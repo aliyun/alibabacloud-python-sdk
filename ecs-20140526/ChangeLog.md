@@ -1,3 +1,11 @@
+2024-08-01 Version: 4.1.10
+- Update API DescribeInvocationResults: update response param.
+- Update API DescribeInvocations: update response param.
+- Update API InvokeCommand: add param Launcher.
+- Update API ModifyDiskSpec: update param ProvisionedIops.
+- Update API RunCommand: add param Launcher.
+
+
 2024-07-23 Version: 4.1.9
 - Update API CopyImage: update param KMSKeyId.
 - Update API CopySnapshot: add param ClientToken.

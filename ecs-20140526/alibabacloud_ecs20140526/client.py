@@ -4912,7 +4912,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateAutoProvisioningGroupResponse:
         """
-        @summary Creates an auto provisioning group.
+        @summary Creates an auto provisioning group. When you call this operation, you can specify parameters, such as ResourceGroupId, AutoProvisioningGroupType, and ValidFrom, in the request.
         
         @description ## [](#)Usage notes
         Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](https://help.aliyun.com/document_detail/200772.html).
@@ -5017,7 +5017,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateAutoProvisioningGroupResponse:
         """
-        @summary Creates an auto provisioning group.
+        @summary Creates an auto provisioning group. When you call this operation, you can specify parameters, such as ResourceGroupId, AutoProvisioningGroupType, and ValidFrom, in the request.
         
         @description ## [](#)Usage notes
         Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](https://help.aliyun.com/document_detail/200772.html).
@@ -5121,7 +5121,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateAutoProvisioningGroupRequest,
     ) -> ecs_20140526_models.CreateAutoProvisioningGroupResponse:
         """
-        @summary Creates an auto provisioning group.
+        @summary Creates an auto provisioning group. When you call this operation, you can specify parameters, such as ResourceGroupId, AutoProvisioningGroupType, and ValidFrom, in the request.
         
         @description ## [](#)Usage notes
         Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](https://help.aliyun.com/document_detail/200772.html).
@@ -5140,7 +5140,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateAutoProvisioningGroupRequest,
     ) -> ecs_20140526_models.CreateAutoProvisioningGroupResponse:
         """
-        @summary Creates an auto provisioning group.
+        @summary Creates an auto provisioning group. When you call this operation, you can specify parameters, such as ResourceGroupId, AutoProvisioningGroupType, and ValidFrom, in the request.
         
         @description ## [](#)Usage notes
         Auto Provisioning is a service that allows quick deployment of an instance cluster that consists of preemptible instances and pay-as-you-go instances. Auto Provisioning supports push-button deployment of instance clusters across different billing methods, instance families, and zones. For more information, see [Use auto provisioning group-related API operations to create multiple ECS instances at the same time](https://help.aliyun.com/document_detail/200772.html).
@@ -5744,7 +5744,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateDedicatedHostClusterResponse:
         """
-        @summary Creates a dedicated host cluster.
+        @summary Creates a dedicated host cluster. When you call this operation, you can specify parameters, such as ResourceGroupId, DedicatedHostClusterName, and ZoneId, in the request.
         
         @param request: CreateDedicatedHostClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5799,7 +5799,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateDedicatedHostClusterResponse:
         """
-        @summary Creates a dedicated host cluster.
+        @summary Creates a dedicated host cluster. When you call this operation, you can specify parameters, such as ResourceGroupId, DedicatedHostClusterName, and ZoneId, in the request.
         
         @param request: CreateDedicatedHostClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5853,7 +5853,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateDedicatedHostClusterRequest,
     ) -> ecs_20140526_models.CreateDedicatedHostClusterResponse:
         """
-        @summary Creates a dedicated host cluster.
+        @summary Creates a dedicated host cluster. When you call this operation, you can specify parameters, such as ResourceGroupId, DedicatedHostClusterName, and ZoneId, in the request.
         
         @param request: CreateDedicatedHostClusterRequest
         @return: CreateDedicatedHostClusterResponse
@@ -5866,7 +5866,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateDedicatedHostClusterRequest,
     ) -> ecs_20140526_models.CreateDedicatedHostClusterResponse:
         """
-        @summary Creates a dedicated host cluster.
+        @summary Creates a dedicated host cluster. When you call this operation, you can specify parameters, such as ResourceGroupId, DedicatedHostClusterName, and ZoneId, in the request.
         
         @param request: CreateDedicatedHostClusterRequest
         @return: CreateDedicatedHostClusterResponse
@@ -8508,7 +8508,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateLaunchTemplateResponse:
         """
-        @summary Creates a launch template. A launch template eliminates the need to configure a large number of parameters every time you create an Elastic Compute Service (ECS) instance.
+        @summary Creates a launch template. When you call this operation, you can specify parameters, such as TemplateTag, LaunchTemplateName, and ImageId, in the request. A launch template eliminates the need to configure a large number of parameters every time you create an Elastic Compute Service (ECS) instance.
         
         @description ## Description
         Launch templates contain preset configurations used to create instances, such as the region, image ID, instance type, security group ID, and public bandwidth settings. If a specific parameter is not included in a launch template, you must manually specify the parameter when you use the launch template to create an instance.
@@ -8651,7 +8651,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateLaunchTemplateResponse:
         """
-        @summary Creates a launch template. A launch template eliminates the need to configure a large number of parameters every time you create an Elastic Compute Service (ECS) instance.
+        @summary Creates a launch template. When you call this operation, you can specify parameters, such as TemplateTag, LaunchTemplateName, and ImageId, in the request. A launch template eliminates the need to configure a large number of parameters every time you create an Elastic Compute Service (ECS) instance.
         
         @description ## Description
         Launch templates contain preset configurations used to create instances, such as the region, image ID, instance type, security group ID, and public bandwidth settings. If a specific parameter is not included in a launch template, you must manually specify the parameter when you use the launch template to create an instance.
@@ -8793,7 +8793,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateLaunchTemplateRequest,
     ) -> ecs_20140526_models.CreateLaunchTemplateResponse:
         """
-        @summary Creates a launch template. A launch template eliminates the need to configure a large number of parameters every time you create an Elastic Compute Service (ECS) instance.
+        @summary Creates a launch template. When you call this operation, you can specify parameters, such as TemplateTag, LaunchTemplateName, and ImageId, in the request. A launch template eliminates the need to configure a large number of parameters every time you create an Elastic Compute Service (ECS) instance.
         
         @description ## Description
         Launch templates contain preset configurations used to create instances, such as the region, image ID, instance type, security group ID, and public bandwidth settings. If a specific parameter is not included in a launch template, you must manually specify the parameter when you use the launch template to create an instance.
@@ -8814,7 +8814,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateLaunchTemplateRequest,
     ) -> ecs_20140526_models.CreateLaunchTemplateResponse:
         """
-        @summary Creates a launch template. A launch template eliminates the need to configure a large number of parameters every time you create an Elastic Compute Service (ECS) instance.
+        @summary Creates a launch template. When you call this operation, you can specify parameters, such as TemplateTag, LaunchTemplateName, and ImageId, in the request. A launch template eliminates the need to configure a large number of parameters every time you create an Elastic Compute Service (ECS) instance.
         
         @description ## Description
         Launch templates contain preset configurations used to create instances, such as the region, image ID, instance type, security group ID, and public bandwidth settings. If a specific parameter is not included in a launch template, you must manually specify the parameter when you use the launch template to create an instance.
@@ -8836,7 +8836,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateLaunchTemplateVersionResponse:
         """
-        @summary Creates a version for a launch template.
+        @summary Creates a version for a launch template. When you call this operation, you can specify parameters, such as LaunchTemplateId, VersionDescription, and Tag, in the request.
         
         @description ## [](#)Usage notes
         If you want to modify the parameters of a launch template version, you can create another version with different parameter settings for the launch template. You can create up to 30 versions for each launch template.
@@ -8972,7 +8972,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateLaunchTemplateVersionResponse:
         """
-        @summary Creates a version for a launch template.
+        @summary Creates a version for a launch template. When you call this operation, you can specify parameters, such as LaunchTemplateId, VersionDescription, and Tag, in the request.
         
         @description ## [](#)Usage notes
         If you want to modify the parameters of a launch template version, you can create another version with different parameter settings for the launch template. You can create up to 30 versions for each launch template.
@@ -9107,7 +9107,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateLaunchTemplateVersionRequest,
     ) -> ecs_20140526_models.CreateLaunchTemplateVersionResponse:
         """
-        @summary Creates a version for a launch template.
+        @summary Creates a version for a launch template. When you call this operation, you can specify parameters, such as LaunchTemplateId, VersionDescription, and Tag, in the request.
         
         @description ## [](#)Usage notes
         If you want to modify the parameters of a launch template version, you can create another version with different parameter settings for the launch template. You can create up to 30 versions for each launch template.
@@ -9123,7 +9123,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateLaunchTemplateVersionRequest,
     ) -> ecs_20140526_models.CreateLaunchTemplateVersionResponse:
         """
-        @summary Creates a version for a launch template.
+        @summary Creates a version for a launch template. When you call this operation, you can specify parameters, such as LaunchTemplateId, VersionDescription, and Tag, in the request.
         
         @description ## [](#)Usage notes
         If you want to modify the parameters of a launch template version, you can create another version with different parameter settings for the launch template. You can create up to 30 versions for each launch template.
@@ -12076,7 +12076,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteAutoProvisioningGroupResponse:
         """
-        @summary Deletes an auto provisioning group.
+        @summary Deletes an auto provisioning group. When you call this operation, you can specify AutoProvisioningGroupId and TerminateInstances in the request.
         
         @param request: DeleteAutoProvisioningGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12123,7 +12123,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteAutoProvisioningGroupResponse:
         """
-        @summary Deletes an auto provisioning group.
+        @summary Deletes an auto provisioning group. When you call this operation, you can specify AutoProvisioningGroupId and TerminateInstances in the request.
         
         @param request: DeleteAutoProvisioningGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12169,7 +12169,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteAutoProvisioningGroupRequest,
     ) -> ecs_20140526_models.DeleteAutoProvisioningGroupResponse:
         """
-        @summary Deletes an auto provisioning group.
+        @summary Deletes an auto provisioning group. When you call this operation, you can specify AutoProvisioningGroupId and TerminateInstances in the request.
         
         @param request: DeleteAutoProvisioningGroupRequest
         @return: DeleteAutoProvisioningGroupResponse
@@ -12182,7 +12182,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteAutoProvisioningGroupRequest,
     ) -> ecs_20140526_models.DeleteAutoProvisioningGroupResponse:
         """
-        @summary Deletes an auto provisioning group.
+        @summary Deletes an auto provisioning group. When you call this operation, you can specify AutoProvisioningGroupId and TerminateInstances in the request.
         
         @param request: DeleteAutoProvisioningGroupRequest
         @return: DeleteAutoProvisioningGroupResponse
@@ -12428,7 +12428,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteCommandResponse:
         """
-        @summary The ID of the command. You can call the [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) operation to query all available command IDs.
+        @summary Deletes a Cloud Assistant command in a region. This operation cannot delete Cloud Assistant commands that are being run.
         
         @param request: DeleteCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12475,7 +12475,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteCommandResponse:
         """
-        @summary The ID of the command. You can call the [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) operation to query all available command IDs.
+        @summary Deletes a Cloud Assistant command in a region. This operation cannot delete Cloud Assistant commands that are being run.
         
         @param request: DeleteCommandRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12521,7 +12521,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteCommandRequest,
     ) -> ecs_20140526_models.DeleteCommandResponse:
         """
-        @summary The ID of the command. You can call the [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) operation to query all available command IDs.
+        @summary Deletes a Cloud Assistant command in a region. This operation cannot delete Cloud Assistant commands that are being run.
         
         @param request: DeleteCommandRequest
         @return: DeleteCommandResponse
@@ -12534,7 +12534,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteCommandRequest,
     ) -> ecs_20140526_models.DeleteCommandResponse:
         """
-        @summary The ID of the command. You can call the [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) operation to query all available command IDs.
+        @summary Deletes a Cloud Assistant command in a region. This operation cannot delete Cloud Assistant commands that are being run.
         
         @param request: DeleteCommandRequest
         @return: DeleteCommandResponse
@@ -12548,7 +12548,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteDedicatedHostClusterResponse:
         """
-        @summary Deletes a dedicated host cluster.
+        @summary Deletes a dedicated host cluster. Before you call this operation, migrate the dedicated hosts in the dedicated host cluster that you want to delete to another dedicated host cluster. When you call this operation, you can specify RegionId and DedicatedHostClusterId in the request.
         
         @param request: DeleteDedicatedHostClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12593,7 +12593,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteDedicatedHostClusterResponse:
         """
-        @summary Deletes a dedicated host cluster.
+        @summary Deletes a dedicated host cluster. Before you call this operation, migrate the dedicated hosts in the dedicated host cluster that you want to delete to another dedicated host cluster. When you call this operation, you can specify RegionId and DedicatedHostClusterId in the request.
         
         @param request: DeleteDedicatedHostClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12637,7 +12637,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteDedicatedHostClusterRequest,
     ) -> ecs_20140526_models.DeleteDedicatedHostClusterResponse:
         """
-        @summary Deletes a dedicated host cluster.
+        @summary Deletes a dedicated host cluster. Before you call this operation, migrate the dedicated hosts in the dedicated host cluster that you want to delete to another dedicated host cluster. When you call this operation, you can specify RegionId and DedicatedHostClusterId in the request.
         
         @param request: DeleteDedicatedHostClusterRequest
         @return: DeleteDedicatedHostClusterResponse
@@ -12650,7 +12650,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteDedicatedHostClusterRequest,
     ) -> ecs_20140526_models.DeleteDedicatedHostClusterResponse:
         """
-        @summary Deletes a dedicated host cluster.
+        @summary Deletes a dedicated host cluster. Before you call this operation, migrate the dedicated hosts in the dedicated host cluster that you want to delete to another dedicated host cluster. When you call this operation, you can specify RegionId and DedicatedHostClusterId in the request.
         
         @param request: DeleteDedicatedHostClusterRequest
         @return: DeleteDedicatedHostClusterResponse
@@ -13640,7 +13640,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteImageResponse:
         """
-        @summary Deletes a custom image.
+        @summary Deletes a custom image. When you call this operation, you can specify ImageId and Force in the request.
+        
+        @description For information about scenarios in which you cannot delete a custom image and the considerations related to custom image deletion, see [Delete a custom image](https://help.aliyun.com/document_detail/25466.html).
         
         @param request: DeleteImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13687,7 +13689,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteImageResponse:
         """
-        @summary Deletes a custom image.
+        @summary Deletes a custom image. When you call this operation, you can specify ImageId and Force in the request.
+        
+        @description For information about scenarios in which you cannot delete a custom image and the considerations related to custom image deletion, see [Delete a custom image](https://help.aliyun.com/document_detail/25466.html).
         
         @param request: DeleteImageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13733,7 +13737,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteImageRequest,
     ) -> ecs_20140526_models.DeleteImageResponse:
         """
-        @summary Deletes a custom image.
+        @summary Deletes a custom image. When you call this operation, you can specify ImageId and Force in the request.
+        
+        @description For information about scenarios in which you cannot delete a custom image and the considerations related to custom image deletion, see [Delete a custom image](https://help.aliyun.com/document_detail/25466.html).
         
         @param request: DeleteImageRequest
         @return: DeleteImageResponse
@@ -13746,7 +13752,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteImageRequest,
     ) -> ecs_20140526_models.DeleteImageResponse:
         """
-        @summary Deletes a custom image.
+        @summary Deletes a custom image. When you call this operation, you can specify ImageId and Force in the request.
+        
+        @description For information about scenarios in which you cannot delete a custom image and the considerations related to custom image deletion, see [Delete a custom image](https://help.aliyun.com/document_detail/25466.html).
         
         @param request: DeleteImageRequest
         @return: DeleteImageResponse
@@ -15652,7 +15660,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteSecurityGroupResponse:
         """
-        @summary Deletes a security group.
+        @summary Deletes a security group. When you call this operation, you can specify RegionId and SecurityGroupId in the request. When a security group is deleted, the rules in the security group are also deleted.
         
         @description ## [](#)Usage notes
         Take note of the following items:
@@ -15702,7 +15710,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteSecurityGroupResponse:
         """
-        @summary Deletes a security group.
+        @summary Deletes a security group. When you call this operation, you can specify RegionId and SecurityGroupId in the request. When a security group is deleted, the rules in the security group are also deleted.
         
         @description ## [](#)Usage notes
         Take note of the following items:
@@ -15751,7 +15759,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteSecurityGroupRequest,
     ) -> ecs_20140526_models.DeleteSecurityGroupResponse:
         """
-        @summary Deletes a security group.
+        @summary Deletes a security group. When you call this operation, you can specify RegionId and SecurityGroupId in the request. When a security group is deleted, the rules in the security group are also deleted.
         
         @description ## [](#)Usage notes
         Take note of the following items:
@@ -15769,7 +15777,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteSecurityGroupRequest,
     ) -> ecs_20140526_models.DeleteSecurityGroupResponse:
         """
-        @summary Deletes a security group.
+        @summary Deletes a security group. When you call this operation, you can specify RegionId and SecurityGroupId in the request. When a security group is deleted, the rules in the security group are also deleted.
         
         @description ## [](#)Usage notes
         Take note of the following items:
@@ -26440,7 +26448,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeLaunchTemplateVersionsResponse:
         """
-        @summary Queries the versions of a launch template.
+        @summary Queries the information of launch template versions, such as the total number of launch templates, launch template names, and launch template version numbers. When you call this operation, you can specify parameters, such as LaunchTemplateVersion, LaunchTemplateId, and DetailFlag, in the request.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs\\&api=DescribeLaunchTemplateVersions\\&type=RPC\\&version=2014-05-26)
@@ -26504,7 +26512,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeLaunchTemplateVersionsResponse:
         """
-        @summary Queries the versions of a launch template.
+        @summary Queries the information of launch template versions, such as the total number of launch templates, launch template names, and launch template version numbers. When you call this operation, you can specify parameters, such as LaunchTemplateVersion, LaunchTemplateId, and DetailFlag, in the request.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs\\&api=DescribeLaunchTemplateVersions\\&type=RPC\\&version=2014-05-26)
@@ -26567,7 +26575,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeLaunchTemplateVersionsRequest,
     ) -> ecs_20140526_models.DescribeLaunchTemplateVersionsResponse:
         """
-        @summary Queries the versions of a launch template.
+        @summary Queries the information of launch template versions, such as the total number of launch templates, launch template names, and launch template version numbers. When you call this operation, you can specify parameters, such as LaunchTemplateVersion, LaunchTemplateId, and DetailFlag, in the request.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs\\&api=DescribeLaunchTemplateVersions\\&type=RPC\\&version=2014-05-26)
@@ -26583,7 +26591,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeLaunchTemplateVersionsRequest,
     ) -> ecs_20140526_models.DescribeLaunchTemplateVersionsResponse:
         """
-        @summary Queries the versions of a launch template.
+        @summary Queries the information of launch template versions, such as the total number of launch templates, launch template names, and launch template version numbers. When you call this operation, you can specify parameters, such as LaunchTemplateVersion, LaunchTemplateId, and DetailFlag, in the request.
         
         @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Ecs\\&api=DescribeLaunchTemplateVersions\\&type=RPC\\&version=2014-05-26)
@@ -26600,7 +26608,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeLaunchTemplatesResponse:
         """
-        @summary The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        @summary Queries the information of one or more available launch templates, such as the total number of launch templates, launch template names, and launch template IDs. When you call this operation, you can specify parameters, such as TemplateTag, TemplateResourceGroupId, and LaunchTemplateId, in the request.
         
         @param request: DescribeLaunchTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26655,7 +26663,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeLaunchTemplatesResponse:
         """
-        @summary The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        @summary Queries the information of one or more available launch templates, such as the total number of launch templates, launch template names, and launch template IDs. When you call this operation, you can specify parameters, such as TemplateTag, TemplateResourceGroupId, and LaunchTemplateId, in the request.
         
         @param request: DescribeLaunchTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26709,7 +26717,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeLaunchTemplatesRequest,
     ) -> ecs_20140526_models.DescribeLaunchTemplatesResponse:
         """
-        @summary The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        @summary Queries the information of one or more available launch templates, such as the total number of launch templates, launch template names, and launch template IDs. When you call this operation, you can specify parameters, such as TemplateTag, TemplateResourceGroupId, and LaunchTemplateId, in the request.
         
         @param request: DescribeLaunchTemplatesRequest
         @return: DescribeLaunchTemplatesResponse
@@ -26722,7 +26730,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeLaunchTemplatesRequest,
     ) -> ecs_20140526_models.DescribeLaunchTemplatesResponse:
         """
-        @summary The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        @summary Queries the information of one or more available launch templates, such as the total number of launch templates, launch template names, and launch template IDs. When you call this operation, you can specify parameters, such as TemplateTag, TemplateResourceGroupId, and LaunchTemplateId, in the request.
         
         @param request: DescribeLaunchTemplatesRequest
         @return: DescribeLaunchTemplatesResponse
@@ -28308,7 +28316,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePriceResponse:
         """
-        @summary Queries the most recent prices of Elastic Compute Resource (ECS) resources.
+        @summary Queries information about the most recent prices of Elastic Compute Service (ECS) resources, such as the promotion rules, prices, and discounts. When you call this operation, you can specify parameters, such as ResourceType, ImageId, and InstanceType, in the request.
         
         @description # [](#)Usage notes
         The required parameters vary based on the types of resources whose prices you want to query.
@@ -28414,7 +28422,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePriceResponse:
         """
-        @summary Queries the most recent prices of Elastic Compute Resource (ECS) resources.
+        @summary Queries information about the most recent prices of Elastic Compute Service (ECS) resources, such as the promotion rules, prices, and discounts. When you call this operation, you can specify parameters, such as ResourceType, ImageId, and InstanceType, in the request.
         
         @description # [](#)Usage notes
         The required parameters vary based on the types of resources whose prices you want to query.
@@ -28519,7 +28527,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePriceRequest,
     ) -> ecs_20140526_models.DescribePriceResponse:
         """
-        @summary Queries the most recent prices of Elastic Compute Resource (ECS) resources.
+        @summary Queries information about the most recent prices of Elastic Compute Service (ECS) resources, such as the promotion rules, prices, and discounts. When you call this operation, you can specify parameters, such as ResourceType, ImageId, and InstanceType, in the request.
         
         @description # [](#)Usage notes
         The required parameters vary based on the types of resources whose prices you want to query.
@@ -28543,7 +28551,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePriceRequest,
     ) -> ecs_20140526_models.DescribePriceResponse:
         """
-        @summary Queries the most recent prices of Elastic Compute Resource (ECS) resources.
+        @summary Queries information about the most recent prices of Elastic Compute Service (ECS) resources, such as the promotion rules, prices, and discounts. When you call this operation, you can specify parameters, such as ResourceType, ImageId, and InstanceType, in the request.
         
         @description # [](#)Usage notes
         The required parameters vary based on the types of resources whose prices you want to query.
@@ -30228,7 +30236,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSecurityGroupReferencesResponse:
         """
-        @summary Queries whether a security group is referenced by the rules of other security groups.
+        @summary Queries the security groups that are referencing specific security groups. When you call this operation, you can specify SecurityGroupId.
         
         @description When you call this operation, take note of the following items:
         A security group can be referenced by the inbound or outbound rules of other security groups.
@@ -30278,7 +30286,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSecurityGroupReferencesResponse:
         """
-        @summary Queries whether a security group is referenced by the rules of other security groups.
+        @summary Queries the security groups that are referencing specific security groups. When you call this operation, you can specify SecurityGroupId.
         
         @description When you call this operation, take note of the following items:
         A security group can be referenced by the inbound or outbound rules of other security groups.
@@ -30327,7 +30335,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSecurityGroupReferencesRequest,
     ) -> ecs_20140526_models.DescribeSecurityGroupReferencesResponse:
         """
-        @summary Queries whether a security group is referenced by the rules of other security groups.
+        @summary Queries the security groups that are referencing specific security groups. When you call this operation, you can specify SecurityGroupId.
         
         @description When you call this operation, take note of the following items:
         A security group can be referenced by the inbound or outbound rules of other security groups.
@@ -30345,7 +30353,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSecurityGroupReferencesRequest,
     ) -> ecs_20140526_models.DescribeSecurityGroupReferencesResponse:
         """
-        @summary Queries whether a security group is referenced by the rules of other security groups.
+        @summary Queries the security groups that are referencing specific security groups. When you call this operation, you can specify SecurityGroupId.
         
         @description When you call this operation, take note of the following items:
         A security group can be referenced by the inbound or outbound rules of other security groups.
@@ -31332,7 +31340,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSnapshotsResponse:
         """
-        @summary Queries all the snapshots of an Elastic Compute Service (ECS) instance or a disk.
+        @summary Queries all snapshots of an Elastic Compute Service (ECS) instance or a disk. When you call this operation, you can specify parameters, such as InstanceId, DiskId, SnapshotLinkId, and Status, in the request.
         
         @description You can configure multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to query snapshots. Configured parameters have logical AND relations. Only the configured parameters are included in the filter conditions.
         When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
@@ -31418,7 +31426,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSnapshotsResponse:
         """
-        @summary Queries all the snapshots of an Elastic Compute Service (ECS) instance or a disk.
+        @summary Queries all snapshots of an Elastic Compute Service (ECS) instance or a disk. When you call this operation, you can specify parameters, such as InstanceId, DiskId, SnapshotLinkId, and Status, in the request.
         
         @description You can configure multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to query snapshots. Configured parameters have logical AND relations. Only the configured parameters are included in the filter conditions.
         When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
@@ -31503,7 +31511,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSnapshotsRequest,
     ) -> ecs_20140526_models.DescribeSnapshotsResponse:
         """
-        @summary Queries all the snapshots of an Elastic Compute Service (ECS) instance or a disk.
+        @summary Queries all snapshots of an Elastic Compute Service (ECS) instance or a disk. When you call this operation, you can specify parameters, such as InstanceId, DiskId, SnapshotLinkId, and Status, in the request.
         
         @description You can configure multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to query snapshots. Configured parameters have logical AND relations. Only the configured parameters are included in the filter conditions.
         When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
@@ -31519,7 +31527,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSnapshotsRequest,
     ) -> ecs_20140526_models.DescribeSnapshotsResponse:
         """
-        @summary Queries all the snapshots of an Elastic Compute Service (ECS) instance or a disk.
+        @summary Queries all snapshots of an Elastic Compute Service (ECS) instance or a disk. When you call this operation, you can specify parameters, such as InstanceId, DiskId, SnapshotLinkId, and Status, in the request.
         
         @description You can configure multiple request parameters such as `InstanceId`, `DiskId`, and `SnapshotIds` to query snapshots. Configured parameters have logical AND relations. Only the configured parameters are included in the filter conditions.
         When you use Alibaba Cloud CLI to call an API operation, you must specify request parameter values of different data types in required formats. For more information, see [Parameter format overview](https://help.aliyun.com/document_detail/110340.html).
@@ -36900,6 +36908,8 @@ class Client(OpenApiClient):
             query['Frequency'] = request.frequency
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.launcher):
+            query['Launcher'] = request.launcher
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -36997,6 +37007,8 @@ class Client(OpenApiClient):
             query['Frequency'] = request.frequency
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.launcher):
+            query['Launcher'] = request.launcher
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -37418,11 +37430,14 @@ class Client(OpenApiClient):
         """
         @summary Removes an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) from a security group.
         
-        @description > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
-        When you call this operation, take note of the following items:
-        Before you remove an instance from a security group, the instance must be in the **Stopped** or **Running** state.
-        An instance must belong to at least one security group. Therefore, if the instance that you want to remove belongs to only one security group, the LeaveSecurityGroup operation fails.
-        You cannot remove an instance and an ENI from a security group at the same time. This indicates that you cannot configure both `InstanceId` and `NetworkInterfaceId` in a request.
+        @description ## [](#)Usage notes
+        >
+        To improve user experience, Alibaba Cloud modified the verification rules for the LeaveSecurityGroup operation on July 8, 2024. When you remove an ECS instance or ENI that does not belong to a security group from the security group, the "InvalidSecurityGroupAssociation.NotFound" error code is returned instead of a success response. Update the LeaveSecurityGroup operation to use the new verification rules with the new error code based on your business requirements.
+        This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an ECS instance to or remove an ECS instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
+        Take note of the following items:
+        Before you remove an instance from a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
+        An instance must belong to at least one security group. Therefore, if the instance to be removed belongs to only one security group, the LeaveSecurityGroup request fails.
+        You cannot remove an instance and an ENI from a security group at the same time. This indicates that you cannot specify `InstanceId` and `NetworkInterfaceId` in one request.
         
         @param request: LeaveSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37473,11 +37488,14 @@ class Client(OpenApiClient):
         """
         @summary Removes an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) from a security group.
         
-        @description > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
-        When you call this operation, take note of the following items:
-        Before you remove an instance from a security group, the instance must be in the **Stopped** or **Running** state.
-        An instance must belong to at least one security group. Therefore, if the instance that you want to remove belongs to only one security group, the LeaveSecurityGroup operation fails.
-        You cannot remove an instance and an ENI from a security group at the same time. This indicates that you cannot configure both `InstanceId` and `NetworkInterfaceId` in a request.
+        @description ## [](#)Usage notes
+        >
+        To improve user experience, Alibaba Cloud modified the verification rules for the LeaveSecurityGroup operation on July 8, 2024. When you remove an ECS instance or ENI that does not belong to a security group from the security group, the "InvalidSecurityGroupAssociation.NotFound" error code is returned instead of a success response. Update the LeaveSecurityGroup operation to use the new verification rules with the new error code based on your business requirements.
+        This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an ECS instance to or remove an ECS instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
+        Take note of the following items:
+        Before you remove an instance from a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
+        An instance must belong to at least one security group. Therefore, if the instance to be removed belongs to only one security group, the LeaveSecurityGroup request fails.
+        You cannot remove an instance and an ENI from a security group at the same time. This indicates that you cannot specify `InstanceId` and `NetworkInterfaceId` in one request.
         
         @param request: LeaveSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37527,11 +37545,14 @@ class Client(OpenApiClient):
         """
         @summary Removes an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) from a security group.
         
-        @description > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
-        When you call this operation, take note of the following items:
-        Before you remove an instance from a security group, the instance must be in the **Stopped** or **Running** state.
-        An instance must belong to at least one security group. Therefore, if the instance that you want to remove belongs to only one security group, the LeaveSecurityGroup operation fails.
-        You cannot remove an instance and an ENI from a security group at the same time. This indicates that you cannot configure both `InstanceId` and `NetworkInterfaceId` in a request.
+        @description ## [](#)Usage notes
+        >
+        To improve user experience, Alibaba Cloud modified the verification rules for the LeaveSecurityGroup operation on July 8, 2024. When you remove an ECS instance or ENI that does not belong to a security group from the security group, the "InvalidSecurityGroupAssociation.NotFound" error code is returned instead of a success response. Update the LeaveSecurityGroup operation to use the new verification rules with the new error code based on your business requirements.
+        This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an ECS instance to or remove an ECS instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
+        Take note of the following items:
+        Before you remove an instance from a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
+        An instance must belong to at least one security group. Therefore, if the instance to be removed belongs to only one security group, the LeaveSecurityGroup request fails.
+        You cannot remove an instance and an ENI from a security group at the same time. This indicates that you cannot specify `InstanceId` and `NetworkInterfaceId` in one request.
         
         @param request: LeaveSecurityGroupRequest
         @return: LeaveSecurityGroupResponse
@@ -37546,11 +37567,14 @@ class Client(OpenApiClient):
         """
         @summary Removes an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) from a security group.
         
-        @description > This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
-        When you call this operation, take note of the following items:
-        Before you remove an instance from a security group, the instance must be in the **Stopped** or **Running** state.
-        An instance must belong to at least one security group. Therefore, if the instance that you want to remove belongs to only one security group, the LeaveSecurityGroup operation fails.
-        You cannot remove an instance and an ENI from a security group at the same time. This indicates that you cannot configure both `InstanceId` and `NetworkInterfaceId` in a request.
+        @description ## [](#)Usage notes
+        >
+        To improve user experience, Alibaba Cloud modified the verification rules for the LeaveSecurityGroup operation on July 8, 2024. When you remove an ECS instance or ENI that does not belong to a security group from the security group, the "InvalidSecurityGroupAssociation.NotFound" error code is returned instead of a success response. Update the LeaveSecurityGroup operation to use the new verification rules with the new error code based on your business requirements.
+        This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an ECS instance to or remove an ECS instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
+        Take note of the following items:
+        Before you remove an instance from a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
+        An instance must belong to at least one security group. Therefore, if the instance to be removed belongs to only one security group, the LeaveSecurityGroup request fails.
+        You cannot remove an instance and an ENI from a security group at the same time. This indicates that you cannot specify `InstanceId` and `NetworkInterfaceId` in one request.
         
         @param request: LeaveSecurityGroupRequest
         @return: LeaveSecurityGroupResponse
@@ -40211,7 +40235,7 @@ class Client(OpenApiClient):
         @summary Changes the billing method of data disks that are attached to a subscription Elastic Compute Service (ECS) instance.
         
         @description # [](#)Usage notes
-        After you change the billing method, the payment (if any) is automatically completed. Maintain sufficient balance in your account. Otherwise, your order becomes invalid and must be canceled. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can go to the [Orders page](https://usercenter2-intl.aliyun.com/order/list) in the Expenses and Costs console and pay for the order.
+        After you change the billing method, the payment (if any) is automatically completed. Maintain sufficient balance in your account. Otherwise, your order becomes invalid and must be canceled. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, log on to the *Expenses and Costs console**, go to the [Orders page](https://usercenter2-intl.aliyun.com/order/list), and pay for the order.
         Take note of the following items:
         Only pay-as-you-go disks can be attached to pay-as-you-go instances, and the billing methods of the disks cannot be changed.
         The instance cannot be in the Stopped state due to expiration.
@@ -40272,7 +40296,7 @@ class Client(OpenApiClient):
         @summary Changes the billing method of data disks that are attached to a subscription Elastic Compute Service (ECS) instance.
         
         @description # [](#)Usage notes
-        After you change the billing method, the payment (if any) is automatically completed. Maintain sufficient balance in your account. Otherwise, your order becomes invalid and must be canceled. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can go to the [Orders page](https://usercenter2-intl.aliyun.com/order/list) in the Expenses and Costs console and pay for the order.
+        After you change the billing method, the payment (if any) is automatically completed. Maintain sufficient balance in your account. Otherwise, your order becomes invalid and must be canceled. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, log on to the *Expenses and Costs console**, go to the [Orders page](https://usercenter2-intl.aliyun.com/order/list), and pay for the order.
         Take note of the following items:
         Only pay-as-you-go disks can be attached to pay-as-you-go instances, and the billing methods of the disks cannot be changed.
         The instance cannot be in the Stopped state due to expiration.
@@ -40332,7 +40356,7 @@ class Client(OpenApiClient):
         @summary Changes the billing method of data disks that are attached to a subscription Elastic Compute Service (ECS) instance.
         
         @description # [](#)Usage notes
-        After you change the billing method, the payment (if any) is automatically completed. Maintain sufficient balance in your account. Otherwise, your order becomes invalid and must be canceled. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can go to the [Orders page](https://usercenter2-intl.aliyun.com/order/list) in the Expenses and Costs console and pay for the order.
+        After you change the billing method, the payment (if any) is automatically completed. Maintain sufficient balance in your account. Otherwise, your order becomes invalid and must be canceled. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, log on to the *Expenses and Costs console**, go to the [Orders page](https://usercenter2-intl.aliyun.com/order/list), and pay for the order.
         Take note of the following items:
         Only pay-as-you-go disks can be attached to pay-as-you-go instances, and the billing methods of the disks cannot be changed.
         The instance cannot be in the Stopped state due to expiration.
@@ -40353,7 +40377,7 @@ class Client(OpenApiClient):
         @summary Changes the billing method of data disks that are attached to a subscription Elastic Compute Service (ECS) instance.
         
         @description # [](#)Usage notes
-        After you change the billing method, the payment (if any) is automatically completed. Maintain sufficient balance in your account. Otherwise, your order becomes invalid and must be canceled. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, you can go to the [Orders page](https://usercenter2-intl.aliyun.com/order/list) in the Expenses and Costs console and pay for the order.
+        After you change the billing method, the payment (if any) is automatically completed. Maintain sufficient balance in your account. Otherwise, your order becomes invalid and must be canceled. If your account balance is insufficient, you can set AutoPay to false to generate an unpaid order. Then, log on to the *Expenses and Costs console**, go to the [Orders page](https://usercenter2-intl.aliyun.com/order/list), and pay for the order.
         Take note of the following items:
         Only pay-as-you-go disks can be attached to pay-as-you-go instances, and the billing methods of the disks cannot be changed.
         The instance cannot be in the Stopped state due to expiration.
@@ -45376,12 +45400,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyReservedInstancesResponse:
         """
-        @summary ## Description
-        When you call this operation, take note of the following items:
-        For information about limits on reserved instances, see the "Limits" section in [Overview](https://help.aliyun.com/document_detail/100370.html).
-        Before you call this operation to split a reserved instance, make sure that you are familiar with the limits on splitting a reserved instance. For more information, see [Split a reserved instance](https://help.aliyun.com/document_detail/100375.html).
-        Before you call this operation to merge reserved instances, make sure that you are familiar with the limits on merging reserved instances. For more information, see [Merge reserved instances](https://help.aliyun.com/document_detail/132229.html).
-        Before you call this operation to modify a reserved instance, make sure that you are familiar with the limits and methods of modifying a reserved instance. For more information, see [Modify a reserved instance](https://help.aliyun.com/document_detail/132230.html).
+        @summary Splits, merges, or modifies reserved instances. When you call this operation, you can specify parameters, such as ReservedInstanceId, ZoneId, InstanceType, and InstanceAmount, in the request.
         
         @description The region ID of the reserved instance.
         You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent list of regions.
@@ -45431,12 +45450,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyReservedInstancesResponse:
         """
-        @summary ## Description
-        When you call this operation, take note of the following items:
-        For information about limits on reserved instances, see the "Limits" section in [Overview](https://help.aliyun.com/document_detail/100370.html).
-        Before you call this operation to split a reserved instance, make sure that you are familiar with the limits on splitting a reserved instance. For more information, see [Split a reserved instance](https://help.aliyun.com/document_detail/100375.html).
-        Before you call this operation to merge reserved instances, make sure that you are familiar with the limits on merging reserved instances. For more information, see [Merge reserved instances](https://help.aliyun.com/document_detail/132229.html).
-        Before you call this operation to modify a reserved instance, make sure that you are familiar with the limits and methods of modifying a reserved instance. For more information, see [Modify a reserved instance](https://help.aliyun.com/document_detail/132230.html).
+        @summary Splits, merges, or modifies reserved instances. When you call this operation, you can specify parameters, such as ReservedInstanceId, ZoneId, InstanceType, and InstanceAmount, in the request.
         
         @description The region ID of the reserved instance.
         You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent list of regions.
@@ -45485,12 +45499,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyReservedInstancesRequest,
     ) -> ecs_20140526_models.ModifyReservedInstancesResponse:
         """
-        @summary ## Description
-        When you call this operation, take note of the following items:
-        For information about limits on reserved instances, see the "Limits" section in [Overview](https://help.aliyun.com/document_detail/100370.html).
-        Before you call this operation to split a reserved instance, make sure that you are familiar with the limits on splitting a reserved instance. For more information, see [Split a reserved instance](https://help.aliyun.com/document_detail/100375.html).
-        Before you call this operation to merge reserved instances, make sure that you are familiar with the limits on merging reserved instances. For more information, see [Merge reserved instances](https://help.aliyun.com/document_detail/132229.html).
-        Before you call this operation to modify a reserved instance, make sure that you are familiar with the limits and methods of modifying a reserved instance. For more information, see [Modify a reserved instance](https://help.aliyun.com/document_detail/132230.html).
+        @summary Splits, merges, or modifies reserved instances. When you call this operation, you can specify parameters, such as ReservedInstanceId, ZoneId, InstanceType, and InstanceAmount, in the request.
         
         @description The region ID of the reserved instance.
         You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent list of regions.
@@ -45506,12 +45515,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyReservedInstancesRequest,
     ) -> ecs_20140526_models.ModifyReservedInstancesResponse:
         """
-        @summary ## Description
-        When you call this operation, take note of the following items:
-        For information about limits on reserved instances, see the "Limits" section in [Overview](https://help.aliyun.com/document_detail/100370.html).
-        Before you call this operation to split a reserved instance, make sure that you are familiar with the limits on splitting a reserved instance. For more information, see [Split a reserved instance](https://help.aliyun.com/document_detail/100375.html).
-        Before you call this operation to merge reserved instances, make sure that you are familiar with the limits on merging reserved instances. For more information, see [Merge reserved instances](https://help.aliyun.com/document_detail/132229.html).
-        Before you call this operation to modify a reserved instance, make sure that you are familiar with the limits and methods of modifying a reserved instance. For more information, see [Modify a reserved instance](https://help.aliyun.com/document_detail/132230.html).
+        @summary Splits, merges, or modifies reserved instances. When you call this operation, you can specify parameters, such as ReservedInstanceId, ZoneId, InstanceType, and InstanceAmount, in the request.
         
         @description The region ID of the reserved instance.
         You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent list of regions.
@@ -45808,7 +45812,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifySecurityGroupAttributeResponse:
         """
-        @summary Modifies the name or description of a security group.
+        @summary Modifies the name or description of a security group. When you call this operation, you can specify parameters, such as SecurityGroupId, SecurityGroupName, and Description, in the request.
         
         @param request: ModifySecurityGroupAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45857,7 +45861,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifySecurityGroupAttributeResponse:
         """
-        @summary Modifies the name or description of a security group.
+        @summary Modifies the name or description of a security group. When you call this operation, you can specify parameters, such as SecurityGroupId, SecurityGroupName, and Description, in the request.
         
         @param request: ModifySecurityGroupAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45905,7 +45909,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifySecurityGroupAttributeRequest,
     ) -> ecs_20140526_models.ModifySecurityGroupAttributeResponse:
         """
-        @summary Modifies the name or description of a security group.
+        @summary Modifies the name or description of a security group. When you call this operation, you can specify parameters, such as SecurityGroupId, SecurityGroupName, and Description, in the request.
         
         @param request: ModifySecurityGroupAttributeRequest
         @return: ModifySecurityGroupAttributeResponse
@@ -45918,7 +45922,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifySecurityGroupAttributeRequest,
     ) -> ecs_20140526_models.ModifySecurityGroupAttributeResponse:
         """
-        @summary Modifies the name or description of a security group.
+        @summary Modifies the name or description of a security group. When you call this operation, you can specify parameters, such as SecurityGroupId, SecurityGroupName, and Description, in the request.
         
         @param request: ModifySecurityGroupAttributeRequest
         @return: ModifySecurityGroupAttributeResponse
@@ -49964,7 +49968,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RenewInstanceResponse:
         """
-        @summary Renews a subscription Elastic Compute Service (ECS) instance.
+        @summary Renews a subscription Elastic Compute Service (ECS) instance. When you call this operation, you can specify parameters, such as InstanceId, Period, and ExpectedRenewDay, in the request.
         
         @description    Before you call this operation, make sure that you are familiar with the billing methods and pricing of ECS. For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
         You can call this operation to renew a subscription instance for a specific period of time or to a synchronized expiration date.
@@ -50020,7 +50024,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RenewInstanceResponse:
         """
-        @summary Renews a subscription Elastic Compute Service (ECS) instance.
+        @summary Renews a subscription Elastic Compute Service (ECS) instance. When you call this operation, you can specify parameters, such as InstanceId, Period, and ExpectedRenewDay, in the request.
         
         @description    Before you call this operation, make sure that you are familiar with the billing methods and pricing of ECS. For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
         You can call this operation to renew a subscription instance for a specific period of time or to a synchronized expiration date.
@@ -50075,7 +50079,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RenewInstanceRequest,
     ) -> ecs_20140526_models.RenewInstanceResponse:
         """
-        @summary Renews a subscription Elastic Compute Service (ECS) instance.
+        @summary Renews a subscription Elastic Compute Service (ECS) instance. When you call this operation, you can specify parameters, such as InstanceId, Period, and ExpectedRenewDay, in the request.
         
         @description    Before you call this operation, make sure that you are familiar with the billing methods and pricing of ECS. For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
         You can call this operation to renew a subscription instance for a specific period of time or to a synchronized expiration date.
@@ -50093,7 +50097,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RenewInstanceRequest,
     ) -> ecs_20140526_models.RenewInstanceResponse:
         """
-        @summary Renews a subscription Elastic Compute Service (ECS) instance.
+        @summary Renews a subscription Elastic Compute Service (ECS) instance. When you call this operation, you can specify parameters, such as InstanceId, Period, and ExpectedRenewDay, in the request.
         
         @description    Before you call this operation, make sure that you are familiar with the billing methods and pricing of ECS. For more information, see the [Elastic Compute Service](https://www.alibabacloud.com/product/ecs#pricing) product page.
         You can call this operation to renew a subscription instance for a specific period of time or to a synchronized expiration date.
@@ -51838,6 +51842,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.keep_command):
             query['KeepCommand'] = request.keep_command
+        if not UtilClient.is_unset(request.launcher):
+            query['Launcher'] = request.launcher
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.owner_account):
@@ -51951,6 +51957,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.keep_command):
             query['KeepCommand'] = request.keep_command
+        if not UtilClient.is_unset(request.launcher):
+            query['Launcher'] = request.launcher
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.owner_account):
