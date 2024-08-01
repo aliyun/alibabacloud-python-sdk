@@ -17,12 +17,16 @@ class BatchSendMessageToGlobeRequest(TeaModel):
         # The mobile phone number of the sender. You can also specify a sender ID. The sender ID can contain both letters and digits. If it does, the ID must be between 1 to 11 characters in length. If the sender ID contains only digits, it must be 1 to 15 characters in length.
         self.from_ = from_
         # The content of the message.
+        # 
+        # This parameter is required.
         self.message = message
         # The ID of the messaging campaign. It must be 1 to 255 characters in length. The ID is the value of the TaskId field in the delivery receipt of the message.
         self.task_id = task_id
         # The mobile phone numbers to which the message is sent. You must add the dialing code to the beginning of each mobile phone number.
         # 
         # For more information, see [Dialing codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/dialing-codes).
+        # 
+        # This parameter is required.
         self.to = to
         # The type of the message. Valid values:
         # 
@@ -191,7 +195,9 @@ class ConversionDataRequest(TeaModel):
     ):
         # Conversion rate monitoring return value.
         # 
-        # >  The value of this parameter is of type double, and the value is between \[0,1].
+        # >  The value of this parameter is of type double, and the value is between [0,1].
+        # 
+        # This parameter is required.
         self.conversion_rate = conversion_rate
         # Timestamp of the conversion rate observation should be a Unix timestamp, a millisecond-level long integer.
         # 
@@ -231,7 +237,7 @@ class ConversionDataResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # Status code. Returning OK means the request was successful. For other error codes, please refer to the [Error codes](~~180674~~) list.
+        # Status code. Returning OK means the request was successful. For other error codes, please refer to the [Error codes](https://help.aliyun.com/document_detail/180674.html) list.
         self.response_code = response_code
         # The description of the status code.
         self.response_description = response_description
@@ -311,6 +317,8 @@ class QueryMessageRequest(TeaModel):
         message_id: str = None,
     ):
         # The ID of the message.
+        # 
+        # This parameter is required.
         self.message_id = message_id
 
     def validate(self):
@@ -530,23 +538,30 @@ class QueryMessageResponse(TeaModel):
 class SendMessageToGlobeRequest(TeaModel):
     def __init__(
         self,
+        channel_id: str = None,
         from_: str = None,
         message: str = None,
         task_id: str = None,
         to: str = None,
         validity_period: int = None,
     ):
+        # The ID of the channel.
+        self.channel_id = channel_id
         # The mobile phone number of the sender. You can also specify a sender ID. The sender ID can contain both letters and digits. If it does, the ID must be between 1 to 11 characters in length. If the sender ID contains only digits, it must be 1 to 15 characters in length.
         self.from_ = from_
         # The content of the message.
+        # 
+        # This parameter is required.
         self.message = message
         # The ID of the messaging campaign. It must be 1 to 255 characters in length. The ID is the value of the TaskId field in the delivery receipt of the message.
         self.task_id = task_id
-        # The mobile phone number to which the message is sent. You must add the dialing code to the beginning of the mobile phone number. Example: 8521245567\*\*\*\*.
+        # The mobile phone number to which the message is sent. You must add the dialing code to the beginning of the mobile phone number. Example: 8521245567\\*\\*\\*\\*.
         # 
-        # For more information, see [Dialing codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/dialing-codes).
+        # For more information, see [Dialing codes](https://www.alibabacloud.com/help/en/sms/product-overview/dialing-codes?spm=a2c63.p38356.0.0.48b940a1PFYRMz).
         # 
         # >  You cannot call the SendMessageToGlobe operation to send messages to the Chinese mainland.
+        # 
+        # This parameter is required.
         self.to = to
         # The validity period of the message. Unit: seconds.
         self.validity_period = validity_period
@@ -560,6 +575,8 @@ class SendMessageToGlobeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
         if self.from_ is not None:
             result['From'] = self.from_
         if self.message is not None:
@@ -574,6 +591,8 @@ class SendMessageToGlobeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
         if m.get('From') is not None:
             self.from_ = m.get('From')
         if m.get('Message') is not None:
@@ -752,6 +771,7 @@ class SendMessageToGlobeResponse(TeaModel):
 class SendMessageWithTemplateRequest(TeaModel):
     def __init__(
         self,
+        channel_id: str = None,
         from_: str = None,
         sms_up_extend_code: str = None,
         template_code: str = None,
@@ -759,17 +779,25 @@ class SendMessageWithTemplateRequest(TeaModel):
         to: str = None,
         validity_period: int = None,
     ):
+        # The ID of the channel.
+        self.channel_id = channel_id
         # The signature. To query the signature, log on to the [Short Message Service (SMS) console](https://sms-intl.console.aliyun.com/overview) and navigate to the **Signatures** tab of the **Go China** page.
+        # 
+        # This parameter is required.
         self.from_ = from_
         # The extension code of the MO message.
         self.sms_up_extend_code = sms_up_extend_code
         # The code of the message template. To query the code, log on to the [SMS console](https://sms-intl.console.aliyun.com/overview) and navigate to the **Templates** tab of the **Go China** page.
+        # 
+        # This parameter is required.
         self.template_code = template_code
         # The value of the variable in the message template. If a variable exists in the template, the parameter is required.
         self.template_param = template_param
-        # The mobile phone number to which the message is sent. You must add the country code to the beginning of the mobile phone number. Example: 861503871\*\*\*\*.
+        # The mobile phone number to which the message is sent. You must add the country code to the beginning of the mobile phone number. Example: 861503871\\*\\*\\*\\*.
         # 
-        # For more information, see [Dialing codes](https://www.alibabacloud.com/help/zh/short-message-service/latest/dialing-codes).
+        # For more information, see [Dialing codes](https://www.alibabacloud.com/help/en/sms/product-overview/dialing-codes?spm=a2c63.p38356.0.0.367279cbwQFoeM).
+        # 
+        # This parameter is required.
         self.to = to
         # The validity period of the message.
         self.validity_period = validity_period
@@ -783,6 +811,8 @@ class SendMessageWithTemplateRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
         if self.from_ is not None:
             result['From'] = self.from_
         if self.sms_up_extend_code is not None:
@@ -799,6 +829,8 @@ class SendMessageWithTemplateRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
         if m.get('From') is not None:
             self.from_ = m.get('From')
         if m.get('SmsUpExtendCode') is not None:
@@ -879,7 +911,7 @@ class SendMessageWithTemplateResponseBody(TeaModel):
         self.response_description = response_description
         # The number of messages that incurred fees.
         self.segments = segments
-        # The mobile phone number to which the message was sent. The dialing code was added to the beginning of the mobile phone number. Example: 861503871\*\*\*\*.
+        # The mobile phone number to which the message was sent. The dialing code was added to the beginning of the mobile phone number. Example: 861503871\\*\\*\\*\\*.
         self.to = to
 
     def validate(self):
@@ -982,8 +1014,12 @@ class SmsConversionRequest(TeaModel):
         # *   If you specify the parameter, the timestamp must be greater than the message sending time and less than the current timestamp.
         self.conversion_time = conversion_time
         # Specifies whether customers replied to the OTP message. Valid values: true and false.
+        # 
+        # This parameter is required.
         self.delivered = delivered
         # The ID of the OTP message.
+        # 
+        # This parameter is required.
         self.message_id = message_id
 
     def validate(self):
@@ -1023,7 +1059,7 @@ class SmsConversionResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The status code. If OK is returned, the request is successful. For more information, see [Error codes](~~180674~~).
+        # The status code. If OK is returned, the request is successful. For more information, see [Error codes](https://help.aliyun.com/document_detail/180674.html).
         self.response_code = response_code
         # The description of the status code.
         self.response_description = response_description
