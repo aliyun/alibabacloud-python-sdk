@@ -1483,6 +1483,8 @@ class Client(OpenApiClient):
             query['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.validation_options):
+            query['ValidationOptions'] = request.validation_options
         body = {}
         if not UtilClient.is_unset(request.template_body):
             body['TemplateBody'] = request.template_body
@@ -1532,6 +1534,8 @@ class Client(OpenApiClient):
             query['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.validation_options):
+            query['ValidationOptions'] = request.validation_options
         body = {}
         if not UtilClient.is_unset(request.template_body):
             body['TemplateBody'] = request.template_body
@@ -10774,12 +10778,18 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.is_draft):
+            query['IsDraft'] = request.is_draft
+        if not UtilClient.is_unset(request.rotate_strategy):
+            query['RotateStrategy'] = request.rotate_strategy
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_name):
             query['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.validation_options):
+            query['ValidationOptions'] = request.validation_options
         body = {}
         if not UtilClient.is_unset(request.template_body):
             body['TemplateBody'] = request.template_body
@@ -10824,12 +10834,18 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.is_draft):
+            query['IsDraft'] = request.is_draft
+        if not UtilClient.is_unset(request.rotate_strategy):
+            query['RotateStrategy'] = request.rotate_strategy
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_name):
             query['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.template_url):
             query['TemplateURL'] = request.template_url
+        if not UtilClient.is_unset(request.validation_options):
+            query['ValidationOptions'] = request.validation_options
         body = {}
         if not UtilClient.is_unset(request.template_body):
             body['TemplateBody'] = request.template_body

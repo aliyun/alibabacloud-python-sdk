@@ -3139,6 +3139,7 @@ class CreateTemplateRequest(TeaModel):
         template_body: str = None,
         template_name: str = None,
         template_url: str = None,
+        validation_options: List[str] = None,
     ):
         # The description of the template. The description can be up to 256 characters in length.
         self.description = description
@@ -3157,6 +3158,7 @@ class CreateTemplateRequest(TeaModel):
         # 
         # > You must specify TemplateBody or TemplateURL.
         self.template_url = template_url
+        self.validation_options = validation_options
 
     def validate(self):
         if self.tags:
@@ -3184,6 +3186,8 @@ class CreateTemplateRequest(TeaModel):
             result['TemplateName'] = self.template_name
         if self.template_url is not None:
             result['TemplateURL'] = self.template_url
+        if self.validation_options is not None:
+            result['ValidationOptions'] = self.validation_options
         return result
 
     def from_map(self, m: dict = None):
@@ -3203,6 +3207,8 @@ class CreateTemplateRequest(TeaModel):
             self.template_name = m.get('TemplateName')
         if m.get('TemplateURL') is not None:
             self.template_url = m.get('TemplateURL')
+        if m.get('ValidationOptions') is not None:
+            self.validation_options = m.get('ValidationOptions')
         return self
 
 
@@ -24686,13 +24692,18 @@ class UpdateTemplateRequest(TeaModel):
     def __init__(
         self,
         description: str = None,
+        is_draft: bool = None,
+        rotate_strategy: str = None,
         template_body: str = None,
         template_id: str = None,
         template_name: str = None,
         template_url: str = None,
+        validation_options: List[str] = None,
     ):
         # The description of the template. It can be up to 256 characters in length.
         self.description = description
+        self.is_draft = is_draft
+        self.rotate_strategy = rotate_strategy
         self.template_body = template_body
         # The ID of the template. This parameter applies to shared and private templates.
         # 
@@ -24708,6 +24719,7 @@ class UpdateTemplateRequest(TeaModel):
         # 
         # You can specify only one of the TemplateBody and TemplateURL parameters.
         self.template_url = template_url
+        self.validation_options = validation_options
 
     def validate(self):
         pass
@@ -24720,6 +24732,10 @@ class UpdateTemplateRequest(TeaModel):
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
+        if self.is_draft is not None:
+            result['IsDraft'] = self.is_draft
+        if self.rotate_strategy is not None:
+            result['RotateStrategy'] = self.rotate_strategy
         if self.template_body is not None:
             result['TemplateBody'] = self.template_body
         if self.template_id is not None:
@@ -24728,12 +24744,18 @@ class UpdateTemplateRequest(TeaModel):
             result['TemplateName'] = self.template_name
         if self.template_url is not None:
             result['TemplateURL'] = self.template_url
+        if self.validation_options is not None:
+            result['ValidationOptions'] = self.validation_options
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('IsDraft') is not None:
+            self.is_draft = m.get('IsDraft')
+        if m.get('RotateStrategy') is not None:
+            self.rotate_strategy = m.get('RotateStrategy')
         if m.get('TemplateBody') is not None:
             self.template_body = m.get('TemplateBody')
         if m.get('TemplateId') is not None:
@@ -24742,6 +24764,8 @@ class UpdateTemplateRequest(TeaModel):
             self.template_name = m.get('TemplateName')
         if m.get('TemplateURL') is not None:
             self.template_url = m.get('TemplateURL')
+        if m.get('ValidationOptions') is not None:
+            self.validation_options = m.get('ValidationOptions')
         return self
 
 

@@ -1,3 +1,10 @@
+2024-08-01 Version: 3.4.1
+- Update API CreateTemplate: add param ValidationOptions.
+- Update API UpdateTemplate: add param IsDraft.
+- Update API UpdateTemplate: add param RotateStrategy.
+- Update API UpdateTemplate: add param ValidationOptions.
+
+
 2024-07-25 Version: 3.4.0
 - Support API CreateAITask.
 - Support API GetAITask.
