@@ -4,6 +4,139 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
+class AddCustomLineRequest(TeaModel):
+    def __init__(
+        self,
+        dns_category: str = None,
+        ipv_4s: List[str] = None,
+        lang: str = None,
+        name: str = None,
+        share_scope: str = None,
+    ):
+        self.dns_category = dns_category
+        # This parameter is required.
+        self.ipv_4s = ipv_4s
+        self.lang = lang
+        # This parameter is required.
+        self.name = name
+        self.share_scope = share_scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dns_category is not None:
+            result['DnsCategory'] = self.dns_category
+        if self.ipv_4s is not None:
+            result['Ipv4s'] = self.ipv_4s
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.share_scope is not None:
+            result['ShareScope'] = self.share_scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DnsCategory') is not None:
+            self.dns_category = m.get('DnsCategory')
+        if m.get('Ipv4s') is not None:
+            self.ipv_4s = m.get('Ipv4s')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShareScope') is not None:
+            self.share_scope = m.get('ShareScope')
+        return self
+
+
+class AddCustomLineResponseBody(TeaModel):
+    def __init__(
+        self,
+        line_id: str = None,
+        name: str = None,
+        request_id: str = None,
+    ):
+        self.line_id = line_id
+        self.name = name
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.line_id is not None:
+            result['LineId'] = self.line_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LineId') is not None:
+            self.line_id = m.get('LineId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddCustomLineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddCustomLineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddCustomLineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddResolverEndpointRequestIpConfig(TeaModel):
     def __init__(
         self,
@@ -1256,6 +1389,121 @@ class BindZoneVpcResponse(TeaModel):
         return self
 
 
+class ChangeZoneDnsGroupRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dns_group: str = None,
+        zone_id: str = None,
+    ):
+        self.client_token = client_token
+        # This parameter is required.
+        self.dns_group = dns_group
+        # This parameter is required.
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dns_group is not None:
+            result['DnsGroup'] = self.dns_group
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DnsGroup') is not None:
+            self.dns_group = m.get('DnsGroup')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class ChangeZoneDnsGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        zone_id: str = None,
+    ):
+        self.request_id = request_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class ChangeZoneDnsGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeZoneDnsGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeZoneDnsGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckZoneNameRequest(TeaModel):
     def __init__(
         self,
@@ -1380,6 +1628,114 @@ class CheckZoneNameResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CheckZoneNameResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCustomLineRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        line_id: str = None,
+    ):
+        self.lang = lang
+        # This parameter is required.
+        self.line_id = line_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.line_id is not None:
+            result['LineId'] = self.line_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('LineId') is not None:
+            self.line_id = m.get('LineId')
+        return self
+
+
+class DeleteCustomLineResponseBody(TeaModel):
+    def __init__(
+        self,
+        line_id: str = None,
+        request_id: str = None,
+    ):
+        self.line_id = line_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.line_id is not None:
+            result['LineId'] = self.line_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LineId') is not None:
+            self.line_id = m.get('LineId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteCustomLineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCustomLineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCustomLineResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2299,6 +2655,452 @@ class DescribeChangeLogsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeChangeLogsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCustomLineInfoRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        line_id: str = None,
+    ):
+        self.lang = lang
+        # This parameter is required.
+        self.line_id = line_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.line_id is not None:
+            result['LineId'] = self.line_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('LineId') is not None:
+            self.line_id = m.get('LineId')
+        return self
+
+
+class DescribeCustomLineInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        create_timestamp: int = None,
+        creator: str = None,
+        creator_sub_type: str = None,
+        creator_type: str = None,
+        ipv_4s: List[str] = None,
+        line_id: str = None,
+        name: str = None,
+        request_id: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+    ):
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.creator = creator
+        self.creator_sub_type = creator_sub_type
+        self.creator_type = creator_type
+        self.ipv_4s = ipv_4s
+        self.line_id = line_id
+        self.name = name
+        self.request_id = request_id
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.creator_sub_type is not None:
+            result['CreatorSubType'] = self.creator_sub_type
+        if self.creator_type is not None:
+            result['CreatorType'] = self.creator_type
+        if self.ipv_4s is not None:
+            result['Ipv4s'] = self.ipv_4s
+        if self.line_id is not None:
+            result['LineId'] = self.line_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('CreatorSubType') is not None:
+            self.creator_sub_type = m.get('CreatorSubType')
+        if m.get('CreatorType') is not None:
+            self.creator_type = m.get('CreatorType')
+        if m.get('Ipv4s') is not None:
+            self.ipv_4s = m.get('Ipv4s')
+        if m.get('LineId') is not None:
+            self.line_id = m.get('LineId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        return self
+
+
+class DescribeCustomLineInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCustomLineInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCustomLineInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCustomLinesRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.lang = lang
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeCustomLinesResponseBodyCustomLinesCustomLineIpv4s(TeaModel):
+    def __init__(
+        self,
+        ipv_4: List[str] = None,
+    ):
+        self.ipv_4 = ipv_4
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipv_4 is not None:
+            result['Ipv4'] = self.ipv_4
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ipv4') is not None:
+            self.ipv_4 = m.get('Ipv4')
+        return self
+
+
+class DescribeCustomLinesResponseBodyCustomLinesCustomLine(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        create_timestamp: int = None,
+        creator: str = None,
+        creator_sub_type: str = None,
+        creator_type: str = None,
+        ipv_4s: DescribeCustomLinesResponseBodyCustomLinesCustomLineIpv4s = None,
+        line_id: str = None,
+        name: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+    ):
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.creator = creator
+        self.creator_sub_type = creator_sub_type
+        self.creator_type = creator_type
+        self.ipv_4s = ipv_4s
+        self.line_id = line_id
+        self.name = name
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+
+    def validate(self):
+        if self.ipv_4s:
+            self.ipv_4s.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.creator_sub_type is not None:
+            result['CreatorSubType'] = self.creator_sub_type
+        if self.creator_type is not None:
+            result['CreatorType'] = self.creator_type
+        if self.ipv_4s is not None:
+            result['Ipv4s'] = self.ipv_4s.to_map()
+        if self.line_id is not None:
+            result['LineId'] = self.line_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('CreatorSubType') is not None:
+            self.creator_sub_type = m.get('CreatorSubType')
+        if m.get('CreatorType') is not None:
+            self.creator_type = m.get('CreatorType')
+        if m.get('Ipv4s') is not None:
+            temp_model = DescribeCustomLinesResponseBodyCustomLinesCustomLineIpv4s()
+            self.ipv_4s = temp_model.from_map(m['Ipv4s'])
+        if m.get('LineId') is not None:
+            self.line_id = m.get('LineId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        return self
+
+
+class DescribeCustomLinesResponseBodyCustomLines(TeaModel):
+    def __init__(
+        self,
+        custom_line: List[DescribeCustomLinesResponseBodyCustomLinesCustomLine] = None,
+    ):
+        self.custom_line = custom_line
+
+    def validate(self):
+        if self.custom_line:
+            for k in self.custom_line:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomLine'] = []
+        if self.custom_line is not None:
+            for k in self.custom_line:
+                result['CustomLine'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_line = []
+        if m.get('CustomLine') is not None:
+            for k in m.get('CustomLine'):
+                temp_model = DescribeCustomLinesResponseBodyCustomLinesCustomLine()
+                self.custom_line.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCustomLinesResponseBody(TeaModel):
+    def __init__(
+        self,
+        custom_lines: DescribeCustomLinesResponseBodyCustomLines = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_items: int = None,
+        total_pages: int = None,
+    ):
+        self.custom_lines = custom_lines
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_items = total_items
+        self.total_pages = total_pages
+
+    def validate(self):
+        if self.custom_lines:
+            self.custom_lines.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_lines is not None:
+            result['CustomLines'] = self.custom_lines.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_items is not None:
+            result['TotalItems'] = self.total_items
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomLines') is not None:
+            temp_model = DescribeCustomLinesResponseBodyCustomLines()
+            self.custom_lines = temp_model.from_map(m['CustomLines'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalItems') is not None:
+            self.total_items = m.get('TotalItems')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+        return self
+
+
+class DescribeCustomLinesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCustomLinesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCustomLinesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5637,6 +6439,193 @@ class DescribeZoneInfoResponse(TeaModel):
         return self
 
 
+class DescribeZoneRecordRequest(TeaModel):
+    def __init__(
+        self,
+        record_id: int = None,
+    ):
+        # This parameter is required.
+        self.record_id = record_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        return self
+
+
+class DescribeZoneRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        create_timestamp: int = None,
+        line: str = None,
+        priority: int = None,
+        record_id: int = None,
+        remark: str = None,
+        request_id: str = None,
+        rr: str = None,
+        status: str = None,
+        ttl: int = None,
+        type: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+        value: str = None,
+        weight: int = None,
+        zone_id: str = None,
+    ):
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.line = line
+        self.priority = priority
+        self.record_id = record_id
+        self.remark = remark
+        self.request_id = request_id
+        self.rr = rr
+        self.status = status
+        self.ttl = ttl
+        self.type = type
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+        self.value = value
+        self.weight = weight
+        # Zone ID。
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.line is not None:
+            result['Line'] = self.line
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rr is not None:
+            result['Rr'] = self.rr
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('Line') is not None:
+            self.line = m.get('Line')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Rr') is not None:
+            self.rr = m.get('Rr')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeZoneRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeZoneRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeZoneRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeZoneRecordsRequest(TeaModel):
     def __init__(
         self,
@@ -7286,6 +8275,332 @@ class MoveResourceGroupResponse(TeaModel):
         return self
 
 
+class SearchCustomLinesRequest(TeaModel):
+    def __init__(
+        self,
+        create_timestamp_end: int = None,
+        create_timestamp_start: int = None,
+        creator: List[str] = None,
+        ipv_4: str = None,
+        lang: str = None,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        update_timestamp_end: int = None,
+        update_timestamp_start: int = None,
+    ):
+        self.create_timestamp_end = create_timestamp_end
+        self.create_timestamp_start = create_timestamp_start
+        self.creator = creator
+        self.ipv_4 = ipv_4
+        self.lang = lang
+        self.name = name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.update_timestamp_end = update_timestamp_end
+        self.update_timestamp_start = update_timestamp_start
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_timestamp_end is not None:
+            result['CreateTimestampEnd'] = self.create_timestamp_end
+        if self.create_timestamp_start is not None:
+            result['CreateTimestampStart'] = self.create_timestamp_start
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.ipv_4 is not None:
+            result['Ipv4'] = self.ipv_4
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.update_timestamp_end is not None:
+            result['UpdateTimestampEnd'] = self.update_timestamp_end
+        if self.update_timestamp_start is not None:
+            result['UpdateTimestampStart'] = self.update_timestamp_start
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTimestampEnd') is not None:
+            self.create_timestamp_end = m.get('CreateTimestampEnd')
+        if m.get('CreateTimestampStart') is not None:
+            self.create_timestamp_start = m.get('CreateTimestampStart')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('Ipv4') is not None:
+            self.ipv_4 = m.get('Ipv4')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('UpdateTimestampEnd') is not None:
+            self.update_timestamp_end = m.get('UpdateTimestampEnd')
+        if m.get('UpdateTimestampStart') is not None:
+            self.update_timestamp_start = m.get('UpdateTimestampStart')
+        return self
+
+
+class SearchCustomLinesResponseBodyCustomLinesCustomLineIpv4s(TeaModel):
+    def __init__(
+        self,
+        ipv_4: List[str] = None,
+    ):
+        self.ipv_4 = ipv_4
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipv_4 is not None:
+            result['Ipv4'] = self.ipv_4
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ipv4') is not None:
+            self.ipv_4 = m.get('Ipv4')
+        return self
+
+
+class SearchCustomLinesResponseBodyCustomLinesCustomLine(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        create_timestamp: int = None,
+        creator: str = None,
+        creator_sub_type: str = None,
+        creator_type: str = None,
+        ipv_4s: SearchCustomLinesResponseBodyCustomLinesCustomLineIpv4s = None,
+        line_id: str = None,
+        name: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+    ):
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.creator = creator
+        self.creator_sub_type = creator_sub_type
+        self.creator_type = creator_type
+        self.ipv_4s = ipv_4s
+        self.line_id = line_id
+        self.name = name
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+
+    def validate(self):
+        if self.ipv_4s:
+            self.ipv_4s.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.creator_sub_type is not None:
+            result['CreatorSubType'] = self.creator_sub_type
+        if self.creator_type is not None:
+            result['CreatorType'] = self.creator_type
+        if self.ipv_4s is not None:
+            result['Ipv4s'] = self.ipv_4s.to_map()
+        if self.line_id is not None:
+            result['LineId'] = self.line_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('CreatorSubType') is not None:
+            self.creator_sub_type = m.get('CreatorSubType')
+        if m.get('CreatorType') is not None:
+            self.creator_type = m.get('CreatorType')
+        if m.get('Ipv4s') is not None:
+            temp_model = SearchCustomLinesResponseBodyCustomLinesCustomLineIpv4s()
+            self.ipv_4s = temp_model.from_map(m['Ipv4s'])
+        if m.get('LineId') is not None:
+            self.line_id = m.get('LineId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        return self
+
+
+class SearchCustomLinesResponseBodyCustomLines(TeaModel):
+    def __init__(
+        self,
+        custom_line: List[SearchCustomLinesResponseBodyCustomLinesCustomLine] = None,
+    ):
+        self.custom_line = custom_line
+
+    def validate(self):
+        if self.custom_line:
+            for k in self.custom_line:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustomLine'] = []
+        if self.custom_line is not None:
+            for k in self.custom_line:
+                result['CustomLine'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.custom_line = []
+        if m.get('CustomLine') is not None:
+            for k in m.get('CustomLine'):
+                temp_model = SearchCustomLinesResponseBodyCustomLinesCustomLine()
+                self.custom_line.append(temp_model.from_map(k))
+        return self
+
+
+class SearchCustomLinesResponseBody(TeaModel):
+    def __init__(
+        self,
+        custom_lines: SearchCustomLinesResponseBodyCustomLines = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_items: int = None,
+        total_pages: int = None,
+    ):
+        self.custom_lines = custom_lines
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_items = total_items
+        self.total_pages = total_pages
+
+    def validate(self):
+        if self.custom_lines:
+            self.custom_lines.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_lines is not None:
+            result['CustomLines'] = self.custom_lines.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_items is not None:
+            result['TotalItems'] = self.total_items
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomLines') is not None:
+            temp_model = SearchCustomLinesResponseBodyCustomLines()
+            self.custom_lines = temp_model.from_map(m['CustomLines'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalItems') is not None:
+            self.total_items = m.get('TotalItems')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+        return self
+
+
+class SearchCustomLinesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SearchCustomLinesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SearchCustomLinesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SetProxyPatternRequest(TeaModel):
     def __init__(
         self,
@@ -7876,6 +9191,127 @@ class UntagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UntagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCustomLineRequest(TeaModel):
+    def __init__(
+        self,
+        ipv_4s: List[str] = None,
+        lang: str = None,
+        line_id: str = None,
+        name: str = None,
+    ):
+        # This parameter is required.
+        self.ipv_4s = ipv_4s
+        self.lang = lang
+        # This parameter is required.
+        self.line_id = line_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipv_4s is not None:
+            result['Ipv4s'] = self.ipv_4s
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.line_id is not None:
+            result['LineId'] = self.line_id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ipv4s') is not None:
+            self.ipv_4s = m.get('Ipv4s')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('LineId') is not None:
+            self.line_id = m.get('LineId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class UpdateCustomLineResponseBody(TeaModel):
+    def __init__(
+        self,
+        line_id: str = None,
+        request_id: str = None,
+    ):
+        self.line_id = line_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.line_id is not None:
+            result['LineId'] = self.line_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LineId') is not None:
+            self.line_id = m.get('LineId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateCustomLineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCustomLineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCustomLineResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -41,6 +41,110 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_custom_line_with_options(
+        self,
+        request: pvtz_20180101_models.AddCustomLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pvtz_20180101_models.AddCustomLineResponse:
+        """
+        @param request: AddCustomLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCustomLineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dns_category):
+            query['DnsCategory'] = request.dns_category
+        if not UtilClient.is_unset(request.ipv_4s):
+            query['Ipv4s'] = request.ipv_4s
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.share_scope):
+            query['ShareScope'] = request.share_scope
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddCustomLine',
+            version='2018-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pvtz_20180101_models.AddCustomLineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_custom_line_with_options_async(
+        self,
+        request: pvtz_20180101_models.AddCustomLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pvtz_20180101_models.AddCustomLineResponse:
+        """
+        @param request: AddCustomLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCustomLineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dns_category):
+            query['DnsCategory'] = request.dns_category
+        if not UtilClient.is_unset(request.ipv_4s):
+            query['Ipv4s'] = request.ipv_4s
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.share_scope):
+            query['ShareScope'] = request.share_scope
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddCustomLine',
+            version='2018-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pvtz_20180101_models.AddCustomLineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_custom_line(
+        self,
+        request: pvtz_20180101_models.AddCustomLineRequest,
+    ) -> pvtz_20180101_models.AddCustomLineResponse:
+        """
+        @param request: AddCustomLineRequest
+        @return: AddCustomLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_custom_line_with_options(request, runtime)
+
+    async def add_custom_line_async(
+        self,
+        request: pvtz_20180101_models.AddCustomLineRequest,
+    ) -> pvtz_20180101_models.AddCustomLineResponse:
+        """
+        @param request: AddCustomLineRequest
+        @return: AddCustomLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_custom_line_with_options_async(request, runtime)
+
     def add_resolver_endpoint_with_options(
         self,
         request: pvtz_20180101_models.AddResolverEndpointRequest,
@@ -861,6 +965,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.bind_zone_vpc_with_options_async(request, runtime)
 
+    def change_zone_dns_group_with_options(
+        self,
+        request: pvtz_20180101_models.ChangeZoneDnsGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pvtz_20180101_models.ChangeZoneDnsGroupResponse:
+        """
+        @param request: ChangeZoneDnsGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeZoneDnsGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dns_group):
+            query['DnsGroup'] = request.dns_group
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeZoneDnsGroup',
+            version='2018-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pvtz_20180101_models.ChangeZoneDnsGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_zone_dns_group_with_options_async(
+        self,
+        request: pvtz_20180101_models.ChangeZoneDnsGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pvtz_20180101_models.ChangeZoneDnsGroupResponse:
+        """
+        @param request: ChangeZoneDnsGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeZoneDnsGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dns_group):
+            query['DnsGroup'] = request.dns_group
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeZoneDnsGroup',
+            version='2018-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pvtz_20180101_models.ChangeZoneDnsGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_zone_dns_group(
+        self,
+        request: pvtz_20180101_models.ChangeZoneDnsGroupRequest,
+    ) -> pvtz_20180101_models.ChangeZoneDnsGroupResponse:
+        """
+        @param request: ChangeZoneDnsGroupRequest
+        @return: ChangeZoneDnsGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.change_zone_dns_group_with_options(request, runtime)
+
+    async def change_zone_dns_group_async(
+        self,
+        request: pvtz_20180101_models.ChangeZoneDnsGroupRequest,
+    ) -> pvtz_20180101_models.ChangeZoneDnsGroupResponse:
+        """
+        @param request: ChangeZoneDnsGroupRequest
+        @return: ChangeZoneDnsGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.change_zone_dns_group_with_options_async(request, runtime)
+
     def check_zone_name_with_options(
         self,
         request: pvtz_20180101_models.CheckZoneNameRequest,
@@ -964,6 +1164,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.check_zone_name_with_options_async(request, runtime)
+
+    def delete_custom_line_with_options(
+        self,
+        request: pvtz_20180101_models.DeleteCustomLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pvtz_20180101_models.DeleteCustomLineResponse:
+        """
+        @param request: DeleteCustomLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomLineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line_id):
+            query['LineId'] = request.line_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomLine',
+            version='2018-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pvtz_20180101_models.DeleteCustomLineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_custom_line_with_options_async(
+        self,
+        request: pvtz_20180101_models.DeleteCustomLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pvtz_20180101_models.DeleteCustomLineResponse:
+        """
+        @param request: DeleteCustomLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomLineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line_id):
+            query['LineId'] = request.line_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomLine',
+            version='2018-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pvtz_20180101_models.DeleteCustomLineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_custom_line(
+        self,
+        request: pvtz_20180101_models.DeleteCustomLineRequest,
+    ) -> pvtz_20180101_models.DeleteCustomLineResponse:
+        """
+        @param request: DeleteCustomLineRequest
+        @return: DeleteCustomLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_custom_line_with_options(request, runtime)
+
+    async def delete_custom_line_async(
+        self,
+        request: pvtz_20180101_models.DeleteCustomLineRequest,
+    ) -> pvtz_20180101_models.DeleteCustomLineResponse:
+        """
+        @param request: DeleteCustomLineRequest
+        @return: DeleteCustomLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_custom_line_with_options_async(request, runtime)
 
     def delete_resolver_endpoint_with_options(
         self,
@@ -1608,6 +1900,194 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_change_logs_with_options_async(request, runtime)
+
+    def describe_custom_line_info_with_options(
+        self,
+        request: pvtz_20180101_models.DescribeCustomLineInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pvtz_20180101_models.DescribeCustomLineInfoResponse:
+        """
+        @param request: DescribeCustomLineInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomLineInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line_id):
+            query['LineId'] = request.line_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomLineInfo',
+            version='2018-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pvtz_20180101_models.DescribeCustomLineInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_custom_line_info_with_options_async(
+        self,
+        request: pvtz_20180101_models.DescribeCustomLineInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pvtz_20180101_models.DescribeCustomLineInfoResponse:
+        """
+        @param request: DescribeCustomLineInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomLineInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line_id):
+            query['LineId'] = request.line_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomLineInfo',
+            version='2018-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pvtz_20180101_models.DescribeCustomLineInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_custom_line_info(
+        self,
+        request: pvtz_20180101_models.DescribeCustomLineInfoRequest,
+    ) -> pvtz_20180101_models.DescribeCustomLineInfoResponse:
+        """
+        @param request: DescribeCustomLineInfoRequest
+        @return: DescribeCustomLineInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_custom_line_info_with_options(request, runtime)
+
+    async def describe_custom_line_info_async(
+        self,
+        request: pvtz_20180101_models.DescribeCustomLineInfoRequest,
+    ) -> pvtz_20180101_models.DescribeCustomLineInfoResponse:
+        """
+        @param request: DescribeCustomLineInfoRequest
+        @return: DescribeCustomLineInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_custom_line_info_with_options_async(request, runtime)
+
+    def describe_custom_lines_with_options(
+        self,
+        request: pvtz_20180101_models.DescribeCustomLinesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pvtz_20180101_models.DescribeCustomLinesResponse:
+        """
+        @param request: DescribeCustomLinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomLinesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomLines',
+            version='2018-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pvtz_20180101_models.DescribeCustomLinesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_custom_lines_with_options_async(
+        self,
+        request: pvtz_20180101_models.DescribeCustomLinesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pvtz_20180101_models.DescribeCustomLinesResponse:
+        """
+        @param request: DescribeCustomLinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomLinesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomLines',
+            version='2018-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pvtz_20180101_models.DescribeCustomLinesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_custom_lines(
+        self,
+        request: pvtz_20180101_models.DescribeCustomLinesRequest,
+    ) -> pvtz_20180101_models.DescribeCustomLinesResponse:
+        """
+        @param request: DescribeCustomLinesRequest
+        @return: DescribeCustomLinesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_custom_lines_with_options(request, runtime)
+
+    async def describe_custom_lines_async(
+        self,
+        request: pvtz_20180101_models.DescribeCustomLinesRequest,
+    ) -> pvtz_20180101_models.DescribeCustomLinesResponse:
+        """
+        @param request: DescribeCustomLinesRequest
+        @return: DescribeCustomLinesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_custom_lines_with_options_async(request, runtime)
 
     def describe_regions_with_options(
         self,
@@ -2901,6 +3381,94 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_zone_info_with_options_async(request, runtime)
 
+    def describe_zone_record_with_options(
+        self,
+        request: pvtz_20180101_models.DescribeZoneRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pvtz_20180101_models.DescribeZoneRecordResponse:
+        """
+        @param request: DescribeZoneRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZoneRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeZoneRecord',
+            version='2018-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pvtz_20180101_models.DescribeZoneRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_zone_record_with_options_async(
+        self,
+        request: pvtz_20180101_models.DescribeZoneRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pvtz_20180101_models.DescribeZoneRecordResponse:
+        """
+        @param request: DescribeZoneRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZoneRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeZoneRecord',
+            version='2018-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pvtz_20180101_models.DescribeZoneRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_zone_record(
+        self,
+        request: pvtz_20180101_models.DescribeZoneRecordRequest,
+    ) -> pvtz_20180101_models.DescribeZoneRecordResponse:
+        """
+        @param request: DescribeZoneRecordRequest
+        @return: DescribeZoneRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_zone_record_with_options(request, runtime)
+
+    async def describe_zone_record_async(
+        self,
+        request: pvtz_20180101_models.DescribeZoneRecordRequest,
+    ) -> pvtz_20180101_models.DescribeZoneRecordResponse:
+        """
+        @param request: DescribeZoneRecordRequest
+        @return: DescribeZoneRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_zone_record_with_options_async(request, runtime)
+
     def describe_zone_records_with_options(
         self,
         request: pvtz_20180101_models.DescribeZoneRecordsRequest,
@@ -3493,6 +4061,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.move_resource_group_with_options_async(request, runtime)
 
+    def search_custom_lines_with_options(
+        self,
+        request: pvtz_20180101_models.SearchCustomLinesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pvtz_20180101_models.SearchCustomLinesResponse:
+        """
+        @param request: SearchCustomLinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchCustomLinesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_timestamp_end):
+            query['CreateTimestampEnd'] = request.create_timestamp_end
+        if not UtilClient.is_unset(request.create_timestamp_start):
+            query['CreateTimestampStart'] = request.create_timestamp_start
+        if not UtilClient.is_unset(request.creator):
+            query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.ipv_4):
+            query['Ipv4'] = request.ipv_4
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.update_timestamp_end):
+            query['UpdateTimestampEnd'] = request.update_timestamp_end
+        if not UtilClient.is_unset(request.update_timestamp_start):
+            query['UpdateTimestampStart'] = request.update_timestamp_start
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchCustomLines',
+            version='2018-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pvtz_20180101_models.SearchCustomLinesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_custom_lines_with_options_async(
+        self,
+        request: pvtz_20180101_models.SearchCustomLinesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pvtz_20180101_models.SearchCustomLinesResponse:
+        """
+        @param request: SearchCustomLinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchCustomLinesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_timestamp_end):
+            query['CreateTimestampEnd'] = request.create_timestamp_end
+        if not UtilClient.is_unset(request.create_timestamp_start):
+            query['CreateTimestampStart'] = request.create_timestamp_start
+        if not UtilClient.is_unset(request.creator):
+            query['Creator'] = request.creator
+        if not UtilClient.is_unset(request.ipv_4):
+            query['Ipv4'] = request.ipv_4
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.update_timestamp_end):
+            query['UpdateTimestampEnd'] = request.update_timestamp_end
+        if not UtilClient.is_unset(request.update_timestamp_start):
+            query['UpdateTimestampStart'] = request.update_timestamp_start
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchCustomLines',
+            version='2018-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pvtz_20180101_models.SearchCustomLinesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_custom_lines(
+        self,
+        request: pvtz_20180101_models.SearchCustomLinesRequest,
+    ) -> pvtz_20180101_models.SearchCustomLinesResponse:
+        """
+        @param request: SearchCustomLinesRequest
+        @return: SearchCustomLinesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.search_custom_lines_with_options(request, runtime)
+
+    async def search_custom_lines_async(
+        self,
+        request: pvtz_20180101_models.SearchCustomLinesRequest,
+    ) -> pvtz_20180101_models.SearchCustomLinesResponse:
+        """
+        @param request: SearchCustomLinesRequest
+        @return: SearchCustomLinesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.search_custom_lines_with_options_async(request, runtime)
+
     def set_proxy_pattern_with_options(
         self,
         request: pvtz_20180101_models.SetProxyPatternRequest,
@@ -3940,6 +4632,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def update_custom_line_with_options(
+        self,
+        request: pvtz_20180101_models.UpdateCustomLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pvtz_20180101_models.UpdateCustomLineResponse:
+        """
+        @param request: UpdateCustomLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomLineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ipv_4s):
+            query['Ipv4s'] = request.ipv_4s
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line_id):
+            query['LineId'] = request.line_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCustomLine',
+            version='2018-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pvtz_20180101_models.UpdateCustomLineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_custom_line_with_options_async(
+        self,
+        request: pvtz_20180101_models.UpdateCustomLineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pvtz_20180101_models.UpdateCustomLineResponse:
+        """
+        @param request: UpdateCustomLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomLineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ipv_4s):
+            query['Ipv4s'] = request.ipv_4s
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line_id):
+            query['LineId'] = request.line_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCustomLine',
+            version='2018-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pvtz_20180101_models.UpdateCustomLineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_custom_line(
+        self,
+        request: pvtz_20180101_models.UpdateCustomLineRequest,
+    ) -> pvtz_20180101_models.UpdateCustomLineResponse:
+        """
+        @param request: UpdateCustomLineRequest
+        @return: UpdateCustomLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_custom_line_with_options(request, runtime)
+
+    async def update_custom_line_async(
+        self,
+        request: pvtz_20180101_models.UpdateCustomLineRequest,
+    ) -> pvtz_20180101_models.UpdateCustomLineResponse:
+        """
+        @param request: UpdateCustomLineRequest
+        @return: UpdateCustomLineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_custom_line_with_options_async(request, runtime)
 
     def update_record_remark_with_options(
         self,

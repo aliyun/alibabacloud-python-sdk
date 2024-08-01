@@ -1,3 +1,14 @@
+2024-08-01 Version: 1.1.0
+- Support API AddCustomLine.
+- Support API ChangeZoneDnsGroup.
+- Support API DeleteCustomLine.
+- Support API DescribeCustomLineInfo.
+- Support API DescribeCustomLines.
+- Support API DescribeZoneRecord.
+- Support API SearchCustomLines.
+- Support API UpdateCustomLine.
+
+
 2024-07-09 Version: 1.0.5
 - Update API AddZone: add param DnsGroup.
 - Update API DescribeResolverEndpoints: add param VpcRegionId.
