@@ -1,3 +1,8 @@
+2024-08-01 Version: 1.5.1
+- Update API CreateInstance: update param body.
+- Update API UpdateInstance: update param body.
+
+
 2024-07-26 Version: 1.5.0
 - Support API DeleteInstanceLabels.
 - Support API UpdateInstanceLabels.

@@ -4,6 +4,202 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class CredentialConfigConfigsRolesUserInfo(TeaModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        id: str = None,
+        security_token: str = None,
+        type: str = None,
+    ):
+        self.access_key_id = access_key_id
+        self.id = id
+        self.security_token = security_token
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key_id is not None:
+            result['AccessKeyId'] = self.access_key_id
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKeyId') is not None:
+            self.access_key_id = m.get('AccessKeyId')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CredentialConfigConfigsRoles(TeaModel):
+    def __init__(
+        self,
+        assume_role_for: str = None,
+        policy: str = None,
+        role_arn: str = None,
+        role_type: str = None,
+        user_info: CredentialConfigConfigsRolesUserInfo = None,
+    ):
+        self.assume_role_for = assume_role_for
+        self.policy = policy
+        # This parameter is required.
+        self.role_arn = role_arn
+        # This parameter is required.
+        self.role_type = role_type
+        self.user_info = user_info
+
+    def validate(self):
+        if self.user_info:
+            self.user_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assume_role_for is not None:
+            result['AssumeRoleFor'] = self.assume_role_for
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+        if self.role_type is not None:
+            result['RoleType'] = self.role_type
+        if self.user_info is not None:
+            result['UserInfo'] = self.user_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssumeRoleFor') is not None:
+            self.assume_role_for = m.get('AssumeRoleFor')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
+        if m.get('RoleType') is not None:
+            self.role_type = m.get('RoleType')
+        if m.get('UserInfo') is not None:
+            temp_model = CredentialConfigConfigsRolesUserInfo()
+            self.user_info = temp_model.from_map(m['UserInfo'])
+        return self
+
+
+class CredentialConfigConfigs(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        roles: List[CredentialConfigConfigsRoles] = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.key = key
+        self.roles = roles
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.roles:
+            for k in self.roles:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        result['Roles'] = []
+        if self.roles is not None:
+            for k in self.roles:
+                result['Roles'].append(k.to_map() if k else None)
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        self.roles = []
+        if m.get('Roles') is not None:
+            for k in m.get('Roles'):
+                temp_model = CredentialConfigConfigsRoles()
+                self.roles.append(temp_model.from_map(k))
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CredentialConfig(TeaModel):
+    def __init__(
+        self,
+        aliyun_env_role_key: str = None,
+        configs: List[CredentialConfigConfigs] = None,
+        enable: bool = None,
+    ):
+        self.aliyun_env_role_key = aliyun_env_role_key
+        self.configs = configs
+        self.enable = enable
+
+    def validate(self):
+        if self.configs:
+            for k in self.configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_env_role_key is not None:
+            result['AliyunEnvRoleKey'] = self.aliyun_env_role_key
+        result['Configs'] = []
+        if self.configs is not None:
+            for k in self.configs:
+                result['Configs'].append(k.to_map() if k else None)
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunEnvRoleKey') is not None:
+            self.aliyun_env_role_key = m.get('AliyunEnvRoleKey')
+        self.configs = []
+        if m.get('Configs') is not None:
+            for k in m.get('Configs'):
+                temp_model = CredentialConfigConfigs()
+                self.configs.append(temp_model.from_map(k))
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
 class DemoCategory(TeaModel):
     def __init__(
         self,
@@ -780,6 +976,7 @@ class CreateInstanceRequest(TeaModel):
         accessibility: str = None,
         affinity: CreateInstanceRequestAffinity = None,
         cloud_disks: List[CreateInstanceRequestCloudDisks] = None,
+        credential_config: CredentialConfig = None,
         datasets: List[CreateInstanceRequestDatasets] = None,
         driver: str = None,
         ecs_spec: str = None,
@@ -800,6 +997,7 @@ class CreateInstanceRequest(TeaModel):
         self.accessibility = accessibility
         self.affinity = affinity
         self.cloud_disks = cloud_disks
+        self.credential_config = credential_config
         self.datasets = datasets
         self.driver = driver
         self.ecs_spec = ecs_spec
@@ -824,6 +1022,8 @@ class CreateInstanceRequest(TeaModel):
             for k in self.cloud_disks:
                 if k:
                     k.validate()
+        if self.credential_config:
+            self.credential_config.validate()
         if self.datasets:
             for k in self.datasets:
                 if k:
@@ -851,6 +1051,8 @@ class CreateInstanceRequest(TeaModel):
         if self.cloud_disks is not None:
             for k in self.cloud_disks:
                 result['CloudDisks'].append(k.to_map() if k else None)
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
         result['Datasets'] = []
         if self.datasets is not None:
             for k in self.datasets:
@@ -901,6 +1103,9 @@ class CreateInstanceRequest(TeaModel):
             for k in m.get('CloudDisks'):
                 temp_model = CreateInstanceRequestCloudDisks()
                 self.cloud_disks.append(temp_model.from_map(k))
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
         self.datasets = []
         if m.get('Datasets') is not None:
             for k in m.get('Datasets'):
@@ -6939,7 +7144,9 @@ class UpdateInstanceRequest(TeaModel):
         accessibility: str = None,
         affinity: UpdateInstanceRequestAffinity = None,
         cloud_disks: List[UpdateInstanceRequestCloudDisks] = None,
+        credential_config: CredentialConfig = None,
         datasets: List[UpdateInstanceRequestDatasets] = None,
+        disassociate_credential: bool = None,
         disassociate_datasets: bool = None,
         disassociate_driver: bool = None,
         disassociate_forward_infos: bool = None,
@@ -6959,7 +7166,9 @@ class UpdateInstanceRequest(TeaModel):
         self.accessibility = accessibility
         self.affinity = affinity
         self.cloud_disks = cloud_disks
+        self.credential_config = credential_config
         self.datasets = datasets
+        self.disassociate_credential = disassociate_credential
         self.disassociate_datasets = disassociate_datasets
         self.disassociate_driver = disassociate_driver
         self.disassociate_forward_infos = disassociate_forward_infos
@@ -6983,6 +7192,8 @@ class UpdateInstanceRequest(TeaModel):
             for k in self.cloud_disks:
                 if k:
                     k.validate()
+        if self.credential_config:
+            self.credential_config.validate()
         if self.datasets:
             for k in self.datasets:
                 if k:
@@ -7006,10 +7217,14 @@ class UpdateInstanceRequest(TeaModel):
         if self.cloud_disks is not None:
             for k in self.cloud_disks:
                 result['CloudDisks'].append(k.to_map() if k else None)
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
         result['Datasets'] = []
         if self.datasets is not None:
             for k in self.datasets:
                 result['Datasets'].append(k.to_map() if k else None)
+        if self.disassociate_credential is not None:
+            result['DisassociateCredential'] = self.disassociate_credential
         if self.disassociate_datasets is not None:
             result['DisassociateDatasets'] = self.disassociate_datasets
         if self.disassociate_driver is not None:
@@ -7054,11 +7269,16 @@ class UpdateInstanceRequest(TeaModel):
             for k in m.get('CloudDisks'):
                 temp_model = UpdateInstanceRequestCloudDisks()
                 self.cloud_disks.append(temp_model.from_map(k))
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
         self.datasets = []
         if m.get('Datasets') is not None:
             for k in m.get('Datasets'):
                 temp_model = UpdateInstanceRequestDatasets()
                 self.datasets.append(temp_model.from_map(k))
+        if m.get('DisassociateCredential') is not None:
+            self.disassociate_credential = m.get('DisassociateCredential')
         if m.get('DisassociateDatasets') is not None:
             self.disassociate_datasets = m.get('DisassociateDatasets')
         if m.get('DisassociateDriver') is not None:

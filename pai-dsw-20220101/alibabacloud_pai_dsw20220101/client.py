@@ -171,6 +171,8 @@ class Client(OpenApiClient):
             body['Affinity'] = request.affinity
         if not UtilClient.is_unset(request.cloud_disks):
             body['CloudDisks'] = request.cloud_disks
+        if not UtilClient.is_unset(request.credential_config):
+            body['CredentialConfig'] = request.credential_config
         if not UtilClient.is_unset(request.datasets):
             body['Datasets'] = request.datasets
         if not UtilClient.is_unset(request.driver):
@@ -245,6 +247,8 @@ class Client(OpenApiClient):
             body['Affinity'] = request.affinity
         if not UtilClient.is_unset(request.cloud_disks):
             body['CloudDisks'] = request.cloud_disks
+        if not UtilClient.is_unset(request.credential_config):
+            body['CredentialConfig'] = request.credential_config
         if not UtilClient.is_unset(request.datasets):
             body['Datasets'] = request.datasets
         if not UtilClient.is_unset(request.driver):
@@ -2868,8 +2872,12 @@ class Client(OpenApiClient):
             body['Affinity'] = request.affinity
         if not UtilClient.is_unset(request.cloud_disks):
             body['CloudDisks'] = request.cloud_disks
+        if not UtilClient.is_unset(request.credential_config):
+            body['CredentialConfig'] = request.credential_config
         if not UtilClient.is_unset(request.datasets):
             body['Datasets'] = request.datasets
+        if not UtilClient.is_unset(request.disassociate_credential):
+            body['DisassociateCredential'] = request.disassociate_credential
         if not UtilClient.is_unset(request.disassociate_datasets):
             body['DisassociateDatasets'] = request.disassociate_datasets
         if not UtilClient.is_unset(request.disassociate_driver):
@@ -2943,8 +2951,12 @@ class Client(OpenApiClient):
             body['Affinity'] = request.affinity
         if not UtilClient.is_unset(request.cloud_disks):
             body['CloudDisks'] = request.cloud_disks
+        if not UtilClient.is_unset(request.credential_config):
+            body['CredentialConfig'] = request.credential_config
         if not UtilClient.is_unset(request.datasets):
             body['Datasets'] = request.datasets
+        if not UtilClient.is_unset(request.disassociate_credential):
+            body['DisassociateCredential'] = request.disassociate_credential
         if not UtilClient.is_unset(request.disassociate_datasets):
             body['DisassociateDatasets'] = request.disassociate_datasets
         if not UtilClient.is_unset(request.disassociate_driver):
