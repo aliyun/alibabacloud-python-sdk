@@ -11168,6 +11168,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_dynamic_image_jobs_with_options_async(request, runtime)
 
+    def list_editing_projects_with_options(
+        self,
+        request: ice20201109_models.ListEditingProjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListEditingProjectsResponse:
+        """
+        @summary 获取云剪辑工程列表
+        
+        @param request: ListEditingProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEditingProjectsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_source):
+            query['CreateSource'] = request.create_source
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.project_type):
+            query['ProjectType'] = request.project_type
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEditingProjects',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListEditingProjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_editing_projects_with_options_async(
+        self,
+        request: ice20201109_models.ListEditingProjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListEditingProjectsResponse:
+        """
+        @summary 获取云剪辑工程列表
+        
+        @param request: ListEditingProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEditingProjectsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_source):
+            query['CreateSource'] = request.create_source
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.project_type):
+            query['ProjectType'] = request.project_type
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEditingProjects',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListEditingProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_editing_projects(
+        self,
+        request: ice20201109_models.ListEditingProjectsRequest,
+    ) -> ice20201109_models.ListEditingProjectsResponse:
+        """
+        @summary 获取云剪辑工程列表
+        
+        @param request: ListEditingProjectsRequest
+        @return: ListEditingProjectsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_editing_projects_with_options(request, runtime)
+
+    async def list_editing_projects_async(
+        self,
+        request: ice20201109_models.ListEditingProjectsRequest,
+    ) -> ice20201109_models.ListEditingProjectsResponse:
+        """
+        @summary 获取云剪辑工程列表
+        
+        @param request: ListEditingProjectsRequest
+        @return: ListEditingProjectsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_editing_projects_with_options_async(request, runtime)
+
     def list_live_record_files_with_options(
         self,
         request: ice20201109_models.ListLiveRecordFilesRequest,

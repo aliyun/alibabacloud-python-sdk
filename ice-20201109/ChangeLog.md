@@ -1,3 +1,7 @@
+2024-08-01 Version: 3.3.0
+- Support API ListEditingProjects.
+
+
 2024-07-31 Version: 3.2.0
 - Support API DescribeRtcRobotInstance.
 - Support API StartRtcRobotInstance.
