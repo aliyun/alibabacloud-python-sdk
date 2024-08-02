@@ -1436,6 +1436,132 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_domain_with_options_async(project, request, headers, runtime)
 
+    def create_download_job_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateDownloadJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateDownloadJobResponse:
+        """
+        @summary 创建下载任务
+        
+        @param request: CreateDownloadJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDownloadJobResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDownloadJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/downloadjobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateDownloadJobResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_download_job_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateDownloadJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateDownloadJobResponse:
+        """
+        @summary 创建下载任务
+        
+        @param request: CreateDownloadJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDownloadJobResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDownloadJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/downloadjobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateDownloadJobResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_download_job(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateDownloadJobRequest,
+    ) -> sls_20201230_models.CreateDownloadJobResponse:
+        """
+        @summary 创建下载任务
+        
+        @param request: CreateDownloadJobRequest
+        @return: CreateDownloadJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_download_job_with_options(project, request, headers, runtime)
+
+    async def create_download_job_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateDownloadJobRequest,
+    ) -> sls_20201230_models.CreateDownloadJobResponse:
+        """
+        @summary 创建下载任务
+        
+        @param request: CreateDownloadJobRequest
+        @return: CreateDownloadJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_download_job_with_options_async(project, request, headers, runtime)
+
     def create_etlwith_options(
         self,
         project: str,
@@ -4663,6 +4789,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_domain_with_options_async(project, domain_name, headers, runtime)
+
+    def delete_download_job_with_options(
+        self,
+        project: str,
+        download_job_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteDownloadJobResponse:
+        """
+        @summary 删除下载任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDownloadJobResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteDownloadJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/downloadjobs/{download_job_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteDownloadJobResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_download_job_with_options_async(
+        self,
+        project: str,
+        download_job_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteDownloadJobResponse:
+        """
+        @summary 删除下载任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDownloadJobResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteDownloadJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/downloadjobs/{download_job_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteDownloadJobResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_download_job(
+        self,
+        project: str,
+        download_job_name: str,
+    ) -> sls_20201230_models.DeleteDownloadJobResponse:
+        """
+        @summary 删除下载任务
+        
+        @return: DeleteDownloadJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_download_job_with_options(project, download_job_name, headers, runtime)
+
+    async def delete_download_job_async(
+        self,
+        project: str,
+        download_job_name: str,
+    ) -> sls_20201230_models.DeleteDownloadJobResponse:
+        """
+        @summary 删除下载任务
+        
+        @return: DeleteDownloadJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_download_job_with_options_async(project, download_job_name, headers, runtime)
 
     def delete_etlwith_options(
         self,
@@ -8129,6 +8355,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_dashboard_with_options_async(project, dashboard_name, headers, runtime)
+
+    def get_download_job_with_options(
+        self,
+        project: str,
+        download_job_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetDownloadJobResponse:
+        """
+        @summary 获取下载任务信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDownloadJobResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDownloadJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/downloadjobs/{download_job_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetDownloadJobResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_download_job_with_options_async(
+        self,
+        project: str,
+        download_job_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetDownloadJobResponse:
+        """
+        @summary 获取下载任务信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDownloadJobResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDownloadJob',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/downloadjobs/{download_job_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetDownloadJobResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_download_job(
+        self,
+        project: str,
+        download_job_name: str,
+    ) -> sls_20201230_models.GetDownloadJobResponse:
+        """
+        @summary 获取下载任务信息
+        
+        @return: GetDownloadJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_download_job_with_options(project, download_job_name, headers, runtime)
+
+    async def get_download_job_async(
+        self,
+        project: str,
+        download_job_name: str,
+    ) -> sls_20201230_models.GetDownloadJobResponse:
+        """
+        @summary 获取下载任务信息
+        
+        @return: GetDownloadJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_download_job_with_options_async(project, download_job_name, headers, runtime)
 
     def get_etlwith_options(
         self,
@@ -12135,6 +12461,128 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_domains_with_options_async(project, request, headers, runtime)
+
+    def list_download_jobs_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.ListDownloadJobsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListDownloadJobsResponse:
+        """
+        @summary 列举下载任务
+        
+        @param request: ListDownloadJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDownloadJobsResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDownloadJobs',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/downloadjobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListDownloadJobsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_download_jobs_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListDownloadJobsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListDownloadJobsResponse:
+        """
+        @summary 列举下载任务
+        
+        @param request: ListDownloadJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDownloadJobsResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDownloadJobs',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/downloadjobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListDownloadJobsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_download_jobs(
+        self,
+        project: str,
+        request: sls_20201230_models.ListDownloadJobsRequest,
+    ) -> sls_20201230_models.ListDownloadJobsResponse:
+        """
+        @summary 列举下载任务
+        
+        @param request: ListDownloadJobsRequest
+        @return: ListDownloadJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_download_jobs_with_options(project, request, headers, runtime)
+
+    async def list_download_jobs_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListDownloadJobsRequest,
+    ) -> sls_20201230_models.ListDownloadJobsResponse:
+        """
+        @summary 列举下载任务
+        
+        @param request: ListDownloadJobsRequest
+        @return: ListDownloadJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_download_jobs_with_options_async(project, request, headers, runtime)
 
     def list_etls_with_options(
         self,

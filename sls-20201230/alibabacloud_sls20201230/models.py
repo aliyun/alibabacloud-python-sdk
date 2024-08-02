@@ -844,6 +844,96 @@ class Alert(TeaModel):
         return self
 
 
+class ConsumeProcessorConfiguration(TeaModel):
+    def __init__(
+        self,
+        spl: str = None,
+    ):
+        # This parameter is required.
+        self.spl = spl
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.spl is not None:
+            result['spl'] = self.spl
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('spl') is not None:
+            self.spl = m.get('spl')
+        return self
+
+
+class ConsumeProcessor(TeaModel):
+    def __init__(
+        self,
+        configuration: ConsumeProcessorConfiguration = None,
+        create_time: int = None,
+        description: str = None,
+        processor_id: str = None,
+        processor_name: str = None,
+        update_time: int = None,
+    ):
+        # This parameter is required.
+        self.configuration = configuration
+        self.create_time = create_time
+        self.description = description
+        # This parameter is required.
+        self.processor_id = processor_id
+        # This parameter is required.
+        self.processor_name = processor_name
+        self.update_time = update_time
+
+    def validate(self):
+        if self.configuration:
+            self.configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration is not None:
+            result['configuration'] = self.configuration.to_map()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.processor_id is not None:
+            result['processorId'] = self.processor_id
+        if self.processor_name is not None:
+            result['processorName'] = self.processor_name
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configuration') is not None:
+            temp_model = ConsumeProcessorConfiguration()
+            self.configuration = temp_model.from_map(m['configuration'])
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('processorId') is not None:
+            self.processor_id = m.get('processorId')
+        if m.get('processorName') is not None:
+            self.processor_name = m.get('processorName')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        return self
+
+
 class ConsumerGroup(TeaModel):
     def __init__(
         self,
@@ -1251,6 +1341,102 @@ class Histogram(TeaModel):
             self.progress = m.get('progress')
         if m.get('to') is not None:
             self.to = m.get('to')
+        return self
+
+
+class IngestProcessorConfiguration(TeaModel):
+    def __init__(
+        self,
+        parse_fail: str = None,
+        spl: str = None,
+    ):
+        self.parse_fail = parse_fail
+        # This parameter is required.
+        self.spl = spl
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.parse_fail is not None:
+            result['parseFail'] = self.parse_fail
+        if self.spl is not None:
+            result['spl'] = self.spl
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('parseFail') is not None:
+            self.parse_fail = m.get('parseFail')
+        if m.get('spl') is not None:
+            self.spl = m.get('spl')
+        return self
+
+
+class IngestProcessor(TeaModel):
+    def __init__(
+        self,
+        configuration: IngestProcessorConfiguration = None,
+        create_time: int = None,
+        description: str = None,
+        processor_id: str = None,
+        processor_name: str = None,
+        update_time: int = None,
+    ):
+        # This parameter is required.
+        self.configuration = configuration
+        self.create_time = create_time
+        self.description = description
+        # This parameter is required.
+        self.processor_id = processor_id
+        # This parameter is required.
+        self.processor_name = processor_name
+        self.update_time = update_time
+
+    def validate(self):
+        if self.configuration:
+            self.configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration is not None:
+            result['configuration'] = self.configuration.to_map()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.processor_id is not None:
+            result['processorId'] = self.processor_id
+        if self.processor_name is not None:
+            result['processorName'] = self.processor_name
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configuration') is not None:
+            temp_model = IngestProcessorConfiguration()
+            self.configuration = temp_model.from_map(m['configuration'])
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('processorId') is not None:
+            self.processor_id = m.get('processorId')
+        if m.get('processorName') is not None:
+            self.processor_name = m.get('processorName')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
         return self
 
 
@@ -2884,6 +3070,97 @@ class OSSIngestion(TeaModel):
             self.schedule_id = m.get('scheduleId')
         if m.get('status') is not None:
             self.status = m.get('status')
+        return self
+
+
+class ProcessorAssociate(TeaModel):
+    def __init__(
+        self,
+        processor_id: str = None,
+    ):
+        # This parameter is required.
+        self.processor_id = processor_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.processor_id is not None:
+            result['processorId'] = self.processor_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('processorId') is not None:
+            self.processor_id = m.get('processorId')
+        return self
+
+
+class ProjectSummary(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        description: str = None,
+        project_name: str = None,
+        region: str = None,
+        resource_group_id: str = None,
+        update_time: int = None,
+    ):
+        # This parameter is required.
+        self.create_time = create_time
+        # This parameter is required.
+        self.description = description
+        # This parameter is required.
+        self.project_name = project_name
+        # This parameter is required.
+        self.region = region
+        # This parameter is required.
+        self.resource_group_id = resource_group_id
+        # This parameter is required.
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.project_name is not None:
+            result['projectName'] = self.project_name
+        if self.region is not None:
+            result['region'] = self.region
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('projectName') is not None:
+            self.project_name = m.get('projectName')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
         return self
 
 
@@ -4984,6 +5261,244 @@ class CreateDomainRequest(TeaModel):
 
 
 class CreateDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class CreateDownloadJobRequestConfigurationSink(TeaModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        compression_type: str = None,
+        content_type: str = None,
+        prefix: str = None,
+        role_arn: str = None,
+        type: str = None,
+    ):
+        # 对象存储桶
+        self.bucket = bucket
+        # 压缩格式
+        # 
+        # This parameter is required.
+        self.compression_type = compression_type
+        # 下载文件格式
+        # 
+        # This parameter is required.
+        self.content_type = content_type
+        self.prefix = prefix
+        # 下载使用roleArn
+        self.role_arn = role_arn
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket is not None:
+            result['bucket'] = self.bucket
+        if self.compression_type is not None:
+            result['compressionType'] = self.compression_type
+        if self.content_type is not None:
+            result['contentType'] = self.content_type
+        if self.prefix is not None:
+            result['prefix'] = self.prefix
+        if self.role_arn is not None:
+            result['roleArn'] = self.role_arn
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bucket') is not None:
+            self.bucket = m.get('bucket')
+        if m.get('compressionType') is not None:
+            self.compression_type = m.get('compressionType')
+        if m.get('contentType') is not None:
+            self.content_type = m.get('contentType')
+        if m.get('prefix') is not None:
+            self.prefix = m.get('prefix')
+        if m.get('roleArn') is not None:
+            self.role_arn = m.get('roleArn')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateDownloadJobRequestConfiguration(TeaModel):
+    def __init__(
+        self,
+        allow_in_complete: bool = None,
+        from_time: int = None,
+        logstore: str = None,
+        power_sql: bool = None,
+        query: str = None,
+        sink: CreateDownloadJobRequestConfigurationSink = None,
+        to_time: int = None,
+    ):
+        # This parameter is required.
+        self.allow_in_complete = allow_in_complete
+        # 起点时间戳（精确到秒）
+        # 
+        # This parameter is required.
+        self.from_time = from_time
+        # 源logstore
+        # 
+        # This parameter is required.
+        self.logstore = logstore
+        # 是否启用powerSql
+        self.power_sql = power_sql
+        # 查询语句
+        # 
+        # This parameter is required.
+        self.query = query
+        # 导出配置
+        # 
+        # This parameter is required.
+        self.sink = sink
+        # 结束时间戳（精确到秒）
+        # 
+        # This parameter is required.
+        self.to_time = to_time
+
+    def validate(self):
+        if self.sink:
+            self.sink.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_in_complete is not None:
+            result['allowInComplete'] = self.allow_in_complete
+        if self.from_time is not None:
+            result['fromTime'] = self.from_time
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
+        if self.power_sql is not None:
+            result['powerSql'] = self.power_sql
+        if self.query is not None:
+            result['query'] = self.query
+        if self.sink is not None:
+            result['sink'] = self.sink.to_map()
+        if self.to_time is not None:
+            result['toTime'] = self.to_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('allowInComplete') is not None:
+            self.allow_in_complete = m.get('allowInComplete')
+        if m.get('fromTime') is not None:
+            self.from_time = m.get('fromTime')
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
+        if m.get('powerSql') is not None:
+            self.power_sql = m.get('powerSql')
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        if m.get('sink') is not None:
+            temp_model = CreateDownloadJobRequestConfigurationSink()
+            self.sink = temp_model.from_map(m['sink'])
+        if m.get('toTime') is not None:
+            self.to_time = m.get('toTime')
+        return self
+
+
+class CreateDownloadJobRequest(TeaModel):
+    def __init__(
+        self,
+        configuration: CreateDownloadJobRequestConfiguration = None,
+        description: str = None,
+        display_name: str = None,
+        name: str = None,
+    ):
+        # 下载配置
+        # 
+        # This parameter is required.
+        self.configuration = configuration
+        # 任务描述
+        self.description = description
+        # 任务显示名称
+        # 
+        # This parameter is required.
+        self.display_name = display_name
+        # 代表资源名称的资源属性字段
+        # 
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        if self.configuration:
+            self.configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration is not None:
+            result['configuration'] = self.configuration.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configuration') is not None:
+            temp_model = CreateDownloadJobRequestConfiguration()
+            self.configuration = temp_model.from_map(m['configuration'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class CreateDownloadJobResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -7333,6 +7848,39 @@ class DeleteDomainResponse(TeaModel):
         return self
 
 
+class DeleteDownloadJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class DeleteETLResponse(TeaModel):
     def __init__(
         self,
@@ -9202,6 +9750,323 @@ class GetDashboardResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = Dashboard()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDownloadJobResponseBodyConfigurationSink(TeaModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        compression_type: str = None,
+        content_type: str = None,
+        prefix: str = None,
+        role_arn: str = None,
+        type: str = None,
+    ):
+        # 对象存储桶
+        self.bucket = bucket
+        # 压缩格式
+        self.compression_type = compression_type
+        # 下载文件格式
+        self.content_type = content_type
+        self.prefix = prefix
+        # 下载使用roleArn
+        self.role_arn = role_arn
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket is not None:
+            result['bucket'] = self.bucket
+        if self.compression_type is not None:
+            result['compressionType'] = self.compression_type
+        if self.content_type is not None:
+            result['contentType'] = self.content_type
+        if self.prefix is not None:
+            result['prefix'] = self.prefix
+        if self.role_arn is not None:
+            result['roleArn'] = self.role_arn
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bucket') is not None:
+            self.bucket = m.get('bucket')
+        if m.get('compressionType') is not None:
+            self.compression_type = m.get('compressionType')
+        if m.get('contentType') is not None:
+            self.content_type = m.get('contentType')
+        if m.get('prefix') is not None:
+            self.prefix = m.get('prefix')
+        if m.get('roleArn') is not None:
+            self.role_arn = m.get('roleArn')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetDownloadJobResponseBodyConfiguration(TeaModel):
+    def __init__(
+        self,
+        allow_in_complete: bool = None,
+        from_time: int = None,
+        logstore: str = None,
+        power_sql: bool = None,
+        query: str = None,
+        sink: GetDownloadJobResponseBodyConfigurationSink = None,
+        to_time: int = None,
+    ):
+        self.allow_in_complete = allow_in_complete
+        # 起点时间戳（精确到秒）
+        self.from_time = from_time
+        # 源logstore
+        self.logstore = logstore
+        # 是否启用powerSql
+        self.power_sql = power_sql
+        # 查询语句
+        self.query = query
+        # 导出配置
+        self.sink = sink
+        # 结束时间戳（精确到秒）
+        self.to_time = to_time
+
+    def validate(self):
+        if self.sink:
+            self.sink.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_in_complete is not None:
+            result['allowInComplete'] = self.allow_in_complete
+        if self.from_time is not None:
+            result['fromTime'] = self.from_time
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
+        if self.power_sql is not None:
+            result['powerSql'] = self.power_sql
+        if self.query is not None:
+            result['query'] = self.query
+        if self.sink is not None:
+            result['sink'] = self.sink.to_map()
+        if self.to_time is not None:
+            result['toTime'] = self.to_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('allowInComplete') is not None:
+            self.allow_in_complete = m.get('allowInComplete')
+        if m.get('fromTime') is not None:
+            self.from_time = m.get('fromTime')
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
+        if m.get('powerSql') is not None:
+            self.power_sql = m.get('powerSql')
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        if m.get('sink') is not None:
+            temp_model = GetDownloadJobResponseBodyConfigurationSink()
+            self.sink = temp_model.from_map(m['sink'])
+        if m.get('toTime') is not None:
+            self.to_time = m.get('toTime')
+        return self
+
+
+class GetDownloadJobResponseBodyExecutionDetails(TeaModel):
+    def __init__(
+        self,
+        check_sum: str = None,
+        error_message: str = None,
+        execute_time: int = None,
+        file_path: str = None,
+        file_size: int = None,
+        log_count: int = None,
+        progress: int = None,
+    ):
+        self.check_sum = check_sum
+        # 下载错误信息
+        self.error_message = error_message
+        # 下载执行时间
+        self.execute_time = execute_time
+        # 下载结果链接
+        self.file_path = file_path
+        # 下载文件大小
+        self.file_size = file_size
+        # 下载日志条数
+        self.log_count = log_count
+        # 下载进度
+        self.progress = progress
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_sum is not None:
+            result['checkSum'] = self.check_sum
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.execute_time is not None:
+            result['executeTime'] = self.execute_time
+        if self.file_path is not None:
+            result['filePath'] = self.file_path
+        if self.file_size is not None:
+            result['fileSize'] = self.file_size
+        if self.log_count is not None:
+            result['logCount'] = self.log_count
+        if self.progress is not None:
+            result['progress'] = self.progress
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('checkSum') is not None:
+            self.check_sum = m.get('checkSum')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('executeTime') is not None:
+            self.execute_time = m.get('executeTime')
+        if m.get('filePath') is not None:
+            self.file_path = m.get('filePath')
+        if m.get('fileSize') is not None:
+            self.file_size = m.get('fileSize')
+        if m.get('logCount') is not None:
+            self.log_count = m.get('logCount')
+        if m.get('progress') is not None:
+            self.progress = m.get('progress')
+        return self
+
+
+class GetDownloadJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        configuration: GetDownloadJobResponseBodyConfiguration = None,
+        create_time: str = None,
+        description: str = None,
+        display_name: str = None,
+        execution_details: GetDownloadJobResponseBodyExecutionDetails = None,
+        name: str = None,
+        status: str = None,
+    ):
+        # 下载配置
+        self.configuration = configuration
+        # 代表创建时间的资源属性字段
+        self.create_time = create_time
+        # 任务描述
+        self.description = description
+        # 任务显示名称
+        self.display_name = display_name
+        # 任务执行细节
+        self.execution_details = execution_details
+        # 代表资源名称的资源属性字段
+        self.name = name
+        # 代表资源状态的资源属性字段
+        self.status = status
+
+    def validate(self):
+        if self.configuration:
+            self.configuration.validate()
+        if self.execution_details:
+            self.execution_details.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration is not None:
+            result['configuration'] = self.configuration.to_map()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.execution_details is not None:
+            result['executionDetails'] = self.execution_details.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configuration') is not None:
+            temp_model = GetDownloadJobResponseBodyConfiguration()
+            self.configuration = temp_model.from_map(m['configuration'])
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('executionDetails') is not None:
+            temp_model = GetDownloadJobResponseBodyExecutionDetails()
+            self.execution_details = temp_model.from_map(m['executionDetails'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class GetDownloadJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDownloadJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDownloadJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12806,6 +13671,407 @@ class ListDomainsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDomainsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDownloadJobsRequest(TeaModel):
+    def __init__(
+        self,
+        logstore: str = None,
+        offset: int = None,
+        size: int = None,
+    ):
+        self.logstore = logstore
+        self.offset = offset
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
+        if self.offset is not None:
+            result['offset'] = self.offset
+        if self.size is not None:
+            result['size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
+        if m.get('offset') is not None:
+            self.offset = m.get('offset')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        return self
+
+
+class ListDownloadJobsResponseBodyResultsConfigurationSink(TeaModel):
+    def __init__(
+        self,
+        bucket: str = None,
+        compression_type: str = None,
+        content_type: str = None,
+        prefix: str = None,
+        role_arn: str = None,
+        type: str = None,
+    ):
+        # 对象存储桶
+        self.bucket = bucket
+        # 压缩格式
+        self.compression_type = compression_type
+        # 下载文件格式
+        self.content_type = content_type
+        self.prefix = prefix
+        # 下载使用roleArn
+        self.role_arn = role_arn
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket is not None:
+            result['bucket'] = self.bucket
+        if self.compression_type is not None:
+            result['compressionType'] = self.compression_type
+        if self.content_type is not None:
+            result['contentType'] = self.content_type
+        if self.prefix is not None:
+            result['prefix'] = self.prefix
+        if self.role_arn is not None:
+            result['roleArn'] = self.role_arn
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bucket') is not None:
+            self.bucket = m.get('bucket')
+        if m.get('compressionType') is not None:
+            self.compression_type = m.get('compressionType')
+        if m.get('contentType') is not None:
+            self.content_type = m.get('contentType')
+        if m.get('prefix') is not None:
+            self.prefix = m.get('prefix')
+        if m.get('roleArn') is not None:
+            self.role_arn = m.get('roleArn')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListDownloadJobsResponseBodyResultsConfiguration(TeaModel):
+    def __init__(
+        self,
+        allow_in_complete: str = None,
+        from_time: int = None,
+        logstore: str = None,
+        power_sql: bool = None,
+        query: str = None,
+        sink: ListDownloadJobsResponseBodyResultsConfigurationSink = None,
+        to_time: int = None,
+    ):
+        self.allow_in_complete = allow_in_complete
+        # 起点时间戳（精确到秒）
+        self.from_time = from_time
+        # 源logstore
+        self.logstore = logstore
+        # 是否启用powerSql
+        self.power_sql = power_sql
+        # 查询语句
+        self.query = query
+        # 导出配置
+        self.sink = sink
+        # 结束时间戳（精确到秒）
+        self.to_time = to_time
+
+    def validate(self):
+        if self.sink:
+            self.sink.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_in_complete is not None:
+            result['allowInComplete'] = self.allow_in_complete
+        if self.from_time is not None:
+            result['fromTime'] = self.from_time
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
+        if self.power_sql is not None:
+            result['powerSql'] = self.power_sql
+        if self.query is not None:
+            result['query'] = self.query
+        if self.sink is not None:
+            result['sink'] = self.sink.to_map()
+        if self.to_time is not None:
+            result['toTime'] = self.to_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('allowInComplete') is not None:
+            self.allow_in_complete = m.get('allowInComplete')
+        if m.get('fromTime') is not None:
+            self.from_time = m.get('fromTime')
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
+        if m.get('powerSql') is not None:
+            self.power_sql = m.get('powerSql')
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        if m.get('sink') is not None:
+            temp_model = ListDownloadJobsResponseBodyResultsConfigurationSink()
+            self.sink = temp_model.from_map(m['sink'])
+        if m.get('toTime') is not None:
+            self.to_time = m.get('toTime')
+        return self
+
+
+class ListDownloadJobsResponseBodyResultsExecutionDetails(TeaModel):
+    def __init__(
+        self,
+        check_sum: str = None,
+        error_message: str = None,
+        execute_time: int = None,
+        file_path: str = None,
+        file_size: int = None,
+        log_count: int = None,
+        progress: int = None,
+    ):
+        self.check_sum = check_sum
+        # 下载错误信息
+        self.error_message = error_message
+        # 下载执行时间
+        self.execute_time = execute_time
+        # 下载结果链接
+        self.file_path = file_path
+        # 下载文件大小
+        self.file_size = file_size
+        # 下载日志条数
+        self.log_count = log_count
+        # 下载进度
+        self.progress = progress
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_sum is not None:
+            result['checkSum'] = self.check_sum
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.execute_time is not None:
+            result['executeTime'] = self.execute_time
+        if self.file_path is not None:
+            result['filePath'] = self.file_path
+        if self.file_size is not None:
+            result['fileSize'] = self.file_size
+        if self.log_count is not None:
+            result['logCount'] = self.log_count
+        if self.progress is not None:
+            result['progress'] = self.progress
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('checkSum') is not None:
+            self.check_sum = m.get('checkSum')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('executeTime') is not None:
+            self.execute_time = m.get('executeTime')
+        if m.get('filePath') is not None:
+            self.file_path = m.get('filePath')
+        if m.get('fileSize') is not None:
+            self.file_size = m.get('fileSize')
+        if m.get('logCount') is not None:
+            self.log_count = m.get('logCount')
+        if m.get('progress') is not None:
+            self.progress = m.get('progress')
+        return self
+
+
+class ListDownloadJobsResponseBodyResults(TeaModel):
+    def __init__(
+        self,
+        configuration: ListDownloadJobsResponseBodyResultsConfiguration = None,
+        create_time: str = None,
+        description: str = None,
+        display_name: str = None,
+        execution_details: ListDownloadJobsResponseBodyResultsExecutionDetails = None,
+        name: str = None,
+        status: str = None,
+    ):
+        # 下载配置
+        self.configuration = configuration
+        self.create_time = create_time
+        # 任务描述
+        self.description = description
+        # 任务显示名称
+        self.display_name = display_name
+        # 任务执行细节
+        self.execution_details = execution_details
+        # 代表资源名称的资源属性字段
+        self.name = name
+        self.status = status
+
+    def validate(self):
+        if self.configuration:
+            self.configuration.validate()
+        if self.execution_details:
+            self.execution_details.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration is not None:
+            result['configuration'] = self.configuration.to_map()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.execution_details is not None:
+            result['executionDetails'] = self.execution_details.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configuration') is not None:
+            temp_model = ListDownloadJobsResponseBodyResultsConfiguration()
+            self.configuration = temp_model.from_map(m['configuration'])
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('executionDetails') is not None:
+            temp_model = ListDownloadJobsResponseBodyResultsExecutionDetails()
+            self.execution_details = temp_model.from_map(m['executionDetails'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class ListDownloadJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        results: List[ListDownloadJobsResponseBodyResults] = None,
+        total: int = None,
+    ):
+        self.count = count
+        self.results = results
+        self.total = total
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['count'] = self.count
+        result['results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['results'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        self.results = []
+        if m.get('results') is not None:
+            for k in m.get('results'):
+                temp_model = ListDownloadJobsResponseBodyResults()
+                self.results.append(temp_model.from_map(k))
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListDownloadJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDownloadJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDownloadJobsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

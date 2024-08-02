@@ -1,3 +1,10 @@
+2024-08-02 Version: 5.3.0
+- Support API CreateDownloadJob.
+- Support API DeleteDownloadJob.
+- Support API GetDownloadJob.
+- Support API ListDownloadJobs.
+
+
 2024-07-25 Version: 5.2.3
 - Generated python 2020-12-30 for Sls.
 
