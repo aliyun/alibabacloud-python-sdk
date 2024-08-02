@@ -606,12 +606,15 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
             body['AppInstanceGroupId'] = request.app_instance_group_id
+        body_flat = {}
         if not UtilClient.is_unset(request.authorize_user_ids):
-            body['AuthorizeUserIds'] = request.authorize_user_ids
+            body_flat['AuthorizeUserIds'] = request.authorize_user_ids
         if not UtilClient.is_unset(request.product_type):
             body['ProductType'] = request.product_type
         if not UtilClient.is_unset(request.un_authorize_user_ids):
-            body['UnAuthorizeUserIds'] = request.un_authorize_user_ids
+            body_flat['UnAuthorizeUserIds'] = request.un_authorize_user_ids
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -647,12 +650,15 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_instance_group_id):
             body['AppInstanceGroupId'] = request.app_instance_group_id
+        body_flat = {}
         if not UtilClient.is_unset(request.authorize_user_ids):
-            body['AuthorizeUserIds'] = request.authorize_user_ids
+            body_flat['AuthorizeUserIds'] = request.authorize_user_ids
         if not UtilClient.is_unset(request.product_type):
             body['ProductType'] = request.product_type
         if not UtilClient.is_unset(request.un_authorize_user_ids):
-            body['UnAuthorizeUserIds'] = request.un_authorize_user_ids
+            body_flat['UnAuthorizeUserIds'] = request.un_authorize_user_ids
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3508,6 +3514,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz_source):
+            query['BizSource'] = request.biz_source
         if not UtilClient.is_unset(request.product_type):
             query['ProductType'] = request.product_type
         req = open_api_models.OpenApiRequest(
@@ -3543,6 +3551,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.biz_source):
+            query['BizSource'] = request.biz_source
         if not UtilClient.is_unset(request.product_type):
             query['ProductType'] = request.product_type
         req = open_api_models.OpenApiRequest(

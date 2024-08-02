@@ -7609,8 +7609,10 @@ class ListProjectsResponse(TeaModel):
 class ListRegionsRequest(TeaModel):
     def __init__(
         self,
+        biz_source: str = None,
         product_type: str = None,
     ):
+        self.biz_source = biz_source
         self.product_type = product_type
 
     def validate(self):
@@ -7622,12 +7624,16 @@ class ListRegionsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.biz_source is not None:
+            result['BizSource'] = self.biz_source
         if self.product_type is not None:
             result['ProductType'] = self.product_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizSource') is not None:
+            self.biz_source = m.get('BizSource')
         if m.get('ProductType') is not None:
             self.product_type = m.get('ProductType')
         return self

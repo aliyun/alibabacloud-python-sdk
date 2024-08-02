@@ -1,3 +1,9 @@
+2024-08-02 Version: 2.0.2
+- Update API AuthorizeInstanceGroup: update param AuthorizeUserIds.
+- Update API AuthorizeInstanceGroup: update param UnAuthorizeUserIds.
+- Update API ListRegions: add param BizSource.
+
+
 2024-07-23 Version: 2.0.1
 - Generated python 2021-09-01 for appstream-center.
 
