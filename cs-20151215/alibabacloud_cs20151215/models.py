@@ -6356,6 +6356,7 @@ class DeleteAlertContactRequest(TeaModel):
         self,
         contact_ids: List[int] = None,
     ):
+        # This parameter is required.
         self.contact_ids = contact_ids
 
     def validate(self):
@@ -6383,6 +6384,7 @@ class DeleteAlertContactShrinkRequest(TeaModel):
         self,
         contact_ids_shrink: str = None,
     ):
+        # This parameter is required.
         self.contact_ids_shrink = contact_ids_shrink
 
     def validate(self):
@@ -6405,7 +6407,7 @@ class DeleteAlertContactShrinkRequest(TeaModel):
         return self
 
 
-class DeleteAlertContactResponseBodyBody(TeaModel):
+class DeleteAlertContactResponseBody(TeaModel):
     def __init__(
         self,
         status: bool = None,
@@ -6444,11 +6446,15 @@ class DeleteAlertContactResponseBodyBody(TeaModel):
         return self
 
 
-class DeleteAlertContactResponseBody(TeaModel):
+class DeleteAlertContactResponse(TeaModel):
     def __init__(
         self,
-        body: List[DeleteAlertContactResponseBodyBody] = None,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: List[DeleteAlertContactResponseBody] = None,
     ):
+        self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
@@ -6463,6 +6469,10 @@ class DeleteAlertContactResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         result['body'] = []
         if self.body is not None:
             for k in self.body:
@@ -6471,52 +6481,15 @@ class DeleteAlertContactResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.body = []
-        if m.get('body') is not None:
-            for k in m.get('body'):
-                temp_model = DeleteAlertContactResponseBodyBody()
-                self.body.append(temp_model.from_map(k))
-        return self
-
-
-class DeleteAlertContactResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DeleteAlertContactResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
+        self.body = []
         if m.get('body') is not None:
-            temp_model = DeleteAlertContactResponseBody()
-            self.body = temp_model.from_map(m['body'])
+            for k in m.get('body'):
+                temp_model = DeleteAlertContactResponseBody()
+                self.body.append(temp_model.from_map(k))
         return self
 
 
@@ -6525,6 +6498,7 @@ class DeleteAlertContactGroupRequest(TeaModel):
         self,
         contact_group_ids: List[int] = None,
     ):
+        # This parameter is required.
         self.contact_group_ids = contact_group_ids
 
     def validate(self):
@@ -6552,6 +6526,7 @@ class DeleteAlertContactGroupShrinkRequest(TeaModel):
         self,
         contact_group_ids_shrink: str = None,
     ):
+        # This parameter is required.
         self.contact_group_ids_shrink = contact_group_ids_shrink
 
     def validate(self):
@@ -27188,17 +27163,98 @@ class UpdateClusterAuditLogConfigResponse(TeaModel):
         return self
 
 
+class UpdateContactGroupForAlertRequest(TeaModel):
+    def __init__(
+        self,
+        alert_rule_group_name: str = None,
+        contact_group_ids: List[int] = None,
+        cr_name: str = None,
+        namespace: str = None,
+    ):
+        self.alert_rule_group_name = alert_rule_group_name
+        self.contact_group_ids = contact_group_ids
+        self.cr_name = cr_name
+        self.namespace = namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_rule_group_name is not None:
+            result['alert_rule_group_name'] = self.alert_rule_group_name
+        if self.contact_group_ids is not None:
+            result['contact_group_ids'] = self.contact_group_ids
+        if self.cr_name is not None:
+            result['cr_name'] = self.cr_name
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alert_rule_group_name') is not None:
+            self.alert_rule_group_name = m.get('alert_rule_group_name')
+        if m.get('contact_group_ids') is not None:
+            self.contact_group_ids = m.get('contact_group_ids')
+        if m.get('cr_name') is not None:
+            self.cr_name = m.get('cr_name')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        return self
+
+
+class UpdateContactGroupForAlertResponseBody(TeaModel):
+    def __init__(
+        self,
+        msg: str = None,
+        status: bool = None,
+    ):
+        self.msg = msg
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.msg is not None:
+            result['msg'] = self.msg
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('msg') is not None:
+            self.msg = m.get('msg')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
 class UpdateContactGroupForAlertResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
+        body: UpdateContactGroupForAlertResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
+        self.body = body
 
     def validate(self):
-        pass
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -27210,6 +27266,8 @@ class UpdateContactGroupForAlertResponse(TeaModel):
             result['headers'] = self.headers
         if self.status_code is not None:
             result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -27218,6 +27276,9 @@ class UpdateContactGroupForAlertResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateContactGroupForAlertResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 

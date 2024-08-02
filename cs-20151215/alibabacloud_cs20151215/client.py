@@ -2715,6 +2715,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteAlertContactResponse:
         """
+        @summary 删除ACK报警联系人
+        
         @param tmp_req: DeleteAlertContactRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2755,6 +2757,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteAlertContactResponse:
         """
+        @summary 删除ACK报警联系人
+        
         @param tmp_req: DeleteAlertContactRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2793,6 +2797,8 @@ class Client(OpenApiClient):
         request: cs20151215_models.DeleteAlertContactRequest,
     ) -> cs20151215_models.DeleteAlertContactResponse:
         """
+        @summary 删除ACK报警联系人
+        
         @param request: DeleteAlertContactRequest
         @return: DeleteAlertContactResponse
         """
@@ -2805,6 +2811,8 @@ class Client(OpenApiClient):
         request: cs20151215_models.DeleteAlertContactRequest,
     ) -> cs20151215_models.DeleteAlertContactResponse:
         """
+        @summary 删除ACK报警联系人
+        
         @param request: DeleteAlertContactRequest
         @return: DeleteAlertContactResponse
         """
@@ -2819,6 +2827,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteAlertContactGroupResponse:
         """
+        @summary 删除ACK报警联系人分组
+        
         @param tmp_req: DeleteAlertContactGroupRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2859,6 +2869,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DeleteAlertContactGroupResponse:
         """
+        @summary 删除ACK报警联系人分组
+        
         @param tmp_req: DeleteAlertContactGroupRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2897,6 +2909,8 @@ class Client(OpenApiClient):
         request: cs20151215_models.DeleteAlertContactGroupRequest,
     ) -> cs20151215_models.DeleteAlertContactGroupResponse:
         """
+        @summary 删除ACK报警联系人分组
+        
         @param request: DeleteAlertContactGroupRequest
         @return: DeleteAlertContactGroupResponse
         """
@@ -2909,6 +2923,8 @@ class Client(OpenApiClient):
         request: cs20151215_models.DeleteAlertContactGroupRequest,
     ) -> cs20151215_models.DeleteAlertContactGroupResponse:
         """
+        @summary 删除ACK报警联系人分组
+        
         @param request: DeleteAlertContactGroupRequest
         @return: DeleteAlertContactGroupResponse
         """
@@ -14747,16 +14763,31 @@ class Client(OpenApiClient):
     def update_contact_group_for_alert_with_options(
         self,
         cluster_id: str,
+        request: cs20151215_models.UpdateContactGroupForAlertRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
         """
+        @summary 为集群中报警规则集设置订阅的通知对象联系人组
+        
+        @param request: UpdateContactGroupForAlertRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateContactGroupForAlertResponse
         """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.alert_rule_group_name):
+            body['alert_rule_group_name'] = request.alert_rule_group_name
+        if not UtilClient.is_unset(request.contact_group_ids):
+            body['contact_group_ids'] = request.contact_group_ids
+        if not UtilClient.is_unset(request.cr_name):
+            body['cr_name'] = request.cr_name
+        if not UtilClient.is_unset(request.namespace):
+            body['namespace'] = request.namespace
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateContactGroupForAlert',
@@ -14767,7 +14798,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='none'
+            body_type='json'
         )
         return TeaCore.from_map(
             cs20151215_models.UpdateContactGroupForAlertResponse(),
@@ -14777,16 +14808,31 @@ class Client(OpenApiClient):
     async def update_contact_group_for_alert_with_options_async(
         self,
         cluster_id: str,
+        request: cs20151215_models.UpdateContactGroupForAlertRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
         """
+        @summary 为集群中报警规则集设置订阅的通知对象联系人组
+        
+        @param request: UpdateContactGroupForAlertRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateContactGroupForAlertResponse
         """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.alert_rule_group_name):
+            body['alert_rule_group_name'] = request.alert_rule_group_name
+        if not UtilClient.is_unset(request.contact_group_ids):
+            body['contact_group_ids'] = request.contact_group_ids
+        if not UtilClient.is_unset(request.cr_name):
+            body['cr_name'] = request.cr_name
+        if not UtilClient.is_unset(request.namespace):
+            body['namespace'] = request.namespace
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateContactGroupForAlert',
@@ -14797,7 +14843,7 @@ class Client(OpenApiClient):
             auth_type='AK',
             style='ROA',
             req_body_type='json',
-            body_type='none'
+            body_type='json'
         )
         return TeaCore.from_map(
             cs20151215_models.UpdateContactGroupForAlertResponse(),
@@ -14807,24 +14853,32 @@ class Client(OpenApiClient):
     def update_contact_group_for_alert(
         self,
         cluster_id: str,
+        request: cs20151215_models.UpdateContactGroupForAlertRequest,
     ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
         """
+        @summary 为集群中报警规则集设置订阅的通知对象联系人组
+        
+        @param request: UpdateContactGroupForAlertRequest
         @return: UpdateContactGroupForAlertResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_contact_group_for_alert_with_options(cluster_id, headers, runtime)
+        return self.update_contact_group_for_alert_with_options(cluster_id, request, headers, runtime)
 
     async def update_contact_group_for_alert_async(
         self,
         cluster_id: str,
+        request: cs20151215_models.UpdateContactGroupForAlertRequest,
     ) -> cs20151215_models.UpdateContactGroupForAlertResponse:
         """
+        @summary 为集群中报警规则集设置订阅的通知对象联系人组
+        
+        @param request: UpdateContactGroupForAlertRequest
         @return: UpdateContactGroupForAlertResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_contact_group_for_alert_with_options_async(cluster_id, headers, runtime)
+        return await self.update_contact_group_for_alert_with_options_async(cluster_id, request, headers, runtime)
 
     def update_control_plane_log_with_options(
         self,

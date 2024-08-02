@@ -1,3 +1,15 @@
+2024-08-02 Version: 4.7.1
+- Update API DeleteAlertContact: update param contact_ids.
+- Update API DeleteAlertContact: update response param.
+- Update API DeleteAlertContactGroup: update param contact_group_ids.
+- Update API DeleteAlertContactGroup: update response param.
+- Update API StartAlert: update param body.
+- Update API StartAlert: update param body.
+- Update API StopAlert: update param body.
+- Update API UpdateContactGroupForAlert: add param body.
+- Update API UpdateContactGroupForAlert: update response param.
+
+
 2024-07-25 Version: 4.7.0
 - Support API RevokeK8sClusterKubeConfig.
 
