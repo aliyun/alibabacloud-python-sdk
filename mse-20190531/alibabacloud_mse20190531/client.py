@@ -2560,6 +2560,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.data_ids):
+            query['DataIds'] = request.data_ids
         if not UtilClient.is_unset(request.ids):
             query['Ids'] = request.ids
         if not UtilClient.is_unset(request.instance_id):
@@ -2607,6 +2609,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.data_ids):
+            query['DataIds'] = request.data_ids
         if not UtilClient.is_unset(request.ids):
             query['Ids'] = request.ids
         if not UtilClient.is_unset(request.instance_id):
@@ -8946,6 +8950,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.fetch_lossless_rule_list_with_options_async(request, runtime)
 
+    def gateway_black_white_list_with_options(
+        self,
+        tmp_req: mse_20190531_models.GatewayBlackWhiteListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GatewayBlackWhiteListResponse:
+        """
+        @summary 黑白名单列表
+        
+        @param tmp_req: GatewayBlackWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GatewayBlackWhiteListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.GatewayBlackWhiteListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter_params):
+            request.filter_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_params, 'FilterParams', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.desc_sort):
+            query['DescSort'] = request.desc_sort
+        if not UtilClient.is_unset(request.filter_params_shrink):
+            query['FilterParams'] = request.filter_params_shrink
+        if not UtilClient.is_unset(request.order_item):
+            query['OrderItem'] = request.order_item
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GatewayBlackWhiteList',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GatewayBlackWhiteListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def gateway_black_white_list_with_options_async(
+        self,
+        tmp_req: mse_20190531_models.GatewayBlackWhiteListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GatewayBlackWhiteListResponse:
+        """
+        @summary 黑白名单列表
+        
+        @param tmp_req: GatewayBlackWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GatewayBlackWhiteListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.GatewayBlackWhiteListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter_params):
+            request.filter_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter_params, 'FilterParams', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.desc_sort):
+            query['DescSort'] = request.desc_sort
+        if not UtilClient.is_unset(request.filter_params_shrink):
+            query['FilterParams'] = request.filter_params_shrink
+        if not UtilClient.is_unset(request.order_item):
+            query['OrderItem'] = request.order_item
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GatewayBlackWhiteList',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GatewayBlackWhiteListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def gateway_black_white_list(
+        self,
+        request: mse_20190531_models.GatewayBlackWhiteListRequest,
+    ) -> mse_20190531_models.GatewayBlackWhiteListResponse:
+        """
+        @summary 黑白名单列表
+        
+        @param request: GatewayBlackWhiteListRequest
+        @return: GatewayBlackWhiteListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.gateway_black_white_list_with_options(request, runtime)
+
+    async def gateway_black_white_list_async(
+        self,
+        request: mse_20190531_models.GatewayBlackWhiteListRequest,
+    ) -> mse_20190531_models.GatewayBlackWhiteListResponse:
+        """
+        @summary 黑白名单列表
+        
+        @param request: GatewayBlackWhiteListRequest
+        @return: GatewayBlackWhiteListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.gateway_black_white_list_with_options_async(request, runtime)
+
     def get_app_message_queue_route_with_options(
         self,
         request: mse_20190531_models.GetAppMessageQueueRouteRequest,
@@ -9324,11 +9452,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetBlackWhiteListResponse:
         """
+        @deprecated OpenAPI GetBlackWhiteList is deprecated, please use mse::2019-05-31::GatewayBlackWhiteList instead.
+        
         @summary Queries the blacklist or whitelist of a gateway.
         
         @param request: GetBlackWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetBlackWhiteListResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -9367,11 +9498,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetBlackWhiteListResponse:
         """
+        @deprecated OpenAPI GetBlackWhiteList is deprecated, please use mse::2019-05-31::GatewayBlackWhiteList instead.
+        
         @summary Queries the blacklist or whitelist of a gateway.
         
         @param request: GetBlackWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetBlackWhiteListResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -9409,10 +9543,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetBlackWhiteListRequest,
     ) -> mse_20190531_models.GetBlackWhiteListResponse:
         """
+        @deprecated OpenAPI GetBlackWhiteList is deprecated, please use mse::2019-05-31::GatewayBlackWhiteList instead.
+        
         @summary Queries the blacklist or whitelist of a gateway.
         
         @param request: GetBlackWhiteListRequest
         @return: GetBlackWhiteListResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.get_black_white_list_with_options(request, runtime)
@@ -9422,10 +9559,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetBlackWhiteListRequest,
     ) -> mse_20190531_models.GetBlackWhiteListResponse:
         """
+        @deprecated OpenAPI GetBlackWhiteList is deprecated, please use mse::2019-05-31::GatewayBlackWhiteList instead.
+        
         @summary Queries the blacklist or whitelist of a gateway.
         
         @param request: GetBlackWhiteListRequest
         @return: GetBlackWhiteListResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_black_white_list_with_options_async(request, runtime)

@@ -7407,6 +7407,7 @@ class CloneNacosConfigRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
+        data_ids: str = None,
         ids: str = None,
         instance_id: str = None,
         origin_namespace_id: str = None,
@@ -7418,9 +7419,8 @@ class CloneNacosConfigRequest(TeaModel):
         # *   zh: Chinese
         # *   en: English
         self.accept_language = accept_language
+        self.data_ids = data_ids
         # The data structure.
-        # 
-        # This parameter is required.
         self.ids = ids
         # The ID of the destination namespace.
         # 
@@ -7453,6 +7453,8 @@ class CloneNacosConfigRequest(TeaModel):
         result = dict()
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
+        if self.data_ids is not None:
+            result['DataIds'] = self.data_ids
         if self.ids is not None:
             result['Ids'] = self.ids
         if self.instance_id is not None:
@@ -7469,6 +7471,8 @@ class CloneNacosConfigRequest(TeaModel):
         m = m or dict()
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
+        if m.get('DataIds') is not None:
+            self.data_ids = m.get('DataIds')
         if m.get('Ids') is not None:
             self.ids = m.get('Ids')
         if m.get('InstanceId') is not None:
@@ -7487,11 +7491,13 @@ class CloneNacosConfigResponseBodyDataFailData(TeaModel):
         self,
         data_id: str = None,
         group: str = None,
+        reason: str = None,
     ):
         # mse-200-105
         self.data_id = data_id
         # duplicatedClusterAliasName
         self.group = group
+        self.reason = reason
 
     def validate(self):
         pass
@@ -7506,6 +7512,8 @@ class CloneNacosConfigResponseBodyDataFailData(TeaModel):
             result['DataId'] = self.data_id
         if self.group is not None:
             result['Group'] = self.group
+        if self.reason is not None:
+            result['Reason'] = self.reason
         return result
 
     def from_map(self, m: dict = None):
@@ -7514,6 +7522,8 @@ class CloneNacosConfigResponseBodyDataFailData(TeaModel):
             self.data_id = m.get('DataId')
         if m.get('Group') is not None:
             self.group = m.get('Group')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
         return self
 
 
@@ -19939,6 +19949,469 @@ class FetchLosslessRuleListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = FetchLosslessRuleListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GatewayBlackWhiteListRequestFilterParams(TeaModel):
+    def __init__(
+        self,
+        gateway_id: int = None,
+        gateway_unique_id: str = None,
+        is_white: bool = None,
+        resource_type: str = None,
+        search_content: str = None,
+        search_type: str = None,
+        type: str = None,
+    ):
+        self.gateway_id = gateway_id
+        self.gateway_unique_id = gateway_unique_id
+        self.is_white = is_white
+        self.resource_type = resource_type
+        self.search_content = search_content
+        self.search_type = search_type
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway_id is not None:
+            result['GatewayId'] = self.gateway_id
+        if self.gateway_unique_id is not None:
+            result['GatewayUniqueId'] = self.gateway_unique_id
+        if self.is_white is not None:
+            result['IsWhite'] = self.is_white
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.search_content is not None:
+            result['SearchContent'] = self.search_content
+        if self.search_type is not None:
+            result['SearchType'] = self.search_type
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GatewayId') is not None:
+            self.gateway_id = m.get('GatewayId')
+        if m.get('GatewayUniqueId') is not None:
+            self.gateway_unique_id = m.get('GatewayUniqueId')
+        if m.get('IsWhite') is not None:
+            self.is_white = m.get('IsWhite')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('SearchContent') is not None:
+            self.search_content = m.get('SearchContent')
+        if m.get('SearchType') is not None:
+            self.search_type = m.get('SearchType')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GatewayBlackWhiteListRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        desc_sort: bool = None,
+        filter_params: GatewayBlackWhiteListRequestFilterParams = None,
+        order_item: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.accept_language = accept_language
+        self.desc_sort = desc_sort
+        # parse from filterParams
+        self.filter_params = filter_params
+        self.order_item = order_item
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        if self.filter_params:
+            self.filter_params.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.desc_sort is not None:
+            result['DescSort'] = self.desc_sort
+        if self.filter_params is not None:
+            result['FilterParams'] = self.filter_params.to_map()
+        if self.order_item is not None:
+            result['OrderItem'] = self.order_item
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('DescSort') is not None:
+            self.desc_sort = m.get('DescSort')
+        if m.get('FilterParams') is not None:
+            temp_model = GatewayBlackWhiteListRequestFilterParams()
+            self.filter_params = temp_model.from_map(m['FilterParams'])
+        if m.get('OrderItem') is not None:
+            self.order_item = m.get('OrderItem')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class GatewayBlackWhiteListShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        desc_sort: bool = None,
+        filter_params_shrink: str = None,
+        order_item: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.accept_language = accept_language
+        self.desc_sort = desc_sort
+        # parse from filterParams
+        self.filter_params_shrink = filter_params_shrink
+        self.order_item = order_item
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.desc_sort is not None:
+            result['DescSort'] = self.desc_sort
+        if self.filter_params_shrink is not None:
+            result['FilterParams'] = self.filter_params_shrink
+        if self.order_item is not None:
+            result['OrderItem'] = self.order_item
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('DescSort') is not None:
+            self.desc_sort = m.get('DescSort')
+        if m.get('FilterParams') is not None:
+            self.filter_params_shrink = m.get('FilterParams')
+        if m.get('OrderItem') is not None:
+            self.order_item = m.get('OrderItem')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class GatewayBlackWhiteListResponseBodyDataResult(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        gateway_id: int = None,
+        gateway_unique_id: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        is_white: bool = None,
+        name: str = None,
+        note: str = None,
+        resource_id: int = None,
+        resource_id_json_list: str = None,
+        resource_id_name_json: str = None,
+        resource_type: str = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.content = content
+        self.gateway_id = gateway_id
+        self.gateway_unique_id = gateway_unique_id
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.is_white = is_white
+        self.name = name
+        self.note = note
+        self.resource_id = resource_id
+        self.resource_id_json_list = resource_id_json_list
+        self.resource_id_name_json = resource_id_name_json
+        self.resource_type = resource_type
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.gateway_id is not None:
+            result['GatewayId'] = self.gateway_id
+        if self.gateway_unique_id is not None:
+            result['GatewayUniqueId'] = self.gateway_unique_id
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.is_white is not None:
+            result['IsWhite'] = self.is_white
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.note is not None:
+            result['Note'] = self.note
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_id_json_list is not None:
+            result['ResourceIdJsonList'] = self.resource_id_json_list
+        if self.resource_id_name_json is not None:
+            result['ResourceIdNameJson'] = self.resource_id_name_json
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('GatewayId') is not None:
+            self.gateway_id = m.get('GatewayId')
+        if m.get('GatewayUniqueId') is not None:
+            self.gateway_unique_id = m.get('GatewayUniqueId')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IsWhite') is not None:
+            self.is_white = m.get('IsWhite')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Note') is not None:
+            self.note = m.get('Note')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceIdJsonList') is not None:
+            self.resource_id_json_list = m.get('ResourceIdJsonList')
+        if m.get('ResourceIdNameJson') is not None:
+            self.resource_id_name_json = m.get('ResourceIdNameJson')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GatewayBlackWhiteListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        result: List[GatewayBlackWhiteListResponseBodyDataResult] = None,
+        total_size: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.result = result
+        self.total_size = total_size
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = GatewayBlackWhiteListResponseBodyDataResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class GatewayBlackWhiteListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GatewayBlackWhiteListResponseBodyData = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        error_code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.error_code = error_code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GatewayBlackWhiteListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GatewayBlackWhiteListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GatewayBlackWhiteListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GatewayBlackWhiteListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

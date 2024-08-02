@@ -1,3 +1,10 @@
+2024-08-02 Version: 6.10.0
+- Support API GatewayBlackWhiteList.
+- Update API CloneNacosConfig: add param DataIds.
+- Update API CloneNacosConfig: update param Ids.
+- Update API CloneNacosConfig: update response param.
+
+
 2024-07-25 Version: 6.9.0
 - Support API CreatePluginConfig.
 - Support API DeletePluginConfig.
