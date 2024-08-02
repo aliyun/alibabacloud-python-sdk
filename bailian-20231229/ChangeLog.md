@@ -1,3 +1,7 @@
+2024-08-02 Version: 1.7.0
+- Support API ListFile.
+
+
 2024-07-31 Version: 1.6.0
 - Support API CreateAndPulishAgent.
 - Support API DeleteAgent.

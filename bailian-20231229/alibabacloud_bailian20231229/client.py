@@ -1743,6 +1743,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_chunks_with_options_async(workspace_id, request, headers, runtime)
 
+    def list_file_with_options(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListFileResponse:
+        """
+        @summary 获取文档列表
+        
+        @param request: ListFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFile',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/files',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_file_with_options_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListFileRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListFileResponse:
+        """
+        @summary 获取文档列表
+        
+        @param request: ListFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFile',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/files',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_file(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListFileRequest,
+    ) -> bailian_20231229_models.ListFileResponse:
+        """
+        @summary 获取文档列表
+        
+        @param request: ListFileRequest
+        @return: ListFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_file_with_options(workspace_id, request, headers, runtime)
+
+    async def list_file_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListFileRequest,
+    ) -> bailian_20231229_models.ListFileResponse:
+        """
+        @summary 获取文档列表
+        
+        @param request: ListFileRequest
+        @return: ListFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_file_with_options_async(workspace_id, request, headers, runtime)
+
     def list_index_documents_with_options(
         self,
         workspace_id: str,

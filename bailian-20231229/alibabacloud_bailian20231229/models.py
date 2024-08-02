@@ -3590,6 +3590,275 @@ class ListChunksResponse(TeaModel):
         return self
 
 
+class ListFileRequest(TeaModel):
+    def __init__(
+        self,
+        category_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        # This parameter is required.
+        self.category_id = category_id
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListFileResponseBodyDataFileList(TeaModel):
+    def __init__(
+        self,
+        category_id: str = None,
+        create_time: str = None,
+        file_id: str = None,
+        file_name: str = None,
+        file_type: str = None,
+        parser: str = None,
+        size_in_bytes: int = None,
+        status: str = None,
+    ):
+        self.category_id = category_id
+        self.create_time = create_time
+        self.file_id = file_id
+        self.file_name = file_name
+        self.file_type = file_type
+        self.parser = parser
+        self.size_in_bytes = size_in_bytes
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.file_id is not None:
+            result['FileId'] = self.file_id
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.parser is not None:
+            result['Parser'] = self.parser
+        if self.size_in_bytes is not None:
+            result['SizeInBytes'] = self.size_in_bytes
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FileId') is not None:
+            self.file_id = m.get('FileId')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('Parser') is not None:
+            self.parser = m.get('Parser')
+        if m.get('SizeInBytes') is not None:
+            self.size_in_bytes = m.get('SizeInBytes')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListFileResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        file_list: List[ListFileResponseBodyDataFileList] = None,
+        has_next: bool = None,
+        max_results: int = None,
+        next_token: str = None,
+        total_count: int = None,
+    ):
+        self.file_list = file_list
+        self.has_next = has_next
+        self.max_results = max_results
+        self.next_token = next_token
+        self.total_count = total_count
+
+    def validate(self):
+        if self.file_list:
+            for k in self.file_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FileList'] = []
+        if self.file_list is not None:
+            for k in self.file_list:
+                result['FileList'].append(k.to_map() if k else None)
+        if self.has_next is not None:
+            result['HasNext'] = self.has_next
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.file_list = []
+        if m.get('FileList') is not None:
+            for k in m.get('FileList'):
+                temp_model = ListFileResponseBodyDataFileList()
+                self.file_list.append(temp_model.from_map(k))
+        if m.get('HasNext') is not None:
+            self.has_next = m.get('HasNext')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListFileResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListFileResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListFileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListFileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListFileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListIndexDocumentsRequest(TeaModel):
     def __init__(
         self,
