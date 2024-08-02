@@ -17691,6 +17691,7 @@ class ExportInsightWorkitemStatusResponseBodyResult(TeaModel):
         priority: int = None,
         product_id: str = None,
         project_id: str = None,
+        serial_number: int = None,
         source: str = None,
         sprint_id: str = None,
         stage: int = None,
@@ -17725,6 +17726,7 @@ class ExportInsightWorkitemStatusResponseBodyResult(TeaModel):
         self.priority = priority
         self.product_id = product_id
         self.project_id = project_id
+        self.serial_number = serial_number
         self.source = source
         self.sprint_id = sprint_id
         self.stage = stage
@@ -17788,6 +17790,8 @@ class ExportInsightWorkitemStatusResponseBodyResult(TeaModel):
             result['productId'] = self.product_id
         if self.project_id is not None:
             result['projectId'] = self.project_id
+        if self.serial_number is not None:
+            result['serialNumber'] = self.serial_number
         if self.source is not None:
             result['source'] = self.source
         if self.sprint_id is not None:
@@ -17858,6 +17862,8 @@ class ExportInsightWorkitemStatusResponseBodyResult(TeaModel):
             self.product_id = m.get('productId')
         if m.get('projectId') is not None:
             self.project_id = m.get('projectId')
+        if m.get('serialNumber') is not None:
+            self.serial_number = m.get('serialNumber')
         if m.get('source') is not None:
             self.source = m.get('source')
         if m.get('sprintId') is not None:
@@ -18057,6 +18063,7 @@ class ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponseBodyResult(TeaMo
         product_id: str = None,
         project_id: str = None,
         reopen_num: int = None,
+        serial_number: int = None,
         serious_level: int = None,
         solution: str = None,
         source: str = None,
@@ -18100,6 +18107,7 @@ class ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponseBodyResult(TeaMo
         self.product_id = product_id
         self.project_id = project_id
         self.reopen_num = reopen_num
+        self.serial_number = serial_number
         self.serious_level = serious_level
         self.solution = solution
         self.source = source
@@ -18178,6 +18186,8 @@ class ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponseBodyResult(TeaMo
             result['projectId'] = self.project_id
         if self.reopen_num is not None:
             result['reopenNum'] = self.reopen_num
+        if self.serial_number is not None:
+            result['serialNumber'] = self.serial_number
         if self.serious_level is not None:
             result['seriousLevel'] = self.serious_level
         if self.solution is not None:
@@ -18266,6 +18276,8 @@ class ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponseBodyResult(TeaMo
             self.project_id = m.get('projectId')
         if m.get('reopenNum') is not None:
             self.reopen_num = m.get('reopenNum')
+        if m.get('serialNumber') is not None:
+            self.serial_number = m.get('serialNumber')
         if m.get('seriousLevel') is not None:
             self.serious_level = m.get('seriousLevel')
         if m.get('solution') is not None:

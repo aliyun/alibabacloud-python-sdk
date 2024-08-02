@@ -1,3 +1,8 @@
+2024-08-02 Version: 4.23.1
+- Update API ExportInsightWorkitemStatus: update response param.
+- Update API ExportInsightWorkitemStatusJoinWorkitemDefectExtra: update response param.
+
+
 2024-07-29 Version: 4.23.0
 - Support API PassReleaseStagePipelineValidate.
 - Support API RefuseReleaseStagePipelineValidate.
