@@ -12418,6 +12418,7 @@ class UpgradePrePayOrderResponseBody(TeaModel):
         self,
         code: int = None,
         message: str = None,
+        order_id: str = None,
         request_id: str = None,
         success: bool = None,
     ):
@@ -12425,6 +12426,7 @@ class UpgradePrePayOrderResponseBody(TeaModel):
         self.code = code
         # The error message returned.
         self.message = message
+        self.order_id = order_id
         # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request is successful.
@@ -12443,6 +12445,8 @@ class UpgradePrePayOrderResponseBody(TeaModel):
             result['Code'] = self.code
         if self.message is not None:
             result['Message'] = self.message
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.success is not None:
@@ -12455,6 +12459,8 @@ class UpgradePrePayOrderResponseBody(TeaModel):
             self.code = m.get('Code')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:

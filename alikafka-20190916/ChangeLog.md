@@ -1,3 +1,8 @@
+2024-08-02 Version: 2.7.2
+- Update API GetConsumerProgress: add param HideLastTimestamp.
+- Update API UpgradePrePayOrder: update response param.
+
+
 2024-07-30 Version: 2.7.1
 - Update API GetConsumerProgress: add param HideLastTimestamp.
 
