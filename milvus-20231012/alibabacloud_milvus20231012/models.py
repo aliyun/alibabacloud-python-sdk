@@ -1569,7 +1569,6 @@ class UpdatePublicNetworkStatusRequest(TeaModel):
         instance_id: str = None,
         public_network_enabled: bool = None,
     ):
-        # This parameter is required.
         self.cidr = cidr
         # This parameter is required.
         self.component_type = component_type
