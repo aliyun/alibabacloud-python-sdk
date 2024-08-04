@@ -762,6 +762,7 @@ class CancelUpsertCollectionDataJobRequest(TeaModel):
         namespace_password: str = None,
         owner_id: int = None,
         region_id: str = None,
+        workspace_id: str = None,
     ):
         # The name of the collection.
         # 
@@ -772,8 +773,6 @@ class CancelUpsertCollectionDataJobRequest(TeaModel):
         # The instance ID.
         # 
         # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The ID of the vector data upload job. You can call the `UpsertCollectionDataAsync` operation to query the job ID.
         # 
@@ -794,6 +793,7 @@ class CancelUpsertCollectionDataJobRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -818,6 +818,8 @@ class CancelUpsertCollectionDataJobRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -836,6 +838,8 @@ class CancelUpsertCollectionDataJobRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -1611,6 +1615,7 @@ class CreateCollectionRequest(TeaModel):
         parser: str = None,
         pq_enable: int = None,
         region_id: str = None,
+        workspace_id: str = None,
     ):
         # The name of the collection that you want to create.
         # 
@@ -1618,7 +1623,6 @@ class CreateCollectionRequest(TeaModel):
         # 
         # This parameter is required.
         self.collection = collection
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The number of vector dimensions.
         # 
@@ -1680,6 +1684,7 @@ class CreateCollectionRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -1720,6 +1725,8 @@ class CreateCollectionRequest(TeaModel):
             result['PqEnable'] = self.pq_enable
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1754,6 +1761,8 @@ class CreateCollectionRequest(TeaModel):
             self.pq_enable = m.get('PqEnable')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -2466,8 +2475,11 @@ class CreateDBInstancePlanRequest(TeaModel):
         self.plan_desc = plan_desc
         # The end time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC. The end time must be later than the start time.
         # 
-        # > - This parameter must be specified only when **PlanScheduleType** is set to **Regular.
-        #  > - If you do not specify this parameter, the plan stops until the plan is deleted.
+        # > 
+        # 
+        # *   This parameter must be specified only when **PlanScheduleType** is set to **Regular**.
+        # 
+        # *   If you do not specify this parameter, the plan stops until the plan is deleted.
         self.plan_end_date = plan_end_date
         # The name of the plan.
         # 
@@ -2482,8 +2494,11 @@ class CreateDBInstancePlanRequest(TeaModel):
         self.plan_schedule_type = plan_schedule_type
         # The start time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
-        # > -  This parameter must be specified only when **PlanScheduleType** is set to **Regular**.
-        # > -  If you do not specify this parameter, the current time is used.
+        # > 
+        # 
+        # *   This parameter must be specified only when **PlanScheduleType** is set to **Regular**.
+        # 
+        # *   If you do not specify this parameter, the current time is used.
         self.plan_start_date = plan_start_date
         # The type of the plan. Valid values:
         # 
@@ -3659,12 +3674,11 @@ class CreateNamespaceRequest(TeaModel):
         namespace_password: str = None,
         owner_id: int = None,
         region_id: str = None,
+        workspace_id: str = None,
     ):
         # The instance ID.
         # 
         # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the manager account that has the rds_superuser permission.
         # 
@@ -3689,6 +3703,7 @@ class CreateNamespaceRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -3713,6 +3728,8 @@ class CreateNamespaceRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3731,6 +3748,8 @@ class CreateNamespaceRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -3963,16 +3982,29 @@ class CreateSecretRequest(TeaModel):
         test_connection: bool = None,
         username: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The description of the access credential.
         self.description = description
         self.owner_id = owner_id
+        # The password of the database account that is used to access the instance.
+        # 
         # This parameter is required.
         self.password = password
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The name of the access credential. The name must be 1 to 16 characters in length and can contain letters, digits, and underscores (_). If you leave this parameter empty, the value of the Username parameter is used.
         self.secret_name = secret_name
+        # Specifies whether to check the connectivity to the instance by using the name and password of the database account.
         self.test_connection = test_connection
+        # The name of the database account that is used to access the instance.
+        # 
         # This parameter is required.
         self.username = username
 
@@ -4033,10 +4065,18 @@ class CreateSecretResponseBody(TeaModel):
         secret_name: str = None,
         status: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
         self.secret_arn = secret_arn
+        # The name of the access credential.
         self.secret_name = secret_name
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -5180,6 +5220,7 @@ class DeleteCollectionRequest(TeaModel):
         namespace_password: str = None,
         owner_id: int = None,
         region_id: str = None,
+        workspace_id: str = None,
     ):
         # The name of the collection.
         # 
@@ -5188,8 +5229,6 @@ class DeleteCollectionRequest(TeaModel):
         # The instance ID.
         # 
         # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the namespace.
         self.namespace = namespace
@@ -5204,6 +5243,7 @@ class DeleteCollectionRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -5226,6 +5266,8 @@ class DeleteCollectionRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5242,6 +5284,8 @@ class DeleteCollectionRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -5342,6 +5386,7 @@ class DeleteCollectionDataRequest(TeaModel):
         namespace_password: str = None,
         owner_id: int = None,
         region_id: str = None,
+        workspace_id: str = None,
     ):
         # The name of the collection.
         # 
@@ -5354,8 +5399,6 @@ class DeleteCollectionDataRequest(TeaModel):
         # The instance ID.
         # 
         # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the namespace.
         self.namespace = namespace
@@ -5370,6 +5413,7 @@ class DeleteCollectionDataRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -5396,6 +5440,8 @@ class DeleteCollectionDataRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5416,6 +5462,8 @@ class DeleteCollectionDataRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -6693,12 +6741,11 @@ class DeleteNamespaceRequest(TeaModel):
         namespace: str = None,
         owner_id: int = None,
         region_id: str = None,
+        workspace_id: str = None,
     ):
         # The instance ID.
         # 
         # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the manager account that has the rds_superuser permission.
         # 
@@ -6721,6 +6768,7 @@ class DeleteNamespaceRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -6743,6 +6791,8 @@ class DeleteNamespaceRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6759,6 +6809,8 @@ class DeleteNamespaceRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -6857,12 +6909,24 @@ class DeleteSecretRequest(TeaModel):
         secret_arn: str = None,
         secret_name: str = None,
     ):
+        # The instance ID. You can call the DescribeDBInstances operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
+        # >
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
+        # 
+        # >  You must specify one of the SecretArn and SecretName parameters.
         self.secret_arn = secret_arn
+        # The name of the access credential.
+        # 
+        # >  You must specify one of the SecretArn and SecretName parameters.
         self.secret_name = secret_name
 
     def validate(self):
@@ -6909,9 +6973,16 @@ class DeleteSecretResponseBody(TeaModel):
         secret_arn: str = None,
         status: str = None,
     ):
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The ARN of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
         self.secret_arn = secret_arn
+        # The status of the operation. Valid values:
+        # 
+        # *   **fail**\
+        # *   **success**\
         self.status = status
 
     def validate(self):
@@ -8570,6 +8641,7 @@ class DescribeCollectionRequest(TeaModel):
         namespace_password: str = None,
         owner_id: int = None,
         region_id: str = None,
+        workspace_id: str = None,
     ):
         # The name of the collection.
         # 
@@ -8580,8 +8652,6 @@ class DescribeCollectionRequest(TeaModel):
         # The instance ID.
         # 
         # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the namespace.
         # 
@@ -8596,6 +8666,7 @@ class DescribeCollectionRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -8618,6 +8689,8 @@ class DescribeCollectionRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -8634,6 +8707,8 @@ class DescribeCollectionRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -19092,12 +19167,11 @@ class DescribeNamespaceRequest(TeaModel):
         namespace: str = None,
         owner_id: int = None,
         region_id: str = None,
+        workspace_id: str = None,
     ):
         # The instance ID.
         # 
         # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the manager account that has the rds_superuser permission.
         # 
@@ -19120,6 +19194,7 @@ class DescribeNamespaceRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -19142,6 +19217,8 @@ class DescribeNamespaceRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -19158,6 +19235,8 @@ class DescribeNamespaceRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -22577,17 +22656,33 @@ class DescribeTableRequest(TeaModel):
         secret_arn: str = None,
         table: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the database.
+        # 
         # This parameter is required.
         self.database = database
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The name of the schema to which the table belongs.
+        # 
         # This parameter is required.
         self.schema = schema
+        # The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. You can call the CreateSecret operation to create an access credential.
+        # 
+        # >  To call the DescribeTable operation as a Resource Access Management (RAM) user, the RAM user must have the permissions to call the UseSecret or GetSecretValue operation on the ARN of the access credential.
+        # 
         # This parameter is required.
         self.secret_arn = secret_arn
+        # The name of the table.
+        # 
         # This parameter is required.
         self.table = table
 
@@ -22678,9 +22773,16 @@ class DescribeTableResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The columns of the table.
         self.column_list = column_list
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -24270,19 +24372,39 @@ class ExecuteStatementRequest(TeaModel):
         sqls: List[str] = None,
         statement_name: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the database.
+        # 
         # This parameter is required.
         self.database = database
         self.owner_id = owner_id
+        # The configuration parameters.
         self.parameters = parameters
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The execution type. Valid values:
+        # 
+        # *   synchronous
+        # *   asynchronous (not supported)
         self.run_type = run_type
+        # The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. You can call the CreateSecret operation to create an access credential.
+        # 
+        # >  To call the ExecuteStatement operation as a Resource Access Management (RAM) user, the RAM user must have the permissions to call the UseSecret or GetSecretValue operation on the ARN of the access credential.
+        # 
         # This parameter is required.
         self.secret_arn = secret_arn
+        # The SQL statements that you want to execute.
         self.sql = sql
+        # The SQL statements.
         self.sqls = sqls
+        # The name of the set of SQL statements that you want to execute.
         self.statement_name = statement_name
 
     def validate(self):
@@ -24355,19 +24477,39 @@ class ExecuteStatementShrinkRequest(TeaModel):
         sqls_shrink: str = None,
         statement_name: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the database.
+        # 
         # This parameter is required.
         self.database = database
         self.owner_id = owner_id
+        # The configuration parameters.
         self.parameters_shrink = parameters_shrink
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The execution type. Valid values:
+        # 
+        # *   synchronous
+        # *   asynchronous (not supported)
         self.run_type = run_type
+        # The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. You can call the CreateSecret operation to create an access credential.
+        # 
+        # >  To call the ExecuteStatement operation as a Resource Access Management (RAM) user, the RAM user must have the permissions to call the UseSecret or GetSecretValue operation on the ARN of the access credential.
+        # 
         # This parameter is required.
         self.secret_arn = secret_arn
+        # The SQL statements that you want to execute.
         self.sql = sql
+        # The SQL statements.
         self.sqls_shrink = sqls_shrink
+        # The name of the set of SQL statements that you want to execute.
         self.statement_name = statement_name
 
     def validate(self):
@@ -24538,8 +24680,11 @@ class ExecuteStatementResponseBodyData(TeaModel):
         records: ExecuteStatementResponseBodyDataRecords = None,
         total_num_rows: int = None,
     ):
+        # The metadata of the columns.
         self.column_metadata = column_metadata
+        # The rows of data.
         self.records = records
+        # The total number of entries returned.
         self.total_num_rows = total_num_rows
 
     def validate(self):
@@ -24588,14 +24733,26 @@ class ExecuteStatementResponseBody(TeaModel):
         secret_arn: str = None,
         status: str = None,
     ):
+        # The time when the SQL statements were created.
         self.created_at = created_at
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The returned results of the synchronous call.
         self.data = data
+        # The name of the database.
         self.database = database
+        # The ID of the job for asynchronously executing the SQL statements.
         self.id = id
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The ARN of the access credential for the created Data API account.
         self.secret_arn = secret_arn
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -24702,12 +24859,24 @@ class GetSecretValueRequest(TeaModel):
         secret_arn: str = None,
         secret_name: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
+        # 
+        # >  You must specify one of the SecretArn and SecretName parameters.
         self.secret_arn = secret_arn
+        # The name of the access credential.
+        # 
+        # >  You must specify one of the SecretArn and SecretName parameters.
         self.secret_name = secret_name
 
     def validate(self):
@@ -24760,15 +24929,28 @@ class GetSecretValueResponseBody(TeaModel):
         status: str = None,
         username: str = None,
     ):
+        # The error code.
         self.code = code
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The description of the access credential.
         self.description = description
+        # The returned message.
         self.message = message
+        # The password of the database account.
         self.password = password
+        # The request ID.
         self.request_id = request_id
+        # The ARN of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
         self.secret_arn = secret_arn
+        # The name of the access credential.
         self.secret_name = secret_name
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
+        # The name of the database account.
         self.username = username
 
     def validate(self):
@@ -25229,6 +25411,7 @@ class GetUpsertCollectionDataJobRequest(TeaModel):
         namespace_password: str = None,
         owner_id: int = None,
         region_id: str = None,
+        workspace_id: str = None,
     ):
         # The name of the collection.
         # 
@@ -25239,8 +25422,6 @@ class GetUpsertCollectionDataJobRequest(TeaModel):
         # The instance ID.
         # 
         # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The ID of the vector data upload job. You can call the `UpsertCollectionDataAsync` operation to query the job ID.
         # 
@@ -25261,6 +25442,7 @@ class GetUpsertCollectionDataJobRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -25285,6 +25467,8 @@ class GetUpsertCollectionDataJobRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -25303,6 +25487,8 @@ class GetUpsertCollectionDataJobRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -25877,12 +26063,11 @@ class InitVectorDatabaseRequest(TeaModel):
         manager_account_password: str = None,
         owner_id: int = None,
         region_id: str = None,
+        workspace_id: str = None,
     ):
         # The instance ID.
         # 
         # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the manager account that has the rds_superuser permission.
         # 
@@ -25901,6 +26086,7 @@ class InitVectorDatabaseRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -25921,6 +26107,8 @@ class InitVectorDatabaseRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -25935,6 +26123,8 @@ class InitVectorDatabaseRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -26032,12 +26222,11 @@ class ListCollectionsRequest(TeaModel):
         namespace_password: str = None,
         owner_id: int = None,
         region_id: str = None,
+        workspace_id: str = None,
     ):
         # The instance ID.
         # 
         # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the namespace.
         self.namespace = namespace
@@ -26052,6 +26241,7 @@ class ListCollectionsRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -26072,6 +26262,8 @@ class ListCollectionsRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -26086,6 +26278,8 @@ class ListCollectionsRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -26250,15 +26444,29 @@ class ListDatabasesRequest(TeaModel):
         region_id: str = None,
         secret_arn: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the database.
+        # 
         # This parameter is required.
         self.database = database
+        # The maximum number of entries per page. Valid values: 1 to 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. You can call the CreateSecret operation to create an access credential.
+        # 
+        # >  To call the DescribeTable operation as a Resource Access Management (RAM) user, the RAM user must have the permissions to call the UseSecret or GetSecretValue operation on the ARN of the access credential.
+        # 
         # This parameter is required.
         self.secret_arn = secret_arn
 
@@ -26342,10 +26550,18 @@ class ListDatabasesResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The queried databases.
         self.databases = databases
+        # The returned message.
         self.message = message
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -26721,6 +26937,7 @@ class ListDocumentsRequest(TeaModel):
         self.collection = collection
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The maximum number of entries per page. Valid values: 1 to 100.
         self.max_results = max_results
         # The name of the namespace. Default value: public.
         # 
@@ -26732,6 +26949,7 @@ class ListDocumentsRequest(TeaModel):
         # 
         # This parameter is required.
         self.namespace_password = namespace_password
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         self.owner_id = owner_id
         # The region ID of the instance.
@@ -26867,9 +27085,12 @@ class ListDocumentsResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The total number of entries returned.
         self.count = count
+        # The queried documents.
         self.items = items
         self.message = message
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
@@ -27701,12 +27922,11 @@ class ListNamespacesRequest(TeaModel):
         manager_account_password: str = None,
         owner_id: int = None,
         region_id: str = None,
+        workspace_id: str = None,
     ):
         # The instance ID.
         # 
         # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the manager account that has the rds_superuser permission.
         # 
@@ -27723,6 +27943,7 @@ class ListNamespacesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -27743,6 +27964,8 @@ class ListNamespacesRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -27757,6 +27980,8 @@ class ListNamespacesRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -27915,16 +28140,31 @@ class ListSchemasRequest(TeaModel):
         schema_pattern: str = None,
         secret_arn: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the database.
+        # 
         # This parameter is required.
         self.database = database
+        # The maximum number of entries per page. Valid values: 1 to 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The schema name pattern for matching. For example, `ab%` specifies to match schema names that start with ab.
         self.schema_pattern = schema_pattern
+        # The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. You can call the CreateSecret operation to create an access credential.
+        # 
+        # >  To call the ListSchemas operation as a Resource Access Management (RAM) user, the RAM user must have the permissions to call the UseSecret or GetSecretValue operation on the ARN of the access credential.
+        # 
         # This parameter is required.
         self.secret_arn = secret_arn
 
@@ -28012,10 +28252,18 @@ class ListSchemasResponseBody(TeaModel):
         schemas: ListSchemasResponseBodySchemas = None,
         status: str = None,
     ):
+        # The returned message.
         self.message = message
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The queried schemas.
         self.schemas = schemas
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -28104,9 +28352,15 @@ class ListSecretsRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -28149,12 +28403,19 @@ class ListSecretsResponseBodySecretsSecrets(TeaModel):
         secret_name: str = None,
         username: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The description of the access credential.
         self.description = description
+        # The region ID of the instance.
         self.region_id = region_id
+        # The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
         self.secret_arn = secret_arn
+        # The name of the access credential.
         self.secret_name = secret_name
+        # The name of the database account.
         self.username = username
 
     def validate(self):
@@ -28245,10 +28506,18 @@ class ListSecretsResponseBody(TeaModel):
         secrets: ListSecretsResponseBodySecrets = None,
         status: str = None,
     ):
+        # The number of access credentials.
         self.count = count
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The queried access credentials.
         self.secrets = secrets
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
 
     def validate(self):
@@ -29162,19 +29431,36 @@ class ListTablesRequest(TeaModel):
         secret_arn: str = None,
         table_pattern: str = None,
     ):
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The name of the database.
+        # 
         # This parameter is required.
         self.database = database
+        # The maximum number of entries per page. Valid values: 1 to 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         self.owner_id = owner_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The name of the schema to which the table belongs.
+        # 
         # This parameter is required.
         self.schema = schema
+        # The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. You can call the CreateSecret operation to create an access credential.
+        # 
+        # >  To call the ListTables operation as a Resource Access Management (RAM) user, the RAM user must have the permissions to call the UseSecret or GetSecretValue operation on the ARN of the access credential.
+        # 
         # This parameter is required.
         self.secret_arn = secret_arn
+        # The table name pattern for matching. For example, `ab%` specifies to match table names that start with ab.
         self.table_pattern = table_pattern
 
     def validate(self):
@@ -29265,10 +29551,18 @@ class ListTablesResponseBody(TeaModel):
         status: str = None,
         tables: ListTablesResponseBodyTables = None,
     ):
+        # The returned message.
         self.message = message
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The status of the operation. Valid values:
+        # 
+        # *   **success**\
+        # *   **fail**\
         self.status = status
+        # The queried tables.
         self.tables = tables
 
     def validate(self):
@@ -33041,6 +33335,7 @@ class QueryCollectionDataRequest(TeaModel):
         region_id: str = None,
         top_k: int = None,
         vector: List[float] = None,
+        workspace_id: str = None,
     ):
         # The name of the collection.
         # 
@@ -33052,7 +33347,6 @@ class QueryCollectionDataRequest(TeaModel):
         # 
         # >  You must specify at least one of the Content and Vector parameters.
         self.content = content
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.filter = filter
         # The two-way retrieval algorithm. This parameter is empty by default, which specifies that scores of vector search and full-text search are directly compared and sorted without additional weighting or adjustments.
@@ -33133,6 +33427,7 @@ class QueryCollectionDataRequest(TeaModel):
         # 
         # >  If you leave this parameter empty, only full-text search results are returned.
         self.vector = vector
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -33177,6 +33472,8 @@ class QueryCollectionDataRequest(TeaModel):
             result['TopK'] = self.top_k
         if self.vector is not None:
             result['Vector'] = self.vector
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -33215,6 +33512,8 @@ class QueryCollectionDataRequest(TeaModel):
             self.top_k = m.get('TopK')
         if m.get('Vector') is not None:
             self.vector = m.get('Vector')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -33238,6 +33537,7 @@ class QueryCollectionDataShrinkRequest(TeaModel):
         region_id: str = None,
         top_k: int = None,
         vector_shrink: str = None,
+        workspace_id: str = None,
     ):
         # The name of the collection.
         # 
@@ -33249,7 +33549,6 @@ class QueryCollectionDataShrinkRequest(TeaModel):
         # 
         # >  You must specify at least one of the Content and Vector parameters.
         self.content = content
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.filter = filter
         # The two-way retrieval algorithm. This parameter is empty by default, which specifies that scores of vector search and full-text search are directly compared and sorted without additional weighting or adjustments.
@@ -33330,6 +33629,7 @@ class QueryCollectionDataShrinkRequest(TeaModel):
         # 
         # >  If you leave this parameter empty, only full-text search results are returned.
         self.vector_shrink = vector_shrink
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -33374,6 +33674,8 @@ class QueryCollectionDataShrinkRequest(TeaModel):
             result['TopK'] = self.top_k
         if self.vector_shrink is not None:
             result['Vector'] = self.vector_shrink
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -33412,6 +33714,8 @@ class QueryCollectionDataShrinkRequest(TeaModel):
             self.top_k = m.get('TopK')
         if m.get('Vector') is not None:
             self.vector_shrink = m.get('Vector')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -36608,6 +36912,7 @@ class UpdateCollectionDataMetadataRequest(TeaModel):
         namespace_password: str = None,
         owner_id: int = None,
         region_id: str = None,
+        workspace_id: str = None,
     ):
         # The name of the collection.
         # 
@@ -36616,8 +36921,6 @@ class UpdateCollectionDataMetadataRequest(TeaModel):
         # The instance ID.
         # 
         # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The condition that is used to filter the data to be updated. Specify this parameter in a format that is the same as the WHERE clause. You cannot leave both this parameter and Ids empty.
         self.filter = filter
@@ -36640,6 +36943,7 @@ class UpdateCollectionDataMetadataRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -36668,6 +36972,8 @@ class UpdateCollectionDataMetadataRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -36690,6 +36996,8 @@ class UpdateCollectionDataMetadataRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -36705,6 +37013,7 @@ class UpdateCollectionDataMetadataShrinkRequest(TeaModel):
         namespace_password: str = None,
         owner_id: int = None,
         region_id: str = None,
+        workspace_id: str = None,
     ):
         # The name of the collection.
         # 
@@ -36713,8 +37022,6 @@ class UpdateCollectionDataMetadataShrinkRequest(TeaModel):
         # The instance ID.
         # 
         # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The condition that is used to filter the data to be updated. Specify this parameter in a format that is the same as the WHERE clause. You cannot leave both this parameter and Ids empty.
         self.filter = filter
@@ -36737,6 +37044,7 @@ class UpdateCollectionDataMetadataShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -36765,6 +37073,8 @@ class UpdateCollectionDataMetadataShrinkRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -36787,6 +37097,8 @@ class UpdateCollectionDataMetadataShrinkRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -38532,6 +38844,7 @@ class UpsertCollectionDataRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
         rows: List[UpsertCollectionDataRequestRows] = None,
+        workspace_id: str = None,
     ):
         # The name of the collection.
         # 
@@ -38540,8 +38853,6 @@ class UpsertCollectionDataRequest(TeaModel):
         # The instance ID.
         # 
         # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the namespace.
         self.namespace = namespace
@@ -38557,6 +38868,7 @@ class UpsertCollectionDataRequest(TeaModel):
         # This parameter is required.
         self.region_id = region_id
         self.rows = rows
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.rows:
@@ -38586,6 +38898,8 @@ class UpsertCollectionDataRequest(TeaModel):
         if self.rows is not None:
             for k in self.rows:
                 result['Rows'].append(k.to_map() if k else None)
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -38607,6 +38921,8 @@ class UpsertCollectionDataRequest(TeaModel):
             for k in m.get('Rows'):
                 temp_model = UpsertCollectionDataRequestRows()
                 self.rows.append(temp_model.from_map(k))
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -38620,6 +38936,7 @@ class UpsertCollectionDataShrinkRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
         rows_shrink: str = None,
+        workspace_id: str = None,
     ):
         # The name of the collection.
         # 
@@ -38628,8 +38945,6 @@ class UpsertCollectionDataShrinkRequest(TeaModel):
         # The instance ID.
         # 
         # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the namespace.
         self.namespace = namespace
@@ -38645,6 +38960,7 @@ class UpsertCollectionDataShrinkRequest(TeaModel):
         # This parameter is required.
         self.region_id = region_id
         self.rows_shrink = rows_shrink
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -38669,6 +38985,8 @@ class UpsertCollectionDataShrinkRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.rows_shrink is not None:
             result['Rows'] = self.rows_shrink
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -38687,6 +39005,8 @@ class UpsertCollectionDataShrinkRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Rows') is not None:
             self.rows_shrink = m.get('Rows')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -38786,6 +39106,7 @@ class UpsertCollectionDataAsyncRequest(TeaModel):
         namespace_password: str = None,
         owner_id: int = None,
         region_id: str = None,
+        workspace_id: str = None,
     ):
         # The name of the collection.
         # 
@@ -38796,8 +39117,6 @@ class UpsertCollectionDataAsyncRequest(TeaModel):
         # The instance ID.
         # 
         # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The Internet-accessible vector data file URL.
         # 
@@ -38826,6 +39145,7 @@ class UpsertCollectionDataAsyncRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -38850,6 +39170,8 @@ class UpsertCollectionDataAsyncRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -38868,6 +39190,8 @@ class UpsertCollectionDataAsyncRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 
@@ -38881,6 +39205,7 @@ class UpsertCollectionDataAsyncAdvanceRequest(TeaModel):
         namespace_password: str = None,
         owner_id: int = None,
         region_id: str = None,
+        workspace_id: str = None,
     ):
         # The name of the collection.
         # 
@@ -38891,8 +39216,6 @@ class UpsertCollectionDataAsyncAdvanceRequest(TeaModel):
         # The instance ID.
         # 
         # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-        # 
-        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The Internet-accessible vector data file URL.
         # 
@@ -38921,6 +39244,7 @@ class UpsertCollectionDataAsyncAdvanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -38945,6 +39269,8 @@ class UpsertCollectionDataAsyncAdvanceRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
         return result
 
     def from_map(self, m: dict = None):
@@ -38963,6 +39289,8 @@ class UpsertCollectionDataAsyncAdvanceRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
         return self
 
 

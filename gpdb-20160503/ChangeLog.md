@@ -1,3 +1,38 @@
+2024-08-04 Version: 3.9.1
+- Update API CancelUpsertCollectionDataJob: add param WorkspaceId.
+- Update API CancelUpsertCollectionDataJob: update param DBInstanceId.
+- Update API CreateCollection: add param WorkspaceId.
+- Update API CreateCollection: update param DBInstanceId.
+- Update API CreateNamespace: add param WorkspaceId.
+- Update API CreateNamespace: update param DBInstanceId.
+- Update API DeleteCollection: add param WorkspaceId.
+- Update API DeleteCollection: update param DBInstanceId.
+- Update API DeleteCollectionData: add param WorkspaceId.
+- Update API DeleteCollectionData: update param DBInstanceId.
+- Update API DeleteNamespace: add param WorkspaceId.
+- Update API DeleteNamespace: update param DBInstanceId.
+- Update API DescribeCollection: add param WorkspaceId.
+- Update API DescribeCollection: update param DBInstanceId.
+- Update API DescribeNamespace: add param WorkspaceId.
+- Update API DescribeNamespace: update param DBInstanceId.
+- Update API GetUpsertCollectionDataJob: add param WorkspaceId.
+- Update API GetUpsertCollectionDataJob: update param DBInstanceId.
+- Update API InitVectorDatabase: add param WorkspaceId.
+- Update API InitVectorDatabase: update param DBInstanceId.
+- Update API ListCollections: add param WorkspaceId.
+- Update API ListCollections: update param DBInstanceId.
+- Update API ListNamespaces: add param WorkspaceId.
+- Update API ListNamespaces: update param DBInstanceId.
+- Update API QueryCollectionData: add param WorkspaceId.
+- Update API QueryCollectionData: update param DBInstanceId.
+- Update API UpdateCollectionDataMetadata: add param WorkspaceId.
+- Update API UpdateCollectionDataMetadata: update param DBInstanceId.
+- Update API UpsertCollectionData: add param WorkspaceId.
+- Update API UpsertCollectionData: update param DBInstanceId.
+- Update API UpsertCollectionDataAsync: add param WorkspaceId.
+- Update API UpsertCollectionDataAsync: update param DBInstanceId.
+
+
 2024-07-19 Version: 3.9.0
 - Support API CreateSecret.
 - Support API DeleteSecret.

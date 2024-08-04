@@ -473,6 +473,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.collection):
             body['Collection'] = request.collection
@@ -525,6 +527,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.collection):
             body['Collection'] = request.collection
@@ -1182,6 +1186,8 @@ class Client(OpenApiClient):
             query['PqEnable'] = request.pq_enable
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1245,6 +1251,8 @@ class Client(OpenApiClient):
             query['PqEnable'] = request.pq_enable
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2482,6 +2490,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2529,6 +2539,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2692,7 +2704,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateSecretResponse:
         """
-        @summary 创建实例的用户凭证
+        @summary Creates an access credential for an AnalyticDB for PostgreSQL instance by using the name and password of a database account.
         
         @param request: CreateSecretRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2741,7 +2753,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateSecretResponse:
         """
-        @summary 创建实例的用户凭证
+        @summary Creates an access credential for an AnalyticDB for PostgreSQL instance by using the name and password of a database account.
         
         @param request: CreateSecretRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2789,7 +2801,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateSecretRequest,
     ) -> gpdb_20160503_models.CreateSecretResponse:
         """
-        @summary 创建实例的用户凭证
+        @summary Creates an access credential for an AnalyticDB for PostgreSQL instance by using the name and password of a database account.
         
         @param request: CreateSecretRequest
         @return: CreateSecretResponse
@@ -2802,7 +2814,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateSecretRequest,
     ) -> gpdb_20160503_models.CreateSecretResponse:
         """
-        @summary 创建实例的用户凭证
+        @summary Creates an access credential for an AnalyticDB for PostgreSQL instance by using the name and password of a database account.
         
         @param request: CreateSecretRequest
         @return: CreateSecretResponse
@@ -3508,6 +3520,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3553,6 +3567,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3628,6 +3644,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3677,6 +3695,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4756,6 +4776,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4801,6 +4823,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4852,7 +4876,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteSecretResponse:
         """
-        @summary 删除实例的用户凭证
+        @summary Deletes the access credentials of an AnalyticDB for PostgreSQL instance.
         
         @param request: DeleteSecretRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4895,7 +4919,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DeleteSecretResponse:
         """
-        @summary 删除实例的用户凭证
+        @summary Deletes the access credentials of an AnalyticDB for PostgreSQL instance.
         
         @param request: DeleteSecretRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4937,7 +4961,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteSecretRequest,
     ) -> gpdb_20160503_models.DeleteSecretResponse:
         """
-        @summary 删除实例的用户凭证
+        @summary Deletes the access credentials of an AnalyticDB for PostgreSQL instance.
         
         @param request: DeleteSecretRequest
         @return: DeleteSecretResponse
@@ -4950,7 +4974,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DeleteSecretRequest,
     ) -> gpdb_20160503_models.DeleteSecretResponse:
         """
-        @summary 删除实例的用户凭证
+        @summary Deletes the access credentials of an AnalyticDB for PostgreSQL instance.
         
         @param request: DeleteSecretRequest
         @return: DeleteSecretResponse
@@ -5884,6 +5908,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5929,6 +5955,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10440,6 +10468,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10485,6 +10515,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12152,7 +12184,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeTableResponse:
         """
-        @summary 查看所有的schema
+        @summary Queries the information about a table.
         
         @param request: DescribeTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12199,7 +12231,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.DescribeTableResponse:
         """
-        @summary 查看所有的schema
+        @summary Queries the information about a table.
         
         @param request: DescribeTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12245,7 +12277,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeTableRequest,
     ) -> gpdb_20160503_models.DescribeTableResponse:
         """
-        @summary 查看所有的schema
+        @summary Queries the information about a table.
         
         @param request: DescribeTableRequest
         @return: DescribeTableResponse
@@ -12258,7 +12290,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.DescribeTableRequest,
     ) -> gpdb_20160503_models.DescribeTableResponse:
         """
-        @summary 查看所有的schema
+        @summary Queries the information about a table.
         
         @param request: DescribeTableRequest
         @return: DescribeTableResponse
@@ -13296,7 +13328,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ExecuteStatementResponse:
         """
-        @summary 运行SQL语句
+        @summary Executes SQL statements.
         
         @param tmp_req: ExecuteStatementRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13357,7 +13389,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ExecuteStatementResponse:
         """
-        @summary 运行SQL语句
+        @summary Executes SQL statements.
         
         @param tmp_req: ExecuteStatementRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13417,7 +13449,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ExecuteStatementRequest,
     ) -> gpdb_20160503_models.ExecuteStatementResponse:
         """
-        @summary 运行SQL语句
+        @summary Executes SQL statements.
         
         @param request: ExecuteStatementRequest
         @return: ExecuteStatementResponse
@@ -13430,7 +13462,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ExecuteStatementRequest,
     ) -> gpdb_20160503_models.ExecuteStatementResponse:
         """
-        @summary 运行SQL语句
+        @summary Executes SQL statements.
         
         @param request: ExecuteStatementRequest
         @return: ExecuteStatementResponse
@@ -13444,7 +13476,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.GetSecretValueResponse:
         """
-        @summary 查看实例的用户凭证里数据
+        @summary Queries the information about an access credential.
         
         @param request: GetSecretValueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13487,7 +13519,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.GetSecretValueResponse:
         """
-        @summary 查看实例的用户凭证里数据
+        @summary Queries the information about an access credential.
         
         @param request: GetSecretValueRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13529,7 +13561,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.GetSecretValueRequest,
     ) -> gpdb_20160503_models.GetSecretValueResponse:
         """
-        @summary 查看实例的用户凭证里数据
+        @summary Queries the information about an access credential.
         
         @param request: GetSecretValueRequest
         @return: GetSecretValueResponse
@@ -13542,7 +13574,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.GetSecretValueRequest,
     ) -> gpdb_20160503_models.GetSecretValueResponse:
         """
-        @summary 查看实例的用户凭证里数据
+        @summary Queries the information about an access credential.
         
         @param request: GetSecretValueRequest
         @return: GetSecretValueResponse
@@ -13713,6 +13745,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.collection):
             body['Collection'] = request.collection
@@ -13765,6 +13799,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.collection):
             body['Collection'] = request.collection
@@ -14082,6 +14118,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14125,6 +14163,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14194,6 +14234,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14237,6 +14279,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14288,7 +14332,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListDatabasesResponse:
         """
-        @summary 查看所有库
+        @summary Queries a list of databases.
         
         @param request: ListDatabasesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14335,7 +14379,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListDatabasesResponse:
         """
-        @summary 查看所有库
+        @summary Queries a list of databases.
         
         @param request: ListDatabasesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14381,7 +14425,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListDatabasesRequest,
     ) -> gpdb_20160503_models.ListDatabasesResponse:
         """
-        @summary 查看所有库
+        @summary Queries a list of databases.
         
         @param request: ListDatabasesRequest
         @return: ListDatabasesResponse
@@ -14394,7 +14438,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListDatabasesRequest,
     ) -> gpdb_20160503_models.ListDatabasesResponse:
         """
-        @summary 查看所有库
+        @summary Queries a list of databases.
         
         @param request: ListDatabasesRequest
         @return: ListDatabasesResponse
@@ -14994,6 +15038,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15037,6 +15083,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15088,7 +15136,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListSchemasResponse:
         """
-        @summary 查看所有的schema
+        @summary Queries a list of schemas.
         
         @param request: ListSchemasRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15137,7 +15185,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListSchemasResponse:
         """
-        @summary 查看所有的schema
+        @summary Queries a list of schemas.
         
         @param request: ListSchemasRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15185,7 +15233,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListSchemasRequest,
     ) -> gpdb_20160503_models.ListSchemasResponse:
         """
-        @summary 查看所有的schema
+        @summary Queries a list of schemas.
         
         @param request: ListSchemasRequest
         @return: ListSchemasResponse
@@ -15198,7 +15246,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListSchemasRequest,
     ) -> gpdb_20160503_models.ListSchemasResponse:
         """
-        @summary 查看所有的schema
+        @summary Queries a list of schemas.
         
         @param request: ListSchemasRequest
         @return: ListSchemasResponse
@@ -15212,7 +15260,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListSecretsResponse:
         """
-        @summary 查询实例的用户凭证列表
+        @summary Queries a list of access credentials.
         
         @param request: ListSecretsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15251,7 +15299,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListSecretsResponse:
         """
-        @summary 查询实例的用户凭证列表
+        @summary Queries a list of access credentials.
         
         @param request: ListSecretsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15289,7 +15337,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListSecretsRequest,
     ) -> gpdb_20160503_models.ListSecretsResponse:
         """
-        @summary 查询实例的用户凭证列表
+        @summary Queries a list of access credentials.
         
         @param request: ListSecretsRequest
         @return: ListSecretsResponse
@@ -15302,7 +15350,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListSecretsRequest,
     ) -> gpdb_20160503_models.ListSecretsResponse:
         """
-        @summary 查询实例的用户凭证列表
+        @summary Queries a list of access credentials.
         
         @param request: ListSecretsRequest
         @return: ListSecretsResponse
@@ -15640,7 +15688,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListTablesResponse:
         """
-        @summary 查看所有表
+        @summary Queries a list of tables in a database.
         
         @param request: ListTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15691,7 +15739,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.ListTablesResponse:
         """
-        @summary 查看所有表
+        @summary Queries a list of tables in a database.
         
         @param request: ListTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15741,7 +15789,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListTablesRequest,
     ) -> gpdb_20160503_models.ListTablesResponse:
         """
-        @summary 查看所有表
+        @summary Queries a list of tables in a database.
         
         @param request: ListTablesRequest
         @return: ListTablesResponse
@@ -15754,7 +15802,7 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.ListTablesRequest,
     ) -> gpdb_20160503_models.ListTablesResponse:
         """
-        @summary 查看所有表
+        @summary Queries a list of tables in a database.
         
         @param request: ListTablesRequest
         @return: ListTablesResponse
@@ -18568,6 +18616,8 @@ class Client(OpenApiClient):
             query['TopK'] = request.top_k
         if not UtilClient.is_unset(request.vector_shrink):
             query['Vector'] = request.vector_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18641,6 +18691,8 @@ class Client(OpenApiClient):
             query['TopK'] = request.top_k
         if not UtilClient.is_unset(request.vector_shrink):
             query['Vector'] = request.vector_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -20652,6 +20704,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -20709,6 +20763,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -21796,6 +21852,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.rows_shrink):
             body['Rows'] = request.rows_shrink
@@ -21849,6 +21907,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.rows_shrink):
             body['Rows'] = request.rows_shrink
@@ -21924,6 +21984,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.collection):
             body['Collection'] = request.collection
@@ -21979,6 +22041,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         body = {}
         if not UtilClient.is_unset(request.collection):
             body['Collection'] = request.collection
