@@ -3204,6 +3204,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.method):
             query['method'] = request.method
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
         if not UtilClient.is_unset(request.name_like):
             query['nameLike'] = request.name_like
         if not UtilClient.is_unset(request.page_number):
@@ -3251,6 +3253,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.method):
             query['method'] = request.method
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
         if not UtilClient.is_unset(request.name_like):
             query['nameLike'] = request.name_like
         if not UtilClient.is_unset(request.page_number):
@@ -3327,6 +3331,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -3371,6 +3377,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):

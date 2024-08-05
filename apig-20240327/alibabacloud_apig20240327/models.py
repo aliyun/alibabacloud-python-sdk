@@ -9294,12 +9294,14 @@ class ListHttpApiOperationsRequest(TeaModel):
     def __init__(
         self,
         method: str = None,
+        name: str = None,
         name_like: str = None,
         page_number: int = None,
         page_size: int = None,
         path_like: str = None,
     ):
         self.method = method
+        self.name = name
         self.name_like = name_like
         self.page_number = page_number
         self.page_size = page_size
@@ -9316,6 +9318,8 @@ class ListHttpApiOperationsRequest(TeaModel):
         result = dict()
         if self.method is not None:
             result['method'] = self.method
+        if self.name is not None:
+            result['name'] = self.name
         if self.name_like is not None:
             result['nameLike'] = self.name_like
         if self.page_number is not None:
@@ -9330,6 +9334,8 @@ class ListHttpApiOperationsRequest(TeaModel):
         m = m or dict()
         if m.get('method') is not None:
             self.method = m.get('method')
+        if m.get('name') is not None:
+            self.name = m.get('name')
         if m.get('nameLike') is not None:
             self.name_like = m.get('nameLike')
         if m.get('pageNumber') is not None:
@@ -9486,11 +9492,13 @@ class ListHttpApisRequest(TeaModel):
     def __init__(
         self,
         keyword: str = None,
+        name: str = None,
         page_number: int = None,
         page_size: int = None,
         published_only: bool = None,
     ):
         self.keyword = keyword
+        self.name = name
         self.page_number = page_number
         self.page_size = page_size
         self.published_only = published_only
@@ -9506,6 +9514,8 @@ class ListHttpApisRequest(TeaModel):
         result = dict()
         if self.keyword is not None:
             result['keyword'] = self.keyword
+        if self.name is not None:
+            result['name'] = self.name
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
         if self.page_size is not None:
@@ -9518,6 +9528,8 @@ class ListHttpApisRequest(TeaModel):
         m = m or dict()
         if m.get('keyword') is not None:
             self.keyword = m.get('keyword')
+        if m.get('name') is not None:
+            self.name = m.get('name')
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')
         if m.get('pageSize') is not None:
