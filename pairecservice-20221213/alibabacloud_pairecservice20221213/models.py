@@ -8099,6 +8099,33 @@ class GetInstanceResponseBodyConfig(TeaModel):
         return self
 
 
+class GetInstanceResponseBodyOperatingTool(TeaModel):
+    def __init__(
+        self,
+        is_enable: bool = None,
+    ):
+        self.is_enable = is_enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_enable is not None:
+            result['IsEnable'] = self.is_enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsEnable') is not None:
+            self.is_enable = m.get('IsEnable')
+        return self
+
+
 class GetInstanceResponseBody(TeaModel):
     def __init__(
         self,
@@ -8109,6 +8136,7 @@ class GetInstanceResponseBody(TeaModel):
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         instance_id: str = None,
+        operating_tool: GetInstanceResponseBodyOperatingTool = None,
         region_id: str = None,
         request_id: str = None,
         status: str = None,
@@ -8121,6 +8149,7 @@ class GetInstanceResponseBody(TeaModel):
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
         self.instance_id = instance_id
+        self.operating_tool = operating_tool
         self.region_id = region_id
         self.request_id = request_id
         self.status = status
@@ -8129,6 +8158,8 @@ class GetInstanceResponseBody(TeaModel):
     def validate(self):
         if self.config:
             self.config.validate()
+        if self.operating_tool:
+            self.operating_tool.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8150,6 +8181,8 @@ class GetInstanceResponseBody(TeaModel):
             result['GmtModifiedTime'] = self.gmt_modified_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.operating_tool is not None:
+            result['OperatingTool'] = self.operating_tool.to_map()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.request_id is not None:
@@ -8177,6 +8210,9 @@ class GetInstanceResponseBody(TeaModel):
             self.gmt_modified_time = m.get('GmtModifiedTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('OperatingTool') is not None:
+            temp_model = GetInstanceResponseBodyOperatingTool()
+            self.operating_tool = temp_model.from_map(m['OperatingTool'])
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RequestId') is not None:
@@ -13627,6 +13663,33 @@ class ListInstancesResponseBodyInstancesConfig(TeaModel):
         return self
 
 
+class ListInstancesResponseBodyInstancesOperatingTool(TeaModel):
+    def __init__(
+        self,
+        is_enable: bool = None,
+    ):
+        self.is_enable = is_enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_enable is not None:
+            result['IsEnable'] = self.is_enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsEnable') is not None:
+            self.is_enable = m.get('IsEnable')
+        return self
+
+
 class ListInstancesResponseBodyInstances(TeaModel):
     def __init__(
         self,
@@ -13637,6 +13700,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         instance_id: str = None,
+        operating_tool: ListInstancesResponseBodyInstancesOperatingTool = None,
         region_id: str = None,
         status: str = None,
         type: str = None,
@@ -13648,6 +13712,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
         self.instance_id = instance_id
+        self.operating_tool = operating_tool
         self.region_id = region_id
         self.status = status
         self.type = type
@@ -13655,6 +13720,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
     def validate(self):
         if self.config:
             self.config.validate()
+        if self.operating_tool:
+            self.operating_tool.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -13676,6 +13743,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['GmtModifiedTime'] = self.gmt_modified_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.operating_tool is not None:
+            result['OperatingTool'] = self.operating_tool.to_map()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.status is not None:
@@ -13701,6 +13770,9 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.gmt_modified_time = m.get('GmtModifiedTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('OperatingTool') is not None:
+            temp_model = ListInstancesResponseBodyInstancesOperatingTool()
+            self.operating_tool = temp_model.from_map(m['OperatingTool'])
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Status') is not None:

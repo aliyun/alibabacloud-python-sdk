@@ -1,3 +1,9 @@
+2024-08-05 Version: 2.1.1
+- Update API GetInstance: update response param.
+- Update API ListInstances: update response param.
+- Update API UpdateTrafficControlTaskTraffic: add param RegionId.
+
+
 2024-07-23 Version: 2.1.0
 - Support API ApplyEngineConfig.
 - Support API CloneEngineConfig.
