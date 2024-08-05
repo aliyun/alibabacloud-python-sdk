@@ -1,3 +1,9 @@
+2024-08-05 Version: 1.7.3
+- Update API CreateNotificationConfiguration: add param TimeZone.
+- Update API DescribeNotificationConfigurations: update response param.
+- Update API ModifyNotificationConfiguration: add param TimeZone.
+
+
 2024-07-04 Version: 1.7.2
 - Update API DescribeScheduledTasks: add param RecurrenceType.
 - Update API DescribeScheduledTasks: add param RecurrenceValue.

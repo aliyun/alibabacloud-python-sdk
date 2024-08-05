@@ -2795,7 +2795,7 @@ class CreateEciScalingConfigurationRequestContainersEnvironmentVars(TeaModel):
     ):
         # >  This parameter is not available for use.
         self.field_ref_field_path = field_ref_field_path
-        # The name of the environment variable. The name can be 1 to 128 characters in length and can contain underscores (_) and digits. The name cannot start with a digit. Specify the value in the [0-9a-zA-Z] format.
+        # The name of the environment variable. The name can be 1 to 128 characters in length and can contain letters, underscores (_), and digits. The name cannot start with a digit. Specify the value in the [0-9a-zA-Z] format.
         self.key = key
         # The value of the environment variable. The value can be up to 256 characters in length.
         self.value = value
@@ -2875,15 +2875,15 @@ class CreateEciScalingConfigurationRequestContainersVolumeMounts(TeaModel):
         read_only: bool = None,
         sub_path: str = None,
     ):
-        # The directory to which the container mounts the volume.
+        # The directory in which the container mounts the volume.
         # 
         # >  Data under this directory is overwritten by data on the volume. Specify this parameter with caution.
         self.mount_path = mount_path
-        # The mount propagation setting of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
+        # The mount propagation settings of the volume. Mount propagation enables volumes mounted on one container to be shared among other containers within the same pod or across distinct pods residing on the same node. Valid values:
         # 
-        # *   None: The volume mount does not receive subsequent mounts that are performed on the volume or the subdirectories of the volume.
-        # *   HostToContainer: The volume mount receives all subsequent mounts that are performed on the volume or the subdirectories of the volume.
-        # *   Bidirectional: The volume mount behaves the same as the HostToContainer mount. The volume mount receives subsequent mounts that are performed on the volume or the subdirectories of the volume. In addition, all volume mounts that are performed on the container are propagated back to the host and all containers of all pods that use the same volume.
+        # *   None: Subsequent mounts executed either on the volume itself or its subdirectories do not propagate to the volume.
+        # *   HostToCotainer: Subsequent mounts executed either on the volume itself or its subdirectories propagate to the volume.
+        # *   Bidirectional: This value is similar to HostToCotainer. Subsequent mounts executed either on the volume itself or its subdirectories propagate to the volume. In addition, any volume mounts executed on the container not only propagate back to the underlying host but also to all containers across every pod that uses the same volume.
         # 
         # Default value: None.
         self.mount_propagation = mount_propagation
@@ -2896,7 +2896,7 @@ class CreateEciScalingConfigurationRequestContainersVolumeMounts(TeaModel):
         # 
         # Default value: false.
         self.read_only = read_only
-        # The subdirectory of the volume.
+        # The volume subdirectory.
         self.sub_path = sub_path
 
     def validate(self):
@@ -2976,15 +2976,15 @@ class CreateEciScalingConfigurationRequestContainers(TeaModel):
         self.security_context = security_context
         # The container startup arguments. You can specify up to 10 arguments.
         self.args = args
-        # The commands that you can run in the container when you use the CLI to perform liveness probes.
+        # The commands that you want to run by using the CLI for liveness probing within the container.
         self.commands = commands
-        # The number of vCPUs that you want to allocate to the container.
+        # The number of vCPUs per container.
         self.cpu = cpu
         # The environment variables.
         self.environment_vars = environment_vars
-        # The number of GPUs that you want to allocate to the container.
+        # The number of GPUs per container.
         self.gpu = gpu
-        # The image of the container.
+        # The container image.
         self.image = image
         # The image pulling policy. Valid values:
         # 
@@ -2992,35 +2992,55 @@ class CreateEciScalingConfigurationRequestContainers(TeaModel):
         # *   IfNotPresent: Image pulling is performed as needed. On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
         # *   Never: On-premises images are always used. Image pulling is not performed.
         self.image_pull_policy = image_pull_policy
+        # The commands that you want to run by using the CLI to configure the postStart callback function within the container.
         self.lifecycle_post_start_handler_execs = lifecycle_post_start_handler_execs
+        # The IP address of the host to which you want to send HTTP GET requests to configure the postStart callback function.
         self.lifecycle_post_start_handler_http_get_host = lifecycle_post_start_handler_http_get_host
+        # The path to which you want to send HTTP GET requests to configure the postStart callback function.
         self.lifecycle_post_start_handler_http_get_path = lifecycle_post_start_handler_http_get_path
+        # The port over which you want to send HTTP GET requests to configure the postStart callback function.
         self.lifecycle_post_start_handler_http_get_port = lifecycle_post_start_handler_http_get_port
+        # The protocol type of HTTP GET requests that you want to send to configure the postStart callback function. Valid values:
+        # 
+        # *   HTTP
+        # *   HTTPS
         self.lifecycle_post_start_handler_http_get_scheme = lifecycle_post_start_handler_http_get_scheme
+        # The IP address of the host detected by the TCP sockets that you want to use to configure the postStart callback function.
         self.lifecycle_post_start_handler_tcp_socket_host = lifecycle_post_start_handler_tcp_socket_host
+        # The port detected by the TCP sockets that you want to use to configure the postStart callback function.
         self.lifecycle_post_start_handler_tcp_socket_port = lifecycle_post_start_handler_tcp_socket_port
+        # The commands that you want to run by using the CLI to configure the preStop callback function within the container.
         self.lifecycle_pre_stop_handler_execs = lifecycle_pre_stop_handler_execs
+        # The IP address of the host to which you want to send HTTP GET requests to configure the preStop callback function.
         self.lifecycle_pre_stop_handler_http_get_host = lifecycle_pre_stop_handler_http_get_host
+        # The path to which you want to send HTTP GET requests to configure the preStop callback function.
         self.lifecycle_pre_stop_handler_http_get_path = lifecycle_pre_stop_handler_http_get_path
+        # The port over which you want to send HTTP GET requests to configure the preStop callback function.
         self.lifecycle_pre_stop_handler_http_get_port = lifecycle_pre_stop_handler_http_get_port
+        # The protocol type of the HTTP GET requests that you want to send to configure the preStop callback function. Valid values:
+        # 
+        # *   HTTP
+        # *   HTTPS
         self.lifecycle_pre_stop_handler_http_get_scheme = lifecycle_pre_stop_handler_http_get_scheme
+        # The IP address of the host detected by the TCP sockets that you want to use to configure the preStop callback function.
         self.lifecycle_pre_stop_handler_tcp_socket_host = lifecycle_pre_stop_handler_tcp_socket_host
+        # The port detected by the TCP sockets that you want to use to configure the preStop callback function.
         self.lifecycle_pre_stop_handler_tcp_socket_port = lifecycle_pre_stop_handler_tcp_socket_port
-        # The memory size that you want to allocate to the container. Unit: GiB.
+        # The memory size per container. Unit: GiB.
         self.memory = memory
         # The name of the container image.
         self.name = name
         # The ports.
         self.ports = ports
-        # Specifies whether the container allocates buffer resources to standard input streams when the container is running. If you do not specify this parameter, an end-of-file (EOF) error may occur when standard input streams in the container are read.
+        # Specifies whether the container allocates buffer resources to standard input streams during its active runtime. If you do not specify this parameter, an end-of-file (EOF) error occurs when standard input streams in the container are read.
         # 
         # Default value: false.
         self.stdin = stdin
-        # Specifies whether to remain standard input streams connected during multiple sessions if StdinOnce is set to true.
+        # Specifies whether standard input streams remain connected during multiple sessions when StdinOnce is set to true.
         # 
-        # If StdinOnce is set to true, standard input streams are connected after the container is started, and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected, and remain disconnected until the container is restarted.
+        # If StdinOnce is set to true, standard input streams are connected after the container is started, and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected and remain disconnected until the container is restarted.
         self.stdin_once = stdin_once
-        # Specifies whether to enable interaction. Valid values:
+        # Specifies whether to enable the Interaction feature. Valid values:
         # 
         # *   true
         # *   false
@@ -3290,11 +3310,11 @@ class CreateEciScalingConfigurationRequestImageRegistryCredentials(TeaModel):
         server: str = None,
         user_name: str = None,
     ):
-        # The password that is used to access the image repository.
+        # The password of the image repository.
         self.password = password
         # The domain name of the image repository.
         self.server = server
-        # The username that is used to access the image repository.
+        # The username of the image repository.
         self.user_name = user_name
 
     def validate(self):
@@ -4144,7 +4164,7 @@ class CreateEciScalingConfigurationRequest(TeaModel):
         self.auto_match_image_cache = auto_match_image_cache
         # The name of the elastic container instance.
         self.container_group_name = container_group_name
-        # The containers in the elastic container instance.
+        # The containers per elastic container instance.
         self.containers = containers
         # Specifies whether to enable the cost optimization feature. Valid values:
         # 
@@ -4208,7 +4228,7 @@ class CreateEciScalingConfigurationRequest(TeaModel):
         self.host_aliases = host_aliases
         # The name of the elastic container instance.
         self.host_name = host_name
-        # Information about the image repository.
+        # The image repositories.
         self.image_registry_credentials = image_registry_credentials
         # The ID of the image cache.
         self.image_snapshot_id = image_snapshot_id
@@ -4265,11 +4285,11 @@ class CreateEciScalingConfigurationRequest(TeaModel):
         # 
         # If you set the SpotStrategy parameter to SpotWithPriceLimit, you must also specify the SpotPriceLimit parameter.
         self.spot_price_limit = spot_price_limit
-        # The bidding policy for the elastic container instance. Valid values:
+        # The instance bidding policy. Valid values:
         # 
-        # *   NoSpot: The instance is a pay-as-you-go instance.
-        # *   SpotWithPriceLimit: The instance is a preemptible instance with a user-defined maximum hourly price.
-        # *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is used as the bid price.
+        # *   NoSpot: The instances are created as pay-as-you-go instances.
+        # *   SpotWithPriceLimit: The instances are preemptible instances for which you can specify the maximum hourly price.
+        # *   SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is used as the bid price.
         # 
         # Default value: NoSpot.
         self.spot_strategy = spot_strategy
@@ -4866,6 +4886,7 @@ class CreateNotificationConfigurationRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         scaling_group_id: str = None,
+        time_zone: str = None,
     ):
         # The Alibaba Cloud Resource Name (ARN) of the notification method. The following list describes the value formats of this parameter:
         # 
@@ -4896,6 +4917,7 @@ class CreateNotificationConfigurationRequest(TeaModel):
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
+        self.time_zone = time_zone
 
     def validate(self):
         pass
@@ -4918,6 +4940,8 @@ class CreateNotificationConfigurationRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.scaling_group_id is not None:
             result['ScalingGroupId'] = self.scaling_group_id
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
         return result
 
     def from_map(self, m: dict = None):
@@ -4934,6 +4958,8 @@ class CreateNotificationConfigurationRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ScalingGroupId') is not None:
             self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
         return self
 
 
@@ -5461,13 +5487,13 @@ class CreateScalingConfigurationRequestInstancePatternInfos(TeaModel):
         minimum_memory_size: float = None,
         physical_processor_models: List[str] = None,
     ):
-        # The architectures of the instance types. Valid values:
+        # The architecture types of the instance types. Valid values:
         # 
-        # *   X86: x86 architecture.
-        # *   Heterogeneous: heterogeneous architecture, such as GPUs and FPGAs.
-        # *   BareMetal: ECS Bare Metal Instance architecture.
-        # *   Arm: ARM architecture.
-        # *   SuperComputeCluster: Super Computing Cluster architecture.
+        # *   X86: x86
+        # *   Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated
+        # *   BareMetal: ECS Bare Metal Instance
+        # *   Arm: Arm
+        # *   SuperComputeCluster: Super Computing Cluster
         # 
         # By default, all values are included.
         self.architectures = architectures
@@ -5477,39 +5503,39 @@ class CreateScalingConfigurationRequestInstancePatternInfos(TeaModel):
         # *   Include: includes burstable instance types.
         # *   Required: includes only burstable instance types.
         # 
-        # Default value: Include
+        # Default value: Include.
         self.burstable_performance = burstable_performance
-        # The number of vCPUs that you want to allocate to an instance type in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria. For more information, see the "[Instance families](https://help.aliyun.com/document_detail/25378.html)" topic.
+        # The number of vCPUs per instance type in intelligent configuration mode. You can use this parameter to filter the available instance types that meet the specified criteria. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
         # 
-        # Take note of the following items when you specify Cores:
+        # Before you specify this parameter, take note of the following items:
         # 
-        # *   InstancePatternInfos is available only for scaling groups that reside in VPCs.
-        # *   If you specify InstancePatternInfos, you must specify Cores and Memory.
-        # *   If you specify an instance type by using InstanceType or InstanceTypes, Auto Scaling preferentially uses the instance type that is specified by InstanceType or InstanceTypes for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances by using the lowest-priced instance type that is specified by InstancePatternInfos.
+        # *   InstancePatternInfos is applicable only to the scaling groups that reside in virtual private clouds (VPCs).
+        # *   If you specify InstancePatternInfos, you must also specify InstancePatternInfos.Cores and InstancePatternInfos.Memory.
+        # *   If you specify InstanceType or InstanceTypes, Auto Scaling preferentially uses the instance type specified by InstanceType or InstanceTypes to create instances during scale-out events. If the specified instance type does not have sufficient inventory, Auto Scaling uses the lowest-priced instance type specified by InstancePatternInfos to create instances during scale-out events.
         self.cores = cores
         self.cpu_architectures = cpu_architectures
-        # The instance types that you want to exclude. You can use wildcard characters, such as asterisks (\\*), to exclude an instance type or an instance family. Examples:
+        # The instance types that you want to exclude. You can use wildcard characters, such as an asterisk (\\*), to exclude an instance type or an instance family. Examples:
         # 
         # *   ecs.c6.large: excludes the ecs.c6.large instance type.
         # *   ecs.c6.\\*: excludes the c6 instance family.
         self.excluded_instance_types = excluded_instance_types
         self.gpu_specs = gpu_specs
         self.instance_categories = instance_categories
-        # The level of the instance type, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
+        # The level of the instance family. You can specify this parameter to specify the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
         # 
-        # *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instance types of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see the "[Shared instance families](https://help.aliyun.com/document_detail/108489.html)" topic.
-        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the "[Instance families](https://help.aliyun.com/document_detail/25378.html)" topic.
-        # *   CreditEntryLevel: credit entry level. This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instance types of this level are suitable for business scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the "[Overview](https://help.aliyun.com/document_detail/59977.html)" topic of burstable instances.
+        # *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+        # *   CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
         self.instance_family_level = instance_family_level
         self.instance_type_families = instance_type_families
-        # The maximum hourly price of a pay-as-you-go or preemptible instance in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria.
+        # The maximum hourly price of pay-as-you-go or preemptible instances in intelligent configuration mode. You can specify this parameter to filter the available instance types.
         # 
-        # > If you set SpotStrategy to SpotWithPriceLimit, you must specify MaxPrice. In other cases, MaxPrice is optional.
+        # >  If you set SpotStrategy to SpotWithPriceLimit, you must specify this parameter. In other cases, this parameter is optional.
         self.max_price = max_price
         self.maximum_cpu_core_count = maximum_cpu_core_count
         self.maximum_gpu_amount = maximum_gpu_amount
         self.maximum_memory_size = maximum_memory_size
-        # The memory size that you want to allocate to an instance type in intelligent configuration mode. Unit: GiB. This parameter is used to filter the available instance types that meet the specified criteria.
+        # The memory size per instance type in intelligent configuration mode. Unit: GiB. You can specify this parameter to filter the available instance types.
         self.memory = memory
         self.minimum_baseline_credit = minimum_baseline_credit
         self.minimum_cpu_core_count = minimum_cpu_core_count
@@ -5892,7 +5918,7 @@ class CreateScalingConfigurationRequest(TeaModel):
         self.instance_description = instance_description
         # The name of the ECS instance that Auto Scaling creates based on the scaling configuration.
         self.instance_name = instance_name
-        # Details of the intelligent configuration settings that determine the range of instance types that meet the specified criteria.
+        # The information about the intelligent configuration settings, which determine the available instance types.
         self.instance_pattern_infos = instance_pattern_infos
         # The instance type of the ECS instance. For more information, see the [Instance families](https://help.aliyun.com/document_detail/25378.html) topic.
         self.instance_type = instance_type
@@ -6791,13 +6817,13 @@ class CreateScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
         minimum_memory_size: float = None,
         physical_processor_models: List[str] = None,
     ):
-        # The architectures of the instance types. Valid values:
+        # The architecture types of the instance types. Valid values:
         # 
-        # *   X86: x86 architecture.
-        # *   Heterogeneous: heterogeneous architecture, such as GPUs and FPGAs.
-        # *   BareMetal: ECS Bare Metal Instance architecture.
-        # *   Arm: ARM architecture.
-        # *   SuperComputeCluster: Super Computing Cluster architecture.
+        # *   X86: x86
+        # *   Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated
+        # *   BareMetal: ECS Bare Metal Instance
+        # *   Arm: Arm
+        # *   SuperComputeCluster: Super Computing Cluster
         # 
         # By default, all values are included.
         self.architectures = architectures
@@ -6807,39 +6833,39 @@ class CreateScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
         # *   Include: includes burstable instance types.
         # *   Required: includes only burstable instance types.
         # 
-        # Default value: Include
+        # Default value: Include.
         self.burstable_performance = burstable_performance
-        # The number of vCPUs that you want to allocate to an instance type in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria. For more information, see the "[Instance families](https://help.aliyun.com/document_detail/25378.html)" topic.
+        # The number of vCPUs per instance type in intelligent configuration mode. You can use this parameter to filter the available instance types that meet the specified criteria. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
         # 
-        # Take note of the following items when you specify Cores:
+        # Before you specify this parameter, take note of the following items:
         # 
-        # *   InstancePatternInfos is available only for scaling groups that reside in VPCs.
-        # *   If you specify InstancePatternInfos, you must specify Cores and Memory.
-        # *   If you specify an instance type by using InstanceType or InstanceTypes, Auto Scaling preferentially uses the instance type that is specified by InstanceType or InstanceTypes for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances by using the lowest-priced instance type that is specified by InstancePatternInfos.
+        # *   InstancePatternInfos is applicable only to the scaling groups that reside in virtual private clouds (VPCs).
+        # *   If you specify InstancePatternInfos, you must also specify InstancePatternInfos.Cores and InstancePatternInfos.Memory.
+        # *   If you specify InstanceType or InstanceTypes, Auto Scaling preferentially uses the instance type specified by InstanceType or InstanceTypes to create instances during scale-out events. If the specified instance type does not have sufficient inventory, Auto Scaling uses the lowest-priced instance type specified by InstancePatternInfos to create instances during scale-out events.
         self.cores = cores
         self.cpu_architectures = cpu_architectures
-        # The instance types that you want to exclude. You can use wildcard characters, such as asterisks (\\*), to exclude an instance type or an instance family. Examples:
+        # The instance types that you want to exclude. You can use wildcard characters, such as an asterisk (\\*), to exclude an instance type or an instance family. Examples:
         # 
         # *   ecs.c6.large: excludes the ecs.c6.large instance type.
         # *   ecs.c6.\\*: excludes the c6 instance family.
         self.excluded_instance_types = excluded_instance_types
         self.gpu_specs = gpu_specs
         self.instance_categories = instance_categories
-        # The level of the instance type, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
+        # The level of the instance family. You can specify this parameter to specify the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
         # 
-        # *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instance types of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see the "[Shared instance families](https://help.aliyun.com/document_detail/108489.html)" topic.
-        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the "[Instance families](https://help.aliyun.com/document_detail/25378.html)" topic.
-        # *   CreditEntryLevel: credit entry level. This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instance types of this level are suitable for business scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the "[Overview](https://help.aliyun.com/document_detail/59977.html)" topic of burstable instances.
+        # *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+        # *   CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
         self.instance_family_level = instance_family_level
         self.instance_type_families = instance_type_families
-        # The maximum hourly price of a pay-as-you-go or preemptible instance in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria.
+        # The maximum hourly price of pay-as-you-go or preemptible instances in intelligent configuration mode. You can specify this parameter to filter the available instance types.
         # 
-        # > If you set SpotStrategy to SpotWithPriceLimit, you must specify MaxPrice. In other cases, MaxPrice is optional.
+        # >  If you set SpotStrategy to SpotWithPriceLimit, you must specify this parameter. In other cases, this parameter is optional.
         self.max_price = max_price
         self.maximum_cpu_core_count = maximum_cpu_core_count
         self.maximum_gpu_amount = maximum_gpu_amount
         self.maximum_memory_size = maximum_memory_size
-        # The memory size that you want to allocate to an instance type in intelligent configuration mode. Unit: GiB. This parameter is used to filter the available instance types that meet the specified criteria.
+        # The memory size per instance type in intelligent configuration mode. Unit: GiB. You can specify this parameter to filter the available instance types.
         self.memory = memory
         self.minimum_baseline_credit = minimum_baseline_credit
         self.minimum_cpu_core_count = minimum_cpu_core_count
@@ -7222,7 +7248,7 @@ class CreateScalingConfigurationShrinkRequest(TeaModel):
         self.instance_description = instance_description
         # The name of the ECS instance that Auto Scaling creates based on the scaling configuration.
         self.instance_name = instance_name
-        # Details of the intelligent configuration settings that determine the range of instance types that meet the specified criteria.
+        # The information about the intelligent configuration settings, which determine the available instance types.
         self.instance_pattern_infos = instance_pattern_infos
         # The instance type of the ECS instance. For more information, see the [Instance families](https://help.aliyun.com/document_detail/25378.html) topic.
         self.instance_type = instance_type
@@ -11266,7 +11292,7 @@ class DescribeAlertConfigurationRequest(TeaModel):
         scaling_group_id: str = None,
     ):
         self.owner_id = owner_id
-        # The region ID of the event-triggered task.
+        # The region ID of the scaling group.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -11316,7 +11342,7 @@ class DescribeAlertConfigurationResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The status of the scaling activities that prompt text message or email notifications.
+        # The status of the scaling activities that trigger text message, internal message, or email-based notifications.
         self.scale_statuses = scale_statuses
 
     def validate(self):
@@ -13385,11 +13411,11 @@ class DescribeEciScalingConfigurationsRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The IDs of the scaling configurations that you want to query.
+        # The IDs of the scaling configurations that you want to query. You can specify 1 to 10 scaling configuration IDs.
         # 
-        # The IDs of active and inactive scaling configurations are displayed in the query results. You can differentiate between active and inactive scaling configurations based on the value of the `LifecycleState` parameter.
+        # The IDs of active and inactive scaling configurations are displayed in the query results. You can distinguish between active and inactive scaling configurations based on the value of `LifecycleState`.
         self.scaling_configuration_ids = scaling_configuration_ids
-        # The names of the scaling configurations that you want to query.
+        # The names of the scaling configurations that you want to query. You can specify 1 to 10 scaling configuration names.
         # 
         # The names of inactive scaling configurations are not displayed in the query results, and no error is reported.
         self.scaling_configuration_names = scaling_configuration_names
@@ -13460,7 +13486,7 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsAcrRegist
         instance_name: str = None,
         region_id: str = None,
     ):
-        # The domain names of the Container Registry Enterprise Edition instance. By default, all domain names of the Container Registry Enterprise Edition instance are displayed. Multiple domain names are separated by commas (,).
+        # The domain names of the Container Registry Enterprise Edition instance. By default, all domain names of the instance are displayed. Multiple domain names are separated by commas (,).
         self.domains = domains
         # The ID of the Container Registry Enterprise Edition instance.
         self.instance_id = instance_id
@@ -13590,25 +13616,25 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainer
         read_only: bool = None,
         sub_path: str = None,
     ):
-        # The directory to which the container mounts the volume.
+        # The directory to which the volume is mounted.
         # 
-        # >  Data under this directory is overwritten by data on the volume. Specify this parameter with caution.
+        # >  Data in this directory is overwritten by the data on the volume. Proceed with caution if you specify this parameter.
         self.mount_path = mount_path
-        # The mount propagation settings of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
+        # The mount propagation settings. Mount propagation enables volumes mounted on one container to be shared among other containers within the same pod or across distinct pods residing on the same node. Valid values:
         # 
-        # *   None: The volume mount does not receive subsequent mounts that are performed on the volume or on the subdirectories of the volume.
-        # *   HostToCotainer: The volume mount receives subsequent mounts that are performed on the volume or on the subdirectories of the volume.
-        # *   Bidirectional: The volume mount behaves the same as the HostToContainer mount. The volume mount receives subsequent mounts that are performed on the volume or on the subdirectories of the volume. In addition, all volume mounts that are performed on the container are propagated back to the host and all containers of all pods that use the same volume.
+        # *   None: Subsequent mounts executed either on the volume itself or its subdirectories do not propagate to the already established volume mount.
+        # *   HostToCotainer: Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount.
+        # *   Bidirectional: This value is similar to HostToCotainer. Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount. In addition, any volume mounts executed on a container not only propagate back to the underlying host but also to all containers across every pod that uses the same volume.
         # 
         # Default value: None.
         self.mount_propagation = mount_propagation
-        # The volume name. The value of this parameter is the same as the value of Volume.N.Name.
+        # The volume name. The value of this parameter is the same as the name of the volume that is mounted to containers.
         self.name = name
         # Indicates whether the volume is read-only.
         # 
         # Default value: false.
         self.read_only = read_only
-        # The subdirectory of the volume.
+        # The volume subdirectory.
         self.sub_path = sub_path
 
     def validate(self):
@@ -13705,35 +13731,49 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainer
     ):
         # The container startup arguments. You can specify up to 10 arguments.
         self.args = args
-        # The container startup commands. You can specify up to 20 commands. Each command contains up to 256 characters.
+        # The container startup commands. You can specify up to 20 commands. Each command can contain up to 256 characters.
         self.commands = commands
-        # The number of vCPUs that are allocated to the container.
+        # The number of vCPUs per container.
         self.cpu = cpu
         # The environment variables.
         self.environment_vars = environment_vars
         # The number of GPUs.
         self.gpu = gpu
-        # The image of the container.
+        # The container image.
         self.image = image
         # The image pulling policy. Valid values:
         # 
-        # *   Always: Each time instances are created, image pulling is performed.
+        # *   Always: Each time image pulling is performed.
         # *   IfNotPresent: Image pulling is performed as needed. On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
         # *   Never: On-premises images are always used. Image pulling is not performed.
         self.image_pull_policy = image_pull_policy
+        # The commands that are run for configuring the postStart callback function by using the CLI within the container.
         self.lifecycle_post_start_handler_execs = lifecycle_post_start_handler_execs
+        # The IP address of the host to which HTTP GET requests for configuring the postStart callback function are sent.
         self.lifecycle_post_start_handler_http_get_host = lifecycle_post_start_handler_http_get_host
+        # The path to which HTTP GET requests for configuring the postStart callback function are sent.
         self.lifecycle_post_start_handler_http_get_path = lifecycle_post_start_handler_http_get_path
+        # The port over which HTTP GET requests for configuring the postStart callback function are sent.
         self.lifecycle_post_start_handler_http_get_port = lifecycle_post_start_handler_http_get_port
+        # The protocol type of the HTTP GET requests that are sent for configuring the postStart callback function.
         self.lifecycle_post_start_handler_http_get_scheme = lifecycle_post_start_handler_http_get_scheme
+        # The IP address of the host detected by the TCP sockets used for configuring the postStart callback function.
         self.lifecycle_post_start_handler_tcp_socket_host = lifecycle_post_start_handler_tcp_socket_host
+        # The port detected by the TCP sockets used for configuring the postStart callback function.
         self.lifecycle_post_start_handler_tcp_socket_port = lifecycle_post_start_handler_tcp_socket_port
+        # The commands that are run for configuring the preStop callback function by using the CLI within the container.
         self.lifecycle_pre_stop_handler_execs = lifecycle_pre_stop_handler_execs
+        # The IP address of the host to which HTTP GET requests for configuring the preStop callback function are sent.
         self.lifecycle_pre_stop_handler_http_get_host = lifecycle_pre_stop_handler_http_get_host
+        # The path to which HTTP GET requests for configuring the preStop callback function are sent.
         self.lifecycle_pre_stop_handler_http_get_path = lifecycle_pre_stop_handler_http_get_path
+        # The port over which HTTP GET requests for configuring the preStop callback function are sent.
         self.lifecycle_pre_stop_handler_http_get_port = lifecycle_pre_stop_handler_http_get_port
+        # The protocol type of the HTTP Get requests that are sent for configuring the preStop callback function.
         self.lifecycle_pre_stop_handler_http_get_scheme = lifecycle_pre_stop_handler_http_get_scheme
+        # The IP address of the host detected by the TCP sockets used for configuring the preStop callback function.
         self.lifecycle_pre_stop_handler_tcp_socket_host = lifecycle_pre_stop_handler_tcp_socket_host
+        # The port detected by the TCP sockets used for configuring the preStop callback function.
         self.lifecycle_pre_stop_handler_tcp_socket_port = lifecycle_pre_stop_handler_tcp_socket_port
         # The commands that are run in the container when you use the CLI to perform liveness probes.
         self.liveness_probe_exec_commands = liveness_probe_exec_commands
@@ -13741,16 +13781,16 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainer
         # 
         # Default value: 3.
         self.liveness_probe_failure_threshold = liveness_probe_failure_threshold
-        # The path to which HTTP Get requests are sent when you use the HTTP Get requests to perform liveness probes.
+        # The path to which HTTP GET requests are sent when you use the HTTP GET requests to perform liveness probes.
         self.liveness_probe_http_get_path = liveness_probe_http_get_path
-        # The port detected by HTTP Get requests when you use the HTTP requests to perform liveness probes.
+        # The port to which HTTP GET requests are sent to perform liveness probes.
         self.liveness_probe_http_get_port = liveness_probe_http_get_port
-        # The protocol type of HTTP GET requests when you use the HTTP requests to perform liveness probes. Valid values:
+        # The protocol type of HTTP GET requests when you use the HTTP GET requests to perform liveness probes. Valid values:
         # 
         # *   HTTP
         # *   HTTPS
         self.liveness_probe_http_get_scheme = liveness_probe_http_get_scheme
-        # The number of seconds that elapse from the startup of the container to the start time of a liveness probe.
+        # The number of seconds that elapses from the startup of the container to the start time of a liveness probe.
         self.liveness_probe_initial_delay_seconds = liveness_probe_initial_delay_seconds
         # The interval at which liveness probes are performed. Unit: seconds. Default value: 10. Minimum value: 1.
         self.liveness_probe_period_seconds = liveness_probe_period_seconds
@@ -13758,13 +13798,13 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainer
         self.liveness_probe_success_threshold = liveness_probe_success_threshold
         # The port detected by TCP sockets when you use the TCP sockets to perform liveness probes.
         self.liveness_probe_tcp_socket_port = liveness_probe_tcp_socket_port
-        # The timeout period of the liveness probe. Default value: 1. Minimum value: 1. Unit: seconds.
+        # The timeout period of a liveness probe. Default value: 1. Minimum value: 1. Unit: seconds.
         self.liveness_probe_timeout_seconds = liveness_probe_timeout_seconds
-        # The memory size of the container.
+        # The memory size per container.
         self.memory = memory
-        # The container name.
+        # The custom name of the container.
         self.name = name
-        # The exposed ports and protocols of the container.
+        # The exposed ports and protocols.
         self.ports = ports
         # The commands that are run in the container when you use the CLI to perform readiness probes.
         self.readiness_probe_exec_commands = readiness_probe_exec_commands
@@ -13772,16 +13812,16 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainer
         # 
         # Default value: 3.
         self.readiness_probe_failure_threshold = readiness_probe_failure_threshold
-        # The path to which HTTP Get requests are sent when you use the HTTP requests to perform readiness probes.
+        # The path to which HTTP GET requests are sent when you use the HTTP GET requests to perform readiness probes.
         self.readiness_probe_http_get_path = readiness_probe_http_get_path
-        # The path to which HTTP Get requests are sent when you use the HTTP Get requests to perform readiness probes.
+        # The path to which HTTP GET requests are sent when you use the HTTP GET requests to perform readiness probes.
         self.readiness_probe_http_get_port = readiness_probe_http_get_port
         # The protocol type of HTTP GET requests when you use the HTTP requests to perform readiness probes. Valid values:
         # 
         # *   HTTP
         # *   HTTPS
         self.readiness_probe_http_get_scheme = readiness_probe_http_get_scheme
-        # The number of seconds that elapse from the startup of the container to the start time of a readiness probe.
+        # The number of seconds that elapses from the startup of the container to the start time of a readiness probe.
         self.readiness_probe_initial_delay_seconds = readiness_probe_initial_delay_seconds
         # The interval at which readiness probes are performed. Unit: seconds. Default value: 10. Minimum value: 1.
         self.readiness_probe_period_seconds = readiness_probe_period_seconds
@@ -13789,7 +13829,7 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainer
         self.readiness_probe_success_threshold = readiness_probe_success_threshold
         # The port detected by TCP sockets when you use the TCP sockets to perform readiness probes.
         self.readiness_probe_tcp_socket_port = readiness_probe_tcp_socket_port
-        # The timeout period of the readiness probe. Default value: 1. Minimum value: 1. Unit: seconds.
+        # The timeout period of a readiness probe. Default value: 1. Minimum value: 1. Unit: seconds.
         self.readiness_probe_timeout_seconds = readiness_probe_timeout_seconds
         # The permissions that are granted to the processes in the container. Valid values: NET_ADMIN and NET_RAW.
         # 
@@ -13799,13 +13839,13 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainer
         self.security_context_read_only_root_filesystem = security_context_read_only_root_filesystem
         # The ID of the user that runs the entry point of the container process.
         self.security_context_run_as_user = security_context_run_as_user
-        # Indicates whether the container allocates buffer resources to standard input streams when the container is run. If you do not specify this parameter, an end-of-file (EOF) error may occur when standard input streams in the container are read. Default value: false.
+        # Indicates whether the container allocates buffer resources to standard input streams when the container is running. If this parameter is not specified, an end-of-file (EOF) error may occur when standard input streams in the container are read. Default value: false.
         self.stdin = stdin
         # Indicates whether standard input streams are disconnected after a client is disconnected. If Stdin is set to true, standard input streams remain connected among multiple sessions.
         # 
-        # If StdinOnce is set to true, standard input streams are connected after the container is started, and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected, and remain disconnected until the container is restarted.
+        # If StdinOnce is set to true, standard input streams are connected after the container is started, and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected, and remain disconnected until the container restarts.
         self.stdin_once = stdin_once
-        # Indicates whether interaction is enabled. Valid values:
+        # Indicates whether the Interaction feature is enabled. Valid values:
         # 
         # *   true
         # *   false
@@ -13814,9 +13854,9 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainer
         # 
         # Default value: false.
         self.tty = tty
-        # The volumes that are mounted to the container.
+        # The mounted volumes.
         self.volume_mounts = volume_mounts
-        # The working directory of the container.
+        # The working directory.
         self.working_dir = working_dir
 
     def validate(self):
@@ -14110,9 +14150,9 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsHostAlias
         hostnames: List[str] = None,
         ip: str = None,
     ):
-        # The hostnames that were added.
+        # The added hostnames.
         self.hostnames = hostnames
-        # The IP address that was added.
+        # The added IP address.
         self.ip = ip
 
     def validate(self):
@@ -14272,11 +14312,11 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitConta
     ):
         # The directory to which the volume is mounted. Data under this directory is overwritten by the data on the volume.
         self.mount_path = mount_path
-        # The mount propagation settings of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
+        # The mount propagation setting. Mount propagation enables volumes mounted on one container to be shared among other containers within the same pod or across distinct pods residing on the same node. Valid values:
         # 
-        # *   None: The volume mount does not receive subsequent mounts that are performed on the volume or on the subdirectories of the volume.
-        # *   HostToCotainer: The volume mount receives subsequent mounts that are performed on the volume or on the subdirectories of the volume.
-        # *   Bidirectional: The volume mount behaves the same as the HostToContainer mount. The volume mount receives subsequent mounts that are performed on the volume or on the subdirectories of the volume. In addition, all volume mounts that are performed on the container are propagated back to the host and all containers of all pods that use the same volume.
+        # *   None: Subsequent mounts executed either on the volume itself or its subdirectories do not propagate to the already established volume mount.
+        # *   HostToCotainer: Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount.
+        # *   Bidirectional: This value is similar to HostToCotainer. Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount. In addition, any volume mounts executed on a container not only propagate back to the underlying host but also to all containers across every pod that uses the same volume.
         # 
         # Default value: None.
         self.mount_propagation = mount_propagation
@@ -14286,7 +14326,7 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitConta
         # 
         # Default value: false.
         self.read_only = read_only
-        # The subdirectory of the volume. A pod can mount different directories of the same volume to different subdirectories of the init container.
+        # The volume subdirectory. A pod can mount different directories of the same volume to different directories of the init container.
         self.sub_path = sub_path
 
     def validate(self):
@@ -14344,25 +14384,25 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitConta
         security_context_run_as_user: str = None,
         working_dir: str = None,
     ):
-        # The number of vCPUs that are allocated to the init container.
+        # The number of vCPUs per init container.
         self.cpu = cpu
-        # The number of GPUs that are allocated to the init container.
+        # The number of GPUs per init container.
         self.gpu = gpu
         # The image of the init container.
         self.image = image
         # The image pulling policy.
         self.image_pull_policy = image_pull_policy
-        # The startup arguments of the init container.
+        # The container startup arguments.
         self.init_container_args = init_container_args
-        # The startup commands of the init container.
+        # The container startup commands.
         self.init_container_commands = init_container_commands
         # The environment variables.
         self.init_container_environment_vars = init_container_environment_vars
         # The ports of the init container.
         self.init_container_ports = init_container_ports
-        # The volumes that are mounted on the init container.
+        # The volumes that are mounted to the init container.
         self.init_container_volume_mounts = init_container_volume_mounts
-        # The memory size of the init container.
+        # The memory size per init container.
         self.memory = memory
         # The name of the init container.
         self.name = name
@@ -14374,7 +14414,7 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitConta
         self.security_context_read_only_root_filesystem = security_context_read_only_root_filesystem
         # The ID of the user that runs the init container.
         self.security_context_run_as_user = security_context_run_as_user
-        # The working directory of the init container.
+        # The working directory.
         self.working_dir = working_dir
 
     def validate(self):
@@ -14520,9 +14560,9 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsTags(TeaM
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the elastic container instance.
+        # The tag key.
         self.key = key
-        # The tag value of the elastic container instance.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -14630,7 +14670,7 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes(T
         self.flex_volume_driver = flex_volume_driver
         # The type of the mounted file system. The default value is determined by the script of FlexVolume.
         self.flex_volume_fs_type = flex_volume_fs_type
-        # The options of the FlexVolume object. Each option is a key-value pair in a JSON string.
+        # The FlexVolume options. Each option is a key-value pair in a JSON string.
         # 
         # For example, if you use FlexVolume to mount a disk, the format of Options is `{"volumeId":"d-2zehdahrwoa7srg****","performanceLevel": "PL2"}`.
         self.flex_volume_options = flex_volume_options
@@ -14807,46 +14847,46 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurations(TeaModel
         self.acr_registry_infos = acr_registry_infos
         # The validity period of the scaling configuration. Unit: seconds.
         self.active_deadline_seconds = active_deadline_seconds
-        # Indicates whether an elastic IP address (EIP) is automatically created and bound to the elastic container instance.
+        # Indicates whether elastic IP addresses (EIPs) are automatically created and bound to elastic container instances.
         self.auto_create_eip = auto_create_eip
         # Indicates whether the image cache is automatically matched. Default value: false.
         self.auto_match_image_cache = auto_match_image_cache
-        # The name of the elastic container instance or the name of the container group.
+        # The name series of elastic container instances.
         self.container_group_name = container_group_name
-        # The containers in the elastic container instance.
+        # The containers in an elastic container instance.
         self.containers = containers
         # Indicates whether the Cost Optimization feature is enabled. Valid values:
         # 
         # *   true
         # *   false
         self.cost_optimization = cost_optimization
-        # The number of vCPUs that are allocated to the elastic container instance.
+        # The number of vCPUs per elastic container instance.
         self.cpu = cpu
-        # The number of physical CPU cores. You can specify this parameter for only specific instance types. For more information, see [Specify CPU options](https://help.aliyun.com/document_detail/197781.html).
+        # The number of physical CPU cores. This parameter can be specified for only specific instance types. For more information, see [Specify CPU options](https://help.aliyun.com/document_detail/197781.html).
         self.cpu_options_core = cpu_options_core
-        # The number of threads per core. You can specify this parameter for only specific instance types. A value of 1 indicates that Hyper-Threading is disabled. For more information, see [Specify CPU options](https://help.aliyun.com/document_detail/197781.html).
+        # The number of threads per core. This parameter can be specified for only specific instance types. A value of 1 indicates that Hyper-Threading is disabled. For more information, see [Specify CPU options](https://help.aliyun.com/document_detail/197781.html).
         self.cpu_options_threads_per_core = cpu_options_threads_per_core
         # The time at which the scaling configuration was created.
         self.creation_time = creation_time
-        # The bucket that caches data.
+        # The bucket that stores the data cache.
         self.data_cache_bucket = data_cache_bucket
-        # Indicates whether the Performance Burst feature is enabled for the ESSD AutoPL disk that caches data. Valid values:
+        # Indicates whether the Performance Burst feature is enabled for the ESSD AutoPL disk that stores the data cache. Valid values:
         # 
         # *   true
         # *   false
         # 
         # >  For more information about ESSD AutoPL disks, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
         self.data_cache_bursting_enabled = data_cache_bursting_enabled
-        # The performance level (PL) of the cloud disk that caches data. We recommend that you use enhanced SSDs (ESSDs). Valid values:
+        # The performance level (PL) of the cloud disk that stores the data cache. We recommend that you use enterprise SSDs (ESSDs). Valid values:
         # 
-        # *   PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
-        # *   PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
-        # *   PL2: An ESSD can deliver up to 100,000 random read/write IOPS.
-        # *   PL3: An ESSD can deliver up to 1,000,000 random read/write IOPS.
+        # *   PL0: An ESSD can provide up to 10,000 random read/write IOPS.
+        # *   PL1: An ESSD can provide up to 50,000 random read/write IOPS.
+        # *   PL2: An ESSD can provide up to 100,000 random read/write IOPS.
+        # *   PL3: An ESSD can provide up to 1,000,000 random read/write IOPS.
         # 
         # >  For more information about ESSDs, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
         self.data_cache_pl = data_cache_pl
-        # The provisioned read/write IOPS of the ESSD AutoPL disk that caches data. Valid values: 0 to min{50,000, 1000 x *Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50* x Capacity, 50,000}.
+        # The provisioned read/write IOPS of the ESSD AutoPL disk that stores the data cache. Valid values: 0 to min{50,000, 1000 x *Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50* x Capacity, 50,000}.
         # 
         # >  For more information about ESSD AutoPL disks, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
         self.data_cache_provisioned_iops = data_cache_provisioned_iops
@@ -14854,35 +14894,35 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurations(TeaModel
         self.description = description
         # The IP addresses of the Domain Name Service (DNS) server.
         self.dns_config_name_servers = dns_config_name_servers
-        # The objects. Each object is a name-value pair. The value is optional.
+        # The options. Each option is a name-value pair. The value in the name-value pair is optional.
         self.dns_config_options = dns_config_options
-        # The search domains of the DNS server.
+        # The search domains of the DNS servers.
         self.dns_config_searches = dns_config_searches
         # The Domain Name System (DNS) policy.
         self.dns_policy = dns_policy
-        # The maximum outbound bandwidth. Unit: bit/s.
+        # The maximum outbound public bandwidth. Unit: bit/s.
         self.egress_bandwidth = egress_bandwidth
-        # The bandwidth of the EIP. Default value: 5. Unit: Mbit/s.
+        # The EIP bandwidth. Default value: 5. Unit: Mbit/s.
         self.eip_bandwidth = eip_bandwidth
-        # The size of the temporary storage space. Unit: GiB.
+        # The capacity of the ephemeral storage. Unit: GiB.
         self.ephemeral_storage = ephemeral_storage
-        # The hostname aliases in a container.
+        # The hostnames and IP addresses for a container that are added to the hosts file of the elastic container instance.
         self.host_aliases = host_aliases
-        # The hostname.
+        # The hostname series.
         self.host_name = host_name
-        # The image repositories.
+        # The information about the image repository.
         self.image_registry_credentials = image_registry_credentials
         # The ID of the image cache.
         self.image_snapshot_id = image_snapshot_id
-        # The maximum inbound bandwidth. Unit: bit/s.
+        # The maximum inbound public bandwidth. Unit: bit/s.
         self.ingress_bandwidth = ingress_bandwidth
         # The init containers.
         self.init_containers = init_containers
-        # The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if `CostOptimization` is set to true. Valid values:
+        # The level of the instance family, which is used to filter the available instance types that meet the specified requirements. This parameter takes effect only if `CostOptimization` is set to true. Valid values:
         # 
-        # *   EntryLevel: entry level (shared instance types) Instance types of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. This level is suitable for business scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
-        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
-        # *   CreditEntryLevel: credit entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+        # *   EntryLevel: entry level (shared instance types). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+        # *   CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
         self.instance_family_level = instance_family_level
         # The specified ECS instance types. You can specify up to five instance types.
         self.instance_types = instance_types
@@ -14890,54 +14930,54 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurations(TeaModel
         self.ipv_6address_count = ipv_6address_count
         # The status of the scaling configuration in the scaling group. Valid values:
         # 
-        # *   Active: The scaling configuration is active in the scaling group. Auto Scaling uses the active scaling configuration to automatically create elastic container instances.
-        # *   Inactive: The scaling configuration is inactive in the scaling group. Inactive scaling configurations are retained in scaling groups. However, Auto Scaling does not use inactive scaling groups to create elastic container instances.
+        # *   Active: The scaling configuration is active in the scaling group. Auto Scaling uses the scaling configuration that is in the Active state to create instances during scale-out events.
+        # *   Inactive: The scaling configuration is inactive in the scaling group. Scaling configurations that are in the Inactive state are still contained in the scaling group, but Auto Scaling does not use the inactive scaling configurations to create instances during scale-out events.
         self.lifecycle_state = lifecycle_state
-        # The weight of the elastic container instance as a backend server. Valid values: 1 to 100.
+        # The load balancing weight of each elastic container instance as a backend server. Valid values: 1 to 100.
         self.load_balancer_weight = load_balancer_weight
         # The memory size.
         # 
-        # You can specify CPU and Memory at the same time to filter instance types. For example, if you set CPU to 2 and Memory to 16, all instance types that have 2 vCPUs and 16 GiB memory are returned. Then, Auto Scaling determines the available instance types based on factors such as the I/O optimization requirements and zones and preferentially uses the lowest-priced instance type to create instances.
+        # You can specify CPU and Memory to define the range of instance types. For example, if you set CPU to 2 and Memory to 16, the instance types that have 2 vCPUs and 16 GiB are returned. After you specify CPU and Memory, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones and preferentially creates instances by using the lowest-priced instance type.
         # 
-        # >  You can specify CPU and Memory to filter instance types only if Scaling Policy is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+        # >  You can specify CPU and Memory to define instance types only if you set Scaling Policy to Cost Optimization and no instance type is specified in the scaling configuration.
         self.memory = memory
         # The endpoints of the Network Time Protocol (NTP) server.
         self.ntp_servers = ntp_servers
-        # The Resource Access Management (RAM) role of the elastic container instance. Elastic container instances and Elastic Compute Service (ECS) instances can share the same RAM role. For more information, see [Use the instance RAM role by calling APIs](https://help.aliyun.com/document_detail/61178.html).
+        # The Resource Access Management (RAM) role of elastic container instances. Elastic container instances and Elastic Compute Service (ECS) instances can share the same RAM role. For more information, see [Use an instance RAM role by calling API operations](https://help.aliyun.com/document_detail/61178.html).
         self.ram_role_name = ram_role_name
-        # The region ID of the elastic container instance.
+        # The region ID of elastic container instances.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The restart policy of the elastic container instance. Valid values:
+        # The restart policy of elastic container instances. Valid values:
         # 
-        # *   Never: The elastic container instance is never restarted.
-        # *   Always: The elastic container instance is always restarted.
-        # *   OnFailure: The elastic container instance is restarted upon failures.
+        # *   Never: Elastic container instances are never restarted.
+        # *   Always: Elastic container instances are always restarted.
+        # *   OnFailure: Elastic container instances are restarted upon failures.
         self.restart_policy = restart_policy
         # The ID of the scaling configuration.
         self.scaling_configuration_id = scaling_configuration_id
         # The name of the scaling configuration.
         self.scaling_configuration_name = scaling_configuration_name
-        # The region ID of the scaling group to which the scaling configuration belongs.
+        # The ID of the scaling group to which the scaling configuration belongs.
         self.scaling_group_id = scaling_group_id
         # The system information of the security context in which the elastic container instance runs.
         self.security_context_sys_ctls = security_context_sys_ctls
-        # The ID of the security group with which the elastic container instance is associated. Elastic container instances that are associated with the same security group can access each other.
+        # The ID of the security group with which elastic container instances are associated. Elastic container instances that are associated with the same security group can communicate with each other.
         self.security_group_id = security_group_id
         # >  This parameter is not available for use.
         self.sls_enable = sls_enable
-        # The maximum hourly price for the preemptible elastic container instance.
+        # The maximum hourly price for preemptible elastic container instances.
         # 
-        # This parameter is returned only when SpotStrategy is set to SpotWithPriceLimit.
+        # This parameter is returned only if you set SpotStrategy to SpotWithPriceLimit.
         self.spot_price_limit = spot_price_limit
-        # The bidding policy for the instance. Valid values:
+        # The bidding policy for elastic container instances. Valid values:
         # 
-        # *   NoSpot: The instance is created as a regular pay-as-you-go instance.
-        # *   SpotWithPriceLimit: The instance is a preemptible instance with a user-defined maximum hourly price.
-        # *   SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bid price.
+        # *   NoSpot: The instances are created as regular pay-as-you-go instances.
+        # *   SpotWithPriceLimit: The instances are created as preemptible instances with a user-defined maximum hourly price.
+        # *   SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.
         self.spot_strategy = spot_strategy
-        # The tags of the elastic container instance. The tags are specified in the key-value format.
+        # The tags of elastic container instances. Tags are specified in the key-value format.
         self.tags = tags
         # The buffer time during which a program handles operations before the program stops.
         self.termination_grace_period_seconds = termination_grace_period_seconds
@@ -16138,6 +16178,7 @@ class DescribeNotificationConfigurationsResponseBodyNotificationConfigurationMod
         notification_arn: str = None,
         notification_types: List[str] = None,
         scaling_group_id: str = None,
+        time_zone: str = None,
     ):
         # The Alibaba Cloud Resource Name (ARN) of the notification method. The following list describes the value formats of this parameter:
         # 
@@ -16156,6 +16197,7 @@ class DescribeNotificationConfigurationsResponseBodyNotificationConfigurationMod
         self.notification_types = notification_types
         # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
+        self.time_zone = time_zone
 
     def validate(self):
         pass
@@ -16172,6 +16214,8 @@ class DescribeNotificationConfigurationsResponseBodyNotificationConfigurationMod
             result['NotificationTypes'] = self.notification_types
         if self.scaling_group_id is not None:
             result['ScalingGroupId'] = self.scaling_group_id
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
         return result
 
     def from_map(self, m: dict = None):
@@ -16182,6 +16226,8 @@ class DescribeNotificationConfigurationsResponseBodyNotificationConfigurationMod
             self.notification_types = m.get('NotificationTypes')
         if m.get('ScalingGroupId') is not None:
             self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
         return self
 
 
@@ -16444,9 +16490,34 @@ class DescribePatternTypesRequest(TeaModel):
         self.cores = cores
         # The number of vCPUs that you want to assign to the instance type. You can specify multiple vCPUs.
         self.cores_list = cores_list
+        # The CPU architectures of the instance types. Valid values:
+        # 
+        # >  You can specify 1 to 2 CPU architectures.
+        # 
+        # *   x86
+        # *   Arm
         self.cpu_architectures = cpu_architectures
         self.excluded_instance_type = excluded_instance_type
+        # The GPU models.
         self.gpu_specs = gpu_specs
+        # The categories of the instance types. Valid values:
+        # 
+        # *   General-purpose
+        # *   Compute-optimized
+        # *   Memory-optimized
+        # *   Big data
+        # *   Local SSDs
+        # *   High Clock Speed
+        # *   Enhanced
+        # *   Shared
+        # *   Compute-optimized with GPU
+        # *   Visual Compute-optimized
+        # *   Heterogeneous Service
+        # *   Compute-optimized with FPGA
+        # *   Compute-optimized with NPU
+        # *   ECS Bare Metal
+        # *   Super Computing Cluster
+        # *   High Performance Compute
         self.instance_categories = instance_categories
         # The level of the instance family. Valid values:
         # 
@@ -16454,24 +16525,37 @@ class DescribePatternTypesRequest(TeaModel):
         # *   EnterpriseLevel: enterprise level
         # *   CreditEntryLevel: credit-based entry level For more information, see [Burstable instance families](https://help.aliyun.com/document_detail/59977.html).
         self.instance_family_level = instance_family_level
+        # The instance families that you want to query. You can query 1 to 10 instance families in each call.
         self.instance_type_families = instance_type_families
         # The maximum hourly price for pay-as-you-go or preemptible instances.
         self.max_price = max_price
+        # The maximum number of vCPUs per instance type.
         self.maximum_cpu_core_count = maximum_cpu_core_count
+        # The maximum number of GPUs per instance. The value must be a positive integer.
         self.maximum_gpu_amount = maximum_gpu_amount
+        # The maximum memory size per instance. Unit: GiB.
         self.maximum_memory_size = maximum_memory_size
         # The memory size that you want to assign to the instance type. Unit: GiB.
         self.memory = memory
         # The memory size that you want to assign to the instance type. Unit: GiB. You can specify multiple memory sizes.
         self.memory_list = memory_list
+        # The baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
         self.minimum_baseline_credit = minimum_baseline_credit
+        # The minimum number of vCPUs per instance type.
         self.minimum_cpu_core_count = minimum_cpu_core_count
+        # The minimum number of IPv6 addresses per ENI.
         self.minimum_eni_ipv_6address_quantity = minimum_eni_ipv_6address_quantity
+        # The minimum number of IPv4 addresses per ENI.
         self.minimum_eni_private_ip_address_quantity = minimum_eni_private_ip_address_quantity
+        # The minimum number of elastic network interfaces (ENIs) per instance.
         self.minimum_eni_quantity = minimum_eni_quantity
+        # The minimum number of GPUs per instance. The value must be a positive integer.
         self.minimum_gpu_amount = minimum_gpu_amount
+        # The initial vCPU credits per t5 or t6 burstable instance.
         self.minimum_initial_credit = minimum_initial_credit
+        # The minimum memory size per instance. Unit: GiB.
         self.minimum_memory_size = minimum_memory_size
+        # The processor models of the instance types. You can specify 1 to 10 processor models.
         self.physical_processor_models = physical_processor_models
         # The region ID.
         # 
@@ -16485,7 +16569,7 @@ class DescribePatternTypesRequest(TeaModel):
         # 
         # Default value: NoSpot.
         self.spot_strategy = spot_strategy
-        # The vSwitch IDs.
+        # The IDs of the vSwitches.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -17590,13 +17674,13 @@ class DescribeScalingConfigurationsRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Pages start from page 1.
+        # The page number. Pages start from page 1.
         # 
-        # Default value: 1
+        # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: 50.
+        # The number of entries per page. Maximum value: 50.
         # 
-        # Default value: 10
+        # Default value: 10.
         self.page_size = page_size
         # The region ID of the scaling group to which the scaling configuration that you want to query belongs.
         # 
@@ -18344,7 +18428,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurations(TeaModel):
         self.instance_generation = instance_generation
         # The naming series of the ECS instances.
         self.instance_name = instance_name
-        # The information about the intelligent configuration settings, which determines the available instance types.
+        # The intelligent configuration settings, which determine the available instance types.
         self.instance_pattern_infos = instance_pattern_infos
         # The instance types of the ECS instances.
         self.instance_type = instance_type
@@ -19991,6 +20075,10 @@ class DescribeScalingGroupsRequest(TeaModel):
         scaling_group_names: List[str] = None,
         tags: List[DescribeScalingGroupsRequestTags] = None,
     ):
+        # The type of instances that are managed by the scaling group. Valid values:
+        # 
+        # *   ECS: ECS instances
+        # *   ECI: elastic container instances
         self.group_type = group_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -21654,9 +21742,9 @@ class DescribeScalingRulesResponseBodyScalingRulesAlarmDimensions(TeaModel):
         dimension_key: str = None,
         dimension_value: str = None,
     ):
-        # 监控项关联的维度信息键。
+        # The dimension key of the metric.
         self.dimension_key = dimension_key
-        # 监控项关联的维度信息值。
+        # The dimension value of the metric.
         self.dimension_value = dimension_value
 
     def validate(self):
@@ -21691,8 +21779,8 @@ class DescribeScalingRulesResponseBodyScalingRulesAlarmsDimensions(TeaModel):
     ):
         # The key of the dimension that is associated with the metric. Valid values:
         # 
-        # *   scaling_group: the ID of the scaling group
-        # *   userId: the ID of the Alibaba Cloud account
+        # *   ScalingGroupId: the ID of the scaling group.
+        # *   userId: the ID of the user account.
         self.dimension_key = dimension_key
         # The value of the dimension that is associated with the metric.
         self.dimension_value = dimension_value
@@ -21738,23 +21826,23 @@ class DescribeScalingRulesResponseBodyScalingRulesAlarms(TeaModel):
         self.alarm_task_id = alarm_task_id
         # The name of the event-triggered task that is associated with the scaling rule.
         self.alarm_task_name = alarm_task_name
-        # The comparison operator between the metric value and the threshold for the event-triggered task that is associated with the scaling rule. The comparison operator indicates the relationship between the metric value and the threshold that is required to meet the condition.
+        # The comparison operator between the statistical value and the threshold of the metric of the event-triggered task that is associated with the scaling rule. The comparison operator indicates the relationship in which the metric value and the metric threshold can meet the alert condition.
         # 
-        # *   Valid value if the metric value is greater than or equal to the threshold: >=.
-        # *   Valid value if the metric value is less than or equal to the threshold: <=.
-        # *   Valid value if the metric value is greater than the threshold: >.
-        # *   Valid value if the metric value is less than the threshold: <.
+        # *   Valid value if the metric value is greater than or equal to the threshold: >=\
+        # *   Valid value if the metric value is less than or equal to the threshold: <=\
+        # *   Valid value if the metric value is greater than the threshold: >
+        # *   Valid value if the metric value is less than the threshold: <
         self.comparison_operator = comparison_operator
         # The dimensions of the event-triggered task that is associated with the scaling rule.
         self.dimensions = dimensions
-        # The number of consecutive times for which the event-triggered task that is associated with the scaling rule meets the threshold expressions before an alert is triggered.
+        # The number of consecutive times when the event-triggered task that is associated with the scaling rule must meet the alert condition before an alert is triggered.
         self.evaluation_count = evaluation_count
         # The name of the metric of the event-triggered task that is associated with the scaling rule.
         self.metric_name = metric_name
-        # The type of the event-triggered task that is associated with the scaling rule. Valid values:
+        # The type of the metric of the event-triggered task that is associated with the scaling rule. Valid values:
         # 
-        # *   system: system monitoring event-triggered tasks
-        # *   custom: custom monitoring event-triggered tasks
+        # *   system: system metrics
+        # *   custom: custom metrics
         self.metric_type = metric_type
         # The statistical method of the event-triggered task that is associated with the scaling rule. Valid values:
         # 
@@ -21832,9 +21920,9 @@ class DescribeScalingRulesResponseBodyScalingRulesStepAdjustments(TeaModel):
         metric_interval_upper_bound: float = None,
         scaling_adjustment: int = None,
     ):
-        # The lower limit that is specified in a step adjustment. Valid values: -9.999999E18 to 9.999999E18.
+        # The lower limit of a step adjustment. Valid values: -9.999999E18 to 9.999999E18.
         self.metric_interval_lower_bound = metric_interval_lower_bound
-        # The upper limit that is specified in a step adjustment. Valid values: -9.999999E18 to 9.999999E18.
+        # The upper limit of a step adjustment. Valid values: -9.999999E18 to 9.999999E18.
         self.metric_interval_upper_bound = metric_interval_upper_bound
         # The number of ECS instances that are scaled in a step adjustment.
         self.scaling_adjustment = scaling_adjustment
@@ -21896,55 +21984,55 @@ class DescribeScalingRulesResponseBodyScalingRules(TeaModel):
         step_adjustments: List[DescribeScalingRulesResponseBodyScalingRulesStepAdjustments] = None,
         target_value: float = None,
     ):
-        # The scaling mode of the scaling rule. Valid values:
+        # The adjustment method of the scaling rule. Valid values:
         # 
-        # *   QuantityChangeInCapacity: adds the specified number of ECS instances to or removes the specified number of ECS instances from the scaling group.
-        # *   PercentChangeInCapacity: adds the specified percentage of ECS instances to or removes the specified percentage of ECS instances from the scaling group.
+        # *   QuantityChangeInCapacity: adds or removes the specified number of Elastic Compute Service (ECS) instances to or from the scaling group.
+        # *   PercentChangeInCapacity: adds or removes the specified percentage of ECS instances to or from the scaling group.
         # *   TotalCapacity: adjusts the number of ECS instances in the scaling group to the specified number.
         self.adjustment_type = adjustment_type
-        # The adjustment value that is specified in the scaling rule.
+        # The number of instances that must be scaled based on the scaling rule.
         self.adjustment_value = adjustment_value
-        # 监控项维度信息值，适用于目标追踪规则，当监控项需额外维度信息时设置，例如LoadBalancerRealServerAverageQps监控项需指定rulePool维度信息。
+        # The dimensions. This parameter is applicable to target tracking scaling rules. You can specify this parameter if your predefined metric requires extra dimensions. For example, if you predefine the LoadBalancerRealServerAverageQps metric, you must use this parameter to specify the rulePool dimension.
         self.alarm_dimensions = alarm_dimensions
-        # The event-triggered tasks that are associated with the scaling rule. Event-triggered tasks that are associated with the scaling rule are returned only if you set the ShowAlarmRules parameter to true. Otherwise, an empty list is returned.
+        # The event-triggered tasks that are associated with the scaling rule. The value of this parameter is returned only if you set ShowAlarmRules to true. Otherwise, null is returned.
         self.alarms = alarms
-        # The cooldown time of the scaling rule. This parameter is available only if you set the ScalingRuleType parameter to SimpleScalingRule. Valid values: 0 to 86400. Unit: seconds.
+        # The cooldown period of the scaling rule. This parameter is available only if you set ScalingRuleType to SimpleScalingRule. Valid values: 0 to 86400. Unit: seconds.
         self.cooldown = cooldown
-        # Specifies whether to disable scale-in. This parameter is available only if you set the ScalingRuleType parameter to TargetTrackingScalingRule. Valid values:
+        # Indicates whether scale-in is disabled. This parameter takes effect only if you set ScalingRuleType to TargetTrackingScalingRule. Valid values:
         # 
         # *   true
         # *   false
         self.disable_scale_in = disable_scale_in
-        # The warmup period of the ECS instance.
+        # The warm-up period of instances. During the warm-up period, a series of preparation measures are taken for the new instances. Performance metrics of instances being warmed up are not counted towards the monitoring range.
         self.estimated_instance_warmup = estimated_instance_warmup
-        # The maximum number of ECS instances in the scaling group. You must specify the InitialMaxSize and PredictiveValueBehavior parameters.
+        # The maximum number of ECS instances that can be contained in the scaling group. If you specify this parameter, you must also specify PredictiveValueBehavior.
         self.initial_max_size = initial_max_size
-        # The maximum number of ECS instances in the scaling group.
+        # The maximum number of ECS instances that can be contained in the scaling group.
         self.max_size = max_size
         # The name of the metric of the event-triggered task that is associated with the scaling rule.
         self.metric_name = metric_name
-        # The minimum number of instances that must be scaled when the AdjustmentType parameter is set to PercentChangeInCapacity. This parameter takes effect only if you set the ScalingRuleType parameter to SimpleScalingRule or StepScalingRule.
+        # The minimum number of instances that must be scaled. This parameter takes effect only if you set ScalingRuleType to SimpleScalingRule or StepScalingRule and set AdjustmentType to PercentChangeInCapacity.
         self.min_adjustment_magnitude = min_adjustment_magnitude
-        # The minimum number of ECS instances in the scaling group.
+        # The minimum number of ECS instances that must be contained in the scaling group.
         self.min_size = min_size
         # The mode of the predictive scaling rule. Valid values:
         # 
-        # *   PredictAndScale: produces predictions and creates prediction tasks.
-        # *   PredictOnly: produces predictions but does not create prediction tasks.
+        # *   PredictAndScale: provides predictions and creates prediction tasks.
+        # *   PredictOnly: provides predictions but does not create prediction tasks.
         self.predictive_scaling_mode = predictive_scaling_mode
-        # The amount of buffer time before the prediction task is executed. By default, all scheduled tasks that are automatically created for a predictive scaling rule are executed on the hour. You can specify a buffer time for resource preparation before prediction tasks are executed. Valid values: 0 to 60. Unit: minutes.
+        # The amount of buffer time before prediction tasks are executed. By default, all prediction tasks that are automatically created based on a predictive scaling rule are executed on the hour. You can specify a buffer time for resource preparation before prediction tasks are executed. Valid values: 0 to 60. Unit: minutes.
         self.predictive_task_buffer_time = predictive_task_buffer_time
-        # Specifies which one of the initial maximum capacity and the predicted value can be used as the maximum value for prediction tasks. Valid values:
+        # The action on the predicted maximum value. Valid values:
         # 
         # *   MaxOverridePredictiveValue: uses the initial maximum capacity as the maximum value for prediction tasks if the predicted value is greater than the initial maximum capacity.
         # *   PredictiveValueOverrideMax: uses the predicted value as the maximum value for prediction tasks when the predicted value is greater than the initial maximum capacity.
-        # *   PredictiveValueOverrideMaxWithBuffer: increases the predicted value by a percentage that is specified by the PredictiveValueBuffer parameter. If the predicted value that is increased by the percentage is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
+        # *   PredictiveValueOverrideMaxWithBuffer: increases the predicted value by a ratio that is specified by PredictiveValueBuffer, and uses the increased value as the maximum value for prediction tasks if the predicted value increased by this ratio is greater than the initial maximum capacity.
         self.predictive_value_behavior = predictive_value_behavior
-        # The percentage of the increment to the predicted value when the PredictiveValueBehavior parameter is set to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this percentage is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+        # The ratio based on which the predicted value is increased when PredictiveValueBehavior is set to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
         self.predictive_value_buffer = predictive_value_buffer
-        # The number of consecutive times that the event-triggered task created for scale-out activities must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and then associated with the target tracking scaling rule.
+        # The number of consecutive times that the event-triggered task for scale-in purposes must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
         self.scale_in_evaluation_count = scale_in_evaluation_count
-        # The number of consecutive times that the event-triggered task created for scale-in activities must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and then associated with the target tracking scaling rule.
+        # The number of consecutive times that the event-triggered task created for scale-out purposes must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
         self.scale_out_evaluation_count = scale_out_evaluation_count
         # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
@@ -21956,14 +22044,14 @@ class DescribeScalingRulesResponseBodyScalingRules(TeaModel):
         self.scaling_rule_name = scaling_rule_name
         # The type of the scaling rule. Valid values:
         # 
-        # *   SimpleScalingRule: adjusts the number of ECS instances based on the values of the AdjustmentType and AdjustmentValue parameters.
-        # *   TargetTrackingScalingRule: calculates the number of ECS instances that need to be scaled in a dynamic manner and maintains the value of a predefined metric close to the value of the TargetValue parameter.
-        # *   StepScalingRule: scales ECS instances in steps based on specified thresholds and metric values.
-        # *   PredictiveScalingRule: uses machine learning to analyze historical monitoring data of the scaling group and predicts the future values of metrics. In addition, Auto Scaling automatically creates scheduled tasks to adjust the boundary values for the scaling group.
+        # *   SimpleScalingRule: a simple scaling rule. Once a simple scaling rule is executed, Auto Scaling adjusts the number of ECS instances in the scaling group based on the values of AdjustmentType and AdjustmentValue.
+        # *   TargetTrackingScalingRule: a target tracking scaling rule. Once a target tracking scaling rule is executed, Auto Scaling dynamically calculates the number of ECS instances or elastic container instances to scale based on the predefined metric (MetricName) and attempts to maintain the metric value close to the specified target value (TargetValue).
+        # *   StepScalingRule: a step scaling rule. Once a step scaling rule is executed, Auto Scaling scales instances step by step based on the predefined thresholds and metric values.
+        # *   PredictiveScalingRule: a predictive scaling rule. Once a predictive scaling rule is executed, Auto Scaling analyzes the historical monitoring data based on the machine learning technology and predicts the trends of metric data. Auto Scaling also creates scheduled tasks to enable dynamic adjustment of the boundary values for the scaling group.
         self.scaling_rule_type = scaling_rule_type
         # The step adjustments of the step scaling rule.
         self.step_adjustments = step_adjustments
-        # The target value of the metric.
+        # The target value of the metric. If you set ScalingRuleType to TargetTrackingScalingRule or PredictiveScalingRule, Auto Scaling keeps the metric value close to the target value by adding instances to or removing instances from the scaling group.
         self.target_value = target_value
 
     def validate(self):
@@ -22123,7 +22211,7 @@ class DescribeScalingRulesResponseBody(TeaModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # Details of the scaling rules.
+        # The scaling rules.
         self.scaling_rules = scaling_rules
         # The total number of scaling rules.
         self.total_count = total_count
@@ -22624,10 +22712,10 @@ class DetachAlbServerGroupsRequest(TeaModel):
         # 
         # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
-        # Specifies whether to remove existing Elastic Compute Service (ECS) instances from the ALB server group that you want to disassociate from the scaling group. Valid values:
+        # Specifies whether to remove the existing ECS instances from the ALB server group. Valid values:
         # 
-        # *   true: removes existing ECS instances and returns the value of the `ScalingActivityId` parameter. You can use the scaling activity ID to check whether the ECS instances are removed.
-        # *   false: does not remove existing ECS instances.
+        # *   true: removes the existing ECS instances from the ALB server group and returns the value of `ScalingActivityId`. You can query the value of ScalingActivityId to check whether the existing ECS instances are removed from the ALB server group.
+        # *   false: does not remove the existing ECS instances from the ALB server group.
         # 
         # Default value: false.
         self.force_detach = force_detach
@@ -22702,7 +22790,7 @@ class DetachAlbServerGroupsResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The ID of the scaling activity in which the ALB server group is disassociated from the scaling group and the ECS instances in the ALB server group are removed from the ALB server group. This parameter is returned only after you set the `ForceDetach` parameter to `true`.
+        # The ID of the scaling activity during which the ALB server group is detached from the scaling group and the existing ECS instances are removed from the ALB server group. This parameter has a return value only if you set `ForceDetach` to `true`.
         self.scaling_activity_id = scaling_activity_id
 
     def validate(self):
@@ -22959,11 +23047,12 @@ class DetachInstancesRequest(TeaModel):
         # 
         # >  This parameter is not supported if you want to remove Alibaba Cloud-hosted third-party instances from a scaling group.
         self.detach_option = detach_option
-        # 从伸缩组移出一批实例时，是否忽略其中无效的实例。取值范围：
-        # - true：从伸缩组中移出一批实例时，会忽略其中无效的实例。如果存在无效的实例，并且有效的实例被成功移除时，伸缩活动执行状态也会显示为警告状态，可以从伸缩活动详情查看无效的实例。
-        # - false：从伸缩组中移出一批实例时，不会忽略无效的实例。如果一批实例中存在无效的实例，请求会报错。
+        # Specifies whether to ignore invalid instances when you remove a batch of instances from the scaling group. Valid values:
         # 
-        # 默认值：false。
+        # *   true: ignores invalid instances. If invalid instances exist and valid instances are removed from the scaling group, the corresponding scaling activity enters the Warning state. You can check the scaling activity details to view the invalid instances that are ignored.
+        # *   false: does not ignore invalid instances. If invalid instances exist in the batch of instances that you want to remove from the scaling group, an error is reported.
+        # 
+        # Default value: false.
         self.ignore_invalid_instance = ignore_invalid_instance
         # The IDs of the ECS instances, elastic container instances, or Aliababa Cloud-managed third-party instances that you want to remove from a scaling group.
         # 
@@ -27706,9 +27795,9 @@ class ModifyEciScalingConfigurationRequestVolumesConfigFileVolumeConfigFileToPat
         mode: int = None,
         path: str = None,
     ):
-        # The content of the configuration file, which can be up to 32 KB in size.
+        # The content of the configuration file (32 KB).
         self.content = content
-        # The permissions on ConfigFileVolume.
+        # The permissions on the ConfigFile volume.
         self.mode = mode
         # The relative path to the configuration file.
         self.path = path
@@ -27759,13 +27848,13 @@ class ModifyEciScalingConfigurationRequestVolumes(TeaModel):
         self.flex_volume = flex_volume
         self.host_path_volume = host_path_volume
         self.nfsvolume = nfsvolume
-        # The paths to the configuration files.
+        # The paths to configuration files.
         self.config_file_volume_config_file_to_path = config_file_volume_config_file_to_path
-        # The default permissions on ConfigFileVolume.
+        # The default permissions on the ConfigFile volume.
         self.config_file_volume_default_mode = config_file_volume_default_mode
-        # The name of the volume.
+        # The volume name.
         self.name = name
-        # The type of HostPathVolume. Examples: File, Directory, and Socket.
+        # The type of the Host directory. Examples: File, Directory, and Socket.
         self.type = type
 
     def validate(self):
@@ -28026,7 +28115,7 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
         self.tags = tags
         # The buffer time in which the program handles operations before the program is stopped. Unit: seconds.
         self.termination_grace_period_seconds = termination_grace_period_seconds
-        # Information about the volumes.
+        # The volumes.
         self.volumes = volumes
 
     def validate(self):
@@ -28404,12 +28493,12 @@ class ModifyInstanceAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
-        # Specifies whether to use the scaling group to manage the lifecycles of the manually added ECS instances. Valid values:
+        # Specifies whether to allow the scaling group to manage the lifecycles of the manually added ECS instances. Valid values:
         # 
-        # *   true: The scaling group manages the lifecycles of instances that are manually added and instances that are automatically created in the same manner. In this case, Auto Scaling releases the instances when they are removed from the scaling group. This rule does not apply to instances that are removed by calling the DetachInstances operation.
-        # *   false: The scaling group does not manage the lifecycles of instances that are manually added. In this case, Auto Scaling does not release the instances when they are removed from the scaling group.
+        # *   true: allows the scaling group to manage the lifecycles of the manually added ECS instances. The scaling group manages the lifecycles of manually added instances and automatically created instances in the same manner. In this case, Auto Scaling releases the instances when they are removed from the scaling group. This rule does not apply to instances that are removed by calling the DetachInstances operation.
+        # *   false: does not allow the scaling group to manage the lifecycles of the manually added ECS instances. In this case, Auto Scaling does not release the instances when they are removed from the scaling group.
         # 
-        # >  You can specify this parameter for only ECS instances that are manually added to scaling groups.
+        # >  You can specify this parameter only for ECS instances that are manually added to the scaling group.
         self.entrusted = entrusted
         # The ID of the ECS instance.
         # 
@@ -28753,6 +28842,7 @@ class ModifyNotificationConfigurationRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         scaling_group_id: str = None,
+        time_zone: str = None,
     ):
         # The Alibaba Cloud Resource Name (ARN) of the notification method. The following list describes the value formats of this parameter:
         # 
@@ -28781,6 +28871,7 @@ class ModifyNotificationConfigurationRequest(TeaModel):
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
+        self.time_zone = time_zone
 
     def validate(self):
         pass
@@ -28803,6 +28894,8 @@ class ModifyNotificationConfigurationRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.scaling_group_id is not None:
             result['ScalingGroupId'] = self.scaling_group_id
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
         return result
 
     def from_map(self, m: dict = None):
@@ -28819,6 +28912,8 @@ class ModifyNotificationConfigurationRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ScalingGroupId') is not None:
             self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
         return self
 
 
@@ -29326,13 +29421,13 @@ class ModifyScalingConfigurationRequestInstancePatternInfos(TeaModel):
         minimum_memory_size: float = None,
         physical_processor_models: List[str] = None,
     ):
-        # The architectures of the instance types.
+        # The architectures of the instance types. Valid values:
         # 
-        # *   X86: x86 architecture.
-        # *   Heterogeneous: heterogeneous architecture, such as GPUs and FPGAs.
-        # *   BareMetal: ECS Bare Metal Instance architecture.
-        # *   Arm: ARM architecture.
-        # *   SuperComputeCluster: Super Computing Cluster architecture.
+        # *   X86: x86
+        # *   Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated
+        # *   BareMetal: ECS Bare Metal Instance
+        # *   Arm: Arm
+        # *   SuperComputeCluster: Super Computing Cluster
         # 
         # By default, all values are included.
         self.architectures = architectures
@@ -29342,39 +29437,39 @@ class ModifyScalingConfigurationRequestInstancePatternInfos(TeaModel):
         # *   Include: includes burstable instance types.
         # *   Required: includes only burstable instance types.
         # 
-        # Default value: Include
+        # Default value: Include.
         self.burstable_performance = burstable_performance
-        # The number of vCPUs that you want to allocate to an instance type in intelligent configuration mode. You can use this parameter to filter the available instance types that meet the specified criteria. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+        # The number of vCPUs per instance type in intelligent configuration mode. You can specify this parameter to filter the available instance types. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
         # 
-        # When you specify this parameter, take note of the following items:
+        # Before you specify this parameter, take note of the following items:
         # 
-        # *   InstancePatternInfo is available only for scaling groups that reside in VPCs.
-        # *   If you specify InstancePatternInfo, you must also specify Cores and Memory.
-        # *   If you specify an instance type by using InstanceType or InstanceTypes, Auto Scaling preferentially creates instances by using the instance type that is specified by InstanceType or InstanceTypes for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances by using the lowest-priced instance type that is specified by InstancePatternInfo.
+        # *   You can specify InstancePatternInfo only if your scaling group resides in a virtual private cloud (VPC).
+        # *   If you specify InstancePatternInfo, you must also specify InstancePatternInfo.Cores and InstancePatternInfo.Memory.
+        # *   Auto Scaling preferentially uses the instance type specified by InstanceType or InstanceTypes to create instances. If the specified instance type does not have sufficient inventory, Auto Scaling selects the lowest-priced instance type specified by InstancePatternInfo to create instances.
         self.cores = cores
         self.cpu_architectures = cpu_architectures
-        # The instance types that you want to exclude. You can use wildcard characters such as an asterisk (\\*) to exclude an instance type or an instance family. Examples:
+        # The instance types that you want to exclude. You can use wildcard characters, such as an asterisk (\\*), to exclude an instance type or an instance family. Examples:
         # 
         # *   ecs.c6.large: excludes the ecs.c6.large instance type.
         # *   ecs.c6.\\*: excludes the c6 instance family.
         self.excluded_instance_types = excluded_instance_types
         self.gpu_specs = gpu_specs
         self.instance_categories = instance_categories
-        # The level of the instance family. You can use this parameter to filter instance types that meet the specified criteria. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
+        # The level of the instance family. You can specify this parameter to filter the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
         # 
-        # *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instance types of this level are suitable for business scenarios in which CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
-        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the [Overview of instance families](https://help.aliyun.com/document_detail/25378.html) topic.
-        # *   CreditEntryLevel: credit entry level. This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instance types of this level are suitable for business scenarios in which CPU utilization is low but may fluctuate in specific scenarios. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html) of burstable instances.
+        # *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+        # *   CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html) of burstable instances.
         self.instance_family_level = instance_family_level
         self.instance_type_families = instance_type_families
-        # The maximum hourly price for a pay-as-you-go instance or a preemptible instance in intelligent configuration mode. You can use this parameter to filter the available instance types that meet the specified criteria.
+        # The maximum hourly price of pay-as-you-go or preemptible instances in intelligent configuration mode. You can specify this parameter to filter the available instance types.
         # 
-        # > If you set SpotStrategy to SpotWithPriceLimit, specify MaxPrice. In other scenarios, MaxPrice is optional.
+        # >  If you set SpotStrategy to SpotWithPriceLimit, you must specify this parameter. In other cases, this parameter is optional.
         self.max_price = max_price
         self.maximum_cpu_core_count = maximum_cpu_core_count
         self.maximum_gpu_amount = maximum_gpu_amount
         self.maximum_memory_size = maximum_memory_size
-        # The memory size that you want to allocate to an instance type in intelligent configuration mode. Unit: GiB. You can use this parameter to filter the available instance types that meet the specified criteria.
+        # The memory size per instance type in intelligent configuration mode. Unit: GiB. You can specify this parameter to filter the available instance types.
         self.memory = memory
         self.minimum_baseline_credit = minimum_baseline_credit
         self.minimum_cpu_core_count = minimum_cpu_core_count
@@ -29741,7 +29836,7 @@ class ModifyScalingConfigurationRequest(TeaModel):
         self.instance_description = instance_description
         # The name of the Elastic Compute Service (ECS) instance that is automatically created by using the scaling configuration.
         self.instance_name = instance_name
-        # The intelligent configuration settings, which determines the range of instance types that meet the specified criteria.
+        # The intelligent configuration settings, which determine the available instance types.
         self.instance_pattern_infos = instance_pattern_infos
         # The instance types.
         self.instance_type_overrides = instance_type_overrides
@@ -30579,13 +30674,13 @@ class ModifyScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
         minimum_memory_size: float = None,
         physical_processor_models: List[str] = None,
     ):
-        # The architectures of the instance types.
+        # The architectures of the instance types. Valid values:
         # 
-        # *   X86: x86 architecture.
-        # *   Heterogeneous: heterogeneous architecture, such as GPUs and FPGAs.
-        # *   BareMetal: ECS Bare Metal Instance architecture.
-        # *   Arm: ARM architecture.
-        # *   SuperComputeCluster: Super Computing Cluster architecture.
+        # *   X86: x86
+        # *   Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated
+        # *   BareMetal: ECS Bare Metal Instance
+        # *   Arm: Arm
+        # *   SuperComputeCluster: Super Computing Cluster
         # 
         # By default, all values are included.
         self.architectures = architectures
@@ -30595,39 +30690,39 @@ class ModifyScalingConfigurationShrinkRequestInstancePatternInfos(TeaModel):
         # *   Include: includes burstable instance types.
         # *   Required: includes only burstable instance types.
         # 
-        # Default value: Include
+        # Default value: Include.
         self.burstable_performance = burstable_performance
-        # The number of vCPUs that you want to allocate to an instance type in intelligent configuration mode. You can use this parameter to filter the available instance types that meet the specified criteria. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+        # The number of vCPUs per instance type in intelligent configuration mode. You can specify this parameter to filter the available instance types. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
         # 
-        # When you specify this parameter, take note of the following items:
+        # Before you specify this parameter, take note of the following items:
         # 
-        # *   InstancePatternInfo is available only for scaling groups that reside in VPCs.
-        # *   If you specify InstancePatternInfo, you must also specify Cores and Memory.
-        # *   If you specify an instance type by using InstanceType or InstanceTypes, Auto Scaling preferentially creates instances by using the instance type that is specified by InstanceType or InstanceTypes for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances by using the lowest-priced instance type that is specified by InstancePatternInfo.
+        # *   You can specify InstancePatternInfo only if your scaling group resides in a virtual private cloud (VPC).
+        # *   If you specify InstancePatternInfo, you must also specify InstancePatternInfo.Cores and InstancePatternInfo.Memory.
+        # *   Auto Scaling preferentially uses the instance type specified by InstanceType or InstanceTypes to create instances. If the specified instance type does not have sufficient inventory, Auto Scaling selects the lowest-priced instance type specified by InstancePatternInfo to create instances.
         self.cores = cores
         self.cpu_architectures = cpu_architectures
-        # The instance types that you want to exclude. You can use wildcard characters such as an asterisk (\\*) to exclude an instance type or an instance family. Examples:
+        # The instance types that you want to exclude. You can use wildcard characters, such as an asterisk (\\*), to exclude an instance type or an instance family. Examples:
         # 
         # *   ecs.c6.large: excludes the ecs.c6.large instance type.
         # *   ecs.c6.\\*: excludes the c6 instance family.
         self.excluded_instance_types = excluded_instance_types
         self.gpu_specs = gpu_specs
         self.instance_categories = instance_categories
-        # The level of the instance family. You can use this parameter to filter instance types that meet the specified criteria. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
+        # The level of the instance family. You can specify this parameter to filter the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
         # 
-        # *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instance types of this level are suitable for business scenarios in which CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
-        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the [Overview of instance families](https://help.aliyun.com/document_detail/25378.html) topic.
-        # *   CreditEntryLevel: credit entry level. This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instance types of this level are suitable for business scenarios in which CPU utilization is low but may fluctuate in specific scenarios. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html) of burstable instances.
+        # *   EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+        # *   CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html) of burstable instances.
         self.instance_family_level = instance_family_level
         self.instance_type_families = instance_type_families
-        # The maximum hourly price for a pay-as-you-go instance or a preemptible instance in intelligent configuration mode. You can use this parameter to filter the available instance types that meet the specified criteria.
+        # The maximum hourly price of pay-as-you-go or preemptible instances in intelligent configuration mode. You can specify this parameter to filter the available instance types.
         # 
-        # > If you set SpotStrategy to SpotWithPriceLimit, specify MaxPrice. In other scenarios, MaxPrice is optional.
+        # >  If you set SpotStrategy to SpotWithPriceLimit, you must specify this parameter. In other cases, this parameter is optional.
         self.max_price = max_price
         self.maximum_cpu_core_count = maximum_cpu_core_count
         self.maximum_gpu_amount = maximum_gpu_amount
         self.maximum_memory_size = maximum_memory_size
-        # The memory size that you want to allocate to an instance type in intelligent configuration mode. Unit: GiB. You can use this parameter to filter the available instance types that meet the specified criteria.
+        # The memory size per instance type in intelligent configuration mode. Unit: GiB. You can specify this parameter to filter the available instance types.
         self.memory = memory
         self.minimum_baseline_credit = minimum_baseline_credit
         self.minimum_cpu_core_count = minimum_cpu_core_count
@@ -30994,7 +31089,7 @@ class ModifyScalingConfigurationShrinkRequest(TeaModel):
         self.instance_description = instance_description
         # The name of the Elastic Compute Service (ECS) instance that is automatically created by using the scaling configuration.
         self.instance_name = instance_name
-        # The intelligent configuration settings, which determines the range of instance types that meet the specified criteria.
+        # The intelligent configuration settings, which determine the available instance types.
         self.instance_pattern_infos = instance_pattern_infos
         # The instance types.
         self.instance_type_overrides = instance_type_overrides
@@ -32874,6 +32969,12 @@ class RemoveInstancesRequest(TeaModel):
         # 
         # Default value: true.
         self.decrease_desired_capacity = decrease_desired_capacity
+        # Specifies whether to ignore invalid instances when you remove a batch of instances from the scaling group. Valid values:
+        # 
+        # *   true: ignores invalid instances. If invalid instances exist and valid instances are deleted, the corresponding scaling activity enters the Warning state. You can check the scaling activity details to view the invalid instances that are ignored.
+        # *   false: does not ignore invalid instances. If invalid instances exist in the batch of instances that you want to remove from the scaling group, an error is reported.
+        # 
+        # Default value: false.
         self.ignore_invalid_instance = ignore_invalid_instance
         # The IDs of the ECS instances that you want to remove from the scaling group.
         # 
