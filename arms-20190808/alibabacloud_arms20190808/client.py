@@ -837,114 +837,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_prometheus_integration_with_options_async(request, runtime)
 
-    def add_prometheus_remote_write_with_options(
-        self,
-        request: arms20190808_models.AddPrometheusRemoteWriteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> arms20190808_models.AddPrometheusRemoteWriteResponse:
-        """
-        @summary Adds a remote write configuration item to a Prometheus instance.
-        
-        @param request: AddPrometheusRemoteWriteRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddPrometheusRemoteWriteResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        body = {}
-        if not UtilClient.is_unset(request.remote_write_yaml):
-            body['RemoteWriteYaml'] = request.remote_write_yaml
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AddPrometheusRemoteWrite',
-            version='2019-08-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            arms20190808_models.AddPrometheusRemoteWriteResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def add_prometheus_remote_write_with_options_async(
-        self,
-        request: arms20190808_models.AddPrometheusRemoteWriteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> arms20190808_models.AddPrometheusRemoteWriteResponse:
-        """
-        @summary Adds a remote write configuration item to a Prometheus instance.
-        
-        @param request: AddPrometheusRemoteWriteRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddPrometheusRemoteWriteResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        body = {}
-        if not UtilClient.is_unset(request.remote_write_yaml):
-            body['RemoteWriteYaml'] = request.remote_write_yaml
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AddPrometheusRemoteWrite',
-            version='2019-08-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            arms20190808_models.AddPrometheusRemoteWriteResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def add_prometheus_remote_write(
-        self,
-        request: arms20190808_models.AddPrometheusRemoteWriteRequest,
-    ) -> arms20190808_models.AddPrometheusRemoteWriteResponse:
-        """
-        @summary Adds a remote write configuration item to a Prometheus instance.
-        
-        @param request: AddPrometheusRemoteWriteRequest
-        @return: AddPrometheusRemoteWriteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.add_prometheus_remote_write_with_options(request, runtime)
-
-    async def add_prometheus_remote_write_async(
-        self,
-        request: arms20190808_models.AddPrometheusRemoteWriteRequest,
-    ) -> arms20190808_models.AddPrometheusRemoteWriteResponse:
-        """
-        @summary Adds a remote write configuration item to a Prometheus instance.
-        
-        @param request: AddPrometheusRemoteWriteRequest
-        @return: AddPrometheusRemoteWriteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.add_prometheus_remote_write_with_options_async(request, runtime)
-
     def add_recording_rule_with_options(
         self,
         request: arms20190808_models.AddRecordingRuleRequest,
@@ -8577,110 +8469,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_prometheus_monitoring_with_options_async(request, runtime)
 
-    def delete_prometheus_remote_write_with_options(
-        self,
-        request: arms20190808_models.DeletePrometheusRemoteWriteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> arms20190808_models.DeletePrometheusRemoteWriteResponse:
-        """
-        @summary Deletes remote write configuration items from a Prometheus instance.
-        
-        @param request: DeletePrometheusRemoteWriteRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeletePrometheusRemoteWriteResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.remote_write_names):
-            query['RemoteWriteNames'] = request.remote_write_names
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeletePrometheusRemoteWrite',
-            version='2019-08-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            arms20190808_models.DeletePrometheusRemoteWriteResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_prometheus_remote_write_with_options_async(
-        self,
-        request: arms20190808_models.DeletePrometheusRemoteWriteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> arms20190808_models.DeletePrometheusRemoteWriteResponse:
-        """
-        @summary Deletes remote write configuration items from a Prometheus instance.
-        
-        @param request: DeletePrometheusRemoteWriteRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeletePrometheusRemoteWriteResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.remote_write_names):
-            query['RemoteWriteNames'] = request.remote_write_names
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeletePrometheusRemoteWrite',
-            version='2019-08-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            arms20190808_models.DeletePrometheusRemoteWriteResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_prometheus_remote_write(
-        self,
-        request: arms20190808_models.DeletePrometheusRemoteWriteRequest,
-    ) -> arms20190808_models.DeletePrometheusRemoteWriteResponse:
-        """
-        @summary Deletes remote write configuration items from a Prometheus instance.
-        
-        @param request: DeletePrometheusRemoteWriteRequest
-        @return: DeletePrometheusRemoteWriteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.delete_prometheus_remote_write_with_options(request, runtime)
-
-    async def delete_prometheus_remote_write_async(
-        self,
-        request: arms20190808_models.DeletePrometheusRemoteWriteRequest,
-    ) -> arms20190808_models.DeletePrometheusRemoteWriteResponse:
-        """
-        @summary Deletes remote write configuration items from a Prometheus instance.
-        
-        @param request: DeletePrometheusRemoteWriteRequest
-        @return: DeletePrometheusRemoteWriteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_prometheus_remote_write_with_options_async(request, runtime)
-
     def delete_retcode_app_with_options(
         self,
         request: arms20190808_models.DeleteRetcodeAppRequest,
@@ -12499,11 +12287,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetManagedPrometheusStatusResponse:
         """
+        @deprecated OpenAPI GetManagedPrometheusStatus is deprecated
+        
         @summary Queries the installation status of a Prometheus agent in a serverless Kubernetes (ASK) cluster or an Elastic Compute Service (ECS) cluster.
         
         @param request: GetManagedPrometheusStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetManagedPrometheusStatusResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -12542,11 +12333,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetManagedPrometheusStatusResponse:
         """
+        @deprecated OpenAPI GetManagedPrometheusStatus is deprecated
+        
         @summary Queries the installation status of a Prometheus agent in a serverless Kubernetes (ASK) cluster or an Elastic Compute Service (ECS) cluster.
         
         @param request: GetManagedPrometheusStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetManagedPrometheusStatusResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -12584,10 +12378,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetManagedPrometheusStatusRequest,
     ) -> arms20190808_models.GetManagedPrometheusStatusResponse:
         """
+        @deprecated OpenAPI GetManagedPrometheusStatus is deprecated
+        
         @summary Queries the installation status of a Prometheus agent in a serverless Kubernetes (ASK) cluster or an Elastic Compute Service (ECS) cluster.
         
         @param request: GetManagedPrometheusStatusRequest
         @return: GetManagedPrometheusStatusResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.get_managed_prometheus_status_with_options(request, runtime)
@@ -12597,10 +12394,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetManagedPrometheusStatusRequest,
     ) -> arms20190808_models.GetManagedPrometheusStatusResponse:
         """
+        @deprecated OpenAPI GetManagedPrometheusStatus is deprecated
+        
         @summary Queries the installation status of a Prometheus agent in a serverless Kubernetes (ASK) cluster or an Elastic Compute Service (ECS) cluster.
         
         @param request: GetManagedPrometheusStatusRequest
         @return: GetManagedPrometheusStatusResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_managed_prometheus_status_with_options_async(request, runtime)
@@ -13324,110 +13124,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_prometheus_monitoring_with_options_async(request, runtime)
-
-    def get_prometheus_remote_write_with_options(
-        self,
-        request: arms20190808_models.GetPrometheusRemoteWriteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> arms20190808_models.GetPrometheusRemoteWriteResponse:
-        """
-        @summary Queries a remote write configuration item of a Prometheus instance for Container Service or a Prometheus instance for ECS.
-        
-        @param request: GetPrometheusRemoteWriteRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetPrometheusRemoteWriteResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.remote_write_name):
-            query['RemoteWriteName'] = request.remote_write_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetPrometheusRemoteWrite',
-            version='2019-08-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            arms20190808_models.GetPrometheusRemoteWriteResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_prometheus_remote_write_with_options_async(
-        self,
-        request: arms20190808_models.GetPrometheusRemoteWriteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> arms20190808_models.GetPrometheusRemoteWriteResponse:
-        """
-        @summary Queries a remote write configuration item of a Prometheus instance for Container Service or a Prometheus instance for ECS.
-        
-        @param request: GetPrometheusRemoteWriteRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetPrometheusRemoteWriteResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.remote_write_name):
-            query['RemoteWriteName'] = request.remote_write_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetPrometheusRemoteWrite',
-            version='2019-08-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            arms20190808_models.GetPrometheusRemoteWriteResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_prometheus_remote_write(
-        self,
-        request: arms20190808_models.GetPrometheusRemoteWriteRequest,
-    ) -> arms20190808_models.GetPrometheusRemoteWriteResponse:
-        """
-        @summary Queries a remote write configuration item of a Prometheus instance for Container Service or a Prometheus instance for ECS.
-        
-        @param request: GetPrometheusRemoteWriteRequest
-        @return: GetPrometheusRemoteWriteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.get_prometheus_remote_write_with_options(request, runtime)
-
-    async def get_prometheus_remote_write_async(
-        self,
-        request: arms20190808_models.GetPrometheusRemoteWriteRequest,
-    ) -> arms20190808_models.GetPrometheusRemoteWriteResponse:
-        """
-        @summary Queries a remote write configuration item of a Prometheus instance for Container Service or a Prometheus instance for ECS.
-        
-        @param request: GetPrometheusRemoteWriteRequest
-        @return: GetPrometheusRemoteWriteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.get_prometheus_remote_write_with_options_async(request, runtime)
 
     def get_recording_rule_with_options(
         self,
@@ -14539,6 +14235,8 @@ class Client(OpenApiClient):
             query['Pid'] = request.pid
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14580,6 +14278,8 @@ class Client(OpenApiClient):
             query['Pid'] = request.pid
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -16307,6 +16007,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.InstallManagedPrometheusResponse:
         """
+        @deprecated OpenAPI InstallManagedPrometheus is deprecated
+        
         @summary Installs a Prometheus agent for serverless Kubernetes (ASK) clusters or Elastic Compute Service (ECS) clusters.
         
         @description You can call this operation only if the following conditions are met: The resources that you want to monitor are ASK clusters or ECS clusters. No Prometheus agents are installed in the ASK or ECS clusters. Take note that Prometheus agents can be installed only on the cloud service side, not in user clusters.
@@ -16314,6 +16016,7 @@ class Client(OpenApiClient):
         @param request: InstallManagedPrometheusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: InstallManagedPrometheusResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -16362,6 +16065,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.InstallManagedPrometheusResponse:
         """
+        @deprecated OpenAPI InstallManagedPrometheus is deprecated
+        
         @summary Installs a Prometheus agent for serverless Kubernetes (ASK) clusters or Elastic Compute Service (ECS) clusters.
         
         @description You can call this operation only if the following conditions are met: The resources that you want to monitor are ASK clusters or ECS clusters. No Prometheus agents are installed in the ASK or ECS clusters. Take note that Prometheus agents can be installed only on the cloud service side, not in user clusters.
@@ -16369,6 +16074,7 @@ class Client(OpenApiClient):
         @param request: InstallManagedPrometheusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: InstallManagedPrometheusResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -16416,12 +16122,15 @@ class Client(OpenApiClient):
         request: arms20190808_models.InstallManagedPrometheusRequest,
     ) -> arms20190808_models.InstallManagedPrometheusResponse:
         """
+        @deprecated OpenAPI InstallManagedPrometheus is deprecated
+        
         @summary Installs a Prometheus agent for serverless Kubernetes (ASK) clusters or Elastic Compute Service (ECS) clusters.
         
         @description You can call this operation only if the following conditions are met: The resources that you want to monitor are ASK clusters or ECS clusters. No Prometheus agents are installed in the ASK or ECS clusters. Take note that Prometheus agents can be installed only on the cloud service side, not in user clusters.
         
         @param request: InstallManagedPrometheusRequest
         @return: InstallManagedPrometheusResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.install_managed_prometheus_with_options(request, runtime)
@@ -16431,12 +16140,15 @@ class Client(OpenApiClient):
         request: arms20190808_models.InstallManagedPrometheusRequest,
     ) -> arms20190808_models.InstallManagedPrometheusResponse:
         """
+        @deprecated OpenAPI InstallManagedPrometheus is deprecated
+        
         @summary Installs a Prometheus agent for serverless Kubernetes (ASK) clusters or Elastic Compute Service (ECS) clusters.
         
         @description You can call this operation only if the following conditions are met: The resources that you want to monitor are ASK clusters or ECS clusters. No Prometheus agents are installed in the ASK or ECS clusters. Take note that Prometheus agents can be installed only on the cloud service side, not in user clusters.
         
         @param request: InstallManagedPrometheusRequest
         @return: InstallManagedPrometheusResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.install_managed_prometheus_with_options_async(request, runtime)
@@ -16911,6 +16623,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.integration_type):
             query['IntegrationType'] = request.integration_type
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
         if not UtilClient.is_unset(request.page):
             query['Page'] = request.page
         if not UtilClient.is_unset(request.region_id):
@@ -16968,6 +16682,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.integration_type):
             query['IntegrationType'] = request.integration_type
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
         if not UtilClient.is_unset(request.page):
             query['Page'] = request.page
         if not UtilClient.is_unset(request.region_id):
@@ -18139,6 +17855,8 @@ class Client(OpenApiClient):
             query['EnvironmentType'] = request.environment_type
         if not UtilClient.is_unset(request.fee_package):
             query['FeePackage'] = request.fee_package
+        if not UtilClient.is_unset(request.filter_region_ids):
+            query['FilterRegionIds'] = request.filter_region_ids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -18190,6 +17908,8 @@ class Client(OpenApiClient):
             query['EnvironmentType'] = request.environment_type
         if not UtilClient.is_unset(request.fee_package):
             query['FeePackage'] = request.fee_package
+        if not UtilClient.is_unset(request.filter_region_ids):
+            query['FilterRegionIds'] = request.filter_region_ids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -19688,106 +19408,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_prometheus_monitoring_with_options_async(request, runtime)
-
-    def list_prometheus_remote_writes_with_options(
-        self,
-        request: arms20190808_models.ListPrometheusRemoteWritesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> arms20190808_models.ListPrometheusRemoteWritesResponse:
-        """
-        @summary Queries the remote write configuration items of a Prometheus instance.
-        
-        @param request: ListPrometheusRemoteWritesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListPrometheusRemoteWritesResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListPrometheusRemoteWrites',
-            version='2019-08-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            arms20190808_models.ListPrometheusRemoteWritesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_prometheus_remote_writes_with_options_async(
-        self,
-        request: arms20190808_models.ListPrometheusRemoteWritesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> arms20190808_models.ListPrometheusRemoteWritesResponse:
-        """
-        @summary Queries the remote write configuration items of a Prometheus instance.
-        
-        @param request: ListPrometheusRemoteWritesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListPrometheusRemoteWritesResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListPrometheusRemoteWrites',
-            version='2019-08-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            arms20190808_models.ListPrometheusRemoteWritesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_prometheus_remote_writes(
-        self,
-        request: arms20190808_models.ListPrometheusRemoteWritesRequest,
-    ) -> arms20190808_models.ListPrometheusRemoteWritesResponse:
-        """
-        @summary Queries the remote write configuration items of a Prometheus instance.
-        
-        @param request: ListPrometheusRemoteWritesRequest
-        @return: ListPrometheusRemoteWritesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.list_prometheus_remote_writes_with_options(request, runtime)
-
-    async def list_prometheus_remote_writes_async(
-        self,
-        request: arms20190808_models.ListPrometheusRemoteWritesRequest,
-    ) -> arms20190808_models.ListPrometheusRemoteWritesResponse:
-        """
-        @summary Queries the remote write configuration items of a Prometheus instance.
-        
-        @param request: ListPrometheusRemoteWritesRequest
-        @return: ListPrometheusRemoteWritesResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.list_prometheus_remote_writes_with_options_async(request, runtime)
 
     def list_retcode_apps_with_options(
         self,
@@ -24459,6 +24079,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UninstallManagedPrometheusResponse:
         """
+        @deprecated OpenAPI UninstallManagedPrometheus is deprecated
+        
         @summary Removes a Prometheus instance from a serverless Kubernetes (ASK) cluster or an Elastic Compute Service (ECS) instance.
         
         @description Make sure that the ASK cluster or ECS instance is monitored in Managed Service for Prometheus.
@@ -24466,6 +24088,7 @@ class Client(OpenApiClient):
         @param request: UninstallManagedPrometheusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UninstallManagedPrometheusResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -24504,6 +24127,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UninstallManagedPrometheusResponse:
         """
+        @deprecated OpenAPI UninstallManagedPrometheus is deprecated
+        
         @summary Removes a Prometheus instance from a serverless Kubernetes (ASK) cluster or an Elastic Compute Service (ECS) instance.
         
         @description Make sure that the ASK cluster or ECS instance is monitored in Managed Service for Prometheus.
@@ -24511,6 +24136,7 @@ class Client(OpenApiClient):
         @param request: UninstallManagedPrometheusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UninstallManagedPrometheusResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -24548,12 +24174,15 @@ class Client(OpenApiClient):
         request: arms20190808_models.UninstallManagedPrometheusRequest,
     ) -> arms20190808_models.UninstallManagedPrometheusResponse:
         """
+        @deprecated OpenAPI UninstallManagedPrometheus is deprecated
+        
         @summary Removes a Prometheus instance from a serverless Kubernetes (ASK) cluster or an Elastic Compute Service (ECS) instance.
         
         @description Make sure that the ASK cluster or ECS instance is monitored in Managed Service for Prometheus.
         
         @param request: UninstallManagedPrometheusRequest
         @return: UninstallManagedPrometheusResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.uninstall_managed_prometheus_with_options(request, runtime)
@@ -24563,12 +24192,15 @@ class Client(OpenApiClient):
         request: arms20190808_models.UninstallManagedPrometheusRequest,
     ) -> arms20190808_models.UninstallManagedPrometheusResponse:
         """
+        @deprecated OpenAPI UninstallManagedPrometheus is deprecated
+        
         @summary Removes a Prometheus instance from a serverless Kubernetes (ASK) cluster or an Elastic Compute Service (ECS) instance.
         
         @description Make sure that the ASK cluster or ECS instance is monitored in Managed Service for Prometheus.
         
         @param request: UninstallManagedPrometheusRequest
         @return: UninstallManagedPrometheusResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.uninstall_managed_prometheus_with_options_async(request, runtime)
@@ -26904,118 +26536,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_prometheus_monitoring_status_with_options_async(request, runtime)
-
-    def update_prometheus_remote_write_with_options(
-        self,
-        request: arms20190808_models.UpdatePrometheusRemoteWriteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> arms20190808_models.UpdatePrometheusRemoteWriteResponse:
-        """
-        @summary Modifies a remote write configuration item of a Prometheus instance for Container Service or a Prometheus instance for ECS.
-        
-        @param request: UpdatePrometheusRemoteWriteRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdatePrometheusRemoteWriteResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.remote_write_name):
-            query['RemoteWriteName'] = request.remote_write_name
-        body = {}
-        if not UtilClient.is_unset(request.remote_write_yaml):
-            body['RemoteWriteYaml'] = request.remote_write_yaml
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdatePrometheusRemoteWrite',
-            version='2019-08-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            arms20190808_models.UpdatePrometheusRemoteWriteResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_prometheus_remote_write_with_options_async(
-        self,
-        request: arms20190808_models.UpdatePrometheusRemoteWriteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> arms20190808_models.UpdatePrometheusRemoteWriteResponse:
-        """
-        @summary Modifies a remote write configuration item of a Prometheus instance for Container Service or a Prometheus instance for ECS.
-        
-        @param request: UpdatePrometheusRemoteWriteRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdatePrometheusRemoteWriteResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.remote_write_name):
-            query['RemoteWriteName'] = request.remote_write_name
-        body = {}
-        if not UtilClient.is_unset(request.remote_write_yaml):
-            body['RemoteWriteYaml'] = request.remote_write_yaml
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdatePrometheusRemoteWrite',
-            version='2019-08-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            arms20190808_models.UpdatePrometheusRemoteWriteResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_prometheus_remote_write(
-        self,
-        request: arms20190808_models.UpdatePrometheusRemoteWriteRequest,
-    ) -> arms20190808_models.UpdatePrometheusRemoteWriteResponse:
-        """
-        @summary Modifies a remote write configuration item of a Prometheus instance for Container Service or a Prometheus instance for ECS.
-        
-        @param request: UpdatePrometheusRemoteWriteRequest
-        @return: UpdatePrometheusRemoteWriteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.update_prometheus_remote_write_with_options(request, runtime)
-
-    async def update_prometheus_remote_write_async(
-        self,
-        request: arms20190808_models.UpdatePrometheusRemoteWriteRequest,
-    ) -> arms20190808_models.UpdatePrometheusRemoteWriteResponse:
-        """
-        @summary Modifies a remote write configuration item of a Prometheus instance for Container Service or a Prometheus instance for ECS.
-        
-        @param request: UpdatePrometheusRemoteWriteRequest
-        @return: UpdatePrometheusRemoteWriteResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.update_prometheus_remote_write_with_options_async(request, runtime)
 
     def update_rum_app_with_options(
         self,

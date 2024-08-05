@@ -3267,154 +3267,6 @@ class AddPrometheusIntegrationResponse(TeaModel):
         return self
 
 
-class AddPrometheusRemoteWriteRequest(TeaModel):
-    def __init__(
-        self,
-        cluster_id: str = None,
-        region_id: str = None,
-        remote_write_yaml: str = None,
-    ):
-        # The ID of the Prometheus instance.
-        # 
-        # This parameter is required.
-        self.cluster_id = cluster_id
-        # The region ID.
-        # 
-        # This parameter is required.
-        self.region_id = region_id
-        # The details of the remote write configuration item. Specify the value in the YAML format.
-        # 
-        # This parameter is required.
-        self.remote_write_yaml = remote_write_yaml
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_id is not None:
-            result['ClusterId'] = self.cluster_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.remote_write_yaml is not None:
-            result['RemoteWriteYaml'] = self.remote_write_yaml
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterId') is not None:
-            self.cluster_id = m.get('ClusterId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('RemoteWriteYaml') is not None:
-            self.remote_write_yaml = m.get('RemoteWriteYaml')
-        return self
-
-
-class AddPrometheusRemoteWriteResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: int = None,
-        data: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
-        self.code = code
-        # The name of the remote write configuration item that was added, or the exception information.
-        self.data = data
-        # The returned message.
-        self.message = message
-        # The request ID.
-        self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`
-        # *   `false`
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class AddPrometheusRemoteWriteResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: AddPrometheusRemoteWriteResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = AddPrometheusRemoteWriteResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class AddRecordingRuleRequest(TeaModel):
     def __init__(
         self,
@@ -8917,6 +8769,8 @@ class CreateOrUpdateEventBridgeIntegrationRequest(TeaModel):
         # *   If you specify this parameter, the specified EventBridge integration is modified.
         self.id = id
         # The name of the EventBridge integration.
+        # 
+        # This parameter is required.
         self.name = name
         # The event source.
         self.source = source
@@ -9180,6 +9034,8 @@ class CreateOrUpdateIMRobotRequest(TeaModel):
         # *   `dingding`: DingTalk chatbot
         # *   `wechat`: WeCom chatbot
         # *   `feishu`: Lark chatbot.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -17581,6 +17437,8 @@ class DeleteEventBridgeIntegrationRequest(TeaModel):
         id: int = None,
     ):
         # The ID of the EventBridge integration. You can call the **ListEventBridgeIntegrations** operation to query the ID.
+        # 
+        # This parameter is required.
         self.id = id
 
     def validate(self):
@@ -18953,151 +18811,6 @@ class DeletePrometheusMonitoringResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeletePrometheusMonitoringResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DeletePrometheusRemoteWriteRequest(TeaModel):
-    def __init__(
-        self,
-        cluster_id: str = None,
-        region_id: str = None,
-        remote_write_names: str = None,
-    ):
-        # The ID of the Prometheus instance.
-        # 
-        # This parameter is required.
-        self.cluster_id = cluster_id
-        # The region ID.
-        # 
-        # This parameter is required.
-        self.region_id = region_id
-        # The names of the remote write configuration items that you want to delete. Separate configuration items with commas (,).
-        # 
-        # This parameter is required.
-        self.remote_write_names = remote_write_names
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_id is not None:
-            result['ClusterId'] = self.cluster_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.remote_write_names is not None:
-            result['RemoteWriteNames'] = self.remote_write_names
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterId') is not None:
-            self.cluster_id = m.get('ClusterId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('RemoteWriteNames') is not None:
-            self.remote_write_names = m.get('RemoteWriteNames')
-        return self
-
-
-class DeletePrometheusRemoteWriteResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: int = None,
-        data: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        # The status code or error code.
-        self.code = code
-        # The number of remote write configuration items that are deleted, or an error message.
-        self.data = data
-        # The message returned.
-        self.message = message
-        # The request ID.
-        self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true and false.
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class DeletePrometheusRemoteWriteResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DeletePrometheusRemoteWriteResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DeletePrometheusRemoteWriteResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -29229,10 +28942,13 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         cluster_id: str = None,
         cluster_name: str = None,
         cluster_type: str = None,
+        db_instance_status: str = None,
+        enable_auth_token: str = None,
         grafana_instance_id: str = None,
         http_api_inter_url: str = None,
         http_api_intra_url: str = None,
         payment_type: str = None,
+        product: str = None,
         push_gateway_inter_url: str = None,
         push_gateway_intra_url: str = None,
         region_id: str = None,
@@ -29245,6 +28961,7 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         security_group_id: str = None,
         storage_duration: int = None,
         sub_clusters_json: str = None,
+        surpport_auth_types: List[str] = None,
         tags: List[GetPrometheusInstanceResponseBodyDataTags] = None,
         user_id: str = None,
         v_switch_id: str = None,
@@ -29267,6 +28984,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         # *   global-view: global aggregation instance
         # *   aliyun-cs: Prometheus instance for Container Service
         self.cluster_type = cluster_type
+        self.db_instance_status = db_instance_status
+        self.enable_auth_token = enable_auth_token
         # The ID of the Grafana workspace.
         self.grafana_instance_id = grafana_instance_id
         # The public URL for the HTTP API.
@@ -29278,6 +28997,7 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         # *   PREPAY: subscription
         # *   POSTPAY: pay-as-you-go
         self.payment_type = payment_type
+        self.product = product
         # The public URL for Pushgateway.
         self.push_gateway_inter_url = push_gateway_inter_url
         # The internal URL for Pushgateway.
@@ -29302,6 +29022,7 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self.storage_duration = storage_duration
         # The child instances of the Prometheus instance for GlobalView. The value is a JSON string.
         self.sub_clusters_json = sub_clusters_json
+        self.surpport_auth_types = surpport_auth_types
         # The tags of the instance.
         self.tags = tags
         # The user ID.
@@ -29335,6 +29056,10 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             result['ClusterName'] = self.cluster_name
         if self.cluster_type is not None:
             result['ClusterType'] = self.cluster_type
+        if self.db_instance_status is not None:
+            result['DbInstanceStatus'] = self.db_instance_status
+        if self.enable_auth_token is not None:
+            result['EnableAuthToken'] = self.enable_auth_token
         if self.grafana_instance_id is not None:
             result['GrafanaInstanceId'] = self.grafana_instance_id
         if self.http_api_inter_url is not None:
@@ -29343,6 +29068,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             result['HttpApiIntraUrl'] = self.http_api_intra_url
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
+        if self.product is not None:
+            result['Product'] = self.product
         if self.push_gateway_inter_url is not None:
             result['PushGatewayInterUrl'] = self.push_gateway_inter_url
         if self.push_gateway_intra_url is not None:
@@ -29367,6 +29094,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             result['StorageDuration'] = self.storage_duration
         if self.sub_clusters_json is not None:
             result['SubClustersJson'] = self.sub_clusters_json
+        if self.surpport_auth_types is not None:
+            result['SurpportAuthTypes'] = self.surpport_auth_types
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -29393,6 +29122,10 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             self.cluster_name = m.get('ClusterName')
         if m.get('ClusterType') is not None:
             self.cluster_type = m.get('ClusterType')
+        if m.get('DbInstanceStatus') is not None:
+            self.db_instance_status = m.get('DbInstanceStatus')
+        if m.get('EnableAuthToken') is not None:
+            self.enable_auth_token = m.get('EnableAuthToken')
         if m.get('GrafanaInstanceId') is not None:
             self.grafana_instance_id = m.get('GrafanaInstanceId')
         if m.get('HttpApiInterUrl') is not None:
@@ -29401,6 +29134,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             self.http_api_intra_url = m.get('HttpApiIntraUrl')
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
         if m.get('PushGatewayInterUrl') is not None:
             self.push_gateway_inter_url = m.get('PushGatewayInterUrl')
         if m.get('PushGatewayIntraUrl') is not None:
@@ -29425,6 +29160,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             self.storage_duration = m.get('StorageDuration')
         if m.get('SubClustersJson') is not None:
             self.sub_clusters_json = m.get('SubClustersJson')
+        if m.get('SurpportAuthTypes') is not None:
+            self.surpport_auth_types = m.get('SurpportAuthTypes')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -30023,198 +29760,6 @@ class GetPrometheusMonitoringResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetPrometheusMonitoringResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetPrometheusRemoteWriteRequest(TeaModel):
-    def __init__(
-        self,
-        cluster_id: str = None,
-        region_id: str = None,
-        remote_write_name: str = None,
-    ):
-        # The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
-        # 
-        # This parameter is required.
-        self.cluster_id = cluster_id
-        # The region ID.
-        # 
-        # This parameter is required.
-        self.region_id = region_id
-        # The name of the remote write configuration item.
-        # 
-        # This parameter is required.
-        self.remote_write_name = remote_write_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_id is not None:
-            result['ClusterId'] = self.cluster_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.remote_write_name is not None:
-            result['RemoteWriteName'] = self.remote_write_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterId') is not None:
-            self.cluster_id = m.get('ClusterId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('RemoteWriteName') is not None:
-            self.remote_write_name = m.get('RemoteWriteName')
-        return self
-
-
-class GetPrometheusRemoteWriteResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        cluster_id: str = None,
-        remote_write_name: str = None,
-        remote_write_yaml: str = None,
-    ):
-        # The ID of the Prometheus instance.
-        self.cluster_id = cluster_id
-        # The name of the remote write configuration item.
-        self.remote_write_name = remote_write_name
-        # The details of the remote write configuration item. The value is in the YAML format.
-        self.remote_write_yaml = remote_write_yaml
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_id is not None:
-            result['ClusterId'] = self.cluster_id
-        if self.remote_write_name is not None:
-            result['RemoteWriteName'] = self.remote_write_name
-        if self.remote_write_yaml is not None:
-            result['RemoteWriteYaml'] = self.remote_write_yaml
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterId') is not None:
-            self.cluster_id = m.get('ClusterId')
-        if m.get('RemoteWriteName') is not None:
-            self.remote_write_name = m.get('RemoteWriteName')
-        if m.get('RemoteWriteYaml') is not None:
-            self.remote_write_yaml = m.get('RemoteWriteYaml')
-        return self
-
-
-class GetPrometheusRemoteWriteResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: int = None,
-        data: GetPrometheusRemoteWriteResponseBodyData = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        # The status code. The status code 200 indicates that the request was successful.
-        self.code = code
-        # The details of the remote write configuration item.
-        self.data = data
-        # The message returned.
-        self.message = message
-        # The request ID.
-        self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`
-        # *   `false`
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = GetPrometheusRemoteWriteResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class GetPrometheusRemoteWriteResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetPrometheusRemoteWriteResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetPrometheusRemoteWriteResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -32845,6 +32390,7 @@ class GetRumUploadFilesRequest(TeaModel):
         app_type: str = None,
         pid: str = None,
         region_id: str = None,
+        version_id: str = None,
     ):
         # The file type. Valid values: source-map: SourceMap files. mapping: symbol table files for Android. dsym: dSYM files for iOS.
         self.app_type = app_type
@@ -32854,6 +32400,8 @@ class GetRumUploadFilesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The version ID. When this field is not provided, the default response includes all versions.
+        self.version_id = version_id
 
     def validate(self):
         pass
@@ -32870,6 +32418,8 @@ class GetRumUploadFilesRequest(TeaModel):
             result['Pid'] = self.pid
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
         return result
 
     def from_map(self, m: dict = None):
@@ -32880,6 +32430,8 @@ class GetRumUploadFilesRequest(TeaModel):
             self.pid = m.get('Pid')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
         return self
 
 
@@ -41172,6 +40724,7 @@ class ListAlertsRequest(TeaModel):
         dispatch_rule_id: int = None,
         end_time: str = None,
         integration_type: str = None,
+        owner: str = None,
         page: int = None,
         region_id: str = None,
         severity: str = None,
@@ -41209,6 +40762,7 @@ class ListAlertsRequest(TeaModel):
         # *   OPENFALCON
         # *   ARMS_INSIGHTS
         self.integration_type = integration_type
+        self.owner = owner
         # The number of the page to return.
         # 
         # This parameter is required.
@@ -41257,6 +40811,8 @@ class ListAlertsRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.integration_type is not None:
             result['IntegrationType'] = self.integration_type
+        if self.owner is not None:
+            result['Owner'] = self.owner
         if self.page is not None:
             result['Page'] = self.page
         if self.region_id is not None:
@@ -41285,6 +40841,8 @@ class ListAlertsRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('IntegrationType') is not None:
             self.integration_type = m.get('IntegrationType')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
         if m.get('Page') is not None:
             self.page = m.get('Page')
         if m.get('RegionId') is not None:
@@ -44605,6 +44163,7 @@ class ListEnvironmentsRequest(TeaModel):
         bind_resource_id: str = None,
         environment_type: str = None,
         fee_package: str = None,
+        filter_region_ids: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         tag: List[ListEnvironmentsRequestTag] = None,
@@ -44663,6 +44222,7 @@ class ListEnvironmentsRequest(TeaModel):
         # *   CS_Pro: Container Monitoring Pro
         # *   CS_Basic: Container Monitoring Basic
         self.fee_package = fee_package
+        self.filter_region_ids = filter_region_ids
         # The region ID.
         self.region_id = region_id
         # The ID of the resource group.
@@ -44690,6 +44250,8 @@ class ListEnvironmentsRequest(TeaModel):
             result['EnvironmentType'] = self.environment_type
         if self.fee_package is not None:
             result['FeePackage'] = self.fee_package
+        if self.filter_region_ids is not None:
+            result['FilterRegionIds'] = self.filter_region_ids
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -44710,6 +44272,8 @@ class ListEnvironmentsRequest(TeaModel):
             self.environment_type = m.get('EnvironmentType')
         if m.get('FeePackage') is not None:
             self.fee_package = m.get('FeePackage')
+        if m.get('FilterRegionIds') is not None:
+            self.filter_region_ids = m.get('FilterRegionIds')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -44729,6 +44293,7 @@ class ListEnvironmentsShrinkRequest(TeaModel):
         bind_resource_id: str = None,
         environment_type: str = None,
         fee_package: str = None,
+        filter_region_ids: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         tag_shrink: str = None,
@@ -44787,6 +44352,7 @@ class ListEnvironmentsShrinkRequest(TeaModel):
         # *   CS_Pro: Container Monitoring Pro
         # *   CS_Basic: Container Monitoring Basic
         self.fee_package = fee_package
+        self.filter_region_ids = filter_region_ids
         # The region ID.
         self.region_id = region_id
         # The ID of the resource group.
@@ -44811,6 +44377,8 @@ class ListEnvironmentsShrinkRequest(TeaModel):
             result['EnvironmentType'] = self.environment_type
         if self.fee_package is not None:
             result['FeePackage'] = self.fee_package
+        if self.filter_region_ids is not None:
+            result['FilterRegionIds'] = self.filter_region_ids
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -44829,6 +44397,8 @@ class ListEnvironmentsShrinkRequest(TeaModel):
             self.environment_type = m.get('EnvironmentType')
         if m.get('FeePackage') is not None:
             self.fee_package = m.get('FeePackage')
+        if m.get('FilterRegionIds') is not None:
+            self.filter_region_ids = m.get('FilterRegionIds')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -49375,192 +48945,6 @@ class ListPrometheusMonitoringResponse(TeaModel):
         return self
 
 
-class ListPrometheusRemoteWritesRequest(TeaModel):
-    def __init__(
-        self,
-        cluster_id: str = None,
-        region_id: str = None,
-    ):
-        # The ID of the Prometheus instance.
-        # 
-        # This parameter is required.
-        self.cluster_id = cluster_id
-        # The ID of the region.
-        # 
-        # This parameter is required.
-        self.region_id = region_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_id is not None:
-            result['ClusterId'] = self.cluster_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterId') is not None:
-            self.cluster_id = m.get('ClusterId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        return self
-
-
-class ListPrometheusRemoteWritesResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        cluster_id: str = None,
-        remote_write_name: str = None,
-        remote_write_yaml: str = None,
-    ):
-        # The ID of the Prometheus instance.
-        self.cluster_id = cluster_id
-        # The name of the remote write configuration item.
-        self.remote_write_name = remote_write_name
-        # The information about the queried remote write configuration item of the Prometheus instance. The information is displayed in the YAML format.
-        self.remote_write_yaml = remote_write_yaml
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_id is not None:
-            result['ClusterId'] = self.cluster_id
-        if self.remote_write_name is not None:
-            result['RemoteWriteName'] = self.remote_write_name
-        if self.remote_write_yaml is not None:
-            result['RemoteWriteYaml'] = self.remote_write_yaml
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterId') is not None:
-            self.cluster_id = m.get('ClusterId')
-        if m.get('RemoteWriteName') is not None:
-            self.remote_write_name = m.get('RemoteWriteName')
-        if m.get('RemoteWriteYaml') is not None:
-            self.remote_write_yaml = m.get('RemoteWriteYaml')
-        return self
-
-
-class ListPrometheusRemoteWritesResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: int = None,
-        data: List[ListPrometheusRemoteWritesResponseBodyData] = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        # The HTTP status code that is returned. The HTTP status code 200 indicates that the call was successful. Otherwise, the call fails.
-        self.code = code
-        # The remote write configuration items returned.
-        self.data = data
-        # The message returned.
-        self.message = message
-        # The ID of the request.
-        self.request_id = request_id
-        # Indicates whether the call was successful. Valid values: true and false.
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        result['Data'] = []
-        if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        self.data = []
-        if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = ListPrometheusRemoteWritesResponseBodyData()
-                self.data.append(temp_model.from_map(k))
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class ListPrometheusRemoteWritesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListPrometheusRemoteWritesResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListPrometheusRemoteWritesResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListRetcodeAppsRequestTags(TeaModel):
     def __init__(
         self,
@@ -53525,8 +52909,9 @@ class QueryCommercialUsageResponseBodyData(TeaModel):
 class QueryCommercialUsageResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
+        code: int = None,
         data: QueryCommercialUsageResponseBodyData = None,
+        http_status_code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
@@ -53535,6 +52920,7 @@ class QueryCommercialUsageResponseBody(TeaModel):
         self.code = code
         # The returned struct.
         self.data = data
+        self.http_status_code = http_status_code
         # The error message returned if the request failed.
         self.message = message
         # The request ID.
@@ -53559,6 +52945,8 @@ class QueryCommercialUsageResponseBody(TeaModel):
             result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -53574,6 +52962,8 @@ class QueryCommercialUsageResponseBody(TeaModel):
         if m.get('Data') is not None:
             temp_model = QueryCommercialUsageResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -64251,163 +63641,6 @@ class UpdatePrometheusMonitoringStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdatePrometheusMonitoringStatusResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class UpdatePrometheusRemoteWriteRequest(TeaModel):
-    def __init__(
-        self,
-        cluster_id: str = None,
-        region_id: str = None,
-        remote_write_name: str = None,
-        remote_write_yaml: str = None,
-    ):
-        # The ID of the Prometheus instance.
-        # 
-        # This parameter is required.
-        self.cluster_id = cluster_id
-        # The region ID.
-        # 
-        # This parameter is required.
-        self.region_id = region_id
-        # The name of the remote write configuration item.
-        # 
-        # This parameter is required.
-        self.remote_write_name = remote_write_name
-        # The remote write configuration. Specify the value in the YAML format.
-        # 
-        # This parameter is required.
-        self.remote_write_yaml = remote_write_yaml
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_id is not None:
-            result['ClusterId'] = self.cluster_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.remote_write_name is not None:
-            result['RemoteWriteName'] = self.remote_write_name
-        if self.remote_write_yaml is not None:
-            result['RemoteWriteYaml'] = self.remote_write_yaml
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterId') is not None:
-            self.cluster_id = m.get('ClusterId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('RemoteWriteName') is not None:
-            self.remote_write_name = m.get('RemoteWriteName')
-        if m.get('RemoteWriteYaml') is not None:
-            self.remote_write_yaml = m.get('RemoteWriteYaml')
-        return self
-
-
-class UpdatePrometheusRemoteWriteResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: int = None,
-        data: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        # The status code. A value of 200 indicates that the request is successful.
-        self.code = code
-        # The name of the remote write configuration that was modified, or the exception information.
-        self.data = data
-        # The message returned.
-        self.message = message
-        # Id of the request
-        self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
-        # 
-        # *   `true`
-        # *   `false`
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class UpdatePrometheusRemoteWriteResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: UpdatePrometheusRemoteWriteResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = UpdatePrometheusRemoteWriteResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
