@@ -1538,6 +1538,339 @@ class DescribeInstancesShrinkRequest(TeaModel):
         return self
 
 
+class DescribeInstancesResponseBodyInstancesClusterStateClusterStageTotalStageWithWeight(TeaModel):
+    def __init__(
+        self,
+        step_index: int = None,
+        step_name: str = None,
+        weight: int = None,
+    ):
+        self.step_index = step_index
+        self.step_name = step_name
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.step_index is not None:
+            result['StepIndex'] = self.step_index
+        if self.step_name is not None:
+            result['StepName'] = self.step_name
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StepIndex') is not None:
+            self.step_index = m.get('StepIndex')
+        if m.get('StepName') is not None:
+            self.step_name = m.get('StepName')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class DescribeInstancesResponseBodyInstancesClusterStateClusterStage(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        current_stage: int = None,
+        message: str = None,
+        status: str = None,
+        total_stage_with_weight: List[DescribeInstancesResponseBodyInstancesClusterStateClusterStageTotalStageWithWeight] = None,
+    ):
+        self.cluster_id = cluster_id
+        self.current_stage = current_stage
+        self.message = message
+        self.status = status
+        self.total_stage_with_weight = total_stage_with_weight
+
+    def validate(self):
+        if self.total_stage_with_weight:
+            for k in self.total_stage_with_weight:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.current_stage is not None:
+            result['CurrentStage'] = self.current_stage
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.status is not None:
+            result['Status'] = self.status
+        result['TotalStageWithWeight'] = []
+        if self.total_stage_with_weight is not None:
+            for k in self.total_stage_with_weight:
+                result['TotalStageWithWeight'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('CurrentStage') is not None:
+            self.current_stage = m.get('CurrentStage')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.total_stage_with_weight = []
+        if m.get('TotalStageWithWeight') is not None:
+            for k in m.get('TotalStageWithWeight'):
+                temp_model = DescribeInstancesResponseBodyInstancesClusterStateClusterStageTotalStageWithWeight()
+                self.total_stage_with_weight.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeInstancesResponseBodyInstancesClusterStateUserSlbDtoUserSlbListeners(TeaModel):
+    def __init__(
+        self,
+        listeners_status: str = None,
+        port: str = None,
+    ):
+        self.listeners_status = listeners_status
+        self.port = port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.listeners_status is not None:
+            result['ListenersStatus'] = self.listeners_status
+        if self.port is not None:
+            result['Port'] = self.port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ListenersStatus') is not None:
+            self.listeners_status = m.get('ListenersStatus')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        return self
+
+
+class DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto(TeaModel):
+    def __init__(
+        self,
+        exist_slb: bool = None,
+        slb_id: str = None,
+        slb_ip: str = None,
+        slb_status: str = None,
+        user_slb_listeners: List[DescribeInstancesResponseBodyInstancesClusterStateUserSlbDtoUserSlbListeners] = None,
+    ):
+        self.exist_slb = exist_slb
+        self.slb_id = slb_id
+        self.slb_ip = slb_ip
+        self.slb_status = slb_status
+        self.user_slb_listeners = user_slb_listeners
+
+    def validate(self):
+        if self.user_slb_listeners:
+            for k in self.user_slb_listeners:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exist_slb is not None:
+            result['ExistSlb'] = self.exist_slb
+        if self.slb_id is not None:
+            result['SlbId'] = self.slb_id
+        if self.slb_ip is not None:
+            result['SlbIp'] = self.slb_ip
+        if self.slb_status is not None:
+            result['SlbStatus'] = self.slb_status
+        result['UserSlbListeners'] = []
+        if self.user_slb_listeners is not None:
+            for k in self.user_slb_listeners:
+                result['UserSlbListeners'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExistSlb') is not None:
+            self.exist_slb = m.get('ExistSlb')
+        if m.get('SlbId') is not None:
+            self.slb_id = m.get('SlbId')
+        if m.get('SlbIp') is not None:
+            self.slb_ip = m.get('SlbIp')
+        if m.get('SlbStatus') is not None:
+            self.slb_status = m.get('SlbStatus')
+        self.user_slb_listeners = []
+        if m.get('UserSlbListeners') is not None:
+            for k in m.get('UserSlbListeners'):
+                temp_model = DescribeInstancesResponseBodyInstancesClusterStateUserSlbDtoUserSlbListeners()
+                self.user_slb_listeners.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeInstancesResponseBodyInstancesClusterState(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_stage: DescribeInstancesResponseBodyInstancesClusterStateClusterStage = None,
+        create_timeout: bool = None,
+        status: str = None,
+        sub_status: str = None,
+        url: str = None,
+        user_slb_dto: DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto = None,
+        vpc_cidr: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cluster_stage = cluster_stage
+        self.create_timeout = create_timeout
+        self.status = status
+        self.sub_status = sub_status
+        self.url = url
+        self.user_slb_dto = user_slb_dto
+        self.vpc_cidr = vpc_cidr
+
+    def validate(self):
+        if self.cluster_stage:
+            self.cluster_stage.validate()
+        if self.user_slb_dto:
+            self.user_slb_dto.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_stage is not None:
+            result['ClusterStage'] = self.cluster_stage.to_map()
+        if self.create_timeout is not None:
+            result['CreateTimeout'] = self.create_timeout
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.sub_status is not None:
+            result['SubStatus'] = self.sub_status
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.user_slb_dto is not None:
+            result['UserSlbDto'] = self.user_slb_dto.to_map()
+        if self.vpc_cidr is not None:
+            result['VpcCidr'] = self.vpc_cidr
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterStage') is not None:
+            temp_model = DescribeInstancesResponseBodyInstancesClusterStateClusterStage()
+            self.cluster_stage = temp_model.from_map(m['ClusterStage'])
+        if m.get('CreateTimeout') is not None:
+            self.create_timeout = m.get('CreateTimeout')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubStatus') is not None:
+            self.sub_status = m.get('SubStatus')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('UserSlbDto') is not None:
+            temp_model = DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto()
+            self.user_slb_dto = temp_model.from_map(m['UserSlbDto'])
+        if m.get('VpcCidr') is not None:
+            self.vpc_cidr = m.get('VpcCidr')
+        return self
+
+
+class DescribeInstancesResponseBodyInstancesClusterUsedResources(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        ha: bool = None,
+        ha_used_cpu: float = None,
+        ha_used_memory: float = None,
+        ha_used_resource: float = None,
+        used_cpu: float = None,
+        used_memory: float = None,
+        used_resource: float = None,
+    ):
+        self.cluster_id = cluster_id
+        self.ha = ha
+        self.ha_used_cpu = ha_used_cpu
+        self.ha_used_memory = ha_used_memory
+        self.ha_used_resource = ha_used_resource
+        self.used_cpu = used_cpu
+        self.used_memory = used_memory
+        self.used_resource = used_resource
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.ha is not None:
+            result['Ha'] = self.ha
+        if self.ha_used_cpu is not None:
+            result['HaUsedCpu'] = self.ha_used_cpu
+        if self.ha_used_memory is not None:
+            result['HaUsedMemory'] = self.ha_used_memory
+        if self.ha_used_resource is not None:
+            result['HaUsedResource'] = self.ha_used_resource
+        if self.used_cpu is not None:
+            result['UsedCpu'] = self.used_cpu
+        if self.used_memory is not None:
+            result['UsedMemory'] = self.used_memory
+        if self.used_resource is not None:
+            result['UsedResource'] = self.used_resource
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('Ha') is not None:
+            self.ha = m.get('Ha')
+        if m.get('HaUsedCpu') is not None:
+            self.ha_used_cpu = m.get('HaUsedCpu')
+        if m.get('HaUsedMemory') is not None:
+            self.ha_used_memory = m.get('HaUsedMemory')
+        if m.get('HaUsedResource') is not None:
+            self.ha_used_resource = m.get('HaUsedResource')
+        if m.get('UsedCpu') is not None:
+            self.used_cpu = m.get('UsedCpu')
+        if m.get('UsedMemory') is not None:
+            self.used_memory = m.get('UsedMemory')
+        if m.get('UsedResource') is not None:
+            self.used_resource = m.get('UsedResource')
+        return self
+
+
 class DescribeInstancesResponseBodyInstancesClusterUsedStorage(TeaModel):
     def __init__(
         self,
@@ -1604,6 +1937,75 @@ class DescribeInstancesResponseBodyInstancesHaResourceSpec(TeaModel):
         return self
 
 
+class DescribeInstancesResponseBodyInstancesHaVSwitchInfo(TeaModel):
+    def __init__(
+        self,
+        available_ip_address_count: int = None,
+        description: str = None,
+        region_id: str = None,
+        v_switch_cidr: str = None,
+        v_switch_id: str = None,
+        v_switch_name: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.available_ip_address_count = available_ip_address_count
+        self.description = description
+        self.region_id = region_id
+        self.v_switch_cidr = v_switch_cidr
+        self.v_switch_id = v_switch_id
+        self.v_switch_name = v_switch_name
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.available_ip_address_count is not None:
+            result['AvailableIpAddressCount'] = self.available_ip_address_count
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.v_switch_cidr is not None:
+            result['VSwitchCidr'] = self.v_switch_cidr
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.v_switch_name is not None:
+            result['VSwitchName'] = self.v_switch_name
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvailableIpAddressCount') is not None:
+            self.available_ip_address_count = m.get('AvailableIpAddressCount')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('VSwitchCidr') is not None:
+            self.v_switch_cidr = m.get('VSwitchCidr')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VSwitchName') is not None:
+            self.v_switch_name = m.get('VSwitchName')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
 class DescribeInstancesResponseBodyInstancesHostAliases(TeaModel):
     def __init__(
         self,
@@ -1636,6 +2038,57 @@ class DescribeInstancesResponseBodyInstancesHostAliases(TeaModel):
             self.host_names = m.get('HostNames')
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
+        return self
+
+
+class DescribeInstancesResponseBodyInstancesOssInfo(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        access_key: str = None,
+        bucket: str = None,
+        bucket_versioning_status: str = None,
+        endpoint: str = None,
+    ):
+        self.access_id = access_id
+        self.access_key = access_key
+        self.bucket = bucket
+        self.bucket_versioning_status = bucket_versioning_status
+        self.endpoint = endpoint
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.access_key is not None:
+            result['AccessKey'] = self.access_key
+        if self.bucket is not None:
+            result['Bucket'] = self.bucket
+        if self.bucket_versioning_status is not None:
+            result['BucketVersioningStatus'] = self.bucket_versioning_status
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('AccessKey') is not None:
+            self.access_key = m.get('AccessKey')
+        if m.get('Bucket') is not None:
+            self.bucket = m.get('Bucket')
+        if m.get('BucketVersioningStatus') is not None:
+            self.bucket_versioning_status = m.get('BucketVersioningStatus')
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
         return self
 
 
@@ -1773,23 +2226,153 @@ class DescribeInstancesResponseBodyInstancesTags(TeaModel):
         return self
 
 
+class DescribeInstancesResponseBodyInstancesVSwitchInfo(TeaModel):
+    def __init__(
+        self,
+        available_ip_address_count: str = None,
+        description: str = None,
+        region_id: str = None,
+        v_switch_cidr: str = None,
+        v_switch_id: str = None,
+        v_switch_name: str = None,
+        vpc_id: str = None,
+        zone_id: str = None,
+    ):
+        self.available_ip_address_count = available_ip_address_count
+        self.description = description
+        self.region_id = region_id
+        self.v_switch_cidr = v_switch_cidr
+        self.v_switch_id = v_switch_id
+        self.v_switch_name = v_switch_name
+        self.vpc_id = vpc_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.available_ip_address_count is not None:
+            result['AvailableIpAddressCount'] = self.available_ip_address_count
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.v_switch_cidr is not None:
+            result['VSwitchCidr'] = self.v_switch_cidr
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.v_switch_name is not None:
+            result['VSwitchName'] = self.v_switch_name
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvailableIpAddressCount') is not None:
+            self.available_ip_address_count = m.get('AvailableIpAddressCount')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('VSwitchCidr') is not None:
+            self.v_switch_cidr = m.get('VSwitchCidr')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VSwitchName') is not None:
+            self.v_switch_name = m.get('VSwitchName')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeInstancesResponseBodyInstancesVpcInfo(TeaModel):
+    def __init__(
+        self,
+        cidr_block: str = None,
+        description: str = None,
+        region_id: str = None,
+        status: str = None,
+        vpc_id: str = None,
+        vpc_name: str = None,
+    ):
+        self.cidr_block = cidr_block
+        self.description = description
+        self.region_id = region_id
+        self.status = status
+        self.vpc_id = vpc_id
+        self.vpc_name = vpc_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vpc_name is not None:
+            result['VpcName'] = self.vpc_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VpcName') is not None:
+            self.vpc_name = m.get('VpcName')
+        return self
+
+
 class DescribeInstancesResponseBodyInstances(TeaModel):
     def __init__(
         self,
         architecture_type: str = None,
         ask_cluster_id: str = None,
         charge_type: str = None,
+        cluster_state: DescribeInstancesResponseBodyInstancesClusterState = None,
         cluster_status: str = None,
+        cluster_used_resources: List[DescribeInstancesResponseBodyInstancesClusterUsedResources] = None,
         cluster_used_storage: DescribeInstancesResponseBodyInstancesClusterUsedStorage = None,
         ha: bool = None,
         ha_resource_spec: DescribeInstancesResponseBodyInstancesHaResourceSpec = None,
         ha_vswitch_ids: List[str] = None,
+        ha_vswitch_info: List[DescribeInstancesResponseBodyInstancesHaVSwitchInfo] = None,
         ha_zone_id: str = None,
         host_aliases: List[DescribeInstancesResponseBodyInstancesHostAliases] = None,
         instance_id: str = None,
         instance_name: str = None,
         monitor_type: str = None,
         order_state: str = None,
+        oss_info: DescribeInstancesResponseBodyInstancesOssInfo = None,
         region: str = None,
         resource_create_time: int = None,
         resource_expired_time: int = None,
@@ -1800,17 +2383,22 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         tags: List[DescribeInstancesResponseBodyInstancesTags] = None,
         uid: str = None,
         v_switch_ids: List[str] = None,
+        v_switch_info: List[DescribeInstancesResponseBodyInstancesVSwitchInfo] = None,
         vpc_id: str = None,
+        vpc_info: DescribeInstancesResponseBodyInstancesVpcInfo = None,
         zone_id: str = None,
     ):
         self.architecture_type = architecture_type
         self.ask_cluster_id = ask_cluster_id
         self.charge_type = charge_type
+        self.cluster_state = cluster_state
         self.cluster_status = cluster_status
+        self.cluster_used_resources = cluster_used_resources
         self.cluster_used_storage = cluster_used_storage
         self.ha = ha
         self.ha_resource_spec = ha_resource_spec
         self.ha_vswitch_ids = ha_vswitch_ids
+        self.ha_vswitch_info = ha_vswitch_info
         self.ha_zone_id = ha_zone_id
         # This parameter is required.
         self.host_aliases = host_aliases
@@ -1818,6 +2406,7 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         self.instance_name = instance_name
         self.monitor_type = monitor_type
         self.order_state = order_state
+        self.oss_info = oss_info
         self.region = region
         self.resource_create_time = resource_create_time
         self.resource_expired_time = resource_expired_time
@@ -1828,18 +2417,32 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         self.tags = tags
         self.uid = uid
         self.v_switch_ids = v_switch_ids
+        self.v_switch_info = v_switch_info
         self.vpc_id = vpc_id
+        self.vpc_info = vpc_info
         self.zone_id = zone_id
 
     def validate(self):
+        if self.cluster_state:
+            self.cluster_state.validate()
+        if self.cluster_used_resources:
+            for k in self.cluster_used_resources:
+                if k:
+                    k.validate()
         if self.cluster_used_storage:
             self.cluster_used_storage.validate()
         if self.ha_resource_spec:
             self.ha_resource_spec.validate()
+        if self.ha_vswitch_info:
+            for k in self.ha_vswitch_info:
+                if k:
+                    k.validate()
         if self.host_aliases:
             for k in self.host_aliases:
                 if k:
                     k.validate()
+        if self.oss_info:
+            self.oss_info.validate()
         if self.resource_spec:
             self.resource_spec.validate()
         if self.storage:
@@ -1848,6 +2451,12 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             for k in self.tags:
                 if k:
                     k.validate()
+        if self.v_switch_info:
+            for k in self.v_switch_info:
+                if k:
+                    k.validate()
+        if self.vpc_info:
+            self.vpc_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1861,8 +2470,14 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             result['AskClusterId'] = self.ask_cluster_id
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+        if self.cluster_state is not None:
+            result['ClusterState'] = self.cluster_state.to_map()
         if self.cluster_status is not None:
             result['ClusterStatus'] = self.cluster_status
+        result['ClusterUsedResources'] = []
+        if self.cluster_used_resources is not None:
+            for k in self.cluster_used_resources:
+                result['ClusterUsedResources'].append(k.to_map() if k else None)
         if self.cluster_used_storage is not None:
             result['ClusterUsedStorage'] = self.cluster_used_storage.to_map()
         if self.ha is not None:
@@ -1871,6 +2486,10 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             result['HaResourceSpec'] = self.ha_resource_spec.to_map()
         if self.ha_vswitch_ids is not None:
             result['HaVSwitchIds'] = self.ha_vswitch_ids
+        result['HaVSwitchInfo'] = []
+        if self.ha_vswitch_info is not None:
+            for k in self.ha_vswitch_info:
+                result['HaVSwitchInfo'].append(k.to_map() if k else None)
         if self.ha_zone_id is not None:
             result['HaZoneId'] = self.ha_zone_id
         result['HostAliases'] = []
@@ -1885,6 +2504,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             result['MonitorType'] = self.monitor_type
         if self.order_state is not None:
             result['OrderState'] = self.order_state
+        if self.oss_info is not None:
+            result['OssInfo'] = self.oss_info.to_map()
         if self.region is not None:
             result['Region'] = self.region
         if self.resource_create_time is not None:
@@ -1907,8 +2528,14 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             result['Uid'] = self.uid
         if self.v_switch_ids is not None:
             result['VSwitchIds'] = self.v_switch_ids
+        result['VSwitchInfo'] = []
+        if self.v_switch_info is not None:
+            for k in self.v_switch_info:
+                result['VSwitchInfo'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
+        if self.vpc_info is not None:
+            result['VpcInfo'] = self.vpc_info.to_map()
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -1921,8 +2548,16 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             self.ask_cluster_id = m.get('AskClusterId')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+        if m.get('ClusterState') is not None:
+            temp_model = DescribeInstancesResponseBodyInstancesClusterState()
+            self.cluster_state = temp_model.from_map(m['ClusterState'])
         if m.get('ClusterStatus') is not None:
             self.cluster_status = m.get('ClusterStatus')
+        self.cluster_used_resources = []
+        if m.get('ClusterUsedResources') is not None:
+            for k in m.get('ClusterUsedResources'):
+                temp_model = DescribeInstancesResponseBodyInstancesClusterUsedResources()
+                self.cluster_used_resources.append(temp_model.from_map(k))
         if m.get('ClusterUsedStorage') is not None:
             temp_model = DescribeInstancesResponseBodyInstancesClusterUsedStorage()
             self.cluster_used_storage = temp_model.from_map(m['ClusterUsedStorage'])
@@ -1933,6 +2568,11 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             self.ha_resource_spec = temp_model.from_map(m['HaResourceSpec'])
         if m.get('HaVSwitchIds') is not None:
             self.ha_vswitch_ids = m.get('HaVSwitchIds')
+        self.ha_vswitch_info = []
+        if m.get('HaVSwitchInfo') is not None:
+            for k in m.get('HaVSwitchInfo'):
+                temp_model = DescribeInstancesResponseBodyInstancesHaVSwitchInfo()
+                self.ha_vswitch_info.append(temp_model.from_map(k))
         if m.get('HaZoneId') is not None:
             self.ha_zone_id = m.get('HaZoneId')
         self.host_aliases = []
@@ -1948,6 +2588,9 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             self.monitor_type = m.get('MonitorType')
         if m.get('OrderState') is not None:
             self.order_state = m.get('OrderState')
+        if m.get('OssInfo') is not None:
+            temp_model = DescribeInstancesResponseBodyInstancesOssInfo()
+            self.oss_info = temp_model.from_map(m['OssInfo'])
         if m.get('Region') is not None:
             self.region = m.get('Region')
         if m.get('ResourceCreateTime') is not None:
@@ -1973,8 +2616,16 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             self.uid = m.get('Uid')
         if m.get('VSwitchIds') is not None:
             self.v_switch_ids = m.get('VSwitchIds')
+        self.v_switch_info = []
+        if m.get('VSwitchInfo') is not None:
+            for k in m.get('VSwitchInfo'):
+                temp_model = DescribeInstancesResponseBodyInstancesVSwitchInfo()
+                self.v_switch_info.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+        if m.get('VpcInfo') is not None:
+            temp_model = DescribeInstancesResponseBodyInstancesVpcInfo()
+            self.vpc_info = temp_model.from_map(m['VpcInfo'])
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -2566,9 +3217,13 @@ class DescribeNamespacesResponse(TeaModel):
 class DescribeSupportedRegionsResponseBodyRegions(TeaModel):
     def __init__(
         self,
+        description: str = None,
+        extra: str = None,
         region: str = None,
         region_name: str = None,
     ):
+        self.description = description
+        self.extra = extra
         self.region = region
         self.region_name = region_name
 
@@ -2581,6 +3236,10 @@ class DescribeSupportedRegionsResponseBodyRegions(TeaModel):
             return _map
 
         result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.extra is not None:
+            result['Extra'] = self.extra
         if self.region is not None:
             result['Region'] = self.region
         if self.region_name is not None:
@@ -2589,6 +3248,10 @@ class DescribeSupportedRegionsResponseBodyRegions(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Extra') is not None:
+            self.extra = m.get('Extra')
         if m.get('Region') is not None:
             self.region = m.get('Region')
         if m.get('RegionName') is not None:
