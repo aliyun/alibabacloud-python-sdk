@@ -1,3 +1,7 @@
+2024-08-05 Version: 7.0.0
+- Update API DescribeTenant: update response param.
+
+
 2024-07-24 Version: 6.0.2
 - Generated python 2019-09-01 for OceanBasePro.
 

@@ -32412,7 +32412,7 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         enable_read_only_replica: bool = None,
         enable_read_write_split: bool = None,
         instance_type: str = None,
-        lower_case_table_names: bytes = None,
+        lower_case_table_names: int = None,
         master_intranet_address_zone: str = None,
         max_parallel_query_degree: int = None,
         pay_type: str = None,
