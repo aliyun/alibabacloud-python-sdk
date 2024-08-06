@@ -1,3 +1,7 @@
+2024-08-06 Version: 1.0.4
+- Update API ListGateways: update response param.
+
+
 2024-08-05 Version: 1.0.3
 - Update API ListHttpApiOperations: add param name.
 - Update API ListHttpApis: add param name.

@@ -9042,6 +9042,149 @@ class ListGatewaysResponseBodyDataItemsLoadBalancers(TeaModel):
         return self
 
 
+class ListGatewaysResponseBodyDataItemsSecurityGroup(TeaModel):
+    def __init__(
+        self,
+        security_group_id: str = None,
+    ):
+        self.security_group_id = security_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.security_group_id is not None:
+            result['securityGroupId'] = self.security_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('securityGroupId') is not None:
+            self.security_group_id = m.get('securityGroupId')
+        return self
+
+
+class ListGatewaysResponseBodyDataItemsVSwitch(TeaModel):
+    def __init__(
+        self,
+        v_switch_id: str = None,
+    ):
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.v_switch_id is not None:
+            result['vSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('vSwitchId') is not None:
+            self.v_switch_id = m.get('vSwitchId')
+        return self
+
+
+class ListGatewaysResponseBodyDataItemsVpc(TeaModel):
+    def __init__(
+        self,
+        vpc_id: str = None,
+    ):
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        return self
+
+
+class ListGatewaysResponseBodyDataItemsZonesVSwitch(TeaModel):
+    def __init__(
+        self,
+        v_switch_id: str = None,
+    ):
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.v_switch_id is not None:
+            result['vSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('vSwitchId') is not None:
+            self.v_switch_id = m.get('vSwitchId')
+        return self
+
+
+class ListGatewaysResponseBodyDataItemsZones(TeaModel):
+    def __init__(
+        self,
+        v_switch: ListGatewaysResponseBodyDataItemsZonesVSwitch = None,
+        zone_id: str = None,
+    ):
+        self.v_switch = v_switch
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.v_switch:
+            self.v_switch.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.v_switch is not None:
+            result['vSwitch'] = self.v_switch.to_map()
+        if self.zone_id is not None:
+            result['zoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('vSwitch') is not None:
+            temp_model = ListGatewaysResponseBodyDataItemsZonesVSwitch()
+            self.v_switch = temp_model.from_map(m['vSwitch'])
+        if m.get('zoneId') is not None:
+            self.zone_id = m.get('zoneId')
+        return self
+
+
 class ListGatewaysResponseBodyDataItems(TeaModel):
     def __init__(
         self,
@@ -9053,11 +9196,15 @@ class ListGatewaysResponseBodyDataItems(TeaModel):
         load_balancers: List[ListGatewaysResponseBodyDataItemsLoadBalancers] = None,
         name: str = None,
         replicas: str = None,
+        security_group: ListGatewaysResponseBodyDataItemsSecurityGroup = None,
         spec: str = None,
         status: str = None,
         target_version: str = None,
         update_timestamp: int = None,
+        v_switch: ListGatewaysResponseBodyDataItemsVSwitch = None,
         version: str = None,
+        vpc: ListGatewaysResponseBodyDataItemsVpc = None,
+        zones: List[ListGatewaysResponseBodyDataItemsZones] = None,
     ):
         self.charge_type = charge_type
         self.create_from = create_from
@@ -9067,15 +9214,29 @@ class ListGatewaysResponseBodyDataItems(TeaModel):
         self.load_balancers = load_balancers
         self.name = name
         self.replicas = replicas
+        self.security_group = security_group
         self.spec = spec
         self.status = status
         self.target_version = target_version
         self.update_timestamp = update_timestamp
+        self.v_switch = v_switch
         self.version = version
+        self.vpc = vpc
+        self.zones = zones
 
     def validate(self):
         if self.load_balancers:
             for k in self.load_balancers:
+                if k:
+                    k.validate()
+        if self.security_group:
+            self.security_group.validate()
+        if self.v_switch:
+            self.v_switch.validate()
+        if self.vpc:
+            self.vpc.validate()
+        if self.zones:
+            for k in self.zones:
                 if k:
                     k.validate()
 
@@ -9103,6 +9264,8 @@ class ListGatewaysResponseBodyDataItems(TeaModel):
             result['name'] = self.name
         if self.replicas is not None:
             result['replicas'] = self.replicas
+        if self.security_group is not None:
+            result['securityGroup'] = self.security_group.to_map()
         if self.spec is not None:
             result['spec'] = self.spec
         if self.status is not None:
@@ -9111,8 +9274,16 @@ class ListGatewaysResponseBodyDataItems(TeaModel):
             result['targetVersion'] = self.target_version
         if self.update_timestamp is not None:
             result['updateTimestamp'] = self.update_timestamp
+        if self.v_switch is not None:
+            result['vSwitch'] = self.v_switch.to_map()
         if self.version is not None:
             result['version'] = self.version
+        if self.vpc is not None:
+            result['vpc'] = self.vpc.to_map()
+        result['zones'] = []
+        if self.zones is not None:
+            for k in self.zones:
+                result['zones'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -9136,6 +9307,9 @@ class ListGatewaysResponseBodyDataItems(TeaModel):
             self.name = m.get('name')
         if m.get('replicas') is not None:
             self.replicas = m.get('replicas')
+        if m.get('securityGroup') is not None:
+            temp_model = ListGatewaysResponseBodyDataItemsSecurityGroup()
+            self.security_group = temp_model.from_map(m['securityGroup'])
         if m.get('spec') is not None:
             self.spec = m.get('spec')
         if m.get('status') is not None:
@@ -9144,8 +9318,19 @@ class ListGatewaysResponseBodyDataItems(TeaModel):
             self.target_version = m.get('targetVersion')
         if m.get('updateTimestamp') is not None:
             self.update_timestamp = m.get('updateTimestamp')
+        if m.get('vSwitch') is not None:
+            temp_model = ListGatewaysResponseBodyDataItemsVSwitch()
+            self.v_switch = temp_model.from_map(m['vSwitch'])
         if m.get('version') is not None:
             self.version = m.get('version')
+        if m.get('vpc') is not None:
+            temp_model = ListGatewaysResponseBodyDataItemsVpc()
+            self.vpc = temp_model.from_map(m['vpc'])
+        self.zones = []
+        if m.get('zones') is not None:
+            for k in m.get('zones'):
+                temp_model = ListGatewaysResponseBodyDataItemsZones()
+                self.zones.append(temp_model.from_map(k))
         return self
 
 
