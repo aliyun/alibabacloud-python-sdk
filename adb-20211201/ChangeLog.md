@@ -1,3 +1,7 @@
+2024-08-06 Version: 1.3.8
+- Update API DescribeSQLPatterns: update response param.
+
+
 2024-07-24 Version: 1.3.7
 - Update API DescribeRegions: add param RegionId.
 - Update API GetTable: update param DbName.

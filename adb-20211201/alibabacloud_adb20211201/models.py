@@ -2096,9 +2096,9 @@ class AttachUserENIRequest(TeaModel):
         self,
         dbcluster_id: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region, including cluster IDs.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -3191,7 +3191,7 @@ class CreateDBResourceGroupRequestRules(TeaModel):
         self.group_name = group_name
         # The execution duration of the query. Unit: milliseconds.
         self.query_time = query_time
-        # The name of the destination resource group.
+        # The name of the resource group to which you want to resubmit the query job.
         self.target_group_name = target_group_name
 
     def validate(self):
@@ -3770,9 +3770,9 @@ class CreateOssSubDirectoryRequest(TeaModel):
         dbcluster_id: str = None,
         path: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -3965,7 +3965,12 @@ class CreatePerformanceViewRequestViewDetailCategoriesKeys(TeaModel):
         key_name: str = None,
         selected: bool = None,
     ):
+        # The name of the metric.
         self.key_name = key_name
+        # Specifies whether to select the metric. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.selected = selected
 
     def validate(self):
@@ -3998,7 +4003,14 @@ class CreatePerformanceViewRequestViewDetailCategories(TeaModel):
         category: str = None,
         keys: List[CreatePerformanceViewRequestViewDetailCategoriesKeys] = None,
     ):
+        # The name of the metric category. Valid values:
+        # 
+        # *   **Node**\
+        # *   **DiskData**\
+        # *   **WorkLoad**\
+        # *   **ResourceGroup**\
         self.category = category
+        # The metrics.
         self.keys = keys
 
     def validate(self):
@@ -4040,8 +4052,14 @@ class CreatePerformanceViewRequestViewDetail(TeaModel):
         chart_linked: bool = None,
         charts_per_line: int = None,
     ):
+        # The metric categories.
         self.categories = categories
+        # Specifies whether to enable the filter interaction feature. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.chart_linked = chart_linked
+        # The number of charts to display in each row.
         self.charts_per_line = charts_per_line
 
     def validate(self):
@@ -4095,15 +4113,29 @@ class CreatePerformanceViewRequest(TeaModel):
         view_name: str = None,
     ):
         self.create_from_view_type = create_from_view_type
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to populate the names of the metrics in the original monitoring view when you view the monitoring view. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.fill_origin_view_keys = fill_origin_view_keys
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The information about the monitoring view.
+        # 
         # This parameter is required.
         self.view_detail = view_detail
         # This parameter is required.
@@ -4182,15 +4214,29 @@ class CreatePerformanceViewShrinkRequest(TeaModel):
         view_name: str = None,
     ):
         self.create_from_view_type = create_from_view_type
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to populate the names of the metrics in the original monitoring view when you view the monitoring view. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.fill_origin_view_keys = fill_origin_view_keys
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The information about the monitoring view.
+        # 
         # This parameter is required.
         self.view_detail_shrink = view_detail_shrink
         # This parameter is required.
@@ -4260,6 +4306,10 @@ class CreatePerformanceViewResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.access_denied_detail = access_denied_detail
+        # The creation result. Valid values:
+        # 
+        # *   **SUCCESS**\
+        # *   **FAILED**\
         self.create_status = create_status
         self.request_id = request_id
 
@@ -4349,7 +4399,7 @@ class CreateSparkTemplateRequest(TeaModel):
         # 
         # >  You do not need to specify this parameter when Type is set to folder.
         self.app_type = app_type
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -4977,10 +5027,18 @@ class DeletePerformanceViewRequest(TeaModel):
         resource_owner_id: int = None,
         view_name: str = None,
     ):
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -5039,6 +5097,9 @@ class DeletePerformanceViewResponseBody(TeaModel):
         delete_status: bool = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
+        # 
+        # >  This parameter is returned only if Resource Access Management (RAM) permission verification failed.
         self.access_denied_detail = access_denied_detail
         self.delete_status = delete_status
         self.request_id = request_id
@@ -5120,9 +5181,9 @@ class DeleteProcessInstanceRequest(TeaModel):
         project_code: int = None,
         region_id: str = None,
     ):
-        # The ID of the Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -5276,7 +5337,7 @@ class DeleteSparkTemplateRequest(TeaModel):
         dbcluster_id: str = None,
         id: int = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -7143,7 +7204,7 @@ class DescribeAllDataSourceRequest(TeaModel):
         schema_name: str = None,
         table_name: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -7206,7 +7267,7 @@ class DescribeAllDataSourceResponseBodyColumnsColumn(TeaModel):
         self.auto_increment_column = auto_increment_column
         # The name of the column.
         self.column_name = column_name
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
         # Indicates whether the column is the primary key of the table. Valid values:
         # 
@@ -7305,7 +7366,7 @@ class DescribeAllDataSourceResponseBodySchemasSchema(TeaModel):
         dbcluster_id: str = None,
         schema_name: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
         # The logical name of the database.
         self.schema_name = schema_name
@@ -7376,7 +7437,7 @@ class DescribeAllDataSourceResponseBodyTablesTable(TeaModel):
         schema_name: str = None,
         table_name: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
         # The name of the database.
         self.schema_name = schema_name
@@ -8755,9 +8816,9 @@ class DescribeBackupsRequest(TeaModel):
     ):
         # The backup set ID.
         self.backup_id = backup_id
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region, including cluster IDs.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -8866,7 +8927,7 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
         # *   **FullBackup**\
         # *   **IncrementalBackup**\
         self.backup_type = backup_type
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
 
     def validate(self):
@@ -10117,7 +10178,7 @@ class DescribeColumnsRequest(TeaModel):
         schema_name: str = None,
         table_name: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -10180,7 +10241,7 @@ class DescribeColumnsResponseBodyItemsColumn(TeaModel):
         self.auto_increment_column = auto_increment_column
         # The name of the column.
         self.column_name = column_name
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
         # Indicates whether the column is the primary key of the table. Valid values:
         # 
@@ -15554,7 +15615,7 @@ class DescribeElasticPlansRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -15562,7 +15623,7 @@ class DescribeElasticPlansRequest(TeaModel):
         # 
         # > If you do not specify this parameter, all scaling plans are queried.
         self.elastic_plan_name = elastic_plan_name
-        # Indicates whether the scaling plan was immediately enabled after the plan is created. Valid values:
+        # Specifies whether to query the scaling plans that are immediately enabled after the plans are created. Valid values:
         # 
         # *   true
         # *   false
@@ -15582,8 +15643,7 @@ class DescribeElasticPlansRequest(TeaModel):
         self.resource_group_name = resource_group_name
         # The type of the scaling plan. Valid values:
         # 
-        # *   EXECUTOR: interactive resource groups, which fall into the computing resource category.
-        # *   WORKER: EIUs.
+        # EXECUTOR: the interactive resource group type, which specifies the computing resource type. WORKER: the EIU type.
         self.type = type
 
     def validate(self):
@@ -15722,7 +15782,7 @@ class DescribeElasticPlansResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The scaling plans.
+        # The queried scaling plans.
         self.elastic_plans = elastic_plans
         # The page number.
         self.page_number = page_number
@@ -16057,9 +16117,9 @@ class DescribeExcessivePrimaryKeysRequest(TeaModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V5.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V5.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -16315,8 +16375,6 @@ class DescribeExcessivePrimaryKeysResponseBody(TeaModel):
         # The queried information about the request denial.
         self.access_denied_detail = access_denied_detail
         # The cluster ID.
-        # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         self.dbcluster_id = dbcluster_id
         # The queried detection items and detection results.
         self.detection_items = detection_items
@@ -16448,7 +16506,7 @@ class DescribeJobResourceUsageRequest(TeaModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -16609,7 +16667,7 @@ class DescribeJobResourceUsageResponseBodyData(TeaModel):
         job_acu_usage: List[DescribeJobResourceUsageResponseBodyDataJobAcuUsage] = None,
         start_time: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
         # The end time of the query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
@@ -17042,10 +17100,18 @@ class DescribePerformanceViewAttributeRequest(TeaModel):
         resource_owner_id: int = None,
         view_name: str = None,
     ):
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -17334,10 +17400,18 @@ class DescribePerformanceViewsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -17945,19 +18019,33 @@ class DescribeSQLPatternsResponseBodyPatternDetails(TeaModel):
         self,
         access_ip: str = None,
         average_execution_time: float = None,
+        average_operator_cost: float = None,
         average_peak_memory: float = None,
         average_query_time: float = None,
+        average_scan_cost: float = None,
         average_scan_size: float = None,
         blockable: bool = None,
         failed_count: int = None,
         max_execution_time: int = None,
+        max_operator_cost: float = None,
         max_peak_memory: int = None,
         max_query_time: int = None,
+        max_scan_cost: float = None,
         max_scan_size: int = None,
+        operator_cost_percentage: float = None,
+        operator_cost_sum: float = None,
         pattern_creation_time: str = None,
         pattern_id: str = None,
+        peak_memory_percentage: float = None,
+        peak_memory_sum: float = None,
         query_count: int = None,
+        query_time_percentage: float = None,
+        query_time_sum: float = None,
         sqlpattern: str = None,
+        scan_cost_percentage: float = None,
+        scan_cost_sum: float = None,
+        scan_size_percentage: float = None,
+        scan_size_sum: float = None,
         tables: str = None,
         user: str = None,
     ):
@@ -17965,10 +18053,12 @@ class DescribeSQLPatternsResponseBodyPatternDetails(TeaModel):
         self.access_ip = access_ip
         # The average execution duration of the SQL pattern within the query time range. Unit: milliseconds.
         self.average_execution_time = average_execution_time
+        self.average_operator_cost = average_operator_cost
         # The average peak memory usage of the SQL pattern within the query time range. Unit: bytes.
         self.average_peak_memory = average_peak_memory
         # The average total amount of time consumed by the SQL pattern within the query time range. Unit: milliseconds.
         self.average_query_time = average_query_time
+        self.average_scan_cost = average_scan_cost
         # The average amount of data scanned based on the SQL pattern within the query time range. Unit: bytes.
         self.average_scan_size = average_scan_size
         # Indicates whether the execution of the SQL pattern can be intercepted. Valid values:
@@ -17982,20 +18072,32 @@ class DescribeSQLPatternsResponseBodyPatternDetails(TeaModel):
         self.failed_count = failed_count
         # The maximum execution duration of the SQL pattern within the query time range. Unit: milliseconds.
         self.max_execution_time = max_execution_time
+        self.max_operator_cost = max_operator_cost
         # The maximum peak memory usage of the SQL pattern within the query time range. Unit: bytes.
         self.max_peak_memory = max_peak_memory
         # The maximum total amount of time consumed by the SQL pattern within the query time range. Unit: milliseconds.
         self.max_query_time = max_query_time
+        self.max_scan_cost = max_scan_cost
         # The maximum amount of data scanned based on the SQL pattern within the query time range. Unit: bytes.
         self.max_scan_size = max_scan_size
+        self.operator_cost_percentage = operator_cost_percentage
+        self.operator_cost_sum = operator_cost_sum
         # The earliest commit time of the SQL pattern within the query time range.
         self.pattern_creation_time = pattern_creation_time
         # The ID of the SQL pattern.
         self.pattern_id = pattern_id
+        self.peak_memory_percentage = peak_memory_percentage
+        self.peak_memory_sum = peak_memory_sum
         # The number of queries executed in association with the SQL pattern within the query time range.
         self.query_count = query_count
+        self.query_time_percentage = query_time_percentage
+        self.query_time_sum = query_time_sum
         # The statement of the SQL pattern.
         self.sqlpattern = sqlpattern
+        self.scan_cost_percentage = scan_cost_percentage
+        self.scan_cost_sum = scan_cost_sum
+        self.scan_size_percentage = scan_size_percentage
+        self.scan_size_sum = scan_size_sum
         # The tables scanned based on the SQL pattern.
         self.tables = tables
         # The name of the database account that is used to commit the SQL pattern.
@@ -18014,10 +18116,14 @@ class DescribeSQLPatternsResponseBodyPatternDetails(TeaModel):
             result['AccessIp'] = self.access_ip
         if self.average_execution_time is not None:
             result['AverageExecutionTime'] = self.average_execution_time
+        if self.average_operator_cost is not None:
+            result['AverageOperatorCost'] = self.average_operator_cost
         if self.average_peak_memory is not None:
             result['AveragePeakMemory'] = self.average_peak_memory
         if self.average_query_time is not None:
             result['AverageQueryTime'] = self.average_query_time
+        if self.average_scan_cost is not None:
+            result['AverageScanCost'] = self.average_scan_cost
         if self.average_scan_size is not None:
             result['AverageScanSize'] = self.average_scan_size
         if self.blockable is not None:
@@ -18026,20 +18132,44 @@ class DescribeSQLPatternsResponseBodyPatternDetails(TeaModel):
             result['FailedCount'] = self.failed_count
         if self.max_execution_time is not None:
             result['MaxExecutionTime'] = self.max_execution_time
+        if self.max_operator_cost is not None:
+            result['MaxOperatorCost'] = self.max_operator_cost
         if self.max_peak_memory is not None:
             result['MaxPeakMemory'] = self.max_peak_memory
         if self.max_query_time is not None:
             result['MaxQueryTime'] = self.max_query_time
+        if self.max_scan_cost is not None:
+            result['MaxScanCost'] = self.max_scan_cost
         if self.max_scan_size is not None:
             result['MaxScanSize'] = self.max_scan_size
+        if self.operator_cost_percentage is not None:
+            result['OperatorCostPercentage'] = self.operator_cost_percentage
+        if self.operator_cost_sum is not None:
+            result['OperatorCostSum'] = self.operator_cost_sum
         if self.pattern_creation_time is not None:
             result['PatternCreationTime'] = self.pattern_creation_time
         if self.pattern_id is not None:
             result['PatternId'] = self.pattern_id
+        if self.peak_memory_percentage is not None:
+            result['PeakMemoryPercentage'] = self.peak_memory_percentage
+        if self.peak_memory_sum is not None:
+            result['PeakMemorySum'] = self.peak_memory_sum
         if self.query_count is not None:
             result['QueryCount'] = self.query_count
+        if self.query_time_percentage is not None:
+            result['QueryTimePercentage'] = self.query_time_percentage
+        if self.query_time_sum is not None:
+            result['QueryTimeSum'] = self.query_time_sum
         if self.sqlpattern is not None:
             result['SQLPattern'] = self.sqlpattern
+        if self.scan_cost_percentage is not None:
+            result['ScanCostPercentage'] = self.scan_cost_percentage
+        if self.scan_cost_sum is not None:
+            result['ScanCostSum'] = self.scan_cost_sum
+        if self.scan_size_percentage is not None:
+            result['ScanSizePercentage'] = self.scan_size_percentage
+        if self.scan_size_sum is not None:
+            result['ScanSizeSum'] = self.scan_size_sum
         if self.tables is not None:
             result['Tables'] = self.tables
         if self.user is not None:
@@ -18052,10 +18182,14 @@ class DescribeSQLPatternsResponseBodyPatternDetails(TeaModel):
             self.access_ip = m.get('AccessIp')
         if m.get('AverageExecutionTime') is not None:
             self.average_execution_time = m.get('AverageExecutionTime')
+        if m.get('AverageOperatorCost') is not None:
+            self.average_operator_cost = m.get('AverageOperatorCost')
         if m.get('AveragePeakMemory') is not None:
             self.average_peak_memory = m.get('AveragePeakMemory')
         if m.get('AverageQueryTime') is not None:
             self.average_query_time = m.get('AverageQueryTime')
+        if m.get('AverageScanCost') is not None:
+            self.average_scan_cost = m.get('AverageScanCost')
         if m.get('AverageScanSize') is not None:
             self.average_scan_size = m.get('AverageScanSize')
         if m.get('Blockable') is not None:
@@ -18064,20 +18198,44 @@ class DescribeSQLPatternsResponseBodyPatternDetails(TeaModel):
             self.failed_count = m.get('FailedCount')
         if m.get('MaxExecutionTime') is not None:
             self.max_execution_time = m.get('MaxExecutionTime')
+        if m.get('MaxOperatorCost') is not None:
+            self.max_operator_cost = m.get('MaxOperatorCost')
         if m.get('MaxPeakMemory') is not None:
             self.max_peak_memory = m.get('MaxPeakMemory')
         if m.get('MaxQueryTime') is not None:
             self.max_query_time = m.get('MaxQueryTime')
+        if m.get('MaxScanCost') is not None:
+            self.max_scan_cost = m.get('MaxScanCost')
         if m.get('MaxScanSize') is not None:
             self.max_scan_size = m.get('MaxScanSize')
+        if m.get('OperatorCostPercentage') is not None:
+            self.operator_cost_percentage = m.get('OperatorCostPercentage')
+        if m.get('OperatorCostSum') is not None:
+            self.operator_cost_sum = m.get('OperatorCostSum')
         if m.get('PatternCreationTime') is not None:
             self.pattern_creation_time = m.get('PatternCreationTime')
         if m.get('PatternId') is not None:
             self.pattern_id = m.get('PatternId')
+        if m.get('PeakMemoryPercentage') is not None:
+            self.peak_memory_percentage = m.get('PeakMemoryPercentage')
+        if m.get('PeakMemorySum') is not None:
+            self.peak_memory_sum = m.get('PeakMemorySum')
         if m.get('QueryCount') is not None:
             self.query_count = m.get('QueryCount')
+        if m.get('QueryTimePercentage') is not None:
+            self.query_time_percentage = m.get('QueryTimePercentage')
+        if m.get('QueryTimeSum') is not None:
+            self.query_time_sum = m.get('QueryTimeSum')
         if m.get('SQLPattern') is not None:
             self.sqlpattern = m.get('SQLPattern')
+        if m.get('ScanCostPercentage') is not None:
+            self.scan_cost_percentage = m.get('ScanCostPercentage')
+        if m.get('ScanCostSum') is not None:
+            self.scan_cost_sum = m.get('ScanCostSum')
+        if m.get('ScanSizePercentage') is not None:
+            self.scan_size_percentage = m.get('ScanSizePercentage')
+        if m.get('ScanSizeSum') is not None:
+            self.scan_size_sum = m.get('ScanSizeSum')
         if m.get('Tables') is not None:
             self.tables = m.get('Tables')
         if m.get('User') is not None:
@@ -18536,9 +18694,9 @@ class DescribeSparkCodeOutputRequest(TeaModel):
         job_id: int = None,
         region_id: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -18682,9 +18840,9 @@ class DescribeSparkCodeWebUiRequest(TeaModel):
         job_id: int = None,
         region_id: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -19427,9 +19585,9 @@ class DescribeTableAccessCountRequest(TeaModel):
         start_time: str = None,
         table_name: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -19886,7 +20044,7 @@ class DescribeUserQuotaRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The region ID of the cluster.
+        # The region ID.
         # 
         # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
         self.region_id = region_id
@@ -21277,9 +21435,9 @@ class GetSparkAppLogRequest(TeaModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The cluster ID.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         self.dbcluster_id = dbcluster_id
         # The number of log entries to return. Valid values: 1 to 500. Default value: 300.
         self.log_length = log_length
@@ -21332,7 +21490,7 @@ class GetSparkAppLogResponseBodyData(TeaModel):
         log_size: int = None,
         message: str = None,
     ):
-        # The ID of the Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
         # The content of the log.
         self.log_content = log_content
@@ -21461,9 +21619,9 @@ class GetSparkAppMetricsRequest(TeaModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         self.dbcluster_id = dbcluster_id
 
     def validate(self):
@@ -21676,9 +21834,9 @@ class GetSparkAppStateRequest(TeaModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         self.dbcluster_id = dbcluster_id
 
     def validate(self):
@@ -22024,7 +22182,7 @@ class GetSparkConfigLogPathRequest(TeaModel):
         self,
         dbcluster_id: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -22188,7 +22346,7 @@ class GetSparkDefinitionsRequest(TeaModel):
         self,
         dbcluster_id: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
 
     def validate(self):
@@ -22401,7 +22559,7 @@ class GetSparkSQLEngineStateRequest(TeaModel):
         dbcluster_id: str = None,
         resource_group_name: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -22607,7 +22765,7 @@ class GetSparkTemplateFileContentRequest(TeaModel):
         dbcluster_id: str = None,
         id: int = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -22788,7 +22946,7 @@ class GetSparkTemplateFolderTreeRequest(TeaModel):
         self,
         dbcluster_id: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -23108,7 +23266,7 @@ class GetTableResponseBody(TeaModel):
         self.request_id = request_id
         # Indicates whether the query succeeded.
         self.success = success
-        # The queried table.
+        # The information about the table.
         self.table = table
 
     def validate(self):
@@ -24261,9 +24419,9 @@ class KillSparkAppRequest(TeaModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         self.dbcluster_id = dbcluster_id
 
     def validate(self):
@@ -24673,7 +24831,7 @@ class ListSparkAppAttemptsRequest(TeaModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
         # The page number. The value must be an integer that is greater than 0. Default value: **1**.
         # 
@@ -25411,9 +25569,9 @@ class LoadSampleDataSetRequest(TeaModel):
         self,
         dbcluster_id: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -25444,7 +25602,7 @@ class LoadSampleDataSetResponseBody(TeaModel):
         dbcluster_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
         # The request ID.
         self.request_id = request_id
@@ -26101,7 +26259,7 @@ class ModifyBackupPolicyRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the default value 7 is used.
         self.backup_retention_period = backup_retention_period
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -26562,7 +26720,7 @@ class ModifyDBClusterRequest(TeaModel):
         resource_owner_account: str = None,
         storage_resource: str = None,
     ):
-        # The reserved computing resources. Unit: ACUs. Valid values: 0 to 4096. The value must be in increments of 16 ACUs. Each ACU is equivalent to 1 core and 4 GB memory.
+        # The reserved computing resources. Unit: ACUs. Valid values: 0 to 4096. The value must be in increments of 16 ACUs. Each ACU is approximately equal to 1 core and 4 GB memory.
         # 
         # >  This parameter must be specified with a unit.
         self.compute_resource = compute_resource
@@ -26586,7 +26744,7 @@ class ModifyDBClusterRequest(TeaModel):
         self.reserved_node_count = reserved_node_count
         self.reserved_node_size = reserved_node_size
         self.resource_owner_account = resource_owner_account
-        # The reserved storage resources. Unit: ACUs. Valid values: 0 to 2064. The value must be in increments of 24 ACUs. Each ACU is equivalent to 1 core and 4 GB memory.
+        # The reserved storage resources. Unit: ACUs. Valid values: 0 to 2064. The value must be in increments of 24 ACUs. Each ACU is approximately equal to 1 core and 4 GB memory.
         # 
         # >  This parameter must be specified with a unit.
         self.storage_resource = storage_resource
@@ -27484,7 +27642,12 @@ class ModifyPerformanceViewRequestViewDetailCategoriesKeys(TeaModel):
         key_name: str = None,
         selected: bool = None,
     ):
+        # The name of the metric.
         self.key_name = key_name
+        # Specifies whether to select the metric. Valid values:
+        # 
+        # *   true
+        # *   false
         self.selected = selected
 
     def validate(self):
@@ -27517,7 +27680,14 @@ class ModifyPerformanceViewRequestViewDetailCategories(TeaModel):
         category: str = None,
         keys: List[ModifyPerformanceViewRequestViewDetailCategoriesKeys] = None,
     ):
+        # The name of the metric category. Valid values:
+        # 
+        # *   **Node**\
+        # *   **DiskData**\
+        # *   **WorkLoad**\
+        # *   **ResourceGroup**\
         self.category = category
+        # The metrics.
         self.keys = keys
 
     def validate(self):
@@ -27559,8 +27729,14 @@ class ModifyPerformanceViewRequestViewDetail(TeaModel):
         chart_linked: bool = None,
         charts_per_line: int = None,
     ):
+        # The metric categories.
         self.categories = categories
+        # Specifies whether to enable the filter interaction feature. Valid values:
+        # 
+        # *   true
+        # *   false
         self.chart_linked = chart_linked
+        # The number of charts to display in each row.
         self.charts_per_line = charts_per_line
 
     def validate(self):
@@ -27611,16 +27787,28 @@ class ModifyPerformanceViewRequest(TeaModel):
         view_detail: ModifyPerformanceViewRequestViewDetail = None,
         view_name: str = None,
     ):
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The new information about the monitoring view.
+        # 
         # This parameter is required.
         self.view_detail = view_detail
+        # The name of the monitoring view.
+        # 
         # This parameter is required.
         self.view_name = view_name
 
@@ -27686,16 +27874,28 @@ class ModifyPerformanceViewShrinkRequest(TeaModel):
         view_detail_shrink: str = None,
         view_name: str = None,
     ):
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The new information about the monitoring view.
+        # 
         # This parameter is required.
         self.view_detail_shrink = view_detail_shrink
+        # The name of the monitoring view.
+        # 
         # This parameter is required.
         self.view_name = view_name
 
@@ -27754,8 +27954,14 @@ class ModifyPerformanceViewResponseBody(TeaModel):
         modify_status: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial. This parameter is returned only if Resource Access Management (RAM) permission verification failed.
         self.access_denied_detail = access_denied_detail
+        # The modification result. Valid values:
+        # 
+        # *   **SUCCESS**\
+        # *   **FAILED**\
         self.modify_status = modify_status
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -27837,9 +28043,9 @@ class PreloadSparkAppMetricsRequest(TeaModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         self.dbcluster_id = dbcluster_id
 
     def validate(self):
@@ -28156,7 +28362,7 @@ class RenameSparkTemplateFileRequest(TeaModel):
         id: int = None,
         name: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -28850,9 +29056,9 @@ class SubmitSparkAppRequest(TeaModel):
         # *   **STREAMING**\
         # *   **BATCH** (default)
         self.app_type = app_type
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query cluster IDs.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -28864,7 +29070,7 @@ class SubmitSparkAppRequest(TeaModel):
         self.data = data
         # The name of the job resource group.
         # 
-        # >  You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/612410.html) operation to query the resource group ID of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # >  You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/612410.html) operation to query the name of a resource group within a cluster.
         # 
         # This parameter is required.
         self.resource_group_name = resource_group_name
@@ -29403,7 +29609,7 @@ class UpdateSparkTemplateFileRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the application template is not updated. For information about how to configure a Spark application template, see [Configure a Spark application](https://help.aliyun.com/document_detail/452402.html).
         self.content = content
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
