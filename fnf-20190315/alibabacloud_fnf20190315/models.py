@@ -15,9 +15,15 @@ class CreateFlowRequest(TeaModel):
         role_arn: str = None,
         type: str = None,
     ):
-        # The definition of the flow. The definition must comply with the flow definition language (FDL) syntax. Considering compatibility, the system supports two flow definition specifications.
+        # The definition of the workflow. The definition must comply with the flow definition language (FDL) syntax. Considering compatibility, the system supports two flow definition specifications.
+        # 
+        # >  In the preceding flow definition example, Name:my_flow_name is the workflow name, which must be consistent with the input parameter Name
+        # 
+        # This parameter is required.
         self.definition = definition
         # The description of the flow.
+        # 
+        # This parameter is required.
         self.description = description
         # The execution mode. Valid values: Express and Standard. Considering compatibility, an empty string is equivalent to the Standard execution mode.
         self.execution_mode = execution_mode
@@ -25,14 +31,18 @@ class CreateFlowRequest(TeaModel):
         self.external_storage_location = external_storage_location
         # The name of the flow. The name is unique within the same region and cannot be modified after the flow is created. Set this parameter based on the following rules:
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (_).
         # *   The name is case-sensitive.
         # *   The name must be 1 to 128 characters in length.
+        # 
+        # This parameter is required.
         self.name = name
         # The Alibaba Cloud resource name (ARN) of the authorized role on which the execution of the flow relies. During the execution of the flow, CloudFlow assumes the role to call API operations of relevant services.
         self.role_arn = role_arn
         # The type of the flow. Set this parameter to **FDL**.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -233,6 +243,8 @@ class CreateScheduleRequest(TeaModel):
         signature_version: str = None,
     ):
         # The CRON expression.
+        # 
+        # This parameter is required.
         self.cron_expression = cron_expression
         # The description of the time-based schedule.
         self.description = description
@@ -241,16 +253,20 @@ class CreateScheduleRequest(TeaModel):
         # *   **true**\
         # *   **false**\
         self.enable = enable
-        # The name of the flow that is bound to the time-based schedule.
+        # The name of the workflow that is associated with the time-based schedule.
+        # 
+        # This parameter is required.
         self.flow_name = flow_name
         # The trigger message of the time-based schedule. Specify the value in the JSON format.
         self.payload = payload
-        # The name of the time-based schedule. Configure this parameter based on the following rules:
+        # The name of the time-based schedule. The name must meet the following conventions:
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
-        # *   The name is case-sensitive.
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (_).
+        # *   It is case-sensitive.
         # *   The name must be 1 to 128 characters in length.
+        # 
+        # This parameter is required.
         self.schedule_name = schedule_name
         self.signature_version = signature_version
 
@@ -428,6 +444,7 @@ class DeleteFlowRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -525,7 +542,9 @@ class DeleteScheduleRequest(TeaModel):
         flow_name: str = None,
         schedule_name: str = None,
     ):
+        # This parameter is required.
         self.flow_name = flow_name
+        # This parameter is required.
         self.schedule_name = schedule_name
 
     def validate(self):
@@ -628,19 +647,13 @@ class DescribeExecutionRequest(TeaModel):
         flow_name: str = None,
         wait_time_seconds: int = None,
     ):
-        # The name of the execution, which is unique within a flow. Set this parameter based on the following rules:
+        # The name of the execution.
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
-        # *   The name is case-sensitive.
-        # *   The name must be 1 to 128 characters in length.
+        # This parameter is required.
         self.execution_name = execution_name
-        # The name of the flow. The name is unique within the region and cannot be modified after the flow is created. Set this parameter based on the following rules:
+        # The name of the workflow.
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
-        # *   The name is case-sensitive.
-        # *   The name must be 1 to 128 characters in length.
+        # This parameter is required.
         self.flow_name = flow_name
         # The maximum period of time for long polling waits. Valid values: 0 to 60. Unit: seconds. Configure this parameter based on the following rules:
         # 
@@ -814,6 +827,8 @@ class DescribeFlowRequest(TeaModel):
         name: str = None,
     ):
         # The name of the flow.
+        # 
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -868,7 +883,7 @@ class DescribeFlowResponseBody(TeaModel):
         self.request_id = request_id
         # The Alibaba Cloud resource name (ARN) of the authorized role on which the execution of the flow relies. During the execution of the flow, CloudFlow assumes the role to call API operations of relevant services.
         self.role_arn = role_arn
-        # The type of the flow. Valid value: **FDL**.
+        # The type of the workflow.
         self.type = type
 
     def validate(self):
@@ -976,17 +991,21 @@ class DescribeScheduleRequest(TeaModel):
     ):
         # The name of the flow that is associated with the time-based schedule. The name must be unique within the region and cannot be modified after the time-based schedule is created. The name must meet the following conventions:
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (_).
         # *   The name is case-sensitive.
         # *   The name must be 1 to 128 characters in length.
+        # 
+        # This parameter is required.
         self.flow_name = flow_name
         # The name of the time-based schedule. The name must meet the following conventions:
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (_).
         # *   The name is case-sensitive.
         # *   The name must be 1 to 128 characters in length.
+        # 
+        # This parameter is required.
         self.schedule_name = schedule_name
 
     def validate(self):
@@ -1149,21 +1168,15 @@ class GetExecutionHistoryRequest(TeaModel):
         limit: int = None,
         next_token: str = None,
     ):
-        # The name of the execution, which is unique within a flow. The name must meet the following conventions:
+        # The name of the execution.
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
-        # *   The name is case-sensitive.
-        # *   The name must be 1 to 128 characters in length.
+        # This parameter is required.
         self.execution_name = execution_name
-        # The name of the flow. The name must be unique within the region and cannot be modified after the flow is created. The name must meet the following conventions:
+        # The name of the workflow.
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
-        # *   The name is case-sensitive.
-        # *   The name must be 1 to 128 characters in length.
+        # This parameter is required.
         self.flow_name = flow_name
-        # The maximum number of steps to be queried. Valid values: 1 to 1000.
+        # The number of workflows that you want to query. Valid values: 1-999. Default value: 60.
         self.limit = limit
         # The name of the event to start the query. You can obtain the value from the response data.
         self.next_token = next_token
@@ -1391,12 +1404,14 @@ class ListExecutionsRequest(TeaModel):
         self.execution_name_prefix = execution_name_prefix
         # The name of the flow. The name must be unique within the region and cannot be modified after the flow is created. The name must meet the following conventions:
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (_).
         # *   The name is case-sensitive.
         # *   The name must be 1 to 128 characters in length.
+        # 
+        # This parameter is required.
         self.flow_name = flow_name
-        # The maximum number of executions to be queried. Valid values: 1 to 100.
+        # The number of executions that you want to query. Valid values: 1-99. Default value: 60.
         self.limit = limit
         # The name of the execution to start the query. You can obtain the value from the response data. You do not need to specify this parameter for the first request.
         self.next_token = next_token
@@ -1632,7 +1647,7 @@ class ListFlowsRequest(TeaModel):
         limit: int = None,
         next_token: str = None,
     ):
-        # The number of flows to be queried. Valid values: 1 to 1000.
+        # The number of workflows that you want to query. Valid values: 1 - 999. Default value: 60.
         self.limit = limit
         # The token to start the query.
         self.next_token = next_token
@@ -1845,10 +1860,12 @@ class ListSchedulesRequest(TeaModel):
     ):
         # The name of the flow that is associated with the time-based schedules. The name is unique within the region and cannot be modified after the flow is created. The name must meet the following conventions:
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (_).
         # *   The name is case-sensitive.
         # *   The name must be 1 to 128 characters in length.
+        # 
+        # This parameter is required.
         self.flow_name = flow_name
         # The number of schedules to be queried. Valid values: 1 to 1000.
         self.limit = limit
@@ -2064,8 +2081,12 @@ class ReportTaskFailedRequest(TeaModel):
         # The cause of the failure. The value must be 1 to 4,096 characters in length.
         self.cause = cause
         # The error code for the failed task. The value must be 1 to 128 characters in length.
+        # 
+        # This parameter is required.
         self.error = error
-        # The token of the specified task that you want to report. If this parameter appears in **waitforCallback** mode, the parameter is passed to the called service, such as Message Service (MNS) or Function Compute. For MNS, the value of this parameter can be obtained from a message. For Function Compute, the value of this parameter can be obtained from an event.
+        # The token of the task whose execution you want to report. The task token is passed to the called service, such as Message Service (MNS) or Function Compute. For MNS, the value of this parameter can be obtained from a message. For Function Compute, the value of this parameter can be obtained from an event. For more information, see [Service integration modes](https://help.aliyun.com/document_detail/2592915.html).
+        # 
+        # This parameter is required.
         self.task_token = task_token
 
     def validate(self):
@@ -2179,8 +2200,12 @@ class ReportTaskSucceededRequest(TeaModel):
         task_token: str = None,
     ):
         # The output information of the task whose execution success you want to report.
+        # 
+        # This parameter is required.
         self.output = output
-        # The token of the task whose execution success you want to report. If this parameter appears in **waitforCallback** mode, the parameter is passed to the called service, such as Message Service (MNS) or Function Compute. For MNS, the value of this parameter can be obtained from the message. For Function Compute, the value of this parameter can be obtained from the event.
+        # The token of the task whose execution you want to report. The task token is passed to the called service, such as Message Service (MNS) or Function Compute. For MNS, the value of this parameter can be obtained from a message. For Function Compute, the value of this parameter can be obtained from an event. For more information, see [Service integration modes](https://help.aliyun.com/document_detail/2592915.html).
+        # 
+        # This parameter is required.
         self.task_token = task_token
 
     def validate(self):
@@ -2295,17 +2320,14 @@ class StartExecutionRequest(TeaModel):
         self.callback_fn_ftask_token = callback_fn_ftask_token
         # The name of the execution. The execution name is unique within a workflow. Configure this parameter based on the following rules:
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
+        # *   The name must start with a letter or an underscore (_).
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-).
         # *   The name is case-sensitive.
         # *   The name must be 1 to 128 characters in length.
         self.execution_name = execution_name
-        # The name of the workflow to be executed. The name is unique within a region and cannot be modified after the workflow is created. Configure this parameter based on the following rules:
+        # The name of the workflow to be executed.
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
-        # *   The name is case-sensitive.
-        # *   The name must be 1 to 128 characters in length.
+        # This parameter is required.
         self.flow_name = flow_name
         # The input of the execution, which is in the JSON format.
         self.input = input
@@ -2483,19 +2505,16 @@ class StartSyncExecutionRequest(TeaModel):
     ):
         # The name of the execution that you want to start. The name must meet the following conventions:
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (_).
         # *   The name is case-sensitive.
         # *   The name must be 1 to 128 characters in length.
         # 
         # Different from the StartExecution operation, in the synchronous execution mode, the execution name is no longer required to be unique within a flow. You can choose to provide an execution name to identify the current execution. In this case, the system adds a UUID to the current execution name. The used format is {ExecutionName}:{UUID}. If you do not specify the execution name, the system automatically generates an execution name.
         self.execution_name = execution_name
-        # The name of the flow in which you want to start the execution. The name is unique within the same region and cannot be modified after the flow is created. Set this parameter based on the following rules:
+        # The name of the workflow to be executed.
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
-        # *   The name is case-sensitive.
-        # *   The name must be 1 to 128 characters in length.
+        # This parameter is required.
         self.flow_name = flow_name
         # The input of the execution, which is in the JSON format.
         self.input = input
@@ -2672,19 +2691,13 @@ class StopExecutionRequest(TeaModel):
         self.cause = cause
         # The error for stopping the execution. The value must be 1 to 128 characters in length.
         self.error = error
-        # The name of the execution that you want to stop. You can call the **ListExecutions** operation to obtain the value of this parameter. The name is unique in a flow. Set this parameter based on the following rules:
+        # The name of the execution to be stopped. You can call the **ListExecutions** operation to obtain the value of this parameter.
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
-        # *   The name is case-sensitive.
-        # *   The name must be 1 to 128 characters in length.
+        # This parameter is required.
         self.execution_name = execution_name
-        # The name of the flow in which that you want to stop the execution. You can call the **ListFlows** operation to obtain the value of this parameter. The name is unique within the same region and cannot be modified after the flow is created. Set this parameter based on the following rules:
+        # The name of the workflow to be stopped. You can call the **ListFlows** operation to obtain the value of this parameter.
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
-        # *   The name is case-sensitive.
-        # *   The name must be 1 to 128 characters in length.
+        # This parameter is required.
         self.flow_name = flow_name
 
     def validate(self):
@@ -2728,6 +2741,7 @@ class StopExecutionResponseBody(TeaModel):
         name: str = None,
         output: str = None,
         request_id: str = None,
+        role_arn: str = None,
         started_time: str = None,
         status: str = None,
         stopped_time: str = None,
@@ -2744,6 +2758,7 @@ class StopExecutionResponseBody(TeaModel):
         self.output = output
         # The request ID.
         self.request_id = request_id
+        self.role_arn = role_arn
         # The time when the execution started.
         self.started_time = started_time
         # The execution status. Valid values:
@@ -2779,6 +2794,8 @@ class StopExecutionResponseBody(TeaModel):
             result['Output'] = self.output
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
         if self.started_time is not None:
             result['StartedTime'] = self.started_time
         if self.status is not None:
@@ -2801,6 +2818,8 @@ class StopExecutionResponseBody(TeaModel):
             self.output = m.get('Output')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
         if m.get('StartedTime') is not None:
             self.started_time = m.get('StartedTime')
         if m.get('Status') is not None:
@@ -2860,16 +2879,15 @@ class UpdateFlowRequest(TeaModel):
         role_arn: str = None,
         type: str = None,
     ):
-        # The flow definition, which follows the flow definition language (FDL) syntax standard. Considering compatibility, the system supports the two flow definition specifications.
+        # The definition of the workflow. The definition must comply with the flow definition language (FDL) syntax. Considering compatibility, the system supports the two workflow definition specifications.
+        # 
+        # >  In the preceding workflow definition example, Name:my_flow_name is the workflow name, which must be consistent with the input parameter Name
         self.definition = definition
         # The description of the flow.
         self.description = description
-        # The name of the flow. The name must be unique within the region and cannot be modified after the flow is created. The name must meet the following conventions:
+        # The name of the workflow.
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
-        # *   The name is case-sensitive.
-        # *   The name must be 1 to 128 characters in length.
+        # This parameter is required.
         self.name = name
         # The Alibaba Cloud resource name (ARN) of the authorized role on which the execution of the flow relies. During the execution of the flow, the flow execution engine assumes the role to call API operations of relevant services.
         self.role_arn = role_arn
@@ -3065,19 +3083,23 @@ class UpdateScheduleRequest(TeaModel):
         self.enable = enable
         # The name of the flow that is associated with the time-based schedule. The name must be unique within the region and cannot be modified after the time-based schedule is created. The name must meet the following conventions:
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (_).
         # *   The name is case-sensitive.
         # *   The name must be 1 to 128 characters in length.
+        # 
+        # This parameter is required.
         self.flow_name = flow_name
         # The trigger message of the time-based schedule. It must be in the JSON format.
         self.payload = payload
         # The name of the time-based schedule. The name must meet the following conventions:
         # 
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
-        # *   The name must start with a letter or an underscore (\_).
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (_).
         # *   The name is case-sensitive.
         # *   The name must be 1 to 128 characters in length.
+        # 
+        # This parameter is required.
         self.schedule_name = schedule_name
 
     def validate(self):

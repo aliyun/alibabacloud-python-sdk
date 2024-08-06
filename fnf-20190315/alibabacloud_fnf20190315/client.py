@@ -54,9 +54,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.CreateFlowResponse:
         """
-        ## [](#)Usage notes
-        *   The number of flows that each user can create is restricted by resources. For more information, see [Limits](~~122093~~). If you want to create more flows, submit a ticket.
-        *   At the user level, flows are distinguished by name. The name of a flow within one account must be unique.
+        @summary Creates a flow.
+        
+        @description ## [](#)Usage notes
+        The number of flows that each user can create is restricted by resources. For more information, see [Limits](https://help.aliyun.com/document_detail/122093.html). If you want to create more flows, submit a ticket.
+        At the user level, flows are distinguished by name. The name of a flow within one account must be unique.
         
         @param request: CreateFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -103,9 +105,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.CreateFlowResponse:
         """
-        ## [](#)Usage notes
-        *   The number of flows that each user can create is restricted by resources. For more information, see [Limits](~~122093~~). If you want to create more flows, submit a ticket.
-        *   At the user level, flows are distinguished by name. The name of a flow within one account must be unique.
+        @summary Creates a flow.
+        
+        @description ## [](#)Usage notes
+        The number of flows that each user can create is restricted by resources. For more information, see [Limits](https://help.aliyun.com/document_detail/122093.html). If you want to create more flows, submit a ticket.
+        At the user level, flows are distinguished by name. The name of a flow within one account must be unique.
         
         @param request: CreateFlowRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -151,9 +155,11 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.CreateFlowRequest,
     ) -> fnf_20190315_models.CreateFlowResponse:
         """
-        ## [](#)Usage notes
-        *   The number of flows that each user can create is restricted by resources. For more information, see [Limits](~~122093~~). If you want to create more flows, submit a ticket.
-        *   At the user level, flows are distinguished by name. The name of a flow within one account must be unique.
+        @summary Creates a flow.
+        
+        @description ## [](#)Usage notes
+        The number of flows that each user can create is restricted by resources. For more information, see [Limits](https://help.aliyun.com/document_detail/122093.html). If you want to create more flows, submit a ticket.
+        At the user level, flows are distinguished by name. The name of a flow within one account must be unique.
         
         @param request: CreateFlowRequest
         @return: CreateFlowResponse
@@ -166,9 +172,11 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.CreateFlowRequest,
     ) -> fnf_20190315_models.CreateFlowResponse:
         """
-        ## [](#)Usage notes
-        *   The number of flows that each user can create is restricted by resources. For more information, see [Limits](~~122093~~). If you want to create more flows, submit a ticket.
-        *   At the user level, flows are distinguished by name. The name of a flow within one account must be unique.
+        @summary Creates a flow.
+        
+        @description ## [](#)Usage notes
+        The number of flows that each user can create is restricted by resources. For more information, see [Limits](https://help.aliyun.com/document_detail/122093.html). If you want to create more flows, submit a ticket.
+        At the user level, flows are distinguished by name. The name of a flow within one account must be unique.
         
         @param request: CreateFlowRequest
         @return: CreateFlowResponse
@@ -181,6 +189,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.CreateScheduleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.CreateScheduleResponse:
+        """
+        @summary Creates a time-based schedule.
+        
+        @param request: CreateScheduleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateScheduleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.signature_version):
@@ -223,6 +238,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.CreateScheduleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.CreateScheduleResponse:
+        """
+        @summary Creates a time-based schedule.
+        
+        @param request: CreateScheduleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateScheduleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.signature_version):
@@ -264,6 +286,12 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.CreateScheduleRequest,
     ) -> fnf_20190315_models.CreateScheduleResponse:
+        """
+        @summary Creates a time-based schedule.
+        
+        @param request: CreateScheduleRequest
+        @return: CreateScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_schedule_with_options(request, runtime)
 
@@ -271,6 +299,12 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.CreateScheduleRequest,
     ) -> fnf_20190315_models.CreateScheduleResponse:
+        """
+        @summary Creates a time-based schedule.
+        
+        @param request: CreateScheduleRequest
+        @return: CreateScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_schedule_with_options_async(request, runtime)
 
@@ -280,7 +314,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.DeleteFlowResponse:
         """
-        ## [](#)Usage notes
+        @summary Deletes an existing flow.
+        
+        @description ## [](#)Usage notes
         A delete operation is asynchronous. If this operation is successful, the system returns a successful response. If an existing flow is pending to be deleted, a new flow of the same name will not be affected by the existing one. After you delete a flow, you cannot query its historical executions. All executions in progress will stop after their most recent steps are complete.
         
         @param request: DeleteFlowRequest
@@ -316,7 +352,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.DeleteFlowResponse:
         """
-        ## [](#)Usage notes
+        @summary Deletes an existing flow.
+        
+        @description ## [](#)Usage notes
         A delete operation is asynchronous. If this operation is successful, the system returns a successful response. If an existing flow is pending to be deleted, a new flow of the same name will not be affected by the existing one. After you delete a flow, you cannot query its historical executions. All executions in progress will stop after their most recent steps are complete.
         
         @param request: DeleteFlowRequest
@@ -351,7 +389,9 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.DeleteFlowRequest,
     ) -> fnf_20190315_models.DeleteFlowResponse:
         """
-        ## [](#)Usage notes
+        @summary Deletes an existing flow.
+        
+        @description ## [](#)Usage notes
         A delete operation is asynchronous. If this operation is successful, the system returns a successful response. If an existing flow is pending to be deleted, a new flow of the same name will not be affected by the existing one. After you delete a flow, you cannot query its historical executions. All executions in progress will stop after their most recent steps are complete.
         
         @param request: DeleteFlowRequest
@@ -365,7 +405,9 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.DeleteFlowRequest,
     ) -> fnf_20190315_models.DeleteFlowResponse:
         """
-        ## [](#)Usage notes
+        @summary Deletes an existing flow.
+        
+        @description ## [](#)Usage notes
         A delete operation is asynchronous. If this operation is successful, the system returns a successful response. If an existing flow is pending to be deleted, a new flow of the same name will not be affected by the existing one. After you delete a flow, you cannot query its historical executions. All executions in progress will stop after their most recent steps are complete.
         
         @param request: DeleteFlowRequest
@@ -379,6 +421,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.DeleteScheduleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.DeleteScheduleResponse:
+        """
+        @summary Deletes a time-based scheduling task.
+        
+        @param request: DeleteScheduleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteScheduleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.flow_name):
@@ -409,6 +458,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.DeleteScheduleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.DeleteScheduleResponse:
+        """
+        @summary Deletes a time-based scheduling task.
+        
+        @param request: DeleteScheduleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteScheduleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.flow_name):
@@ -438,6 +494,12 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.DeleteScheduleRequest,
     ) -> fnf_20190315_models.DeleteScheduleResponse:
+        """
+        @summary Deletes a time-based scheduling task.
+        
+        @param request: DeleteScheduleRequest
+        @return: DeleteScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_schedule_with_options(request, runtime)
 
@@ -445,6 +507,12 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.DeleteScheduleRequest,
     ) -> fnf_20190315_models.DeleteScheduleResponse:
+        """
+        @summary Deletes a time-based scheduling task.
+        
+        @param request: DeleteScheduleRequest
+        @return: DeleteScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_schedule_with_options_async(request, runtime)
 
@@ -453,6 +521,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.DescribeExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.DescribeExecutionResponse:
+        """
+        @summary Queries an execution in a flow. The long polling mode is supported. The maximum waiting period for long polling depends on the value of the WaitTimeSeconds parameter.
+        
+        @param request: DescribeExecutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExecutionResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -479,6 +554,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.DescribeExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.DescribeExecutionResponse:
+        """
+        @summary Queries an execution in a flow. The long polling mode is supported. The maximum waiting period for long polling depends on the value of the WaitTimeSeconds parameter.
+        
+        @param request: DescribeExecutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExecutionResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -504,6 +586,12 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.DescribeExecutionRequest,
     ) -> fnf_20190315_models.DescribeExecutionResponse:
+        """
+        @summary Queries an execution in a flow. The long polling mode is supported. The maximum waiting period for long polling depends on the value of the WaitTimeSeconds parameter.
+        
+        @param request: DescribeExecutionRequest
+        @return: DescribeExecutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_execution_with_options(request, runtime)
 
@@ -511,6 +599,12 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.DescribeExecutionRequest,
     ) -> fnf_20190315_models.DescribeExecutionResponse:
+        """
+        @summary Queries an execution in a flow. The long polling mode is supported. The maximum waiting period for long polling depends on the value of the WaitTimeSeconds parameter.
+        
+        @param request: DescribeExecutionRequest
+        @return: DescribeExecutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_execution_with_options_async(request, runtime)
 
@@ -519,6 +613,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.DescribeFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.DescribeFlowResponse:
+        """
+        @summary Queries the information about a flow.
+        
+        @param request: DescribeFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFlowResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -545,6 +646,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.DescribeFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.DescribeFlowResponse:
+        """
+        @summary Queries the information about a flow.
+        
+        @param request: DescribeFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFlowResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -570,6 +678,12 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.DescribeFlowRequest,
     ) -> fnf_20190315_models.DescribeFlowResponse:
+        """
+        @summary Queries the information about a flow.
+        
+        @param request: DescribeFlowRequest
+        @return: DescribeFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_flow_with_options(request, runtime)
 
@@ -577,6 +691,12 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.DescribeFlowRequest,
     ) -> fnf_20190315_models.DescribeFlowResponse:
+        """
+        @summary Queries the information about a flow.
+        
+        @param request: DescribeFlowRequest
+        @return: DescribeFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_flow_with_options_async(request, runtime)
 
@@ -585,6 +705,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.DescribeScheduleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.DescribeScheduleResponse:
+        """
+        @summary Queries the detailed information about a time-based schedule.
+        
+        @param request: DescribeScheduleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeScheduleResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -611,6 +738,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.DescribeScheduleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.DescribeScheduleResponse:
+        """
+        @summary Queries the detailed information about a time-based schedule.
+        
+        @param request: DescribeScheduleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeScheduleResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -636,6 +770,12 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.DescribeScheduleRequest,
     ) -> fnf_20190315_models.DescribeScheduleResponse:
+        """
+        @summary Queries the detailed information about a time-based schedule.
+        
+        @param request: DescribeScheduleRequest
+        @return: DescribeScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_schedule_with_options(request, runtime)
 
@@ -643,6 +783,12 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.DescribeScheduleRequest,
     ) -> fnf_20190315_models.DescribeScheduleResponse:
+        """
+        @summary Queries the detailed information about a time-based schedule.
+        
+        @param request: DescribeScheduleRequest
+        @return: DescribeScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_schedule_with_options_async(request, runtime)
 
@@ -651,6 +797,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.GetExecutionHistoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.GetExecutionHistoryResponse:
+        """
+        @summary Queries the details about each step in an execution process.
+        
+        @param request: GetExecutionHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetExecutionHistoryResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -677,6 +830,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.GetExecutionHistoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.GetExecutionHistoryResponse:
+        """
+        @summary Queries the details about each step in an execution process.
+        
+        @param request: GetExecutionHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetExecutionHistoryResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -702,6 +862,12 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.GetExecutionHistoryRequest,
     ) -> fnf_20190315_models.GetExecutionHistoryResponse:
+        """
+        @summary Queries the details about each step in an execution process.
+        
+        @param request: GetExecutionHistoryRequest
+        @return: GetExecutionHistoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_execution_history_with_options(request, runtime)
 
@@ -709,6 +875,12 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.GetExecutionHistoryRequest,
     ) -> fnf_20190315_models.GetExecutionHistoryResponse:
+        """
+        @summary Queries the details about each step in an execution process.
+        
+        @param request: GetExecutionHistoryRequest
+        @return: GetExecutionHistoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_execution_history_with_options_async(request, runtime)
 
@@ -718,7 +890,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.ListExecutionsResponse:
         """
-        ## [](#)Usage notes
+        @summary Queries all historical executions of a flow.
+        
+        @description ## [](#)Usage notes
         After you delete a flow, you cannot query its historical executions, even if you create a flow of the same name.
         
         @param request: ListExecutionsRequest
@@ -752,7 +926,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.ListExecutionsResponse:
         """
-        ## [](#)Usage notes
+        @summary Queries all historical executions of a flow.
+        
+        @description ## [](#)Usage notes
         After you delete a flow, you cannot query its historical executions, even if you create a flow of the same name.
         
         @param request: ListExecutionsRequest
@@ -785,7 +961,9 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.ListExecutionsRequest,
     ) -> fnf_20190315_models.ListExecutionsResponse:
         """
-        ## [](#)Usage notes
+        @summary Queries all historical executions of a flow.
+        
+        @description ## [](#)Usage notes
         After you delete a flow, you cannot query its historical executions, even if you create a flow of the same name.
         
         @param request: ListExecutionsRequest
@@ -799,7 +977,9 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.ListExecutionsRequest,
     ) -> fnf_20190315_models.ListExecutionsResponse:
         """
-        ## [](#)Usage notes
+        @summary Queries all historical executions of a flow.
+        
+        @description ## [](#)Usage notes
         After you delete a flow, you cannot query its historical executions, even if you create a flow of the same name.
         
         @param request: ListExecutionsRequest
@@ -813,6 +993,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.ListFlowsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.ListFlowsResponse:
+        """
+        @summary Queries a list of flows.
+        
+        @param request: ListFlowsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFlowsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -839,6 +1026,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.ListFlowsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.ListFlowsResponse:
+        """
+        @summary Queries a list of flows.
+        
+        @param request: ListFlowsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFlowsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -864,6 +1058,12 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.ListFlowsRequest,
     ) -> fnf_20190315_models.ListFlowsResponse:
+        """
+        @summary Queries a list of flows.
+        
+        @param request: ListFlowsRequest
+        @return: ListFlowsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_flows_with_options(request, runtime)
 
@@ -871,6 +1071,12 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.ListFlowsRequest,
     ) -> fnf_20190315_models.ListFlowsResponse:
+        """
+        @summary Queries a list of flows.
+        
+        @param request: ListFlowsRequest
+        @return: ListFlowsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_flows_with_options_async(request, runtime)
 
@@ -879,6 +1085,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.ListSchedulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.ListSchedulesResponse:
+        """
+        @summary Queries time-based schedules in a flow.
+        
+        @param request: ListSchedulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSchedulesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -905,6 +1118,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.ListSchedulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.ListSchedulesResponse:
+        """
+        @summary Queries time-based schedules in a flow.
+        
+        @param request: ListSchedulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSchedulesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -930,6 +1150,12 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.ListSchedulesRequest,
     ) -> fnf_20190315_models.ListSchedulesResponse:
+        """
+        @summary Queries time-based schedules in a flow.
+        
+        @param request: ListSchedulesRequest
+        @return: ListSchedulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_schedules_with_options(request, runtime)
 
@@ -937,6 +1163,12 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.ListSchedulesRequest,
     ) -> fnf_20190315_models.ListSchedulesResponse:
+        """
+        @summary Queries time-based schedules in a flow.
+        
+        @param request: ListSchedulesRequest
+        @return: ListSchedulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_schedules_with_options_async(request, runtime)
 
@@ -946,9 +1178,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.ReportTaskFailedResponse:
         """
-        ## [](#)Usage notes
-        In the old version of CloudFlow, the task step that ReportTaskFailed is used to call back `pattern: waitForCallback` indicates that the current task fails to be executed.
-        In the new version of CloudFlow, the task step that ReportTaskFailed is used to call back `TaskMode: WaitForCustomCallback` indicates that the current task fails to be executed.
+        @summary Reports a failed task.
+        
+        @description ## [](#)Usage notes
+        In the previous service (Serverless Workflow), the task step that ReportTaskFailed is used to call back `pattern: waitForCallback` indicates that the current task fails to be executed.
+        In the new service (CloudFlow), the task step that ReportTaskFailed is used to call back `TaskMode: WaitForCustomCallback` indicates that the current task fails to be executed.
         
         @param request: ReportTaskFailedRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -989,9 +1223,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.ReportTaskFailedResponse:
         """
-        ## [](#)Usage notes
-        In the old version of CloudFlow, the task step that ReportTaskFailed is used to call back `pattern: waitForCallback` indicates that the current task fails to be executed.
-        In the new version of CloudFlow, the task step that ReportTaskFailed is used to call back `TaskMode: WaitForCustomCallback` indicates that the current task fails to be executed.
+        @summary Reports a failed task.
+        
+        @description ## [](#)Usage notes
+        In the previous service (Serverless Workflow), the task step that ReportTaskFailed is used to call back `pattern: waitForCallback` indicates that the current task fails to be executed.
+        In the new service (CloudFlow), the task step that ReportTaskFailed is used to call back `TaskMode: WaitForCustomCallback` indicates that the current task fails to be executed.
         
         @param request: ReportTaskFailedRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1031,9 +1267,11 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.ReportTaskFailedRequest,
     ) -> fnf_20190315_models.ReportTaskFailedResponse:
         """
-        ## [](#)Usage notes
-        In the old version of CloudFlow, the task step that ReportTaskFailed is used to call back `pattern: waitForCallback` indicates that the current task fails to be executed.
-        In the new version of CloudFlow, the task step that ReportTaskFailed is used to call back `TaskMode: WaitForCustomCallback` indicates that the current task fails to be executed.
+        @summary Reports a failed task.
+        
+        @description ## [](#)Usage notes
+        In the previous service (Serverless Workflow), the task step that ReportTaskFailed is used to call back `pattern: waitForCallback` indicates that the current task fails to be executed.
+        In the new service (CloudFlow), the task step that ReportTaskFailed is used to call back `TaskMode: WaitForCustomCallback` indicates that the current task fails to be executed.
         
         @param request: ReportTaskFailedRequest
         @return: ReportTaskFailedResponse
@@ -1046,9 +1284,11 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.ReportTaskFailedRequest,
     ) -> fnf_20190315_models.ReportTaskFailedResponse:
         """
-        ## [](#)Usage notes
-        In the old version of CloudFlow, the task step that ReportTaskFailed is used to call back `pattern: waitForCallback` indicates that the current task fails to be executed.
-        In the new version of CloudFlow, the task step that ReportTaskFailed is used to call back `TaskMode: WaitForCustomCallback` indicates that the current task fails to be executed.
+        @summary Reports a failed task.
+        
+        @description ## [](#)Usage notes
+        In the previous service (Serverless Workflow), the task step that ReportTaskFailed is used to call back `pattern: waitForCallback` indicates that the current task fails to be executed.
+        In the new service (CloudFlow), the task step that ReportTaskFailed is used to call back `TaskMode: WaitForCustomCallback` indicates that the current task fails to be executed.
         
         @param request: ReportTaskFailedRequest
         @return: ReportTaskFailedResponse
@@ -1062,9 +1302,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.ReportTaskSucceededResponse:
         """
-        ## [](#)Usage notes
-        In the old version of CloudFlow, the task step that ReportTaskSucceeded is used to call back pattern: waitForCallback indicates that the current task is successfully executed.
-        In the new version of CloudFlow, the task step that ReportTaskSucceeded is used to call back TaskMode: WaitForCustomCallback indicates that the current task is successfully executed.
+        @summary Reports a successful task.
+        
+        @description ## [](#)Usage notes
+        In the previous service (Serverless Workflow), the task step that ReportTaskSucceeded is used to call back pattern: waitForCallback indicates that the current task is successfully executed.
+        In the new service (CloudFlow), the task step that ReportTaskSucceeded is used to call back TaskMode: WaitForCustomCallback indicates that the current task is successfully executed.
         
         @param request: ReportTaskSucceededRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1103,9 +1345,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.ReportTaskSucceededResponse:
         """
-        ## [](#)Usage notes
-        In the old version of CloudFlow, the task step that ReportTaskSucceeded is used to call back pattern: waitForCallback indicates that the current task is successfully executed.
-        In the new version of CloudFlow, the task step that ReportTaskSucceeded is used to call back TaskMode: WaitForCustomCallback indicates that the current task is successfully executed.
+        @summary Reports a successful task.
+        
+        @description ## [](#)Usage notes
+        In the previous service (Serverless Workflow), the task step that ReportTaskSucceeded is used to call back pattern: waitForCallback indicates that the current task is successfully executed.
+        In the new service (CloudFlow), the task step that ReportTaskSucceeded is used to call back TaskMode: WaitForCustomCallback indicates that the current task is successfully executed.
         
         @param request: ReportTaskSucceededRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1143,9 +1387,11 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.ReportTaskSucceededRequest,
     ) -> fnf_20190315_models.ReportTaskSucceededResponse:
         """
-        ## [](#)Usage notes
-        In the old version of CloudFlow, the task step that ReportTaskSucceeded is used to call back pattern: waitForCallback indicates that the current task is successfully executed.
-        In the new version of CloudFlow, the task step that ReportTaskSucceeded is used to call back TaskMode: WaitForCustomCallback indicates that the current task is successfully executed.
+        @summary Reports a successful task.
+        
+        @description ## [](#)Usage notes
+        In the previous service (Serverless Workflow), the task step that ReportTaskSucceeded is used to call back pattern: waitForCallback indicates that the current task is successfully executed.
+        In the new service (CloudFlow), the task step that ReportTaskSucceeded is used to call back TaskMode: WaitForCustomCallback indicates that the current task is successfully executed.
         
         @param request: ReportTaskSucceededRequest
         @return: ReportTaskSucceededResponse
@@ -1158,9 +1404,11 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.ReportTaskSucceededRequest,
     ) -> fnf_20190315_models.ReportTaskSucceededResponse:
         """
-        ## [](#)Usage notes
-        In the old version of CloudFlow, the task step that ReportTaskSucceeded is used to call back pattern: waitForCallback indicates that the current task is successfully executed.
-        In the new version of CloudFlow, the task step that ReportTaskSucceeded is used to call back TaskMode: WaitForCustomCallback indicates that the current task is successfully executed.
+        @summary Reports a successful task.
+        
+        @description ## [](#)Usage notes
+        In the previous service (Serverless Workflow), the task step that ReportTaskSucceeded is used to call back pattern: waitForCallback indicates that the current task is successfully executed.
+        In the new service (CloudFlow), the task step that ReportTaskSucceeded is used to call back TaskMode: WaitForCustomCallback indicates that the current task is successfully executed.
         
         @param request: ReportTaskSucceededRequest
         @return: ReportTaskSucceededResponse
@@ -1174,12 +1422,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.StartExecutionResponse:
         """
-        ## [](#)Usage notes
-        *   The flow is created. A flow only in standard mode is supported.
-        *   If you do not specify an execution, the system automatically generates an execution and starts the execution.
-        *   If an ongoing execution has the same name as that of the execution to be started, the system directly returns the ongoing execution.
-        *   If the ongoing execution with the same name has ended (succeeded or failed), `ExecutionAlreadyExists` is returned.
-        *   If no execution with the same name exists, the system starts a new execution.
+        @summary Starts the execution of a workflow.
+        
+        @description ## [](#)Usage notes
+        The flow is created. A flow only in standard mode is supported.
+        If you do not specify an execution, the system automatically generates an execution and starts the execution.
+        If an ongoing execution has the same name as that of the execution to be started, the system directly returns the ongoing execution.
+        If the ongoing execution with the same name has ended (succeeded or failed), `ExecutionAlreadyExists` is returned.
+        If no execution with the same name exists, the system starts a new execution.
         
         @param request: StartExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1220,12 +1470,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.StartExecutionResponse:
         """
-        ## [](#)Usage notes
-        *   The flow is created. A flow only in standard mode is supported.
-        *   If you do not specify an execution, the system automatically generates an execution and starts the execution.
-        *   If an ongoing execution has the same name as that of the execution to be started, the system directly returns the ongoing execution.
-        *   If the ongoing execution with the same name has ended (succeeded or failed), `ExecutionAlreadyExists` is returned.
-        *   If no execution with the same name exists, the system starts a new execution.
+        @summary Starts the execution of a workflow.
+        
+        @description ## [](#)Usage notes
+        The flow is created. A flow only in standard mode is supported.
+        If you do not specify an execution, the system automatically generates an execution and starts the execution.
+        If an ongoing execution has the same name as that of the execution to be started, the system directly returns the ongoing execution.
+        If the ongoing execution with the same name has ended (succeeded or failed), `ExecutionAlreadyExists` is returned.
+        If no execution with the same name exists, the system starts a new execution.
         
         @param request: StartExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1265,12 +1517,14 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.StartExecutionRequest,
     ) -> fnf_20190315_models.StartExecutionResponse:
         """
-        ## [](#)Usage notes
-        *   The flow is created. A flow only in standard mode is supported.
-        *   If you do not specify an execution, the system automatically generates an execution and starts the execution.
-        *   If an ongoing execution has the same name as that of the execution to be started, the system directly returns the ongoing execution.
-        *   If the ongoing execution with the same name has ended (succeeded or failed), `ExecutionAlreadyExists` is returned.
-        *   If no execution with the same name exists, the system starts a new execution.
+        @summary Starts the execution of a workflow.
+        
+        @description ## [](#)Usage notes
+        The flow is created. A flow only in standard mode is supported.
+        If you do not specify an execution, the system automatically generates an execution and starts the execution.
+        If an ongoing execution has the same name as that of the execution to be started, the system directly returns the ongoing execution.
+        If the ongoing execution with the same name has ended (succeeded or failed), `ExecutionAlreadyExists` is returned.
+        If no execution with the same name exists, the system starts a new execution.
         
         @param request: StartExecutionRequest
         @return: StartExecutionResponse
@@ -1283,12 +1537,14 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.StartExecutionRequest,
     ) -> fnf_20190315_models.StartExecutionResponse:
         """
-        ## [](#)Usage notes
-        *   The flow is created. A flow only in standard mode is supported.
-        *   If you do not specify an execution, the system automatically generates an execution and starts the execution.
-        *   If an ongoing execution has the same name as that of the execution to be started, the system directly returns the ongoing execution.
-        *   If the ongoing execution with the same name has ended (succeeded or failed), `ExecutionAlreadyExists` is returned.
-        *   If no execution with the same name exists, the system starts a new execution.
+        @summary Starts the execution of a workflow.
+        
+        @description ## [](#)Usage notes
+        The flow is created. A flow only in standard mode is supported.
+        If you do not specify an execution, the system automatically generates an execution and starts the execution.
+        If an ongoing execution has the same name as that of the execution to be started, the system directly returns the ongoing execution.
+        If the ongoing execution with the same name has ended (succeeded or failed), `ExecutionAlreadyExists` is returned.
+        If no execution with the same name exists, the system starts a new execution.
         
         @param request: StartExecutionRequest
         @return: StartExecutionResponse
@@ -1302,7 +1558,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.StartSyncExecutionResponse:
         """
-        Only flows of the express execution mode are supported.
+        @summary Synchronously starts an execution in a flow.
+        
+        @description    Only flows of the express execution mode are supported.
         
         @param request: StartSyncExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1341,7 +1599,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.StartSyncExecutionResponse:
         """
-        Only flows of the express execution mode are supported.
+        @summary Synchronously starts an execution in a flow.
+        
+        @description    Only flows of the express execution mode are supported.
         
         @param request: StartSyncExecutionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1379,7 +1639,9 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.StartSyncExecutionRequest,
     ) -> fnf_20190315_models.StartSyncExecutionResponse:
         """
-        Only flows of the express execution mode are supported.
+        @summary Synchronously starts an execution in a flow.
+        
+        @description    Only flows of the express execution mode are supported.
         
         @param request: StartSyncExecutionRequest
         @return: StartSyncExecutionResponse
@@ -1392,7 +1654,9 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.StartSyncExecutionRequest,
     ) -> fnf_20190315_models.StartSyncExecutionResponse:
         """
-        Only flows of the express execution mode are supported.
+        @summary Synchronously starts an execution in a flow.
+        
+        @description    Only flows of the express execution mode are supported.
         
         @param request: StartSyncExecutionRequest
         @return: StartSyncExecutionResponse
@@ -1406,7 +1670,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.StopExecutionResponse:
         """
-        ## [](#)Usage notes
+        @summary Stops an execution that is in progress in a flow.
+        
+        @description ## [](#)Usage notes
         The flow must be in progress.
         
         @param request: StopExecutionRequest
@@ -1448,7 +1714,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.StopExecutionResponse:
         """
-        ## [](#)Usage notes
+        @summary Stops an execution that is in progress in a flow.
+        
+        @description ## [](#)Usage notes
         The flow must be in progress.
         
         @param request: StopExecutionRequest
@@ -1489,7 +1757,9 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.StopExecutionRequest,
     ) -> fnf_20190315_models.StopExecutionResponse:
         """
-        ## [](#)Usage notes
+        @summary Stops an execution that is in progress in a flow.
+        
+        @description ## [](#)Usage notes
         The flow must be in progress.
         
         @param request: StopExecutionRequest
@@ -1503,7 +1773,9 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.StopExecutionRequest,
     ) -> fnf_20190315_models.StopExecutionResponse:
         """
-        ## [](#)Usage notes
+        @summary Stops an execution that is in progress in a flow.
+        
+        @description ## [](#)Usage notes
         The flow must be in progress.
         
         @param request: StopExecutionRequest
@@ -1517,6 +1789,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.UpdateFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.UpdateFlowResponse:
+        """
+        @summary Updates a flow.
+        
+        @param request: UpdateFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFlowResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.definition):
@@ -1553,6 +1832,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.UpdateFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.UpdateFlowResponse:
+        """
+        @summary Updates a flow.
+        
+        @param request: UpdateFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFlowResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.definition):
@@ -1588,6 +1874,12 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.UpdateFlowRequest,
     ) -> fnf_20190315_models.UpdateFlowResponse:
+        """
+        @summary Updates a flow.
+        
+        @param request: UpdateFlowRequest
+        @return: UpdateFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_flow_with_options(request, runtime)
 
@@ -1595,6 +1887,12 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.UpdateFlowRequest,
     ) -> fnf_20190315_models.UpdateFlowResponse:
+        """
+        @summary Updates a flow.
+        
+        @param request: UpdateFlowRequest
+        @return: UpdateFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_flow_with_options_async(request, runtime)
 
@@ -1603,6 +1901,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.UpdateScheduleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.UpdateScheduleResponse:
+        """
+        @summary Updates a time-based schedule.
+        
+        @param request: UpdateScheduleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateScheduleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cron_expression):
@@ -1641,6 +1946,13 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.UpdateScheduleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.UpdateScheduleResponse:
+        """
+        @summary Updates a time-based schedule.
+        
+        @param request: UpdateScheduleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateScheduleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cron_expression):
@@ -1678,6 +1990,12 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.UpdateScheduleRequest,
     ) -> fnf_20190315_models.UpdateScheduleResponse:
+        """
+        @summary Updates a time-based schedule.
+        
+        @param request: UpdateScheduleRequest
+        @return: UpdateScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_schedule_with_options(request, runtime)
 
@@ -1685,5 +2003,11 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.UpdateScheduleRequest,
     ) -> fnf_20190315_models.UpdateScheduleResponse:
+        """
+        @summary Updates a time-based schedule.
+        
+        @param request: UpdateScheduleRequest
+        @return: UpdateScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_schedule_with_options_async(request, runtime)

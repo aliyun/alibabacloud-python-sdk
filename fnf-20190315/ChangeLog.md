@@ -1,3 +1,7 @@
+2024-08-06 Version: 1.1.3
+- Update API StopExecution: update response param.
+
+
 2024-03-26 Version: 1.1.2
 - Update API DeleteFlow: update param Name.
 - Update API DeleteSchedule: update param FlowName.
