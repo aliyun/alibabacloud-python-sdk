@@ -1,3 +1,7 @@
+2024-08-06 Version: 2.9.0
+- Support API CertNoThreeElementVerification.
+
+
 2024-07-08 Version: 2.8.1
 - Update API DescribePhoneNumberOperatorAttribute: add param FlowName.
 - Update API DescribePhoneNumberOperatorAttribute: add param ResultCount.
