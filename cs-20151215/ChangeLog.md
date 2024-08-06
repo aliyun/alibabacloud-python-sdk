@@ -1,3 +1,7 @@
+2024-08-06 Version: 4.7.2
+- Update API GetClusterAuditProject: update response param.
+
+
 2024-08-02 Version: 4.7.1
 - Update API DeleteAlertContact: update param contact_ids.
 - Update API DeleteAlertContact: update response param.

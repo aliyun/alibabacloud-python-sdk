@@ -19341,8 +19341,10 @@ class GetClusterAddonInstanceResponse(TeaModel):
 class GetClusterAuditProjectResponseBody(TeaModel):
     def __init__(
         self,
+        audit_enabled: bool = None,
         sls_project_name: str = None,
     ):
+        self.audit_enabled = audit_enabled
         self.sls_project_name = sls_project_name
 
     def validate(self):
@@ -19354,12 +19356,16 @@ class GetClusterAuditProjectResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.audit_enabled is not None:
+            result['audit_enabled'] = self.audit_enabled
         if self.sls_project_name is not None:
             result['sls_project_name'] = self.sls_project_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('audit_enabled') is not None:
+            self.audit_enabled = m.get('audit_enabled')
         if m.get('sls_project_name') is not None:
             self.sls_project_name = m.get('sls_project_name')
         return self
