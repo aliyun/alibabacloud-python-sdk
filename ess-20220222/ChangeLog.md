@@ -1,3 +1,6 @@
+2024-08-06 Version: 1.7.4
+- Generated python 2022-02-22 for Ess.
+
 2024-08-05 Version: 1.7.3
 - Update API CreateNotificationConfiguration: add param TimeZone.
 - Update API DescribeNotificationConfigurations: update response param.
