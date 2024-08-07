@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.AddDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.AddDataSourceResponse:
+        """
+        @summary Adds a data source to a cloud account that is added to the threat analysis feature.
+        
+        @param request: AddDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDataSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -86,6 +93,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.AddDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.AddDataSourceResponse:
+        """
+        @summary Adds a data source to a cloud account that is added to the threat analysis feature.
+        
+        @param request: AddDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDataSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -125,6 +139,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.AddDataSourceRequest,
     ) -> cloud_siem_20220616_models.AddDataSourceResponse:
+        """
+        @summary Adds a data source to a cloud account that is added to the threat analysis feature.
+        
+        @param request: AddDataSourceRequest
+        @return: AddDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_data_source_with_options(request, runtime)
 
@@ -132,6 +152,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.AddDataSourceRequest,
     ) -> cloud_siem_20220616_models.AddDataSourceResponse:
+        """
+        @summary Adds a data source to a cloud account that is added to the threat analysis feature.
+        
+        @param request: AddDataSourceRequest
+        @return: AddDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_data_source_with_options_async(request, runtime)
 
@@ -140,6 +166,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.AddDataSourceLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.AddDataSourceLogResponse:
+        """
+        @summary Adds logs of a cloud account to the threat analysis feature.
+        
+        @param request: AddDataSourceLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDataSourceLogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -178,6 +211,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.AddDataSourceLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.AddDataSourceLogResponse:
+        """
+        @summary Adds logs of a cloud account to the threat analysis feature.
+        
+        @param request: AddDataSourceLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDataSourceLogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -215,6 +255,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.AddDataSourceLogRequest,
     ) -> cloud_siem_20220616_models.AddDataSourceLogResponse:
+        """
+        @summary Adds logs of a cloud account to the threat analysis feature.
+        
+        @param request: AddDataSourceLogRequest
+        @return: AddDataSourceLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_data_source_log_with_options(request, runtime)
 
@@ -222,6 +268,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.AddDataSourceLogRequest,
     ) -> cloud_siem_20220616_models.AddDataSourceLogResponse:
+        """
+        @summary Adds logs of a cloud account to the threat analysis feature.
+        
+        @param request: AddDataSourceLogRequest
+        @return: AddDataSourceLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_data_source_log_with_options_async(request, runtime)
 
@@ -230,6 +282,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.AddUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.AddUserResponse:
+        """
+        @summary Adds a cloud account to the threat analysis feature for centralized management. After you add the account, you can use the account to perform operations that are supported by the threat analysis feature. For example, you can add logs of the account to the threat analysis feature.
+        
+        @param request: AddUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.added_user_id):
@@ -260,6 +319,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.AddUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.AddUserResponse:
+        """
+        @summary Adds a cloud account to the threat analysis feature for centralized management. After you add the account, you can use the account to perform operations that are supported by the threat analysis feature. For example, you can add logs of the account to the threat analysis feature.
+        
+        @param request: AddUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.added_user_id):
@@ -289,6 +355,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.AddUserRequest,
     ) -> cloud_siem_20220616_models.AddUserResponse:
+        """
+        @summary Adds a cloud account to the threat analysis feature for centralized management. After you add the account, you can use the account to perform operations that are supported by the threat analysis feature. For example, you can add logs of the account to the threat analysis feature.
+        
+        @param request: AddUserRequest
+        @return: AddUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_user_with_options(request, runtime)
 
@@ -296,6 +368,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.AddUserRequest,
     ) -> cloud_siem_20220616_models.AddUserResponse:
+        """
+        @summary Adds a cloud account to the threat analysis feature for centralized management. After you add the account, you can use the account to perform operations that are supported by the threat analysis feature. For example, you can add logs of the account to the threat analysis feature.
+        
+        @param request: AddUserRequest
+        @return: AddUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_user_with_options_async(request, runtime)
 
@@ -304,6 +382,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.AddUserSourceLogConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.AddUserSourceLogConfigResponse:
+        """
+        @summary Adds the logs of a cloud service within a cloud account to the threat analysis feature for alert and event anslysis.
+        
+        @param request: AddUserSourceLogConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserSourceLogConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.deleted):
@@ -344,6 +429,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.AddUserSourceLogConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.AddUserSourceLogConfigResponse:
+        """
+        @summary Adds the logs of a cloud service within a cloud account to the threat analysis feature for alert and event anslysis.
+        
+        @param request: AddUserSourceLogConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserSourceLogConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.deleted):
@@ -383,6 +475,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.AddUserSourceLogConfigRequest,
     ) -> cloud_siem_20220616_models.AddUserSourceLogConfigResponse:
+        """
+        @summary Adds the logs of a cloud service within a cloud account to the threat analysis feature for alert and event anslysis.
+        
+        @param request: AddUserSourceLogConfigRequest
+        @return: AddUserSourceLogConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_user_source_log_config_with_options(request, runtime)
 
@@ -390,88 +488,27 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.AddUserSourceLogConfigRequest,
     ) -> cloud_siem_20220616_models.AddUserSourceLogConfigResponse:
+        """
+        @summary Adds the logs of a cloud service within a cloud account to the threat analysis feature for alert and event anslysis.
+        
+        @param request: AddUserSourceLogConfigRequest
+        @return: AddUserSourceLogConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_user_source_log_config_with_options_async(request, runtime)
-
-    def batch_job_check_with_options(
-        self,
-        request: cloud_siem_20220616_models.BatchJobCheckRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.BatchJobCheckResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.submit_id):
-            body['SubmitId'] = request.submit_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='BatchJobCheck',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.BatchJobCheckResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def batch_job_check_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.BatchJobCheckRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.BatchJobCheckResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.submit_id):
-            body['SubmitId'] = request.submit_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='BatchJobCheck',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.BatchJobCheckResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def batch_job_check(
-        self,
-        request: cloud_siem_20220616_models.BatchJobCheckRequest,
-    ) -> cloud_siem_20220616_models.BatchJobCheckResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.batch_job_check_with_options(request, runtime)
-
-    async def batch_job_check_async(
-        self,
-        request: cloud_siem_20220616_models.BatchJobCheckRequest,
-    ) -> cloud_siem_20220616_models.BatchJobCheckResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.batch_job_check_with_options_async(request, runtime)
 
     def batch_job_submit_with_options(
         self,
         request: cloud_siem_20220616_models.BatchJobSubmitRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.BatchJobSubmitResponse:
+        """
+        @summary Configures log collection tasks based on resource directories.
+        
+        @param request: BatchJobSubmitRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchJobSubmitResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.json_config):
@@ -502,6 +539,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.BatchJobSubmitRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.BatchJobSubmitResponse:
+        """
+        @summary Configures log collection tasks based on resource directories.
+        
+        @param request: BatchJobSubmitRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchJobSubmitResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.json_config):
@@ -531,6 +575,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.BatchJobSubmitRequest,
     ) -> cloud_siem_20220616_models.BatchJobSubmitResponse:
+        """
+        @summary Configures log collection tasks based on resource directories.
+        
+        @param request: BatchJobSubmitRequest
+        @return: BatchJobSubmitResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_job_submit_with_options(request, runtime)
 
@@ -538,6 +588,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.BatchJobSubmitRequest,
     ) -> cloud_siem_20220616_models.BatchJobSubmitResponse:
+        """
+        @summary Configures log collection tasks based on resource directories.
+        
+        @param request: BatchJobSubmitRequest
+        @return: BatchJobSubmitResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_job_submit_with_options_async(request, runtime)
 
@@ -546,6 +602,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.BindAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.BindAccountResponse:
+        """
+        @summary Adds a third-party cloud account that is displayed on the Multi-cloud assets tab of the Feature Settings page to the threat analysis feature.
+        
+        @param request: BindAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAccountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.access_id):
@@ -558,6 +621,10 @@ class Client(OpenApiClient):
             body['CloudCode'] = request.cloud_code
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -582,6 +649,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.BindAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.BindAccountResponse:
+        """
+        @summary Adds a third-party cloud account that is displayed on the Multi-cloud assets tab of the Feature Settings page to the threat analysis feature.
+        
+        @param request: BindAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAccountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.access_id):
@@ -594,6 +668,10 @@ class Client(OpenApiClient):
             body['CloudCode'] = request.cloud_code
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -617,6 +695,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.BindAccountRequest,
     ) -> cloud_siem_20220616_models.BindAccountResponse:
+        """
+        @summary Adds a third-party cloud account that is displayed on the Multi-cloud assets tab of the Feature Settings page to the threat analysis feature.
+        
+        @param request: BindAccountRequest
+        @return: BindAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_account_with_options(request, runtime)
 
@@ -624,6 +708,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.BindAccountRequest,
     ) -> cloud_siem_20220616_models.BindAccountResponse:
+        """
+        @summary Adds a third-party cloud account that is displayed on the Multi-cloud assets tab of the Feature Settings page to the threat analysis feature.
+        
+        @param request: BindAccountRequest
+        @return: BindAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_account_with_options_async(request, runtime)
 
@@ -632,6 +722,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.CloseDeliveryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.CloseDeliveryResponse:
+        """
+        @summary Disables the log delivery feature for a cloud service.
+        
+        @param request: CloseDeliveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseDeliveryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.log_code):
@@ -668,6 +765,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.CloseDeliveryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.CloseDeliveryResponse:
+        """
+        @summary Disables the log delivery feature for a cloud service.
+        
+        @param request: CloseDeliveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseDeliveryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.log_code):
@@ -703,6 +807,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.CloseDeliveryRequest,
     ) -> cloud_siem_20220616_models.CloseDeliveryResponse:
+        """
+        @summary Disables the log delivery feature for a cloud service.
+        
+        @param request: CloseDeliveryRequest
+        @return: CloseDeliveryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.close_delivery_with_options(request, runtime)
 
@@ -710,6 +820,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.CloseDeliveryRequest,
     ) -> cloud_siem_20220616_models.CloseDeliveryResponse:
+        """
+        @summary Disables the log delivery feature for a cloud service.
+        
+        @param request: CloseDeliveryRequest
+        @return: CloseDeliveryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.close_delivery_with_options_async(request, runtime)
 
@@ -718,6 +834,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DeleteAutomateResponseConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DeleteAutomateResponseConfigResponse:
+        """
+        @summary Deletes the automated response rule with a specified ID.
+        
+        @param request: DeleteAutomateResponseConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAutomateResponseConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -752,6 +875,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DeleteAutomateResponseConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DeleteAutomateResponseConfigResponse:
+        """
+        @summary Deletes the automated response rule with a specified ID.
+        
+        @param request: DeleteAutomateResponseConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAutomateResponseConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -785,6 +915,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DeleteAutomateResponseConfigRequest,
     ) -> cloud_siem_20220616_models.DeleteAutomateResponseConfigResponse:
+        """
+        @summary Deletes the automated response rule with a specified ID.
+        
+        @param request: DeleteAutomateResponseConfigRequest
+        @return: DeleteAutomateResponseConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_automate_response_config_with_options(request, runtime)
 
@@ -792,6 +928,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DeleteAutomateResponseConfigRequest,
     ) -> cloud_siem_20220616_models.DeleteAutomateResponseConfigResponse:
+        """
+        @summary Deletes the automated response rule with a specified ID.
+        
+        @param request: DeleteAutomateResponseConfigRequest
+        @return: DeleteAutomateResponseConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_automate_response_config_with_options_async(request, runtime)
 
@@ -800,6 +942,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DeleteBindAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DeleteBindAccountResponse:
+        """
+        @summary Removes a third-party cloud account that is added to the threat analysis feature by using its AccessKey ID. You can add another cloud account based on your business requirements.
+        
+        @param request: DeleteBindAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBindAccountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.access_id):
@@ -812,6 +961,10 @@ class Client(OpenApiClient):
             body['CloudCode'] = request.cloud_code
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -836,6 +989,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DeleteBindAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DeleteBindAccountResponse:
+        """
+        @summary Removes a third-party cloud account that is added to the threat analysis feature by using its AccessKey ID. You can add another cloud account based on your business requirements.
+        
+        @param request: DeleteBindAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBindAccountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.access_id):
@@ -848,6 +1008,10 @@ class Client(OpenApiClient):
             body['CloudCode'] = request.cloud_code
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -871,6 +1035,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DeleteBindAccountRequest,
     ) -> cloud_siem_20220616_models.DeleteBindAccountResponse:
+        """
+        @summary Removes a third-party cloud account that is added to the threat analysis feature by using its AccessKey ID. You can add another cloud account based on your business requirements.
+        
+        @param request: DeleteBindAccountRequest
+        @return: DeleteBindAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_bind_account_with_options(request, runtime)
 
@@ -878,6 +1048,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DeleteBindAccountRequest,
     ) -> cloud_siem_20220616_models.DeleteBindAccountResponse:
+        """
+        @summary Removes a third-party cloud account that is added to the threat analysis feature by using its AccessKey ID. You can add another cloud account based on your business requirements.
+        
+        @param request: DeleteBindAccountRequest
+        @return: DeleteBindAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_bind_account_with_options_async(request, runtime)
 
@@ -886,6 +1062,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DeleteCustomizeRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DeleteCustomizeRuleResponse:
+        """
+        @summary Deletes a rule by rule ID.
+        
+        @param request: DeleteCustomizeRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomizeRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -920,6 +1103,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DeleteCustomizeRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DeleteCustomizeRuleResponse:
+        """
+        @summary Deletes a rule by rule ID.
+        
+        @param request: DeleteCustomizeRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomizeRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -953,6 +1143,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DeleteCustomizeRuleRequest,
     ) -> cloud_siem_20220616_models.DeleteCustomizeRuleResponse:
+        """
+        @summary Deletes a rule by rule ID.
+        
+        @param request: DeleteCustomizeRuleRequest
+        @return: DeleteCustomizeRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_customize_rule_with_options(request, runtime)
 
@@ -960,6 +1156,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DeleteCustomizeRuleRequest,
     ) -> cloud_siem_20220616_models.DeleteCustomizeRuleResponse:
+        """
+        @summary Deletes a rule by rule ID.
+        
+        @param request: DeleteCustomizeRuleRequest
+        @return: DeleteCustomizeRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_customize_rule_with_options_async(request, runtime)
 
@@ -968,6 +1170,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DeleteDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DeleteDataSourceResponse:
+        """
+        @summary Removes a data source that is no longer required.
+        
+        @param request: DeleteDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -1002,6 +1211,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DeleteDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DeleteDataSourceResponse:
+        """
+        @summary Removes a data source that is no longer required.
+        
+        @param request: DeleteDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -1035,6 +1251,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DeleteDataSourceRequest,
     ) -> cloud_siem_20220616_models.DeleteDataSourceResponse:
+        """
+        @summary Removes a data source that is no longer required.
+        
+        @param request: DeleteDataSourceRequest
+        @return: DeleteDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_data_source_with_options(request, runtime)
 
@@ -1042,6 +1264,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DeleteDataSourceRequest,
     ) -> cloud_siem_20220616_models.DeleteDataSourceResponse:
+        """
+        @summary Removes a data source that is no longer required.
+        
+        @param request: DeleteDataSourceRequest
+        @return: DeleteDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_data_source_with_options_async(request, runtime)
 
@@ -1050,6 +1278,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DeleteDataSourceLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DeleteDataSourceLogResponse:
+        """
+        @summary Removes a log.
+        
+        @param request: DeleteDataSourceLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataSourceLogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -1086,6 +1321,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DeleteDataSourceLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DeleteDataSourceLogResponse:
+        """
+        @summary Removes a log.
+        
+        @param request: DeleteDataSourceLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataSourceLogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -1121,6 +1363,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DeleteDataSourceLogRequest,
     ) -> cloud_siem_20220616_models.DeleteDataSourceLogResponse:
+        """
+        @summary Removes a log.
+        
+        @param request: DeleteDataSourceLogRequest
+        @return: DeleteDataSourceLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_data_source_log_with_options(request, runtime)
 
@@ -1128,88 +1376,27 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DeleteDataSourceLogRequest,
     ) -> cloud_siem_20220616_models.DeleteDataSourceLogResponse:
+        """
+        @summary Removes a log.
+        
+        @param request: DeleteDataSourceLogRequest
+        @return: DeleteDataSourceLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_data_source_log_with_options_async(request, runtime)
-
-    def delete_quick_query_with_options(
-        self,
-        request: cloud_siem_20220616_models.DeleteQuickQueryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.DeleteQuickQueryResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.search_name):
-            body['SearchName'] = request.search_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteQuickQuery',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.DeleteQuickQueryResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_quick_query_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.DeleteQuickQueryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.DeleteQuickQueryResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.search_name):
-            body['SearchName'] = request.search_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteQuickQuery',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.DeleteQuickQueryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_quick_query(
-        self,
-        request: cloud_siem_20220616_models.DeleteQuickQueryRequest,
-    ) -> cloud_siem_20220616_models.DeleteQuickQueryResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.delete_quick_query_with_options(request, runtime)
-
-    async def delete_quick_query_async(
-        self,
-        request: cloud_siem_20220616_models.DeleteQuickQueryRequest,
-    ) -> cloud_siem_20220616_models.DeleteQuickQueryResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_quick_query_with_options_async(request, runtime)
 
     def delete_user_with_options(
         self,
         request: cloud_siem_20220616_models.DeleteUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DeleteUserResponse:
+        """
+        @summary Removes an Alibaba Cloud account that is added to the threat analysis feature for centralized management. You can add the account to the feature again if required.
+        
+        @param request: DeleteUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.added_user_id):
@@ -1240,6 +1427,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DeleteUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DeleteUserResponse:
+        """
+        @summary Removes an Alibaba Cloud account that is added to the threat analysis feature for centralized management. You can add the account to the feature again if required.
+        
+        @param request: DeleteUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.added_user_id):
@@ -1269,6 +1463,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DeleteUserRequest,
     ) -> cloud_siem_20220616_models.DeleteUserResponse:
+        """
+        @summary Removes an Alibaba Cloud account that is added to the threat analysis feature for centralized management. You can add the account to the feature again if required.
+        
+        @param request: DeleteUserRequest
+        @return: DeleteUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_user_with_options(request, runtime)
 
@@ -1276,6 +1476,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DeleteUserRequest,
     ) -> cloud_siem_20220616_models.DeleteUserResponse:
+        """
+        @summary Removes an Alibaba Cloud account that is added to the threat analysis feature for centralized management. You can add the account to the feature again if required.
+        
+        @param request: DeleteUserRequest
+        @return: DeleteUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_with_options_async(request, runtime)
 
@@ -1284,6 +1490,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DeleteWhiteRuleListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DeleteWhiteRuleListResponse:
+        """
+        @summary Deletes an alert whitelist rule with a specified ID.
+        
+        @param request: DeleteWhiteRuleListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWhiteRuleListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -1318,6 +1531,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DeleteWhiteRuleListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DeleteWhiteRuleListResponse:
+        """
+        @summary Deletes an alert whitelist rule with a specified ID.
+        
+        @param request: DeleteWhiteRuleListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWhiteRuleListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -1351,6 +1571,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DeleteWhiteRuleListRequest,
     ) -> cloud_siem_20220616_models.DeleteWhiteRuleListResponse:
+        """
+        @summary Deletes an alert whitelist rule with a specified ID.
+        
+        @param request: DeleteWhiteRuleListRequest
+        @return: DeleteWhiteRuleListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_white_rule_list_with_options(request, runtime)
 
@@ -1358,6 +1584,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DeleteWhiteRuleListRequest,
     ) -> cloud_siem_20220616_models.DeleteWhiteRuleListResponse:
+        """
+        @summary Deletes an alert whitelist rule with a specified ID.
+        
+        @param request: DeleteWhiteRuleListRequest
+        @return: DeleteWhiteRuleListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_white_rule_list_with_options_async(request, runtime)
 
@@ -1366,6 +1598,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAggregateFunctionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAggregateFunctionResponse:
+        """
+        @summary Queries the aggregate functions that are supported for a custom rule.
+        
+        @param request: DescribeAggregateFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAggregateFunctionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -1398,6 +1637,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAggregateFunctionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAggregateFunctionResponse:
+        """
+        @summary Queries the aggregate functions that are supported for a custom rule.
+        
+        @param request: DescribeAggregateFunctionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAggregateFunctionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -1429,6 +1675,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAggregateFunctionRequest,
     ) -> cloud_siem_20220616_models.DescribeAggregateFunctionResponse:
+        """
+        @summary Queries the aggregate functions that are supported for a custom rule.
+        
+        @param request: DescribeAggregateFunctionRequest
+        @return: DescribeAggregateFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_aggregate_function_with_options(request, runtime)
 
@@ -1436,6 +1688,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAggregateFunctionRequest,
     ) -> cloud_siem_20220616_models.DescribeAggregateFunctionResponse:
+        """
+        @summary Queries the aggregate functions that are supported for a custom rule.
+        
+        @param request: DescribeAggregateFunctionRequest
+        @return: DescribeAggregateFunctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_aggregate_function_with_options_async(request, runtime)
 
@@ -1444,6 +1702,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAlertSceneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAlertSceneResponse:
+        """
+        @summary Queries the scenarios in which an alert needs to be added to the whitelist.
+        
+        @param request: DescribeAlertSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertSceneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -1476,6 +1741,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAlertSceneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAlertSceneResponse:
+        """
+        @summary Queries the scenarios in which an alert needs to be added to the whitelist.
+        
+        @param request: DescribeAlertSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertSceneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -1507,6 +1779,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAlertSceneRequest,
     ) -> cloud_siem_20220616_models.DescribeAlertSceneResponse:
+        """
+        @summary Queries the scenarios in which an alert needs to be added to the whitelist.
+        
+        @param request: DescribeAlertSceneRequest
+        @return: DescribeAlertSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_alert_scene_with_options(request, runtime)
 
@@ -1514,6 +1792,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAlertSceneRequest,
     ) -> cloud_siem_20220616_models.DescribeAlertSceneResponse:
+        """
+        @summary Queries the scenarios in which an alert needs to be added to the whitelist.
+        
+        @param request: DescribeAlertSceneRequest
+        @return: DescribeAlertSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_alert_scene_with_options_async(request, runtime)
 
@@ -1522,6 +1806,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAlertSceneByEventRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAlertSceneByEventResponse:
+        """
+        @summary Queries the scenarios and objects that can be added to an alert whitelist rule.
+        
+        @param request: DescribeAlertSceneByEventRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertSceneByEventResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.incident_uuid):
@@ -1556,6 +1847,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAlertSceneByEventRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAlertSceneByEventResponse:
+        """
+        @summary Queries the scenarios and objects that can be added to an alert whitelist rule.
+        
+        @param request: DescribeAlertSceneByEventRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertSceneByEventResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.incident_uuid):
@@ -1589,6 +1887,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAlertSceneByEventRequest,
     ) -> cloud_siem_20220616_models.DescribeAlertSceneByEventResponse:
+        """
+        @summary Queries the scenarios and objects that can be added to an alert whitelist rule.
+        
+        @param request: DescribeAlertSceneByEventRequest
+        @return: DescribeAlertSceneByEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_alert_scene_by_event_with_options(request, runtime)
 
@@ -1596,6 +1900,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAlertSceneByEventRequest,
     ) -> cloud_siem_20220616_models.DescribeAlertSceneByEventResponse:
+        """
+        @summary Queries the scenarios and objects that can be added to an alert whitelist rule.
+        
+        @param request: DescribeAlertSceneByEventRequest
+        @return: DescribeAlertSceneByEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_alert_scene_by_event_with_options_async(request, runtime)
 
@@ -1604,6 +1914,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAlertSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAlertSourceResponse:
+        """
+        @summary Queries alert data sources.
+        
+        @param request: DescribeAlertSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_time):
@@ -1642,6 +1959,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAlertSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAlertSourceResponse:
+        """
+        @summary Queries alert data sources.
+        
+        @param request: DescribeAlertSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_time):
@@ -1679,6 +2003,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAlertSourceRequest,
     ) -> cloud_siem_20220616_models.DescribeAlertSourceResponse:
+        """
+        @summary Queries alert data sources.
+        
+        @param request: DescribeAlertSourceRequest
+        @return: DescribeAlertSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_alert_source_with_options(request, runtime)
 
@@ -1686,6 +2016,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAlertSourceRequest,
     ) -> cloud_siem_20220616_models.DescribeAlertSourceResponse:
+        """
+        @summary Queries alert data sources.
+        
+        @param request: DescribeAlertSourceRequest
+        @return: DescribeAlertSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_alert_source_with_options_async(request, runtime)
 
@@ -1694,6 +2030,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAlertSourceWithEventRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAlertSourceWithEventResponse:
+        """
+        @summary Queries the data sources of the alert that is associated with an event.
+        
+        @param request: DescribeAlertSourceWithEventRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertSourceWithEventResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.incident_uuid):
@@ -1728,6 +2071,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAlertSourceWithEventRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAlertSourceWithEventResponse:
+        """
+        @summary Queries the data sources of the alert that is associated with an event.
+        
+        @param request: DescribeAlertSourceWithEventRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertSourceWithEventResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.incident_uuid):
@@ -1761,6 +2111,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAlertSourceWithEventRequest,
     ) -> cloud_siem_20220616_models.DescribeAlertSourceWithEventResponse:
+        """
+        @summary Queries the data sources of the alert that is associated with an event.
+        
+        @param request: DescribeAlertSourceWithEventRequest
+        @return: DescribeAlertSourceWithEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_alert_source_with_event_with_options(request, runtime)
 
@@ -1768,6 +2124,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAlertSourceWithEventRequest,
     ) -> cloud_siem_20220616_models.DescribeAlertSourceWithEventResponse:
+        """
+        @summary Queries the data sources of the alert that is associated with an event.
+        
+        @param request: DescribeAlertSourceWithEventRequest
+        @return: DescribeAlertSourceWithEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_alert_source_with_event_with_options_async(request, runtime)
 
@@ -1776,6 +2138,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAlertTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAlertTypeResponse:
+        """
+        @summary Queries the threat types that you can select when you create a custom rule.
+        
+        @param request: DescribeAlertTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertTypeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -1810,6 +2179,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAlertTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAlertTypeResponse:
+        """
+        @summary Queries the threat types that you can select when you create a custom rule.
+        
+        @param request: DescribeAlertTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertTypeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -1843,6 +2219,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAlertTypeRequest,
     ) -> cloud_siem_20220616_models.DescribeAlertTypeResponse:
+        """
+        @summary Queries the threat types that you can select when you create a custom rule.
+        
+        @param request: DescribeAlertTypeRequest
+        @return: DescribeAlertTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_alert_type_with_options(request, runtime)
 
@@ -1850,6 +2232,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAlertTypeRequest,
     ) -> cloud_siem_20220616_models.DescribeAlertTypeResponse:
+        """
+        @summary Queries the threat types that you can select when you create a custom rule.
+        
+        @param request: DescribeAlertTypeRequest
+        @return: DescribeAlertTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_alert_type_with_options_async(request, runtime)
 
@@ -1858,6 +2246,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAlertsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAlertsResponse:
+        """
+        @summary Queries alerts within your account.
+        
+        @param request: DescribeAlertsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_title):
@@ -1910,6 +2305,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAlertsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAlertsResponse:
+        """
+        @summary Queries alerts within your account.
+        
+        @param request: DescribeAlertsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_title):
@@ -1961,6 +2363,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAlertsRequest,
     ) -> cloud_siem_20220616_models.DescribeAlertsResponse:
+        """
+        @summary Queries alerts within your account.
+        
+        @param request: DescribeAlertsRequest
+        @return: DescribeAlertsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_alerts_with_options(request, runtime)
 
@@ -1968,6 +2376,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAlertsRequest,
     ) -> cloud_siem_20220616_models.DescribeAlertsResponse:
+        """
+        @summary Queries alerts within your account.
+        
+        @param request: DescribeAlertsRequest
+        @return: DescribeAlertsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_alerts_with_options_async(request, runtime)
 
@@ -1976,6 +2390,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAlertsCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAlertsCountResponse:
+        """
+        @summary Queries the number of alerts of different severities.
+        
+        @param request: DescribeAlertsCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertsCountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_time):
@@ -2012,6 +2433,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAlertsCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAlertsCountResponse:
+        """
+        @summary Queries the number of alerts of different severities.
+        
+        @param request: DescribeAlertsCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertsCountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_time):
@@ -2047,6 +2475,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAlertsCountRequest,
     ) -> cloud_siem_20220616_models.DescribeAlertsCountResponse:
+        """
+        @summary Queries the number of alerts of different severities.
+        
+        @param request: DescribeAlertsCountRequest
+        @return: DescribeAlertsCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_alerts_count_with_options(request, runtime)
 
@@ -2054,6 +2488,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAlertsCountRequest,
     ) -> cloud_siem_20220616_models.DescribeAlertsCountResponse:
+        """
+        @summary Queries the number of alerts of different severities.
+        
+        @param request: DescribeAlertsCountRequest
+        @return: DescribeAlertsCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_alerts_count_with_options_async(request, runtime)
 
@@ -2062,6 +2502,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAlertsWithEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAlertsWithEntityResponse:
+        """
+        @summary Queries the alerts that are associated with an entity.
+        
+        @param request: DescribeAlertsWithEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertsWithEntityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.current_page):
@@ -2104,6 +2551,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAlertsWithEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAlertsWithEntityResponse:
+        """
+        @summary Queries the alerts that are associated with an entity.
+        
+        @param request: DescribeAlertsWithEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertsWithEntityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.current_page):
@@ -2145,6 +2599,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAlertsWithEntityRequest,
     ) -> cloud_siem_20220616_models.DescribeAlertsWithEntityResponse:
+        """
+        @summary Queries the alerts that are associated with an entity.
+        
+        @param request: DescribeAlertsWithEntityRequest
+        @return: DescribeAlertsWithEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_alerts_with_entity_with_options(request, runtime)
 
@@ -2152,6 +2612,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAlertsWithEntityRequest,
     ) -> cloud_siem_20220616_models.DescribeAlertsWithEntityResponse:
+        """
+        @summary Queries the alerts that are associated with an entity.
+        
+        @param request: DescribeAlertsWithEntityRequest
+        @return: DescribeAlertsWithEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_alerts_with_entity_with_options_async(request, runtime)
 
@@ -2160,6 +2626,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAlertsWithEventRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAlertsWithEventResponse:
+        """
+        @summary Queries the alerts that are associated with an event.
+        
+        @param request: DescribeAlertsWithEventRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertsWithEventResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_title):
@@ -2208,6 +2681,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAlertsWithEventRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAlertsWithEventResponse:
+        """
+        @summary Queries the alerts that are associated with an event.
+        
+        @param request: DescribeAlertsWithEventRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAlertsWithEventResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_title):
@@ -2255,6 +2735,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAlertsWithEventRequest,
     ) -> cloud_siem_20220616_models.DescribeAlertsWithEventResponse:
+        """
+        @summary Queries the alerts that are associated with an event.
+        
+        @param request: DescribeAlertsWithEventRequest
+        @return: DescribeAlertsWithEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_alerts_with_event_with_options(request, runtime)
 
@@ -2262,6 +2748,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAlertsWithEventRequest,
     ) -> cloud_siem_20220616_models.DescribeAlertsWithEventResponse:
+        """
+        @summary Queries the alerts that are associated with an event.
+        
+        @param request: DescribeAlertsWithEventRequest
+        @return: DescribeAlertsWithEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_alerts_with_event_with_options_async(request, runtime)
 
@@ -2270,6 +2762,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAttackTimeLineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAttackTimeLineResponse:
+        """
+        @summary Queries the timeline of the alerts that are associated with an event.
+        
+        @param request: DescribeAttackTimeLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAttackTimeLineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.asset_name):
@@ -2310,6 +2809,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAttackTimeLineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAttackTimeLineResponse:
+        """
+        @summary Queries the timeline of the alerts that are associated with an event.
+        
+        @param request: DescribeAttackTimeLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAttackTimeLineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.asset_name):
@@ -2349,6 +2855,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAttackTimeLineRequest,
     ) -> cloud_siem_20220616_models.DescribeAttackTimeLineResponse:
+        """
+        @summary Queries the timeline of the alerts that are associated with an event.
+        
+        @param request: DescribeAttackTimeLineRequest
+        @return: DescribeAttackTimeLineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_attack_time_line_with_options(request, runtime)
 
@@ -2356,6 +2868,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAttackTimeLineRequest,
     ) -> cloud_siem_20220616_models.DescribeAttackTimeLineResponse:
+        """
+        @summary Queries the timeline of the alerts that are associated with an event.
+        
+        @param request: DescribeAttackTimeLineRequest
+        @return: DescribeAttackTimeLineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_attack_time_line_with_options_async(request, runtime)
 
@@ -2364,6 +2882,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAuthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAuthResponse:
+        """
+        @summary Checks whether the security information and event management (SIEM) system is granted the required permissions to access other cloud resources within your Alibaba Cloud account and whether the AliyunServiceRoleForSasCloudSiem service-linked role is created.
+        
+        @param request: DescribeAuthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAuthResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -2392,6 +2917,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAuthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAuthResponse:
+        """
+        @summary Checks whether the security information and event management (SIEM) system is granted the required permissions to access other cloud resources within your Alibaba Cloud account and whether the AliyunServiceRoleForSasCloudSiem service-linked role is created.
+        
+        @param request: DescribeAuthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAuthResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -2419,6 +2951,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAuthRequest,
     ) -> cloud_siem_20220616_models.DescribeAuthResponse:
+        """
+        @summary Checks whether the security information and event management (SIEM) system is granted the required permissions to access other cloud resources within your Alibaba Cloud account and whether the AliyunServiceRoleForSasCloudSiem service-linked role is created.
+        
+        @param request: DescribeAuthRequest
+        @return: DescribeAuthResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_auth_with_options(request, runtime)
 
@@ -2426,6 +2964,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAuthRequest,
     ) -> cloud_siem_20220616_models.DescribeAuthResponse:
+        """
+        @summary Checks whether the security information and event management (SIEM) system is granted the required permissions to access other cloud resources within your Alibaba Cloud account and whether the AliyunServiceRoleForSasCloudSiem service-linked role is created.
+        
+        @param request: DescribeAuthRequest
+        @return: DescribeAuthResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_auth_with_options_async(request, runtime)
 
@@ -2434,6 +2978,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAutomateResponseConfigCounterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAutomateResponseConfigCounterResponse:
+        """
+        @summary Queries the number of automated response rules.
+        
+        @param request: DescribeAutomateResponseConfigCounterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAutomateResponseConfigCounterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -2466,6 +3017,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAutomateResponseConfigCounterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAutomateResponseConfigCounterResponse:
+        """
+        @summary Queries the number of automated response rules.
+        
+        @param request: DescribeAutomateResponseConfigCounterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAutomateResponseConfigCounterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -2497,6 +3055,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAutomateResponseConfigCounterRequest,
     ) -> cloud_siem_20220616_models.DescribeAutomateResponseConfigCounterResponse:
+        """
+        @summary Queries the number of automated response rules.
+        
+        @param request: DescribeAutomateResponseConfigCounterRequest
+        @return: DescribeAutomateResponseConfigCounterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_automate_response_config_counter_with_options(request, runtime)
 
@@ -2504,6 +3068,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAutomateResponseConfigCounterRequest,
     ) -> cloud_siem_20220616_models.DescribeAutomateResponseConfigCounterResponse:
+        """
+        @summary Queries the number of automated response rules.
+        
+        @param request: DescribeAutomateResponseConfigCounterRequest
+        @return: DescribeAutomateResponseConfigCounterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_automate_response_config_counter_with_options_async(request, runtime)
 
@@ -2512,6 +3082,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAutomateResponseConfigFeatureRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAutomateResponseConfigFeatureResponse:
+        """
+        @summary Queries the configurable fields and operators of an automated response rule.
+        
+        @param request: DescribeAutomateResponseConfigFeatureRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAutomateResponseConfigFeatureResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_response_type):
@@ -2546,6 +3123,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAutomateResponseConfigFeatureRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAutomateResponseConfigFeatureResponse:
+        """
+        @summary Queries the configurable fields and operators of an automated response rule.
+        
+        @param request: DescribeAutomateResponseConfigFeatureRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAutomateResponseConfigFeatureResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_response_type):
@@ -2579,6 +3163,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAutomateResponseConfigFeatureRequest,
     ) -> cloud_siem_20220616_models.DescribeAutomateResponseConfigFeatureResponse:
+        """
+        @summary Queries the configurable fields and operators of an automated response rule.
+        
+        @param request: DescribeAutomateResponseConfigFeatureRequest
+        @return: DescribeAutomateResponseConfigFeatureResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_automate_response_config_feature_with_options(request, runtime)
 
@@ -2586,6 +3176,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAutomateResponseConfigFeatureRequest,
     ) -> cloud_siem_20220616_models.DescribeAutomateResponseConfigFeatureResponse:
+        """
+        @summary Queries the configurable fields and operators of an automated response rule.
+        
+        @param request: DescribeAutomateResponseConfigFeatureRequest
+        @return: DescribeAutomateResponseConfigFeatureResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_automate_response_config_feature_with_options_async(request, runtime)
 
@@ -2594,6 +3190,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAutomateResponseConfigPlayBooksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAutomateResponseConfigPlayBooksResponse:
+        """
+        @summary Queries user-defined playbooks.
+        
+        @param request: DescribeAutomateResponseConfigPlayBooksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAutomateResponseConfigPlayBooksResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_response_type):
@@ -2630,6 +3233,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeAutomateResponseConfigPlayBooksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeAutomateResponseConfigPlayBooksResponse:
+        """
+        @summary Queries user-defined playbooks.
+        
+        @param request: DescribeAutomateResponseConfigPlayBooksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAutomateResponseConfigPlayBooksResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_response_type):
@@ -2665,6 +3275,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAutomateResponseConfigPlayBooksRequest,
     ) -> cloud_siem_20220616_models.DescribeAutomateResponseConfigPlayBooksResponse:
+        """
+        @summary Queries user-defined playbooks.
+        
+        @param request: DescribeAutomateResponseConfigPlayBooksRequest
+        @return: DescribeAutomateResponseConfigPlayBooksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_automate_response_config_play_books_with_options(request, runtime)
 
@@ -2672,6 +3288,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeAutomateResponseConfigPlayBooksRequest,
     ) -> cloud_siem_20220616_models.DescribeAutomateResponseConfigPlayBooksResponse:
+        """
+        @summary Queries user-defined playbooks.
+        
+        @param request: DescribeAutomateResponseConfigPlayBooksRequest
+        @return: DescribeAutomateResponseConfigPlayBooksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_automate_response_config_play_books_with_options_async(request, runtime)
 
@@ -2680,6 +3302,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeCloudSiemAssetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeCloudSiemAssetsResponse:
+        """
+        @summary Queries the assets that are associated with an event.
+        
+        @param request: DescribeCloudSiemAssetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudSiemAssetsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.asset_type):
@@ -2720,6 +3349,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeCloudSiemAssetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeCloudSiemAssetsResponse:
+        """
+        @summary Queries the assets that are associated with an event.
+        
+        @param request: DescribeCloudSiemAssetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudSiemAssetsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.asset_type):
@@ -2759,6 +3395,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeCloudSiemAssetsRequest,
     ) -> cloud_siem_20220616_models.DescribeCloudSiemAssetsResponse:
+        """
+        @summary Queries the assets that are associated with an event.
+        
+        @param request: DescribeCloudSiemAssetsRequest
+        @return: DescribeCloudSiemAssetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cloud_siem_assets_with_options(request, runtime)
 
@@ -2766,6 +3408,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeCloudSiemAssetsRequest,
     ) -> cloud_siem_20220616_models.DescribeCloudSiemAssetsResponse:
+        """
+        @summary Queries the assets that are associated with an event.
+        
+        @param request: DescribeCloudSiemAssetsRequest
+        @return: DescribeCloudSiemAssetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloud_siem_assets_with_options_async(request, runtime)
 
@@ -2774,6 +3422,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeCloudSiemAssetsCounterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeCloudSiemAssetsCounterResponse:
+        """
+        @summary Queries the number of assets that are associated with an event by asset type.
+        
+        @param request: DescribeCloudSiemAssetsCounterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudSiemAssetsCounterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.incident_uuid):
@@ -2808,6 +3463,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeCloudSiemAssetsCounterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeCloudSiemAssetsCounterResponse:
+        """
+        @summary Queries the number of assets that are associated with an event by asset type.
+        
+        @param request: DescribeCloudSiemAssetsCounterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudSiemAssetsCounterResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.incident_uuid):
@@ -2841,6 +3503,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeCloudSiemAssetsCounterRequest,
     ) -> cloud_siem_20220616_models.DescribeCloudSiemAssetsCounterResponse:
+        """
+        @summary Queries the number of assets that are associated with an event by asset type.
+        
+        @param request: DescribeCloudSiemAssetsCounterRequest
+        @return: DescribeCloudSiemAssetsCounterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cloud_siem_assets_counter_with_options(request, runtime)
 
@@ -2848,6 +3516,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeCloudSiemAssetsCounterRequest,
     ) -> cloud_siem_20220616_models.DescribeCloudSiemAssetsCounterResponse:
+        """
+        @summary Queries the number of assets that are associated with an event by asset type.
+        
+        @param request: DescribeCloudSiemAssetsCounterRequest
+        @return: DescribeCloudSiemAssetsCounterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloud_siem_assets_counter_with_options_async(request, runtime)
 
@@ -2856,6 +3530,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeCloudSiemEventDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeCloudSiemEventDetailResponse:
+        """
+        @summary Queries the details of an event.
+        
+        @param request: DescribeCloudSiemEventDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudSiemEventDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.incident_uuid):
@@ -2890,6 +3571,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeCloudSiemEventDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeCloudSiemEventDetailResponse:
+        """
+        @summary Queries the details of an event.
+        
+        @param request: DescribeCloudSiemEventDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudSiemEventDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.incident_uuid):
@@ -2923,6 +3611,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeCloudSiemEventDetailRequest,
     ) -> cloud_siem_20220616_models.DescribeCloudSiemEventDetailResponse:
+        """
+        @summary Queries the details of an event.
+        
+        @param request: DescribeCloudSiemEventDetailRequest
+        @return: DescribeCloudSiemEventDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cloud_siem_event_detail_with_options(request, runtime)
 
@@ -2930,6 +3624,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeCloudSiemEventDetailRequest,
     ) -> cloud_siem_20220616_models.DescribeCloudSiemEventDetailResponse:
+        """
+        @summary Queries the details of an event.
+        
+        @param request: DescribeCloudSiemEventDetailRequest
+        @return: DescribeCloudSiemEventDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloud_siem_event_detail_with_options_async(request, runtime)
 
@@ -2938,6 +3638,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeCloudSiemEventsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeCloudSiemEventsResponse:
+        """
+        @summary Queries events in SIEM.
+        
+        @param request: DescribeCloudSiemEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudSiemEventsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.asset_id):
@@ -2992,6 +3699,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeCloudSiemEventsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeCloudSiemEventsResponse:
+        """
+        @summary Queries events in SIEM.
+        
+        @param request: DescribeCloudSiemEventsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudSiemEventsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.asset_id):
@@ -3045,6 +3759,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeCloudSiemEventsRequest,
     ) -> cloud_siem_20220616_models.DescribeCloudSiemEventsResponse:
+        """
+        @summary Queries events in SIEM.
+        
+        @param request: DescribeCloudSiemEventsRequest
+        @return: DescribeCloudSiemEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cloud_siem_events_with_options(request, runtime)
 
@@ -3052,6 +3772,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeCloudSiemEventsRequest,
     ) -> cloud_siem_20220616_models.DescribeCloudSiemEventsResponse:
+        """
+        @summary Queries events in SIEM.
+        
+        @param request: DescribeCloudSiemEventsRequest
+        @return: DescribeCloudSiemEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloud_siem_events_with_options_async(request, runtime)
 
@@ -3060,6 +3786,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeCsImportedProdStatusByUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeCsImportedProdStatusByUserResponse:
+        """
+        @summary Checks whether an Alibaba Cloud service is activated for an Alibaba Cloud account.
+        
+        @param request: DescribeCsImportedProdStatusByUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCsImportedProdStatusByUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -3092,6 +3825,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeCsImportedProdStatusByUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeCsImportedProdStatusByUserResponse:
+        """
+        @summary Checks whether an Alibaba Cloud service is activated for an Alibaba Cloud account.
+        
+        @param request: DescribeCsImportedProdStatusByUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCsImportedProdStatusByUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -3123,6 +3863,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeCsImportedProdStatusByUserRequest,
     ) -> cloud_siem_20220616_models.DescribeCsImportedProdStatusByUserResponse:
+        """
+        @summary Checks whether an Alibaba Cloud service is activated for an Alibaba Cloud account.
+        
+        @param request: DescribeCsImportedProdStatusByUserRequest
+        @return: DescribeCsImportedProdStatusByUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cs_imported_prod_status_by_user_with_options(request, runtime)
 
@@ -3130,88 +3876,27 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeCsImportedProdStatusByUserRequest,
     ) -> cloud_siem_20220616_models.DescribeCsImportedProdStatusByUserResponse:
+        """
+        @summary Checks whether an Alibaba Cloud service is activated for an Alibaba Cloud account.
+        
+        @param request: DescribeCsImportedProdStatusByUserRequest
+        @return: DescribeCsImportedProdStatusByUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cs_imported_prod_status_by_user_with_options_async(request, runtime)
-
-    def describe_customize_rule_with_options(
-        self,
-        request: cloud_siem_20220616_models.DescribeCustomizeRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.DescribeCustomizeRuleResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.rule_id):
-            body['RuleId'] = request.rule_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeCustomizeRule',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.DescribeCustomizeRuleResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_customize_rule_with_options_async(
-        self,
-        request: cloud_siem_20220616_models.DescribeCustomizeRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloud_siem_20220616_models.DescribeCustomizeRuleResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.rule_id):
-            body['RuleId'] = request.rule_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DescribeCustomizeRule',
-            version='2022-06-16',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cloud_siem_20220616_models.DescribeCustomizeRuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_customize_rule(
-        self,
-        request: cloud_siem_20220616_models.DescribeCustomizeRuleRequest,
-    ) -> cloud_siem_20220616_models.DescribeCustomizeRuleResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_customize_rule_with_options(request, runtime)
-
-    async def describe_customize_rule_async(
-        self,
-        request: cloud_siem_20220616_models.DescribeCustomizeRuleRequest,
-    ) -> cloud_siem_20220616_models.DescribeCustomizeRuleResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_customize_rule_with_options_async(request, runtime)
 
     def describe_customize_rule_count_with_options(
         self,
         request: cloud_siem_20220616_models.DescribeCustomizeRuleCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeCustomizeRuleCountResponse:
+        """
+        @summary Queries the number of custom rules.
+        
+        @param request: DescribeCustomizeRuleCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomizeRuleCountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -3244,6 +3929,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeCustomizeRuleCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeCustomizeRuleCountResponse:
+        """
+        @summary Queries the number of custom rules.
+        
+        @param request: DescribeCustomizeRuleCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomizeRuleCountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -3275,6 +3967,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeCustomizeRuleCountRequest,
     ) -> cloud_siem_20220616_models.DescribeCustomizeRuleCountResponse:
+        """
+        @summary Queries the number of custom rules.
+        
+        @param request: DescribeCustomizeRuleCountRequest
+        @return: DescribeCustomizeRuleCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_customize_rule_count_with_options(request, runtime)
 
@@ -3282,6 +3980,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeCustomizeRuleCountRequest,
     ) -> cloud_siem_20220616_models.DescribeCustomizeRuleCountResponse:
+        """
+        @summary Queries the number of custom rules.
+        
+        @param request: DescribeCustomizeRuleCountRequest
+        @return: DescribeCustomizeRuleCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_customize_rule_count_with_options_async(request, runtime)
 
@@ -3290,6 +3994,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeCustomizeRuleTestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeCustomizeRuleTestResponse:
+        """
+        @summary Queries the historical simulation data that is used in a simulation test scenario.
+        
+        @param request: DescribeCustomizeRuleTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomizeRuleTestResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -3324,6 +4035,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeCustomizeRuleTestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeCustomizeRuleTestResponse:
+        """
+        @summary Queries the historical simulation data that is used in a simulation test scenario.
+        
+        @param request: DescribeCustomizeRuleTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomizeRuleTestResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -3357,6 +4075,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeCustomizeRuleTestRequest,
     ) -> cloud_siem_20220616_models.DescribeCustomizeRuleTestResponse:
+        """
+        @summary Queries the historical simulation data that is used in a simulation test scenario.
+        
+        @param request: DescribeCustomizeRuleTestRequest
+        @return: DescribeCustomizeRuleTestResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_customize_rule_test_with_options(request, runtime)
 
@@ -3364,6 +4088,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeCustomizeRuleTestRequest,
     ) -> cloud_siem_20220616_models.DescribeCustomizeRuleTestResponse:
+        """
+        @summary Queries the historical simulation data that is used in a simulation test scenario.
+        
+        @param request: DescribeCustomizeRuleTestRequest
+        @return: DescribeCustomizeRuleTestResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_customize_rule_test_with_options_async(request, runtime)
 
@@ -3372,6 +4102,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeCustomizeRuleTestHistogramRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeCustomizeRuleTestHistogramResponse:
+        """
+        @summary Queries the chart that displays the test results of business data for a custom rule.
+        
+        @param request: DescribeCustomizeRuleTestHistogramRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomizeRuleTestHistogramResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -3406,6 +4143,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeCustomizeRuleTestHistogramRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeCustomizeRuleTestHistogramResponse:
+        """
+        @summary Queries the chart that displays the test results of business data for a custom rule.
+        
+        @param request: DescribeCustomizeRuleTestHistogramRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomizeRuleTestHistogramResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -3439,6 +4183,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeCustomizeRuleTestHistogramRequest,
     ) -> cloud_siem_20220616_models.DescribeCustomizeRuleTestHistogramResponse:
+        """
+        @summary Queries the chart that displays the test results of business data for a custom rule.
+        
+        @param request: DescribeCustomizeRuleTestHistogramRequest
+        @return: DescribeCustomizeRuleTestHistogramResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_customize_rule_test_histogram_with_options(request, runtime)
 
@@ -3446,6 +4196,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeCustomizeRuleTestHistogramRequest,
     ) -> cloud_siem_20220616_models.DescribeCustomizeRuleTestHistogramResponse:
+        """
+        @summary Queries the chart that displays the test results of business data for a custom rule.
+        
+        @param request: DescribeCustomizeRuleTestHistogramRequest
+        @return: DescribeCustomizeRuleTestHistogramResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_customize_rule_test_histogram_with_options_async(request, runtime)
 
@@ -3454,6 +4210,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeDataSourceInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeDataSourceInstanceResponse:
+        """
+        @summary Queries the details of a data source.
+        
+        @param request: DescribeDataSourceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataSourceInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -3488,6 +4251,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeDataSourceInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeDataSourceInstanceResponse:
+        """
+        @summary Queries the details of a data source.
+        
+        @param request: DescribeDataSourceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataSourceInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -3521,6 +4291,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeDataSourceInstanceRequest,
     ) -> cloud_siem_20220616_models.DescribeDataSourceInstanceResponse:
+        """
+        @summary Queries the details of a data source.
+        
+        @param request: DescribeDataSourceInstanceRequest
+        @return: DescribeDataSourceInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_data_source_instance_with_options(request, runtime)
 
@@ -3528,6 +4304,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeDataSourceInstanceRequest,
     ) -> cloud_siem_20220616_models.DescribeDataSourceInstanceResponse:
+        """
+        @summary Queries the details of a data source.
+        
+        @param request: DescribeDataSourceInstanceRequest
+        @return: DescribeDataSourceInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_data_source_instance_with_options_async(request, runtime)
 
@@ -3536,6 +4318,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeDataSourceParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeDataSourceParametersResponse:
+        """
+        @summary Queries the parameters of a data source.
+        
+        @param request: DescribeDataSourceParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataSourceParametersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cloud_code):
@@ -3568,6 +4357,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeDataSourceParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeDataSourceParametersResponse:
+        """
+        @summary Queries the parameters of a data source.
+        
+        @param request: DescribeDataSourceParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataSourceParametersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cloud_code):
@@ -3599,6 +4395,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeDataSourceParametersRequest,
     ) -> cloud_siem_20220616_models.DescribeDataSourceParametersResponse:
+        """
+        @summary Queries the parameters of a data source.
+        
+        @param request: DescribeDataSourceParametersRequest
+        @return: DescribeDataSourceParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_data_source_parameters_with_options(request, runtime)
 
@@ -3606,6 +4408,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeDataSourceParametersRequest,
     ) -> cloud_siem_20220616_models.DescribeDataSourceParametersResponse:
+        """
+        @summary Queries the parameters of a data source.
+        
+        @param request: DescribeDataSourceParametersRequest
+        @return: DescribeDataSourceParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_data_source_parameters_with_options_async(request, runtime)
 
@@ -3614,6 +4422,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeDisposeAndPlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeDisposeAndPlaybookResponse:
+        """
+        @summary Queries the list of entities and playbooks that need to be handled.
+        
+        @param request: DescribeDisposeAndPlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDisposeAndPlaybookResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.current_page):
@@ -3654,6 +4469,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeDisposeAndPlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeDisposeAndPlaybookResponse:
+        """
+        @summary Queries the list of entities and playbooks that need to be handled.
+        
+        @param request: DescribeDisposeAndPlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDisposeAndPlaybookResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.current_page):
@@ -3693,6 +4515,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeDisposeAndPlaybookRequest,
     ) -> cloud_siem_20220616_models.DescribeDisposeAndPlaybookResponse:
+        """
+        @summary Queries the list of entities and playbooks that need to be handled.
+        
+        @param request: DescribeDisposeAndPlaybookRequest
+        @return: DescribeDisposeAndPlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dispose_and_playbook_with_options(request, runtime)
 
@@ -3700,6 +4528,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeDisposeAndPlaybookRequest,
     ) -> cloud_siem_20220616_models.DescribeDisposeAndPlaybookResponse:
+        """
+        @summary Queries the list of entities and playbooks that need to be handled.
+        
+        @param request: DescribeDisposeAndPlaybookRequest
+        @return: DescribeDisposeAndPlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dispose_and_playbook_with_options_async(request, runtime)
 
@@ -3708,6 +4542,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeDisposeStrategyPlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeDisposeStrategyPlaybookResponse:
+        """
+        @summary Queries the list of playbooks that are used by a handling policy.
+        
+        @param request: DescribeDisposeStrategyPlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDisposeStrategyPlaybookResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_time):
@@ -3744,6 +4585,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeDisposeStrategyPlaybookRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeDisposeStrategyPlaybookResponse:
+        """
+        @summary Queries the list of playbooks that are used by a handling policy.
+        
+        @param request: DescribeDisposeStrategyPlaybookRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDisposeStrategyPlaybookResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_time):
@@ -3779,6 +4627,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeDisposeStrategyPlaybookRequest,
     ) -> cloud_siem_20220616_models.DescribeDisposeStrategyPlaybookResponse:
+        """
+        @summary Queries the list of playbooks that are used by a handling policy.
+        
+        @param request: DescribeDisposeStrategyPlaybookRequest
+        @return: DescribeDisposeStrategyPlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dispose_strategy_playbook_with_options(request, runtime)
 
@@ -3786,6 +4640,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeDisposeStrategyPlaybookRequest,
     ) -> cloud_siem_20220616_models.DescribeDisposeStrategyPlaybookResponse:
+        """
+        @summary Queries the list of playbooks that are used by a handling policy.
+        
+        @param request: DescribeDisposeStrategyPlaybookRequest
+        @return: DescribeDisposeStrategyPlaybookResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dispose_strategy_playbook_with_options_async(request, runtime)
 
@@ -3794,6 +4654,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeEntityInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeEntityInfoResponse:
+        """
+        @summary Queries the details of an entity.
+        
+        @param request: DescribeEntityInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEntityInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.entity_id):
@@ -3834,6 +4701,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeEntityInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeEntityInfoResponse:
+        """
+        @summary Queries the details of an entity.
+        
+        @param request: DescribeEntityInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEntityInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.entity_id):
@@ -3873,6 +4747,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeEntityInfoRequest,
     ) -> cloud_siem_20220616_models.DescribeEntityInfoResponse:
+        """
+        @summary Queries the details of an entity.
+        
+        @param request: DescribeEntityInfoRequest
+        @return: DescribeEntityInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_entity_info_with_options(request, runtime)
 
@@ -3880,6 +4760,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeEntityInfoRequest,
     ) -> cloud_siem_20220616_models.DescribeEntityInfoResponse:
+        """
+        @summary Queries the details of an entity.
+        
+        @param request: DescribeEntityInfoRequest
+        @return: DescribeEntityInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_entity_info_with_options_async(request, runtime)
 
@@ -3888,6 +4774,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeEventCountByThreatLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeEventCountByThreatLevelResponse:
+        """
+        @summary Queries the number of events by type.
+        
+        @param request: DescribeEventCountByThreatLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventCountByThreatLevelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_time):
@@ -3924,6 +4817,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeEventCountByThreatLevelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeEventCountByThreatLevelResponse:
+        """
+        @summary Queries the number of events by type.
+        
+        @param request: DescribeEventCountByThreatLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventCountByThreatLevelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_time):
@@ -3959,6 +4859,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeEventCountByThreatLevelRequest,
     ) -> cloud_siem_20220616_models.DescribeEventCountByThreatLevelResponse:
+        """
+        @summary Queries the number of events by type.
+        
+        @param request: DescribeEventCountByThreatLevelRequest
+        @return: DescribeEventCountByThreatLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_event_count_by_threat_level_with_options(request, runtime)
 
@@ -3966,6 +4872,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeEventCountByThreatLevelRequest,
     ) -> cloud_siem_20220616_models.DescribeEventCountByThreatLevelResponse:
+        """
+        @summary Queries the number of events by type.
+        
+        @param request: DescribeEventCountByThreatLevelRequest
+        @return: DescribeEventCountByThreatLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_event_count_by_threat_level_with_options_async(request, runtime)
 
@@ -3974,6 +4886,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeEventDisposeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeEventDisposeResponse:
+        """
+        @summary Queries the handling policies of a historical event.
+        
+        @param request: DescribeEventDisposeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventDisposeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.current_page):
@@ -4012,6 +4931,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeEventDisposeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeEventDisposeResponse:
+        """
+        @summary Queries the handling policies of a historical event.
+        
+        @param request: DescribeEventDisposeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventDisposeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.current_page):
@@ -4049,6 +4975,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeEventDisposeRequest,
     ) -> cloud_siem_20220616_models.DescribeEventDisposeResponse:
+        """
+        @summary Queries the handling policies of a historical event.
+        
+        @param request: DescribeEventDisposeRequest
+        @return: DescribeEventDisposeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_event_dispose_with_options(request, runtime)
 
@@ -4056,6 +4988,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeEventDisposeRequest,
     ) -> cloud_siem_20220616_models.DescribeEventDisposeResponse:
+        """
+        @summary Queries the handling policies of a historical event.
+        
+        @param request: DescribeEventDisposeRequest
+        @return: DescribeEventDisposeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_event_dispose_with_options_async(request, runtime)
 
@@ -4064,10 +5002,21 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeImportedLogCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeImportedLogCountResponse:
+        """
+        @summary Queries the number of logs that are added to the threat analysis feature.
+        
+        @param request: DescribeImportedLogCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImportedLogCountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -4092,10 +5041,21 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeImportedLogCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeImportedLogCountResponse:
+        """
+        @summary Queries the number of logs that are added to the threat analysis feature.
+        
+        @param request: DescribeImportedLogCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImportedLogCountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -4119,6 +5079,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeImportedLogCountRequest,
     ) -> cloud_siem_20220616_models.DescribeImportedLogCountResponse:
+        """
+        @summary Queries the number of logs that are added to the threat analysis feature.
+        
+        @param request: DescribeImportedLogCountRequest
+        @return: DescribeImportedLogCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_imported_log_count_with_options(request, runtime)
 
@@ -4126,6 +5092,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeImportedLogCountRequest,
     ) -> cloud_siem_20220616_models.DescribeImportedLogCountResponse:
+        """
+        @summary Queries the number of logs that are added to the threat analysis feature.
+        
+        @param request: DescribeImportedLogCountRequest
+        @return: DescribeImportedLogCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_imported_log_count_with_options_async(request, runtime)
 
@@ -4134,6 +5106,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeJobStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeJobStatusResponse:
+        """
+        @summary Queries the status of collection tasks by using the submitId parameter of the tasks.
+        
+        @param request: DescribeJobStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeJobStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4164,6 +5143,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeJobStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeJobStatusResponse:
+        """
+        @summary Queries the status of collection tasks by using the submitId parameter of the tasks.
+        
+        @param request: DescribeJobStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeJobStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4193,6 +5179,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeJobStatusRequest,
     ) -> cloud_siem_20220616_models.DescribeJobStatusResponse:
+        """
+        @summary Queries the status of collection tasks by using the submitId parameter of the tasks.
+        
+        @param request: DescribeJobStatusRequest
+        @return: DescribeJobStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_job_status_with_options(request, runtime)
 
@@ -4200,6 +5192,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeJobStatusRequest,
     ) -> cloud_siem_20220616_models.DescribeJobStatusResponse:
+        """
+        @summary Queries the status of collection tasks by using the submitId parameter of the tasks.
+        
+        @param request: DescribeJobStatusRequest
+        @return: DescribeJobStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_job_status_with_options_async(request, runtime)
 
@@ -4208,6 +5206,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeLogFieldsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeLogFieldsResponse:
+        """
+        @summary Queries the fields that can be configured for a custom rule.
+        
+        @param request: DescribeLogFieldsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogFieldsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.log_source):
@@ -4244,6 +5249,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeLogFieldsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeLogFieldsResponse:
+        """
+        @summary Queries the fields that can be configured for a custom rule.
+        
+        @param request: DescribeLogFieldsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogFieldsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.log_source):
@@ -4279,6 +5291,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeLogFieldsRequest,
     ) -> cloud_siem_20220616_models.DescribeLogFieldsResponse:
+        """
+        @summary Queries the fields that can be configured for a custom rule.
+        
+        @param request: DescribeLogFieldsRequest
+        @return: DescribeLogFieldsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_log_fields_with_options(request, runtime)
 
@@ -4286,6 +5304,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeLogFieldsRequest,
     ) -> cloud_siem_20220616_models.DescribeLogFieldsResponse:
+        """
+        @summary Queries the fields that can be configured for a custom rule.
+        
+        @param request: DescribeLogFieldsRequest
+        @return: DescribeLogFieldsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_log_fields_with_options_async(request, runtime)
 
@@ -4294,6 +5318,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeLogSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeLogSourceResponse:
+        """
+        @summary Queries the log sources that can be configured for a custom rule.
+        
+        @param request: DescribeLogSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.log_type):
@@ -4328,6 +5359,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeLogSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeLogSourceResponse:
+        """
+        @summary Queries the log sources that can be configured for a custom rule.
+        
+        @param request: DescribeLogSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.log_type):
@@ -4361,6 +5399,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeLogSourceRequest,
     ) -> cloud_siem_20220616_models.DescribeLogSourceResponse:
+        """
+        @summary Queries the log sources that can be configured for a custom rule.
+        
+        @param request: DescribeLogSourceRequest
+        @return: DescribeLogSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_log_source_with_options(request, runtime)
 
@@ -4368,6 +5412,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeLogSourceRequest,
     ) -> cloud_siem_20220616_models.DescribeLogSourceResponse:
+        """
+        @summary Queries the log sources that can be configured for a custom rule.
+        
+        @param request: DescribeLogSourceRequest
+        @return: DescribeLogSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_log_source_with_options_async(request, runtime)
 
@@ -4376,6 +5426,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeLogStoreRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeLogStoreResponse:
+        """
+        @summary Queries the information about a Logstore that is used in the threat analysis feature of Simple Log Service on the user side. The information may be the Logstore name or the time-to-live (TTL) period of data in the Logstore.
+        
+        @param request: DescribeLogStoreRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogStoreResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4404,6 +5461,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeLogStoreRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeLogStoreResponse:
+        """
+        @summary Queries the information about a Logstore that is used in the threat analysis feature of Simple Log Service on the user side. The information may be the Logstore name or the time-to-live (TTL) period of data in the Logstore.
+        
+        @param request: DescribeLogStoreRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogStoreResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4431,6 +5495,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeLogStoreRequest,
     ) -> cloud_siem_20220616_models.DescribeLogStoreResponse:
+        """
+        @summary Queries the information about a Logstore that is used in the threat analysis feature of Simple Log Service on the user side. The information may be the Logstore name or the time-to-live (TTL) period of data in the Logstore.
+        
+        @param request: DescribeLogStoreRequest
+        @return: DescribeLogStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_log_store_with_options(request, runtime)
 
@@ -4438,6 +5508,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeLogStoreRequest,
     ) -> cloud_siem_20220616_models.DescribeLogStoreResponse:
+        """
+        @summary Queries the information about a Logstore that is used in the threat analysis feature of Simple Log Service on the user side. The information may be the Logstore name or the time-to-live (TTL) period of data in the Logstore.
+        
+        @param request: DescribeLogStoreRequest
+        @return: DescribeLogStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_log_store_with_options_async(request, runtime)
 
@@ -4446,6 +5522,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeLogTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeLogTypeResponse:
+        """
+        @summary Queries the log types that can be configured for a custom rule.
+        
+        @param request: DescribeLogTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogTypeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4478,6 +5561,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeLogTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeLogTypeResponse:
+        """
+        @summary Queries the log types that can be configured for a custom rule.
+        
+        @param request: DescribeLogTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogTypeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4509,6 +5599,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeLogTypeRequest,
     ) -> cloud_siem_20220616_models.DescribeLogTypeResponse:
+        """
+        @summary Queries the log types that can be configured for a custom rule.
+        
+        @param request: DescribeLogTypeRequest
+        @return: DescribeLogTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_log_type_with_options(request, runtime)
 
@@ -4516,6 +5612,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeLogTypeRequest,
     ) -> cloud_siem_20220616_models.DescribeLogTypeResponse:
+        """
+        @summary Queries the log types that can be configured for a custom rule.
+        
+        @param request: DescribeLogTypeRequest
+        @return: DescribeLogTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_log_type_with_options_async(request, runtime)
 
@@ -4524,6 +5626,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeOperatorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeOperatorsResponse:
+        """
+        @summary Queries the operator of a custom rule.
+        
+        @param request: DescribeOperatorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOperatorsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4558,6 +5667,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeOperatorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeOperatorsResponse:
+        """
+        @summary Queries the operator of a custom rule.
+        
+        @param request: DescribeOperatorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOperatorsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4591,6 +5707,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeOperatorsRequest,
     ) -> cloud_siem_20220616_models.DescribeOperatorsResponse:
+        """
+        @summary Queries the operator of a custom rule.
+        
+        @param request: DescribeOperatorsRequest
+        @return: DescribeOperatorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_operators_with_options(request, runtime)
 
@@ -4598,6 +5720,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeOperatorsRequest,
     ) -> cloud_siem_20220616_models.DescribeOperatorsResponse:
+        """
+        @summary Queries the operator of a custom rule.
+        
+        @param request: DescribeOperatorsRequest
+        @return: DescribeOperatorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_operators_with_options_async(request, runtime)
 
@@ -4606,10 +5734,21 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeProdCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeProdCountResponse:
+        """
+        @summary Queries the number of services that can be added to the threat analysis feature in Alibaba Cloud, Tenant Cloud, and Huawei Cloud.
+        
+        @param request: DescribeProdCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProdCountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -4634,10 +5773,21 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeProdCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeProdCountResponse:
+        """
+        @summary Queries the number of services that can be added to the threat analysis feature in Alibaba Cloud, Tenant Cloud, and Huawei Cloud.
+        
+        @param request: DescribeProdCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProdCountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -4661,6 +5811,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeProdCountRequest,
     ) -> cloud_siem_20220616_models.DescribeProdCountResponse:
+        """
+        @summary Queries the number of services that can be added to the threat analysis feature in Alibaba Cloud, Tenant Cloud, and Huawei Cloud.
+        
+        @param request: DescribeProdCountRequest
+        @return: DescribeProdCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_prod_count_with_options(request, runtime)
 
@@ -4668,6 +5824,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeProdCountRequest,
     ) -> cloud_siem_20220616_models.DescribeProdCountResponse:
+        """
+        @summary Queries the number of services that can be added to the threat analysis feature in Alibaba Cloud, Tenant Cloud, and Huawei Cloud.
+        
+        @param request: DescribeProdCountRequest
+        @return: DescribeProdCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_prod_count_with_options_async(request, runtime)
 
@@ -4676,6 +5838,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeScopeUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeScopeUsersResponse:
+        """
+        @summary Queries the list of users in the playbook scope.
+        
+        @param request: DescribeScopeUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeScopeUsersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4708,6 +5877,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeScopeUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeScopeUsersResponse:
+        """
+        @summary Queries the list of users in the playbook scope.
+        
+        @param request: DescribeScopeUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeScopeUsersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4739,6 +5915,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeScopeUsersRequest,
     ) -> cloud_siem_20220616_models.DescribeScopeUsersResponse:
+        """
+        @summary Queries the list of users in the playbook scope.
+        
+        @param request: DescribeScopeUsersRequest
+        @return: DescribeScopeUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_scope_users_with_options(request, runtime)
 
@@ -4746,6 +5928,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeScopeUsersRequest,
     ) -> cloud_siem_20220616_models.DescribeScopeUsersResponse:
+        """
+        @summary Queries the list of users in the playbook scope.
+        
+        @param request: DescribeScopeUsersRequest
+        @return: DescribeScopeUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_scope_users_with_options_async(request, runtime)
 
@@ -4754,6 +5942,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeServiceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeServiceStatusResponse:
+        """
+        @summary Checks whether the threat analysis feature is authorized to access a resource directory.
+        
+        @param request: DescribeServiceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4782,6 +5977,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeServiceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeServiceStatusResponse:
+        """
+        @summary Checks whether the threat analysis feature is authorized to access a resource directory.
+        
+        @param request: DescribeServiceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServiceStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4809,6 +6011,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeServiceStatusRequest,
     ) -> cloud_siem_20220616_models.DescribeServiceStatusResponse:
+        """
+        @summary Checks whether the threat analysis feature is authorized to access a resource directory.
+        
+        @param request: DescribeServiceStatusRequest
+        @return: DescribeServiceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_service_status_with_options(request, runtime)
 
@@ -4816,6 +6024,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeServiceStatusRequest,
     ) -> cloud_siem_20220616_models.DescribeServiceStatusResponse:
+        """
+        @summary Checks whether the threat analysis feature is authorized to access a resource directory.
+        
+        @param request: DescribeServiceStatusRequest
+        @return: DescribeServiceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_service_status_with_options_async(request, runtime)
 
@@ -4824,6 +6038,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeStorageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeStorageResponse:
+        """
+        @summary Queries the status of the Logstores for the threat analysis feature in Simple Log Service on the user side.
+        
+        @param request: DescribeStorageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStorageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4856,6 +6077,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeStorageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeStorageResponse:
+        """
+        @summary Queries the status of the Logstores for the threat analysis feature in Simple Log Service on the user side.
+        
+        @param request: DescribeStorageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStorageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4887,6 +6115,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeStorageRequest,
     ) -> cloud_siem_20220616_models.DescribeStorageResponse:
+        """
+        @summary Queries the status of the Logstores for the threat analysis feature in Simple Log Service on the user side.
+        
+        @param request: DescribeStorageRequest
+        @return: DescribeStorageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_storage_with_options(request, runtime)
 
@@ -4894,6 +6128,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeStorageRequest,
     ) -> cloud_siem_20220616_models.DescribeStorageResponse:
+        """
+        @summary Queries the status of the Logstores for the threat analysis feature in Simple Log Service on the user side.
+        
+        @param request: DescribeStorageRequest
+        @return: DescribeStorageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_storage_with_options_async(request, runtime)
 
@@ -4902,6 +6142,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeUserBuyStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeUserBuyStatusResponse:
+        """
+        @summary Checks whether the current Alibaba Cloud account or the management account of a resource directory is used to purchase the threat analysis feature.
+        
+        @param request: DescribeUserBuyStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserBuyStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4932,6 +6179,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeUserBuyStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeUserBuyStatusResponse:
+        """
+        @summary Checks whether the current Alibaba Cloud account or the management account of a resource directory is used to purchase the threat analysis feature.
+        
+        @param request: DescribeUserBuyStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserBuyStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4961,6 +6215,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeUserBuyStatusRequest,
     ) -> cloud_siem_20220616_models.DescribeUserBuyStatusResponse:
+        """
+        @summary Checks whether the current Alibaba Cloud account or the management account of a resource directory is used to purchase the threat analysis feature.
+        
+        @param request: DescribeUserBuyStatusRequest
+        @return: DescribeUserBuyStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_user_buy_status_with_options(request, runtime)
 
@@ -4968,6 +6228,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeUserBuyStatusRequest,
     ) -> cloud_siem_20220616_models.DescribeUserBuyStatusResponse:
+        """
+        @summary Checks whether the current Alibaba Cloud account or the management account of a resource directory is used to purchase the threat analysis feature.
+        
+        @param request: DescribeUserBuyStatusRequest
+        @return: DescribeUserBuyStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_buy_status_with_options_async(request, runtime)
 
@@ -4976,6 +6242,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeWafScopeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeWafScopeResponse:
+        """
+        @summary Queries the protected domain names of the WAF instance for a user to which an entity belongs.
+        
+        @param request: DescribeWafScopeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWafScopeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.entity_id):
@@ -5010,6 +6283,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeWafScopeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeWafScopeResponse:
+        """
+        @summary Queries the protected domain names of the WAF instance for a user to which an entity belongs.
+        
+        @param request: DescribeWafScopeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWafScopeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.entity_id):
@@ -5043,6 +6323,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeWafScopeRequest,
     ) -> cloud_siem_20220616_models.DescribeWafScopeResponse:
+        """
+        @summary Queries the protected domain names of the WAF instance for a user to which an entity belongs.
+        
+        @param request: DescribeWafScopeRequest
+        @return: DescribeWafScopeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_waf_scope_with_options(request, runtime)
 
@@ -5050,6 +6336,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeWafScopeRequest,
     ) -> cloud_siem_20220616_models.DescribeWafScopeResponse:
+        """
+        @summary Queries the protected domain names of the WAF instance for a user to which an entity belongs.
+        
+        @param request: DescribeWafScopeRequest
+        @return: DescribeWafScopeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_waf_scope_with_options_async(request, runtime)
 
@@ -5058,6 +6350,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeWhiteRuleListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeWhiteRuleListResponse:
+        """
+        @summary Queries a list of whitelist rules for alerts.
+        
+        @param request: DescribeWhiteRuleListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWhiteRuleListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_name):
@@ -5100,6 +6399,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DescribeWhiteRuleListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DescribeWhiteRuleListResponse:
+        """
+        @summary Queries a list of whitelist rules for alerts.
+        
+        @param request: DescribeWhiteRuleListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWhiteRuleListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_name):
@@ -5141,6 +6447,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeWhiteRuleListRequest,
     ) -> cloud_siem_20220616_models.DescribeWhiteRuleListResponse:
+        """
+        @summary Queries a list of whitelist rules for alerts.
+        
+        @param request: DescribeWhiteRuleListRequest
+        @return: DescribeWhiteRuleListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_white_rule_list_with_options(request, runtime)
 
@@ -5148,6 +6460,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DescribeWhiteRuleListRequest,
     ) -> cloud_siem_20220616_models.DescribeWhiteRuleListResponse:
+        """
+        @summary Queries a list of whitelist rules for alerts.
+        
+        @param request: DescribeWhiteRuleListRequest
+        @return: DescribeWhiteRuleListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_white_rule_list_with_options_async(request, runtime)
 
@@ -5156,6 +6474,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DoQuickFieldRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DoQuickFieldResponse:
+        """
+        @summary Queries and analyzes the distribution of specific fields by using quick analysis.
+        
+        @param request: DoQuickFieldRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DoQuickFieldResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.from_):
@@ -5196,6 +6521,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DoQuickFieldRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DoQuickFieldResponse:
+        """
+        @summary Queries and analyzes the distribution of specific fields by using quick analysis.
+        
+        @param request: DoQuickFieldRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DoQuickFieldResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.from_):
@@ -5235,6 +6567,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DoQuickFieldRequest,
     ) -> cloud_siem_20220616_models.DoQuickFieldResponse:
+        """
+        @summary Queries and analyzes the distribution of specific fields by using quick analysis.
+        
+        @param request: DoQuickFieldRequest
+        @return: DoQuickFieldResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.do_quick_field_with_options(request, runtime)
 
@@ -5242,6 +6580,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DoQuickFieldRequest,
     ) -> cloud_siem_20220616_models.DoQuickFieldResponse:
+        """
+        @summary Queries and analyzes the distribution of specific fields by using quick analysis.
+        
+        @param request: DoQuickFieldRequest
+        @return: DoQuickFieldResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.do_quick_field_with_options_async(request, runtime)
 
@@ -5250,6 +6594,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DoSelfDelegateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DoSelfDelegateResponse:
+        """
+        @summary Grants permissions to or revokes permissions from a regular member on the threat analysis feature. This helps manage the authorization to view information such as log analysis and alerts.
+        
+        @param request: DoSelfDelegateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DoSelfDelegateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ali_uid):
@@ -5282,6 +6633,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.DoSelfDelegateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.DoSelfDelegateResponse:
+        """
+        @summary Grants permissions to or revokes permissions from a regular member on the threat analysis feature. This helps manage the authorization to view information such as log analysis and alerts.
+        
+        @param request: DoSelfDelegateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DoSelfDelegateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ali_uid):
@@ -5313,6 +6671,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DoSelfDelegateRequest,
     ) -> cloud_siem_20220616_models.DoSelfDelegateResponse:
+        """
+        @summary Grants permissions to or revokes permissions from a regular member on the threat analysis feature. This helps manage the authorization to view information such as log analysis and alerts.
+        
+        @param request: DoSelfDelegateRequest
+        @return: DoSelfDelegateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.do_self_delegate_with_options(request, runtime)
 
@@ -5320,6 +6684,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.DoSelfDelegateRequest,
     ) -> cloud_siem_20220616_models.DoSelfDelegateResponse:
+        """
+        @summary Grants permissions to or revokes permissions from a regular member on the threat analysis feature. This helps manage the authorization to view information such as log analysis and alerts.
+        
+        @param request: DoSelfDelegateRequest
+        @return: DoSelfDelegateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.do_self_delegate_with_options_async(request, runtime)
 
@@ -5328,6 +6698,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.EnableAccessForCloudSiemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.EnableAccessForCloudSiemResponse:
+        """
+        @summary Creates a service-linked role named AliyunServiceRoleForSasCloudSiem for the threat analysis feature. The feature can assume this role to access cloud services.
+        
+        @param request: EnableAccessForCloudSiemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableAccessForCloudSiemResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_submit):
@@ -5362,6 +6739,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.EnableAccessForCloudSiemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.EnableAccessForCloudSiemResponse:
+        """
+        @summary Creates a service-linked role named AliyunServiceRoleForSasCloudSiem for the threat analysis feature. The feature can assume this role to access cloud services.
+        
+        @param request: EnableAccessForCloudSiemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableAccessForCloudSiemResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_submit):
@@ -5395,6 +6779,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.EnableAccessForCloudSiemRequest,
     ) -> cloud_siem_20220616_models.EnableAccessForCloudSiemResponse:
+        """
+        @summary Creates a service-linked role named AliyunServiceRoleForSasCloudSiem for the threat analysis feature. The feature can assume this role to access cloud services.
+        
+        @param request: EnableAccessForCloudSiemRequest
+        @return: EnableAccessForCloudSiemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_access_for_cloud_siem_with_options(request, runtime)
 
@@ -5402,6 +6792,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.EnableAccessForCloudSiemRequest,
     ) -> cloud_siem_20220616_models.EnableAccessForCloudSiemResponse:
+        """
+        @summary Creates a service-linked role named AliyunServiceRoleForSasCloudSiem for the threat analysis feature. The feature can assume this role to access cloud services.
+        
+        @param request: EnableAccessForCloudSiemRequest
+        @return: EnableAccessForCloudSiemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_access_for_cloud_siem_with_options_async(request, runtime)
 
@@ -5410,6 +6806,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.EnableServiceForCloudSiemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.EnableServiceForCloudSiemResponse:
+        """
+        @summary Authorizes the threat analysis feature to access a resource directory. This operation must be called by the management account of the resource directory.
+        
+        @param request: EnableServiceForCloudSiemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableServiceForCloudSiemResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -5438,6 +6841,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.EnableServiceForCloudSiemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.EnableServiceForCloudSiemResponse:
+        """
+        @summary Authorizes the threat analysis feature to access a resource directory. This operation must be called by the management account of the resource directory.
+        
+        @param request: EnableServiceForCloudSiemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableServiceForCloudSiemResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -5465,6 +6875,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.EnableServiceForCloudSiemRequest,
     ) -> cloud_siem_20220616_models.EnableServiceForCloudSiemResponse:
+        """
+        @summary Authorizes the threat analysis feature to access a resource directory. This operation must be called by the management account of the resource directory.
+        
+        @param request: EnableServiceForCloudSiemRequest
+        @return: EnableServiceForCloudSiemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_service_for_cloud_siem_with_options(request, runtime)
 
@@ -5472,6 +6888,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.EnableServiceForCloudSiemRequest,
     ) -> cloud_siem_20220616_models.EnableServiceForCloudSiemResponse:
+        """
+        @summary Authorizes the threat analysis feature to access a resource directory. This operation must be called by the management account of the resource directory.
+        
+        @param request: EnableServiceForCloudSiemRequest
+        @return: EnableServiceForCloudSiemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_service_for_cloud_siem_with_options_async(request, runtime)
 
@@ -5480,6 +6902,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.GetCapacityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.GetCapacityResponse:
+        """
+        @summary Queries the storage capacity usage of the threat analysis feature and the purchased storage capacity
+        
+        @param request: GetCapacityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCapacityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -5512,6 +6941,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.GetCapacityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.GetCapacityResponse:
+        """
+        @summary Queries the storage capacity usage of the threat analysis feature and the purchased storage capacity
+        
+        @param request: GetCapacityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCapacityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -5543,6 +6979,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.GetCapacityRequest,
     ) -> cloud_siem_20220616_models.GetCapacityResponse:
+        """
+        @summary Queries the storage capacity usage of the threat analysis feature and the purchased storage capacity
+        
+        @param request: GetCapacityRequest
+        @return: GetCapacityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_capacity_with_options(request, runtime)
 
@@ -5550,6 +6992,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.GetCapacityRequest,
     ) -> cloud_siem_20220616_models.GetCapacityResponse:
+        """
+        @summary Queries the storage capacity usage of the threat analysis feature and the purchased storage capacity
+        
+        @param request: GetCapacityRequest
+        @return: GetCapacityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_capacity_with_options_async(request, runtime)
 
@@ -5558,6 +7006,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.GetHistogramsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.GetHistogramsResponse:
+        """
+        @summary Queries the results of of search statements that are displayed in histograms.
+        
+        @param request: GetHistogramsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHistogramsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.from_):
@@ -5592,6 +7047,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.GetHistogramsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.GetHistogramsResponse:
+        """
+        @summary Queries the results of of search statements that are displayed in histograms.
+        
+        @param request: GetHistogramsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHistogramsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.from_):
@@ -5625,6 +7087,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.GetHistogramsRequest,
     ) -> cloud_siem_20220616_models.GetHistogramsResponse:
+        """
+        @summary Queries the results of of search statements that are displayed in histograms.
+        
+        @param request: GetHistogramsRequest
+        @return: GetHistogramsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_histograms_with_options(request, runtime)
 
@@ -5632,6 +7100,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.GetHistogramsRequest,
     ) -> cloud_siem_20220616_models.GetHistogramsResponse:
+        """
+        @summary Queries the results of of search statements that are displayed in histograms.
+        
+        @param request: GetHistogramsRequest
+        @return: GetHistogramsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_histograms_with_options_async(request, runtime)
 
@@ -5640,6 +7114,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.GetLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.GetLogsResponse:
+        """
+        @summary Queries the results of a log query by using SQL statements.
+        
+        @param request: GetLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLogsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.from_):
@@ -5682,6 +7163,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.GetLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.GetLogsResponse:
+        """
+        @summary Queries the results of a log query by using SQL statements.
+        
+        @param request: GetLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLogsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.from_):
@@ -5723,6 +7211,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.GetLogsRequest,
     ) -> cloud_siem_20220616_models.GetLogsResponse:
+        """
+        @summary Queries the results of a log query by using SQL statements.
+        
+        @param request: GetLogsRequest
+        @return: GetLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_logs_with_options(request, runtime)
 
@@ -5730,6 +7224,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.GetLogsRequest,
     ) -> cloud_siem_20220616_models.GetLogsResponse:
+        """
+        @summary Queries the results of a log query by using SQL statements.
+        
+        @param request: GetLogsRequest
+        @return: GetLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_logs_with_options_async(request, runtime)
 
@@ -5738,6 +7238,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.GetQuickQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.GetQuickQueryResponse:
+        """
+        @summary Queries a query statement that is saved as a saved search in log analysis by name.
+        
+        @param request: GetQuickQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQuickQueryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -5768,6 +7275,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.GetQuickQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.GetQuickQueryResponse:
+        """
+        @summary Queries a query statement that is saved as a saved search in log analysis by name.
+        
+        @param request: GetQuickQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQuickQueryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -5797,6 +7311,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.GetQuickQueryRequest,
     ) -> cloud_siem_20220616_models.GetQuickQueryResponse:
+        """
+        @summary Queries a query statement that is saved as a saved search in log analysis by name.
+        
+        @param request: GetQuickQueryRequest
+        @return: GetQuickQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_quick_query_with_options(request, runtime)
 
@@ -5804,6 +7324,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.GetQuickQueryRequest,
     ) -> cloud_siem_20220616_models.GetQuickQueryResponse:
+        """
+        @summary Queries a query statement that is saved as a saved search in log analysis by name.
+        
+        @param request: GetQuickQueryRequest
+        @return: GetQuickQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_quick_query_with_options_async(request, runtime)
 
@@ -5812,6 +7338,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.GetStorageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.GetStorageResponse:
+        """
+        @summary Queries the storage configurations for the threat analysis feature on the user side.
+        
+        @param request: GetStorageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStorageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -5844,6 +7377,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.GetStorageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.GetStorageResponse:
+        """
+        @summary Queries the storage configurations for the threat analysis feature on the user side.
+        
+        @param request: GetStorageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStorageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -5875,6 +7415,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.GetStorageRequest,
     ) -> cloud_siem_20220616_models.GetStorageResponse:
+        """
+        @summary Queries the storage configurations for the threat analysis feature on the user side.
+        
+        @param request: GetStorageRequest
+        @return: GetStorageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_storage_with_options(request, runtime)
 
@@ -5882,6 +7428,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.GetStorageRequest,
     ) -> cloud_siem_20220616_models.GetStorageResponse:
+        """
+        @summary Queries the storage configurations for the threat analysis feature on the user side.
+        
+        @param request: GetStorageRequest
+        @return: GetStorageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_storage_with_options_async(request, runtime)
 
@@ -5890,12 +7442,23 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListAccountAccessIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListAccountAccessIdResponse:
+        """
+        @summary Queries a list of AccessKey IDs of third-party cloud accounts that are added to the threat analysis feature.
+        
+        @param request: ListAccountAccessIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccountAccessIdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cloud_code):
             body['CloudCode'] = request.cloud_code
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -5920,12 +7483,23 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListAccountAccessIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListAccountAccessIdResponse:
+        """
+        @summary Queries a list of AccessKey IDs of third-party cloud accounts that are added to the threat analysis feature.
+        
+        @param request: ListAccountAccessIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccountAccessIdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cloud_code):
             body['CloudCode'] = request.cloud_code
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -5949,6 +7523,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListAccountAccessIdRequest,
     ) -> cloud_siem_20220616_models.ListAccountAccessIdResponse:
+        """
+        @summary Queries a list of AccessKey IDs of third-party cloud accounts that are added to the threat analysis feature.
+        
+        @param request: ListAccountAccessIdRequest
+        @return: ListAccountAccessIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_account_access_id_with_options(request, runtime)
 
@@ -5956,6 +7536,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListAccountAccessIdRequest,
     ) -> cloud_siem_20220616_models.ListAccountAccessIdResponse:
+        """
+        @summary Queries a list of AccessKey IDs of third-party cloud accounts that are added to the threat analysis feature.
+        
+        @param request: ListAccountAccessIdRequest
+        @return: ListAccountAccessIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_account_access_id_with_options_async(request, runtime)
 
@@ -5964,6 +7550,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListAccountsByLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListAccountsByLogResponse:
+        """
+        @summary Query accounts by log.
+        
+        @param request: ListAccountsByLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccountsByLogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cloud_code):
@@ -6002,6 +7595,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListAccountsByLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListAccountsByLogResponse:
+        """
+        @summary Query accounts by log.
+        
+        @param request: ListAccountsByLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccountsByLogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cloud_code):
@@ -6039,6 +7639,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListAccountsByLogRequest,
     ) -> cloud_siem_20220616_models.ListAccountsByLogResponse:
+        """
+        @summary Query accounts by log.
+        
+        @param request: ListAccountsByLogRequest
+        @return: ListAccountsByLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_accounts_by_log_with_options(request, runtime)
 
@@ -6046,6 +7652,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListAccountsByLogRequest,
     ) -> cloud_siem_20220616_models.ListAccountsByLogResponse:
+        """
+        @summary Query accounts by log.
+        
+        @param request: ListAccountsByLogRequest
+        @return: ListAccountsByLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_accounts_by_log_with_options_async(request, runtime)
 
@@ -6054,6 +7666,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListAllProdsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListAllProdsResponse:
+        """
+        @summary Queries a list of cloud services that can be added to the threat analysis feature.
+        
+        @param request: ListAllProdsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllProdsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -6086,6 +7705,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListAllProdsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListAllProdsResponse:
+        """
+        @summary Queries a list of cloud services that can be added to the threat analysis feature.
+        
+        @param request: ListAllProdsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllProdsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -6117,6 +7743,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListAllProdsRequest,
     ) -> cloud_siem_20220616_models.ListAllProdsResponse:
+        """
+        @summary Queries a list of cloud services that can be added to the threat analysis feature.
+        
+        @param request: ListAllProdsRequest
+        @return: ListAllProdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_all_prods_with_options(request, runtime)
 
@@ -6124,6 +7756,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListAllProdsRequest,
     ) -> cloud_siem_20220616_models.ListAllProdsResponse:
+        """
+        @summary Queries a list of cloud services that can be added to the threat analysis feature.
+        
+        @param request: ListAllProdsRequest
+        @return: ListAllProdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_all_prods_with_options_async(request, runtime)
 
@@ -6132,6 +7770,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListAutomateResponseConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListAutomateResponseConfigsResponse:
+        """
+        @summary Queries automated response rules.
+        
+        @param request: ListAutomateResponseConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAutomateResponseConfigsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.action_type):
@@ -6182,6 +7827,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListAutomateResponseConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListAutomateResponseConfigsResponse:
+        """
+        @summary Queries automated response rules.
+        
+        @param request: ListAutomateResponseConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAutomateResponseConfigsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.action_type):
@@ -6231,6 +7883,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListAutomateResponseConfigsRequest,
     ) -> cloud_siem_20220616_models.ListAutomateResponseConfigsResponse:
+        """
+        @summary Queries automated response rules.
+        
+        @param request: ListAutomateResponseConfigsRequest
+        @return: ListAutomateResponseConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_automate_response_configs_with_options(request, runtime)
 
@@ -6238,6 +7896,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListAutomateResponseConfigsRequest,
     ) -> cloud_siem_20220616_models.ListAutomateResponseConfigsResponse:
+        """
+        @summary Queries automated response rules.
+        
+        @param request: ListAutomateResponseConfigsRequest
+        @return: ListAutomateResponseConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_automate_response_configs_with_options_async(request, runtime)
 
@@ -6246,12 +7910,23 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListBindAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListBindAccountResponse:
+        """
+        @summary Queries a list of cloud accounts that are added to the threat analysis feature.
+        
+        @param request: ListBindAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBindAccountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cloud_code):
             body['CloudCode'] = request.cloud_code
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -6276,12 +7951,23 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListBindAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListBindAccountResponse:
+        """
+        @summary Queries a list of cloud accounts that are added to the threat analysis feature.
+        
+        @param request: ListBindAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBindAccountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cloud_code):
             body['CloudCode'] = request.cloud_code
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -6305,6 +7991,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListBindAccountRequest,
     ) -> cloud_siem_20220616_models.ListBindAccountResponse:
+        """
+        @summary Queries a list of cloud accounts that are added to the threat analysis feature.
+        
+        @param request: ListBindAccountRequest
+        @return: ListBindAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_bind_account_with_options(request, runtime)
 
@@ -6312,6 +8004,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListBindAccountRequest,
     ) -> cloud_siem_20220616_models.ListBindAccountResponse:
+        """
+        @summary Queries a list of cloud accounts that are added to the threat analysis feature.
+        
+        @param request: ListBindAccountRequest
+        @return: ListBindAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_bind_account_with_options_async(request, runtime)
 
@@ -6320,6 +8018,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListBindDataSourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListBindDataSourcesResponse:
+        """
+        @summary Queries a list of data sources that are added to the threat analysis feature.
+        
+        @param request: ListBindDataSourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBindDataSourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -6352,6 +8057,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListBindDataSourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListBindDataSourcesResponse:
+        """
+        @summary Queries a list of data sources that are added to the threat analysis feature.
+        
+        @param request: ListBindDataSourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBindDataSourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -6383,6 +8095,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListBindDataSourcesRequest,
     ) -> cloud_siem_20220616_models.ListBindDataSourcesResponse:
+        """
+        @summary Queries a list of data sources that are added to the threat analysis feature.
+        
+        @param request: ListBindDataSourcesRequest
+        @return: ListBindDataSourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_bind_data_sources_with_options(request, runtime)
 
@@ -6390,6 +8108,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListBindDataSourcesRequest,
     ) -> cloud_siem_20220616_models.ListBindDataSourcesResponse:
+        """
+        @summary Queries a list of data sources that are added to the threat analysis feature.
+        
+        @param request: ListBindDataSourcesRequest
+        @return: ListBindDataSourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_bind_data_sources_with_options_async(request, runtime)
 
@@ -6398,6 +8122,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListCloudSiemCustomizeRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListCloudSiemCustomizeRulesResponse:
+        """
+        @summary Queries custom rules.
+        
+        @param request: ListCloudSiemCustomizeRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudSiemCustomizeRulesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_type):
@@ -6454,6 +8185,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListCloudSiemCustomizeRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListCloudSiemCustomizeRulesResponse:
+        """
+        @summary Queries custom rules.
+        
+        @param request: ListCloudSiemCustomizeRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudSiemCustomizeRulesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_type):
@@ -6509,6 +8247,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListCloudSiemCustomizeRulesRequest,
     ) -> cloud_siem_20220616_models.ListCloudSiemCustomizeRulesResponse:
+        """
+        @summary Queries custom rules.
+        
+        @param request: ListCloudSiemCustomizeRulesRequest
+        @return: ListCloudSiemCustomizeRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_cloud_siem_customize_rules_with_options(request, runtime)
 
@@ -6516,6 +8260,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListCloudSiemCustomizeRulesRequest,
     ) -> cloud_siem_20220616_models.ListCloudSiemCustomizeRulesResponse:
+        """
+        @summary Queries custom rules.
+        
+        @param request: ListCloudSiemCustomizeRulesRequest
+        @return: ListCloudSiemCustomizeRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_cloud_siem_customize_rules_with_options_async(request, runtime)
 
@@ -6524,6 +8274,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListCloudSiemPredefinedRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListCloudSiemPredefinedRulesResponse:
+        """
+        @summary Queries predefined rules.
+        
+        @param request: ListCloudSiemPredefinedRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudSiemPredefinedRulesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_type):
@@ -6586,6 +8343,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListCloudSiemPredefinedRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListCloudSiemPredefinedRulesResponse:
+        """
+        @summary Queries predefined rules.
+        
+        @param request: ListCloudSiemPredefinedRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudSiemPredefinedRulesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_type):
@@ -6647,6 +8411,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListCloudSiemPredefinedRulesRequest,
     ) -> cloud_siem_20220616_models.ListCloudSiemPredefinedRulesResponse:
+        """
+        @summary Queries predefined rules.
+        
+        @param request: ListCloudSiemPredefinedRulesRequest
+        @return: ListCloudSiemPredefinedRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_cloud_siem_predefined_rules_with_options(request, runtime)
 
@@ -6654,6 +8424,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListCloudSiemPredefinedRulesRequest,
     ) -> cloud_siem_20220616_models.ListCloudSiemPredefinedRulesResponse:
+        """
+        @summary Queries predefined rules.
+        
+        @param request: ListCloudSiemPredefinedRulesRequest
+        @return: ListCloudSiemPredefinedRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_cloud_siem_predefined_rules_with_options_async(request, runtime)
 
@@ -6662,6 +8438,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListCustomizeRuleTestResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListCustomizeRuleTestResultResponse:
+        """
+        @summary Queries the test results of a custom rule.
+        
+        @param request: ListCustomizeRuleTestResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomizeRuleTestResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.current_page):
@@ -6700,6 +8483,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListCustomizeRuleTestResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListCustomizeRuleTestResultResponse:
+        """
+        @summary Queries the test results of a custom rule.
+        
+        @param request: ListCustomizeRuleTestResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomizeRuleTestResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.current_page):
@@ -6737,6 +8527,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListCustomizeRuleTestResultRequest,
     ) -> cloud_siem_20220616_models.ListCustomizeRuleTestResultResponse:
+        """
+        @summary Queries the test results of a custom rule.
+        
+        @param request: ListCustomizeRuleTestResultRequest
+        @return: ListCustomizeRuleTestResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_customize_rule_test_result_with_options(request, runtime)
 
@@ -6744,6 +8540,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListCustomizeRuleTestResultRequest,
     ) -> cloud_siem_20220616_models.ListCustomizeRuleTestResultResponse:
+        """
+        @summary Queries the test results of a custom rule.
+        
+        @param request: ListCustomizeRuleTestResultRequest
+        @return: ListCustomizeRuleTestResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_customize_rule_test_result_with_options_async(request, runtime)
 
@@ -6752,6 +8554,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListDataSourceLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListDataSourceLogsResponse:
+        """
+        @summary Queries the logs of a data source.
+        
+        @param request: ListDataSourceLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourceLogsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -6786,6 +8595,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListDataSourceLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListDataSourceLogsResponse:
+        """
+        @summary Queries the logs of a data source.
+        
+        @param request: ListDataSourceLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourceLogsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -6819,6 +8635,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListDataSourceLogsRequest,
     ) -> cloud_siem_20220616_models.ListDataSourceLogsResponse:
+        """
+        @summary Queries the logs of a data source.
+        
+        @param request: ListDataSourceLogsRequest
+        @return: ListDataSourceLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_data_source_logs_with_options(request, runtime)
 
@@ -6826,6 +8648,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListDataSourceLogsRequest,
     ) -> cloud_siem_20220616_models.ListDataSourceLogsResponse:
+        """
+        @summary Queries the logs of a data source.
+        
+        @param request: ListDataSourceLogsRequest
+        @return: ListDataSourceLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_source_logs_with_options_async(request, runtime)
 
@@ -6834,6 +8662,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListDataSourceTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListDataSourceTypesResponse:
+        """
+        @summary Queries a list of data source types in third-party cloud services that can be added to the threat analysis feature.
+        
+        @param request: ListDataSourceTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourceTypesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cloud_code):
@@ -6864,6 +8699,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListDataSourceTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListDataSourceTypesResponse:
+        """
+        @summary Queries a list of data source types in third-party cloud services that can be added to the threat analysis feature.
+        
+        @param request: ListDataSourceTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourceTypesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cloud_code):
@@ -6893,6 +8735,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListDataSourceTypesRequest,
     ) -> cloud_siem_20220616_models.ListDataSourceTypesResponse:
+        """
+        @summary Queries a list of data source types in third-party cloud services that can be added to the threat analysis feature.
+        
+        @param request: ListDataSourceTypesRequest
+        @return: ListDataSourceTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_data_source_types_with_options(request, runtime)
 
@@ -6900,6 +8748,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListDataSourceTypesRequest,
     ) -> cloud_siem_20220616_models.ListDataSourceTypesResponse:
+        """
+        @summary Queries a list of data source types in third-party cloud services that can be added to the threat analysis feature.
+        
+        @param request: ListDataSourceTypesRequest
+        @return: ListDataSourceTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_source_types_with_options_async(request, runtime)
 
@@ -6908,6 +8762,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListDeliveryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListDeliveryResponse:
+        """
+        @summary Queries the information about the cloud services that are integrated with the threat analysis feature, the logs of the cloud services, and the delivery of the logs.
+        
+        @param request: ListDeliveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDeliveryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -6940,6 +8801,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListDeliveryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListDeliveryResponse:
+        """
+        @summary Queries the information about the cloud services that are integrated with the threat analysis feature, the logs of the cloud services, and the delivery of the logs.
+        
+        @param request: ListDeliveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDeliveryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -6971,6 +8839,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListDeliveryRequest,
     ) -> cloud_siem_20220616_models.ListDeliveryResponse:
+        """
+        @summary Queries the information about the cloud services that are integrated with the threat analysis feature, the logs of the cloud services, and the delivery of the logs.
+        
+        @param request: ListDeliveryRequest
+        @return: ListDeliveryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_delivery_with_options(request, runtime)
 
@@ -6978,6 +8852,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListDeliveryRequest,
     ) -> cloud_siem_20220616_models.ListDeliveryResponse:
+        """
+        @summary Queries the information about the cloud services that are integrated with the threat analysis feature, the logs of the cloud services, and the delivery of the logs.
+        
+        @param request: ListDeliveryRequest
+        @return: ListDeliveryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_delivery_with_options_async(request, runtime)
 
@@ -6986,6 +8866,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListDisposeStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListDisposeStrategyResponse:
+        """
+        @summary Queries handling policies.
+        
+        @param request: ListDisposeStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDisposeStrategyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.current_page):
@@ -7044,6 +8931,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListDisposeStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListDisposeStrategyResponse:
+        """
+        @summary Queries handling policies.
+        
+        @param request: ListDisposeStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDisposeStrategyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.current_page):
@@ -7101,6 +8995,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListDisposeStrategyRequest,
     ) -> cloud_siem_20220616_models.ListDisposeStrategyResponse:
+        """
+        @summary Queries handling policies.
+        
+        @param request: ListDisposeStrategyRequest
+        @return: ListDisposeStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_dispose_strategy_with_options(request, runtime)
 
@@ -7108,6 +9008,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListDisposeStrategyRequest,
     ) -> cloud_siem_20220616_models.ListDisposeStrategyResponse:
+        """
+        @summary Queries handling policies.
+        
+        @param request: ListDisposeStrategyRequest
+        @return: ListDisposeStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_dispose_strategy_with_options_async(request, runtime)
 
@@ -7116,6 +9022,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListImportedLogsByProdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListImportedLogsByProdResponse:
+        """
+        @summary Queries the details of the logs in a cloud service that is added to the threat analysis feature.
+        
+        @param request: ListImportedLogsByProdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListImportedLogsByProdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cloud_code):
@@ -7152,6 +9065,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListImportedLogsByProdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListImportedLogsByProdResponse:
+        """
+        @summary Queries the details of the logs in a cloud service that is added to the threat analysis feature.
+        
+        @param request: ListImportedLogsByProdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListImportedLogsByProdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cloud_code):
@@ -7187,6 +9107,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListImportedLogsByProdRequest,
     ) -> cloud_siem_20220616_models.ListImportedLogsByProdResponse:
+        """
+        @summary Queries the details of the logs in a cloud service that is added to the threat analysis feature.
+        
+        @param request: ListImportedLogsByProdRequest
+        @return: ListImportedLogsByProdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_imported_logs_by_prod_with_options(request, runtime)
 
@@ -7194,6 +9120,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListImportedLogsByProdRequest,
     ) -> cloud_siem_20220616_models.ListImportedLogsByProdResponse:
+        """
+        @summary Queries the details of the logs in a cloud service that is added to the threat analysis feature.
+        
+        @param request: ListImportedLogsByProdRequest
+        @return: ListImportedLogsByProdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_imported_logs_by_prod_with_options_async(request, runtime)
 
@@ -7202,6 +9134,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListOperationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListOperationResponse:
+        """
+        @summary Queries the resource-related permissions granted to the current user. The threat analysis feature supports two types of identities: administrators and common members. An administrator is granted all permissions, and a common member is granted permissions to access only specific resources.
+        
+        @param request: ListOperationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOperationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -7230,6 +9169,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListOperationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListOperationResponse:
+        """
+        @summary Queries the resource-related permissions granted to the current user. The threat analysis feature supports two types of identities: administrators and common members. An administrator is granted all permissions, and a common member is granted permissions to access only specific resources.
+        
+        @param request: ListOperationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOperationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -7257,6 +9203,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListOperationRequest,
     ) -> cloud_siem_20220616_models.ListOperationResponse:
+        """
+        @summary Queries the resource-related permissions granted to the current user. The threat analysis feature supports two types of identities: administrators and common members. An administrator is granted all permissions, and a common member is granted permissions to access only specific resources.
+        
+        @param request: ListOperationRequest
+        @return: ListOperationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_operation_with_options(request, runtime)
 
@@ -7264,6 +9216,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListOperationRequest,
     ) -> cloud_siem_20220616_models.ListOperationResponse:
+        """
+        @summary Queries the resource-related permissions granted to the current user. The threat analysis feature supports two types of identities: administrators and common members. An administrator is granted all permissions, and a common member is granted permissions to access only specific resources.
+        
+        @param request: ListOperationRequest
+        @return: ListOperationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_operation_with_options_async(request, runtime)
 
@@ -7272,6 +9230,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListProjectLogStoresRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListProjectLogStoresResponse:
+        """
+        @summary Queries the dedicated Simple Log Service project and Logstore for a cloud service based on the patterns of the project and Logstore names.
+        
+        @param request: ListProjectLogStoresRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectLogStoresResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -7306,6 +9271,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListProjectLogStoresRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListProjectLogStoresResponse:
+        """
+        @summary Queries the dedicated Simple Log Service project and Logstore for a cloud service based on the patterns of the project and Logstore names.
+        
+        @param request: ListProjectLogStoresRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectLogStoresResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -7339,6 +9311,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListProjectLogStoresRequest,
     ) -> cloud_siem_20220616_models.ListProjectLogStoresResponse:
+        """
+        @summary Queries the dedicated Simple Log Service project and Logstore for a cloud service based on the patterns of the project and Logstore names.
+        
+        @param request: ListProjectLogStoresRequest
+        @return: ListProjectLogStoresResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_project_log_stores_with_options(request, runtime)
 
@@ -7346,6 +9324,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListProjectLogStoresRequest,
     ) -> cloud_siem_20220616_models.ListProjectLogStoresResponse:
+        """
+        @summary Queries the dedicated Simple Log Service project and Logstore for a cloud service based on the patterns of the project and Logstore names.
+        
+        @param request: ListProjectLogStoresRequest
+        @return: ListProjectLogStoresResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_project_log_stores_with_options_async(request, runtime)
 
@@ -7354,6 +9338,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListQuickQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListQuickQueryResponse:
+        """
+        @summary Queries the saved searches of the Logstore.
+        
+        @param request: ListQuickQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQuickQueryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.offset):
@@ -7386,6 +9377,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListQuickQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListQuickQueryResponse:
+        """
+        @summary Queries the saved searches of the Logstore.
+        
+        @param request: ListQuickQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQuickQueryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.offset):
@@ -7417,6 +9415,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListQuickQueryRequest,
     ) -> cloud_siem_20220616_models.ListQuickQueryResponse:
+        """
+        @summary Queries the saved searches of the Logstore.
+        
+        @param request: ListQuickQueryRequest
+        @return: ListQuickQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_quick_query_with_options(request, runtime)
 
@@ -7424,6 +9428,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListQuickQueryRequest,
     ) -> cloud_siem_20220616_models.ListQuickQueryResponse:
+        """
+        @summary Queries the saved searches of the Logstore.
+        
+        @param request: ListQuickQueryRequest
+        @return: ListQuickQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_quick_query_with_options_async(request, runtime)
 
@@ -7432,6 +9442,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListRdUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListRdUsersResponse:
+        """
+        @summary Queries a list of Alibaba Cloud accounts that are added to the threat analysis feature for centralized management. These accounts can be used to perform operations supported by the threat analysis feature, such as adding logs and handling events.
+        
+        @param request: ListRdUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRdUsersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -7460,6 +9477,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListRdUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListRdUsersResponse:
+        """
+        @summary Queries a list of Alibaba Cloud accounts that are added to the threat analysis feature for centralized management. These accounts can be used to perform operations supported by the threat analysis feature, such as adding logs and handling events.
+        
+        @param request: ListRdUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRdUsersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -7487,6 +9511,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListRdUsersRequest,
     ) -> cloud_siem_20220616_models.ListRdUsersResponse:
+        """
+        @summary Queries a list of Alibaba Cloud accounts that are added to the threat analysis feature for centralized management. These accounts can be used to perform operations supported by the threat analysis feature, such as adding logs and handling events.
+        
+        @param request: ListRdUsersRequest
+        @return: ListRdUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_rd_users_with_options(request, runtime)
 
@@ -7494,6 +9524,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListRdUsersRequest,
     ) -> cloud_siem_20220616_models.ListRdUsersResponse:
+        """
+        @summary Queries a list of Alibaba Cloud accounts that are added to the threat analysis feature for centralized management. These accounts can be used to perform operations supported by the threat analysis feature, such as adding logs and handling events.
+        
+        @param request: ListRdUsersRequest
+        @return: ListRdUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_rd_users_with_options_async(request, runtime)
 
@@ -7502,6 +9538,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListUserProdLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListUserProdLogsResponse:
+        """
+        @summary Queries a list of logs that are added to the threat analysis feature by cloud service.
+        
+        @param request: ListUserProdLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserProdLogsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -7538,6 +9581,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListUserProdLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListUserProdLogsResponse:
+        """
+        @summary Queries a list of logs that are added to the threat analysis feature by cloud service.
+        
+        @param request: ListUserProdLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserProdLogsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -7573,6 +9623,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListUserProdLogsRequest,
     ) -> cloud_siem_20220616_models.ListUserProdLogsResponse:
+        """
+        @summary Queries a list of logs that are added to the threat analysis feature by cloud service.
+        
+        @param request: ListUserProdLogsRequest
+        @return: ListUserProdLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_user_prod_logs_with_options(request, runtime)
 
@@ -7580,6 +9636,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListUserProdLogsRequest,
     ) -> cloud_siem_20220616_models.ListUserProdLogsResponse:
+        """
+        @summary Queries a list of logs that are added to the threat analysis feature by cloud service.
+        
+        @param request: ListUserProdLogsRequest
+        @return: ListUserProdLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_prod_logs_with_options_async(request, runtime)
 
@@ -7588,6 +9650,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListUsersByProdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListUsersByProdResponse:
+        """
+        @summary Queries the details of the logs that are added to the threat analysis feature by cloud service.
+        
+        @param request: ListUsersByProdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersByProdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -7622,6 +9691,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ListUsersByProdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ListUsersByProdResponse:
+        """
+        @summary Queries the details of the logs that are added to the threat analysis feature by cloud service.
+        
+        @param request: ListUsersByProdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersByProdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -7655,6 +9731,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListUsersByProdRequest,
     ) -> cloud_siem_20220616_models.ListUsersByProdResponse:
+        """
+        @summary Queries the details of the logs that are added to the threat analysis feature by cloud service.
+        
+        @param request: ListUsersByProdRequest
+        @return: ListUsersByProdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_users_by_prod_with_options(request, runtime)
 
@@ -7662,6 +9744,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ListUsersByProdRequest,
     ) -> cloud_siem_20220616_models.ListUsersByProdResponse:
+        """
+        @summary Queries the details of the logs that are added to the threat analysis feature by cloud service.
+        
+        @param request: ListUsersByProdRequest
+        @return: ListUsersByProdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_users_by_prod_with_options_async(request, runtime)
 
@@ -7670,6 +9758,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ModifyBindAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ModifyBindAccountResponse:
+        """
+        @summary Modifies a third-party cloud account that is added to the threat analysis feature.
+        
+        @param request: ModifyBindAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBindAccountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.access_id):
@@ -7684,6 +9779,10 @@ class Client(OpenApiClient):
             body['CloudCode'] = request.cloud_code
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -7708,6 +9807,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ModifyBindAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ModifyBindAccountResponse:
+        """
+        @summary Modifies a third-party cloud account that is added to the threat analysis feature.
+        
+        @param request: ModifyBindAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBindAccountResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.access_id):
@@ -7722,6 +9828,10 @@ class Client(OpenApiClient):
             body['CloudCode'] = request.cloud_code
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -7745,6 +9855,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ModifyBindAccountRequest,
     ) -> cloud_siem_20220616_models.ModifyBindAccountResponse:
+        """
+        @summary Modifies a third-party cloud account that is added to the threat analysis feature.
+        
+        @param request: ModifyBindAccountRequest
+        @return: ModifyBindAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_bind_account_with_options(request, runtime)
 
@@ -7752,6 +9868,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ModifyBindAccountRequest,
     ) -> cloud_siem_20220616_models.ModifyBindAccountResponse:
+        """
+        @summary Modifies a third-party cloud account that is added to the threat analysis feature.
+        
+        @param request: ModifyBindAccountRequest
+        @return: ModifyBindAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_bind_account_with_options_async(request, runtime)
 
@@ -7760,6 +9882,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ModifyDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ModifyDataSourceResponse:
+        """
+        @summary Modifies a data source that is added to the threat analysis feature.
+        
+        @param request: ModifyDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDataSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -7802,6 +9931,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ModifyDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ModifyDataSourceResponse:
+        """
+        @summary Modifies a data source that is added to the threat analysis feature.
+        
+        @param request: ModifyDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDataSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -7843,6 +9979,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ModifyDataSourceRequest,
     ) -> cloud_siem_20220616_models.ModifyDataSourceResponse:
+        """
+        @summary Modifies a data source that is added to the threat analysis feature.
+        
+        @param request: ModifyDataSourceRequest
+        @return: ModifyDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_data_source_with_options(request, runtime)
 
@@ -7850,6 +9992,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ModifyDataSourceRequest,
     ) -> cloud_siem_20220616_models.ModifyDataSourceResponse:
+        """
+        @summary Modifies a data source that is added to the threat analysis feature.
+        
+        @param request: ModifyDataSourceRequest
+        @return: ModifyDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_data_source_with_options_async(request, runtime)
 
@@ -7858,6 +10006,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ModifyDataSourceLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ModifyDataSourceLogResponse:
+        """
+        @summary Modifies the description of the logs that are added to the threat analysis feature for a data source within a cloud account.
+        
+        @param request: ModifyDataSourceLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDataSourceLogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -7900,6 +10055,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ModifyDataSourceLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ModifyDataSourceLogResponse:
+        """
+        @summary Modifies the description of the logs that are added to the threat analysis feature for a data source within a cloud account.
+        
+        @param request: ModifyDataSourceLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDataSourceLogResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -7941,6 +10103,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ModifyDataSourceLogRequest,
     ) -> cloud_siem_20220616_models.ModifyDataSourceLogResponse:
+        """
+        @summary Modifies the description of the logs that are added to the threat analysis feature for a data source within a cloud account.
+        
+        @param request: ModifyDataSourceLogRequest
+        @return: ModifyDataSourceLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_data_source_log_with_options(request, runtime)
 
@@ -7948,6 +10116,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ModifyDataSourceLogRequest,
     ) -> cloud_siem_20220616_models.ModifyDataSourceLogResponse:
+        """
+        @summary Modifies the description of the logs that are added to the threat analysis feature for a data source within a cloud account.
+        
+        @param request: ModifyDataSourceLogRequest
+        @return: ModifyDataSourceLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_data_source_log_with_options_async(request, runtime)
 
@@ -7956,6 +10130,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.OpenDeliveryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.OpenDeliveryResponse:
+        """
+        @summary Enables the log delivery feature for a cloud service that is integrated with Simple Log Service.
+        
+        @param request: OpenDeliveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenDeliveryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.log_code):
@@ -7992,6 +10173,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.OpenDeliveryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.OpenDeliveryResponse:
+        """
+        @summary Enables the log delivery feature for a cloud service that is integrated with Simple Log Service.
+        
+        @param request: OpenDeliveryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenDeliveryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.log_code):
@@ -8027,6 +10215,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.OpenDeliveryRequest,
     ) -> cloud_siem_20220616_models.OpenDeliveryResponse:
+        """
+        @summary Enables the log delivery feature for a cloud service that is integrated with Simple Log Service.
+        
+        @param request: OpenDeliveryRequest
+        @return: OpenDeliveryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_delivery_with_options(request, runtime)
 
@@ -8034,6 +10228,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.OpenDeliveryRequest,
     ) -> cloud_siem_20220616_models.OpenDeliveryResponse:
+        """
+        @summary Enables the log delivery feature for a cloud service that is integrated with Simple Log Service.
+        
+        @param request: OpenDeliveryRequest
+        @return: OpenDeliveryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_delivery_with_options_async(request, runtime)
 
@@ -8042,6 +10242,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.PostAutomateResponseConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.PostAutomateResponseConfigResponse:
+        """
+        @summary Creates or updates an automatic response rule.
+        
+        @param request: PostAutomateResponseConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostAutomateResponseConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.action_config):
@@ -8088,6 +10295,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.PostAutomateResponseConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.PostAutomateResponseConfigResponse:
+        """
+        @summary Creates or updates an automatic response rule.
+        
+        @param request: PostAutomateResponseConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostAutomateResponseConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.action_config):
@@ -8133,6 +10347,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.PostAutomateResponseConfigRequest,
     ) -> cloud_siem_20220616_models.PostAutomateResponseConfigResponse:
+        """
+        @summary Creates or updates an automatic response rule.
+        
+        @param request: PostAutomateResponseConfigRequest
+        @return: PostAutomateResponseConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.post_automate_response_config_with_options(request, runtime)
 
@@ -8140,6 +10360,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.PostAutomateResponseConfigRequest,
     ) -> cloud_siem_20220616_models.PostAutomateResponseConfigResponse:
+        """
+        @summary Creates or updates an automatic response rule.
+        
+        @param request: PostAutomateResponseConfigRequest
+        @return: PostAutomateResponseConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.post_automate_response_config_with_options_async(request, runtime)
 
@@ -8148,6 +10374,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.PostCustomizeRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.PostCustomizeRuleResponse:
+        """
+        @summary Creates or updates a custom rule.
+        
+        @param request: PostCustomizeRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostCustomizeRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_type):
@@ -8216,6 +10449,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.PostCustomizeRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.PostCustomizeRuleResponse:
+        """
+        @summary Creates or updates a custom rule.
+        
+        @param request: PostCustomizeRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostCustomizeRuleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.alert_type):
@@ -8283,6 +10523,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.PostCustomizeRuleRequest,
     ) -> cloud_siem_20220616_models.PostCustomizeRuleResponse:
+        """
+        @summary Creates or updates a custom rule.
+        
+        @param request: PostCustomizeRuleRequest
+        @return: PostCustomizeRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.post_customize_rule_with_options(request, runtime)
 
@@ -8290,6 +10536,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.PostCustomizeRuleRequest,
     ) -> cloud_siem_20220616_models.PostCustomizeRuleResponse:
+        """
+        @summary Creates or updates a custom rule.
+        
+        @param request: PostCustomizeRuleRequest
+        @return: PostCustomizeRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.post_customize_rule_with_options_async(request, runtime)
 
@@ -8298,6 +10550,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.PostCustomizeRuleTestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.PostCustomizeRuleTestResponse:
+        """
+        @summary Submits a custom rule for testing.
+        
+        @param request: PostCustomizeRuleTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostCustomizeRuleTestResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -8336,6 +10595,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.PostCustomizeRuleTestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.PostCustomizeRuleTestResponse:
+        """
+        @summary Submits a custom rule for testing.
+        
+        @param request: PostCustomizeRuleTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostCustomizeRuleTestResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -8373,6 +10639,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.PostCustomizeRuleTestRequest,
     ) -> cloud_siem_20220616_models.PostCustomizeRuleTestResponse:
+        """
+        @summary Submits a custom rule for testing.
+        
+        @param request: PostCustomizeRuleTestRequest
+        @return: PostCustomizeRuleTestResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.post_customize_rule_test_with_options(request, runtime)
 
@@ -8380,6 +10652,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.PostCustomizeRuleTestRequest,
     ) -> cloud_siem_20220616_models.PostCustomizeRuleTestResponse:
+        """
+        @summary Submits a custom rule for testing.
+        
+        @param request: PostCustomizeRuleTestRequest
+        @return: PostCustomizeRuleTestResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.post_customize_rule_test_with_options_async(request, runtime)
 
@@ -8388,6 +10666,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.PostEventDisposeAndWhiteruleListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.PostEventDisposeAndWhiteruleListResponse:
+        """
+        @summary Submits event handling information.
+        
+        @param request: PostEventDisposeAndWhiteruleListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostEventDisposeAndWhiteruleListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.event_dispose):
@@ -8430,6 +10715,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.PostEventDisposeAndWhiteruleListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.PostEventDisposeAndWhiteruleListResponse:
+        """
+        @summary Submits event handling information.
+        
+        @param request: PostEventDisposeAndWhiteruleListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostEventDisposeAndWhiteruleListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.event_dispose):
@@ -8471,6 +10763,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.PostEventDisposeAndWhiteruleListRequest,
     ) -> cloud_siem_20220616_models.PostEventDisposeAndWhiteruleListResponse:
+        """
+        @summary Submits event handling information.
+        
+        @param request: PostEventDisposeAndWhiteruleListRequest
+        @return: PostEventDisposeAndWhiteruleListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.post_event_dispose_and_whiterule_list_with_options(request, runtime)
 
@@ -8478,6 +10776,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.PostEventDisposeAndWhiteruleListRequest,
     ) -> cloud_siem_20220616_models.PostEventDisposeAndWhiteruleListResponse:
+        """
+        @summary Submits event handling information.
+        
+        @param request: PostEventDisposeAndWhiteruleListRequest
+        @return: PostEventDisposeAndWhiteruleListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.post_event_dispose_and_whiterule_list_with_options_async(request, runtime)
 
@@ -8486,6 +10790,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.PostEventWhiteruleListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.PostEventWhiteruleListResponse:
+        """
+        @summary Submits an alert whitelist rule.
+        
+        @param request: PostEventWhiteruleListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostEventWhiteruleListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.incident_uuid):
@@ -8522,6 +10833,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.PostEventWhiteruleListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.PostEventWhiteruleListResponse:
+        """
+        @summary Submits an alert whitelist rule.
+        
+        @param request: PostEventWhiteruleListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostEventWhiteruleListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.incident_uuid):
@@ -8557,6 +10875,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.PostEventWhiteruleListRequest,
     ) -> cloud_siem_20220616_models.PostEventWhiteruleListResponse:
+        """
+        @summary Submits an alert whitelist rule.
+        
+        @param request: PostEventWhiteruleListRequest
+        @return: PostEventWhiteruleListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.post_event_whiterule_list_with_options(request, runtime)
 
@@ -8564,6 +10888,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.PostEventWhiteruleListRequest,
     ) -> cloud_siem_20220616_models.PostEventWhiteruleListResponse:
+        """
+        @summary Submits an alert whitelist rule.
+        
+        @param request: PostEventWhiteruleListRequest
+        @return: PostEventWhiteruleListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.post_event_whiterule_list_with_options_async(request, runtime)
 
@@ -8572,6 +10902,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.PostFinishCustomizeRuleTestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.PostFinishCustomizeRuleTestResponse:
+        """
+        @summary Ends the test of a custom rule.
+        
+        @param request: PostFinishCustomizeRuleTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostFinishCustomizeRuleTestResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -8606,6 +10943,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.PostFinishCustomizeRuleTestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.PostFinishCustomizeRuleTestResponse:
+        """
+        @summary Ends the test of a custom rule.
+        
+        @param request: PostFinishCustomizeRuleTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostFinishCustomizeRuleTestResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -8639,6 +10983,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.PostFinishCustomizeRuleTestRequest,
     ) -> cloud_siem_20220616_models.PostFinishCustomizeRuleTestResponse:
+        """
+        @summary Ends the test of a custom rule.
+        
+        @param request: PostFinishCustomizeRuleTestRequest
+        @return: PostFinishCustomizeRuleTestResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.post_finish_customize_rule_test_with_options(request, runtime)
 
@@ -8646,6 +10996,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.PostFinishCustomizeRuleTestRequest,
     ) -> cloud_siem_20220616_models.PostFinishCustomizeRuleTestResponse:
+        """
+        @summary Ends the test of a custom rule.
+        
+        @param request: PostFinishCustomizeRuleTestRequest
+        @return: PostFinishCustomizeRuleTestResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.post_finish_customize_rule_test_with_options_async(request, runtime)
 
@@ -8654,6 +11010,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.PostRuleStatusChangeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.PostRuleStatusChangeResponse:
+        """
+        @summary Updates the status of a custom rule.
+        
+        @param request: PostRuleStatusChangeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostRuleStatusChangeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ids):
@@ -8692,6 +11055,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.PostRuleStatusChangeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.PostRuleStatusChangeResponse:
+        """
+        @summary Updates the status of a custom rule.
+        
+        @param request: PostRuleStatusChangeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostRuleStatusChangeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ids):
@@ -8729,6 +11099,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.PostRuleStatusChangeRequest,
     ) -> cloud_siem_20220616_models.PostRuleStatusChangeResponse:
+        """
+        @summary Updates the status of a custom rule.
+        
+        @param request: PostRuleStatusChangeRequest
+        @return: PostRuleStatusChangeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.post_rule_status_change_with_options(request, runtime)
 
@@ -8736,6 +11112,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.PostRuleStatusChangeRequest,
     ) -> cloud_siem_20220616_models.PostRuleStatusChangeResponse:
+        """
+        @summary Updates the status of a custom rule.
+        
+        @param request: PostRuleStatusChangeRequest
+        @return: PostRuleStatusChangeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.post_rule_status_change_with_options_async(request, runtime)
 
@@ -8744,6 +11126,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.RestoreCapacityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.RestoreCapacityResponse:
+        """
+        @summary Releases storage to reduce the storage usage. The release operation is irreversible and may cause data loss. Proceed with caution.
+        
+        @param request: RestoreCapacityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreCapacityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -8776,6 +11165,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.RestoreCapacityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.RestoreCapacityResponse:
+        """
+        @summary Releases storage to reduce the storage usage. The release operation is irreversible and may cause data loss. Proceed with caution.
+        
+        @param request: RestoreCapacityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreCapacityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -8807,6 +11203,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.RestoreCapacityRequest,
     ) -> cloud_siem_20220616_models.RestoreCapacityResponse:
+        """
+        @summary Releases storage to reduce the storage usage. The release operation is irreversible and may cause data loss. Proceed with caution.
+        
+        @param request: RestoreCapacityRequest
+        @return: RestoreCapacityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.restore_capacity_with_options(request, runtime)
 
@@ -8814,6 +11216,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.RestoreCapacityRequest,
     ) -> cloud_siem_20220616_models.RestoreCapacityResponse:
+        """
+        @summary Releases storage to reduce the storage usage. The release operation is irreversible and may cause data loss. Proceed with caution.
+        
+        @param request: RestoreCapacityRequest
+        @return: RestoreCapacityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.restore_capacity_with_options_async(request, runtime)
 
@@ -8822,6 +11230,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.SaveQuickQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.SaveQuickQueryResponse:
+        """
+        @summary Saves a query statement in log analysis as a saved search. This helps save the time required to write the query statement.
+        
+        @param request: SaveQuickQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveQuickQueryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.display_name):
@@ -8854,6 +11269,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.SaveQuickQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.SaveQuickQueryResponse:
+        """
+        @summary Saves a query statement in log analysis as a saved search. This helps save the time required to write the query statement.
+        
+        @param request: SaveQuickQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveQuickQueryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.display_name):
@@ -8885,6 +11307,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.SaveQuickQueryRequest,
     ) -> cloud_siem_20220616_models.SaveQuickQueryResponse:
+        """
+        @summary Saves a query statement in log analysis as a saved search. This helps save the time required to write the query statement.
+        
+        @param request: SaveQuickQueryRequest
+        @return: SaveQuickQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.save_quick_query_with_options(request, runtime)
 
@@ -8892,6 +11320,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.SaveQuickQueryRequest,
     ) -> cloud_siem_20220616_models.SaveQuickQueryResponse:
+        """
+        @summary Saves a query statement in log analysis as a saved search. This helps save the time required to write the query statement.
+        
+        @param request: SaveQuickQueryRequest
+        @return: SaveQuickQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.save_quick_query_with_options_async(request, runtime)
 
@@ -8900,6 +11334,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.SetStorageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.SetStorageResponse:
+        """
+        @summary Configures the settings of log storage, such as the storage duration and storage region.
+        
+        @param request: SetStorageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetStorageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region):
@@ -8936,6 +11377,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.SetStorageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.SetStorageResponse:
+        """
+        @summary Configures the settings of log storage, such as the storage duration and storage region.
+        
+        @param request: SetStorageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetStorageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region):
@@ -8971,6 +11419,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.SetStorageRequest,
     ) -> cloud_siem_20220616_models.SetStorageResponse:
+        """
+        @summary Configures the settings of log storage, such as the storage duration and storage region.
+        
+        @param request: SetStorageRequest
+        @return: SetStorageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_storage_with_options(request, runtime)
 
@@ -8978,6 +11432,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.SetStorageRequest,
     ) -> cloud_siem_20220616_models.SetStorageResponse:
+        """
+        @summary Configures the settings of log storage, such as the storage duration and storage region.
+        
+        @param request: SetStorageRequest
+        @return: SetStorageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_storage_with_options_async(request, runtime)
 
@@ -8986,6 +11446,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ShowQuickAnalysisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ShowQuickAnalysisResponse:
+        """
+        @summary Configures index fields to display in log analysis. The index fields can be used for quick analysis.
+        
+        @param request: ShowQuickAnalysisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ShowQuickAnalysisResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -9014,6 +11481,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.ShowQuickAnalysisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.ShowQuickAnalysisResponse:
+        """
+        @summary Configures index fields to display in log analysis. The index fields can be used for quick analysis.
+        
+        @param request: ShowQuickAnalysisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ShowQuickAnalysisResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.region_id):
@@ -9041,6 +11515,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ShowQuickAnalysisRequest,
     ) -> cloud_siem_20220616_models.ShowQuickAnalysisResponse:
+        """
+        @summary Configures index fields to display in log analysis. The index fields can be used for quick analysis.
+        
+        @param request: ShowQuickAnalysisRequest
+        @return: ShowQuickAnalysisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.show_quick_analysis_with_options(request, runtime)
 
@@ -9048,6 +11528,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.ShowQuickAnalysisRequest,
     ) -> cloud_siem_20220616_models.ShowQuickAnalysisResponse:
+        """
+        @summary Configures index fields to display in log analysis. The index fields can be used for quick analysis.
+        
+        @param request: ShowQuickAnalysisRequest
+        @return: ShowQuickAnalysisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.show_quick_analysis_with_options_async(request, runtime)
 
@@ -9056,6 +11542,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.SubmitImportLogTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.SubmitImportLogTasksResponse:
+        """
+        @summary Submits log collection tasks at a time.
+        
+        @param request: SubmitImportLogTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitImportLogTasksResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accounts):
@@ -9070,6 +11563,10 @@ class Client(OpenApiClient):
             body['ProdCode'] = request.prod_code
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -9094,6 +11591,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.SubmitImportLogTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.SubmitImportLogTasksResponse:
+        """
+        @summary Submits log collection tasks at a time.
+        
+        @param request: SubmitImportLogTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitImportLogTasksResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accounts):
@@ -9108,6 +11612,10 @@ class Client(OpenApiClient):
             body['ProdCode'] = request.prod_code
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not UtilClient.is_unset(request.role_type):
+            body['RoleType'] = request.role_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -9131,6 +11639,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.SubmitImportLogTasksRequest,
     ) -> cloud_siem_20220616_models.SubmitImportLogTasksResponse:
+        """
+        @summary Submits log collection tasks at a time.
+        
+        @param request: SubmitImportLogTasksRequest
+        @return: SubmitImportLogTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_import_log_tasks_with_options(request, runtime)
 
@@ -9138,6 +11652,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.SubmitImportLogTasksRequest,
     ) -> cloud_siem_20220616_models.SubmitImportLogTasksResponse:
+        """
+        @summary Submits log collection tasks at a time.
+        
+        @param request: SubmitImportLogTasksRequest
+        @return: SubmitImportLogTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_import_log_tasks_with_options_async(request, runtime)
 
@@ -9146,6 +11666,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.SubmitJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.SubmitJobsResponse:
+        """
+        @summary Submits multiple tasks that add logs to the threat analysis feature at a time. After the logs are added, you can perform alert and event analysis.
+        
+        @param request: SubmitJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitJobsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.json_param):
@@ -9176,6 +11703,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.SubmitJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.SubmitJobsResponse:
+        """
+        @summary Submits multiple tasks that add logs to the threat analysis feature at a time. After the logs are added, you can perform alert and event analysis.
+        
+        @param request: SubmitJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitJobsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.json_param):
@@ -9205,6 +11739,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.SubmitJobsRequest,
     ) -> cloud_siem_20220616_models.SubmitJobsResponse:
+        """
+        @summary Submits multiple tasks that add logs to the threat analysis feature at a time. After the logs are added, you can perform alert and event analysis.
+        
+        @param request: SubmitJobsRequest
+        @return: SubmitJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_jobs_with_options(request, runtime)
 
@@ -9212,6 +11752,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.SubmitJobsRequest,
     ) -> cloud_siem_20220616_models.SubmitJobsResponse:
+        """
+        @summary Submits multiple tasks that add logs to the threat analysis feature at a time. After the logs are added, you can perform alert and event analysis.
+        
+        @param request: SubmitJobsRequest
+        @return: SubmitJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_jobs_with_options_async(request, runtime)
 
@@ -9220,6 +11766,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.UpdateAutomateResponseConfigStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.UpdateAutomateResponseConfigStatusResponse:
+        """
+        @summary Updates the status of an automatic response rule.
+        
+        @param request: UpdateAutomateResponseConfigStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAutomateResponseConfigStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ids):
@@ -9256,6 +11809,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.UpdateAutomateResponseConfigStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.UpdateAutomateResponseConfigStatusResponse:
+        """
+        @summary Updates the status of an automatic response rule.
+        
+        @param request: UpdateAutomateResponseConfigStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAutomateResponseConfigStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.ids):
@@ -9291,6 +11851,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.UpdateAutomateResponseConfigStatusRequest,
     ) -> cloud_siem_20220616_models.UpdateAutomateResponseConfigStatusResponse:
+        """
+        @summary Updates the status of an automatic response rule.
+        
+        @param request: UpdateAutomateResponseConfigStatusRequest
+        @return: UpdateAutomateResponseConfigStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_automate_response_config_status_with_options(request, runtime)
 
@@ -9298,6 +11864,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.UpdateAutomateResponseConfigStatusRequest,
     ) -> cloud_siem_20220616_models.UpdateAutomateResponseConfigStatusResponse:
+        """
+        @summary Updates the status of an automatic response rule.
+        
+        @param request: UpdateAutomateResponseConfigStatusRequest
+        @return: UpdateAutomateResponseConfigStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_automate_response_config_status_with_options_async(request, runtime)
 
@@ -9306,6 +11878,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.UpdateWhiteRuleListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.UpdateWhiteRuleListResponse:
+        """
+        @summary Creates or updates an alert whitelist rule.
+        
+        @param request: UpdateWhiteRuleListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWhiteRuleListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.expression):
@@ -9344,6 +11923,13 @@ class Client(OpenApiClient):
         request: cloud_siem_20220616_models.UpdateWhiteRuleListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloud_siem_20220616_models.UpdateWhiteRuleListResponse:
+        """
+        @summary Creates or updates an alert whitelist rule.
+        
+        @param request: UpdateWhiteRuleListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWhiteRuleListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.expression):
@@ -9381,6 +11967,12 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.UpdateWhiteRuleListRequest,
     ) -> cloud_siem_20220616_models.UpdateWhiteRuleListResponse:
+        """
+        @summary Creates or updates an alert whitelist rule.
+        
+        @param request: UpdateWhiteRuleListRequest
+        @return: UpdateWhiteRuleListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_white_rule_list_with_options(request, runtime)
 
@@ -9388,5 +11980,11 @@ class Client(OpenApiClient):
         self,
         request: cloud_siem_20220616_models.UpdateWhiteRuleListRequest,
     ) -> cloud_siem_20220616_models.UpdateWhiteRuleListResponse:
+        """
+        @summary Creates or updates an alert whitelist rule.
+        
+        @param request: UpdateWhiteRuleListRequest
+        @return: UpdateWhiteRuleListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_white_rule_list_with_options_async(request, runtime)

@@ -1,3 +1,25 @@
+2024-08-07 Version: 4.0.0
+- Delete API BatchJobCheck.
+- Delete API DeleteQuickQuery.
+- Delete API DescribeCustomizeRule.
+- Update API BindAccount: add param RoleFor.
+- Update API BindAccount: add param RoleType.
+- Update API DeleteBindAccount: add param RoleFor.
+- Update API DeleteBindAccount: add param RoleType.
+- Update API DescribeImportedLogCount: add param RoleFor.
+- Update API DescribeImportedLogCount: add param RoleType.
+- Update API DescribeProdCount: add param RoleFor.
+- Update API DescribeProdCount: add param RoleType.
+- Update API ListAccountAccessId: add param RoleFor.
+- Update API ListAccountAccessId: add param RoleType.
+- Update API ListBindAccount: add param RoleFor.
+- Update API ListBindAccount: add param RoleType.
+- Update API ModifyBindAccount: add param RoleFor.
+- Update API ModifyBindAccount: add param RoleType.
+- Update API SubmitImportLogTasks: add param RoleFor.
+- Update API SubmitImportLogTasks: add param RoleType.
+
+
 2024-04-26 Version: 3.0.6
 - Update API CloseDelivery: add param RoleFor.
 - Update API CloseDelivery: add param RoleType.

@@ -150,6 +150,8 @@ class AddDataSourceRequest(TeaModel):
         # *   qcloud
         # *   hcloud
         # *   aliyun
+        # 
+        # This parameter is required.
         self.cloud_code = cloud_code
         # The name of the data source.
         self.data_source_instance_name = data_source_instance_name
@@ -337,16 +339,24 @@ class AddDataSourceLogRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud account.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The code of the cloud service provider. Valid values:
         # 
         # *   qcloud: Tencent Cloud
         # *   aliyun: Alibaba Cloud
         # *   hcloud: Huawei Cloud
+        # 
+        # This parameter is required.
         self.cloud_code = cloud_code
-        # The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
+        # The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
+        # 
+        # This parameter is required.
         self.data_source_instance_id = data_source_instance_id
         # The parameters of the data source. Set this parameter to a JSON array.
+        # 
+        # This parameter is required.
         self.data_source_instance_logs = data_source_instance_logs
         # The log code.
         self.log_code = log_code
@@ -516,6 +526,8 @@ class AddUserRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud account.
+        # 
+        # This parameter is required.
         self.added_user_id = added_user_id
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
@@ -636,7 +648,7 @@ class AddUserSourceLogConfigRequest(TeaModel):
     ):
         # Specifies whether to add logs or delete added logs. Valid values:
         # 
-        # *   \-1: deletes added logs.
+        # *   \\-1: deletes added logs.
         # *   0: adds logs.
         self.deleted = deleted
         # The display details of the Logstore.
@@ -649,10 +661,14 @@ class AddUserSourceLogConfigRequest(TeaModel):
         # The log code.
         self.source_log_code = source_log_code
         # The details of the Logstore that you want to use in the JSON string format.
+        # 
+        # This parameter is required.
         self.source_log_info = source_log_info
         # The code of the cloud service.
         self.source_prod_code = source_prod_code
         # The ID of the Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.sub_user_id = sub_user_id
 
     def validate(self):
@@ -850,377 +866,6 @@ class AddUserSourceLogConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddUserSourceLogConfigResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class BatchJobCheckRequest(TeaModel):
-    def __init__(
-        self,
-        region_id: str = None,
-        submit_id: str = None,
-    ):
-        # The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside.
-        self.region_id = region_id
-        # The id of task.
-        self.submit_id = submit_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.submit_id is not None:
-            result['SubmitId'] = self.submit_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('SubmitId') is not None:
-            self.submit_id = m.get('SubmitId')
-        return self
-
-
-class BatchJobCheckResponseBodyDataErrTaskListProductListLogList(TeaModel):
-    def __init__(
-        self,
-        error_code: str = None,
-        log_code: str = None,
-        log_store_name_pattern: str = None,
-        product_code: str = None,
-        project_name_pattern: str = None,
-        region_code: str = None,
-    ):
-        # The error code returned if the request failed.
-        self.error_code = error_code
-        # The log code.
-        self.log_code = log_code
-        # The pattern of SLS log store name.
-        self.log_store_name_pattern = log_store_name_pattern
-        # The code of product.
-        self.product_code = product_code
-        # The pattern of SLS project name.
-        self.project_name_pattern = project_name_pattern
-        # The ID of the region in which the instance resides.
-        self.region_code = region_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.error_code is not None:
-            result['ErrorCode'] = self.error_code
-        if self.log_code is not None:
-            result['LogCode'] = self.log_code
-        if self.log_store_name_pattern is not None:
-            result['LogStoreNamePattern'] = self.log_store_name_pattern
-        if self.product_code is not None:
-            result['ProductCode'] = self.product_code
-        if self.project_name_pattern is not None:
-            result['ProjectNamePattern'] = self.project_name_pattern
-        if self.region_code is not None:
-            result['RegionCode'] = self.region_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ErrorCode') is not None:
-            self.error_code = m.get('ErrorCode')
-        if m.get('LogCode') is not None:
-            self.log_code = m.get('LogCode')
-        if m.get('LogStoreNamePattern') is not None:
-            self.log_store_name_pattern = m.get('LogStoreNamePattern')
-        if m.get('ProductCode') is not None:
-            self.product_code = m.get('ProductCode')
-        if m.get('ProjectNamePattern') is not None:
-            self.project_name_pattern = m.get('ProjectNamePattern')
-        if m.get('RegionCode') is not None:
-            self.region_code = m.get('RegionCode')
-        return self
-
-
-class BatchJobCheckResponseBodyDataErrTaskListProductList(TeaModel):
-    def __init__(
-        self,
-        log_list: List[BatchJobCheckResponseBodyDataErrTaskListProductListLogList] = None,
-        product_code: str = None,
-    ):
-        # The list of log.
-        self.log_list = log_list
-        # The code of the product.
-        self.product_code = product_code
-
-    def validate(self):
-        if self.log_list:
-            for k in self.log_list:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['LogList'] = []
-        if self.log_list is not None:
-            for k in self.log_list:
-                result['LogList'].append(k.to_map() if k else None)
-        if self.product_code is not None:
-            result['ProductCode'] = self.product_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.log_list = []
-        if m.get('LogList') is not None:
-            for k in m.get('LogList'):
-                temp_model = BatchJobCheckResponseBodyDataErrTaskListProductListLogList()
-                self.log_list.append(temp_model.from_map(k))
-        if m.get('ProductCode') is not None:
-            self.product_code = m.get('ProductCode')
-        return self
-
-
-class BatchJobCheckResponseBodyDataErrTaskList(TeaModel):
-    def __init__(
-        self,
-        product_list: List[BatchJobCheckResponseBodyDataErrTaskListProductList] = None,
-        user_id: int = None,
-    ):
-        # The list of product.
-        self.product_list = product_list
-        # The account id of aliyun.
-        self.user_id = user_id
-
-    def validate(self):
-        if self.product_list:
-            for k in self.product_list:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['ProductList'] = []
-        if self.product_list is not None:
-            for k in self.product_list:
-                result['ProductList'].append(k.to_map() if k else None)
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.product_list = []
-        if m.get('ProductList') is not None:
-            for k in m.get('ProductList'):
-                temp_model = BatchJobCheckResponseBodyDataErrTaskListProductList()
-                self.product_list.append(temp_model.from_map(k))
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
-        return self
-
-
-class BatchJobCheckResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        config_id: str = None,
-        err_task_list: List[BatchJobCheckResponseBodyDataErrTaskList] = None,
-        failed_count: int = None,
-        finish_count: int = None,
-        folder_id: str = None,
-        task_count: int = None,
-        task_status: str = None,
-    ):
-        # The ID of the task configuration.
-        self.config_id = config_id
-        # The list of error task.
-        self.err_task_list = err_task_list
-        # The number of custom route entries that failed to be added.
-        self.failed_count = failed_count
-        # The number of scan tasks that are complete.
-        self.finish_count = finish_count
-        # The ID of the folder.
-        self.folder_id = folder_id
-        # The number of existing tasks that are created to add logs within the data source.
-        self.task_count = task_count
-        # The status of task.
-        self.task_status = task_status
-
-    def validate(self):
-        if self.err_task_list:
-            for k in self.err_task_list:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.config_id is not None:
-            result['ConfigId'] = self.config_id
-        result['ErrTaskList'] = []
-        if self.err_task_list is not None:
-            for k in self.err_task_list:
-                result['ErrTaskList'].append(k.to_map() if k else None)
-        if self.failed_count is not None:
-            result['FailedCount'] = self.failed_count
-        if self.finish_count is not None:
-            result['FinishCount'] = self.finish_count
-        if self.folder_id is not None:
-            result['FolderId'] = self.folder_id
-        if self.task_count is not None:
-            result['TaskCount'] = self.task_count
-        if self.task_status is not None:
-            result['TaskStatus'] = self.task_status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ConfigId') is not None:
-            self.config_id = m.get('ConfigId')
-        self.err_task_list = []
-        if m.get('ErrTaskList') is not None:
-            for k in m.get('ErrTaskList'):
-                temp_model = BatchJobCheckResponseBodyDataErrTaskList()
-                self.err_task_list.append(temp_model.from_map(k))
-        if m.get('FailedCount') is not None:
-            self.failed_count = m.get('FailedCount')
-        if m.get('FinishCount') is not None:
-            self.finish_count = m.get('FinishCount')
-        if m.get('FolderId') is not None:
-            self.folder_id = m.get('FolderId')
-        if m.get('TaskCount') is not None:
-            self.task_count = m.get('TaskCount')
-        if m.get('TaskStatus') is not None:
-            self.task_status = m.get('TaskStatus')
-        return self
-
-
-class BatchJobCheckResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: int = None,
-        data: BatchJobCheckResponseBodyData = None,
-        err_code: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        # The HTTP status code.
-        self.code = code
-        # The data returned.
-        self.data = data
-        # The error code.
-        self.err_code = err_code
-        # The message returned.
-        self.message = message
-        # The request ID.
-        self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = BatchJobCheckResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class BatchJobCheckResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: BatchJobCheckResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = BatchJobCheckResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1586,25 +1231,36 @@ class BindAccountRequest(TeaModel):
         account_name: str = None,
         cloud_code: str = None,
         region_id: str = None,
+        role_for: int = None,
+        role_type: int = None,
     ):
         # The AccessKey ID of the cloud account.
+        # 
+        # This parameter is required.
         self.access_id = access_id
         # The ID of the cloud account.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The username of the cloud account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
-        # The code of the cloud service provider.
+        # The code of the cloud service provider. Valid values:
         # 
-        # Valid values:
+        # *   aliyun: Alibaba Cloud
+        # *   hcloud: Huawei Cloud
+        # *   qcloud: Tencent Cloud
         # 
-        # *   qcloud
-        # *   hcloud
+        # This parameter is required.
         self.cloud_code = cloud_code
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        self.role_for = role_for
+        self.role_type = role_type
 
     def validate(self):
         pass
@@ -1625,6 +1281,10 @@ class BindAccountRequest(TeaModel):
             result['CloudCode'] = self.cloud_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.role_for is not None:
+            result['RoleFor'] = self.role_for
+        if self.role_type is not None:
+            result['RoleType'] = self.role_type
         return result
 
     def from_map(self, m: dict = None):
@@ -1639,6 +1299,10 @@ class BindAccountRequest(TeaModel):
             self.cloud_code = m.get('CloudCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RoleFor') is not None:
+            self.role_for = m.get('RoleFor')
+        if m.get('RoleType') is not None:
+            self.role_type = m.get('RoleType')
         return self
 
 
@@ -1647,7 +1311,7 @@ class BindAccountResponseBodyData(TeaModel):
         self,
         count: int = None,
     ):
-        # The number of the cloud accounts that are added to the threat analysis feature. The value 1 indicates that the account is added, and a value less than or equal to 0 indicates that the account failed to be added.
+        # The number of the cloud accounts that are added to the threat analysis feature.
         self.count = count
 
     def validate(self):
@@ -1676,7 +1340,7 @@ class BindAccountResponseBody(TeaModel):
         data: BindAccountResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response parameters.
+        # The data returned.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -1784,13 +1448,19 @@ class CloseDeliveryRequest(TeaModel):
         # *   bastionhost
         # *   oss
         # *   polardb
+        # 
+        # This parameter is required.
         self.product_code = product_code
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-        # *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -1923,7 +1593,11 @@ class DeleteAutomateResponseConfigRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -2066,24 +1740,34 @@ class DeleteBindAccountRequest(TeaModel):
         bind_id: int = None,
         cloud_code: str = None,
         region_id: str = None,
+        role_for: int = None,
+        role_type: int = None,
     ):
         # The AccessKey ID of the cloud account.
+        # 
+        # This parameter is required.
         self.access_id = access_id
         # The ID of the cloud account.
+        # 
+        # This parameter is required.
         self.account_id = account_id
-        # The ID generated when the account is added to the threat analysis feature. You can call the [ListBindAccount](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListBindAccount) operation to query the ID.
+        # The ID generated when the account is added to the threat analysis feature. You can call the [ListBindAccount](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CListBindAccount) operation to query the ID.
         self.bind_id = bind_id
         # The code of the cloud service provider. Valid values:
         # 
         # *   qcloud: Tencent Cloud
         # *   aliyun: Alibaba Cloud
         # *   hcloud: Huawei Cloud
+        # 
+        # This parameter is required.
         self.cloud_code = cloud_code
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        self.role_for = role_for
+        self.role_type = role_type
 
     def validate(self):
         pass
@@ -2104,6 +1788,10 @@ class DeleteBindAccountRequest(TeaModel):
             result['CloudCode'] = self.cloud_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.role_for is not None:
+            result['RoleFor'] = self.role_for
+        if self.role_type is not None:
+            result['RoleType'] = self.role_type
         return result
 
     def from_map(self, m: dict = None):
@@ -2118,6 +1806,10 @@ class DeleteBindAccountRequest(TeaModel):
             self.cloud_code = m.get('CloudCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RoleFor') is not None:
+            self.role_for = m.get('RoleFor')
+        if m.get('RoleType') is not None:
+            self.role_type = m.get('RoleType')
         return self
 
 
@@ -2237,7 +1929,11 @@ class DeleteCustomizeRuleRequest(TeaModel):
     ):
         # The region in which the service is deployed.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
         # The ID of the rule.
         self.rule_id = rule_id
@@ -2383,14 +2079,20 @@ class DeleteDataSourceRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud account.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The code of the cloud service provider. Valid values:
         # 
         # *   qcloud: Tencent Cloud
         # *   aliyun: Alibaba Cloud
         # *   hcloud: Huawei Cloud
+        # 
+        # This parameter is required.
         self.cloud_code = cloud_code
-        # The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
+        # The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
+        # 
+        # This parameter is required.
         self.data_source_instance_id = data_source_instance_id
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
@@ -2546,16 +2248,24 @@ class DeleteDataSourceLogRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud account.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The code of the cloud service provider. Valid values:
         # 
         # *   qcloud: Tencent Cloud
         # *   aliyun: Alibaba Cloud
         # *   hcloud: Huawei Cloud
+        # 
+        # This parameter is required.
         self.cloud_code = cloud_code
-        # The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
+        # The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
+        # 
+        # This parameter is required.
         self.data_source_instance_id = data_source_instance_id
-        # The ID of the log. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of logs.
+        # The ID of the log. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of logs.
+        # 
+        # This parameter is required.
         self.log_instance_id = log_instance_id
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
@@ -2712,123 +2422,6 @@ class DeleteDataSourceLogResponse(TeaModel):
         return self
 
 
-class DeleteQuickQueryRequest(TeaModel):
-    def __init__(
-        self,
-        region_id: str = None,
-        search_name: str = None,
-    ):
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
-        # 
-        # *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-        # *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
-        self.region_id = region_id
-        # The name of the saved search.
-        self.search_name = search_name
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.search_name is not None:
-            result['SearchName'] = self.search_name
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('SearchName') is not None:
-            self.search_name = m.get('SearchName')
-        return self
-
-
-class DeleteQuickQueryResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: bool = None,
-        request_id: str = None,
-    ):
-        # Indicates whether the saved search is deleted. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.data = data
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DeleteQuickQueryResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DeleteQuickQueryResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DeleteQuickQueryResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DeleteUserRequest(TeaModel):
     def __init__(
         self,
@@ -2836,6 +2429,8 @@ class DeleteUserRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.added_user_id = added_user_id
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
@@ -2955,13 +2550,19 @@ class DeleteWhiteRuleListRequest(TeaModel):
         role_type: int = None,
     ):
         # The unique ID of the whitelist rule.
+        # 
+        # This parameter is required.
         self.id = id
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -3108,7 +2709,11 @@ class DescribeAggregateFunctionRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -3294,7 +2899,11 @@ class DescribeAlertSceneRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -3569,13 +3178,19 @@ class DescribeAlertSceneByEventRequest(TeaModel):
         role_type: int = None,
     ):
         # The ID of the event.
+        # 
+        # This parameter is required.
         self.incident_uuid = incident_uuid
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -3868,7 +3483,11 @@ class DescribeAlertSourceRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
         # The beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
@@ -4066,12 +3685,16 @@ class DescribeAlertSourceWithEventRequest(TeaModel):
     ):
         # The UUID of the event.
         self.incident_uuid = incident_uuid
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   Valid values: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -4262,8 +3885,15 @@ class DescribeAlertTypeRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
+        # The type of rule. Valid values:
+        # - predefine: the defined rule by system
+        # - customize: the customed rule by user
         self.rule_type = rule_type
 
     def validate(self):
@@ -4463,6 +4093,8 @@ class DescribeAlertsRequest(TeaModel):
         # The UUID of the alert.
         self.alert_uuid = alert_uuid
         # The page number. Pages start from page 1.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
@@ -4478,13 +4110,19 @@ class DescribeAlertsRequest(TeaModel):
         # *   remind: low
         self.level = level
         # The number of entries per page. Maximum value: 100.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
         # The source of the alert.
         self.source = source
@@ -4721,7 +4359,7 @@ class DescribeAlertsResponseBodyDataResponseData(TeaModel):
         self.alert_uuid = alert_uuid
         # The details of the asset.
         self.asset_list = asset_list
-        # The tag of the ATT\&CK attack.
+        # The tag of the ATT\\&CK attack.
         self.att_ck = att_ck
         # The cloud code. Valid values:
         # 
@@ -5073,7 +4711,11 @@ class DescribeAlertsCountRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
         # The beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
@@ -5285,19 +4927,27 @@ class DescribeAlertsWithEntityRequest(TeaModel):
         sophon_task_id: str = None,
     ):
         # The page number. Pages start from page 1.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The ID of the entity.
         self.entity_id = entity_id
         # The UUID of the event.
         self.incident_uuid = incident_uuid
         # The number of entries per page. Maximum value: 100.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
         # The ID of the SOAR handing policy.
         self.sophon_task_id = sophon_task_id
@@ -5510,7 +5160,7 @@ class DescribeAlertsWithEntityResponseBodyDataResponseData(TeaModel):
         self.alert_uuid = alert_uuid
         # The details of the asset.
         self.asset_list = asset_list
-        # The tag of the ATT\&CK attack.
+        # The tag of the ATT\\&CK attack.
         self.att_ck = att_ck
         # The cloud code. Valid values:
         # 
@@ -5864,6 +5514,8 @@ class DescribeAlertsWithEventRequest(TeaModel):
         # The title of the alert.
         self.alert_title = alert_title
         # The page number. Pages start from page 1.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The ID of the event.
         self.incident_uuid = incident_uuid
@@ -5879,13 +5531,20 @@ class DescribeAlertsWithEventRequest(TeaModel):
         # *   remind: low
         self.level = level
         # The number of entries per page. Maximum value: 100.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the member in the resource directory.
         self.role_for = role_for
+        # The type of the view.
+        # 
+        # *   0: view of the current Alibaba Cloud account.
+        # *   1: view of all accounts for the enterprise.
         self.role_type = role_type
         # The data source of the alert.
         self.source = source
@@ -6085,9 +5744,9 @@ class DescribeAlertsWithEventResponseBodyDataResponseData(TeaModel):
         self.alert_info_list = alert_info_list
         # The risk level. Valid values:
         # 
-        # *   serious: high
-        # *   suspicious: medium
-        # *   remind: low
+        # *   serious: high.
+        # *   suspicious: medium.
+        # *   remind: low.
         self.alert_level = alert_level
         # The name of the alert.
         self.alert_name = alert_name
@@ -6113,16 +5772,17 @@ class DescribeAlertsWithEventResponseBodyDataResponseData(TeaModel):
         self.alert_uuid = alert_uuid
         # The details of the asset.
         self.asset_list = asset_list
-        # The tag of the ATT\&CK attack.
+        # The tag of the ATT\\&CK technique.
         self.att_ck = att_ck
-        # The cloud code. Valid values:
+        # The code of the cloud service provider. Valid values:
         # 
-        # *   aliyun: Alibaba Cloud
-        # *   qcloud: Tencent Cloud
-        # *   hcloud: Huawei Cloud
+        # *   aliyun: Alibaba Cloud.
+        # *   qcloud: Tencent Cloud.
+        # *   hcloud: Huawei Cloud.
         self.cloud_code = cloud_code
         # The time when the alert was closed.
         self.end_time = end_time
+        # The details of the entity.
         self.entity_list = entity_list
         # The time when the alert was received.
         self.gmt_create = gmt_create
@@ -6132,10 +5792,10 @@ class DescribeAlertsWithEventResponseBodyDataResponseData(TeaModel):
         self.id = id
         # The UUID of the event.
         self.incident_uuid = incident_uuid
-        # Indicates whether an attack is defended. Valid values:
+        # Indicates whether an attack is defended against. Valid values:
         # 
-        # *   0: detected
-        # *   1: blocked
+        # *   0: detected.
+        # *   1: blocked.
         self.is_defend = is_defend
         # The time when the alert was recorded.
         self.log_time = log_time
@@ -6476,7 +6136,11 @@ class DescribeAttackTimeLineRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
         # The beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
@@ -6585,7 +6249,7 @@ class DescribeAttackTimeLineResponseBodyData(TeaModel):
         self.asset_list = asset_list
         # The name of the asset.
         self.asset_name = asset_name
-        # The tag of the ATT\&CK attack.
+        # The tag of the ATT\\&CK attack.
         self.att_ck = att_ck
         # The cloud code. Valid values:
         # 
@@ -6924,7 +6588,11 @@ class DescribeAutomateResponseConfigCounterRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -7110,7 +6778,11 @@ class DescribeAutomateResponseConfigFeatureRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -7459,7 +7131,11 @@ class DescribeAutomateResponseConfigPlayBooksRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -7687,17 +7363,25 @@ class DescribeCloudSiemAssetsRequest(TeaModel):
         # *   host
         self.asset_type = asset_type
         # The page number. Pages start from page 1.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The UUID of the event.
         self.incident_uuid = incident_uuid
         # The number of entries per page. Maximum value: 100.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -8109,13 +7793,19 @@ class DescribeCloudSiemAssetsCounterRequest(TeaModel):
         role_type: int = None,
     ):
         # The UUID of the event.
+        # 
+        # This parameter is required.
         self.incident_uuid = incident_uuid
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -8309,13 +7999,19 @@ class DescribeCloudSiemEventDetailRequest(TeaModel):
         role_type: int = None,
     ):
         # The UUID of the event.
+        # 
+        # This parameter is required.
         self.incident_uuid = incident_uuid
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -8378,7 +8074,7 @@ class DescribeCloudSiemEventDetailResponseBodyData(TeaModel):
         self.aliuid = aliuid
         # The number of assets that are associated with the event.
         self.asset_num = asset_num
-        # The tags of the ATT\&CK attacks.
+        # The tags of the ATT\\&CK attacks.
         self.att_ck_labels = att_ck_labels
         # The source of the alert.
         self.data_sources = data_sources
@@ -8398,6 +8094,7 @@ class DescribeCloudSiemEventDetailResponseBodyData(TeaModel):
         self.incident_name_en = incident_name_en
         # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # Users associated with the event.
         self.refer_account = refer_account
         # The remarks of the event.
         self.remark = remark
@@ -8628,6 +8325,8 @@ class DescribeCloudSiemEventsRequest(TeaModel):
         # The ID of the asset that is associated with the event.
         self.asset_id = asset_id
         # The page number. Pages start from page 1.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
@@ -8646,13 +8345,19 @@ class DescribeCloudSiemEventsRequest(TeaModel):
         # *   ThreatScore: sorts the events by risk score.
         self.order_field = order_field
         # The number of entries per page. Maximum value: 100.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
         # The beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
@@ -8812,7 +8517,7 @@ class DescribeCloudSiemEventsResponseBodyDataResponseData(TeaModel):
         self.aliuid = aliuid
         # The number of assets that are associated with the event.
         self.asset_num = asset_num
-        # The tags of the ATT\&CK attack.
+        # The tags of the ATT\\&CK techniques.
         self.att_ck_labels = att_ck_labels
         # The sources of the alert.
         self.data_sources = data_sources
@@ -8832,21 +8537,22 @@ class DescribeCloudSiemEventsResponseBodyDataResponseData(TeaModel):
         self.incident_name_en = incident_name_en
         # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # the refer account info.
         self.refer_account = refer_account
         # The remarks of the event.
         self.remark = remark
         # The status of the event. Valid values:
         # 
-        # *   0: unhandled
-        # *   1: handling
-        # *   5: handling failed
-        # *   10: handled
+        # *   0: unhandled.
+        # *   1: handling.
+        # *   5: handling failed.
+        # *   10: handled.
         self.status = status
         # The risk level. Valid values:
         # 
-        # *   serious: high
-        # *   suspicious: medium
-        # *   remind: low
+        # *   serious: high.
+        # *   suspicious: medium.
+        # *   remind: low.
         self.threat_level = threat_level
         # The risk score of the event. Valid values: 0 to 100. A higher value indicates a higher risk level.
         self.threat_score = threat_score
@@ -9211,341 +8917,6 @@ class DescribeCsImportedProdStatusByUserResponse(TeaModel):
         return self
 
 
-class DescribeCustomizeRuleRequest(TeaModel):
-    def __init__(
-        self,
-        region_id: str = None,
-        rule_id: int = None,
-    ):
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
-        # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
-        self.region_id = region_id
-        # The ID of the rule.
-        self.rule_id = rule_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.rule_id is not None:
-            result['RuleId'] = self.rule_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('RuleId') is not None:
-            self.rule_id = m.get('RuleId')
-        return self
-
-
-class DescribeCustomizeRuleResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        alert_type: str = None,
-        alert_type_mds: str = None,
-        aliuid: int = None,
-        event_transfer_ext: str = None,
-        event_transfer_switch: int = None,
-        event_transfer_type: str = None,
-        gmt_create: str = None,
-        gmt_modified: str = None,
-        id: int = None,
-        log_source: str = None,
-        log_source_mds: str = None,
-        log_type: str = None,
-        log_type_mds: str = None,
-        query_cycle: str = None,
-        rule_condition: str = None,
-        rule_desc: str = None,
-        rule_group: str = None,
-        rule_name: str = None,
-        rule_threshold: str = None,
-        rule_type: str = None,
-        status: int = None,
-        threat_level: str = None,
-    ):
-        # The risk type.
-        self.alert_type = alert_type
-        # The internal code of the risk type.
-        self.alert_type_mds = alert_type_mds
-        # The ID of the Alibaba Cloud account for which the threat analysis feature is enabled.
-        self.aliuid = aliuid
-        # The extended information about event generation. If **eventTransferType** is set to **allToSingle**, a value is returned for EventTransferExt. The return value indicates the length and time unit of the alert aggregation window. The HTML escape characters are reversed.
-        self.event_transfer_ext = event_transfer_ext
-        # Indicates whether the alert generates an event. Valid values:
-        # 
-        # *   0: no
-        # *   1: yes
-        self.event_transfer_switch = event_transfer_switch
-        # The event generation method. Valid values:
-        # 
-        # *   **default**: The default method is used.
-        # *   **singleToSingle**: The system generates an event for each alert.
-        # *   **allToSingle**: The system generates an event for alerts within a period of time.
-        self.event_transfer_type = event_transfer_type
-        # The time when the custom rule was created.
-        self.gmt_create = gmt_create
-        # The time when the custom rule was last updated.
-        self.gmt_modified = gmt_modified
-        # The ID of the custom rule.
-        self.id = id
-        # The log source of the rule.
-        self.log_source = log_source
-        # The internal code of the log source.
-        self.log_source_mds = log_source_mds
-        # The log type of the rule.
-        self.log_type = log_type
-        # The internal code of the log type.
-        self.log_type_mds = log_type_mds
-        # The window length of the rule. The HTML escape characters are reversed.
-        self.query_cycle = query_cycle
-        # The query condition of the rule. The value is in the JSON format. The HTML escape characters are reversed.
-        self.rule_condition = rule_condition
-        # The description of the rule.
-        self.rule_desc = rule_desc
-        # The log aggregation field. The value is in the JSON format. The HTML escape characters are reversed.
-        self.rule_group = rule_group
-        # The name of the rule.
-        self.rule_name = rule_name
-        # The threshold configuration of the rule. The value is in the JSON format. The HTML escape characters are reversed.
-        self.rule_threshold = rule_threshold
-        # The rule type. Valid values:
-        # 
-        # *   predefine
-        # *   customize
-        self.rule_type = rule_type
-        # The rule status. Valid values:
-        # 
-        # *   **0**: the initial status.
-        # *   **10**: The simulation data is tested.
-        # *   **15**: The business data is being tested.
-        # *   **20**: The business data test ends.
-        # *   **100**: The rule takes effect.
-        self.status = status
-        # The threat level. Valid values:
-        # 
-        # *   **serious**: high risk
-        # *   **suspicious**: medium risk
-        # *   **remind**: low risk
-        self.threat_level = threat_level
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.alert_type is not None:
-            result['AlertType'] = self.alert_type
-        if self.alert_type_mds is not None:
-            result['AlertTypeMds'] = self.alert_type_mds
-        if self.aliuid is not None:
-            result['Aliuid'] = self.aliuid
-        if self.event_transfer_ext is not None:
-            result['EventTransferExt'] = self.event_transfer_ext
-        if self.event_transfer_switch is not None:
-            result['EventTransferSwitch'] = self.event_transfer_switch
-        if self.event_transfer_type is not None:
-            result['EventTransferType'] = self.event_transfer_type
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.gmt_modified is not None:
-            result['GmtModified'] = self.gmt_modified
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.log_source is not None:
-            result['LogSource'] = self.log_source
-        if self.log_source_mds is not None:
-            result['LogSourceMds'] = self.log_source_mds
-        if self.log_type is not None:
-            result['LogType'] = self.log_type
-        if self.log_type_mds is not None:
-            result['LogTypeMds'] = self.log_type_mds
-        if self.query_cycle is not None:
-            result['QueryCycle'] = self.query_cycle
-        if self.rule_condition is not None:
-            result['RuleCondition'] = self.rule_condition
-        if self.rule_desc is not None:
-            result['RuleDesc'] = self.rule_desc
-        if self.rule_group is not None:
-            result['RuleGroup'] = self.rule_group
-        if self.rule_name is not None:
-            result['RuleName'] = self.rule_name
-        if self.rule_threshold is not None:
-            result['RuleThreshold'] = self.rule_threshold
-        if self.rule_type is not None:
-            result['RuleType'] = self.rule_type
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.threat_level is not None:
-            result['ThreatLevel'] = self.threat_level
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AlertType') is not None:
-            self.alert_type = m.get('AlertType')
-        if m.get('AlertTypeMds') is not None:
-            self.alert_type_mds = m.get('AlertTypeMds')
-        if m.get('Aliuid') is not None:
-            self.aliuid = m.get('Aliuid')
-        if m.get('EventTransferExt') is not None:
-            self.event_transfer_ext = m.get('EventTransferExt')
-        if m.get('EventTransferSwitch') is not None:
-            self.event_transfer_switch = m.get('EventTransferSwitch')
-        if m.get('EventTransferType') is not None:
-            self.event_transfer_type = m.get('EventTransferType')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('GmtModified') is not None:
-            self.gmt_modified = m.get('GmtModified')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('LogSource') is not None:
-            self.log_source = m.get('LogSource')
-        if m.get('LogSourceMds') is not None:
-            self.log_source_mds = m.get('LogSourceMds')
-        if m.get('LogType') is not None:
-            self.log_type = m.get('LogType')
-        if m.get('LogTypeMds') is not None:
-            self.log_type_mds = m.get('LogTypeMds')
-        if m.get('QueryCycle') is not None:
-            self.query_cycle = m.get('QueryCycle')
-        if m.get('RuleCondition') is not None:
-            self.rule_condition = m.get('RuleCondition')
-        if m.get('RuleDesc') is not None:
-            self.rule_desc = m.get('RuleDesc')
-        if m.get('RuleGroup') is not None:
-            self.rule_group = m.get('RuleGroup')
-        if m.get('RuleName') is not None:
-            self.rule_name = m.get('RuleName')
-        if m.get('RuleThreshold') is not None:
-            self.rule_threshold = m.get('RuleThreshold')
-        if m.get('RuleType') is not None:
-            self.rule_type = m.get('RuleType')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('ThreatLevel') is not None:
-            self.threat_level = m.get('ThreatLevel')
-        return self
-
-
-class DescribeCustomizeRuleResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: int = None,
-        data: DescribeCustomizeRuleResponseBodyData = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        # The HTTP status code.
-        self.code = code
-        # The return value for the request.
-        self.data = data
-        # The returned message.
-        self.message = message
-        # The request ID.
-        self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**\
-        # *   **false**\
-        self.success = success
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            temp_model = DescribeCustomizeRuleResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class DescribeCustomizeRuleResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeCustomizeRuleResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeCustomizeRuleResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeCustomizeRuleCountRequest(TeaModel):
     def __init__(
         self,
@@ -9558,7 +8929,11 @@ class DescribeCustomizeRuleCountRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions inside China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -9605,9 +8980,13 @@ class DescribeCustomizeRuleCountResponseBodyData(TeaModel):
         total_rule_num: int = None,
         un_event_rule_num: int = None,
     ):
+        # 同类聚合规则数。
         self.aggregation_rule_num = aggregation_rule_num
+        # 自定义规则数。
         self.customize_rule_num = customize_rule_num
+        # 专家规则数。
         self.expert_rule_num = expert_rule_num
+        # 图计算规则数。
         self.graph_computing_rule_num = graph_computing_rule_num
         # The number of rules that are used to identify high-risk threats.
         self.high_rule_num = high_rule_num
@@ -9617,9 +8996,13 @@ class DescribeCustomizeRuleCountResponseBodyData(TeaModel):
         self.low_rule_num = low_rule_num
         # The number of rules that are used to identify medium-risk threats.
         self.medium_rule_num = medium_rule_num
+        # 预定义规则数。
         self.predefined_rule_num = predefined_rule_num
+        # 告警透传规则数。
         self.single_alert_rule_num = single_alert_rule_num
+        # 总规则数。
         self.total_rule_num = total_rule_num
+        # 不产生事件规则数。
         self.un_event_rule_num = un_event_rule_num
 
     def validate(self):
@@ -9803,7 +9186,11 @@ class DescribeCustomizeRuleTestRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -10003,7 +9390,11 @@ class DescribeCustomizeRuleTestHistogramRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -10197,14 +9588,20 @@ class DescribeDataSourceInstanceRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud account.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The code of the cloud service provider. Valid values:
         # 
         # *   qcloud: Tencent Cloud
         # *   aliyun: Alibaba Cloud
         # *   hcloud: Huawei Cloud
+        # 
+        # This parameter is required.
         self.cloud_code = cloud_code
-        # The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
+        # The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
+        # 
+        # This parameter is required.
         self.data_source_instance_id = data_source_instance_id
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
@@ -10432,12 +9829,16 @@ class DescribeDataSourceParametersRequest(TeaModel):
         # *   qcloud
         # *   hcloud
         # *   aliyun
+        # 
+        # This parameter is required.
         self.cloud_code = cloud_code
         # The type of the data source. Valid values:
         # 
         # *   **ckafka**: Tencent Cloud TDMQ for CKafka
         # *   **obs**: Huawei Cloud Object Storage Service (OBS)
         # *   **wafApi**: download API of Tencent Cloud Web Application Firewall (WAF)
+        # 
+        # This parameter is required.
         self.data_source_type = data_source_type
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
@@ -10767,7 +10168,11 @@ class DescribeDisposeAndPlaybookRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions inside China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -11182,15 +10587,23 @@ class DescribeDisposeStrategyPlaybookRequest(TeaModel):
         start_time: int = None,
     ):
         # The end of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions inside China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
         # The beginning of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -11394,7 +10807,11 @@ class DescribeEntityInfoRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
         # The ID of the SOAR handling policy.
         self.sophon_task_id = sophon_task_id
@@ -11610,14 +11027,21 @@ class DescribeEventCountByThreatLevelRequest(TeaModel):
         role_type: int = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the member in the resource directory.
         self.role_for = role_for
+        # The type of the view.
+        # 
+        # *   0: view of the current Alibaba Cloud account.
+        # *   1: view of all accounts for the enterprise.
         self.role_type = role_type
+        # The beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -11828,14 +11252,18 @@ class DescribeEventDisposeRequest(TeaModel):
         self.current_page = current_page
         # The UUID of the event.
         self.incident_uuid = incident_uuid
-        # The number of entries to return on each page. Maximum value: 500.
+        # The number of entries per page. Maximum value: 500.
         self.page_size = page_size
         # The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions inside China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -12123,12 +11551,16 @@ class DescribeImportedLogCountRequest(TeaModel):
     def __init__(
         self,
         region_id: str = None,
+        role_for: str = None,
+        role_type: str = None,
     ):
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        self.role_for = role_for
+        self.role_type = role_type
 
     def validate(self):
         pass
@@ -12141,12 +11573,20 @@ class DescribeImportedLogCountRequest(TeaModel):
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.role_for is not None:
+            result['RoleFor'] = self.role_for
+        if self.role_type is not None:
+            result['RoleType'] = self.role_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RoleFor') is not None:
+            self.role_for = m.get('RoleFor')
+        if m.get('RoleType') is not None:
+            self.role_type = m.get('RoleType')
         return self
 
 
@@ -12276,12 +11716,11 @@ class DescribeJobStatusRequest(TeaModel):
         region_id: str = None,
         submit_id: str = None,
     ):
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
-        # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # The region where the service resides. Default value: cn-shanghai.
         self.region_id = region_id
-        # The id of collection task.
+        # The ID of the collection task. The ID is the value of the submitId parameter in the response of the [BatchJobSubmit](https://next.api.aliyun.com/api/cloud-siem/2022-06-16/BatchSubmitJob?lang=JAVA\\&useCommon=true) operation.
+        # 
+        # This parameter is required.
         self.submit_id = submit_id
 
     def validate(self):
@@ -12318,17 +11757,17 @@ class DescribeJobStatusResponseBodyDataErrTaskListProductListLogList(TeaModel):
         project_name_pattern: str = None,
         region_code: str = None,
     ):
-        # The error code.
+        # The reason for the failure.
         self.error_code = error_code
-        # The log code.
+        # The code of the logs.
         self.log_code = log_code
-        # The pattern of SLS logstore name.
+        # The pattern for the name of the Simple Log Service Logstore from which logs are collected.
         self.log_store_name_pattern = log_store_name_pattern
-        # The code of product.
+        # The code of the service.
         self.product_code = product_code
-        # The pattern of SLS project name.
+        # The pattern for the name of the Simple Log Service project from which logs are collected.
         self.project_name_pattern = project_name_pattern
-        # The ID of the region in which the instance resides.
+        # The ID of the region.
         self.region_code = region_code
 
     def validate(self):
@@ -12377,9 +11816,9 @@ class DescribeJobStatusResponseBodyDataErrTaskListProductList(TeaModel):
         log_list: List[DescribeJobStatusResponseBodyDataErrTaskListProductListLogList] = None,
         product_code: str = None,
     ):
-        # The list of log.
+        # The list of logs that fail to be collected.
         self.log_list = log_list
-        # The code of product.
+        # The code of the service.
         self.product_code = product_code
 
     def validate(self):
@@ -12420,9 +11859,9 @@ class DescribeJobStatusResponseBodyDataErrTaskList(TeaModel):
         product_list: List[DescribeJobStatusResponseBodyDataErrTaskListProductList] = None,
         user_id: int = None,
     ):
-        # The list of product.
+        # The list of services in failed tasks.
         self.product_list = product_list
-        # The account id of aliyun.
+        # The ID of the Alibaba Cloud account.
         self.user_id = user_id
 
     def validate(self):
@@ -12470,17 +11909,35 @@ class DescribeJobStatusResponseBodyData(TeaModel):
     ):
         # The ID of the task configuration.
         self.config_id = config_id
-        # The list of failed task.
+        # The list of failed tasks. The value contains the Alibaba Cloud account and service code of each failed task.
         self.err_task_list = err_task_list
-        # The number of failed tasks.
+        # The total number of tasks that fail.
         self.failed_count = failed_count
-        # The number of scan tasks that are complete.
+        # The total number of tasks that are complete.
         self.finish_count = finish_count
-        # The ID of the folder.
+        # The ID of the resource directory folder.
         self.folder_id = folder_id
-        # The number of existing tasks that are created to add logs within the data source.
+        # The total number of collection tasks that are created.
         self.task_count = task_count
-        # The status of submitted task.
+        # The status of the submitted task.
+        # 
+        # Valid values:
+        # 
+        # *   submit
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   finish
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.task_status = task_status
 
     def validate(self):
@@ -12545,20 +12002,20 @@ class DescribeJobStatusResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The HTTP status code. If the request is successful, 200 is returned.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The error code.
+        # The error code. If the request is successful, the parameter is empty. If the request fails, an error code is returned.
         self.err_code = err_code
-        # The returned message.
+        # The error message. If the request is successful, the parameter is empty. If the request fails, the reason for the failure is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -12662,7 +12119,11 @@ class DescribeLogFieldsRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -12883,7 +12344,11 @@ class DescribeLogSourceRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -13261,7 +12726,11 @@ class DescribeLogTypeRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -13448,7 +12917,11 @@ class DescribeOperatorsRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
         # The type of the scenario in which the operator is used. Valid values:
         # 
@@ -13670,12 +13143,16 @@ class DescribeProdCountRequest(TeaModel):
     def __init__(
         self,
         region_id: str = None,
+        role_for: int = None,
+        role_type: int = None,
     ):
         # The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions inside China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        self.role_for = role_for
+        self.role_type = role_type
 
     def validate(self):
         pass
@@ -13688,12 +13165,20 @@ class DescribeProdCountRequest(TeaModel):
         result = dict()
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.role_for is not None:
+            result['RoleFor'] = self.role_for
+        if self.role_type is not None:
+            result['RoleType'] = self.role_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RoleFor') is not None:
+            self.role_for = m.get('RoleFor')
+        if m.get('RoleType') is not None:
+            self.role_type = m.get('RoleType')
         return self
 
 
@@ -13829,7 +13314,11 @@ class DescribeScopeUsersRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions inside China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -13872,11 +13361,15 @@ class DescribeScopeUsersResponseBodyData(TeaModel):
     ):
         # The ID of the security information and event management (SIEM) user.
         self.ali_uid = ali_uid
+        # 云code。  取值：
+        # - qcloud：腾讯云
+        # - hcloud：华为云
         self.cloud_code = cloud_code
         # An array consisting of the domain names that are protected by the WAF instance.
         self.domains = domains
         # The ID of the Web Application Firewall (WAF) instance.
         self.instance_id = instance_id
+        # 多云用户ID。
         self.user_id = user_id
         # The username.
         self.user_name = user_name
@@ -14146,12 +13639,16 @@ class DescribeStorageRequest(TeaModel):
         role_for: int = None,
         role_type: int = None,
     ):
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-        # *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -14499,7 +13996,11 @@ class DescribeWafScopeRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -14701,17 +14202,25 @@ class DescribeWhiteRuleListRequest(TeaModel):
         # The type of the alert.
         self.alert_type = alert_type
         # The page number. Pages start from page 1.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The UUID of the event.
         self.incident_uuid = incident_uuid
         # The number of entries per page. Valid values: 1 to 100.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -14815,10 +14324,10 @@ class DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft(
     ):
         # Indicates whether the left operand is a variable. Valid values:
         # 
-        # *   true: variable
-        # *   false: constant
+        # *   true: variable.
+        # *   false: constant.
         self.is_var = is_var
-        # The remarks on the left operand.
+        # The remarks on the right operand.
         self.modifier = modifier
         # The key-value pair information of the remarks.
         self.modifier_param = modifier_param
@@ -14877,8 +14386,8 @@ class DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight
     ):
         # Indicates whether the right operand is a constant or a runtime variable that is obtained from the runtime context. Valid values:
         # 
-        # *   true: runtime variable
-        # *   false: constant
+        # *   true: runtime variable.
+        # *   false: constant.
         self.is_var = is_var
         # The remarks on the right operand.
         self.modifier = modifier
@@ -14945,12 +14454,12 @@ class DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions(TeaM
         self.left = left
         # The logical operator of the rule condition. Valid values:
         # 
-        # *   `=`: equals to
-        # *   `<>`: does not equal to
-        # *   `in`: contains
-        # *   `not in`: does not contain
-        # *   `REGEXP`: matches a regular expression
-        # *   `NOT REGEXP`: does not match a regular expression
+        # *   `=`: equals to.
+        # *   `<>`: does not equal to.
+        # *   `in`: contains.
+        # *   `not in`: does not contain.
+        # *   `REGEXP`: matches a regular expression.
+        # *   `NOT REGEXP`: does not match a regular expression.
         self.operator = operator
         # The right operand of the rule condition.
         self.right = right
@@ -15080,8 +14589,8 @@ class DescribeWhiteRuleListResponseBodyDataResponseData(TeaModel):
         self.incident_uuid = incident_uuid
         # The status of the whitelist rule. Valid values:
         # 
-        # *   1: enabled
-        # *   0: disabled
+        # *   1: enabled.
+        # *   0: disabled.
         self.status = status
         # The ID of the Alibaba Cloud account that is used to create the whitelist rule.
         self.sub_aliuid = sub_aliuid
@@ -15316,8 +14825,12 @@ class DoQuickFieldRequest(TeaModel):
         to: int = None,
     ):
         # The time when the quick analysis starts. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.from_ = from_
         # The index field.
+        # 
+        # This parameter is required.
         self.index = index
         # The number of pages to return. Default value: 1.
         self.page = page
@@ -15331,6 +14844,8 @@ class DoQuickFieldRequest(TeaModel):
         # The number of entries per page. Default value: 10.
         self.size = size
         # The time when the quick analysis ends. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.to = to
 
     def validate(self):
@@ -15564,11 +15079,15 @@ class DoSelfDelegateRequest(TeaModel):
         region_id: str = None,
     ):
         # The Alibaba Cloud account of an ordinary member of the threat analysis feature.
+        # 
+        # This parameter is required.
         self.ali_uid = ali_uid
         # Specifies whether to use a delegated administrator account. Valid values:
         # 
         # *   1: use a delegated administrator account.
         # *   0: do not use a delegated administrator account.
+        # 
+        # This parameter is required.
         self.delegate_or_not = delegate_or_not
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
         # 
@@ -15691,13 +15210,20 @@ class EnableAccessForCloudSiemRequest(TeaModel):
         role_for: int = None,
         role_type: int = None,
     ):
+        # Whether import the log of SAS alert, the log of WAF alert, the log of CFW alert or not. Valid values:
+        # - 0: not imported automatically
+        # - 1: imported automatically
         self.auto_submit = auto_submit
         # The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions inside China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -15925,12 +15451,16 @@ class GetCapacityRequest(TeaModel):
         role_for: int = None,
         role_type: int = None,
     ):
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-        # *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -16093,8 +15623,10 @@ class GetHistogramsRequest(TeaModel):
         to: int = None,
     ):
         # The start time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned.
+        # 
+        # This parameter is required.
         self.from_ = from_
-        # The SQL statement. Only search statements are supported. Analytic statements are not supported. For more information about the syntax and limits of search statements, see [Log search overview](~~29060~~).
+        # The SQL statement. Only search statements are supported. Analytic statements are not supported. For more information about the syntax and limits of search statements, see [Log search overview](https://help.aliyun.com/document_detail/29060.html).
         self.query = query
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
         # 
@@ -16102,6 +15634,8 @@ class GetHistogramsRequest(TeaModel):
         # *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
         self.region_id = region_id
         # The end time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC. The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned.
+        # 
+        # This parameter is required.
         self.to = to
 
     def validate(self):
@@ -16329,12 +15863,18 @@ class GetLogsRequest(TeaModel):
         total: int = None,
     ):
         # The time when the query starts. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.from_ = from_
         # The page number. Pages start from page 1.
+        # 
+        # This parameter is required.
         self.page_index = page_index
         # The number of entries per page. Valid values: 0 to 100.
+        # 
+        # This parameter is required.
         self.page_size = page_size
-        # The search statement or the analytic statement. For more information, see [Log search overview](~~43772~~) and [Log analysis overview](~~53608~~).
+        # The search statement or the analytic statement. For more information, see [Log search overview](https://help.aliyun.com/document_detail/43772.html) and [Log analysis overview](https://help.aliyun.com/document_detail/53608.html).
         self.query = query
         # The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
         # 
@@ -16347,6 +15887,8 @@ class GetLogsRequest(TeaModel):
         # *   false
         self.reverse_or_not = reverse_or_not
         # The time when the query ends. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.to = to
         # The total number of entries returned.
         self.total = total
@@ -16664,6 +16206,8 @@ class GetQuickQueryRequest(TeaModel):
         # *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
         self.region_id = region_id
         # The name of the saved search.
+        # 
+        # This parameter is required.
         self.search_name = search_name
 
     def validate(self):
@@ -16778,7 +16322,11 @@ class GetStorageRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -16949,6 +16497,8 @@ class ListAccountAccessIdRequest(TeaModel):
         self,
         cloud_code: str = None,
         region_id: str = None,
+        role_for: int = None,
+        role_type: int = None,
     ):
         # The code of the cloud service provider.
         # 
@@ -16956,12 +16506,20 @@ class ListAccountAccessIdRequest(TeaModel):
         # 
         # *   qcloud
         # *   hcloud
+        # 
+        # This parameter is required.
         self.cloud_code = cloud_code
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
+        self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
+        self.role_type = role_type
 
     def validate(self):
         pass
@@ -16976,6 +16534,10 @@ class ListAccountAccessIdRequest(TeaModel):
             result['CloudCode'] = self.cloud_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.role_for is not None:
+            result['RoleFor'] = self.role_for
+        if self.role_type is not None:
+            result['RoleType'] = self.role_type
         return result
 
     def from_map(self, m: dict = None):
@@ -16984,6 +16546,10 @@ class ListAccountAccessIdRequest(TeaModel):
             self.cloud_code = m.get('CloudCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RoleFor') is not None:
+            self.role_for = m.get('RoleFor')
+        if m.get('RoleType') is not None:
+            self.role_type = m.get('RoleType')
         return self
 
 
@@ -17180,22 +16746,26 @@ class ListAccountsByLogRequest(TeaModel):
     ):
         # The code that is used for multi-cloud environments.
         # 
-        # Valid values:
-        # 
-        # *   qcloud
-        # *   hcloud
-        # *   aliyun
+        # This parameter is required.
         self.cloud_code = cloud_code
         # The codes of logs. The value is a JSON array.
+        # 
+        # This parameter is required.
         self.log_codes = log_codes
         # The code of the service.
+        # 
+        # This parameter is required.
         self.prod_code = prod_code
         # The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions inside China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -17404,7 +16974,12 @@ class ListAllProdsRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # 
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -17446,9 +17021,9 @@ class ListAllProdsResponseBodyDataProdList(TeaModel):
     ):
         # The code of the cloud service provider. Valid values:
         # 
-        # *   qcloud: Tencent Cloud
-        # *   aliyun: Alibaba Cloud
-        # *   hcloud: Huawei Cloud
+        # *   qcloud: Tencent Cloud.
+        # *   aliyun: Alibaba Cloud.
+        # *   hcloud: Huawei Cloud.
         self.cloud_code = cloud_code
         # The number of logs within the cloud service that are added to the threat analysis feature.
         self.imported_log_count = imported_log_count
@@ -17658,10 +17233,14 @@ class ListAutomateResponseConfigsRequest(TeaModel):
         # *   alert
         self.auto_response_type = auto_response_type
         # The page number. Pages start from page 1.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The ID of the automated response rule.
         self.id = id
         # The number of entries per page. Maximum value: 100.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The UUID of the playbook.
         self.playbook_uuid = playbook_uuid
@@ -17670,7 +17249,11 @@ class ListAutomateResponseConfigsRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
         # The name of the automated response rule.
         self.rule_name = rule_name
@@ -17804,23 +17387,27 @@ class ListAutomateResponseConfigsResponseBodyDataResponseData(TeaModel):
         status: int = None,
         sub_user_id: int = None,
     ):
-        # The configuration of the action that is performed after the rule is hit. The value is in JSON format.
+        # The configuration of the action that is performed after the automated response rule is hit. The value is in the JSON format.
         self.action_config = action_config
         # The type of the handling action. Multiple types are separated by commas (,). Valid values:
         # 
-        # *   doPlaybook: runs a playbook.
-        # *   changeEventStatus: changes the status of an event.
-        # *   changeThreatLevel: changes the risk level of an event.
+        # *   **doPlaybook**: runs the playbook.
+        # *   **changeEventStatus**: changes the event status.
+        # *   **changeThreatLevel**: changes the risk level of the event.
         self.action_type = action_type
         # The ID of the Alibaba Cloud account that is associated with the rule in SIEM.
         self.aliuid = aliuid
         # The type of the automated response rule. Valid values:
         # 
-        # *   event
-        # *   alert
+        # *   **event**\
+        # *   **alert**\
         self.auto_response_type = auto_response_type
+        # The type of the view. Valid values:
+        # 
+        # 0: the current Alibaba Cloud account
+        # 1: the global account
         self.data_type = data_type
-        # The trigger condition of the rule. The value is in the JSON format.
+        # The trigger condition of the automated response rule. The value is in the JSON format.
         self.execution_condition = execution_condition
         # The creation time.
         self.gmt_create = gmt_create
@@ -17832,8 +17419,8 @@ class ListAutomateResponseConfigsResponseBodyDataResponseData(TeaModel):
         self.rule_name = rule_name
         # The status of the rule. Valid values:
         # 
-        # *   0: disabled
-        # *   100: enabled
+        # *   **0**: disabled.
+        # *   **100**: enabled.
         self.status = status
         # The ID of the user who created the rule.
         self.sub_user_id = sub_user_id
@@ -18055,18 +17642,24 @@ class ListBindAccountRequest(TeaModel):
         self,
         cloud_code: str = None,
         region_id: str = None,
+        role_for: int = None,
+        role_type: int = None,
     ):
         # The code of the cloud service provider. Valid values:
         # 
         # *   qcloud: Tencent Cloud
         # *   aliyun: Alibaba Cloud
         # *   hcloud: Huawei Cloud
+        # 
+        # This parameter is required.
         self.cloud_code = cloud_code
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        self.role_for = role_for
+        self.role_type = role_type
 
     def validate(self):
         pass
@@ -18081,6 +17674,10 @@ class ListBindAccountRequest(TeaModel):
             result['CloudCode'] = self.cloud_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.role_for is not None:
+            result['RoleFor'] = self.role_for
+        if self.role_type is not None:
+            result['RoleType'] = self.role_type
         return result
 
     def from_map(self, m: dict = None):
@@ -18089,6 +17686,10 @@ class ListBindAccountRequest(TeaModel):
             self.cloud_code = m.get('CloudCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RoleFor') is not None:
+            self.role_for = m.get('RoleFor')
+        if m.get('RoleType') is not None:
+            self.role_type = m.get('RoleType')
         return self
 
 
@@ -18265,6 +17866,8 @@ class ListBindDataSourcesRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud account.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The code of the cloud service provider.
         # 
@@ -18273,6 +17876,8 @@ class ListBindDataSourcesRequest(TeaModel):
         # *   qcloud
         # *   hcloud
         # *   aliyun
+        # 
+        # This parameter is required.
         self.cloud_code = cloud_code
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
@@ -18506,23 +18111,40 @@ class ListCloudSiemCustomizeRulesRequest(TeaModel):
         # The alert type.
         self.alert_type = alert_type
         # The page number. Pages start from page 1.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
         # The ID of the custom rule.
         self.id = id
+        # The sort method. Valid values:
+        # 
+        # *   desc: descending order.
+        # *   asc: ascending order.
         self.order = order
+        # The field that is used to sort the rules. Valid values:
+        # 
+        # *   GmtModified: The rules are sorted based on the modification time.
+        # *   Id (default): The rules are sorted based on the rule ID.
         self.order_field = order_field
         # The number of entries per page. The value can be up to 100.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The data management center of the threat analysis feature. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   **cn-hangzhou**: Your assets reside in regions in China.
         # *   **ap-southeast-1**: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the destination account to which you switch the view from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # 
+        # *   0: view of the current Alibaba Cloud account.
+        # *   1: view of all accounts for the enterprise.
         self.role_type = role_type
-        # The name of the rule. The name can contain letters, digits, underscores (\_), and periods (.).
+        # The name of the rule. The name can contain letters, digits, underscores (_), and periods (.).
         self.rule_name = rule_name
         # The type of the rule. Valid values:
         # 
@@ -18692,13 +18314,17 @@ class ListCloudSiemCustomizeRulesResponseBodyDataResponseData(TeaModel):
         status: int = None,
         threat_level: str = None,
     ):
-        # The threat type.
+        # The type of the risk.
         self.alert_type = alert_type
-        # The internal code of the threat type.
+        # The internal code of the risk type.
         self.alert_type_mds = alert_type_mds
         # The ID of the Alibaba Cloud account in SIEM.
         self.aliuid = aliuid
+        # The alert additional field for ATT\\&CK.
         self.att_ck = att_ck
+        # The type of the view. Valid values:
+        # 
+        # 0: view of the current Alibaba Cloud account. 1: view of all accounts for the enterprise.
         self.data_type = data_type
         # The extended information about event generation. If the value of **eventTransferType** is **allToSingle**, the value of this parameter indicates the length and unit of the alert aggregation window. The HTML escape characters are reversed.
         self.event_transfer_ext = event_transfer_ext
@@ -18709,7 +18335,7 @@ class ListCloudSiemCustomizeRulesResponseBodyDataResponseData(TeaModel):
         self.event_transfer_switch = event_transfer_switch
         # The method that is used to generate an event. Valid values:
         # 
-        # *   **default**: The default method is used.
+        # *   **default**: built-in method.
         # *   **singleToSingle**: The system generates an event for each alert.
         # *   **allToSingle**: The system generates an event for alerts within a period of time.
         self.event_transfer_type = event_transfer_type
@@ -18752,7 +18378,7 @@ class ListCloudSiemCustomizeRulesResponseBodyDataResponseData(TeaModel):
         # *   **20**: The business data test is complete.
         # *   **100**: The rule is in effect.
         self.status = status
-        # The threat level. Valid values:
+        # The risk level. Valid values:
         # 
         # *   **serious**: high-risk.
         # *   **suspicious**: medium-risk.
@@ -18928,7 +18554,7 @@ class ListCloudSiemCustomizeRulesResponseBody(TeaModel):
     ):
         # The HTTP status code.
         self.code = code
-        # The returned data.
+        # The data returned.
         self.data = data
         # The returned message.
         self.message = message
@@ -19043,27 +18669,51 @@ class ListCloudSiemPredefinedRulesRequest(TeaModel):
     ):
         # The alert type.
         self.alert_type = alert_type
+        # The ATT\\&CK information.
         self.att_ck = att_ck
         # The page number. Pages start from page 1.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
+        # The method that is used to generate an event. Valid values:
+        # 
+        # *   default: built-in method.
+        # *   singleToSingle: The system generates an event for each alert.
+        # *   allToSingle: The system generates an event for alerts within a period of time.
         self.event_transfer_type = event_transfer_type
         # The ID of the rule.
         self.id = id
+        # The log source.
         self.log_source = log_source
+        # The sort method. Valid values:
+        # 
+        # *   desc: descending order.
+        # *   asc: ascending order.
         self.order = order
+        # The field that is used to sort the rules. Valid values:
+        # 
+        # *   GmtModified: The rules are sorted based on the modification time.
+        # *   Id (default): The rules are sorted based on the rule ID.
         self.order_field = order_field
         # The number of entries per page. Maximum value: 100.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the destination account to which you switch the view from the management account.
         self.role_for = role_for
+        # The type of the view.
+        # 
+        # *   0: view of the current Alibaba Cloud account.
+        # *   1: view of all accounts for the enterprise.
         self.role_type = role_type
-        # The name of the rule. The name can contain letters, digits, underscores (\_), and periods (.).
+        # The name of the rule. The name can contain letters, digits, underscores (_), and periods (.).
         self.rule_name = rule_name
         # The type of the rule. Valid values:
         # 
@@ -19237,7 +18887,13 @@ class ListCloudSiemPredefinedRulesResponseBodyDataResponseData(TeaModel):
     ):
         # The type of the risk.
         self.alert_type = alert_type
+        # The alert additional field for ATT\\&CK.
         self.att_ck = att_ck
+        # The method that is used to generate an event. Valid values:
+        # 
+        # *   default: built-in method.
+        # *   singleToSingle: The system generates an event for each alert.
+        # *   allToSingle: The system generates an event for alerts within a period of time.
         self.event_transfer_type = event_transfer_type
         # The time when the rule was created.
         self.gmt_create = gmt_create
@@ -19249,7 +18905,9 @@ class ListCloudSiemPredefinedRulesResponseBodyDataResponseData(TeaModel):
         self.rule_desc_mds = rule_desc_mds
         # The name of the rule.
         self.rule_name = rule_name
+        # The rule name in Chinese.
         self.rule_name_cn = rule_name_cn
+        # The rule name in English.
         self.rule_name_en = rule_name_en
         # The internal code of the rule name.
         self.rule_name_mds = rule_name_mds
@@ -19260,11 +18918,11 @@ class ListCloudSiemPredefinedRulesResponseBodyDataResponseData(TeaModel):
         # *   0: The rule is in the initial state.
         # *   100: The rule takes effect.
         self.status = status
-        # The threat level. Valid values:
+        # The risk level. Valid values:
         # 
-        # *   serious: high
-        # *   suspicious: medium
-        # *   remind: low
+        # *   serious: high.
+        # *   suspicious: medium.
+        # *   remind: low.
         self.threat_level = threat_level
 
     def validate(self):
@@ -19498,17 +19156,25 @@ class ListCustomizeRuleTestResultRequest(TeaModel):
         role_type: int = None,
     ):
         # The page number. Pages start from page 1.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The ID of the rule.
         self.id = id
         # The number of entries per page. Valid values: 1 to 100.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -19620,7 +19286,7 @@ class ListCustomizeRuleTestResultResponseBodyDataResponseData(TeaModel):
         self.alert_src_prod = alert_src_prod
         # The sub-module of the source.
         self.alert_src_prod_module = alert_src_prod_module
-        # The tag of the ATT\&CK attack.
+        # The tag of the ATT\\&CK attack.
         self.att_ck = att_ck
         # The name of the alert, which corresponds to the name of the custom rule.
         self.event_name = event_name
@@ -19883,14 +19549,20 @@ class ListDataSourceLogsRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cloud account.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The code that is used for multi-cloud environments. Valid values:
         # 
         # *   qcloud: Tencent Cloud
         # *   aliyun: Alibaba Cloud
         # *   hcloud: Huawei Cloud
+        # 
+        # This parameter is required.
         self.cloud_code = cloud_code
         # The ID of the data source. The value is obtained after the threat analysis feature calculates the MD5 hash value of a parameter.
+        # 
+        # This parameter is required.
         self.data_source_instance_id = data_source_instance_id
         # The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
         # 
@@ -20204,6 +19876,8 @@ class ListDataSourceTypesRequest(TeaModel):
         # 
         # *   qcloud
         # *   hcloud
+        # 
+        # This parameter is required.
         self.cloud_code = cloud_code
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
@@ -20365,12 +20039,16 @@ class ListDeliveryRequest(TeaModel):
         role_for: int = None,
         role_type: int = None,
     ):
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-        # *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -20797,6 +20475,8 @@ class ListDisposeStrategyRequest(TeaModel):
         start_time: int = None,
     ):
         # The page number. Pages start from page 1.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The status of the policy. Valid values:
         # 
@@ -20804,6 +20484,8 @@ class ListDisposeStrategyRequest(TeaModel):
         # *   1: valid
         self.effective_status = effective_status
         # The end of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The feature value of the entity. Fuzzy match is supported.
         self.entity_identity = entity_identity
@@ -20825,6 +20507,8 @@ class ListDisposeStrategyRequest(TeaModel):
         # *   FinishTime: sorts the policies by end time.
         self.order_field = order_field
         # The number of entries per page. Maximum value: 100.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The name of the playbook, which is the unique identifier of the playbook.
         self.playbook_name = playbook_name
@@ -20843,11 +20527,17 @@ class ListDisposeStrategyRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
         # The ID of the SOAR handling policy.
         self.sophon_task_id = sophon_task_id
         # The beginning of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -21317,18 +21007,26 @@ class ListImportedLogsByProdRequest(TeaModel):
     ):
         # The code of the cloud service provider. Valid values:
         # 
-        # *   qcloud: Tencent Cloud
-        # *   aliyun: Alibaba Cloud
-        # *   hcloud: Huawei Cloud
+        # *   qcloud: Tencent Cloud.
+        # *   aliyun: Alibaba Cloud.
+        # *   hcloud: Huawei Cloud.
+        # 
+        # This parameter is required.
         self.cloud_code = cloud_code
         # The code of the cloud service.
+        # 
+        # This parameter is required.
         self.prod_code = prod_code
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -21384,26 +21082,30 @@ class ListImportedLogsByProdResponseBodyData(TeaModel):
     ):
         # Indicates whether the log is automatically added to the threat analysis feature within newly added accounts. Valid values:
         # 
-        # *   1: yes
-        # *   0: no
+        # *   1: yes.
+        # *   0: no.
         self.auto_imported = auto_imported
         # The code of the cloud service provider. Valid values:
         # 
-        # *   qcloud: Tencent Cloud
-        # *   aliyun: Alibaba Cloud
-        # *   hcloud: Huawei Cloud
+        # *   qcloud: Tencent Cloud.
+        # *   aliyun: Alibaba Cloud.
+        # *   hcloud: Huawei Cloud.
         self.cloud_code = cloud_code
         # Indicates whether the log is added to the threat analysis feature. Valid values:
         # 
-        # *   1: yes
-        # *   0: no
+        # *   1: yes.
+        # *   0: no.
         self.imported = imported
         # The number of users who have added the log.
         self.imported_user_count = imported_user_count
-        # The log code.
+        # The code of the log.
         self.log_code = log_code
-        # The display log code.
+        # The display code of the log.
         self.log_mds_code = log_mds_code
+        # The type of log. Valid values:
+        #  - 1: the log produced by other product
+        #  - 2: the predefined log
+        #  - 3: the custom log
         self.log_type = log_type
         # The time when the log was last added.
         self.modify_time = modify_time
@@ -21719,10 +21421,16 @@ class ListProjectLogStoresRequest(TeaModel):
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
         # The log code.
+        # 
+        # This parameter is required.
         self.source_log_code = source_log_code
         # The code of the cloud service.
+        # 
+        # This parameter is required.
         self.source_prod_code = source_prod_code
         # The ID of the Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.sub_user_id = sub_user_id
 
     def validate(self):
@@ -21928,6 +21636,8 @@ class ListQuickQueryRequest(TeaModel):
         # The line from which the query starts. Default value: 0.
         self.offset = offset
         # The number of entries per page. Valid values: 1 to 500.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
         # 
@@ -22328,11 +22038,20 @@ class ListUserProdLogsRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # 管理员切换成其他成员视角的用户ID。
         self.role_for = role_for
+        # 视图类型。
+        # 
+        # - 0：当前阿里云账号视图。
+        # - 1：企业下所有账号的视图。
         self.role_type = role_type
         # The log code.
+        # 
+        # This parameter is required.
         self.source_log_code = source_log_code
         # The code of the cloud service.
+        # 
+        # This parameter is required.
         self.source_prod_code = source_prod_code
 
     def validate(self):
@@ -22571,6 +22290,8 @@ class ListUsersByProdRequest(TeaModel):
         self.role_for = role_for
         self.role_type = role_type
         # The code of the cloud service.
+        # 
+        # This parameter is required.
         self.source_prod_code = source_prod_code
 
     def validate(self):
@@ -22620,13 +22341,13 @@ class ListUsersByProdResponseBodyData(TeaModel):
     ):
         # The code of the cloud service provider. Valid values:
         # 
-        # *   qcloud: Tencent Cloud
-        # *   aliyun: Alibaba Cloud
-        # *   hcloud: Huawei Cloud
+        # *   qcloud: Tencent Cloud.
+        # *   aliyun: Alibaba Cloud.
+        # *   hcloud: Huawei Cloud.
         self.cloud_code = cloud_code
         # Indicates whether the log is added to the threat analysis feature.
         self.imported = imported
-        # The display log code. The value is based on your console settings.
+        # The display log code. The value varies based on your console settings.
         self.log_mds_code = log_mds_code
         # The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
         self.main_user_id = main_user_id
@@ -22636,9 +22357,9 @@ class ListUsersByProdResponseBodyData(TeaModel):
         self.source_log_name = source_log_name
         # The code of the cloud service.
         self.source_prod_code = source_prod_code
-        # The ID of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+        # The ID of the Alibaba Cloud account for threat analysis.
         self.sub_user_id = sub_user_id
-        # The username of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+        # The display name of the Alibaba Cloud account for threat analysis.
         self.sub_user_name = sub_user_name
 
     def validate(self):
@@ -22786,27 +22507,32 @@ class ModifyBindAccountRequest(TeaModel):
         bind_id: int = None,
         cloud_code: str = None,
         region_id: str = None,
+        role_for: int = None,
+        role_type: int = None,
     ):
         # The AccessKey ID of the cloud account.
         self.access_id = access_id
         # The ID of the cloud account.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The username of the cloud account.
         self.account_name = account_name
         # The ID that is generated by the system when the account is added. You can call the ListBindAccount operation to query the ID.
+        # 
+        # This parameter is required.
         self.bind_id = bind_id
         # The code of the cloud service provider.
         # 
-        # Enumeration values:
-        # 
-        # *   qcloud
-        # *   hcloud
+        # This parameter is required.
         self.cloud_code = cloud_code
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        self.role_for = role_for
+        self.role_type = role_type
 
     def validate(self):
         pass
@@ -22829,6 +22555,10 @@ class ModifyBindAccountRequest(TeaModel):
             result['CloudCode'] = self.cloud_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.role_for is not None:
+            result['RoleFor'] = self.role_for
+        if self.role_type is not None:
+            result['RoleType'] = self.role_type
         return result
 
     def from_map(self, m: dict = None):
@@ -22845,6 +22575,10 @@ class ModifyBindAccountRequest(TeaModel):
             self.cloud_code = m.get('CloudCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RoleFor') is not None:
+            self.role_for = m.get('RoleFor')
+        if m.get('RoleType') is not None:
+            self.role_type = m.get('RoleType')
         return self
 
 
@@ -22973,8 +22707,12 @@ class ModifyDataSourceRequest(TeaModel):
         # *   qcloud: Tencent Cloud
         # *   aliyun: Alibaba Cloud
         # *   hcloud: Huawei Cloud
+        # 
+        # This parameter is required.
         self.cloud_code = cloud_code
-        # The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [DescribeDataSourceInstance](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CDescribeDataSourceInstance) operation to query the IDs of data sources.
+        # The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [DescribeDataSourceInstance](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CDescribeDataSourceInstance) operation to query the IDs of data sources.
+        # 
+        # This parameter is required.
         self.data_source_instance_id = data_source_instance_id
         # The name of the data source.
         self.data_source_instance_name = data_source_instance_name
@@ -22987,6 +22725,8 @@ class ModifyDataSourceRequest(TeaModel):
         # *   ckafka: Tencent Cloud Kafka (CKafka)
         # *   obs: Huawei Cloud Object Storage Service (OBS)
         # *   wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
+        # 
+        # This parameter is required.
         self.data_source_type = data_source_type
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
@@ -23174,10 +22914,16 @@ class ModifyDataSourceLogRequest(TeaModel):
         # *   qcloud: Tencent Cloud
         # *   aliyun: Alibaba Cloud
         # *   hcloud: Huawei Cloud
+        # 
+        # This parameter is required.
         self.cloud_code = cloud_code
-        # The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [DescribeDataSourceInstance](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CDescribeDataSourceInstance) operation to query the IDs of data sources.
+        # The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [DescribeDataSourceInstance](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CDescribeDataSourceInstance) operation to query the IDs of data sources.
+        # 
+        # This parameter is required.
         self.data_source_instance_id = data_source_instance_id
         # The parameters of the data source. Set this parameter to a JSON string.
+        # 
+        # This parameter is required.
         self.data_source_instance_logs = data_source_instance_logs
         # The type of the data source. Valid values:
         # 
@@ -23187,7 +22933,9 @@ class ModifyDataSourceLogRequest(TeaModel):
         self.data_source_type = data_source_type
         # The log code.
         self.log_code = log_code
-        # The ID of the log. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\&activeTabKey=api%7CListDataSourceLogs) to query log IDs.
+        # The ID of the log. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CListDataSourceLogs) to query log IDs.
+        # 
+        # This parameter is required.
         self.log_instance_id = log_instance_id
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
@@ -23365,7 +23113,7 @@ class OpenDeliveryRequest(TeaModel):
         role_for: int = None,
         role_type: int = None,
     ):
-        # The log code of the cloud service, such as the code of the process log for Security Center. If you leave this parameter empty, operations are performed on all logs of the cloud service.
+        # The log code of the cloud service, such as the code of the process log for Security Center. This parameter is optional. If you leave this parameter empty, operations are performed on all logs of the cloud service.
         self.log_code = log_code
         # The code of the cloud service. Valid values:
         # 
@@ -23392,13 +23140,19 @@ class OpenDeliveryRequest(TeaModel):
         # *   bastionhost
         # *   oss
         # *   polardb
+        # 
+        # This parameter is required.
         self.product_code = product_code
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions inside the Chinese mainland or in the China (Hong Kong) region.
-        # *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -23552,7 +23306,11 @@ class PostAutomateResponseConfigRequest(TeaModel):
         # *   **cn-hangzhou**: Your assets reside in regions in China.
         # *   **ap-southeast-1**: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
         # The rule name.
         self.rule_name = rule_name
@@ -23744,6 +23502,7 @@ class PostCustomizeRuleRequest(TeaModel):
         self.alert_type = alert_type
         # The internal code of the risk type.
         self.alert_type_mds = alert_type_mds
+        # att&ck.
         self.att_ck = att_ck
         # The extended information about event generation. If eventTransferType is set to allToSingle, the value of this parameter indicates the length and unit of the alert aggregation window.
         self.event_transfer_ext = event_transfer_ext
@@ -23775,7 +23534,11 @@ class PostCustomizeRuleRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
         # The query condition of the rule. The value is in the JSON format.
         self.rule_condition = rule_condition
@@ -23928,7 +23691,9 @@ class PostCustomizeRuleResponseBodyData(TeaModel):
         self.alert_type_mds = alert_type_mds
         # The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
         self.aliuid = aliuid
+        # 告警附加字段attck
         self.att_ck = att_ck
+        # 自动化响应规则条件字段数据类型。
         self.data_type = data_type
         # The extended information about event generation. If eventTransferType is set to allToSingle, the value of this parameter indicates the length and unit of the alert aggregation window. The HTML escape characters are reversed.
         self.event_transfer_ext = event_transfer_ext
@@ -24220,7 +23985,11 @@ class PostCustomizeRuleTestRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions inside China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
         # The simulation data for the test. This parameter is available only when TestType is set to simulate.
         self.simulated_data = simulated_data
@@ -24395,7 +24164,11 @@ class PostEventDisposeAndWhiteruleListRequest(TeaModel):
         self.region_id = region_id
         # The remarks of the event.
         self.remark = remark
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
         # The status of the event. Valid values:
         # 
@@ -24569,9 +24342,15 @@ class PostEventWhiteruleListRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
         # The alert whitelist rule. The value is a JSON object.
+        # 
+        # This parameter is required.
         self.whiterule_list = whiterule_list
 
     def validate(self):
@@ -24725,7 +24504,11 @@ class PostFinishCustomizeRuleTestRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -24882,7 +24665,11 @@ class PostRuleStatusChangeRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
         # The type of the rule. Valid values:
         # 
@@ -25037,12 +24824,16 @@ class RestoreCapacityRequest(TeaModel):
         role_for: int = None,
         role_type: int = None,
     ):
-        # The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions in the Chinese mainland or in the China (Hong Kong) region.
-        # *   ap-southeast-1: Your assets reside in regions outside the Chinese mainland, excluding the China (Hong Kong) region.
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -25160,8 +24951,12 @@ class SaveQuickQueryRequest(TeaModel):
         region_id: str = None,
     ):
         # The name of the saved search.
+        # 
+        # This parameter is required.
         self.display_name = display_name
         # The query statement.
+        # 
+        # This parameter is required.
         self.query = query
         # The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
         # 
@@ -25296,9 +25091,15 @@ class SetStorageRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions in China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
         # The storage duration of logs. Default value: 180. Minimum value: 30. Maximum value: 3000. Unit: days.
+        # 
+        # This parameter is required.
         self.ttl = ttl
 
     def validate(self):
@@ -25562,6 +25363,8 @@ class SubmitImportLogTasksRequest(TeaModel):
         log_codes: str = None,
         prod_code: str = None,
         region_id: str = None,
+        role_for: int = None,
+        role_type: int = None,
     ):
         # The accounts that you want to add. The value is a JSON array. Valid values:
         # 
@@ -25577,23 +25380,31 @@ class SubmitImportLogTasksRequest(TeaModel):
         # *   1: yes
         # *   0: no
         self.auto_imported = auto_imported
-        # The code that is used for multi-cloud environments.
+        # The code that is used for multi-cloud environments. Valid values:
         # 
-        # Valid values:
+        # *   qcloud: Tencent Cloud
+        # *   aliyun: Alibaba Cloud
+        # *   hcloud: Huawei Cloud
         # 
-        # *   qcloud.
-        # *   hcloud.
-        # *   aliyun.
+        # This parameter is required.
         self.cloud_code = cloud_code
         # The logs that you want to collect. The value is a JSON array.
         self.log_codes = log_codes
         # The code of the service.
+        # 
+        # This parameter is required.
         self.prod_code = prod_code
         # The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
         # 
         # *   cn-hangzhou: Your assets reside in regions inside China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
+        self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
+        self.role_type = role_type
 
     def validate(self):
         pass
@@ -25616,6 +25427,10 @@ class SubmitImportLogTasksRequest(TeaModel):
             result['ProdCode'] = self.prod_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.role_for is not None:
+            result['RoleFor'] = self.role_for
+        if self.role_type is not None:
+            result['RoleType'] = self.role_type
         return result
 
     def from_map(self, m: dict = None):
@@ -25632,6 +25447,10 @@ class SubmitImportLogTasksRequest(TeaModel):
             self.prod_code = m.get('ProdCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RoleFor') is not None:
+            self.role_for = m.get('RoleFor')
+        if m.get('RoleType') is not None:
+            self.role_type = m.get('RoleType')
         return self
 
 
@@ -25747,7 +25566,7 @@ class SubmitJobsRequest(TeaModel):
         json_param: str = None,
         region_id: str = None,
     ):
-        # The parameters of the logs that you want to add. The value is a JSON array, which contains the following parameters:\
+        # The parameters of the logs that you want to add. The value is a JSON array, which contains the following parameters:\\
         # 
         # 
         # *   SourceProdCode: the code of the cloud service.
@@ -25758,6 +25577,8 @@ class SubmitJobsRequest(TeaModel):
         # 
         #     *   0: yes
         #     *   1: no
+        # 
+        # This parameter is required.
         self.json_param = json_param
         # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
         # 
@@ -25886,7 +25707,11 @@ class UpdateAutomateResponseConfigStatusRequest(TeaModel):
         # *   cn-hangzhou: Your assets reside in regions inside China.
         # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the account that you switch from the management account.
         self.role_for = role_for
+        # The type of the view. Valid values:
+        # - 0: the current Alibaba Cloud account
+        # - 1: the global account
         self.role_type = role_type
 
     def validate(self):
@@ -26036,6 +25861,8 @@ class UpdateWhiteRuleListRequest(TeaModel):
         white_rule_id: int = None,
     ):
         # The alert whitelist rule. The value is a JSON object.
+        # 
+        # This parameter is required.
         self.expression = expression
         # The UUID of the event.
         self.incident_uuid = incident_uuid
@@ -26047,6 +25874,8 @@ class UpdateWhiteRuleListRequest(TeaModel):
         self.role_for = role_for
         self.role_type = role_type
         # The unique ID of the whitelist rule.
+        # 
+        # This parameter is required.
         self.white_rule_id = white_rule_id
 
     def validate(self):
