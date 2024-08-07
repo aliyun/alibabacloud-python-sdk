@@ -360,6 +360,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.BatchStopApplicationsResponse:
         """
+        @summary Stops multiple applications at a time.
+        
         @param request: BatchStopApplicationsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -400,6 +402,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.BatchStopApplicationsResponse:
         """
+        @summary Stops multiple applications at a time.
+        
         @param request: BatchStopApplicationsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -438,6 +442,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.BatchStopApplicationsRequest,
     ) -> sae_20190506_models.BatchStopApplicationsResponse:
         """
+        @summary Stops multiple applications at a time.
+        
         @param request: BatchStopApplicationsRequest
         @return: BatchStopApplicationsResponse
         """
@@ -450,6 +456,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.BatchStopApplicationsRequest,
     ) -> sae_20190506_models.BatchStopApplicationsResponse:
         """
+        @summary Stops multiple applications at a time.
+        
         @param request: BatchStopApplicationsRequest
         @return: BatchStopApplicationsResponse
         """
@@ -475,10 +483,14 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.internet):
             query['Internet'] = request.internet
+        if not UtilClient.is_unset(request.internet_slb_charge_type):
+            query['InternetSlbChargeType'] = request.internet_slb_charge_type
         if not UtilClient.is_unset(request.internet_slb_id):
             query['InternetSlbId'] = request.internet_slb_id
         if not UtilClient.is_unset(request.intranet):
             query['Intranet'] = request.intranet
+        if not UtilClient.is_unset(request.intranet_slb_charge_type):
+            query['IntranetSlbChargeType'] = request.intranet_slb_charge_type
         if not UtilClient.is_unset(request.intranet_slb_id):
             query['IntranetSlbId'] = request.intranet_slb_id
         req = open_api_models.OpenApiRequest(
@@ -519,10 +531,14 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.internet):
             query['Internet'] = request.internet
+        if not UtilClient.is_unset(request.internet_slb_charge_type):
+            query['InternetSlbChargeType'] = request.internet_slb_charge_type
         if not UtilClient.is_unset(request.internet_slb_id):
             query['InternetSlbId'] = request.internet_slb_id
         if not UtilClient.is_unset(request.intranet):
             query['Intranet'] = request.intranet
+        if not UtilClient.is_unset(request.intranet_slb_charge_type):
+            query['IntranetSlbChargeType'] = request.intranet_slb_charge_type
         if not UtilClient.is_unset(request.intranet_slb_id):
             query['IntranetSlbId'] = request.intranet_slb_id
         req = open_api_models.OpenApiRequest(
@@ -1888,7 +1904,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateNamespaceResponse:
         """
-        @summary desc
+        @summary Creates a namespace.
         
         @param request: CreateNamespaceRequest
         @param headers: map
@@ -1934,7 +1950,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateNamespaceResponse:
         """
-        @summary desc
+        @summary Creates a namespace.
         
         @param request: CreateNamespaceRequest
         @param headers: map
@@ -1978,7 +1994,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateNamespaceRequest,
     ) -> sae_20190506_models.CreateNamespaceResponse:
         """
-        @summary desc
+        @summary Creates a namespace.
         
         @param request: CreateNamespaceRequest
         @return: CreateNamespaceResponse
@@ -1992,7 +2008,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateNamespaceRequest,
     ) -> sae_20190506_models.CreateNamespaceResponse:
         """
-        @summary desc
+        @summary Creates a namespace.
         
         @param request: CreateNamespaceRequest
         @return: CreateNamespaceResponse
@@ -4064,6 +4080,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationConfigResponse:
         """
+        @summary Queries the configurations of an application.
+        
         @param request: DescribeApplicationConfigRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4102,6 +4120,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationConfigResponse:
         """
+        @summary Queries the configurations of an application.
+        
         @param request: DescribeApplicationConfigRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4138,6 +4158,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeApplicationConfigRequest,
     ) -> sae_20190506_models.DescribeApplicationConfigResponse:
         """
+        @summary Queries the configurations of an application.
+        
         @param request: DescribeApplicationConfigRequest
         @return: DescribeApplicationConfigResponse
         """
@@ -4150,6 +4172,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeApplicationConfigRequest,
     ) -> sae_20190506_models.DescribeApplicationConfigResponse:
         """
+        @summary Queries the configurations of an application.
+        
         @param request: DescribeApplicationConfigRequest
         @return: DescribeApplicationConfigResponse
         """
@@ -4268,6 +4292,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationImageResponse:
         """
+        @summary Queries the information about the image of an application.
+        
         @param request: DescribeApplicationImageRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4306,6 +4332,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeApplicationImageResponse:
         """
+        @summary Queries the information about the image of an application.
+        
         @param request: DescribeApplicationImageRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4342,6 +4370,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeApplicationImageRequest,
     ) -> sae_20190506_models.DescribeApplicationImageResponse:
         """
+        @summary Queries the information about the image of an application.
+        
         @param request: DescribeApplicationImageRequest
         @return: DescribeApplicationImageResponse
         """
@@ -4354,6 +4384,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeApplicationImageRequest,
     ) -> sae_20190506_models.DescribeApplicationImageResponse:
         """
+        @summary Queries the information about the image of an application.
+        
         @param request: DescribeApplicationImageRequest
         @return: DescribeApplicationImageResponse
         """
@@ -6180,6 +6212,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeNamespaceListResponse:
         """
+        @summary Queries a list of namespaces.
+        
         @param request: DescribeNamespaceListRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6218,6 +6252,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.DescribeNamespaceListResponse:
         """
+        @summary Queries a list of namespaces.
+        
         @param request: DescribeNamespaceListRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -6254,6 +6290,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeNamespaceListRequest,
     ) -> sae_20190506_models.DescribeNamespaceListResponse:
         """
+        @summary Queries a list of namespaces.
+        
         @param request: DescribeNamespaceListRequest
         @return: DescribeNamespaceListResponse
         """
@@ -6266,6 +6304,8 @@ class Client(OpenApiClient):
         request: sae_20190506_models.DescribeNamespaceListRequest,
     ) -> sae_20190506_models.DescribeNamespaceListResponse:
         """
+        @summary Queries a list of namespaces.
+        
         @param request: DescribeNamespaceListRequest
         @return: DescribeNamespaceListResponse
         """
