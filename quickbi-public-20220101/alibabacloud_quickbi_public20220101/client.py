@@ -5083,6 +5083,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_api_datasource_parameters_with_options_async(request, runtime)
 
+    def modify_copilot_embed_config_with_options(
+        self,
+        request: quickbi_public_20220101_models.ModifyCopilotEmbedConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ModifyCopilotEmbedConfigResponse:
+        """
+        @summary 修改智能问数嵌入配置
+        
+        @param request: ModifyCopilotEmbedConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCopilotEmbedConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not UtilClient.is_unset(request.copilot_id):
+            query['CopilotId'] = request.copilot_id
+        if not UtilClient.is_unset(request.data_range):
+            query['DataRange'] = request.data_range
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCopilotEmbedConfig',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ModifyCopilotEmbedConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_copilot_embed_config_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.ModifyCopilotEmbedConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ModifyCopilotEmbedConfigResponse:
+        """
+        @summary 修改智能问数嵌入配置
+        
+        @param request: ModifyCopilotEmbedConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCopilotEmbedConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_name):
+            query['AgentName'] = request.agent_name
+        if not UtilClient.is_unset(request.copilot_id):
+            query['CopilotId'] = request.copilot_id
+        if not UtilClient.is_unset(request.data_range):
+            query['DataRange'] = request.data_range
+        if not UtilClient.is_unset(request.module_name):
+            query['ModuleName'] = request.module_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCopilotEmbedConfig',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ModifyCopilotEmbedConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_copilot_embed_config(
+        self,
+        request: quickbi_public_20220101_models.ModifyCopilotEmbedConfigRequest,
+    ) -> quickbi_public_20220101_models.ModifyCopilotEmbedConfigResponse:
+        """
+        @summary 修改智能问数嵌入配置
+        
+        @param request: ModifyCopilotEmbedConfigRequest
+        @return: ModifyCopilotEmbedConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_copilot_embed_config_with_options(request, runtime)
+
+    async def modify_copilot_embed_config_async(
+        self,
+        request: quickbi_public_20220101_models.ModifyCopilotEmbedConfigRequest,
+    ) -> quickbi_public_20220101_models.ModifyCopilotEmbedConfigResponse:
+        """
+        @summary 修改智能问数嵌入配置
+        
+        @param request: ModifyCopilotEmbedConfigRequest
+        @return: ModifyCopilotEmbedConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_copilot_embed_config_with_options_async(request, runtime)
+
     def query_approval_info_with_options(
         self,
         request: quickbi_public_20220101_models.QueryApprovalInfoRequest,
@@ -5431,6 +5539,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_component_performance_with_options_async(request, runtime)
 
+    def query_copilot_embed_config_with_options(
+        self,
+        request: quickbi_public_20220101_models.QueryCopilotEmbedConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryCopilotEmbedConfigResponse:
+        """
+        @summary 获取开通小Q嵌入的配置列表
+        
+        @param request: QueryCopilotEmbedConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCopilotEmbedConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCopilotEmbedConfig',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryCopilotEmbedConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_copilot_embed_config_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.QueryCopilotEmbedConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryCopilotEmbedConfigResponse:
+        """
+        @summary 获取开通小Q嵌入的配置列表
+        
+        @param request: QueryCopilotEmbedConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCopilotEmbedConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCopilotEmbedConfig',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryCopilotEmbedConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_copilot_embed_config(
+        self,
+        request: quickbi_public_20220101_models.QueryCopilotEmbedConfigRequest,
+    ) -> quickbi_public_20220101_models.QueryCopilotEmbedConfigResponse:
+        """
+        @summary 获取开通小Q嵌入的配置列表
+        
+        @param request: QueryCopilotEmbedConfigRequest
+        @return: QueryCopilotEmbedConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_copilot_embed_config_with_options(request, runtime)
+
+    async def query_copilot_embed_config_async(
+        self,
+        request: quickbi_public_20220101_models.QueryCopilotEmbedConfigRequest,
+    ) -> quickbi_public_20220101_models.QueryCopilotEmbedConfigResponse:
+        """
+        @summary 获取开通小Q嵌入的配置列表
+        
+        @param request: QueryCopilotEmbedConfigRequest
+        @return: QueryCopilotEmbedConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_copilot_embed_config_with_options_async(request, runtime)
+
     def query_cube_optimization_with_options(
         self,
         request: quickbi_public_20220101_models.QueryCubeOptimizationRequest,
@@ -5642,6 +5846,214 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_cube_performance_with_options_async(request, runtime)
+
+    def query_data_with_options(
+        self,
+        request: quickbi_public_20220101_models.QueryDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryDataResponse:
+        """
+        @summary 调用开放数据服务API
+        
+        @param request: QueryDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.conditions):
+            query['Conditions'] = request.conditions
+        if not UtilClient.is_unset(request.return_fields):
+            query['ReturnFields'] = request.return_fields
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryData',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_data_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.QueryDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryDataResponse:
+        """
+        @summary 调用开放数据服务API
+        
+        @param request: QueryDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.conditions):
+            query['Conditions'] = request.conditions
+        if not UtilClient.is_unset(request.return_fields):
+            query['ReturnFields'] = request.return_fields
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryData',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_data(
+        self,
+        request: quickbi_public_20220101_models.QueryDataRequest,
+    ) -> quickbi_public_20220101_models.QueryDataResponse:
+        """
+        @summary 调用开放数据服务API
+        
+        @param request: QueryDataRequest
+        @return: QueryDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_data_with_options(request, runtime)
+
+    async def query_data_async(
+        self,
+        request: quickbi_public_20220101_models.QueryDataRequest,
+    ) -> quickbi_public_20220101_models.QueryDataResponse:
+        """
+        @summary 调用开放数据服务API
+        
+        @param request: QueryDataRequest
+        @return: QueryDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_data_with_options_async(request, runtime)
+
+    def query_data_range_with_options(
+        self,
+        request: quickbi_public_20220101_models.QueryDataRangeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryDataRangeResponse:
+        """
+        @summary 获取数据范围目录列表
+        
+        @param request: QueryDataRangeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDataRangeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDataRange',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryDataRangeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_data_range_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.QueryDataRangeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryDataRangeResponse:
+        """
+        @summary 获取数据范围目录列表
+        
+        @param request: QueryDataRangeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDataRangeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDataRange',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryDataRangeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_data_range(
+        self,
+        request: quickbi_public_20220101_models.QueryDataRangeRequest,
+    ) -> quickbi_public_20220101_models.QueryDataRangeResponse:
+        """
+        @summary 获取数据范围目录列表
+        
+        @param request: QueryDataRangeRequest
+        @return: QueryDataRangeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_data_range_with_options(request, runtime)
+
+    async def query_data_range_async(
+        self,
+        request: quickbi_public_20220101_models.QueryDataRangeRequest,
+    ) -> quickbi_public_20220101_models.QueryDataRangeResponse:
+        """
+        @summary 获取数据范围目录列表
+        
+        @param request: QueryDataRangeRequest
+        @return: QueryDataRangeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_data_range_with_options_async(request, runtime)
 
     def query_data_service_with_options(
         self,

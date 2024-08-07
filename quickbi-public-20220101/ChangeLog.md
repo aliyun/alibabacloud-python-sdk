@@ -1,3 +1,10 @@
+2024-08-07 Version: 1.6.0
+- Support API ModifyCopilotEmbedConfig.
+- Support API QueryCopilotEmbedConfig.
+- Support API QueryData.
+- Support API QueryDataRange.
+
+
 2024-06-28 Version: 1.5.1
 - Update API DataSourceBlood: update response param.
 

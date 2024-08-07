@@ -7944,6 +7944,132 @@ class ModifyApiDatasourceParametersResponse(TeaModel):
         return self
 
 
+class ModifyCopilotEmbedConfigRequest(TeaModel):
+    def __init__(
+        self,
+        agent_name: str = None,
+        copilot_id: str = None,
+        data_range: str = None,
+        module_name: str = None,
+    ):
+        self.agent_name = agent_name
+        # This parameter is required.
+        self.copilot_id = copilot_id
+        self.data_range = data_range
+        self.module_name = module_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_name is not None:
+            result['AgentName'] = self.agent_name
+        if self.copilot_id is not None:
+            result['CopilotId'] = self.copilot_id
+        if self.data_range is not None:
+            result['DataRange'] = self.data_range
+        if self.module_name is not None:
+            result['ModuleName'] = self.module_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentName') is not None:
+            self.agent_name = m.get('AgentName')
+        if m.get('CopilotId') is not None:
+            self.copilot_id = m.get('CopilotId')
+        if m.get('DataRange') is not None:
+            self.data_range = m.get('DataRange')
+        if m.get('ModuleName') is not None:
+            self.module_name = m.get('ModuleName')
+        return self
+
+
+class ModifyCopilotEmbedConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: bool = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyCopilotEmbedConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyCopilotEmbedConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyCopilotEmbedConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryApprovalInfoRequest(TeaModel):
     def __init__(
         self,
@@ -8790,6 +8916,237 @@ class QueryComponentPerformanceResponse(TeaModel):
         return self
 
 
+class QueryCopilotEmbedConfigRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+    ):
+        self.keyword = keyword
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        return self
+
+
+class QueryCopilotEmbedConfigResponseBodyResultDataRange(TeaModel):
+    def __init__(
+        self,
+        all_cube: bool = None,
+        all_theme: bool = None,
+        llm_cubes: List[str] = None,
+        themes: List[str] = None,
+    ):
+        self.all_cube = all_cube
+        self.all_theme = all_theme
+        self.llm_cubes = llm_cubes
+        self.themes = themes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all_cube is not None:
+            result['AllCube'] = self.all_cube
+        if self.all_theme is not None:
+            result['AllTheme'] = self.all_theme
+        if self.llm_cubes is not None:
+            result['LlmCubes'] = self.llm_cubes
+        if self.themes is not None:
+            result['Themes'] = self.themes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllCube') is not None:
+            self.all_cube = m.get('AllCube')
+        if m.get('AllTheme') is not None:
+            self.all_theme = m.get('AllTheme')
+        if m.get('LlmCubes') is not None:
+            self.llm_cubes = m.get('LlmCubes')
+        if m.get('Themes') is not None:
+            self.themes = m.get('Themes')
+        return self
+
+
+class QueryCopilotEmbedConfigResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        agent_name: str = None,
+        copilot_id: str = None,
+        create_user: str = None,
+        create_user_name: str = None,
+        data_range: QueryCopilotEmbedConfigResponseBodyResultDataRange = None,
+        modify_user: str = None,
+        module_name: str = None,
+        show_name: str = None,
+    ):
+        self.agent_name = agent_name
+        self.copilot_id = copilot_id
+        self.create_user = create_user
+        self.create_user_name = create_user_name
+        self.data_range = data_range
+        self.modify_user = modify_user
+        self.module_name = module_name
+        self.show_name = show_name
+
+    def validate(self):
+        if self.data_range:
+            self.data_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_name is not None:
+            result['AgentName'] = self.agent_name
+        if self.copilot_id is not None:
+            result['CopilotId'] = self.copilot_id
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.create_user_name is not None:
+            result['CreateUserName'] = self.create_user_name
+        if self.data_range is not None:
+            result['DataRange'] = self.data_range.to_map()
+        if self.modify_user is not None:
+            result['ModifyUser'] = self.modify_user
+        if self.module_name is not None:
+            result['ModuleName'] = self.module_name
+        if self.show_name is not None:
+            result['ShowName'] = self.show_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentName') is not None:
+            self.agent_name = m.get('AgentName')
+        if m.get('CopilotId') is not None:
+            self.copilot_id = m.get('CopilotId')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('CreateUserName') is not None:
+            self.create_user_name = m.get('CreateUserName')
+        if m.get('DataRange') is not None:
+            temp_model = QueryCopilotEmbedConfigResponseBodyResultDataRange()
+            self.data_range = temp_model.from_map(m['DataRange'])
+        if m.get('ModifyUser') is not None:
+            self.modify_user = m.get('ModifyUser')
+        if m.get('ModuleName') is not None:
+            self.module_name = m.get('ModuleName')
+        if m.get('ShowName') is not None:
+            self.show_name = m.get('ShowName')
+        return self
+
+
+class QueryCopilotEmbedConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: List[QueryCopilotEmbedConfigResponseBodyResult] = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = QueryCopilotEmbedConfigResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryCopilotEmbedConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryCopilotEmbedConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryCopilotEmbedConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryCubeOptimizationRequest(TeaModel):
     def __init__(
         self,
@@ -9378,6 +9735,535 @@ class QueryCubePerformanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryCubePerformanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryDataRequest(TeaModel):
+    def __init__(
+        self,
+        api_id: str = None,
+        conditions: str = None,
+        return_fields: str = None,
+        user_id: str = None,
+    ):
+        # This parameter is required.
+        self.api_id = api_id
+        self.conditions = conditions
+        self.return_fields = return_fields
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_id is not None:
+            result['ApiId'] = self.api_id
+        if self.conditions is not None:
+            result['Conditions'] = self.conditions
+        if self.return_fields is not None:
+            result['ReturnFields'] = self.return_fields
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiId') is not None:
+            self.api_id = m.get('ApiId')
+        if m.get('Conditions') is not None:
+            self.conditions = m.get('Conditions')
+        if m.get('ReturnFields') is not None:
+            self.return_fields = m.get('ReturnFields')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class QueryDataResponseBodyResultHeaders(TeaModel):
+    def __init__(
+        self,
+        aggregator: str = None,
+        column: str = None,
+        data_type: str = None,
+        granularity: str = None,
+        label: str = None,
+        type: str = None,
+    ):
+        self.aggregator = aggregator
+        self.column = column
+        self.data_type = data_type
+        self.granularity = granularity
+        self.label = label
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator is not None:
+            result['Aggregator'] = self.aggregator
+        if self.column is not None:
+            result['Column'] = self.column
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.granularity is not None:
+            result['Granularity'] = self.granularity
+        if self.label is not None:
+            result['Label'] = self.label
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Aggregator') is not None:
+            self.aggregator = m.get('Aggregator')
+        if m.get('Column') is not None:
+            self.column = m.get('Column')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('Granularity') is not None:
+            self.granularity = m.get('Granularity')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class QueryDataResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        headers: List[QueryDataResponseBodyResultHeaders] = None,
+        sql: str = None,
+        values: List[Dict[str, Any]] = None,
+    ):
+        self.headers = headers
+        self.sql = sql
+        self.values = values
+
+    def validate(self):
+        if self.headers:
+            for k in self.headers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Headers'] = []
+        if self.headers is not None:
+            for k in self.headers:
+                result['Headers'].append(k.to_map() if k else None)
+        if self.sql is not None:
+            result['Sql'] = self.sql
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.headers = []
+        if m.get('Headers') is not None:
+            for k in m.get('Headers'):
+                temp_model = QueryDataResponseBodyResultHeaders()
+                self.headers.append(temp_model.from_map(k))
+        if m.get('Sql') is not None:
+            self.sql = m.get('Sql')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class QueryDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: QueryDataResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = QueryDataResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryDataRangeRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        type: str = None,
+    ):
+        self.keyword = keyword
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        create_user: str = None,
+        llm_cube_id: str = None,
+    ):
+        self.alias = alias
+        self.create_user = create_user
+        self.llm_cube_id = llm_cube_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.llm_cube_id is not None:
+            result['LlmCubeId'] = self.llm_cube_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('LlmCubeId') is not None:
+            self.llm_cube_id = m.get('LlmCubeId')
+        return self
+
+
+class QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        create_user: str = None,
+        llm_cube_id: str = None,
+    ):
+        self.alias = alias
+        self.create_user = create_user
+        self.llm_cube_id = llm_cube_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['Alias'] = self.alias
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.llm_cube_id is not None:
+            result['LlmCubeId'] = self.llm_cube_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('LlmCubeId') is not None:
+            self.llm_cube_id = m.get('LlmCubeId')
+        return self
+
+
+class QueryDataRangeResponseBodyResultApiCopilotThemeModels(TeaModel):
+    def __init__(
+        self,
+        api_copilot_llm_cube_models: List[QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels] = None,
+        create_user: str = None,
+        theme_id: str = None,
+        theme_name: str = None,
+    ):
+        self.api_copilot_llm_cube_models = api_copilot_llm_cube_models
+        self.create_user = create_user
+        self.theme_id = theme_id
+        self.theme_name = theme_name
+
+    def validate(self):
+        if self.api_copilot_llm_cube_models:
+            for k in self.api_copilot_llm_cube_models:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApiCopilotLlmCubeModels'] = []
+        if self.api_copilot_llm_cube_models is not None:
+            for k in self.api_copilot_llm_cube_models:
+                result['ApiCopilotLlmCubeModels'].append(k.to_map() if k else None)
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.theme_id is not None:
+            result['ThemeId'] = self.theme_id
+        if self.theme_name is not None:
+            result['ThemeName'] = self.theme_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.api_copilot_llm_cube_models = []
+        if m.get('ApiCopilotLlmCubeModels') is not None:
+            for k in m.get('ApiCopilotLlmCubeModels'):
+                temp_model = QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels()
+                self.api_copilot_llm_cube_models.append(temp_model.from_map(k))
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('ThemeId') is not None:
+            self.theme_id = m.get('ThemeId')
+        if m.get('ThemeName') is not None:
+            self.theme_name = m.get('ThemeName')
+        return self
+
+
+class QueryDataRangeResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        api_copilot_llm_cube_models: List[QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels] = None,
+        api_copilot_theme_models: List[QueryDataRangeResponseBodyResultApiCopilotThemeModels] = None,
+    ):
+        self.api_copilot_llm_cube_models = api_copilot_llm_cube_models
+        self.api_copilot_theme_models = api_copilot_theme_models
+
+    def validate(self):
+        if self.api_copilot_llm_cube_models:
+            for k in self.api_copilot_llm_cube_models:
+                if k:
+                    k.validate()
+        if self.api_copilot_theme_models:
+            for k in self.api_copilot_theme_models:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApiCopilotLlmCubeModels'] = []
+        if self.api_copilot_llm_cube_models is not None:
+            for k in self.api_copilot_llm_cube_models:
+                result['ApiCopilotLlmCubeModels'].append(k.to_map() if k else None)
+        result['ApiCopilotThemeModels'] = []
+        if self.api_copilot_theme_models is not None:
+            for k in self.api_copilot_theme_models:
+                result['ApiCopilotThemeModels'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.api_copilot_llm_cube_models = []
+        if m.get('ApiCopilotLlmCubeModels') is not None:
+            for k in m.get('ApiCopilotLlmCubeModels'):
+                temp_model = QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels()
+                self.api_copilot_llm_cube_models.append(temp_model.from_map(k))
+        self.api_copilot_theme_models = []
+        if m.get('ApiCopilotThemeModels') is not None:
+            for k in m.get('ApiCopilotThemeModels'):
+                temp_model = QueryDataRangeResponseBodyResultApiCopilotThemeModels()
+                self.api_copilot_theme_models.append(temp_model.from_map(k))
+        return self
+
+
+class QueryDataRangeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: QueryDataRangeResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = QueryDataRangeResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryDataRangeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryDataRangeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryDataRangeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
