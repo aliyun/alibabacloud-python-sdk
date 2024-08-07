@@ -19942,6 +19942,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.endpoints):
             body['endpoints'] = request.endpoints
+        if not UtilClient.is_unset(request.es_instance_id):
+            body['esInstanceId'] = request.es_instance_id
         if not UtilClient.is_unset(request.password):
             body['password'] = request.password
         if not UtilClient.is_unset(request.pipeline_ids):
@@ -19993,6 +19995,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.endpoints):
             body['endpoints'] = request.endpoints
+        if not UtilClient.is_unset(request.es_instance_id):
+            body['esInstanceId'] = request.es_instance_id
         if not UtilClient.is_unset(request.password):
             body['password'] = request.password
         if not UtilClient.is_unset(request.pipeline_ids):

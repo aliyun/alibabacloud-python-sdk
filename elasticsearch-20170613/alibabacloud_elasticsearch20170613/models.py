@@ -36415,6 +36415,7 @@ class UpdatePipelineManagementConfigRequest(TeaModel):
     def __init__(
         self,
         endpoints: List[str] = None,
+        es_instance_id: str = None,
         password: str = None,
         pipeline_ids: List[str] = None,
         pipeline_management_type: str = None,
@@ -36422,6 +36423,7 @@ class UpdatePipelineManagementConfigRequest(TeaModel):
         client_token: str = None,
     ):
         self.endpoints = endpoints
+        self.es_instance_id = es_instance_id
         self.password = password
         self.pipeline_ids = pipeline_ids
         self.pipeline_management_type = pipeline_management_type
@@ -36439,6 +36441,8 @@ class UpdatePipelineManagementConfigRequest(TeaModel):
         result = dict()
         if self.endpoints is not None:
             result['endpoints'] = self.endpoints
+        if self.es_instance_id is not None:
+            result['esInstanceId'] = self.es_instance_id
         if self.password is not None:
             result['password'] = self.password
         if self.pipeline_ids is not None:
@@ -36455,6 +36459,8 @@ class UpdatePipelineManagementConfigRequest(TeaModel):
         m = m or dict()
         if m.get('endpoints') is not None:
             self.endpoints = m.get('endpoints')
+        if m.get('esInstanceId') is not None:
+            self.es_instance_id = m.get('esInstanceId')
         if m.get('password') is not None:
             self.password = m.get('password')
         if m.get('pipelineIds') is not None:
