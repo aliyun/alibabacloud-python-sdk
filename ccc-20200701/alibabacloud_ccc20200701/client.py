@@ -6561,6 +6561,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_case_file_upload_url_with_options_async(request, runtime)
 
+    def get_chat_media_url_with_options(
+        self,
+        request: ccc20200701_models.GetChatMediaUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetChatMediaUrlResponse:
+        """
+        @param request: GetChatMediaUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatMediaUrlResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.media_id):
+            body['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetChatMediaUrl',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetChatMediaUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_chat_media_url_with_options_async(
+        self,
+        request: ccc20200701_models.GetChatMediaUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetChatMediaUrlResponse:
+        """
+        @param request: GetChatMediaUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatMediaUrlResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.media_id):
+            body['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.request_id):
+            body['RequestId'] = request.request_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetChatMediaUrl',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetChatMediaUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_chat_media_url(
+        self,
+        request: ccc20200701_models.GetChatMediaUrlRequest,
+    ) -> ccc20200701_models.GetChatMediaUrlResponse:
+        """
+        @param request: GetChatMediaUrlRequest
+        @return: GetChatMediaUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_chat_media_url_with_options(request, runtime)
+
+    async def get_chat_media_url_async(
+        self,
+        request: ccc20200701_models.GetChatMediaUrlRequest,
+    ) -> ccc20200701_models.GetChatMediaUrlResponse:
+        """
+        @param request: GetChatMediaUrlRequest
+        @return: GetChatMediaUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_chat_media_url_with_options_async(request, runtime)
+
     def get_contact_flow_with_options(
         self,
         request: ccc20200701_models.GetContactFlowRequest,

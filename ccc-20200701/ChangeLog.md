@@ -1,3 +1,8 @@
+2024-08-07 Version: 2.27.0
+- Support API GetChatMediaUrl.
+- Update API ListCallDetailRecordsV2: update param EndTime.
+
+
 2024-07-29 Version: 2.26.4
 - Update API ListCallDetailRecords: update response param.
 
