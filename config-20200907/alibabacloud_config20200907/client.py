@@ -5878,7 +5878,9 @@ class Client(OpenApiClient):
         @return: GetAggregateConfigRuleSummaryByRiskLevelResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5887,7 +5889,7 @@ class Client(OpenApiClient):
             version='2020-09-07',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -5913,7 +5915,9 @@ class Client(OpenApiClient):
         @return: GetAggregateConfigRuleSummaryByRiskLevelResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.aggregator_id):
+            query['AggregatorId'] = request.aggregator_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5922,7 +5926,7 @@ class Client(OpenApiClient):
             version='2020-09-07',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -7888,7 +7892,7 @@ class Client(OpenApiClient):
             version='2020-09-07',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -7918,7 +7922,7 @@ class Client(OpenApiClient):
             version='2020-09-07',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
