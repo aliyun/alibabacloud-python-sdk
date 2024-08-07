@@ -1,6 +1,9 @@
 2024-08-07 Version: 3.0.7
 - Generated python 2020-09-07 for Config.
 
+2024-08-07 Version: 3.0.7
+- Generated python 2020-09-07 for Config.
+
 2024-08-01 Version: 3.0.6
 - Update API CreateAggregateConfigDeliveryChannel: add param CompliantSnapshot.
 - Update API CreateAggregateConfigRule: update param ExcludeTagsScope.
