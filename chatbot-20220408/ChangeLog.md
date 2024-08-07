@@ -1,3 +1,11 @@
+2024-08-07 Version: 2.1.1
+- Update API GenerateUserAccessToken: update param Email.
+- Update API GenerateUserAccessToken: update param ExpireTime.
+- Update API GenerateUserAccessToken: update param ForeignId.
+- Update API GenerateUserAccessToken: update param Nick.
+- Update API GenerateUserAccessToken: update param Telephone.
+
+
 2024-06-13 Version: 2.1.0
 - Support API GetBotSessionData.
 

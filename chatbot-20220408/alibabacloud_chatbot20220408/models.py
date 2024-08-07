@@ -7421,7 +7421,9 @@ class GenerateUserAccessTokenRequest(TeaModel):
         self.email = email
         self.expire_time = expire_time
         self.extra_info = extra_info
+        # This parameter is required.
         self.foreign_id = foreign_id
+        # This parameter is required.
         self.nick = nick
         self.telephone = telephone
 
