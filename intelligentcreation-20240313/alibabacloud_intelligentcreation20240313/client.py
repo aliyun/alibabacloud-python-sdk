@@ -261,6 +261,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.check_session_with_options_async(request, headers, runtime)
 
+    def count_text_with_options(
+        self,
+        request: intelligent_creation_20240313_models.CountTextRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CountTextResponse:
+        """
+        @summary 文本数量统计
+        
+        @param request: CountTextRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CountTextResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.generation_source):
+            query['generationSource'] = request.generation_source
+        if not UtilClient.is_unset(request.industry):
+            query['industry'] = request.industry
+        if not UtilClient.is_unset(request.publish_status):
+            query['publishStatus'] = request.publish_status
+        if not UtilClient.is_unset(request.style):
+            query['style'] = request.style
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CountText',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/countText',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CountTextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def count_text_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.CountTextRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CountTextResponse:
+        """
+        @summary 文本数量统计
+        
+        @param request: CountTextRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CountTextResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.generation_source):
+            query['generationSource'] = request.generation_source
+        if not UtilClient.is_unset(request.industry):
+            query['industry'] = request.industry
+        if not UtilClient.is_unset(request.publish_status):
+            query['publishStatus'] = request.publish_status
+        if not UtilClient.is_unset(request.style):
+            query['style'] = request.style
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CountText',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/countText',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CountTextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def count_text(
+        self,
+        request: intelligent_creation_20240313_models.CountTextRequest,
+    ) -> intelligent_creation_20240313_models.CountTextResponse:
+        """
+        @summary 文本数量统计
+        
+        @param request: CountTextRequest
+        @return: CountTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.count_text_with_options(request, headers, runtime)
+
+    async def count_text_async(
+        self,
+        request: intelligent_creation_20240313_models.CountTextRequest,
+    ) -> intelligent_creation_20240313_models.CountTextResponse:
+        """
+        @summary 文本数量统计
+        
+        @param request: CountTextRequest
+        @return: CountTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.count_text_with_options_async(request, headers, runtime)
+
     def create_illustration_task_with_options(
         self,
         text_id: str,
@@ -1397,6 +1513,8 @@ class Client(OpenApiClient):
             query['generationSource'] = request.generation_source
         if not UtilClient.is_unset(request.industry):
             query['industry'] = request.industry
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -1447,6 +1565,8 @@ class Client(OpenApiClient):
             query['generationSource'] = request.generation_source
         if not UtilClient.is_unset(request.industry):
             query['industry'] = request.industry
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
         if not UtilClient.is_unset(request.page_number):
             query['pageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -2395,6 +2515,8 @@ class Client(OpenApiClient):
             body['scaleType'] = request.scale_type
         if not UtilClient.is_unset(request.subtitle_tag):
             body['subtitleTag'] = request.subtitle_tag
+        if not UtilClient.is_unset(request.transparent_background):
+            body['transparentBackground'] = request.transparent_background
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -2437,6 +2559,8 @@ class Client(OpenApiClient):
             body['scaleType'] = request.scale_type
         if not UtilClient.is_unset(request.subtitle_tag):
             body['subtitleTag'] = request.subtitle_tag
+        if not UtilClient.is_unset(request.transparent_background):
+            body['transparentBackground'] = request.transparent_background
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)

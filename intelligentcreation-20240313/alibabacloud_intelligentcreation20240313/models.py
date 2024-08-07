@@ -1339,6 +1339,167 @@ class CheckSessionResponse(TeaModel):
         return self
 
 
+class CountTextRequest(TeaModel):
+    def __init__(
+        self,
+        generation_source: str = None,
+        industry: str = None,
+        publish_status: str = None,
+        style: str = None,
+    ):
+        # API
+        self.generation_source = generation_source
+        self.industry = industry
+        self.publish_status = publish_status
+        self.style = style
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.generation_source is not None:
+            result['generationSource'] = self.generation_source
+        if self.industry is not None:
+            result['industry'] = self.industry
+        if self.publish_status is not None:
+            result['publishStatus'] = self.publish_status
+        if self.style is not None:
+            result['style'] = self.style
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('generationSource') is not None:
+            self.generation_source = m.get('generationSource')
+        if m.get('industry') is not None:
+            self.industry = m.get('industry')
+        if m.get('publishStatus') is not None:
+            self.publish_status = m.get('publishStatus')
+        if m.get('style') is not None:
+            self.style = m.get('style')
+        return self
+
+
+class CountTextResponseBodyCountTextCmdList(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        theme: str = None,
+    ):
+        self.count = count
+        self.theme = theme
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['count'] = self.count
+        if self.theme is not None:
+            result['theme'] = self.theme
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        if m.get('theme') is not None:
+            self.theme = m.get('theme')
+        return self
+
+
+class CountTextResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        count_text_cmd_list: List[CountTextResponseBodyCountTextCmdList] = None,
+    ):
+        self.request_id = request_id
+        self.count_text_cmd_list = count_text_cmd_list
+
+    def validate(self):
+        if self.count_text_cmd_list:
+            for k in self.count_text_cmd_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['countTextCmdList'] = []
+        if self.count_text_cmd_list is not None:
+            for k in self.count_text_cmd_list:
+                result['countTextCmdList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.count_text_cmd_list = []
+        if m.get('countTextCmdList') is not None:
+            for k in m.get('countTextCmdList'):
+                temp_model = CountTextResponseBodyCountTextCmdList()
+                self.count_text_cmd_list.append(temp_model.from_map(k))
+        return self
+
+
+class CountTextResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CountTextResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CountTextResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateIllustrationTaskRequest(TeaModel):
     def __init__(
         self,
@@ -2324,6 +2485,7 @@ class ListTextsRequest(TeaModel):
         self,
         generation_source: str = None,
         industry: str = None,
+        keyword: str = None,
         page_number: int = None,
         page_size: int = None,
         publish_status: str = None,
@@ -2332,6 +2494,7 @@ class ListTextsRequest(TeaModel):
     ):
         self.generation_source = generation_source
         self.industry = industry
+        self.keyword = keyword
         self.page_number = page_number
         self.page_size = page_size
         self.publish_status = publish_status
@@ -2351,6 +2514,8 @@ class ListTextsRequest(TeaModel):
             result['generationSource'] = self.generation_source
         if self.industry is not None:
             result['industry'] = self.industry
+        if self.keyword is not None:
+            result['keyword'] = self.keyword
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
         if self.page_size is not None:
@@ -2369,6 +2534,8 @@ class ListTextsRequest(TeaModel):
             self.generation_source = m.get('generationSource')
         if m.get('industry') is not None:
             self.industry = m.get('industry')
+        if m.get('keyword') is not None:
+            self.keyword = m.get('keyword')
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')
         if m.get('pageSize') is not None:
@@ -3761,11 +3928,13 @@ class SubmitProjectTaskRequest(TeaModel):
         frames: List[SubmitProjectTaskRequestFrames] = None,
         scale_type: str = None,
         subtitle_tag: int = None,
+        transparent_background: int = None,
     ):
         # frame
         self.frames = frames
         self.scale_type = scale_type
         self.subtitle_tag = subtitle_tag
+        self.transparent_background = transparent_background
 
     def validate(self):
         if self.frames:
@@ -3787,6 +3956,8 @@ class SubmitProjectTaskRequest(TeaModel):
             result['scaleType'] = self.scale_type
         if self.subtitle_tag is not None:
             result['subtitleTag'] = self.subtitle_tag
+        if self.transparent_background is not None:
+            result['transparentBackground'] = self.transparent_background
         return result
 
     def from_map(self, m: dict = None):
@@ -3800,6 +3971,8 @@ class SubmitProjectTaskRequest(TeaModel):
             self.scale_type = m.get('scaleType')
         if m.get('subtitleTag') is not None:
             self.subtitle_tag = m.get('subtitleTag')
+        if m.get('transparentBackground') is not None:
+            self.transparent_background = m.get('transparentBackground')
         return self
 
 

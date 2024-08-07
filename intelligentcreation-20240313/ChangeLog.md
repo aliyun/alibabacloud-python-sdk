@@ -1,3 +1,9 @@
+2024-08-07 Version: 2.2.0
+- Support API CountText.
+- Update API ListTexts: add param keyword.
+- Update API SubmitProjectTask: update param body.
+
+
 2024-07-22 Version: 2.1.4
 - Generated python 2024-03-13 for IntelligentCreation.
 
