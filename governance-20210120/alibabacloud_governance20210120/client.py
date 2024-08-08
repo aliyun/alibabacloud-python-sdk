@@ -1021,6 +1021,526 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_enrolled_accounts_with_options_async(request, runtime)
 
+    def list_evaluation_metadata_with_options(
+        self,
+        request: governance_20210120_models.ListEvaluationMetadataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.ListEvaluationMetadataResponse:
+        """
+        @summary 查看治理检测定义
+        
+        @param request: ListEvaluationMetadataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEvaluationMetadataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEvaluationMetadata',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.ListEvaluationMetadataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_evaluation_metadata_with_options_async(
+        self,
+        request: governance_20210120_models.ListEvaluationMetadataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.ListEvaluationMetadataResponse:
+        """
+        @summary 查看治理检测定义
+        
+        @param request: ListEvaluationMetadataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEvaluationMetadataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEvaluationMetadata',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.ListEvaluationMetadataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_evaluation_metadata(
+        self,
+        request: governance_20210120_models.ListEvaluationMetadataRequest,
+    ) -> governance_20210120_models.ListEvaluationMetadataResponse:
+        """
+        @summary 查看治理检测定义
+        
+        @param request: ListEvaluationMetadataRequest
+        @return: ListEvaluationMetadataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_evaluation_metadata_with_options(request, runtime)
+
+    async def list_evaluation_metadata_async(
+        self,
+        request: governance_20210120_models.ListEvaluationMetadataRequest,
+    ) -> governance_20210120_models.ListEvaluationMetadataResponse:
+        """
+        @summary 查看治理检测定义
+        
+        @param request: ListEvaluationMetadataRequest
+        @return: ListEvaluationMetadataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_evaluation_metadata_with_options_async(request, runtime)
+
+    def list_evaluation_metric_details_with_options(
+        self,
+        request: governance_20210120_models.ListEvaluationMetricDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.ListEvaluationMetricDetailsResponse:
+        """
+        @summary 获取云治理中心治理检测项结果详情
+        
+        @param request: ListEvaluationMetricDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEvaluationMetricDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEvaluationMetricDetails',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.ListEvaluationMetricDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_evaluation_metric_details_with_options_async(
+        self,
+        request: governance_20210120_models.ListEvaluationMetricDetailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.ListEvaluationMetricDetailsResponse:
+        """
+        @summary 获取云治理中心治理检测项结果详情
+        
+        @param request: ListEvaluationMetricDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEvaluationMetricDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEvaluationMetricDetails',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.ListEvaluationMetricDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_evaluation_metric_details(
+        self,
+        request: governance_20210120_models.ListEvaluationMetricDetailsRequest,
+    ) -> governance_20210120_models.ListEvaluationMetricDetailsResponse:
+        """
+        @summary 获取云治理中心治理检测项结果详情
+        
+        @param request: ListEvaluationMetricDetailsRequest
+        @return: ListEvaluationMetricDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_evaluation_metric_details_with_options(request, runtime)
+
+    async def list_evaluation_metric_details_async(
+        self,
+        request: governance_20210120_models.ListEvaluationMetricDetailsRequest,
+    ) -> governance_20210120_models.ListEvaluationMetricDetailsResponse:
+        """
+        @summary 获取云治理中心治理检测项结果详情
+        
+        @param request: ListEvaluationMetricDetailsRequest
+        @return: ListEvaluationMetricDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_evaluation_metric_details_with_options_async(request, runtime)
+
+    def list_evaluation_results_with_options(
+        self,
+        request: governance_20210120_models.ListEvaluationResultsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.ListEvaluationResultsResponse:
+        """
+        @summary 查看检测结果
+        
+        @param request: ListEvaluationResultsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEvaluationResultsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEvaluationResults',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.ListEvaluationResultsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_evaluation_results_with_options_async(
+        self,
+        request: governance_20210120_models.ListEvaluationResultsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.ListEvaluationResultsResponse:
+        """
+        @summary 查看检测结果
+        
+        @param request: ListEvaluationResultsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEvaluationResultsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEvaluationResults',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.ListEvaluationResultsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_evaluation_results(
+        self,
+        request: governance_20210120_models.ListEvaluationResultsRequest,
+    ) -> governance_20210120_models.ListEvaluationResultsResponse:
+        """
+        @summary 查看检测结果
+        
+        @param request: ListEvaluationResultsRequest
+        @return: ListEvaluationResultsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_evaluation_results_with_options(request, runtime)
+
+    async def list_evaluation_results_async(
+        self,
+        request: governance_20210120_models.ListEvaluationResultsRequest,
+    ) -> governance_20210120_models.ListEvaluationResultsResponse:
+        """
+        @summary 查看检测结果
+        
+        @param request: ListEvaluationResultsRequest
+        @return: ListEvaluationResultsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_evaluation_results_with_options_async(request, runtime)
+
+    def list_evaluation_score_history_with_options(
+        self,
+        request: governance_20210120_models.ListEvaluationScoreHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.ListEvaluationScoreHistoryResponse:
+        """
+        @summary 查看治理检测定义
+        
+        @param request: ListEvaluationScoreHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEvaluationScoreHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEvaluationScoreHistory',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.ListEvaluationScoreHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_evaluation_score_history_with_options_async(
+        self,
+        request: governance_20210120_models.ListEvaluationScoreHistoryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.ListEvaluationScoreHistoryResponse:
+        """
+        @summary 查看治理检测定义
+        
+        @param request: ListEvaluationScoreHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEvaluationScoreHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEvaluationScoreHistory',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.ListEvaluationScoreHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_evaluation_score_history(
+        self,
+        request: governance_20210120_models.ListEvaluationScoreHistoryRequest,
+    ) -> governance_20210120_models.ListEvaluationScoreHistoryResponse:
+        """
+        @summary 查看治理检测定义
+        
+        @param request: ListEvaluationScoreHistoryRequest
+        @return: ListEvaluationScoreHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_evaluation_score_history_with_options(request, runtime)
+
+    async def list_evaluation_score_history_async(
+        self,
+        request: governance_20210120_models.ListEvaluationScoreHistoryRequest,
+    ) -> governance_20210120_models.ListEvaluationScoreHistoryResponse:
+        """
+        @summary 查看治理检测定义
+        
+        @param request: ListEvaluationScoreHistoryRequest
+        @return: ListEvaluationScoreHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_evaluation_score_history_with_options_async(request, runtime)
+
+    def run_evaluation_with_options(
+        self,
+        request: governance_20210120_models.RunEvaluationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.RunEvaluationResponse:
+        """
+        @summary 运行云治理中心治理检测
+        
+        @param request: RunEvaluationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunEvaluationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RunEvaluation',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.RunEvaluationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_evaluation_with_options_async(
+        self,
+        request: governance_20210120_models.RunEvaluationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> governance_20210120_models.RunEvaluationResponse:
+        """
+        @summary 运行云治理中心治理检测
+        
+        @param request: RunEvaluationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunEvaluationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RunEvaluation',
+            version='2021-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            governance_20210120_models.RunEvaluationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_evaluation(
+        self,
+        request: governance_20210120_models.RunEvaluationRequest,
+    ) -> governance_20210120_models.RunEvaluationResponse:
+        """
+        @summary 运行云治理中心治理检测
+        
+        @param request: RunEvaluationRequest
+        @return: RunEvaluationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_evaluation_with_options(request, runtime)
+
+    async def run_evaluation_async(
+        self,
+        request: governance_20210120_models.RunEvaluationRequest,
+    ) -> governance_20210120_models.RunEvaluationResponse:
+        """
+        @summary 运行云治理中心治理检测
+        
+        @param request: RunEvaluationRequest
+        @return: RunEvaluationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_evaluation_with_options_async(request, runtime)
+
     def update_account_factory_baseline_with_options(
         self,
         request: governance_20210120_models.UpdateAccountFactoryBaselineRequest,
