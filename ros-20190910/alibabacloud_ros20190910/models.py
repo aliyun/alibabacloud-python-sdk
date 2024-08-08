@@ -24774,11 +24774,13 @@ class UpdateTemplateResponseBody(TeaModel):
         self,
         request_id: str = None,
         template_id: str = None,
+        template_version: str = None,
     ):
         # The ID of the request.
         self.request_id = request_id
         # The ID of the template.
         self.template_id = template_id
+        self.template_version = template_version
 
     def validate(self):
         pass
@@ -24793,6 +24795,8 @@ class UpdateTemplateResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
+        if self.template_version is not None:
+            result['TemplateVersion'] = self.template_version
         return result
 
     def from_map(self, m: dict = None):
@@ -24801,6 +24805,8 @@ class UpdateTemplateResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+        if m.get('TemplateVersion') is not None:
+            self.template_version = m.get('TemplateVersion')
         return self
 
 
