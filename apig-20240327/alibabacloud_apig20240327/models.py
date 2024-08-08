@@ -1475,6 +1475,39 @@ class HttpApiApiInfoEnvironmentsDnsConfigs(TeaModel):
         return self
 
 
+class HttpApiApiInfoEnvironmentsGatewayInfo(TeaModel):
+    def __init__(
+        self,
+        gateway_id: str = None,
+        name: str = None,
+    ):
+        self.gateway_id = gateway_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
 class HttpApiApiInfoEnvironmentsServiceConfigs(TeaModel):
     def __init__(
         self,
@@ -1581,32 +1614,87 @@ class HttpApiApiInfoEnvironmentsVipConfigs(TeaModel):
         return self
 
 
+class HttpApiDomainInfo(TeaModel):
+    def __init__(
+        self,
+        domain_id: str = None,
+        name: str = None,
+        protocol: str = None,
+    ):
+        self.domain_id = domain_id
+        self.name = name
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_id is not None:
+            result['domainId'] = self.domain_id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('domainId') is not None:
+            self.domain_id = m.get('domainId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        return self
+
+
 class HttpApiApiInfoEnvironments(TeaModel):
     def __init__(
         self,
+        alias: str = None,
         backend_scene: str = None,
         backend_type: str = None,
         cloud_product_config: HttpApiApiInfoEnvironmentsCloudProductConfig = None,
+        custom_domains: List[HttpApiDomainInfo] = None,
         dns_configs: List[HttpApiApiInfoEnvironmentsDnsConfigs] = None,
         environment_id: str = None,
+        gateway_info: HttpApiApiInfoEnvironmentsGatewayInfo = None,
+        name: str = None,
+        publish_status: str = None,
         service_configs: List[HttpApiApiInfoEnvironmentsServiceConfigs] = None,
         vip_configs: List[HttpApiApiInfoEnvironmentsVipConfigs] = None,
     ):
+        self.alias = alias
         self.backend_scene = backend_scene
         self.backend_type = backend_type
         self.cloud_product_config = cloud_product_config
+        self.custom_domains = custom_domains
         self.dns_configs = dns_configs
         self.environment_id = environment_id
+        self.gateway_info = gateway_info
+        self.name = name
+        self.publish_status = publish_status
         self.service_configs = service_configs
         self.vip_configs = vip_configs
 
     def validate(self):
         if self.cloud_product_config:
             self.cloud_product_config.validate()
+        if self.custom_domains:
+            for k in self.custom_domains:
+                if k:
+                    k.validate()
         if self.dns_configs:
             for k in self.dns_configs:
                 if k:
                     k.validate()
+        if self.gateway_info:
+            self.gateway_info.validate()
         if self.service_configs:
             for k in self.service_configs:
                 if k:
@@ -1622,18 +1710,30 @@ class HttpApiApiInfoEnvironments(TeaModel):
             return _map
 
         result = dict()
+        if self.alias is not None:
+            result['alias'] = self.alias
         if self.backend_scene is not None:
             result['backendScene'] = self.backend_scene
         if self.backend_type is not None:
             result['backendType'] = self.backend_type
         if self.cloud_product_config is not None:
             result['cloudProductConfig'] = self.cloud_product_config.to_map()
+        result['customDomains'] = []
+        if self.custom_domains is not None:
+            for k in self.custom_domains:
+                result['customDomains'].append(k.to_map() if k else None)
         result['dnsConfigs'] = []
         if self.dns_configs is not None:
             for k in self.dns_configs:
                 result['dnsConfigs'].append(k.to_map() if k else None)
         if self.environment_id is not None:
             result['environmentId'] = self.environment_id
+        if self.gateway_info is not None:
+            result['gatewayInfo'] = self.gateway_info.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.publish_status is not None:
+            result['publishStatus'] = self.publish_status
         result['serviceConfigs'] = []
         if self.service_configs is not None:
             for k in self.service_configs:
@@ -1646,6 +1746,8 @@ class HttpApiApiInfoEnvironments(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('alias') is not None:
+            self.alias = m.get('alias')
         if m.get('backendScene') is not None:
             self.backend_scene = m.get('backendScene')
         if m.get('backendType') is not None:
@@ -1653,6 +1755,11 @@ class HttpApiApiInfoEnvironments(TeaModel):
         if m.get('cloudProductConfig') is not None:
             temp_model = HttpApiApiInfoEnvironmentsCloudProductConfig()
             self.cloud_product_config = temp_model.from_map(m['cloudProductConfig'])
+        self.custom_domains = []
+        if m.get('customDomains') is not None:
+            for k in m.get('customDomains'):
+                temp_model = HttpApiDomainInfo()
+                self.custom_domains.append(temp_model.from_map(k))
         self.dns_configs = []
         if m.get('dnsConfigs') is not None:
             for k in m.get('dnsConfigs'):
@@ -1660,6 +1767,13 @@ class HttpApiApiInfoEnvironments(TeaModel):
                 self.dns_configs.append(temp_model.from_map(k))
         if m.get('environmentId') is not None:
             self.environment_id = m.get('environmentId')
+        if m.get('gatewayInfo') is not None:
+            temp_model = HttpApiApiInfoEnvironmentsGatewayInfo()
+            self.gateway_info = temp_model.from_map(m['gatewayInfo'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('publishStatus') is not None:
+            self.publish_status = m.get('publishStatus')
         self.service_configs = []
         if m.get('serviceConfigs') is not None:
             for k in m.get('serviceConfigs'):
@@ -1795,45 +1909,6 @@ class HttpApiApiInfo(TeaModel):
         if m.get('versionInfo') is not None:
             temp_model = HttpApiVersionInfo()
             self.version_info = temp_model.from_map(m['versionInfo'])
-        return self
-
-
-class HttpApiDomainInfo(TeaModel):
-    def __init__(
-        self,
-        domain_id: str = None,
-        name: str = None,
-        protocol: str = None,
-    ):
-        self.domain_id = domain_id
-        self.name = name
-        self.protocol = protocol
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.domain_id is not None:
-            result['domainId'] = self.domain_id
-        if self.name is not None:
-            result['name'] = self.name
-        if self.protocol is not None:
-            result['protocol'] = self.protocol
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('domainId') is not None:
-            self.domain_id = m.get('domainId')
-        if m.get('name') is not None:
-            self.name = m.get('name')
-        if m.get('protocol') is not None:
-            self.protocol = m.get('protocol')
         return self
 
 

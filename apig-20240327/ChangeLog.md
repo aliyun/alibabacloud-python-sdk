@@ -1,3 +1,6 @@
+2024-08-08 Version: 1.0.5
+- Generated python 2024-03-27 for APIG.
+
 2024-08-06 Version: 1.0.4
 - Update API ListGateways: update response param.
 
