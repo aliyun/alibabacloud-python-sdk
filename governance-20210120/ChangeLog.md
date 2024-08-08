@@ -6,6 +6,14 @@
 - Support API RunEvaluation.
 
 
+2024-08-08 Version: 0.3.0
+- Support API ListEvaluationMetadata.
+- Support API ListEvaluationMetricDetails.
+- Support API ListEvaluationResults.
+- Support API ListEvaluationScoreHistory.
+- Support API RunEvaluation.
+
+
 2024-07-31 Version: 0.2.0
 - Support API BatchEnrollAccounts.
 - Support API CreateAccountFactoryBaseline.
