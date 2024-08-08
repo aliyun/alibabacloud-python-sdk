@@ -3173,6 +3173,94 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_tags_with_options_async(request, runtime)
 
+    def describe_user_service_status_with_options(
+        self,
+        request: pvtz_20180101_models.DescribeUserServiceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pvtz_20180101_models.DescribeUserServiceStatusResponse:
+        """
+        @param request: DescribeUserServiceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserServiceStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserServiceStatus',
+            version='2018-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pvtz_20180101_models.DescribeUserServiceStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_service_status_with_options_async(
+        self,
+        request: pvtz_20180101_models.DescribeUserServiceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> pvtz_20180101_models.DescribeUserServiceStatusResponse:
+        """
+        @param request: DescribeUserServiceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserServiceStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserServiceStatus',
+            version='2018-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pvtz_20180101_models.DescribeUserServiceStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_service_status(
+        self,
+        request: pvtz_20180101_models.DescribeUserServiceStatusRequest,
+    ) -> pvtz_20180101_models.DescribeUserServiceStatusResponse:
+        """
+        @param request: DescribeUserServiceStatusRequest
+        @return: DescribeUserServiceStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_service_status_with_options(request, runtime)
+
+    async def describe_user_service_status_async(
+        self,
+        request: pvtz_20180101_models.DescribeUserServiceStatusRequest,
+    ) -> pvtz_20180101_models.DescribeUserServiceStatusResponse:
+        """
+        @param request: DescribeUserServiceStatusRequest
+        @return: DescribeUserServiceStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_service_status_with_options_async(request, runtime)
+
     def describe_user_vpc_authorizations_with_options(
         self,
         request: pvtz_20180101_models.DescribeUserVpcAuthorizationsRequest,
