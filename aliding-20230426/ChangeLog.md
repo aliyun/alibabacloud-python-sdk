@@ -1,3 +1,14 @@
+2024-08-08 Version: 2.22.0
+- Support API CommitFile.
+- Support API GetFileUploadInfo.
+- Support API GetMultipartFileUploadInfos.
+- Support API GetSchedule.
+- Support API InitMultipartFileUpload.
+- Update API GetDocContentTakId: add param GenerateCp.
+- Update API InviteUsers: update param phoneInviteeList.
+- Update API InviteUsers: update response param.
+
+
 2024-07-24 Version: 2.21.4
 - Generated python 2023-04-26 for aliding.
 

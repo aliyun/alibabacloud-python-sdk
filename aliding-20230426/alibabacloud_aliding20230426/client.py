@@ -2735,6 +2735,156 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.CommentListReportHeaders()
         return await self.comment_list_report_with_options_async(request, headers, runtime)
 
+    def commit_file_with_options(
+        self,
+        tmp_req: aliding_20230426_models.CommitFileRequest,
+        tmp_header: aliding_20230426_models.CommitFileHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CommitFileResponse:
+        """
+        @summary 提交文件
+        
+        @param tmp_req: CommitFileRequest
+        @param tmp_header: CommitFileHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CommitFileResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CommitFileShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CommitFileShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.option):
+            request.option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.option, 'Option', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.option_shrink):
+            body['Option'] = request.option_shrink
+        if not UtilClient.is_unset(request.parent_dentry_uuid):
+            body['ParentDentryUuid'] = request.parent_dentry_uuid
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.upload_key):
+            body['UploadKey'] = request.upload_key
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CommitFile',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/commitFile',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CommitFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def commit_file_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.CommitFileRequest,
+        tmp_header: aliding_20230426_models.CommitFileHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CommitFileResponse:
+        """
+        @summary 提交文件
+        
+        @param tmp_req: CommitFileRequest
+        @param tmp_header: CommitFileHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CommitFileResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CommitFileShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CommitFileShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.option):
+            request.option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.option, 'Option', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.option_shrink):
+            body['Option'] = request.option_shrink
+        if not UtilClient.is_unset(request.parent_dentry_uuid):
+            body['ParentDentryUuid'] = request.parent_dentry_uuid
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.upload_key):
+            body['UploadKey'] = request.upload_key
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CommitFile',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/commitFile',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CommitFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def commit_file(
+        self,
+        request: aliding_20230426_models.CommitFileRequest,
+    ) -> aliding_20230426_models.CommitFileResponse:
+        """
+        @summary 提交文件
+        
+        @param request: CommitFileRequest
+        @return: CommitFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CommitFileHeaders()
+        return self.commit_file_with_options(request, headers, runtime)
+
+    async def commit_file_async(
+        self,
+        request: aliding_20230426_models.CommitFileRequest,
+    ) -> aliding_20230426_models.CommitFileResponse:
+        """
+        @summary 提交文件
+        
+        @param request: CommitFileRequest
+        @return: CommitFileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CommitFileHeaders()
+        return await self.commit_file_with_options_async(request, headers, runtime)
+
     def create_delivery_plan_with_options(
         self,
         tmp_req: aliding_20230426_models.CreateDeliveryPlanRequest,
@@ -9455,6 +9605,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.dentry_uuid):
             body['DentryUuid'] = request.dentry_uuid
+        if not UtilClient.is_unset(request.generate_cp):
+            body['GenerateCp'] = request.generate_cp
         if not UtilClient.is_unset(request.target_format):
             body['TargetFormat'] = request.target_format
         if not UtilClient.is_unset(request.tenant_context_shrink):
@@ -9510,6 +9662,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.dentry_uuid):
             body['DentryUuid'] = request.dentry_uuid
+        if not UtilClient.is_unset(request.generate_cp):
+            body['GenerateCp'] = request.generate_cp
         if not UtilClient.is_unset(request.target_format):
             body['TargetFormat'] = request.target_format
         if not UtilClient.is_unset(request.tenant_context_shrink):
@@ -9976,6 +10130,152 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetFileDownloadInfoHeaders()
         return await self.get_file_download_info_with_options_async(request, headers, runtime)
+
+    def get_file_upload_info_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetFileUploadInfoRequest,
+        tmp_header: aliding_20230426_models.GetFileUploadInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetFileUploadInfoResponse:
+        """
+        @summary 获取文件上传信息
+        
+        @param tmp_req: GetFileUploadInfoRequest
+        @param tmp_header: GetFileUploadInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileUploadInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetFileUploadInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetFileUploadInfoShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.option):
+            request.option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.option, 'Option', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.option_shrink):
+            body['Option'] = request.option_shrink
+        if not UtilClient.is_unset(request.parent_dentry_uuid):
+            body['ParentDentryUuid'] = request.parent_dentry_uuid
+        if not UtilClient.is_unset(request.protocol):
+            body['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFileUploadInfo',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/getFileUploadInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetFileUploadInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_file_upload_info_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetFileUploadInfoRequest,
+        tmp_header: aliding_20230426_models.GetFileUploadInfoHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetFileUploadInfoResponse:
+        """
+        @summary 获取文件上传信息
+        
+        @param tmp_req: GetFileUploadInfoRequest
+        @param tmp_header: GetFileUploadInfoHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileUploadInfoResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetFileUploadInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetFileUploadInfoShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.option):
+            request.option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.option, 'Option', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.option_shrink):
+            body['Option'] = request.option_shrink
+        if not UtilClient.is_unset(request.parent_dentry_uuid):
+            body['ParentDentryUuid'] = request.parent_dentry_uuid
+        if not UtilClient.is_unset(request.protocol):
+            body['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFileUploadInfo',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/getFileUploadInfo',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetFileUploadInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_file_upload_info(
+        self,
+        request: aliding_20230426_models.GetFileUploadInfoRequest,
+    ) -> aliding_20230426_models.GetFileUploadInfoResponse:
+        """
+        @summary 获取文件上传信息
+        
+        @param request: GetFileUploadInfoRequest
+        @return: GetFileUploadInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetFileUploadInfoHeaders()
+        return self.get_file_upload_info_with_options(request, headers, runtime)
+
+    async def get_file_upload_info_async(
+        self,
+        request: aliding_20230426_models.GetFileUploadInfoRequest,
+    ) -> aliding_20230426_models.GetFileUploadInfoResponse:
+        """
+        @summary 获取文件上传信息
+        
+        @param request: GetFileUploadInfoRequest
+        @return: GetFileUploadInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetFileUploadInfoHeaders()
+        return await self.get_file_upload_info_with_options_async(request, headers, runtime)
 
     def get_form_component_definition_list_with_options(
         self,
@@ -11708,6 +12008,156 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetMineWorkspaceHeaders()
         return await self.get_mine_workspace_with_options_async(request, headers, runtime)
+
+    def get_multipart_file_upload_infos_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetMultipartFileUploadInfosRequest,
+        tmp_header: aliding_20230426_models.GetMultipartFileUploadInfosHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetMultipartFileUploadInfosResponse:
+        """
+        @summary 获取文件分片上传信息
+        
+        @param tmp_req: GetMultipartFileUploadInfosRequest
+        @param tmp_header: GetMultipartFileUploadInfosHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultipartFileUploadInfosResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetMultipartFileUploadInfosShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetMultipartFileUploadInfosShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.option):
+            request.option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.option, 'Option', 'json')
+        if not UtilClient.is_unset(tmp_req.part_numbers):
+            request.part_numbers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.part_numbers, 'PartNumbers', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.option_shrink):
+            body['Option'] = request.option_shrink
+        if not UtilClient.is_unset(request.part_numbers_shrink):
+            body['PartNumbers'] = request.part_numbers_shrink
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.upload_key):
+            body['UploadKey'] = request.upload_key
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMultipartFileUploadInfos',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/GetMultipartFileUploadInfos',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetMultipartFileUploadInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_multipart_file_upload_infos_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetMultipartFileUploadInfosRequest,
+        tmp_header: aliding_20230426_models.GetMultipartFileUploadInfosHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetMultipartFileUploadInfosResponse:
+        """
+        @summary 获取文件分片上传信息
+        
+        @param tmp_req: GetMultipartFileUploadInfosRequest
+        @param tmp_header: GetMultipartFileUploadInfosHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMultipartFileUploadInfosResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetMultipartFileUploadInfosShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetMultipartFileUploadInfosShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.option):
+            request.option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.option, 'Option', 'json')
+        if not UtilClient.is_unset(tmp_req.part_numbers):
+            request.part_numbers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.part_numbers, 'PartNumbers', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.option_shrink):
+            body['Option'] = request.option_shrink
+        if not UtilClient.is_unset(request.part_numbers_shrink):
+            body['PartNumbers'] = request.part_numbers_shrink
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.upload_key):
+            body['UploadKey'] = request.upload_key
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMultipartFileUploadInfos',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/GetMultipartFileUploadInfos',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetMultipartFileUploadInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_multipart_file_upload_infos(
+        self,
+        request: aliding_20230426_models.GetMultipartFileUploadInfosRequest,
+    ) -> aliding_20230426_models.GetMultipartFileUploadInfosResponse:
+        """
+        @summary 获取文件分片上传信息
+        
+        @param request: GetMultipartFileUploadInfosRequest
+        @return: GetMultipartFileUploadInfosResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetMultipartFileUploadInfosHeaders()
+        return self.get_multipart_file_upload_infos_with_options(request, headers, runtime)
+
+    async def get_multipart_file_upload_infos_async(
+        self,
+        request: aliding_20230426_models.GetMultipartFileUploadInfosRequest,
+    ) -> aliding_20230426_models.GetMultipartFileUploadInfosResponse:
+        """
+        @summary 获取文件分片上传信息
+        
+        @param request: GetMultipartFileUploadInfosRequest
+        @return: GetMultipartFileUploadInfosResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetMultipartFileUploadInfosHeaders()
+        return await self.get_multipart_file_upload_infos_with_options_async(request, headers, runtime)
 
     def get_newest_inner_groups_with_options(
         self,
@@ -13551,6 +14001,152 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.GetRunningTasksHeaders()
         return await self.get_running_tasks_with_options_async(request, headers, runtime)
 
+    def get_schedule_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetScheduleRequest,
+        tmp_header: aliding_20230426_models.GetScheduleHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetScheduleResponse:
+        """
+        @summary 获取用户忙闲信息
+        
+        @param tmp_req: GetScheduleRequest
+        @param tmp_header: GetScheduleHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetScheduleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetScheduleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetScheduleShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.user_ids):
+            request.user_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_ids, 'UserIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.user_ids_shrink):
+            body['UserIds'] = request.user_ids_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSchedule',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/getSchedule',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_schedule_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetScheduleRequest,
+        tmp_header: aliding_20230426_models.GetScheduleHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetScheduleResponse:
+        """
+        @summary 获取用户忙闲信息
+        
+        @param tmp_req: GetScheduleRequest
+        @param tmp_header: GetScheduleHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetScheduleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetScheduleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetScheduleShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.user_ids):
+            request.user_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_ids, 'UserIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.user_ids_shrink):
+            body['UserIds'] = request.user_ids_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSchedule',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/getSchedule',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_schedule(
+        self,
+        request: aliding_20230426_models.GetScheduleRequest,
+    ) -> aliding_20230426_models.GetScheduleResponse:
+        """
+        @summary 获取用户忙闲信息
+        
+        @param request: GetScheduleRequest
+        @return: GetScheduleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetScheduleHeaders()
+        return self.get_schedule_with_options(request, headers, runtime)
+
+    async def get_schedule_async(
+        self,
+        request: aliding_20230426_models.GetScheduleRequest,
+    ) -> aliding_20230426_models.GetScheduleResponse:
+        """
+        @summary 获取用户忙闲信息
+        
+        @param request: GetScheduleRequest
+        @return: GetScheduleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetScheduleHeaders()
+        return await self.get_schedule_with_options_async(request, headers, runtime)
+
     def get_sheet_with_options(
         self,
         tmp_req: aliding_20230426_models.GetSheetRequest,
@@ -14974,6 +15570,148 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GrantHonorHeaders()
         return await self.grant_honor_with_options_async(request, headers, runtime)
+
+    def init_multipart_file_upload_with_options(
+        self,
+        tmp_req: aliding_20230426_models.InitMultipartFileUploadRequest,
+        tmp_header: aliding_20230426_models.InitMultipartFileUploadHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.InitMultipartFileUploadResponse:
+        """
+        @summary 初始化文件分片上传
+        
+        @param tmp_req: InitMultipartFileUploadRequest
+        @param tmp_header: InitMultipartFileUploadHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitMultipartFileUploadResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.InitMultipartFileUploadShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.InitMultipartFileUploadShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.option):
+            request.option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.option, 'Option', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.option_shrink):
+            body['Option'] = request.option_shrink
+        if not UtilClient.is_unset(request.parent_dentry_uuid):
+            body['ParentDentryUuid'] = request.parent_dentry_uuid
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InitMultipartFileUpload',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/initMultipartFileUpload',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.InitMultipartFileUploadResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def init_multipart_file_upload_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.InitMultipartFileUploadRequest,
+        tmp_header: aliding_20230426_models.InitMultipartFileUploadHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.InitMultipartFileUploadResponse:
+        """
+        @summary 初始化文件分片上传
+        
+        @param tmp_req: InitMultipartFileUploadRequest
+        @param tmp_header: InitMultipartFileUploadHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitMultipartFileUploadResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.InitMultipartFileUploadShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.InitMultipartFileUploadShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.option):
+            request.option_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.option, 'Option', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.option_shrink):
+            body['Option'] = request.option_shrink
+        if not UtilClient.is_unset(request.parent_dentry_uuid):
+            body['ParentDentryUuid'] = request.parent_dentry_uuid
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InitMultipartFileUpload',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/initMultipartFileUpload',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.InitMultipartFileUploadResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def init_multipart_file_upload(
+        self,
+        request: aliding_20230426_models.InitMultipartFileUploadRequest,
+    ) -> aliding_20230426_models.InitMultipartFileUploadResponse:
+        """
+        @summary 初始化文件分片上传
+        
+        @param request: InitMultipartFileUploadRequest
+        @return: InitMultipartFileUploadResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.InitMultipartFileUploadHeaders()
+        return self.init_multipart_file_upload_with_options(request, headers, runtime)
+
+    async def init_multipart_file_upload_async(
+        self,
+        request: aliding_20230426_models.InitMultipartFileUploadRequest,
+    ) -> aliding_20230426_models.InitMultipartFileUploadResponse:
+        """
+        @summary 初始化文件分片上传
+        
+        @param request: InitMultipartFileUploadRequest
+        @return: InitMultipartFileUploadResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.InitMultipartFileUploadHeaders()
+        return await self.init_multipart_file_upload_with_options_async(request, headers, runtime)
 
     def insert_columns_before_with_options(
         self,

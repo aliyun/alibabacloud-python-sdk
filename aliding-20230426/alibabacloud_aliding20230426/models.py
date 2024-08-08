@@ -4,6 +4,45 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
+class DentryAppPropertiesValue(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+        visibility: str = None,
+    ):
+        self.name = name
+        self.value = value
+        self.visibility = visibility
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.visibility is not None:
+            result['Visibility'] = self.visibility
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('Visibility') is not None:
+            self.visibility = m.get('Visibility')
+        return self
+
+
 class DentriesAppPropertiesValue(TeaModel):
     def __init__(
         self,
@@ -6171,6 +6210,656 @@ class CommentListReportResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CommentListReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CommitFileHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class CommitFileHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: CommitFileHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = CommitFileHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class CommitFileShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class CommitFileRequestOptionAppProperties(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+        visibility: str = None,
+    ):
+        self.name = name
+        self.value = value
+        self.visibility = visibility
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.visibility is not None:
+            result['Visibility'] = self.visibility
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('Visibility') is not None:
+            self.visibility = m.get('Visibility')
+        return self
+
+
+class CommitFileRequestOption(TeaModel):
+    def __init__(
+        self,
+        app_properties: List[CommitFileRequestOptionAppProperties] = None,
+        conflict_strategy: str = None,
+        convert_to_online_doc: bool = None,
+        convert_to_online_doc_target_document_type: str = None,
+        size: int = None,
+    ):
+        self.app_properties = app_properties
+        self.conflict_strategy = conflict_strategy
+        self.convert_to_online_doc = convert_to_online_doc
+        self.convert_to_online_doc_target_document_type = convert_to_online_doc_target_document_type
+        self.size = size
+
+    def validate(self):
+        if self.app_properties:
+            for k in self.app_properties:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AppProperties'] = []
+        if self.app_properties is not None:
+            for k in self.app_properties:
+                result['AppProperties'].append(k.to_map() if k else None)
+        if self.conflict_strategy is not None:
+            result['ConflictStrategy'] = self.conflict_strategy
+        if self.convert_to_online_doc is not None:
+            result['ConvertToOnlineDoc'] = self.convert_to_online_doc
+        if self.convert_to_online_doc_target_document_type is not None:
+            result['ConvertToOnlineDocTargetDocumentType'] = self.convert_to_online_doc_target_document_type
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.app_properties = []
+        if m.get('AppProperties') is not None:
+            for k in m.get('AppProperties'):
+                temp_model = CommitFileRequestOptionAppProperties()
+                self.app_properties.append(temp_model.from_map(k))
+        if m.get('ConflictStrategy') is not None:
+            self.conflict_strategy = m.get('ConflictStrategy')
+        if m.get('ConvertToOnlineDoc') is not None:
+            self.convert_to_online_doc = m.get('ConvertToOnlineDoc')
+        if m.get('ConvertToOnlineDocTargetDocumentType') is not None:
+            self.convert_to_online_doc_target_document_type = m.get('ConvertToOnlineDocTargetDocumentType')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class CommitFileRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class CommitFileRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        option: CommitFileRequestOption = None,
+        parent_dentry_uuid: str = None,
+        tenant_context: CommitFileRequestTenantContext = None,
+        upload_key: str = None,
+    ):
+        self.name = name
+        self.option = option
+        self.parent_dentry_uuid = parent_dentry_uuid
+        self.tenant_context = tenant_context
+        self.upload_key = upload_key
+
+    def validate(self):
+        if self.option:
+            self.option.validate()
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.option is not None:
+            result['Option'] = self.option.to_map()
+        if self.parent_dentry_uuid is not None:
+            result['ParentDentryUuid'] = self.parent_dentry_uuid
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.upload_key is not None:
+            result['UploadKey'] = self.upload_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Option') is not None:
+            temp_model = CommitFileRequestOption()
+            self.option = temp_model.from_map(m['Option'])
+        if m.get('ParentDentryUuid') is not None:
+            self.parent_dentry_uuid = m.get('ParentDentryUuid')
+        if m.get('TenantContext') is not None:
+            temp_model = CommitFileRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('UploadKey') is not None:
+            self.upload_key = m.get('UploadKey')
+        return self
+
+
+class CommitFileShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        option_shrink: str = None,
+        parent_dentry_uuid: str = None,
+        tenant_context_shrink: str = None,
+        upload_key: str = None,
+    ):
+        self.name = name
+        self.option_shrink = option_shrink
+        self.parent_dentry_uuid = parent_dentry_uuid
+        self.tenant_context_shrink = tenant_context_shrink
+        self.upload_key = upload_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.option_shrink is not None:
+            result['Option'] = self.option_shrink
+        if self.parent_dentry_uuid is not None:
+            result['ParentDentryUuid'] = self.parent_dentry_uuid
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.upload_key is not None:
+            result['UploadKey'] = self.upload_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Option') is not None:
+            self.option_shrink = m.get('Option')
+        if m.get('ParentDentryUuid') is not None:
+            self.parent_dentry_uuid = m.get('ParentDentryUuid')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('UploadKey') is not None:
+            self.upload_key = m.get('UploadKey')
+        return self
+
+
+class CommitFileResponseBodyDentryProperties(TeaModel):
+    def __init__(
+        self,
+        read_only: bool = None,
+    ):
+        self.read_only = read_only
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.read_only is not None:
+            result['ReadOnly'] = self.read_only
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReadOnly') is not None:
+            self.read_only = m.get('ReadOnly')
+        return self
+
+
+class CommitFileResponseBodyDentryThumbnail(TeaModel):
+    def __init__(
+        self,
+        height: int = None,
+        url: str = None,
+        width: int = None,
+    ):
+        self.height = height
+        self.url = url
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class CommitFileResponseBodyDentry(TeaModel):
+    def __init__(
+        self,
+        app_properties: Dict[str, List[DentryAppPropertiesValue]] = None,
+        category: str = None,
+        create_time: str = None,
+        creator_id: str = None,
+        extension: str = None,
+        id: str = None,
+        modified_time: str = None,
+        modifier_id: str = None,
+        name: str = None,
+        parent_id: str = None,
+        partition_type: str = None,
+        path: str = None,
+        properties: CommitFileResponseBodyDentryProperties = None,
+        size: int = None,
+        space_id: str = None,
+        status: str = None,
+        storage_driver: str = None,
+        thumbnail: CommitFileResponseBodyDentryThumbnail = None,
+        type: str = None,
+        uuid: str = None,
+        version: int = None,
+    ):
+        self.app_properties = app_properties
+        self.category = category
+        self.create_time = create_time
+        self.creator_id = creator_id
+        self.extension = extension
+        self.id = id
+        self.modified_time = modified_time
+        self.modifier_id = modifier_id
+        self.name = name
+        self.parent_id = parent_id
+        self.partition_type = partition_type
+        self.path = path
+        self.properties = properties
+        self.size = size
+        self.space_id = space_id
+        self.status = status
+        self.storage_driver = storage_driver
+        self.thumbnail = thumbnail
+        self.type = type
+        self.uuid = uuid
+        self.version = version
+
+    def validate(self):
+        if self.app_properties:
+            for v in self.app_properties.values():
+                for k1 in v:
+                    if k1:
+                        k1.validate()
+        if self.properties:
+            self.properties.validate()
+        if self.thumbnail:
+            self.thumbnail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AppProperties'] = {}
+        if self.app_properties is not None:
+            for k, v in self.app_properties.items():
+                l1 = []
+                for k1 in v:
+                    l1.append(k1.to_map() if k1 else None)
+                result['AppProperties'][k] = l1
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.extension is not None:
+            result['Extension'] = self.extension
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.modifier_id is not None:
+            result['ModifierId'] = self.modifier_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.parent_id is not None:
+            result['ParentId'] = self.parent_id
+        if self.partition_type is not None:
+            result['PartitionType'] = self.partition_type
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.properties is not None:
+            result['Properties'] = self.properties.to_map()
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.space_id is not None:
+            result['SpaceId'] = self.space_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.storage_driver is not None:
+            result['StorageDriver'] = self.storage_driver
+        if self.thumbnail is not None:
+            result['Thumbnail'] = self.thumbnail.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.app_properties = {}
+        if m.get('AppProperties') is not None:
+            for k, v in m.get('AppProperties').items():
+                l1 = []
+                for k1 in v:
+                    temp_model = DentryAppPropertiesValue()
+                    l1.append(temp_model.from_map(k1))
+                self.app_properties['k'] = l1
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('ModifierId') is not None:
+            self.modifier_id = m.get('ModifierId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ParentId') is not None:
+            self.parent_id = m.get('ParentId')
+        if m.get('PartitionType') is not None:
+            self.partition_type = m.get('PartitionType')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('Properties') is not None:
+            temp_model = CommitFileResponseBodyDentryProperties()
+            self.properties = temp_model.from_map(m['Properties'])
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('SpaceId') is not None:
+            self.space_id = m.get('SpaceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StorageDriver') is not None:
+            self.storage_driver = m.get('StorageDriver')
+        if m.get('Thumbnail') is not None:
+            temp_model = CommitFileResponseBodyDentryThumbnail()
+            self.thumbnail = temp_model.from_map(m['Thumbnail'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class CommitFileResponseBody(TeaModel):
+    def __init__(
+        self,
+        dentry: CommitFileResponseBodyDentry = None,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.dentry = dentry
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        if self.dentry:
+            self.dentry.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dentry is not None:
+            result['dentry'] = self.dentry.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dentry') is not None:
+            temp_model = CommitFileResponseBodyDentry()
+            self.dentry = temp_model.from_map(m['dentry'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class CommitFileResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CommitFileResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CommitFileResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21594,11 +22283,13 @@ class GetDocContentTakIdRequest(TeaModel):
     def __init__(
         self,
         dentry_uuid: str = None,
+        generate_cp: bool = None,
         target_format: str = None,
         tenant_context: GetDocContentTakIdRequestTenantContext = None,
     ):
         # This parameter is required.
         self.dentry_uuid = dentry_uuid
+        self.generate_cp = generate_cp
         self.target_format = target_format
         self.tenant_context = tenant_context
 
@@ -21614,6 +22305,8 @@ class GetDocContentTakIdRequest(TeaModel):
         result = dict()
         if self.dentry_uuid is not None:
             result['DentryUuid'] = self.dentry_uuid
+        if self.generate_cp is not None:
+            result['GenerateCp'] = self.generate_cp
         if self.target_format is not None:
             result['TargetFormat'] = self.target_format
         if self.tenant_context is not None:
@@ -21624,6 +22317,8 @@ class GetDocContentTakIdRequest(TeaModel):
         m = m or dict()
         if m.get('DentryUuid') is not None:
             self.dentry_uuid = m.get('DentryUuid')
+        if m.get('GenerateCp') is not None:
+            self.generate_cp = m.get('GenerateCp')
         if m.get('TargetFormat') is not None:
             self.target_format = m.get('TargetFormat')
         if m.get('TenantContext') is not None:
@@ -21636,11 +22331,13 @@ class GetDocContentTakIdShrinkRequest(TeaModel):
     def __init__(
         self,
         dentry_uuid: str = None,
+        generate_cp: bool = None,
         target_format: str = None,
         tenant_context_shrink: str = None,
     ):
         # This parameter is required.
         self.dentry_uuid = dentry_uuid
+        self.generate_cp = generate_cp
         self.target_format = target_format
         self.tenant_context_shrink = tenant_context_shrink
 
@@ -21655,6 +22352,8 @@ class GetDocContentTakIdShrinkRequest(TeaModel):
         result = dict()
         if self.dentry_uuid is not None:
             result['DentryUuid'] = self.dentry_uuid
+        if self.generate_cp is not None:
+            result['GenerateCp'] = self.generate_cp
         if self.target_format is not None:
             result['TargetFormat'] = self.target_format
         if self.tenant_context_shrink is not None:
@@ -21665,6 +22364,8 @@ class GetDocContentTakIdShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('DentryUuid') is not None:
             self.dentry_uuid = m.get('DentryUuid')
+        if m.get('GenerateCp') is not None:
+            self.generate_cp = m.get('GenerateCp')
         if m.get('TargetFormat') is not None:
             self.target_format = m.get('TargetFormat')
         if m.get('TenantContext') is not None:
@@ -23441,6 +24142,461 @@ class GetFileDownloadInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetFileDownloadInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetFileUploadInfoHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class GetFileUploadInfoHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: GetFileUploadInfoHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = GetFileUploadInfoHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class GetFileUploadInfoShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class GetFileUploadInfoRequestOptionPreCheckParam(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        size: int = None,
+    ):
+        self.name = name
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class GetFileUploadInfoRequestOption(TeaModel):
+    def __init__(
+        self,
+        pre_check_param: GetFileUploadInfoRequestOptionPreCheckParam = None,
+        prefer_intranet: bool = None,
+        prefer_region: str = None,
+        storage_driver: str = None,
+    ):
+        self.pre_check_param = pre_check_param
+        self.prefer_intranet = prefer_intranet
+        self.prefer_region = prefer_region
+        self.storage_driver = storage_driver
+
+    def validate(self):
+        if self.pre_check_param:
+            self.pre_check_param.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pre_check_param is not None:
+            result['PreCheckParam'] = self.pre_check_param.to_map()
+        if self.prefer_intranet is not None:
+            result['PreferIntranet'] = self.prefer_intranet
+        if self.prefer_region is not None:
+            result['PreferRegion'] = self.prefer_region
+        if self.storage_driver is not None:
+            result['StorageDriver'] = self.storage_driver
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PreCheckParam') is not None:
+            temp_model = GetFileUploadInfoRequestOptionPreCheckParam()
+            self.pre_check_param = temp_model.from_map(m['PreCheckParam'])
+        if m.get('PreferIntranet') is not None:
+            self.prefer_intranet = m.get('PreferIntranet')
+        if m.get('PreferRegion') is not None:
+            self.prefer_region = m.get('PreferRegion')
+        if m.get('StorageDriver') is not None:
+            self.storage_driver = m.get('StorageDriver')
+        return self
+
+
+class GetFileUploadInfoRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class GetFileUploadInfoRequest(TeaModel):
+    def __init__(
+        self,
+        option: GetFileUploadInfoRequestOption = None,
+        parent_dentry_uuid: str = None,
+        protocol: str = None,
+        tenant_context: GetFileUploadInfoRequestTenantContext = None,
+    ):
+        self.option = option
+        self.parent_dentry_uuid = parent_dentry_uuid
+        self.protocol = protocol
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.option:
+            self.option.validate()
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.option is not None:
+            result['Option'] = self.option.to_map()
+        if self.parent_dentry_uuid is not None:
+            result['ParentDentryUuid'] = self.parent_dentry_uuid
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Option') is not None:
+            temp_model = GetFileUploadInfoRequestOption()
+            self.option = temp_model.from_map(m['Option'])
+        if m.get('ParentDentryUuid') is not None:
+            self.parent_dentry_uuid = m.get('ParentDentryUuid')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('TenantContext') is not None:
+            temp_model = GetFileUploadInfoRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class GetFileUploadInfoShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        option_shrink: str = None,
+        parent_dentry_uuid: str = None,
+        protocol: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        self.option_shrink = option_shrink
+        self.parent_dentry_uuid = parent_dentry_uuid
+        self.protocol = protocol
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.option_shrink is not None:
+            result['Option'] = self.option_shrink
+        if self.parent_dentry_uuid is not None:
+            result['ParentDentryUuid'] = self.parent_dentry_uuid
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Option') is not None:
+            self.option_shrink = m.get('Option')
+        if m.get('ParentDentryUuid') is not None:
+            self.parent_dentry_uuid = m.get('ParentDentryUuid')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class GetFileUploadInfoResponseBodyHeaderSignatureInfo(TeaModel):
+    def __init__(
+        self,
+        expiration_seconds: int = None,
+        headers: Dict[str, str] = None,
+        internal_resource_urls: List[str] = None,
+        region: str = None,
+        resource_urls: List[str] = None,
+    ):
+        self.expiration_seconds = expiration_seconds
+        self.headers = headers
+        self.internal_resource_urls = internal_resource_urls
+        self.region = region
+        self.resource_urls = resource_urls
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expiration_seconds is not None:
+            result['ExpirationSeconds'] = self.expiration_seconds
+        if self.headers is not None:
+            result['Headers'] = self.headers
+        if self.internal_resource_urls is not None:
+            result['InternalResourceUrls'] = self.internal_resource_urls
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_urls is not None:
+            result['ResourceUrls'] = self.resource_urls
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpirationSeconds') is not None:
+            self.expiration_seconds = m.get('ExpirationSeconds')
+        if m.get('Headers') is not None:
+            self.headers = m.get('Headers')
+        if m.get('InternalResourceUrls') is not None:
+            self.internal_resource_urls = m.get('InternalResourceUrls')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceUrls') is not None:
+            self.resource_urls = m.get('ResourceUrls')
+        return self
+
+
+class GetFileUploadInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        header_signature_info: GetFileUploadInfoResponseBodyHeaderSignatureInfo = None,
+        protocol: str = None,
+        request_id: str = None,
+        storage_driver: str = None,
+        upload_key: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.header_signature_info = header_signature_info
+        self.protocol = protocol
+        self.request_id = request_id
+        self.storage_driver = storage_driver
+        self.upload_key = upload_key
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        if self.header_signature_info:
+            self.header_signature_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.header_signature_info is not None:
+            result['headerSignatureInfo'] = self.header_signature_info.to_map()
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.storage_driver is not None:
+            result['storageDriver'] = self.storage_driver
+        if self.upload_key is not None:
+            result['uploadKey'] = self.upload_key
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headerSignatureInfo') is not None:
+            temp_model = GetFileUploadInfoResponseBodyHeaderSignatureInfo()
+            self.header_signature_info = temp_model.from_map(m['headerSignatureInfo'])
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('storageDriver') is not None:
+            self.storage_driver = m.get('storageDriver')
+        if m.get('uploadKey') is not None:
+            self.upload_key = m.get('uploadKey')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class GetFileUploadInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetFileUploadInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetFileUploadInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -28318,6 +29474,431 @@ class GetMineWorkspaceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetMineWorkspaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetMultipartFileUploadInfosHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class GetMultipartFileUploadInfosHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: GetMultipartFileUploadInfosHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = GetMultipartFileUploadInfosHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class GetMultipartFileUploadInfosShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class GetMultipartFileUploadInfosRequestOption(TeaModel):
+    def __init__(
+        self,
+        prefer_intranet: bool = None,
+    ):
+        self.prefer_intranet = prefer_intranet
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prefer_intranet is not None:
+            result['PreferIntranet'] = self.prefer_intranet
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PreferIntranet') is not None:
+            self.prefer_intranet = m.get('PreferIntranet')
+        return self
+
+
+class GetMultipartFileUploadInfosRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class GetMultipartFileUploadInfosRequest(TeaModel):
+    def __init__(
+        self,
+        option: GetMultipartFileUploadInfosRequestOption = None,
+        part_numbers: List[int] = None,
+        tenant_context: GetMultipartFileUploadInfosRequestTenantContext = None,
+        upload_key: str = None,
+    ):
+        self.option = option
+        self.part_numbers = part_numbers
+        self.tenant_context = tenant_context
+        self.upload_key = upload_key
+
+    def validate(self):
+        if self.option:
+            self.option.validate()
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.option is not None:
+            result['Option'] = self.option.to_map()
+        if self.part_numbers is not None:
+            result['PartNumbers'] = self.part_numbers
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.upload_key is not None:
+            result['UploadKey'] = self.upload_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Option') is not None:
+            temp_model = GetMultipartFileUploadInfosRequestOption()
+            self.option = temp_model.from_map(m['Option'])
+        if m.get('PartNumbers') is not None:
+            self.part_numbers = m.get('PartNumbers')
+        if m.get('TenantContext') is not None:
+            temp_model = GetMultipartFileUploadInfosRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('UploadKey') is not None:
+            self.upload_key = m.get('UploadKey')
+        return self
+
+
+class GetMultipartFileUploadInfosShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        option_shrink: str = None,
+        part_numbers_shrink: str = None,
+        tenant_context_shrink: str = None,
+        upload_key: str = None,
+    ):
+        self.option_shrink = option_shrink
+        self.part_numbers_shrink = part_numbers_shrink
+        self.tenant_context_shrink = tenant_context_shrink
+        self.upload_key = upload_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.option_shrink is not None:
+            result['Option'] = self.option_shrink
+        if self.part_numbers_shrink is not None:
+            result['PartNumbers'] = self.part_numbers_shrink
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.upload_key is not None:
+            result['UploadKey'] = self.upload_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Option') is not None:
+            self.option_shrink = m.get('Option')
+        if m.get('PartNumbers') is not None:
+            self.part_numbers_shrink = m.get('PartNumbers')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('UploadKey') is not None:
+            self.upload_key = m.get('UploadKey')
+        return self
+
+
+class GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfosHeaderSignatureInfo(TeaModel):
+    def __init__(
+        self,
+        expiration_seconds: int = None,
+        headers: Dict[str, str] = None,
+        internal_resource_urls: List[str] = None,
+        region: str = None,
+        resource_urls: List[str] = None,
+    ):
+        self.expiration_seconds = expiration_seconds
+        self.headers = headers
+        self.internal_resource_urls = internal_resource_urls
+        self.region = region
+        self.resource_urls = resource_urls
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expiration_seconds is not None:
+            result['ExpirationSeconds'] = self.expiration_seconds
+        if self.headers is not None:
+            result['Headers'] = self.headers
+        if self.internal_resource_urls is not None:
+            result['InternalResourceUrls'] = self.internal_resource_urls
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_urls is not None:
+            result['ResourceUrls'] = self.resource_urls
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpirationSeconds') is not None:
+            self.expiration_seconds = m.get('ExpirationSeconds')
+        if m.get('Headers') is not None:
+            self.headers = m.get('Headers')
+        if m.get('InternalResourceUrls') is not None:
+            self.internal_resource_urls = m.get('InternalResourceUrls')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceUrls') is not None:
+            self.resource_urls = m.get('ResourceUrls')
+        return self
+
+
+class GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfos(TeaModel):
+    def __init__(
+        self,
+        header_signature_info: GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfosHeaderSignatureInfo = None,
+        part_number: int = None,
+    ):
+        self.header_signature_info = header_signature_info
+        self.part_number = part_number
+
+    def validate(self):
+        if self.header_signature_info:
+            self.header_signature_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.header_signature_info is not None:
+            result['HeaderSignatureInfo'] = self.header_signature_info.to_map()
+        if self.part_number is not None:
+            result['PartNumber'] = self.part_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HeaderSignatureInfo') is not None:
+            temp_model = GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfosHeaderSignatureInfo()
+            self.header_signature_info = temp_model.from_map(m['HeaderSignatureInfo'])
+        if m.get('PartNumber') is not None:
+            self.part_number = m.get('PartNumber')
+        return self
+
+
+class GetMultipartFileUploadInfosResponseBody(TeaModel):
+    def __init__(
+        self,
+        multipart_header_signature_infos: List[GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfos] = None,
+        request_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.multipart_header_signature_infos = multipart_header_signature_infos
+        self.request_id = request_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        if self.multipart_header_signature_infos:
+            for k in self.multipart_header_signature_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['multipartHeaderSignatureInfos'] = []
+        if self.multipart_header_signature_infos is not None:
+            for k in self.multipart_header_signature_infos:
+                result['multipartHeaderSignatureInfos'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.multipart_header_signature_infos = []
+        if m.get('multipartHeaderSignatureInfos') is not None:
+            for k in m.get('multipartHeaderSignatureInfos'):
+                temp_model = GetMultipartFileUploadInfosResponseBodyMultipartHeaderSignatureInfos()
+                self.multipart_header_signature_infos.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class GetMultipartFileUploadInfosResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMultipartFileUploadInfosResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMultipartFileUploadInfosResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -33541,6 +35122,484 @@ class GetRunningTasksResponse(TeaModel):
         return self
 
 
+class GetScheduleHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class GetScheduleHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: GetScheduleHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = GetScheduleHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class GetScheduleShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class GetScheduleRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class GetScheduleRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        start_time: str = None,
+        tenant_context: GetScheduleRequestTenantContext = None,
+        user_ids: List[str] = None,
+    ):
+        self.end_time = end_time
+        self.start_time = start_time
+        self.tenant_context = tenant_context
+        self.user_ids = user_ids
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        if self.user_ids is not None:
+            result['UserIds'] = self.user_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TenantContext') is not None:
+            temp_model = GetScheduleRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        if m.get('UserIds') is not None:
+            self.user_ids = m.get('UserIds')
+        return self
+
+
+class GetScheduleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        start_time: str = None,
+        tenant_context_shrink: str = None,
+        user_ids_shrink: str = None,
+    ):
+        self.end_time = end_time
+        self.start_time = start_time
+        self.tenant_context_shrink = tenant_context_shrink
+        self.user_ids_shrink = user_ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        if self.user_ids_shrink is not None:
+            result['UserIds'] = self.user_ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        if m.get('UserIds') is not None:
+            self.user_ids_shrink = m.get('UserIds')
+        return self
+
+
+class GetScheduleResponseBodyScheduleInformationScheduleItemsEnd(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        date_time: str = None,
+        time_zone: str = None,
+    ):
+        self.date = date
+        self.date_time = date_time
+        self.time_zone = time_zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.date_time is not None:
+            result['DateTime'] = self.date_time
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('DateTime') is not None:
+            self.date_time = m.get('DateTime')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+        return self
+
+
+class GetScheduleResponseBodyScheduleInformationScheduleItemsStart(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        date_time: str = None,
+        time_zone: str = None,
+    ):
+        self.date = date
+        self.date_time = date_time
+        self.time_zone = time_zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.date_time is not None:
+            result['DateTime'] = self.date_time
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('DateTime') is not None:
+            self.date_time = m.get('DateTime')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
+        return self
+
+
+class GetScheduleResponseBodyScheduleInformationScheduleItems(TeaModel):
+    def __init__(
+        self,
+        end: GetScheduleResponseBodyScheduleInformationScheduleItemsEnd = None,
+        start: GetScheduleResponseBodyScheduleInformationScheduleItemsStart = None,
+        status: str = None,
+    ):
+        self.end = end
+        self.start = start
+        self.status = status
+
+    def validate(self):
+        if self.end:
+            self.end.validate()
+        if self.start:
+            self.start.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end is not None:
+            result['End'] = self.end.to_map()
+        if self.start is not None:
+            result['Start'] = self.start.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('End') is not None:
+            temp_model = GetScheduleResponseBodyScheduleInformationScheduleItemsEnd()
+            self.end = temp_model.from_map(m['End'])
+        if m.get('Start') is not None:
+            temp_model = GetScheduleResponseBodyScheduleInformationScheduleItemsStart()
+            self.start = temp_model.from_map(m['Start'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetScheduleResponseBodyScheduleInformation(TeaModel):
+    def __init__(
+        self,
+        error: str = None,
+        schedule_items: List[GetScheduleResponseBodyScheduleInformationScheduleItems] = None,
+        user_id: str = None,
+    ):
+        self.error = error
+        self.schedule_items = schedule_items
+        self.user_id = user_id
+
+    def validate(self):
+        if self.schedule_items:
+            for k in self.schedule_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error is not None:
+            result['Error'] = self.error
+        result['ScheduleItems'] = []
+        if self.schedule_items is not None:
+            for k in self.schedule_items:
+                result['ScheduleItems'].append(k.to_map() if k else None)
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        self.schedule_items = []
+        if m.get('ScheduleItems') is not None:
+            for k in m.get('ScheduleItems'):
+                temp_model = GetScheduleResponseBodyScheduleInformationScheduleItems()
+                self.schedule_items.append(temp_model.from_map(k))
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetScheduleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        schedule_information: List[GetScheduleResponseBodyScheduleInformation] = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.request_id = request_id
+        self.schedule_information = schedule_information
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        if self.schedule_information:
+            for k in self.schedule_information:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['scheduleInformation'] = []
+        if self.schedule_information is not None:
+            for k in self.schedule_information:
+                result['scheduleInformation'].append(k.to_map() if k else None)
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.schedule_information = []
+        if m.get('scheduleInformation') is not None:
+            for k in m.get('scheduleInformation'):
+                temp_model = GetScheduleResponseBodyScheduleInformation()
+                self.schedule_information.append(temp_model.from_map(k))
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class GetScheduleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetScheduleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetScheduleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetSheetHeadersAccountContext(TeaModel):
     def __init__(
         self,
@@ -38200,6 +40259,390 @@ class GrantHonorResponse(TeaModel):
         return self
 
 
+class InitMultipartFileUploadHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class InitMultipartFileUploadHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: InitMultipartFileUploadHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = InitMultipartFileUploadHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class InitMultipartFileUploadShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class InitMultipartFileUploadRequestOptionPreCheckParam(TeaModel):
+    def __init__(
+        self,
+        md_5: str = None,
+        name: str = None,
+        parent_id: str = None,
+        size: int = None,
+    ):
+        self.md_5 = md_5
+        self.name = name
+        self.parent_id = parent_id
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.md_5 is not None:
+            result['Md5'] = self.md_5
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.parent_id is not None:
+            result['ParentId'] = self.parent_id
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Md5') is not None:
+            self.md_5 = m.get('Md5')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ParentId') is not None:
+            self.parent_id = m.get('ParentId')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class InitMultipartFileUploadRequestOption(TeaModel):
+    def __init__(
+        self,
+        pre_check_param: InitMultipartFileUploadRequestOptionPreCheckParam = None,
+        prefer_region: str = None,
+        storage_driver: str = None,
+    ):
+        self.pre_check_param = pre_check_param
+        self.prefer_region = prefer_region
+        self.storage_driver = storage_driver
+
+    def validate(self):
+        if self.pre_check_param:
+            self.pre_check_param.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pre_check_param is not None:
+            result['PreCheckParam'] = self.pre_check_param.to_map()
+        if self.prefer_region is not None:
+            result['PreferRegion'] = self.prefer_region
+        if self.storage_driver is not None:
+            result['StorageDriver'] = self.storage_driver
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PreCheckParam') is not None:
+            temp_model = InitMultipartFileUploadRequestOptionPreCheckParam()
+            self.pre_check_param = temp_model.from_map(m['PreCheckParam'])
+        if m.get('PreferRegion') is not None:
+            self.prefer_region = m.get('PreferRegion')
+        if m.get('StorageDriver') is not None:
+            self.storage_driver = m.get('StorageDriver')
+        return self
+
+
+class InitMultipartFileUploadRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class InitMultipartFileUploadRequest(TeaModel):
+    def __init__(
+        self,
+        option: InitMultipartFileUploadRequestOption = None,
+        parent_dentry_uuid: str = None,
+        tenant_context: InitMultipartFileUploadRequestTenantContext = None,
+    ):
+        self.option = option
+        self.parent_dentry_uuid = parent_dentry_uuid
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.option:
+            self.option.validate()
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.option is not None:
+            result['Option'] = self.option.to_map()
+        if self.parent_dentry_uuid is not None:
+            result['ParentDentryUuid'] = self.parent_dentry_uuid
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Option') is not None:
+            temp_model = InitMultipartFileUploadRequestOption()
+            self.option = temp_model.from_map(m['Option'])
+        if m.get('ParentDentryUuid') is not None:
+            self.parent_dentry_uuid = m.get('ParentDentryUuid')
+        if m.get('TenantContext') is not None:
+            temp_model = InitMultipartFileUploadRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class InitMultipartFileUploadShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        option_shrink: str = None,
+        parent_dentry_uuid: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        self.option_shrink = option_shrink
+        self.parent_dentry_uuid = parent_dentry_uuid
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.option_shrink is not None:
+            result['Option'] = self.option_shrink
+        if self.parent_dentry_uuid is not None:
+            result['ParentDentryUuid'] = self.parent_dentry_uuid
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Option') is not None:
+            self.option_shrink = m.get('Option')
+        if m.get('ParentDentryUuid') is not None:
+            self.parent_dentry_uuid = m.get('ParentDentryUuid')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class InitMultipartFileUploadResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        storage_driver: str = None,
+        upload_key: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.request_id = request_id
+        self.storage_driver = storage_driver
+        self.upload_key = upload_key
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.storage_driver is not None:
+            result['storageDriver'] = self.storage_driver
+        if self.upload_key is not None:
+            result['uploadKey'] = self.upload_key
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('storageDriver') is not None:
+            self.storage_driver = m.get('storageDriver')
+        if m.get('uploadKey') is not None:
+            self.upload_key = m.get('uploadKey')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class InitMultipartFileUploadResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InitMultipartFileUploadResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InitMultipartFileUploadResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class InsertColumnsBeforeHeadersAccountContext(TeaModel):
     def __init__(
         self,
@@ -38978,11 +41421,15 @@ class InviteUsersRequestTenantContext(TeaModel):
 class InviteUsersRequestPhoneInviteeList(TeaModel):
     def __init__(
         self,
+        invite_client: bool = None,
         nick: str = None,
         phone_number: str = None,
+        status_code: str = None,
     ):
+        self.invite_client = invite_client
         self.nick = nick
         self.phone_number = phone_number
+        self.status_code = status_code
 
     def validate(self):
         pass
@@ -38993,18 +41440,26 @@ class InviteUsersRequestPhoneInviteeList(TeaModel):
             return _map
 
         result = dict()
+        if self.invite_client is not None:
+            result['InviteClient'] = self.invite_client
         if self.nick is not None:
             result['Nick'] = self.nick
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InviteClient') is not None:
+            self.invite_client = m.get('InviteClient')
         if m.get('Nick') is not None:
             self.nick = m.get('Nick')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
         return self
 
 
@@ -39125,10 +41580,14 @@ class InviteUsersResponseBody(TeaModel):
         self,
         request_id: str = None,
         success: bool = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
     ):
         # requestId
         self.request_id = request_id
         self.success = success
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
 
     def validate(self):
         pass
@@ -39143,6 +41602,10 @@ class InviteUsersResponseBody(TeaModel):
             result['requestId'] = self.request_id
         if self.success is not None:
             result['success'] = self.success
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
         return result
 
     def from_map(self, m: dict = None):
@@ -39151,6 +41614,10 @@ class InviteUsersResponseBody(TeaModel):
             self.request_id = m.get('requestId')
         if m.get('success') is not None:
             self.success = m.get('success')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
         return self
 
 
