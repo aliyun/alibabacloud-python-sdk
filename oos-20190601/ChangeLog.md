@@ -1,3 +1,9 @@
+2024-08-08 Version: 3.2.1
+- Update API GetApplicationGroup: update response param.
+- Update API UpdateApplicationGroup: add param OperationName.
+- Update API UpdateApplicationGroup: add param Parameters.
+
+
 2024-07-29 Version: 3.2.0
 - Support API ListInstancePackageStates.
 - Support API UpdateInstancePackageState.

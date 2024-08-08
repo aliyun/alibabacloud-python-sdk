@@ -8627,17 +8627,21 @@ class Client(OpenApiClient):
 
     def update_application_group_with_options(
         self,
-        request: oos_20190601_models.UpdateApplicationGroupRequest,
+        tmp_req: oos_20190601_models.UpdateApplicationGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateApplicationGroupResponse:
         """
         @summary Updates the information of an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
         
-        @param request: UpdateApplicationGroupRequest
+        @param tmp_req: UpdateApplicationGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateApplicationGroupResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.UpdateApplicationGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
         if not UtilClient.is_unset(request.application_name):
             query['ApplicationName'] = request.application_name
@@ -8645,6 +8649,10 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.new_name):
             query['NewName'] = request.new_name
+        if not UtilClient.is_unset(request.operation_name):
+            query['OperationName'] = request.operation_name
+        if not UtilClient.is_unset(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -8668,17 +8676,21 @@ class Client(OpenApiClient):
 
     async def update_application_group_with_options_async(
         self,
-        request: oos_20190601_models.UpdateApplicationGroupRequest,
+        tmp_req: oos_20190601_models.UpdateApplicationGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> oos_20190601_models.UpdateApplicationGroupResponse:
         """
         @summary Updates the information of an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
         
-        @param request: UpdateApplicationGroupRequest
+        @param tmp_req: UpdateApplicationGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateApplicationGroupResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = oos_20190601_models.UpdateApplicationGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
         if not UtilClient.is_unset(request.application_name):
             query['ApplicationName'] = request.application_name
@@ -8686,6 +8698,10 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.new_name):
             query['NewName'] = request.new_name
+        if not UtilClient.is_unset(request.operation_name):
+            query['OperationName'] = request.operation_name
+        if not UtilClient.is_unset(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(

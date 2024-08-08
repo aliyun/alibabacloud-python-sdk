@@ -5714,6 +5714,7 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
         import_tag_key: str = None,
         import_tag_value: str = None,
         name: str = None,
+        operation_metadata: str = None,
         progress: str = None,
         status: str = None,
         status_reason: str = None,
@@ -5739,6 +5740,7 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
         self.import_tag_value = import_tag_value
         # The name of the application group.
         self.name = name
+        self.operation_metadata = operation_metadata
         # The creation progress of the application instance.
         self.progress = progress
         # The state of the application group.
@@ -5777,6 +5779,8 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
             result['ImportTagValue'] = self.import_tag_value
         if self.name is not None:
             result['Name'] = self.name
+        if self.operation_metadata is not None:
+            result['OperationMetadata'] = self.operation_metadata
         if self.progress is not None:
             result['Progress'] = self.progress
         if self.status is not None:
@@ -5809,6 +5813,8 @@ class GetApplicationGroupResponseBodyApplicationGroup(TeaModel):
             self.import_tag_value = m.get('ImportTagValue')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('OperationMetadata') is not None:
+            self.operation_metadata = m.get('OperationMetadata')
         if m.get('Progress') is not None:
             self.progress = m.get('Progress')
         if m.get('Status') is not None:
@@ -19137,6 +19143,8 @@ class UpdateApplicationGroupRequest(TeaModel):
         application_name: str = None,
         name: str = None,
         new_name: str = None,
+        operation_name: str = None,
+        parameters: Dict[str, Any] = None,
         region_id: str = None,
     ):
         # The application name.
@@ -19149,6 +19157,8 @@ class UpdateApplicationGroupRequest(TeaModel):
         self.name = name
         # The new name of the application group.
         self.new_name = new_name
+        self.operation_name = operation_name
+        self.parameters = parameters
         # The region ID. Set the value to cn-hangzhou.
         self.region_id = region_id
 
@@ -19167,6 +19177,10 @@ class UpdateApplicationGroupRequest(TeaModel):
             result['Name'] = self.name
         if self.new_name is not None:
             result['NewName'] = self.new_name
+        if self.operation_name is not None:
+            result['OperationName'] = self.operation_name
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -19179,6 +19193,75 @@ class UpdateApplicationGroupRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('NewName') is not None:
             self.new_name = m.get('NewName')
+        if m.get('OperationName') is not None:
+            self.operation_name = m.get('OperationName')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class UpdateApplicationGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        application_name: str = None,
+        name: str = None,
+        new_name: str = None,
+        operation_name: str = None,
+        parameters_shrink: str = None,
+        region_id: str = None,
+    ):
+        # The application name.
+        # 
+        # This parameter is required.
+        self.application_name = application_name
+        # The name of the application group.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The new name of the application group.
+        self.new_name = new_name
+        self.operation_name = operation_name
+        self.parameters_shrink = parameters_shrink
+        # The region ID. Set the value to cn-hangzhou.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.new_name is not None:
+            result['NewName'] = self.new_name
+        if self.operation_name is not None:
+            result['OperationName'] = self.operation_name
+        if self.parameters_shrink is not None:
+            result['Parameters'] = self.parameters_shrink
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NewName') is not None:
+            self.new_name = m.get('NewName')
+        if m.get('OperationName') is not None:
+            self.operation_name = m.get('OperationName')
+        if m.get('Parameters') is not None:
+            self.parameters_shrink = m.get('Parameters')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
