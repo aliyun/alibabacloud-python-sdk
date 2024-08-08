@@ -41,12 +41,140 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def create_autofe_experiment_with_options(
+        self,
+        request: pai_auto_ml20220828_models.CreateAutofeExperimentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_auto_ml20220828_models.CreateAutofeExperimentResponse:
+        """
+        @summary CreateAutofeExperiment
+        
+        @param request: CreateAutofeExperimentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAutofeExperimentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.autofe_experiment_configuration):
+            body['AutofeExperimentConfiguration'] = request.autofe_experiment_configuration
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAutofeExperiment',
+            version='2022-08-28',
+            protocol='HTTPS',
+            pathname=f'/api/automl/v1/autofe/experiment',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_auto_ml20220828_models.CreateAutofeExperimentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_autofe_experiment_with_options_async(
+        self,
+        request: pai_auto_ml20220828_models.CreateAutofeExperimentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_auto_ml20220828_models.CreateAutofeExperimentResponse:
+        """
+        @summary CreateAutofeExperiment
+        
+        @param request: CreateAutofeExperimentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAutofeExperimentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.autofe_experiment_configuration):
+            body['AutofeExperimentConfiguration'] = request.autofe_experiment_configuration
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAutofeExperiment',
+            version='2022-08-28',
+            protocol='HTTPS',
+            pathname=f'/api/automl/v1/autofe/experiment',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_auto_ml20220828_models.CreateAutofeExperimentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_autofe_experiment(
+        self,
+        request: pai_auto_ml20220828_models.CreateAutofeExperimentRequest,
+    ) -> pai_auto_ml20220828_models.CreateAutofeExperimentResponse:
+        """
+        @summary CreateAutofeExperiment
+        
+        @param request: CreateAutofeExperimentRequest
+        @return: CreateAutofeExperimentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_autofe_experiment_with_options(request, headers, runtime)
+
+    async def create_autofe_experiment_async(
+        self,
+        request: pai_auto_ml20220828_models.CreateAutofeExperimentRequest,
+    ) -> pai_auto_ml20220828_models.CreateAutofeExperimentResponse:
+        """
+        @summary CreateAutofeExperiment
+        
+        @param request: CreateAutofeExperimentRequest
+        @return: CreateAutofeExperimentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_autofe_experiment_with_options_async(request, headers, runtime)
+
     def create_hpo_experiment_with_options(
         self,
         request: pai_auto_ml20220828_models.CreateHpoExperimentRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.CreateHpoExperimentResponse:
+        """
+        @summary Create an HyperParameter Optimization experiment.
+        
+        @param request: CreateHpoExperimentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHpoExperimentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accessibility):
@@ -85,6 +213,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.CreateHpoExperimentResponse:
+        """
+        @summary Create an HyperParameter Optimization experiment.
+        
+        @param request: CreateHpoExperimentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHpoExperimentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accessibility):
@@ -121,6 +257,12 @@ class Client(OpenApiClient):
         self,
         request: pai_auto_ml20220828_models.CreateHpoExperimentRequest,
     ) -> pai_auto_ml20220828_models.CreateHpoExperimentResponse:
+        """
+        @summary Create an HyperParameter Optimization experiment.
+        
+        @param request: CreateHpoExperimentRequest
+        @return: CreateHpoExperimentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_hpo_experiment_with_options(request, headers, runtime)
@@ -129,9 +271,97 @@ class Client(OpenApiClient):
         self,
         request: pai_auto_ml20220828_models.CreateHpoExperimentRequest,
     ) -> pai_auto_ml20220828_models.CreateHpoExperimentResponse:
+        """
+        @summary Create an HyperParameter Optimization experiment.
+        
+        @param request: CreateHpoExperimentRequest
+        @return: CreateHpoExperimentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_hpo_experiment_with_options_async(request, headers, runtime)
+
+    def create_service_identity_role_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_auto_ml20220828_models.CreateServiceIdentityRoleResponse:
+        """
+        @summary CreateServiceIdentityRole
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceIdentityRoleResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreateServiceIdentityRole',
+            version='2022-08-28',
+            protocol='HTTPS',
+            pathname=f'/api/automl/v1/serviceidentityrole',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_auto_ml20220828_models.CreateServiceIdentityRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_identity_role_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_auto_ml20220828_models.CreateServiceIdentityRoleResponse:
+        """
+        @summary CreateServiceIdentityRole
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceIdentityRoleResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreateServiceIdentityRole',
+            version='2022-08-28',
+            protocol='HTTPS',
+            pathname=f'/api/automl/v1/serviceidentityrole',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_auto_ml20220828_models.CreateServiceIdentityRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_service_identity_role(self) -> pai_auto_ml20220828_models.CreateServiceIdentityRoleResponse:
+        """
+        @summary CreateServiceIdentityRole
+        
+        @return: CreateServiceIdentityRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_service_identity_role_with_options(headers, runtime)
+
+    async def create_service_identity_role_async(self) -> pai_auto_ml20220828_models.CreateServiceIdentityRoleResponse:
+        """
+        @summary CreateServiceIdentityRole
+        
+        @return: CreateServiceIdentityRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_service_identity_role_with_options_async(headers, runtime)
 
     def delete_hpo_experiment_with_options(
         self,
@@ -139,6 +369,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.DeleteHpoExperimentResponse:
+        """
+        @summary Delete an HPO experiment
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHpoExperimentResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -164,6 +401,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.DeleteHpoExperimentResponse:
+        """
+        @summary Delete an HPO experiment
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHpoExperimentResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -187,6 +431,11 @@ class Client(OpenApiClient):
         self,
         experiment_id: str,
     ) -> pai_auto_ml20220828_models.DeleteHpoExperimentResponse:
+        """
+        @summary Delete an HPO experiment
+        
+        @return: DeleteHpoExperimentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_hpo_experiment_with_options(experiment_id, headers, runtime)
@@ -195,9 +444,104 @@ class Client(OpenApiClient):
         self,
         experiment_id: str,
     ) -> pai_auto_ml20220828_models.DeleteHpoExperimentResponse:
+        """
+        @summary Delete an HPO experiment
+        
+        @return: DeleteHpoExperimentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_hpo_experiment_with_options_async(experiment_id, headers, runtime)
+
+    def get_autofe_experiment_with_options(
+        self,
+        experiment_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_auto_ml20220828_models.GetAutofeExperimentResponse:
+        """
+        @summary Get AutoFE Experiment。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAutofeExperimentResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetAutofeExperiment',
+            version='2022-08-28',
+            protocol='HTTPS',
+            pathname=f'/api/automl/v1/autofe/experiment/{OpenApiUtilClient.get_encode_param(experiment_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_auto_ml20220828_models.GetAutofeExperimentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_autofe_experiment_with_options_async(
+        self,
+        experiment_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_auto_ml20220828_models.GetAutofeExperimentResponse:
+        """
+        @summary Get AutoFE Experiment。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAutofeExperimentResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetAutofeExperiment',
+            version='2022-08-28',
+            protocol='HTTPS',
+            pathname=f'/api/automl/v1/autofe/experiment/{OpenApiUtilClient.get_encode_param(experiment_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_auto_ml20220828_models.GetAutofeExperimentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_autofe_experiment(
+        self,
+        experiment_id: str,
+    ) -> pai_auto_ml20220828_models.GetAutofeExperimentResponse:
+        """
+        @summary Get AutoFE Experiment。
+        
+        @return: GetAutofeExperimentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_autofe_experiment_with_options(experiment_id, headers, runtime)
+
+    async def get_autofe_experiment_async(
+        self,
+        experiment_id: str,
+    ) -> pai_auto_ml20220828_models.GetAutofeExperimentResponse:
+        """
+        @summary Get AutoFE Experiment。
+        
+        @return: GetAutofeExperimentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_autofe_experiment_with_options_async(experiment_id, headers, runtime)
 
     def get_hpo_experiment_with_options(
         self,
@@ -205,6 +549,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.GetHpoExperimentResponse:
+        """
+        @summary get hpo experiment by user id and exp id
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHpoExperimentResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -230,6 +581,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.GetHpoExperimentResponse:
+        """
+        @summary get hpo experiment by user id and exp id
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHpoExperimentResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -253,6 +611,11 @@ class Client(OpenApiClient):
         self,
         experiment_id: str,
     ) -> pai_auto_ml20220828_models.GetHpoExperimentResponse:
+        """
+        @summary get hpo experiment by user id and exp id
+        
+        @return: GetHpoExperimentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_hpo_experiment_with_options(experiment_id, headers, runtime)
@@ -261,6 +624,11 @@ class Client(OpenApiClient):
         self,
         experiment_id: str,
     ) -> pai_auto_ml20220828_models.GetHpoExperimentResponse:
+        """
+        @summary get hpo experiment by user id and exp id
+        
+        @return: GetHpoExperimentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_hpo_experiment_with_options_async(experiment_id, headers, runtime)
@@ -272,6 +640,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.GetHpoTrialResponse:
+        """
+        @summary Get trial detail information
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHpoTrialResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -298,6 +673,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.GetHpoTrialResponse:
+        """
+        @summary Get trial detail information
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHpoTrialResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -322,6 +704,11 @@ class Client(OpenApiClient):
         experiment_id: str,
         trial_id: str,
     ) -> pai_auto_ml20220828_models.GetHpoTrialResponse:
+        """
+        @summary Get trial detail information
+        
+        @return: GetHpoTrialResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_hpo_trial_with_options(experiment_id, trial_id, headers, runtime)
@@ -331,9 +718,96 @@ class Client(OpenApiClient):
         experiment_id: str,
         trial_id: str,
     ) -> pai_auto_ml20220828_models.GetHpoTrialResponse:
+        """
+        @summary Get trial detail information
+        
+        @return: GetHpoTrialResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_hpo_trial_with_options_async(experiment_id, trial_id, headers, runtime)
+
+    def get_service_identity_role_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_auto_ml20220828_models.GetServiceIdentityRoleResponse:
+        """
+        @summary GetServiceIdentityRole, return role name if SLR exists, empty otherwise
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceIdentityRoleResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetServiceIdentityRole',
+            version='2022-08-28',
+            protocol='HTTPS',
+            pathname=f'/api/automl/v1/serviceidentityrole',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_auto_ml20220828_models.GetServiceIdentityRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_service_identity_role_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_auto_ml20220828_models.GetServiceIdentityRoleResponse:
+        """
+        @summary GetServiceIdentityRole, return role name if SLR exists, empty otherwise
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceIdentityRoleResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetServiceIdentityRole',
+            version='2022-08-28',
+            protocol='HTTPS',
+            pathname=f'/api/automl/v1/serviceidentityrole',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_auto_ml20220828_models.GetServiceIdentityRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_service_identity_role(self) -> pai_auto_ml20220828_models.GetServiceIdentityRoleResponse:
+        """
+        @summary GetServiceIdentityRole, return role name if SLR exists, empty otherwise
+        
+        @return: GetServiceIdentityRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_service_identity_role_with_options(headers, runtime)
+
+    async def get_service_identity_role_async(self) -> pai_auto_ml20220828_models.GetServiceIdentityRoleResponse:
+        """
+        @summary GetServiceIdentityRole, return role name if SLR exists, empty otherwise
+        
+        @return: GetServiceIdentityRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_service_identity_role_with_options_async(headers, runtime)
 
     def list_hpo_experiment_logs_with_options(
         self,
@@ -342,6 +816,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.ListHpoExperimentLogsResponse:
+        """
+        @summary list the content of a specified hpo experiment log
+        
+        @param request: ListHpoExperimentLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHpoExperimentLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.log_name):
@@ -377,6 +859,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.ListHpoExperimentLogsResponse:
+        """
+        @summary list the content of a specified hpo experiment log
+        
+        @param request: ListHpoExperimentLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHpoExperimentLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.log_name):
@@ -410,6 +900,12 @@ class Client(OpenApiClient):
         experiment_id: str,
         request: pai_auto_ml20220828_models.ListHpoExperimentLogsRequest,
     ) -> pai_auto_ml20220828_models.ListHpoExperimentLogsResponse:
+        """
+        @summary list the content of a specified hpo experiment log
+        
+        @param request: ListHpoExperimentLogsRequest
+        @return: ListHpoExperimentLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_hpo_experiment_logs_with_options(experiment_id, request, headers, runtime)
@@ -419,6 +915,12 @@ class Client(OpenApiClient):
         experiment_id: str,
         request: pai_auto_ml20220828_models.ListHpoExperimentLogsRequest,
     ) -> pai_auto_ml20220828_models.ListHpoExperimentLogsResponse:
+        """
+        @summary list the content of a specified hpo experiment log
+        
+        @param request: ListHpoExperimentLogsRequest
+        @return: ListHpoExperimentLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_hpo_experiment_logs_with_options_async(experiment_id, request, headers, runtime)
@@ -429,6 +931,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.ListHpoExperimentsResponse:
+        """
+        @summary List HPO experiments
+        
+        @param request: ListHpoExperimentsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHpoExperimentsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accessibility):
@@ -481,6 +991,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.ListHpoExperimentsResponse:
+        """
+        @summary List HPO experiments
+        
+        @param request: ListHpoExperimentsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHpoExperimentsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accessibility):
@@ -531,6 +1049,12 @@ class Client(OpenApiClient):
         self,
         request: pai_auto_ml20220828_models.ListHpoExperimentsRequest,
     ) -> pai_auto_ml20220828_models.ListHpoExperimentsResponse:
+        """
+        @summary List HPO experiments
+        
+        @param request: ListHpoExperimentsRequest
+        @return: ListHpoExperimentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_hpo_experiments_with_options(request, headers, runtime)
@@ -539,6 +1063,12 @@ class Client(OpenApiClient):
         self,
         request: pai_auto_ml20220828_models.ListHpoExperimentsRequest,
     ) -> pai_auto_ml20220828_models.ListHpoExperimentsResponse:
+        """
+        @summary List HPO experiments
+        
+        @param request: ListHpoExperimentsRequest
+        @return: ListHpoExperimentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_hpo_experiments_with_options_async(request, headers, runtime)
@@ -550,6 +1080,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.ListHpoTrialCommandsResponse:
+        """
+        @summary 返回一个trial所对应的任务里所有已经执行的命令
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHpoTrialCommandsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -576,6 +1113,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.ListHpoTrialCommandsResponse:
+        """
+        @summary 返回一个trial所对应的任务里所有已经执行的命令
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHpoTrialCommandsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -600,6 +1144,11 @@ class Client(OpenApiClient):
         experiment_id: str,
         trial_id: str,
     ) -> pai_auto_ml20220828_models.ListHpoTrialCommandsResponse:
+        """
+        @summary 返回一个trial所对应的任务里所有已经执行的命令
+        
+        @return: ListHpoTrialCommandsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_hpo_trial_commands_with_options(experiment_id, trial_id, headers, runtime)
@@ -609,6 +1158,11 @@ class Client(OpenApiClient):
         experiment_id: str,
         trial_id: str,
     ) -> pai_auto_ml20220828_models.ListHpoTrialCommandsResponse:
+        """
+        @summary 返回一个trial所对应的任务里所有已经执行的命令
+        
+        @return: ListHpoTrialCommandsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_hpo_trial_commands_with_options_async(experiment_id, trial_id, headers, runtime)
@@ -620,6 +1174,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.ListHpoTrialLogNamesResponse:
+        """
+        @summary List all log file names a trial have.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHpoTrialLogNamesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -646,6 +1207,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.ListHpoTrialLogNamesResponse:
+        """
+        @summary List all log file names a trial have.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHpoTrialLogNamesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -670,6 +1238,11 @@ class Client(OpenApiClient):
         experiment_id: str,
         trial_id: str,
     ) -> pai_auto_ml20220828_models.ListHpoTrialLogNamesResponse:
+        """
+        @summary List all log file names a trial have.
+        
+        @return: ListHpoTrialLogNamesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_hpo_trial_log_names_with_options(experiment_id, trial_id, headers, runtime)
@@ -679,6 +1252,11 @@ class Client(OpenApiClient):
         experiment_id: str,
         trial_id: str,
     ) -> pai_auto_ml20220828_models.ListHpoTrialLogNamesResponse:
+        """
+        @summary List all log file names a trial have.
+        
+        @return: ListHpoTrialLogNamesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_hpo_trial_log_names_with_options_async(experiment_id, trial_id, headers, runtime)
@@ -691,6 +1269,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.ListHpoTrialLogsResponse:
+        """
+        @summary List Trial log lines
+        
+        @param request: ListHpoTrialLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHpoTrialLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.log_name):
@@ -727,6 +1313,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.ListHpoTrialLogsResponse:
+        """
+        @summary List Trial log lines
+        
+        @param request: ListHpoTrialLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHpoTrialLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.log_name):
@@ -761,6 +1355,12 @@ class Client(OpenApiClient):
         trial_id: str,
         request: pai_auto_ml20220828_models.ListHpoTrialLogsRequest,
     ) -> pai_auto_ml20220828_models.ListHpoTrialLogsResponse:
+        """
+        @summary List Trial log lines
+        
+        @param request: ListHpoTrialLogsRequest
+        @return: ListHpoTrialLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_hpo_trial_logs_with_options(experiment_id, trial_id, request, headers, runtime)
@@ -771,6 +1371,12 @@ class Client(OpenApiClient):
         trial_id: str,
         request: pai_auto_ml20220828_models.ListHpoTrialLogsRequest,
     ) -> pai_auto_ml20220828_models.ListHpoTrialLogsResponse:
+        """
+        @summary List Trial log lines
+        
+        @param request: ListHpoTrialLogsRequest
+        @return: ListHpoTrialLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_hpo_trial_logs_with_options_async(experiment_id, trial_id, request, headers, runtime)
@@ -782,6 +1388,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.ListHpoTrialsResponse:
+        """
+        @summary List HPO trials
+        
+        @param request: ListHpoTrialsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHpoTrialsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order):
@@ -819,6 +1433,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.ListHpoTrialsResponse:
+        """
+        @summary List HPO trials
+        
+        @param request: ListHpoTrialsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHpoTrialsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order):
@@ -854,6 +1476,12 @@ class Client(OpenApiClient):
         experiment_id: str,
         request: pai_auto_ml20220828_models.ListHpoTrialsRequest,
     ) -> pai_auto_ml20220828_models.ListHpoTrialsResponse:
+        """
+        @summary List HPO trials
+        
+        @param request: ListHpoTrialsRequest
+        @return: ListHpoTrialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_hpo_trials_with_options(experiment_id, request, headers, runtime)
@@ -863,6 +1491,12 @@ class Client(OpenApiClient):
         experiment_id: str,
         request: pai_auto_ml20220828_models.ListHpoTrialsRequest,
     ) -> pai_auto_ml20220828_models.ListHpoTrialsResponse:
+        """
+        @summary List HPO trials
+        
+        @param request: ListHpoTrialsRequest
+        @return: ListHpoTrialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_hpo_trials_with_options_async(experiment_id, request, headers, runtime)
@@ -874,6 +1508,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.RestartHpoTrialsResponse:
+        """
+        @summary Restart HPO trials
+        
+        @param request: RestartHpoTrialsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartHpoTrialsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.trial_hyper_parameters):
@@ -907,6 +1549,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.RestartHpoTrialsResponse:
+        """
+        @summary Restart HPO trials
+        
+        @param request: RestartHpoTrialsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartHpoTrialsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.trial_hyper_parameters):
@@ -938,6 +1588,12 @@ class Client(OpenApiClient):
         experiment_id: str,
         request: pai_auto_ml20220828_models.RestartHpoTrialsRequest,
     ) -> pai_auto_ml20220828_models.RestartHpoTrialsResponse:
+        """
+        @summary Restart HPO trials
+        
+        @param request: RestartHpoTrialsRequest
+        @return: RestartHpoTrialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.restart_hpo_trials_with_options(experiment_id, request, headers, runtime)
@@ -947,6 +1603,12 @@ class Client(OpenApiClient):
         experiment_id: str,
         request: pai_auto_ml20220828_models.RestartHpoTrialsRequest,
     ) -> pai_auto_ml20220828_models.RestartHpoTrialsResponse:
+        """
+        @summary Restart HPO trials
+        
+        @param request: RestartHpoTrialsRequest
+        @return: RestartHpoTrialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.restart_hpo_trials_with_options_async(experiment_id, request, headers, runtime)
@@ -957,6 +1619,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.StopHpoExperimentResponse:
+        """
+        @summary calling hpo StopExperiment
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopHpoExperimentResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -982,6 +1651,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.StopHpoExperimentResponse:
+        """
+        @summary calling hpo StopExperiment
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopHpoExperimentResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1005,6 +1681,11 @@ class Client(OpenApiClient):
         self,
         experiment_id: str,
     ) -> pai_auto_ml20220828_models.StopHpoExperimentResponse:
+        """
+        @summary calling hpo StopExperiment
+        
+        @return: StopHpoExperimentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.stop_hpo_experiment_with_options(experiment_id, headers, runtime)
@@ -1013,6 +1694,11 @@ class Client(OpenApiClient):
         self,
         experiment_id: str,
     ) -> pai_auto_ml20220828_models.StopHpoExperimentResponse:
+        """
+        @summary calling hpo StopExperiment
+        
+        @return: StopHpoExperimentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_hpo_experiment_with_options_async(experiment_id, headers, runtime)
@@ -1024,6 +1710,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.StopHpoTrialsResponse:
+        """
+        @summary Stop an HPO trial.
+        
+        @param request: StopHpoTrialsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopHpoTrialsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.trial_ids):
@@ -1055,6 +1749,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.StopHpoTrialsResponse:
+        """
+        @summary Stop an HPO trial.
+        
+        @param request: StopHpoTrialsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopHpoTrialsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.trial_ids):
@@ -1084,6 +1786,12 @@ class Client(OpenApiClient):
         experiment_id: str,
         request: pai_auto_ml20220828_models.StopHpoTrialsRequest,
     ) -> pai_auto_ml20220828_models.StopHpoTrialsResponse:
+        """
+        @summary Stop an HPO trial.
+        
+        @param request: StopHpoTrialsRequest
+        @return: StopHpoTrialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.stop_hpo_trials_with_options(experiment_id, request, headers, runtime)
@@ -1093,6 +1801,12 @@ class Client(OpenApiClient):
         experiment_id: str,
         request: pai_auto_ml20220828_models.StopHpoTrialsRequest,
     ) -> pai_auto_ml20220828_models.StopHpoTrialsResponse:
+        """
+        @summary Stop an HPO trial.
+        
+        @param request: StopHpoTrialsRequest
+        @return: StopHpoTrialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_hpo_trials_with_options_async(experiment_id, request, headers, runtime)
@@ -1104,6 +1818,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.UpdateHpoExperimentResponse:
+        """
+        @summary Update a running HPO experiment\\"s configuration
+        
+        @param request: UpdateHpoExperimentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHpoExperimentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accessibility):
@@ -1143,6 +1865,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_auto_ml20220828_models.UpdateHpoExperimentResponse:
+        """
+        @summary Update a running HPO experiment\\"s configuration
+        
+        @param request: UpdateHpoExperimentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHpoExperimentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accessibility):
@@ -1180,6 +1910,12 @@ class Client(OpenApiClient):
         experiment_id: str,
         request: pai_auto_ml20220828_models.UpdateHpoExperimentRequest,
     ) -> pai_auto_ml20220828_models.UpdateHpoExperimentResponse:
+        """
+        @summary Update a running HPO experiment\\"s configuration
+        
+        @param request: UpdateHpoExperimentRequest
+        @return: UpdateHpoExperimentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_hpo_experiment_with_options(experiment_id, request, headers, runtime)
@@ -1189,6 +1925,12 @@ class Client(OpenApiClient):
         experiment_id: str,
         request: pai_auto_ml20220828_models.UpdateHpoExperimentRequest,
     ) -> pai_auto_ml20220828_models.UpdateHpoExperimentResponse:
+        """
+        @summary Update a running HPO experiment\\"s configuration
+        
+        @param request: UpdateHpoExperimentRequest
+        @return: UpdateHpoExperimentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_hpo_experiment_with_options_async(experiment_id, request, headers, runtime)

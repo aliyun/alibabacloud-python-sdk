@@ -16,8 +16,11 @@ class AutofeExperimentConfigurationOdpsConfig(TeaModel):
     ):
         self.odps_access_id = odps_access_id
         self.odps_access_key = odps_access_key
+        # This parameter is required.
         self.odps_endpoint = odps_endpoint
+        # This parameter is required.
         self.odps_project_name = odps_project_name
+        # This parameter is required.
         self.odps_region_id = odps_region_id
         self.odps_role_arn = odps_role_arn
 
@@ -72,7 +75,9 @@ class AutofeExperimentConfigurationOssConfig(TeaModel):
     ):
         self.oss_access_id = oss_access_id
         self.oss_access_key = oss_access_key
+        # This parameter is required.
         self.oss_bucket = oss_bucket
+        # This parameter is required.
         self.oss_endpoint = oss_endpoint
         self.oss_role_arn = oss_role_arn
 
@@ -144,6 +149,7 @@ class AutofeExperimentConfigurationYmlConfig(TeaModel):
         self.analyze_exp_id = analyze_exp_id
         self.cpu = cpu
         self.data_partition = data_partition
+        # This parameter is required.
         self.data_source = data_source
         self.data_type = data_type
         self.debug_mode = debug_mode
@@ -151,8 +157,10 @@ class AutofeExperimentConfigurationYmlConfig(TeaModel):
         self.feature_selection = feature_selection
         self.filter_thresh = filter_thresh
         self.iv_thresh = iv_thresh
+        # This parameter is required.
         self.label = label
         self.memory = memory
+        # This parameter is required.
         self.output_config_oss_dir = output_config_oss_dir
         self.pipeline_exp_id = pipeline_exp_id
         self.reuse_results = reuse_results
@@ -161,6 +169,7 @@ class AutofeExperimentConfigurationYmlConfig(TeaModel):
         self.selection_exp_id = selection_exp_id
         self.skip_select = skip_select
         self.workers = workers
+        # This parameter is required.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -278,8 +287,11 @@ class AutofeExperimentConfiguration(TeaModel):
         oss_config: AutofeExperimentConfigurationOssConfig = None,
         yml_config: AutofeExperimentConfigurationYmlConfig = None,
     ):
+        # This parameter is required.
         self.odps_config = odps_config
+        # This parameter is required.
         self.oss_config = oss_config
+        # This parameter is required.
         self.yml_config = yml_config
 
     def validate(self):
@@ -423,9 +435,13 @@ class HpoExperimentConfigMetricConfig(TeaModel):
         metric_type: str = None,
         source_list_final_mode: str = None,
     ):
+        # This parameter is required.
         self.final_mode = final_mode
+        # This parameter is required.
         self.metric_dict = metric_dict
+        # This parameter is required.
         self.metric_source = metric_source
+        # This parameter is required.
         self.metric_type = metric_type
         self.source_list_final_mode = source_list_final_mode
 
@@ -736,7 +752,9 @@ class HpoExperimentConfigPlatformConfig(TeaModel):
         name: str = None,
         resume: str = None,
     ):
+        # This parameter is required.
         self.cmd = cmd
+        # This parameter is required.
         self.name = name
         self.resume = resume
 
@@ -1059,6 +1077,7 @@ class HpoExperimentConfig(TeaModel):
     ):
         self.dlc_config = dlc_config
         self.k_8s_config = k_8s_config
+        # This parameter is required.
         self.metric_config = metric_config
         self.monitor_config = monitor_config
         self.odps_config = odps_config
@@ -1066,6 +1085,7 @@ class HpoExperimentConfig(TeaModel):
         self.output_config = output_config
         self.paiflow_config = paiflow_config
         self.params_config = params_config
+        # This parameter is required.
         self.platform_config = platform_config
         self.schedule_config = schedule_config
         self.search_space = search_space
@@ -1182,6 +1202,152 @@ class HpoExperimentConfig(TeaModel):
         return self
 
 
+class CreateAutofeExperimentRequest(TeaModel):
+    def __init__(
+        self,
+        accessibility: str = None,
+        autofe_experiment_configuration: AutofeExperimentConfiguration = None,
+        description: str = None,
+        name: str = None,
+        workspace_id: str = None,
+    ):
+        self.accessibility = accessibility
+        self.autofe_experiment_configuration = autofe_experiment_configuration
+        self.description = description
+        # This parameter is required.
+        self.name = name
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.autofe_experiment_configuration:
+            self.autofe_experiment_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+        if self.autofe_experiment_configuration is not None:
+            result['AutofeExperimentConfiguration'] = self.autofe_experiment_configuration.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+        if m.get('AutofeExperimentConfiguration') is not None:
+            temp_model = AutofeExperimentConfiguration()
+            self.autofe_experiment_configuration = temp_model.from_map(m['AutofeExperimentConfiguration'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class CreateAutofeExperimentResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        detail: Dict[str, Any] = None,
+        experiment_id: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.detail = detail
+        self.experiment_id = experiment_id
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.detail is not None:
+            result['Detail'] = self.detail
+        if self.experiment_id is not None:
+            result['ExperimentId'] = self.experiment_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+        if m.get('ExperimentId') is not None:
+            self.experiment_id = m.get('ExperimentId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateAutofeExperimentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAutofeExperimentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAutofeExperimentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateHpoExperimentRequest(TeaModel):
     def __init__(
         self,
@@ -1191,10 +1357,15 @@ class CreateHpoExperimentRequest(TeaModel):
         name: str = None,
         workspace_id: str = None,
     ):
+        # Experiment accesibility, public or private.
         self.accessibility = accessibility
+        # Experiment description.
         self.description = description
+        # The config object of the expriment.
         self.hpo_experiment_configuration = hpo_experiment_configuration
+        # Experiment Name
         self.name = name
+        # AI Workspace ID
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -1244,10 +1415,15 @@ class CreateHpoExperimentResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
+        # Detailed information of the failure.
         self.detail = detail
+        # Id of the request
         self.experiment_id = experiment_id
+        # The error message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1327,6 +1503,93 @@ class CreateHpoExperimentResponse(TeaModel):
         return self
 
 
+class CreateServiceIdentityRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        role_name: str = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.role_name = role_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.role_name is not None:
+            result['RoleName'] = self.role_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RoleName') is not None:
+            self.role_name = m.get('RoleName')
+        return self
+
+
+class CreateServiceIdentityRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateServiceIdentityRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateServiceIdentityRoleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteHpoExperimentResponseBody(TeaModel):
     def __init__(
         self,
@@ -1335,9 +1598,13 @@ class DeleteHpoExperimentResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The error code when the API call is not successful.
         self.code = code
+        # Extra info on the execution failure.
         self.detail = detail
+        # The error message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1413,6 +1680,140 @@ class DeleteHpoExperimentResponse(TeaModel):
         return self
 
 
+class GetAutofeExperimentResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        creator: str = None,
+        detail: Dict[str, Any] = None,
+        experiment_id: str = None,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
+        job_meta: str = None,
+        message: str = None,
+        name: str = None,
+        request_id: str = None,
+        selected_features: str = None,
+        status: str = None,
+    ):
+        self.code = code
+        self.creator = creator
+        self.detail = detail
+        self.experiment_id = experiment_id
+        self.gmt_create_time = gmt_create_time
+        self.gmt_modified_time = gmt_modified_time
+        self.job_meta = job_meta
+        self.message = message
+        self.name = name
+        self.request_id = request_id
+        self.selected_features = selected_features
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.detail is not None:
+            result['Detail'] = self.detail
+        if self.experiment_id is not None:
+            result['ExperimentId'] = self.experiment_id
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.job_meta is not None:
+            result['JobMeta'] = self.job_meta
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.selected_features is not None:
+            result['SelectedFeatures'] = self.selected_features
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+        if m.get('ExperimentId') is not None:
+            self.experiment_id = m.get('ExperimentId')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('JobMeta') is not None:
+            self.job_meta = m.get('JobMeta')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SelectedFeatures') is not None:
+            self.selected_features = m.get('SelectedFeatures')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetAutofeExperimentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAutofeExperimentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAutofeExperimentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetHpoExperimentResponseBody(TeaModel):
     def __init__(
         self,
@@ -1438,26 +1839,47 @@ class GetHpoExperimentResponseBody(TeaModel):
         trial_status: Dict[str, str] = None,
         workspace_id: str = None,
     ):
+        # Accessibility of expriment, public or private.
         self.accessibility = accessibility
+        # Error when the API call is not success.
         self.code = code
+        # Experiment run environment configurations.
         self.config_ini = config_ini
+        # HPO search config yaml.
         self.config_yml = config_yml
+        # The one who created the experiment.
         self.creator = creator
+        # If the Experiment if deleted.
         self.deleted = deleted
+        # Description of the experiment.
         self.description = description
+        # Extra error message info.
         self.detail = detail
+        # Experiment ID.
         self.experiment_id = experiment_id
+        # Experiment create time.
         self.gmt_create_time = gmt_create_time
+        # Experiment last update time.
         self.gmt_modified_time = gmt_modified_time
+        # Experiment configuration in json format.
         self.hpo_experiment_configuration = hpo_experiment_configuration
+        # Experiment  Job type.
         self.job_type = job_type
+        # Error message.
         self.message = message
+        # Experiment name.
         self.name = name
+        # The ID of the request.
         self.request_id = request_id
+        # HPO hyperparameter search space.
         self.search_space = search_space
+        # Experiment status.
         self.status = status
+        # Trials amount run till now.
         self.trial_count = trial_count
+        # Status if a trial
         self.trial_status = trial_status
+        # AI Workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -1623,23 +2045,41 @@ class GetHpoTrialResponseBody(TeaModel):
         user_comment: str = None,
         user_score: int = None,
     ):
+        # Error code.
         self.code = code
+        # Extra error information.
         self.detail = detail
+        # Experiment ID.
         self.experiment_id = experiment_id
+        # Final metric of the trial.
         self.final_metric = final_metric
+        # Trial create time.
         self.gmt_create_time = gmt_create_time
+        # Trial last update time.
         self.gmt_modified_time = gmt_modified_time
+        # Hyperparameters used to run the trial.
         self.hyperparam = hyperparam
+        # trial meta infomation.
         self.job_meta = job_meta
+        # The error message.
         self.message = message
+        # metric details uploaded during running.
         self.metric = metric
+        # Name of the metric.
         self.metric_name = metric_name
+        # Trial output model.
         self.model = model
+        # Parameter id, start from 0.
         self.parameter_id = parameter_id
+        # The request ID.
         self.request_id = request_id
+        # Trial status.
         self.status = status
+        # Trail ID.
         self.trial_id = trial_id
+        # User added comments.
         self.user_comment = user_comment
+        # User updated score.
         self.user_score = user_score
 
     def validate(self):
@@ -1771,6 +2211,92 @@ class GetHpoTrialResponse(TeaModel):
         return self
 
 
+class GetServiceIdentityRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        role_name: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.role_name = role_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.role_name is not None:
+            result['RoleName'] = self.role_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RoleName') is not None:
+            self.role_name = m.get('RoleName')
+        return self
+
+
+class GetServiceIdentityRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetServiceIdentityRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetServiceIdentityRoleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListHpoExperimentLogsRequest(TeaModel):
     def __init__(
         self,
@@ -1778,8 +2304,11 @@ class ListHpoExperimentLogsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # Log name to be listed.
         self.log_name = log_name
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):
@@ -1820,11 +2349,17 @@ class ListHpoExperimentLogsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Error code.
         self.code = code
+        # Extra error message.
         self.detail = detail
+        # The log.
         self.logs = logs
+        # The error message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -1924,17 +2459,31 @@ class ListHpoExperimentsRequest(TeaModel):
         status: str = None,
         workspace_id: str = None,
     ):
+        # The accessibility of the experiments to be listed.
         self.accessibility = accessibility
+        # Who created the expriment.
         self.creator = creator
+        # Return experiment detailed configuration or not.
         self.include_config_data = include_config_data
+        # The maximum create time of the experiment.
         self.max_create_time = max_create_time
+        # The minimum create time of the experiment.
         self.min_create_time = min_create_time
+        # Experiment name filter.
         self.name = name
+        # ASC, DESC.
         self.order = order
+        # The page number.
+        # 
+        # Default value: 1.
         self.page_number = page_number
+        # Record number on each page
         self.page_size = page_size
+        # The returned experiments to be sorted by this column.
         self.sort_by = sort_by
+        # Experiment status to be listed.
         self.status = status
+        # The AI workspace ID the experiments belongs to.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -2021,21 +2570,37 @@ class ListHpoExperimentsResponseBodyExperiments(TeaModel):
         trial_status: Dict[str, str] = None,
         workspace_id: str = None,
     ):
+        # Experiment accessibility, private or public.
         self.accessibility = accessibility
+        # Experiment job run environment configurations.
         self.config_ini = config_ini
+        # HPO experiment run configuration.
         self.config_yml = config_yml
+        # The one who created the experiment.
         self.creator = creator
+        # If the experiment is deleted.
         self.deleted = deleted
+        # The description of the experiment.
         self.description = description
+        # Experiment ID.
         self.experiment_id = experiment_id
+        # Experiment Create Time.
         self.gmt_create_time = gmt_create_time
+        # Last modified time.
         self.gmt_modified_time = gmt_modified_time
+        # Experimetn job type.
         self.job_type = job_type
+        # Experiment name
         self.name = name
+        # Experiment hyperparameter search space.
         self.search_space = search_space
+        # Experiment status.
         self.status = status
+        # How many trials the experiment have.
         self.trial_count = trial_count
+        # Trial status map.
         self.trial_status = trial_status
+        # The ID of the AI workspace.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -2128,11 +2693,17 @@ class ListHpoExperimentsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Error code.
         self.code = code
+        # Extra error information.
         self.detail = detail
+        # experiment array.
         self.experiments = experiments
+        # Error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Total qualified experiment count.
         self.total_count = total_count
 
     def validate(self):
@@ -2231,8 +2802,11 @@ class ListHpoTrialCommandsResponseBodyCommands(TeaModel):
         id: int = None,
         output: str = None,
     ):
+        # The command that you want to run.
         self.command = command
+        # The id of the command.
         self.id = id
+        # The output of the above command
         self.output = output
 
     def validate(self):
@@ -2272,10 +2846,15 @@ class ListHpoTrialCommandsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The list of commands.
         self.commands = commands
+        # Extra error information.
         self.detail = detail
+        # The error message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2372,10 +2951,15 @@ class ListHpoTrialLogNamesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Error code.
         self.code = code
+        # Extra error information.
         self.detail = detail
+        # Existing log files.
         self.log_names = log_names
+        # Error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2462,8 +3046,11 @@ class ListHpoTrialLogsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # Log file name.
         self.log_name = log_name
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
 
     def validate(self):
@@ -2504,11 +3091,17 @@ class ListHpoTrialLogsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Error code.
         self.code = code
+        # Extra error information.
         self.detail = detail
+        # The log.
         self.logs = logs
+        # Error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -2600,9 +3193,13 @@ class ListHpoTrialsRequest(TeaModel):
         page_size: int = None,
         sort_by: str = None,
     ):
+        # The trial results order.
         self.order = order
+        # The number of the page to return.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The results to be sorted by which column.
         self.sort_by = sort_by
 
     def validate(self):
@@ -2752,11 +3349,17 @@ class ListHpoTrialsResponseBody(TeaModel):
         total_count: int = None,
         trials: List[ListHpoTrialsResponseBodyTrials] = None,
     ):
+        # Error code.
         self.code = code
+        # Extra error information.
         self.detail = detail
+        # The error message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries qualified.
         self.total_count = total_count
+        # Trial array.
         self.trials = trials
 
     def validate(self):
@@ -2854,7 +3457,9 @@ class RestartHpoTrialsRequest(TeaModel):
         trial_hyper_parameters: str = None,
         trial_ids: List[str] = None,
     ):
+        # A hyperparameter combination instance.
         self.trial_hyper_parameters = trial_hyper_parameters
+        # Trial ID array.
         self.trial_ids = trial_ids
 
     def validate(self):
@@ -2890,10 +3495,15 @@ class RestartHpoTrialsResponseBody(TeaModel):
         request_id: str = None,
         results: Dict[str, Any] = None,
     ):
+        # Response code.
         self.code = code
+        # Extra error information.
         self.detail = detail
+        # Error message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # Restart status of all the trial IDs.
         self.results = results
 
     def validate(self):
@@ -2981,12 +3591,19 @@ class StopHpoExperimentResponseBody(TeaModel):
         exp_id: str = None,
         message: str = None,
         request_id: str = None,
+        status: str = None,
     ):
+        # Response code.
         self.code = code
+        # Extra error information.
         self.detail = detail
+        # Experiment ID
         self.exp_id = exp_id
+        # Error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        self.status = status
 
     def validate(self):
         pass
@@ -3007,6 +3624,8 @@ class StopHpoExperimentResponseBody(TeaModel):
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -3021,6 +3640,8 @@ class StopHpoExperimentResponseBody(TeaModel):
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -3070,6 +3691,7 @@ class StopHpoTrialsRequest(TeaModel):
         self,
         trial_ids: List[str] = None,
     ):
+        # Trial Ids to be stopped.
         self.trial_ids = trial_ids
 
     def validate(self):
@@ -3101,10 +3723,15 @@ class StopHpoTrialsResponseBody(TeaModel):
         request_id: str = None,
         results: Dict[str, Any] = None,
     ):
+        # Error code.
         self.code = code
+        # Extra error information.
         self.detail = detail
+        # Error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The results of trial stop.
         self.results = results
 
     def validate(self):
@@ -3193,10 +3820,15 @@ class UpdateHpoExperimentRequest(TeaModel):
         name: str = None,
         workspace_id: str = None,
     ):
+        # Experiment accessibility, private or public.
         self.accessibility = accessibility
+        # Experiment description.
         self.description = description
+        # Experiment configuration.
         self.hpo_experiment_configuration = hpo_experiment_configuration
+        # Experiment name.
         self.name = name
+        # Expeirment\\"s AI workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -3245,9 +3877,13 @@ class UpdateHpoExperimentResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Error code.
         self.code = code
+        # Extra error information.
         self.detail = detail
+        # Error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

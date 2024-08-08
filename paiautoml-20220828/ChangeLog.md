@@ -1,3 +1,11 @@
+2024-08-08 Version: 1.4.0
+- Support API CreateAutofeExperiment.
+- Support API CreateServiceIdentityRole.
+- Support API GetAutofeExperiment.
+- Support API GetServiceIdentityRole.
+- Update API StopHpoExperiment: update response param.
+
+
 2024-03-09 Version: 1.3.0
 - Support API ListHpoExperimentLogs.
 - Support API ListHpoTrialCommands.
