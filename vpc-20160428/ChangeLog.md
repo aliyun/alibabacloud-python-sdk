@@ -1,3 +1,8 @@
+2024-08-08 Version: 6.7.3
+- Update API ListPublicIpAddressPools: update response param.
+- Update API UpdateVirtualPhysicalConnection: update response param.
+
+
 2024-07-24 Version: 6.7.2
 - Update API AllocateIpv6InternetBandwidth: add param DryRun.
 - Update API AllocateIpv6InternetBandwidth: update param ClientToken.
