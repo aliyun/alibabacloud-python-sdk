@@ -9268,7 +9268,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         self.dbcluster_network_type = dbcluster_network_type
         # The status of the cluster. For information about the valid values, see [Cluster states](https://help.aliyun.com/document_detail/99286.html).
         self.dbcluster_status = dbcluster_status
-        # The details of the nodes.
+        # The information about the nodes.
         self.dbnodes = dbnodes
         # The type of the database engine.
         self.dbtype = dbtype
@@ -16068,6 +16068,10 @@ class DescribeDasConfigRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
+        # 
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
@@ -16120,7 +16124,11 @@ class DescribeDasConfigResponseBody(TeaModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the automatic storage expansion feature is enabled for the standard cluster.
         self.storage_auto_scale = storage_auto_scale
+        # The maximum storage capacity of the standard cluster that is scaled up. Unit: GB.
+        # 
+        # >  This parameter is returned when the StorageAutoScale parameter is set to Enable.
         self.storage_upper_bound = storage_upper_bound
 
     def validate(self):
@@ -23515,6 +23523,7 @@ class FailoverDBClusterRequest(TeaModel):
         resource_owner_id: int = None,
         roll_back_for_disaster: bool = None,
         target_dbnode_id: str = None,
+        target_zone_type: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
@@ -23536,6 +23545,7 @@ class FailoverDBClusterRequest(TeaModel):
         # > *   If you leave this parameter empty, the system selects one or more available read-only nodes that have the highest failover priority as candidate primary nodes. If the failover to the first read-only node fails due to network issues, abnormal replication status, or other reasons, the system attempts to fail over your applications to the next read-only node until the failover is successful.
         # >*  This parameter is required for PolarDB for Oracle and PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.
         self.target_dbnode_id = target_dbnode_id
+        self.target_zone_type = target_zone_type
 
     def validate(self):
         pass
@@ -23562,6 +23572,8 @@ class FailoverDBClusterRequest(TeaModel):
             result['RollBackForDisaster'] = self.roll_back_for_disaster
         if self.target_dbnode_id is not None:
             result['TargetDBNodeId'] = self.target_dbnode_id
+        if self.target_zone_type is not None:
+            result['TargetZoneType'] = self.target_zone_type
         return result
 
     def from_map(self, m: dict = None):
@@ -23582,6 +23594,8 @@ class FailoverDBClusterRequest(TeaModel):
             self.roll_back_for_disaster = m.get('RollBackForDisaster')
         if m.get('TargetDBNodeId') is not None:
             self.target_dbnode_id = m.get('TargetDBNodeId')
+        if m.get('TargetZoneType') is not None:
+            self.target_zone_type = m.get('TargetZoneType')
         return self
 
 

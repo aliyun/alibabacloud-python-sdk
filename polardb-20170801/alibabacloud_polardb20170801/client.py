@@ -8293,7 +8293,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDasConfigResponse:
         """
-        @summary 查看实例的 DAS 配置
+        @summary Queries the configurations of a cluster in Database Autonomy Service (DAS).
         
         @param request: DescribeDasConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8336,7 +8336,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.DescribeDasConfigResponse:
         """
-        @summary 查看实例的 DAS 配置
+        @summary Queries the configurations of a cluster in Database Autonomy Service (DAS).
         
         @param request: DescribeDasConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8378,7 +8378,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDasConfigRequest,
     ) -> polardb_20170801_models.DescribeDasConfigResponse:
         """
-        @summary 查看实例的 DAS 配置
+        @summary Queries the configurations of a cluster in Database Autonomy Service (DAS).
         
         @param request: DescribeDasConfigRequest
         @return: DescribeDasConfigResponse
@@ -8391,7 +8391,7 @@ class Client(OpenApiClient):
         request: polardb_20170801_models.DescribeDasConfigRequest,
     ) -> polardb_20170801_models.DescribeDasConfigResponse:
         """
-        @summary 查看实例的 DAS 配置
+        @summary Queries the configurations of a cluster in Database Autonomy Service (DAS).
         
         @param request: DescribeDasConfigRequest
         @return: DescribeDasConfigResponse
@@ -11793,6 +11793,8 @@ class Client(OpenApiClient):
             query['RollBackForDisaster'] = request.roll_back_for_disaster
         if not UtilClient.is_unset(request.target_dbnode_id):
             query['TargetDBNodeId'] = request.target_dbnode_id
+        if not UtilClient.is_unset(request.target_zone_type):
+            query['TargetZoneType'] = request.target_zone_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11842,6 +11844,8 @@ class Client(OpenApiClient):
             query['RollBackForDisaster'] = request.roll_back_for_disaster
         if not UtilClient.is_unset(request.target_dbnode_id):
             query['TargetDBNodeId'] = request.target_dbnode_id
+        if not UtilClient.is_unset(request.target_zone_type):
+            query['TargetZoneType'] = request.target_zone_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
