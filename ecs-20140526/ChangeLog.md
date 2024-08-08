@@ -1,3 +1,10 @@
+2024-08-08 Version: 4.1.11
+- Update API DescribeInstances: update response param.
+- Update API DescribeNetworkInterfaces: update response param.
+- Update API ModifyInstanceAttribute: add param PrivateDnsNameOptions.
+- Update API RunInstances: add param PrivateDnsNameOptions.
+
+
 2024-08-01 Version: 4.1.10
 - Update API DescribeInvocationResults: update response param.
 - Update API DescribeInvocations: update response param.

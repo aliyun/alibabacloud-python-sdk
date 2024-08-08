@@ -42061,6 +42061,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
+        if not UtilClient.is_unset(request.private_dns_name_options):
+            query['PrivateDnsNameOptions'] = request.private_dns_name_options
         if not UtilClient.is_unset(request.recyclable):
             query['Recyclable'] = request.recyclable
         if not UtilClient.is_unset(request.remote_connection_options):
@@ -42153,6 +42155,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.password):
             query['Password'] = request.password
+        if not UtilClient.is_unset(request.private_dns_name_options):
+            query['PrivateDnsNameOptions'] = request.private_dns_name_options
         if not UtilClient.is_unset(request.recyclable):
             query['Recyclable'] = request.recyclable
         if not UtilClient.is_unset(request.remote_connection_options):
@@ -52303,6 +52307,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.period_unit):
             query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.private_dns_name_options):
+            query['PrivateDnsNameOptions'] = request.private_dns_name_options
         if not UtilClient.is_unset(request.private_ip_address):
             query['PrivateIpAddress'] = request.private_ip_address
         if not UtilClient.is_unset(request.ram_role_name):
@@ -52603,6 +52609,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.period_unit):
             query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.private_dns_name_options):
+            query['PrivateDnsNameOptions'] = request.private_dns_name_options
         if not UtilClient.is_unset(request.private_ip_address):
             query['PrivateIpAddress'] = request.private_ip_address
         if not UtilClient.is_unset(request.ram_role_name):
