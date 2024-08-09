@@ -1,3 +1,11 @@
+2024-08-09 Version: 1.0.12
+- Update API MassPush: update param PushTask.
+- Update API Push: add param AndroidBadgeAddNum.
+- Update API Push: add param AndroidBadgeClass.
+- Update API Push: add param AndroidBadgeSetNum.
+- Update API QueryDeviceStat: update param DeviceType.
+
+
 2024-07-10 Version: 1.0.11
 - Update API QueryDeviceStat: update param DeviceType.
 

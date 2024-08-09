@@ -1469,6 +1469,9 @@ class MassPushRequestPushTask(TeaModel):
     def __init__(
         self,
         android_activity: str = None,
+        android_badge_add_num: int = None,
+        android_badge_class: str = None,
+        android_badge_set_num: int = None,
         android_big_body: str = None,
         android_big_picture_url: str = None,
         android_big_title: str = None,
@@ -1552,6 +1555,9 @@ class MassPushRequestPushTask(TeaModel):
         i_ossubtitle: str = None,
     ):
         self.android_activity = android_activity
+        self.android_badge_add_num = android_badge_add_num
+        self.android_badge_class = android_badge_class
+        self.android_badge_set_num = android_badge_set_num
         self.android_big_body = android_big_body
         self.android_big_picture_url = android_big_picture_url
         self.android_big_title = android_big_title
@@ -1650,6 +1656,12 @@ class MassPushRequestPushTask(TeaModel):
         result = dict()
         if self.android_activity is not None:
             result['AndroidActivity'] = self.android_activity
+        if self.android_badge_add_num is not None:
+            result['AndroidBadgeAddNum'] = self.android_badge_add_num
+        if self.android_badge_class is not None:
+            result['AndroidBadgeClass'] = self.android_badge_class
+        if self.android_badge_set_num is not None:
+            result['AndroidBadgeSetNum'] = self.android_badge_set_num
         if self.android_big_body is not None:
             result['AndroidBigBody'] = self.android_big_body
         if self.android_big_picture_url is not None:
@@ -1818,6 +1830,12 @@ class MassPushRequestPushTask(TeaModel):
         m = m or dict()
         if m.get('AndroidActivity') is not None:
             self.android_activity = m.get('AndroidActivity')
+        if m.get('AndroidBadgeAddNum') is not None:
+            self.android_badge_add_num = m.get('AndroidBadgeAddNum')
+        if m.get('AndroidBadgeClass') is not None:
+            self.android_badge_class = m.get('AndroidBadgeClass')
+        if m.get('AndroidBadgeSetNum') is not None:
+            self.android_badge_set_num = m.get('AndroidBadgeSetNum')
         if m.get('AndroidBigBody') is not None:
             self.android_big_body = m.get('AndroidBigBody')
         if m.get('AndroidBigPictureUrl') is not None:
@@ -2133,6 +2151,9 @@ class PushRequest(TeaModel):
     def __init__(
         self,
         android_activity: str = None,
+        android_badge_add_num: int = None,
+        android_badge_class: str = None,
+        android_badge_set_num: int = None,
         android_big_body: str = None,
         android_big_picture_url: str = None,
         android_big_title: str = None,
@@ -2222,6 +2243,9 @@ class PushRequest(TeaModel):
         i_ossubtitle: str = None,
     ):
         self.android_activity = android_activity
+        self.android_badge_add_num = android_badge_add_num
+        self.android_badge_class = android_badge_class
+        self.android_badge_set_num = android_badge_set_num
         self.android_big_body = android_big_body
         self.android_big_picture_url = android_big_picture_url
         self.android_big_title = android_big_title
@@ -2327,6 +2351,12 @@ class PushRequest(TeaModel):
         result = dict()
         if self.android_activity is not None:
             result['AndroidActivity'] = self.android_activity
+        if self.android_badge_add_num is not None:
+            result['AndroidBadgeAddNum'] = self.android_badge_add_num
+        if self.android_badge_class is not None:
+            result['AndroidBadgeClass'] = self.android_badge_class
+        if self.android_badge_set_num is not None:
+            result['AndroidBadgeSetNum'] = self.android_badge_set_num
         if self.android_big_body is not None:
             result['AndroidBigBody'] = self.android_big_body
         if self.android_big_picture_url is not None:
@@ -2507,6 +2537,12 @@ class PushRequest(TeaModel):
         m = m or dict()
         if m.get('AndroidActivity') is not None:
             self.android_activity = m.get('AndroidActivity')
+        if m.get('AndroidBadgeAddNum') is not None:
+            self.android_badge_add_num = m.get('AndroidBadgeAddNum')
+        if m.get('AndroidBadgeClass') is not None:
+            self.android_badge_class = m.get('AndroidBadgeClass')
+        if m.get('AndroidBadgeSetNum') is not None:
+            self.android_badge_set_num = m.get('AndroidBadgeSetNum')
         if m.get('AndroidBigBody') is not None:
             self.android_big_body = m.get('AndroidBigBody')
         if m.get('AndroidBigPictureUrl') is not None:

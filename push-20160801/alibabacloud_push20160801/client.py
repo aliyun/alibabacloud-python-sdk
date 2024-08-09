@@ -1233,6 +1233,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.android_activity):
             query['AndroidActivity'] = request.android_activity
+        if not UtilClient.is_unset(request.android_badge_add_num):
+            query['AndroidBadgeAddNum'] = request.android_badge_add_num
+        if not UtilClient.is_unset(request.android_badge_class):
+            query['AndroidBadgeClass'] = request.android_badge_class
+        if not UtilClient.is_unset(request.android_badge_set_num):
+            query['AndroidBadgeSetNum'] = request.android_badge_set_num
         if not UtilClient.is_unset(request.android_big_body):
             query['AndroidBigBody'] = request.android_big_body
         if not UtilClient.is_unset(request.android_big_picture_url):
@@ -1440,6 +1446,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.android_activity):
             query['AndroidActivity'] = request.android_activity
+        if not UtilClient.is_unset(request.android_badge_add_num):
+            query['AndroidBadgeAddNum'] = request.android_badge_add_num
+        if not UtilClient.is_unset(request.android_badge_class):
+            query['AndroidBadgeClass'] = request.android_badge_class
+        if not UtilClient.is_unset(request.android_badge_set_num):
+            query['AndroidBadgeSetNum'] = request.android_badge_set_num
         if not UtilClient.is_unset(request.android_big_body):
             query['AndroidBigBody'] = request.android_big_body
         if not UtilClient.is_unset(request.android_big_picture_url):
