@@ -5930,7 +5930,7 @@ class DescribeAccountPrivilegeObjectsRequest(TeaModel):
         self.account_name = account_name
         # The column name that is used to filter columns.
         self.column_privilege_object = column_privilege_object
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -7623,9 +7623,9 @@ class DescribeApsActionLogsRequest(TeaModel):
         state: str = None,
         workload_id: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -11232,9 +11232,9 @@ class DescribeDBClusterHealthStatusRequest(TeaModel):
         dbcluster_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -11576,9 +11576,9 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         resource_pools: str = None,
         start_time: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~~612397~~~) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+        # >  You can call the [DescribeDBClusters](~~~612397~~~) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -11740,7 +11740,7 @@ class DescribeDBClusterPerformanceResponseBodyPerformancesSeries(TeaModel):
         # 
         #         *   AnalyticDB_Avg_QueryRT: the average amount of time consumed by queries.
         #         *   AnalyticDB_Max_QueryRT: the maximum amount of time consumed by a single query.
-        #         *   etl_avg_rt: the average amount of time consumed by extract-transform-load (ETL) operations.
+        #         *   etl_avg_rt: the average amount of time consumed by extract, transform, load (ETL) operations.
         #         *   etl_max_rt: the maximum amount of time consumed by a single ETL operation.
         # 
         #     *   **AnalyticDB_QueryWaitTime**: the query wait time.
@@ -11838,36 +11838,30 @@ class DescribeDBClusterPerformanceResponseBodyPerformancesSeries(TeaModel):
         # 
         #         *   AnalyticDB_WLM_TotalQueries_Count: the total number of WLM queries.
         # 
-        # *   APS
+        # *   AnalyticDB Pipeline Service (APS)
         # 
-        #     *   AnalyticDB_APS_BPS: the bytes per second (BPS) of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        #     *   AnalyticDB_APS_BPS: the bytes per second (BPS) of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         #         *   APS_Read_BPS: the read BPS of APS.
         # 
-        #     *   AnalyticDB_APS_CPU: the CPU utilization of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        #     *   AnalyticDB_APS_CPU: the CPU utilization of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         #         *   APS_CPU_Avg_Usage_Percentage: the average CPU utilization of APS.
         #         *   APS_CPU_Max_Usage_Percentage: the maximum CPU utilization of APS.
         # 
-        #     *   AnalyticDB_APS_Memory: the memory usage of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        #     *   AnalyticDB_APS_Memory: the memory usage of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         #         *   APS_Memory_Avg_Usage_Percentage: the average memory usage of APS.
         #         *   APS_Memory_Max_Usage_Percentage: the maximum memory usage of APS.
         # 
-        #     *   AnalyticDB_APS_RPS: the number of records per second of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        #     *   AnalyticDB_APS_RPS: the number of records per second of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         #         *   APS_Read_RPS: the number of read records per second of APS.
         # 
-        #     *   AnalyticDB_APS_RT: the response time of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        #     *   AnalyticDB_APS_RT: the response time of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         #         *   APS_Read_Avg_RT: the average response time of APS.
         #         *   APS_Read_Max_RT: the maximum response time of APS.
-        # 
-        # *   *   *\
-        #     *   *\
-        #     *   *\
-        #     *   *\
-        #     *   *\
         self.name = name
         # The tags that are added to the cluster.
         self.tags = tags
@@ -12069,7 +12063,7 @@ class DescribeDBClusterSpaceSummaryRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -16812,7 +16806,7 @@ class DescribePatternPerformanceRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region, including cluster IDs.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -16822,7 +16816,7 @@ class DescribePatternPerformanceRequest(TeaModel):
         self.end_time = end_time
         # The SQL pattern ID.
         # 
-        # >  You can call the [DescribeSQLPatterns](https://help.aliyun.com/document_detail/321868.html) operation to query the information about all SQL patterns in an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster within a period of time, including SQL pattern IDs.
+        # >  You can call the [DescribeSQLPatterns](https://help.aliyun.com/document_detail/321868.html) operation to query the information about all SQL patterns in an AnalyticDB for MySQL cluster within a period of time, including SQL pattern IDs.
         self.pattern_id = pattern_id
         # The region ID.
         # 
@@ -24708,7 +24702,7 @@ class KillSparkSQLEngineRequest(TeaModel):
         dbcluster_id: str = None,
         resource_group_name: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -27005,7 +26999,7 @@ class ModifyDBClusterMaintainTimeRequest(TeaModel):
         dbcluster_id: str = None,
         maintain_time: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

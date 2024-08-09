@@ -1,3 +1,6 @@
+2024-08-09 Version: 1.3.9
+- Generated python 2021-12-01 for adb.
+
 2024-08-06 Version: 1.3.8
 - Update API DescribeSQLPatterns: update response param.
 
