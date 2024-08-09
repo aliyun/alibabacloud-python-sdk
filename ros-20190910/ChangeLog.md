@@ -1,3 +1,6 @@
+2024-08-09 Version: 3.4.3
+- Generated python 2019-09-10 for ROS.
+
 2024-08-08 Version: 3.4.2
 - Update API UpdateTemplate: update response param.
 
