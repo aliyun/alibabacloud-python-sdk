@@ -1,3 +1,11 @@
+2024-08-09 Version: 6.7.4
+- Update API CreateSnatEntry: add param NetworkInterfaceId.
+- Update API CreateSnatEntry: update param SnatIp.
+- Update API DescribeSnatTableEntries: add param NetworkInterfaceIds.
+- Update API DescribeSnatTableEntries: update response param.
+- Update API ModifySnatEntry: add param NetworkInterfaceId.
+
+
 2024-08-08 Version: 6.7.3
 - Update API ListPublicIpAddressPools: update response param.
 - Update API UpdateVirtualPhysicalConnection: update response param.

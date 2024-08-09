@@ -16503,6 +16503,7 @@ class CreateSnatEntryRequest(TeaModel):
         self,
         client_token: str = None,
         eip_affinity: int = None,
+        network_interface_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -16531,6 +16532,7 @@ class CreateSnatEntryRequest(TeaModel):
         # 
         # **Description** After you enable EIP affinity, if multiple EIPs are associated with an SNAT entry, each client uses one EIP to access the Internet. If EIP affinity is disabled, each client uses a random EIP to access the Internet.
         self.eip_affinity = eip_affinity
+        self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the NAT gateway.
@@ -16566,8 +16568,6 @@ class CreateSnatEntryRequest(TeaModel):
         # >  If you specify multiple EIPs in the SNAT IP address pool, the service connection is allocated to multiple EIPs by using the hashing algorithm. The traffic of each EIP may be different. Therefore, we recommend that you associate the EIPs with an Internet Shared Bandwidth instance to prevent service interruptions caused by bandwidth exhaustion.
         # 
         # *   When you add SNAT entries for a VPC NAT gateway, this parameter specifies the NAT IP addresses in the SNAT entry. Separate multiple NAT IP addresses with commas (,).
-        # 
-        # This parameter is required.
         self.snat_ip = snat_ip
         # The ID of the SNAT table.
         # 
@@ -16607,6 +16607,8 @@ class CreateSnatEntryRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.eip_affinity is not None:
             result['EipAffinity'] = self.eip_affinity
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -16635,6 +16637,8 @@ class CreateSnatEntryRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('EipAffinity') is not None:
             self.eip_affinity = m.get('EipAffinity')
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -52091,6 +52095,7 @@ class DescribeSnatTableEntriesRequest(TeaModel):
     def __init__(
         self,
         nat_gateway_id: str = None,
+        network_interface_ids: List[str] = None,
         owner_account: str = None,
         owner_id: int = None,
         page_number: int = None,
@@ -52109,6 +52114,7 @@ class DescribeSnatTableEntriesRequest(TeaModel):
         # 
         # >  You must specify at least one of **SnatTableId** and **NatGatewayId**.
         self.nat_gateway_id = nat_gateway_id
+        self.network_interface_ids = network_interface_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number. Default value: **1**.
@@ -52155,6 +52161,8 @@ class DescribeSnatTableEntriesRequest(TeaModel):
         result = dict()
         if self.nat_gateway_id is not None:
             result['NatGatewayId'] = self.nat_gateway_id
+        if self.network_interface_ids is not None:
+            result['NetworkInterfaceIds'] = self.network_interface_ids
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -52187,6 +52195,8 @@ class DescribeSnatTableEntriesRequest(TeaModel):
         m = m or dict()
         if m.get('NatGatewayId') is not None:
             self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('NetworkInterfaceIds') is not None:
+            self.network_interface_ids = m.get('NetworkInterfaceIds')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -52221,6 +52231,7 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry(TeaMode
         self,
         eip_affinity: str = None,
         nat_gateway_id: str = None,
+        network_interface_id: str = None,
         snat_entry_id: str = None,
         snat_entry_name: str = None,
         snat_ip: str = None,
@@ -52232,6 +52243,7 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry(TeaMode
         self.eip_affinity = eip_affinity
         # The ID of the NAT gateway to which the SNAT entry belongs.
         self.nat_gateway_id = nat_gateway_id
+        self.network_interface_id = network_interface_id
         # The ID of the SNAT entry.
         self.snat_entry_id = snat_entry_id
         # The name of the SNAT entry.
@@ -52266,6 +52278,8 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry(TeaMode
             result['EipAffinity'] = self.eip_affinity
         if self.nat_gateway_id is not None:
             result['NatGatewayId'] = self.nat_gateway_id
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
         if self.snat_entry_id is not None:
             result['SnatEntryId'] = self.snat_entry_id
         if self.snat_entry_name is not None:
@@ -52288,6 +52302,8 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry(TeaMode
             self.eip_affinity = m.get('EipAffinity')
         if m.get('NatGatewayId') is not None:
             self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
         if m.get('SnatEntryId') is not None:
             self.snat_entry_id = m.get('SnatEntryId')
         if m.get('SnatEntryName') is not None:
@@ -86937,6 +86953,7 @@ class ModifySnatEntryRequest(TeaModel):
         self,
         client_token: str = None,
         eip_affinity: int = None,
+        network_interface_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -86954,6 +86971,7 @@ class ModifySnatEntryRequest(TeaModel):
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         self.eip_affinity = eip_affinity
+        self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the NAT gateway.
@@ -86996,6 +87014,8 @@ class ModifySnatEntryRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.eip_affinity is not None:
             result['EipAffinity'] = self.eip_affinity
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -87022,6 +87042,8 @@ class ModifySnatEntryRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('EipAffinity') is not None:
             self.eip_affinity = m.get('EipAffinity')
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:

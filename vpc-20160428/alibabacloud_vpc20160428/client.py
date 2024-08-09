@@ -11815,6 +11815,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.eip_affinity):
             query['EipAffinity'] = request.eip_affinity
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -11882,6 +11884,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.eip_affinity):
             query['EipAffinity'] = request.eip_affinity
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -29557,6 +29561,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.nat_gateway_id):
             query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.network_interface_ids):
+            query['NetworkInterfaceIds'] = request.network_interface_ids
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -29618,6 +29624,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.nat_gateway_id):
             query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.network_interface_ids):
+            query['NetworkInterfaceIds'] = request.network_interface_ids
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -45220,6 +45228,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.eip_affinity):
             query['EipAffinity'] = request.eip_affinity
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -45282,6 +45292,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.eip_affinity):
             query['EipAffinity'] = request.eip_affinity
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
