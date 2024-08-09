@@ -2887,7 +2887,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI StartJob is deprecated
         
-        @summary start job
+        @summary Creates and starts a job.
         
         @param request: StartJobRequest
         @param headers: StartJobHeaders
@@ -2931,7 +2931,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI StartJob is deprecated
         
-        @summary start job
+        @summary Creates and starts a job.
         
         @param request: StartJobRequest
         @param headers: StartJobHeaders
@@ -2973,7 +2973,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI StartJob is deprecated
         
-        @summary start job
+        @summary Creates and starts a job.
         
         @param request: StartJobRequest
         @return: StartJobResponse
@@ -2991,7 +2991,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI StartJob is deprecated
         
-        @summary start job
+        @summary Creates and starts a job.
         
         @param request: StartJobRequest
         @return: StartJobResponse

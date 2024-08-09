@@ -192,6 +192,145 @@ class Artifact(TeaModel):
         return self
 
 
+class ValidationErrorDetails(TeaModel):
+    def __init__(
+        self,
+        column_number: str = None,
+        end_column_number: str = None,
+        end_line_number: str = None,
+        line_number: str = None,
+        message: str = None,
+    ):
+        self.column_number = column_number
+        self.end_column_number = end_column_number
+        self.end_line_number = end_line_number
+        self.line_number = line_number
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_number is not None:
+            result['columnNumber'] = self.column_number
+        if self.end_column_number is not None:
+            result['endColumnNumber'] = self.end_column_number
+        if self.end_line_number is not None:
+            result['endLineNumber'] = self.end_line_number
+        if self.line_number is not None:
+            result['lineNumber'] = self.line_number
+        if self.message is not None:
+            result['message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('columnNumber') is not None:
+            self.column_number = m.get('columnNumber')
+        if m.get('endColumnNumber') is not None:
+            self.end_column_number = m.get('endColumnNumber')
+        if m.get('endLineNumber') is not None:
+            self.end_line_number = m.get('endLineNumber')
+        if m.get('lineNumber') is not None:
+            self.line_number = m.get('lineNumber')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        return self
+
+
+class ValidateStatementResult(TeaModel):
+    def __init__(
+        self,
+        error_details: ValidationErrorDetails = None,
+        validation_result: str = None,
+    ):
+        self.error_details = error_details
+        self.validation_result = validation_result
+
+    def validate(self):
+        if self.error_details:
+            self.error_details.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_details is not None:
+            result['errorDetails'] = self.error_details.to_map()
+        if self.validation_result is not None:
+            result['validationResult'] = self.validation_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorDetails') is not None:
+            temp_model = ValidationErrorDetails()
+            self.error_details = temp_model.from_map(m['errorDetails'])
+        if m.get('validationResult') is not None:
+            self.validation_result = m.get('validationResult')
+        return self
+
+
+class AsyncDraftDeployResult(TeaModel):
+    def __init__(
+        self,
+        artifact_validation_detail: ValidateStatementResult = None,
+        deployment_id: str = None,
+        message: str = None,
+        success: bool = None,
+        ticket_status: str = None,
+    ):
+        self.artifact_validation_detail = artifact_validation_detail
+        self.deployment_id = deployment_id
+        self.message = message
+        self.success = success
+        self.ticket_status = ticket_status
+
+    def validate(self):
+        if self.artifact_validation_detail:
+            self.artifact_validation_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.artifact_validation_detail is not None:
+            result['artifactValidationDetail'] = self.artifact_validation_detail.to_map()
+        if self.deployment_id is not None:
+            result['deploymentId'] = self.deployment_id
+        if self.message is not None:
+            result['message'] = self.message
+        if self.success is not None:
+            result['success'] = self.success
+        if self.ticket_status is not None:
+            result['ticketStatus'] = self.ticket_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('artifactValidationDetail') is not None:
+            temp_model = ValidateStatementResult()
+            self.artifact_validation_detail = temp_model.from_map(m['artifactValidationDetail'])
+        if m.get('deploymentId') is not None:
+            self.deployment_id = m.get('deploymentId')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('ticketStatus') is not None:
+            self.ticket_status = m.get('ticketStatus')
+        return self
+
+
 class AsyncResourcePlanOperationResult(TeaModel):
     def __init__(
         self,
@@ -499,6 +638,467 @@ class BriefResourceSetting(TeaModel):
         return self
 
 
+class Catalog(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        properties: Dict[str, Any] = None,
+    ):
+        self.name = name
+        self.properties = properties
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.properties is not None:
+            result['properties'] = self.properties
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('properties') is not None:
+            self.properties = m.get('properties')
+        return self
+
+
+class Property(TeaModel):
+    def __init__(
+        self,
+        default_value: str = None,
+        defines_format: bool = None,
+        description: str = None,
+        key: str = None,
+        required: bool = None,
+        sensitive: bool = None,
+    ):
+        self.default_value = default_value
+        self.defines_format = defines_format
+        self.description = description
+        self.key = key
+        self.required = required
+        self.sensitive = sensitive
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default_value is not None:
+            result['defaultValue'] = self.default_value
+        if self.defines_format is not None:
+            result['definesFormat'] = self.defines_format
+        if self.description is not None:
+            result['description'] = self.description
+        if self.key is not None:
+            result['key'] = self.key
+        if self.required is not None:
+            result['required'] = self.required
+        if self.sensitive is not None:
+            result['sensitive'] = self.sensitive
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('defaultValue') is not None:
+            self.default_value = m.get('defaultValue')
+        if m.get('definesFormat') is not None:
+            self.defines_format = m.get('definesFormat')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('required') is not None:
+            self.required = m.get('required')
+        if m.get('sensitive') is not None:
+            self.sensitive = m.get('sensitive')
+        return self
+
+
+class Connector(TeaModel):
+    def __init__(
+        self,
+        creator: str = None,
+        creator_name: str = None,
+        dependencies: List[str] = None,
+        lookup: bool = None,
+        modifier: str = None,
+        modifier_name: str = None,
+        name: str = None,
+        properties: List[Property] = None,
+        sink: bool = None,
+        source: bool = None,
+        supported_formats: List[str] = None,
+        type: str = None,
+    ):
+        self.creator = creator
+        self.creator_name = creator_name
+        self.dependencies = dependencies
+        self.lookup = lookup
+        self.modifier = modifier
+        self.modifier_name = modifier_name
+        self.name = name
+        self.properties = properties
+        self.sink = sink
+        self.source = source
+        self.supported_formats = supported_formats
+        self.type = type
+
+    def validate(self):
+        if self.properties:
+            for k in self.properties:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.creator_name is not None:
+            result['creatorName'] = self.creator_name
+        if self.dependencies is not None:
+            result['dependencies'] = self.dependencies
+        if self.lookup is not None:
+            result['lookup'] = self.lookup
+        if self.modifier is not None:
+            result['modifier'] = self.modifier
+        if self.modifier_name is not None:
+            result['modifierName'] = self.modifier_name
+        if self.name is not None:
+            result['name'] = self.name
+        result['properties'] = []
+        if self.properties is not None:
+            for k in self.properties:
+                result['properties'].append(k.to_map() if k else None)
+        if self.sink is not None:
+            result['sink'] = self.sink
+        if self.source is not None:
+            result['source'] = self.source
+        if self.supported_formats is not None:
+            result['supportedFormats'] = self.supported_formats
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('creatorName') is not None:
+            self.creator_name = m.get('creatorName')
+        if m.get('dependencies') is not None:
+            self.dependencies = m.get('dependencies')
+        if m.get('lookup') is not None:
+            self.lookup = m.get('lookup')
+        if m.get('modifier') is not None:
+            self.modifier = m.get('modifier')
+        if m.get('modifierName') is not None:
+            self.modifier_name = m.get('modifierName')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        self.properties = []
+        if m.get('properties') is not None:
+            for k in m.get('properties'):
+                temp_model = Property()
+                self.properties.append(temp_model.from_map(k))
+        if m.get('sink') is not None:
+            self.sink = m.get('sink')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        if m.get('supportedFormats') is not None:
+            self.supported_formats = m.get('supportedFormats')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class UdfClass(TeaModel):
+    def __init__(
+        self,
+        class_name: str = None,
+        class_type: str = None,
+        function_names: List[str] = None,
+        udf_artifact_name: str = None,
+    ):
+        self.class_name = class_name
+        self.class_type = class_type
+        self.function_names = function_names
+        self.udf_artifact_name = udf_artifact_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.class_name is not None:
+            result['className'] = self.class_name
+        if self.class_type is not None:
+            result['classType'] = self.class_type
+        if self.function_names is not None:
+            result['functionNames'] = self.function_names
+        if self.udf_artifact_name is not None:
+            result['udfArtifactName'] = self.udf_artifact_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('className') is not None:
+            self.class_name = m.get('className')
+        if m.get('classType') is not None:
+            self.class_type = m.get('classType')
+        if m.get('functionNames') is not None:
+            self.function_names = m.get('functionNames')
+        if m.get('udfArtifactName') is not None:
+            self.udf_artifact_name = m.get('udfArtifactName')
+        return self
+
+
+class UdfArtifact(TeaModel):
+    def __init__(
+        self,
+        artifact_type: str = None,
+        created_at: int = None,
+        creator: str = None,
+        dependency_jar_uris: List[str] = None,
+        jar_url: str = None,
+        modified_at: int = None,
+        name: str = None,
+        namespace: str = None,
+        udf_classes: List[UdfClass] = None,
+    ):
+        self.artifact_type = artifact_type
+        self.created_at = created_at
+        self.creator = creator
+        self.dependency_jar_uris = dependency_jar_uris
+        self.jar_url = jar_url
+        self.modified_at = modified_at
+        self.name = name
+        self.namespace = namespace
+        self.udf_classes = udf_classes
+
+    def validate(self):
+        if self.udf_classes:
+            for k in self.udf_classes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.artifact_type is not None:
+            result['artifactType'] = self.artifact_type
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.dependency_jar_uris is not None:
+            result['dependencyJarUris'] = self.dependency_jar_uris
+        if self.jar_url is not None:
+            result['jarUrl'] = self.jar_url
+        if self.modified_at is not None:
+            result['modifiedAt'] = self.modified_at
+        if self.name is not None:
+            result['name'] = self.name
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        result['udfClasses'] = []
+        if self.udf_classes is not None:
+            for k in self.udf_classes:
+                result['udfClasses'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('artifactType') is not None:
+            self.artifact_type = m.get('artifactType')
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('dependencyJarUris') is not None:
+            self.dependency_jar_uris = m.get('dependencyJarUris')
+        if m.get('jarUrl') is not None:
+            self.jar_url = m.get('jarUrl')
+        if m.get('modifiedAt') is not None:
+            self.modified_at = m.get('modifiedAt')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        self.udf_classes = []
+        if m.get('udfClasses') is not None:
+            for k in m.get('udfClasses'):
+                temp_model = UdfClass()
+                self.udf_classes.append(temp_model.from_map(k))
+        return self
+
+
+class CreateUdfArtifactResult(TeaModel):
+    def __init__(
+        self,
+        colliding_classes: List[UdfClass] = None,
+        create_success: bool = None,
+        message: str = None,
+        udf_artifact: UdfArtifact = None,
+    ):
+        self.colliding_classes = colliding_classes
+        self.create_success = create_success
+        self.message = message
+        self.udf_artifact = udf_artifact
+
+    def validate(self):
+        if self.colliding_classes:
+            for k in self.colliding_classes:
+                if k:
+                    k.validate()
+        if self.udf_artifact:
+            self.udf_artifact.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['collidingClasses'] = []
+        if self.colliding_classes is not None:
+            for k in self.colliding_classes:
+                result['collidingClasses'].append(k.to_map() if k else None)
+        if self.create_success is not None:
+            result['createSuccess'] = self.create_success
+        if self.message is not None:
+            result['message'] = self.message
+        if self.udf_artifact is not None:
+            result['udfArtifact'] = self.udf_artifact.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.colliding_classes = []
+        if m.get('collidingClasses') is not None:
+            for k in m.get('collidingClasses'):
+                temp_model = UdfClass()
+                self.colliding_classes.append(temp_model.from_map(k))
+        if m.get('createSuccess') is not None:
+            self.create_success = m.get('createSuccess')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('udfArtifact') is not None:
+            temp_model = UdfArtifact()
+            self.udf_artifact = temp_model.from_map(m['udfArtifact'])
+        return self
+
+
+class Database(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        name: str = None,
+        properties: Dict[str, Any] = None,
+    ):
+        self.comment = comment
+        self.name = name
+        self.properties = properties
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['comment'] = self.comment
+        if self.name is not None:
+            result['name'] = self.name
+        if self.properties is not None:
+            result['properties'] = self.properties
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('comment') is not None:
+            self.comment = m.get('comment')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('properties') is not None:
+            self.properties = m.get('properties')
+        return self
+
+
+class DeleteUdfArtifactResult(TeaModel):
+    def __init__(
+        self,
+        delete_success: bool = None,
+        message: str = None,
+        referenced_classes: List[UdfClass] = None,
+    ):
+        self.delete_success = delete_success
+        self.message = message
+        self.referenced_classes = referenced_classes
+
+    def validate(self):
+        if self.referenced_classes:
+            for k in self.referenced_classes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delete_success is not None:
+            result['deleteSuccess'] = self.delete_success
+        if self.message is not None:
+            result['message'] = self.message
+        result['referencedClasses'] = []
+        if self.referenced_classes is not None:
+            for k in self.referenced_classes:
+                result['referencedClasses'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('deleteSuccess') is not None:
+            self.delete_success = m.get('deleteSuccess')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        self.referenced_classes = []
+        if m.get('referencedClasses') is not None:
+            for k in m.get('referencedClasses'):
+                temp_model = UdfClass()
+                self.referenced_classes.append(temp_model.from_map(k))
+        return self
+
+
 class JobSummary(TeaModel):
     def __init__(
         self,
@@ -727,6 +1327,7 @@ class Deployment(TeaModel):
         execution_mode: str = None,
         flink_conf: Dict[str, Any] = None,
         job_summary: JobSummary = None,
+        labels: Dict[str, Any] = None,
         local_variables: List[LocalVariable] = None,
         logging: Logging = None,
         modified_at: str = None,
@@ -734,6 +1335,7 @@ class Deployment(TeaModel):
         modifier_name: str = None,
         name: str = None,
         namespace: str = None,
+        referenced_deployment_draft_id: str = None,
         streaming_resource_setting: StreamingResourceSetting = None,
         workspace: str = None,
     ):
@@ -750,6 +1352,7 @@ class Deployment(TeaModel):
         self.execution_mode = execution_mode
         self.flink_conf = flink_conf
         self.job_summary = job_summary
+        self.labels = labels
         self.local_variables = local_variables
         self.logging = logging
         self.modified_at = modified_at
@@ -757,6 +1360,7 @@ class Deployment(TeaModel):
         self.modifier_name = modifier_name
         self.name = name
         self.namespace = namespace
+        self.referenced_deployment_draft_id = referenced_deployment_draft_id
         self.streaming_resource_setting = streaming_resource_setting
         self.workspace = workspace
 
@@ -810,6 +1414,8 @@ class Deployment(TeaModel):
             result['flinkConf'] = self.flink_conf
         if self.job_summary is not None:
             result['jobSummary'] = self.job_summary.to_map()
+        if self.labels is not None:
+            result['labels'] = self.labels
         result['localVariables'] = []
         if self.local_variables is not None:
             for k in self.local_variables:
@@ -826,6 +1432,8 @@ class Deployment(TeaModel):
             result['name'] = self.name
         if self.namespace is not None:
             result['namespace'] = self.namespace
+        if self.referenced_deployment_draft_id is not None:
+            result['referencedDeploymentDraftId'] = self.referenced_deployment_draft_id
         if self.streaming_resource_setting is not None:
             result['streamingResourceSetting'] = self.streaming_resource_setting.to_map()
         if self.workspace is not None:
@@ -864,6 +1472,8 @@ class Deployment(TeaModel):
         if m.get('jobSummary') is not None:
             temp_model = JobSummary()
             self.job_summary = temp_model.from_map(m['jobSummary'])
+        if m.get('labels') is not None:
+            self.labels = m.get('labels')
         self.local_variables = []
         if m.get('localVariables') is not None:
             for k in m.get('localVariables'):
@@ -882,9 +1492,205 @@ class Deployment(TeaModel):
             self.name = m.get('name')
         if m.get('namespace') is not None:
             self.namespace = m.get('namespace')
+        if m.get('referencedDeploymentDraftId') is not None:
+            self.referenced_deployment_draft_id = m.get('referencedDeploymentDraftId')
         if m.get('streamingResourceSetting') is not None:
             temp_model = StreamingResourceSetting()
             self.streaming_resource_setting = temp_model.from_map(m['streamingResourceSetting'])
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class Lock(TeaModel):
+    def __init__(
+        self,
+        holder_id: str = None,
+        holder_name: str = None,
+        id: str = None,
+        namespace: str = None,
+        workspace: str = None,
+    ):
+        self.holder_id = holder_id
+        self.holder_name = holder_name
+        self.id = id
+        self.namespace = namespace
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.holder_id is not None:
+            result['holderId'] = self.holder_id
+        if self.holder_name is not None:
+            result['holderName'] = self.holder_name
+        if self.id is not None:
+            result['id'] = self.id
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('holderId') is not None:
+            self.holder_id = m.get('holderId')
+        if m.get('holderName') is not None:
+            self.holder_name = m.get('holderName')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class DeploymentDraft(TeaModel):
+    def __init__(
+        self,
+        artifact: Artifact = None,
+        created_at: int = None,
+        creator: str = None,
+        creator_name: str = None,
+        deployment_draft_id: str = None,
+        engine_version: str = None,
+        execution_mode: str = None,
+        labels: Dict[str, Any] = None,
+        local_variables: List[LocalVariable] = None,
+        lock: Lock = None,
+        modified_at: int = None,
+        modifier: str = None,
+        modifier_name: str = None,
+        name: str = None,
+        namespace: str = None,
+        parent_id: str = None,
+        referenced_deployment_id: str = None,
+        workspace: str = None,
+    ):
+        self.artifact = artifact
+        self.created_at = created_at
+        self.creator = creator
+        self.creator_name = creator_name
+        self.deployment_draft_id = deployment_draft_id
+        self.engine_version = engine_version
+        self.execution_mode = execution_mode
+        self.labels = labels
+        self.local_variables = local_variables
+        self.lock = lock
+        self.modified_at = modified_at
+        self.modifier = modifier
+        self.modifier_name = modifier_name
+        self.name = name
+        self.namespace = namespace
+        self.parent_id = parent_id
+        self.referenced_deployment_id = referenced_deployment_id
+        self.workspace = workspace
+
+    def validate(self):
+        if self.artifact:
+            self.artifact.validate()
+        if self.local_variables:
+            for k in self.local_variables:
+                if k:
+                    k.validate()
+        if self.lock:
+            self.lock.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.artifact is not None:
+            result['artifact'] = self.artifact.to_map()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.creator_name is not None:
+            result['creatorName'] = self.creator_name
+        if self.deployment_draft_id is not None:
+            result['deploymentDraftId'] = self.deployment_draft_id
+        if self.engine_version is not None:
+            result['engineVersion'] = self.engine_version
+        if self.execution_mode is not None:
+            result['executionMode'] = self.execution_mode
+        if self.labels is not None:
+            result['labels'] = self.labels
+        result['localVariables'] = []
+        if self.local_variables is not None:
+            for k in self.local_variables:
+                result['localVariables'].append(k.to_map() if k else None)
+        if self.lock is not None:
+            result['lock'] = self.lock.to_map()
+        if self.modified_at is not None:
+            result['modifiedAt'] = self.modified_at
+        if self.modifier is not None:
+            result['modifier'] = self.modifier
+        if self.modifier_name is not None:
+            result['modifierName'] = self.modifier_name
+        if self.name is not None:
+            result['name'] = self.name
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.parent_id is not None:
+            result['parentId'] = self.parent_id
+        if self.referenced_deployment_id is not None:
+            result['referencedDeploymentId'] = self.referenced_deployment_id
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('artifact') is not None:
+            temp_model = Artifact()
+            self.artifact = temp_model.from_map(m['artifact'])
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('creatorName') is not None:
+            self.creator_name = m.get('creatorName')
+        if m.get('deploymentDraftId') is not None:
+            self.deployment_draft_id = m.get('deploymentDraftId')
+        if m.get('engineVersion') is not None:
+            self.engine_version = m.get('engineVersion')
+        if m.get('executionMode') is not None:
+            self.execution_mode = m.get('executionMode')
+        if m.get('labels') is not None:
+            self.labels = m.get('labels')
+        self.local_variables = []
+        if m.get('localVariables') is not None:
+            for k in m.get('localVariables'):
+                temp_model = LocalVariable()
+                self.local_variables.append(temp_model.from_map(k))
+        if m.get('lock') is not None:
+            temp_model = Lock()
+            self.lock = temp_model.from_map(m['lock'])
+        if m.get('modifiedAt') is not None:
+            self.modified_at = m.get('modifiedAt')
+        if m.get('modifier') is not None:
+            self.modifier = m.get('modifier')
+        if m.get('modifierName') is not None:
+            self.modifier_name = m.get('modifierName')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('parentId') is not None:
+            self.parent_id = m.get('parentId')
+        if m.get('referencedDeploymentId') is not None:
+            self.referenced_deployment_id = m.get('referencedDeploymentId')
         if m.get('workspace') is not None:
             self.workspace = m.get('workspace')
         return self
@@ -965,6 +1771,183 @@ class DeploymentTarget(TeaModel):
             self.name = m.get('name')
         if m.get('namespace') is not None:
             self.namespace = m.get('namespace')
+        return self
+
+
+class DraftDeployParams(TeaModel):
+    def __init__(
+        self,
+        deployment_draft_id: str = None,
+        deployment_target: BriefDeploymentTarget = None,
+        skip_validate: bool = None,
+    ):
+        self.deployment_draft_id = deployment_draft_id
+        self.deployment_target = deployment_target
+        self.skip_validate = skip_validate
+
+    def validate(self):
+        if self.deployment_target:
+            self.deployment_target.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deployment_draft_id is not None:
+            result['deploymentDraftId'] = self.deployment_draft_id
+        if self.deployment_target is not None:
+            result['deploymentTarget'] = self.deployment_target.to_map()
+        if self.skip_validate is not None:
+            result['skipValidate'] = self.skip_validate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('deploymentDraftId') is not None:
+            self.deployment_draft_id = m.get('deploymentDraftId')
+        if m.get('deploymentTarget') is not None:
+            temp_model = BriefDeploymentTarget()
+            self.deployment_target = temp_model.from_map(m['deploymentTarget'])
+        if m.get('skipValidate') is not None:
+            self.skip_validate = m.get('skipValidate')
+        return self
+
+
+class DraftDeployResult(TeaModel):
+    def __init__(
+        self,
+        artifact_validation_detail: ValidateStatementResult = None,
+        deployment_id: str = None,
+        message: str = None,
+        success: bool = None,
+    ):
+        self.artifact_validation_detail = artifact_validation_detail
+        self.deployment_id = deployment_id
+        self.message = message
+        self.success = success
+
+    def validate(self):
+        if self.artifact_validation_detail:
+            self.artifact_validation_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.artifact_validation_detail is not None:
+            result['artifactValidationDetail'] = self.artifact_validation_detail.to_map()
+        if self.deployment_id is not None:
+            result['deploymentId'] = self.deployment_id
+        if self.message is not None:
+            result['message'] = self.message
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('artifactValidationDetail') is not None:
+            temp_model = ValidateStatementResult()
+            self.artifact_validation_detail = temp_model.from_map(m['artifactValidationDetail'])
+        if m.get('deploymentId') is not None:
+            self.deployment_id = m.get('deploymentId')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class Relation(TeaModel):
+    def __init__(
+        self,
+        destination: str = None,
+        job_id: str = None,
+        source: str = None,
+    ):
+        self.destination = destination
+        self.job_id = job_id
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination is not None:
+            result['destination'] = self.destination
+        if self.job_id is not None:
+            result['jobId'] = self.job_id
+        if self.source is not None:
+            result['source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('destination') is not None:
+            self.destination = m.get('destination')
+        if m.get('jobId') is not None:
+            self.job_id = m.get('jobId')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        return self
+
+
+class Edge(TeaModel):
+    def __init__(
+        self,
+        column_lineage: List[Relation] = None,
+        table_lineage: List[Relation] = None,
+    ):
+        self.column_lineage = column_lineage
+        self.table_lineage = table_lineage
+
+    def validate(self):
+        if self.column_lineage:
+            for k in self.column_lineage:
+                if k:
+                    k.validate()
+        if self.table_lineage:
+            for k in self.table_lineage:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['columnLineage'] = []
+        if self.column_lineage is not None:
+            for k in self.column_lineage:
+                result['columnLineage'].append(k.to_map() if k else None)
+        result['tableLineage'] = []
+        if self.table_lineage is not None:
+            for k in self.table_lineage:
+                result['tableLineage'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.column_lineage = []
+        if m.get('columnLineage') is not None:
+            for k in m.get('columnLineage'):
+                temp_model = Relation()
+                self.column_lineage.append(temp_model.from_map(k))
+        self.table_lineage = []
+        if m.get('tableLineage') is not None:
+            for k in m.get('tableLineage'):
+                temp_model = Relation()
+                self.table_lineage.append(temp_model.from_map(k))
         return self
 
 
@@ -1178,6 +2161,428 @@ class ErrorDetails(TeaModel):
             self.line_number = m.get('lineNumber')
         if m.get('message') is not None:
             self.message = m.get('message')
+        return self
+
+
+class SubFolder(TeaModel):
+    def __init__(
+        self,
+        folder_id: str = None,
+        name: str = None,
+        parent_id: str = None,
+    ):
+        self.folder_id = folder_id
+        self.name = name
+        self.parent_id = parent_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.folder_id is not None:
+            result['folderId'] = self.folder_id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parent_id is not None:
+            result['parentId'] = self.parent_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('folderId') is not None:
+            self.folder_id = m.get('folderId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('parentId') is not None:
+            self.parent_id = m.get('parentId')
+        return self
+
+
+class Folder(TeaModel):
+    def __init__(
+        self,
+        created_at: int = None,
+        folder_id: str = None,
+        modified_at: int = None,
+        name: str = None,
+        namespace: str = None,
+        parent_id: str = None,
+        sub_folder: List[SubFolder] = None,
+        workspace: str = None,
+    ):
+        self.created_at = created_at
+        self.folder_id = folder_id
+        self.modified_at = modified_at
+        self.name = name
+        self.namespace = namespace
+        self.parent_id = parent_id
+        self.sub_folder = sub_folder
+        self.workspace = workspace
+
+    def validate(self):
+        if self.sub_folder:
+            for k in self.sub_folder:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.folder_id is not None:
+            result['folderId'] = self.folder_id
+        if self.modified_at is not None:
+            result['modifiedAt'] = self.modified_at
+        if self.name is not None:
+            result['name'] = self.name
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.parent_id is not None:
+            result['parentId'] = self.parent_id
+        result['subFolder'] = []
+        if self.sub_folder is not None:
+            for k in self.sub_folder:
+                result['subFolder'].append(k.to_map() if k else None)
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('folderId') is not None:
+            self.folder_id = m.get('folderId')
+        if m.get('modifiedAt') is not None:
+            self.modified_at = m.get('modifiedAt')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('parentId') is not None:
+            self.parent_id = m.get('parentId')
+        self.sub_folder = []
+        if m.get('subFolder') is not None:
+            for k in m.get('subFolder'):
+                temp_model = SubFolder()
+                self.sub_folder.append(temp_model.from_map(k))
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class GetLineageInfoParams(TeaModel):
+    def __init__(
+        self,
+        depth: int = None,
+        direction: str = None,
+        id: str = None,
+        id_type: str = None,
+        is_column_level: bool = None,
+        is_temporary: bool = None,
+        namespace: str = None,
+        workspace: str = None,
+    ):
+        self.depth = depth
+        self.direction = direction
+        self.id = id
+        self.id_type = id_type
+        self.is_column_level = is_column_level
+        self.is_temporary = is_temporary
+        self.namespace = namespace
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.depth is not None:
+            result['depth'] = self.depth
+        if self.direction is not None:
+            result['direction'] = self.direction
+        if self.id is not None:
+            result['id'] = self.id
+        if self.id_type is not None:
+            result['idType'] = self.id_type
+        if self.is_column_level is not None:
+            result['isColumnLevel'] = self.is_column_level
+        if self.is_temporary is not None:
+            result['isTemporary'] = self.is_temporary
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('depth') is not None:
+            self.depth = m.get('depth')
+        if m.get('direction') is not None:
+            self.direction = m.get('direction')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('idType') is not None:
+            self.id_type = m.get('idType')
+        if m.get('isColumnLevel') is not None:
+            self.is_column_level = m.get('isColumnLevel')
+        if m.get('isTemporary') is not None:
+            self.is_temporary = m.get('isTemporary')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class HotUpdateJobFailureInfo(TeaModel):
+    def __init__(
+        self,
+        failure_severity: str = None,
+        message: str = None,
+        reason: str = None,
+    ):
+        self.failure_severity = failure_severity
+        self.message = message
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failure_severity is not None:
+            result['failureSeverity'] = self.failure_severity
+        if self.message is not None:
+            result['message'] = self.message
+        if self.reason is not None:
+            result['reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('failureSeverity') is not None:
+            self.failure_severity = m.get('failureSeverity')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        return self
+
+
+class RescaleJobParam(TeaModel):
+    def __init__(
+        self,
+        job_parallelism: int = None,
+        vertex_parallelism: Dict[str, Any] = None,
+    ):
+        self.job_parallelism = job_parallelism
+        self.vertex_parallelism = vertex_parallelism
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_parallelism is not None:
+            result['jobParallelism'] = self.job_parallelism
+        if self.vertex_parallelism is not None:
+            result['vertexParallelism'] = self.vertex_parallelism
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('jobParallelism') is not None:
+            self.job_parallelism = m.get('jobParallelism')
+        if m.get('vertexParallelism') is not None:
+            self.vertex_parallelism = m.get('vertexParallelism')
+        return self
+
+
+class UpdateJobConfigParam(TeaModel):
+    def __init__(
+        self,
+        new_flink_conf: Dict[str, Any] = None,
+    ):
+        self.new_flink_conf = new_flink_conf
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.new_flink_conf is not None:
+            result['newFlinkConf'] = self.new_flink_conf
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('newFlinkConf') is not None:
+            self.new_flink_conf = m.get('newFlinkConf')
+        return self
+
+
+class HotUpdateJobParams(TeaModel):
+    def __init__(
+        self,
+        rescale_job_param: RescaleJobParam = None,
+        update_job_config_param: UpdateJobConfigParam = None,
+    ):
+        self.rescale_job_param = rescale_job_param
+        self.update_job_config_param = update_job_config_param
+
+    def validate(self):
+        if self.rescale_job_param:
+            self.rescale_job_param.validate()
+        if self.update_job_config_param:
+            self.update_job_config_param.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rescale_job_param is not None:
+            result['rescaleJobParam'] = self.rescale_job_param.to_map()
+        if self.update_job_config_param is not None:
+            result['updateJobConfigParam'] = self.update_job_config_param.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('rescaleJobParam') is not None:
+            temp_model = RescaleJobParam()
+            self.rescale_job_param = temp_model.from_map(m['rescaleJobParam'])
+        if m.get('updateJobConfigParam') is not None:
+            temp_model = UpdateJobConfigParam()
+            self.update_job_config_param = temp_model.from_map(m['updateJobConfigParam'])
+        return self
+
+
+class HotUpdateJobStatus(TeaModel):
+    def __init__(
+        self,
+        failure: HotUpdateJobFailureInfo = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.failure = failure
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        if self.failure:
+            self.failure.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failure is not None:
+            result['failure'] = self.failure.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('failure') is not None:
+            temp_model = HotUpdateJobFailureInfo()
+            self.failure = temp_model.from_map(m['failure'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class HotUpdateJobResult(TeaModel):
+    def __init__(
+        self,
+        hot_update_params: HotUpdateJobParams = None,
+        job_hot_update_id: str = None,
+        job_id: str = None,
+        status: HotUpdateJobStatus = None,
+        target_resource_setting: BriefResourceSetting = None,
+    ):
+        self.hot_update_params = hot_update_params
+        self.job_hot_update_id = job_hot_update_id
+        self.job_id = job_id
+        self.status = status
+        self.target_resource_setting = target_resource_setting
+
+    def validate(self):
+        if self.hot_update_params:
+            self.hot_update_params.validate()
+        if self.status:
+            self.status.validate()
+        if self.target_resource_setting:
+            self.target_resource_setting.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hot_update_params is not None:
+            result['hotUpdateParams'] = self.hot_update_params.to_map()
+        if self.job_hot_update_id is not None:
+            result['jobHotUpdateId'] = self.job_hot_update_id
+        if self.job_id is not None:
+            result['jobId'] = self.job_id
+        if self.status is not None:
+            result['status'] = self.status.to_map()
+        if self.target_resource_setting is not None:
+            result['targetResourceSetting'] = self.target_resource_setting.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('hotUpdateParams') is not None:
+            temp_model = HotUpdateJobParams()
+            self.hot_update_params = temp_model.from_map(m['hotUpdateParams'])
+        if m.get('jobHotUpdateId') is not None:
+            self.job_hot_update_id = m.get('jobHotUpdateId')
+        if m.get('jobId') is not None:
+            self.job_id = m.get('jobId')
+        if m.get('status') is not None:
+            temp_model = HotUpdateJobStatus()
+            self.status = temp_model.from_map(m['status'])
+        if m.get('targetResourceSetting') is not None:
+            temp_model = BriefResourceSetting()
+            self.target_resource_setting = temp_model.from_map(m['targetResourceSetting'])
         return self
 
 
@@ -1536,6 +2941,39 @@ class Job(TeaModel):
         return self
 
 
+class JobInfo(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        properties: Dict[str, Any] = None,
+    ):
+        self.id = id
+        self.properties = properties
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.properties is not None:
+            result['properties'] = self.properties
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('properties') is not None:
+            self.properties = m.get('properties')
+        return self
+
+
 class JobStartParameters(TeaModel):
     def __init__(
         self,
@@ -1592,6 +3030,270 @@ class JobStartParameters(TeaModel):
         return self
 
 
+class LineageColumn(TeaModel):
+    def __init__(
+        self,
+        column_name: str = None,
+        column_native_type: str = None,
+        column_type: str = None,
+        created_at: int = None,
+        creator: str = None,
+        description: str = None,
+        id: str = None,
+        modified_at: int = None,
+        modifier: str = None,
+        nullable: bool = None,
+    ):
+        self.column_name = column_name
+        self.column_native_type = column_native_type
+        self.column_type = column_type
+        self.created_at = created_at
+        self.creator = creator
+        self.description = description
+        self.id = id
+        self.modified_at = modified_at
+        self.modifier = modifier
+        self.nullable = nullable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_name is not None:
+            result['columnName'] = self.column_name
+        if self.column_native_type is not None:
+            result['columnNativeType'] = self.column_native_type
+        if self.column_type is not None:
+            result['columnType'] = self.column_type
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.description is not None:
+            result['description'] = self.description
+        if self.id is not None:
+            result['id'] = self.id
+        if self.modified_at is not None:
+            result['modifiedAt'] = self.modified_at
+        if self.modifier is not None:
+            result['modifier'] = self.modifier
+        if self.nullable is not None:
+            result['nullable'] = self.nullable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('columnName') is not None:
+            self.column_name = m.get('columnName')
+        if m.get('columnNativeType') is not None:
+            self.column_native_type = m.get('columnNativeType')
+        if m.get('columnType') is not None:
+            self.column_type = m.get('columnType')
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('modifiedAt') is not None:
+            self.modified_at = m.get('modifiedAt')
+        if m.get('modifier') is not None:
+            self.modifier = m.get('modifier')
+        if m.get('nullable') is not None:
+            self.nullable = m.get('nullable')
+        return self
+
+
+class LineageTable(TeaModel):
+    def __init__(
+        self,
+        columns: List[LineageColumn] = None,
+        id: str = None,
+        properties: Dict[str, Any] = None,
+        table_name: str = None,
+        with_: Dict[str, Any] = None,
+    ):
+        self.columns = columns
+        self.id = id
+        self.properties = properties
+        self.table_name = table_name
+        self.with_ = with_
+
+    def validate(self):
+        if self.columns:
+            for k in self.columns:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['columns'] = []
+        if self.columns is not None:
+            for k in self.columns:
+                result['columns'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['id'] = self.id
+        if self.properties is not None:
+            result['properties'] = self.properties
+        if self.table_name is not None:
+            result['tableName'] = self.table_name
+        if self.with_ is not None:
+            result['with'] = self.with_
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.columns = []
+        if m.get('columns') is not None:
+            for k in m.get('columns'):
+                temp_model = LineageColumn()
+                self.columns.append(temp_model.from_map(k))
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('properties') is not None:
+            self.properties = m.get('properties')
+        if m.get('tableName') is not None:
+            self.table_name = m.get('tableName')
+        if m.get('with') is not None:
+            self.with_ = m.get('with')
+        return self
+
+
+class Node(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        connector: str = None,
+        database_name: str = None,
+        id: str = None,
+        is_temporary: bool = None,
+        tables: List[LineageTable] = None,
+    ):
+        self.catalog_name = catalog_name
+        self.connector = connector
+        self.database_name = database_name
+        self.id = id
+        self.is_temporary = is_temporary
+        self.tables = tables
+
+    def validate(self):
+        if self.tables:
+            for k in self.tables:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['catalogName'] = self.catalog_name
+        if self.connector is not None:
+            result['connector'] = self.connector
+        if self.database_name is not None:
+            result['databaseName'] = self.database_name
+        if self.id is not None:
+            result['id'] = self.id
+        if self.is_temporary is not None:
+            result['isTemporary'] = self.is_temporary
+        result['tables'] = []
+        if self.tables is not None:
+            for k in self.tables:
+                result['tables'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('catalogName') is not None:
+            self.catalog_name = m.get('catalogName')
+        if m.get('connector') is not None:
+            self.connector = m.get('connector')
+        if m.get('databaseName') is not None:
+            self.database_name = m.get('databaseName')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('isTemporary') is not None:
+            self.is_temporary = m.get('isTemporary')
+        self.tables = []
+        if m.get('tables') is not None:
+            for k in m.get('tables'):
+                temp_model = LineageTable()
+                self.tables.append(temp_model.from_map(k))
+        return self
+
+
+class LineageInfo(TeaModel):
+    def __init__(
+        self,
+        edges: Edge = None,
+        job_infos: List[JobInfo] = None,
+        nodes: List[Node] = None,
+    ):
+        self.edges = edges
+        self.job_infos = job_infos
+        self.nodes = nodes
+
+    def validate(self):
+        if self.edges:
+            self.edges.validate()
+        if self.job_infos:
+            for k in self.job_infos:
+                if k:
+                    k.validate()
+        if self.nodes:
+            for k in self.nodes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.edges is not None:
+            result['edges'] = self.edges.to_map()
+        result['jobInfos'] = []
+        if self.job_infos is not None:
+            for k in self.job_infos:
+                result['jobInfos'].append(k.to_map() if k else None)
+        result['nodes'] = []
+        if self.nodes is not None:
+            for k in self.nodes:
+                result['nodes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('edges') is not None:
+            temp_model = Edge()
+            self.edges = temp_model.from_map(m['edges'])
+        self.job_infos = []
+        if m.get('jobInfos') is not None:
+            for k in m.get('jobInfos'):
+                temp_model = JobInfo()
+                self.job_infos.append(temp_model.from_map(k))
+        self.nodes = []
+        if m.get('nodes') is not None:
+            for k in m.get('nodes'):
+                temp_model = Node()
+                self.nodes.append(temp_model.from_map(k))
+        return self
+
+
 class Member(TeaModel):
     def __init__(
         self,
@@ -1623,6 +3325,72 @@ class Member(TeaModel):
             self.member = m.get('member')
         if m.get('role') is not None:
             self.role = m.get('role')
+        return self
+
+
+class MetadataInfo(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        virtual: bool = None,
+    ):
+        self.key = key
+        self.virtual = virtual
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.virtual is not None:
+            result['virtual'] = self.virtual
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('virtual') is not None:
+            self.virtual = m.get('virtual')
+        return self
+
+
+class PrimaryKey(TeaModel):
+    def __init__(
+        self,
+        columns: List[str] = None,
+        constraint_name: str = None,
+    ):
+        self.columns = columns
+        self.constraint_name = constraint_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.columns is not None:
+            result['columns'] = self.columns
+        if self.constraint_name is not None:
+            result['constraintName'] = self.constraint_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('columns') is not None:
+            self.columns = m.get('columns')
+        if m.get('constraintName') is not None:
+            self.constraint_name = m.get('constraintName')
         return self
 
 
@@ -1795,6 +3563,198 @@ class Savepoint(TeaModel):
         return self
 
 
+class TableColumn(TeaModel):
+    def __init__(
+        self,
+        expression: str = None,
+        metadata_info: MetadataInfo = None,
+        name: str = None,
+        nullable: bool = None,
+        type: str = None,
+    ):
+        self.expression = expression
+        self.metadata_info = metadata_info
+        self.name = name
+        self.nullable = nullable
+        self.type = type
+
+    def validate(self):
+        if self.metadata_info:
+            self.metadata_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expression is not None:
+            result['expression'] = self.expression
+        if self.metadata_info is not None:
+            result['metadataInfo'] = self.metadata_info.to_map()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.nullable is not None:
+            result['nullable'] = self.nullable
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('expression') is not None:
+            self.expression = m.get('expression')
+        if m.get('metadataInfo') is not None:
+            temp_model = MetadataInfo()
+            self.metadata_info = temp_model.from_map(m['metadataInfo'])
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('nullable') is not None:
+            self.nullable = m.get('nullable')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class WatermarkSpec(TeaModel):
+    def __init__(
+        self,
+        column: str = None,
+        watermark_expression: str = None,
+    ):
+        self.column = column
+        self.watermark_expression = watermark_expression
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column is not None:
+            result['column'] = self.column
+        if self.watermark_expression is not None:
+            result['watermarkExpression'] = self.watermark_expression
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('column') is not None:
+            self.column = m.get('column')
+        if m.get('watermarkExpression') is not None:
+            self.watermark_expression = m.get('watermarkExpression')
+        return self
+
+
+class Schema(TeaModel):
+    def __init__(
+        self,
+        columns: List[TableColumn] = None,
+        primary_key: List[PrimaryKey] = None,
+        watermark_specs: List[WatermarkSpec] = None,
+    ):
+        self.columns = columns
+        self.primary_key = primary_key
+        self.watermark_specs = watermark_specs
+
+    def validate(self):
+        if self.columns:
+            for k in self.columns:
+                if k:
+                    k.validate()
+        if self.primary_key:
+            for k in self.primary_key:
+                if k:
+                    k.validate()
+        if self.watermark_specs:
+            for k in self.watermark_specs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['columns'] = []
+        if self.columns is not None:
+            for k in self.columns:
+                result['columns'].append(k.to_map() if k else None)
+        result['primaryKey'] = []
+        if self.primary_key is not None:
+            for k in self.primary_key:
+                result['primaryKey'].append(k.to_map() if k else None)
+        result['watermarkSpecs'] = []
+        if self.watermark_specs is not None:
+            for k in self.watermark_specs:
+                result['watermarkSpecs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.columns = []
+        if m.get('columns') is not None:
+            for k in m.get('columns'):
+                temp_model = TableColumn()
+                self.columns.append(temp_model.from_map(k))
+        self.primary_key = []
+        if m.get('primaryKey') is not None:
+            for k in m.get('primaryKey'):
+                temp_model = PrimaryKey()
+                self.primary_key.append(temp_model.from_map(k))
+        self.watermark_specs = []
+        if m.get('watermarkSpecs') is not None:
+            for k in m.get('watermarkSpecs'):
+                temp_model = WatermarkSpec()
+                self.watermark_specs.append(temp_model.from_map(k))
+        return self
+
+
+class SqlStatementExecuteResult(TeaModel):
+    def __init__(
+        self,
+        error_details: ErrorDetails = None,
+        execute_success: bool = None,
+        statement: str = None,
+    ):
+        self.error_details = error_details
+        self.execute_success = execute_success
+        self.statement = statement
+
+    def validate(self):
+        if self.error_details:
+            self.error_details.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_details is not None:
+            result['errorDetails'] = self.error_details.to_map()
+        if self.execute_success is not None:
+            result['executeSuccess'] = self.execute_success
+        if self.statement is not None:
+            result['statement'] = self.statement
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorDetails') is not None:
+            temp_model = ErrorDetails()
+            self.error_details = temp_model.from_map(m['errorDetails'])
+        if m.get('executeSuccess') is not None:
+            self.execute_success = m.get('executeSuccess')
+        if m.get('statement') is not None:
+            self.statement = m.get('statement')
+        return self
+
+
 class SqlStatementValidationResult(TeaModel):
     def __init__(
         self,
@@ -1964,6 +3924,208 @@ class StopJobRequestBody(TeaModel):
         m = m or dict()
         if m.get('stopStrategy') is not None:
             self.stop_strategy = m.get('stopStrategy')
+        return self
+
+
+class Table(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        name: str = None,
+        partition_keys: List[str] = None,
+        properties: Dict[str, Any] = None,
+        schema: Schema = None,
+    ):
+        self.comment = comment
+        self.name = name
+        self.partition_keys = partition_keys
+        self.properties = properties
+        self.schema = schema
+
+    def validate(self):
+        if self.schema:
+            self.schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['comment'] = self.comment
+        if self.name is not None:
+            result['name'] = self.name
+        if self.partition_keys is not None:
+            result['partitionKeys'] = self.partition_keys
+        if self.properties is not None:
+            result['properties'] = self.properties
+        if self.schema is not None:
+            result['schema'] = self.schema.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('comment') is not None:
+            self.comment = m.get('comment')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('partitionKeys') is not None:
+            self.partition_keys = m.get('partitionKeys')
+        if m.get('properties') is not None:
+            self.properties = m.get('properties')
+        if m.get('schema') is not None:
+            temp_model = Schema()
+            self.schema = temp_model.from_map(m['schema'])
+        return self
+
+
+class TableMeta(TeaModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        database_name: str = None,
+        table_name: str = None,
+    ):
+        self.catalog_name = catalog_name
+        self.database_name = database_name
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog_name is not None:
+            result['catalogName'] = self.catalog_name
+        if self.database_name is not None:
+            result['databaseName'] = self.database_name
+        if self.table_name is not None:
+            result['tableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('catalogName') is not None:
+            self.catalog_name = m.get('catalogName')
+        if m.get('databaseName') is not None:
+            self.database_name = m.get('databaseName')
+        if m.get('tableName') is not None:
+            self.table_name = m.get('tableName')
+        return self
+
+
+class UdfFunction(TeaModel):
+    def __init__(
+        self,
+        class_name: str = None,
+        function_name: str = None,
+        udf_artifact_name: str = None,
+    ):
+        self.class_name = class_name
+        self.function_name = function_name
+        self.udf_artifact_name = udf_artifact_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.class_name is not None:
+            result['className'] = self.class_name
+        if self.function_name is not None:
+            result['functionName'] = self.function_name
+        if self.udf_artifact_name is not None:
+            result['udfArtifactName'] = self.udf_artifact_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('className') is not None:
+            self.class_name = m.get('className')
+        if m.get('functionName') is not None:
+            self.function_name = m.get('functionName')
+        if m.get('udfArtifactName') is not None:
+            self.udf_artifact_name = m.get('udfArtifactName')
+        return self
+
+
+class UpdateUdfArtifactResult(TeaModel):
+    def __init__(
+        self,
+        colliding_classes: List[UdfClass] = None,
+        message: str = None,
+        missing_classes: List[UdfClass] = None,
+        udf_artifact: UdfArtifact = None,
+        update_success: bool = None,
+    ):
+        self.colliding_classes = colliding_classes
+        self.message = message
+        self.missing_classes = missing_classes
+        self.udf_artifact = udf_artifact
+        self.update_success = update_success
+
+    def validate(self):
+        if self.colliding_classes:
+            for k in self.colliding_classes:
+                if k:
+                    k.validate()
+        if self.missing_classes:
+            for k in self.missing_classes:
+                if k:
+                    k.validate()
+        if self.udf_artifact:
+            self.udf_artifact.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['collidingClasses'] = []
+        if self.colliding_classes is not None:
+            for k in self.colliding_classes:
+                result['collidingClasses'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['message'] = self.message
+        result['missingClasses'] = []
+        if self.missing_classes is not None:
+            for k in self.missing_classes:
+                result['missingClasses'].append(k.to_map() if k else None)
+        if self.udf_artifact is not None:
+            result['udfArtifact'] = self.udf_artifact.to_map()
+        if self.update_success is not None:
+            result['updateSuccess'] = self.update_success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.colliding_classes = []
+        if m.get('collidingClasses') is not None:
+            for k in m.get('collidingClasses'):
+                temp_model = UdfClass()
+                self.colliding_classes.append(temp_model.from_map(k))
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        self.missing_classes = []
+        if m.get('missingClasses') is not None:
+            for k in m.get('missingClasses'):
+                temp_model = UdfClass()
+                self.missing_classes.append(temp_model.from_map(k))
+        if m.get('udfArtifact') is not None:
+            temp_model = UdfArtifact()
+            self.udf_artifact = temp_model.from_map(m['udfArtifact'])
+        if m.get('updateSuccess') is not None:
+            self.update_success = m.get('updateSuccess')
         return self
 
 
@@ -6377,6 +8539,8 @@ class StartJobHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -6409,6 +8573,8 @@ class StartJobRequest(TeaModel):
         self,
         body: StartJobRequestBody = None,
     ):
+        # The parameter that is used to start the job.
+        # 
         # This parameter is required.
         self.body = body
 
@@ -6444,11 +8610,20 @@ class StartJobResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # *   If the value of success was true, the job that you created was returned.
+        # *   If the value of success was false, a null value was returned.
         self.data = data
+        # *   If the value of success was false, an error code was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_code = error_code
+        # *   If the value of success was false, an error message was returned.
+        # *   If the value of success was true, a null value was returned.
         self.error_message = error_message
+        # The value was fixed to 200.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
