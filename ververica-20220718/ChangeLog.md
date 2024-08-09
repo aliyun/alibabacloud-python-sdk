@@ -1,6 +1,9 @@
 2024-08-09 Version: 1.4.1
 - Generated python 2022-07-18 for ververica.
 
+2024-08-09 Version: 1.4.1
+- Generated python 2022-07-18 for ververica.
+
 2024-07-23 Version: 1.4.0
 - Support API GetLatestJobStartLog.
 - Support API ListEditableNamespace.
