@@ -1,3 +1,7 @@
+2024-08-09 Version: 1.2.7
+- Update API DescribeDataLimits: update response param.
+
+
 2024-07-22 Version: 1.2.6
 - Update API CreateDataLimit: add param InstantlyScan.
 - Update API DescribeDataObjects: update response param.

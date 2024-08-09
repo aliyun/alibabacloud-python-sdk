@@ -4192,6 +4192,7 @@ class DescribeDataLimitsResponseBodyItems(TeaModel):
         instance_description: str = None,
         instance_id: str = None,
         last_finished_time: int = None,
+        last_start_time: int = None,
         local_name: str = None,
         log_store_day: int = None,
         member_account: int = None,
@@ -4273,6 +4274,7 @@ class DescribeDataLimitsResponseBodyItems(TeaModel):
         # *   The value is a UNIX timestamp.
         # *   Unit: milliseconds.
         self.last_finished_time = last_finished_time
+        self.last_start_time = last_start_time
         # The region in which the data asset resides.
         self.local_name = local_name
         # The retention period of raw logs. Unit: days.
@@ -4394,6 +4396,8 @@ class DescribeDataLimitsResponseBodyItems(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.last_finished_time is not None:
             result['LastFinishedTime'] = self.last_finished_time
+        if self.last_start_time is not None:
+            result['LastStartTime'] = self.last_start_time
         if self.local_name is not None:
             result['LocalName'] = self.local_name
         if self.log_store_day is not None:
@@ -4478,6 +4482,8 @@ class DescribeDataLimitsResponseBodyItems(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('LastFinishedTime') is not None:
             self.last_finished_time = m.get('LastFinishedTime')
+        if m.get('LastStartTime') is not None:
+            self.last_start_time = m.get('LastStartTime')
         if m.get('LocalName') is not None:
             self.local_name = m.get('LocalName')
         if m.get('LogStoreDay') is not None:
