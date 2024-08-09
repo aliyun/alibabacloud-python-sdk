@@ -1056,16 +1056,168 @@ class EventInfo(TeaModel):
         return self
 
 
+class LifecyclePostStartExec(TeaModel):
+    def __init__(
+        self,
+        command: List[str] = None,
+    ):
+        self.command = command
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command is not None:
+            result['Command'] = self.command
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        return self
+
+
+class LifecyclePostStart(TeaModel):
+    def __init__(
+        self,
+        exec: LifecyclePostStartExec = None,
+    ):
+        self.exec = exec
+
+    def validate(self):
+        if self.exec:
+            self.exec.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exec is not None:
+            result['Exec'] = self.exec.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Exec') is not None:
+            temp_model = LifecyclePostStartExec()
+            self.exec = temp_model.from_map(m['Exec'])
+        return self
+
+
+class LifecyclePreStopExec(TeaModel):
+    def __init__(
+        self,
+        command: List[str] = None,
+    ):
+        self.command = command
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command is not None:
+            result['Command'] = self.command
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        return self
+
+
+class LifecyclePreStop(TeaModel):
+    def __init__(
+        self,
+        exec: LifecyclePreStopExec = None,
+    ):
+        self.exec = exec
+
+    def validate(self):
+        if self.exec:
+            self.exec.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exec is not None:
+            result['Exec'] = self.exec.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Exec') is not None:
+            temp_model = LifecyclePreStopExec()
+            self.exec = temp_model.from_map(m['Exec'])
+        return self
+
+
+class Lifecycle(TeaModel):
+    def __init__(
+        self,
+        post_start: LifecyclePostStart = None,
+        pre_stop: LifecyclePreStop = None,
+    ):
+        self.post_start = post_start
+        self.pre_stop = pre_stop
+
+    def validate(self):
+        if self.post_start:
+            self.post_start.validate()
+        if self.pre_stop:
+            self.pre_stop.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.post_start is not None:
+            result['PostStart'] = self.post_start.to_map()
+        if self.pre_stop is not None:
+            result['PreStop'] = self.pre_stop.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PostStart') is not None:
+            temp_model = LifecyclePostStart()
+            self.post_start = temp_model.from_map(m['PostStart'])
+        if m.get('PreStop') is not None:
+            temp_model = LifecyclePreStop()
+            self.pre_stop = temp_model.from_map(m['PreStop'])
+        return self
+
+
 class ExtraPodSpec(TeaModel):
     def __init__(
         self,
         init_containers: List[ContainerSpec] = None,
+        lifecycle: Lifecycle = None,
         pod_annotations: Dict[str, str] = None,
         pod_labels: Dict[str, str] = None,
         shared_volume_mount_paths: List[str] = None,
         side_car_containers: List[ContainerSpec] = None,
     ):
         self.init_containers = init_containers
+        self.lifecycle = lifecycle
         self.pod_annotations = pod_annotations
         self.pod_labels = pod_labels
         self.shared_volume_mount_paths = shared_volume_mount_paths
@@ -1076,6 +1228,8 @@ class ExtraPodSpec(TeaModel):
             for k in self.init_containers:
                 if k:
                     k.validate()
+        if self.lifecycle:
+            self.lifecycle.validate()
         if self.side_car_containers:
             for k in self.side_car_containers:
                 if k:
@@ -1091,6 +1245,8 @@ class ExtraPodSpec(TeaModel):
         if self.init_containers is not None:
             for k in self.init_containers:
                 result['InitContainers'].append(k.to_map() if k else None)
+        if self.lifecycle is not None:
+            result['Lifecycle'] = self.lifecycle.to_map()
         if self.pod_annotations is not None:
             result['PodAnnotations'] = self.pod_annotations
         if self.pod_labels is not None:
@@ -1110,6 +1266,9 @@ class ExtraPodSpec(TeaModel):
             for k in m.get('InitContainers'):
                 temp_model = ContainerSpec()
                 self.init_containers.append(temp_model.from_map(k))
+        if m.get('Lifecycle') is not None:
+            temp_model = Lifecycle()
+            self.lifecycle = temp_model.from_map(m['Lifecycle'])
         if m.get('PodAnnotations') is not None:
             self.pod_annotations = m.get('PodAnnotations')
         if m.get('PodLabels') is not None:
@@ -3409,10 +3568,12 @@ class CreateJobRequestDataSources(TeaModel):
         self,
         data_source_id: str = None,
         mount_path: str = None,
+        options: str = None,
         uri: str = None,
     ):
         self.data_source_id = data_source_id
         self.mount_path = mount_path
+        self.options = options
         self.uri = uri
 
     def validate(self):
@@ -3428,6 +3589,8 @@ class CreateJobRequestDataSources(TeaModel):
             result['DataSourceId'] = self.data_source_id
         if self.mount_path is not None:
             result['MountPath'] = self.mount_path
+        if self.options is not None:
+            result['Options'] = self.options
         if self.uri is not None:
             result['Uri'] = self.uri
         return result
@@ -3438,6 +3601,8 @@ class CreateJobRequestDataSources(TeaModel):
             self.data_source_id = m.get('DataSourceId')
         if m.get('MountPath') is not None:
             self.mount_path = m.get('MountPath')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
         if m.get('Uri') is not None:
             self.uri = m.get('Uri')
         return self
