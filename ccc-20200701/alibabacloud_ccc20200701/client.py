@@ -12929,6 +12929,206 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_documents_with_options_async(request, runtime)
 
+    def list_flash_sms_applications_with_options(
+        self,
+        request: ccc20200701_models.ListFlashSmsApplicationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListFlashSmsApplicationsResponse:
+        """
+        @param request: ListFlashSmsApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFlashSmsApplicationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.provider_id):
+            query['ProviderId'] = request.provider_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFlashSmsApplications',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListFlashSmsApplicationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_flash_sms_applications_with_options_async(
+        self,
+        request: ccc20200701_models.ListFlashSmsApplicationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListFlashSmsApplicationsResponse:
+        """
+        @param request: ListFlashSmsApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFlashSmsApplicationsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.provider_id):
+            query['ProviderId'] = request.provider_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFlashSmsApplications',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListFlashSmsApplicationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_flash_sms_applications(
+        self,
+        request: ccc20200701_models.ListFlashSmsApplicationsRequest,
+    ) -> ccc20200701_models.ListFlashSmsApplicationsResponse:
+        """
+        @param request: ListFlashSmsApplicationsRequest
+        @return: ListFlashSmsApplicationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_flash_sms_applications_with_options(request, runtime)
+
+    async def list_flash_sms_applications_async(
+        self,
+        request: ccc20200701_models.ListFlashSmsApplicationsRequest,
+    ) -> ccc20200701_models.ListFlashSmsApplicationsResponse:
+        """
+        @param request: ListFlashSmsApplicationsRequest
+        @return: ListFlashSmsApplicationsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_flash_sms_applications_with_options_async(request, runtime)
+
+    def list_flash_sms_templates_with_options(
+        self,
+        request: ccc20200701_models.ListFlashSmsTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListFlashSmsTemplatesResponse:
+        """
+        @param request: ListFlashSmsTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFlashSmsTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.provider_id):
+            query['ProviderId'] = request.provider_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFlashSmsTemplates',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListFlashSmsTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_flash_sms_templates_with_options_async(
+        self,
+        request: ccc20200701_models.ListFlashSmsTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListFlashSmsTemplatesResponse:
+        """
+        @param request: ListFlashSmsTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFlashSmsTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.provider_id):
+            query['ProviderId'] = request.provider_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListFlashSmsTemplates',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListFlashSmsTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_flash_sms_templates(
+        self,
+        request: ccc20200701_models.ListFlashSmsTemplatesRequest,
+    ) -> ccc20200701_models.ListFlashSmsTemplatesResponse:
+        """
+        @param request: ListFlashSmsTemplatesRequest
+        @return: ListFlashSmsTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_flash_sms_templates_with_options(request, runtime)
+
+    async def list_flash_sms_templates_async(
+        self,
+        request: ccc20200701_models.ListFlashSmsTemplatesRequest,
+    ) -> ccc20200701_models.ListFlashSmsTemplatesResponse:
+        """
+        @param request: ListFlashSmsTemplatesRequest
+        @return: ListFlashSmsTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_flash_sms_templates_with_options_async(request, runtime)
+
     def list_group_chat_messages_with_options(
         self,
         request: ccc20200701_models.ListGroupChatMessagesRequest,
