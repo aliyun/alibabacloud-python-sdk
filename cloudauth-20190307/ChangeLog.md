@@ -1,3 +1,8 @@
+2024-08-12 Version: 2.7.2
+- Update API InitFaceVerify: add param AppQualityCheck.
+- Update API InitFaceVerify: update param FaceContrastPicture.
+
+
 2024-07-02 Version: 2.7.1
 - Update API InitFaceVerify: add param VideoEvidence.
 

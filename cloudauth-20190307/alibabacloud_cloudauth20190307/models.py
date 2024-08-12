@@ -4157,6 +4157,7 @@ class Id2MetaVerifyResponse(TeaModel):
 class InitFaceVerifyRequest(TeaModel):
     def __init__(
         self,
+        app_quality_check: str = None,
         auth_id: str = None,
         birthday: str = None,
         callback_token: str = None,
@@ -4193,6 +4194,7 @@ class InitFaceVerifyRequest(TeaModel):
         video_evidence: str = None,
         voluntary_customized_content: str = None,
     ):
+        self.app_quality_check = app_quality_check
         self.auth_id = auth_id
         self.birthday = birthday
         self.callback_token = callback_token
@@ -4238,6 +4240,8 @@ class InitFaceVerifyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_quality_check is not None:
+            result['AppQualityCheck'] = self.app_quality_check
         if self.auth_id is not None:
             result['AuthId'] = self.auth_id
         if self.birthday is not None:
@@ -4312,6 +4316,8 @@ class InitFaceVerifyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppQualityCheck') is not None:
+            self.app_quality_check = m.get('AppQualityCheck')
         if m.get('AuthId') is not None:
             self.auth_id = m.get('AuthId')
         if m.get('Birthday') is not None:

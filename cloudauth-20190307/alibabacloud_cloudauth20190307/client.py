@@ -2325,6 +2325,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_quality_check):
+            query['AppQualityCheck'] = request.app_quality_check
         if not UtilClient.is_unset(request.birthday):
             query['Birthday'] = request.birthday
         if not UtilClient.is_unset(request.callback_token):
@@ -2428,6 +2430,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_quality_check):
+            query['AppQualityCheck'] = request.app_quality_check
         if not UtilClient.is_unset(request.birthday):
             query['Birthday'] = request.birthday
         if not UtilClient.is_unset(request.callback_token):
