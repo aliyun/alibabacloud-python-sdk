@@ -1,3 +1,34 @@
+2024-08-12 Version: 1.5.0
+- Support API CreateDeploymentDraft.
+- Support API CreateFolder.
+- Support API CreateUdfArtifact.
+- Support API DeleteCustomConnector.
+- Support API DeleteDeploymentDraft.
+- Support API DeleteFolder.
+- Support API DeleteUdfArtifact.
+- Support API DeleteUdfFunction.
+- Support API DeployDeploymentDraftAsync.
+- Support API ExecuteSqlStatement.
+- Support API GetCatalogs.
+- Support API GetDatabases.
+- Support API GetDeployDeploymentDraftResult.
+- Support API GetDeploymentDraft.
+- Support API GetDeploymentDraftLock.
+- Support API GetFolder.
+- Support API GetHotUpdateJobResult.
+- Support API GetLineageInfo.
+- Support API GetTables.
+- Support API GetUdfArtifacts.
+- Support API HotUpdateJob.
+- Support API ListCustomConnectors.
+- Support API ListDeploymentDrafts.
+- Support API RegisterCustomConnector.
+- Support API RegisterUdfFunction.
+- Support API UpdateDeploymentDraft.
+- Support API UpdateFolder.
+- Support API UpdateUdfArtifact.
+
+
 2024-08-09 Version: 1.4.1
 - Generated python 2022-07-18 for ververica.
 
