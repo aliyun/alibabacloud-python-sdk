@@ -1,3 +1,8 @@
+2024-08-12 Version: 2.29.0
+- Support API ListCallSummaries.
+- Support API ListWaitingChats.
+
+
 2024-08-09 Version: 2.28.0
 - Support API ListFlashSmsApplications.
 - Support API ListFlashSmsTemplates.

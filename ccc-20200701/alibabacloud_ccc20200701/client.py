@@ -11649,6 +11649,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_call_detail_records_v2with_options_async(request, runtime)
 
+    def list_call_summaries_with_options(
+        self,
+        tmp_req: ccc20200701_models.ListCallSummariesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListCallSummariesResponse:
+        """
+        @param tmp_req: ListCallSummariesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCallSummariesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.ListCallSummariesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.contact_id_list):
+            request.contact_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contact_id_list, 'ContactIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.contact_id_list_shrink):
+            query['ContactIdList'] = request.contact_id_list_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCallSummaries',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListCallSummariesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_call_summaries_with_options_async(
+        self,
+        tmp_req: ccc20200701_models.ListCallSummariesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListCallSummariesResponse:
+        """
+        @param tmp_req: ListCallSummariesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCallSummariesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ccc20200701_models.ListCallSummariesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.contact_id_list):
+            request.contact_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.contact_id_list, 'ContactIdList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.contact_id_list_shrink):
+            query['ContactIdList'] = request.contact_id_list_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCallSummaries',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListCallSummariesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_call_summaries(
+        self,
+        request: ccc20200701_models.ListCallSummariesRequest,
+    ) -> ccc20200701_models.ListCallSummariesResponse:
+        """
+        @param request: ListCallSummariesRequest
+        @return: ListCallSummariesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_call_summaries_with_options(request, runtime)
+
+    async def list_call_summaries_async(
+        self,
+        request: ccc20200701_models.ListCallSummariesRequest,
+    ) -> ccc20200701_models.ListCallSummariesResponse:
+        """
+        @param request: ListCallSummariesRequest
+        @return: ListCallSummariesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_call_summaries_with_options_async(request, runtime)
+
     def list_call_tags_with_options(
         self,
         request: ccc20200701_models.ListCallTagsRequest,
@@ -17232,6 +17332,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_voicemails_with_options_async(request, runtime)
+
+    def list_waiting_chats_with_options(
+        self,
+        request: ccc20200701_models.ListWaitingChatsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListWaitingChatsResponse:
+        """
+        @param request: ListWaitingChatsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWaitingChatsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.skill_group_id_list):
+            query['SkillGroupIdList'] = request.skill_group_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWaitingChats',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListWaitingChatsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_waiting_chats_with_options_async(
+        self,
+        request: ccc20200701_models.ListWaitingChatsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListWaitingChatsResponse:
+        """
+        @param request: ListWaitingChatsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWaitingChatsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.skill_group_id_list):
+            query['SkillGroupIdList'] = request.skill_group_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWaitingChats',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListWaitingChatsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_waiting_chats(
+        self,
+        request: ccc20200701_models.ListWaitingChatsRequest,
+    ) -> ccc20200701_models.ListWaitingChatsResponse:
+        """
+        @param request: ListWaitingChatsRequest
+        @return: ListWaitingChatsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_waiting_chats_with_options(request, runtime)
+
+    async def list_waiting_chats_async(
+        self,
+        request: ccc20200701_models.ListWaitingChatsRequest,
+    ) -> ccc20200701_models.ListWaitingChatsResponse:
+        """
+        @param request: ListWaitingChatsRequest
+        @return: ListWaitingChatsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_waiting_chats_with_options_async(request, runtime)
 
     def make_call_with_options(
         self,
