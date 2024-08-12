@@ -6078,9 +6078,7 @@ class RecoveryFileRequest(TeaModel):
     ):
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
-        # This parameter is required.
         self.backup_file_id = backup_file_id
-        # This parameter is required.
         self.backup_file_path = backup_file_path
         self.upload_endpoint = upload_endpoint
         self.upload_type = upload_type

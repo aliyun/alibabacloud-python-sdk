@@ -4102,6 +4102,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.RecoveryFileResponse:
         """
+        @summary 文件恢复
+        
         @param request: RecoveryFileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RecoveryFileResponse
@@ -4143,6 +4145,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.RecoveryFileResponse:
         """
+        @summary 文件恢复
+        
         @param request: RecoveryFileRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RecoveryFileResponse
@@ -4183,6 +4187,8 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.RecoveryFileRequest,
     ) -> eds_aic_20230930_models.RecoveryFileResponse:
         """
+        @summary 文件恢复
+        
         @param request: RecoveryFileRequest
         @return: RecoveryFileResponse
         """
@@ -4194,6 +4200,8 @@ class Client(OpenApiClient):
         request: eds_aic_20230930_models.RecoveryFileRequest,
     ) -> eds_aic_20230930_models.RecoveryFileResponse:
         """
+        @summary 文件恢复
+        
         @param request: RecoveryFileRequest
         @return: RecoveryFileResponse
         """
