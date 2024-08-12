@@ -7294,13 +7294,13 @@ class DescribeDBClusterPerformanceResponseBody(TeaModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The end of the time range to query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in Coordinated Universal Time (UTC).
+        # The end of the time range to query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in Coordinated Universal Time (UTC).
         self.end_time = end_time
         # The values of the queried performance metrics of the cluster.
         self.performances = performances
         # The request ID.
         self.request_id = request_id
-        # The beginning of the time range to query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The beginning of the time range to query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -7672,6 +7672,7 @@ class DescribeDBClustersResponseBodyDBClustersDBCluster(TeaModel):
         dbnode_class: str = None,
         dbnode_count: int = None,
         dbnode_storage: int = None,
+        db_version: str = None,
         expire_time: str = None,
         ext_storage_size: int = None,
         ext_storage_type: str = None,
@@ -7747,6 +7748,7 @@ class DescribeDBClustersResponseBodyDBClustersDBCluster(TeaModel):
         # 
         # >  This value is a multiple of 100.
         self.dbnode_storage = dbnode_storage
+        self.db_version = db_version
         # The time when the cluster expired. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
         # 
         # >  Pay-as-you-go clusters never expire. If the cluster is a pay-as-you-go cluster, an empty string is returned for this parameter.
@@ -7849,6 +7851,8 @@ class DescribeDBClustersResponseBodyDBClustersDBCluster(TeaModel):
             result['DBNodeCount'] = self.dbnode_count
         if self.dbnode_storage is not None:
             result['DBNodeStorage'] = self.dbnode_storage
+        if self.db_version is not None:
+            result['DbVersion'] = self.db_version
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
         if self.ext_storage_size is not None:
@@ -7915,6 +7919,8 @@ class DescribeDBClustersResponseBodyDBClustersDBCluster(TeaModel):
             self.dbnode_count = m.get('DBNodeCount')
         if m.get('DBNodeStorage') is not None:
             self.dbnode_storage = m.get('DBNodeStorage')
+        if m.get('DbVersion') is not None:
+            self.db_version = m.get('DbVersion')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
         if m.get('ExtStorageSize') is not None:
@@ -10485,13 +10491,18 @@ class DescribeTransferHistoryRequest(TeaModel):
 class DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail(TeaModel):
     def __init__(
         self,
+        disable_write_windows: str = None,
         progress: str = None,
+        source_control_version: str = None,
         source_dbcluster: str = None,
         status: str = None,
+        target_control_version: str = None,
         target_dbcluster: str = None,
     ):
+        self.disable_write_windows = disable_write_windows
         # The progress of the data migration.
         self.progress = progress
+        self.source_control_version = source_control_version
         # The ID of the source cluster.
         self.source_dbcluster = source_dbcluster
         # The status of the data migration task. Valid values:
@@ -10499,6 +10510,7 @@ class DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail(TeaModel):
         # *   **Finished**: The data migration task is complete.
         # *   **Processing**: The data migration task is in progress.
         self.status = status
+        self.target_control_version = target_control_version
         # The ID of the destination cluster.
         self.target_dbcluster = target_dbcluster
 
@@ -10511,24 +10523,36 @@ class DescribeTransferHistoryResponseBodyHistoryDetailsHistoryDetail(TeaModel):
             return _map
 
         result = dict()
+        if self.disable_write_windows is not None:
+            result['DisableWriteWindows'] = self.disable_write_windows
         if self.progress is not None:
             result['Progress'] = self.progress
+        if self.source_control_version is not None:
+            result['SourceControlVersion'] = self.source_control_version
         if self.source_dbcluster is not None:
             result['SourceDBCluster'] = self.source_dbcluster
         if self.status is not None:
             result['Status'] = self.status
+        if self.target_control_version is not None:
+            result['TargetControlVersion'] = self.target_control_version
         if self.target_dbcluster is not None:
             result['TargetDBCluster'] = self.target_dbcluster
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DisableWriteWindows') is not None:
+            self.disable_write_windows = m.get('DisableWriteWindows')
         if m.get('Progress') is not None:
             self.progress = m.get('Progress')
+        if m.get('SourceControlVersion') is not None:
+            self.source_control_version = m.get('SourceControlVersion')
         if m.get('SourceDBCluster') is not None:
             self.source_dbcluster = m.get('SourceDBCluster')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('TargetControlVersion') is not None:
+            self.target_control_version = m.get('TargetControlVersion')
         if m.get('TargetDBCluster') is not None:
             self.target_dbcluster = m.get('TargetDBCluster')
         return self
@@ -13142,6 +13166,7 @@ class TransferVersionRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        disable_write_windows: str = None,
         owner_account: str = None,
         owner_id: int = None,
         page_number: int = None,
@@ -13159,6 +13184,7 @@ class TransferVersionRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.disable_write_windows = disable_write_windows
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number.
@@ -13207,6 +13233,8 @@ class TransferVersionRequest(TeaModel):
         result = dict()
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.disable_write_windows is not None:
+            result['DisableWriteWindows'] = self.disable_write_windows
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -13237,6 +13265,8 @@ class TransferVersionRequest(TeaModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DisableWriteWindows') is not None:
+            self.disable_write_windows = m.get('DisableWriteWindows')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
