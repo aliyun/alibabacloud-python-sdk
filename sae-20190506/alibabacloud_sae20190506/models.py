@@ -16974,6 +16974,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         edas_container_version: str = None,
         enable_ahas: str = None,
         enable_grey_tag_route: bool = None,
+        enable_idle: bool = None,
         envs: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
@@ -16984,6 +16985,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         liveness: str = None,
         memory: int = None,
         micro_registration: str = None,
+        micro_registration_config: str = None,
         min_ready_instance_ratio: int = None,
         min_ready_instances: int = None,
         mount_desc: List[DescribeApplicationConfigResponseBodyDataMountDesc] = None,
@@ -17092,6 +17094,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # *   **true**: The canary release rules are enabled.
         # *   **false**: The canary release rules are disabled.
         self.enable_grey_tag_route = enable_grey_tag_route
+        self.enable_idle = enable_idle
         # The environment variables. Variable description:
         # 
         # *   **name**: the name of the environment variable.
@@ -17170,6 +17173,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # *   This parameter is set to **131072** if the Cpu parameter is set to 32000.
         self.memory = memory
         self.micro_registration = micro_registration
+        self.micro_registration_config = micro_registration_config
         # The percentage of the minimum number of available instances. Valid values:
         # 
         # *   **-1**: the default value. This value indicates that the minimum number of available instances is not measured by percentage. If you do not configure this parameter, the default value **-1** is used.
@@ -17380,6 +17384,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['EnableAhas'] = self.enable_ahas
         if self.enable_grey_tag_route is not None:
             result['EnableGreyTagRoute'] = self.enable_grey_tag_route
+        if self.enable_idle is not None:
+            result['EnableIdle'] = self.enable_idle
         if self.envs is not None:
             result['Envs'] = self.envs
         if self.image_pull_secrets is not None:
@@ -17400,6 +17406,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['Memory'] = self.memory
         if self.micro_registration is not None:
             result['MicroRegistration'] = self.micro_registration
+        if self.micro_registration_config is not None:
+            result['MicroRegistrationConfig'] = self.micro_registration_config
         if self.min_ready_instance_ratio is not None:
             result['MinReadyInstanceRatio'] = self.min_ready_instance_ratio
         if self.min_ready_instances is not None:
@@ -17525,6 +17533,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.enable_ahas = m.get('EnableAhas')
         if m.get('EnableGreyTagRoute') is not None:
             self.enable_grey_tag_route = m.get('EnableGreyTagRoute')
+        if m.get('EnableIdle') is not None:
+            self.enable_idle = m.get('EnableIdle')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
         if m.get('ImagePullSecrets') is not None:
@@ -17545,6 +17555,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.memory = m.get('Memory')
         if m.get('MicroRegistration') is not None:
             self.micro_registration = m.get('MicroRegistration')
+        if m.get('MicroRegistrationConfig') is not None:
+            self.micro_registration_config = m.get('MicroRegistrationConfig')
         if m.get('MinReadyInstanceRatio') is not None:
             self.min_ready_instance_ratio = m.get('MinReadyInstanceRatio')
         if m.get('MinReadyInstances') is not None:

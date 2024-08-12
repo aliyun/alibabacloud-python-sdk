@@ -1,3 +1,7 @@
+2024-08-12 Version: 1.23.2
+- Update API DescribeApplicationConfig: update response param.
+
+
 2024-08-07 Version: 1.23.1
 - Update API BindSlb: add param InternetSlbChargeType.
 - Update API BindSlb: add param IntranetSlbChargeType.
