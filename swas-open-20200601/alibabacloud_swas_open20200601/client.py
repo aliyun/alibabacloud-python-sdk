@@ -47,7 +47,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> swas__open20200601_models.AddCustomImageShareAccountResponse:
         """
-        @summary 共享镜像给用户
+        @summary Shares a custom image with other Alibaba Cloud accounts in the same region to quickly deploy the same environment configurations for multiple simple application servers at a time. This improves deployment efficiency.
+        
+        @description    Before you share a custom image, make sure that all sensitive data and files are removed from the image.
+        The IDs of the Alibaba Cloud accounts with which you want to share the image is obtained. Move the pointer over the profile in the upper-right corner of the Simple Application Server console. In the card that appears, if Main Account is displayed, the showed account ID is the Alibaba Cloud account ID.
         
         @param request: AddCustomImageShareAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -88,7 +91,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> swas__open20200601_models.AddCustomImageShareAccountResponse:
         """
-        @summary 共享镜像给用户
+        @summary Shares a custom image with other Alibaba Cloud accounts in the same region to quickly deploy the same environment configurations for multiple simple application servers at a time. This improves deployment efficiency.
+        
+        @description    Before you share a custom image, make sure that all sensitive data and files are removed from the image.
+        The IDs of the Alibaba Cloud accounts with which you want to share the image is obtained. Move the pointer over the profile in the upper-right corner of the Simple Application Server console. In the card that appears, if Main Account is displayed, the showed account ID is the Alibaba Cloud account ID.
         
         @param request: AddCustomImageShareAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -128,7 +134,10 @@ class Client(OpenApiClient):
         request: swas__open20200601_models.AddCustomImageShareAccountRequest,
     ) -> swas__open20200601_models.AddCustomImageShareAccountResponse:
         """
-        @summary 共享镜像给用户
+        @summary Shares a custom image with other Alibaba Cloud accounts in the same region to quickly deploy the same environment configurations for multiple simple application servers at a time. This improves deployment efficiency.
+        
+        @description    Before you share a custom image, make sure that all sensitive data and files are removed from the image.
+        The IDs of the Alibaba Cloud accounts with which you want to share the image is obtained. Move the pointer over the profile in the upper-right corner of the Simple Application Server console. In the card that appears, if Main Account is displayed, the showed account ID is the Alibaba Cloud account ID.
         
         @param request: AddCustomImageShareAccountRequest
         @return: AddCustomImageShareAccountResponse
@@ -141,7 +150,10 @@ class Client(OpenApiClient):
         request: swas__open20200601_models.AddCustomImageShareAccountRequest,
     ) -> swas__open20200601_models.AddCustomImageShareAccountResponse:
         """
-        @summary 共享镜像给用户
+        @summary Shares a custom image with other Alibaba Cloud accounts in the same region to quickly deploy the same environment configurations for multiple simple application servers at a time. This improves deployment efficiency.
+        
+        @description    Before you share a custom image, make sure that all sensitive data and files are removed from the image.
+        The IDs of the Alibaba Cloud accounts with which you want to share the image is obtained. Move the pointer over the profile in the upper-right corner of the Simple Application Server console. In the card that appears, if Main Account is displayed, the showed account ID is the Alibaba Cloud account ID.
         
         @param request: AddCustomImageShareAccountRequest
         @return: AddCustomImageShareAccountResponse
@@ -289,8 +301,6 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.firewall_template_id):
             query['FirewallTemplateId'] = request.firewall_template_id
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.region_id):
@@ -334,8 +344,6 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.firewall_template_id):
             query['FirewallTemplateId'] = request.firewall_template_id
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.region_id):
@@ -675,8 +683,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resoure_group_id):
-            query['ResoureGroupId'] = request.resoure_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.system_snapshot_id):
             query['SystemSnapshotId'] = request.system_snapshot_id
         if not UtilClient.is_unset(request.tag):
@@ -738,8 +746,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resoure_group_id):
-            query['ResoureGroupId'] = request.resoure_group_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.system_snapshot_id):
             query['SystemSnapshotId'] = request.system_snapshot_id
         if not UtilClient.is_unset(request.tag):
@@ -2459,8 +2467,6 @@ class Client(OpenApiClient):
             query['FirewallTemplateId'] = request.firewall_template_id
         if not UtilClient.is_unset(request.firewall_template_rule_id):
             query['FirewallTemplateRuleId'] = request.firewall_template_rule_id
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -2504,8 +2510,6 @@ class Client(OpenApiClient):
             query['FirewallTemplateId'] = request.firewall_template_id
         if not UtilClient.is_unset(request.firewall_template_rule_id):
             query['FirewallTemplateRuleId'] = request.firewall_template_rule_id
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -2577,8 +2581,6 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.firewall_template_id):
             query['FirewallTemplateId'] = request.firewall_template_id
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -2620,8 +2622,6 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.firewall_template_id):
             query['FirewallTemplateId'] = request.firewall_template_id
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -4359,8 +4359,6 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.firewall_template_id):
             query['FirewallTemplateId'] = request.firewall_template_id
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -4406,8 +4404,6 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.firewall_template_id):
             query['FirewallTemplateId'] = request.firewall_template_id
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -6311,7 +6307,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> swas__open20200601_models.ListCustomImageShareAccountsResponse:
         """
-        @summary 查询镜像共享给的用户
+        @summary Queries information about custom images that are shared across Alibaba Cloud accounts in a region.
         
         @param request: ListCustomImageShareAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6354,7 +6350,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> swas__open20200601_models.ListCustomImageShareAccountsResponse:
         """
-        @summary 查询镜像共享给的用户
+        @summary Queries information about custom images that are shared across Alibaba Cloud accounts in a region.
         
         @param request: ListCustomImageShareAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6396,7 +6392,7 @@ class Client(OpenApiClient):
         request: swas__open20200601_models.ListCustomImageShareAccountsRequest,
     ) -> swas__open20200601_models.ListCustomImageShareAccountsResponse:
         """
-        @summary 查询镜像共享给的用户
+        @summary Queries information about custom images that are shared across Alibaba Cloud accounts in a region.
         
         @param request: ListCustomImageShareAccountsRequest
         @return: ListCustomImageShareAccountsResponse
@@ -6409,7 +6405,7 @@ class Client(OpenApiClient):
         request: swas__open20200601_models.ListCustomImageShareAccountsRequest,
     ) -> swas__open20200601_models.ListCustomImageShareAccountsResponse:
         """
-        @summary 查询镜像共享给的用户
+        @summary Queries information about custom images that are shared across Alibaba Cloud accounts in a region.
         
         @param request: ListCustomImageShareAccountsRequest
         @return: ListCustomImageShareAccountsResponse
@@ -8561,8 +8557,6 @@ class Client(OpenApiClient):
             query['FirewallTemplateId'] = request.firewall_template_id
         if not UtilClient.is_unset(request.firewall_template_rule):
             query['FirewallTemplateRule'] = request.firewall_template_rule
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.region_id):
@@ -8610,8 +8604,6 @@ class Client(OpenApiClient):
             query['FirewallTemplateId'] = request.firewall_template_id
         if not UtilClient.is_unset(request.firewall_template_rule):
             query['FirewallTemplateRule'] = request.firewall_template_rule
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.region_id):
@@ -9271,7 +9263,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> swas__open20200601_models.RemoveCustomImageShareAccountResponse:
         """
-        @summary 取消共享镜像到用户
+        @summary Unshares a custom image that is shared across Alibaba Cloud accounts.
         
         @param request: RemoveCustomImageShareAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9312,7 +9304,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> swas__open20200601_models.RemoveCustomImageShareAccountResponse:
         """
-        @summary 取消共享镜像到用户
+        @summary Unshares a custom image that is shared across Alibaba Cloud accounts.
         
         @param request: RemoveCustomImageShareAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9352,7 +9344,7 @@ class Client(OpenApiClient):
         request: swas__open20200601_models.RemoveCustomImageShareAccountRequest,
     ) -> swas__open20200601_models.RemoveCustomImageShareAccountResponse:
         """
-        @summary 取消共享镜像到用户
+        @summary Unshares a custom image that is shared across Alibaba Cloud accounts.
         
         @param request: RemoveCustomImageShareAccountRequest
         @return: RemoveCustomImageShareAccountResponse
@@ -9365,7 +9357,7 @@ class Client(OpenApiClient):
         request: swas__open20200601_models.RemoveCustomImageShareAccountRequest,
     ) -> swas__open20200601_models.RemoveCustomImageShareAccountResponse:
         """
-        @summary 取消共享镜像到用户
+        @summary Unshares a custom image that is shared across Alibaba Cloud accounts.
         
         @param request: RemoveCustomImageShareAccountRequest
         @return: RemoveCustomImageShareAccountResponse

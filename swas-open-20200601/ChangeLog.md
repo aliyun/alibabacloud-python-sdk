@@ -1,3 +1,13 @@
+2024-08-12 Version: 3.0.0
+- Update API ApplyFirewallTemplate: delete param InstanceId.
+- Update API CreateCustomImage: add param ResourceGroupId.
+- Update API CreateCustomImage: delete param ResoureGroupId.
+- Update API DeleteFirewallTemplateRules: delete param InstanceId.
+- Update API DeleteFirewallTemplates: delete param InstanceId.
+- Update API DescribeFirewallTemplateApplyResults: delete param InstanceId.
+- Update API ModifyFirewallTemplate: delete param InstanceId.
+
+
 2024-07-31 Version: 2.0.0
 - Support API AddCustomImageShareAccount.
 - Support API ApplyFirewallTemplate.

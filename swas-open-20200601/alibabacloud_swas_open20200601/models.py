@@ -12,11 +12,18 @@ class AddCustomImageShareAccountRequest(TeaModel):
         image_id: str = None,
         region_id: str = None,
     ):
+        # The IDs of the Alibaba Cloud accounts with which you want to share the custom image.
+        # 
         # This parameter is required.
         self.account = account
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
+        # The ID of the custom image.
+        # 
         # This parameter is required.
         self.image_id = image_id
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -57,6 +64,7 @@ class AddCustomImageShareAccountResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -247,7 +255,6 @@ class ApplyFirewallTemplateRequest(TeaModel):
         self,
         client_token: str = None,
         firewall_template_id: str = None,
-        instance_id: str = None,
         instance_ids: List[str] = None,
         region_id: str = None,
     ):
@@ -257,8 +264,6 @@ class ApplyFirewallTemplateRequest(TeaModel):
         # 
         # This parameter is required.
         self.firewall_template_id = firewall_template_id
-        # The ID of the simple application server.
-        self.instance_id = instance_id
         # The IDs of the simple application servers.
         # 
         # This parameter is required.
@@ -281,8 +286,6 @@ class ApplyFirewallTemplateRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.firewall_template_id is not None:
             result['FirewallTemplateId'] = self.firewall_template_id
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
         if self.region_id is not None:
@@ -295,8 +298,6 @@ class ApplyFirewallTemplateRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('FirewallTemplateId') is not None:
             self.firewall_template_id = m.get('FirewallTemplateId')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
         if m.get('RegionId') is not None:
@@ -876,7 +877,7 @@ class CreateCustomImageRequest(TeaModel):
         image_name: str = None,
         instance_id: str = None,
         region_id: str = None,
-        resoure_group_id: str = None,
+        resource_group_id: str = None,
         system_snapshot_id: str = None,
         tag: List[CreateCustomImageRequestTag] = None,
     ):
@@ -898,8 +899,7 @@ class CreateCustomImageRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
-        self.resoure_group_id = resoure_group_id
+        self.resource_group_id = resource_group_id
         # The ID of the system disk snapshot.
         self.system_snapshot_id = system_snapshot_id
         # The tags that you want to add to the custom image. You can specify up to 20 tags.
@@ -929,8 +929,8 @@ class CreateCustomImageRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
-        if self.resoure_group_id is not None:
-            result['ResoureGroupId'] = self.resoure_group_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.system_snapshot_id is not None:
             result['SystemSnapshotId'] = self.system_snapshot_id
         result['Tag'] = []
@@ -953,8 +953,8 @@ class CreateCustomImageRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-        if m.get('ResoureGroupId') is not None:
-            self.resoure_group_id = m.get('ResoureGroupId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SystemSnapshotId') is not None:
             self.system_snapshot_id = m.get('SystemSnapshotId')
         self.tag = []
@@ -3314,7 +3314,6 @@ class DeleteFirewallTemplateRulesRequest(TeaModel):
         client_token: str = None,
         firewall_template_id: str = None,
         firewall_template_rule_id: List[str] = None,
-        instance_id: str = None,
         region_id: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
@@ -3327,8 +3326,6 @@ class DeleteFirewallTemplateRulesRequest(TeaModel):
         # 
         # This parameter is required.
         self.firewall_template_rule_id = firewall_template_rule_id
-        # The ID of the simple application server to which the firewall template is applied.
-        self.instance_id = instance_id
         # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
         # 
         # This parameter is required.
@@ -3349,8 +3346,6 @@ class DeleteFirewallTemplateRulesRequest(TeaModel):
             result['FirewallTemplateId'] = self.firewall_template_id
         if self.firewall_template_rule_id is not None:
             result['FirewallTemplateRuleId'] = self.firewall_template_rule_id
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -3363,8 +3358,6 @@ class DeleteFirewallTemplateRulesRequest(TeaModel):
             self.firewall_template_id = m.get('FirewallTemplateId')
         if m.get('FirewallTemplateRuleId') is not None:
             self.firewall_template_rule_id = m.get('FirewallTemplateRuleId')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -3444,7 +3437,6 @@ class DeleteFirewallTemplatesRequest(TeaModel):
         self,
         client_token: str = None,
         firewall_template_id: List[str] = None,
-        instance_id: str = None,
         region_id: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
@@ -3453,8 +3445,6 @@ class DeleteFirewallTemplatesRequest(TeaModel):
         # 
         # This parameter is required.
         self.firewall_template_id = firewall_template_id
-        # The ID of the simple application server to which the firewall templates belong.
-        self.instance_id = instance_id
         # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
         # 
         # This parameter is required.
@@ -3473,8 +3463,6 @@ class DeleteFirewallTemplatesRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.firewall_template_id is not None:
             result['FirewallTemplateId'] = self.firewall_template_id
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -3485,8 +3473,6 @@ class DeleteFirewallTemplatesRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('FirewallTemplateId') is not None:
             self.firewall_template_id = m.get('FirewallTemplateId')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -7102,7 +7088,6 @@ class DescribeFirewallTemplateApplyResultsRequest(TeaModel):
         self,
         client_token: str = None,
         firewall_template_id: str = None,
-        instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
@@ -7112,8 +7097,6 @@ class DescribeFirewallTemplateApplyResultsRequest(TeaModel):
         self.client_token = client_token
         # The ID of the firewall template.
         self.firewall_template_id = firewall_template_id
-        # The ID of the simple application server to which the template belongs.
-        self.instance_id = instance_id
         # The page number.
         self.page_number = page_number
         # The number of entries per page. Default value: 20.
@@ -7138,8 +7121,6 @@ class DescribeFirewallTemplateApplyResultsRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.firewall_template_id is not None:
             result['FirewallTemplateId'] = self.firewall_template_id
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -7156,8 +7137,6 @@ class DescribeFirewallTemplateApplyResultsRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('FirewallTemplateId') is not None:
             self.firewall_template_id = m.get('FirewallTemplateId')
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -10328,11 +10307,22 @@ class ListCustomImageShareAccountsRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request?](https://help.aliyun.com/document_detail/25693.html)
         self.client_token = client_token
+        # The ID of the shared custom image.
+        # 
         # This parameter is required.
         self.image_id = image_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
+        # Maximum value: 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
+        # The region ID. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -10378,7 +10368,9 @@ class ListCustomImageShareAccountsResponseBodyImageShareUsers(TeaModel):
         shared_time: str = None,
         user_id: int = None,
     ):
+        # The time when the custom image is shared.
         self.shared_time = shared_time
+        # The ID of the Alibaba Cloud account whose custom image is shared.
         self.user_id = user_id
 
     def validate(self):
@@ -10414,10 +10406,15 @@ class ListCustomImageShareAccountsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The information about the shared custom images.
         self.image_share_users = image_share_users
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -15243,7 +15240,6 @@ class ModifyFirewallTemplateRequest(TeaModel):
         description: str = None,
         firewall_template_id: str = None,
         firewall_template_rule: List[ModifyFirewallTemplateRequestFirewallTemplateRule] = None,
-        instance_id: str = None,
         name: str = None,
         region_id: str = None,
     ):
@@ -15257,8 +15253,6 @@ class ModifyFirewallTemplateRequest(TeaModel):
         self.firewall_template_id = firewall_template_id
         # The firewall rule in the template.
         self.firewall_template_rule = firewall_template_rule
-        # The ID of the simple application server to which the firewall template is applied.
-        self.instance_id = instance_id
         # The name of the firewall template.
         self.name = name
         # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
@@ -15288,8 +15282,6 @@ class ModifyFirewallTemplateRequest(TeaModel):
         if self.firewall_template_rule is not None:
             for k in self.firewall_template_rule:
                 result['FirewallTemplateRule'].append(k.to_map() if k else None)
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
         if self.name is not None:
             result['Name'] = self.name
         if self.region_id is not None:
@@ -15309,8 +15301,6 @@ class ModifyFirewallTemplateRequest(TeaModel):
             for k in m.get('FirewallTemplateRule'):
                 temp_model = ModifyFirewallTemplateRequestFirewallTemplateRule()
                 self.firewall_template_rule.append(temp_model.from_map(k))
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('RegionId') is not None:
@@ -16001,11 +15991,18 @@ class RemoveCustomImageShareAccountRequest(TeaModel):
         image_id: str = None,
         region_id: str = None,
     ):
+        # The IDs of the Alibaba Cloud accounts with which you want to unshare the image.
+        # 
         # This parameter is required.
         self.account = account
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
+        # The ID of the shared custom image.
+        # 
         # This parameter is required.
         self.image_id = image_id
+        # The region ID of the simple application server. You can call the [ListRegions](https://help.aliyun.com/document_detail/189315.html) operation to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -16046,6 +16043,7 @@ class RemoveCustomImageShareAccountResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
