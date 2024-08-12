@@ -9990,6 +9990,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_gateway_auth_detail_with_options_async(request, runtime)
 
+    def get_gateway_config_with_options(
+        self,
+        request: mse_20190531_models.GetGatewayConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetGatewayConfigResponse:
+        """
+        @summary 获取网关全局配置
+        
+        @param request: GetGatewayConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGatewayConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGatewayConfig',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetGatewayConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_gateway_config_with_options_async(
+        self,
+        request: mse_20190531_models.GetGatewayConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetGatewayConfigResponse:
+        """
+        @summary 获取网关全局配置
+        
+        @param request: GetGatewayConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGatewayConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.gateway_unique_id):
+            query['GatewayUniqueId'] = request.gateway_unique_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGatewayConfig',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetGatewayConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_gateway_config(
+        self,
+        request: mse_20190531_models.GetGatewayConfigRequest,
+    ) -> mse_20190531_models.GetGatewayConfigResponse:
+        """
+        @summary 获取网关全局配置
+        
+        @param request: GetGatewayConfigRequest
+        @return: GetGatewayConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_gateway_config_with_options(request, runtime)
+
+    async def get_gateway_config_async(
+        self,
+        request: mse_20190531_models.GetGatewayConfigRequest,
+    ) -> mse_20190531_models.GetGatewayConfigResponse:
+        """
+        @summary 获取网关全局配置
+        
+        @param request: GetGatewayConfigRequest
+        @return: GetGatewayConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_gateway_config_with_options_async(request, runtime)
+
     def get_gateway_domain_detail_with_options(
         self,
         request: mse_20190531_models.GetGatewayDomainDetailRequest,

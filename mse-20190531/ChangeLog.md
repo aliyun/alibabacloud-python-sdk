@@ -1,3 +1,7 @@
+2024-08-12 Version: 6.11.0
+- Support API GetGatewayConfig.
+
+
 2024-08-02 Version: 6.10.0
 - Support API GatewayBlackWhiteList.
 - Update API CloneNacosConfig: add param DataIds.
