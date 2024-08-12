@@ -6088,6 +6088,7 @@ class ListListenersRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         region_id: str = None,
+        sec_sensor_enabled: str = None,
         tag: List[ListListenersRequestTag] = None,
     ):
         # The listener IDs.
@@ -6107,6 +6108,7 @@ class ListListenersRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
         self.region_id = region_id
+        self.sec_sensor_enabled = sec_sensor_enabled
         # The tags.
         self.tag = tag
 
@@ -6134,6 +6136,8 @@ class ListListenersRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.sec_sensor_enabled is not None:
+            result['SecSensorEnabled'] = self.sec_sensor_enabled
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -6154,6 +6158,8 @@ class ListListenersRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SecSensorEnabled') is not None:
+            self.sec_sensor_enabled = m.get('SecSensorEnabled')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):

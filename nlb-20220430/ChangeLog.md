@@ -1,3 +1,7 @@
+2024-08-12 Version: 3.1.1
+- Update API ListListeners: add param SecSensorEnabled.
+
+
 2024-06-25 Version: 3.1.0
 - Support API DescribeHdMonitorRegionConfig.
 - Support API SetHdMonitorRegionConfig.
