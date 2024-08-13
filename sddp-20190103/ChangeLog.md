@@ -1,3 +1,8 @@
+2024-08-13 Version: 1.2.8
+- Update API DescribeOssObjects: add param Marker.
+- Update API DescribeOssObjects: update response param.
+
+
 2024-08-09 Version: 1.2.7
 - Update API DescribeDataLimits: update response param.
 

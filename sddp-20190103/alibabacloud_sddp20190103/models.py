@@ -9474,6 +9474,7 @@ class DescribeOssObjectsRequest(TeaModel):
         lang: str = None,
         last_scan_time_end: int = None,
         last_scan_time_start: int = None,
+        marker: int = None,
         name: str = None,
         page_size: int = None,
         risk_level_id: int = None,
@@ -9498,6 +9499,7 @@ class DescribeOssObjectsRequest(TeaModel):
         self.last_scan_time_end = last_scan_time_end
         # The start time of the last scan. The value is a UNIX timestamp. Unit: milliseconds.
         self.last_scan_time_start = last_scan_time_start
+        self.marker = marker
         # The search keyword. Fuzzy match is supported.
         self.name = name
         # The number of entries to return on each page.
@@ -9540,6 +9542,8 @@ class DescribeOssObjectsRequest(TeaModel):
             result['LastScanTimeEnd'] = self.last_scan_time_end
         if self.last_scan_time_start is not None:
             result['LastScanTimeStart'] = self.last_scan_time_start
+        if self.marker is not None:
+            result['Marker'] = self.marker
         if self.name is not None:
             result['Name'] = self.name
         if self.page_size is not None:
@@ -9568,6 +9572,8 @@ class DescribeOssObjectsRequest(TeaModel):
             self.last_scan_time_end = m.get('LastScanTimeEnd')
         if m.get('LastScanTimeStart') is not None:
             self.last_scan_time_start = m.get('LastScanTimeStart')
+        if m.get('Marker') is not None:
+            self.marker = m.get('Marker')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('PageSize') is not None:
@@ -9790,20 +9796,26 @@ class DescribeOssObjectsResponseBody(TeaModel):
         self,
         current_page: int = None,
         items: List[DescribeOssObjectsResponseBodyItems] = None,
+        marker: str = None,
+        next_marker: str = None,
         page_size: int = None,
         request_id: str = None,
         total_count: int = None,
+        truncated: bool = None,
     ):
         # The page number of the returned page.
         self.current_page = current_page
         # A list of OSS objects.
         self.items = items
+        self.marker = marker
+        self.next_marker = next_marker
         # The number of entries returned per page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
+        self.truncated = truncated
 
     def validate(self):
         if self.items:
@@ -9823,12 +9835,18 @@ class DescribeOssObjectsResponseBody(TeaModel):
         if self.items is not None:
             for k in self.items:
                 result['Items'].append(k.to_map() if k else None)
+        if self.marker is not None:
+            result['Marker'] = self.marker
+        if self.next_marker is not None:
+            result['NextMarker'] = self.next_marker
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
+        if self.truncated is not None:
+            result['Truncated'] = self.truncated
         return result
 
     def from_map(self, m: dict = None):
@@ -9840,12 +9858,18 @@ class DescribeOssObjectsResponseBody(TeaModel):
             for k in m.get('Items'):
                 temp_model = DescribeOssObjectsResponseBodyItems()
                 self.items.append(temp_model.from_map(k))
+        if m.get('Marker') is not None:
+            self.marker = m.get('Marker')
+        if m.get('NextMarker') is not None:
+            self.next_marker = m.get('NextMarker')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+        if m.get('Truncated') is not None:
+            self.truncated = m.get('Truncated')
         return self
 
 

@@ -3902,6 +3902,8 @@ class Client(OpenApiClient):
             query['LastScanTimeEnd'] = request.last_scan_time_end
         if not UtilClient.is_unset(request.last_scan_time_start):
             query['LastScanTimeStart'] = request.last_scan_time_start
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.page_size):
@@ -3959,6 +3961,8 @@ class Client(OpenApiClient):
             query['LastScanTimeEnd'] = request.last_scan_time_end
         if not UtilClient.is_unset(request.last_scan_time_start):
             query['LastScanTimeStart'] = request.last_scan_time_start
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.page_size):
