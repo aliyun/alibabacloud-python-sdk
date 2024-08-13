@@ -177,7 +177,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.AddRdMemberListResponse:
         """
-        @summary 添加资源目录成员账号列表
+        @summary Adds members to a resource directory.
+        
+        @description Only a delegated administrator account or the management account of a resource directory can be used to add members to the resource directory.
         
         @param tmp_req: AddRdMemberListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -216,7 +218,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.AddRdMemberListResponse:
         """
-        @summary 添加资源目录成员账号列表
+        @summary Adds members to a resource directory.
+        
+        @description Only a delegated administrator account or the management account of a resource directory can be used to add members to the resource directory.
         
         @param tmp_req: AddRdMemberListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -254,7 +258,9 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.AddRdMemberListRequest,
     ) -> ddosbgp_20180720_models.AddRdMemberListResponse:
         """
-        @summary 添加资源目录成员账号列表
+        @summary Adds members to a resource directory.
+        
+        @description Only a delegated administrator account or the management account of a resource directory can be used to add members to the resource directory.
         
         @param request: AddRdMemberListRequest
         @return: AddRdMemberListResponse
@@ -267,7 +273,9 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.AddRdMemberListRequest,
     ) -> ddosbgp_20180720_models.AddRdMemberListResponse:
         """
-        @summary 添加资源目录成员账号列表
+        @summary Adds members to a resource directory.
+        
+        @description Only a delegated administrator account or the management account of a resource directory can be used to add members to the resource directory.
         
         @param request: AddRdMemberListRequest
         @return: AddRdMemberListResponse
@@ -393,7 +401,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.AttachToPolicyResponse:
         """
-        @summary 策略绑定
+        @summary Associates a mitigation policy to a protected object.
         
         @param tmp_req: AttachToPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -434,7 +442,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.AttachToPolicyResponse:
         """
-        @summary 策略绑定
+        @summary Associates a mitigation policy to a protected object.
         
         @param tmp_req: AttachToPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -474,7 +482,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.AttachToPolicyRequest,
     ) -> ddosbgp_20180720_models.AttachToPolicyResponse:
         """
-        @summary 策略绑定
+        @summary Associates a mitigation policy to a protected object.
         
         @param request: AttachToPolicyRequest
         @return: AttachToPolicyResponse
@@ -487,7 +495,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.AttachToPolicyRequest,
     ) -> ddosbgp_20180720_models.AttachToPolicyResponse:
         """
-        @summary 策略绑定
+        @summary Associates a mitigation policy to a protected object.
         
         @param request: AttachToPolicyRequest
         @return: AttachToPolicyResponse
@@ -501,7 +509,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.CheckAccessLogAuthResponse:
         """
-        @summary Checks whether Anti-DDoS Origin is authorized to access Log Service.
+        @summary Queries whether Anti-DDoS Origin is authorized to access Simple Log Service.
         
         @param request: CheckAccessLogAuthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -538,7 +546,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.CheckAccessLogAuthResponse:
         """
-        @summary Checks whether Anti-DDoS Origin is authorized to access Log Service.
+        @summary Queries whether Anti-DDoS Origin is authorized to access Simple Log Service.
         
         @param request: CheckAccessLogAuthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -574,7 +582,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.CheckAccessLogAuthRequest,
     ) -> ddosbgp_20180720_models.CheckAccessLogAuthResponse:
         """
-        @summary Checks whether Anti-DDoS Origin is authorized to access Log Service.
+        @summary Queries whether Anti-DDoS Origin is authorized to access Simple Log Service.
         
         @param request: CheckAccessLogAuthRequest
         @return: CheckAccessLogAuthResponse
@@ -587,7 +595,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.CheckAccessLogAuthRequest,
     ) -> ddosbgp_20180720_models.CheckAccessLogAuthResponse:
         """
-        @summary Checks whether Anti-DDoS Origin is authorized to access Log Service.
+        @summary Queries whether Anti-DDoS Origin is authorized to access Simple Log Service.
         
         @param request: CheckAccessLogAuthRequest
         @return: CheckAccessLogAuthResponse
@@ -709,6 +717,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.ConfigSchedruleOnDemandResponse:
         """
+        @summary Modifies a scheduling rule of an on-demand instance.
+        
         @param request: ConfigSchedruleOnDemandRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ConfigSchedruleOnDemandResponse
@@ -764,6 +774,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.ConfigSchedruleOnDemandResponse:
         """
+        @summary Modifies a scheduling rule of an on-demand instance.
+        
         @param request: ConfigSchedruleOnDemandRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ConfigSchedruleOnDemandResponse
@@ -818,6 +830,8 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.ConfigSchedruleOnDemandRequest,
     ) -> ddosbgp_20180720_models.ConfigSchedruleOnDemandResponse:
         """
+        @summary Modifies a scheduling rule of an on-demand instance.
+        
         @param request: ConfigSchedruleOnDemandRequest
         @return: ConfigSchedruleOnDemandResponse
         """
@@ -829,6 +843,8 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.ConfigSchedruleOnDemandRequest,
     ) -> ddosbgp_20180720_models.ConfigSchedruleOnDemandResponse:
         """
+        @summary Modifies a scheduling rule of an on-demand instance.
+        
         @param request: ConfigSchedruleOnDemandRequest
         @return: ConfigSchedruleOnDemandResponse
         """
@@ -841,7 +857,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.CreatePolicyResponse:
         """
-        @summary 创建策略
+        @summary Creates a mitigation policy.
         
         @param request: CreatePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -878,7 +894,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.CreatePolicyResponse:
         """
-        @summary 创建策略
+        @summary Creates a mitigation policy.
         
         @param request: CreatePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -914,7 +930,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.CreatePolicyRequest,
     ) -> ddosbgp_20180720_models.CreatePolicyResponse:
         """
-        @summary 创建策略
+        @summary Creates a mitigation policy.
         
         @param request: CreatePolicyRequest
         @return: CreatePolicyResponse
@@ -927,7 +943,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.CreatePolicyRequest,
     ) -> ddosbgp_20180720_models.CreatePolicyResponse:
         """
-        @summary 创建策略
+        @summary Creates a mitigation policy.
         
         @param request: CreatePolicyRequest
         @return: CreatePolicyResponse
@@ -1085,8 +1101,8 @@ class Client(OpenApiClient):
         
         @description You can call the DeleteBlackhole operation to deactivate blackhole filtering for a protected IP address.
         Before you call this operation, you can call the [DescribePackIpList](https://help.aliyun.com/document_detail/118701.html) operation to query the protection status of the IP addresses that are protected by your Anti-DDoS Origin instance. For example, you can query whether blackhole filtering is triggered for an IP address.
-        ### Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        ### [](#qps-)Limits
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DeleteBlackholeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1131,8 +1147,8 @@ class Client(OpenApiClient):
         
         @description You can call the DeleteBlackhole operation to deactivate blackhole filtering for a protected IP address.
         Before you call this operation, you can call the [DescribePackIpList](https://help.aliyun.com/document_detail/118701.html) operation to query the protection status of the IP addresses that are protected by your Anti-DDoS Origin instance. For example, you can query whether blackhole filtering is triggered for an IP address.
-        ### Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        ### [](#qps-)Limits
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DeleteBlackholeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1176,8 +1192,8 @@ class Client(OpenApiClient):
         
         @description You can call the DeleteBlackhole operation to deactivate blackhole filtering for a protected IP address.
         Before you call this operation, you can call the [DescribePackIpList](https://help.aliyun.com/document_detail/118701.html) operation to query the protection status of the IP addresses that are protected by your Anti-DDoS Origin instance. For example, you can query whether blackhole filtering is triggered for an IP address.
-        ### Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        ### [](#qps-)Limits
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DeleteBlackholeRequest
         @return: DeleteBlackholeResponse
@@ -1194,8 +1210,8 @@ class Client(OpenApiClient):
         
         @description You can call the DeleteBlackhole operation to deactivate blackhole filtering for a protected IP address.
         Before you call this operation, you can call the [DescribePackIpList](https://help.aliyun.com/document_detail/118701.html) operation to query the protection status of the IP addresses that are protected by your Anti-DDoS Origin instance. For example, you can query whether blackhole filtering is triggered for an IP address.
-        ### Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        ### [](#qps-)Limits
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DeleteBlackholeRequest
         @return: DeleteBlackholeResponse
@@ -1325,7 +1341,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DeletePolicyResponse:
         """
-        @summary 删除策略
+        @summary Deletes a mitigation policy.
+        
+        @description You cannot delete a mitigation policy to which a protected object is added.
         
         @param request: DeletePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1360,7 +1378,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DeletePolicyResponse:
         """
-        @summary 删除策略
+        @summary Deletes a mitigation policy.
+        
+        @description You cannot delete a mitigation policy to which a protected object is added.
         
         @param request: DeletePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1394,7 +1414,9 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DeletePolicyRequest,
     ) -> ddosbgp_20180720_models.DeletePolicyResponse:
         """
-        @summary 删除策略
+        @summary Deletes a mitigation policy.
+        
+        @description You cannot delete a mitigation policy to which a protected object is added.
         
         @param request: DeletePolicyRequest
         @return: DeletePolicyResponse
@@ -1407,7 +1429,9 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DeletePolicyRequest,
     ) -> ddosbgp_20180720_models.DeletePolicyResponse:
         """
-        @summary 删除策略
+        @summary Deletes a mitigation policy.
+        
+        @description You cannot delete a mitigation policy to which a protected object is added.
         
         @param request: DeletePolicyRequest
         @return: DeletePolicyResponse
@@ -1421,7 +1445,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DeleteRdMemberListResponse:
         """
-        @summary 删除资源目录成员账号列表
+        @summary Deletes members.
+        
+        @description Only a delegated administrator account or the management account of a resource directory can be used to delete members.
         
         @param tmp_req: DeleteRdMemberListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1460,7 +1486,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DeleteRdMemberListResponse:
         """
-        @summary 删除资源目录成员账号列表
+        @summary Deletes members.
+        
+        @description Only a delegated administrator account or the management account of a resource directory can be used to delete members.
         
         @param tmp_req: DeleteRdMemberListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1498,7 +1526,9 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DeleteRdMemberListRequest,
     ) -> ddosbgp_20180720_models.DeleteRdMemberListResponse:
         """
-        @summary 删除资源目录成员账号列表
+        @summary Deletes members.
+        
+        @description Only a delegated administrator account or the management account of a resource directory can be used to delete members.
         
         @param request: DeleteRdMemberListRequest
         @return: DeleteRdMemberListResponse
@@ -1511,7 +1541,9 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DeleteRdMemberListRequest,
     ) -> ddosbgp_20180720_models.DeleteRdMemberListResponse:
         """
-        @summary 删除资源目录成员账号列表
+        @summary Deletes members.
+        
+        @description Only a delegated administrator account or the management account of a resource directory can be used to delete members.
         
         @param request: DeleteRdMemberListRequest
         @return: DeleteRdMemberListResponse
@@ -1525,6 +1557,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DeleteSchedruleOnDemandResponse:
         """
+        @summary Deletes a scheduling rule of an anti-DDoS diversion instance.
+        
         @param request: DeleteSchedruleOnDemandRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteSchedruleOnDemandResponse
@@ -1562,6 +1596,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DeleteSchedruleOnDemandResponse:
         """
+        @summary Deletes a scheduling rule of an anti-DDoS diversion instance.
+        
         @param request: DeleteSchedruleOnDemandRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteSchedruleOnDemandResponse
@@ -1598,6 +1634,8 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DeleteSchedruleOnDemandRequest,
     ) -> ddosbgp_20180720_models.DeleteSchedruleOnDemandResponse:
         """
+        @summary Deletes a scheduling rule of an anti-DDoS diversion instance.
+        
         @param request: DeleteSchedruleOnDemandRequest
         @return: DeleteSchedruleOnDemandResponse
         """
@@ -1609,6 +1647,8 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DeleteSchedruleOnDemandRequest,
     ) -> ddosbgp_20180720_models.DeleteSchedruleOnDemandResponse:
         """
+        @summary Deletes a scheduling rule of an anti-DDoS diversion instance.
+        
         @param request: DeleteSchedruleOnDemandRequest
         @return: DeleteSchedruleOnDemandResponse
         """
@@ -1845,10 +1885,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeDdosEventResponse:
         """
-        @summary Queries the details about the DDoS attack events that occurred on a specific Anti-DDoS Origin instance.
+        @summary Queries the details about the DDoS attack events that occurred on an Anti-DDoS Origin instance.
         
-        @description You can call the DescribeDdosEvent operation to query the details about the DDoS attack events that occurred on a specific Anti-DDoS Origin instance by page. The details include the start time, end time, attacked IP address, and status of each event.
-        ## Limits
+        @description You can call the DescribeDdosEvent operation to query the details about the DDoS attack events that occurred on an Anti-DDoS Origin instance by page. The details include the start time, end time, attacked IP address, and status of each event.
+        ### [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeDdosEventRequest
@@ -1898,10 +1938,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeDdosEventResponse:
         """
-        @summary Queries the details about the DDoS attack events that occurred on a specific Anti-DDoS Origin instance.
+        @summary Queries the details about the DDoS attack events that occurred on an Anti-DDoS Origin instance.
         
-        @description You can call the DescribeDdosEvent operation to query the details about the DDoS attack events that occurred on a specific Anti-DDoS Origin instance by page. The details include the start time, end time, attacked IP address, and status of each event.
-        ## Limits
+        @description You can call the DescribeDdosEvent operation to query the details about the DDoS attack events that occurred on an Anti-DDoS Origin instance by page. The details include the start time, end time, attacked IP address, and status of each event.
+        ### [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeDdosEventRequest
@@ -1950,10 +1990,10 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DescribeDdosEventRequest,
     ) -> ddosbgp_20180720_models.DescribeDdosEventResponse:
         """
-        @summary Queries the details about the DDoS attack events that occurred on a specific Anti-DDoS Origin instance.
+        @summary Queries the details about the DDoS attack events that occurred on an Anti-DDoS Origin instance.
         
-        @description You can call the DescribeDdosEvent operation to query the details about the DDoS attack events that occurred on a specific Anti-DDoS Origin instance by page. The details include the start time, end time, attacked IP address, and status of each event.
-        ## Limits
+        @description You can call the DescribeDdosEvent operation to query the details about the DDoS attack events that occurred on an Anti-DDoS Origin instance by page. The details include the start time, end time, attacked IP address, and status of each event.
+        ### [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeDdosEventRequest
@@ -1967,10 +2007,10 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DescribeDdosEventRequest,
     ) -> ddosbgp_20180720_models.DescribeDdosEventResponse:
         """
-        @summary Queries the details about the DDoS attack events that occurred on a specific Anti-DDoS Origin instance.
+        @summary Queries the details about the DDoS attack events that occurred on an Anti-DDoS Origin instance.
         
-        @description You can call the DescribeDdosEvent operation to query the details about the DDoS attack events that occurred on a specific Anti-DDoS Origin instance by page. The details include the start time, end time, attacked IP address, and status of each event.
-        ## Limits
+        @description You can call the DescribeDdosEvent operation to query the details about the DDoS attack events that occurred on an Anti-DDoS Origin instance by page. The details include the start time, end time, attacked IP address, and status of each event.
+        ### [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeDdosEventRequest
@@ -1985,7 +2025,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeDdosOriginInstanceBillResponse:
         """
-        @summary 查询账单
+        @summary Queries the bill of an Anti-DDoS Origin (Pay-as-you-go) instance.
         
         @param request: DescribeDdosOriginInstanceBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2026,7 +2066,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeDdosOriginInstanceBillResponse:
         """
-        @summary 查询账单
+        @summary Queries the bill of an Anti-DDoS Origin (Pay-as-you-go) instance.
         
         @param request: DescribeDdosOriginInstanceBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2066,7 +2106,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DescribeDdosOriginInstanceBillRequest,
     ) -> ddosbgp_20180720_models.DescribeDdosOriginInstanceBillResponse:
         """
-        @summary 查询账单
+        @summary Queries the bill of an Anti-DDoS Origin (Pay-as-you-go) instance.
         
         @param request: DescribeDdosOriginInstanceBillRequest
         @return: DescribeDdosOriginInstanceBillResponse
@@ -2079,7 +2119,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DescribeDdosOriginInstanceBillRequest,
     ) -> ddosbgp_20180720_models.DescribeDdosOriginInstanceBillResponse:
         """
-        @summary 查询账单
+        @summary Queries the bill of an Anti-DDoS Origin (Pay-as-you-go) instance.
         
         @param request: DescribeDdosOriginInstanceBillRequest
         @return: DescribeDdosOriginInstanceBillResponse
@@ -2093,10 +2133,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeExcpetionCountResponse:
         """
-        @summary Queries the number of assets that are in an abnormal state and the number of Anti-DDoS
-        Origin instances that are about to expire in a specific region. The assets can be
-        elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS)
-        instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+        @summary Queries the number of assets that are in an abnormal state and the number of Anti-DDoS Origin instances that are about to expire. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
         
         @description ## Usage notes
         You can call the DescribeExcpetionCount operation to query the number of assets that are in an abnormal state and the number of Anti-DDoS Origin instances that are about to expire in a specific region. For example, if blackhole filtering is triggered for an IP address, the IP address is in an abnormal state. An instance whose remaining validity period is less than seven days is considered as an instance that is about to expire.
@@ -2136,10 +2173,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeExcpetionCountResponse:
         """
-        @summary Queries the number of assets that are in an abnormal state and the number of Anti-DDoS
-        Origin instances that are about to expire in a specific region. The assets can be
-        elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS)
-        instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+        @summary Queries the number of assets that are in an abnormal state and the number of Anti-DDoS Origin instances that are about to expire. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
         
         @description ## Usage notes
         You can call the DescribeExcpetionCount operation to query the number of assets that are in an abnormal state and the number of Anti-DDoS Origin instances that are about to expire in a specific region. For example, if blackhole filtering is triggered for an IP address, the IP address is in an abnormal state. An instance whose remaining validity period is less than seven days is considered as an instance that is about to expire.
@@ -2178,10 +2212,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DescribeExcpetionCountRequest,
     ) -> ddosbgp_20180720_models.DescribeExcpetionCountResponse:
         """
-        @summary Queries the number of assets that are in an abnormal state and the number of Anti-DDoS
-        Origin instances that are about to expire in a specific region. The assets can be
-        elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS)
-        instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+        @summary Queries the number of assets that are in an abnormal state and the number of Anti-DDoS Origin instances that are about to expire. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
         
         @description ## Usage notes
         You can call the DescribeExcpetionCount operation to query the number of assets that are in an abnormal state and the number of Anti-DDoS Origin instances that are about to expire in a specific region. For example, if blackhole filtering is triggered for an IP address, the IP address is in an abnormal state. An instance whose remaining validity period is less than seven days is considered as an instance that is about to expire.
@@ -2197,10 +2228,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DescribeExcpetionCountRequest,
     ) -> ddosbgp_20180720_models.DescribeExcpetionCountResponse:
         """
-        @summary Queries the number of assets that are in an abnormal state and the number of Anti-DDoS
-        Origin instances that are about to expire in a specific region. The assets can be
-        elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS)
-        instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
+        @summary Queries the number of assets that are in an abnormal state and the number of Anti-DDoS Origin instances that are about to expire. The assets can be elastic IP addresses (EIPs). The assets can also be Elastic Compute Service (ECS) instances or Server Load Balancer (SLB) instances that are assigned public IP addresses.
         
         @description ## Usage notes
         You can call the DescribeExcpetionCount operation to query the number of assets that are in an abnormal state and the number of Anti-DDoS Origin instances that are about to expire in a specific region. For example, if blackhole filtering is triggered for an IP address, the IP address is in an abnormal state. An instance whose remaining validity period is less than seven days is considered as an instance that is about to expire.
@@ -2473,9 +2501,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeOnDemandDdosEventResponse:
         """
-        @summary Call the DescribeOnDemandDdosEvent operation to query the DDoS events recorded for the IP address of the Anti-DDoS on-demand instance.
+        @summary Queries the DDoS attack events recorded for the IP address of an anti-DDoS diversion instance of Anti-DDoS Origin.
         
-        @description >  Anti-DDoS Origin API operations are available for only Anti-DDoS Origin Enterprise users.
+        @description You can use this operation to query the details about the DDoS attack events that occurred on the IP address of an anti-DDoS diversion instance of Anti-DDoS Origin by page. The details include the start time, end time, volume of attack traffic, and status of each event.
+        ### [](#qps-)Limits
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeOnDemandDdosEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2524,9 +2554,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeOnDemandDdosEventResponse:
         """
-        @summary Call the DescribeOnDemandDdosEvent operation to query the DDoS events recorded for the IP address of the Anti-DDoS on-demand instance.
+        @summary Queries the DDoS attack events recorded for the IP address of an anti-DDoS diversion instance of Anti-DDoS Origin.
         
-        @description >  Anti-DDoS Origin API operations are available for only Anti-DDoS Origin Enterprise users.
+        @description You can use this operation to query the details about the DDoS attack events that occurred on the IP address of an anti-DDoS diversion instance of Anti-DDoS Origin by page. The details include the start time, end time, volume of attack traffic, and status of each event.
+        ### [](#qps-)Limits
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeOnDemandDdosEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2574,9 +2606,11 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DescribeOnDemandDdosEventRequest,
     ) -> ddosbgp_20180720_models.DescribeOnDemandDdosEventResponse:
         """
-        @summary Call the DescribeOnDemandDdosEvent operation to query the DDoS events recorded for the IP address of the Anti-DDoS on-demand instance.
+        @summary Queries the DDoS attack events recorded for the IP address of an anti-DDoS diversion instance of Anti-DDoS Origin.
         
-        @description >  Anti-DDoS Origin API operations are available for only Anti-DDoS Origin Enterprise users.
+        @description You can use this operation to query the details about the DDoS attack events that occurred on the IP address of an anti-DDoS diversion instance of Anti-DDoS Origin by page. The details include the start time, end time, volume of attack traffic, and status of each event.
+        ### [](#qps-)Limits
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeOnDemandDdosEventRequest
         @return: DescribeOnDemandDdosEventResponse
@@ -2589,9 +2623,11 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DescribeOnDemandDdosEventRequest,
     ) -> ddosbgp_20180720_models.DescribeOnDemandDdosEventResponse:
         """
-        @summary Call the DescribeOnDemandDdosEvent operation to query the DDoS events recorded for the IP address of the Anti-DDoS on-demand instance.
+        @summary Queries the DDoS attack events recorded for the IP address of an anti-DDoS diversion instance of Anti-DDoS Origin.
         
-        @description >  Anti-DDoS Origin API operations are available for only Anti-DDoS Origin Enterprise users.
+        @description You can use this operation to query the details about the DDoS attack events that occurred on the IP address of an anti-DDoS diversion instance of Anti-DDoS Origin by page. The details include the start time, end time, volume of attack traffic, and status of each event.
+        ### [](#qps-)Limits
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeOnDemandDdosEventRequest
         @return: DescribeOnDemandDdosEventResponse
@@ -2605,6 +2641,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeOnDemandInstanceStatusResponse:
         """
+        @summary Queries the details of anti-DDoS diversion instances.
+        
         @param request: DescribeOnDemandInstanceStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeOnDemandInstanceStatusResponse
@@ -2640,6 +2678,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeOnDemandInstanceStatusResponse:
         """
+        @summary Queries the details of anti-DDoS diversion instances.
+        
         @param request: DescribeOnDemandInstanceStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeOnDemandInstanceStatusResponse
@@ -2674,6 +2714,8 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DescribeOnDemandInstanceStatusRequest,
     ) -> ddosbgp_20180720_models.DescribeOnDemandInstanceStatusResponse:
         """
+        @summary Queries the details of anti-DDoS diversion instances.
+        
         @param request: DescribeOnDemandInstanceStatusRequest
         @return: DescribeOnDemandInstanceStatusResponse
         """
@@ -2685,6 +2727,8 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DescribeOnDemandInstanceStatusRequest,
     ) -> ddosbgp_20180720_models.DescribeOnDemandInstanceStatusResponse:
         """
+        @summary Queries the details of anti-DDoS diversion instances.
+        
         @param request: DescribeOnDemandInstanceStatusRequest
         @return: DescribeOnDemandInstanceStatusResponse
         """
@@ -2697,9 +2741,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeOpEntitiesResponse:
         """
-        @summary The number of entries to return on each page.
+        @summary Queries the operation logs of an Anti-DDoS Origin instance.
         
-        @description The start time. Operation logs that were generated after this time are queried.*** This value is a UNIX timestamp. Unit: milliseconds.
+        @description You can call the DescribeOpEntities operation to query the operation logs of an instance by page.
+        ### Limit
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeOpEntitiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2750,9 +2796,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeOpEntitiesResponse:
         """
-        @summary The number of entries to return on each page.
+        @summary Queries the operation logs of an Anti-DDoS Origin instance.
         
-        @description The start time. Operation logs that were generated after this time are queried.*** This value is a UNIX timestamp. Unit: milliseconds.
+        @description You can call the DescribeOpEntities operation to query the operation logs of an instance by page.
+        ### Limit
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeOpEntitiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2802,9 +2850,11 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DescribeOpEntitiesRequest,
     ) -> ddosbgp_20180720_models.DescribeOpEntitiesResponse:
         """
-        @summary The number of entries to return on each page.
+        @summary Queries the operation logs of an Anti-DDoS Origin instance.
         
-        @description The start time. Operation logs that were generated after this time are queried.*** This value is a UNIX timestamp. Unit: milliseconds.
+        @description You can call the DescribeOpEntities operation to query the operation logs of an instance by page.
+        ### Limit
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeOpEntitiesRequest
         @return: DescribeOpEntitiesResponse
@@ -2817,9 +2867,11 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DescribeOpEntitiesRequest,
     ) -> ddosbgp_20180720_models.DescribeOpEntitiesResponse:
         """
-        @summary The number of entries to return on each page.
+        @summary Queries the operation logs of an Anti-DDoS Origin instance.
         
-        @description The start time. Operation logs that were generated after this time are queried.*** This value is a UNIX timestamp. Unit: milliseconds.
+        @description You can call the DescribeOpEntities operation to query the operation logs of an instance by page.
+        ### Limit
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeOpEntitiesRequest
         @return: DescribeOpEntitiesResponse
@@ -2973,7 +3025,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeRdMemberListResponse:
         """
-        @summary 查询资源目录成员账号列表
+        @summary Queries members that are managed by using the multi-account management feature.
         
         @param request: DescribeRdMemberListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3012,7 +3064,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeRdMemberListResponse:
         """
-        @summary 查询资源目录成员账号列表
+        @summary Queries members that are managed by using the multi-account management feature.
         
         @param request: DescribeRdMemberListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3050,7 +3102,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DescribeRdMemberListRequest,
     ) -> ddosbgp_20180720_models.DescribeRdMemberListResponse:
         """
-        @summary 查询资源目录成员账号列表
+        @summary Queries members that are managed by using the multi-account management feature.
         
         @param request: DescribeRdMemberListRequest
         @return: DescribeRdMemberListResponse
@@ -3063,7 +3115,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DescribeRdMemberListRequest,
     ) -> ddosbgp_20180720_models.DescribeRdMemberListResponse:
         """
-        @summary 查询资源目录成员账号列表
+        @summary Queries members that are managed by using the multi-account management feature.
         
         @param request: DescribeRdMemberListRequest
         @return: DescribeRdMemberListResponse
@@ -3076,7 +3128,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeRdStatusResponse:
         """
-        @summary 查询RD状态
+        @summary Queries the status of the multi-account management feature.
         
         @param request: DescribeRdStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3104,7 +3156,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DescribeRdStatusResponse:
         """
-        @summary 查询RD状态
+        @summary Queries the status of the multi-account management feature.
         
         @param request: DescribeRdStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3129,7 +3181,7 @@ class Client(OpenApiClient):
 
     def describe_rd_status(self) -> ddosbgp_20180720_models.DescribeRdStatusResponse:
         """
-        @summary 查询RD状态
+        @summary Queries the status of the multi-account management feature.
         
         @return: DescribeRdStatusResponse
         """
@@ -3138,7 +3190,7 @@ class Client(OpenApiClient):
 
     async def describe_rd_status_async(self) -> ddosbgp_20180720_models.DescribeRdStatusResponse:
         """
-        @summary 查询RD状态
+        @summary Queries the status of the multi-account management feature.
         
         @return: DescribeRdStatusResponse
         """
@@ -3399,7 +3451,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DetachFromPolicyResponse:
         """
-        @summary 策略解绑
+        @summary Removes protected objects from a mitigation policy.
         
         @param tmp_req: DetachFromPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3440,7 +3492,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.DetachFromPolicyResponse:
         """
-        @summary 策略解绑
+        @summary Removes protected objects from a mitigation policy.
         
         @param tmp_req: DetachFromPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3480,7 +3532,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DetachFromPolicyRequest,
     ) -> ddosbgp_20180720_models.DetachFromPolicyResponse:
         """
-        @summary 策略解绑
+        @summary Removes protected objects from a mitigation policy.
         
         @param request: DetachFromPolicyRequest
         @return: DetachFromPolicyResponse
@@ -3493,7 +3545,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.DetachFromPolicyRequest,
     ) -> ddosbgp_20180720_models.DetachFromPolicyResponse:
         """
-        @summary 策略解绑
+        @summary Removes protected objects from a mitigation policy.
         
         @param request: DetachFromPolicyRequest
         @return: DetachFromPolicyResponse
@@ -3619,7 +3671,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.GetSlsOpenStatusResponse:
         """
-        @summary Checks whether Log Service is activated.
+        @summary Queries whether Simple Log Service is activated.
         
         @param request: GetSlsOpenStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3656,7 +3708,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.GetSlsOpenStatusResponse:
         """
-        @summary Checks whether Log Service is activated.
+        @summary Queries whether Simple Log Service is activated.
         
         @param request: GetSlsOpenStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3692,7 +3744,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.GetSlsOpenStatusRequest,
     ) -> ddosbgp_20180720_models.GetSlsOpenStatusResponse:
         """
-        @summary Checks whether Log Service is activated.
+        @summary Queries whether Simple Log Service is activated.
         
         @param request: GetSlsOpenStatusRequest
         @return: GetSlsOpenStatusResponse
@@ -3705,7 +3757,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.GetSlsOpenStatusRequest,
     ) -> ddosbgp_20180720_models.GetSlsOpenStatusResponse:
         """
-        @summary Checks whether Log Service is activated.
+        @summary Queries whether Simple Log Service is activated.
         
         @param request: GetSlsOpenStatusRequest
         @return: GetSlsOpenStatusResponse
@@ -3823,7 +3875,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.ListPolicyResponse:
         """
-        @summary 查询策略
+        @summary Queries mitigation policies.
         
         @param request: ListPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3837,6 +3889,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -3864,7 +3918,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.ListPolicyResponse:
         """
-        @summary 查询策略
+        @summary Queries mitigation policies.
         
         @param request: ListPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3878,6 +3932,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_type):
+            query['ProductType'] = request.product_type
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -3904,7 +3960,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.ListPolicyRequest,
     ) -> ddosbgp_20180720_models.ListPolicyResponse:
         """
-        @summary 查询策略
+        @summary Queries mitigation policies.
         
         @param request: ListPolicyRequest
         @return: ListPolicyResponse
@@ -3917,7 +3973,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.ListPolicyRequest,
     ) -> ddosbgp_20180720_models.ListPolicyResponse:
         """
-        @summary 查询策略
+        @summary Queries mitigation policies.
         
         @param request: ListPolicyRequest
         @return: ListPolicyResponse
@@ -3931,7 +3987,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.ListPolicyAttachmentResponse:
         """
-        @summary 查询策略绑定
+        @summary Queries attachments to mitigation policies.
         
         @param tmp_req: ListPolicyAttachmentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3978,7 +4034,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.ListPolicyAttachmentResponse:
         """
-        @summary 查询策略绑定
+        @summary Queries attachments to mitigation policies.
         
         @param tmp_req: ListPolicyAttachmentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4024,7 +4080,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.ListPolicyAttachmentRequest,
     ) -> ddosbgp_20180720_models.ListPolicyAttachmentResponse:
         """
-        @summary 查询策略绑定
+        @summary Queries attachments to mitigation policies.
         
         @param request: ListPolicyAttachmentRequest
         @return: ListPolicyAttachmentResponse
@@ -4037,7 +4093,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.ListPolicyAttachmentRequest,
     ) -> ddosbgp_20180720_models.ListPolicyAttachmentResponse:
         """
-        @summary 查询策略绑定
+        @summary Queries attachments to mitigation policies.
         
         @param request: ListPolicyAttachmentRequest
         @return: ListPolicyAttachmentResponse
@@ -4163,7 +4219,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.ListTagResourcesResponse:
         """
+        @summary Queries the relationship between Anti-DDoS Origin instances and tags.
+        
         @description You can call the ListTagResources operation to query the tags that are added to Anti-DDoS Origin instances at a time.
+        ### [](#qps-)Limits
+        You can call this API operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4208,7 +4268,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.ListTagResourcesResponse:
         """
+        @summary Queries the relationship between Anti-DDoS Origin instances and tags.
+        
         @description You can call the ListTagResources operation to query the tags that are added to Anti-DDoS Origin instances at a time.
+        ### [](#qps-)Limits
+        You can call this API operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4252,7 +4316,11 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.ListTagResourcesRequest,
     ) -> ddosbgp_20180720_models.ListTagResourcesResponse:
         """
+        @summary Queries the relationship between Anti-DDoS Origin instances and tags.
+        
         @description You can call the ListTagResources operation to query the tags that are added to Anti-DDoS Origin instances at a time.
+        ### [](#qps-)Limits
+        You can call this API operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -4265,7 +4333,11 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.ListTagResourcesRequest,
     ) -> ddosbgp_20180720_models.ListTagResourcesResponse:
         """
+        @summary Queries the relationship between Anti-DDoS Origin instances and tags.
+        
         @description You can call the ListTagResources operation to query the tags that are added to Anti-DDoS Origin instances at a time.
+        ### [](#qps-)Limits
+        You can call this API operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -4279,7 +4351,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.ModifyPolicyResponse:
         """
-        @summary 修改策略
+        @summary Modifies a mitigation policy.
         
         @param tmp_req: ModifyPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4324,7 +4396,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.ModifyPolicyResponse:
         """
-        @summary 修改策略
+        @summary Modifies a mitigation policy.
         
         @param tmp_req: ModifyPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4368,7 +4440,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.ModifyPolicyRequest,
     ) -> ddosbgp_20180720_models.ModifyPolicyResponse:
         """
-        @summary 修改策略
+        @summary Modifies a mitigation policy.
         
         @param request: ModifyPolicyRequest
         @return: ModifyPolicyResponse
@@ -4381,7 +4453,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.ModifyPolicyRequest,
     ) -> ddosbgp_20180720_models.ModifyPolicyResponse:
         """
-        @summary 修改策略
+        @summary Modifies a mitigation policy.
         
         @param request: ModifyPolicyRequest
         @return: ModifyPolicyResponse
@@ -4395,7 +4467,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.ModifyPolicyContentResponse:
         """
-        @summary 修改策略
+        @summary Modifies the content of the mitigation policy.
+        
+        @description Make sure that all request parameters are configured when you call this operation. If any parameter is left empty, the configuration is deleted.
         
         @param tmp_req: ModifyPolicyContentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4438,7 +4512,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.ModifyPolicyContentResponse:
         """
-        @summary 修改策略
+        @summary Modifies the content of the mitigation policy.
+        
+        @description Make sure that all request parameters are configured when you call this operation. If any parameter is left empty, the configuration is deleted.
         
         @param tmp_req: ModifyPolicyContentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4480,7 +4556,9 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.ModifyPolicyContentRequest,
     ) -> ddosbgp_20180720_models.ModifyPolicyContentResponse:
         """
-        @summary 修改策略
+        @summary Modifies the content of the mitigation policy.
+        
+        @description Make sure that all request parameters are configured when you call this operation. If any parameter is left empty, the configuration is deleted.
         
         @param request: ModifyPolicyContentRequest
         @return: ModifyPolicyContentResponse
@@ -4493,7 +4571,9 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.ModifyPolicyContentRequest,
     ) -> ddosbgp_20180720_models.ModifyPolicyContentResponse:
         """
-        @summary 修改策略
+        @summary Modifies the content of the mitigation policy.
+        
+        @description Make sure that all request parameters are configured when you call this operation. If any parameter is left empty, the configuration is deleted.
         
         @param request: ModifyPolicyContentRequest
         @return: ModifyPolicyContentResponse
@@ -4507,10 +4587,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.ModifyRemarkResponse:
         """
-        @summary Adds remarks for a specific Anti-DDoS Origin instance.
+        @summary Adds remarks for a single Anti-DDoS Origin instance.
         
         @description You can call the ModifyRemark operation to add remarks for a single Anti-DDoS Origin instance.
-        ## Limits
+        ### [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ModifyRemarkRequest
@@ -4552,10 +4632,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.ModifyRemarkResponse:
         """
-        @summary Adds remarks for a specific Anti-DDoS Origin instance.
+        @summary Adds remarks for a single Anti-DDoS Origin instance.
         
         @description You can call the ModifyRemark operation to add remarks for a single Anti-DDoS Origin instance.
-        ## Limits
+        ### [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ModifyRemarkRequest
@@ -4596,10 +4676,10 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.ModifyRemarkRequest,
     ) -> ddosbgp_20180720_models.ModifyRemarkResponse:
         """
-        @summary Adds remarks for a specific Anti-DDoS Origin instance.
+        @summary Adds remarks for a single Anti-DDoS Origin instance.
         
         @description You can call the ModifyRemark operation to add remarks for a single Anti-DDoS Origin instance.
-        ## Limits
+        ### [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ModifyRemarkRequest
@@ -4613,10 +4693,10 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.ModifyRemarkRequest,
     ) -> ddosbgp_20180720_models.ModifyRemarkResponse:
         """
-        @summary Adds remarks for a specific Anti-DDoS Origin instance.
+        @summary Adds remarks for a single Anti-DDoS Origin instance.
         
         @description You can call the ModifyRemark operation to add remarks for a single Anti-DDoS Origin instance.
-        ## Limits
+        ### [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: ModifyRemarkRequest
@@ -4731,7 +4811,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.ReleaseDdosOriginInstanceResponse:
         """
-        @summary 释放原生防护全局实例
+        @summary Releases a pay-as-you-go Anti-DDoS Origin instance.
         
         @param request: ReleaseDdosOriginInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4766,7 +4846,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.ReleaseDdosOriginInstanceResponse:
         """
-        @summary 释放原生防护全局实例
+        @summary Releases a pay-as-you-go Anti-DDoS Origin instance.
         
         @param request: ReleaseDdosOriginInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4800,7 +4880,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.ReleaseDdosOriginInstanceRequest,
     ) -> ddosbgp_20180720_models.ReleaseDdosOriginInstanceResponse:
         """
-        @summary 释放原生防护全局实例
+        @summary Releases a pay-as-you-go Anti-DDoS Origin instance.
         
         @param request: ReleaseDdosOriginInstanceRequest
         @return: ReleaseDdosOriginInstanceResponse
@@ -4813,7 +4893,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.ReleaseDdosOriginInstanceRequest,
     ) -> ddosbgp_20180720_models.ReleaseDdosOriginInstanceResponse:
         """
-        @summary 释放原生防护全局实例
+        @summary Releases a pay-as-you-go Anti-DDoS Origin instance.
         
         @param request: ReleaseDdosOriginInstanceRequest
         @return: ReleaseDdosOriginInstanceResponse
@@ -4827,6 +4907,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.SetInstanceModeOnDemandResponse:
         """
+        @summary Specifies the scheduling mode for on-demand instances.
+        
         @param request: SetInstanceModeOnDemandRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetInstanceModeOnDemandResponse
@@ -4864,6 +4946,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.SetInstanceModeOnDemandResponse:
         """
+        @summary Specifies the scheduling mode for on-demand instances.
+        
         @param request: SetInstanceModeOnDemandRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetInstanceModeOnDemandResponse
@@ -4900,6 +4984,8 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.SetInstanceModeOnDemandRequest,
     ) -> ddosbgp_20180720_models.SetInstanceModeOnDemandResponse:
         """
+        @summary Specifies the scheduling mode for on-demand instances.
+        
         @param request: SetInstanceModeOnDemandRequest
         @return: SetInstanceModeOnDemandResponse
         """
@@ -4911,6 +4997,8 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.SetInstanceModeOnDemandRequest,
     ) -> ddosbgp_20180720_models.SetInstanceModeOnDemandResponse:
         """
+        @summary Specifies the scheduling mode for on-demand instances.
+        
         @param request: SetInstanceModeOnDemandRequest
         @return: SetInstanceModeOnDemandResponse
         """
@@ -4923,11 +5011,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.TagResourcesResponse:
         """
-        @summary Adds tags to Anti-DDoS Origin instances.
+        @summary Add tags to Anti-DDoS Origin instances.
         
-        @description You can call the TagResources operation to add tags to Anti-DDoS Origin instances.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @description You can call the TagResources operation to add tags to instances.
+        ### Limit
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4970,11 +5058,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.TagResourcesResponse:
         """
-        @summary Adds tags to Anti-DDoS Origin instances.
+        @summary Add tags to Anti-DDoS Origin instances.
         
-        @description You can call the TagResources operation to add tags to Anti-DDoS Origin instances.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @description You can call the TagResources operation to add tags to instances.
+        ### Limit
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5016,11 +5104,11 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.TagResourcesRequest,
     ) -> ddosbgp_20180720_models.TagResourcesResponse:
         """
-        @summary Adds tags to Anti-DDoS Origin instances.
+        @summary Add tags to Anti-DDoS Origin instances.
         
-        @description You can call the TagResources operation to add tags to Anti-DDoS Origin instances.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @description You can call the TagResources operation to add tags to instances.
+        ### Limit
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -5033,11 +5121,11 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.TagResourcesRequest,
     ) -> ddosbgp_20180720_models.TagResourcesResponse:
         """
-        @summary Adds tags to Anti-DDoS Origin instances.
+        @summary Add tags to Anti-DDoS Origin instances.
         
-        @description You can call the TagResources operation to add tags to Anti-DDoS Origin instances.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        @description You can call the TagResources operation to add tags to instances.
+        ### Limit
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -5051,7 +5139,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.UntagResourcesResponse:
         """
-        @summary Removes tags from Anti-DDoS Origin Enterprise instances.
+        @summary Removes tags from Anti-DDoS Origin instances.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5096,7 +5184,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddosbgp_20180720_models.UntagResourcesResponse:
         """
-        @summary Removes tags from Anti-DDoS Origin Enterprise instances.
+        @summary Removes tags from Anti-DDoS Origin instances.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5140,7 +5228,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.UntagResourcesRequest,
     ) -> ddosbgp_20180720_models.UntagResourcesResponse:
         """
-        @summary Removes tags from Anti-DDoS Origin Enterprise instances.
+        @summary Removes tags from Anti-DDoS Origin instances.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -5153,7 +5241,7 @@ class Client(OpenApiClient):
         request: ddosbgp_20180720_models.UntagResourcesRequest,
     ) -> ddosbgp_20180720_models.UntagResourcesResponse:
         """
-        @summary Removes tags from Anti-DDoS Origin Enterprise instances.
+        @summary Removes tags from Anti-DDoS Origin instances.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse

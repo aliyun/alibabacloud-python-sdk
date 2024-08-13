@@ -22,13 +22,15 @@ class AddIpRequest(TeaModel):
         # 
         # *   **ip**: required. The IP address that you want to add. Data type: string.
         # 
-        #     > The IP address must be the IP address of an asset that belongs to the current Alibaba Cloud account.
+        #     **\
+        # 
+        #     **Note** The IP address must be the IP address of an asset that belongs to the current Alibaba Cloud account.
         # 
         # This parameter is required.
         self.ip_list = ip_list
         # The region ID of the Anti-DDoS Origin Enterprise instance.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         # 
@@ -72,7 +74,7 @@ class AddIpResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -141,6 +143,7 @@ class AddRdMemberListRequestMemberList(TeaModel):
         self,
         uid: str = None,
     ):
+        # The Alibaba Cloud account ID of the member.
         self.uid = uid
 
     def validate(self):
@@ -168,6 +171,8 @@ class AddRdMemberListRequest(TeaModel):
         self,
         member_list: List[AddRdMemberListRequestMemberList] = None,
     ):
+        # The list of the members.
+        # 
         # This parameter is required.
         self.member_list = member_list
 
@@ -204,6 +209,8 @@ class AddRdMemberListShrinkRequest(TeaModel):
         self,
         member_list_shrink: str = None,
     ):
+        # The list of the members.
+        # 
         # This parameter is required.
         self.member_list_shrink = member_list_shrink
 
@@ -232,6 +239,7 @@ class AddRdMemberListResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -534,9 +542,20 @@ class AttachToPolicyRequestIpPortProtocolList(TeaModel):
         port: int = None,
         protocol: str = None,
     ):
+        # The IP address of the protected object.
+        # 
         # This parameter is required.
         self.ip = ip
+        # The port number of the protected object.
+        # 
+        # >  This parameter is available for only port-specific mitigation policies.
         self.port = port
+        # The protocol type of the protected object. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
+        # 
+        # >  This parameter is available for only port-specific mitigation policies.
         self.protocol = protocol
 
     def validate(self):
@@ -573,8 +592,12 @@ class AttachToPolicyRequest(TeaModel):
         ip_port_protocol_list: List[AttachToPolicyRequestIpPortProtocolList] = None,
         policy_id: str = None,
     ):
+        # The protected objects.
+        # 
         # This parameter is required.
         self.ip_port_protocol_list = ip_port_protocol_list
+        # The policy ID.
+        # 
         # This parameter is required.
         self.policy_id = policy_id
 
@@ -616,8 +639,12 @@ class AttachToPolicyShrinkRequest(TeaModel):
         ip_port_protocol_list_shrink: str = None,
         policy_id: str = None,
     ):
+        # The protected objects.
+        # 
         # This parameter is required.
         self.ip_port_protocol_list_shrink = ip_port_protocol_list_shrink
+        # The policy ID.
+        # 
         # This parameter is required.
         self.policy_id = policy_id
 
@@ -650,6 +677,7 @@ class AttachToPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -758,12 +786,12 @@ class CheckAccessLogAuthResponseBody(TeaModel):
         access_log_auth: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether Anti-DDoS Origin was authorized to access Log Service. Valid values:
+        # Indicates whether Anti-DDoS Origin was authorized to access Simple Log Service. Valid values:
         # 
-        # *   **true**: Anti-DDoS Origin was authorized.
-        # *   **false**: Anti-DDoS Origin was not authorized.
+        # *   **true**\
+        # *   **false**\
         self.access_log_auth = access_log_auth
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -983,7 +1011,7 @@ class ConfigSchedruleOnDemandRequest(TeaModel):
         self.instance_id = instance_id
         # The region ID of the on-demand instance.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The scheduling action. Set the value to **declare**, which indicates that the route is advertised.
         # 
@@ -995,7 +1023,7 @@ class ConfigSchedruleOnDemandRequest(TeaModel):
         # 
         # This parameter is required.
         self.rule_condition_cnt = rule_condition_cnt
-        # The threshold of inbound packets. Unit: Kpps. Minimum value: **10**.
+        # The threshold of inbound packets. Unit: kilo packets per second (Kpps). Minimum value: **10**.
         # 
         # This parameter is required.
         self.rule_condition_kpps = rule_condition_kpps
@@ -1011,8 +1039,8 @@ class ConfigSchedruleOnDemandRequest(TeaModel):
         self.rule_name = rule_name
         # Specifies whether the scheduling rule is enabled. Valid values:
         # 
-        # *   **on**: enabled
-        # *   **off**: disabled
+        # *   **on**\
+        # *   **off**\
         # 
         # This parameter is required.
         self.rule_switch = rule_switch
@@ -1020,7 +1048,7 @@ class ConfigSchedruleOnDemandRequest(TeaModel):
         # 
         # If the system detects that DDoS attacks stop, the system no longer reroutes traffic to the on-demand instance from the time you specified. We recommend that you set this parameter to a value that is defined as off-peak hours.
         # 
-        # >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+        # >  This parameter takes effect only when the value of **RuleUndoMode** is **auto**.
         # 
         # This parameter is required.
         self.rule_undo_begin_time = rule_undo_begin_time
@@ -1028,8 +1056,8 @@ class ConfigSchedruleOnDemandRequest(TeaModel):
         self.rule_undo_end_time = rule_undo_end_time
         # The stop method of the scheduling rule. Valid values:
         # 
-        # *   **auto**: The scheduling rule automatically stops.
-        # *   **manual**: The scheduling rule is manually stopped.
+        # *   **auto**\
+        # *   **manual**\
         # 
         # This parameter is required.
         self.rule_undo_mode = rule_undo_mode
@@ -1037,7 +1065,7 @@ class ConfigSchedruleOnDemandRequest(TeaModel):
         # 
         # For example, the value `GMT-08:00` indicates that the time zone is UTC+8.
         # 
-        # >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+        # >  This parameter takes effect only when the value of **RuleUndoMode** is **auto**.
         # 
         # This parameter is required.
         self.time_zone = time_zone
@@ -1111,7 +1139,7 @@ class ConfigSchedruleOnDemandResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1181,8 +1209,15 @@ class CreatePolicyRequest(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # The name of the policy.
+        # 
         # This parameter is required.
         self.name = name
+        # The type of the policy. Valid values:
+        # 
+        # *   **l3**: IP-specific mitigation policies.
+        # *   **l4**: port-specific mitigation policies.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -1216,7 +1251,9 @@ class CreatePolicyResponseBody(TeaModel):
         id: str = None,
         request_id: str = None,
     ):
+        # The ID of the policy.
         self.id = id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1308,7 +1345,7 @@ class CreateSchedruleOnDemandRequest(TeaModel):
         self.instance_id = instance_id
         # The region ID of the on-demand instance.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The scheduling action. Set the value to **declare**, which indicates that the route is advertised.
         # 
@@ -1320,7 +1357,7 @@ class CreateSchedruleOnDemandRequest(TeaModel):
         # 
         # This parameter is required.
         self.rule_condition_cnt = rule_condition_cnt
-        # The threshold of inbound packets. Unit: Kpps. Minimum value: **10**.
+        # The threshold of inbound packets. Unit: kilo packets per second (Kpps). Minimum value: **10**.
         # 
         # This parameter is required.
         self.rule_condition_kpps = rule_condition_kpps
@@ -1336,8 +1373,8 @@ class CreateSchedruleOnDemandRequest(TeaModel):
         self.rule_name = rule_name
         # Specifies whether the scheduling rule is enabled. Valid values:
         # 
-        # *   **on**: enabled
-        # *   **off**: disabled
+        # *   **on**\
+        # *   **off**\
         # 
         # This parameter is required.
         self.rule_switch = rule_switch
@@ -1345,7 +1382,7 @@ class CreateSchedruleOnDemandRequest(TeaModel):
         # 
         # If the system detects that DDoS attacks stop, the system no longer reroutes traffic to the on-demand instance from the time you specified. We recommend that you set this parameter to a value that is defined as off-peak hours.
         # 
-        # >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+        # >  This parameter takes effect only when the value of **RuleUndoMode** is **auto**.
         # 
         # This parameter is required.
         self.rule_undo_begin_time = rule_undo_begin_time
@@ -1353,8 +1390,8 @@ class CreateSchedruleOnDemandRequest(TeaModel):
         self.rule_undo_end_time = rule_undo_end_time
         # The stop method of the scheduling rule. Valid values:
         # 
-        # *   **auto**: The scheduling rule automatically stops.
-        # *   **manual**: The scheduling rule is manually stopped.
+        # *   **auto**\
+        # *   **manual**\
         # 
         # This parameter is required.
         self.rule_undo_mode = rule_undo_mode
@@ -1362,7 +1399,7 @@ class CreateSchedruleOnDemandRequest(TeaModel):
         # 
         # For example, the value `GMT-08:00` indicates that the time zone is UTC+8.
         # 
-        # >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+        # >  This parameter takes effect only when the value of **RuleUndoMode** is **auto**.
         # 
         # This parameter is required.
         self.time_zone = time_zone
@@ -1436,7 +1473,7 @@ class CreateSchedruleOnDemandResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1566,7 +1603,7 @@ class DeleteBlackholeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1644,17 +1681,19 @@ class DeleteIpRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The list of IP addresses that you want to remove from the Anti-DDoS Origin Enterprise instance. This parameter is a string consisting of JSON arrays. Each element in a JSON array is a JSON struct that includes the following field:
+        # The list of IP addresses that you want to remove from the Anti-DDoS Origin Enterprise instance. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
         # 
         # *   **ip**: required. The IP address that you want to remove. Data type: string.
         # 
-        #     > The IP addresses that you want to remove must be protected by the Anti-DDoS Origin Enterprise instance.
+        #     **\
+        # 
+        #     **Note** The IP addresses that you want to remove must be protected by the Anti-DDoS Origin Enterprise instance.
         # 
         # This parameter is required.
         self.ip_list = ip_list
         # The region ID of the Anti-DDoS Origin Enterprise instance.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group to which the Anti-DDoS Origin Enterprise instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         # 
@@ -1698,7 +1737,7 @@ class DeleteIpResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1767,6 +1806,8 @@ class DeletePolicyRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # The ID of the policy.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -1795,6 +1836,7 @@ class DeletePolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1863,6 +1905,7 @@ class DeleteRdMemberListRequestMemberList(TeaModel):
         self,
         uid: str = None,
     ):
+        # The Alibaba Cloud account ID of the member.
         self.uid = uid
 
     def validate(self):
@@ -1890,6 +1933,8 @@ class DeleteRdMemberListRequest(TeaModel):
         self,
         member_list: List[DeleteRdMemberListRequestMemberList] = None,
     ):
+        # The list of the members.
+        # 
         # This parameter is required.
         self.member_list = member_list
 
@@ -1926,6 +1971,8 @@ class DeleteRdMemberListShrinkRequest(TeaModel):
         self,
         member_list_shrink: str = None,
     ):
+        # The list of the members.
+        # 
         # This parameter is required.
         self.member_list_shrink = member_list_shrink
 
@@ -1954,6 +2001,7 @@ class DeleteRdMemberListResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2024,15 +2072,15 @@ class DeleteSchedruleOnDemandRequest(TeaModel):
         region_id: str = None,
         rule_name: str = None,
     ):
-        # The ID of the on-demand instance.
+        # The ID of the anti-DDoS diversion instance.
         # 
-        # >  You can call the [DescribeOnDemandInstance](https://help.aliyun.com/document_detail/152120.html) operation to query the IDs of all on-demand instances.
+        # >  You can call the [DescribeOnDemandInstance](https://help.aliyun.com/document_detail/152120.html) operation to query the IDs of all anti-DDoS diversion instances.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the on-demand instance.
+        # The region ID of the anti-DDoS diversion instance.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
         # The name of the scheduling rule that you want to delete.
         # 
@@ -2072,7 +2120,7 @@ class DeleteSchedruleOnDemandResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2556,7 +2604,7 @@ class DescribeDdosEventRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
-        # The end time of the DDoS attack event to query. This value is a UNIX timestamp. Unit: seconds.
+        # The end time of the DDoS attack events to query. This value is a UNIX timestamp. Unit: seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -2568,11 +2616,11 @@ class DescribeDdosEventRequest(TeaModel):
         self.instance_id = instance_id
         # The attacked IP address to query.
         self.ip = ip
-        # The number of the page to return.
+        # The page number.
         # 
         # This parameter is required.
         self.page_no = page_no
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
@@ -2584,7 +2632,7 @@ class DescribeDdosEventRequest(TeaModel):
         # 
         # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
-        # The start time of the DDoS attack event to query. This value is a UNIX timestamp. Unit: seconds.
+        # The start time of the DDoS attack events to query. This value is a UNIX timestamp. Unit: seconds.
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -2714,9 +2762,9 @@ class DescribeDdosEventResponseBody(TeaModel):
     ):
         # The details about the DDoS attack event.
         self.events = events
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of DDoS attack events.
+        # The total number of DDoS attack events that are returned.
         self.total = total
 
     def validate(self):
@@ -2804,9 +2852,23 @@ class DescribeDdosOriginInstanceBillRequest(TeaModel):
         start_time: int = None,
         type: str = None,
     ):
+        # The end of the time range to query. The value is a timestamp. Unit: milliseconds. The time span between StartTime and EndTime cannot exceed 30 days.
         self.end_time = end_time
+        # Specifies whether to display the bill details. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.is_show_list = is_show_list
+        # The beginning of the time range to query. The value is a timestamp. Unit: milliseconds.
         self.start_time = start_time
+        # The bill type. Valid values:
+        # 
+        # *   **flow_cn**: the bill for the clean bandwidth of elastic IP addresses (EIPs) with Anti-DDoS (Enhanced) enabled in the Chinese mainland
+        # *   **flow_ov**: the bill for the clean bandwidth of EIPs with Anti-DDoS (Enhanced) enabled outside the Chinese mainland
+        # *   **standard_assets_flow_cn**: the bill for the clean bandwidth of regular Alibaba Cloud services in the Chinese mainland
+        # *   **standard_assets_flow_ov**: the bill for the clean bandwidth of regular Alibaba Cloud services outside the Chinese mainland
+        # *   **function**: the bill for the basic fee
+        # *   **ip_count**: the bill for protected IP addresses
         self.type = type
 
     def validate(self):
@@ -2849,9 +2911,26 @@ class DescribeDdosOriginInstanceBillResponseBodyFlowList(TeaModel):
         time: int = None,
         total_flow: int = None,
     ):
+        # The traffic distribution by region. The JSON struct contains the following fields:
+        # 
+        # *   **bytes**: the traffic volume of EIPs with Anti-DDoS (Enhanced) enabled in a region. Unit: bytes.
+        # *   **memberUid**: the owner account.
+        # *   **instanceId**: the ID of the pay-as-you-go instance that protects the EIPs with Anti-DDoS (Enhanced) enabled.
+        # *   **ip**: the EIPs with Anti-DDoS (Enhanced) enabled.
+        # *   **region**: the region.
+        # 
+        # >  If the memberUid field in the JSON struct is empty, the information about the current account is returned. The value of the bytes parameter in the outermost level of the JSON struct indicates the total traffic, and the values of the bytes parameters in inner levels indicate the traffic of the account.
         self.member_flow = member_flow
+        # The traffic distribution by region. The JSON struct contains the following fields:
+        # 
+        # *   **bytes**: the traffic volume of EIPs with Anti-DDoS (Enhanced) enabled in a region. Unit: bytes.
+        # *   **instanceId**: the ID of the pay-as-you-go instance that protects the EIPs with Anti-DDoS (Enhanced) enabled.
+        # *   **ip**: the EIPs with Anti-DDoS (Enhanced) enabled.
+        # *   **region**: the region.
         self.region_flow = region_flow
+        # The timestamp. Unit: milliseconds.
         self.time = time
+        # The traffic of EIPs with Anti-DDoS (Enhanced) enabled. Unit: bytes.
         self.total_flow = total_flow
 
     def validate(self):
@@ -2895,10 +2974,27 @@ class DescribeDdosOriginInstanceBillResponseBodyIpCountOrFunctionList(TeaModel):
         member_ip_cnt: str = None,
         time: int = None,
     ):
+        # The application scope of the instance. Valid values:
+        # 
+        # *   **only_mainland_china**: regions in the Chinese mainland
+        # *   **global**: all regions
+        # *   **international_and_hmt**: regions outside the Chinese mainland
         self.coverage = coverage
+        # The number of IP addresses protected by the pay-as-you-go instance in the Chinese mainland.
         self.ip_cnt_cn = ip_cnt_cn
+        # The number of IP addresses protected by the pay-as-you-go instance outside the Chinese mainland.
         self.ip_cnt_ov = ip_cnt_ov
+        # The bill distribution by account. The JSON struct contains the following fields:
+        # 
+        # *   **eipCnIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled in the Chinese mainland
+        # *   **eipOvIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled outside the Chinese mainland
+        # *   **memberUid**: the owner account
+        # *   **standardAssetsCnIpCount**: the number of IP addresses of regular Alibaba Cloud services in the Chinese mainland
+        # *   **standardAssetsOvIpCount**: the number of IP addresses of regular Alibaba Cloud services outside the Chinese mainland
+        # 
+        # >  If the memberUid field in the JSON struct is empty, the information about the current account is returned.
         self.member_ip_cnt = member_ip_cnt
+        # The billing time. Unit: milliseconds.
         self.time = time
 
     def validate(self):
@@ -2945,9 +3041,26 @@ class DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList(TeaModel)
         time: int = None,
         total_flow: int = None,
     ):
+        # The traffic distribution by region. The JSON struct contains the following fields:
+        # 
+        # *   **bytes**: the traffic volume of regular Alibaba Cloud services in a region. Unit: bytes.
+        # *   **memberUid**: the owner account.
+        # *   **instanceId**: the ID of the pay-as-you-go instance that protects the regular Alibaba Cloud services.
+        # *   **ip**: the IP address of the regular Alibaba Cloud service protected by the Anti-DDoS Origin instance.
+        # *   **region**: the region.
+        # 
+        # >  If the memberUid field in the JSON struct is empty, the information about the current account is returned. The value of the bytes parameter in the outermost level of the JSON struct indicates the total traffic, and the values of the bytes parameters in inner levels indicate the traffic of the account.
         self.member_flow = member_flow
+        # The traffic distribution by region. The JSON struct contains the following fields:
+        # 
+        # *   **bytes**: the traffic volume of regular Alibaba Cloud services in a region. Unit: bytes.
+        # *   **instanceId**: the ID of the pay-as-you-go instance that protects the regular Alibaba Cloud services.
+        # *   **ip**: the IP address protected by the Anti-DDoS Origin instance.
+        # *   **region**: the region.
         self.region_flow = region_flow
+        # The timestamp. Unit: milliseconds.
         self.time = time
+        # The traffic of regular Alibaba Cloud services. Unit: bytes.
         self.total_flow = total_flow
 
     def validate(self):
@@ -3001,20 +3114,47 @@ class DescribeDdosOriginInstanceBillResponseBody(TeaModel):
         total_flow_cn: int = None,
         total_flow_ov: int = None,
     ):
+        # The payment status. Valid values:
+        # 
+        # *   **0**: The payment is not overdue.
+        # *   **1**: The payment is overdue.
         self.debt_status = debt_status
+        # The details about the traffic of EIPs with Anti-DDoS (Enhanced) enabled.
         self.flow_list = flow_list
+        # The traffic distribution of EIPs with Anti-DDoS (Enhanced) enabled by region.
         self.flow_region = flow_region
+        # The ID of the Anti-DDoS Origin (Pay-as-you-go) instance to query.
         self.instance_id = instance_id
+        # The number of protected IP addresses.
         self.ip_count = ip_count
+        # The protected IP addresses and enabled features.
         self.ip_count_or_function_list = ip_count_or_function_list
+        # The IP address distribution. The JSON struct contains the following fields:
+        # 
+        # *   **eipCnIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled in the Chinese mainland
+        # *   **eipOvIpCount**: the number of EIPs with Anti-DDoS (Enhanced) enabled outside the Chinese mainland
+        # *   **standardAssetsCnIpCount**: the number of IP addresses of regular Alibaba Cloud services in the Chinese mainland
+        # *   **standardAssetsOvIpCount**: the number of IP addresses of regular Alibaba Cloud services outside the Chinese mainland
         self.ip_info = ip_info
+        # The request ID.
         self.request_id = request_id
+        # The details about the traffic of regular Alibaba Cloud services.
         self.standard_assets_flow_list = standard_assets_flow_list
+        # The traffic distribution of regular Alibaba Cloud services by region.
         self.standard_assets_flow_region = standard_assets_flow_region
+        # The total traffic of regular Alibaba Cloud services in the Chinese mainland in the current month.
         self.standard_assets_total_flow_cn = standard_assets_total_flow_cn
+        # The total traffic of regular Alibaba Cloud services outside the Chinese mainland in the current month.
         self.standard_assets_total_flow_ov = standard_assets_total_flow_ov
+        # The instance status. Valid values:
+        # 
+        # *   **1**: normal
+        # *   **2**: expired
+        # *   **3**: released
         self.status = status
+        # The total traffic of EIPs with Anti-DDoS (Enhanced) enabled in the Chinese mainland in the current month. Unit: bytes.
         self.total_flow_cn = total_flow_cn
+        # The total traffic of EIPs with Anti-DDoS (Enhanced) enabled outside the Chinese mainland in the current month. Unit: bytes.
         self.total_flow_ov = total_flow_ov
 
     def validate(self):
@@ -3498,21 +3638,32 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
         remark: str = None,
         status: str = None,
     ):
+        # The condition that triggers automatic association of the instance with an object.
         self.auto_protect_condition = auto_protect_condition
         # Indicates whether auto-renewal is enabled for the instance. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # *   **true**\
+        # *   **false**\
         self.auto_renewal = auto_renewal
         # The number of protected public IP addresses for which blackhole filtering is triggered.
         # 
         # >  You can call the [DeleteBlackhole](https://help.aliyun.com/document_detail/118692.html) operation to deactivate blackhole filtering for a protected IP address.
         self.blackholding_count = blackholding_count
+        # The type of the instance.
+        # 
+        # *   **ddos_ddosorigin_public_cn**: Anti-DDoS Origin 2.0 (Pay-as-you-go) on the China site (aliyun.com)
+        # *   **ddos_ddosorigin_public_intl**: Anti-DDoS Origin 2.0 (Pay-as-you-go) on the International site (alibabacloud.com)
         self.commodity_type = commodity_type
+        # The application scope of the instance.
+        # 
+        # *   **1**: The instance supports public IP addresses in all regions.
+        # *   **2**: The instance supports public IP addresses in regions in the Chinese mainland.
+        # *   **3**: The instance supports public IP addresses in regions outside the Chinese mainland.
+        # *   **4**: The instance supports public IP addresses in a region in or outside the Chinese mainland.
         self.coverage_type = coverage_type
-        # The time when the instance expires. This value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the instance expires. The value is a UNIX timestamp. Unit: milliseconds.
         self.expire_time = expire_time
-        # The time when the instance was purchased. This value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the instance was purchased. The value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
         # The ID of the instance.
         self.instance_id = instance_id
@@ -3523,17 +3674,17 @@ class DescribeInstanceListResponseBodyInstanceList(TeaModel):
         self.instance_type = instance_type
         # The protocol type of the IP address asset that is protected by the instance. Valid values:
         # 
-        # *   **Ipv4**: IPv4
-        # *   **Ipv6**: IPv6
+        # *   **Ipv4**\
+        # *   **Ipv6**\
         self.ip_type = ip_type
-        # The type of the cloud service that is associated with the Anti-DDoS Origin instance. By default, this parameter is not returned. If the Anti-DDoS Origin instance is created by using a different cloud service, the code of the cloud service is returned.
+        # The type of the cloud service that is associated with the Anti-DDoS Origin instance By default, this parameter is not returned. If the Anti-DDoS Origin instance is created by using a different cloud service, the code of the cloud service is returned.
         # 
         # Valid values:
         # 
         # *   **gamebox**: The Anti-DDoS Origin instance is created by using Game Security Box.
         # *   **eip**: The Anti-DDoS Origin instance is created by using an elastic IP address (EIP) for which Anti-DDoS (Enhanced Edition) is enabled.
         self.product = product
-        # The remarks of the instance.
+        # The description of the instance.
         self.remark = remark
         # The status of the instance. Valid values:
         # 
@@ -3619,7 +3770,7 @@ class DescribeInstanceListResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The details about the Anti-DDoS Origin instance.
+        # The details about the Anti-DDoS Origin instances.
         self.instance_list = instance_list
         # The ID of the request.
         self.request_id = request_id
@@ -3765,17 +3916,17 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecsPackConfig(TeaModel):
         pack_adv_thre: int = None,
         pack_basic_thre: int = None,
     ):
-        # The bandwidth of the package configuration.
+        # The bandwidth. Unit: Gbit/s.
         self.bandwidth = bandwidth
         # The number of IP addresses that are protected by the Anti-DDoS Origin Enterprise instance.
         self.bind_ip_count = bind_ip_count
-        # The burstable bandwidth of each protected IP address. Unit: Gbit/s.
+        # The burstable protection bandwidth of each protected IP address. Unit: Gbit/s.
         self.ip_advance_thre = ip_advance_thre
-        # The basic bandwidth of each protected IP address. Unit: Gbit/s.
+        # The basic protection bandwidth of each protected IP address. Unit: Gbit/s.
         self.ip_basic_thre = ip_basic_thre
         # The number of IP addresses that can be protected by the Anti-DDoS Origin Enterprise instance.
         self.ip_spec = ip_spec
-        # The normal clean bandwidth. Unit: Mbit/s.
+        # The clean bandwidth. Unit: Mbit/s.
         self.normal_bandwidth = normal_bandwidth
         # The burstable protection bandwidth of the Anti-DDoS Origin Enterprise instance. Unit: Gbit/s.
         self.pack_adv_thre = pack_adv_thre
@@ -3842,25 +3993,26 @@ class DescribeInstanceSpecsResponseBodyInstanceSpecs(TeaModel):
         region: str = None,
         total_defense_times: int = None,
     ):
-        # The number of times that the unlimited protection feature can be enabled.
+        # The available best-effort protection sessions.
         self.available_defense_times = available_defense_times
         # The number of times that blackhole filtering can be deactivated.
         self.available_delete_blackhole_count = available_delete_blackhole_count
+        # The percentage of the used best-effort protection sessions. Unit: %.
         self.defense_times_percent = defense_times_percent
-        # The ID of the Anti-DDoS Origin Enterprise instance.
+        # The region ID of the Anti-DDoS Origin Enterprise instance.
         self.instance_id = instance_id
-        # Indicates whether the unlimited protection feature is enabled. Valid values:
+        # Indicates whether best-effort protection is enabled. Valid values:
         # 
-        # *   **0**: The unlimited protection feature is disabled.
-        # *   **1**: The unlimited protection feature is enabled.
+        # *   **0**: Best-effort protection is disabled.
+        # *   **1**: Best-effort protection is enabled.
         self.is_full_defense_mode = is_full_defense_mode
         # The configurations of the Anti-DDoS Origin Enterprise instance, including the number of protected IP addresses and protection bandwidth.
         self.pack_config = pack_config
         # The region ID of the Anti-DDoS Origin Enterprise instance.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the name of the region.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the name of the region.
         self.region = region
-        # The number of times that the unlimited protection feature can be enabled.
+        # The total best-effort protection sessions.
         self.total_defense_times = total_defense_times
 
     def validate(self):
@@ -3919,7 +4071,7 @@ class DescribeInstanceSpecsResponseBody(TeaModel):
         instance_specs: List[DescribeInstanceSpecsResponseBodyInstanceSpecs] = None,
         request_id: str = None,
     ):
-        # The specifications of the Anti-DDoS Origin Enterprise instance, including whether the unlimited protection feature is enabled, and the numbers of times that the unlimited protection feature can be enabled and has been enabled.
+        # The specifications of the Anti-DDoS Origin Enterprise instance, including whether best-effort protection is enabled, the number of available best-effort protection sessions, and the number of used best-effort protection sessions.
         self.instance_specs = instance_specs
         # The ID of the request.
         self.request_id = request_id
@@ -4009,28 +4161,35 @@ class DescribeOnDemandDdosEventRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
-        # The timestamp that specifies the end of the time range to query. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
+        # The end time of the DDoS attack events to query. This value is a UNIX timestamp. Unit: seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The ID of the on-demand instance to query.
+        # The ID of the anti-DDoS diversion instance to query.
+        # 
+        # >  You can call the [DescribeOnDemandInstance](https://help.aliyun.com/document_detail/152120.html) operation to query the IDs of all anti-DDoS diversion instances.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The IP address of the protection target.
+        # The IP address of the anti-DDoS diversion instance to query.
         self.ip = ip
-        # The number of the page to return. Default value: **1**.
+        # The page number.
         # 
         # This parameter is required.
         self.page_no = page_no
-        # The number of entries to return on each page. The maximum value is **50**. The default value is **10**.
+        # The number of entries per page. Maximum value: **50**.
         # 
         # This parameter is required.
         self.page_size = page_size
+        # The region ID of the anti-DDoS diversion instance to query.
+        # 
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
+        # 
+        # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
-        # The timestamp that specifies the beginning of the time range to query. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
+        # The start time of the DDoS attack events to query. This value is a UNIX timestamp. Unit: seconds.
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -4093,22 +4252,22 @@ class DescribeOnDemandDdosEventResponseBodyEvents(TeaModel):
         start_time: int = None,
         status: str = None,
     ):
-        # The timestamp that indicates the end time of the attack. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
+        # The time when the DDoS attack stopped. This value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
-        # The IP address of the protection target that encounters the DDoS attack.
+        # The attacked IP address.
         self.ip = ip
-        # The throughput of the DDoS attack. Unit: Mbit/s.
+        # The attack traffic. Unit: Mbit/s.
         self.mbps = mbps
         # The packet forwarding rate of the DDoS attack. Unit: packets per second (PPS).
         self.pps = pps
-        # The timestamp that indicates the start time of the attack. Unit: seconds. The timestamp follows the UNIX time format. It is the number of seconds that have elapsed since 00:00:00 Thursday, 1 January 1970.
+        # The time when the DDoS attack started. This value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
-        # The status of the event. Valid values:
+        # The status of the DDoS attack event. Valid values:
         # 
-        # *   **hole_begin **: indicates that the event is in the blackhole state.
-        # *   **hole_end **: indicates that blackhole ends.
-        # *   **defense_begin **: indicates that the event is in the cleaning state.
-        # *   **defense_end **: indicates that cleaning ends.
+        # *   **hole_begin**: indicates that blackhole filtering is triggered.
+        # *   **hole_end**: indicates that tblackhole filtering is deactivated.
+        # *   **defense_begin**: indicates that traffic scrubbing is in progress.
+        # *   **defense_end**: indicates that traffic scrubbing is complete.
         self.status = status
 
     def validate(self):
@@ -4158,11 +4317,11 @@ class DescribeOnDemandDdosEventResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The list of DDoS events and the details of each event.
+        # The details about the DDoS attack event.
         self.events = events
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of DDoS events.
+        # The total number of DDoS attack events that are returned.
         self.total = total
 
     def validate(self):
@@ -4248,15 +4407,15 @@ class DescribeOnDemandInstanceStatusRequest(TeaModel):
         instance_id_list: List[str] = None,
         region_id: str = None,
     ):
-        # The IDs of on-demand instances.
+        # The IDs of the anti-DDoS diversion instances.
         # 
-        # >  You can call the [DescribeOnDemandInstance](https://help.aliyun.com/document_detail/152120.html) operation to query the IDs of all on-demand instances.
+        # >  You can call the [DescribeOnDemandInstance](https://help.aliyun.com/document_detail/152120.html) operation to query the IDs of all anti-DDoS diversion instances.
         # 
         # This parameter is required.
         self.instance_id_list = instance_id_list
-        # The region ID of the on-demand instance.
+        # The region ID of the anti-DDoS diversion instance.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions that are supported by Anti-DDoS Origin.
         self.region_id = region_id
 
     def validate(self):
@@ -4296,23 +4455,23 @@ class DescribeOnDemandInstanceStatusResponseBodyInstances(TeaModel):
     ):
         # The details of route advertisement for data centers outside the Chinese mainland. This parameter is a JSON string. The following fields are included in the value:
         # 
-        # *   **region**: The code of the data center outside the Chinese mainland. The value is of the STRING type. For more information, see **Codes of data centers outside the Chinese mainland**.
-        # *   **declared**: indicates whether the data center advertised the route. The value is of the STRING type. Valid values: **0** and **1**. The value of 0 indicates that the data center did not advertise the route. The value of 1 indicates that the data center advertised the route.
+        # *   **region**: The code of the data center outside the Chinese mainland. The value is of the string type. For more information, see **Codes of data centers outside the Chinese mainland**.
+        # *   **declared**: indicates whether the data center advertised the route. The value is of the string type. Valid values: **0** and **1**. The value of 0 indicates that the data center did not advertise the route. The value of 1 indicates that the data center advertised the route.
         self.declared = declared
-        # The description of the on-demand instance.
+        # The description of the anti-DDoS diversion instance.
         # 
-        # >  The value of this parameter is returned only when the information about multiple on-demand instances is returned. The value of this parameter is not returned because the information about only one on-demand instance is returned.
+        # > This parameter is returned only when the information about multiple anti-DDoS diversion instances are returned. The value of this parameter is not returned because the information about only one anti-DDoS diversion instance is returned.
         self.desc = desc
-        # The ID of the on-demand instance.
+        # The ID of the anti-DDoS diversion instance.
         # 
-        # >  The value of this parameter is returned only when the information about multiple on-demand instances is returned. The value of this parameter is not returned because the information about only one on-demand instance is returned.
+        # > This parameter is returned only when the information about multiple anti-DDoS diversion instances are returned. The value of this parameter is not returned because the information about only one anti-DDoS diversion instance is returned.
         self.instance_id = instance_id
-        # The mode used to start the on-demand instance. Valid values:
+        # The mode that is used to enable traffic rerouting to the anti-DDoS diversion instance. Valid values:
         # 
         # *   **manual**: The instance is manually started.
         # *   **netflow-auto**: The instance is automatically started by using NetFlow that monitors network traffic.
         self.mode = mode
-        # The CIDR block of the on-demand instance.
+        # The CIDR block of the anti-DDoS diversion instance.
         self.net = net
         # The number of the autonomous system (AS). Set the value to **0**, which indicates that AS is disabled.
         self.registed_as = registed_as
@@ -4369,7 +4528,7 @@ class DescribeOnDemandInstanceStatusResponseBody(TeaModel):
         instances: List[DescribeOnDemandInstanceStatusResponseBodyInstances] = None,
         request_id: str = None,
     ):
-        # The details of the on-demand instance.
+        # The details of the anti-DDoS diversion instance.
         self.instances = instances
         # The ID of the request.
         self.request_id = request_id
@@ -4460,63 +4619,40 @@ class DescribeOpEntitiesRequest(TeaModel):
         resource_group_id: str = None,
         start_time: int = None,
     ):
-        # The operation that you want to perform. Set the value to **DescribeOpEntities**.
+        # The page number.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The details of the operation log.
+        # The end time. Operation logs that were generated before this time are queried.**** The value is a UNIX timestamp. Unit: milliseconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The page number of the returned page.
+        # The ID of the instance to query.
+        # 
+        # > You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all instances.
         self.instance_id = instance_id
+        # The sorting method of operation logs. Set the value to **opdate**, which indicates sorting based on the operation time.
+        self.order_by = order_by
         # The sort order of operation logs. Valid values:
         # 
         # *   **ASC**: the ascending order.
         # *   **DESC**: the descending order.
-        self.order_by = order_by
-        # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+        # Default value: **DESC**.
         self.order_dir = order_dir
-        # The type of the operation object. The value is fixed as **1**, which indicates Anti-DDoS Origin instances.
+        # The number of entries per page. Maximum value: 50.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The ID of the Alibaba Cloud account that performs the operation.
+        # The ID of the region where the instance resides.
         # 
-        # >  If the value is **system**, the operation is performed by Anti-DDoS Origin.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
-        # The details about the operation. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+        # The ID of the resource group to which the instance belongs in Resource Management.
         # 
-        # *   **entity**: the operation object. Data type: object. The fields that are included in the value of the **entity** parameter vary based on the value of the **OpAction** parameter. Take note of the following items:
-        # 
-        #     *   If the value of the **OpAction** parameter is **3**, the value of the **entity** parameter consists of the following field:
-        # 
-        #         *   **ips**: the public IP addresses that are protected by the Anti-DDoS Origin instance. Data type: array
-        # 
-        #     *   If the value of the **OpAction** parameter is **4**, the value of the **entity** parameter consists of the following field:
-        # 
-        #         *   **ips**: the public IP addresses that are no longer protected by the Anti-DDoS Origin instance. Data type: array.
-        # 
-        #     *   If the value of the **OpAction** parameter is **5**, the value of the **entity** parameter consists of the following fields:
-        # 
-        #         *   **baseBandwidth**: the basic protection bandwidth. Unit: Gbit/s. Data type: integer.
-        #         *   **elasticBandwidth**: the burstable protection bandwidth. Unit: Gbit/s. Data type: integer.
-        #         *   **opSource**: the source of the operation. The value is fixed as **1**, indicating that the operation is performed by Anti-DDoS Origin. Data type: integer.
-        # 
-        #     *   If the value of the **OpAction** parameter is **6**, the value of the **entity** parameter consists of the following field:
-        # 
-        #         *   **ips**: the public IP addresses for which to deactivate blackhole filtering. Data type: array.
-        # 
-        #     *   If the value of the **OpAction** parameter is **7**, the **entity** parameter is not returned.
-        # 
-        #     *   If the value of the **OpAction** parameter is **8**, the value of the **entity** parameter consists of the following fields:
-        # 
-        #         *   **baseBandwidth**: the basic protection bandwidth. Unit: Gbit/s. Data type: integer.
-        #         *   **elasticBandwidth**: the burstable protection bandwidth. Unit: Gbit/s. Data type: integer.
+        # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
-        # The sorting method of operation logs. Set the value to **opdate**, which indicates sorting based on the operation time.
+        # The start time. Operation logs that were generated after this time are queried.**** The value is a UNIX timestamp. Unit: milliseconds.
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -4583,17 +4719,53 @@ class DescribeOpEntitiesResponseBodyOpEntities(TeaModel):
         op_action: int = None,
         op_desc: str = None,
     ):
-        # Queries the operation logs of an Anti-DDoS Origin instance.
+        # The operation object, which is the ID of the instance.
         self.entity_object = entity_object
-        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](https://help.aliyun.com/document_detail/118841.html).
-        # 
-        # For more information about sample requests, see the **"Examples"** section of this topic.
+        # The type of the operation object. The value is fixed as **1**, which indicates Anti-DDoS Origin instances.
         self.entity_type = entity_type
-        # WB01342967
+        # The time when the log was generated. The value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
+        # The ID of the Alibaba Cloud account that performs the operation.
+        # 
+        # > If the value is **system**, the operation is performed by Anti-DDoS Origin.
         self.op_account = op_account
-        # DescribeOpEntities
+        # The type of operation. Valid values:
+        # 
+        # *   **3**: indicates an operation to add an IP address to the Anti-DDoS Origin instance for protection.
+        # *   **4**: indicates an operation to remove a protected IP address from the Anti-DDoS Origin instance.
+        # *   **5**: indicates an operation to downgrade the Anti-DDoS Origin instance.
+        # *   **6**: indicates an operation to deactivate blackhole filtering for an IP address.
+        # *   **7**: indicates an operation to reset the number of times that you can deactivate blackhole filtering.
+        # *   **8**: indicates an operation to enable burstable protection.
         self.op_action = op_action
+        # The details of the operation. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+        # 
+        # *   **entity**: the operation object. Data type: object. The fields that are included in the value of the **entity** parameter vary based on the value of the **OpAction** parameter. Valid values:
+        # 
+        #     *   If the value of the **OpAction** parameter is **3**, the value of the **entity** parameter consists of the following field:
+        # 
+        #         *   **ips**: the public IP addresses that are protected by the Anti-DDoS Origin instance. Data type: array
+        # 
+        #     *   If the value of the **OpAction** parameter is **4**, the value of the **entity** parameter consists of the following field:
+        # 
+        #         *   **ips**: the public IP addresses that are no longer protected by the Anti-DDoS Origin instance. Data type: array.
+        # 
+        #     *   If the value of the **OpAction** parameter is **5**, the value of the **entity** parameter consists of the following fields:
+        # 
+        #         *   **baseBandwidth**: the basic protection bandwidth. Unit: Gbit/s. Data type: integer.
+        #         *   **elasticBandwidth**: the burstable protection bandwidth. Unit: Gbit/s. Data type: integer.
+        #         *   **opSource**: the source of the operation. The value is fixed as **1**, indicating that the operation is performed by Anti-DDoS Origin. Data type: integer.
+        # 
+        #     *   If the value of the **OpAction** parameter is **6**, the value of the **entity** parameter consists of the following field:
+        # 
+        #         *   **ips**: the public IP addresses for which to deactivate blackhole filtering. Data type: array.
+        # 
+        #     *   If the value of the **OpAction** parameter is **7**, the **entity** parameter is not returned.
+        # 
+        #     *   If the value of the **OpAction** parameter is **8**, the value of the **entity** parameter consists of the following fields:
+        # 
+        #         *   **baseBandwidth**: the basic protection bandwidth. Unit: Gbit/s. Data type: integer.
+        #         *   **elasticBandwidth**: the burstable protection bandwidth. Unit: Gbit/s. Data type: integer.
         self.op_desc = op_desc
 
     def validate(self):
@@ -4643,11 +4815,11 @@ class DescribeOpEntitiesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The ID of the request.
+        # The details of the operation log.
         self.op_entities = op_entities
-        # The end time. Operation logs that were generated before this time are queried.**** This value is a UNIX timestamp. Unit: milliseconds.
+        # The ID of the request.
         self.request_id = request_id
-        # The time when the log was generated. This value is a UNIX timestamp. Unit: milliseconds.
+        # The total number of operation logs.
         self.total_count = total_count
 
     def validate(self):
@@ -4838,13 +5010,19 @@ class DescribePackIpListResponseBodyIpList(TeaModel):
         self.ip = ip
         # The ID of the member.
         self.member_uid = member_uid
+        # The time when the near-origin traffic diversion feature was disabled.
         self.nsm_expire_at = nsm_expire_at
+        # The time when the near-origin traffic diversion feature was enabled.
         self.nsm_start_at = nsm_start_at
+        # The status of the near-origin traffic diversion feature. Valid values:
+        # 
+        # *   **1**: The near-origin traffic diversion feature is enabled.
+        # *   **0**: The near-origin traffic diversion feature is disabled.
         self.nsm_status = nsm_status
         # The type of the cloud asset to which the IP address belongs. Valid values:
         # 
         # *   **ECS**: an ECS instance.
-        # *   **SLB**: a CLB instance, originally called an SLB instance.
+        # *   **SLB**: a CLB (formerly SLB) instance.
         # *   **EIP**: an EIP. If the IP address belongs to an ALB instance, the value EIP is returned.
         # *   **WAF**: a WAF instance.
         self.product = product
@@ -4858,7 +5036,7 @@ class DescribePackIpListResponseBodyIpList(TeaModel):
         self.remark = remark
         # The status of the IP address. Valid values:
         # 
-        # *   **normal**: The IP address is in the normal state, which indicates that the IP address is not under attack.
+        # *   **normal**: The IP address is not under attack.
         # *   **hole_begin**: Blackhole filtering is triggered for the IP address.
         self.status = status
 
@@ -5031,8 +5209,11 @@ class DescribeRdMemberListRequest(TeaModel):
         page_size: int = None,
         resource_directory_id: str = None,
     ):
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page. Default value: **10**.
         self.page_size = page_size
+        # The ID of the resource directory.
         self.resource_directory_id = resource_directory_id
 
     def validate(self):
@@ -5070,8 +5251,11 @@ class DescribeRdMemberListResponseBodyMemberList(TeaModel):
         name: str = None,
         uid: str = None,
     ):
+        # The creation time.
         self.gmt_create = gmt_create
+        # The name of the member.
         self.name = name
+        # The Alibaba Cloud account ID of the member.
         self.uid = uid
 
     def validate(self):
@@ -5109,8 +5293,11 @@ class DescribeRdMemberListResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The list of the members.
         self.member_list = member_list
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -5203,14 +5390,27 @@ class DescribeRdStatusResponseBody(TeaModel):
         root_uid: str = None,
         service_principal_enabled: bool = None,
     ):
+        # The Alibaba Cloud account ID of the current account.
         self.current_uid = current_uid
+        # The type of the Alibaba Cloud account. Valid values:
+        # 
+        # *   **MasterAccount**: management account
+        # *   **DelegatedAdminAccount**: delegated administrator account
+        # *   **MasterAccount**: member
         self.current_uid_type = current_uid_type
+        # Indicates whether the multi-account management feature is enabled for Anti-DDoS Origin.
         self.enabled = enabled
+        # Indicates whether the multi-account management feature is enabled for the current account in Anti-DDoS Origin.
         self.local_enable = local_enable
+        # The Alibaba Cloud account ID of the management account in the resource directory.
         self.master_uid = master_uid
+        # Indicates whether Resource Directory is enabled in the [Resource Management console](https://resourcemanager.console.aliyun.com).
         self.remote_enable = remote_enable
+        # The request ID.
         self.request_id = request_id
+        # The Alibaba Cloud account ID of the management account for which the multi-account management feature is enabled in Anti-DDoS Origin.
         self.root_uid = root_uid
+        # Indicates whether the trusted service is enabled.
         self.service_principal_enabled = service_principal_enabled
 
     def validate(self):
@@ -5757,9 +5957,16 @@ class DetachFromPolicyRequestIpPortProtocolList(TeaModel):
         port: int = None,
         protocol: str = None,
     ):
+        # The IP address of the protected object.
+        # 
         # This parameter is required.
         self.ip = ip
+        # The port of the protected object.
         self.port = port
+        # The protocol type of the protected object. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
         self.protocol = protocol
 
     def validate(self):
@@ -5796,8 +6003,16 @@ class DetachFromPolicyRequest(TeaModel):
         ip_port_protocol_list: List[DetachFromPolicyRequestIpPortProtocolList] = None,
         policy_type: str = None,
     ):
+        # The protected objects.
+        # 
         # This parameter is required.
         self.ip_port_protocol_list = ip_port_protocol_list
+        # The type of the policy. Valid values:
+        # 
+        # *   **default**: the default mitigation policies.
+        # *   **l3**: IP-specific mitigation policies.
+        # *   **l4**: port-specific mitigation policies.
+        # 
         # This parameter is required.
         self.policy_type = policy_type
 
@@ -5839,8 +6054,16 @@ class DetachFromPolicyShrinkRequest(TeaModel):
         ip_port_protocol_list_shrink: str = None,
         policy_type: str = None,
     ):
+        # The protected objects.
+        # 
         # This parameter is required.
         self.ip_port_protocol_list_shrink = ip_port_protocol_list_shrink
+        # The type of the policy. Valid values:
+        # 
+        # *   **default**: the default mitigation policies.
+        # *   **l3**: IP-specific mitigation policies.
+        # *   **l4**: port-specific mitigation policies.
+        # 
         # This parameter is required.
         self.policy_type = policy_type
 
@@ -5873,6 +6096,7 @@ class DetachFromPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6174,7 +6398,7 @@ class GetSlsOpenStatusRequest(TeaModel):
         # 
         # For more information about the valid values of this parameter, see [Regions and zones](https://help.aliyun.com/document_detail/188196.html).
         self.region_id = region_id
-        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         # 
         # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
@@ -6209,12 +6433,12 @@ class GetSlsOpenStatusResponseBody(TeaModel):
         request_id: str = None,
         sls_open_status: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether Log Service was activated. Valid values:
+        # Indicates whether Simple Log Service was activated. Valid values:
         # 
-        # *   **true**: Log Service was activated.
-        # *   **false**: Log Service was not activated.
+        # *   **true**\
+        # *   **false**\
         self.sls_open_status = sls_open_status
 
     def validate(self):
@@ -6289,11 +6513,11 @@ class ListOpenedAccessLogInstancesRequest(TeaModel):
         page_size: int = None,
         resource_group_id: str = None,
     ):
-        # The number of the page to return. Pages start from page 1. Default value: **1**.
+        # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**.
+        # The number of entries per page. Default value: **10**.
         self.page_size = page_size
-        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
+        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         # 
         # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
@@ -6334,8 +6558,8 @@ class ListOpenedAccessLogInstancesResponseBodySlsConfigStatus(TeaModel):
     ):
         # Indicates whether log analysis was enabled for the Anti-DDoS Origin instance. Valid values:
         # 
-        # *   **true**: Log analysis was enabled.
-        # *   **false**: Log analysis was disabled.
+        # *   **true**\
+        # *   **false**\
         self.enable = enable
         # The ID of the Anti-DDoS Origin instance.
         self.instance_id = instance_id
@@ -6371,7 +6595,7 @@ class ListOpenedAccessLogInstancesResponseBody(TeaModel):
         sls_config_status: List[ListOpenedAccessLogInstancesResponseBodySlsConfigStatus] = None,
         total_count: int = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The configuration of log analysis for the Anti-DDoS Origin instance.
         self.sls_config_status = sls_config_status
@@ -6461,11 +6685,20 @@ class ListPolicyRequest(TeaModel):
         name: str = None,
         page_no: int = None,
         page_size: int = None,
+        product_type: str = None,
         type: str = None,
     ):
+        # The name of the policy.
         self.name = name
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page. Default value: **10**.
         self.page_size = page_size
+        self.product_type = product_type
+        # The type of the policy. Valid values:
+        # 
+        # *   **l3**: IP-specific mitigation policies.
+        # *   **l4**: port-specific mitigation policies.
         self.type = type
 
     def validate(self):
@@ -6483,6 +6716,8 @@ class ListPolicyRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -6495,6 +6730,8 @@ class ListPolicyRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -6517,18 +6754,41 @@ class ListPolicyResponseBodyPolicyListContentFingerPrintRuleList(TeaModel):
         src_port_end: int = None,
         src_port_start: int = None,
     ):
+        # The end of the destination port range. Valid values: **0** to **65535**.
         self.dst_port_end = dst_port_end
+        # The start of the destination port range. Valid values: **0** to **65535**.
         self.dst_port_start = dst_port_start
+        # The ID of the rule.
         self.id = id
+        # The action triggered if the rule is matched. Valid values:
+        # 
+        # *   **accept**: allows the traffic that matches the conditions in the byte-match filter rule.
+        # *   **drop**: discards the traffic that matches the conditions in the byte-match filter rule.
+        # *   **ip_rate**: limits rates on the source IP address whose traffic matches the conditions in the byte-match filter rule. The rate limit is specified by **RateValue**.
+        # *   **session_rate**: limits the number of sessions from the source IP address whose traffic matches the conditions in the byte-match filter rule. The rate limit is specified by **RateValue**.
         self.match_action = match_action
+        # The maximum packet length. Valid values: **1** to **1500**.
         self.max_pkt_len = max_pkt_len
+        # The minimum packet length. Valid values: **1** to **1500**.
         self.min_pkt_len = min_pkt_len
+        # The offset. Valid values: **0** to **1500**.
         self.offset = offset
+        # The payload. The value is a hexadecimal string.
         self.payload_bytes = payload_bytes
+        # The protocol type. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
         self.protocol = protocol
+        # The rate limit. Valid values: **1** to **100000**.
+        # 
+        # >  This parameter is required when **MatchAction** is set to **ip_rate** or **session_rate**.
         self.rate_value = rate_value
+        # The sequence number that indicates the order for the rule to take effect. The value is an integer.
         self.seq_no = seq_no
+        # The end of the source port range. Valid values: **0** to **65535**.
         self.src_port_end = src_port_end
+        # The start of the source port range. Valid values: **0** to **65535**.
         self.src_port_start = src_port_start
 
     def validate(self):
@@ -6606,8 +6866,13 @@ class ListPolicyResponseBodyPolicyListContentL4RuleListConditionList(TeaModel):
         depth: int = None,
         position: int = None,
     ):
+        # The term that is used for matching.
+        # 
+        # >  If Method is set to **char**, the value of this parameter must be ASCII strings. If Method is set to **hex**, the value of this parameter must be hexadecimal strings. Maximum length: 2,048.
         self.arg = arg
+        # The number of bytes from the start position for matching. Valid values: **1** to **2048**.
         self.depth = depth
+        # The start position for matching. Valid values: **0** to **2047**.
         self.position = position
 
     def validate(self):
@@ -6649,12 +6914,27 @@ class ListPolicyResponseBodyPolicyListContentL4RuleList(TeaModel):
         name: str = None,
         priority: int = None,
     ):
+        # The action that is specified in the rule. Valid value:
+        # 
+        # *   **2**: The traffic is discarded.
         self.action = action
+        # The match conditions.
         self.condition_list = condition_list
+        # The minimum number of bytes in a session to trigger matching. Valid values: **0** to **2048**.
         self.limited = limited
+        # The condition based on which an action is performed. Valid values:
+        # 
+        # *   **0**: If the rule is matched, the action specified in the rule is performed.
+        # *   **1**: If the rule is not matched, the action specified in the rule is performed.
         self.match = match
+        # The type of the rule. Valid values:
+        # 
+        # *   **char**: string match.
+        # *   **hex**: hexadecimal string match.
         self.method = method
+        # The name of the rule.
         self.name = name
+        # The priority of the rule.
         self.priority = priority
 
     def validate(self):
@@ -6721,13 +7001,26 @@ class ListPolicyResponseBodyPolicyListContentPortRuleList(TeaModel):
         src_port_end: int = None,
         src_port_start: int = None,
     ):
+        # The end of the destination port range. Valid values: **0** to **65535**.
         self.dst_port_end = dst_port_end
+        # The start of the destination port range. Valid values: **0** to **65535**.
         self.dst_port_start = dst_port_start
+        # The ID of the rule.
         self.id = id
+        # The action triggered if the rule is matched. Valid value:
+        # 
+        # *   **drop**: The traffic is discarded.
         self.match_action = match_action
+        # The protocol type. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
         self.protocol = protocol
+        # The sequence number that indicates the order for the rule to take effect. The value is an integer.
         self.seq_no = seq_no
+        # The end of the source port range. Valid values: **0** to **65535**.
         self.src_port_end = src_port_end
+        # The start of the source port range. Valid values: **0** to **65535**.
         self.src_port_start = src_port_start
 
     def validate(self):
@@ -6786,9 +7079,18 @@ class ListPolicyResponseBodyPolicyListContentSourceBlockList(TeaModel):
         exceed_limit_times: int = None,
         type: int = None,
     ):
+        # The validity period of the blacklist to which the source IP address is added. Unit: seconds.
         self.block_expire_seconds = block_expire_seconds
+        # The statistical period during which the system collects data on source IP addresses to determine whether to add the source IP addresses to the blacklist. Unit: seconds.
         self.every_seconds = every_seconds
+        # The number of times that the source IP address exceeds a limit in a statistical period.
         self.exceed_limit_times = exceed_limit_times
+        # The type of the source rate limit. Valid values:
+        # 
+        # *   **3**: the PPS limit on source IP addresses.
+        # *   **4**: the bandwidth limit on source IP addresses.
+        # *   **5**: the PPS limit on source SYN packets.
+        # *   **6**: the bandwidth limit on source SYN packets.
         self.type = type
 
     def validate(self):
@@ -6831,9 +7133,13 @@ class ListPolicyResponseBodyPolicyListContentSourceLimit(TeaModel):
         syn_bps: int = None,
         syn_pps: int = None,
     ):
+        # The bandwidth limit on source IP addresses. Unit: bytes per second.
         self.bps = bps
+        # The packets per second (PPS) limit on source IP addresses.
         self.pps = pps
+        # The bandwidth limit on source SYN packets. Unit: bytes per second.
         self.syn_bps = syn_bps
+        # The PPS limit on source SYN packets.
         self.syn_pps = syn_pps
 
     def validate(self):
@@ -6886,19 +7192,37 @@ class ListPolicyResponseBodyPolicyListContent(TeaModel):
         source_limit: ListPolicyResponseBodyPolicyListContentSourceLimit = None,
         whiten_gfbr_nets: bool = None,
     ):
+        # The validity period of the IP address blacklist. The value is a UNIX timestamp.
         self.black_ip_list_expire_at = black_ip_list_expire_at
+        # Indicates whether ICMP blocking is enabled.
         self.enable_drop_icmp = enable_drop_icmp
+        # Indicates whether intelligent protection is enabled.
         self.enable_intelligence = enable_intelligence
+        # Indicates whether port-specific mitigation is enabled.
         self.enable_l4defense = enable_l4defense
+        # The byte-match filter rules.
         self.finger_print_rule_list = finger_print_rule_list
+        # The level of intelligent protection. Valid values:
+        # 
+        # *   **default**: normal.
+        # *   **hard**: strict.
+        # *   **weak**: loose.
         self.intelligence_level = intelligence_level
+        # The port-specific mitigation rules.
         self.l_4rule_list = l_4rule_list
+        # The port blocking rules.
         self.port_rule_list = port_rule_list
+        # The ports whose traffic is filtered out by the filtering policies for UDP reflection attacks.
         self.reflect_block_udp_port_list = reflect_block_udp_port_list
+        # The countries in the location blacklist.
         self.region_block_country_list = region_block_country_list
+        # The provinces in the location blacklist.
         self.region_block_province_list = region_block_province_list
+        # The source IP addresses that are added to the blacklist.
         self.source_block_list = source_block_list
+        # The settings for source rate limiting.
         self.source_limit = source_limit
+        # Indicates whether back-to-origin CIDR blocks of Anti-DDoS Proxy are added to the whitelist.
         self.whiten_gfbr_nets = whiten_gfbr_nets
 
     def validate(self):
@@ -7018,12 +7342,22 @@ class ListPolicyResponseBodyPolicyList(TeaModel):
         content: ListPolicyResponseBodyPolicyListContent = None,
         id: str = None,
         name: str = None,
+        remark: str = None,
         type: str = None,
     ):
+        # The number of protected objects that are added to the policy.
         self.attached_count = attached_count
+        # The content of the policy.
         self.content = content
+        # The ID of the policy.
         self.id = id
+        # The name of the policy.
         self.name = name
+        self.remark = remark
+        # The type of the policy. Valid values:
+        # 
+        # *   **l3**: IP-specific mitigation policies.
+        # *   **l4**: port-specific mitigation policies.
         self.type = type
 
     def validate(self):
@@ -7044,6 +7378,8 @@ class ListPolicyResponseBodyPolicyList(TeaModel):
             result['Id'] = self.id
         if self.name is not None:
             result['Name'] = self.name
+        if self.remark is not None:
+            result['Remark'] = self.remark
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -7059,6 +7395,8 @@ class ListPolicyResponseBodyPolicyList(TeaModel):
             self.id = m.get('Id')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -7071,8 +7409,11 @@ class ListPolicyResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The policies.
         self.policy_list = policy_list
+        # The request ID.
         self.request_id = request_id
+        # The total number of policies.
         self.total = total
 
     def validate(self):
@@ -7159,9 +7500,16 @@ class ListPolicyAttachmentRequestIpPortProtocolList(TeaModel):
         port: int = None,
         protocol: str = None,
     ):
+        # The IP address of the protected object.
+        # 
         # This parameter is required.
         self.ip = ip
+        # The port number of the protected object.
         self.port = port
+        # The protocol type of the protected object. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
         self.protocol = protocol
 
     def validate(self):
@@ -7201,10 +7549,19 @@ class ListPolicyAttachmentRequest(TeaModel):
         policy_id: str = None,
         policy_type: str = None,
     ):
+        # The protected objects.
         self.ip_port_protocol_list = ip_port_protocol_list
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page. Default value: **10**.
         self.page_size = page_size
+        # The ID of the policy.
         self.policy_id = policy_id
+        # The type of the policy. Valid values:
+        # 
+        # *   **default**: the default mitigation policies.
+        # *   **l3**: IP-specific mitigation policies.
+        # *   **l4**: port-specific mitigation policies.
         self.policy_type = policy_type
 
     def validate(self):
@@ -7260,10 +7617,19 @@ class ListPolicyAttachmentShrinkRequest(TeaModel):
         policy_id: str = None,
         policy_type: str = None,
     ):
+        # The protected objects.
         self.ip_port_protocol_list_shrink = ip_port_protocol_list_shrink
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page. Default value: **10**.
         self.page_size = page_size
+        # The ID of the policy.
         self.policy_id = policy_id
+        # The type of the policy. Valid values:
+        # 
+        # *   **default**: the default mitigation policies.
+        # *   **l3**: IP-specific mitigation policies.
+        # *   **l4**: port-specific mitigation policies.
         self.policy_type = policy_type
 
     def validate(self):
@@ -7309,18 +7675,34 @@ class ListPolicyAttachmentResponseBodyAttachmentList(TeaModel):
         member_uid: str = None,
         policy_id: str = None,
         policy_name: str = None,
+        policy_remark: str = None,
         policy_type: str = None,
         port: int = None,
         protocol: str = None,
         region: str = None,
     ):
+        # The IP address of the protected object.
         self.ip = ip
+        # The UID of the member to which the IP address of the protected object belongs.
         self.member_uid = member_uid
+        # The ID of the policy.
         self.policy_id = policy_id
+        # The name of the rule.
         self.policy_name = policy_name
+        self.policy_remark = policy_remark
+        # The type of the policy. Valid values:
+        # 
+        # *   **l3**: IP-specific mitigation policies.
+        # *   **l4**: port-specific mitigation policies.
         self.policy_type = policy_type
+        # The port number of the protected object.
         self.port = port
+        # The protocol type of the protected object. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
         self.protocol = protocol
+        # The region to which the IP address of the protected object belongs.
         self.region = region
 
     def validate(self):
@@ -7340,6 +7722,8 @@ class ListPolicyAttachmentResponseBodyAttachmentList(TeaModel):
             result['PolicyId'] = self.policy_id
         if self.policy_name is not None:
             result['PolicyName'] = self.policy_name
+        if self.policy_remark is not None:
+            result['PolicyRemark'] = self.policy_remark
         if self.policy_type is not None:
             result['PolicyType'] = self.policy_type
         if self.port is not None:
@@ -7360,6 +7744,8 @@ class ListPolicyAttachmentResponseBodyAttachmentList(TeaModel):
             self.policy_id = m.get('PolicyId')
         if m.get('PolicyName') is not None:
             self.policy_name = m.get('PolicyName')
+        if m.get('PolicyRemark') is not None:
+            self.policy_remark = m.get('PolicyRemark')
         if m.get('PolicyType') is not None:
             self.policy_type = m.get('PolicyType')
         if m.get('Port') is not None:
@@ -7378,8 +7764,11 @@ class ListPolicyAttachmentResponseBody(TeaModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The records of attachments to the mitigation policy.
         self.attachment_list = attachment_list
+        # The request ID.
         self.request_id = request_id
+        # The total number of attachments to the mitigation policy.
         self.total = total
 
     def validate(self):
@@ -7468,17 +7857,17 @@ class ListTagKeysRequest(TeaModel):
         resource_group_id: str = None,
         resource_type: str = None,
     ):
-        # The number of the page to return. Pages start from page **1**. Default value: **1**.
+        # The page number. Pages start from page **1**. Default value: **1**.
         self.current_page = current_page
-        # The number of entries to return on each page. Valid values: 1 to **50**. Default value: **10**.
+        # The number of entries per page. Valid values: 1 to **50**. Default value: **10**.
         self.page_size = page_size
-        # The region ID.
+        # The ID of the region that you want to query.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The type of the resource. Valid value: **INSTANCE**.
+        # The resource type. Set the value to **INSTANCE**.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -7527,7 +7916,7 @@ class ListTagKeysResponseBodyTagKeys(TeaModel):
     ):
         # The total number of tag values that correspond to each key.
         self.tag_count = tag_count
-        # The key of each tag.
+        # The tag key.
         self.tag_key = tag_key
 
     def validate(self):
@@ -7563,15 +7952,15 @@ class ListTagKeysResponseBody(TeaModel):
         tag_keys: List[ListTagKeysResponseBodyTagKeys] = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The list of tags and the details of each tag.
+        # The information about the tags.
         self.tag_keys = tag_keys
-        # The total number of tags.
+        # The total number of tags returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7667,11 +8056,11 @@ class ListTagResourcesRequestTag(TeaModel):
     ):
         # The key of the tag to query.
         # 
-        # >  The **ResourceIds.N** parameter and the key-value pair (Tag.N.Key and Tag.N.Value) cannot be left empty at the same time.
+        # >  The **ResourceId** parameter and the **key-value pair for the Tag parameter** cannot be left empty at the same time.
         self.key = key
         # The value of the tag to query.
         # 
-        # >  The **ResourceIds.N** parameter and the key-value pair (Tag.N.Key and Tag.N.Value) cannot be left empty at the same time.
+        # >  The **ResourceId** parameter and the **key-value pair for the Tag parameter** cannot be left empty at the same time.
         self.value = value
 
     def validate(self):
@@ -7708,7 +8097,7 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
-        # The query token. Set the value to the **NextToken** value that is returned in the last call to the ListTagResources operation. Leave this parameter empty the first time you call this operation.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of **NextToken**.
         self.next_token = next_token
         # The ID of the region where the Anti-DDoS Origin instance resides.
         # 
@@ -7720,15 +8109,15 @@ class ListTagResourcesRequest(TeaModel):
         # 
         # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
-        # The IDs of Anti-DDoS Origin Instances to query.
+        # The IDs of the Anti-DDoS Origin instances to query.
         # 
-        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
+        # >  The **ResourceId** parameter and the **key-value pair for the Tag parameter** cannot be left empty at the same time.
         self.resource_id = resource_id
-        # The type of the resource to query. Set the value to **INSTANCE**, which indicates instances.
+        # The type of the resource to query. Set the value to **INSTANCE**.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags to query.
+        # The key-value pair of the tag to query.
         self.tag = tag
 
     def validate(self):
@@ -7789,7 +8178,7 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
     ):
         # The ID of the Anti-DDoS Origin instance.
         self.resource_id = resource_id
-        # The type of the resource. The value is fixed as **INSTANCE**, which indicates instances.
+        # The type of the resource. The value is set to **INSTANCE**.
         self.resource_type = resource_type
         # The key of the tag that is added to the instance.
         self.tag_key = tag_key
@@ -7870,11 +8259,11 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: ListTagResourcesResponseBodyTagResources = None,
     ):
-        # The query token that is returned in this call.
+        # A pagination token.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The list of tags that are added to the Anti-DDoS Origin instance.
+        # The tags that are added to the Anti-DDoS Origin instance.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -7965,26 +8354,60 @@ class ModifyPolicyRequestContentFingerPrintRuleList(TeaModel):
         src_port_end: int = None,
         src_port_start: int = None,
     ):
+        # The end of the destination port range. Valid values: **0** to **65535**.
+        # 
         # This parameter is required.
         self.dst_port_end = dst_port_end
+        # The start of the destination port range. Valid values: **0** to **65535**.
+        # 
         # This parameter is required.
         self.dst_port_start = dst_port_start
+        # The ID of the rule.
         self.id = id
+        # The action triggered if the rule is matched. Valid values:
+        # 
+        # *   **accept**: allows the traffic that matches the conditions in the byte-match filter rule.
+        # *   **drop**: discards the traffic that matches the conditions in the byte-match filter rule.
+        # *   **ip_rate**: limits rates on the source IP address whose traffic matches the conditions in the byte-match filter rule. The rate limit is specified by **RateValue**.
+        # *   **session_rate**: limits the number of sessions from the source IP address whose traffic matches the conditions in the byte-match filter rule. The rate limit is specified by **RateValue**.
+        # 
         # This parameter is required.
         self.match_action = match_action
+        # The maximum packet length. Valid values: **1** to **1500**.
+        # 
         # This parameter is required.
         self.max_pkt_len = max_pkt_len
+        # The minimum packet length. Valid values: **1** to **1500**.
+        # 
         # This parameter is required.
         self.min_pkt_len = min_pkt_len
+        # The offset. Valid values: **0** to **1500**.
         self.offset = offset
+        # The payload. The value is a hexadecimal string.
         self.payload_bytes = payload_bytes
+        # The type of the protocol. Valid value:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
+        # 
         # This parameter is required.
         self.protocol = protocol
+        # The rate limit. Valid values: **1** to **100000**.
+        # 
+        # >  This parameter is required when **MatchAction** is set to **ip_rate** or **session_rate**.
         self.rate_value = rate_value
+        # The sequence number that indicates the order for the rule to take effect. The value is an integer.
+        # 
+        # >  A smaller number indicates a higher priority.
+        # 
         # This parameter is required.
         self.seq_no = seq_no
+        # The end of the source port range. Valid values: **0** to **65535**.
+        # 
         # This parameter is required.
         self.src_port_end = src_port_end
+        # The start of the source port range. Valid values: **0** to **65535**.
+        # 
         # This parameter is required.
         self.src_port_start = src_port_start
 
@@ -8063,10 +8486,18 @@ class ModifyPolicyRequestContentL4RuleListConditionList(TeaModel):
         depth: int = None,
         position: int = None,
     ):
+        # The term that is used for matching.
+        # 
+        # >  If Method is set to **char**, the value of this parameter must be ASCII strings. If Method is set to **hex**, the value of this parameter must be hexadecimal strings. Maximum length: 2,048.
+        # 
         # This parameter is required.
         self.arg = arg
+        # The number of bytes from the start position for matching. Valid values: **1** to **2048**.
+        # 
         # This parameter is required.
         self.depth = depth
+        # The start position for matching. Valid values: **0** to **2047**.
+        # 
         # This parameter is required.
         self.position = position
 
@@ -8109,18 +8540,42 @@ class ModifyPolicyRequestContentL4RuleList(TeaModel):
         name: str = None,
         priority: int = None,
     ):
+        # The action that is specified in the rule. Valid value:
+        # 
+        # *   **2**: The traffic is discarded.
+        # 
         # This parameter is required.
         self.action = action
+        # The match conditions.
+        # 
         # This parameter is required.
         self.condition_list = condition_list
+        # The minimum number of bytes in a session to trigger matching. Valid values: **0** to **2048**.
+        # 
         # This parameter is required.
         self.limited = limited
+        # The condition based on which an action is performed. Valid values:
+        # 
+        # *   **0**: If the rule is matched, the action specified in the rule is performed.
+        # *   **1**: If the rule is not matched, the action specified in the rule is performed.
+        # 
         # This parameter is required.
         self.match = match
+        # The type of the rule. Valid values:
+        # 
+        # *   **char**: string match.
+        # *   **hex**: hexadecimal string match.
+        # 
         # This parameter is required.
         self.method = method
+        # The name of the rule.
+        # 
         # This parameter is required.
         self.name = name
+        # The priority of the rule. Valid values: **1** to **100**.
+        # 
+        # >  A smaller value indicates a higher priority.
+        # 
         # This parameter is required.
         self.priority = priority
 
@@ -8188,19 +8643,41 @@ class ModifyPolicyRequestContentPortRuleList(TeaModel):
         src_port_end: int = None,
         src_port_start: int = None,
     ):
+        # The end of the destination port range. Valid values: **0** to **65535**.
+        # 
         # This parameter is required.
         self.dst_port_end = dst_port_end
+        # The start of the destination port range. Valid values: **0** to **65535**.
+        # 
         # This parameter is required.
         self.dst_port_start = dst_port_start
+        # The ID of the rule.
         self.id = id
+        # The action triggered if the rule is matched. Valid value:
+        # 
+        # *   **drop**: The traffic is discarded.
+        # 
         # This parameter is required.
         self.match_action = match_action
+        # The type of the protocol. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
+        # 
         # This parameter is required.
         self.protocol = protocol
+        # The sequence number that indicates the order for the rule to take effect. The value is an integer.
+        # 
+        # >  A smaller number indicates a higher priority.
+        # 
         # This parameter is required.
         self.seq_no = seq_no
+        # The end of the source port range. Valid values: **0** to **65535**.
+        # 
         # This parameter is required.
         self.src_port_end = src_port_end
+        # The start of the source port range. Valid values: **0** to **65535**.
+        # 
         # This parameter is required.
         self.src_port_start = src_port_start
 
@@ -8260,12 +8737,25 @@ class ModifyPolicyRequestContentSourceBlockList(TeaModel):
         exceed_limit_times: int = None,
         type: int = None,
     ):
+        # The validity period of the blacklist to which the source IP address is added. Unit: seconds.
+        # 
         # This parameter is required.
         self.block_expire_seconds = block_expire_seconds
+        # The statistical period during which the system collects data on source IP addresses to determine whether to add the source IP addresses to the blacklist. Unit: seconds.
+        # 
         # This parameter is required.
         self.every_seconds = every_seconds
+        # The number of times that the source IP address exceeds a limit in a statistical period.
+        # 
         # This parameter is required.
         self.exceed_limit_times = exceed_limit_times
+        # The type of the source rate limit. Valid values:
+        # 
+        # *   **3**: the PPS limit on source IP addresses.
+        # *   **4**: the bandwidth limit on source IP addresses.
+        # *   **5**: the PPS limit on source SYN packets.
+        # *   **6**: the bandwidth limit on source SYN packets.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -8309,9 +8799,13 @@ class ModifyPolicyRequestContentSourceLimit(TeaModel):
         syn_bps: int = None,
         syn_pps: int = None,
     ):
+        # The bandwidth limit on source IP addresses. Unit: bytes per second.
         self.bps = bps
+        # The packets per second (PPS) limit on source IP addresses.
         self.pps = pps
+        # The bandwidth limit on source SYN packets. Unit: bytes per second.
         self.syn_bps = syn_bps
+        # The PPS limit on source SYN packets.
         self.syn_pps = syn_pps
 
     def validate(self):
@@ -8366,21 +8860,41 @@ class ModifyPolicyRequestContent(TeaModel):
         white_ip_list: List[str] = None,
         whiten_gfbr_nets: bool = None,
     ):
+        # The IP addresses in the blacklist.
         self.black_ip_list = black_ip_list
+        # The validity period of the IP address blacklist. The value is a UNIX timestamp.
         self.black_ip_list_expire_at = black_ip_list_expire_at
+        # Specifies whether to enable ICMP blocking.
         self.enable_drop_icmp = enable_drop_icmp
+        # Specifies whether to enable intelligent protection.
         self.enable_intelligence = enable_intelligence
+        # Specifies whether to enable port-specific mitigation.
         self.enable_l4defense = enable_l4defense
+        # The byte-match filter rules.
         self.finger_print_rule_list = finger_print_rule_list
+        # The level of intelligent protection. Valid values:
+        # 
+        # *   **default**: normal.
+        # *   **hard**: strict.
+        # *   **weak**: loose.
         self.intelligence_level = intelligence_level
+        # The port-specific mitigation rules.
         self.l_4rule_list = l_4rule_list
+        # The port blocking rules.
         self.port_rule_list = port_rule_list
+        # The ports whose traffic is filtered out by the filtering policies for UDP reflection attacks.
         self.reflect_block_udp_port_list = reflect_block_udp_port_list
+        # The countries in the location blacklist.
         self.region_block_country_list = region_block_country_list
+        # The provinces in the location blacklist.
         self.region_block_province_list = region_block_province_list
+        # The source IP addresses that are added to the blacklist.
         self.source_block_list = source_block_list
+        # The settings for source rate limiting.
         self.source_limit = source_limit
+        # The IP addresses in the whitelist.
         self.white_ip_list = white_ip_list
+        # Specifies whether to add back-to-origin CIDR blocks of Anti-DDoS Proxy to the whitelist.
         self.whiten_gfbr_nets = whiten_gfbr_nets
 
     def validate(self):
@@ -8509,11 +9023,40 @@ class ModifyPolicyRequest(TeaModel):
         id: str = None,
         name: str = None,
     ):
+        # The type of the action. Valid values:
+        # 
+        # *   **10**: modifies the name. If you specify this value, `Name` is required.
+        # *   **11**: modifies the blacklist validity period. If you specify this value, `BlackIpListExpireAt` is required. Only IP-specific mitigation policies support this value.
+        # *   **12**: changes the status of the feature of adding back-to-origin CIDR blocks of Anti-DDoS Proxy to the whitelist. If you specify this value, `WhitenGfbrNets` is required. Only IP-specific mitigation policies support this value.
+        # *   **13**: changes the status of the ICMP blocking feature. If you specify this value, `EnableDropIcmp` is required. Only IP-specific mitigation policies support this value.
+        # *   **20**: adds IP addresses to the blacklist or the whitelist. If you specify this value, you must specify at least one of `WhiteIpList` and `BlackIpList`. Only IP-specific mitigation policies support this value.
+        # *   **21**: removes IP addresses from the blacklist or the whitelist. If you specify this value, at least one of `WhiteIpList` and `BlackIpList` is required. Only IP-specific mitigation policies support this value.
+        # *   **22**: clears the whitelist. Only IP-specific mitigation policies support this value.
+        # *   **23**: clears the blacklist. Only IP-specific mitigation policies support this value.
+        # *   **30**: modifies the status and level of intelligent protection. If you specify this value, `EnableIntelligence` and `IntelligenceLevel` are required. Only IP-specific mitigation policies support this value.
+        # *   **31**: modifies the location blacklist settings. If you specify this value, one of `RegionBlockCountryList` and `RegionBlockProvinceList` is required. Only IP-specific mitigation policies support this value.
+        # *   **32**: modifies the settings for source rate limiting. If you specify this value, `SourceLimit` and `SourceBlockList` are required. Only IP-specific mitigation policies support this value.
+        # *   **33**: modifies the settings for reflection attack filtering. If you specify this value, `ReflectBlockUdpPortList` is required. Only IP-specific mitigation policies support this value.
+        # *   **40**: creates a port blocking rule. If you specify this value, `PortRuleList` is required. Only IP-specific mitigation policies support this value.
+        # *   **41**: modifies the port blocking rule. If you specify this value, `PortRuleList` is required. Only IP-specific mitigation policies support this value.
+        # *   **42**: deletes the port blocking rule. If you specify this value, `PortRuleList` is required. Only IP-specific mitigation policies support this value.
+        # *   **50**: creates a byte-match filter rule. If you specify this value, `FingerPrintRuleList` is required. Only IP-specific mitigation policies support this value.
+        # *   **51**: modifies the byte-match filter rule. If you specify this value, `FingerPrintRuleList` is required. Only IP-specific mitigation policies support this value.
+        # *   **52**: deletes the byte-match filter rule. If you specify this value, `FingerPrintRuleList` is required. Only IP-specific mitigation policies support this value.
+        # *   **60**: changes the status of the port-specific mitigation feature. If you specify this value, `EnableL4Defense` is required. Only port-specific mitigation policies support this value.
+        # *   **61**: creates a port-specific mitigation rule. If you specify this value, `L4RuleList` is required. Only port-specific mitigation policies support this value.
+        # *   **62**: modifies the port-specific mitigation rule. If you specify this value, `L4RuleList` is required. Only port-specific mitigation policies support this value.
+        # *   **63**: deletes the port-specific mitigation rule. If you specify this value, `L4RuleList` is required. Only port-specific mitigation policies support this value.
+        # 
         # This parameter is required.
         self.action_type = action_type
+        # The content of the policy.
         self.content = content
+        # The ID of the policy.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the policy.
         self.name = name
 
     def validate(self):
@@ -8558,11 +9101,40 @@ class ModifyPolicyShrinkRequest(TeaModel):
         id: str = None,
         name: str = None,
     ):
+        # The type of the action. Valid values:
+        # 
+        # *   **10**: modifies the name. If you specify this value, `Name` is required.
+        # *   **11**: modifies the blacklist validity period. If you specify this value, `BlackIpListExpireAt` is required. Only IP-specific mitigation policies support this value.
+        # *   **12**: changes the status of the feature of adding back-to-origin CIDR blocks of Anti-DDoS Proxy to the whitelist. If you specify this value, `WhitenGfbrNets` is required. Only IP-specific mitigation policies support this value.
+        # *   **13**: changes the status of the ICMP blocking feature. If you specify this value, `EnableDropIcmp` is required. Only IP-specific mitigation policies support this value.
+        # *   **20**: adds IP addresses to the blacklist or the whitelist. If you specify this value, you must specify at least one of `WhiteIpList` and `BlackIpList`. Only IP-specific mitigation policies support this value.
+        # *   **21**: removes IP addresses from the blacklist or the whitelist. If you specify this value, at least one of `WhiteIpList` and `BlackIpList` is required. Only IP-specific mitigation policies support this value.
+        # *   **22**: clears the whitelist. Only IP-specific mitigation policies support this value.
+        # *   **23**: clears the blacklist. Only IP-specific mitigation policies support this value.
+        # *   **30**: modifies the status and level of intelligent protection. If you specify this value, `EnableIntelligence` and `IntelligenceLevel` are required. Only IP-specific mitigation policies support this value.
+        # *   **31**: modifies the location blacklist settings. If you specify this value, one of `RegionBlockCountryList` and `RegionBlockProvinceList` is required. Only IP-specific mitigation policies support this value.
+        # *   **32**: modifies the settings for source rate limiting. If you specify this value, `SourceLimit` and `SourceBlockList` are required. Only IP-specific mitigation policies support this value.
+        # *   **33**: modifies the settings for reflection attack filtering. If you specify this value, `ReflectBlockUdpPortList` is required. Only IP-specific mitigation policies support this value.
+        # *   **40**: creates a port blocking rule. If you specify this value, `PortRuleList` is required. Only IP-specific mitigation policies support this value.
+        # *   **41**: modifies the port blocking rule. If you specify this value, `PortRuleList` is required. Only IP-specific mitigation policies support this value.
+        # *   **42**: deletes the port blocking rule. If you specify this value, `PortRuleList` is required. Only IP-specific mitigation policies support this value.
+        # *   **50**: creates a byte-match filter rule. If you specify this value, `FingerPrintRuleList` is required. Only IP-specific mitigation policies support this value.
+        # *   **51**: modifies the byte-match filter rule. If you specify this value, `FingerPrintRuleList` is required. Only IP-specific mitigation policies support this value.
+        # *   **52**: deletes the byte-match filter rule. If you specify this value, `FingerPrintRuleList` is required. Only IP-specific mitigation policies support this value.
+        # *   **60**: changes the status of the port-specific mitigation feature. If you specify this value, `EnableL4Defense` is required. Only port-specific mitigation policies support this value.
+        # *   **61**: creates a port-specific mitigation rule. If you specify this value, `L4RuleList` is required. Only port-specific mitigation policies support this value.
+        # *   **62**: modifies the port-specific mitigation rule. If you specify this value, `L4RuleList` is required. Only port-specific mitigation policies support this value.
+        # *   **63**: deletes the port-specific mitigation rule. If you specify this value, `L4RuleList` is required. Only port-specific mitigation policies support this value.
+        # 
         # This parameter is required.
         self.action_type = action_type
+        # The content of the policy.
         self.content_shrink = content_shrink
+        # The ID of the policy.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the policy.
         self.name = name
 
     def validate(self):
@@ -8602,6 +9174,7 @@ class ModifyPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8682,26 +9255,60 @@ class ModifyPolicyContentRequestContentFingerPrintRuleList(TeaModel):
         src_port_end: int = None,
         src_port_start: int = None,
     ):
+        # The end of the destination port range. Valid values: **0** to **65535**.
+        # 
         # This parameter is required.
         self.dst_port_end = dst_port_end
+        # The start of the destination port range. Valid values: **0** to **65535**.
+        # 
         # This parameter is required.
         self.dst_port_start = dst_port_start
+        # The ID of the rule.
         self.id = id
+        # The action triggered if the rule is matched. Valid values:
+        # 
+        # *   **permit**: allows the traffic that matches the conditions in the byte-match filter rule.
+        # *   **drop**: discards the traffic that matches the conditions in the byte-match filter rule.
+        # *   **ip_rate**: limits rates on the source IP address whose traffic matches the conditions in the byte-match filter rule. The rate limit is specified by **RateValue**.
+        # *   **session_rate**: limits the number of sessions from the source IP address whose traffic matches the conditions in the byte-match filter rule. The rate limit is specified by **RateValue**.
+        # 
         # This parameter is required.
         self.match_action = match_action
+        # The maximum packet length. Valid values: **1** to **1500**.
+        # 
         # This parameter is required.
         self.max_pkt_len = max_pkt_len
+        # The minimum packet length. Valid values: **1** to **1500**.
+        # 
         # This parameter is required.
         self.min_pkt_len = min_pkt_len
+        # The offset. Valid values: **0** to **1500**.
         self.offset = offset
+        # The payload. The value is a hexadecimal string.
         self.payload_bytes = payload_bytes
+        # The protocol type. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
+        # 
         # This parameter is required.
         self.protocol = protocol
+        # The rate limit. Valid values: **1** to **100000**.
+        # 
+        # >  This parameter is required when **MatchAction** is set to **ip_rate** or **session_rate**.
         self.rate_value = rate_value
+        # The sequence number that indicates the order for the rule to take effect. The value is an integer.
+        # 
+        # >  A smaller number indicates a higher priority.
+        # 
         # This parameter is required.
         self.seq_no = seq_no
+        # The end of the source port range. Valid values: **0** to **65535**.
+        # 
         # This parameter is required.
         self.src_port_end = src_port_end
+        # The start of the source port range. Valid values: **0** to **65535**.
+        # 
         # This parameter is required.
         self.src_port_start = src_port_start
 
@@ -8780,10 +9387,18 @@ class ModifyPolicyContentRequestContentL4RuleListConditionList(TeaModel):
         depth: int = None,
         position: int = None,
     ):
+        # The term that is used for matching.
+        # 
+        # >  If Method is set to **char**, the value of this parameter must be ASCII strings. If Method is set to **hex**, the value of this parameter must be hexadecimal strings. Maximum length: 2,048.
+        # 
         # This parameter is required.
         self.arg = arg
+        # The number of bytes from the start position for matching. Valid values: **1** to **2048**.
+        # 
         # This parameter is required.
         self.depth = depth
+        # The start position for matching. Valid values: **0** to **2047**.
+        # 
         # This parameter is required.
         self.position = position
 
@@ -8826,18 +9441,42 @@ class ModifyPolicyContentRequestContentL4RuleList(TeaModel):
         name: str = None,
         priority: int = None,
     ):
+        # The action that is specified in the rule. Valid value:
+        # 
+        # *   **2**: The traffic is discarded.
+        # 
         # This parameter is required.
         self.action = action
+        # The match conditions.
+        # 
         # This parameter is required.
         self.condition_list = condition_list
+        # The minimum number of bytes in a session to trigger matching. Valid values: **0** to **2048**.
+        # 
         # This parameter is required.
         self.limited = limited
+        # The condition based on which an action is performed. Valid values:
+        # 
+        # *   **0**: If the rule is matched, the action specified in the rule is performed.
+        # *   **1**: If the rule is not matched, the action specified in the rule is performed.
+        # 
         # This parameter is required.
         self.match = match
+        # The type of the rule. Valid values:
+        # 
+        # *   **char**: string match.
+        # *   **hex**: hexadecimal string match.
+        # 
         # This parameter is required.
         self.method = method
+        # The name of the rule.
+        # 
         # This parameter is required.
         self.name = name
+        # The priority of the rule. Valid values: 1 to 100.
+        # 
+        # >  A smaller value indicates a higher priority.
+        # 
         # This parameter is required.
         self.priority = priority
 
@@ -8905,19 +9544,41 @@ class ModifyPolicyContentRequestContentPortRuleList(TeaModel):
         src_port_end: int = None,
         src_port_start: int = None,
     ):
+        # The end of the destination port range. Valid values: **0** to **65535**.
+        # 
         # This parameter is required.
         self.dst_port_end = dst_port_end
+        # The start of the destination port range. Valid values: **0** to **65535**.
+        # 
         # This parameter is required.
         self.dst_port_start = dst_port_start
+        # The ID of the rule.
         self.id = id
+        # The action triggered if the rule is matched. Valid value:
+        # 
+        # *   **drop**: The traffic is discarded.
+        # 
         # This parameter is required.
         self.match_action = match_action
+        # The protocol type. Valid values:
+        # 
+        # *   **tcp**\
+        # *   **udp**\
+        # 
         # This parameter is required.
         self.protocol = protocol
+        # The sequence number that indicates the order for the rule to take effect. The value is an integer.
+        # 
+        # >  A smaller number indicates a higher priority.
+        # 
         # This parameter is required.
         self.seq_no = seq_no
+        # The end of the source port range. Valid values: **0** to **65535**.
+        # 
         # This parameter is required.
         self.src_port_end = src_port_end
+        # The start of the source port range. Valid values: **0** to **65535**.
+        # 
         # This parameter is required.
         self.src_port_start = src_port_start
 
@@ -8977,12 +9638,25 @@ class ModifyPolicyContentRequestContentSourceBlockList(TeaModel):
         exceed_limit_times: int = None,
         type: int = None,
     ):
+        # The validity period of the blacklist to which the source IP address is added. Unit: seconds.
+        # 
         # This parameter is required.
         self.block_expire_seconds = block_expire_seconds
+        # The statistical period during which the system collects data on source IP addresses to determine whether to add the source IP addresses to the blacklist. Unit: seconds.
+        # 
         # This parameter is required.
         self.every_seconds = every_seconds
+        # The number of times that the source IP address exceeds a limit in a statistical period.
+        # 
         # This parameter is required.
         self.exceed_limit_times = exceed_limit_times
+        # The type of the source rate limit. Valid values:
+        # 
+        # *   **3**: the PPS limit on source IP addresses.
+        # *   **4**: the bandwidth limit on source IP addresses.
+        # *   **5**: the PPS limit on source SYN packets.
+        # *   **6**: the bandwidth limit on source SYN packets.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -9026,9 +9700,13 @@ class ModifyPolicyContentRequestContentSourceLimit(TeaModel):
         syn_bps: int = None,
         syn_pps: int = None,
     ):
+        # The bandwidth limit on source IP addresses. Unit: bytes per second.
         self.bps = bps
+        # The packets per second (PPS) limit on source IP addresses.
         self.pps = pps
+        # The bandwidth limit on source SYN packets. Unit: bytes per second.
         self.syn_bps = syn_bps
+        # The PPS limit on source SYN packets.
         self.syn_pps = syn_pps
 
     def validate(self):
@@ -9081,19 +9759,37 @@ class ModifyPolicyContentRequestContent(TeaModel):
         source_limit: ModifyPolicyContentRequestContentSourceLimit = None,
         whiten_gfbr_nets: bool = None,
     ):
+        # The validity period of the IP address blacklist. The value is a UNIX timestamp.
         self.black_ip_list_expire_at = black_ip_list_expire_at
+        # Specifies whether to enable ICMP blocking.
         self.enable_drop_icmp = enable_drop_icmp
+        # Specifies whether to enable intelligent protection.
         self.enable_intelligence = enable_intelligence
+        # Specifies whether to enable port-specific mitigation.
         self.enable_l4defense = enable_l4defense
+        # The byte-match filter rules.
         self.finger_print_rule_list = finger_print_rule_list
+        # The level of intelligent protection. Valid values:
+        # 
+        # *   **default**: normal.
+        # *   **hard**: strict.
+        # *   **weak**: loose.
         self.intelligence_level = intelligence_level
+        # The port-specific mitigation rules.
         self.l_4rule_list = l_4rule_list
+        # The port blocking rules.
         self.port_rule_list = port_rule_list
+        # The ports whose traffic is filtered out by the filtering policies for UDP reflection attacks.
         self.reflect_block_udp_port_list = reflect_block_udp_port_list
+        # The countries in the location blacklist.
         self.region_block_country_list = region_block_country_list
+        # The provinces in the location blacklist.
         self.region_block_province_list = region_block_province_list
+        # The source IP addresses that are added to the blacklist.
         self.source_block_list = source_block_list
+        # The settings for source rate limiting.
         self.source_limit = source_limit
+        # Specifies whether to add back-to-origin CIDR blocks of Anti-DDoS Proxy to the whitelist.
         self.whiten_gfbr_nets = whiten_gfbr_nets
 
     def validate(self):
@@ -9213,9 +9909,13 @@ class ModifyPolicyContentRequest(TeaModel):
         id: str = None,
         name: str = None,
     ):
+        # The content of the policy.
         self.content = content
+        # The ID of the policy.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the policy.
         self.name = name
 
     def validate(self):
@@ -9255,9 +9955,13 @@ class ModifyPolicyContentShrinkRequest(TeaModel):
         id: str = None,
         name: str = None,
     ):
+        # The content of the policy.
         self.content_shrink = content_shrink
+        # The ID of the policy.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the policy.
         self.name = name
 
     def validate(self):
@@ -9293,6 +9997,7 @@ class ModifyPolicyContentResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9420,7 +10125,7 @@ class ModifyRemarkResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9498,7 +10203,7 @@ class QuerySchedruleOnDemandRequest(TeaModel):
         self.instance_id = instance_id
         # The region ID of the on-demand instance.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -9539,13 +10244,13 @@ class QuerySchedruleOnDemandResponseBodyRuleConfig(TeaModel):
         rule_undo_mode: str = None,
         time_zone: str = None,
     ):
-        # The scheduling action. Set the value to **declare**, which indicates that the route is advertised.
+        # The scheduling action. The value is set to **declare**, which indicates that the route is advertised.
         self.rule_action = rule_action
         # If the inbound bandwidth or packets consecutively exceed the threshold for the specified number of times, the scheduling rule is triggered and traffic is rerouted to the on-demand instance. The specified number of times is the value of this parameter.
         # 
         # >  The threshold of inbound bandwidth is the value of **RuleConditionMbps**. The threshold of inbound packets is the value of **RuleConditionKpps**.
         self.rule_condition_cnt = rule_condition_cnt
-        # The threshold of inbound packets. Unit: Kpps. Minimum value: **10**.
+        # The threshold of inbound packets. Unit: kilo packets per second (Kpps). Minimum value: **10**.
         self.rule_condition_kpps = rule_condition_kpps
         # The threshold of inbound bandwidth. Unit: Mbit/s. Minimum value: **100**.
         self.rule_condition_mbps = rule_condition_mbps
@@ -9553,27 +10258,27 @@ class QuerySchedruleOnDemandResponseBodyRuleConfig(TeaModel):
         self.rule_name = rule_name
         # Indicates whether the scheduling rule is enabled. Valid values:
         # 
-        # *   **on**: enabled
-        # *   **off**: disabled
+        # *   **on**: enabled.
+        # *   **off**: disabled.
         self.rule_switch = rule_switch
         # The start time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
         # 
         # If the system detects that DDoS attacks stop, the system no longer reroutes traffic to the on-demand instance from the time you specified. We recommend that you set this parameter to a value that is defined as off-peak hours.
         # 
-        # >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+        # >  This parameter takes effect only when the value of **RuleUndoMode** is **auto**.
         self.rule_undo_begin_time = rule_undo_begin_time
         # The end time of the period during which the scheduling rule is automatically stopped. The time must be in the 24-hour clock and in the `hh:mm` format.
         self.rule_undo_end_time = rule_undo_end_time
         # The stop method of the scheduling rule. Valid values:
         # 
-        # *   **auto**: The scheduling rule automatically stops.
-        # *   **manual**: The scheduling rule is manually stopped.
+        # *   **auto**\
+        # *   **manual**\
         self.rule_undo_mode = rule_undo_mode
         # The time zone of the time when the scheduling rule automatically stops. The time zone must be in the `GMT-hh:mm` format.
         # 
         # For example, the value `GMT-08:00` indicates that the time zone is UTC+8.
         # 
-        # >  This parameter takes effect only when the **RuleUndoMode** parameter is set to **auto**.
+        # >  This parameter takes effect only when the value of **RuleUndoMode** is **auto**.
         self.time_zone = time_zone
 
     def validate(self):
@@ -9681,7 +10386,7 @@ class QuerySchedruleOnDemandResponseBody(TeaModel):
     ):
         # The ID of the on-demand instance.
         self.instance_id = instance_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The configurations of the scheduling rule.
         self.rule_config = rule_config
@@ -9789,6 +10494,10 @@ class ReleaseDdosOriginInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the Anti-DDoS Origin instance that you want to release.
+        # 
+        # >  You can call the [DescribeInstanceList](https://help.aliyun.com/document_detail/118698.html) operation to query the IDs of all Anti-DDoS Origin instances.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 
@@ -9817,6 +10526,7 @@ class ReleaseDdosOriginInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9889,11 +10599,11 @@ class SetInstanceModeOnDemandRequest(TeaModel):
     ):
         # The IDs of on-demand instances.
         # 
-        # >  You can call the [DescribeOnDemandInstance](https://help.aliyun.com/document_detail/152120.html) operation to query the IDs of all on-demand instances.
+        # > You can call the [DescribeOnDemandInstance](https://help.aliyun.com/document_detail/152120.html) operation to query the IDs of all on-demand instances.
         # 
         # This parameter is required.
         self.instance_id_list = instance_id_list
-        # The scheduling mode of the on-demand instance. Valid values:
+        # Specifies the scheduling mode for on-demand instances. Valid values:
         # 
         # *   **manual**: manual scheduling
         # *   **netflow-auto**: automatic scheduling
@@ -9902,7 +10612,7 @@ class SetInstanceModeOnDemandRequest(TeaModel):
         self.mode = mode
         # The region ID of the on-demand instance.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions supported by Anti-DDoS Origin.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all regions that are supported by Anti-DDoS Origin.
         self.region_id = region_id
 
     def validate(self):
@@ -10010,11 +10720,11 @@ class TagResourcesRequestTag(TeaModel):
     ):
         # The key of the tag to add.
         # 
-        # >  If the specified key does not exist, a key is created.
+        # > If the specified key does not exist, a key is created.
         self.key = key
         # The value of the tag to add.
         # 
-        # >  If the specified value does not exist, a value is created.
+        # > If the specified tag value does not exist, the tag value is created.
         self.value = value
 
     def validate(self):
@@ -10050,22 +10760,25 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
-        # The ID of the region where the Anti-DDoS Origin instance resides.
+        # The ID of the region in which the instance resides.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the Anti-DDoS Origin instance belongs in Resource Management.
+        # The ID of the resource group to which the instance belongs in Resource Management.
         # 
         # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
+        # The IDs of the instances to which you want to add tags. You can specify up to 51 IDs.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource to which you want to add tags. Set the value to **INSTANCE**, which indicates instances.
         # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tags to add. You can specify up to 21 tags.
         self.tag = tag
 
     def validate(self):
@@ -10191,20 +10904,23 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to remove all tags from the specified Anti-DDoS Origin Enterprise instances.
+        # Specifies whether to remove all tags from the instances. Default value: No.
         self.all = all
-        # The ID of the region where the Anti-DDoS Origin Enterprise instances reside.
+        # The ID of the region in which the instances reside.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The IDs of the instances. Valid values of N: 0 to 49. You can specify up to 50 instances at a time. Example: ResourceId.0, ResourceId.1, ... , ResourceId.49.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the specified resource. Set the value to **INSTANCE**.
+        # The resource type. Set the value to **INSTANCE**.
         # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The keys of the tag that you want to remove. Valid values of N: 0 to 19. You can specify up to 20 tag keys at a time. Example: Tag.0.Key, Tag.1.Key, ... , Tag.19.Key.
         self.tag_key = tag_key
 
     def validate(self):

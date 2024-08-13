@@ -1,3 +1,10 @@
+2024-08-13 Version: 2.7.1
+- Update API ListPolicy: add param ProductType.
+- Update API ListPolicy: update param Type.
+- Update API ListPolicy: update response param.
+- Update API ListPolicyAttachment: update response param.
+
+
 2024-06-25 Version: 2.7.0
 - Support API AttachToPolicy.
 
