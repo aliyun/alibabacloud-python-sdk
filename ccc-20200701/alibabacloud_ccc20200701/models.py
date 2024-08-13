@@ -23445,7 +23445,6 @@ class LaunchSurveyRequest(TeaModel):
         survey_template_variables: str = None,
         user_id: str = None,
     ):
-        # This parameter is required.
         self.contact_flow_id = contact_flow_id
         self.contact_flow_variables = contact_flow_variables
         self.device_id = device_id
