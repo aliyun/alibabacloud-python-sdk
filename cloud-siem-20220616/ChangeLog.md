@@ -1,3 +1,10 @@
+2024-08-13 Version: 4.0.1
+- Update API DescribeProdCount: update param RoleType.
+- Update API DescribeProdCount: update response param.
+- Update API ListAccountsByLog: update param CloudCode.
+- Update API ListImportedLogsByProd: update param CloudCode.
+
+
 2024-08-07 Version: 4.0.0
 - Delete API BatchJobCheck.
 - Delete API DeleteQuickQuery.
