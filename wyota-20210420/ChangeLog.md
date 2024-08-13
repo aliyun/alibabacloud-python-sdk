@@ -1,3 +1,8 @@
+2024-08-13 Version: 1.0.2
+- Update API ListTerminals: add param SerialNumbers.
+- Update API ListTerminals: add param Uuids.
+
+
 2024-08-13 Version: 1.0.1
 - Update API SendOpsMessageToTerminals: add param Delay.
 

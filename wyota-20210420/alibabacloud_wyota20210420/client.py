@@ -5017,6 +5017,11 @@ class Client(OpenApiClient):
         @return: ListTerminalsResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.serial_numbers):
+            query['SerialNumbers'] = request.serial_numbers
+        if not UtilClient.is_unset(request.uuids):
+            query['Uuids'] = request.uuids
         body = {}
         if not UtilClient.is_unset(request.max_results):
             body['MaxResults'] = request.max_results
@@ -5027,6 +5032,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.terminal_group_id):
             body['TerminalGroupId'] = request.terminal_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -5058,6 +5064,11 @@ class Client(OpenApiClient):
         @return: ListTerminalsResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.serial_numbers):
+            query['SerialNumbers'] = request.serial_numbers
+        if not UtilClient.is_unset(request.uuids):
+            query['Uuids'] = request.uuids
         body = {}
         if not UtilClient.is_unset(request.max_results):
             body['MaxResults'] = request.max_results
@@ -5068,6 +5079,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.terminal_group_id):
             body['TerminalGroupId'] = request.terminal_group_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(

@@ -8965,12 +8965,16 @@ class ListTerminalsRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         search_keyword: str = None,
+        serial_numbers: List[str] = None,
         terminal_group_id: str = None,
+        uuids: List[str] = None,
     ):
         self.max_results = max_results
         self.next_token = next_token
         self.search_keyword = search_keyword
+        self.serial_numbers = serial_numbers
         self.terminal_group_id = terminal_group_id
+        self.uuids = uuids
 
     def validate(self):
         pass
@@ -8987,8 +8991,12 @@ class ListTerminalsRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.search_keyword is not None:
             result['SearchKeyword'] = self.search_keyword
+        if self.serial_numbers is not None:
+            result['SerialNumbers'] = self.serial_numbers
         if self.terminal_group_id is not None:
             result['TerminalGroupId'] = self.terminal_group_id
+        if self.uuids is not None:
+            result['Uuids'] = self.uuids
         return result
 
     def from_map(self, m: dict = None):
@@ -8999,8 +9007,12 @@ class ListTerminalsRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('SearchKeyword') is not None:
             self.search_keyword = m.get('SearchKeyword')
+        if m.get('SerialNumbers') is not None:
+            self.serial_numbers = m.get('SerialNumbers')
         if m.get('TerminalGroupId') is not None:
             self.terminal_group_id = m.get('TerminalGroupId')
+        if m.get('Uuids') is not None:
+            self.uuids = m.get('Uuids')
         return self
 
 
