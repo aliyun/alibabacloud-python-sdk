@@ -1,3 +1,9 @@
+2024-08-13 Version: 1.1.3
+- Update API DescribeGlobalDesktops: update response param.
+- Update API StartRecordContent: update response param.
+- Update API StopRecordContent: update response param.
+
+
 2024-06-04 Version: 1.1.2
 - Update API GetLoginToken: update response param.
 

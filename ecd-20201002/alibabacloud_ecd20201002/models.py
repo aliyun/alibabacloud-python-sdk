@@ -4,6 +4,63 @@ from Tea.model import TeaModel
 from typing import Dict, List
 
 
+class OssUploadCredential(TeaModel):
+    def __init__(
+        self,
+        access_key_id: str = None,
+        endpoint: str = None,
+        file_path: str = None,
+        oss_policy: str = None,
+        oss_signature: str = None,
+        sts_token: str = None,
+    ):
+        self.access_key_id = access_key_id
+        self.endpoint = endpoint
+        self.file_path = file_path
+        self.oss_policy = oss_policy
+        self.oss_signature = oss_signature
+        self.sts_token = sts_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key_id is not None:
+            result['AccessKeyId'] = self.access_key_id
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        if self.file_path is not None:
+            result['FilePath'] = self.file_path
+        if self.oss_policy is not None:
+            result['OssPolicy'] = self.oss_policy
+        if self.oss_signature is not None:
+            result['OssSignature'] = self.oss_signature
+        if self.sts_token is not None:
+            result['StsToken'] = self.sts_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessKeyId') is not None:
+            self.access_key_id = m.get('AccessKeyId')
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+        if m.get('FilePath') is not None:
+            self.file_path = m.get('FilePath')
+        if m.get('OssPolicy') is not None:
+            self.oss_policy = m.get('OssPolicy')
+        if m.get('OssSignature') is not None:
+            self.oss_signature = m.get('OssSignature')
+        if m.get('StsToken') is not None:
+            self.sts_token = m.get('StsToken')
+        return self
+
+
 class ApproveFotaUpdateRequest(TeaModel):
     def __init__(
         self,
@@ -1223,6 +1280,7 @@ class DescribeGlobalDesktopsResponseBodyDesktops(TeaModel):
         protocol_type: str = None,
         real_desktop_id: str = None,
         region_id: str = None,
+        region_location: str = None,
         session_type: str = None,
         sessions: List[DescribeGlobalDesktopsResponseBodyDesktopsSessions] = None,
         support_hibernation: bool = None,
@@ -1263,6 +1321,7 @@ class DescribeGlobalDesktopsResponseBodyDesktops(TeaModel):
         self.protocol_type = protocol_type
         self.real_desktop_id = real_desktop_id
         self.region_id = region_id
+        self.region_location = region_location
         self.session_type = session_type
         self.sessions = sessions
         self.support_hibernation = support_hibernation
@@ -1368,6 +1427,8 @@ class DescribeGlobalDesktopsResponseBodyDesktops(TeaModel):
             result['RealDesktopId'] = self.real_desktop_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.region_location is not None:
+            result['RegionLocation'] = self.region_location
         if self.session_type is not None:
             result['SessionType'] = self.session_type
         result['Sessions'] = []
@@ -1460,6 +1521,8 @@ class DescribeGlobalDesktopsResponseBodyDesktops(TeaModel):
             self.real_desktop_id = m.get('RealDesktopId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RegionLocation') is not None:
+            self.region_location = m.get('RegionLocation')
         if m.get('SessionType') is not None:
             self.session_type = m.get('SessionType')
         self.sessions = []
@@ -2698,22 +2761,34 @@ class GetLoginTokenRequest(TeaModel):
         # 
         # This parameter is required.
         self.client_id = client_id
-        # The OS that the client runs.
+        # The operating system (OS) of the device that runs an Alibaba Cloud Workspace client.
         self.client_os = client_os
-        # The type of the software client.
+        # The type of Alibaba Cloud Workspace clients.
+        # 
+        # Valid values:
+        # 
+        # *   HTML5: web client.
+        # 
+        # *   WINDOWS: Windows client.
+        # 
+        # *   MACOS: macOS client.
+        # 
+        # *   IOS: iOS client.
+        # 
+        # *   ANDROID: Android client.
         self.client_type = client_type
         # The version of the client. When you use an Alibaba Cloud Workspace client, you can view the client version in the **About** dialog box on the client logon page.
         self.client_version = client_version
         # The logon authentication stage. Valid values:
         # 
         # *   `ADPassword`: the stage to verify the identity of the Active Directory (AD) user. You must specify the value when the system verifies the identity of a convenience account or an AD account.
-        # *   `MFABind`: the stage to bind a virtual multi-factor authentication (MFA) device.
-        # *   `MFAVerify`: the stage to obtain the verification code that is generated by the virtual MFA device.
-        # *   `TokenVerify`: the stage to perform two-factor authentication for the client.
+        # *   `MFABind: the stage to bind a virtual multi-factor authentication (MFA) device.`
+        # *   `MFAVerify: the stage to verify the verification code that is generated by the virtual MFA device.`
+        # *   `TokenVerify`: the stage to perform two-factor authentication on an Alibaba Cloud Workspace client (hereinafter referred to as the client).
         # *   `ChangePassword`: the stage to change the password of the user.
-        # *   `VerifyKeepAlive`: the stage to exchange the logon credential. This parameter is valid if KeepAliveToken is valid.
+        # *   `KeepAliveVerify`: the stage to obtain LoginToken if KeepAliveToken is valid.
         self.current_stage = current_stage
-        # The ID of the workspace. The parameter is the same as the `OfficeSiteId` parameter. We recommend that you use `OfficeSiteId` instead of `DirectoryId`. You can specify a value for either the `DirectoryId` parameter or the `OfficeSiteId` parameter, but not both.
+        # The office network ID. This parameter has the same meaning as `OfficeSiteId`. We recommend that you replace `DirectoryId` with `OfficeSiteId`. You can specify a value for `DirectoryId` or `OfficeSiteId`.
         self.directory_id = directory_id
         # The name of the convenience user or the AD user. This parameter is required if you set `CurrentStage` to `ADPassword`.
         self.end_user_id = end_user_id
@@ -2723,17 +2798,17 @@ class GetLoginTokenRequest(TeaModel):
         # * true: Keep the user logged on to the client.
         # * false:  Do not keep the user logged on to the client.
         self.keep_alive = keep_alive
-        # The token that is used to keep the user logged on to the client. After the user logs on to the client and KeepAlive is set to true, the `KeepAliveToken` is returned. You can call the `GetLoginToken` operation within the valid duration``, and set `CurrentStage` to `VerifyKeepAlive` to obtain the logon token (LoginToken). This parameter is required if you set `CurrentStage` to `VerifyKeepAlive```.
+        # The token to keep logging on to an Alibaba Cloud Workspace client. When an end user logs on to the Alibaba Cloud Workspace client and select Auto Sign-in, `KeepAliveToken` is returned after you call this operation. Within the valid period of the returned token``, you can call the `GetLoginToken` operation and set `CurrentStage` to `KeepAliveVerify`. Then, you can obtain LoginToken. If you set `CurrentStage` to `KeepAliveVerify`, `KeepAliveToken` is required.
         self.keep_alive_token = keep_alive_token
         # The new password. This parameter is required if you set `CurrentStage` to `ChangePassword`.
         self.new_password = new_password
-        # The ID of the workspace.
+        # The office network ID.
         self.office_site_id = office_site_id
         # The current password. This parameter is required if you set `CurrentStage` to `ChangePassword`.
         self.old_password = old_password
         # The password of the convenience user or the AD user. This parameter is required if you set `CurrentStage` to `ADPassword`.
         self.password = password
-        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/436773.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by EDS.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -2742,7 +2817,7 @@ class GetLoginTokenRequest(TeaModel):
         # *   If the virtual multi-factor authentication (MFA) device is not bound or two-factor authentication is not enabled for the client, you do not need to specify a value for `SessionId`.
         # *   If the virtual MFA device is not bound or two-factor authentication is enabled for the client, you must specify a value for `SessionId` to verify the user identity after you specify a value for `ADPassword`. The value of the `SessionId` parameter is returned only if the CurrentStage parameter is set to `ADPassword` when you call the `GetLoginToken` operation.
         self.session_id = session_id
-        # If two-factor authentication is enabled in the Elastic Desktop Service (EDS) console and the system detects that the identity of the logon user may have security risks, the system sends a verification code for two-factor authentication to the email address of the user. This parameter is required if you set `CurrentStage` to `TokenVerify`.
+        # If two-factor authentication is enabled for Alibaba Cloud Workspace terminals in the EDS console and the system detects that the current logon user is exposed to risks, the system sends a verification code to the email address of the user. This parameter is required if you set `CurrentStage` to `TokenVerify`.
         self.token_code = token_code
         # The unique identifier of the client. When you use an Alibaba Cloud Workspace client, you can view the client version in the **About** dialog box on the client logon page.
         self.uuid = uuid
@@ -2841,7 +2916,9 @@ class GetLoginTokenResponseBodyPasswordStrategy(TeaModel):
         tenant_alternative_chars: List[str] = None,
         tenant_password_length: str = None,
     ):
+        # > This is a parameter only for internal use.
         self.tenant_alternative_chars = tenant_alternative_chars
+        # > This is a parameter only for internal use.
         self.tenant_password_length = tenant_password_length
 
     def validate(self):
@@ -2876,9 +2953,13 @@ class GetLoginTokenResponseBodyRiskVerifyInfo(TeaModel):
         locked: str = None,
         phone: str = None,
     ):
+        # The email used for authentication.
         self.email = email
+        # The duration of the lock.
         self.last_lock_duration = last_lock_duration
+        # Whether the account is locked or not.
         self.locked = locked
+        # The mobile number used for authentication.
         self.phone = phone
 
     def validate(self):
@@ -2950,10 +3031,11 @@ class GetLoginTokenResponseBody(TeaModel):
         self.label = label
         # The logon token.
         self.login_token = login_token
-        # The next stage that is expected to enter. For example, if the administrator enables MFA authentication in the EDS console, `MFAVerify` is returned after the username and password pass the authentication (after you set CurrentStage to `ADPassword` stage). This indicates that the MFA authentication is required.
+        # The next stage that is expected to enter. For example, an administrator enables MFA in the EDS console. When an end user enters the password, that is, the end user completes the `ADPassword` stage, this parameter returns `MFAVerify`. This indicates that MFA is required.
         # 
-        # > For more information about each authentication stage, see the parameter description of the request parameter `CurrentStage`.
+        # >  For more information about the authentication stages, see the `CurrentStage` parameter.
         self.next_stage = next_stage
+        # > This is a parameter only for internal use.
         self.password_strategy = password_strategy
         # Enter the mobile number of the convenience user. For an AD user, null is returned.
         self.phone = phone
@@ -2963,9 +3045,11 @@ class GetLoginTokenResponseBody(TeaModel):
         # 
         # > For more information about each authentication stage, see the parameter description of the request parameter `CurrentStage`.
         self.qr_code_png = qr_code_png
+        # > This is a parameter only for internal use.
         self.reason = reason
         # The ID of the request.
         self.request_id = request_id
+        # Risk identification information regarding the signin process.
         self.risk_verify_info = risk_verify_info
         # The key that is generated when you bind the virtual MFA device. This parameter is required when the CurrentStage parameter is set to `MFABind`.
         # 
@@ -3420,6 +3504,7 @@ class RebootDesktopsRequest(TeaModel):
         self.session_id = session_id
         # The logon token.
         self.session_token = session_token
+        # The UUID of the client.
         self.uuid = uuid
 
     def validate(self):
@@ -4667,6 +4752,7 @@ class StartDesktopsRequest(TeaModel):
         self.region_id = region_id
         # The session ID.
         self.session_id = session_id
+        # The UUID of the client.
         self.uuid = uuid
 
     def validate(self):
