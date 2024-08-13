@@ -1,3 +1,14 @@
+2024-08-13 Version: 3.0.1
+- Update API CreateAppInfo: add param ResourceGroupId.
+- Update API DescribeVodCertificateList: update response param.
+- Update API GetAppInfos: update response param.
+- Update API GetMezzanineInfo: update response param.
+- Update API ListAppInfo: add param ResourceGroupId.
+- Update API ListAppInfo: update response param.
+- Update API SetMessageCallback: update param CallbackURL.
+- Update API SubmitAIMediaAuditJob: update param TemplateId.
+
+
 2024-07-05 Version: 3.0.0
 - Support API DescribeVodDomainQpsData.
 - Support API DescribeVodTieringStorageData.

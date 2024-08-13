@@ -340,19 +340,19 @@ class AddEditingProjectRequest(TeaModel):
         timeline: str = None,
         title: str = None,
     ):
-        # The thumbnail URL of the online editing project. If you do not specify this parameter and the video track in the timeline has mezzanine files, the thumbnail of the first mezzanine file in the timeline is used.
+        # The thumbnail URL of the online editing project. If you leave this parameter empty and materials exist on the video track in the timeline, the thumbnail of the first material is used by default.
         self.cover_url = cover_url
         # The description of the online editing project.
         self.description = description
-        # The region where you want to create the online editing project.
+        # The region in which ApsaraVideo VOD is activated.
         self.division = division
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The timeline of the online editing project, in JSON format. For more information about the structure, see [Timeline](https://help.aliyun.com/document_detail/52839.html).
+        # The timeline of the online editing project in JSON format. For more information about the structure, see [Timeline](https://help.aliyun.com/document_detail/52839.html).
         # 
-        # If you do not specify this parameter, an empty timeline is created and the duration of the online editing project is zero.
+        # If you leave this parameter empty, an empty timeline is created and the duration of the online editing project is zero.
         self.timeline = timeline
         # The title of the online editing project.
         # 
@@ -425,16 +425,16 @@ class AddEditingProjectResponseBodyProject(TeaModel):
         self.creation_time = creation_time
         # The description of the online editing project.
         self.description = description
-        # The last time when the online editing project was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the online editing project was last modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.modified_time = modified_time
         # The ID of the online editing project.
         self.project_id = project_id
         # The status of the online editing project. Valid values:
         # 
-        # - **Normal**: indicates that the online editing project is in draft.
-        # - **Producing**: indicates that the video is being produced.
-        # - **Produced**: indicates that the video was produced.
-        # - **ProduceFailed**: indicates that the video failed to be produced.
+        # *   **Normal**: the online editing project is in draft.
+        # *   **Producing**: the video is being produced.
+        # *   **Produced**: the video is produced.
+        # *   **ProduceFailed**: the video failed to be produced.
         self.status = status
         # The title of the online editing project.
         self.title = title
@@ -568,12 +568,24 @@ class AddEditingProjectMaterialsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: str = None,
     ):
+        # The ID of the material. Separate multiple material IDs with commas (,). You can specify up to 10 IDs.
+        # 
+        # >  If you specify multiple materials, make sure that the materials are of the same type as specified in MaterialType.
+        # 
         # This parameter is required.
         self.material_ids = material_ids
+        # The type of the material. Valid values:
+        # 
+        # *   **video**\
+        # *   **audio**\
+        # *   **image**\
+        # 
         # This parameter is required.
         self.material_type = material_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the online editing project.
+        # 
         # This parameter is required.
         self.project_id = project_id
         self.resource_owner_account = resource_owner_account
@@ -644,22 +656,47 @@ class AddEditingProjectMaterialsResponseBodyMaterialList(TeaModel):
         tags: str = None,
         title: str = None,
     ):
+        # The ID of the category.
         self.cate_id = cate_id
+        # The category name of the material.
         self.cate_name = cate_name
+        # The thumbnail URL.
         self.cover_url = cover_url
+        # The time when the material was created. The time follows the ISO 8601 standard in the *YYYY-MM-DD**Thh:mm:ss* format. The time is displayed in UTC.
         self.create_time = create_time
+        # The user ID.
         self.customer_id = customer_id
+        # The description of the material.
         self.description = description
+        # The duration of the material. Unit: seconds. The value is accurate to four decimal places.
         self.duration = duration
+        # The ID of the material.
         self.material_id = material_id
+        # The type of the material. Valid values:
+        # 
+        # *   **video**\
+        # *   **audio**\
+        # *   **image**\
         self.material_type = material_type
+        # The time when the material was last updated. The time follows the ISO 8601 standard in the *YYYY-MM-DD**Thh:mm:ss* format. The time is displayed in UTC.
         self.modify_time = modify_time
+        # The size of the material.
         self.size = size
+        # The URLs of snapshots.
         self.snapshots = snapshots
+        # The configuration of the sprite snapshot.
         self.sprite_config = sprite_config
+        # The URLs of sprite snapshots.
         self.sprites = sprites
+        # The status of the material. Valid values:
+        # 
+        # *   **Normal**\
+        # *   **Uploading**\
+        # *   **UploadFail**\
         self.status = status
+        # The tag of the material. Multiple tags are separated by commas (,).
         self.tags = tags
+        # The title of the material.
         self.title = title
 
     def validate(self):
@@ -752,7 +789,9 @@ class AddEditingProjectMaterialsResponseBody(TeaModel):
         material_list: List[AddEditingProjectMaterialsResponseBodyMaterialList] = None,
         request_id: str = None,
     ):
+        # The materials.
         self.material_list = material_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2229,6 +2268,7 @@ class CreateAppInfoRequest(TeaModel):
         self,
         app_name: str = None,
         description: str = None,
+        resource_group_id: str = None,
     ):
         # The name of the application. The application name must be unique.
         # 
@@ -2242,6 +2282,7 @@ class CreateAppInfoRequest(TeaModel):
         # *   The description can contain up to 512 characters in length.
         # *   The value must be encoded in UTF-8.
         self.description = description
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -2256,6 +2297,8 @@ class CreateAppInfoRequest(TeaModel):
             result['AppName'] = self.app_name
         if self.description is not None:
             result['Description'] = self.description
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2264,6 +2307,8 @@ class CreateAppInfoRequest(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -2458,9 +2503,9 @@ class CreateUploadAttachedMediaRequest(TeaModel):
         title: str = None,
         user_data: str = None,
     ):
-        # The ID of the application. Default value: **app-1000000**. For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
+        # The ID of the application. Default value: **app-1000000**. If you have activated the multi-application service, specify the ID of the application to add the watermark template in the specified application. For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
         self.app_id = app_id
-        # The type of the media asset. Valid values:
+        # The type of the auxiliary media asset. Valid values:
         # 
         # *   **watermark**\
         # *   **subtitle**\
@@ -2468,32 +2513,34 @@ class CreateUploadAttachedMediaRequest(TeaModel):
         # 
         # This parameter is required.
         self.business_type = business_type
-        # The one or more category IDs of the auxiliary media asset. Separate multiple category IDs with commas (,). A maximum of five category IDs can be specified. You can use one of the following methods to obtain the category ID:
+        # The ID of the category. Separate multiple IDs with commas (,). You can specify up to five IDs. You can use one of the following methods to obtain the ID:
         # 
-        # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Categories**. On the Categories page, you can view the category ID.
-        # *   View the value of the CateId parameter returned by the [AddCategory](https://help.aliyun.com/document_detail/56401.html) operation that you called to create a category.
-        # *   View the value of the CateId parameter returned by the [GetCategories](https://help.aliyun.com/document_detail/56406.html) operation that you called to query a category.
+        # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Categories** to view the category ID of the media file.
+        # *   Obtain the category ID from the response to the [AddCategory](~~AddCategory~~) operation that you call to create a category.
+        # *   Obtain the category ID from the response to the [GetCategories](~~GetCategories~~) operation that you call to query categories.
         self.cate_ids = cate_ids
         # The description of the auxiliary media asset. Take note of the following items:
         # 
         # *   The description can be up to 1,024 bytes in length.
         # *   The value must be encoded in UTF-8.
         self.description = description
-        # The name of the source file.
+        # The source file URL of the auxiliary media asset.
+        # 
+        # >  The file name extension is optional. If the file name extension that you specified for this parameter is different from the value of MediaExt, the value of MediaExt takes effect.
         self.file_name = file_name
         # The size of the auxiliary media asset. Unit: byte.
         self.file_size = file_size
-        # The file name extension. Valid values:
+        # The file name extension of the auxiliary media asset.
         # 
         # *   Valid values for watermarks: **png, gif, apng, and mov**\
         # *   Valid values for subtitles: **srt, ass, stl, ttml, and vtt**\
         # *   Valid values for materials: **jpg, gif, png, mp4, mat, zip, and apk**\
         self.media_ext = media_ext
-        # The storage location. You can use one of the following methods to obtain the storage location:
+        # The storage address. Perform the following operations to obtain the storage address:
         # 
-        # Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Storage**. On the Storage page, you can view the storage location.
+        # Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Storage**. On the Storage page, view the storage address.
         # 
-        # >  If this parameter is set to a specific value, the auxiliary media asset is uploaded to the specified storage location.
+        # >  If you leave this parameter empty, the auxiliary media asset is uploaded to the default storage address. If you specify this parameter, the auxiliary media asset is uploaded to the specified storage address.
         self.storage_location = storage_location
         # The one or more tags of the auxiliary media asset. Take note of the following items:
         # 
@@ -2502,15 +2549,15 @@ class CreateUploadAttachedMediaRequest(TeaModel):
         # *   Each tag can be up to 32 characters in length.
         # *   The value must be encoded in UTF-8.
         self.tags = tags
-        # The title of the media asset. Take note of the following items:
+        # The title of the auxiliary media asset. The following rules apply:
         # 
-        # *   The title can be up to 128 bytes in length.
-        # *   The value must be encoded in UTF-8.
+        # *   The title cannot exceed 128 bytes.
+        # *   The title must be encoded in UTF-8.
         self.title = title
-        # The custom configurations, including callback configurations and upload acceleration configurations. The value is a JSON string. For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](https://help.aliyun.com/document_detail/86952.html) topic.
+        # The custom configurations. For example, you can specify callback configurations and upload acceleration configurations. The value must be a JSON string. For more information, see [Request parameters](~~86952#section-6fg-qll-v3w~~).
         # 
-        # > *   The callback configurations take effect only after you specify the HTTP callback URL and select the specific callback events in the ApsaraVideo VOD console. For more information about how to configure an HTTP callback in the ApsaraVideo VOD console, see [Configure callback settings](https://help.aliyun.com/document_detail/86071.html).
-        # >*   To use the upload acceleration feature, submit a [ticket](https://ticket-intl.console.aliyun.com/#/ticket/createIndex) to enable this feature. For more information, see [Overview](https://help.aliyun.com/document_detail/55396.html).
+        # > *   The callback configurations take effect only after you specify the HTTP callback URL and select the specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](https://help.aliyun.com/document_detail/86071.html).
+        # > *   If you want to enable the upload acceleration feature, submit a ticket. For more information, see [Overview](https://help.aliyun.com/document_detail/55396.html). For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
         self.user_data = user_data
 
     def validate(self):
@@ -2583,13 +2630,17 @@ class CreateUploadAttachedMediaResponseBody(TeaModel):
         upload_address: str = None,
         upload_auth: str = None,
     ):
-        # The OSS URL of the file. The URL does not contain the information used for URL signing. You can set the FileUrl parameter to this URL when you call the [AddWatermark](https://help.aliyun.com/document_detail/98617.html) operation.
+        # The URL of the auxiliary media asset file. The URL is an Object Storage Service (OSS) URL and does not contain the information used for URL signing.
+        # 
+        # You can use specify this value for the `FileUrl` parameter when you call the [AddWatermark](~~AddWatermark~~) operation to create a watermark template.
         self.file_url = file_url
         # The ID of the auxiliary media asset.
         self.media_id = media_id
-        # The URL of the auxiliary media asset. If a domain name for Alibaba Cloud CDN (CDN) is specified, a CDN URL is returned. Otherwise, an OSS URL is returned.
+        # The URL of the auxiliary media asset.
         # 
-        # >  If you enable the URL signing feature of ApsaraVideo VOD, you may be unable to access the returned URL of the auxiliary media asset by using a browser and the HTTP status code 403 may be returned. You can disable the [URL signing](https://help.aliyun.com/document_detail/86090.html) feature or [generate an authentication signature](https://help.aliyun.com/document_detail/57007.html).
+        # If a domain name for Alibaba Cloud CDN is specified, a CDN URL is returned. Otherwise, an OSS URL is returned.
+        # 
+        # >  If you enable the URL signing feature of ApsaraVideo VOD, you may be unable to access the returned URL of the auxiliary media asset by using a browser and the HTTP status code 403 may be returned. To resolve this issue, you can disable the [URL signing](https://help.aliyun.com/document_detail/86090.html) feature or [generate a signed URL](https://help.aliyun.com/document_detail/57007.html).
         self.media_url = media_url
         # The ID of the request.
         self.request_id = request_id
@@ -2749,7 +2800,7 @@ class CreateUploadImageRequest(TeaModel):
         # The custom configurations, including callback configurations and upload acceleration configurations. The value must be a JSON string. For more information, see the "UserData: specifies the custom configurations for media upload" section of the [Request parameters](https://help.aliyun.com/document_detail/86952.html) topic.
         # 
         # > *   The callback configurations take effect only after you specify the HTTP callback URL and select specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](https://help.aliyun.com/document_detail/86071.html).
-        # >*   If you want to enable the upload acceleration feature, [submit a request on Yida](https://yida.alibaba-inc.com/o/ticketapply). For more information, see [Overview](https://help.aliyun.com/document_detail/55396.html).
+        # > *   If you want to enable the upload acceleration feature, submit a ticket. For more information, see [Overview](https://help.aliyun.com/document_detail/55396.html). For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
         self.user_data = user_data
 
     def validate(self):
@@ -2936,11 +2987,11 @@ class CreateUploadVideoRequest(TeaModel):
     ):
         # The ID of the application. Default value: **app-1000000**. For more information, see [Overview](https://help.aliyun.com/document_detail/113600.html).
         self.app_id = app_id
-        # The category ID of the media file. You can use one of the following methods to obtain the category ID:
+        # The ID of the category. You can use one of the following methods to obtain the ID:
         # 
         # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Categories** to view the category ID of the media file.
-        # *   Obtain the value of CateId from the response to the [AddCategory](https://help.aliyun.com/document_detail/56401.html) operation.
-        # *   Obtain the value of CateId from the response to the [GetCategories](https://help.aliyun.com/document_detail/56406.html) operation.
+        # *   Obtain the value of CateId from the response to the [AddCategory](~~AddCategory~~) operation.
+        # *   Obtain the value of CateId from the response to the [GetCategories](~~GetCategories~~) operation.
         self.cate_id = cate_id
         # The URL of the custom video thumbnail.
         self.cover_url = cover_url
@@ -2949,7 +3000,7 @@ class CreateUploadVideoRequest(TeaModel):
         # *   The value can be up to 1,024 characters in length.
         # *   The value must be encoded in UTF-8.
         self.description = description
-        # The name of the audio or video file.
+        # The name of the source file.
         # 
         # *   The name must contain a file name extension, which is not case-sensitive.
         # *   For more information about file name extensions supported by ApsaraVideo VOD, see [Overview](https://help.aliyun.com/document_detail/55396.html).
@@ -2958,9 +3009,9 @@ class CreateUploadVideoRequest(TeaModel):
         self.file_name = file_name
         # The size of the source file. Unit: bytes.
         self.file_size = file_size
-        # The storage address. To obtain the storage address, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Storage**.
+        # The storage address. Perform the following operations to obtain the storage address: Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Management** > **Storage**. On the Storage page, view the storage address.
         # 
-        # > If you specify a storage address, media files are uploaded to the specified address.
+        # >  If you leave this parameter empty, audio and video files are uploaded to the default storage address. If you specify a storage address, audio and video files are uploaded to the specified address.
         self.storage_location = storage_location
         # The tags of the audio or video file.
         # 
@@ -2969,13 +3020,16 @@ class CreateUploadVideoRequest(TeaModel):
         # *   Each tag can be up to 32 characters in length.
         # *   The value must be encoded in UTF-8.
         self.tags = tags
-        # The ID of the transcoding template group. You can use one of the following methods to obtain the ID of the transcoding template group:
+        # The ID of the transcoding template group. You can use one of the following methods to obtain the ID:
         # 
-        # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing** > **Transcoding Template Groups** to view the ID of the transcoding template group.
-        # *   Obtain the value of TranscodeTemplateGroupId in the response to the [AddTranscodeTemplateGroup](https://help.aliyun.com/document_detail/102665.html) operation.
-        # *   Obtain the value of TranscodeTemplateGroupId in the response to the [ListTranscodeTemplateGroup](https://help.aliyun.com/document_detail/102669.html) operation.
+        # *   Log on to the ApsaraVideo VOD console. In the left-side navigation pane, choose Configuration Management > Media Processing > Transcoding Template Groups. On the Transcoding Template Groups page, you can view the ID of the transcoding template group.[](https://vod.console.aliyun.com)************\
+        # *   Obtain the value of the TranscodeTemplateGroupId parameter from the response to the [AddTranscodeTemplateGroup](https://help.aliyun.com/document_detail/102665.html) operation that you called to create a transcoding template group.
+        # *   Obtain the value of the TranscodeTemplateGroupId parameter from the response to the [ListTranscodeTemplateGroup](https://help.aliyun.com/document_detail/102669.html) operation that you called to query transcoding template groups.
         # 
-        # > If you leave this parameter empty, the default transcoding template group is used. If you specify this parameter, the specified transcoding template group is used for transcoding.
+        # > *   If you specify both WorkflowId and TemplateGroupId, the value of the WorkflowId parameter takes effect.
+        # > *   If this parameter is not specified, transcoding is performed based on the default transcoding template group. If the transcoding template group ID is specified, transcoding is performed based on the specified template group.
+        # > *   If the **No Transcoding** template group is used, only the [FileUploadComplete](https://help.aliyun.com/document_detail/55630.html) event notification is returned after a video is uploaded. The [StreamTranscodeComplete](https://help.aliyun.com/document_detail/55636.html) event notification is not returned.
+        # > *   If you use the **No Transcoding** template group to upload videos, only videos in the format of MP4, FLV, MP3, M3U8, or WebM can be played. Videos in other formats can only be stored in ApsaraVideo VOD. You can view the file name extension to obtain the video format. If you want to use ApsaraVideo Player, make sure that the version of the player is V3.1.0 or later.
         self.template_group_id = template_group_id
         # The title of the audio or video file.
         # 
@@ -3601,10 +3655,10 @@ class DeleteAttachedMediaRequest(TeaModel):
         self,
         media_ids: str = None,
     ):
-        # The ID of the auxiliary media asset that you want to delete. You can obtain the ID of the auxiliary media asset from the MediaId parameter in the response to the [CreateUploadAttachedMedia](https://help.aliyun.com/document_detail/98467.html) operation.
+        # The ID of the auxiliary media asset that you want to delete.
         # 
-        # *   Separate multiple IDs with commas (,).
-        # *   You can specify a maximum of 20 IDs.
+        # *   Separate multiple IDs with commas (,). You can specify up to 20 IDs.
+        # *   You can obtain the ID from the response to the [CreateUploadAttachedMedia](~~CreateUploadAttachedMedia~~) operation that you call to obtain the upload URL and credential.
         # 
         # This parameter is required.
         self.media_ids = media_ids
@@ -4192,33 +4246,35 @@ class DeleteImageRequest(TeaModel):
         # 
         # This parameter is required.
         self.delete_image_type = delete_image_type
-        # The ID of the image file. You can specify multiple image IDs. Separate multiple IDs with commas (,). You can use one of the following methods to obtain the image ID:
+        # The ID of the image. You can specify up to 20 image IDs and separate them with commas (,). You can use one of the following methods to obtain the image ID:
         # 
-        # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Media Files** > **Image** to view the image ID. This method is applicable to images that are uploaded by using the ApsaraVideo VOD console.
-        # *   Obtain the value of the ImageId parameter from the response to the [CreateUploadImage](https://help.aliyun.com/document_detail/55619.html) operation.
-        # *   Obtain the value of the ImageId parameter from the response to the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation after you upload images.
+        # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Media Files** > **Image** to view the image ID.
+        # *   Obtain the image ID from the response to the [CreateUploadImage](~~CreateUploadImage~~) operation that you call to obtain the upload credential and URL.
+        # *   Obtain the image ID from the response to the [SearchMedia](~~SearchMedia~~) operation that you call to query images.
         # 
-        # > This parameter is required only if you set **DeleteImageType** to **ImageId**.
+        # >  This parameter takes effect and is required only if you set **DeleteImageType** to **ImageId**.
         self.image_ids = image_ids
-        # The type of images that you want to delete. The images are associated with the video. This parameter is required only if you set **DeleteImageType** to **VideoId**. Valid values:
+        # The type of images that you want to delete. The images are associated with the video. Valid values:
         # 
         # *   **CoverSnapshot**: thumbnail snapshot.
-        # *   **NormalSnapshot**: normal snapshot.
+        # *   **NormalSnapshot**: regular snapshot.
         # *   **SpriteSnapshot**: sprite snapshot.
         # *   **SpriteOriginSnapshot**: sprite source snapshot.
-        # *   **All**: images of all the preceding types. If this parameter is not set to All, you can specify multiple types and separate the types with commas (,).
+        # *   **All**: images of all the preceding types. You can specify multiple types other than `All` for this parameter. Separate multiple types with commas (,).
+        # 
+        # >  This parameter takes effect and is required only if you set **DeleteImageType** to **VideoId**.
         self.image_type = image_type
-        # The URL of the image. You can obtain the value of ImageURL from the response to the [CreateUploadImage](https://help.aliyun.com/document_detail/55619.html) operation. You can specify multiple URLs. Separate multiple URLs with commas (,).
+        # The URL of the image. You can obtain the value of `ImageURL` from the response to the [CreateUploadImage](~~CreateUploadImage~~) operation. You can specify up to 20 URLs and separate them with commas (,).
         # 
-        # > This parameter is required only if you set **DeleteImageType** to **ImageURL**.
+        # >  This parameter takes effect and is required only if you set **DeleteImageType** to **ImageURL**.
         self.image_urls = image_urls
-        # The ID of the video file. You can use one of the following methods to obtain the video ID:
+        # The ID of the video. You can specify only one ID. You can use one of the following methods to obtain the ID:
         # 
-        # *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, view the ID of the media file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
-        # *   Obtain the value of the VideoId parameter from the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation.
-        # *   Obtain the value of the VideoId parameter from the response to the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation after you upload media files.
+        # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, view the ID of the media file.
+        # *   Obtain the video ID from the response to the [CreateUploadVideo](~~CreateUploadVideo~~) operation that you call to obtain the upload credential and URL.
+        # *   Obtain the video ID from the response to the [SearchMedia](~~SearchMedia~~) operation that you call to query videos.
         # 
-        # > This parameter is required only if you set **DeleteImageType** to **VideoId**.
+        # >  This parameter takes effect and is required only if you set **DeleteImageType** to **VideoId**.
         self.video_id = video_id
 
     def validate(self):
@@ -5165,17 +5221,14 @@ class DeleteVodSpecificConfigRequest(TeaModel):
         # 
         # This parameter is required.
         self.config_id = config_id
-        # The domain name for CDN.
+        # The accelerated domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The environment of configuration. 
+        # The environment from which the domain name configurations are deleted. Valid values:
         # 
-        # Value:
-        # 
-        # online: production environment
-        # 
-        # gray: simulation environment
+        # *   online: production environment
+        # *   gray: simulation environment
         self.env = env
         self.owner_id = owner_id
         self.security_token = security_token
@@ -5501,14 +5554,14 @@ class DescribePlayTopVideosRequest(TeaModel):
         page_no: int = None,
         page_size: int = None,
     ):
-        # The time to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The time to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.biz_date = biz_date
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_no = page_no
-        # The number of entries to return on each page. Default value: **100**. Maximum value: **1000**.
+        # The number of entries to return on each page. The default value is **100**. The maximum value is **1000**.
         self.page_size = page_size
 
     def validate(self):
@@ -5552,7 +5605,7 @@ class DescribePlayTopVideosResponseBodyTopPlayVideosTopPlayVideoStatis(TeaModel)
         vv: str = None,
         video_id: str = None,
     ):
-        # The playback duration. Unit: milliseconds.
+        # The total playback duration. Unit: milliseconds.
         self.play_duration = play_duration
         # The title of the video.
         self.title = title
@@ -5643,9 +5696,9 @@ class DescribePlayTopVideosResponseBody(TeaModel):
         top_play_videos: DescribePlayTopVideosResponseBodyTopPlayVideos = None,
         total_num: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_no = page_no
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
@@ -5940,12 +5993,14 @@ class DescribePlayUserTotalRequest(TeaModel):
         owner_id: int = None,
         start_time: str = None,
     ):
-        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 180 days.
         # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_id = owner_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -6085,7 +6140,7 @@ class DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotal(T
         uv: DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalUV = None,
         vv: DescribePlayUserTotalResponseBodyUserPlayStatisTotalsUserPlayStatisTotalVV = None,
     ):
-        # The date. The date is displayed in the *yyyy-MM-dd* format.
+        # The date. The date is displayed in the yyyy-MM-dd format.
         self.date = date
         # The total playback duration. Unit: milliseconds.
         self.play_duration = play_duration
@@ -6260,6 +6315,8 @@ class DescribePlayVideoStatisRequest(TeaModel):
     ):
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
+        # >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 180 days.
+        # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_id = owner_id
@@ -6267,7 +6324,11 @@ class DescribePlayVideoStatisRequest(TeaModel):
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The video ID.
+        # The ID of the video. You can specify only one ID. You can use one of the following methods to obtain the ID:
+        # 
+        # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the page that appears, view the video ID.
+        # *   Obtain the video ID from the response to the [CreateUploadVideo](~~CreateUploadVideo~~) operation that you call to obtain the upload URL and credential.
+        # *   Obtain the video ID from the response to the [SearchMedia](~~SearchMedia~~) operation that you call to query the audio or video file.
         # 
         # This parameter is required.
         self.video_id = video_id
@@ -6314,9 +6375,9 @@ class DescribePlayVideoStatisResponseBodyVideoPlayStatisDetailsVideoPlayStatisDe
         uv: str = None,
         vv: str = None,
     ):
-        # The date. The date is displayed in the *yyyy-MM-dd* format.
+        # The date. The time follows the ISO 8601 standard in the *YYYY-MM-DD*T*hh:mm:ss* format. The time is displayed in UTC.
         self.date = date
-        # The playback duration. Unit: millisecond.
+        # The total playback duration. Unit: milliseconds.
         self.play_duration = play_duration
         # The distribution of the playback duration.
         self.play_range = play_range
@@ -6825,25 +6886,39 @@ class DescribeVodCertificateListRequest(TeaModel):
 class DescribeVodCertificateListResponseBodyCertificateListModelCertListCert(TeaModel):
     def __init__(
         self,
+        algorithm: str = None,
         cert_id: int = None,
+        cert_identifier: str = None,
         cert_name: str = None,
         common: str = None,
+        create_time: int = None,
+        domain_match_cert: bool = None,
+        end_time: int = None,
         fingerprint: str = None,
+        instance_id: str = None,
         issuer: str = None,
         last_time: int = None,
+        sign_algorithm: str = None,
     ):
+        self.algorithm = algorithm
         # The ID of the certificate.
         self.cert_id = cert_id
+        self.cert_identifier = cert_identifier
         # The name of the certificate.
         self.cert_name = cert_name
         # The common name of the certificate.
         self.common = common
+        self.create_time = create_time
+        self.domain_match_cert = domain_match_cert
+        self.end_time = end_time
         # The fingerprint of the certificate.
         self.fingerprint = fingerprint
+        self.instance_id = instance_id
         # The certificate authority (CA) that issued the certificate.
         self.issuer = issuer
         # The time when the certificate was issued. Unit: seconds.
         self.last_time = last_time
+        self.sign_algorithm = sign_algorithm
 
     def validate(self):
         pass
@@ -6854,34 +6929,62 @@ class DescribeVodCertificateListResponseBodyCertificateListModelCertListCert(Tea
             return _map
 
         result = dict()
+        if self.algorithm is not None:
+            result['Algorithm'] = self.algorithm
         if self.cert_id is not None:
             result['CertId'] = self.cert_id
+        if self.cert_identifier is not None:
+            result['CertIdentifier'] = self.cert_identifier
         if self.cert_name is not None:
             result['CertName'] = self.cert_name
         if self.common is not None:
             result['Common'] = self.common
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.domain_match_cert is not None:
+            result['DomainMatchCert'] = self.domain_match_cert
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.fingerprint is not None:
             result['Fingerprint'] = self.fingerprint
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.issuer is not None:
             result['Issuer'] = self.issuer
         if self.last_time is not None:
             result['LastTime'] = self.last_time
+        if self.sign_algorithm is not None:
+            result['SignAlgorithm'] = self.sign_algorithm
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Algorithm') is not None:
+            self.algorithm = m.get('Algorithm')
         if m.get('CertId') is not None:
             self.cert_id = m.get('CertId')
+        if m.get('CertIdentifier') is not None:
+            self.cert_identifier = m.get('CertIdentifier')
         if m.get('CertName') is not None:
             self.cert_name = m.get('CertName')
         if m.get('Common') is not None:
             self.common = m.get('Common')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DomainMatchCert') is not None:
+            self.domain_match_cert = m.get('DomainMatchCert')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('Fingerprint') is not None:
             self.fingerprint = m.get('Fingerprint')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('Issuer') is not None:
             self.issuer = m.get('Issuer')
         if m.get('LastTime') is not None:
             self.last_time = m.get('LastTime')
+        if m.get('SignAlgorithm') is not None:
+            self.sign_algorithm = m.get('SignAlgorithm')
         return self
 
 
@@ -6926,9 +7029,9 @@ class DescribeVodCertificateListResponseBodyCertificateListModel(TeaModel):
         cert_list: DescribeVodCertificateListResponseBodyCertificateListModelCertList = None,
         count: int = None,
     ):
-        # The details of each certificate.
+        # The list of certificates.
         self.cert_list = cert_list
-        # The number of certificates.
+        # The number of certificates that are returned.
         self.count = count
 
     def validate(self):
@@ -6963,7 +7066,7 @@ class DescribeVodCertificateListResponseBody(TeaModel):
         certificate_list_model: DescribeVodCertificateListResponseBodyCertificateListModel = None,
         request_id: str = None,
     ):
-        # The information about the returned certificates.
+        # The information about each certificate.
         self.certificate_list_model = certificate_list_model
         # The ID of the request.
         self.request_id = request_id
@@ -8722,7 +8825,7 @@ class DescribeVodDomainLogRequest(TeaModel):
         page_size: int = None,
         start_time: str = None,
     ):
-        # The domain name.
+        # The domain name for CDN.
         # 
         # >  You can specify only one domain name in each query.
         # 
@@ -12388,7 +12491,10 @@ class DescribeVodMediaPlayDataRequest(TeaModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The playback time. You can specify this parameter to query all playback data generated only on the specified date. You can query data only by day. Specify the value in the yyyyMMdd format.
+        # The playback time. Specify the value in the yyyyMMdd format.
+        # 
+        # > *   You can query data only by day.
+        # > *   You can query only data within the last 30 days.
         self.play_date = play_date
         # The region in which ApsaraVideo VOD is activated. You can specify this parameter to query all playback data generated only in a specific region. Valid values:
         # 
@@ -12399,7 +12505,7 @@ class DescribeVodMediaPlayDataRequest(TeaModel):
         # *   **ap-southeast-1**: Singapore
         # *   **ap-southeast-5**: Indonesia (Jakarta)
         # *   **eu-central-1**: Germany (Frankfurt)
-        # *   **ap-south-1**: India (Mumbai)
+        # *   **ap-south-1**: India (Mumbai) (disabled)
         self.region = region
         # The type of the player SDK. You can specify this parameter to query all playback data generated by using a specific type of player SDK. Valid values:
         # 
@@ -12973,7 +13079,7 @@ class DescribeVodRefreshTasksRequest(TeaModel):
         # > If you specify the DomainName or Status parameter, you must also specify the ObjectType parameter.
         self.object_type = object_type
         self.owner_id = owner_id
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
         # The number of entries to return on each page. Default value: **20**. Maximum value: **50**.
         self.page_size = page_size
@@ -13296,9 +13402,9 @@ class DescribeVodStorageDataRequest(TeaModel):
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The name of the Object Storage Service (OSS) bucket. If you leave this parameter empty, data of all buckets is returned. Separate multiple bucket names with commas (,).
+        # The name of the Object Storage Service (OSS) bucket. If you leave this parameter empty, data of all buckets is returned. Separate multiple transcoding specifications with commas (,).
         self.storage = storage
-        # The storage type. Set the value to **OSS**.
+        # The storage class. Set the value to **OSS**.
         self.storage_type = storage_type
 
     def validate(self):
@@ -14706,7 +14812,7 @@ class DescribeVodVerifyContentRequest(TeaModel):
         domain_name: str = None,
         owner_id: int = None,
     ):
-        # The domain name for which you want to query the ownership verification content. You can specify only one domain name in each call.
+        # The domain name for which you want to verify the ownership. You can specify only one domain name in each call.
         # 
         # This parameter is required.
         self.domain_name = domain_name
@@ -15517,28 +15623,28 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataAudioResult(TeaModel):
         score: str = None,
         suggestion: str = None,
     ):
-        # The category of the review result. Valid values:
+        # The category of the review result.
         # 
-        # *   **normal**\
-        # *   **spam**\
-        # *   **ad**\
-        # *   **politics**\
-        # *   **terrorism**\
-        # *   **abuse**\
-        # *   **porn**\
-        # *   **flood**: spam posts
-        # *   **contraband**\
-        # *   **meaningless**\
+        # *   **normal**: normal content
+        # *   **spam**: spam
+        # *   **ad**: ads
+        # *   **politics**: political content
+        # *   **terrorism**: terrorist content
+        # *   **abuse**: abuse
+        # *   **porn**: pornographic content.
+        # *   **flood**: excessive junk content
+        # *   **contraband**: prohibited content
+        # *   **meaningless**: meaningless content
         self.label = label
-        # The review scenario. Valid value: **antispam**.
+        # The review scenario. The value is **antispam**.
         self.scene = scene
         # The score.
         self.score = score
         # The recommendation for review results. Valid values:
         # 
-        # *   **block**: The content violates the regulations.
-        # *   **review**: The content may violate the regulations.
-        # *   **pass**: The content passes the review.
+        # *   **block**\
+        # *   **review**\
+        # *   **pass**\
         self.suggestion = suggestion
 
     def validate(self):
@@ -15608,47 +15714,47 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResultResult(TeaModel)
         # 
         # Valid values if scene is **ad**:
         # 
-        # *   **normal**\
-        # *   **ad**\
-        # *   **politics**\
-        # *   **porn**\
-        # *   **abuse**\
-        # *   **terrorism**\
-        # *   **contraband**\
-        # *   **spam**\
+        # *   **normal**: normal content
+        # *   **ad**: ads
+        # *   **politics**: political content
+        # *   **porn**: pornographic content
+        # *   **abuse**: verbal abuse
+        # *   **terrorism**: terrorist content
+        # *   **contraband**: prohibited content
+        # *   **spam**: spam content
         # *   **npx**: illegal ad
         # *   **qrcode**: QR code
-        # *   **programCode**\
+        # *   **programCode**: mini program code
         # 
         # Valid values if scene is **live**:
         # 
-        # *   **normal**\
-        # *   **meaningless**\
-        # *   **PIP**\
-        # *   **smoking**\
-        # *   **drivelive**\
+        # *   **normal**: normal content
+        # *   **meaningless**: meaningless content, such as a black or white screen.
+        # *   **PIP**: picture-in-picture
+        # *   **smoking**: smoking
+        # *   **drivelive**: live broadcasting in a running vehicle
         # 
         # Valid values if scene is **logo**:
         # 
-        # *   **normal**\
-        # *   **TV**\
-        # *   **trademark**\
+        # *   **normal**: normal content
+        # *   **TV**: controlled TV station logo
+        # *   **trademark**: trademark
         self.label = label
         # The review scenario. Valid values:
         # 
-        # *   **porn**\
-        # *   **terrorism**\
-        # *   **ad**\
-        # *   **live**: undesirable scenes
-        # *   **logo**\
+        # *   **porn**: pornographic content
+        # *   **terrorism**: terrorist or politically sensitive content
+        # *   **ad**: ad violation
+        # *   **live**: undesirable scene
+        # *   **logo**: logo
         self.scene = scene
         # The score of the image of the category that is indicated by Label. Valid values: `[0, 100]`. The score is representative of the confidence.
         self.score = score
         # The recommendation for review results. Valid values:
         # 
-        # *   **block**: The content violates the regulations.
-        # *   **review**: The content may violate the regulations.
-        # *   **pass**: The content passes the review.
+        # *   **block**\
+        # *   **review**\
+        # *   **pass**\
         self.suggestion = suggestion
 
     def validate(self):
@@ -15692,23 +15798,22 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataImageResult(TeaModel):
         type: str = None,
         url: str = None,
     ):
-        # The category of the review result. Separate multiple values with commas (,). Valid values:
+        # The categories of the image review results. Multiple values are separated by commas (,). Valid values:
         # 
-        # *   **porn**\
-        # *   **terrorism**\
-        # *   **ad**\
-        # *   **live**: undesirable scenes
-        # *   **logo**\
-        # *   **audio**: audio anti-spam
-        # *   **normal**\
+        # *   **porn**: pornographic content
+        # *   **terrorism**: terrorist or politically sensitive content
+        # *   **ad**: ad violation
+        # *   **live**: undesirable scene
+        # *   **logo**: logo
+        # *   **normal**: normal content
         self.label = label
         # Details of image review results.
         self.result = result
         # The recommendation for review results. Valid values:
         # 
-        # *   **block**: The content violates the regulations.
-        # *   **review**: The content may violate the regulations.
-        # *   **pass**: The content passes the review.
+        # *   **block**\
+        # *   **review**\
+        # *   **pass**\
         self.suggestion = suggestion
         # The type of the image. Valid value: **cover**.
         self.type = type
@@ -15769,27 +15874,27 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataTextResult(TeaModel):
         suggestion: str = None,
         type: str = None,
     ):
-        # The text.
+        # The text content.
         self.content = content
         # The category of the review result. Valid values:
         # 
-        # *   **spam**\
-        # *   **ad**\
-        # *   **abuse**\
-        # *   **flood**: spam posts
-        # *   **contraband**\
-        # *   **meaningless**\
-        # *   **normal**\
+        # *   **spam**: spam content
+        # *   **ad**: ads
+        # *   **abuse**: abuse
+        # *   **flood**: excessive junk content
+        # *   **contraband**: prohibited content
+        # *   **meaningless**: meaningless content
+        # *   **normal**: normal content
         self.label = label
-        # The review scenario. Valid value: **antispam**.
+        # The review scenario. The value is **antispam**.
         self.scene = scene
         # The score of the image of the category that is indicated by Label. Valid values: `[0, 100]`. The score is representative of the confidence.
         self.score = score
         # The recommendation for review results. Valid values:
         # 
-        # *   **block**: The content violates the regulations.
-        # *   **review**: The content may violate the regulations.
-        # *   **pass**: The content passes the review.
+        # *   **block**\
+        # *   **review**\
+        # *   **pass**\
         self.suggestion = suggestion
         # The type of the text. The value is **title**.
         self.type = type
@@ -15840,12 +15945,21 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResultCounterL
         count: int = None,
         label: str = None,
     ):
-        # The number of images.
+        # The number of video snapshots.
         self.count = count
-        # The category of the review result. Valid values:
+        # The categories of the ad review results. Valid values:
         # 
-        # *   **ad**\
-        # *   **normal**\
+        # *   **normal**: normal content
+        # *   **ad**: other ads
+        # *   **politics**: political content
+        # *   **porn**: pornographic content
+        # *   **abuse**: abuse
+        # *   **terrorism**: terrorist content
+        # *   **contraband**: prohibited content
+        # *   **spam**: spam content
+        # *   **npx**: illegal ad
+        # *   **qrcode**: QR code
+        # *   **programCode**: mini program code
         self.label = label
 
     def validate(self):
@@ -15880,16 +15994,25 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResultTopList(
         timestamp: str = None,
         url: str = None,
     ):
-        # The category of the review result. Valid values:
+        # The categories of the ad review results. Valid values:
         # 
-        # *   **ad**\
-        # *   **normal**\
+        # *   **normal**: normal content
+        # *   **ad**: other ads
+        # *   **politics**: political content
+        # *   **porn**: pornographic content
+        # *   **abuse**: abuse
+        # *   **terrorism**: terrorist content
+        # *   **contraband**: prohibited content
+        # *   **spam**: spam content
+        # *   **npx**: illegal ad
+        # *   **qrcode**: QR code
+        # *   **programCode**: mini program code
         self.label = label
-        # The score of the image of the category that is indicated by Label.
+        # The score of the snapshot in the category that is indicated by Label.
         self.score = score
-        # The position in the video. Unit: milliseconds.
+        # The timestamp of the snapshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
-        # The URL of the image.
+        # The URL of the video snapshot.
         self.url = url
 
     def validate(self):
@@ -15936,12 +16059,21 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResult(TeaMode
     ):
         # The average score of the review results.
         self.average_score = average_score
-        # The statistics about tag frames.
+        # The number of snapshots of each category in the review result.
         self.counter_list = counter_list
-        # The category of the review result. Valid values:
+        # The categories of the ad review results. Valid values:
         # 
-        # *   **ad**\
-        # *   **normal**\
+        # *   **normal**: normal content
+        # *   **ad**: other ads
+        # *   **politics**: political content
+        # *   **porn**: pornographic content
+        # *   **abuse**: abuse
+        # *   **terrorism**: terrorist content
+        # *   **contraband**: prohibited content
+        # *   **spam**: spam content
+        # *   **npx**: illegal ad
+        # *   **qrcode**: QR code
+        # *   **programCode**: mini program code
         self.label = label
         # The highest review score.
         self.max_score = max_score
@@ -15951,7 +16083,7 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultAdResult(TeaMode
         # *   **review**: The content may violate the regulations.
         # *   **pass**: The content passes the review.
         self.suggestion = suggestion
-        # The information about the image with the highest score of the category that is indicated by Label.
+        # The information about the snapshot that has the highest score in the category.
         self.top_list = top_list
 
     def validate(self):
@@ -16017,12 +16149,15 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResultCounte
         count: int = None,
         label: str = None,
     ):
-        # The number of images.
+        # The number of video snapshots.
         self.count = count
         # The category of the review result. Valid values:
         # 
-        # *   **live**: The content contains undesirable scenes.
-        # *   **normal**\
+        # *   **normal**: normal content
+        # *   **meaningless**: meaningless content, such as a black or white screen.
+        # *   **PIP**: picture-in-picture
+        # *   **smoking**: smoking
+        # *   **drivelive**: live broadcasting in a running vehicle
         self.label = label
 
     def validate(self):
@@ -16059,14 +16194,17 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResultTopLis
     ):
         # The category of the review result. Valid values:
         # 
-        # *   **live**: The content contains undesirable scenes.
-        # *   **normal**\
+        # *   **normal**: normal content
+        # *   **meaningless**: meaningless content, such as a black or white screen.
+        # *   **PIP**: picture-in-picture
+        # *   **smoking**: smoking
+        # *   **drivelive**: live broadcasting in a running vehicle
         self.label = label
-        # The score of the image of the category that is indicated by Label.
+        # The score of the snapshot in the category that is indicated by Label.
         self.score = score
-        # The position in the video. Unit: milliseconds.
+        # The timestamp of the snapshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
-        # The URL of the image.
+        # The URL of the video snapshot.
         self.url = url
 
     def validate(self):
@@ -16113,12 +16251,15 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResult(TeaMo
     ):
         # The average score of the review results.
         self.average_score = average_score
-        # The categories of the review results and the number of images.
+        # The categories of the review results and the number of video snapshots in each category.
         self.counter_list = counter_list
         # The category of the review result. Valid values:
         # 
-        # *   **live**: The content contains undesirable scenes.
-        # *   **normal**\
+        # *   **normal**: normal content
+        # *   **meaningless**: meaningless content, such as a black or white screen.
+        # *   **PIP**: picture-in-picture
+        # *   **smoking**: smoking
+        # *   **drivelive**: live broadcasting in a running vehicle
         self.label = label
         # The highest review score.
         self.max_score = max_score
@@ -16128,7 +16269,7 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLiveResult(TeaMo
         # *   **review**: The content may violate the regulations.
         # *   **pass**: The content passes the review.
         self.suggestion = suggestion
-        # The information about the image with the highest score of the category that is indicated by Label.
+        # The information about the snapshot that has the highest score in the category.
         self.top_list = top_list
 
     def validate(self):
@@ -16194,12 +16335,13 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultCounte
         count: int = None,
         label: str = None,
     ):
-        # The number of images.
+        # The number of video snapshots.
         self.count = count
         # The category of the review result. Valid values:
         # 
-        # *   **logo**\
-        # *   **normal**\
+        # *   **normal**: normal content
+        # *   **TV**: controlled TV station logo
+        # *   **trademark**: trademark
         self.label = label
 
     def validate(self):
@@ -16236,14 +16378,15 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultTopLis
     ):
         # The category of the review result. Valid values:
         # 
-        # *   **logo**\
-        # *   **normal**\
+        # *   **normal**: normal content
+        # *   **TV**: controlled TV station logo
+        # *   **trademark**: trademark
         self.label = label
-        # The score of the image of the category that is indicated by Label.
+        # The score of the snapshot in the category that is indicated by Label.
         self.score = score
-        # The position in the video. Unit: milliseconds.
+        # The timestamp of the snapshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
-        # The URL of the image.
+        # The URL of the video snapshot.
         self.url = url
 
     def validate(self):
@@ -16288,16 +16431,17 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResult(TeaMo
         suggestion: str = None,
         top_list: List[GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResultTopList] = None,
     ):
-        # The average score of the images of the category that is indicated by Label.
+        # The average score of the snapshots in the category indicated by Label.
         self.average_score = average_score
-        # The categories of the review results and the number of images.
+        # The categories of the review results and the number of video snapshots in each category.
         self.counter_list = counter_list
         # The category of the review result. Valid values:
         # 
-        # *   **logo**\
-        # *   **normal**\
+        # *   **normal**: normal content
+        # *   **TV**: controlled TV station logo
+        # *   **trademark**: trademark
         self.label = label
-        # The highest score of the image of the category that is indicated by Label.
+        # The highest score of the snapshot of the category that is indicated by Label.
         self.max_score = max_score
         # The recommendation for review results. Valid values:
         # 
@@ -16305,7 +16449,7 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultLogoResult(TeaMo
         # *   **review**: The content may violate the regulations.
         # *   **pass**: The content passes the review.
         self.suggestion = suggestion
-        # The information about the image with the highest score of the category that is indicated by Label.
+        # The information about the snapshot that has the highest score in the category.
         self.top_list = top_list
 
     def validate(self):
@@ -16371,9 +16515,9 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultCounte
         count: int = None,
         label: str = None,
     ):
-        # The number of images.
+        # The number of video snapshots.
         self.count = count
-        # The category of the review result. Valid values:
+        # The results of pornographic content review. Valid values:
         # 
         # *   **porn**\
         # *   **sexy**\
@@ -16412,17 +16556,17 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultTopLis
         timestamp: str = None,
         url: str = None,
     ):
-        # The category of the review result. Valid values:
+        # The results of pornographic content review. Valid values:
         # 
         # *   **porn**\
         # *   **sexy**\
         # *   **normal**\
         self.label = label
-        # The score of the image of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
+        # The score of the snapshot in the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
         self.score = score
-        # The position in the video. Unit: milliseconds.
+        # The timestamp of the snapshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
-        # The URL of the image.
+        # The URL of the video snapshot.
         self.url = url
 
     def validate(self):
@@ -16467,9 +16611,9 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResult(TeaMo
         suggestion: str = None,
         top_list: List[GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResultTopList] = None,
     ):
-        # The average score of the images of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
+        # The average score of the snapshots of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
         self.average_score = average_score
-        # The categories of the review results and the number of images.
+        # The number of snapshots of each category in the review result.
         self.counter_list = counter_list
         # The category of the review result. Valid values:
         # 
@@ -16477,7 +16621,7 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResult(TeaMo
         # *   **sexy**\
         # *   **normal**\
         self.label = label
-        # The highest score of the image of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
+        # The highest score of the snapshot of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
         self.max_score = max_score
         # The recommendation for review results. Valid values:
         # 
@@ -16485,7 +16629,7 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultPornResult(TeaMo
         # *   **review**: The content may violate the regulations.
         # *   **pass**: The content passes the review.
         self.suggestion = suggestion
-        # The information about the image with the highest score of the category that is indicated by Label.
+        # The information about the snapshot that has the highest score in the category.
         self.top_list = top_list
 
     def validate(self):
@@ -16551,17 +16695,24 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResultC
         count: int = None,
         label: str = None,
     ):
-        # The number of images.
+        # The number of video snapshots.
         self.count = count
-        # The category of the review result. Valid values:
+        # The results of terrorist content review. Valid values:
         # 
-        # *   **terrorism**\
+        # *   **normal**\
+        # *   **bloody**\
+        # *   **explosion**\
         # *   **outfit**\
         # *   **logo**\
         # *   **weapon**\
         # *   **politics**\
+        # *   **violence**\
+        # *   **crowd**\
+        # *   **parade**\
+        # *   **carcrash**\
+        # *   **flag**\
+        # *   **location**\
         # *   **others**\
-        # *   **normal**\
         self.label = label
 
     def validate(self):
@@ -16596,7 +16747,7 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResultT
         timestamp: str = None,
         url: str = None,
     ):
-        # The category of the review result. Valid values:
+        # The results of terrorist content review. Valid values:
         # 
         # *   **normal**\
         # *   **bloody**\
@@ -16613,11 +16764,11 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResultT
         # *   **location**\
         # *   **others**\
         self.label = label
-        # The score of the image of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
+        # The score of the snapshot in the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
         self.score = score
-        # The position in the video. Unit: milliseconds.
+        # The timestamp of the snapshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
-        # The URL of the image.
+        # The URL of the video snapshot.
         self.url = url
 
     def validate(self):
@@ -16662,9 +16813,9 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResult(
         suggestion: str = None,
         top_list: List[GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResultTopList] = None,
     ):
-        # The average score of the images of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
+        # The average score of the snapshots of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
         self.average_score = average_score
-        # The categories of the review results and the number of images.
+        # The categories of terrorist content review results and the number of video snapshots in each category.
         self.counter_list = counter_list
         # The category of the review result. Valid values:
         # 
@@ -16683,15 +16834,15 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResultTerrorismResult(
         # *   **location**\
         # *   **others**\
         self.label = label
-        # The highest score of the image of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
+        # The highest score of the snapshot of the category that is indicated by Label. Valid values: `[0, 100]`. The value is accurate to 10 decimal places. The score is representative of the confidence.
         self.max_score = max_score
-        # The recommendation for review results. Valid values:
+        # The recommendation for terrorist content review results. Valid values:
         # 
-        # *   **block**: The content violates the regulations.
-        # *   **review**: The content may violate the regulations.
-        # *   **pass**: The content passes the review.
+        # *   **block**\
+        # *   **review**\
+        # *   **pass**\
         self.suggestion = suggestion
-        # The information about the image with the highest score of the category that is indicated by Label.
+        # The information about the snapshot that has the highest score in the category.
         self.top_list = top_list
 
     def validate(self):
@@ -16766,22 +16917,26 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobDataVideoResult(TeaModel):
         self.ad_result = ad_result
         # The category of the review result. Valid values:
         # 
-        # *   **ad**\
+        # *   **porn**: pornographic content
+        # *   **terrorism**: terrorist or politically sensitive content
+        # *   **ad**: ad violation
+        # *   **live**: undesirable scene
+        # *   **logo**: logo
         # *   **normal**\
         self.label = label
         # The results of undesired content review.
         self.live_result = live_result
         # The results of logo review.
         self.logo_result = logo_result
-        # The results of pornography content review.
+        # The results of pornographic content review.
         self.porn_result = porn_result
-        # The recommendation for review results. Valid values:
+        # The recommendation for video review results. Valid values:
         # 
-        # *   **block**: The content violates the regulations.
-        # *   **review**: The content may violate the regulations.
-        # *   **pass**: The content passes the review.
+        # *   **block**\
+        # *   **review**\
+        # *   **pass**\
         self.suggestion = suggestion
-        # The results of terrorism content review.
+        # The results of terrorist content review.
         self.terrorism_result = terrorism_result
 
     def validate(self):
@@ -16863,15 +17018,15 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobData(TeaModel):
         self.audio_result = audio_result
         # The results of image review.
         self.image_result = image_result
-        # The category of the review result. Separate multiple values with commas (,). Valid values:
+        # The category of the review result. Multiple values are separated by commas (,). Valid values:
         # 
-        # *   **porn**\
-        # *   **terrorism**\
-        # *   **ad**\
-        # *   **live**: undesirable scenes
-        # *   **logo**\
+        # *   **porn**: pornographic content
+        # *   **terrorism**: terrorist or politically sensitive content
+        # *   **ad**: ad violation
+        # *   **live**: undesirable scene
+        # *   **logo**: logo
         # *   **audio**: audio anti-spam
-        # *   **normal**\
+        # *   **normal**: normal content
         self.label = label
         # The recommendation for review results. Valid values:
         # 
@@ -16879,7 +17034,7 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJobData(TeaModel):
         # *   **review**: The content may violate the regulations.
         # *   **pass**: The content passes the review.
         self.suggestion = suggestion
-        # The results of text review.
+        # The text moderation results.
         self.text_result = text_result
         # The results of video review.
         self.video_result = video_result
@@ -16976,7 +17131,7 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJob(TeaModel):
         self.complete_time = complete_time
         # The time when the job started to run. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The job result data.
+        # The job result.
         self.data = data
         # The ID of the job.
         self.job_id = job_id
@@ -16991,7 +17146,7 @@ class GetAIMediaAuditJobResponseBodyMediaAuditJob(TeaModel):
         # *   **init**: The job is being initialized.
         # *   **Processing**: The job is in progress.
         self.status = status
-        # Only the job type is supported.
+        # The type of the job. The value is AIMediaAudit.
         self.type = type
 
     def validate(self):
@@ -17777,6 +17932,7 @@ class GetAppInfosResponseBodyAppInfoList(TeaModel):
         creation_time: str = None,
         description: str = None,
         modification_time: str = None,
+        resource_group_id: str = None,
         status: str = None,
         type: str = None,
     ):
@@ -17790,6 +17946,7 @@ class GetAppInfosResponseBodyAppInfoList(TeaModel):
         self.description = description
         # The last time when the application was modified. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.modification_time = modification_time
+        self.resource_group_id = resource_group_id
         # The status of the application. Valid values:
         # 
         # *   **Normal**\
@@ -17820,6 +17977,8 @@ class GetAppInfosResponseBodyAppInfoList(TeaModel):
             result['Description'] = self.description
         if self.modification_time is not None:
             result['ModificationTime'] = self.modification_time
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
         if self.type is not None:
@@ -17838,6 +17997,8 @@ class GetAppInfosResponseBodyAppInfoList(TeaModel):
             self.description = m.get('Description')
         if m.get('ModificationTime') is not None:
             self.modification_time = m.get('ModificationTime')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Type') is not None:
@@ -17950,25 +18111,33 @@ class GetAttachedMediaInfoRequest(TeaModel):
         media_ids: str = None,
         output_type: str = None,
     ):
-        # The validity period of the URL of the auxiliary media asset. Unit: seconds.
-        # > *   If the OutputType parameter is set to **cdn**:
-        # >     *   The URL of the auxiliary media asset has a validity period only if URL signing is enabled. Otherwise, the URL of the auxiliary media asset is permanently valid.
-        # >     *   Minimum value: **1**.
-        # >     *   Maximum value: unlimited.
-        # >     *   Default value: If you do not set this parameter, the default validity period that is specified in URL signing is used.
-        # > *   If the OutputType parameter is set to **oss**:
-        # >     *   The URL of the auxiliary media asset has a validity period only if the permissions on the Object Storage Service (OSS) bucket are private. Otherwise, the URL of the auxiliary media asset is permanently valid.
-        # >     *   Minimum value: **1**.
-        # >     *   Maximum value: **2592000** (30 days). The maximum value is limited to reduce security risks of the origin.
-        # >     *   Default value: If you do not set this parameter, the default value is **3600**.
+        # The validity period of the URL. Unit: seconds.
+        # 
+        # *   If you set the OutputType parameter to **cdn**:
+        # 
+        #     *   The URL of the auxiliary media asset has a validity period only if URL signing is enabled. Otherwise, the URL of the auxiliary media asset is permanently valid.
+        #     *   Minimum value: **1**.
+        #     *   Maximum value: unlimited.
+        #     *   Default value: If you do not set this parameter, the default validity period that is specified in URL signing is used.
+        # 
+        # *   If you set the OutputType parameter to **oss**:
+        # 
+        #     *   The URL of the auxiliary media asset has a validity period only if the permissions on the Object Storage Service (OSS) bucket are private. Otherwise, the URL of the auxiliary media asset is permanently valid.
+        #     *   Minimum value: **1**.
+        #     *   The maximum value for a media asset stored in the VOD bucket is **2592000** (30 days) and the maximum value for a media asset stored in an OSS bucket is **129600** (36 hours). The maximum value is limited to reduce security risks of the origin.
+        #     *   Default value: If you do not set this parameter, the default value **3600** is used.
         self.auth_timeout = auth_timeout
-        # The ID of the auxiliary media asset. Separate multiple IDs with commas (,). A maximum of 20 IDs can be specified.
+        # The ID of the auxiliary media asset.
+        # 
+        # *   Separate multiple IDs with commas (,). You can specify up to 20 IDs.
+        # *   You can obtain the ID from the response to the [CreateUploadAttachedMedia](~~CreateUploadAttachedMedia~~) operation that you call to obtain the upload URL and credential.
         # 
         # This parameter is required.
         self.media_ids = media_ids
-        # The type of the URL of the auxiliary media asset. Valid values:
-        # *   **oss**: OSS URL
-        # *   **cdn** (default): Content Delivery Network (CDN) URL
+        # The type of the media asset URL. Valid values:
+        # 
+        # *   **oss**\
+        # *   **cdn** (default)
         self.output_type = output_type
 
     def validate(self):
@@ -18007,15 +18176,13 @@ class GetAttachedMediaInfoResponseBodyAttachedMediaListCategories(TeaModel):
         level: int = None,
         parent_id: int = None,
     ):
-        # The ID of the video category.
+        # The ID of the category.
         self.cate_id = cate_id
         # The name of the category.
-        # - The value can be up to 64 bytes in length.
-        # - The string must be encoded in the UTF-8 format.
         self.cate_name = cate_name
-        # The level of the category. A value of 0 indicates a level 1 category.
+        # The level of the category.
         self.level = level
-        # The ID of the parent category. The parent category ID of a level 1 category is -1.
+        # The ID of the parent category.
         self.parent_id = parent_id
 
     def validate(self):
@@ -18068,34 +18235,41 @@ class GetAttachedMediaInfoResponseBodyAttachedMediaList(TeaModel):
     ):
         # The ID of the application.
         self.app_id = app_id
-        # The list of categories.
+        # The categories.
         self.categories = categories
         # The time when the auxiliary media asset was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The description of the auxiliary media asset.
+        # 
+        # >  This parameter is returned only when a description is specified for the auxiliary media asset.
         self.description = description
         # The ID of the auxiliary media asset.
         self.media_id = media_id
-        # The time when the auxiliary media asset was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the auxiliary media asset was last updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.modification_time = modification_time
         # The status of the auxiliary media asset. Valid values:
-        # - **Uploading**: The auxiliary media asset is being uploaded. This is the initial status.
-        # - **Normal**: The auxiliary media asset is uploaded.
-        # - **UploadFail**: The auxiliary media asset fails to be uploaded.
+        # 
+        # *   **Uploading**\
+        # *   **Normal**\
+        # *   **UploadFail**\
         self.status = status
-        # The OSS bucket where the auxiliary media asset is stored.
+        # The storage address of the auxiliary media asset.
         self.storage_location = storage_location
         # The tags of the auxiliary media asset.
+        # 
+        # >  This parameter is returned only when tags are specified for the auxiliary media asset.
         self.tags = tags
         # The title of the auxiliary media asset.
         self.title = title
-        # The type of the auxiliary media asset. Valid values:
-        # - **watermark**\
-        # - **subtitle**\
-        # - **material**\
+        # The type of the auxiliary media asset.
+        # 
+        # *   **watermark**\
+        # *   **subtitle**\
+        # *   **material**\
         self.type = type
         # The URL of the auxiliary media asset.
-        # > If a CDN domain name is specified, a CDN URL is returned. Otherwise, an OSS URL is returned.
+        # 
+        # >  If a CDN domain name is specified, a CDN URL is returned. Otherwise, an OSS URL is returned.
         self.url = url
 
     def validate(self):
@@ -18177,7 +18351,7 @@ class GetAttachedMediaInfoResponseBody(TeaModel):
         non_exist_media_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The information about the media asset.
+        # The information about the media assets.
         self.attached_media_list = attached_media_list
         # The IDs of the auxiliary media assets that do not exist.
         self.non_exist_media_ids = non_exist_media_ids
@@ -19857,27 +20031,34 @@ class GetImageInfoRequest(TeaModel):
         image_id: str = None,
         output_type: str = None,
     ):
-        # The validity period of the image URL. Unit: seconds.
+        # The time when the image URL expires. Unit: seconds.
         # 
-        # > *   If the OutputType parameter is set to **cdn**:
-        # >     *   The image URL has a validity period only if URL signing is enabled. Otherwise, the image URL is permanently valid.
-        # >     *   Minimum value: **1**.
-        # >     *   Maximum value: unlimited.
-        # >     *   Default value: If you do not set this parameter, the default validity period that is specified in URL signing is used.
-        # > *   If the OutputType parameter is set to **oss**:
-        # >     *   The image URL has a validity period only if the permissions on the Object Storage Service (OSS) bucket are private. Otherwise, the image URL is permanently valid.
-        # >     *   Minimum value: **1**.
-        # >     *   Maximum value: **2592000** (30 days). The maximum value is limited to reduce security risks of the origin.
-        # >     *   Default value: If you do not set this parameter, the default value is **3600**.
+        # *   If you set OutputType to cdn:
+        # 
+        #     *   This parameter takes effect only if URL authentication is enabled. Otherwise, the image URL does not expire.
+        #     *   Minimum value: 1.
+        #     *   Maximum value: unlimited.
+        #     *   Default value: If you leave this parameter empty, the default validity period that is specified in URL signing is used.
+        # 
+        # *   If you set OutputType to oss:
+        # 
+        #     *   This parameter takes effect only when the ACL of the Object Storage Service (OSS) bucket is private. Otherwise, the image URL does not expire.
+        #     *   Minimum value: 1.
+        #     *   If you store the image in the VOD bucket, the maximum value of this parameter is **2592000** (30 days). If you store the image in an OSS bucket, the maximum value of this parameter is **129600** (36 hours). The maximum value is limited to reduce security risks of the origin.
+        #     *   Default value: 3600.
         self.auth_timeout = auth_timeout
-        # The ID of the image.
+        # The ID of the image. You can use one of the following methods to obtain the ID:
+        # 
+        # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/). In the left-side navigation pane, choose Media Files > Image. On the Image page, view the image ID.
+        # *   Obtain the image ID from the response to the [CreateUploadImage](~~CreateUploadImage~~) operation that you call to obtain the upload URL and credential.
+        # *   Obtain the image ID from the response to the [SearchMedia](~~SearchMedia~~) operation that you call to query the image.
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The type of the image URL. Valid values:
+        # The type of the output image URL. Valid values:
         # 
-        # *   **oss**: OSS URL
-        # *   **cdn** (default): Content Delivery Network (CDN) URL
+        # *   oss: OSS URL
+        # *   cdn: CDN URL
         self.output_type = output_type
 
     def validate(self):
@@ -19917,15 +20098,15 @@ class GetImageInfoResponseBodyImageInfoMezzanine(TeaModel):
         original_file_name: str = None,
         width: int = None,
     ):
-        # The size of the file. Unit: byte.
+        # The size of the image. Unit: bytes.
         self.file_size = file_size
-        # The OSS URL of the image.
+        # The OSS URL of the image file.
         self.file_url = file_url
-        # The height of the image. Unit: pixel.
+        # The height of the image. Unit: pixels.
         self.height = height
-        # The name of the uploaded file.
+        # The URL of the source file.
         self.original_file_name = original_file_name
-        # The width of the image. Unit: pixel.
+        # The width of the image. Unit: pixels.
         self.width = width
 
     def validate(self):
@@ -19987,7 +20168,7 @@ class GetImageInfoResponseBodyImageInfo(TeaModel):
         self.cate_id = cate_id
         # The name of the category.
         self.cate_name = cate_name
-        # The time when the image file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the image was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The description of the image.
         self.description = description
@@ -19995,27 +20176,27 @@ class GetImageInfoResponseBodyImageInfo(TeaModel):
         self.image_id = image_id
         # The type of the image. Valid values:
         # 
-        # - **CoverSnapshot**: thumbnail snapshot.
-        # - **NormalSnapshot**: normal snapshot.
-        # - **SpriteSnapshot**: sprite snapshot.
-        # - **SpriteOriginSnapshot**: sprite source snapshot.
-        # - **All**: images of all the preceding types. If this parameter is not set to All, you can specify multiple types and separate them with commas (,).
+        # *   **CoverSnapshot**: thumbnail snapshot.
+        # *   **NormalSnapshot**: normal snapshot.
+        # *   **SpriteSnapshot**: sprite snapshot.
+        # *   **SpriteOriginSnapshot**: sprite source snapshot.
+        # *   **All**: images of all the preceding types. Multiple types other than All can return for this parameter. Multiple types are separated by commas (,).
         self.image_type = image_type
-        # The information about the image mezzanine file.
+        # The source information about the image.
         self.mezzanine = mezzanine
         # The status of the image. Valid values:
         # 
-        # - **Uploading**: The image is being uploaded. This is the initial status.
-        # - **Normal**: The image is uploaded.
-        # - **UploadFail**: The image fails to be uploaded.
+        # *   **Uploading**: The image is being uploaded. This is the initial status.
+        # *   **Normal**: The image is uploaded.
+        # *   **UploadFail**: The image fails to be uploaded.
         self.status = status
-        # The OSS bucket where the image is stored.
+        # The bucket in which the image is stored.
         self.storage_location = storage_location
-        # The tag of the image. Multiple tags are separated by commas (,).
+        # The tags of the image. Multiple tags are separated by commas (,).
         self.tags = tags
         # The title of the image.
         self.title = title
-        # The URL of the image. If a CDN domain name is specified, a CDN URL is returned. Otherwise, an OSS URL is returned.
+        # The image URL. If a domain name for CDN is specified, a CDN URL is returned. Otherwise, an OSS URL is returned.
         self.url = url
 
     def validate(self):
@@ -20186,14 +20367,14 @@ class GetImageInfosRequest(TeaModel):
         # 
         #     *   This parameter takes effect only when the ACL of the Object Storage Service (OSS) bucket is private. Otherwise, the image URL does not expire.
         #     *   Minimum value: 1.
-        #     *   Maximum value: 2592000 (30 days). This limit is imposed to reduce security risks of the origin server.
+        #     *   If you store the image in the VOD bucket, the maximum value of this parameter is **2592000** (30 days). If you store the image in an OSS bucket, the maximum value of this parameter is **129600** (36 hours). The maximum value is limited to reduce security risks of the origin.
         #     *   Default value: 3600.
         self.auth_timeout = auth_timeout
-        # The image IDs. Separate multiple IDs with commas (,). You can specify a maximum of 20 image IDs. You can use one of the following methods to obtain the image ID:
+        # The image IDs. Separate multiple IDs with commas (,). You can specify up to 20 image IDs. You can use one of the following methods to obtain the ID:
         # 
-        # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/) and choose Media Files > Images in the left-side navigation pane. This method is applicable to images that are uploaded by using the ApsaraVideo VOD console.
-        # *   Obtain the value of ImageId from the response to the [CreateUploadImage](https://help.aliyun.com/document_detail/436544.html) operation that you call to obtain the upload URL and credential.
-        # *   Obtain the value of ImageId from the response to the [SearchMedia](https://help.aliyun.com/document_detail/436559.html) operation after you upload images.
+        # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/) and choose **Media Files > Images** in the left-side navigation pane.
+        # *   Obtain the value of ImageId from the response to the CreateUploadImage operation that you call to obtain the upload URL and credential.
+        # *   Obtain the value of ImageId from the response to the [SearchMedia](~~SearchMedia~~) operation after you upload images.
         # 
         # This parameter is required.
         self.image_ids = image_ids
@@ -20240,13 +20421,13 @@ class GetImageInfosResponseBodyImageInfoMezzanine(TeaModel):
         original_file_name: str = None,
         width: int = None,
     ):
-        # The size of the image file. Unit: bytes.
+        # The size of the file to be uploaded. Unit: bytes.
         self.file_size = file_size
         # The OSS URL of the image file.
         self.file_url = file_url
         # The height of the image. Unit: pixels.
         self.height = height
-        # The name of the source file.
+        # The URL of the source file.
         self.original_file_name = original_file_name
         # The width of the image. Unit: pixels.
         self.width = width
@@ -20306,7 +20487,7 @@ class GetImageInfosResponseBodyImageInfo(TeaModel):
     ):
         # The ID of the application.
         self.app_id = app_id
-        # The ID of the category to which the image belongs.
+        # The ID of the category.
         self.cate_id = cate_id
         # The name of the category.
         self.cate_name = cate_name
@@ -20314,15 +20495,12 @@ class GetImageInfosResponseBodyImageInfo(TeaModel):
         self.creation_time = creation_time
         # The description of the image.
         self.description = description
-        # The ID of the image file.
+        # The ID of the image.
         self.image_id = image_id
         # The type of the image. Valid values:
         # 
-        # *   **CoverSnapshot**: thumbnail snapshot
-        # *   **NormalSnapshot**: normal snapshot
-        # *   **SpriteSnapshot**: sprite snapshot
-        # *   **SpriteOriginSnapshot**: sprite source snapshot
-        # *   **All**: images of all the preceding types. If this parameter is not set to All, you can specify multiple types and separate the types with commas (,).
+        # *   **default**: regular images
+        # *   **cover**: video thumbnail
         self.image_type = image_type
         # The source information about the image.
         self.mezzanine = mezzanine
@@ -20334,7 +20512,7 @@ class GetImageInfosResponseBodyImageInfo(TeaModel):
         self.status = status
         # The bucket in which the image is stored.
         self.storage_location = storage_location
-        # The tags of the image. Separate multiple tags with commas (,).
+        # The tags of the image. Multiple tags are separated by commas (,).
         self.tags = tags
         # The title of the image.
         self.title = title
@@ -22278,7 +22456,7 @@ class GetMediaAuditResultDetailRequest(TeaModel):
         # 
         # This parameter is required.
         self.media_id = media_id
-        # The page number of the review result to return. The default value is **1**. A maximum of **20** records can be returned on each page.
+        # The page number. The default value is **1**. A maximum of **20** records can be returned on each page.
         # 
         # This parameter is required.
         self.page_no = page_no
@@ -22323,50 +22501,70 @@ class GetMediaAuditResultDetailResponseBodyMediaAuditResultDetailList(TeaModel):
         timestamp: str = None,
         url: str = None,
     ):
-        # The category of the ad review result. Valid values:
+        # The category of the review result. Valid values:
         # 
-        # *   **normal**: normal content
-        # *   **ad**: ad or text violation
+        # *   **normal**: normal content.
+        # *   **ad**: other ads.
+        # *   **politics**: political content in text.
+        # *   **porn**: pornographic content in text.
+        # *   **abuse**: verbal abuse in text.
+        # *   **terrorism**: terrorist content in text.
+        # *   **contraband**: prohibited content in text.
+        # *   **spam**: spam content in text.
+        # *   **npx**: illegal ad
+        # *   **qrcode**: QR code.
+        # *   **programCode**: mini program code.
         self.ad_label = ad_label
-        # The score of the review result category. It is representative of the confidence. Valid values: `[0.00-100.00].` The value is rounded down to 10 decimal places.
+        # The score of the video snapshot in the ad review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
         self.ad_score = ad_score
-        # The category of the undesirable scene review result. Valid values:
+        # The category of the review result. Valid values:
         # 
-        # *   **normal**: The video does not contain undesirable scenes.
-        # *   **live**: The video contains undesirable scenes.
+        # *   **normal**: normal content.
+        # *   **meaningless**: meaningless content, such as a black or white screen.
+        # *   **PIP**: picture-in-picture.
+        # *   **smoking**: smoking.
+        # *   **drivelive**: live broadcasting in a running vehicle.
         self.live_label = live_label
-        # The score of the review result category. It is representative of the confidence. Valid values: `[0.00-100.00].` The value is rounded down to 10 decimal places.
+        # The score of the video snapshot in the undesirable content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
         self.live_score = live_score
-        # The category of the logo review result. Valid values:
+        # The category of the review result. Valid values:
         # 
-        # *   **normal**\
-        # *   **tlogo**\
+        # *   **normal**: normal content.
+        # *   **TV**: controlled TV station logo.
+        # *   **trademark**: trademark.
         self.logo_label = logo_label
-        # The score of the review result category. It is representative of the confidence. Valid values: `[0.00-100.00].` The value is rounded down to 10 decimal places.
+        # The score of the video snapshot in the logo review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
         self.logo_score = logo_score
-        # The category of the pornographic content review result. Valid values:
+        # The category of the review result. Valid values:
         # 
         # *   **normal**\
         # *   **porn**\
         # *   **sexy**\
         self.porn_label = porn_label
-        # The score of the review result category. It is representative of the confidence. Valid values: `[0.00-100.00].` The value is rounded down to 10 decimal places.
+        # The score of the video snapshot in the pornographic content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
         self.porn_score = porn_score
-        # The category of the terrorist content review result.
+        # The category of the review result. Valid values:
         # 
-        # *   **normal**: normal
-        # *   **terrorism**: terrorist content
-        # *   **outfit**: special costume
-        # *   **logo**: special logo
-        # *   **weapon**: weapon
-        # *   **politics**: politically sensitive content
-        # *   **others**: other terrorist content and politically sensitive content
+        # *   **normal**\
+        # *   **bloody**\
+        # *   **explosion**\
+        # *   **outfit**\
+        # *   **logo**\
+        # *   **weapon**\
+        # *   **politics**\
+        # *   **violence**\
+        # *   **crowd**\
+        # *   **parade**\
+        # *   **carcrash**\
+        # *   **flag**\
+        # *   **location**\
+        # *   **others**\
         self.terrorism_label = terrorism_label
-        # The score of the review result category. It is representative of the confidence. Valid values: `[0.00-100.00].` The value is rounded down to 10 decimal places.
+        # The score of the video snapshot in the terrorist content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
         self.terrorism_score = terrorism_score
-        # The position in the video. Unit: milliseconds.
+        # The timestamp of the snapshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
-        # The URL of the image.
+        # The URL of the video snapshot.
         self.url = url
 
     def validate(self):
@@ -22593,12 +22791,21 @@ class GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineAd(TeaModel
     ):
         # The category of the review result. Valid values:
         # 
-        # *   **normal**: normal content
-        # *   **ad**: ad or text violation
+        # *   **normal**: normal content.
+        # *   **ad**: other ads.
+        # *   **politics**: political content in text.
+        # *   **porn**: pornographic content in text.
+        # *   **abuse**: abuse in text.
+        # *   **terrorism**: terrorist content in text.
+        # *   **contraband**: prohibited content in text.
+        # *   **spam**: spam content.
+        # *   **npx**: illegal ad.
+        # *   **qrcode**: QR code.
+        # *   **programCode**: mini program code.
         self.label = label
-        # The score of the review result category. Valid values: `[0, 100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+        # The score of the video snapshot in the ad review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
         self.score = score
-        # The position in the video. Unit: milliseconds.
+        # The timestamp of the snapshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -22636,14 +22843,17 @@ class GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineLive(TeaMod
         score: str = None,
         timestamp: str = None,
     ):
-        # The category of the review result. Valid values:
+        # The categories of undesired content review results. Valid values:
         # 
-        # *   **normal**\
-        # *   **terrorism**\
+        # *   **normal**: normal content.
+        # *   **meaningless**: meaningless content, such as a black or white screen.
+        # *   **PIP**: picture-in-picture.
+        # *   **smoking**: smoking.
+        # *   **drivelive**: live broadcasting in a running vehicle.
         self.label = label
-        # The score of the review result category. Valid values: `[0, 100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+        # The score of the video snapshot in the undesirable content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
         self.score = score
-        # The position in the video. Unit: milliseconds.
+        # The timestamp of the snapshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -22683,12 +22893,13 @@ class GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineLogo(TeaMod
     ):
         # The category of the review result. Valid values:
         # 
-        # *   **normal**\
-        # *   **logo**\
+        # *   **normal**: normal content.
+        # *   **TV**: controlled TV station logo.
+        # *   **trademark**: trademark.
         self.label = label
-        # The score of the review result category. Valid values: `[0, 100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+        # The score of the video snapshot in the logo review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
         self.score = score
-        # The position in the video. Unit: milliseconds.
+        # The timestamp of the snapshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -22732,9 +22943,9 @@ class GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelinePorn(TeaMod
         # *   **sexy**\
         # *   **normal**\
         self.label = label
-        # The score of the review result category. Valid values: `[0, 100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
+        # The score of the video snapshot in the pornographic content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
         self.score = score
-        # The position in the video. Unit: milliseconds.
+        # The timestamp of the snapshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -22774,17 +22985,24 @@ class GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimelineTerrorism(T
     ):
         # The category of the review result. Valid values:
         # 
-        # *   **terrorism**: terrorist content
-        # *   **outfit**: special costume
-        # *   **logo**: special logo
-        # *   **weapon**: weapon
-        # *   **politics**: politically sensitive content
-        # *   **others**: other terrorist and politically sensitive content
-        # *   **normal**: normal content
+        # *   **normal**\
+        # *   **bloody**\
+        # *   **explosion**\
+        # *   **outfit**\
+        # *   **logo**\
+        # *   **weapon**\
+        # *   **politics**\
+        # *   **violence**\
+        # *   **crowd**\
+        # *   **parade**\
+        # *   **carcrash**\
+        # *   **flag**\
+        # *   **location**\
+        # *   **others**\
         self.label = label
-        # The score of the review result category.
+        # The score of the video snapshot in the terrorist content review result. Valid values: `[0,100]`. The value is rounded down to 10 decimal places. The score is representative of the confidence.
         self.score = score
-        # The position in the video. Unit: milliseconds.
+        # The timestamp of the snapshot in the video. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -22826,7 +23044,7 @@ class GetMediaAuditResultTimelineResponseBodyMediaAuditResultTimeline(TeaModel):
     ):
         # The collection of ad timelines.
         self.ad = ad
-        # The collection of undesirable scene timelines.
+        # The collection of undesirable content timelines.
         self.live = live
         # The collection of logo timelines.
         self.logo = logo
@@ -24162,6 +24380,7 @@ class GetMezzanineInfoResponseBodyMezzanine(TeaModel):
         fps: str = None,
         height: int = None,
         output_type: str = None,
+        preprocess_status: str = None,
         restore_expiration: str = None,
         restore_status: str = None,
         size: int = None,
@@ -24194,6 +24413,7 @@ class GetMezzanineInfoResponseBodyMezzanine(TeaModel):
         # 
         # > If you specify an OSS URL for the video stream, the video stream must be in the MP4 format.
         self.output_type = output_type
+        self.preprocess_status = preprocess_status
         # The period of time in which the object remains in the restored state.
         self.restore_expiration = restore_expiration
         # The restoration status of the audio or video file. Valid values:
@@ -24266,6 +24486,8 @@ class GetMezzanineInfoResponseBodyMezzanine(TeaModel):
             result['Height'] = self.height
         if self.output_type is not None:
             result['OutputType'] = self.output_type
+        if self.preprocess_status is not None:
+            result['PreprocessStatus'] = self.preprocess_status
         if self.restore_expiration is not None:
             result['RestoreExpiration'] = self.restore_expiration
         if self.restore_status is not None:
@@ -24309,6 +24531,8 @@ class GetMezzanineInfoResponseBodyMezzanine(TeaModel):
             self.height = m.get('Height')
         if m.get('OutputType') is not None:
             self.output_type = m.get('OutputType')
+        if m.get('PreprocessStatus') is not None:
+            self.preprocess_status = m.get('PreprocessStatus')
         if m.get('RestoreExpiration') is not None:
             self.restore_expiration = m.get('RestoreExpiration')
         if m.get('RestoreStatus') is not None:
@@ -28996,12 +29220,14 @@ class ListAppInfoRequest(TeaModel):
         self,
         page_no: int = None,
         page_size: int = None,
+        resource_group_id: str = None,
         status: str = None,
     ):
         # The number of the page to return. By default, pages start from page 1.
         self.page_no = page_no
         # The number of entries to return on each page. Default value: **10**. Maximum value: **100**.
         self.page_size = page_size
+        self.resource_group_id = resource_group_id
         # The status of the application. After an application is created, it enters the **Normal** state. Valid values:
         # 
         # *   **Normal**\
@@ -29021,6 +29247,8 @@ class ListAppInfoRequest(TeaModel):
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -29031,6 +29259,8 @@ class ListAppInfoRequest(TeaModel):
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -29044,6 +29274,8 @@ class ListAppInfoResponseBodyAppInfoList(TeaModel):
         creation_time: str = None,
         description: str = None,
         modification_time: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
         status: str = None,
         type: str = None,
     ):
@@ -29057,6 +29289,8 @@ class ListAppInfoResponseBodyAppInfoList(TeaModel):
         self.description = description
         # The last time when the application was modified. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.modification_time = modification_time
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The status of the application. Valid values:
         # 
         # *   **Normal**\
@@ -29087,6 +29321,10 @@ class ListAppInfoResponseBodyAppInfoList(TeaModel):
             result['Description'] = self.description
         if self.modification_time is not None:
             result['ModificationTime'] = self.modification_time
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
         if self.type is not None:
@@ -29105,6 +29343,10 @@ class ListAppInfoResponseBodyAppInfoList(TeaModel):
             self.description = m.get('Description')
         if m.get('ModificationTime') is not None:
             self.modification_time = m.get('ModificationTime')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Type') is not None:
@@ -30220,25 +30462,29 @@ class ListSnapshotsRequest(TeaModel):
         snapshot_type: str = None,
         video_id: str = None,
     ):
-        # The validity period of the snapshot URL. Unit: seconds. Default value: **3600**. Minimum value: **3600**.
+        # The validity period of the snapshot URL. Default value: **3600**. Minimum value: **3600**. Unit: seconds.
         # 
-        # *   This parameter only takes effect when [URL authentication](https://help.aliyun.com/document_detail/57007.html) is enabled.
-        # *   If the specified validity period is less than **3600** seconds, the default value is **3600**.
-        # *   If an Object Storage Service (OSS) URL is returned, the maximum validity period is limited to **2592000** seconds (30 days) to reduce security risks of the origin.
+        # *   This parameter takes effect only when you enable URL signing. For more information, see [Configure URL signing](https://help.aliyun.com/document_detail/57007.html).
+        # *   If you specify a value smaller than **3,600 seconds**, **3600** is used by default.
+        # *   If the snapshot URL is an Object Storage Service (OSS) URL, the maximum value for this parameter is **2592000** (30 days). This reduces risks on the origin.
         self.auth_timeout = auth_timeout
-        # The number of the page to turn. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_no = page_no
-        # The number of entries to return on each page. Default value: **20**. Maximum value: **100**.
+        # The number of entries per page. Default value: **20**. Maximum value: **100**.
         self.page_size = page_size
-        # The type of snapshots that are returned. Valid values:
+        # The type of snapshots to return. Valid values:
         # 
         # *   **CoverSnapshot**: thumbnail snapshot
-        # *   **NormalSnapshot**: normal snapshot
+        # *   **NormalSnapshot**: regular snapshot
         # *   **SpriteSnapshot**: sprite snapshot
         # *   **SpriteOriginSnapshot**: sprite source snapshot
         # *   **WebVttSnapshot**: WebVTT snapshot
         self.snapshot_type = snapshot_type
-        # The ID of the video.
+        # The ID of the video. You can use one of the following methods to obtain the ID:
+        # 
+        # *   Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Media Files** > **Audio/Video** to view the video ID.
+        # *   Obtain the video ID from the response to the [CreateUploadVideo](~~CreateUploadVideo~~) operation that you call to obtain the upload URL and credential.
+        # *   Obtain the video ID from the response to the [SearchMedia](~~SearchMedia~~) operation that you call to query videos.
         # 
         # This parameter is required.
         self.video_id = video_id
@@ -30362,9 +30608,9 @@ class ListSnapshotsResponseBodyMediaSnapshot(TeaModel):
         self.creation_time = creation_time
         # The ID of the snapshot job.
         self.job_id = job_id
-        # The rule for generating snapshot URLs.
+        # The rule used to generate snapshot URLs.
         self.regular = regular
-        # The snapshot data.
+        # The details of the snapshot.
         self.snapshots = snapshots
         # The total number of snapshots.
         self.total = total
@@ -30413,7 +30659,7 @@ class ListSnapshotsResponseBody(TeaModel):
         media_snapshot: ListSnapshotsResponseBodyMediaSnapshot = None,
         request_id: str = None,
     ):
-        # The snapshot data of the media.
+        # The information about the snapshot.
         self.media_snapshot = media_snapshot
         # The ID of the request.
         self.request_id = request_id
@@ -31821,10 +32067,10 @@ class RefreshMediaPlayUrlsRequest(TeaModel):
         # 
         # This parameter is required.
         self.task_type = task_type
-        # The custom configurations such as callback configurations and upload acceleration configurations. The value is a JSON string. For more information, see [Request parameter](https://help.aliyun.com/document_detail/86952.html).
-        # > 
-        # - The callback configurations take effect only after you specify the HTTP callback URL and select specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](https://help.aliyun.com/document_detail/86071.html).
-        # - You must submit a ticket to enable the upload acceleration feature. For more information, see [Overview](https://help.aliyun.com/document_detail/55396.html).
+        # The custom configurations such as callback configurations and upload acceleration configurations. The value must be a JSON string. For more information, see the "UserData: specifies the custom configurations for media upload" section in the [Request parameter](https://help.aliyun.com/document_detail/86952.html) topic.
+        # 
+        # >*   The callback configurations take effect only after you specify the HTTP callback URL and select specific callback events in the ApsaraVideo VOD console. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](https://help.aliyun.com/document_detail/86071.html).
+        # >*   To enable the upload acceleration feature, submit a ticket. For more information, see [Overview](https://help.aliyun.com/document_detail/55396.html). For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
         self.user_data = user_data
 
     def validate(self):
@@ -34302,6 +34548,8 @@ class SetAuditSecurityIpRequest(TeaModel):
         # *   **Append** (default): adds the IP addresses to the original whitelist.
         # *   **Cover**: overwrites the original whitelist.
         # *   **Delete**: removes the IP addresses from the original whitelist.
+        # 
+        # >  If the value that you specify is invalid, the default value is used.
         self.operate_mode = operate_mode
         # The name of the review security group. Default value: **Default**. You can specify a maximum of 10 review security groups.
         self.security_group_name = security_group_name
@@ -35308,16 +35556,10 @@ class SubmitAIImageAuditJobRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the review template.
+        # The ID of the AI template. You can use one of the following methods to obtain the ID:
         # 
-        # If you want to use an AI template, you can call the following operations:
-        # 
-        # *   [ListAITemplate](https://help.aliyun.com/document_detail/102936.html)
-        # *   [AddAITemplate](https://help.aliyun.com/document_detail/102930.html)
-        # *   [GetAITemplate](https://help.aliyun.com/document_detail/102933.html)
-        # *   [SetDefaultAITemplate](https://help.aliyun.com/document_detail/102937.html)
-        # 
-        # If you do not specify this parameter, the ID of the default AI template for automated review is used.
+        # *   Obtain the value of TemplateId from the response to the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) operation that you call to create an AI template.
+        # *   Obtain the value of TemplateId from the response to the [ListAITemplate](https://help.aliyun.com/document_detail/102936.html) operation that you call to create an AI template.
         # 
         # This parameter is required.
         self.template_id = template_id
@@ -35456,7 +35698,7 @@ class SubmitAIImageJobRequest(TeaModel):
     ):
         # The ID of the pipeline that is used for the AI processing job.
         # 
-        # >  This parameter is optional if you have specified a default pipeline ID. If you need to submit image AI processing jobs in a batch to a specific pipeline, [submit a ticket](https://yida.alibaba-inc.com/o/ticketapply) to contact Alibaba Cloud technical support.
+        # >  This parameter is optional if you specify a default pipeline ID. If you want to use a separate pipeline to submit multiple AI processing jobs., submit a ticket or contact Alibaba Cloud after-sales engineers. For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
         self.aipipeline_id = aipipeline_id
         # The ID of the AI template. You can use one of the following methods to obtain the ID:
         # 
@@ -35867,7 +36109,7 @@ class SubmitAIMediaAuditJobRequest(TeaModel):
         # The configuration information about the review job.
         # 
         # *   Other configuration items of the review job. Only the ResourceType field is supported. This field is used to specify the type of media files. You can adjust review standards and rules based on the type of media files.
-        # *   If you want to modify the review standard and rules based on ResourceType, [submit a request on Yida](https://yida.alibaba-inc.com/o/ticketapply) to reach technical support.
+        # *   If you want to modify the review standard and rules based on ResourceType, submit a ticket. For more information, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
         # *   The value of ResourceType can contain only letters, digits, and underscores (_).
         self.media_audit_configuration = media_audit_configuration
         # The ID of the video file. To obtain the file ID, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Review Management** > **Content Moderation** in the left-side navigation pane.
@@ -35878,8 +36120,8 @@ class SubmitAIMediaAuditJobRequest(TeaModel):
         self.media_type = media_type
         # The ID of the AI template. You can use one of the following methods to obtain the ID of the AI template:
         # 
-        # *   Obtain the ID of the AI template from the response to the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) operation. The value of TemplateId is the ID of the AI template.
-        # *   Obtain the ID of the AI template from the response to the [ListAITemplate](https://help.aliyun.com/document_detail/102936.html) operation. The value of TemplateId is the ID of the AI template.
+        # *   Obtain the value of TemplateId from the response to the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) operation that you call to create an AI template.
+        # *   Obtain the value of TemplateId from the response to the [ListAITemplate](https://help.aliyun.com/document_detail/102936.html) operation that you call to create an AI template.
         # 
         # >  If you do not specify an ID, the ID of the default AI template is used.
         self.template_id = template_id
@@ -36444,11 +36686,15 @@ class SubmitPreprocessJobsRequest(TeaModel):
         preprocess_type: str = None,
         video_id: str = None,
     ):
-        # The preprocessing type. Set the value to **LivePreprocess**, which indicates that the video is preprocessed in the production studio.
+        # The preprocessing type. Set the value to **LivePreprocess**. LivePreprocess specifies that the video is preprocessed in the production studio.
         # 
         # This parameter is required.
         self.preprocess_type = preprocess_type
-        # The ID of the video.
+        # The ID of the video. You can use one of the following methods to obtain the ID:
+        # 
+        # *   After you upload a video in the ApsaraVideo VOD console, you can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files** > **Audio/Video** to view the ID of the video.
+        # *   Obtain the VideoId from the response to the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation that you call to upload videos.
+        # *   Obtain the VideoId from the response to the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation that you call to query videos.
         # 
         # This parameter is required.
         self.video_id = video_id
@@ -36546,7 +36792,7 @@ class SubmitPreprocessJobsResponseBody(TeaModel):
         preprocess_jobs: SubmitPreprocessJobsResponseBodyPreprocessJobs = None,
         request_id: str = None,
     ):
-        # The job information.
+        # The information about the job.
         self.preprocess_jobs = preprocess_jobs
         # The ID of the request.
         self.request_id = request_id
@@ -37554,7 +37800,10 @@ class UpdateAttachedMediaInfosRequest(TeaModel):
         self,
         update_content: str = None,
     ):
-        # The new information about auxiliary media assets. You can modify the information about up to 20 auxiliary media assets at a time. For more information, see the **UpdateContent** section of this topic.
+        # The new information about the one or more images. You can modify the information about up to 20 auxiliary media assets at a time. For more information, see the **UpdateContent** section of this topic.
+        # 
+        # > *   You cannot specify emojis for `Title`, `Description`, or `Tags`.
+        # > *   The specific parameter of a video is updated only when a new value is passed in the parameter.
         # 
         # This parameter is required.
         self.update_content = update_content
@@ -37925,9 +38174,9 @@ class UpdateImageInfosRequest(TeaModel):
         self,
         update_content: str = None,
     ):
-        # The new information about the one or more images. You can modify the information about up to 20 images at a time. For more information, see the **UpdateContent** section of this topic.
+        # The new information about the one or more images. You can modify the information about up to 20 images at a time. For more information about the parameter structure, see the **UpdateContent** section.
         # 
-        # > The values of the nested parameters Title, Description, and Tags under the UpdateContent parameter cannot contain emoticons.
+        # >  The values of the nested parameters Title, Description, and Tags under the UpdateContent parameter cannot contain emoticons.
         # 
         # This parameter is required.
         self.update_content = update_content
@@ -38734,15 +38983,11 @@ class UpdateVodDomainRequest(TeaModel):
         sources: str = None,
         top_level_domain: str = None,
     ):
-        # The accelerated domain name.
-        # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
         self.security_token = security_token
-        # The information about the addresses of origin servers.
         self.sources = sources
-        # The top-level domain.
         self.top_level_domain = top_level_domain
 
     def validate(self):
@@ -38786,7 +39031,6 @@ class UpdateVodDomainResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
