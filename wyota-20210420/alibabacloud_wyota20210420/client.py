@@ -6461,6 +6461,9 @@ class Client(OpenApiClient):
         @return: SendOpsMessageToTerminalsResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delay):
+            query['Delay'] = request.delay
         body = {}
         if not UtilClient.is_unset(request.msg):
             body['Msg'] = request.msg
@@ -6474,6 +6477,7 @@ class Client(OpenApiClient):
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -6505,6 +6509,9 @@ class Client(OpenApiClient):
         @return: SendOpsMessageToTerminalsResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delay):
+            query['Delay'] = request.delay
         body = {}
         if not UtilClient.is_unset(request.msg):
             body['Msg'] = request.msg
@@ -6518,6 +6525,7 @@ class Client(OpenApiClient):
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(

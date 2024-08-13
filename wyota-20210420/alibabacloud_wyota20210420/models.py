@@ -11817,11 +11817,13 @@ class ReportUserFbIssueResponse(TeaModel):
 class SendOpsMessageToTerminalsRequest(TeaModel):
     def __init__(
         self,
+        delay: bool = None,
         msg: str = None,
         ops_action: str = None,
         uuids: List[str] = None,
         wait_for_ack: bool = None,
     ):
+        self.delay = delay
         self.msg = msg
         self.ops_action = ops_action
         self.uuids = uuids
@@ -11836,6 +11838,8 @@ class SendOpsMessageToTerminalsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.delay is not None:
+            result['Delay'] = self.delay
         if self.msg is not None:
             result['Msg'] = self.msg
         if self.ops_action is not None:
@@ -11848,6 +11852,8 @@ class SendOpsMessageToTerminalsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Delay') is not None:
+            self.delay = m.get('Delay')
         if m.get('Msg') is not None:
             self.msg = m.get('Msg')
         if m.get('OpsAction') is not None:
