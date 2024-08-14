@@ -601,6 +601,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
@@ -640,6 +642,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
@@ -1351,6 +1355,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.FetchImageTaskResponse:
         """
+        @summary 获取图片任务执行结果
+        
         @param tmp_req: FetchImageTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: FetchImageTaskResponse
@@ -1394,6 +1400,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.FetchImageTaskResponse:
         """
+        @summary 获取图片任务执行结果
+        
         @param tmp_req: FetchImageTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: FetchImageTaskResponse
@@ -1436,6 +1444,8 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.FetchImageTaskRequest,
     ) -> ai_miao_bi_20230801_models.FetchImageTaskResponse:
         """
+        @summary 获取图片任务执行结果
+        
         @param request: FetchImageTaskRequest
         @return: FetchImageTaskResponse
         """
@@ -1447,6 +1457,8 @@ class Client(OpenApiClient):
         request: ai_miao_bi_20230801_models.FetchImageTaskRequest,
     ) -> ai_miao_bi_20230801_models.FetchImageTaskResponse:
         """
+        @summary 获取图片任务执行结果
+        
         @param request: FetchImageTaskRequest
         @return: FetchImageTaskResponse
         """
@@ -3437,6 +3449,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.type):
             body['Type'] = request.type
@@ -3476,6 +3490,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.type):
             body['Type'] = request.type
@@ -3776,10 +3792,14 @@ class Client(OpenApiClient):
             body['Current'] = request.current
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
         if not UtilClient.is_unset(request.size):
             body['Size'] = request.size
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.title):
             body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
@@ -3825,10 +3845,14 @@ class Client(OpenApiClient):
             body['Current'] = request.current
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
         if not UtilClient.is_unset(request.size):
             body['Size'] = request.size
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.title):
             body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
@@ -5721,6 +5745,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.author):
             body['Author'] = request.author
@@ -5788,6 +5814,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         body = {}
         if not UtilClient.is_unset(request.author):
             body['Author'] = request.author

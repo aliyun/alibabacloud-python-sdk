@@ -858,11 +858,13 @@ class DeleteGeneratedContentRequest(TeaModel):
         self,
         agent_key: str = None,
         id: int = None,
+        region_id: str = None,
     ):
         # This parameter is required.
         self.agent_key = agent_key
         # This parameter is required.
         self.id = id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -877,6 +879,8 @@ class DeleteGeneratedContentRequest(TeaModel):
             result['AgentKey'] = self.agent_key
         if self.id is not None:
             result['Id'] = self.id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -885,6 +889,8 @@ class DeleteGeneratedContentRequest(TeaModel):
             self.agent_key = m.get('AgentKey')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -7137,10 +7143,12 @@ class ListBuildConfigsRequest(TeaModel):
     def __init__(
         self,
         agent_key: str = None,
+        region_id: str = None,
         type: str = None,
     ):
         # This parameter is required.
         self.agent_key = agent_key
+        self.region_id = region_id
         self.type = type
 
     def validate(self):
@@ -7154,6 +7162,8 @@ class ListBuildConfigsRequest(TeaModel):
         result = dict()
         if self.agent_key is not None:
             result['AgentKey'] = self.agent_key
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -7162,6 +7172,8 @@ class ListBuildConfigsRequest(TeaModel):
         m = m or dict()
         if m.get('AgentKey') is not None:
             self.agent_key = m.get('AgentKey')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -7850,8 +7862,10 @@ class ListGeneratedContentsRequest(TeaModel):
         content_domain: str = None,
         current: int = None,
         end_time: str = None,
+        query: str = None,
         size: int = None,
         start_time: str = None,
+        task_id: str = None,
         title: str = None,
     ):
         # This parameter is required.
@@ -7859,8 +7873,10 @@ class ListGeneratedContentsRequest(TeaModel):
         self.content_domain = content_domain
         self.current = current
         self.end_time = end_time
+        self.query = query
         self.size = size
         self.start_time = start_time
+        self.task_id = task_id
         self.title = title
 
     def validate(self):
@@ -7880,10 +7896,14 @@ class ListGeneratedContentsRequest(TeaModel):
             result['Current'] = self.current
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.query is not None:
+            result['Query'] = self.query
         if self.size is not None:
             result['Size'] = self.size
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         if self.title is not None:
             result['Title'] = self.title
         return result
@@ -7898,10 +7918,14 @@ class ListGeneratedContentsRequest(TeaModel):
             self.current = m.get('Current')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         return self
@@ -12081,6 +12105,7 @@ class UpdateMaterialDocumentRequest(TeaModel):
         html_content: str = None,
         id: int = None,
         pub_time: str = None,
+        region_id: str = None,
         share_attr: int = None,
         src_from: str = None,
         summary: str = None,
@@ -12099,6 +12124,7 @@ class UpdateMaterialDocumentRequest(TeaModel):
         # This parameter is required.
         self.id = id
         self.pub_time = pub_time
+        self.region_id = region_id
         self.share_attr = share_attr
         self.src_from = src_from
         self.summary = summary
@@ -12131,6 +12157,8 @@ class UpdateMaterialDocumentRequest(TeaModel):
             result['Id'] = self.id
         if self.pub_time is not None:
             result['PubTime'] = self.pub_time
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.share_attr is not None:
             result['ShareAttr'] = self.share_attr
         if self.src_from is not None:
@@ -12163,6 +12191,8 @@ class UpdateMaterialDocumentRequest(TeaModel):
             self.id = m.get('Id')
         if m.get('PubTime') is not None:
             self.pub_time = m.get('PubTime')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ShareAttr') is not None:
             self.share_attr = m.get('ShareAttr')
         if m.get('SrcFrom') is not None:
@@ -12189,6 +12219,7 @@ class UpdateMaterialDocumentShrinkRequest(TeaModel):
         html_content: str = None,
         id: int = None,
         pub_time: str = None,
+        region_id: str = None,
         share_attr: int = None,
         src_from: str = None,
         summary: str = None,
@@ -12207,6 +12238,7 @@ class UpdateMaterialDocumentShrinkRequest(TeaModel):
         # This parameter is required.
         self.id = id
         self.pub_time = pub_time
+        self.region_id = region_id
         self.share_attr = share_attr
         self.src_from = src_from
         self.summary = summary
@@ -12239,6 +12271,8 @@ class UpdateMaterialDocumentShrinkRequest(TeaModel):
             result['Id'] = self.id
         if self.pub_time is not None:
             result['PubTime'] = self.pub_time
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.share_attr is not None:
             result['ShareAttr'] = self.share_attr
         if self.src_from is not None:
@@ -12271,6 +12305,8 @@ class UpdateMaterialDocumentShrinkRequest(TeaModel):
             self.id = m.get('Id')
         if m.get('PubTime') is not None:
             self.pub_time = m.get('PubTime')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ShareAttr') is not None:
             self.share_attr = m.get('ShareAttr')
         if m.get('SrcFrom') is not None:
