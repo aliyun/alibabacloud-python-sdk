@@ -195,13 +195,19 @@ class Entity(TeaModel):
 class LineageEntityVO(TeaModel):
     def __init__(
         self,
+        attributes: Dict[str, str] = None,
         detail_url: str = None,
+        entity_type: str = None,
         name: str = None,
+        owner: str = None,
         parent_name: str = None,
         qualified_name: str = None,
     ):
+        self.attributes = attributes
         self.detail_url = detail_url
+        self.entity_type = entity_type
         self.name = name
+        self.owner = owner
         self.parent_name = parent_name
         self.qualified_name = qualified_name
 
@@ -214,10 +220,16 @@ class LineageEntityVO(TeaModel):
             return _map
 
         result = dict()
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
         if self.detail_url is not None:
             result['DetailUrl'] = self.detail_url
+        if self.entity_type is not None:
+            result['EntityType'] = self.entity_type
         if self.name is not None:
             result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
         if self.parent_name is not None:
             result['ParentName'] = self.parent_name
         if self.qualified_name is not None:
@@ -226,10 +238,16 @@ class LineageEntityVO(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
         if m.get('DetailUrl') is not None:
             self.detail_url = m.get('DetailUrl')
+        if m.get('EntityType') is not None:
+            self.entity_type = m.get('EntityType')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
         if m.get('ParentName') is not None:
             self.parent_name = m.get('ParentName')
         if m.get('QualifiedName') is not None:
@@ -240,9 +258,13 @@ class LineageEntityVO(TeaModel):
 class RelationshipVO(TeaModel):
     def __init__(
         self,
-        type: str = None,
+        attributes: Dict[str, str] = None,
+        relationship_guid: str = None,
+        relationship_type: str = None,
     ):
-        self.type = type
+        self.attributes = attributes
+        self.relationship_guid = relationship_guid
+        self.relationship_type = relationship_type
 
     def validate(self):
         pass
@@ -253,14 +275,87 @@ class RelationshipVO(TeaModel):
             return _map
 
         result = dict()
-        if self.type is not None:
-            result['Type'] = self.type
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.relationship_guid is not None:
+            result['RelationshipGuid'] = self.relationship_guid
+        if self.relationship_type is not None:
+            result['RelationshipType'] = self.relationship_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('RelationshipGuid') is not None:
+            self.relationship_guid = m.get('RelationshipGuid')
+        if m.get('RelationshipType') is not None:
+            self.relationship_type = m.get('RelationshipType')
+        return self
+
+
+class LineageRelationRegisterBulkVO(TeaModel):
+    def __init__(
+        self,
+        create_timestamp: int = None,
+        dest_entities: List[LineageEntityVO] = None,
+        relationship: RelationshipVO = None,
+        src_entities: List[LineageEntityVO] = None,
+    ):
+        self.create_timestamp = create_timestamp
+        self.dest_entities = dest_entities
+        self.relationship = relationship
+        self.src_entities = src_entities
+
+    def validate(self):
+        if self.dest_entities:
+            for k in self.dest_entities:
+                if k:
+                    k.validate()
+        if self.relationship:
+            self.relationship.validate()
+        if self.src_entities:
+            for k in self.src_entities:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        result['DestEntities'] = []
+        if self.dest_entities is not None:
+            for k in self.dest_entities:
+                result['DestEntities'].append(k.to_map() if k else None)
+        if self.relationship is not None:
+            result['Relationship'] = self.relationship.to_map()
+        result['SrcEntities'] = []
+        if self.src_entities is not None:
+            for k in self.src_entities:
+                result['SrcEntities'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        self.dest_entities = []
+        if m.get('DestEntities') is not None:
+            for k in m.get('DestEntities'):
+                temp_model = LineageEntityVO()
+                self.dest_entities.append(temp_model.from_map(k))
+        if m.get('Relationship') is not None:
+            temp_model = RelationshipVO()
+            self.relationship = temp_model.from_map(m['Relationship'])
+        self.src_entities = []
+        if m.get('SrcEntities') is not None:
+            for k in m.get('SrcEntities'):
+                temp_model = LineageEntityVO()
+                self.src_entities.append(temp_model.from_map(k))
         return self
 
 
@@ -12248,6 +12343,7 @@ class DeleteLineageRelationRequest(TeaModel):
         self,
         dest_entity_qualified_name: str = None,
         relationship_guid: str = None,
+        relationship_type: str = None,
         src_entity_qualified_name: str = None,
     ):
         # The unique identifier of the destination entity.
@@ -12256,6 +12352,7 @@ class DeleteLineageRelationRequest(TeaModel):
         self.dest_entity_qualified_name = dest_entity_qualified_name
         # The unique identifier of the lineage.
         self.relationship_guid = relationship_guid
+        self.relationship_type = relationship_type
         # The unique identifier of the source entity.
         # 
         # This parameter is required.
@@ -12274,6 +12371,8 @@ class DeleteLineageRelationRequest(TeaModel):
             result['DestEntityQualifiedName'] = self.dest_entity_qualified_name
         if self.relationship_guid is not None:
             result['RelationshipGuid'] = self.relationship_guid
+        if self.relationship_type is not None:
+            result['RelationshipType'] = self.relationship_type
         if self.src_entity_qualified_name is not None:
             result['SrcEntityQualifiedName'] = self.src_entity_qualified_name
         return result
@@ -12284,6 +12383,8 @@ class DeleteLineageRelationRequest(TeaModel):
             self.dest_entity_qualified_name = m.get('DestEntityQualifiedName')
         if m.get('RelationshipGuid') is not None:
             self.relationship_guid = m.get('RelationshipGuid')
+        if m.get('RelationshipType') is not None:
+            self.relationship_type = m.get('RelationshipType')
         if m.get('SrcEntityQualifiedName') is not None:
             self.src_entity_qualified_name = m.get('SrcEntityQualifiedName')
         return self
@@ -25406,7 +25507,11 @@ class GetDagRequest(TeaModel):
         dag_id: int = None,
         project_env: str = None,
     ):
-        # The DAG ID. You can set this parameter to the value of the DagId parameter returned by the CreateDagComplement, CreateTest, or CreateManualDag operation.
+        # The ID of the DAG. You can use one of the following method to obtain the ID:
+        # 
+        # *   Call the [RunCycleDagNodes](https://help.aliyun.com/document_detail/2780209.html) operation and obtain the value of the **Data** response parameter.
+        # *   Call the [RunSmokeTest](https://help.aliyun.com/document_detail/2780210.html) operation and obtain the value of the **Data** response parameter.
+        # *   Call the [RunManualDagNodes](https://help.aliyun.com/document_detail/2780218.html) operation and obtain the value of the **DagId** response parameter.
         # 
         # This parameter is required.
         self.dag_id = dag_id
@@ -78228,7 +78333,7 @@ class UpdateDataSourceRequest(TeaModel):
     ):
         # The details about the data source. You are not allowed to change the type of the data source. For example, you are not allowed to change the data source type from MaxCompute to MySQL. Examples of details of some common data sources:
         # 
-        # *   MaxCompute
+        # *   odps
         # 
         #         {
         #           "accessId": "xssssss",
@@ -78239,7 +78344,7 @@ class UpdateDataSourceRequest(TeaModel):
         #           "tag": "public"
         #         }
         # 
-        # *   MySQL
+        # *   mysql
         # 
         #         {
         #           "database": "xsaxsa",
@@ -78251,7 +78356,7 @@ class UpdateDataSourceRequest(TeaModel):
         #           "username": "xsaxsa"
         #         }
         # 
-        # *   RDS
+        # *   rds
         # 
         #         {
         #           "configType": 1,
@@ -78263,7 +78368,7 @@ class UpdateDataSourceRequest(TeaModel):
         #           "rdsOwnerId": "11111111"
         #         }
         # 
-        # *   OSS
+        # *   oss
         # 
         #         {
         #           "accessId": "sssssxx",
@@ -78273,7 +78378,7 @@ class UpdateDataSourceRequest(TeaModel):
         #           "tag": "public"
         #         }
         # 
-        # *   SQL Server
+        # *   sqlserver
         # 
         #         {
         #           "jdbcUrl": "jdbc:sqlserver://xsaxsa-xsaxsa.database.xxx.cn:123;DatabaseName=xsxs-xsxs",
@@ -78282,7 +78387,7 @@ class UpdateDataSourceRequest(TeaModel):
         #           "username": "sxaxacdacdd"
         #         }
         # 
-        # *   PolarDB
+        # *   polardb
         # 
         #         {
         #           "clusterId": "pc-sdadsadsa",
@@ -78294,7 +78399,7 @@ class UpdateDataSourceRequest(TeaModel):
         #           "username": "asdadsads"
         #         }
         # 
-        # *   Oracle
+        # *   oracle
         # 
         #         {
         #           "jdbcUrl": "jdbc:oracle:saaa:@xxxxx:1521:PROD",
@@ -78303,7 +78408,7 @@ class UpdateDataSourceRequest(TeaModel):
         #           "username": "sasfadfa"
         #         }
         # 
-        # *   MongoDB
+        # *   mongodb
         # 
         #         {
         #           "address": "[\\"xsaxxsa.mongodb.rds.aliyuncs.com:3717\\"]",
@@ -78313,7 +78418,7 @@ class UpdateDataSourceRequest(TeaModel):
         #           "username": "dsadsadas"
         #         }
         # 
-        # *   EMR
+        # *   emr
         # 
         #         {
         #           "accessId": "xsaxsa",
@@ -78329,7 +78434,7 @@ class UpdateDataSourceRequest(TeaModel):
         #           "emrProjectId": "FP-sdadsad"
         #         }
         # 
-        # *   PostgreSQL
+        # *   postgresql
         # 
         #         {
         #           "jdbcUrl": "jdbc:postgresql://xxxx:1921/ssss",
@@ -78338,7 +78443,7 @@ class UpdateDataSourceRequest(TeaModel):
         #           "username": "sdsasda"
         #         }
         # 
-        # *   AnalyticDB for MySQL
+        # *   analyticdb_for_mysql
         # 
         #         {
         #           "instanceId": "am-sadsada",
@@ -78348,7 +78453,7 @@ class UpdateDataSourceRequest(TeaModel):
         #           "connectionString": "am-xssxsxs.ads.aliyuncs.com:3306"
         #         }
         # 
-        # *   HybridDB for PostgreSQL
+        # *   hybriddb_for_postgresql
         # 
         #         {
         #           "connectionString": "gp-xsaxsaxa-master.gpdbmaster.rds.aliyuncs.com",
@@ -78360,7 +78465,7 @@ class UpdateDataSourceRequest(TeaModel):
         #           "username": "sadsad"
         #         }
         # 
-        # *   Hologres
+        # *   holo
         # 
         #         {
         #           "accessId": "xsaxsaxs",
@@ -78370,7 +78475,7 @@ class UpdateDataSourceRequest(TeaModel):
         #           "tag": "aliyun"
         #         }
         # 
-        # *   Kafka
+        # *   kafka
         # 
         #         {
         #           "instanceId": "xsax-cn-xsaxsa",

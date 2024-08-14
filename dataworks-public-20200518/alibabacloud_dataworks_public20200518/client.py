@@ -7217,6 +7217,8 @@ class Client(OpenApiClient):
             query['DestEntityQualifiedName'] = request.dest_entity_qualified_name
         if not UtilClient.is_unset(request.relationship_guid):
             query['RelationshipGuid'] = request.relationship_guid
+        if not UtilClient.is_unset(request.relationship_type):
+            query['RelationshipType'] = request.relationship_type
         if not UtilClient.is_unset(request.src_entity_qualified_name):
             query['SrcEntityQualifiedName'] = request.src_entity_qualified_name
         req = open_api_models.OpenApiRequest(
@@ -7258,6 +7260,8 @@ class Client(OpenApiClient):
             query['DestEntityQualifiedName'] = request.dest_entity_qualified_name
         if not UtilClient.is_unset(request.relationship_guid):
             query['RelationshipGuid'] = request.relationship_guid
+        if not UtilClient.is_unset(request.relationship_type):
+            query['RelationshipType'] = request.relationship_type
         if not UtilClient.is_unset(request.src_entity_qualified_name):
             query['SrcEntityQualifiedName'] = request.src_entity_qualified_name
         req = open_api_models.OpenApiRequest(

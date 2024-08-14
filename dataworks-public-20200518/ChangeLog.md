@@ -1,3 +1,7 @@
+2024-08-14 Version: 6.0.1
+- Update API DeleteLineageRelation: add param RelationshipType.
+
+
 2024-07-31 Version: 6.0.0
 - Support API ListClusterConfigs.
 - Support API ListClusters.
