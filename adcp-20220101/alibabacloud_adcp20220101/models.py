@@ -179,15 +179,15 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The ID of the new resource group.
+        # The ID of the new resource group. You can view the available resource groups in the Resource Management console.
         # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
-        # The resource ID. If ResourceType=cluster, the resource ID is ClusterId.
+        # The ID of the resource. The value of this parameter varies with the resource type. For example, if you set ResourceType to cluster, this parameter specifies a cluster ID.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the resource. Only cluster are supported. Set the value to cluster.
+        # The resource type. Set the value to cluster.
         self.resource_type = resource_type
 
     def validate(self):
@@ -338,6 +338,9 @@ class CreateHubClusterRequest(TeaModel):
         self.region_id = region_id
         # The Resource Group ID.
         self.resource_group_id = resource_group_id
+        # The tags.
+        # 
+        # You can specify at most 20 tags in each call.
         self.tag = tag
         # The ID of the vSwitch.
         # 
@@ -480,6 +483,9 @@ class CreateHubClusterShrinkRequest(TeaModel):
         self.region_id = region_id
         # The Resource Group ID.
         self.resource_group_id = resource_group_id
+        # The tags.
+        # 
+        # You can specify at most 20 tags in each call.
         self.tag_shrink = tag_shrink
         # The ID of the vSwitch.
         # 
@@ -2328,7 +2334,7 @@ class DescribeHubClusterKubeconfigRequest(TeaModel):
         cluster_id: str = None,
         private_ip_address: bool = None,
     ):
-        # The ID of the master instance.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
@@ -2445,7 +2451,7 @@ class DescribeHubClusterLogsRequest(TeaModel):
         self,
         cluster_id: str = None,
     ):
-        # The ID of the master instance.
+        # The ID of the Fleet instance. You can call the [DescribeHubClusters](https://help.aliyun.com/document_detail/424404.html) operation to query the created Fleet instances.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
@@ -2478,13 +2484,17 @@ class DescribeHubClusterLogsResponseBodyLogs(TeaModel):
         creation_time: str = None,
         log_level: str = None,
     ):
-        # The ID of the master instance.
+        # The ID of the Fleet instance.
         self.cluster_id = cluster_id
-        # A log of the master instance.
+        # The log of the Fleet instance.
         self.cluster_log = cluster_log
-        # The time when the log was created. Format: <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z (UTC time).
+        # The time when the log was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The severity level of the log. Valid values: - error: errors. - warn: warnings. - info: information.
+        # The log level. Valid values:
+        # 
+        # *   error
+        # *   warn
+        # *   info
         self.log_level = log_level
 
     def validate(self):
@@ -2525,9 +2535,9 @@ class DescribeHubClusterLogsResponseBody(TeaModel):
         logs: List[DescribeHubClusterLogsResponseBodyLogs] = None,
         request_id: str = None,
     ):
-        # Brief information about operation logs.
+        # The details of operations logs.
         self.logs = logs
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2614,6 +2624,7 @@ class DescribeHubClustersRequest(TeaModel):
         self.profile = profile
         # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -2663,6 +2674,7 @@ class DescribeHubClustersShrinkRequest(TeaModel):
         self.profile = profile
         # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The tags.
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -2702,7 +2714,7 @@ class DescribeHubClustersResponseBodyClustersApiServer(TeaModel):
     ):
         # The elastic IP address (EIP) ID.
         self.api_server_eip_id = api_server_eip_id
-        # Indicates whether public endpoint is enabled for the API server. Valid values:
+        # Indicates whether the public endpoint is enabled for the API server. Valid values:
         # 
         # *   true
         # *   false
@@ -2744,7 +2756,9 @@ class DescribeHubClustersResponseBodyClustersClusterInfoTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -2789,36 +2803,37 @@ class DescribeHubClustersResponseBodyClustersClusterInfo(TeaModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The specification of the cluster.
+        # The specifications of the cluster.
         # 
-        # *   Only ack.pro.small is returned.
+        # *   Only ack.pro.small may be returned.
         self.cluster_spec = cluster_spec
         # The time when the cluster was created.
         self.creation_time = creation_time
         # The error message that is returned if the cluster failed to be created.
         self.error_message = error_message
-        # The name of the cluster.
+        # The cluster name.
         self.name = name
         # The configurations of the cluster.
         self.profile = profile
         # The region ID.
         self.region_id = region_id
-        # The ID of Resource Group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The status of the cluster. Valid values:
+        # The state of the cluster. Valid values:
         # 
         # *   initial: The cluster is being initialized.
         # *   failed: The cluster failed to be created.
         # *   running: The cluster is running
-        # *   inactive: The cluster is pending.
+        # *   inactive: The cluster is not activated.
         # *   deleting: The cluster is being deleted.
         # *   delete_failed: The cluster failed to be deleted.
         # *   deleted: The cluster is deleted.
         self.state = state
+        # The tags.
         self.tags = tags
-        # The time when the cluster was last updated.
+        # The time when the cluster was last modified.
         self.update_time = update_time
-        # The Kubernetes version of the cluster.
+        # The version of the cluster.
         self.version = version
 
     def validate(self):
@@ -2901,11 +2916,11 @@ class DescribeHubClustersResponseBodyClustersConditions(TeaModel):
         status: str = None,
         type: str = None,
     ):
-        # The error message that is returned.
+        # The error message returned.
         self.message = message
         # The reason for the deletion condition.
         self.reason = reason
-        # The status of the cluster that the deletion condition indicates. Valid values:
+        # The state of the cluster that the deletion condition indicates. Valid values:
         # 
         # *   True: The cluster cannot be deleted.
         # *   False: The cluster can be deleted.
@@ -3130,7 +3145,7 @@ class DescribeHubClustersResponseBodyClusters(TeaModel):
         self.cluster_info = cluster_info
         # The deletion conditions of the cluster.
         self.conditions = conditions
-        # The endpoint of the cluster.
+        # The endpoints of the cluster.
         self.endpoints = endpoints
         # The logging configurations.
         self.log_config = log_config
@@ -4903,9 +4918,9 @@ class DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstancesPolicyClus
         cluster_id: str = None,
         status: str = None,
     ):
-        # The ID of the associated cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # The status of the deployment.
+        # The status of the policy deployment.
         self.status = status
 
     def validate(self):
@@ -4948,9 +4963,9 @@ class DescribePolicyInstancesStatusResponseBodyPoliciesPolicyInstances(TeaModel)
         self.policy_clusters = policy_clusters
         # The description of the policy.
         self.policy_description = policy_description
-        # The number of policy instances that are deployed. If this parameter is empty, no policy instance is deployed.
+        # The number of policy instances that are deployed. If this parameter is left empty, no policy instance is deployed.
         self.policy_instances_count = policy_instances_count
-        # The name of the policy.
+        # The policy name.
         self.policy_name = policy_name
         # The severity level of the policy.
         self.policy_severity = policy_severity
@@ -5011,7 +5026,7 @@ class DescribePolicyInstancesStatusResponseBodyPoliciesSeverityInfo(TeaModel):
     ):
         # The number of policy instances.
         self.severity_count = severity_count
-        # The severity level.
+        # The severity level of the policy.
         self.severity_type = severity_type
 
     def validate(self):
@@ -5632,25 +5647,35 @@ class GrantUserPermissionRequest(TeaModel):
         role_type: str = None,
         user_id: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
         # The entity to which the permissions are granted. A value of `true` indicates that the permissions are granted to a RAM user. A value of `false` indicates that the permissions are granted to a RAM role.
         self.is_ram_role = is_ram_role
-        # The namespace to which the permissions are scoped. By default, this parameter is empty when you set RoleType to cluster.
-        self.namespace = namespace
-        # The predefined role that you want to assign. Valid values:
+        # The name of the namespace.
         # 
-        # *   admin: the administrator role.
-        # *   dev: the developer role.
+        # *   If **RoleType** is set to **cluster**, you do not need to specify this parameter.
+        # *   This parameter is required if **RoleType** is set to **namespace**.
+        # *   If **RoleType** is set to **namespace** and **RoleName** is set to **gitops-dev**, this parameter is required and must be set to **argocd**.
+        self.namespace = namespace
+        # The predefined role. Valid values:
+        # 
+        # *   admin: administrator
+        # *   dev: developer
+        # *   gitops-dev: GitOps developer. The parameter is available only for Fleet instances.
+        # 
+        # The value of RoleName and that of RoleType must meet the following requirements:
+        # 
+        # *   If **RoleType** is set to **cluster**, this parameter must be set to **admin**.
+        # *   If **RoleType** is set to **namespace**, this parameter must be set to **dev** or **gitops-dev**.
         # 
         # This parameter is required.
         self.role_name = role_name
         # The authorization type. Valid values:
         # 
-        # *   cluster: specifies that the permissions are scoped to a master instance.
-        # *   namespace: specifies that the permissions are scoped to a namespace of a cluster.
+        # *   cluster: The permissions are granted to a cluster.
+        # *   namespace: The permissions are granted to a namespace of a cluster.
         # 
         # This parameter is required.
         self.role_type = role_type

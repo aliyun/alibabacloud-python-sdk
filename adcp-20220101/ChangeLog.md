@@ -1,3 +1,6 @@
+2024-08-14 Version: 3.1.1
+- Support Tags.
+
 2024-05-13 Version: 3.1.0
 - Support API ChangeResourceGroup.
 - Update API CreateHubCluster: add param Tag.
