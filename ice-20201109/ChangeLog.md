@@ -1,3 +1,7 @@
+2024-08-14 Version: 3.3.1
+- Update API ListMediaProducingJobs: add param ProjectId.
+
+
 2024-08-01 Version: 3.3.0
 - Support API ListEditingProjects.
 

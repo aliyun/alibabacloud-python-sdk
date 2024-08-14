@@ -29801,6 +29801,7 @@ class ListMediaProducingJobsRequest(TeaModel):
         master_job_id: str = None,
         max_results: int = None,
         next_token: str = None,
+        project_id: str = None,
         sort_by: str = None,
         start_time: str = None,
         status: str = None,
@@ -29811,6 +29812,7 @@ class ListMediaProducingJobsRequest(TeaModel):
         self.master_job_id = master_job_id
         self.max_results = max_results
         self.next_token = next_token
+        self.project_id = project_id
         self.sort_by = sort_by
         self.start_time = start_time
         self.status = status
@@ -29836,6 +29838,8 @@ class ListMediaProducingJobsRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         if self.start_time is not None:
@@ -29858,6 +29862,8 @@ class ListMediaProducingJobsRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         if m.get('StartTime') is not None:
