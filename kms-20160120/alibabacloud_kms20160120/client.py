@@ -73,6 +73,8 @@ class Client(OpenApiClient):
             query['Algorithm'] = request.algorithm
         if not UtilClient.is_unset(request.ciphertext_blob):
             query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.key_id):
             query['KeyId'] = request.key_id
         if not UtilClient.is_unset(request.key_version_id):
@@ -130,6 +132,8 @@ class Client(OpenApiClient):
             query['Algorithm'] = request.algorithm
         if not UtilClient.is_unset(request.ciphertext_blob):
             query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.key_id):
             query['KeyId'] = request.key_id
         if not UtilClient.is_unset(request.key_version_id):
@@ -231,6 +235,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.algorithm):
             query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.key_id):
             query['KeyId'] = request.key_id
         if not UtilClient.is_unset(request.key_version_id):
@@ -288,6 +294,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.algorithm):
             query['Algorithm'] = request.algorithm
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.key_id):
             query['KeyId'] = request.key_id
         if not UtilClient.is_unset(request.key_version_id):
@@ -385,6 +393,8 @@ class Client(OpenApiClient):
             query['Algorithm'] = request.algorithm
         if not UtilClient.is_unset(request.digest):
             query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.key_id):
             query['KeyId'] = request.key_id
         if not UtilClient.is_unset(request.key_version_id):
@@ -434,6 +444,8 @@ class Client(OpenApiClient):
             query['Algorithm'] = request.algorithm
         if not UtilClient.is_unset(request.digest):
             query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.key_id):
             query['KeyId'] = request.key_id
         if not UtilClient.is_unset(request.key_version_id):
@@ -523,6 +535,8 @@ class Client(OpenApiClient):
             query['Algorithm'] = request.algorithm
         if not UtilClient.is_unset(request.digest):
             query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.key_id):
             query['KeyId'] = request.key_id
         if not UtilClient.is_unset(request.key_version_id):
@@ -584,6 +598,8 @@ class Client(OpenApiClient):
             query['Algorithm'] = request.algorithm
         if not UtilClient.is_unset(request.digest):
             query['Digest'] = request.digest
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.key_id):
             query['KeyId'] = request.key_id
         if not UtilClient.is_unset(request.key_version_id):
@@ -2865,6 +2881,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ciphertext_blob):
             query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.encryption_context_shrink):
             query['EncryptionContext'] = request.encryption_context_shrink
         req = open_api_models.OpenApiRequest(
@@ -2912,6 +2930,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ciphertext_blob):
             query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.encryption_context_shrink):
             query['EncryptionContext'] = request.encryption_context_shrink
         req = open_api_models.OpenApiRequest(
@@ -5053,6 +5073,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.encryption_context_shrink):
             query['EncryptionContext'] = request.encryption_context_shrink
         if not UtilClient.is_unset(request.key_id):
@@ -5104,6 +5126,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.encryption_context_shrink):
             query['EncryptionContext'] = request.encryption_context_shrink
         if not UtilClient.is_unset(request.key_id):
@@ -5186,6 +5210,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ciphertext_blob):
             query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.encryption_context_shrink):
             query['EncryptionContext'] = request.encryption_context_shrink
         if not UtilClient.is_unset(request.public_key_blob):
@@ -5240,6 +5266,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ciphertext_blob):
             query['CiphertextBlob'] = request.ciphertext_blob
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.encryption_context_shrink):
             query['EncryptionContext'] = request.encryption_context_shrink
         if not UtilClient.is_unset(request.public_key_blob):
@@ -5323,6 +5351,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.encryption_context_shrink):
             query['EncryptionContext'] = request.encryption_context_shrink
         if not UtilClient.is_unset(request.key_id):
@@ -5384,6 +5414,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.encryption_context_shrink):
             query['EncryptionContext'] = request.encryption_context_shrink
         if not UtilClient.is_unset(request.key_id):
@@ -5486,6 +5518,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.encryption_context_shrink):
             query['EncryptionContext'] = request.encryption_context_shrink
         if not UtilClient.is_unset(request.key_id):
@@ -5548,6 +5582,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.encryption_context_shrink):
             query['EncryptionContext'] = request.encryption_context_shrink
         if not UtilClient.is_unset(request.key_id):
@@ -5652,6 +5688,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.encryption_context_shrink):
             query['EncryptionContext'] = request.encryption_context_shrink
         if not UtilClient.is_unset(request.key_id):
@@ -5708,6 +5746,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.encryption_context):
             request.encryption_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_context, 'EncryptionContext', 'json')
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.encryption_context_shrink):
             query['EncryptionContext'] = request.encryption_context_shrink
         if not UtilClient.is_unset(request.key_id):
@@ -6393,6 +6433,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.key_id):
             query['KeyId'] = request.key_id
         if not UtilClient.is_unset(request.key_version_id):
@@ -6434,6 +6476,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.key_id):
             query['KeyId'] = request.key_id
         if not UtilClient.is_unset(request.key_version_id):
@@ -6739,6 +6783,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.fetch_extended_config):
             query['FetchExtendedConfig'] = request.fetch_extended_config
         if not UtilClient.is_unset(request.secret_name):
@@ -6790,6 +6836,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.fetch_extended_config):
             query['FetchExtendedConfig'] = request.fetch_extended_config
         if not UtilClient.is_unset(request.secret_name):
@@ -8780,6 +8828,8 @@ class Client(OpenApiClient):
             query['DestinationEncryptionContext'] = request.destination_encryption_context_shrink
         if not UtilClient.is_unset(request.destination_key_id):
             query['DestinationKeyId'] = request.destination_key_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.source_encryption_algorithm):
             query['SourceEncryptionAlgorithm'] = request.source_encryption_algorithm
         if not UtilClient.is_unset(request.source_encryption_context_shrink):
@@ -8846,6 +8896,8 @@ class Client(OpenApiClient):
             query['DestinationEncryptionContext'] = request.destination_encryption_context_shrink
         if not UtilClient.is_unset(request.destination_key_id):
             query['DestinationKeyId'] = request.destination_key_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.source_encryption_algorithm):
             query['SourceEncryptionAlgorithm'] = request.source_encryption_algorithm
         if not UtilClient.is_unset(request.source_encryption_context_shrink):

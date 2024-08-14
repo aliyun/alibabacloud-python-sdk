@@ -9,6 +9,7 @@ class AsymmetricDecryptRequest(TeaModel):
         self,
         algorithm: str = None,
         ciphertext_blob: str = None,
+        dry_run: str = None,
         key_id: str = None,
         key_version_id: str = None,
     ):
@@ -23,6 +24,7 @@ class AsymmetricDecryptRequest(TeaModel):
         # 
         # This parameter is required.
         self.ciphertext_blob = ciphertext_blob
+        self.dry_run = dry_run
         # The ID of the customer master key (CMK). The ID must be globally unique.
         # 
         # >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Alias overview](https://help.aliyun.com/document_detail/68522.html).
@@ -47,6 +49,8 @@ class AsymmetricDecryptRequest(TeaModel):
             result['Algorithm'] = self.algorithm
         if self.ciphertext_blob is not None:
             result['CiphertextBlob'] = self.ciphertext_blob
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.key_id is not None:
             result['KeyId'] = self.key_id
         if self.key_version_id is not None:
@@ -59,6 +63,8 @@ class AsymmetricDecryptRequest(TeaModel):
             self.algorithm = m.get('Algorithm')
         if m.get('CiphertextBlob') is not None:
             self.ciphertext_blob = m.get('CiphertextBlob')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('KeyId') is not None:
             self.key_id = m.get('KeyId')
         if m.get('KeyVersionId') is not None:
@@ -162,6 +168,7 @@ class AsymmetricEncryptRequest(TeaModel):
     def __init__(
         self,
         algorithm: str = None,
+        dry_run: str = None,
         key_id: str = None,
         key_version_id: str = None,
         plaintext: str = None,
@@ -170,6 +177,7 @@ class AsymmetricEncryptRequest(TeaModel):
         # 
         # This parameter is required.
         self.algorithm = algorithm
+        self.dry_run = dry_run
         # The ID of the CMK. The ID must be globally unique.
         # 
         # >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Overview of aliases](https://help.aliyun.com/document_detail/68522.html).
@@ -198,6 +206,8 @@ class AsymmetricEncryptRequest(TeaModel):
         result = dict()
         if self.algorithm is not None:
             result['Algorithm'] = self.algorithm
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.key_id is not None:
             result['KeyId'] = self.key_id
         if self.key_version_id is not None:
@@ -210,6 +220,8 @@ class AsymmetricEncryptRequest(TeaModel):
         m = m or dict()
         if m.get('Algorithm') is not None:
             self.algorithm = m.get('Algorithm')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('KeyId') is not None:
             self.key_id = m.get('KeyId')
         if m.get('KeyVersionId') is not None:
@@ -316,6 +328,7 @@ class AsymmetricSignRequest(TeaModel):
         self,
         algorithm: str = None,
         digest: str = None,
+        dry_run: str = None,
         key_id: str = None,
         key_version_id: str = None,
     ):
@@ -327,6 +340,7 @@ class AsymmetricSignRequest(TeaModel):
         # 
         # This parameter is required.
         self.digest = digest
+        self.dry_run = dry_run
         # The operation that you want to perform. Set the value to **AsymmetricSign**.
         # 
         # This parameter is required.
@@ -351,6 +365,8 @@ class AsymmetricSignRequest(TeaModel):
             result['Algorithm'] = self.algorithm
         if self.digest is not None:
             result['Digest'] = self.digest
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.key_id is not None:
             result['KeyId'] = self.key_id
         if self.key_version_id is not None:
@@ -363,6 +379,8 @@ class AsymmetricSignRequest(TeaModel):
             self.algorithm = m.get('Algorithm')
         if m.get('Digest') is not None:
             self.digest = m.get('Digest')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('KeyId') is not None:
             self.key_id = m.get('KeyId')
         if m.get('KeyVersionId') is not None:
@@ -472,6 +490,7 @@ class AsymmetricVerifyRequest(TeaModel):
         self,
         algorithm: str = None,
         digest: str = None,
+        dry_run: str = None,
         key_id: str = None,
         key_version_id: str = None,
         value: str = None,
@@ -486,6 +505,7 @@ class AsymmetricVerifyRequest(TeaModel):
         # 
         # This parameter is required.
         self.digest = digest
+        self.dry_run = dry_run
         # The ID of the CMK. The ID must be globally unique.
         # 
         # >  You can also set this parameter to an alias that is bound to the CMK. For more information, see [Overview of aliases](https://help.aliyun.com/document_detail/68522.html).
@@ -516,6 +536,8 @@ class AsymmetricVerifyRequest(TeaModel):
             result['Algorithm'] = self.algorithm
         if self.digest is not None:
             result['Digest'] = self.digest
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.key_id is not None:
             result['KeyId'] = self.key_id
         if self.key_version_id is not None:
@@ -530,6 +552,8 @@ class AsymmetricVerifyRequest(TeaModel):
             self.algorithm = m.get('Algorithm')
         if m.get('Digest') is not None:
             self.digest = m.get('Digest')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('KeyId') is not None:
             self.key_id = m.get('KeyId')
         if m.get('KeyVersionId') is not None:
@@ -3585,6 +3609,7 @@ class DecryptRequest(TeaModel):
     def __init__(
         self,
         ciphertext_blob: str = None,
+        dry_run: str = None,
         encryption_context: Dict[str, Any] = None,
     ):
         # The ciphertext that you want to decrypt.
@@ -3597,6 +3622,7 @@ class DecryptRequest(TeaModel):
         # 
         # This parameter is required.
         self.ciphertext_blob = ciphertext_blob
+        self.dry_run = dry_run
         # The JSON string that consists of key-value pairs.
         # 
         # >  If you specify the EncryptionContext parameter when you call the [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [Encrypt](https://help.aliyun.com/document_detail/28949.html), or [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html) operation, you must specify the same context when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
@@ -3613,6 +3639,8 @@ class DecryptRequest(TeaModel):
         result = dict()
         if self.ciphertext_blob is not None:
             result['CiphertextBlob'] = self.ciphertext_blob
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.encryption_context is not None:
             result['EncryptionContext'] = self.encryption_context
         return result
@@ -3621,6 +3649,8 @@ class DecryptRequest(TeaModel):
         m = m or dict()
         if m.get('CiphertextBlob') is not None:
             self.ciphertext_blob = m.get('CiphertextBlob')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('EncryptionContext') is not None:
             self.encryption_context = m.get('EncryptionContext')
         return self
@@ -3630,6 +3660,7 @@ class DecryptShrinkRequest(TeaModel):
     def __init__(
         self,
         ciphertext_blob: str = None,
+        dry_run: str = None,
         encryption_context_shrink: str = None,
     ):
         # The ciphertext that you want to decrypt.
@@ -3642,6 +3673,7 @@ class DecryptShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.ciphertext_blob = ciphertext_blob
+        self.dry_run = dry_run
         # The JSON string that consists of key-value pairs.
         # 
         # >  If you specify the EncryptionContext parameter when you call the [GenerateDataKey](https://help.aliyun.com/document_detail/28948.html), [Encrypt](https://help.aliyun.com/document_detail/28949.html), or [GenerateDataKeyWithoutPlaintext](https://help.aliyun.com/document_detail/134043.html) operation, you must specify the same context when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
@@ -3658,6 +3690,8 @@ class DecryptShrinkRequest(TeaModel):
         result = dict()
         if self.ciphertext_blob is not None:
             result['CiphertextBlob'] = self.ciphertext_blob
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.encryption_context_shrink is not None:
             result['EncryptionContext'] = self.encryption_context_shrink
         return result
@@ -3666,6 +3700,8 @@ class DecryptShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('CiphertextBlob') is not None:
             self.ciphertext_blob = m.get('CiphertextBlob')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('EncryptionContext') is not None:
             self.encryption_context_shrink = m.get('EncryptionContext')
         return self
@@ -6429,10 +6465,12 @@ class EnableKeyResponse(TeaModel):
 class EncryptRequest(TeaModel):
     def __init__(
         self,
+        dry_run: str = None,
         encryption_context: Dict[str, Any] = None,
         key_id: str = None,
         plaintext: str = None,
     ):
+        self.dry_run = dry_run
         # A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context = encryption_context
         # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
@@ -6453,6 +6491,8 @@ class EncryptRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.encryption_context is not None:
             result['EncryptionContext'] = self.encryption_context
         if self.key_id is not None:
@@ -6463,6 +6503,8 @@ class EncryptRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('EncryptionContext') is not None:
             self.encryption_context = m.get('EncryptionContext')
         if m.get('KeyId') is not None:
@@ -6475,10 +6517,12 @@ class EncryptRequest(TeaModel):
 class EncryptShrinkRequest(TeaModel):
     def __init__(
         self,
+        dry_run: str = None,
         encryption_context_shrink: str = None,
         key_id: str = None,
         plaintext: str = None,
     ):
+        self.dry_run = dry_run
         # A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context_shrink = encryption_context_shrink
         # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
@@ -6499,6 +6543,8 @@ class EncryptShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.encryption_context_shrink is not None:
             result['EncryptionContext'] = self.encryption_context_shrink
         if self.key_id is not None:
@@ -6509,6 +6555,8 @@ class EncryptShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('EncryptionContext') is not None:
             self.encryption_context_shrink = m.get('EncryptionContext')
         if m.get('KeyId') is not None:
@@ -6612,6 +6660,7 @@ class ExportDataKeyRequest(TeaModel):
     def __init__(
         self,
         ciphertext_blob: str = None,
+        dry_run: str = None,
         encryption_context: Dict[str, Any] = None,
         public_key_blob: str = None,
         wrapping_algorithm: str = None,
@@ -6621,6 +6670,7 @@ class ExportDataKeyRequest(TeaModel):
         # 
         # This parameter is required.
         self.ciphertext_blob = ciphertext_blob
+        self.dry_run = dry_run
         # A JSON string that consists of key-value pairs. If you specify this parameter when you use a CMK to encrypt the data key, an equivalent value is required here. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context = encryption_context
         # A Base64-encoded public key.
@@ -6658,6 +6708,8 @@ class ExportDataKeyRequest(TeaModel):
         result = dict()
         if self.ciphertext_blob is not None:
             result['CiphertextBlob'] = self.ciphertext_blob
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.encryption_context is not None:
             result['EncryptionContext'] = self.encryption_context
         if self.public_key_blob is not None:
@@ -6672,6 +6724,8 @@ class ExportDataKeyRequest(TeaModel):
         m = m or dict()
         if m.get('CiphertextBlob') is not None:
             self.ciphertext_blob = m.get('CiphertextBlob')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('EncryptionContext') is not None:
             self.encryption_context = m.get('EncryptionContext')
         if m.get('PublicKeyBlob') is not None:
@@ -6687,6 +6741,7 @@ class ExportDataKeyShrinkRequest(TeaModel):
     def __init__(
         self,
         ciphertext_blob: str = None,
+        dry_run: str = None,
         encryption_context_shrink: str = None,
         public_key_blob: str = None,
         wrapping_algorithm: str = None,
@@ -6696,6 +6751,7 @@ class ExportDataKeyShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.ciphertext_blob = ciphertext_blob
+        self.dry_run = dry_run
         # A JSON string that consists of key-value pairs. If you specify this parameter when you use a CMK to encrypt the data key, an equivalent value is required here. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context_shrink = encryption_context_shrink
         # A Base64-encoded public key.
@@ -6733,6 +6789,8 @@ class ExportDataKeyShrinkRequest(TeaModel):
         result = dict()
         if self.ciphertext_blob is not None:
             result['CiphertextBlob'] = self.ciphertext_blob
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.encryption_context_shrink is not None:
             result['EncryptionContext'] = self.encryption_context_shrink
         if self.public_key_blob is not None:
@@ -6747,6 +6805,8 @@ class ExportDataKeyShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('CiphertextBlob') is not None:
             self.ciphertext_blob = m.get('CiphertextBlob')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('EncryptionContext') is not None:
             self.encryption_context_shrink = m.get('EncryptionContext')
         if m.get('PublicKeyBlob') is not None:
@@ -6853,6 +6913,7 @@ class ExportDataKeyResponse(TeaModel):
 class GenerateAndExportDataKeyRequest(TeaModel):
     def __init__(
         self,
+        dry_run: str = None,
         encryption_context: Dict[str, Any] = None,
         key_id: str = None,
         key_spec: str = None,
@@ -6861,6 +6922,7 @@ class GenerateAndExportDataKeyRequest(TeaModel):
         wrapping_algorithm: str = None,
         wrapping_key_spec: str = None,
     ):
+        self.dry_run = dry_run
         # A JSON string of key-value pairs. If you specify this parameter here, an equivalent value is required when you decrypt or re-encrypt the data key. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context = encryption_context
         # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
@@ -6913,6 +6975,8 @@ class GenerateAndExportDataKeyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.encryption_context is not None:
             result['EncryptionContext'] = self.encryption_context
         if self.key_id is not None:
@@ -6931,6 +6995,8 @@ class GenerateAndExportDataKeyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('EncryptionContext') is not None:
             self.encryption_context = m.get('EncryptionContext')
         if m.get('KeyId') is not None:
@@ -6951,6 +7017,7 @@ class GenerateAndExportDataKeyRequest(TeaModel):
 class GenerateAndExportDataKeyShrinkRequest(TeaModel):
     def __init__(
         self,
+        dry_run: str = None,
         encryption_context_shrink: str = None,
         key_id: str = None,
         key_spec: str = None,
@@ -6959,6 +7026,7 @@ class GenerateAndExportDataKeyShrinkRequest(TeaModel):
         wrapping_algorithm: str = None,
         wrapping_key_spec: str = None,
     ):
+        self.dry_run = dry_run
         # A JSON string of key-value pairs. If you specify this parameter here, an equivalent value is required when you decrypt or re-encrypt the data key. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context_shrink = encryption_context_shrink
         # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
@@ -7011,6 +7079,8 @@ class GenerateAndExportDataKeyShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.encryption_context_shrink is not None:
             result['EncryptionContext'] = self.encryption_context_shrink
         if self.key_id is not None:
@@ -7029,6 +7099,8 @@ class GenerateAndExportDataKeyShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('EncryptionContext') is not None:
             self.encryption_context_shrink = m.get('EncryptionContext')
         if m.get('KeyId') is not None:
@@ -7148,11 +7220,13 @@ class GenerateAndExportDataKeyResponse(TeaModel):
 class GenerateDataKeyRequest(TeaModel):
     def __init__(
         self,
+        dry_run: str = None,
         encryption_context: Dict[str, Any] = None,
         key_id: str = None,
         key_spec: str = None,
         number_of_bytes: int = None,
     ):
+        self.dry_run = dry_run
         # The JSON string that consists of key-value pairs.
         # 
         # If you specify this parameter, an equivalent value is required when you call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
@@ -7189,6 +7263,8 @@ class GenerateDataKeyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.encryption_context is not None:
             result['EncryptionContext'] = self.encryption_context
         if self.key_id is not None:
@@ -7201,6 +7277,8 @@ class GenerateDataKeyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('EncryptionContext') is not None:
             self.encryption_context = m.get('EncryptionContext')
         if m.get('KeyId') is not None:
@@ -7215,11 +7293,13 @@ class GenerateDataKeyRequest(TeaModel):
 class GenerateDataKeyShrinkRequest(TeaModel):
     def __init__(
         self,
+        dry_run: str = None,
         encryption_context_shrink: str = None,
         key_id: str = None,
         key_spec: str = None,
         number_of_bytes: int = None,
     ):
+        self.dry_run = dry_run
         # The JSON string that consists of key-value pairs.
         # 
         # If you specify this parameter, an equivalent value is required when you call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
@@ -7256,6 +7336,8 @@ class GenerateDataKeyShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.encryption_context_shrink is not None:
             result['EncryptionContext'] = self.encryption_context_shrink
         if self.key_id is not None:
@@ -7268,6 +7350,8 @@ class GenerateDataKeyShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('EncryptionContext') is not None:
             self.encryption_context_shrink = m.get('EncryptionContext')
         if m.get('KeyId') is not None:
@@ -7381,11 +7465,13 @@ class GenerateDataKeyResponse(TeaModel):
 class GenerateDataKeyWithoutPlaintextRequest(TeaModel):
     def __init__(
         self,
+        dry_run: str = None,
         encryption_context: Dict[str, Any] = None,
         key_id: str = None,
         key_spec: str = None,
         number_of_bytes: int = None,
     ):
+        self.dry_run = dry_run
         # A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context = encryption_context
         # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see Use aliases.
@@ -7415,6 +7501,8 @@ class GenerateDataKeyWithoutPlaintextRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.encryption_context is not None:
             result['EncryptionContext'] = self.encryption_context
         if self.key_id is not None:
@@ -7427,6 +7515,8 @@ class GenerateDataKeyWithoutPlaintextRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('EncryptionContext') is not None:
             self.encryption_context = m.get('EncryptionContext')
         if m.get('KeyId') is not None:
@@ -7441,11 +7531,13 @@ class GenerateDataKeyWithoutPlaintextRequest(TeaModel):
 class GenerateDataKeyWithoutPlaintextShrinkRequest(TeaModel):
     def __init__(
         self,
+        dry_run: str = None,
         encryption_context_shrink: str = None,
         key_id: str = None,
         key_spec: str = None,
         number_of_bytes: int = None,
     ):
+        self.dry_run = dry_run
         # A JSON string that consists of key-value pairs. If you specify this parameter, an equivalent value is required when you call the Decrypt operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
         self.encryption_context_shrink = encryption_context_shrink
         # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see Use aliases.
@@ -7475,6 +7567,8 @@ class GenerateDataKeyWithoutPlaintextShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.encryption_context_shrink is not None:
             result['EncryptionContext'] = self.encryption_context_shrink
         if self.key_id is not None:
@@ -7487,6 +7581,8 @@ class GenerateDataKeyWithoutPlaintextShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('EncryptionContext') is not None:
             self.encryption_context_shrink = m.get('EncryptionContext')
         if m.get('KeyId') is not None:
@@ -8466,9 +8562,11 @@ class GetParametersForImportResponse(TeaModel):
 class GetPublicKeyRequest(TeaModel):
     def __init__(
         self,
+        dry_run: str = None,
         key_id: str = None,
         key_version_id: str = None,
     ):
+        self.dry_run = dry_run
         # The globally unique ID of the CMK. You can also set this parameter to an alias that is bound to the CMK. For more information, see [Use aliases](https://help.aliyun.com/document_detail/68522.html).
         # 
         # This parameter is required.
@@ -8487,6 +8585,8 @@ class GetPublicKeyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.key_id is not None:
             result['KeyId'] = self.key_id
         if self.key_version_id is not None:
@@ -8495,6 +8595,8 @@ class GetPublicKeyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('KeyId') is not None:
             self.key_id = m.get('KeyId')
         if m.get('KeyVersionId') is not None:
@@ -8886,11 +8988,13 @@ class GetSecretPolicyResponse(TeaModel):
 class GetSecretValueRequest(TeaModel):
     def __init__(
         self,
+        dry_run: str = None,
         fetch_extended_config: bool = None,
         secret_name: str = None,
         version_id: str = None,
         version_stage: str = None,
     ):
+        self.dry_run = dry_run
         # Specifies whether to obtain the extended configuration of the secret. Valid values:
         # 
         # *   true
@@ -8922,6 +9026,8 @@ class GetSecretValueRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.fetch_extended_config is not None:
             result['FetchExtendedConfig'] = self.fetch_extended_config
         if self.secret_name is not None:
@@ -8934,39 +9040,14 @@ class GetSecretValueRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('FetchExtendedConfig') is not None:
             self.fetch_extended_config = m.get('FetchExtendedConfig')
         if m.get('SecretName') is not None:
             self.secret_name = m.get('SecretName')
         if m.get('VersionId') is not None:
             self.version_id = m.get('VersionId')
-        if m.get('VersionStage') is not None:
-            self.version_stage = m.get('VersionStage')
-        return self
-
-
-class GetSecretValueResponseBodyVersionStages(TeaModel):
-    def __init__(
-        self,
-        version_stage: List[str] = None,
-    ):
-        self.version_stage = version_stage
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.version_stage is not None:
-            result['VersionStage'] = self.version_stage
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
         if m.get('VersionStage') is not None:
             self.version_stage = m.get('VersionStage')
         return self
@@ -8987,7 +9068,7 @@ class GetSecretValueResponseBody(TeaModel):
         secret_name: str = None,
         secret_type: str = None,
         version_id: str = None,
-        version_stages: GetSecretValueResponseBodyVersionStages = None,
+        version_stages: List[str] = None,
     ):
         # Indicates whether automatic rotation is enabled. Valid values:
         # 
@@ -9052,8 +9133,7 @@ class GetSecretValueResponseBody(TeaModel):
         self.version_stages = version_stages
 
     def validate(self):
-        if self.version_stages:
-            self.version_stages.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -9086,7 +9166,7 @@ class GetSecretValueResponseBody(TeaModel):
         if self.version_id is not None:
             result['VersionId'] = self.version_id
         if self.version_stages is not None:
-            result['VersionStages'] = self.version_stages.to_map()
+            result['VersionStages'] = self.version_stages
         return result
 
     def from_map(self, m: dict = None):
@@ -9116,8 +9196,7 @@ class GetSecretValueResponseBody(TeaModel):
         if m.get('VersionId') is not None:
             self.version_id = m.get('VersionId')
         if m.get('VersionStages') is not None:
-            temp_model = GetSecretValueResponseBodyVersionStages()
-            self.version_stages = temp_model.from_map(m['VersionStages'])
+            self.version_stages = m.get('VersionStages')
         return self
 
 
@@ -12589,6 +12668,7 @@ class ReEncryptRequest(TeaModel):
         ciphertext_blob: str = None,
         destination_encryption_context: Dict[str, Any] = None,
         destination_key_id: str = None,
+        dry_run: str = None,
         source_encryption_algorithm: str = None,
         source_encryption_context: Dict[str, Any] = None,
         source_key_id: str = None,
@@ -12609,6 +12689,7 @@ class ReEncryptRequest(TeaModel):
         # 
         # This parameter is required.
         self.destination_key_id = destination_key_id
+        self.dry_run = dry_run
         # The encryption algorithm based on which the public key is used to encrypt the ciphertext specified by CiphertextBlob. For more information about encryption algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).
         # 
         # Valid values:
@@ -12649,6 +12730,8 @@ class ReEncryptRequest(TeaModel):
             result['DestinationEncryptionContext'] = self.destination_encryption_context
         if self.destination_key_id is not None:
             result['DestinationKeyId'] = self.destination_key_id
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.source_encryption_algorithm is not None:
             result['SourceEncryptionAlgorithm'] = self.source_encryption_algorithm
         if self.source_encryption_context is not None:
@@ -12667,6 +12750,8 @@ class ReEncryptRequest(TeaModel):
             self.destination_encryption_context = m.get('DestinationEncryptionContext')
         if m.get('DestinationKeyId') is not None:
             self.destination_key_id = m.get('DestinationKeyId')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('SourceEncryptionAlgorithm') is not None:
             self.source_encryption_algorithm = m.get('SourceEncryptionAlgorithm')
         if m.get('SourceEncryptionContext') is not None:
@@ -12684,6 +12769,7 @@ class ReEncryptShrinkRequest(TeaModel):
         ciphertext_blob: str = None,
         destination_encryption_context_shrink: str = None,
         destination_key_id: str = None,
+        dry_run: str = None,
         source_encryption_algorithm: str = None,
         source_encryption_context_shrink: str = None,
         source_key_id: str = None,
@@ -12704,6 +12790,7 @@ class ReEncryptShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.destination_key_id = destination_key_id
+        self.dry_run = dry_run
         # The encryption algorithm based on which the public key is used to encrypt the ciphertext specified by CiphertextBlob. For more information about encryption algorithms, see [AsymmetricDecrypt](https://help.aliyun.com/document_detail/148130.html).
         # 
         # Valid values:
@@ -12744,6 +12831,8 @@ class ReEncryptShrinkRequest(TeaModel):
             result['DestinationEncryptionContext'] = self.destination_encryption_context_shrink
         if self.destination_key_id is not None:
             result['DestinationKeyId'] = self.destination_key_id
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.source_encryption_algorithm is not None:
             result['SourceEncryptionAlgorithm'] = self.source_encryption_algorithm
         if self.source_encryption_context_shrink is not None:
@@ -12762,6 +12851,8 @@ class ReEncryptShrinkRequest(TeaModel):
             self.destination_encryption_context_shrink = m.get('DestinationEncryptionContext')
         if m.get('DestinationKeyId') is not None:
             self.destination_key_id = m.get('DestinationKeyId')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('SourceEncryptionAlgorithm') is not None:
             self.source_encryption_algorithm = m.get('SourceEncryptionAlgorithm')
         if m.get('SourceEncryptionContext') is not None:
