@@ -2807,6 +2807,7 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
         end_time: str = None,
         executor_id: str = None,
         host_name: List[str] = None,
+        image: str = None,
         ip_address: List[str] = None,
         job_id: str = None,
         job_name: str = None,
@@ -2819,6 +2820,7 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
         self.end_time = end_time
         self.executor_id = executor_id
         self.host_name = host_name
+        self.image = image
         self.ip_address = ip_address
         self.job_id = job_id
         self.job_name = job_name
@@ -2845,6 +2847,8 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
             result['ExecutorId'] = self.executor_id
         if self.host_name is not None:
             result['HostName'] = self.host_name
+        if self.image is not None:
+            result['Image'] = self.image
         if self.ip_address is not None:
             result['IpAddress'] = self.ip_address
         if self.job_id is not None:
@@ -2871,6 +2875,8 @@ class ListExecutorsResponseBodyExecutors(TeaModel):
             self.executor_id = m.get('ExecutorId')
         if m.get('HostName') is not None:
             self.host_name = m.get('HostName')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
         if m.get('IpAddress') is not None:
             self.ip_address = m.get('IpAddress')
         if m.get('JobId') is not None:
@@ -3317,12 +3323,76 @@ class ListJobExecutorsRequest(TeaModel):
         return self
 
 
+class ListJobExecutorsResponseBodyExecutorStatus(TeaModel):
+    def __init__(
+        self,
+        deleted: int = None,
+        exception: int = None,
+        failed: int = None,
+        initing: int = None,
+        pending: int = None,
+        running: int = None,
+        succeeded: int = None,
+    ):
+        self.deleted = deleted
+        self.exception = exception
+        self.failed = failed
+        self.initing = initing
+        self.pending = pending
+        self.running = running
+        self.succeeded = succeeded
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deleted is not None:
+            result['Deleted'] = self.deleted
+        if self.exception is not None:
+            result['Exception'] = self.exception
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.initing is not None:
+            result['Initing'] = self.initing
+        if self.pending is not None:
+            result['Pending'] = self.pending
+        if self.running is not None:
+            result['Running'] = self.running
+        if self.succeeded is not None:
+            result['Succeeded'] = self.succeeded
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Deleted') is not None:
+            self.deleted = m.get('Deleted')
+        if m.get('Exception') is not None:
+            self.exception = m.get('Exception')
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Initing') is not None:
+            self.initing = m.get('Initing')
+        if m.get('Pending') is not None:
+            self.pending = m.get('Pending')
+        if m.get('Running') is not None:
+            self.running = m.get('Running')
+        if m.get('Succeeded') is not None:
+            self.succeeded = m.get('Succeeded')
+        return self
+
+
 class ListJobExecutorsResponseBodyExecutors(TeaModel):
     def __init__(
         self,
         array_index: int = None,
         create_time: str = None,
         end_time: str = None,
+        executor_id: str = None,
         host_name: List[str] = None,
         ip_address: List[str] = None,
         status: str = None,
@@ -3331,6 +3401,7 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
         self.array_index = array_index
         self.create_time = create_time
         self.end_time = end_time
+        self.executor_id = executor_id
         self.host_name = host_name
         self.ip_address = ip_address
         self.status = status
@@ -3351,6 +3422,8 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
             result['CreateTime'] = self.create_time
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.executor_id is not None:
+            result['ExecutorId'] = self.executor_id
         if self.host_name is not None:
             result['HostName'] = self.host_name
         if self.ip_address is not None:
@@ -3369,6 +3442,8 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('ExecutorId') is not None:
+            self.executor_id = m.get('ExecutorId')
         if m.get('HostName') is not None:
             self.host_name = m.get('HostName')
         if m.get('IpAddress') is not None:
@@ -3383,6 +3458,7 @@ class ListJobExecutorsResponseBodyExecutors(TeaModel):
 class ListJobExecutorsResponseBody(TeaModel):
     def __init__(
         self,
+        executor_status: ListJobExecutorsResponseBodyExecutorStatus = None,
         executors: List[ListJobExecutorsResponseBodyExecutors] = None,
         job_id: str = None,
         page_number: str = None,
@@ -3391,6 +3467,7 @@ class ListJobExecutorsResponseBody(TeaModel):
         task_name: str = None,
         total_count: str = None,
     ):
+        self.executor_status = executor_status
         self.executors = executors
         self.job_id = job_id
         self.page_number = page_number
@@ -3400,6 +3477,8 @@ class ListJobExecutorsResponseBody(TeaModel):
         self.total_count = total_count
 
     def validate(self):
+        if self.executor_status:
+            self.executor_status.validate()
         if self.executors:
             for k in self.executors:
                 if k:
@@ -3411,6 +3490,8 @@ class ListJobExecutorsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.executor_status is not None:
+            result['ExecutorStatus'] = self.executor_status.to_map()
         result['Executors'] = []
         if self.executors is not None:
             for k in self.executors:
@@ -3431,6 +3512,9 @@ class ListJobExecutorsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExecutorStatus') is not None:
+            temp_model = ListJobExecutorsResponseBodyExecutorStatus()
+            self.executor_status = temp_model.from_map(m['ExecutorStatus'])
         self.executors = []
         if m.get('Executors') is not None:
             for k in m.get('Executors'):
