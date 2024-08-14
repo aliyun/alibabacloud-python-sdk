@@ -1,3 +1,10 @@
+2024-08-14 Version: 1.3.10
+- Update API CreateDBResourceGroup: add param Engine.
+- Update API CreateDBResourceGroup: add param EngineParams.
+- Update API DescribeDBResourceGroup: update response param.
+- Update API ModifyDBResourceGroup: add param EngineParams.
+
+
 2024-08-09 Version: 1.3.9
 - Generated python 2021-12-01 for adb.
 

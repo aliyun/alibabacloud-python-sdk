@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import List, Dict, Any
 
 
 class Adb4MysqlSparkDiagnosisInfo(TeaModel):
@@ -3229,6 +3229,8 @@ class CreateDBResourceGroupRequest(TeaModel):
         cluster_size_resource: str = None,
         dbcluster_id: str = None,
         enable_spot: bool = None,
+        engine: str = None,
+        engine_params: Dict[str, Any] = None,
         group_name: str = None,
         group_type: str = None,
         max_cluster_count: int = None,
@@ -3251,6 +3253,8 @@ class CreateDBResourceGroupRequest(TeaModel):
         # *   **True**\
         # *   **False**\
         self.enable_spot = enable_spot
+        self.engine = engine
+        self.engine_params = engine_params
         # The name of the resource group.
         # 
         # *   The name can be up to 255 characters in length.
@@ -3309,6 +3313,10 @@ class CreateDBResourceGroupRequest(TeaModel):
             result['DBClusterId'] = self.dbcluster_id
         if self.enable_spot is not None:
             result['EnableSpot'] = self.enable_spot
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.engine_params is not None:
+            result['EngineParams'] = self.engine_params
         if self.group_name is not None:
             result['GroupName'] = self.group_name
         if self.group_type is not None:
@@ -3339,6 +3347,10 @@ class CreateDBResourceGroupRequest(TeaModel):
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('EnableSpot') is not None:
             self.enable_spot = m.get('EnableSpot')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('EngineParams') is not None:
+            self.engine_params = m.get('EngineParams')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
         if m.get('GroupType') is not None:
@@ -3368,6 +3380,8 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
         cluster_size_resource: str = None,
         dbcluster_id: str = None,
         enable_spot: bool = None,
+        engine: str = None,
+        engine_params_shrink: str = None,
         group_name: str = None,
         group_type: str = None,
         max_cluster_count: int = None,
@@ -3390,6 +3404,8 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
         # *   **True**\
         # *   **False**\
         self.enable_spot = enable_spot
+        self.engine = engine
+        self.engine_params_shrink = engine_params_shrink
         # The name of the resource group.
         # 
         # *   The name can be up to 255 characters in length.
@@ -3445,6 +3461,10 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
             result['DBClusterId'] = self.dbcluster_id
         if self.enable_spot is not None:
             result['EnableSpot'] = self.enable_spot
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.engine_params_shrink is not None:
+            result['EngineParams'] = self.engine_params_shrink
         if self.group_name is not None:
             result['GroupName'] = self.group_name
         if self.group_type is not None:
@@ -3473,6 +3493,10 @@ class CreateDBResourceGroupShrinkRequest(TeaModel):
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('EnableSpot') is not None:
             self.enable_spot = m.get('EnableSpot')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('EngineParams') is not None:
+            self.engine_params_shrink = m.get('EngineParams')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
         if m.get('GroupType') is not None:
@@ -13499,11 +13523,14 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
         create_time: str = None,
         elastic_min_compute_resource: str = None,
         enable_spot: str = None,
+        engine: str = None,
+        engine_params: Dict[str, Any] = None,
         group_name: str = None,
         group_type: str = None,
         group_users: str = None,
         max_cluster_count: int = None,
         max_compute_resource: str = None,
+        message: str = None,
         min_cluster_count: int = None,
         min_compute_resource: str = None,
         rules: List[DescribeDBResourceGroupResponseBodyGroupsInfoRules] = None,
@@ -13526,6 +13553,8 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
         # 
         # The True value is returned only for job resource groups.
         self.enable_spot = enable_spot
+        self.engine = engine
+        self.engine_params = engine_params
         # The name of the resource group.
         self.group_name = group_name
         # The type of the resource group. Valid values:
@@ -13541,6 +13570,8 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
         self.max_cluster_count = max_cluster_count
         # The maximum amount of reserved computing resources. Unit: ACUs.
         self.max_compute_resource = max_compute_resource
+        # This parameter is required.
+        self.message = message
         # A reserved parameter.
         self.min_cluster_count = min_cluster_count
         # The minimum amount of reserved computing resources. Unit: AnalyticDB compute units (ACUs).
@@ -13580,6 +13611,10 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
             result['ElasticMinComputeResource'] = self.elastic_min_compute_resource
         if self.enable_spot is not None:
             result['EnableSpot'] = self.enable_spot
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.engine_params is not None:
+            result['EngineParams'] = self.engine_params
         if self.group_name is not None:
             result['GroupName'] = self.group_name
         if self.group_type is not None:
@@ -13590,6 +13625,8 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
             result['MaxClusterCount'] = self.max_cluster_count
         if self.max_compute_resource is not None:
             result['MaxComputeResource'] = self.max_compute_resource
+        if self.message is not None:
+            result['Message'] = self.message
         if self.min_cluster_count is not None:
             result['MinClusterCount'] = self.min_cluster_count
         if self.min_compute_resource is not None:
@@ -13618,6 +13655,10 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
             self.elastic_min_compute_resource = m.get('ElasticMinComputeResource')
         if m.get('EnableSpot') is not None:
             self.enable_spot = m.get('EnableSpot')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('EngineParams') is not None:
+            self.engine_params = m.get('EngineParams')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
         if m.get('GroupType') is not None:
@@ -13628,6 +13669,8 @@ class DescribeDBResourceGroupResponseBodyGroupsInfo(TeaModel):
             self.max_cluster_count = m.get('MaxClusterCount')
         if m.get('MaxComputeResource') is not None:
             self.max_compute_resource = m.get('MaxComputeResource')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('MinClusterCount') is not None:
             self.min_cluster_count = m.get('MinClusterCount')
         if m.get('MinComputeResource') is not None:
@@ -27152,6 +27195,7 @@ class ModifyDBResourceGroupRequest(TeaModel):
         cluster_size_resource: str = None,
         dbcluster_id: str = None,
         enable_spot: bool = None,
+        engine_params: Dict[str, Any] = None,
         group_name: str = None,
         group_type: str = None,
         max_cluster_count: int = None,
@@ -27174,6 +27218,7 @@ class ModifyDBResourceGroupRequest(TeaModel):
         # *   **True**\
         # *   **False**\
         self.enable_spot = enable_spot
+        self.engine_params = engine_params
         # The name of the resource group.
         # 
         # > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the name of a resource group in a cluster.
@@ -27230,6 +27275,8 @@ class ModifyDBResourceGroupRequest(TeaModel):
             result['DBClusterId'] = self.dbcluster_id
         if self.enable_spot is not None:
             result['EnableSpot'] = self.enable_spot
+        if self.engine_params is not None:
+            result['EngineParams'] = self.engine_params
         if self.group_name is not None:
             result['GroupName'] = self.group_name
         if self.group_type is not None:
@@ -27260,6 +27307,8 @@ class ModifyDBResourceGroupRequest(TeaModel):
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('EnableSpot') is not None:
             self.enable_spot = m.get('EnableSpot')
+        if m.get('EngineParams') is not None:
+            self.engine_params = m.get('EngineParams')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
         if m.get('GroupType') is not None:
@@ -27289,6 +27338,7 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
         cluster_size_resource: str = None,
         dbcluster_id: str = None,
         enable_spot: bool = None,
+        engine_params_shrink: str = None,
         group_name: str = None,
         group_type: str = None,
         max_cluster_count: int = None,
@@ -27311,6 +27361,7 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
         # *   **True**\
         # *   **False**\
         self.enable_spot = enable_spot
+        self.engine_params_shrink = engine_params_shrink
         # The name of the resource group.
         # 
         # > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the name of a resource group in a cluster.
@@ -27364,6 +27415,8 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
             result['DBClusterId'] = self.dbcluster_id
         if self.enable_spot is not None:
             result['EnableSpot'] = self.enable_spot
+        if self.engine_params_shrink is not None:
+            result['EngineParams'] = self.engine_params_shrink
         if self.group_name is not None:
             result['GroupName'] = self.group_name
         if self.group_type is not None:
@@ -27392,6 +27445,8 @@ class ModifyDBResourceGroupShrinkRequest(TeaModel):
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('EnableSpot') is not None:
             self.enable_spot = m.get('EnableSpot')
+        if m.get('EngineParams') is not None:
+            self.engine_params_shrink = m.get('EngineParams')
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
         if m.get('GroupType') is not None:

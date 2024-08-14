@@ -1068,6 +1068,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = adb_20211201_models.CreateDBResourceGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.engine_params):
+            request.engine_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.engine_params, 'EngineParams', 'json')
         if not UtilClient.is_unset(tmp_req.rules):
             request.rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
         query = {}
@@ -1079,6 +1081,10 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.enable_spot):
             query['EnableSpot'] = request.enable_spot
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_params_shrink):
+            query['EngineParams'] = request.engine_params_shrink
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.group_type):
@@ -1131,6 +1137,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = adb_20211201_models.CreateDBResourceGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.engine_params):
+            request.engine_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.engine_params, 'EngineParams', 'json')
         if not UtilClient.is_unset(tmp_req.rules):
             request.rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
         query = {}
@@ -1142,6 +1150,10 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.enable_spot):
             query['EnableSpot'] = request.enable_spot
+        if not UtilClient.is_unset(request.engine):
+            query['Engine'] = request.engine
+        if not UtilClient.is_unset(request.engine_params_shrink):
+            query['EngineParams'] = request.engine_params_shrink
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.group_type):
@@ -13816,6 +13828,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = adb_20211201_models.ModifyDBResourceGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.engine_params):
+            request.engine_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.engine_params, 'EngineParams', 'json')
         if not UtilClient.is_unset(tmp_req.rules):
             request.rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
         query = {}
@@ -13827,6 +13841,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.enable_spot):
             query['EnableSpot'] = request.enable_spot
+        if not UtilClient.is_unset(request.engine_params_shrink):
+            query['EngineParams'] = request.engine_params_shrink
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.group_type):
@@ -13879,6 +13895,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = adb_20211201_models.ModifyDBResourceGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.engine_params):
+            request.engine_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.engine_params, 'EngineParams', 'json')
         if not UtilClient.is_unset(tmp_req.rules):
             request.rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
         query = {}
@@ -13890,6 +13908,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.enable_spot):
             query['EnableSpot'] = request.enable_spot
+        if not UtilClient.is_unset(request.engine_params_shrink):
+            query['EngineParams'] = request.engine_params_shrink
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.group_type):
