@@ -1,3 +1,16 @@
+2024-08-14 Version: 1.5.2
+- Update API ListInstances: add param GpuType.
+- Update API ListInstances: add param ImageName.
+- Update API ListInstances: add param MaxCpu.
+- Update API ListInstances: add param MaxGpu.
+- Update API ListInstances: add param MaxGpuMemory.
+- Update API ListInstances: add param MaxMemory.
+- Update API ListInstances: add param MinCpu.
+- Update API ListInstances: add param MinGpu.
+- Update API ListInstances: add param MinGpuMemory.
+- Update API ListInstances: add param MinMemory.
+
+
 2024-08-01 Version: 1.5.1
 - Update API CreateInstance: update param body.
 - Update API UpdateInstance: update param body.

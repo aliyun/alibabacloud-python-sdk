@@ -2519,12 +2519,32 @@ class Client(OpenApiClient):
             query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.create_user_id):
             query['CreateUserId'] = request.create_user_id
+        if not UtilClient.is_unset(request.gpu_type):
+            query['GpuType'] = request.gpu_type
+        if not UtilClient.is_unset(request.image_name):
+            query['ImageName'] = request.image_name
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.labels_shrink):
             query['Labels'] = request.labels_shrink
+        if not UtilClient.is_unset(request.max_cpu):
+            query['MaxCpu'] = request.max_cpu
+        if not UtilClient.is_unset(request.max_gpu):
+            query['MaxGpu'] = request.max_gpu
+        if not UtilClient.is_unset(request.max_gpu_memory):
+            query['MaxGpuMemory'] = request.max_gpu_memory
+        if not UtilClient.is_unset(request.max_memory):
+            query['MaxMemory'] = request.max_memory
+        if not UtilClient.is_unset(request.min_cpu):
+            query['MinCpu'] = request.min_cpu
+        if not UtilClient.is_unset(request.min_gpu):
+            query['MinGpu'] = request.min_gpu
+        if not UtilClient.is_unset(request.min_gpu_memory):
+            query['MinGpuMemory'] = request.min_gpu_memory
+        if not UtilClient.is_unset(request.min_memory):
+            query['MinMemory'] = request.min_memory
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
@@ -2585,12 +2605,32 @@ class Client(OpenApiClient):
             query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.create_user_id):
             query['CreateUserId'] = request.create_user_id
+        if not UtilClient.is_unset(request.gpu_type):
+            query['GpuType'] = request.gpu_type
+        if not UtilClient.is_unset(request.image_name):
+            query['ImageName'] = request.image_name
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.labels_shrink):
             query['Labels'] = request.labels_shrink
+        if not UtilClient.is_unset(request.max_cpu):
+            query['MaxCpu'] = request.max_cpu
+        if not UtilClient.is_unset(request.max_gpu):
+            query['MaxGpu'] = request.max_gpu
+        if not UtilClient.is_unset(request.max_gpu_memory):
+            query['MaxGpuMemory'] = request.max_gpu_memory
+        if not UtilClient.is_unset(request.max_memory):
+            query['MaxMemory'] = request.max_memory
+        if not UtilClient.is_unset(request.min_cpu):
+            query['MinCpu'] = request.min_cpu
+        if not UtilClient.is_unset(request.min_gpu):
+            query['MinGpu'] = request.min_gpu
+        if not UtilClient.is_unset(request.min_gpu_memory):
+            query['MinGpuMemory'] = request.min_gpu_memory
+        if not UtilClient.is_unset(request.min_memory):
+            query['MinMemory'] = request.min_memory
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):

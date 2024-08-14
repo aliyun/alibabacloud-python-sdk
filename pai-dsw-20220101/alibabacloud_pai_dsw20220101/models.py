@@ -5474,9 +5474,19 @@ class ListInstancesRequest(TeaModel):
         accelerator_type: str = None,
         accessibility: str = None,
         create_user_id: str = None,
+        gpu_type: str = None,
+        image_name: str = None,
         instance_id: str = None,
         instance_name: str = None,
         labels: Dict[str, Any] = None,
+        max_cpu: str = None,
+        max_gpu: str = None,
+        max_gpu_memory: str = None,
+        max_memory: str = None,
+        min_cpu: str = None,
+        min_gpu: str = None,
+        min_gpu_memory: str = None,
+        min_memory: str = None,
         order: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -5489,9 +5499,19 @@ class ListInstancesRequest(TeaModel):
         self.accelerator_type = accelerator_type
         self.accessibility = accessibility
         self.create_user_id = create_user_id
+        self.gpu_type = gpu_type
+        self.image_name = image_name
         self.instance_id = instance_id
         self.instance_name = instance_name
         self.labels = labels
+        self.max_cpu = max_cpu
+        self.max_gpu = max_gpu
+        self.max_gpu_memory = max_gpu_memory
+        self.max_memory = max_memory
+        self.min_cpu = min_cpu
+        self.min_gpu = min_gpu
+        self.min_gpu_memory = min_gpu_memory
+        self.min_memory = min_memory
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
@@ -5516,12 +5536,32 @@ class ListInstancesRequest(TeaModel):
             result['Accessibility'] = self.accessibility
         if self.create_user_id is not None:
             result['CreateUserId'] = self.create_user_id
+        if self.gpu_type is not None:
+            result['GpuType'] = self.gpu_type
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
         if self.labels is not None:
             result['Labels'] = self.labels
+        if self.max_cpu is not None:
+            result['MaxCpu'] = self.max_cpu
+        if self.max_gpu is not None:
+            result['MaxGpu'] = self.max_gpu
+        if self.max_gpu_memory is not None:
+            result['MaxGpuMemory'] = self.max_gpu_memory
+        if self.max_memory is not None:
+            result['MaxMemory'] = self.max_memory
+        if self.min_cpu is not None:
+            result['MinCpu'] = self.min_cpu
+        if self.min_gpu is not None:
+            result['MinGpu'] = self.min_gpu
+        if self.min_gpu_memory is not None:
+            result['MinGpuMemory'] = self.min_gpu_memory
+        if self.min_memory is not None:
+            result['MinMemory'] = self.min_memory
         if self.order is not None:
             result['Order'] = self.order
         if self.page_number is not None:
@@ -5548,12 +5588,32 @@ class ListInstancesRequest(TeaModel):
             self.accessibility = m.get('Accessibility')
         if m.get('CreateUserId') is not None:
             self.create_user_id = m.get('CreateUserId')
+        if m.get('GpuType') is not None:
+            self.gpu_type = m.get('GpuType')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
+        if m.get('MaxCpu') is not None:
+            self.max_cpu = m.get('MaxCpu')
+        if m.get('MaxGpu') is not None:
+            self.max_gpu = m.get('MaxGpu')
+        if m.get('MaxGpuMemory') is not None:
+            self.max_gpu_memory = m.get('MaxGpuMemory')
+        if m.get('MaxMemory') is not None:
+            self.max_memory = m.get('MaxMemory')
+        if m.get('MinCpu') is not None:
+            self.min_cpu = m.get('MinCpu')
+        if m.get('MinGpu') is not None:
+            self.min_gpu = m.get('MinGpu')
+        if m.get('MinGpuMemory') is not None:
+            self.min_gpu_memory = m.get('MinGpuMemory')
+        if m.get('MinMemory') is not None:
+            self.min_memory = m.get('MinMemory')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('PageNumber') is not None:
@@ -5579,9 +5639,19 @@ class ListInstancesShrinkRequest(TeaModel):
         accelerator_type: str = None,
         accessibility: str = None,
         create_user_id: str = None,
+        gpu_type: str = None,
+        image_name: str = None,
         instance_id: str = None,
         instance_name: str = None,
         labels_shrink: str = None,
+        max_cpu: str = None,
+        max_gpu: str = None,
+        max_gpu_memory: str = None,
+        max_memory: str = None,
+        min_cpu: str = None,
+        min_gpu: str = None,
+        min_gpu_memory: str = None,
+        min_memory: str = None,
         order: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -5594,9 +5664,19 @@ class ListInstancesShrinkRequest(TeaModel):
         self.accelerator_type = accelerator_type
         self.accessibility = accessibility
         self.create_user_id = create_user_id
+        self.gpu_type = gpu_type
+        self.image_name = image_name
         self.instance_id = instance_id
         self.instance_name = instance_name
         self.labels_shrink = labels_shrink
+        self.max_cpu = max_cpu
+        self.max_gpu = max_gpu
+        self.max_gpu_memory = max_gpu_memory
+        self.max_memory = max_memory
+        self.min_cpu = min_cpu
+        self.min_gpu = min_gpu
+        self.min_gpu_memory = min_gpu_memory
+        self.min_memory = min_memory
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
@@ -5621,12 +5701,32 @@ class ListInstancesShrinkRequest(TeaModel):
             result['Accessibility'] = self.accessibility
         if self.create_user_id is not None:
             result['CreateUserId'] = self.create_user_id
+        if self.gpu_type is not None:
+            result['GpuType'] = self.gpu_type
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
         if self.labels_shrink is not None:
             result['Labels'] = self.labels_shrink
+        if self.max_cpu is not None:
+            result['MaxCpu'] = self.max_cpu
+        if self.max_gpu is not None:
+            result['MaxGpu'] = self.max_gpu
+        if self.max_gpu_memory is not None:
+            result['MaxGpuMemory'] = self.max_gpu_memory
+        if self.max_memory is not None:
+            result['MaxMemory'] = self.max_memory
+        if self.min_cpu is not None:
+            result['MinCpu'] = self.min_cpu
+        if self.min_gpu is not None:
+            result['MinGpu'] = self.min_gpu
+        if self.min_gpu_memory is not None:
+            result['MinGpuMemory'] = self.min_gpu_memory
+        if self.min_memory is not None:
+            result['MinMemory'] = self.min_memory
         if self.order is not None:
             result['Order'] = self.order
         if self.page_number is not None:
@@ -5653,12 +5753,32 @@ class ListInstancesShrinkRequest(TeaModel):
             self.accessibility = m.get('Accessibility')
         if m.get('CreateUserId') is not None:
             self.create_user_id = m.get('CreateUserId')
+        if m.get('GpuType') is not None:
+            self.gpu_type = m.get('GpuType')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
         if m.get('Labels') is not None:
             self.labels_shrink = m.get('Labels')
+        if m.get('MaxCpu') is not None:
+            self.max_cpu = m.get('MaxCpu')
+        if m.get('MaxGpu') is not None:
+            self.max_gpu = m.get('MaxGpu')
+        if m.get('MaxGpuMemory') is not None:
+            self.max_gpu_memory = m.get('MaxGpuMemory')
+        if m.get('MaxMemory') is not None:
+            self.max_memory = m.get('MaxMemory')
+        if m.get('MinCpu') is not None:
+            self.min_cpu = m.get('MinCpu')
+        if m.get('MinGpu') is not None:
+            self.min_gpu = m.get('MinGpu')
+        if m.get('MinGpuMemory') is not None:
+            self.min_gpu_memory = m.get('MinGpuMemory')
+        if m.get('MinMemory') is not None:
+            self.min_memory = m.get('MinMemory')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('PageNumber') is not None:
