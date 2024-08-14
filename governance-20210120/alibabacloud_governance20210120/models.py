@@ -2865,6 +2865,39 @@ class ListEvaluationResultsRequest(TeaModel):
         return self
 
 
+class ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+    ):
+        self.code = code
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
 class ListEvaluationResultsResponseBodyResultsMetricResultsResourcesSummary(TeaModel):
     def __init__(
         self,
@@ -2895,6 +2928,7 @@ class ListEvaluationResultsResponseBodyResultsMetricResultsResourcesSummary(TeaM
 class ListEvaluationResultsResponseBodyResultsMetricResults(TeaModel):
     def __init__(
         self,
+        error_info: ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo = None,
         evaluation_time: str = None,
         id: str = None,
         resources_summary: ListEvaluationResultsResponseBodyResultsMetricResultsResourcesSummary = None,
@@ -2902,6 +2936,7 @@ class ListEvaluationResultsResponseBodyResultsMetricResults(TeaModel):
         risk: str = None,
         status: str = None,
     ):
+        self.error_info = error_info
         self.evaluation_time = evaluation_time
         self.id = id
         self.resources_summary = resources_summary
@@ -2910,6 +2945,8 @@ class ListEvaluationResultsResponseBodyResultsMetricResults(TeaModel):
         self.status = status
 
     def validate(self):
+        if self.error_info:
+            self.error_info.validate()
         if self.resources_summary:
             self.resources_summary.validate()
 
@@ -2919,6 +2956,8 @@ class ListEvaluationResultsResponseBodyResultsMetricResults(TeaModel):
             return _map
 
         result = dict()
+        if self.error_info is not None:
+            result['ErrorInfo'] = self.error_info.to_map()
         if self.evaluation_time is not None:
             result['EvaluationTime'] = self.evaluation_time
         if self.id is not None:
@@ -2935,6 +2974,9 @@ class ListEvaluationResultsResponseBodyResultsMetricResults(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ErrorInfo') is not None:
+            temp_model = ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo()
+            self.error_info = temp_model.from_map(m['ErrorInfo'])
         if m.get('EvaluationTime') is not None:
             self.evaluation_time = m.get('EvaluationTime')
         if m.get('Id') is not None:
