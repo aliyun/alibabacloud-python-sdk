@@ -1,3 +1,7 @@
+2024-08-14 Version: 4.7.3
+- Update API UpgradeCluster: update param body.
+
+
 2024-08-06 Version: 4.7.2
 - Update API GetClusterAuditProject: update response param.
 

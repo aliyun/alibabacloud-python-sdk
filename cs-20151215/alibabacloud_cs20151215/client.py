@@ -15513,6 +15513,8 @@ class Client(OpenApiClient):
             body['master_only'] = request.master_only
         if not UtilClient.is_unset(request.next_version):
             body['next_version'] = request.next_version
+        if not UtilClient.is_unset(request.rolling_policy):
+            body['rolling_policy'] = request.rolling_policy
         if not UtilClient.is_unset(request.version):
             body['version'] = request.version
         req = open_api_models.OpenApiRequest(
@@ -15558,6 +15560,8 @@ class Client(OpenApiClient):
             body['master_only'] = request.master_only
         if not UtilClient.is_unset(request.next_version):
             body['next_version'] = request.next_version
+        if not UtilClient.is_unset(request.rolling_policy):
+            body['rolling_policy'] = request.rolling_policy
         if not UtilClient.is_unset(request.version):
             body['version'] = request.version
         req = open_api_models.OpenApiRequest(

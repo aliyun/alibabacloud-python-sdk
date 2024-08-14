@@ -27893,12 +27893,40 @@ class UpdateUserPermissionsResponse(TeaModel):
         return self
 
 
+class UpgradeClusterRequestRollingPolicy(TeaModel):
+    def __init__(
+        self,
+        max_parallelism: int = None,
+    ):
+        self.max_parallelism = max_parallelism
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_parallelism is not None:
+            result['max_parallelism'] = self.max_parallelism
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('max_parallelism') is not None:
+            self.max_parallelism = m.get('max_parallelism')
+        return self
+
+
 class UpgradeClusterRequest(TeaModel):
     def __init__(
         self,
         component_name: str = None,
         master_only: bool = None,
         next_version: str = None,
+        rolling_policy: UpgradeClusterRequestRollingPolicy = None,
         version: str = None,
     ):
         # This parameter is discontinued.
@@ -27910,11 +27938,13 @@ class UpgradeClusterRequest(TeaModel):
         self.master_only = master_only
         # The Kubernetes version to which you want to update the cluster.
         self.next_version = next_version
+        self.rolling_policy = rolling_policy
         # This parameter is discontinued. Specify the Kubernetes version by using the next_version parameter.
         self.version = version
 
     def validate(self):
-        pass
+        if self.rolling_policy:
+            self.rolling_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -27928,6 +27958,8 @@ class UpgradeClusterRequest(TeaModel):
             result['master_only'] = self.master_only
         if self.next_version is not None:
             result['next_version'] = self.next_version
+        if self.rolling_policy is not None:
+            result['rolling_policy'] = self.rolling_policy.to_map()
         if self.version is not None:
             result['version'] = self.version
         return result
@@ -27940,6 +27972,9 @@ class UpgradeClusterRequest(TeaModel):
             self.master_only = m.get('master_only')
         if m.get('next_version') is not None:
             self.next_version = m.get('next_version')
+        if m.get('rolling_policy') is not None:
+            temp_model = UpgradeClusterRequestRollingPolicy()
+            self.rolling_policy = temp_model.from_map(m['rolling_policy'])
         if m.get('version') is not None:
             self.version = m.get('version')
         return self
