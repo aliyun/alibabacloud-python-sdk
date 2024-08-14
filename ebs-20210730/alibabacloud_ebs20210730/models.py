@@ -12,13 +12,19 @@ class AddDiskReplicaPairRequest(TeaModel):
         replica_group_id: str = None,
         replica_pair_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The region ID of the replication pair-consistent group.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the replication pair-consistent group.
+        # 
+        # This parameter is required.
         self.replica_group_id = replica_group_id
-        # The ID of the replication pair. You can call the [DescribeDiskReplicaPairs](~~354206~~) operation to query the IDs of existing replication pairs.
+        # The ID of the replication pair. You can call the [DescribeDiskReplicaPairs](https://help.aliyun.com/document_detail/354206.html) operation to query the IDs of existing replication pairs.
+        # 
+        # This parameter is required.
         self.replica_pair_id = replica_pair_id
 
     def validate(self):
@@ -199,13 +205,17 @@ class BindEnterpriseSnapshotPolicyRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The list of disks.
         self.disk_targets = disk_targets
         # The id of the policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
-        # The region ID . You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which snapshot policy is supported.
+        # The region ID . You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which snapshot policy is supported.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -387,19 +397,27 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The ID of the new resource group. You can view the available resource groups in the Resource Management console. For more information, see [View basic information of a resource group](~~151181~~).
+        # The ID of the new resource group. You can view the available resource groups in the Resource Management console. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # 
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
-        # The region ID of the resource. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        # The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource. For example, if you set ResourceType to diskreplicapair, set this parameter to the ID of a replication pair.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Valid values:
         # 
         # *   dedicatedblockstoragecluster: dedicated block storage cluster.
         # *   diskreplicapair: replication pair.
         # *   diskreplicagroup: replication pair-consistent group.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -514,11 +532,17 @@ class ClearPairDrillRequest(TeaModel):
         pair_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the drill. You can call the [DescribePairDrills](~~2584480~~) operation to query the disaster recovery drills that were performed on replication pairs in a specific region.
+        # The ID of the drill. You can call the [DescribePairDrills](https://help.aliyun.com/document_detail/2584480.html) operation to query the disaster recovery drills that were performed on replication pairs in a specific region.
+        # 
+        # This parameter is required.
         self.drill_id = drill_id
-        # The ID of the replication pair. You can call the [DescribeDiskReplicaPairs](~~354206~~) operation to query the most recent list of replication pairs, including replication pair IDs.
+        # The ID of the replication pair. You can call the [DescribeDiskReplicaPairs](https://help.aliyun.com/document_detail/354206.html) operation to query the most recent list of replication pairs, including replication pair IDs.
+        # 
+        # This parameter is required.
         self.pair_id = pair_id
-        # The region ID. You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which async replication is supported.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which async replication is supported.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -625,11 +649,17 @@ class ClearReplicaGroupDrillRequest(TeaModel):
         group_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the drill. You can call the [DescribeReplicaGroupDrills](~~2584481~~) operation to query disaster recovery drills that were performed on replication pairs in a specific region.
+        # The ID of the drill. You can call the [DescribeReplicaGroupDrills](https://help.aliyun.com/document_detail/2584481.html) operation to query disaster recovery drills that were performed on replication pairs in a specific region.
+        # 
+        # This parameter is required.
         self.drill_id = drill_id
-        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](~~426614~~) operation to query the most recent list of replication pair-consistent groups, including group IDs.
+        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](https://help.aliyun.com/document_detail/426614.html) operation to query the most recent list of replication pair-consistent groups, including group IDs.
+        # 
+        # This parameter is required.
         self.group_id = group_id
-        # The region ID. You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which async replication is supported.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which async replication is supported.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -735,15 +765,13 @@ class CreateDedicatedBlockStorageClusterRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N used for exact search of EBS resources. The tag key must be 1 to 128 characters in length. Valid values of N: 1 to 20.
+        # The key of tag N to add to the dedicated block storage cluster.
         # 
-        # The `Tag.N` parameter pair (Tag.N.Key and Tag.N.Value) is used for exact search of EBS resources that have specified tags added. Each tag is a key-value pair.
-        # 
-        # *   If you specify only `Tag.N.Key`, all EBS resources whose tags contain the specified tag key are returned.
-        # *   If you specify only `Tag.N.Value`, the `InvalidParameter.TagValue` error is returned.
-        # *   If you specify multiple tag key-value pairs at the same time, only EBS resources that match all tag key-value pairs are returned.
+        # This parameter is required.
         self.key = key
-        # The value of tag N to add to the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:` or contain `http://` or `https://`.
+        # The value of tag N to add to the dedicated block storage cluster.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -784,37 +812,44 @@ class CreateDedicatedBlockStorageClusterRequest(TeaModel):
         tag: List[CreateDedicatedBlockStorageClusterRequestTag] = None,
         type: str = None,
     ):
-        # The ID of the zone in which to create the dedicated block storage cluster. You can call the [DescribeZones](~~25610~~) operation to query the most recent zone list.
-        self.azone = azone
-        # The capacity of the dedicated block storage cluster. Valid values: 61440 to 2334720. Unit: GiB. 2,334,720 GiB is equal to 2,280 TiB. The capacity increases in a minimum increment of 12,288 GB.
+        # The ID of the zone in which to create the dedicated block storage cluster. You can call the [DescribeZones](https://help.aliyun.com/document_detail/25610.html) operation to query the most recent zone list.
         # 
-        # >  If the capacity of a dedicated block storage cluster is less than 576 TiB, the maximum throughput supported per TiB does not exceed 52 MB/s. If the capacity of a dedicated block storage cluster is greater than 576 TiB, the maximum throughput supported per TiB does not exceed 26 MB/s.
+        # This parameter is required.
+        self.azone = azone
+        # The capacity of the dedicated block storage cluster. Valid values: 61440 to 2334720. Unit: GiB. 2,334,720 GiB is equal to 2,280 TiB. The capacity increases in a minimum increment of 12,288 GiB.
+        # 
+        # >  If the capacity of a dedicated block storage cluster is less than 576 TiB, the maximum throughput per TiB cannot exceed 52 MB/s. If the capacity of a dedicated block storage cluster is greater than 576 TiB, the maximum throughput per TiB cannot exceed 26 MB/s.
+        # 
+        # This parameter is required.
         self.capacity = capacity
-        # This parameter is no longer used.
+        # This parameter is deprecated.
         self.dbsc_id = dbsc_id
         # The name of the dedicated block storage cluster.
-        self.dbsc_name = dbsc_name
-        # The specific number of PeriodUnit.
-        self.period = period
-        # The unit of the subscription duration for the dedicated block storage cluster,
-        # Valid values:
         # 
-        # *   **Month**\
+        # This parameter is required.
+        self.dbsc_name = dbsc_name
+        # The subscription duration of the dedicated block storage cluster. Valid values: 6, 7, 8, 9, 10, 11, 12, 24, and 36.
+        self.period = period
+        # The unit of the subscription duration specified by `Period`. Set the value to Month.
         self.period_unit = period_unit
-        # The ID of the region in which to create the dedicated block storage cluster. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        # The ID of the region in which to create the dedicated block storage cluster. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which to assign the dedicated block storage cluster.
         self.resource_group_id = resource_group_id
-        # The resource tags. You can specify up to 20 tags.
+        # The tags to add to the dedicated block storage cluster. You can specify up to 20 tags.
         self.tag = tag
         # The type of the dedicated block storage cluster. Valid values:
         # 
-        # *   Standard: basic type. When you set Type to Standard, enhanced SSDs (ESSDs) at performance level 0 (PL0 ESSDs) can be created in the dedicated block storage cluster.
-        # *   Premium: performance type. When you set Type to Premium, ESSDs at performance level 1 (PL1 ESSDs) can be created in the dedicated block storage cluster.
+        # *   Standard: basic dedicated block storage cluster. Enterprise SSDs (ESSDs) at performance level 0 (PL0 ESSDs) can be created in basic dedicated block storage clusters.
+        # *   Premium: performance dedicated block storage cluster. ESSDs at performance level 1 (PL1 ESSDs) can be created in performance dedicated block storage clusters.
         # 
         # Default value: Premium.
         # 
-        # For more information about ESSDs, see [ESSDs](~~122389~~).
+        # For more information about ESSDs, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -890,9 +925,9 @@ class CreateDedicatedBlockStorageClusterResponseBody(TeaModel):
     ):
         # The ID of the dedicated block storage cluster.
         self.dbsc_id = dbsc_id
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1018,23 +1053,31 @@ class CreateDiskReplicaGroupRequest(TeaModel):
         # 
         # >  This parameter is not publicly available.
         self.bandwidth = bandwidth
-        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The description of the replication pair-consistent group. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         # The region ID of the secondary site.
+        # 
+        # This parameter is required.
         self.destination_region_id = destination_region_id
         # The zone ID of the secondary site.
+        # 
+        # This parameter is required.
         self.destination_zone_id = destination_zone_id
-        # The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.group_name = group_name
         # The RPO of the replication pair-consistent group. Unit: seconds. Valid value: 900.
         self.rpo = rpo
         # The ID of the region in which to create the replication pair-consistent group. The primary site is deployed in the specified region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the replication pair-consistent group belongs.
         self.resource_group_id = resource_group_id
         # The zone ID of the primary site.
+        # 
+        # This parameter is required.
         self.source_zone_id = source_zone_id
         # The tags. Up to 20 tags are supported.
         self.tag = tag
@@ -1256,19 +1299,27 @@ class CreateDiskReplicaPairRequest(TeaModel):
         # 
         # Default value: POSTPAY.
         self.charge_type = charge_type
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The description of the replication pair. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         # The ID of the secondary disk.
+        # 
+        # This parameter is required.
         self.destination_disk_id = destination_disk_id
-        # The region ID of the secondary disk. You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which async replication is supported.
+        # The region ID of the secondary disk. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which async replication is supported.
+        # 
+        # This parameter is required.
         self.destination_region_id = destination_region_id
         # The zone ID of the secondary disk.
+        # 
+        # This parameter is required.
         self.destination_zone_id = destination_zone_id
         # The ID of the primary disk.
+        # 
+        # This parameter is required.
         self.disk_id = disk_id
-        # The name of the replication pair. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
+        # The name of the replication pair. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         self.pair_name = pair_name
         # The subscription duration of the replication pair. This parameter is required when the `ChargeType` parameter is set to PREPAY. The unit of the subscription duration is specified by the `PeriodUnit` parameter.
         # 
@@ -1285,10 +1336,14 @@ class CreateDiskReplicaPairRequest(TeaModel):
         # The recovery point objective (RPO) of the replication pair. Unit: seconds. Set the value to 900.
         self.rpo = rpo
         # The ID of the region in which to create the replication pair.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which to assign the replication group.
         self.resource_group_id = resource_group_id
         # The zone ID of the primary disk.
+        # 
+        # This parameter is required.
         self.source_zone_id = source_zone_id
         # The resource tags. You can specify up to 20 tags.
         self.tag = tag
@@ -1470,7 +1525,7 @@ class CreateEnterpriseSnapshotPolicyRequestCrossRegionCopyInfoRegions(TeaModel):
         region_id: str = None,
         retain_days: int = None,
     ):
-        # The region ID of the destination. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        # The region ID of the destination. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         self.region_id = region_id
         # Number of days to retain the destination snapshot. The range of values is greater than 1.
         self.retain_days = retain_days
@@ -1600,6 +1655,8 @@ class CreateEnterpriseSnapshotPolicyRequestSchedule(TeaModel):
         # The time when the policy will to be scheduled. Valid values: Set the parameter in a cron expression.
         # 
         # For example, you can use 0 0 4 1/1 * ? to specify 04:00:00 (UTC+8) on the first day of each month.
+        # 
+        # This parameter is required.
         self.cron_expression = cron_expression
 
     def validate(self):
@@ -1756,12 +1813,16 @@ class CreateEnterpriseSnapshotPolicyRequestTag(TeaModel):
         value: str = None,
     ):
         # The key of the tag.
+        # 
+        # This parameter is required.
         self.key = key
         # The tag value.
         # 
         # The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
         # Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -1805,21 +1866,29 @@ class CreateEnterpriseSnapshotPolicyRequest(TeaModel):
         tag: List[CreateEnterpriseSnapshotPolicyRequestTag] = None,
         target_type: str = None,
     ):
-        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # Snapshot replication destination information.
         self.cross_region_copy_info = cross_region_copy_info
         # The description of the policy.
         self.desc = desc
         # The name of the policy.
+        # 
+        # This parameter is required.
         self.name = name
-        # The region ID . You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which snapshot policy is supported.
+        # The region ID . You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which snapshot policy is supported.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which to assign the snapshot policy.
         self.resource_group_id = resource_group_id
         # The snapshot retention rule.
+        # 
+        # This parameter is required.
         self.retain_rule = retain_rule
         # The rule for scheduling.
+        # 
+        # This parameter is required.
         self.schedule = schedule
         # The special snapshot retention rules.
         self.special_retain_rules = special_retain_rules
@@ -1836,6 +1905,8 @@ class CreateEnterpriseSnapshotPolicyRequest(TeaModel):
         # Binding target type, valid value:
         # 
         # - DISK
+        # 
+        # This parameter is required.
         self.target_type = target_type
 
     def validate(self):
@@ -1936,12 +2007,16 @@ class CreateEnterpriseSnapshotPolicyShrinkRequestTag(TeaModel):
         value: str = None,
     ):
         # The key of the tag.
+        # 
+        # This parameter is required.
         self.key = key
         # The tag value.
         # 
         # The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
         # Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -1985,21 +2060,29 @@ class CreateEnterpriseSnapshotPolicyShrinkRequest(TeaModel):
         tag: List[CreateEnterpriseSnapshotPolicyShrinkRequestTag] = None,
         target_type: str = None,
     ):
-        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # Snapshot replication destination information.
         self.cross_region_copy_info_shrink = cross_region_copy_info_shrink
         # The description of the policy.
         self.desc = desc
         # The name of the policy.
+        # 
+        # This parameter is required.
         self.name = name
-        # The region ID . You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which snapshot policy is supported.
+        # The region ID . You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which snapshot policy is supported.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which to assign the snapshot policy.
         self.resource_group_id = resource_group_id
         # The snapshot retention rule.
+        # 
+        # This parameter is required.
         self.retain_rule_shrink = retain_rule_shrink
         # The rule for scheduling.
+        # 
+        # This parameter is required.
         self.schedule_shrink = schedule_shrink
         # The special snapshot retention rules.
         self.special_retain_rules_shrink = special_retain_rules_shrink
@@ -2016,6 +2099,8 @@ class CreateEnterpriseSnapshotPolicyShrinkRequest(TeaModel):
         # Binding target type, valid value:
         # 
         # - DISK
+        # 
+        # This parameter is required.
         self.target_type = target_type
 
     def validate(self):
@@ -2177,8 +2262,12 @@ class DeleteDiskRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the disk.
+        # 
+        # This parameter is required.
         self.disk_id = disk_id
-        # The region ID of the primary or secondary disk in the replication pair. You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which async replication is supported.
+        # The region ID of the primary or secondary disk in the replication pair. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which async replication is supported.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2281,11 +2370,15 @@ class DeleteDiskReplicaGroupRequest(TeaModel):
         region_id: str = None,
         replica_group_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The region ID of the replication pair-consistent group.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](~~426614~~) operation to query the IDs of replication pair-consistent groups.
+        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](https://help.aliyun.com/document_detail/426614.html) operation to query the IDs of replication pair-consistent groups.
+        # 
+        # This parameter is required.
         self.replica_group_id = replica_group_id
 
     def validate(self):
@@ -2392,11 +2485,15 @@ class DeleteDiskReplicaPairRequest(TeaModel):
         region_id: str = None,
         replica_pair_id: str = None,
     ):
-        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The region ID of the primary disk in the replication pair. You can call the [DescribeDiskReplicaPairs](~~354206~~) operation to query the region information of replication pairs.
+        # The region ID of the primary disk in the replication pair. You can call the [DescribeDiskReplicaPairs](https://help.aliyun.com/document_detail/354206.html) operation to query the region information of replication pairs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the replication pair.
+        # 
+        # This parameter is required.
         self.replica_pair_id = replica_pair_id
 
     def validate(self):
@@ -2503,11 +2600,15 @@ class DeleteEnterpriseSnapshotPolicyRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The id of the policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
-        # The region ID . You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which snapshot policy is supported.
+        # The region ID . You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which snapshot policy is supported.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2616,6 +2717,8 @@ class DescribeDedicatedBlockStorageClusterDisksRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the dedicated block storage cluster.
+        # 
+        # This parameter is required.
         self.dbsc_id = dbsc_id
         # The maximum number of entries to return on each page. Maximum value: 500.
         # 
@@ -2623,7 +2726,9 @@ class DescribeDedicatedBlockStorageClusterDisksRequest(TeaModel):
         self.max_results = max_results
         # The query token. Set the value to the NextToken value returned in the previous call to the DescribeDedicatedBlockStorageClusterDisks operation. Leave this parameter empty the first time you call this operation.
         self.next_token = next_token
-        # The ID of the region where the dedicated block storage cluster resides. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        # The ID of the region where the dedicated block storage cluster resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2735,7 +2840,7 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk(TeaModel):
         self.attached_time = attached_time
         # This parameter is currently in invitational preview and unavailable for general users.
         self.bdf_id = bdf_id
-        # Whether the ESSD AutoPL disk is enabled burst IOPS / BPS. This parameter is available only if the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](~~368372~~).
+        # Whether the ESSD AutoPL disk is enabled burst IOPS / BPS. This parameter is available only if the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
         self.bursting_enabled = bursting_enabled
         # The category of the disk. A value of cloud_essd indicates that the disk is an ESSD.
         self.category = category
@@ -2744,7 +2849,7 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk(TeaModel):
         # *   true: The automatic snapshots of the cloud disk are deleted when the disk is released.
         # *   false: The automatic snapshots of the cloud disk are retained when the disk is released.
         # 
-        # Snapshots that are created by calling the [CreateSnapshot](~~25524~~) operation or by using the Elastic Compute Service (ECS) console are retained and not affected by this parameter.
+        # Snapshots that are created by calling the [CreateSnapshot](https://help.aliyun.com/document_detail/25524.html) operation or by using the Elastic Compute Service (ECS) console are retained and not affected by this parameter.
         self.delete_auto_snapshot = delete_auto_snapshot
         # Indicates whether the cloud disk is released when its associated instance is released. Valid values:
         # 
@@ -2800,7 +2905,7 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk(TeaModel):
         # Indicates whether the cloud disk is removable.
         self.portable = portable
         # The provisioned read/write IOPS of the ESSD AutoPL disk. 
-        # >  This parameter is available only if the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](~~368372~~) and [Modify the performance configurations of an ESSD AutoPL disk](~~413275~~).
+        # >  This parameter is available only if the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html) and [Modify the performance configurations of an ESSD AutoPL disk](https://help.aliyun.com/document_detail/413275.html).
         self.provisioned_iops = provisioned_iops
         # The region ID of cloud disk.
         self.region_id = region_id
@@ -2810,7 +2915,7 @@ class DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk(TeaModel):
         # 
         # This parameter is empty unless the cloud disk was created from a snapshot. The value of this parameter remains unchanged throughout the lifecycle of the cloud disk.
         self.source_snapshot_id = source_snapshot_id
-        # The state of the cloud disk. For more information, see [Disk states](~~25689~~). Valid values:
+        # The state of the cloud disk. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html). Valid values:
         # 
         # *   In_use
         # *   Available
@@ -3169,7 +3274,7 @@ class DescribeDedicatedBlockStorageClustersRequest(TeaModel):
         status: List[str] = None,
         tag: List[DescribeDedicatedBlockStorageClustersRequestTag] = None,
     ):
-        # The zone ID of the dedicated block storage cluster. You can call the [DescribeZones](~~25610~~) operation to query the most recent zone list.
+        # The zone ID of the dedicated block storage cluster. You can call the [DescribeZones](https://help.aliyun.com/document_detail/25610.html) operation to query the most recent zone list.
         self.azone_id = azone_id
         # The category of disks that can be created in the dedicated block storage cluster.
         # 
@@ -3183,7 +3288,9 @@ class DescribeDedicatedBlockStorageClustersRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Valid values: 1 to 100.
         self.page_size = page_size
-        # The region ID of the dedicated block storage cluster. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        # The region ID of the dedicated block storage cluster. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the dedicated block storage cluster belongs.
         self.resource_group_id = resource_group_id
@@ -3723,7 +3830,7 @@ class DescribeDiskEventsRequest(TeaModel):
         self.disk_category = disk_category
         # The ID of the disk.
         self.disk_id = disk_id
-        # The end of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
         # The maximum number of entries per page. Valid values: 1 to 100.
         # 
@@ -3734,9 +3841,9 @@ class DescribeDiskEventsRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in this request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
         self.next_token = next_token
-        # The region ID of the disk. You can call the [DescribeRegions](~~354276~~) operation to query the list of regions that support CloudLens for EBS.
+        # The region ID of the disk. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the list of regions that support CloudLens for EBS.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
         # The event type. Set the value to DataNeedProtect, which indicates that the disk data needs to be protected.
         self.type = type
@@ -3817,7 +3924,7 @@ class DescribeDiskEventsResponseBodyDiskEvents(TeaModel):
         # *   Solved
         # *   UnSolved
         self.status = status
-        # The time when the event occurred. The time follows the [ISO 8601](~~25696~~) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the event occurred. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.timestamp = timestamp
         # The type of the event. Only DataNeedProtect can be returned.
         self.type = type
@@ -3975,8 +4082,12 @@ class DescribeDiskMonitorDataRequest(TeaModel):
         type: str = None,
     ):
         # The ID of the disk.
+        # 
+        # This parameter is required.
         self.disk_id = disk_id
-        # The end of the time range during which you want to query the near real-time monitoring data of the disk. Specify the time in the [ISO 8601](~~25696~~) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # The end of the time range during which you want to query the near real-time monitoring data of the disk. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The interval at which the near real-time monitoring data is collected. Unit: seconds. Valid values:
         # 
@@ -3986,8 +4097,12 @@ class DescribeDiskMonitorDataRequest(TeaModel):
         # Default value: 5.
         self.period = period
         # The region ID of the disk.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The beginning of the time range during which you want to query the near real-time monitoring data of the disk. Specify the time in the [ISO 8601](~~25696~~) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # The beginning of the time range during which you want to query the near real-time monitoring data of the disk. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The type of the monitoring data. Valid values:
         # 
@@ -4068,7 +4183,7 @@ class DescribeDiskMonitorDataResponseBodyMonitorData(TeaModel):
         self.read_iops = read_iops
         # Read IO latency. Unit:  microsecond
         self.read_latency = read_latency
-        # The timestamp that is used to query the near real-time monitoring data of the disk. The time follows the [ISO 8601](~~25696~~) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+        # The timestamp that is used to query the near real-time monitoring data of the disk. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.timestamp = timestamp
         # The write bandwidth of the disk. Unit: MByte/s.
         self.write_bps = write_bps
@@ -4251,7 +4366,9 @@ class DescribeDiskMonitorDataListRequest(TeaModel):
     ):
         # The IDs of the disks. The value is a JSON array that contains multiple disk IDs. Separate the IDs with commas (,).
         self.disk_ids = disk_ids
-        # The end of the time range during which you want to query the near real-time monitoring data of the disks. Specify the time in the [ISO 8601](~~25696~~) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # The end of the time range during which you want to query the near real-time monitoring data of the disks. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The number of entries per page. If you specify this parameter, both `MaxResults` and `NextToken` are used for a paged query.
         # 
@@ -4261,13 +4378,19 @@ class DescribeDiskMonitorDataListRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in this request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
-        # The region ID. You can call the [DescribeRegions](~~354276~~) operation to query the list of regions that support CloudLens for EBS.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the list of regions that support CloudLens for EBS.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The beginning of the time range during which you want to query the near real-time monitoring data of the disks. Specify the time in the [ISO 8601](~~25696~~) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # The beginning of the time range during which you want to query the near real-time monitoring data of the disks. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The type of the monitoring data. Set the value to pro.
         # 
         # pro: burst performance data, such as burst I/O operations.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -4325,7 +4448,7 @@ class DescribeDiskMonitorDataListResponseBodyMonitorData(TeaModel):
         self.burst_iocount = burst_iocount
         # The ID of the disk.
         self.disk_id = disk_id
-        # The beginning of the time range during which the performance of the disk bursts. The time follows the [ISO 8601](~~25696~~) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+        # The beginning of the time range during which the performance of the disk bursts. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.timestamp = timestamp
 
     def validate(self):
@@ -4494,6 +4617,7 @@ class DescribeDiskReplicaGroupsRequest(TeaModel):
         self,
         group_ids: str = None,
         max_results: int = None,
+        name: str = None,
         next_token: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -4510,6 +4634,7 @@ class DescribeDiskReplicaGroupsRequest(TeaModel):
         # 
         # Default value: 10.
         self.max_results = max_results
+        self.name = name
         # The query token. Set the value to the NextToken value returned in the previous call to the DescribeDiskReplicaGroups operation. Leave this parameter empty the first time you call this operation. When NextToken is specified, the PageSize and PageNumber request parameters do not take effect and the TotalCount response parameter is invalid.
         self.next_token = next_token
         # The number of the page to return.
@@ -4519,6 +4644,8 @@ class DescribeDiskReplicaGroupsRequest(TeaModel):
         # Valid values: 1 to 100.
         self.page_size = page_size
         # The region ID of the replication pair-consistent group.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the replication group belongs.
         self.resource_group_id = resource_group_id
@@ -4550,6 +4677,8 @@ class DescribeDiskReplicaGroupsRequest(TeaModel):
             result['GroupIds'] = self.group_ids
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
+        if self.name is not None:
+            result['Name'] = self.name
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.page_number is not None:
@@ -4574,6 +4703,8 @@ class DescribeDiskReplicaGroupsRequest(TeaModel):
             self.group_ids = m.get('GroupIds')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('PageNumber') is not None:
@@ -4939,8 +5070,12 @@ class DescribeDiskReplicaPairProgressRequest(TeaModel):
         replica_pair_id: str = None,
     ):
         # The region ID of the replication pair.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The ID of the replication pair. You can call the [DescribeDiskReplicaPairs](~~354206~~)operation to query the IDs of existing replication pairs.
+        # The ID of the replication pair. You can call the [DescribeDiskReplicaPairs](https://help.aliyun.com/document_detail/354206.html)operation to query the IDs of existing replication pairs.
+        # 
+        # This parameter is required.
         self.replica_pair_id = replica_pair_id
 
     def validate(self):
@@ -5089,6 +5224,7 @@ class DescribeDiskReplicaPairsRequest(TeaModel):
     def __init__(
         self,
         max_results: int = None,
+        name: str = None,
         next_token: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -5105,6 +5241,7 @@ class DescribeDiskReplicaPairsRequest(TeaModel):
         # 
         # Default value: 10.
         self.max_results = max_results
+        self.name = name
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. If you specify NextToken, the PageSize and PageNumber request parameters do not take effect, and the TotalCount response parameter is invalid.
         self.next_token = next_token
         # The page number.
@@ -5115,7 +5252,9 @@ class DescribeDiskReplicaPairsRequest(TeaModel):
         # 
         # This parameter is empty by default, which indicates that all replication pairs in the specified region are queried. You can specify a maximum of 100 replication pair IDs.
         self.pair_ids = pair_ids
-        # The region ID of the primary or secondary disk in the replication pair. You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which async replication is supported.
+        # The region ID of the primary or secondary disk in the replication pair. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which async replication is supported.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the replication pair-consistent group. You can specify the ID of a replication pair-consistent group to query the replication pairs in the group. Example: `pg-****`.
         # 
@@ -5149,6 +5288,8 @@ class DescribeDiskReplicaPairsRequest(TeaModel):
         result = dict()
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
+        if self.name is not None:
+            result['Name'] = self.name
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.page_number is not None:
@@ -5175,6 +5316,8 @@ class DescribeDiskReplicaPairsRequest(TeaModel):
         m = m or dict()
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('PageNumber') is not None:
@@ -5597,8 +5740,12 @@ class DescribeDisksRequestTag(TeaModel):
         value: str = None,
     ):
         # The key of the tag.
+        # 
+        # This parameter is required.
         self.key = key
         # The value of the tag.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -5661,6 +5808,8 @@ class DescribeDisksRequest(TeaModel):
         # The number of entries per page.
         self.page_size = page_size
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the disk belongs.
         self.resource_group_id = resource_group_id
@@ -6018,13 +6167,13 @@ class DescribeDisksResponseBodyData(TeaModel):
         # 
         # Default value: PL1.
         # 
-        # For more information about ESSD performance levels, see [ESSDs](~~122389~~).
+        # For more information about ESSD performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
         self.performance_level = performance_level
         # The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}
         # 
         # Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}
         # 
-        # >  This parameter is available only if the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](~~368372~~) and [Modify the performance configurations of an ESSD AutoPL disk](~~413275~~).
+        # >  This parameter is available only if the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html) and [Modify the performance configurations of an ESSD AutoPL disk](https://help.aliyun.com/document_detail/413275.html).
         self.provisioned_iops = provisioned_iops
         # The region ID of the disk.
         self.region_id = region_id
@@ -6315,8 +6464,12 @@ class DescribeEnterpriseSnapshotPolicyRequestTag(TeaModel):
         value: str = None,
     ):
         # The key of tag N of the enterprise-level snapshot policy.
+        # 
+        # This parameter is required.
         self.key = key
         # The value of tag N of the enterprise-level snapshot policy.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -6359,11 +6512,11 @@ class DescribeEnterpriseSnapshotPolicyRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
-        # The list of disks.
+        # The IDs of disks.
         self.disk_ids = disk_ids
         # The maximum number of entries per page.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. If you specify NextToken, the PageSize and PageNumber request parameters do not take effect, and the TotalCount response parameter is invalid.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
@@ -6371,9 +6524,11 @@ class DescribeEnterpriseSnapshotPolicyRequest(TeaModel):
         self.page_size = page_size
         # The IDs of enterprise-level snapshot policies.
         self.policy_ids = policy_ids
-        # The region ID. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the enterprise-level snapshot policy belongs.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The tags of the enterprise-level snapshot policies. Valid values of N: 1 to 20.
         self.tag = tag
@@ -6764,7 +6919,7 @@ class DescribeEnterpriseSnapshotPolicyResponseBodyPolicies(TeaModel):
         self.cross_region_copy_info = cross_region_copy_info
         # The description of the enterprise-level snapshot policy.
         self.desc = desc
-        # The list of disks.
+        # The disks that are associated with the snapshot policy.
         self.disk_ids = disk_ids
         # Indicates whether snapshots are managed.
         self.managed_for_ecs = managed_for_ecs
@@ -6910,7 +7065,7 @@ class DescribeEnterpriseSnapshotPolicyResponseBody(TeaModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The returned enterprise-level snapshot policies.
+        # The returned snapshot policies.
         self.policies = policies
         # The request ID.
         self.request_id = request_id
@@ -7019,14 +7174,53 @@ class DescribeEventsRequest(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The end of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
+        # The name of the event. Valid values:
+        # 
+        # *   NoSnapshot: indicates the event that is triggered because no snapshot is created for a disk to protect data on the disk.
+        # *   BurstIOTriggered: indicates the event that is triggered when a burst I/O operation is performed on a disk.
+        # *   CostOptimizationNeeded: indicates the event that is triggered when cost optimization is required.
+        # *   DiskSpecNotMatchedWithInstance: indicates the event that is triggered because the specifications of a disk do not match the instance to which the disk is attached.
+        # *   DiskIONo4kAligned: indicates the event that is triggered because the physical and logical sectors involved in a read or write operation are not 4K aligned.
+        # *   DiskIOHang: indicates the event that is triggered when an I/O hang occurs on a disk.
+        # *   InstanceIOPSExceedInstanceMaxLimit: indicates the event that is triggered when the number of IOPS on an instance reaches the upper limit.
+        # *   InstanceBPSExceedInstanceMaxLimit: indicates the event that is triggered when the number of BPS on an instance reaches the upper limit.
+        # *   DiskIOPSExceedInstanceMaxLimit: indicates the event that is triggered when the number of IOPS on a disk reaches the upper limit for the associated instance.
+        # *   DiskBPSExceedInstanceMaxLimit: indicates the event that is triggered when the number of BPS on a disk reaches the upper limit for the associated instance.
+        # *   DiskIOPSExceedDiskMaxLimit: indicates the event that is triggered when the number of IOPS on a disk reaches the upper limit for the disk.
+        # *   DiskBPSExceedDiskMaxLimit: indicates the event that is triggered when the number of BPS on a disk reaches the upper limit for the disk.
         self.event_name = event_name
+        # The maximum number of entries per page. If you specify MaxResults, `MaxResults` and `NextToken` are used for a paged query.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The region ID . You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions supported.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # The resource ID.
         self.resource_id = resource_id
+        # The type of resource. Valid values:
+        # 
+        # *   disk.
+        # 
+        # Default value: disk.
         self.resource_type = resource_type
+        # The beginning of the time range to query. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
+        # The status of event. Valid values:
+        # 
+        # - WillExecute
+        # - Executing
+        # - Executed
+        # - Ignore
+        # - Expired
+        # - Deleted
         self.status = status
 
     def validate(self):
@@ -7096,16 +7290,61 @@ class DescribeEventsResponseBodyResourceEvents(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The description of the event.
         self.description = description
+        # The end time of the event, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.
         self.end_time = end_time
+        # The level of the event. Valid values:
+        # 
+        # 1.  INFO
+        # 2.  WARN
+        # 3.  CRITICAL
         self.event_level = event_level
+        # The name of the event. Valid values:
+        # 
+        # *   NoSnapshot: indicates the event that is triggered because no snapshot is created for a disk to protect data on the disk.
+        # *   BurstIOTriggered: indicates the event that is triggered when a burst I/O operation is performed on a disk.
+        # *   CostOptimizationNeeded: indicates the event that is triggered when cost optimization is required.
+        # *   DiskSpecNotMatchedWithInstance: indicates the event that is triggered because the specifications of a disk do not match the instance to which the disk is attached.
+        # *   DiskIONo4kAligned: indicates the event that is triggered because the physical and logical sectors involved in a read or write operation are not 4K aligned.
+        # *   DiskIOHang: indicates the event that is triggered when an I/O hang occurs on a disk.
+        # *   InstanceIOPSExceedInstanceMaxLimit: indicates the event that is triggered when the number of IOPS on an instance reaches the upper limit.
+        # *   InstanceBPSExceedInstanceMaxLimit: indicates the event that is triggered when the number of BPS on an instance reaches the upper limit.
+        # *   DiskIOPSExceedInstanceMaxLimit: indicates the event that is triggered when the number of IOPS on a disk reaches the upper limit for the associated instance.
+        # *   DiskBPSExceedInstanceMaxLimit: indicates the event that is triggered when the number of BPS on a disk reaches the upper limit for the associated instance.
+        # *   DiskIOPSExceedDiskMaxLimit: indicates the event that is triggered when the number of IOPS on a disk reaches the upper limit for the disk.
+        # *   DiskBPSExceedDiskMaxLimit: indicates the event that is triggered when the number of BPS on a disk reaches the upper limit for the disk.
         self.event_name = event_name
+        # The type of the event. Valid values:
+        # 
+        # 1.  Notification
+        # 2.  SystemException
+        # 3.  Alert
         self.event_type = event_type
+        # The recommended action after the event occurred. Valid values:
+        # 
+        # *   ModifyDiskSpec
+        # *   CreateSnapshot
+        # *   ResizeDisk
+        # *   AdjustProvision
+        # *   ModifyInstanceSpec
         self.recommend_action = recommend_action
+        # The codes of the parameters for the recommended action after the event occurred.
         self.recommend_params = recommend_params
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The type of the resource.
         self.resource_type = resource_type
+        # The start time of the event, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.
         self.start_time = start_time
+        # The status of the event. Valid values:
+        # 
+        # 1.  WillExecute
+        # 2.  Executing
+        # 3.  Executed
+        # 4.  Ignore
+        # 5.  Expired
+        # 6.  Deleted
         self.status = status
 
     def validate(self):
@@ -7176,10 +7415,13 @@ class DescribeEventsResponseBody(TeaModel):
         resource_events: List[DescribeEventsResponseBodyResourceEvents] = None,
         total_count: int = None,
     ):
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        # The events.
         self.resource_events = resource_events
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7283,29 +7525,31 @@ class DescribeLensMonitorDisksRequest(TeaModel):
         self.disk_category = disk_category
         # The list of disks.
         self.disk_ids = disk_ids
-        # Lens event tag list to filter cloud disks that have experienced these event types within 24 hours. Valid values:
+        # Event tags of the disk, which are used to filter the disks on which the events associated with the specified tags occurred in the previous 24 hours. Valid values:
         # 
-        # - NoSnapshot
-        # - BurstIOTriggered
-        # - CostOptimizationNeeded
-        # - DiskSpecNotMatchedWithInstance
-        # - DiskIONo4kAligned
-        # - DiskIOHang
-        # - InstanceIOPSExceedInstanceMaxLimit
-        # - InstanceBPSExceedInstanceMaxLimit
-        # - DiskIOPSExceedInstanceMaxLimit
-        # - DiskBPSExceedInstanceMaxLimit
-        # - DiskIOPSExceedDiskMaxLimit
-        # - DiskBPSExceedDiskMaxLimit
-        # - DiskSlowIOTriggerred
+        # *   NoSnapshot: specifies the event that is triggered because no snapshot is created for the disk to protect data on the disk.
+        # *   BurstIOTriggered: specifies the event that is triggered when a burst I/O operation is performed on the disk.
+        # *   CostOptimizationNeeded: specifies the event that is triggered when cost optimization is required.
+        # *   DiskSpecNotMatchedWithInstance: specifies the event that is triggered if the disk specifications do not match the instance to which the disk is attached.
+        # *   DiskIONo4kAligned: specifies the event that is triggered if the physical and logical sectors involved in a read or write operation are not 4K aligned.
+        # *   DiskIOHang: specifies the event that is triggered when an I/O hang occurs on the disk.
+        # *   InstanceIOPSExceedInstanceMaxLimit: specifies the event that is triggered when the number of IOPS on the instance reaches the upper limit.
+        # *   InstanceBPSExceedInstanceMaxLimit: specifies the event that is triggered when the number of BPS on the instance reaches the upper limit.
+        # *   DiskIOPSExceedInstanceMaxLimit: specifies the event that is triggered when the number of IOPS on the disk reaches the upper limit of the instance.
+        # *   DiskBPSExceedInstanceMaxLimit: specifies the event that is triggered when the number of BPS on the disk reaches the upper limit of the instance.
+        # *   DiskIOPSExceedDiskMaxLimit: specifies the event that is triggered when the number of IOPS on the disk reaches the upper limit of the disk.
+        # *   DiskBPSExceedDiskMaxLimit: specifies the event that is triggered when the number of BPS on the disk reaches the upper limit of the disk.
+        # *   DiskSlowIOTriggerred: specifies the event that is triggered when the I/O speed on the disk is slow.
         self.lens_tags = lens_tags
         # The number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
         # The token used to start the next query to retrieve more results.
         # 
-        # >  This parameter is not required in the first query. If not all results are returned in one query, you can pass in the NextToken value returned in the previous query to perform the query again.
+        # >The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -7409,7 +7653,7 @@ class DescribeLensMonitorDisksResponseBodyDiskInfos(TeaModel):
         # *   true
         # *   false
         # 
-        # This parameter is available only if you set `DiskCategory` to `cloud_auto`. For more information, see [ESSD AutoPL disks](~~368372~~).
+        # This parameter is available only if you set `DiskCategory` to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
         self.bursting_enabled = bursting_enabled
         # The type of the disk. Valid values:
         # - cloud
@@ -7434,7 +7678,7 @@ class DescribeLensMonitorDisksResponseBodyDiskInfos(TeaModel):
         self.disk_type = disk_type
         # The IOPS.
         self.iops = iops
-        # Lens tags of the disk.
+        # Event tags of the disk.
         self.lens_tags = lens_tags
         # The new performance level of the ESSD. Valid values:
         # 
@@ -7734,7 +7978,20 @@ class DescribeMetricDataRequest(TeaModel):
         self.dimensions = dimensions
         # The end of the time range to query. The specified time must be later than the current time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
-        # The name of the metric.
+        # The name of the metric. Valid values:
+        # 
+        # *   disk_bps_percent
+        # *   disk_iops_percent
+        # *   disk_read_block_size
+        # *   disk_read_bps
+        # *   disk_read_iops
+        # *   disk_read_latency
+        # *   disk_write_block_size
+        # *   disk_write_bps
+        # *   disk_write_iops
+        # *   disk_write_latency
+        # 
+        # This parameter is required.
         self.metric_name = metric_name
         # The interval at which metric data is collected. Unit: seconds. Default value: 60. Valid values: 60, 300, 600, and 3600, which support queries for time ranges of up to 2 hours, 2 hours, 1 day, and 7 days, respectively. For example, if you set Period to 60, the end time is less than 2 hours from the end time.
         self.period = period
@@ -7934,9 +8191,13 @@ class DescribePairDrillsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Valid values: 1 to 100.
         self.page_size = page_size
-        # The ID of the replication pair. You can call the [DescribeDiskReplicaPairs](~~354206~~) operation to query a list of asynchronous replication pairs, including replication pair IDs.
+        # The ID of the replication pair. You can call the [DescribeDiskReplicaPairs](https://help.aliyun.com/document_detail/354206.html) operation to query a list of asynchronous replication pairs, including replication pair IDs.
+        # 
+        # This parameter is required.
         self.pair_id = pair_id
-        # The region ID of the primary or secondary disk in the async replication pair. You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which async replication is supported.
+        # The region ID of the primary or secondary disk in the async replication pair. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which async replication is supported.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -8428,7 +8689,9 @@ class DescribeReplicaGroupDrillsRequest(TeaModel):
     ):
         # The ID of the drill.
         self.drill_id = drill_id
-        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](~~426614~~) operation to query a list of async replication pair-consistent groups, including group IDs.
+        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](https://help.aliyun.com/document_detail/426614.html) operation to query a list of async replication pair-consistent groups, including group IDs.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The maximum number of entries to be returned. You can use this parameter together with NextToken.
         # 
@@ -8442,7 +8705,9 @@ class DescribeReplicaGroupDrillsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Valid values: 1 to 100.
         self.page_size = page_size
-        # The region ID of the primary or secondary disk in the async replication pair-consistent group. You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which async replication is supported.
+        # The region ID of the primary or secondary disk in the async replication pair-consistent group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which async replication is supported.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -8741,10 +9006,14 @@ class DescribeSolutionInstanceConfigurationRequestParameters(TeaModel):
         parameter_value: str = None,
     ):
         # The key of the parameter.
+        # 
+        # This parameter is required.
         self.parameter_key = parameter_key
         # The value of the parameter.
         # 
         # > The Parameters parameter is optional. If you specify Parameters, you must specify ParameterValue.
+        # 
+        # This parameter is required.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -8779,13 +9048,17 @@ class DescribeSolutionInstanceConfigurationRequest(TeaModel):
         region_id: str = None,
         solution_id: str = None,
     ):
-        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The parameters.
         self.parameters = parameters
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the solution.
+        # 
+        # This parameter is required.
         self.solution_id = solution_id
 
     def validate(self):
@@ -8911,11 +9184,15 @@ class FailoverDiskReplicaGroupRequest(TeaModel):
         region_id: str = None,
         replica_group_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The region ID of the secondary site of the replication pair-consistent group.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the replication pair-consistent group.
+        # 
+        # This parameter is required.
         self.replica_group_id = replica_group_id
 
     def validate(self):
@@ -9022,13 +9299,17 @@ class FailoverDiskReplicaPairRequest(TeaModel):
         region_id: str = None,
         replica_pair_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The region ID of the secondary disk in the replication pair. You can call the [DescribeDiskReplicaPairs](~~354206~~) operation to query region IDs of secondary disks in replication pairs.
+        # The region ID of the secondary disk in the replication pair. You can call the [DescribeDiskReplicaPairs](https://help.aliyun.com/document_detail/354206.html) operation to query region IDs of secondary disks in replication pairs.
         # 
         # >  The failover feature must be enabled for the region where the secondary disk is located.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the replication pair.
+        # 
+        # This parameter is required.
         self.replica_pair_id = replica_pair_id
 
     def validate(self):
@@ -9135,8 +9416,12 @@ class GetDiskRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the disk.
+        # 
+        # This parameter is required.
         self.disk_id = disk_id
         # The region ID of the disk.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -9393,7 +9678,7 @@ class GetDiskResponseBodyDisk(TeaModel):
         self.bursting_enabled = bursting_enabled
         # The category of the disk.
         self.category = category
-        # The time when the disk was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. For more information, see [ISO 8601](~~25696~~).
+        # The time when the disk was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
         self.creation_time = creation_time
         # The description of the disk.
         self.description = description
@@ -9433,9 +9718,9 @@ class GetDiskResponseBodyDisk(TeaModel):
         # 
         # Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}
         # 
-        # >  This parameter is available only if the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](~~368372~~) and [Modify the performance configurations of an ESSD AutoPL disk](~~413275~~).
+        # >  This parameter is available only if the DiskCategory parameter is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html) and [Modify the performance configurations of an ESSD AutoPL disk](https://help.aliyun.com/document_detail/413275.html).
         self.provisioned_iops = provisioned_iops
-        # The region ID of the disk. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        # The region ID of the disk. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group to which the disk belongs.
         self.resource_group_id = resource_group_id
@@ -9734,11 +10019,13 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The token used to start the next query.
         self.next_token = next_token
-        # The region ID of the resource. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        # The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID list of the resource. You can specify up to 50 resource IDs in each call.
         self.resource_id = resource_id
@@ -9747,6 +10034,8 @@ class ListTagResourcesRequest(TeaModel):
         # *   dedicatedblockstoragecluster: dedicated block storage cluster
         # *   diskreplicapair: replication pair
         # *   diskreplicagroup: replication pair-consistent group
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The information about the tags.
         # 
@@ -9956,15 +10245,21 @@ class ModifyDedicatedBlockStorageClusterAttributeRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
         # 
-        # The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure idempotence ](~~25693~~).
+        # The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure idempotence ](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the dedicated block storage cluster.
+        # 
+        # This parameter is required.
         self.dbsc_id = dbsc_id
         # The new name of the dedicated block storage cluster.
+        # 
+        # This parameter is required.
         self.dbsc_name = dbsc_name
         # The new description of dedicated block storage cluster.
         self.description = description
-        # The region ID of the dedicated block storage cluster. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        # The region ID of the dedicated block storage cluster. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -10087,17 +10382,21 @@ class ModifyDiskReplicaGroupRequest(TeaModel):
         # 
         # >  This parameter is not publicly available.
         self.bandwidth = bandwidth
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The description of the replication pair-consistent group. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (\_), and hyphens (-).
+        # The name of the replication pair-consistent group. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.group_name = group_name
         # The RPO of the replication pair-consistent group. Unit: seconds. Valid value: 900.
         self.rpo = rpo
         # The region ID of the replication pair-consistent group.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](~~426614~~) operation to query the IDs of replication pair-consistent groups.
+        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](https://help.aliyun.com/document_detail/426614.html) operation to query the IDs of replication pair-consistent groups.
+        # 
+        # This parameter is required.
         self.replica_group_id = replica_group_id
 
     def validate(self):
@@ -10228,7 +10527,7 @@ class ModifyDiskReplicaPairRequest(TeaModel):
         # 
         # >  This parameter is not publicly available.
         self.bandwidth = bandwidth
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The description of the replication pair.
         self.description = description
@@ -10236,9 +10535,13 @@ class ModifyDiskReplicaPairRequest(TeaModel):
         self.pair_name = pair_name
         # The recovery point objective (RPO) of the replication pair-consistent group. Unit: seconds. Valid value: 900.
         self.rpo = rpo
-        # The region ID of the primary or secondary disk in the replication pair. You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which async replication is supported.
+        # The region ID of the primary or secondary disk in the replication pair. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which async replication is supported.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the replication pair.
+        # 
+        # This parameter is required.
         self.replica_pair_id = replica_pair_id
 
     def validate(self):
@@ -10361,11 +10664,15 @@ class QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest(TeaModel):
         qos_request_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the request of SetDedicatedBlockStorageClusterDiskThroughput api.
+        # 
+        # This parameter is required.
         self.qos_request_id = qos_request_id
         # The region ID of the dedicated block storage cluster.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -10489,17 +10796,27 @@ class QueryDedicatedBlockStorageClusterInventoryDataRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
         # 
-        # The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure idempotence ](~~25693~~).
+        # The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure idempotence ](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the dedicated block storage cluster.
+        # 
+        # This parameter is required.
         self.dbsc_id = dbsc_id
         # End timestamp of trend data.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The time interval (seconds) between data retrieval points.
+        # 
+        # This parameter is required.
         self.period = period
         # The region ID of the dedicated block storage cluster.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Start timestamp of trend data.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -10743,15 +11060,21 @@ class RemoveDiskReplicaPairRequest(TeaModel):
         replica_group_id: str = None,
         replica_pair_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The region ID of the replication pair-consistent group.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the replication pair-consistent group.
         # 
-        # You can call the [DescribeDiskReplicaGroups](~~426614~~) operation to query the IDs of replication pair-consistent groups.
+        # You can call the [DescribeDiskReplicaGroups](https://help.aliyun.com/document_detail/426614.html) operation to query the IDs of replication pair-consistent groups.
+        # 
+        # This parameter is required.
         self.replica_group_id = replica_group_id
         # The ID of the replication pair.
+        # 
+        # This parameter is required.
         self.replica_pair_id = replica_pair_id
 
     def validate(self):
@@ -10863,11 +11186,15 @@ class ReprotectDiskReplicaGroupRequest(TeaModel):
         replica_group_id: str = None,
         reverse_replicate: bool = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](~~426614~~) operation to query the IDs of replication pair-consistent groups.
+        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](https://help.aliyun.com/document_detail/426614.html) operation to query the IDs of replication pair-consistent groups.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](~~426614~~) operation to query the IDs of replication pair-consistent groups.
+        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](https://help.aliyun.com/document_detail/426614.html) operation to query the IDs of replication pair-consistent groups.
+        # 
+        # This parameter is required.
         self.replica_group_id = replica_group_id
         # Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
         self.reverse_replicate = reverse_replicate
@@ -10981,13 +11308,17 @@ class ReprotectDiskReplicaPairRequest(TeaModel):
         replica_pair_id: str = None,
         reverse_replicate: bool = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The region ID of the secondary disk in the replication pair. You can call the [DescribeDiskReplicaPairs](~~354206~~) operation to query region IDs of secondary disks in replication pairs.
+        # The region ID of the secondary disk in the replication pair. You can call the [DescribeDiskReplicaPairs](https://help.aliyun.com/document_detail/354206.html) operation to query region IDs of secondary disks in replication pairs.
         # 
         # >  The reverse replication feature must be enabled from the region where the secondary disk is located.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the replication pair.
+        # 
+        # This parameter is required.
         self.replica_pair_id = replica_pair_id
         # Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
         self.reverse_replicate = reverse_replicate
@@ -11102,12 +11433,18 @@ class SetDedicatedBlockStorageClusterDiskThroughputRequest(TeaModel):
         region_id: str = None,
     ):
         # Target throughput.
+        # 
+        # This parameter is required.
         self.bps = bps
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the disk.
+        # 
+        # This parameter is required.
         self.disk_id = disk_id
         # The region ID of disk.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11219,7 +11556,7 @@ class StartDiskReplicaGroupRequest(TeaModel):
         region_id: str = None,
         replica_group_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # Specifies whether to immediately synchronize data once. Valid values:
         # 
@@ -11229,8 +11566,12 @@ class StartDiskReplicaGroupRequest(TeaModel):
         # Default value: false.
         self.one_shot = one_shot
         # The ID of the replication pair-consistent group.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](~~426614~~) operation to query the IDs of replication pair-consistent groups.
+        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](https://help.aliyun.com/document_detail/426614.html) operation to query the IDs of replication pair-consistent groups.
+        # 
+        # This parameter is required.
         self.replica_group_id = replica_group_id
 
     def validate(self):
@@ -11342,7 +11683,7 @@ class StartDiskReplicaPairRequest(TeaModel):
         region_id: str = None,
         replica_pair_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # Specifies whether to immediately synchronize data. Valid values:
         # 
@@ -11351,9 +11692,13 @@ class StartDiskReplicaPairRequest(TeaModel):
         # 
         # Default value: false.
         self.one_shot = one_shot
-        # The region ID of the primary or secondary disk in the replication pair. You can call the [DescribeDiskReplicaPairs](~~354206~~) operation to query the region information of replication pairs.
+        # The region ID of the primary or secondary disk in the replication pair. You can call the [DescribeDiskReplicaPairs](https://help.aliyun.com/document_detail/354206.html) operation to query the region information of replication pairs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the replication pair.
+        # 
+        # This parameter is required.
         self.replica_pair_id = replica_pair_id
 
     def validate(self):
@@ -11464,13 +11809,17 @@ class StartPairDrillRequest(TeaModel):
         pair_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The ID of the replication pair. You can call the [DescribeDiskReplicaPairs](~~354206~~) operation to query a list of replication pairs, including replication pair IDs.
+        # The ID of the replication pair. You can call the [DescribeDiskReplicaPairs](https://help.aliyun.com/document_detail/354206.html) operation to query a list of replication pairs, including replication pair IDs.
+        # 
+        # This parameter is required.
         self.pair_id = pair_id
-        # The region ID of the secondary disk in the replication pair. You can call the [DescribeDiskReplicaPairs](~~354206~~) operation to query the region in which the secondary disk of the replication pair resides.
+        # The region ID of the secondary disk in the replication pair. You can call the [DescribeDiskReplicaPairs](https://help.aliyun.com/document_detail/354206.html) operation to query the region in which the secondary disk of the replication pair resides.
         # 
         # >  You must enable the disaster recovery drill feature in the region in which the secondary site resides.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11584,13 +11933,17 @@ class StartReplicaGroupDrillRequest(TeaModel):
         group_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The ID of the replication pair-consistent group ID. You can call the [DescribeDiskReplicaGroups](~~426614~~) operation the most recent list of async replication pair-consistent groups, including group IDs.
+        # The ID of the replication pair-consistent group ID. You can call the [DescribeDiskReplicaGroups](https://help.aliyun.com/document_detail/426614.html) operation the most recent list of async replication pair-consistent groups, including group IDs.
+        # 
+        # This parameter is required.
         self.group_id = group_id
-        # The ID of the region where the secondary site in the replication pair-consistent group is located. You can call the [DescribeDiskReplicaGroups](~~426614~~) operation to query the region where the secondary site in the replication pair-consistent group is located.
+        # The ID of the region where the secondary site in the replication pair-consistent group is located. You can call the [DescribeDiskReplicaGroups](https://help.aliyun.com/document_detail/426614.html) operation to query the region where the secondary site in the replication pair-consistent group is located.
         # 
         # >  You must enable the disaster recovery drill feature in the region in which the secondary site resides.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11704,11 +12057,15 @@ class StopDiskReplicaGroupRequest(TeaModel):
         region_id: str = None,
         replica_group_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The region ID of the replication pair-consistent group.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](~~426614~~) operation to query the IDs of replication pair-consistent groups.
+        # The ID of the replication pair-consistent group. You can call the [DescribeDiskReplicaGroups](https://help.aliyun.com/document_detail/426614.html) operation to query the IDs of replication pair-consistent groups.
+        # 
+        # This parameter is required.
         self.replica_group_id = replica_group_id
 
     def validate(self):
@@ -11815,11 +12172,15 @@ class StopDiskReplicaPairRequest(TeaModel):
         region_id: str = None,
         replica_pair_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The region ID of the primary or secondary disk in the replication pair. You can call the [DescribeDiskReplicaPairs](~~354206~~) operation to query the region information of replication pairs.
+        # The region ID of the primary or secondary disk in the replication pair. You can call the [DescribeDiskReplicaPairs](https://help.aliyun.com/document_detail/354206.html) operation to query the region information of replication pairs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the replication pair.
+        # 
+        # This parameter is required.
         self.replica_pair_id = replica_pair_id
 
     def validate(self):
@@ -11926,8 +12287,12 @@ class TagResourcesRequestTag(TeaModel):
         value: str = None,
     ):
         # The key of tag N to add to the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
+        # 
+        # This parameter is required.
         self.key = key
         # The value of tag N to add to the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:` or contain `http://` or `https://`.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -11963,19 +12328,27 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The region ID of the resource. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        # The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID list of the resources. You can specify up to 50 IDs in each request.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Valid values:
         # 
         # *   dedicatedblockstoragecluster: dedicated block storage cluster
         # *   diskreplicapair: replication pair
         # *   diskreplicagroup: replication pair-consistent group
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The resource tags. You can specify up to 20 tags.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -12099,13 +12472,17 @@ class UnbindEnterpriseSnapshotPolicyRequest(TeaModel):
         policy_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The list of disks.
         self.disk_targets = disk_targets
         # The id of the policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
-        # The region ID . You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which snapshot policy is supported.
+        # The region ID . You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which snapshot policy is supported.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -12226,17 +12603,23 @@ class UntagResourcesRequest(TeaModel):
         # 
         # Default value: false.
         self.all = all
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The region ID of the resource. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        # The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID list of the resource. You can specify up to 50 resource IDs in each call.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Valid values:
         # 
         # *   dedicatedblockstoragecluster: dedicated block storage cluster
         # *   diskreplicapair: the replication pair.
         # *   diskreplicagroup: replication pair-consistent group
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The list of tag keys. You can specify up to 20 tag keys in the list.
         self.tag_key = tag_key
@@ -12356,7 +12739,7 @@ class UpdateEnterpriseSnapshotPolicyRequestCrossRegionCopyInfoRegions(TeaModel):
         region_id: str = None,
         retain_days: int = None,
     ):
-        # The region ID. You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which async replication is supported.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which async replication is supported.
         self.region_id = region_id
         # Number of days to retain the destination snapshot. The range of values is greater than 1.
         self.retain_days = retain_days
@@ -12485,6 +12868,8 @@ class UpdateEnterpriseSnapshotPolicyRequestSchedule(TeaModel):
         # The time when the policy will to be scheduled. Valid values: Set the parameter in a cron expression.
         # 
         # For example, you can use `0 0 4 1/1 * ?` to specify 04:00:00 (UTC+8) on the first day of each month.
+        # 
+        # This parameter is required.
         self.cron_expression = cron_expression
 
     def validate(self):
@@ -12649,7 +13034,7 @@ class UpdateEnterpriseSnapshotPolicyRequest(TeaModel):
         state: str = None,
         storage_rule: UpdateEnterpriseSnapshotPolicyRequestStorageRule = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # Snapshot replication destination information.
         self.cross_region_copy_info = cross_region_copy_info
@@ -12658,8 +13043,12 @@ class UpdateEnterpriseSnapshotPolicyRequest(TeaModel):
         # The name of the policy.
         self.name = name
         # The id of the policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
-        # The region ID . You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which snapshot policy is supported.
+        # The region ID . You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which snapshot policy is supported.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Snapshot retention rule.
         self.retain_rule = retain_rule
@@ -12764,7 +13153,7 @@ class UpdateEnterpriseSnapshotPolicyShrinkRequest(TeaModel):
         state: str = None,
         storage_rule_shrink: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # Snapshot replication destination information.
         self.cross_region_copy_info_shrink = cross_region_copy_info_shrink
@@ -12773,8 +13162,12 @@ class UpdateEnterpriseSnapshotPolicyShrinkRequest(TeaModel):
         # The name of the policy.
         self.name = name
         # The id of the policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
-        # The region ID . You can call the [DescribeRegions](~~354276~~) operation to query the most recent list of regions in which snapshot policy is supported.
+        # The region ID . You can call the [DescribeRegions](https://help.aliyun.com/document_detail/354276.html) operation to query the most recent list of regions in which snapshot policy is supported.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Snapshot retention rule.
         self.retain_rule_shrink = retain_rule_shrink
@@ -12928,15 +13321,19 @@ class UpdateSolutionInstanceAttributeRequest(TeaModel):
         region_id: str = None,
         solution_instance_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The description of the instance.
         self.description = description
         # The name of the instance.
         self.name = name
-        # The ID of the region where the dedicated block storage cluster resides. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        # The ID of the region where the dedicated block storage cluster resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.solution_instance_id = solution_instance_id
 
     def validate(self):
