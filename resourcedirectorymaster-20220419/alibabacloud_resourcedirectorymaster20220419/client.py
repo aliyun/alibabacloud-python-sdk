@@ -48,7 +48,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.AcceptHandshakeResponse:
         """
-        After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
+        @summary Accepts an invitation.
+        
+        @description After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
         
         @param request: AcceptHandshakeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -83,7 +85,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.AcceptHandshakeResponse:
         """
-        After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
+        @summary Accepts an invitation.
+        
+        @description After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
         
         @param request: AcceptHandshakeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -117,7 +121,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.AcceptHandshakeRequest,
     ) -> resource_directory_master_20220419_models.AcceptHandshakeResponse:
         """
-        After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
+        @summary Accepts an invitation.
+        
+        @description After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
         
         @param request: AcceptHandshakeRequest
         @return: AcceptHandshakeResponse
@@ -130,7 +136,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.AcceptHandshakeRequest,
     ) -> resource_directory_master_20220419_models.AcceptHandshakeResponse:
         """
-        After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
+        @summary Accepts an invitation.
+        
+        @description After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
         
         @param request: AcceptHandshakeRequest
         @return: AcceptHandshakeResponse
@@ -143,6 +151,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.AddMessageContactRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.AddMessageContactResponse:
+        """
+        @summary Adds a contact.
+        
+        @param request: AddMessageContactRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMessageContactResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.email_address):
@@ -179,6 +194,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.AddMessageContactRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.AddMessageContactResponse:
+        """
+        @summary Adds a contact.
+        
+        @param request: AddMessageContactRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMessageContactResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.email_address):
@@ -214,6 +236,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.AddMessageContactRequest,
     ) -> resource_directory_master_20220419_models.AddMessageContactResponse:
+        """
+        @summary Adds a contact.
+        
+        @param request: AddMessageContactRequest
+        @return: AddMessageContactResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_message_contact_with_options(request, runtime)
 
@@ -221,6 +249,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.AddMessageContactRequest,
     ) -> resource_directory_master_20220419_models.AddMessageContactResponse:
+        """
+        @summary Adds a contact.
+        
+        @param request: AddMessageContactRequest
+        @return: AddMessageContactResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_message_contact_with_options_async(request, runtime)
 
@@ -229,6 +263,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.AssociateMembersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.AssociateMembersResponse:
+        """
+        @summary Binds a contact to a resource directory, folder, or member.
+        
+        @param request: AssociateMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -259,6 +300,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.AssociateMembersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.AssociateMembersResponse:
+        """
+        @summary Binds a contact to a resource directory, folder, or member.
+        
+        @param request: AssociateMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -288,6 +336,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.AssociateMembersRequest,
     ) -> resource_directory_master_20220419_models.AssociateMembersResponse:
+        """
+        @summary Binds a contact to a resource directory, folder, or member.
+        
+        @param request: AssociateMembersRequest
+        @return: AssociateMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.associate_members_with_options(request, runtime)
 
@@ -295,6 +349,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.AssociateMembersRequest,
     ) -> resource_directory_master_20220419_models.AssociateMembersResponse:
+        """
+        @summary Binds a contact to a resource directory, folder, or member.
+        
+        @param request: AssociateMembersRequest
+        @return: AssociateMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.associate_members_with_options_async(request, runtime)
 
@@ -304,7 +364,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.AttachControlPolicyResponse:
         """
-        After you attach a custom access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
+        @summary Attaches an access control policy.
+        
+        @description After you attach a custom access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
         By default, the system access control policy FullAliyunAccess is attached to each folder and member.
         The access control policy that is attached to a folder also applies to all its subfolders and all members in the subfolders.
         A maximum of 10 access control policies can be attached to a folder or member.
@@ -344,7 +406,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.AttachControlPolicyResponse:
         """
-        After you attach a custom access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
+        @summary Attaches an access control policy.
+        
+        @description After you attach a custom access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
         By default, the system access control policy FullAliyunAccess is attached to each folder and member.
         The access control policy that is attached to a folder also applies to all its subfolders and all members in the subfolders.
         A maximum of 10 access control policies can be attached to a folder or member.
@@ -383,7 +447,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.AttachControlPolicyRequest,
     ) -> resource_directory_master_20220419_models.AttachControlPolicyResponse:
         """
-        After you attach a custom access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
+        @summary Attaches an access control policy.
+        
+        @description After you attach a custom access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
         By default, the system access control policy FullAliyunAccess is attached to each folder and member.
         The access control policy that is attached to a folder also applies to all its subfolders and all members in the subfolders.
         A maximum of 10 access control policies can be attached to a folder or member.
@@ -399,7 +465,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.AttachControlPolicyRequest,
     ) -> resource_directory_master_20220419_models.AttachControlPolicyResponse:
         """
-        After you attach a custom access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
+        @summary Attaches an access control policy.
+        
+        @description After you attach a custom access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
         By default, the system access control policy FullAliyunAccess is attached to each folder and member.
         The access control policy that is attached to a folder also applies to all its subfolders and all members in the subfolders.
         A maximum of 10 access control policies can be attached to a folder or member.
@@ -416,7 +484,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.BindSecureMobilePhoneResponse:
         """
-        You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
+        @summary Binds a mobile phone number to a member of the resource account type in a resource directory for security purposes.
+        
+        @description You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
         To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
         
         @param request: BindSecureMobilePhoneRequest
@@ -456,7 +526,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.BindSecureMobilePhoneResponse:
         """
-        You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
+        @summary Binds a mobile phone number to a member of the resource account type in a resource directory for security purposes.
+        
+        @description You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
         To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
         
         @param request: BindSecureMobilePhoneRequest
@@ -495,7 +567,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.BindSecureMobilePhoneRequest,
     ) -> resource_directory_master_20220419_models.BindSecureMobilePhoneResponse:
         """
-        You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
+        @summary Binds a mobile phone number to a member of the resource account type in a resource directory for security purposes.
+        
+        @description You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
         To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
         
         @param request: BindSecureMobilePhoneRequest
@@ -509,7 +583,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.BindSecureMobilePhoneRequest,
     ) -> resource_directory_master_20220419_models.BindSecureMobilePhoneResponse:
         """
-        You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
+        @summary Binds a mobile phone number to a member of the resource account type in a resource directory for security purposes.
+        
+        @description You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
         To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
         
         @param request: BindSecureMobilePhoneRequest
@@ -523,6 +599,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.CancelChangeAccountEmailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.CancelChangeAccountEmailResponse:
+        """
+        @summary Cancels the email address change of a member.
+        
+        @param request: CancelChangeAccountEmailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelChangeAccountEmailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -551,6 +634,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.CancelChangeAccountEmailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.CancelChangeAccountEmailResponse:
+        """
+        @summary Cancels the email address change of a member.
+        
+        @param request: CancelChangeAccountEmailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelChangeAccountEmailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -578,6 +668,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.CancelChangeAccountEmailRequest,
     ) -> resource_directory_master_20220419_models.CancelChangeAccountEmailResponse:
+        """
+        @summary Cancels the email address change of a member.
+        
+        @param request: CancelChangeAccountEmailRequest
+        @return: CancelChangeAccountEmailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_change_account_email_with_options(request, runtime)
 
@@ -585,6 +681,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.CancelChangeAccountEmailRequest,
     ) -> resource_directory_master_20220419_models.CancelChangeAccountEmailResponse:
+        """
+        @summary Cancels the email address change of a member.
+        
+        @param request: CancelChangeAccountEmailRequest
+        @return: CancelChangeAccountEmailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_change_account_email_with_options_async(request, runtime)
 
@@ -593,6 +695,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.CancelHandshakeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.CancelHandshakeResponse:
+        """
+        @summary Cancels an invitation.
+        
+        @param request: CancelHandshakeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelHandshakeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.handshake_id):
@@ -621,6 +730,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.CancelHandshakeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.CancelHandshakeResponse:
+        """
+        @summary Cancels an invitation.
+        
+        @param request: CancelHandshakeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelHandshakeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.handshake_id):
@@ -648,6 +764,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.CancelHandshakeRequest,
     ) -> resource_directory_master_20220419_models.CancelHandshakeResponse:
+        """
+        @summary Cancels an invitation.
+        
+        @param request: CancelHandshakeRequest
+        @return: CancelHandshakeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_handshake_with_options(request, runtime)
 
@@ -655,6 +777,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.CancelHandshakeRequest,
     ) -> resource_directory_master_20220419_models.CancelHandshakeResponse:
+        """
+        @summary Cancels an invitation.
+        
+        @param request: CancelHandshakeRequest
+        @return: CancelHandshakeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_handshake_with_options_async(request, runtime)
 
@@ -663,6 +791,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.CancelMessageContactUpdateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.CancelMessageContactUpdateResponse:
+        """
+        @summary Cancels the update of the mobile phone number or email address of a contact.
+        
+        @param request: CancelMessageContactUpdateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelMessageContactUpdateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -695,6 +830,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.CancelMessageContactUpdateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.CancelMessageContactUpdateResponse:
+        """
+        @summary Cancels the update of the mobile phone number or email address of a contact.
+        
+        @param request: CancelMessageContactUpdateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelMessageContactUpdateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -726,6 +868,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.CancelMessageContactUpdateRequest,
     ) -> resource_directory_master_20220419_models.CancelMessageContactUpdateResponse:
+        """
+        @summary Cancels the update of the mobile phone number or email address of a contact.
+        
+        @param request: CancelMessageContactUpdateRequest
+        @return: CancelMessageContactUpdateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_message_contact_update_with_options(request, runtime)
 
@@ -733,6 +881,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.CancelMessageContactUpdateRequest,
     ) -> resource_directory_master_20220419_models.CancelMessageContactUpdateResponse:
+        """
+        @summary Cancels the update of the mobile phone number or email address of a contact.
+        
+        @param request: CancelMessageContactUpdateRequest
+        @return: CancelMessageContactUpdateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_message_contact_update_with_options_async(request, runtime)
 
@@ -741,6 +895,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ChangeAccountEmailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ChangeAccountEmailResponse:
+        """
+        @summary Changes the email address that is bound to a member.
+        
+        @param request: ChangeAccountEmailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeAccountEmailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -771,6 +932,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ChangeAccountEmailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ChangeAccountEmailResponse:
+        """
+        @summary Changes the email address that is bound to a member.
+        
+        @param request: ChangeAccountEmailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeAccountEmailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -800,6 +968,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ChangeAccountEmailRequest,
     ) -> resource_directory_master_20220419_models.ChangeAccountEmailResponse:
+        """
+        @summary Changes the email address that is bound to a member.
+        
+        @param request: ChangeAccountEmailRequest
+        @return: ChangeAccountEmailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_account_email_with_options(request, runtime)
 
@@ -807,6 +981,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ChangeAccountEmailRequest,
     ) -> resource_directory_master_20220419_models.ChangeAccountEmailResponse:
+        """
+        @summary Changes the email address that is bound to a member.
+        
+        @param request: ChangeAccountEmailRequest
+        @return: ChangeAccountEmailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_account_email_with_options_async(request, runtime)
 
@@ -816,7 +996,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.CheckAccountDeleteResponse:
         """
-        Before you delete a member, you must call this API operation to check whether the member can be deleted.
+        @summary Performs a member deletion check.
+        
+        @description Before you delete a member, you must call this API operation to check whether the member can be deleted.
         
         @param request: CheckAccountDeleteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -851,7 +1033,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.CheckAccountDeleteResponse:
         """
-        Before you delete a member, you must call this API operation to check whether the member can be deleted.
+        @summary Performs a member deletion check.
+        
+        @description Before you delete a member, you must call this API operation to check whether the member can be deleted.
         
         @param request: CheckAccountDeleteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -885,7 +1069,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.CheckAccountDeleteRequest,
     ) -> resource_directory_master_20220419_models.CheckAccountDeleteResponse:
         """
-        Before you delete a member, you must call this API operation to check whether the member can be deleted.
+        @summary Performs a member deletion check.
+        
+        @description Before you delete a member, you must call this API operation to check whether the member can be deleted.
         
         @param request: CheckAccountDeleteRequest
         @return: CheckAccountDeleteResponse
@@ -898,7 +1084,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.CheckAccountDeleteRequest,
     ) -> resource_directory_master_20220419_models.CheckAccountDeleteResponse:
         """
-        Before you delete a member, you must call this API operation to check whether the member can be deleted.
+        @summary Performs a member deletion check.
+        
+        @description Before you delete a member, you must call this API operation to check whether the member can be deleted.
         
         @param request: CheckAccountDeleteRequest
         @return: CheckAccountDeleteResponse
@@ -911,6 +1099,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.CreateControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.CreateControlPolicyResponse:
+        """
+        @summary Creates a custom access control policy.
+        
+        @param request: CreateControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -921,6 +1116,8 @@ class Client(OpenApiClient):
             query['PolicyDocument'] = request.policy_document
         if not UtilClient.is_unset(request.policy_name):
             query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -945,6 +1142,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.CreateControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.CreateControlPolicyResponse:
+        """
+        @summary Creates a custom access control policy.
+        
+        @param request: CreateControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -955,6 +1159,8 @@ class Client(OpenApiClient):
             query['PolicyDocument'] = request.policy_document
         if not UtilClient.is_unset(request.policy_name):
             query['PolicyName'] = request.policy_name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -978,6 +1184,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.CreateControlPolicyRequest,
     ) -> resource_directory_master_20220419_models.CreateControlPolicyResponse:
+        """
+        @summary Creates a custom access control policy.
+        
+        @param request: CreateControlPolicyRequest
+        @return: CreateControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_control_policy_with_options(request, runtime)
 
@@ -985,6 +1197,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.CreateControlPolicyRequest,
     ) -> resource_directory_master_20220419_models.CreateControlPolicyResponse:
+        """
+        @summary Creates a custom access control policy.
+        
+        @param request: CreateControlPolicyRequest
+        @return: CreateControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_control_policy_with_options_async(request, runtime)
 
@@ -994,7 +1212,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.CreateFolderResponse:
         """
-        A maximum of five levels of folders can be created under the Root folder.
+        @summary Creates a folder.
+        
+        @description A maximum of five levels of folders can be created under the Root folder.
         
         @param request: CreateFolderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1006,6 +1226,8 @@ class Client(OpenApiClient):
             query['FolderName'] = request.folder_name
         if not UtilClient.is_unset(request.parent_folder_id):
             query['ParentFolderId'] = request.parent_folder_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1031,7 +1253,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.CreateFolderResponse:
         """
-        A maximum of five levels of folders can be created under the Root folder.
+        @summary Creates a folder.
+        
+        @description A maximum of five levels of folders can be created under the Root folder.
         
         @param request: CreateFolderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1043,6 +1267,8 @@ class Client(OpenApiClient):
             query['FolderName'] = request.folder_name
         if not UtilClient.is_unset(request.parent_folder_id):
             query['ParentFolderId'] = request.parent_folder_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1067,7 +1293,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.CreateFolderRequest,
     ) -> resource_directory_master_20220419_models.CreateFolderResponse:
         """
-        A maximum of five levels of folders can be created under the Root folder.
+        @summary Creates a folder.
+        
+        @description A maximum of five levels of folders can be created under the Root folder.
         
         @param request: CreateFolderRequest
         @return: CreateFolderResponse
@@ -1080,7 +1308,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.CreateFolderRequest,
     ) -> resource_directory_master_20220419_models.CreateFolderResponse:
         """
-        A maximum of five levels of folders can be created under the Root folder.
+        @summary Creates a folder.
+        
+        @description A maximum of five levels of folders can be created under the Root folder.
         
         @param request: CreateFolderRequest
         @return: CreateFolderResponse
@@ -1094,8 +1324,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.CreateResourceAccountResponse:
         """
-        A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
-        This topic provides an example on how to call the API operation to create a member in the `fd-r23M55****` folder. The display name of the member is `Dev`, and the prefix for the Alibaba Cloud account name of the member is `alice`.
+        @summary Creates a member of the resource account type.
+        
+        @description A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
+        This topic provides an example on how to call the API operation to create a member in the `fd-r23M55***` folder. The display name of the member is `Dev`, and the prefix for the Alibaba Cloud account name of the member is `alice`.
         
         @param request: CreateResourceAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1142,8 +1374,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.CreateResourceAccountResponse:
         """
-        A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
-        This topic provides an example on how to call the API operation to create a member in the `fd-r23M55****` folder. The display name of the member is `Dev`, and the prefix for the Alibaba Cloud account name of the member is `alice`.
+        @summary Creates a member of the resource account type.
+        
+        @description A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
+        This topic provides an example on how to call the API operation to create a member in the `fd-r23M55***` folder. The display name of the member is `Dev`, and the prefix for the Alibaba Cloud account name of the member is `alice`.
         
         @param request: CreateResourceAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1189,8 +1423,10 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.CreateResourceAccountRequest,
     ) -> resource_directory_master_20220419_models.CreateResourceAccountResponse:
         """
-        A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
-        This topic provides an example on how to call the API operation to create a member in the `fd-r23M55****` folder. The display name of the member is `Dev`, and the prefix for the Alibaba Cloud account name of the member is `alice`.
+        @summary Creates a member of the resource account type.
+        
+        @description A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
+        This topic provides an example on how to call the API operation to create a member in the `fd-r23M55***` folder. The display name of the member is `Dev`, and the prefix for the Alibaba Cloud account name of the member is `alice`.
         
         @param request: CreateResourceAccountRequest
         @return: CreateResourceAccountResponse
@@ -1203,8 +1439,10 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.CreateResourceAccountRequest,
     ) -> resource_directory_master_20220419_models.CreateResourceAccountResponse:
         """
-        A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
-        This topic provides an example on how to call the API operation to create a member in the `fd-r23M55****` folder. The display name of the member is `Dev`, and the prefix for the Alibaba Cloud account name of the member is `alice`.
+        @summary Creates a member of the resource account type.
+        
+        @description A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
+        This topic provides an example on how to call the API operation to create a member in the `fd-r23M55***` folder. The display name of the member is `Dev`, and the prefix for the Alibaba Cloud account name of the member is `alice`.
         
         @param request: CreateResourceAccountRequest
         @return: CreateResourceAccountResponse
@@ -1217,6 +1455,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.DeclineHandshakeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DeclineHandshakeResponse:
+        """
+        @summary Rejects an invitation.
+        
+        @param request: DeclineHandshakeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeclineHandshakeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.handshake_id):
@@ -1245,6 +1490,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.DeclineHandshakeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DeclineHandshakeResponse:
+        """
+        @summary Rejects an invitation.
+        
+        @param request: DeclineHandshakeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeclineHandshakeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.handshake_id):
@@ -1272,6 +1524,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.DeclineHandshakeRequest,
     ) -> resource_directory_master_20220419_models.DeclineHandshakeResponse:
+        """
+        @summary Rejects an invitation.
+        
+        @param request: DeclineHandshakeRequest
+        @return: DeclineHandshakeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.decline_handshake_with_options(request, runtime)
 
@@ -1279,6 +1537,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.DeclineHandshakeRequest,
     ) -> resource_directory_master_20220419_models.DeclineHandshakeResponse:
+        """
+        @summary Rejects an invitation.
+        
+        @param request: DeclineHandshakeRequest
+        @return: DeclineHandshakeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.decline_handshake_with_options_async(request, runtime)
 
@@ -1288,8 +1552,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DeleteAccountResponse:
         """
-        Before you delete a member, we recommend that you call the [CheckAccountDelete](~~CheckAccountDelete~~) and [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operations to check whether the member meets deletion requirements. You can call the DeleteAccount operation to delete only members that meet the deletion requirements.
-        After you submit a deletion request for a member, you can call the [GetAccountDeletionStatus](~~GetAccountDeletionStatus~~) operation to query the deletion status of the member. After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](~~446078~~).
+        @summary Deletes a member of the resource account type.
+        
+        @description Before you delete a member, we recommend that you call the [CheckAccountDelete](~~CheckAccountDelete~~) and [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operations to check whether the member meets deletion requirements. You can call the DeleteAccount operation to delete only members that meet the deletion requirements.
+        After you submit a deletion request for a member, you can call the [GetAccountDeletionStatus](~~GetAccountDeletionStatus~~) operation to query the deletion status of the member. After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](https://help.aliyun.com/document_detail/446078.html).
         
         @param tmp_req: DeleteAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1330,8 +1596,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DeleteAccountResponse:
         """
-        Before you delete a member, we recommend that you call the [CheckAccountDelete](~~CheckAccountDelete~~) and [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operations to check whether the member meets deletion requirements. You can call the DeleteAccount operation to delete only members that meet the deletion requirements.
-        After you submit a deletion request for a member, you can call the [GetAccountDeletionStatus](~~GetAccountDeletionStatus~~) operation to query the deletion status of the member. After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](~~446078~~).
+        @summary Deletes a member of the resource account type.
+        
+        @description Before you delete a member, we recommend that you call the [CheckAccountDelete](~~CheckAccountDelete~~) and [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operations to check whether the member meets deletion requirements. You can call the DeleteAccount operation to delete only members that meet the deletion requirements.
+        After you submit a deletion request for a member, you can call the [GetAccountDeletionStatus](~~GetAccountDeletionStatus~~) operation to query the deletion status of the member. After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](https://help.aliyun.com/document_detail/446078.html).
         
         @param tmp_req: DeleteAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1371,8 +1639,10 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.DeleteAccountRequest,
     ) -> resource_directory_master_20220419_models.DeleteAccountResponse:
         """
-        Before you delete a member, we recommend that you call the [CheckAccountDelete](~~CheckAccountDelete~~) and [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operations to check whether the member meets deletion requirements. You can call the DeleteAccount operation to delete only members that meet the deletion requirements.
-        After you submit a deletion request for a member, you can call the [GetAccountDeletionStatus](~~GetAccountDeletionStatus~~) operation to query the deletion status of the member. After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](~~446078~~).
+        @summary Deletes a member of the resource account type.
+        
+        @description Before you delete a member, we recommend that you call the [CheckAccountDelete](~~CheckAccountDelete~~) and [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operations to check whether the member meets deletion requirements. You can call the DeleteAccount operation to delete only members that meet the deletion requirements.
+        After you submit a deletion request for a member, you can call the [GetAccountDeletionStatus](~~GetAccountDeletionStatus~~) operation to query the deletion status of the member. After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](https://help.aliyun.com/document_detail/446078.html).
         
         @param request: DeleteAccountRequest
         @return: DeleteAccountResponse
@@ -1385,8 +1655,10 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.DeleteAccountRequest,
     ) -> resource_directory_master_20220419_models.DeleteAccountResponse:
         """
-        Before you delete a member, we recommend that you call the [CheckAccountDelete](~~CheckAccountDelete~~) and [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operations to check whether the member meets deletion requirements. You can call the DeleteAccount operation to delete only members that meet the deletion requirements.
-        After you submit a deletion request for a member, you can call the [GetAccountDeletionStatus](~~GetAccountDeletionStatus~~) operation to query the deletion status of the member. After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](~~446078~~).
+        @summary Deletes a member of the resource account type.
+        
+        @description Before you delete a member, we recommend that you call the [CheckAccountDelete](~~CheckAccountDelete~~) and [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operations to check whether the member meets deletion requirements. You can call the DeleteAccount operation to delete only members that meet the deletion requirements.
+        After you submit a deletion request for a member, you can call the [GetAccountDeletionStatus](~~GetAccountDeletionStatus~~) operation to query the deletion status of the member. After a member is deleted, the resources and data within the member are deleted, and you can no longer use the member to log on to the Alibaba Cloud Management Console. In addition, the member cannot be recovered. Proceed with caution. For more information about how to delete a member, see [Delete a member of the resource account type](https://help.aliyun.com/document_detail/446078.html).
         
         @param request: DeleteAccountRequest
         @return: DeleteAccountResponse
@@ -1400,7 +1672,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DeleteControlPolicyResponse:
         """
-        If you want to delete a custom access control policy that is attached to folders or members, you must call the [DetachControlPolicy](~~DetachControlPolicy~~) operation to detach the policy before you delete it.
+        @summary Deletes a custom access control policy.
+        
+        @description If you want to delete a custom access control policy that is attached to folders or members, you must call the [DetachControlPolicy](~~DetachControlPolicy~~) operation to detach the policy before you delete it.
         
         @param request: DeleteControlPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1435,7 +1709,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DeleteControlPolicyResponse:
         """
-        If you want to delete a custom access control policy that is attached to folders or members, you must call the [DetachControlPolicy](~~DetachControlPolicy~~) operation to detach the policy before you delete it.
+        @summary Deletes a custom access control policy.
+        
+        @description If you want to delete a custom access control policy that is attached to folders or members, you must call the [DetachControlPolicy](~~DetachControlPolicy~~) operation to detach the policy before you delete it.
         
         @param request: DeleteControlPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1469,7 +1745,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.DeleteControlPolicyRequest,
     ) -> resource_directory_master_20220419_models.DeleteControlPolicyResponse:
         """
-        If you want to delete a custom access control policy that is attached to folders or members, you must call the [DetachControlPolicy](~~DetachControlPolicy~~) operation to detach the policy before you delete it.
+        @summary Deletes a custom access control policy.
+        
+        @description If you want to delete a custom access control policy that is attached to folders or members, you must call the [DetachControlPolicy](~~DetachControlPolicy~~) operation to detach the policy before you delete it.
         
         @param request: DeleteControlPolicyRequest
         @return: DeleteControlPolicyResponse
@@ -1482,7 +1760,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.DeleteControlPolicyRequest,
     ) -> resource_directory_master_20220419_models.DeleteControlPolicyResponse:
         """
-        If you want to delete a custom access control policy that is attached to folders or members, you must call the [DetachControlPolicy](~~DetachControlPolicy~~) operation to detach the policy before you delete it.
+        @summary Deletes a custom access control policy.
+        
+        @description If you want to delete a custom access control policy that is attached to folders or members, you must call the [DetachControlPolicy](~~DetachControlPolicy~~) operation to detach the policy before you delete it.
         
         @param request: DeleteControlPolicyRequest
         @return: DeleteControlPolicyResponse
@@ -1496,7 +1776,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DeleteFolderResponse:
         """
-        Before you delete a folder, you must make sure that the folder does not contain members or subfolders.
+        @summary Deletes a folder.
+        
+        @description Before you delete a folder, you must make sure that the folder does not contain members or subfolders.
         
         @param request: DeleteFolderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1531,7 +1813,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DeleteFolderResponse:
         """
-        Before you delete a folder, you must make sure that the folder does not contain members or subfolders.
+        @summary Deletes a folder.
+        
+        @description Before you delete a folder, you must make sure that the folder does not contain members or subfolders.
         
         @param request: DeleteFolderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1565,7 +1849,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.DeleteFolderRequest,
     ) -> resource_directory_master_20220419_models.DeleteFolderResponse:
         """
-        Before you delete a folder, you must make sure that the folder does not contain members or subfolders.
+        @summary Deletes a folder.
+        
+        @description Before you delete a folder, you must make sure that the folder does not contain members or subfolders.
         
         @param request: DeleteFolderRequest
         @return: DeleteFolderResponse
@@ -1578,7 +1864,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.DeleteFolderRequest,
     ) -> resource_directory_master_20220419_models.DeleteFolderResponse:
         """
-        Before you delete a folder, you must make sure that the folder does not contain members or subfolders.
+        @summary Deletes a folder.
+        
+        @description Before you delete a folder, you must make sure that the folder does not contain members or subfolders.
         
         @param request: DeleteFolderRequest
         @return: DeleteFolderResponse
@@ -1591,6 +1879,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.DeleteMessageContactRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DeleteMessageContactResponse:
+        """
+        @summary Deletes a contact.
+        
+        @param request: DeleteMessageContactRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMessageContactResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -1621,6 +1916,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.DeleteMessageContactRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DeleteMessageContactResponse:
+        """
+        @summary Deletes a contact.
+        
+        @param request: DeleteMessageContactRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMessageContactResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -1650,6 +1952,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.DeleteMessageContactRequest,
     ) -> resource_directory_master_20220419_models.DeleteMessageContactResponse:
+        """
+        @summary Deletes a contact.
+        
+        @param request: DeleteMessageContactRequest
+        @return: DeleteMessageContactResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_message_contact_with_options(request, runtime)
 
@@ -1657,6 +1965,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.DeleteMessageContactRequest,
     ) -> resource_directory_master_20220419_models.DeleteMessageContactResponse:
+        """
+        @summary Deletes a contact.
+        
+        @param request: DeleteMessageContactRequest
+        @return: DeleteMessageContactResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_message_contact_with_options_async(request, runtime)
 
@@ -1666,7 +1980,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DeregisterDelegatedAdministratorResponse:
         """
-        If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
+        @summary Removes a delegated administrator account for a trusted service.
+        
+        @description If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
         
         @param request: DeregisterDelegatedAdministratorRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1703,7 +2019,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DeregisterDelegatedAdministratorResponse:
         """
-        If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
+        @summary Removes a delegated administrator account for a trusted service.
+        
+        @description If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
         
         @param request: DeregisterDelegatedAdministratorRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1739,7 +2057,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.DeregisterDelegatedAdministratorRequest,
     ) -> resource_directory_master_20220419_models.DeregisterDelegatedAdministratorResponse:
         """
-        If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
+        @summary Removes a delegated administrator account for a trusted service.
+        
+        @description If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
         
         @param request: DeregisterDelegatedAdministratorRequest
         @return: DeregisterDelegatedAdministratorResponse
@@ -1752,7 +2072,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.DeregisterDelegatedAdministratorRequest,
     ) -> resource_directory_master_20220419_models.DeregisterDelegatedAdministratorResponse:
         """
-        If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
+        @summary Removes a delegated administrator account for a trusted service.
+        
+        @description If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
         
         @param request: DeregisterDelegatedAdministratorRequest
         @return: DeregisterDelegatedAdministratorResponse
@@ -1765,9 +2087,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DestroyResourceDirectoryResponse:
         """
-        Before you disable a resource directory, you must make sure that the following requirements are met:
-        *   All members of the cloud account type in the resource directory are removed. You can call the [RemoveCloudAccount](~~RemoveCloudAccount~~) operation to remove a member of the cloud account type.
-        *   All folders except the Root folder are deleted from the resource directory. You can call the [DeleteFolder](~~DeleteFolder~~) operation to delete a folder.
+        @summary Disables a resource directory. This operation cannot be undone. Therefore, proceed with caution.
+        
+        @description Before you disable a resource directory, you must make sure that the following requirements are met:
+        All members of the cloud account type in the resource directory are removed. You can call the [RemoveCloudAccount](~~RemoveCloudAccount~~) operation to remove a member of the cloud account type.
+        All folders except the Root folder are deleted from the resource directory. You can call the [DeleteFolder](~~DeleteFolder~~) operation to delete a folder.
         
         @param request: DestroyResourceDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1795,9 +2119,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DestroyResourceDirectoryResponse:
         """
-        Before you disable a resource directory, you must make sure that the following requirements are met:
-        *   All members of the cloud account type in the resource directory are removed. You can call the [RemoveCloudAccount](~~RemoveCloudAccount~~) operation to remove a member of the cloud account type.
-        *   All folders except the Root folder are deleted from the resource directory. You can call the [DeleteFolder](~~DeleteFolder~~) operation to delete a folder.
+        @summary Disables a resource directory. This operation cannot be undone. Therefore, proceed with caution.
+        
+        @description Before you disable a resource directory, you must make sure that the following requirements are met:
+        All members of the cloud account type in the resource directory are removed. You can call the [RemoveCloudAccount](~~RemoveCloudAccount~~) operation to remove a member of the cloud account type.
+        All folders except the Root folder are deleted from the resource directory. You can call the [DeleteFolder](~~DeleteFolder~~) operation to delete a folder.
         
         @param request: DestroyResourceDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1822,9 +2148,11 @@ class Client(OpenApiClient):
 
     def destroy_resource_directory(self) -> resource_directory_master_20220419_models.DestroyResourceDirectoryResponse:
         """
-        Before you disable a resource directory, you must make sure that the following requirements are met:
-        *   All members of the cloud account type in the resource directory are removed. You can call the [RemoveCloudAccount](~~RemoveCloudAccount~~) operation to remove a member of the cloud account type.
-        *   All folders except the Root folder are deleted from the resource directory. You can call the [DeleteFolder](~~DeleteFolder~~) operation to delete a folder.
+        @summary Disables a resource directory. This operation cannot be undone. Therefore, proceed with caution.
+        
+        @description Before you disable a resource directory, you must make sure that the following requirements are met:
+        All members of the cloud account type in the resource directory are removed. You can call the [RemoveCloudAccount](~~RemoveCloudAccount~~) operation to remove a member of the cloud account type.
+        All folders except the Root folder are deleted from the resource directory. You can call the [DeleteFolder](~~DeleteFolder~~) operation to delete a folder.
         
         @return: DestroyResourceDirectoryResponse
         """
@@ -1833,9 +2161,11 @@ class Client(OpenApiClient):
 
     async def destroy_resource_directory_async(self) -> resource_directory_master_20220419_models.DestroyResourceDirectoryResponse:
         """
-        Before you disable a resource directory, you must make sure that the following requirements are met:
-        *   All members of the cloud account type in the resource directory are removed. You can call the [RemoveCloudAccount](~~RemoveCloudAccount~~) operation to remove a member of the cloud account type.
-        *   All folders except the Root folder are deleted from the resource directory. You can call the [DeleteFolder](~~DeleteFolder~~) operation to delete a folder.
+        @summary Disables a resource directory. This operation cannot be undone. Therefore, proceed with caution.
+        
+        @description Before you disable a resource directory, you must make sure that the following requirements are met:
+        All members of the cloud account type in the resource directory are removed. You can call the [RemoveCloudAccount](~~RemoveCloudAccount~~) operation to remove a member of the cloud account type.
+        All folders except the Root folder are deleted from the resource directory. You can call the [DeleteFolder](~~DeleteFolder~~) operation to delete a folder.
         
         @return: DestroyResourceDirectoryResponse
         """
@@ -1848,7 +2178,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DetachControlPolicyResponse:
         """
-        After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
+        @summary Detaches an access control policy.
+        
+        @description After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
         Both the system and custom access control policies can be detached. If an object has only one access control policy attached, the policy cannot be detached.
         
         @param request: DetachControlPolicyRequest
@@ -1886,7 +2218,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DetachControlPolicyResponse:
         """
-        After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
+        @summary Detaches an access control policy.
+        
+        @description After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
         Both the system and custom access control policies can be detached. If an object has only one access control policy attached, the policy cannot be detached.
         
         @param request: DetachControlPolicyRequest
@@ -1923,7 +2257,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.DetachControlPolicyRequest,
     ) -> resource_directory_master_20220419_models.DetachControlPolicyResponse:
         """
-        After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
+        @summary Detaches an access control policy.
+        
+        @description After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
         Both the system and custom access control policies can be detached. If an object has only one access control policy attached, the policy cannot be detached.
         
         @param request: DetachControlPolicyRequest
@@ -1937,7 +2273,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.DetachControlPolicyRequest,
     ) -> resource_directory_master_20220419_models.DetachControlPolicyResponse:
         """
-        After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
+        @summary Detaches an access control policy.
+        
+        @description After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
         Both the system and custom access control policies can be detached. If an object has only one access control policy attached, the policy cannot be detached.
         
         @param request: DetachControlPolicyRequest
@@ -1951,7 +2289,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DisableControlPolicyResponse:
         """
-        After you disable the Control Policy feature, the system automatically detaches all access control policies that are attached to folders and members. The system does not delete these access control policies, but you cannot attach them to folders or members again.
+        @summary Disables the Control Policy feature.
+        
+        @description After you disable the Control Policy feature, the system automatically detaches all access control policies that are attached to folders and members. The system does not delete these access control policies, but you cannot attach them to folders or members again.
         > If you disable the Control Policy feature, the permissions of all folders and members in your resource directory are affected. Therefore, proceed with caution.
         
         @param request: DisableControlPolicyRequest
@@ -1980,7 +2320,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DisableControlPolicyResponse:
         """
-        After you disable the Control Policy feature, the system automatically detaches all access control policies that are attached to folders and members. The system does not delete these access control policies, but you cannot attach them to folders or members again.
+        @summary Disables the Control Policy feature.
+        
+        @description After you disable the Control Policy feature, the system automatically detaches all access control policies that are attached to folders and members. The system does not delete these access control policies, but you cannot attach them to folders or members again.
         > If you disable the Control Policy feature, the permissions of all folders and members in your resource directory are affected. Therefore, proceed with caution.
         
         @param request: DisableControlPolicyRequest
@@ -2006,7 +2348,9 @@ class Client(OpenApiClient):
 
     def disable_control_policy(self) -> resource_directory_master_20220419_models.DisableControlPolicyResponse:
         """
-        After you disable the Control Policy feature, the system automatically detaches all access control policies that are attached to folders and members. The system does not delete these access control policies, but you cannot attach them to folders or members again.
+        @summary Disables the Control Policy feature.
+        
+        @description After you disable the Control Policy feature, the system automatically detaches all access control policies that are attached to folders and members. The system does not delete these access control policies, but you cannot attach them to folders or members again.
         > If you disable the Control Policy feature, the permissions of all folders and members in your resource directory are affected. Therefore, proceed with caution.
         
         @return: DisableControlPolicyResponse
@@ -2016,7 +2360,9 @@ class Client(OpenApiClient):
 
     async def disable_control_policy_async(self) -> resource_directory_master_20220419_models.DisableControlPolicyResponse:
         """
-        After you disable the Control Policy feature, the system automatically detaches all access control policies that are attached to folders and members. The system does not delete these access control policies, but you cannot attach them to folders or members again.
+        @summary Disables the Control Policy feature.
+        
+        @description After you disable the Control Policy feature, the system automatically detaches all access control policies that are attached to folders and members. The system does not delete these access control policies, but you cannot attach them to folders or members again.
         > If you disable the Control Policy feature, the permissions of all folders and members in your resource directory are affected. Therefore, proceed with caution.
         
         @return: DisableControlPolicyResponse
@@ -2029,6 +2375,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.DisassociateMembersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DisassociateMembersResponse:
+        """
+        @summary Unbinds a contact from a resource directory, folder, or member.
+        
+        @param request: DisassociateMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisassociateMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -2059,6 +2412,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.DisassociateMembersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.DisassociateMembersResponse:
+        """
+        @summary Unbinds a contact from a resource directory, folder, or member.
+        
+        @param request: DisassociateMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisassociateMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -2088,6 +2448,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.DisassociateMembersRequest,
     ) -> resource_directory_master_20220419_models.DisassociateMembersResponse:
+        """
+        @summary Unbinds a contact from a resource directory, folder, or member.
+        
+        @param request: DisassociateMembersRequest
+        @return: DisassociateMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disassociate_members_with_options(request, runtime)
 
@@ -2095,6 +2461,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.DisassociateMembersRequest,
     ) -> resource_directory_master_20220419_models.DisassociateMembersResponse:
+        """
+        @summary Unbinds a contact from a resource directory, folder, or member.
+        
+        @param request: DisassociateMembersRequest
+        @return: DisassociateMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disassociate_members_with_options_async(request, runtime)
 
@@ -2103,7 +2475,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.EnableControlPolicyResponse:
         """
-        The Control Policy feature provided by the Resource Directory service allows you to manage the permission boundaries of the folders or members in your resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](~~178671~~).
+        @summary Enables the Control Policy feature.
+        
+        @description The Control Policy feature provided by the Resource Directory service allows you to manage the permission boundaries of the folders or members in your resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](https://help.aliyun.com/document_detail/178671.html).
         
         @param request: EnableControlPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2131,7 +2505,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.EnableControlPolicyResponse:
         """
-        The Control Policy feature provided by the Resource Directory service allows you to manage the permission boundaries of the folders or members in your resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](~~178671~~).
+        @summary Enables the Control Policy feature.
+        
+        @description The Control Policy feature provided by the Resource Directory service allows you to manage the permission boundaries of the folders or members in your resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](https://help.aliyun.com/document_detail/178671.html).
         
         @param request: EnableControlPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2156,7 +2532,9 @@ class Client(OpenApiClient):
 
     def enable_control_policy(self) -> resource_directory_master_20220419_models.EnableControlPolicyResponse:
         """
-        The Control Policy feature provided by the Resource Directory service allows you to manage the permission boundaries of the folders or members in your resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](~~178671~~).
+        @summary Enables the Control Policy feature.
+        
+        @description The Control Policy feature provided by the Resource Directory service allows you to manage the permission boundaries of the folders or members in your resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](https://help.aliyun.com/document_detail/178671.html).
         
         @return: EnableControlPolicyResponse
         """
@@ -2165,7 +2543,9 @@ class Client(OpenApiClient):
 
     async def enable_control_policy_async(self) -> resource_directory_master_20220419_models.EnableControlPolicyResponse:
         """
-        The Control Policy feature provided by the Resource Directory service allows you to manage the permission boundaries of the folders or members in your resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](~~178671~~).
+        @summary Enables the Control Policy feature.
+        
+        @description The Control Policy feature provided by the Resource Directory service allows you to manage the permission boundaries of the folders or members in your resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](https://help.aliyun.com/document_detail/178671.html).
         
         @return: EnableControlPolicyResponse
         """
@@ -2178,7 +2558,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.EnableResourceDirectoryResponse:
         """
-        You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](~~111215~~).
+        @summary Enables a resource directory.
+        
+        @description You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](https://help.aliyun.com/document_detail/111215.html).
         
         @param request: EnableResourceDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2221,7 +2603,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.EnableResourceDirectoryResponse:
         """
-        You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](~~111215~~).
+        @summary Enables a resource directory.
+        
+        @description You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](https://help.aliyun.com/document_detail/111215.html).
         
         @param request: EnableResourceDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2263,7 +2647,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.EnableResourceDirectoryRequest,
     ) -> resource_directory_master_20220419_models.EnableResourceDirectoryResponse:
         """
-        You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](~~111215~~).
+        @summary Enables a resource directory.
+        
+        @description You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](https://help.aliyun.com/document_detail/111215.html).
         
         @param request: EnableResourceDirectoryRequest
         @return: EnableResourceDirectoryResponse
@@ -2276,7 +2662,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.EnableResourceDirectoryRequest,
     ) -> resource_directory_master_20220419_models.EnableResourceDirectoryResponse:
         """
-        You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](~~111215~~).
+        @summary Enables a resource directory.
+        
+        @description You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](https://help.aliyun.com/document_detail/111215.html).
         
         @param request: EnableResourceDirectoryRequest
         @return: EnableResourceDirectoryResponse
@@ -2289,6 +2677,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.GetAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetAccountResponse:
+        """
+        @summary Queries the information of a member.
+        
+        @param request: GetAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2319,6 +2714,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.GetAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetAccountResponse:
+        """
+        @summary Queries the information of a member.
+        
+        @param request: GetAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2348,6 +2750,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.GetAccountRequest,
     ) -> resource_directory_master_20220419_models.GetAccountResponse:
+        """
+        @summary Queries the information of a member.
+        
+        @param request: GetAccountRequest
+        @return: GetAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_account_with_options(request, runtime)
 
@@ -2355,6 +2763,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.GetAccountRequest,
     ) -> resource_directory_master_20220419_models.GetAccountResponse:
+        """
+        @summary Queries the information of a member.
+        
+        @param request: GetAccountRequest
+        @return: GetAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_account_with_options_async(request, runtime)
 
@@ -2364,7 +2778,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetAccountDeletionCheckResultResponse:
         """
-        After you call the [CheckAccountDelete](~~CheckAccountDelete~~) operation to perform a member deletion check, you can call the [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
+        @summary Queries the result of a member deletion check.
+        
+        @description After you call the [CheckAccountDelete](~~CheckAccountDelete~~) operation to perform a member deletion check, you can call the [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
         
         @param request: GetAccountDeletionCheckResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2399,7 +2815,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetAccountDeletionCheckResultResponse:
         """
-        After you call the [CheckAccountDelete](~~CheckAccountDelete~~) operation to perform a member deletion check, you can call the [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
+        @summary Queries the result of a member deletion check.
+        
+        @description After you call the [CheckAccountDelete](~~CheckAccountDelete~~) operation to perform a member deletion check, you can call the [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
         
         @param request: GetAccountDeletionCheckResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2433,7 +2851,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.GetAccountDeletionCheckResultRequest,
     ) -> resource_directory_master_20220419_models.GetAccountDeletionCheckResultResponse:
         """
-        After you call the [CheckAccountDelete](~~CheckAccountDelete~~) operation to perform a member deletion check, you can call the [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
+        @summary Queries the result of a member deletion check.
+        
+        @description After you call the [CheckAccountDelete](~~CheckAccountDelete~~) operation to perform a member deletion check, you can call the [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
         
         @param request: GetAccountDeletionCheckResultRequest
         @return: GetAccountDeletionCheckResultResponse
@@ -2446,7 +2866,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.GetAccountDeletionCheckResultRequest,
     ) -> resource_directory_master_20220419_models.GetAccountDeletionCheckResultResponse:
         """
-        After you call the [CheckAccountDelete](~~CheckAccountDelete~~) operation to perform a member deletion check, you can call the [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
+        @summary Queries the result of a member deletion check.
+        
+        @description After you call the [CheckAccountDelete](~~CheckAccountDelete~~) operation to perform a member deletion check, you can call the [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
         
         @param request: GetAccountDeletionCheckResultRequest
         @return: GetAccountDeletionCheckResultResponse
@@ -2459,6 +2881,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.GetAccountDeletionStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetAccountDeletionStatusResponse:
+        """
+        @summary Queries the deletion status of a member.
+        
+        @param request: GetAccountDeletionStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountDeletionStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2487,6 +2916,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.GetAccountDeletionStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetAccountDeletionStatusResponse:
+        """
+        @summary Queries the deletion status of a member.
+        
+        @param request: GetAccountDeletionStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountDeletionStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2514,6 +2950,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.GetAccountDeletionStatusRequest,
     ) -> resource_directory_master_20220419_models.GetAccountDeletionStatusResponse:
+        """
+        @summary Queries the deletion status of a member.
+        
+        @param request: GetAccountDeletionStatusRequest
+        @return: GetAccountDeletionStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_account_deletion_status_with_options(request, runtime)
 
@@ -2521,6 +2963,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.GetAccountDeletionStatusRequest,
     ) -> resource_directory_master_20220419_models.GetAccountDeletionStatusResponse:
+        """
+        @summary Queries the deletion status of a member.
+        
+        @param request: GetAccountDeletionStatusRequest
+        @return: GetAccountDeletionStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_account_deletion_status_with_options_async(request, runtime)
 
@@ -2529,6 +2977,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.GetControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetControlPolicyResponse:
+        """
+        @summary Queries the details of an access control policy.
+        
+        @param request: GetControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -2559,6 +3014,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.GetControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetControlPolicyResponse:
+        """
+        @summary Queries the details of an access control policy.
+        
+        @param request: GetControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -2588,6 +3050,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.GetControlPolicyRequest,
     ) -> resource_directory_master_20220419_models.GetControlPolicyResponse:
+        """
+        @summary Queries the details of an access control policy.
+        
+        @param request: GetControlPolicyRequest
+        @return: GetControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_control_policy_with_options(request, runtime)
 
@@ -2595,6 +3063,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.GetControlPolicyRequest,
     ) -> resource_directory_master_20220419_models.GetControlPolicyResponse:
+        """
+        @summary Queries the details of an access control policy.
+        
+        @param request: GetControlPolicyRequest
+        @return: GetControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_control_policy_with_options_async(request, runtime)
 
@@ -2602,6 +3076,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetControlPolicyEnablementStatusResponse:
+        """
+        @summary Queries the status of the Control Policy feature.
+        
+        @param request: GetControlPolicyEnablementStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetControlPolicyEnablementStatusResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetControlPolicyEnablementStatus',
@@ -2623,6 +3104,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetControlPolicyEnablementStatusResponse:
+        """
+        @summary Queries the status of the Control Policy feature.
+        
+        @param request: GetControlPolicyEnablementStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetControlPolicyEnablementStatusResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetControlPolicyEnablementStatus',
@@ -2641,10 +3129,20 @@ class Client(OpenApiClient):
         )
 
     def get_control_policy_enablement_status(self) -> resource_directory_master_20220419_models.GetControlPolicyEnablementStatusResponse:
+        """
+        @summary Queries the status of the Control Policy feature.
+        
+        @return: GetControlPolicyEnablementStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_control_policy_enablement_status_with_options(runtime)
 
     async def get_control_policy_enablement_status_async(self) -> resource_directory_master_20220419_models.GetControlPolicyEnablementStatusResponse:
+        """
+        @summary Queries the status of the Control Policy feature.
+        
+        @return: GetControlPolicyEnablementStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_control_policy_enablement_status_with_options_async(runtime)
 
@@ -2653,6 +3151,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.GetFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetFolderResponse:
+        """
+        @summary Queries the information about a folder.
+        
+        @param request: GetFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFolderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.folder_id):
@@ -2681,6 +3186,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.GetFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetFolderResponse:
+        """
+        @summary Queries the information about a folder.
+        
+        @param request: GetFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFolderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.folder_id):
@@ -2708,6 +3220,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.GetFolderRequest,
     ) -> resource_directory_master_20220419_models.GetFolderResponse:
+        """
+        @summary Queries the information about a folder.
+        
+        @param request: GetFolderRequest
+        @return: GetFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_folder_with_options(request, runtime)
 
@@ -2715,6 +3233,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.GetFolderRequest,
     ) -> resource_directory_master_20220419_models.GetFolderResponse:
+        """
+        @summary Queries the information about a folder.
+        
+        @param request: GetFolderRequest
+        @return: GetFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_folder_with_options_async(request, runtime)
 
@@ -2723,6 +3247,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.GetHandshakeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetHandshakeResponse:
+        """
+        @summary Queries the information of an invitation.
+        
+        @param request: GetHandshakeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHandshakeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.handshake_id):
@@ -2751,6 +3282,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.GetHandshakeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetHandshakeResponse:
+        """
+        @summary Queries the information of an invitation.
+        
+        @param request: GetHandshakeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHandshakeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.handshake_id):
@@ -2778,6 +3316,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.GetHandshakeRequest,
     ) -> resource_directory_master_20220419_models.GetHandshakeResponse:
+        """
+        @summary Queries the information of an invitation.
+        
+        @param request: GetHandshakeRequest
+        @return: GetHandshakeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_handshake_with_options(request, runtime)
 
@@ -2785,6 +3329,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.GetHandshakeRequest,
     ) -> resource_directory_master_20220419_models.GetHandshakeResponse:
+        """
+        @summary Queries the information of an invitation.
+        
+        @param request: GetHandshakeRequest
+        @return: GetHandshakeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_handshake_with_options_async(request, runtime)
 
@@ -2793,6 +3343,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.GetMessageContactRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetMessageContactResponse:
+        """
+        @summary Queries the information about a contact.
+        
+        @param request: GetMessageContactRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMessageContactResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -2821,6 +3378,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.GetMessageContactRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetMessageContactResponse:
+        """
+        @summary Queries the information about a contact.
+        
+        @param request: GetMessageContactRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMessageContactResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -2848,6 +3412,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.GetMessageContactRequest,
     ) -> resource_directory_master_20220419_models.GetMessageContactResponse:
+        """
+        @summary Queries the information about a contact.
+        
+        @param request: GetMessageContactRequest
+        @return: GetMessageContactResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_message_contact_with_options(request, runtime)
 
@@ -2855,6 +3425,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.GetMessageContactRequest,
     ) -> resource_directory_master_20220419_models.GetMessageContactResponse:
+        """
+        @summary Queries the information about a contact.
+        
+        @param request: GetMessageContactRequest
+        @return: GetMessageContactResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_message_contact_with_options_async(request, runtime)
 
@@ -2863,6 +3439,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.GetMessageContactDeletionStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetMessageContactDeletionStatusResponse:
+        """
+        @summary Queries the deletion status of a contact.
+        
+        @param request: GetMessageContactDeletionStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMessageContactDeletionStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -2891,6 +3474,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.GetMessageContactDeletionStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetMessageContactDeletionStatusResponse:
+        """
+        @summary Queries the deletion status of a contact.
+        
+        @param request: GetMessageContactDeletionStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMessageContactDeletionStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -2918,6 +3508,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.GetMessageContactDeletionStatusRequest,
     ) -> resource_directory_master_20220419_models.GetMessageContactDeletionStatusResponse:
+        """
+        @summary Queries the deletion status of a contact.
+        
+        @param request: GetMessageContactDeletionStatusRequest
+        @return: GetMessageContactDeletionStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_message_contact_deletion_status_with_options(request, runtime)
 
@@ -2925,6 +3521,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.GetMessageContactDeletionStatusRequest,
     ) -> resource_directory_master_20220419_models.GetMessageContactDeletionStatusResponse:
+        """
+        @summary Queries the deletion status of a contact.
+        
+        @param request: GetMessageContactDeletionStatusRequest
+        @return: GetMessageContactDeletionStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_message_contact_deletion_status_with_options_async(request, runtime)
 
@@ -2933,6 +3535,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.GetPayerForAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetPayerForAccountResponse:
+        """
+        @summary Queries the information of a billing account.
+        
+        @param request: GetPayerForAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPayerForAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2961,6 +3570,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.GetPayerForAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetPayerForAccountResponse:
+        """
+        @summary Queries the information of a billing account.
+        
+        @param request: GetPayerForAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPayerForAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2988,6 +3604,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.GetPayerForAccountRequest,
     ) -> resource_directory_master_20220419_models.GetPayerForAccountResponse:
+        """
+        @summary Queries the information of a billing account.
+        
+        @param request: GetPayerForAccountRequest
+        @return: GetPayerForAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_payer_for_account_with_options(request, runtime)
 
@@ -2995,6 +3617,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.GetPayerForAccountRequest,
     ) -> resource_directory_master_20220419_models.GetPayerForAccountResponse:
+        """
+        @summary Queries the information of a billing account.
+        
+        @param request: GetPayerForAccountRequest
+        @return: GetPayerForAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_payer_for_account_with_options_async(request, runtime)
 
@@ -3002,6 +3630,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetResourceDirectoryResponse:
+        """
+        @summary \\\\*\\* Co., Ltd.
+        
+        @param request: GetResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceDirectoryResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetResourceDirectory',
@@ -3023,6 +3658,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.GetResourceDirectoryResponse:
+        """
+        @summary \\\\*\\* Co., Ltd.
+        
+        @param request: GetResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceDirectoryResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetResourceDirectory',
@@ -3041,10 +3683,20 @@ class Client(OpenApiClient):
         )
 
     def get_resource_directory(self) -> resource_directory_master_20220419_models.GetResourceDirectoryResponse:
+        """
+        @summary \\\\*\\* Co., Ltd.
+        
+        @return: GetResourceDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_resource_directory_with_options(runtime)
 
     async def get_resource_directory_async(self) -> resource_directory_master_20220419_models.GetResourceDirectoryResponse:
+        """
+        @summary \\\\*\\* Co., Ltd.
+        
+        @return: GetResourceDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_resource_directory_with_options_async(runtime)
 
@@ -3053,6 +3705,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.InviteAccountToResourceDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.InviteAccountToResourceDirectoryResponse:
+        """
+        @summary Invites an account to join a resource directory.
+        
+        @param request: InviteAccountToResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InviteAccountToResourceDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.note):
@@ -3089,6 +3748,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.InviteAccountToResourceDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.InviteAccountToResourceDirectoryResponse:
+        """
+        @summary Invites an account to join a resource directory.
+        
+        @param request: InviteAccountToResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InviteAccountToResourceDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.note):
@@ -3124,6 +3790,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.InviteAccountToResourceDirectoryRequest,
     ) -> resource_directory_master_20220419_models.InviteAccountToResourceDirectoryResponse:
+        """
+        @summary Invites an account to join a resource directory.
+        
+        @param request: InviteAccountToResourceDirectoryRequest
+        @return: InviteAccountToResourceDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.invite_account_to_resource_directory_with_options(request, runtime)
 
@@ -3131,6 +3803,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.InviteAccountToResourceDirectoryRequest,
     ) -> resource_directory_master_20220419_models.InviteAccountToResourceDirectoryResponse:
+        """
+        @summary Invites an account to join a resource directory.
+        
+        @param request: InviteAccountToResourceDirectoryRequest
+        @return: InviteAccountToResourceDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.invite_account_to_resource_directory_with_options_async(request, runtime)
 
@@ -3140,7 +3818,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListAccountsResponse:
         """
-        You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
+        @summary Queries all the members in a resource directory.
+        
+        @description You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
         
         @param request: ListAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3183,7 +3863,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListAccountsResponse:
         """
-        You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
+        @summary Queries all the members in a resource directory.
+        
+        @description You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
         
         @param request: ListAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3225,7 +3907,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListAccountsRequest,
     ) -> resource_directory_master_20220419_models.ListAccountsResponse:
         """
-        You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
+        @summary Queries all the members in a resource directory.
+        
+        @description You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
         
         @param request: ListAccountsRequest
         @return: ListAccountsResponse
@@ -3238,7 +3922,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListAccountsRequest,
     ) -> resource_directory_master_20220419_models.ListAccountsResponse:
         """
-        You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
+        @summary Queries all the members in a resource directory.
+        
+        @description You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
         
         @param request: ListAccountsRequest
         @return: ListAccountsResponse
@@ -3251,6 +3937,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListAccountsForParentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListAccountsForParentResponse:
+        """
+        @summary Queries the information of members in a folder.
+        
+        @param request: ListAccountsForParentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccountsForParentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.include_tags):
@@ -3289,6 +3982,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListAccountsForParentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListAccountsForParentResponse:
+        """
+        @summary Queries the information of members in a folder.
+        
+        @param request: ListAccountsForParentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccountsForParentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.include_tags):
@@ -3326,6 +4026,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListAccountsForParentRequest,
     ) -> resource_directory_master_20220419_models.ListAccountsForParentResponse:
+        """
+        @summary Queries the information of members in a folder.
+        
+        @param request: ListAccountsForParentRequest
+        @return: ListAccountsForParentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_accounts_for_parent_with_options(request, runtime)
 
@@ -3333,6 +4039,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListAccountsForParentRequest,
     ) -> resource_directory_master_20220419_models.ListAccountsForParentResponse:
+        """
+        @summary Queries the information of members in a folder.
+        
+        @param request: ListAccountsForParentRequest
+        @return: ListAccountsForParentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_accounts_for_parent_with_options_async(request, runtime)
 
@@ -3341,6 +4053,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListAncestorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListAncestorsResponse:
+        """
+        @summary Queries the information of all the parent folders of a specified folder.
+        
+        @param request: ListAncestorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAncestorsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.child_id):
@@ -3369,6 +4088,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListAncestorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListAncestorsResponse:
+        """
+        @summary Queries the information of all the parent folders of a specified folder.
+        
+        @param request: ListAncestorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAncestorsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.child_id):
@@ -3396,6 +4122,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListAncestorsRequest,
     ) -> resource_directory_master_20220419_models.ListAncestorsResponse:
+        """
+        @summary Queries the information of all the parent folders of a specified folder.
+        
+        @param request: ListAncestorsRequest
+        @return: ListAncestorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_ancestors_with_options(request, runtime)
 
@@ -3403,6 +4135,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListAncestorsRequest,
     ) -> resource_directory_master_20220419_models.ListAncestorsResponse:
+        """
+        @summary Queries the information of all the parent folders of a specified folder.
+        
+        @param request: ListAncestorsRequest
+        @return: ListAncestorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_ancestors_with_options_async(request, runtime)
 
@@ -3411,6 +4149,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListControlPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListControlPoliciesResponse:
+        """
+        @summary Queries access control policies.
+        
+        @param request: ListControlPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListControlPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -3445,6 +4190,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListControlPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListControlPoliciesResponse:
+        """
+        @summary Queries access control policies.
+        
+        @param request: ListControlPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListControlPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -3478,6 +4230,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListControlPoliciesRequest,
     ) -> resource_directory_master_20220419_models.ListControlPoliciesResponse:
+        """
+        @summary Queries access control policies.
+        
+        @param request: ListControlPoliciesRequest
+        @return: ListControlPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_control_policies_with_options(request, runtime)
 
@@ -3485,6 +4243,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListControlPoliciesRequest,
     ) -> resource_directory_master_20220419_models.ListControlPoliciesResponse:
+        """
+        @summary Queries access control policies.
+        
+        @param request: ListControlPoliciesRequest
+        @return: ListControlPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_control_policies_with_options_async(request, runtime)
 
@@ -3493,6 +4257,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListControlPolicyAttachmentsForTargetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListControlPolicyAttachmentsForTargetResponse:
+        """
+        @summary Queries the access control policies that are attached to a folder or member.
+        
+        @param request: ListControlPolicyAttachmentsForTargetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListControlPolicyAttachmentsForTargetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -3523,6 +4294,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListControlPolicyAttachmentsForTargetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListControlPolicyAttachmentsForTargetResponse:
+        """
+        @summary Queries the access control policies that are attached to a folder or member.
+        
+        @param request: ListControlPolicyAttachmentsForTargetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListControlPolicyAttachmentsForTargetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.language):
@@ -3552,6 +4330,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListControlPolicyAttachmentsForTargetRequest,
     ) -> resource_directory_master_20220419_models.ListControlPolicyAttachmentsForTargetResponse:
+        """
+        @summary Queries the access control policies that are attached to a folder or member.
+        
+        @param request: ListControlPolicyAttachmentsForTargetRequest
+        @return: ListControlPolicyAttachmentsForTargetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_control_policy_attachments_for_target_with_options(request, runtime)
 
@@ -3559,6 +4343,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListControlPolicyAttachmentsForTargetRequest,
     ) -> resource_directory_master_20220419_models.ListControlPolicyAttachmentsForTargetResponse:
+        """
+        @summary Queries the access control policies that are attached to a folder or member.
+        
+        @param request: ListControlPolicyAttachmentsForTargetRequest
+        @return: ListControlPolicyAttachmentsForTargetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_control_policy_attachments_for_target_with_options_async(request, runtime)
 
@@ -3567,6 +4357,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListDelegatedAdministratorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListDelegatedAdministratorsResponse:
+        """
+        @summary Queries delegated administrator accounts.
+        
+        @param request: ListDelegatedAdministratorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDelegatedAdministratorsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -3599,6 +4396,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListDelegatedAdministratorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListDelegatedAdministratorsResponse:
+        """
+        @summary Queries delegated administrator accounts.
+        
+        @param request: ListDelegatedAdministratorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDelegatedAdministratorsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -3630,6 +4434,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListDelegatedAdministratorsRequest,
     ) -> resource_directory_master_20220419_models.ListDelegatedAdministratorsResponse:
+        """
+        @summary Queries delegated administrator accounts.
+        
+        @param request: ListDelegatedAdministratorsRequest
+        @return: ListDelegatedAdministratorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_delegated_administrators_with_options(request, runtime)
 
@@ -3637,6 +4447,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListDelegatedAdministratorsRequest,
     ) -> resource_directory_master_20220419_models.ListDelegatedAdministratorsResponse:
+        """
+        @summary Queries delegated administrator accounts.
+        
+        @param request: ListDelegatedAdministratorsRequest
+        @return: ListDelegatedAdministratorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_delegated_administrators_with_options_async(request, runtime)
 
@@ -3645,6 +4461,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListDelegatedServicesForAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListDelegatedServicesForAccountResponse:
+        """
+        @summary Queries the trusted services for which a member is specified as a delegated administrator account.
+        
+        @param request: ListDelegatedServicesForAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDelegatedServicesForAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -3673,6 +4496,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListDelegatedServicesForAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListDelegatedServicesForAccountResponse:
+        """
+        @summary Queries the trusted services for which a member is specified as a delegated administrator account.
+        
+        @param request: ListDelegatedServicesForAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDelegatedServicesForAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -3700,6 +4530,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListDelegatedServicesForAccountRequest,
     ) -> resource_directory_master_20220419_models.ListDelegatedServicesForAccountResponse:
+        """
+        @summary Queries the trusted services for which a member is specified as a delegated administrator account.
+        
+        @param request: ListDelegatedServicesForAccountRequest
+        @return: ListDelegatedServicesForAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_delegated_services_for_account_with_options(request, runtime)
 
@@ -3707,6 +4543,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListDelegatedServicesForAccountRequest,
     ) -> resource_directory_master_20220419_models.ListDelegatedServicesForAccountResponse:
+        """
+        @summary Queries the trusted services for which a member is specified as a delegated administrator account.
+        
+        @param request: ListDelegatedServicesForAccountRequest
+        @return: ListDelegatedServicesForAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_delegated_services_for_account_with_options_async(request, runtime)
 
@@ -3716,7 +4558,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListFoldersForParentResponse:
         """
-        You can call this API operation to view the information of only the first-level subfolders of a folder.
+        @summary Queries the information of all subfolders of a folder.
+        
+        @description You can call this API operation to view the information of only the first-level subfolders of a folder.
         
         @param request: ListFoldersForParentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3757,7 +4601,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListFoldersForParentResponse:
         """
-        You can call this API operation to view the information of only the first-level subfolders of a folder.
+        @summary Queries the information of all subfolders of a folder.
+        
+        @description You can call this API operation to view the information of only the first-level subfolders of a folder.
         
         @param request: ListFoldersForParentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3797,7 +4643,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListFoldersForParentRequest,
     ) -> resource_directory_master_20220419_models.ListFoldersForParentResponse:
         """
-        You can call this API operation to view the information of only the first-level subfolders of a folder.
+        @summary Queries the information of all subfolders of a folder.
+        
+        @description You can call this API operation to view the information of only the first-level subfolders of a folder.
         
         @param request: ListFoldersForParentRequest
         @return: ListFoldersForParentResponse
@@ -3810,7 +4658,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListFoldersForParentRequest,
     ) -> resource_directory_master_20220419_models.ListFoldersForParentResponse:
         """
-        You can call this API operation to view the information of only the first-level subfolders of a folder.
+        @summary Queries the information of all subfolders of a folder.
+        
+        @description You can call this API operation to view the information of only the first-level subfolders of a folder.
         
         @param request: ListFoldersForParentRequest
         @return: ListFoldersForParentResponse
@@ -3823,6 +4673,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListHandshakesForAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListHandshakesForAccountResponse:
+        """
+        @summary Queries the invitations that are associated with an account.
+        
+        @param request: ListHandshakesForAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHandshakesForAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -3853,6 +4710,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListHandshakesForAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListHandshakesForAccountResponse:
+        """
+        @summary Queries the invitations that are associated with an account.
+        
+        @param request: ListHandshakesForAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHandshakesForAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -3882,6 +4746,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListHandshakesForAccountRequest,
     ) -> resource_directory_master_20220419_models.ListHandshakesForAccountResponse:
+        """
+        @summary Queries the invitations that are associated with an account.
+        
+        @param request: ListHandshakesForAccountRequest
+        @return: ListHandshakesForAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_handshakes_for_account_with_options(request, runtime)
 
@@ -3889,6 +4759,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListHandshakesForAccountRequest,
     ) -> resource_directory_master_20220419_models.ListHandshakesForAccountResponse:
+        """
+        @summary Queries the invitations that are associated with an account.
+        
+        @param request: ListHandshakesForAccountRequest
+        @return: ListHandshakesForAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_handshakes_for_account_with_options_async(request, runtime)
 
@@ -3897,6 +4773,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListHandshakesForResourceDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListHandshakesForResourceDirectoryResponse:
+        """
+        @summary Queries invitations in a resource directory.
+        
+        @param request: ListHandshakesForResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHandshakesForResourceDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -3927,6 +4810,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListHandshakesForResourceDirectoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListHandshakesForResourceDirectoryResponse:
+        """
+        @summary Queries invitations in a resource directory.
+        
+        @param request: ListHandshakesForResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHandshakesForResourceDirectoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -3956,6 +4846,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListHandshakesForResourceDirectoryRequest,
     ) -> resource_directory_master_20220419_models.ListHandshakesForResourceDirectoryResponse:
+        """
+        @summary Queries invitations in a resource directory.
+        
+        @param request: ListHandshakesForResourceDirectoryRequest
+        @return: ListHandshakesForResourceDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_handshakes_for_resource_directory_with_options(request, runtime)
 
@@ -3963,6 +4859,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListHandshakesForResourceDirectoryRequest,
     ) -> resource_directory_master_20220419_models.ListHandshakesForResourceDirectoryResponse:
+        """
+        @summary Queries invitations in a resource directory.
+        
+        @param request: ListHandshakesForResourceDirectoryRequest
+        @return: ListHandshakesForResourceDirectoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_handshakes_for_resource_directory_with_options_async(request, runtime)
 
@@ -3971,6 +4873,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListMessageContactVerificationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListMessageContactVerificationsResponse:
+        """
+        @summary Queries the mobile phone number or email address to be verified for a contact.
+        
+        @param request: ListMessageContactVerificationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMessageContactVerificationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -4003,6 +4912,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListMessageContactVerificationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListMessageContactVerificationsResponse:
+        """
+        @summary Queries the mobile phone number or email address to be verified for a contact.
+        
+        @param request: ListMessageContactVerificationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMessageContactVerificationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -4034,6 +4950,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListMessageContactVerificationsRequest,
     ) -> resource_directory_master_20220419_models.ListMessageContactVerificationsResponse:
+        """
+        @summary Queries the mobile phone number or email address to be verified for a contact.
+        
+        @param request: ListMessageContactVerificationsRequest
+        @return: ListMessageContactVerificationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_message_contact_verifications_with_options(request, runtime)
 
@@ -4041,6 +4963,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListMessageContactVerificationsRequest,
     ) -> resource_directory_master_20220419_models.ListMessageContactVerificationsResponse:
+        """
+        @summary Queries the mobile phone number or email address to be verified for a contact.
+        
+        @param request: ListMessageContactVerificationsRequest
+        @return: ListMessageContactVerificationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_message_contact_verifications_with_options_async(request, runtime)
 
@@ -4049,6 +4977,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListMessageContactsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListMessageContactsResponse:
+        """
+        @summary Queries contacts.
+        
+        @param request: ListMessageContactsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMessageContactsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -4083,6 +5018,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListMessageContactsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListMessageContactsResponse:
+        """
+        @summary Queries contacts.
+        
+        @param request: ListMessageContactsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMessageContactsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -4116,6 +5058,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListMessageContactsRequest,
     ) -> resource_directory_master_20220419_models.ListMessageContactsResponse:
+        """
+        @summary Queries contacts.
+        
+        @param request: ListMessageContactsRequest
+        @return: ListMessageContactsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_message_contacts_with_options(request, runtime)
 
@@ -4123,6 +5071,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListMessageContactsRequest,
     ) -> resource_directory_master_20220419_models.ListMessageContactsResponse:
+        """
+        @summary Queries contacts.
+        
+        @param request: ListMessageContactsRequest
+        @return: ListMessageContactsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_message_contacts_with_options_async(request, runtime)
 
@@ -4131,6 +5085,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListTagKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListTagKeysResponse:
+        """
+        @summary Queries tag keys.
+        
+        @param request: ListTagKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_filter):
@@ -4165,6 +5126,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListTagKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListTagKeysResponse:
+        """
+        @summary Queries tag keys.
+        
+        @param request: ListTagKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_filter):
@@ -4198,6 +5166,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListTagKeysRequest,
     ) -> resource_directory_master_20220419_models.ListTagKeysResponse:
+        """
+        @summary Queries tag keys.
+        
+        @param request: ListTagKeysRequest
+        @return: ListTagKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_keys_with_options(request, runtime)
 
@@ -4205,6 +5179,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListTagKeysRequest,
     ) -> resource_directory_master_20220419_models.ListTagKeysResponse:
+        """
+        @summary Queries tag keys.
+        
+        @param request: ListTagKeysRequest
+        @return: ListTagKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_keys_with_options_async(request, runtime)
 
@@ -4213,6 +5193,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to the members in a resource directory.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -4249,6 +5236,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to the members in a resource directory.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -4284,6 +5278,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListTagResourcesRequest,
     ) -> resource_directory_master_20220419_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to the members in a resource directory.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -4291,6 +5291,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListTagResourcesRequest,
     ) -> resource_directory_master_20220419_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are added to the members in a resource directory.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -4299,6 +5305,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListTagValuesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListTagValuesResponse:
+        """
+        @summary Queries the tag values of a tag key.
+        
+        @param request: ListTagValuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagValuesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -4335,6 +5348,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListTagValuesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListTagValuesResponse:
+        """
+        @summary Queries the tag values of a tag key.
+        
+        @param request: ListTagValuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagValuesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -4370,6 +5390,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListTagValuesRequest,
     ) -> resource_directory_master_20220419_models.ListTagValuesResponse:
+        """
+        @summary Queries the tag values of a tag key.
+        
+        @param request: ListTagValuesRequest
+        @return: ListTagValuesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_values_with_options(request, runtime)
 
@@ -4377,6 +5403,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListTagValuesRequest,
     ) -> resource_directory_master_20220419_models.ListTagValuesResponse:
+        """
+        @summary Queries the tag values of a tag key.
+        
+        @param request: ListTagValuesRequest
+        @return: ListTagValuesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_values_with_options_async(request, runtime)
 
@@ -4385,6 +5417,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListTargetAttachmentsForControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListTargetAttachmentsForControlPolicyResponse:
+        """
+        @summary Queries the objects to which an access control policy is attached.
+        
+        @param request: ListTargetAttachmentsForControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTargetAttachmentsForControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4417,6 +5456,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListTargetAttachmentsForControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListTargetAttachmentsForControlPolicyResponse:
+        """
+        @summary Queries the objects to which an access control policy is attached.
+        
+        @param request: ListTargetAttachmentsForControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTargetAttachmentsForControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -4448,6 +5494,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListTargetAttachmentsForControlPolicyRequest,
     ) -> resource_directory_master_20220419_models.ListTargetAttachmentsForControlPolicyResponse:
+        """
+        @summary Queries the objects to which an access control policy is attached.
+        
+        @param request: ListTargetAttachmentsForControlPolicyRequest
+        @return: ListTargetAttachmentsForControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_target_attachments_for_control_policy_with_options(request, runtime)
 
@@ -4455,6 +5507,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.ListTargetAttachmentsForControlPolicyRequest,
     ) -> resource_directory_master_20220419_models.ListTargetAttachmentsForControlPolicyResponse:
+        """
+        @summary Queries the objects to which an access control policy is attached.
+        
+        @param request: ListTargetAttachmentsForControlPolicyRequest
+        @return: ListTargetAttachmentsForControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_target_attachments_for_control_policy_with_options_async(request, runtime)
 
@@ -4464,7 +5522,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListTrustedServiceStatusResponse:
         """
-        Only a management account or delegated administrator account can be used to call this operation.
+        @summary Queries the trusted services that are enabled within a management account or delegated administrator account.
+        
+        @description Only a management account or delegated administrator account can be used to call this operation.
         
         @param request: ListTrustedServiceStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4503,7 +5563,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.ListTrustedServiceStatusResponse:
         """
-        Only a management account or delegated administrator account can be used to call this operation.
+        @summary Queries the trusted services that are enabled within a management account or delegated administrator account.
+        
+        @description Only a management account or delegated administrator account can be used to call this operation.
         
         @param request: ListTrustedServiceStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4541,7 +5603,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListTrustedServiceStatusRequest,
     ) -> resource_directory_master_20220419_models.ListTrustedServiceStatusResponse:
         """
-        Only a management account or delegated administrator account can be used to call this operation.
+        @summary Queries the trusted services that are enabled within a management account or delegated administrator account.
+        
+        @description Only a management account or delegated administrator account can be used to call this operation.
         
         @param request: ListTrustedServiceStatusRequest
         @return: ListTrustedServiceStatusResponse
@@ -4554,7 +5618,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.ListTrustedServiceStatusRequest,
     ) -> resource_directory_master_20220419_models.ListTrustedServiceStatusResponse:
         """
-        Only a management account or delegated administrator account can be used to call this operation.
+        @summary Queries the trusted services that are enabled within a management account or delegated administrator account.
+        
+        @description Only a management account or delegated administrator account can be used to call this operation.
         
         @param request: ListTrustedServiceStatusRequest
         @return: ListTrustedServiceStatusResponse
@@ -4567,6 +5633,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.MoveAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.MoveAccountResponse:
+        """
+        @summary Moves a member from a folder to another.
+        
+        @param request: MoveAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -4597,6 +5670,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.MoveAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.MoveAccountResponse:
+        """
+        @summary Moves a member from a folder to another.
+        
+        @param request: MoveAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -4626,6 +5706,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.MoveAccountRequest,
     ) -> resource_directory_master_20220419_models.MoveAccountResponse:
+        """
+        @summary Moves a member from a folder to another.
+        
+        @param request: MoveAccountRequest
+        @return: MoveAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.move_account_with_options(request, runtime)
 
@@ -4633,6 +5719,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.MoveAccountRequest,
     ) -> resource_directory_master_20220419_models.MoveAccountResponse:
+        """
+        @summary Moves a member from a folder to another.
+        
+        @param request: MoveAccountRequest
+        @return: MoveAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.move_account_with_options_async(request, runtime)
 
@@ -4641,6 +5733,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.PrecheckForConsolidatedBillingAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.PrecheckForConsolidatedBillingAccountResponse:
+        """
+        @summary Checks whether a management account or member can be used as a main financial account.
+        
+        @param request: PrecheckForConsolidatedBillingAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PrecheckForConsolidatedBillingAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.billing_account_id):
@@ -4669,6 +5768,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.PrecheckForConsolidatedBillingAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.PrecheckForConsolidatedBillingAccountResponse:
+        """
+        @summary Checks whether a management account or member can be used as a main financial account.
+        
+        @param request: PrecheckForConsolidatedBillingAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PrecheckForConsolidatedBillingAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.billing_account_id):
@@ -4696,6 +5802,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.PrecheckForConsolidatedBillingAccountRequest,
     ) -> resource_directory_master_20220419_models.PrecheckForConsolidatedBillingAccountResponse:
+        """
+        @summary Checks whether a management account or member can be used as a main financial account.
+        
+        @param request: PrecheckForConsolidatedBillingAccountRequest
+        @return: PrecheckForConsolidatedBillingAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.precheck_for_consolidated_billing_account_with_options(request, runtime)
 
@@ -4703,6 +5815,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.PrecheckForConsolidatedBillingAccountRequest,
     ) -> resource_directory_master_20220419_models.PrecheckForConsolidatedBillingAccountResponse:
+        """
+        @summary Checks whether a management account or member can be used as a main financial account.
+        
+        @param request: PrecheckForConsolidatedBillingAccountRequest
+        @return: PrecheckForConsolidatedBillingAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.precheck_for_consolidated_billing_account_with_options_async(request, runtime)
 
@@ -4712,10 +5830,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.RegisterDelegatedAdministratorResponse:
         """
-        The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory. When you call this operation, you must take note of the following limits:
-        *   Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](~~208133~~).
-        *   Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
-        *   The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
+        @summary Specifies a member in a resource directory as a delegated administrator account of a trusted service.
+        
+        @description The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory. When you call this operation, you must take note of the following limits:
+        Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
+        Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
+        The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
         
         @param request: RegisterDelegatedAdministratorRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4752,10 +5872,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.RegisterDelegatedAdministratorResponse:
         """
-        The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory. When you call this operation, you must take note of the following limits:
-        *   Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](~~208133~~).
-        *   Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
-        *   The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
+        @summary Specifies a member in a resource directory as a delegated administrator account of a trusted service.
+        
+        @description The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory. When you call this operation, you must take note of the following limits:
+        Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
+        Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
+        The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
         
         @param request: RegisterDelegatedAdministratorRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4791,10 +5913,12 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.RegisterDelegatedAdministratorRequest,
     ) -> resource_directory_master_20220419_models.RegisterDelegatedAdministratorResponse:
         """
-        The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory. When you call this operation, you must take note of the following limits:
-        *   Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](~~208133~~).
-        *   Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
-        *   The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
+        @summary Specifies a member in a resource directory as a delegated administrator account of a trusted service.
+        
+        @description The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory. When you call this operation, you must take note of the following limits:
+        Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
+        Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
+        The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
         
         @param request: RegisterDelegatedAdministratorRequest
         @return: RegisterDelegatedAdministratorResponse
@@ -4807,10 +5931,12 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.RegisterDelegatedAdministratorRequest,
     ) -> resource_directory_master_20220419_models.RegisterDelegatedAdministratorResponse:
         """
-        The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory. When you call this operation, you must take note of the following limits:
-        *   Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](~~208133~~).
-        *   Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
-        *   The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
+        @summary Specifies a member in a resource directory as a delegated administrator account of a trusted service.
+        
+        @description The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory. When you call this operation, you must take note of the following limits:
+        Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
+        Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
+        The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
         
         @param request: RegisterDelegatedAdministratorRequest
         @return: RegisterDelegatedAdministratorResponse
@@ -4823,6 +5949,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.RemoveCloudAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.RemoveCloudAccountResponse:
+        """
+        @summary Removes a member of the cloud account type.
+        
+        @param request: RemoveCloudAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveCloudAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -4851,6 +5984,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.RemoveCloudAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.RemoveCloudAccountResponse:
+        """
+        @summary Removes a member of the cloud account type.
+        
+        @param request: RemoveCloudAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveCloudAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -4878,6 +6018,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.RemoveCloudAccountRequest,
     ) -> resource_directory_master_20220419_models.RemoveCloudAccountResponse:
+        """
+        @summary Removes a member of the cloud account type.
+        
+        @param request: RemoveCloudAccountRequest
+        @return: RemoveCloudAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_cloud_account_with_options(request, runtime)
 
@@ -4885,6 +6031,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.RemoveCloudAccountRequest,
     ) -> resource_directory_master_20220419_models.RemoveCloudAccountResponse:
+        """
+        @summary Removes a member of the cloud account type.
+        
+        @param request: RemoveCloudAccountRequest
+        @return: RemoveCloudAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_cloud_account_with_options_async(request, runtime)
 
@@ -4893,6 +6045,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.RetryChangeAccountEmailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.RetryChangeAccountEmailResponse:
+        """
+        @summary Resends a verification email for the email address change of a member.
+        
+        @param request: RetryChangeAccountEmailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryChangeAccountEmailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -4921,6 +6080,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.RetryChangeAccountEmailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.RetryChangeAccountEmailResponse:
+        """
+        @summary Resends a verification email for the email address change of a member.
+        
+        @param request: RetryChangeAccountEmailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryChangeAccountEmailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_id):
@@ -4948,6 +6114,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.RetryChangeAccountEmailRequest,
     ) -> resource_directory_master_20220419_models.RetryChangeAccountEmailResponse:
+        """
+        @summary Resends a verification email for the email address change of a member.
+        
+        @param request: RetryChangeAccountEmailRequest
+        @return: RetryChangeAccountEmailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.retry_change_account_email_with_options(request, runtime)
 
@@ -4955,6 +6127,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.RetryChangeAccountEmailRequest,
     ) -> resource_directory_master_20220419_models.RetryChangeAccountEmailResponse:
+        """
+        @summary Resends a verification email for the email address change of a member.
+        
+        @param request: RetryChangeAccountEmailRequest
+        @return: RetryChangeAccountEmailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.retry_change_account_email_with_options_async(request, runtime)
 
@@ -4963,6 +6141,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.SendEmailVerificationForMessageContactRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.SendEmailVerificationForMessageContactResponse:
+        """
+        @summary Sends verification information to the email address of a contact.
+        
+        @param request: SendEmailVerificationForMessageContactRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendEmailVerificationForMessageContactResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -4993,6 +6178,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.SendEmailVerificationForMessageContactRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.SendEmailVerificationForMessageContactResponse:
+        """
+        @summary Sends verification information to the email address of a contact.
+        
+        @param request: SendEmailVerificationForMessageContactRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendEmailVerificationForMessageContactResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -5022,6 +6214,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.SendEmailVerificationForMessageContactRequest,
     ) -> resource_directory_master_20220419_models.SendEmailVerificationForMessageContactResponse:
+        """
+        @summary Sends verification information to the email address of a contact.
+        
+        @param request: SendEmailVerificationForMessageContactRequest
+        @return: SendEmailVerificationForMessageContactResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.send_email_verification_for_message_contact_with_options(request, runtime)
 
@@ -5029,6 +6227,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.SendEmailVerificationForMessageContactRequest,
     ) -> resource_directory_master_20220419_models.SendEmailVerificationForMessageContactResponse:
+        """
+        @summary Sends verification information to the email address of a contact.
+        
+        @param request: SendEmailVerificationForMessageContactRequest
+        @return: SendEmailVerificationForMessageContactResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.send_email_verification_for_message_contact_with_options_async(request, runtime)
 
@@ -5037,6 +6241,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.SendPhoneVerificationForMessageContactRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.SendPhoneVerificationForMessageContactResponse:
+        """
+        @summary Sends verification information to the mobile phone number of a contact.
+        
+        @param request: SendPhoneVerificationForMessageContactRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendPhoneVerificationForMessageContactResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -5067,6 +6278,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.SendPhoneVerificationForMessageContactRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.SendPhoneVerificationForMessageContactResponse:
+        """
+        @summary Sends verification information to the mobile phone number of a contact.
+        
+        @param request: SendPhoneVerificationForMessageContactRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendPhoneVerificationForMessageContactResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -5096,6 +6314,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.SendPhoneVerificationForMessageContactRequest,
     ) -> resource_directory_master_20220419_models.SendPhoneVerificationForMessageContactResponse:
+        """
+        @summary Sends verification information to the mobile phone number of a contact.
+        
+        @param request: SendPhoneVerificationForMessageContactRequest
+        @return: SendPhoneVerificationForMessageContactResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.send_phone_verification_for_message_contact_with_options(request, runtime)
 
@@ -5103,6 +6327,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.SendPhoneVerificationForMessageContactRequest,
     ) -> resource_directory_master_20220419_models.SendPhoneVerificationForMessageContactResponse:
+        """
+        @summary Sends verification information to the mobile phone number of a contact.
+        
+        @param request: SendPhoneVerificationForMessageContactRequest
+        @return: SendPhoneVerificationForMessageContactResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.send_phone_verification_for_message_contact_with_options_async(request, runtime)
 
@@ -5112,7 +6342,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.SendVerificationCodeForBindSecureMobilePhoneResponse:
         """
-        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
+        @summary Sends a verification code to the mobile phone number that you want to bind to a member of the resource account type in a resource directory for security purposes.
+        
+        @description To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
         
         @param request: SendVerificationCodeForBindSecureMobilePhoneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5149,7 +6381,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.SendVerificationCodeForBindSecureMobilePhoneResponse:
         """
-        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
+        @summary Sends a verification code to the mobile phone number that you want to bind to a member of the resource account type in a resource directory for security purposes.
+        
+        @description To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
         
         @param request: SendVerificationCodeForBindSecureMobilePhoneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5185,7 +6419,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.SendVerificationCodeForBindSecureMobilePhoneRequest,
     ) -> resource_directory_master_20220419_models.SendVerificationCodeForBindSecureMobilePhoneResponse:
         """
-        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
+        @summary Sends a verification code to the mobile phone number that you want to bind to a member of the resource account type in a resource directory for security purposes.
+        
+        @description To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
         
         @param request: SendVerificationCodeForBindSecureMobilePhoneRequest
         @return: SendVerificationCodeForBindSecureMobilePhoneResponse
@@ -5198,7 +6434,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.SendVerificationCodeForBindSecureMobilePhoneRequest,
     ) -> resource_directory_master_20220419_models.SendVerificationCodeForBindSecureMobilePhoneResponse:
         """
-        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
+        @summary Sends a verification code to the mobile phone number that you want to bind to a member of the resource account type in a resource directory for security purposes.
+        
+        @description To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
         
         @param request: SendVerificationCodeForBindSecureMobilePhoneRequest
         @return: SendVerificationCodeForBindSecureMobilePhoneResponse
@@ -5212,7 +6450,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.SendVerificationCodeForEnableRDResponse:
         """
-        Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
+        @summary Sends a verification code to the mobile phone number bound to a newly created account when you use the account to enable a resource directory.
+        
+        @description Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
         
         @param request: SendVerificationCodeForEnableRDRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5247,7 +6487,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.SendVerificationCodeForEnableRDResponse:
         """
-        Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
+        @summary Sends a verification code to the mobile phone number bound to a newly created account when you use the account to enable a resource directory.
+        
+        @description Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
         
         @param request: SendVerificationCodeForEnableRDRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5281,7 +6523,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.SendVerificationCodeForEnableRDRequest,
     ) -> resource_directory_master_20220419_models.SendVerificationCodeForEnableRDResponse:
         """
-        Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
+        @summary Sends a verification code to the mobile phone number bound to a newly created account when you use the account to enable a resource directory.
+        
+        @description Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
         
         @param request: SendVerificationCodeForEnableRDRequest
         @return: SendVerificationCodeForEnableRDResponse
@@ -5294,7 +6538,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.SendVerificationCodeForEnableRDRequest,
     ) -> resource_directory_master_20220419_models.SendVerificationCodeForEnableRDResponse:
         """
-        Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
+        @summary Sends a verification code to the mobile phone number bound to a newly created account when you use the account to enable a resource directory.
+        
+        @description Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
         
         @param request: SendVerificationCodeForEnableRDRequest
         @return: SendVerificationCodeForEnableRDResponse
@@ -5308,7 +6554,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.SetMemberDeletionPermissionResponse:
         """
-        Members of the resource account type can be deleted only after the member deletion feature is enabled.
+        @summary Enables or disables the member deletion feature.
+        
+        @description Members of the resource account type can be deleted only after the member deletion feature is enabled.
         
         @param request: SetMemberDeletionPermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5343,7 +6591,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.SetMemberDeletionPermissionResponse:
         """
-        Members of the resource account type can be deleted only after the member deletion feature is enabled.
+        @summary Enables or disables the member deletion feature.
+        
+        @description Members of the resource account type can be deleted only after the member deletion feature is enabled.
         
         @param request: SetMemberDeletionPermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5377,7 +6627,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.SetMemberDeletionPermissionRequest,
     ) -> resource_directory_master_20220419_models.SetMemberDeletionPermissionResponse:
         """
-        Members of the resource account type can be deleted only after the member deletion feature is enabled.
+        @summary Enables or disables the member deletion feature.
+        
+        @description Members of the resource account type can be deleted only after the member deletion feature is enabled.
         
         @param request: SetMemberDeletionPermissionRequest
         @return: SetMemberDeletionPermissionResponse
@@ -5390,7 +6642,9 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.SetMemberDeletionPermissionRequest,
     ) -> resource_directory_master_20220419_models.SetMemberDeletionPermissionResponse:
         """
-        Members of the resource account type can be deleted only after the member deletion feature is enabled.
+        @summary Enables or disables the member deletion feature.
+        
+        @description Members of the resource account type can be deleted only after the member deletion feature is enabled.
         
         @param request: SetMemberDeletionPermissionRequest
         @return: SetMemberDeletionPermissionResponse
@@ -5403,6 +6657,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.TagResourcesResponse:
+        """
+        @summary Adds tags to the members in a resource directory.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -5435,6 +6696,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.TagResourcesResponse:
+        """
+        @summary Adds tags to the members in a resource directory.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -5466,6 +6734,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.TagResourcesRequest,
     ) -> resource_directory_master_20220419_models.TagResourcesResponse:
+        """
+        @summary Adds tags to the members in a resource directory.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -5473,6 +6747,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.TagResourcesRequest,
     ) -> resource_directory_master_20220419_models.TagResourcesResponse:
+        """
+        @summary Adds tags to the members in a resource directory.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -5481,6 +6761,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from the members in a resource directory.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -5515,6 +6802,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from the members in a resource directory.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -5548,6 +6842,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.UntagResourcesRequest,
     ) -> resource_directory_master_20220419_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from the members in a resource directory.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -5555,6 +6855,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.UntagResourcesRequest,
     ) -> resource_directory_master_20220419_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from the members in a resource directory.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -5564,9 +6870,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.UpdateAccountResponse:
         """
-        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
-        *   Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](~~111233~~).
-        *   Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](~~209980~~).
+        @summary Changes the display name of a member, or switches the type of a member.
+        
+        @description    To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
+        Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](https://help.aliyun.com/document_detail/111233.html).
+        Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](https://help.aliyun.com/document_detail/209980.html).
         
         @param request: UpdateAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5607,9 +6915,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.UpdateAccountResponse:
         """
-        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
-        *   Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](~~111233~~).
-        *   Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](~~209980~~).
+        @summary Changes the display name of a member, or switches the type of a member.
+        
+        @description    To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
+        Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](https://help.aliyun.com/document_detail/111233.html).
+        Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](https://help.aliyun.com/document_detail/209980.html).
         
         @param request: UpdateAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5649,9 +6959,11 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.UpdateAccountRequest,
     ) -> resource_directory_master_20220419_models.UpdateAccountResponse:
         """
-        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
-        *   Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](~~111233~~).
-        *   Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](~~209980~~).
+        @summary Changes the display name of a member, or switches the type of a member.
+        
+        @description    To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
+        Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](https://help.aliyun.com/document_detail/111233.html).
+        Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](https://help.aliyun.com/document_detail/209980.html).
         
         @param request: UpdateAccountRequest
         @return: UpdateAccountResponse
@@ -5664,9 +6976,11 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.UpdateAccountRequest,
     ) -> resource_directory_master_20220419_models.UpdateAccountResponse:
         """
-        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
-        *   Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](~~111233~~).
-        *   Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](~~209980~~).
+        @summary Changes the display name of a member, or switches the type of a member.
+        
+        @description    To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
+        Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](https://help.aliyun.com/document_detail/111233.html).
+        Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](https://help.aliyun.com/document_detail/209980.html).
         
         @param request: UpdateAccountRequest
         @return: UpdateAccountResponse
@@ -5679,6 +6993,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.UpdateControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.UpdateControlPolicyResponse:
+        """
+        @summary Updates a custom access control policy.
+        
+        @param request: UpdateControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_description):
@@ -5713,6 +7034,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.UpdateControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.UpdateControlPolicyResponse:
+        """
+        @summary Updates a custom access control policy.
+        
+        @param request: UpdateControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_description):
@@ -5746,6 +7074,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.UpdateControlPolicyRequest,
     ) -> resource_directory_master_20220419_models.UpdateControlPolicyResponse:
+        """
+        @summary Updates a custom access control policy.
+        
+        @param request: UpdateControlPolicyRequest
+        @return: UpdateControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_control_policy_with_options(request, runtime)
 
@@ -5753,6 +7087,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.UpdateControlPolicyRequest,
     ) -> resource_directory_master_20220419_models.UpdateControlPolicyResponse:
+        """
+        @summary Updates a custom access control policy.
+        
+        @param request: UpdateControlPolicyRequest
+        @return: UpdateControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_control_policy_with_options_async(request, runtime)
 
@@ -5761,6 +7101,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.UpdateFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.UpdateFolderResponse:
+        """
+        @summary Changes the name of a folder.
+        
+        @param request: UpdateFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFolderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.folder_id):
@@ -5791,6 +7138,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.UpdateFolderRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.UpdateFolderResponse:
+        """
+        @summary Changes the name of a folder.
+        
+        @param request: UpdateFolderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFolderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.folder_id):
@@ -5820,6 +7174,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.UpdateFolderRequest,
     ) -> resource_directory_master_20220419_models.UpdateFolderResponse:
+        """
+        @summary Changes the name of a folder.
+        
+        @param request: UpdateFolderRequest
+        @return: UpdateFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_folder_with_options(request, runtime)
 
@@ -5827,6 +7187,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.UpdateFolderRequest,
     ) -> resource_directory_master_20220419_models.UpdateFolderResponse:
+        """
+        @summary Changes the name of a folder.
+        
+        @param request: UpdateFolderRequest
+        @return: UpdateFolderResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_folder_with_options_async(request, runtime)
 
@@ -5835,6 +7201,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.UpdateMessageContactRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.UpdateMessageContactResponse:
+        """
+        @summary Updates a contact.
+        
+        @param request: UpdateMessageContactRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMessageContactResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -5873,6 +7246,13 @@ class Client(OpenApiClient):
         request: resource_directory_master_20220419_models.UpdateMessageContactRequest,
         runtime: util_models.RuntimeOptions,
     ) -> resource_directory_master_20220419_models.UpdateMessageContactResponse:
+        """
+        @summary Updates a contact.
+        
+        @param request: UpdateMessageContactRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMessageContactResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contact_id):
@@ -5910,6 +7290,12 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.UpdateMessageContactRequest,
     ) -> resource_directory_master_20220419_models.UpdateMessageContactResponse:
+        """
+        @summary Updates a contact.
+        
+        @param request: UpdateMessageContactRequest
+        @return: UpdateMessageContactResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_message_contact_with_options(request, runtime)
 
@@ -5917,5 +7303,11 @@ class Client(OpenApiClient):
         self,
         request: resource_directory_master_20220419_models.UpdateMessageContactRequest,
     ) -> resource_directory_master_20220419_models.UpdateMessageContactResponse:
+        """
+        @summary Updates a contact.
+        
+        @param request: UpdateMessageContactRequest
+        @return: UpdateMessageContactResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_message_contact_with_options_async(request, runtime)

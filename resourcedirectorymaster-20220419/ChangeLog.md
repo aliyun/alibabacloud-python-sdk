@@ -1,3 +1,8 @@
+2024-08-15 Version: 2.0.4
+- Update API CreateControlPolicy: add param Tag.
+- Update API CreateFolder: add param Tag.
+
+
 2024-05-06 Version: 2.0.3
 - Update API GetAccount: update response param.
 

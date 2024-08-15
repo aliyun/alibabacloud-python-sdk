@@ -12,6 +12,8 @@ class AcceptHandshakeRequest(TeaModel):
         # The ID of the invitation.
         # 
         # You can call the [ListHandshakesForAccount](~~ListHandshakesForAccount~~) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.handshake_id = handshake_id
 
     def validate(self):
@@ -231,14 +233,20 @@ class AddMessageContactRequest(TeaModel):
         # The email address of the contact.
         # 
         # After you specify an email address, you need to call [SendEmailVerificationForMessageContact](~~SendEmailVerificationForMessageContact~~) to send verification information to the email address. After the verification is passed, the email address takes effect.
+        # 
+        # This parameter is required.
         self.email_address = email_address
         # The types of messages received by the contact.
+        # 
+        # This parameter is required.
         self.message_types = message_types
         # The name of the contact.
         # 
         # The name must be unique in your resource directory.
         # 
         # The name must be 2 to 12 characters in length and can contain only letters.
+        # 
+        # This parameter is required.
         self.name = name
         # The mobile phone number of the contact.
         # 
@@ -299,6 +307,8 @@ class AddMessageContactRequest(TeaModel):
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -622,12 +632,16 @@ class AttachControlPolicyRequest(TeaModel):
         target_id: str = None,
     ):
         # The ID of the access control policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
         # The ID of the object to which you want to attach the access control policy. Access control policies can be attached to the following objects:
         # 
         # *   Root folder
         # *   Subfolders of the Root folder
         # *   Members
+        # 
+        # This parameter is required.
         self.target_id = target_id
 
     def validate(self):
@@ -731,18 +745,24 @@ class BindSecureMobilePhoneRequest(TeaModel):
         verification_code: str = None,
     ):
         # The Alibaba Cloud account ID of the member.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The mobile phone number that you want to bind to the member for security purposes.
         # 
         # The mobile phone number you specify must be the same as the mobile phone number that you specify when you call the [SendVerificationCodeForBindSecureMobilePhone](~~SendVerificationCodeForBindSecureMobilePhone~~) operation to obtain a verification code.
         # 
-        # Specify the mobile phone number in the \<Country code>-\<Mobile phone number> format.
+        # Specify the mobile phone number in the \\<Country code>-\\<Mobile phone number> format.
         # 
         # > Mobile phone numbers in the `86-<Mobile phone number>` format in the Chinese mainland are not supported.
+        # 
+        # This parameter is required.
         self.secure_mobile_phone = secure_mobile_phone
         # The verification code.
         # 
         # You can call the [SendVerificationCodeForBindSecureMobilePhone](~~SendVerificationCodeForBindSecureMobilePhone~~) operation to obtain the verification code.
+        # 
+        # This parameter is required.
         self.verification_code = verification_code
 
     def validate(self):
@@ -848,6 +868,8 @@ class CancelChangeAccountEmailRequest(TeaModel):
         account_id: str = None,
     ):
         # The Alibaba Cloud account ID of the member.
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -945,6 +967,8 @@ class CancelHandshakeRequest(TeaModel):
         handshake_id: str = None,
     ):
         # The ID of the invitation.
+        # 
+        # This parameter is required.
         self.handshake_id = handshake_id
 
     def validate(self):
@@ -1272,10 +1296,14 @@ class ChangeAccountEmailRequest(TeaModel):
         email: str = None,
     ):
         # The Alibaba Cloud account ID of the member.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The email address to be bound to the member.
         # 
         # > The system automatically sends a verification email to the email address. After the verification is passed, the email address takes effect, and the system changes both the logon email address and secure email address of the member.
+        # 
+        # This parameter is required.
         self.email = email
 
     def validate(self):
@@ -1377,6 +1405,8 @@ class CheckAccountDeleteRequest(TeaModel):
         account_id: str = None,
     ):
         # The Alibaba Cloud account ID of the member that you want to delete.
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -1468,6 +1498,39 @@ class CheckAccountDeleteResponse(TeaModel):
         return self
 
 
+class CreateControlPolicyRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateControlPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -1475,30 +1538,41 @@ class CreateControlPolicyRequest(TeaModel):
         effect_scope: str = None,
         policy_document: str = None,
         policy_name: str = None,
+        tag: List[CreateControlPolicyRequestTag] = None,
     ):
         # The description of the access control policy.
         # 
-        # The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
+        # The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (_), and hyphens (-) and must start with a letter.
         self.description = description
         # The effective scope of the access control policy.
         # 
         # The value RAM indicates that the access control policy takes effect only for RAM users and RAM roles.
+        # 
+        # This parameter is required.
         self.effect_scope = effect_scope
         # The document of the access control policy.
         # 
         # The document can be a maximum of 4,096 characters in length.
         # 
-        # For more information about the languages of access control policies, see [Languages of access control policies](~~179096~~).
+        # For more information about the languages of access control policies, see [Languages of access control policies](https://help.aliyun.com/document_detail/179096.html).
         # 
-        # For more information about the examples of access control policies, see [Examples of custom access control policies](~~181474~~).
+        # For more information about the examples of access control policies, see [Examples of custom access control policies](https://help.aliyun.com/document_detail/181474.html).
+        # 
+        # This parameter is required.
         self.policy_document = policy_document
         # The name of the access control policy.
         # 
         # The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
+        # 
+        # This parameter is required.
         self.policy_name = policy_name
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1514,6 +1588,10 @@ class CreateControlPolicyRequest(TeaModel):
             result['PolicyDocument'] = self.policy_document
         if self.policy_name is not None:
             result['PolicyName'] = self.policy_name
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1526,6 +1604,11 @@ class CreateControlPolicyRequest(TeaModel):
             self.policy_document = m.get('PolicyDocument')
         if m.get('PolicyName') is not None:
             self.policy_name = m.get('PolicyName')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateControlPolicyRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -1689,21 +1772,61 @@ class CreateControlPolicyResponse(TeaModel):
         return self
 
 
+class CreateFolderRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateFolderRequest(TeaModel):
     def __init__(
         self,
         folder_name: str = None,
         parent_folder_id: str = None,
+        tag: List[CreateFolderRequestTag] = None,
     ):
         # The name of the folder.
         # 
-        # The name must be 1 to 24 characters in length and can contain letters, digits, underscores (\_), periods (.),and hyphens (-).
+        # The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.),and hyphens (-).
+        # 
+        # This parameter is required.
         self.folder_name = folder_name
         # The ID of the parent folder.
         self.parent_folder_id = parent_folder_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1715,6 +1838,10 @@ class CreateFolderRequest(TeaModel):
             result['FolderName'] = self.folder_name
         if self.parent_folder_id is not None:
             result['ParentFolderId'] = self.parent_folder_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1723,6 +1850,11 @@ class CreateFolderRequest(TeaModel):
             self.folder_name = m.get('FolderName')
         if m.get('ParentFolderId') is not None:
             self.parent_folder_id = m.get('ParentFolderId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateFolderRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -1913,9 +2045,11 @@ class CreateResourceAccountRequest(TeaModel):
         # 
         # The name must be 2 to 50 characters in length.
         # 
-        # The name can contain letters, digits, underscores (\_), periods (.), hyphens (-), and spaces.
+        # The name can contain letters, digits, underscores (_), periods (.), hyphens (-), and spaces.
         # 
         # The name must be unique in the resource directory.
+        # 
+        # This parameter is required.
         self.display_name = display_name
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
@@ -1924,7 +2058,7 @@ class CreateResourceAccountRequest(TeaModel):
         self.dry_run = dry_run
         # The ID of the parent folder.
         self.parent_folder_id = parent_folder_id
-        # The ID of the billing account. If you leave this parameter empty, the member is used as its own billing account.
+        # The ID of the billing account. If you leave this parameter empty, the newly created member is used as its billing account.
         self.payer_account_id = payer_account_id
         # The identity type of the member. Valid values:
         # 
@@ -2166,6 +2300,8 @@ class DeclineHandshakeRequest(TeaModel):
         handshake_id: str = None,
     ):
         # The ID of the invitation.
+        # 
+        # This parameter is required.
         self.handshake_id = handshake_id
 
     def validate(self):
@@ -2384,6 +2520,8 @@ class DeleteAccountRequest(TeaModel):
         # You can obtain the IDs from the response of the [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operation.
         self.abandonable_check_id = abandonable_check_id
         # The Alibaba Cloud account ID of the member that you want to delete.
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -2421,6 +2559,8 @@ class DeleteAccountShrinkRequest(TeaModel):
         # You can obtain the IDs from the response of the [GetAccountDeletionCheckResult](~~GetAccountDeletionCheckResult~~) operation.
         self.abandonable_check_id_shrink = abandonable_check_id_shrink
         # The Alibaba Cloud account ID of the member that you want to delete.
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -2456,7 +2596,7 @@ class DeleteAccountResponseBody(TeaModel):
         # The type of the deletion. Valid values:
         # 
         # *   0: direct deletion. If the member does not have pay-as-you-go resources that are purchased within the previous 30 days, the system directly deletes the member.
-        # *   1: deletion with a silence period. If the member has pay-as-you-go resources that are purchased within the previous 30 days, the member enters a silence period. The system starts to delete the member until the silence period ends. For more information about the silence period, see [What is the silence period for member deletion?](~~446079~~)
+        # *   1: deletion with a silence period. If the member has pay-as-you-go resources that are purchased within the previous 30 days, the member enters a silence period. The system starts to delete the member until the silence period ends. For more information about the silence period, see [What is the silence period for member deletion?](https://help.aliyun.com/document_detail/446079.html)
         self.deletion_type = deletion_type
         # The ID of the request.
         self.request_id = request_id
@@ -2532,6 +2672,8 @@ class DeleteControlPolicyRequest(TeaModel):
         policy_id: str = None,
     ):
         # The ID of the access control policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
 
     def validate(self):
@@ -2629,6 +2771,8 @@ class DeleteFolderRequest(TeaModel):
         folder_id: str = None,
     ):
         # The ID of the folder.
+        # 
+        # This parameter is required.
         self.folder_id = folder_id
 
     def validate(self):
@@ -2727,6 +2871,8 @@ class DeleteMessageContactRequest(TeaModel):
         retain_contact_in_members: bool = None,
     ):
         # The ID of the contact.
+        # 
+        # This parameter is required.
         self.contact_id = contact_id
         # Specifies whether to retain the contact for members. Valid values:
         # 
@@ -2844,8 +2990,12 @@ class DeregisterDelegatedAdministratorRequest(TeaModel):
         service_principal: str = None,
     ):
         # The Alibaba Cloud account ID of the member in the resource directory.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The identifier of the trusted service.
+        # 
+        # This parameter is required.
         self.service_principal = service_principal
 
     def validate(self):
@@ -3017,12 +3167,16 @@ class DetachControlPolicyRequest(TeaModel):
         target_id: str = None,
     ):
         # The ID of the access control policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
         # The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
         # 
         # *   Root folder
         # *   Subfolders of the Root folder
         # *   Members
+        # 
+        # This parameter is required.
         self.target_id = target_id
 
     def validate(self):
@@ -3206,8 +3360,12 @@ class DisassociateMembersRequest(TeaModel):
         members: List[str] = None,
     ):
         # The ID of the contact.
+        # 
+        # This parameter is required.
         self.contact_id = contact_id
         # The IDs of objects from which you want to unbind the contact.
+        # 
+        # This parameter is required.
         self.members = members
 
     def validate(self):
@@ -3463,6 +3621,8 @@ class EnableResourceDirectoryRequest(TeaModel):
         # 
         # *   CurrentAccount: The current account is used to enable a resource directory.
         # *   NewManagementAccount: A newly created account is used to enable a resource directory. If you select this mode, you must configure the `MAName`, `MASecureMobilePhone`, and `VerificationCode` parameters.
+        # 
+        # This parameter is required.
         self.enable_mode = enable_mode
         # The name of the newly created account.
         # 
@@ -3658,6 +3818,8 @@ class GetAccountRequest(TeaModel):
         include_tags: bool = None,
     ):
         # The Alibaba Cloud account ID of the member.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # Specifies whether to return the information of tags. Valid values:
         # 
@@ -3695,9 +3857,9 @@ class GetAccountResponseBodyAccountTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # A tag key.
+        # The tag key.
         self.key = key
-        # A tag value.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -3759,6 +3921,10 @@ class GetAccountResponseBodyAccount(TeaModel):
         self.email_status = email_status
         # The ID of the folder.
         self.folder_id = folder_id
+        # Indicates whether a mobile phone number is bound to the member for security purposes. Valid values:
+        # 
+        # *   true
+        # *   false
         self.has_secure_mobile_phone = has_secure_mobile_phone
         # The real-name verification information.
         self.identity_information = identity_information
@@ -3889,7 +4055,7 @@ class GetAccountResponseBody(TeaModel):
         account: GetAccountResponseBodyAccount = None,
         request_id: str = None,
     ):
-        # The information of the member.
+        # The information about the member.
         self.account = account
         # The ID of the request.
         self.request_id = request_id
@@ -3967,6 +4133,8 @@ class GetAccountDeletionCheckResultRequest(TeaModel):
         account_id: str = None,
     ):
         # The Alibaba Cloud account ID of the member that you want to delete.
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -4233,6 +4401,8 @@ class GetAccountDeletionStatusRequest(TeaModel):
         account_id: str = None,
     ):
         # The Alibaba Cloud account ID of the member.
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -4305,11 +4475,13 @@ class GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus(TeaModel):
         # The start time of the deletion.
         self.create_time = create_time
         # The end time of the deletion.
+        # 
+        # This parameter is required.
         self.deletion_time = deletion_time
         # The type of the deletion. Valid values:
         # 
         # *   0: direct deletion. If the member does not have pay-as-you-go resources that are purchased within the previous 30 days, the system directly deletes the member.
-        # *   1: deletion with a silence period. If the member has pay-as-you-go resources that are purchased within the previous 30 days, the member enters a silence period of 45 days. The system starts to delete the member until the silence period ends. For more information about the silence period, see [What is the silence period for member deletion?](~~446079~~)
+        # *   1: deletion with a silence period. If the member has pay-as-you-go resources that are purchased within the previous 30 days, the member enters a silence period of 45 days. The system starts to delete the member until the silence period ends. For more information about the silence period, see [What is the silence period for member deletion?](https://help.aliyun.com/document_detail/446079.html)
         self.deletion_type = deletion_type
         # The reasons why the member fails to be deleted.
         self.fail_reason_list = fail_reason_list
@@ -4463,6 +4635,8 @@ class GetControlPolicyRequest(TeaModel):
         # > This parameter is valid only for system access control policies.
         self.language = language
         # The ID of the access control policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
 
     def validate(self):
@@ -4744,6 +4918,8 @@ class GetFolderRequest(TeaModel):
         folder_id: str = None,
     ):
         # The ID of the folder.
+        # 
+        # This parameter is required.
         self.folder_id = folder_id
 
     def validate(self):
@@ -4906,6 +5082,8 @@ class GetHandshakeRequest(TeaModel):
         handshake_id: str = None,
     ):
         # The ID of the invitation.
+        # 
+        # This parameter is required.
         self.handshake_id = handshake_id
 
     def validate(self):
@@ -5137,6 +5315,8 @@ class GetMessageContactRequest(TeaModel):
         contact_id: str = None,
     ):
         # The ID of the contact.
+        # 
+        # This parameter is required.
         self.contact_id = contact_id
 
     def validate(self):
@@ -5525,6 +5705,8 @@ class GetPayerForAccountRequest(TeaModel):
         account_id: str = None,
     ):
         # The ID of the billing account.
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -5828,11 +6010,15 @@ class InviteAccountToResourceDirectoryRequest(TeaModel):
         # The tags.
         self.tag = tag
         # The ID or logon email address of the account that you want to invite.
+        # 
+        # This parameter is required.
         self.target_entity = target_entity
         # The type of the invited account. Valid values:
         # 
         # *   Account: indicates the ID of the account.
         # *   Email: indicates the logon email address of the account.
+        # 
+        # This parameter is required.
         self.target_type = target_type
 
     def validate(self):
@@ -6964,6 +7150,8 @@ class ListAncestorsRequest(TeaModel):
         child_id: str = None,
     ):
         # The ID of the subfolder.
+        # 
+        # This parameter is required.
         self.child_id = child_id
 
     def validate(self):
@@ -7439,6 +7627,8 @@ class ListControlPolicyAttachmentsForTargetRequest(TeaModel):
         # *   Root folder
         # *   Subfolders of the Root folder
         # *   Members
+        # 
+        # This parameter is required.
         self.target_id = target_id
 
     def validate(self):
@@ -7664,7 +7854,7 @@ class ListDelegatedAdministratorsRequest(TeaModel):
         self.page_size = page_size
         # The identifier of the trusted service.
         # 
-        # For more information, see the `Trusted service identifier` column in [Supported trusted services](~~208133~~).
+        # For more information, see the `Trusted service identifier` column in [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
         self.service_principal = service_principal
 
     def validate(self):
@@ -7894,6 +8084,8 @@ class ListDelegatedServicesForAccountRequest(TeaModel):
         account_id: str = None,
     ):
         # The Alibaba Cloud account ID of the member.
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -9326,6 +9518,8 @@ class ListTagKeysRequest(TeaModel):
         # The resource type.
         # 
         # The value Account indicates the members of the resource directory.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -9539,6 +9733,8 @@ class ListTagResourcesRequest(TeaModel):
         # The type of the objects whose tags you want to query. This parameter specifies a filter condition for the query. Valid values:
         # 
         # *   Account: member
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags. This parameter specifies a filter condition for the query.
         # 
@@ -9752,8 +9948,12 @@ class ListTagValuesRequest(TeaModel):
         # The resource type.
         # 
         # The value Account indicates the members of the resource directory.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag key. This parameter specifies a filter condition for the query.
+        # 
+        # This parameter is required.
         self.tag_key = tag_key
         # The tag value for a fuzzy query.
         self.value_filter = value_filter
@@ -9932,6 +10132,8 @@ class ListTargetAttachmentsForControlPolicyRequest(TeaModel):
         # Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
         # The ID of the access control policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
 
     def validate(self):
@@ -10161,7 +10363,7 @@ class ListTrustedServiceStatusRequest(TeaModel):
         # *   If you set this parameter to the ID of a management account, the trusted services that are enabled within the management account are queried. The default value of this parameter is the ID of an management account.
         # *   If you set this parameter to the ID of a delegated administrator account, the trusted services that are enabled within the delegated administrator account are queried.
         # 
-        # For more information about trusted services and delegated administrator accounts, see [Overview of trusted services](~~208133~~) and [Delegated administrator accounts](~~208117~~).
+        # For more information about trusted services and delegated administrator accounts, see [Overview of trusted services](https://help.aliyun.com/document_detail/208133.html) and [Delegated administrator accounts](https://help.aliyun.com/document_detail/208117.html).
         self.admin_account_id = admin_account_id
         # The number of the page to return.
         # 
@@ -10376,8 +10578,12 @@ class MoveAccountRequest(TeaModel):
         destination_folder_id: str = None,
     ):
         # The Alibaba Cloud account ID of the member that you want to move.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The ID of the destination folder.
+        # 
+        # This parameter is required.
         self.destination_folder_id = destination_folder_id
 
     def validate(self):
@@ -10479,6 +10685,8 @@ class PrecheckForConsolidatedBillingAccountRequest(TeaModel):
         billing_account_id: str = None,
     ):
         # The ID of the management account or member to be used as a main financial account.
+        # 
+        # This parameter is required.
         self.billing_account_id = billing_account_id
 
     def validate(self):
@@ -10637,10 +10845,14 @@ class RegisterDelegatedAdministratorRequest(TeaModel):
         service_principal: str = None,
     ):
         # The Alibaba Cloud account ID of the member in the resource directory.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The identifier of the trusted service.
         # 
-        # For more information, see the `Trusted service identifier` column in [Supported trusted services](~~208133~~).
+        # For more information, see the `Trusted service identifier` column in [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
+        # 
+        # This parameter is required.
         self.service_principal = service_principal
 
     def validate(self):
@@ -10742,6 +10954,8 @@ class RemoveCloudAccountRequest(TeaModel):
         account_id: str = None,
     ):
         # The Alibaba Cloud account ID of the member.
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -10839,6 +11053,8 @@ class RetryChangeAccountEmailRequest(TeaModel):
         account_id: str = None,
     ):
         # The Alibaba Cloud account ID of the member.
+        # 
+        # This parameter is required.
         self.account_id = account_id
 
     def validate(self):
@@ -11151,12 +11367,16 @@ class SendVerificationCodeForBindSecureMobilePhoneRequest(TeaModel):
         secure_mobile_phone: str = None,
     ):
         # The Alibaba Cloud account ID of the member.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # The mobile phone number that you want to bind to the member for security purposes.
         # 
-        # Specify the mobile phone number in the \<Country code>-\<Mobile phone number> format.
+        # Specify the mobile phone number in the \\<Country code>-\\<Mobile phone number> format.
         # 
         # > Mobile phone numbers in the `86-<Mobile phone number>` format in the Chinese mainland are not supported.
+        # 
+        # This parameter is required.
         self.secure_mobile_phone = secure_mobile_phone
 
     def validate(self):
@@ -11369,6 +11589,8 @@ class SetMemberDeletionPermissionRequest(TeaModel):
         # 
         # *   Enabled: enables the member deletion feature.
         # *   Disabled: disables the member deletion feature.
+        # 
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -11533,14 +11755,20 @@ class TagResourcesRequest(TeaModel):
         # The Alibaba Cloud account IDs of the members.
         # 
         # You can specify a maximum of 50 IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the objects to which you want to add tags. Valid values:
         # 
         # *   Account: member
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags.
         # 
         # You can specify a maximum of 20 tags.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -11664,10 +11892,14 @@ class UntagResourcesRequest(TeaModel):
         # The Alibaba Cloud account IDs of the members.
         # 
         # You can specify a maximum of 50 IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the objects from which you want to remove tags. Valid values:
         # 
         # *   Account: member
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag keys.
         # 
@@ -11786,6 +12018,8 @@ class UpdateAccountRequest(TeaModel):
         new_display_name: str = None,
     ):
         # The Alibaba Cloud account ID of the member.
+        # 
+        # This parameter is required.
         self.account_id = account_id
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
@@ -12026,21 +12260,23 @@ class UpdateControlPolicyRequest(TeaModel):
     ):
         # The new description of the access control policy.
         # 
-        # The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
+        # The description must be 1 to 1,024 characters in length. The description can contain letters, digits, underscores (_), and hyphens (-) and must start with a letter.
         self.new_description = new_description
         # The new document of the access control policy.
         # 
         # The document can be a maximum of 4,096 characters in length.
         # 
-        # For more information about the languages of access control policies, see [Languages of access control policies](~~179096~~).
+        # For more information about the languages of access control policies, see [Languages of access control policies](https://help.aliyun.com/document_detail/179096.html).
         # 
-        # For more information about the examples of access control policies, see [Examples of custom access control policies](~~181474~~).
+        # For more information about the examples of access control policies, see [Examples of custom access control policies](https://help.aliyun.com/document_detail/181474.html).
         self.new_policy_document = new_policy_document
         # The new name of the access control policy.
         # 
         # The name must be 1 to 128 characters in length. The name can contain letters, digits, and hyphens (-) and must start with a letter.
         self.new_policy_name = new_policy_name
         # The ID of the access control policy.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
 
     def validate(self):
@@ -12243,10 +12479,14 @@ class UpdateFolderRequest(TeaModel):
         new_folder_name: str = None,
     ):
         # The ID of the folder.
+        # 
+        # This parameter is required.
         self.folder_id = folder_id
         # The new name of the folder.
         # 
-        # The name must be 1 to 24 characters in length and can contain letters, digits, underscores (\_), periods (.), and hyphens (-).
+        # The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+        # 
+        # This parameter is required.
         self.new_folder_name = new_folder_name
 
     def validate(self):
