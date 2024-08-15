@@ -1,3 +1,25 @@
+2024-08-15 Version: 7.0.0
+- Delete API AddPrometheusRemoteWrite.
+- Delete API DeletePrometheusRemoteWrite.
+- Delete API GetPrometheusRemoteWrite.
+- Delete API ListPrometheusRemoteWrites.
+- Delete API UpdatePrometheusRemoteWrite.
+- Update API CreateOrUpdateEventBridgeIntegration: update param Name.
+- Update API CreateOrUpdateIMRobot: update param Type.
+- Update API CreateOrUpdateSilencePolicy: add param EffectiveTimeType.
+- Update API CreateOrUpdateSilencePolicy: add param TimePeriod.
+- Update API CreateOrUpdateSilencePolicy: add param TimeSlots.
+- Update API CreateOrUpdateSilencePolicy: update response param.
+- Update API DeleteEventBridgeIntegration: update param Id.
+- Update API GetPrometheusInstance: update response param.
+- Update API GetRumAppInfo: update response param.
+- Update API GetRumUploadFiles: add param VersionId.
+- Update API ListAlerts: add param Owner.
+- Update API ListEnvironments: add param FilterRegionIds.
+- Update API ListSilencePolicies: update response param.
+- Update API QueryCommercialUsage: update response param.
+
+
 2024-08-05 Version: 6.0.0
 - Delete API AddPrometheusRemoteWrite.
 - Delete API DeletePrometheusRemoteWrite.

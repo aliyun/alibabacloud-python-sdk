@@ -947,7 +947,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddTagToFlinkClusterResponse:
         """
-        @summary Associates a Prometheus instance with the ID and name of a Flink workspace.
+        @summary Attaches the workspace ID and workspace name tags to the Prometheus instance corresponding to a Flink workspace.
         
         @param request: AddTagToFlinkClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -992,7 +992,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddTagToFlinkClusterResponse:
         """
-        @summary Associates a Prometheus instance with the ID and name of a Flink workspace.
+        @summary Attaches the workspace ID and workspace name tags to the Prometheus instance corresponding to a Flink workspace.
         
         @param request: AddTagToFlinkClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1036,7 +1036,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddTagToFlinkClusterRequest,
     ) -> arms20190808_models.AddTagToFlinkClusterResponse:
         """
-        @summary Associates a Prometheus instance with the ID and name of a Flink workspace.
+        @summary Attaches the workspace ID and workspace name tags to the Prometheus instance corresponding to a Flink workspace.
         
         @param request: AddTagToFlinkClusterRequest
         @return: AddTagToFlinkClusterResponse
@@ -1049,7 +1049,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddTagToFlinkClusterRequest,
     ) -> arms20190808_models.AddTagToFlinkClusterResponse:
         """
-        @summary Associates a Prometheus instance with the ID and name of a Flink workspace.
+        @summary Attaches the workspace ID and workspace name tags to the Prometheus instance corresponding to a Flink workspace.
         
         @param request: AddTagToFlinkClusterRequest
         @return: AddTagToFlinkClusterResponse
@@ -4222,6 +4222,13 @@ class Client(OpenApiClient):
         @return: CreateOrUpdateSilencePolicyResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.effective_time_type):
+            query['EffectiveTimeType'] = request.effective_time_type
+        if not UtilClient.is_unset(request.time_period):
+            query['TimePeriod'] = request.time_period
+        if not UtilClient.is_unset(request.time_slots):
+            query['TimeSlots'] = request.time_slots
         body = {}
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
@@ -4234,6 +4241,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.state):
             body['State'] = request.state
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -4265,6 +4273,13 @@ class Client(OpenApiClient):
         @return: CreateOrUpdateSilencePolicyResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.effective_time_type):
+            query['EffectiveTimeType'] = request.effective_time_type
+        if not UtilClient.is_unset(request.time_period):
+            query['TimePeriod'] = request.time_period
+        if not UtilClient.is_unset(request.time_slots):
+            query['TimeSlots'] = request.time_slots
         body = {}
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
@@ -4277,6 +4292,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.state):
             body['State'] = request.state
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -14115,7 +14131,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetRumOcuStatisticDataResponse:
         """
-        @summary 获取RUM OCU统计数据
+        @summary Queries the observability capacity unit (OCU) usage data of Real User Monitoring (RUM).
+        
+        @description You can query the usage data for the current day at any time. You can query the usage data for the previous day only after 8:00 today.
         
         @param tmp_req: GetRumOcuStatisticDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14154,7 +14172,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetRumOcuStatisticDataResponse:
         """
-        @summary 获取RUM OCU统计数据
+        @summary Queries the observability capacity unit (OCU) usage data of Real User Monitoring (RUM).
+        
+        @description You can query the usage data for the current day at any time. You can query the usage data for the previous day only after 8:00 today.
         
         @param tmp_req: GetRumOcuStatisticDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14192,7 +14212,9 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetRumOcuStatisticDataRequest,
     ) -> arms20190808_models.GetRumOcuStatisticDataResponse:
         """
-        @summary 获取RUM OCU统计数据
+        @summary Queries the observability capacity unit (OCU) usage data of Real User Monitoring (RUM).
+        
+        @description You can query the usage data for the current day at any time. You can query the usage data for the previous day only after 8:00 today.
         
         @param request: GetRumOcuStatisticDataRequest
         @return: GetRumOcuStatisticDataResponse
@@ -14205,7 +14227,9 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetRumOcuStatisticDataRequest,
     ) -> arms20190808_models.GetRumOcuStatisticDataResponse:
         """
-        @summary 获取RUM OCU统计数据
+        @summary Queries the observability capacity unit (OCU) usage data of Real User Monitoring (RUM).
+        
+        @description You can query the usage data for the current day at any time. You can query the usage data for the previous day only after 8:00 today.
         
         @param request: GetRumOcuStatisticDataRequest
         @return: GetRumOcuStatisticDataResponse
