@@ -1118,16 +1118,20 @@ class GetTaskInfoResponseBodyDataResult(TeaModel):
     def __init__(
         self,
         auto_chapters: str = None,
+        custom_prompt: str = None,
         meeting_assistance: str = None,
         ppt_extraction: str = None,
+        service_inspection: str = None,
         summarization: str = None,
         text_polish: str = None,
         transcription: str = None,
         translation: str = None,
     ):
         self.auto_chapters = auto_chapters
+        self.custom_prompt = custom_prompt
         self.meeting_assistance = meeting_assistance
         self.ppt_extraction = ppt_extraction
+        self.service_inspection = service_inspection
         self.summarization = summarization
         self.text_polish = text_polish
         self.transcription = transcription
@@ -1144,10 +1148,14 @@ class GetTaskInfoResponseBodyDataResult(TeaModel):
         result = dict()
         if self.auto_chapters is not None:
             result['AutoChapters'] = self.auto_chapters
+        if self.custom_prompt is not None:
+            result['CustomPrompt'] = self.custom_prompt
         if self.meeting_assistance is not None:
             result['MeetingAssistance'] = self.meeting_assistance
         if self.ppt_extraction is not None:
             result['PptExtraction'] = self.ppt_extraction
+        if self.service_inspection is not None:
+            result['ServiceInspection'] = self.service_inspection
         if self.summarization is not None:
             result['Summarization'] = self.summarization
         if self.text_polish is not None:
@@ -1162,10 +1170,14 @@ class GetTaskInfoResponseBodyDataResult(TeaModel):
         m = m or dict()
         if m.get('AutoChapters') is not None:
             self.auto_chapters = m.get('AutoChapters')
+        if m.get('CustomPrompt') is not None:
+            self.custom_prompt = m.get('CustomPrompt')
         if m.get('MeetingAssistance') is not None:
             self.meeting_assistance = m.get('MeetingAssistance')
         if m.get('PptExtraction') is not None:
             self.ppt_extraction = m.get('PptExtraction')
+        if m.get('ServiceInspection') is not None:
+            self.service_inspection = m.get('ServiceInspection')
         if m.get('Summarization') is not None:
             self.summarization = m.get('Summarization')
         if m.get('TextPolish') is not None:
