@@ -19266,15 +19266,19 @@ class DeleteRumAppResponse(TeaModel):
 class DeleteRumUploadFileRequest(TeaModel):
     def __init__(
         self,
+        batch_items: str = None,
         file_name: str = None,
         pid: str = None,
         region_id: str = None,
         uuid: str = None,
         version_id: str = None,
     ):
+        self.batch_items = batch_items
         # The file name, with the extension.
         self.file_name = file_name
         # The application ID.
+        # 
+        # This parameter is required.
         self.pid = pid
         # The region ID.
         # 
@@ -19294,6 +19298,8 @@ class DeleteRumUploadFileRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.batch_items is not None:
+            result['BatchItems'] = self.batch_items
         if self.file_name is not None:
             result['FileName'] = self.file_name
         if self.pid is not None:
@@ -19308,6 +19314,8 @@ class DeleteRumUploadFileRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BatchItems') is not None:
+            self.batch_items = m.get('BatchItems')
         if m.get('FileName') is not None:
             self.file_name = m.get('FileName')
         if m.get('Pid') is not None:

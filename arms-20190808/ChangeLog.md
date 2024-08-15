@@ -1,3 +1,8 @@
+2024-08-15 Version: 7.0.1
+- Update API DeleteRumUploadFile: add param BatchItems.
+- Update API DeleteRumUploadFile: update param Pid.
+
+
 2024-08-15 Version: 7.0.0
 - Delete API AddPrometheusRemoteWrite.
 - Delete API DeletePrometheusRemoteWrite.
