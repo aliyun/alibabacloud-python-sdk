@@ -26410,6 +26410,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_nacos_config_with_options_async(request, runtime)
 
+    def update_nacos_gray_config_with_options(
+        self,
+        request: mse_20190531_models.UpdateNacosGrayConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateNacosGrayConfigResponse:
+        """
+        @summary 更新nacos灰度配置
+        
+        @param request: UpdateNacosGrayConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNacosGrayConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.data_id):
+            query['DataId'] = request.data_id
+        if not UtilClient.is_unset(request.gray_rule):
+            query['GrayRule'] = request.gray_rule
+        if not UtilClient.is_unset(request.gray_type):
+            query['GrayType'] = request.gray_type
+        if not UtilClient.is_unset(request.group):
+            query['Group'] = request.group
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_pars):
+            query['RequestPars'] = request.request_pars
+        if not UtilClient.is_unset(request.stop_gray):
+            query['StopGray'] = request.stop_gray
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateNacosGrayConfig',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateNacosGrayConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_nacos_gray_config_with_options_async(
+        self,
+        request: mse_20190531_models.UpdateNacosGrayConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.UpdateNacosGrayConfigResponse:
+        """
+        @summary 更新nacos灰度配置
+        
+        @param request: UpdateNacosGrayConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNacosGrayConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.data_id):
+            query['DataId'] = request.data_id
+        if not UtilClient.is_unset(request.gray_rule):
+            query['GrayRule'] = request.gray_rule
+        if not UtilClient.is_unset(request.gray_type):
+            query['GrayType'] = request.gray_type
+        if not UtilClient.is_unset(request.group):
+            query['Group'] = request.group
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.request_pars):
+            query['RequestPars'] = request.request_pars
+        if not UtilClient.is_unset(request.stop_gray):
+            query['StopGray'] = request.stop_gray
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateNacosGrayConfig',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.UpdateNacosGrayConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_nacos_gray_config(
+        self,
+        request: mse_20190531_models.UpdateNacosGrayConfigRequest,
+    ) -> mse_20190531_models.UpdateNacosGrayConfigResponse:
+        """
+        @summary 更新nacos灰度配置
+        
+        @param request: UpdateNacosGrayConfigRequest
+        @return: UpdateNacosGrayConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_nacos_gray_config_with_options(request, runtime)
+
+    async def update_nacos_gray_config_async(
+        self,
+        request: mse_20190531_models.UpdateNacosGrayConfigRequest,
+    ) -> mse_20190531_models.UpdateNacosGrayConfigResponse:
+        """
+        @summary 更新nacos灰度配置
+        
+        @param request: UpdateNacosGrayConfigRequest
+        @return: UpdateNacosGrayConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_nacos_gray_config_with_options_async(request, runtime)
+
     def update_nacos_instance_with_options(
         self,
         request: mse_20190531_models.UpdateNacosInstanceRequest,

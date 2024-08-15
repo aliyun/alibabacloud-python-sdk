@@ -1,3 +1,7 @@
+2024-08-15 Version: 6.12.0
+- Support API UpdateNacosGrayConfig.
+
+
 2024-08-12 Version: 6.11.0
 - Support API GetGatewayConfig.
 
