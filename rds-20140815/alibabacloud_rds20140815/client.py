@@ -1076,158 +1076,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.calculate_dbinstance_weight_with_options_async(request, runtime)
 
-    def cancel_import_with_options(
-        self,
-        request: rds_20140815_models.CancelImportRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rds_20140815_models.CancelImportResponse:
-        """
-        @summary Cancels the migration task of an ApsaraDB RDS for SQL Server instance.
-        
-        @description This operation is phased out.
-        ### [](#)Supported database engines
-        RDS SQL Server
-        ### [](#)Description
-        This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](https://help.aliyun.com/document_detail/610592.html).
-        ### [](#)Usage notes
-        This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
-        
-        @param request: CancelImportRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CancelImportResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.import_id):
-            query['ImportId'] = request.import_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CancelImport',
-            version='2014-08-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rds_20140815_models.CancelImportResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def cancel_import_with_options_async(
-        self,
-        request: rds_20140815_models.CancelImportRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rds_20140815_models.CancelImportResponse:
-        """
-        @summary Cancels the migration task of an ApsaraDB RDS for SQL Server instance.
-        
-        @description This operation is phased out.
-        ### [](#)Supported database engines
-        RDS SQL Server
-        ### [](#)Description
-        This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](https://help.aliyun.com/document_detail/610592.html).
-        ### [](#)Usage notes
-        This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
-        
-        @param request: CancelImportRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CancelImportResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.import_id):
-            query['ImportId'] = request.import_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CancelImport',
-            version='2014-08-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rds_20140815_models.CancelImportResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def cancel_import(
-        self,
-        request: rds_20140815_models.CancelImportRequest,
-    ) -> rds_20140815_models.CancelImportResponse:
-        """
-        @summary Cancels the migration task of an ApsaraDB RDS for SQL Server instance.
-        
-        @description This operation is phased out.
-        ### [](#)Supported database engines
-        RDS SQL Server
-        ### [](#)Description
-        This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](https://help.aliyun.com/document_detail/610592.html).
-        ### [](#)Usage notes
-        This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
-        
-        @param request: CancelImportRequest
-        @return: CancelImportResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.cancel_import_with_options(request, runtime)
-
-    async def cancel_import_async(
-        self,
-        request: rds_20140815_models.CancelImportRequest,
-    ) -> rds_20140815_models.CancelImportResponse:
-        """
-        @summary Cancels the migration task of an ApsaraDB RDS for SQL Server instance.
-        
-        @description This operation is phased out.
-        ### [](#)Supported database engines
-        RDS SQL Server
-        ### [](#)Description
-        This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](https://help.aliyun.com/document_detail/610592.html).
-        ### [](#)Usage notes
-        This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
-        
-        @param request: CancelImportRequest
-        @return: CancelImportResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.cancel_import_with_options_async(request, runtime)
-
     def check_account_name_available_with_options(
         self,
         request: rds_20140815_models.CheckAccountNameAvailableRequest,
@@ -2134,6 +1982,8 @@ class Client(OpenApiClient):
             query['BurstingEnabled'] = request.bursting_enabled
         if not UtilClient.is_unset(request.category):
             query['Category'] = request.category
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbinstance_class):
             query['DBInstanceClass'] = request.dbinstance_class
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -2243,6 +2093,8 @@ class Client(OpenApiClient):
             query['BurstingEnabled'] = request.bursting_enabled
         if not UtilClient.is_unset(request.category):
             query['Category'] = request.category
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dbinstance_class):
             query['DBInstanceClass'] = request.dbinstance_class
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -3138,8 +2990,6 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dbname):
             query['DBName'] = request.dbname
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
@@ -3203,8 +3053,6 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.dbname):
             query['DBName'] = request.dbname
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         req = open_api_models.OpenApiRequest(
@@ -5030,8 +4878,6 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -5093,8 +4939,6 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -5862,6 +5706,8 @@ class Client(OpenApiClient):
             query['MaskingAlgo'] = request.masking_algo
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -5915,6 +5761,8 @@ class Client(OpenApiClient):
             query['MaskingAlgo'] = request.masking_algo
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -8848,11 +8696,10 @@ class Client(OpenApiClient):
         """
         @summary Deletes a node from an instance that runs RDS Cluster Edition.
         
-        @description ### [](#)Supported database engines
+        @description ### [](#)Supported database engine
         MySQL
-        PostgreSQL
         ### [](#)References
-        > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
         [Delete a node from an ApsaraDB RDS for MySQL cluster](https://help.aliyun.com/document_detail/464130.html)
         
         @param tmp_req: DeleteDBNodesRequest
@@ -8908,11 +8755,10 @@ class Client(OpenApiClient):
         """
         @summary Deletes a node from an instance that runs RDS Cluster Edition.
         
-        @description ### [](#)Supported database engines
+        @description ### [](#)Supported database engine
         MySQL
-        PostgreSQL
         ### [](#)References
-        > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
         [Delete a node from an ApsaraDB RDS for MySQL cluster](https://help.aliyun.com/document_detail/464130.html)
         
         @param tmp_req: DeleteDBNodesRequest
@@ -8967,11 +8813,10 @@ class Client(OpenApiClient):
         """
         @summary Deletes a node from an instance that runs RDS Cluster Edition.
         
-        @description ### [](#)Supported database engines
+        @description ### [](#)Supported database engine
         MySQL
-        PostgreSQL
         ### [](#)References
-        > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
         [Delete a node from an ApsaraDB RDS for MySQL cluster](https://help.aliyun.com/document_detail/464130.html)
         
         @param request: DeleteDBNodesRequest
@@ -8987,11 +8832,10 @@ class Client(OpenApiClient):
         """
         @summary Deletes a node from an instance that runs RDS Cluster Edition.
         
-        @description ### [](#)Supported database engines
+        @description ### [](#)Supported database engine
         MySQL
-        PostgreSQL
         ### [](#)References
-        > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
         [Delete a node from an ApsaraDB RDS for MySQL cluster](https://help.aliyun.com/document_detail/464130.html)
         
         @param request: DeleteDBNodesRequest
@@ -9446,6 +9290,8 @@ class Client(OpenApiClient):
             query['DBInstanceName'] = request.dbinstance_name
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -9489,6 +9335,8 @@ class Client(OpenApiClient):
             query['DBInstanceName'] = request.dbinstance_name
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -10562,6 +10410,8 @@ class Client(OpenApiClient):
             query['DBInstanceName'] = request.dbinstance_name
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -10605,6 +10455,8 @@ class Client(OpenApiClient):
             query['DBInstanceName'] = request.dbinstance_name
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -10938,7 +10790,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeActiveOperationTasksResponse:
         """
-        @summary Queries the details about scheduled O\\\\\\\\\\\\&M tasks for an instance.
+        @summary Queries the details about scheduled O\\\\\\\\\\\\\\\\\\\\&M tasks for an instance.
         
         @description ### [](#)Supported database engines
         MySQL
@@ -11009,7 +10861,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeActiveOperationTasksResponse:
         """
-        @summary Queries the details about scheduled O\\\\\\\\\\\\&M tasks for an instance.
+        @summary Queries the details about scheduled O\\\\\\\\\\\\\\\\\\\\&M tasks for an instance.
         
         @description ### [](#)Supported database engines
         MySQL
@@ -11079,7 +10931,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeActiveOperationTasksRequest,
     ) -> rds_20140815_models.DescribeActiveOperationTasksResponse:
         """
-        @summary Queries the details about scheduled O\\\\\\\\\\\\&M tasks for an instance.
+        @summary Queries the details about scheduled O\\\\\\\\\\\\\\\\\\\\&M tasks for an instance.
         
         @description ### [](#)Supported database engines
         MySQL
@@ -11098,7 +10950,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeActiveOperationTasksRequest,
     ) -> rds_20140815_models.DescribeActiveOperationTasksResponse:
         """
-        @summary Queries the details about scheduled O\\\\\\\\\\\\&M tasks for an instance.
+        @summary Queries the details about scheduled O\\\\\\\\\\\\\\\\\\\\&M tasks for an instance.
         
         @description ### [](#)Supported database engines
         MySQL
@@ -12588,8 +12440,6 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.start_time):
@@ -12649,8 +12499,6 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.start_time):
@@ -15514,17 +15362,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeDBInstanceIpHostnameResponse:
         """
-        @summary Queries the hostname of the Elastic Compute Service (ECS) instance on which the ApsaraDB RDS for SQL Server instance runs.
+        @summary Queries the internal IP address and hostname of the Elastic Compute Service (ECS) instance on which the ApsaraDB RDS for SQL Server instance runs.
         
         @description ### [](#)Supported database engines
-        RDS SQL Server
+        SQL Server
         ### [](#)Prerequisites
         The RDS instance runs RDS Basic Edition, RDS High-availability Edition, or RDS Cluster Edition. If your RDS instance runs RDS High-availability Edition, make sure that the instance runs SQL Server 2012 or later.
         The RDS instance belongs to a general-purpose or dedicated instance family. The shared instance family is not supported.
-        If the RDS instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the Creation Time
+        If the RDS instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the Creation Time parameter of an instance in the Status section of the Basic Information page in the ApsaraDB RDS console.
         ### [](#)References
-        > : Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        >  Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
         [Configure a distributed transaction whitelist](https://help.aliyun.com/document_detail/124321.html)
+        [Connect Kingdee K/3 WISE to an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/124188.html)
         
         @param request: DescribeDBInstanceIpHostnameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15571,17 +15420,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeDBInstanceIpHostnameResponse:
         """
-        @summary Queries the hostname of the Elastic Compute Service (ECS) instance on which the ApsaraDB RDS for SQL Server instance runs.
+        @summary Queries the internal IP address and hostname of the Elastic Compute Service (ECS) instance on which the ApsaraDB RDS for SQL Server instance runs.
         
         @description ### [](#)Supported database engines
-        RDS SQL Server
+        SQL Server
         ### [](#)Prerequisites
         The RDS instance runs RDS Basic Edition, RDS High-availability Edition, or RDS Cluster Edition. If your RDS instance runs RDS High-availability Edition, make sure that the instance runs SQL Server 2012 or later.
         The RDS instance belongs to a general-purpose or dedicated instance family. The shared instance family is not supported.
-        If the RDS instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the Creation Time
+        If the RDS instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the Creation Time parameter of an instance in the Status section of the Basic Information page in the ApsaraDB RDS console.
         ### [](#)References
-        > : Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        >  Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
         [Configure a distributed transaction whitelist](https://help.aliyun.com/document_detail/124321.html)
+        [Connect Kingdee K/3 WISE to an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/124188.html)
         
         @param request: DescribeDBInstanceIpHostnameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15627,17 +15477,18 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeDBInstanceIpHostnameRequest,
     ) -> rds_20140815_models.DescribeDBInstanceIpHostnameResponse:
         """
-        @summary Queries the hostname of the Elastic Compute Service (ECS) instance on which the ApsaraDB RDS for SQL Server instance runs.
+        @summary Queries the internal IP address and hostname of the Elastic Compute Service (ECS) instance on which the ApsaraDB RDS for SQL Server instance runs.
         
         @description ### [](#)Supported database engines
-        RDS SQL Server
+        SQL Server
         ### [](#)Prerequisites
         The RDS instance runs RDS Basic Edition, RDS High-availability Edition, or RDS Cluster Edition. If your RDS instance runs RDS High-availability Edition, make sure that the instance runs SQL Server 2012 or later.
         The RDS instance belongs to a general-purpose or dedicated instance family. The shared instance family is not supported.
-        If the RDS instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the Creation Time
+        If the RDS instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the Creation Time parameter of an instance in the Status section of the Basic Information page in the ApsaraDB RDS console.
         ### [](#)References
-        > : Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        >  Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
         [Configure a distributed transaction whitelist](https://help.aliyun.com/document_detail/124321.html)
+        [Connect Kingdee K/3 WISE to an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/124188.html)
         
         @param request: DescribeDBInstanceIpHostnameRequest
         @return: DescribeDBInstanceIpHostnameResponse
@@ -15650,17 +15501,18 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeDBInstanceIpHostnameRequest,
     ) -> rds_20140815_models.DescribeDBInstanceIpHostnameResponse:
         """
-        @summary Queries the hostname of the Elastic Compute Service (ECS) instance on which the ApsaraDB RDS for SQL Server instance runs.
+        @summary Queries the internal IP address and hostname of the Elastic Compute Service (ECS) instance on which the ApsaraDB RDS for SQL Server instance runs.
         
         @description ### [](#)Supported database engines
-        RDS SQL Server
+        SQL Server
         ### [](#)Prerequisites
         The RDS instance runs RDS Basic Edition, RDS High-availability Edition, or RDS Cluster Edition. If your RDS instance runs RDS High-availability Edition, make sure that the instance runs SQL Server 2012 or later.
         The RDS instance belongs to a general-purpose or dedicated instance family. The shared instance family is not supported.
-        If the RDS instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the Creation Time
+        If the RDS instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the Creation Time parameter of an instance in the Status section of the Basic Information page in the ApsaraDB RDS console.
         ### [](#)References
-        > : Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        >  Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
         [Configure a distributed transaction whitelist](https://help.aliyun.com/document_detail/124321.html)
+        [Connect Kingdee K/3 WISE to an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/124188.html)
         
         @param request: DescribeDBInstanceIpHostnameRequest
         @return: DescribeDBInstanceIpHostnameResponse
@@ -18754,8 +18606,6 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -18813,8 +18663,6 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -22202,6 +22050,8 @@ class Client(OpenApiClient):
             query['DBInstanceName'] = request.dbinstance_name
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -22245,6 +22095,8 @@ class Client(OpenApiClient):
             query['DBInstanceName'] = request.dbinstance_name
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -25622,6 +25474,8 @@ class Client(OpenApiClient):
         The DescribeSQLLogFiles operation does not return the log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
         The DescribeSQLLogFiles operation does not return the log files that are generated by the SQL Explorer feature and manually exported from the ApsaraDB RDS console. The DescribeSQLLogFiles operation returns the SQL Explorer log files that are generated by calling the [DescribeSQLLogRecords](https://help.aliyun.com/document_detail/610533.html) operation with the request parameter **Form** set to **File**.
         The exported files are retained for only two days.
+        *\
+        *Note** If you have enabled Database Autonomy Service (DAS) Enterprise Edition V2 or V3 and have enabled the SQL Explorer and Audit feature, the exported files are retained for seven days. You can call the [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) operation to query the information about the enabled DAS Enterprise Edition.
         
         @param request: DescribeSQLLogFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25682,6 +25536,8 @@ class Client(OpenApiClient):
         The DescribeSQLLogFiles operation does not return the log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
         The DescribeSQLLogFiles operation does not return the log files that are generated by the SQL Explorer feature and manually exported from the ApsaraDB RDS console. The DescribeSQLLogFiles operation returns the SQL Explorer log files that are generated by calling the [DescribeSQLLogRecords](https://help.aliyun.com/document_detail/610533.html) operation with the request parameter **Form** set to **File**.
         The exported files are retained for only two days.
+        *\
+        *Note** If you have enabled Database Autonomy Service (DAS) Enterprise Edition V2 or V3 and have enabled the SQL Explorer and Audit feature, the exported files are retained for seven days. You can call the [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) operation to query the information about the enabled DAS Enterprise Edition.
         
         @param request: DescribeSQLLogFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25741,6 +25597,8 @@ class Client(OpenApiClient):
         The DescribeSQLLogFiles operation does not return the log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
         The DescribeSQLLogFiles operation does not return the log files that are generated by the SQL Explorer feature and manually exported from the ApsaraDB RDS console. The DescribeSQLLogFiles operation returns the SQL Explorer log files that are generated by calling the [DescribeSQLLogRecords](https://help.aliyun.com/document_detail/610533.html) operation with the request parameter **Form** set to **File**.
         The exported files are retained for only two days.
+        *\
+        *Note** If you have enabled Database Autonomy Service (DAS) Enterprise Edition V2 or V3 and have enabled the SQL Explorer and Audit feature, the exported files are retained for seven days. You can call the [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) operation to query the information about the enabled DAS Enterprise Edition.
         
         @param request: DescribeSQLLogFilesRequest
         @return: DescribeSQLLogFilesResponse
@@ -25765,6 +25623,8 @@ class Client(OpenApiClient):
         The DescribeSQLLogFiles operation does not return the log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
         The DescribeSQLLogFiles operation does not return the log files that are generated by the SQL Explorer feature and manually exported from the ApsaraDB RDS console. The DescribeSQLLogFiles operation returns the SQL Explorer log files that are generated by calling the [DescribeSQLLogRecords](https://help.aliyun.com/document_detail/610533.html) operation with the request parameter **Form** set to **File**.
         The exported files are retained for only two days.
+        *\
+        *Note** If you have enabled Database Autonomy Service (DAS) Enterprise Edition V2 or V3 and have enabled the SQL Explorer and Audit feature, the exported files are retained for seven days. You can call the [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) operation to query the information about the enabled DAS Enterprise Edition.
         
         @param request: DescribeSQLLogFilesRequest
         @return: DescribeSQLLogFilesResponse
@@ -32200,130 +32060,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_config_with_options_async(request, runtime)
 
-    def modify_dbinstance_connection_mode_with_options(
-        self,
-        request: rds_20140815_models.ModifyDBInstanceConnectionModeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rds_20140815_models.ModifyDBInstanceConnectionModeResponse:
-        """
-        @summary 修改实例访问模式
-        
-        @description > The API has been taken offline
-        
-        @param request: ModifyDBInstanceConnectionModeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDBInstanceConnectionModeResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.connection_mode):
-            query['ConnectionMode'] = request.connection_mode
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyDBInstanceConnectionMode',
-            version='2014-08-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rds_20140815_models.ModifyDBInstanceConnectionModeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_dbinstance_connection_mode_with_options_async(
-        self,
-        request: rds_20140815_models.ModifyDBInstanceConnectionModeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rds_20140815_models.ModifyDBInstanceConnectionModeResponse:
-        """
-        @summary 修改实例访问模式
-        
-        @description > The API has been taken offline
-        
-        @param request: ModifyDBInstanceConnectionModeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDBInstanceConnectionModeResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.connection_mode):
-            query['ConnectionMode'] = request.connection_mode
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyDBInstanceConnectionMode',
-            version='2014-08-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rds_20140815_models.ModifyDBInstanceConnectionModeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_dbinstance_connection_mode(
-        self,
-        request: rds_20140815_models.ModifyDBInstanceConnectionModeRequest,
-    ) -> rds_20140815_models.ModifyDBInstanceConnectionModeResponse:
-        """
-        @summary 修改实例访问模式
-        
-        @description > The API has been taken offline
-        
-        @param request: ModifyDBInstanceConnectionModeRequest
-        @return: ModifyDBInstanceConnectionModeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.modify_dbinstance_connection_mode_with_options(request, runtime)
-
-    async def modify_dbinstance_connection_mode_async(
-        self,
-        request: rds_20140815_models.ModifyDBInstanceConnectionModeRequest,
-    ) -> rds_20140815_models.ModifyDBInstanceConnectionModeResponse:
-        """
-        @summary 修改实例访问模式
-        
-        @description > The API has been taken offline
-        
-        @param request: ModifyDBInstanceConnectionModeRequest
-        @return: ModifyDBInstanceConnectionModeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_dbinstance_connection_mode_with_options_async(request, runtime)
-
     def modify_dbinstance_connection_string_with_options(
         self,
         request: rds_20140815_models.ModifyDBInstanceConnectionStringRequest,
@@ -34292,130 +34028,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_pay_type_with_options_async(request, runtime)
 
-    def modify_dbinstance_proxy_configuration_with_options(
-        self,
-        request: rds_20140815_models.ModifyDBInstanceProxyConfigurationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rds_20140815_models.ModifyDBInstanceProxyConfigurationResponse:
-        """
-        @summary You can call the ModifyDBInstanceProxyConfiguration operation to configure the database proxy for an instance.
-        
-        @description > This operation is phased out.
-        
-        @param request: ModifyDBInstanceProxyConfigurationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDBInstanceProxyConfigurationResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.proxy_configuration_key):
-            query['ProxyConfigurationKey'] = request.proxy_configuration_key
-        if not UtilClient.is_unset(request.proxy_configuration_value):
-            query['ProxyConfigurationValue'] = request.proxy_configuration_value
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyDBInstanceProxyConfiguration',
-            version='2014-08-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rds_20140815_models.ModifyDBInstanceProxyConfigurationResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_dbinstance_proxy_configuration_with_options_async(
-        self,
-        request: rds_20140815_models.ModifyDBInstanceProxyConfigurationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rds_20140815_models.ModifyDBInstanceProxyConfigurationResponse:
-        """
-        @summary You can call the ModifyDBInstanceProxyConfiguration operation to configure the database proxy for an instance.
-        
-        @description > This operation is phased out.
-        
-        @param request: ModifyDBInstanceProxyConfigurationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDBInstanceProxyConfigurationResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.proxy_configuration_key):
-            query['ProxyConfigurationKey'] = request.proxy_configuration_key
-        if not UtilClient.is_unset(request.proxy_configuration_value):
-            query['ProxyConfigurationValue'] = request.proxy_configuration_value
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyDBInstanceProxyConfiguration',
-            version='2014-08-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rds_20140815_models.ModifyDBInstanceProxyConfigurationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_dbinstance_proxy_configuration(
-        self,
-        request: rds_20140815_models.ModifyDBInstanceProxyConfigurationRequest,
-    ) -> rds_20140815_models.ModifyDBInstanceProxyConfigurationResponse:
-        """
-        @summary You can call the ModifyDBInstanceProxyConfiguration operation to configure the database proxy for an instance.
-        
-        @description > This operation is phased out.
-        
-        @param request: ModifyDBInstanceProxyConfigurationRequest
-        @return: ModifyDBInstanceProxyConfigurationResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.modify_dbinstance_proxy_configuration_with_options(request, runtime)
-
-    async def modify_dbinstance_proxy_configuration_async(
-        self,
-        request: rds_20140815_models.ModifyDBInstanceProxyConfigurationRequest,
-    ) -> rds_20140815_models.ModifyDBInstanceProxyConfigurationResponse:
-        """
-        @summary You can call the ModifyDBInstanceProxyConfiguration operation to configure the database proxy for an instance.
-        
-        @description > This operation is phased out.
-        
-        @param request: ModifyDBInstanceProxyConfigurationRequest
-        @return: ModifyDBInstanceProxyConfigurationResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_dbinstance_proxy_configuration_with_options_async(request, runtime)
-
     def modify_dbinstance_sslwith_options(
         self,
         request: rds_20140815_models.ModifyDBInstanceSSLRequest,
@@ -35218,13 +34830,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyDBNodeResponse:
         """
-        @summary Changes the specifications and storage capacity of an instance.
+        @summary Changes the specifications, storage type, and storage capacity of an ApsaraDB RDS for MySQL instance that runs RDS Cluster Edition.
         
-        @description ### [](#)Supported database engines
+        @description ### [](#)Supported database engine
         MySQL
         ### [](#)References
-        > Fees are generated if the call is successful. Before you call this operation, carefully read the following topics:
-        [Change the specifications of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96061.html)
+        [Change instance specifications](https://help.aliyun.com/document_detail/2627998.html)
+        >  Fees of an instance are changed if the call is successful. Before you call this operation, carefully read the related topics.
         
         @param tmp_req: ModifyDBNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35287,13 +34899,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyDBNodeResponse:
         """
-        @summary Changes the specifications and storage capacity of an instance.
+        @summary Changes the specifications, storage type, and storage capacity of an ApsaraDB RDS for MySQL instance that runs RDS Cluster Edition.
         
-        @description ### [](#)Supported database engines
+        @description ### [](#)Supported database engine
         MySQL
         ### [](#)References
-        > Fees are generated if the call is successful. Before you call this operation, carefully read the following topics:
-        [Change the specifications of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96061.html)
+        [Change instance specifications](https://help.aliyun.com/document_detail/2627998.html)
+        >  Fees of an instance are changed if the call is successful. Before you call this operation, carefully read the related topics.
         
         @param tmp_req: ModifyDBNodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35355,13 +34967,13 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyDBNodeRequest,
     ) -> rds_20140815_models.ModifyDBNodeResponse:
         """
-        @summary Changes the specifications and storage capacity of an instance.
+        @summary Changes the specifications, storage type, and storage capacity of an ApsaraDB RDS for MySQL instance that runs RDS Cluster Edition.
         
-        @description ### [](#)Supported database engines
+        @description ### [](#)Supported database engine
         MySQL
         ### [](#)References
-        > Fees are generated if the call is successful. Before you call this operation, carefully read the following topics:
-        [Change the specifications of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96061.html)
+        [Change instance specifications](https://help.aliyun.com/document_detail/2627998.html)
+        >  Fees of an instance are changed if the call is successful. Before you call this operation, carefully read the related topics.
         
         @param request: ModifyDBNodeRequest
         @return: ModifyDBNodeResponse
@@ -35374,13 +34986,13 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyDBNodeRequest,
     ) -> rds_20140815_models.ModifyDBNodeResponse:
         """
-        @summary Changes the specifications and storage capacity of an instance.
+        @summary Changes the specifications, storage type, and storage capacity of an ApsaraDB RDS for MySQL instance that runs RDS Cluster Edition.
         
-        @description ### [](#)Supported database engines
+        @description ### [](#)Supported database engine
         MySQL
         ### [](#)References
-        > Fees are generated if the call is successful. Before you call this operation, carefully read the following topics:
-        [Change the specifications of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96061.html)
+        [Change instance specifications](https://help.aliyun.com/document_detail/2627998.html)
+        >  Fees of an instance are changed if the call is successful. Before you call this operation, carefully read the related topics.
         
         @param request: ModifyDBNodeRequest
         @return: ModifyDBNodeResponse
@@ -43323,130 +42935,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.switch_dbinstance_vpc_with_options_async(request, runtime)
-
-    def switch_guard_to_master_instance_with_options(
-        self,
-        request: rds_20140815_models.SwitchGuardToMasterInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rds_20140815_models.SwitchGuardToMasterInstanceResponse:
-        """
-        @summary Switches a disaster recovery instance to a primary instance.
-        
-        @description This operation is phased out.
-        
-        @param request: SwitchGuardToMasterInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SwitchGuardToMasterInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SwitchGuardToMasterInstance',
-            version='2014-08-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rds_20140815_models.SwitchGuardToMasterInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def switch_guard_to_master_instance_with_options_async(
-        self,
-        request: rds_20140815_models.SwitchGuardToMasterInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> rds_20140815_models.SwitchGuardToMasterInstanceResponse:
-        """
-        @summary Switches a disaster recovery instance to a primary instance.
-        
-        @description This operation is phased out.
-        
-        @param request: SwitchGuardToMasterInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SwitchGuardToMasterInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SwitchGuardToMasterInstance',
-            version='2014-08-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            rds_20140815_models.SwitchGuardToMasterInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def switch_guard_to_master_instance(
-        self,
-        request: rds_20140815_models.SwitchGuardToMasterInstanceRequest,
-    ) -> rds_20140815_models.SwitchGuardToMasterInstanceResponse:
-        """
-        @summary Switches a disaster recovery instance to a primary instance.
-        
-        @description This operation is phased out.
-        
-        @param request: SwitchGuardToMasterInstanceRequest
-        @return: SwitchGuardToMasterInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.switch_guard_to_master_instance_with_options(request, runtime)
-
-    async def switch_guard_to_master_instance_async(
-        self,
-        request: rds_20140815_models.SwitchGuardToMasterInstanceRequest,
-    ) -> rds_20140815_models.SwitchGuardToMasterInstanceResponse:
-        """
-        @summary Switches a disaster recovery instance to a primary instance.
-        
-        @description This operation is phased out.
-        
-        @param request: SwitchGuardToMasterInstanceRequest
-        @return: SwitchGuardToMasterInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.switch_guard_to_master_instance_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,

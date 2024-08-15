@@ -1157,147 +1157,6 @@ class CalculateDBInstanceWeightResponse(TeaModel):
         return self
 
 
-class CancelImportRequest(TeaModel):
-    def __init__(
-        self,
-        dbinstance_id: str = None,
-        import_id: int = None,
-        owner_account: str = None,
-        owner_id: int = None,
-        resource_group_id: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-    ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        # 
-        # This parameter is required.
-        self.dbinstance_id = dbinstance_id
-        # The migration task ID.
-        # 
-        # >  This parameter is returned when the migration task is started. For more information, see ImportDatabaseBetweenInstances.
-        # 
-        # This parameter is required.
-        self.import_id = import_id
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        # The resource group ID.
-        self.resource_group_id = resource_group_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dbinstance_id is not None:
-            result['DBInstanceId'] = self.dbinstance_id
-        if self.import_id is not None:
-            result['ImportId'] = self.import_id
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DBInstanceId') is not None:
-            self.dbinstance_id = m.get('DBInstanceId')
-        if m.get('ImportId') is not None:
-            self.import_id = m.get('ImportId')
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class CancelImportResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class CancelImportResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CancelImportResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CancelImportResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CheckAccountNameAvailableRequest(TeaModel):
     def __init__(
         self,
@@ -2333,6 +2192,7 @@ class CloneDBInstanceRequest(TeaModel):
         bpe_enabled: str = None,
         bursting_enabled: bool = None,
         category: str = None,
+        client_token: str = None,
         dbinstance_class: str = None,
         dbinstance_id: str = None,
         dbinstance_storage: int = None,
@@ -2396,6 +2256,8 @@ class CloneDBInstanceRequest(TeaModel):
         # 
         # >  You do not need to configure this parameter. The value of this parameter is the same as that of the original instance.
         self.category = category
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
         # The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
         # 
         # > By default, the new instance uses the same instance type as the original primary instance.
@@ -2444,7 +2306,7 @@ class CloneDBInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The unit that is used to calculate the billing cycle of the new instance. Valid values:
+        # The unit that is used to calculate the billing cycle of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
         # 
         # *   **Year**\
         # *   **Month**\
@@ -2515,6 +2377,8 @@ class CloneDBInstanceRequest(TeaModel):
             result['BurstingEnabled'] = self.bursting_enabled
         if self.category is not None:
             result['Category'] = self.category
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.dbinstance_class is not None:
             result['DBInstanceClass'] = self.dbinstance_class
         if self.dbinstance_id is not None:
@@ -2579,6 +2443,8 @@ class CloneDBInstanceRequest(TeaModel):
             self.bursting_enabled = m.get('BurstingEnabled')
         if m.get('Category') is not None:
             self.category = m.get('Category')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('DBInstanceClass') is not None:
             self.dbinstance_class = m.get('DBInstanceClass')
         if m.get('DBInstanceId') is not None:
@@ -2640,6 +2506,7 @@ class CloneDBInstanceShrinkRequest(TeaModel):
         bpe_enabled: str = None,
         bursting_enabled: bool = None,
         category: str = None,
+        client_token: str = None,
         dbinstance_class: str = None,
         dbinstance_id: str = None,
         dbinstance_storage: int = None,
@@ -2703,6 +2570,8 @@ class CloneDBInstanceShrinkRequest(TeaModel):
         # 
         # >  You do not need to configure this parameter. The value of this parameter is the same as that of the original instance.
         self.category = category
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
         # The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
         # 
         # > By default, the new instance uses the same instance type as the original primary instance.
@@ -2751,7 +2620,7 @@ class CloneDBInstanceShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The unit that is used to calculate the billing cycle of the new instance. Valid values:
+        # The unit that is used to calculate the billing cycle of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
         # 
         # *   **Year**\
         # *   **Month**\
@@ -2821,6 +2690,8 @@ class CloneDBInstanceShrinkRequest(TeaModel):
             result['BurstingEnabled'] = self.bursting_enabled
         if self.category is not None:
             result['Category'] = self.category
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.dbinstance_class is not None:
             result['DBInstanceClass'] = self.dbinstance_class
         if self.dbinstance_id is not None:
@@ -2885,6 +2756,8 @@ class CloneDBInstanceShrinkRequest(TeaModel):
             self.bursting_enabled = m.get('BurstingEnabled')
         if m.get('Category') is not None:
             self.category = m.get('Category')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('DBInstanceClass') is not None:
             self.dbinstance_class = m.get('DBInstanceClass')
         if m.get('DBInstanceId') is not None:
@@ -3671,7 +3544,7 @@ class CreateAccountRequest(TeaModel):
         self.account_password = account_password
         # The account type. Valid values:
         # 
-        # *   **Normal**: standard account (default).
+        # *   **Normal** (default): standard account.
         # *   **Super**: privileged account.
         # *   **Sysadmin**: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
         # 
@@ -3815,7 +3688,6 @@ class CreateBackupRequest(TeaModel):
         backup_type: str = None,
         dbinstance_id: str = None,
         dbname: str = None,
-        resource_group_id: str = None,
         resource_owner_id: int = None,
     ):
         # The backup type of the instance. Valid values:
@@ -3856,8 +3728,6 @@ class CreateBackupRequest(TeaModel):
         # 
         # > You can specify this parameter when you perform a logical backup on individual databases of an ApsaraDB RDS for MySQL instance. You can also specify this parameter when you perform a full physical backup on individual databases of an ApsaraDB RDS for SQL Server instance.
         self.dbname = dbname
-        # The resource group ID. You can call the DescribeDBInstanceAttribute to query the resource group ID.
-        self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
 
     def validate(self):
@@ -3879,8 +3749,6 @@ class CreateBackupRequest(TeaModel):
             result['DBInstanceId'] = self.dbinstance_id
         if self.dbname is not None:
             result['DBName'] = self.dbname
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
         return result
@@ -3897,8 +3765,6 @@ class CreateBackupRequest(TeaModel):
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('DBName') is not None:
             self.dbname = m.get('DBName')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
         return self
@@ -4375,7 +4241,7 @@ class CreateDBInstanceRequestServerlessConfig(TeaModel):
         # 
         # *   Serverless ApsaraDB RDS for MySQL instances: **0.5 to 32**.
         # *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 8**. Only integers are supported.
-        # *   Serverless ApsaraDB RDS for PostgreSQL instances: **0.5 to 14**\
+        # *   Serverless ApsaraDB RDS for PostgreSQL instances: **0.5 to 14**.
         # 
         # >  The value of this parameter must be less than or equal to the value of **MaxCapacity**.
         self.min_capacity = min_capacity
@@ -4536,11 +4402,16 @@ class CreateDBInstanceRequest(TeaModel):
         # > *   After you submit a request to create multiple ApsaraDB RDS for MySQL instances, this operation returns **TaskId**, **RequestId**, and **Message**. You can call the DescribeDBInstanceAttribute operation to query the information about an instance.
         # > *   If the value of the **Engine** parameter is not **MySQL** and the value of the Amount parameter is greater than **1**, this operation fails and returns an error code `InvalidParam.Engine`.
         self.amount = amount
+        # 是否自动创建代理。取值范围：
+        # 
+        # - **true**：开启自动创建，默认为通用代理。
+        # 
+        # - **false**：不开启自动创建。
         self.auto_create_proxy = auto_create_proxy
         # Specifies whether to enable the automatic payment feature. Valid values:
         # 
-        # *   **true**: automatically completes the payment. You must make sure that your account balance is sufficient.
-        # *   **false**: does not automatically complete the payment. An unpaid order is generated.
+        # *   **true**: enables the feature. Make sure that your account balance is sufficient.
+        # *   **false**: disables the feature. An unpaid order is generated.
         # 
         # >  The default value is true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
         self.auto_pay = auto_pay
@@ -5271,11 +5142,16 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # > *   After you submit a request to create multiple ApsaraDB RDS for MySQL instances, this operation returns **TaskId**, **RequestId**, and **Message**. You can call the DescribeDBInstanceAttribute operation to query the information about an instance.
         # > *   If the value of the **Engine** parameter is not **MySQL** and the value of the Amount parameter is greater than **1**, this operation fails and returns an error code `InvalidParam.Engine`.
         self.amount = amount
+        # 是否自动创建代理。取值范围：
+        # 
+        # - **true**：开启自动创建，默认为通用代理。
+        # 
+        # - **false**：不开启自动创建。
         self.auto_create_proxy = auto_create_proxy
         # Specifies whether to enable the automatic payment feature. Valid values:
         # 
-        # *   **true**: automatically completes the payment. You must make sure that your account balance is sufficient.
-        # *   **false**: does not automatically complete the payment. An unpaid order is generated.
+        # *   **true**: enables the feature. Make sure that your account balance is sufficient.
+        # *   **false**: disables the feature. An unpaid order is generated.
         # 
         # >  The default value is true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
         self.auto_pay = auto_pay
@@ -7657,7 +7533,6 @@ class CreateDatabaseRequest(TeaModel):
         dbname: str = None,
         owner_account: str = None,
         owner_id: int = None,
-        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
@@ -7695,8 +7570,6 @@ class CreateDatabaseRequest(TeaModel):
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the resource group.
-        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -7721,8 +7594,6 @@ class CreateDatabaseRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -7743,8 +7614,6 @@ class CreateDatabaseRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -9245,6 +9114,7 @@ class CreateMaskingRulesRequest(TeaModel):
         default_algo: str = None,
         masking_algo: str = None,
         owner_id: str = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         rule_config: CreateMaskingRulesRequestRuleConfig = None,
@@ -9255,6 +9125,7 @@ class CreateMaskingRulesRequest(TeaModel):
         self.default_algo = default_algo
         self.masking_algo = masking_algo
         self.owner_id = owner_id
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.rule_config = rule_config
@@ -9279,6 +9150,8 @@ class CreateMaskingRulesRequest(TeaModel):
             result['MaskingAlgo'] = self.masking_algo
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -9299,6 +9172,8 @@ class CreateMaskingRulesRequest(TeaModel):
             self.masking_algo = m.get('MaskingAlgo')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -9318,6 +9193,7 @@ class CreateMaskingRulesShrinkRequest(TeaModel):
         default_algo: str = None,
         masking_algo: str = None,
         owner_id: str = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         rule_config_shrink: str = None,
@@ -9328,6 +9204,7 @@ class CreateMaskingRulesShrinkRequest(TeaModel):
         self.default_algo = default_algo
         self.masking_algo = masking_algo
         self.owner_id = owner_id
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.rule_config_shrink = rule_config_shrink
@@ -9351,6 +9228,8 @@ class CreateMaskingRulesShrinkRequest(TeaModel):
             result['MaskingAlgo'] = self.masking_algo
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -9371,6 +9250,8 @@ class CreateMaskingRulesShrinkRequest(TeaModel):
             self.masking_algo = m.get('MaskingAlgo')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -10673,13 +10554,18 @@ class CreateReadOnlyDBInstanceRequest(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # 是否自动创建代理。取值范围：
+        # 
+        # - **true**：开启自动创建，默认为通用代理。
+        # 
+        # - **false**：不开启自动创建。
         self.auto_create_proxy = auto_create_proxy
         # Specifies whether to enable the automatic payment feature. Valid values:
         # 
         # 1.  **true**: enables the feature. Make sure that your account balance is sufficient.
         # 2.  **false**: disables the feature. An unpaid order is generated.
         # 
-        # >  Default value: true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
+        # >  The default value is true. If your account balance is insufficient, you can set the AutoPay parameter to false to generate an unpaid order. Then, you can log on to the ApsaraDB RDS console to complete the payment.
         self.auto_pay = auto_pay
         # Specifies whether to enable the auto-renewal feature for the read-only instance. If you set the PayType parameter to Prepaid, you must also specify this parameter. Valid values:
         # 
@@ -10734,10 +10620,10 @@ class CreateReadOnlyDBInstanceRequest(TeaModel):
         self.dedicated_host_group_id = dedicated_host_group_id
         # Specifies whether to enable the release protection feature for the read-only instance. Valid values:
         # 
-        # *   **true**: enables the feature.
-        # *   **false** (default): disables the feature.
+        # *   **true**\
+        # *   **false** (default)
         # 
-        # >  You can enable the release protection feature for the read-only instance only when you set the **Billing Method** parameter to **Pay-As-You-Go**.
+        # >  You can enable the release protection feature for the read-only instance only when you set the **PayType** parameter to **Postpaid**.
         self.deletion_protection = deletion_protection
         # The version of the database engine. The read-only instance and the primary instance must run the same major engine version.
         # 
@@ -11581,7 +11467,7 @@ class CreateYouhuiForOrderRequest(TeaModel):
         promotion_id: int = None,
         region_id: str = None,
         resource_owner_account: str = None,
-        resource_owner_id: str = None,
+        resource_owner_id: int = None,
     ):
         # The activity ID.
         # 
@@ -13564,6 +13450,7 @@ class DeleteMaskingRulesRequest(TeaModel):
         self,
         dbinstance_name: str = None,
         owner_id: str = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         rule_name: str = None,
@@ -13571,6 +13458,7 @@ class DeleteMaskingRulesRequest(TeaModel):
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.owner_id = owner_id
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # This parameter is required.
@@ -13589,6 +13477,8 @@ class DeleteMaskingRulesRequest(TeaModel):
             result['DBInstanceName'] = self.dbinstance_name
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -13603,6 +13493,8 @@ class DeleteMaskingRulesRequest(TeaModel):
             self.dbinstance_name = m.get('DBInstanceName')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -13853,7 +13745,7 @@ class DeletePostgresExtensionsRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID of the instance.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -14999,6 +14891,7 @@ class DescribeAccountMaskingPrivilegeRequest(TeaModel):
         self,
         dbinstance_name: str = None,
         owner_id: str = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         user_name: str = None,
@@ -15006,6 +14899,7 @@ class DescribeAccountMaskingPrivilegeRequest(TeaModel):
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.owner_id = owner_id
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.user_name = user_name
@@ -15023,6 +14917,8 @@ class DescribeAccountMaskingPrivilegeRequest(TeaModel):
             result['DBInstanceName'] = self.dbinstance_name
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -15037,6 +14933,8 @@ class DescribeAccountMaskingPrivilegeRequest(TeaModel):
             self.dbinstance_name = m.get('DBInstanceName')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -18919,7 +18817,6 @@ class DescribeBackupsRequest(TeaModel):
         end_time: str = None,
         page_number: int = None,
         page_size: int = None,
-        resource_group_id: str = None,
         resource_owner_id: int = None,
         start_time: str = None,
     ):
@@ -18960,8 +18857,6 @@ class DescribeBackupsRequest(TeaModel):
         # 
         # Default value: **30**.
         self.page_size = page_size
-        # The resource group ID.
-        self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         self.start_time = start_time
@@ -18991,8 +18886,6 @@ class DescribeBackupsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.start_time is not None:
@@ -19017,8 +18910,6 @@ class DescribeBackupsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('StartTime') is not None:
@@ -19128,7 +19019,6 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
         host_instance_id: str = None,
         is_avail: int = None,
         meta_status: str = None,
-        resource_group_id: str = None,
         storage_class: str = None,
         store_status: str = None,
     ):
@@ -19214,8 +19104,6 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
         # 
         # >  If an empty string is returned, the data backup file cannot be used to restore individual databases or tables.
         self.meta_status = meta_status
-        # The resource group ID.
-        self.resource_group_id = resource_group_id
         # The storage class of the backup set. Valid values:
         # 
         # *   **0**: regular storage
@@ -19281,8 +19169,6 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
             result['IsAvail'] = self.is_avail
         if self.meta_status is not None:
             result['MetaStatus'] = self.meta_status
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
         if self.storage_class is not None:
             result['StorageClass'] = self.storage_class
         if self.store_status is not None:
@@ -19336,8 +19222,6 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
             self.is_avail = m.get('IsAvail')
         if m.get('MetaStatus') is not None:
             self.meta_status = m.get('MetaStatus')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('StorageClass') is not None:
             self.storage_class = m.get('StorageClass')
         if m.get('StoreStatus') is not None:
@@ -26365,13 +26249,13 @@ class DescribeDBInstanceIpHostnameRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) operation to query the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # You can call the DescribeDBInstanceAttribute operation to query the region ID.
+        # The region ID. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/2628783.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -26432,7 +26316,7 @@ class DescribeDBInstanceIpHostnameResponseBody(TeaModel):
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The internal IP addresses and hostnames of the ECS instances on which the primary and secondary instances reside. Format: `IP address 1,Hostname 1;IP address 2,Hostname 2`.
+        # The internal IP addresses and hostnames of the ECS instance on which a primary ApsaraDB RDS for SQL Server instance and its secondary RDS instance reside. Format: `IP address 1, Hostname 1; IP address 2, Hostname 2`.
         self.ip_hostname_infos = ip_hostname_infos
         # The request ID.
         self.request_id = request_id
@@ -33992,7 +33876,6 @@ class DescribeDatabasesRequest(TeaModel):
         owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
-        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
@@ -34022,8 +33905,6 @@ class DescribeDatabasesRequest(TeaModel):
         # 
         # Default value: 30.
         self.page_size = page_size
-        # The ID of the resource group.
-        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -34050,8 +33931,6 @@ class DescribeDatabasesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -34074,8 +33953,6 @@ class DescribeDatabasesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -34263,7 +34140,6 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
         engine: str = None,
         page_number: int = None,
         page_size: int = None,
-        resource_group_id: str = None,
         runtime_info: DescribeDatabasesResponseBodyDatabasesDatabaseRuntimeInfo = None,
         tablespace: str = None,
         total_count: int = None,
@@ -34311,8 +34187,6 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The resource group ID.
-        self.resource_group_id = resource_group_id
         # The runtime information about the database.
         # 
         # >  This parameter is returned only for instances that run SQL Server.
@@ -34370,8 +34244,6 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
         if self.runtime_info is not None:
             result['RuntimeInfo'] = self.runtime_info.to_map()
         if self.tablespace is not None:
@@ -34413,8 +34285,6 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RuntimeInfo') is not None:
             temp_model = DescribeDatabasesResponseBodyDatabasesDatabaseRuntimeInfo()
             self.runtime_info = temp_model.from_map(m['RuntimeInfo'])
@@ -41061,6 +40931,7 @@ class DescribeMaskingRulesRequest(TeaModel):
         self,
         dbinstance_name: str = None,
         owner_id: str = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         rule_name: str = None,
@@ -41068,6 +40939,7 @@ class DescribeMaskingRulesRequest(TeaModel):
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.owner_id = owner_id
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.rule_name = rule_name
@@ -41085,6 +40957,8 @@ class DescribeMaskingRulesRequest(TeaModel):
             result['DBInstanceName'] = self.dbinstance_name
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -41099,6 +40973,8 @@ class DescribeMaskingRulesRequest(TeaModel):
             self.dbinstance_name = m.get('DBInstanceName')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -45533,15 +45409,15 @@ class DescribePriceRequest(TeaModel):
         # The commodity code of the instance. Valid values:
         # 
         # *   **bards**: The instance is a pay-as-you-go primary instance. This value is available at the China site (aliyun.com).
-        # *   **rds**: The instance is a subscription primary instance. This is the default value. This value is available at the China site (aliyun.com).
+        # *   **rds** (default): The instance is a subscription primary instance. This value is available on the China site (aliyun.com).
         # *   **rords**: The instance is a pay-as-you-go read-only instance. This value is available at the China site (aliyun.com).
         # *   **rds_rordspre_public_cn**: The instance is a subscription read-only instance. This value is available at the China site (aliyun.com).
-        # *   **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available at the International site (alibabacloud.com).
-        # *   **rds_intl**: The instance is a subscription primary instance. This value is available at the International site (alibabacloud.com).
-        # *   **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available at the International site (alibabacloud.com).
-        # *   **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
+        # *   **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available at the international site (alibabacloud.com).
+        # *   **rds_intl**: The instance is a subscription primary instance. This value is available at the international site (alibabacloud.com).
+        # *   **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available at the international site (alibabacloud.com).
+        # *   **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the international site (alibabacloud.com).
         # 
-        # > If you want to query the price of a read-only instance, you must specify this parameter.
+        # >  If you want to query the price of a read-only instance, you must specify this parameter.
         self.commodity_code = commodity_code
         # The instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
         # 
@@ -45781,15 +45657,15 @@ class DescribePriceShrinkRequest(TeaModel):
         # The commodity code of the instance. Valid values:
         # 
         # *   **bards**: The instance is a pay-as-you-go primary instance. This value is available at the China site (aliyun.com).
-        # *   **rds**: The instance is a subscription primary instance. This is the default value. This value is available at the China site (aliyun.com).
+        # *   **rds** (default): The instance is a subscription primary instance. This value is available on the China site (aliyun.com).
         # *   **rords**: The instance is a pay-as-you-go read-only instance. This value is available at the China site (aliyun.com).
         # *   **rds_rordspre_public_cn**: The instance is a subscription read-only instance. This value is available at the China site (aliyun.com).
-        # *   **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available at the International site (alibabacloud.com).
-        # *   **rds_intl**: The instance is a subscription primary instance. This value is available at the International site (alibabacloud.com).
-        # *   **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available at the International site (alibabacloud.com).
-        # *   **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
+        # *   **bards_intl**: The instance is a pay-as-you-go primary instance. This value is available at the international site (alibabacloud.com).
+        # *   **rds_intl**: The instance is a subscription primary instance. This value is available at the international site (alibabacloud.com).
+        # *   **rords_intl**: The instance is a pay-as-you-go read-only instance. This value is available at the international site (alibabacloud.com).
+        # *   **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the international site (alibabacloud.com).
         # 
-        # > If you want to query the price of a read-only instance, you must specify this parameter.
+        # >  If you want to query the price of a read-only instance, you must specify this parameter.
         self.commodity_code = commodity_code
         # The instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
         # 
@@ -49393,12 +49269,12 @@ class DescribeSQLLogRecordsRequest(TeaModel):
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Specifies whether to generate an SQL audit log file or return SQL audit log entries. Valid values:
+        # Specifies whether to generate an SQL audit log file or return SQL audit logs. Valid values:
         # 
         # *   **File**: If you set this parameter to File, this operation generates an SQL audit log file and returns only common response parameters. After you call this operation, you must call the DescribeSQLLogFiles operation to obtain the download URL of the SQL audit log file.
-        # *   **Stream** (default): If you set this parameter to Stream, this operation returns SQL audit log entries.
+        # *   **Stream** (default): If you set this parameter to Stream, this operation returns SQL audit logs.
         # 
-        # >  If you set this parameter to **File**, only ApsaraDB RDS for MySQL instances that use local disks and ApsaraDB RDS for SQL Server instances are supported, and a maximum of one million log entries are returned.
+        # >  If you set this parameter to **File**, only ApsaraDB RDS for MySQL instances that use local disks and ApsaraDB RDS for SQL Server instances are supported, and a maximum of 1 million logs are returned.
         self.form = form
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -53670,7 +53546,7 @@ class DescribeWhitelistTemplateRequest(TeaModel):
         resource_owner_id: int = None,
         template_id: int = None,
     ):
-        # The region ID.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -59558,145 +59434,6 @@ class ModifyDBInstanceConfigResponse(TeaModel):
         return self
 
 
-class ModifyDBInstanceConnectionModeRequest(TeaModel):
-    def __init__(
-        self,
-        connection_mode: str = None,
-        dbinstance_id: str = None,
-        owner_account: str = None,
-        owner_id: int = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-    ):
-        # The connection mode of the instance. Valid values:
-        # 
-        # *   **Standard**: standard mode
-        # *   **Safe**: database proxy mode
-        # 
-        # The system automatically assigns a connection mode to the instance.
-        # 
-        # >  SQL Server 2012, SQL Server 2016, and SQL Server 2017 support only the standard mode.
-        # 
-        # This parameter is required.
-        self.connection_mode = connection_mode
-        # The ID of the instance.
-        # 
-        # This parameter is required.
-        self.dbinstance_id = dbinstance_id
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.connection_mode is not None:
-            result['ConnectionMode'] = self.connection_mode
-        if self.dbinstance_id is not None:
-            result['DBInstanceId'] = self.dbinstance_id
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ConnectionMode') is not None:
-            self.connection_mode = m.get('ConnectionMode')
-        if m.get('DBInstanceId') is not None:
-            self.dbinstance_id = m.get('DBInstanceId')
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class ModifyDBInstanceConnectionModeResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # The ID of the request.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ModifyDBInstanceConnectionModeResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ModifyDBInstanceConnectionModeResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ModifyDBInstanceConnectionModeResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ModifyDBInstanceConnectionStringRequest(TeaModel):
     def __init__(
         self,
@@ -61874,162 +61611,6 @@ class ModifyDBInstancePayTypeResponse(TeaModel):
         return self
 
 
-class ModifyDBInstanceProxyConfigurationRequest(TeaModel):
-    def __init__(
-        self,
-        dbinstance_id: str = None,
-        owner_id: int = None,
-        proxy_configuration_key: str = None,
-        proxy_configuration_value: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-    ):
-        # The ID of the instance.
-        # 
-        # This parameter is required.
-        self.dbinstance_id = dbinstance_id
-        self.owner_id = owner_id
-        # The key of the **configuration item** for the database proxy. Valid values:
-        # 
-        # *   **TransparentSwitch**: transparent switchover
-        # *   **PersistentConnections**: short-lived connection optimization
-        # *   **AttacksProtection**: brute-force attack protection
-        # 
-        # This parameter is required.
-        self.proxy_configuration_key = proxy_configuration_key
-        # The features and status of the database proxy:
-        # 
-        # *   **TransparentSwitch**: transparent switchover. Valid values:
-        # 
-        #     *   **Enable**: The feature is enabled. This is the default value.
-        #     *   **Disable**: The feature is disabled.
-        # 
-        # *   **PersistentConnections**: short-lived connection optimization. Valid values:
-        # 
-        #     *   **Enable**: The feature is enabled.
-        #     *   **Disable**: The feature is disabled. This is the default value.
-        # 
-        # *   **AttacksProtection**: brute-force attack protection. Valid values:
-        # 
-        #     *   **Enable**: The feature is enabled.
-        #     *   **Disable**: The feature is disabled. This is the default value.
-        # 
-        # Format: {"Feature 1":"Status 1","Feature 2":"Status 2"...}
-        # 
-        # This parameter is required.
-        self.proxy_configuration_value = proxy_configuration_value
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dbinstance_id is not None:
-            result['DBInstanceId'] = self.dbinstance_id
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.proxy_configuration_key is not None:
-            result['ProxyConfigurationKey'] = self.proxy_configuration_key
-        if self.proxy_configuration_value is not None:
-            result['ProxyConfigurationValue'] = self.proxy_configuration_value
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DBInstanceId') is not None:
-            self.dbinstance_id = m.get('DBInstanceId')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ProxyConfigurationKey') is not None:
-            self.proxy_configuration_key = m.get('ProxyConfigurationKey')
-        if m.get('ProxyConfigurationValue') is not None:
-            self.proxy_configuration_value = m.get('ProxyConfigurationValue')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class ModifyDBInstanceProxyConfigurationResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ModifyDBInstanceProxyConfigurationResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ModifyDBInstanceProxyConfigurationResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ModifyDBInstanceProxyConfigurationResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ModifyDBInstanceSSLRequest(TeaModel):
     def __init__(
         self,
@@ -62061,7 +61642,7 @@ class ModifyDBInstanceSSLRequest(TeaModel):
         # *   **verify-ca**\
         # *   **verify-full** (supported only when the instance runs PostgreSQL 12 or later)
         self.acl = acl
-        # The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. If you set SSLEnabled to **1**, the default value of this parameter is **aliyun**. Valid values:
+        # The type of the server certificate. This parameter is supported only when the instance runs MySQL or PostgreSQL with cloud disks. If you set SSLEnabled to **1**, the default value of this parameter is **aliyun**. Valid values:
         # 
         # *   **aliyun**: a cloud certificate
         # *   **custom**: a custom certificate
@@ -62488,8 +62069,9 @@ class ModifyDBInstanceSpecRequestServerlessConfiguration(TeaModel):
         # *   **true**\
         # *   **false** (default)
         # 
-        # > *   This parameter is required only for serverless instances that run MySQL and PostgreSQL. After the automatic start and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is suspended. After a connection to the instance is established, the instance is automatically resumed.
-        # > *   This parameter is available only on the China site (aliyun.com).
+        # > 
+        # 
+        # *   This parameter is required only for serverless instances that run MySQL and PostgreSQL. After the automatic start and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is suspended. After a connection to the instance is established, the instance is automatically resumed.
         self.auto_pause = auto_pause
         # The maximum number of RDS Capacity Units (RCUs). Valid values:
         # 
@@ -62497,8 +62079,9 @@ class ModifyDBInstanceSpecRequestServerlessConfiguration(TeaModel):
         # *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 8**\
         # *   Serverless ApsaraDB RDS for PostgreSQL instances: **1 to 14**\
         # 
-        # > *   The value of this parameter must be greater than or equal to the value of **MinCapacity** and can be specified only to an **integer**.
-        # > *   This parameter is available only on the China site (aliyun.com).
+        # > 
+        # 
+        # *   The value of this parameter must be greater than or equal to the value of **MinCapacity** and can be specified only to an **integer**.
         self.max_capacity = max_capacity
         # The minimum number of RCUs. Valid values:
         # 
@@ -62506,17 +62089,20 @@ class ModifyDBInstanceSpecRequestServerlessConfiguration(TeaModel):
         # *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 8**. Only integers are supported.
         # *   Serverless ApsaraDB RDS for PostgreSQL instances: **0.5 to 14**.
         # 
-        # > *   The value of this parameter must be less than or equal to the value of MaxCapacity.
-        # > *   This parameter is available only on the China site (aliyun.com).
+        # > 
+        # 
+        # *   The value of this parameter must be less than or equal to the value of MaxCapacity.
         self.min_capacity = min_capacity
         # Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
         # 
-        # > *   This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts 30 to 120 seconds occurs during forced scaling. Process with caution.
-        # > *   The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
-        # > *   This parameter is available only on the China site (aliyun.com).
+        # > 
+        # 
+        # *   This parameter is required only for serverless instances that run MySQL and PostgreSQL. If you set this parameter to true, a service interruption that lasts 30 to 120 seconds occurs during forced scaling. Process with caution.
+        # 
+        # *   The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance.
         self.switch_force = switch_force
 
     def validate(self):
@@ -62645,14 +62231,11 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         # 
         # >  If you specify only **DBInstanceStorageType**, you can leave Direction empty. For example, if you want to change only the storage type of the instance from standard SSD to ESSD, you do not need to specify Direction.
         self.direction = direction
-        # The time when you want the change to take effect. Valid values:
+        # The effective time. Valid values:
         # 
         # *   **Immediate** (default)
         # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
-        # 
-        # <!---->
-        # 
-        # *   ScheduleTime: The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
+        # *   **ScheduleTime**: The change takes effect at the point in time that you specify. The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
         self.effective_time = effective_time
         # The database engine version of the instance.
         # 
@@ -62686,8 +62269,6 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The specifications that you want to change for a serverless instance.
-        # 
-        # >  This parameter is available only on the China site (aliyun.com).
         self.serverless_configuration = serverless_configuration
         # A deprecated parameter. You do not need to specify this parameter.
         self.source_biz = source_biz
@@ -62925,14 +62506,11 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         # 
         # >  If you specify only **DBInstanceStorageType**, you can leave Direction empty. For example, if you want to change only the storage type of the instance from standard SSD to ESSD, you do not need to specify Direction.
         self.direction = direction
-        # The time when you want the change to take effect. Valid values:
+        # The effective time. Valid values:
         # 
         # *   **Immediate** (default)
         # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
-        # 
-        # <!---->
-        # 
-        # *   ScheduleTime: The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
+        # *   **ScheduleTime**: The change takes effect at the point in time that you specify. The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
         self.effective_time = effective_time
         # The database engine version of the instance.
         # 
@@ -62966,8 +62544,6 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The specifications that you want to change for a serverless instance.
-        # 
-        # >  This parameter is available only on the China site (aliyun.com).
         self.serverless_configuration_shrink = serverless_configuration_shrink
         # A deprecated parameter. You do not need to specify this parameter.
         self.source_biz = source_biz
@@ -63411,7 +62987,7 @@ class ModifyDBNodeRequestDBNode(TeaModel):
         class_code: str = None,
         node_id: str = None,
     ):
-        # The instance type of the node.
+        # The specification information about the node.
         self.class_code = class_code
         # The node ID.
         self.node_id = node_id
@@ -63480,16 +63056,17 @@ class ModifyDBNodeRequest(TeaModel):
         self.dbinstance_storage_type = dbinstance_storage_type
         # The information about the node.
         # 
-        # >  This parameter is supported for ApsaraDB RDS for MySQL instances that run RDS Cluster Edition.
+        # >  This parameter is used for ApsaraDB RDS for MySQL instances that run RDS Cluster Edition.
         self.dbnode = dbnode
         # Specifies whether to perform a dry run. Valid values: Valid values:
         # 
         # *   **true**: performs a dry run and does not perform the actual request. The system checks items such as the request parameters, request format, service limits, and available resources.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
         self.dry_run = dry_run
-        # Effective time, value:
-        # - Immediate (default value): takes effect immediately.
-        # - MaintainTime: Effective within the operational time period, please refer to ModifyDBInstanceMaintainTime.
+        # The time when you want the change to take effect. Valid values:
+        # 
+        # *   **Immediate** (default): The change immediately takes effect.
+        # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         self.effective_time = effective_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -63619,16 +63196,17 @@ class ModifyDBNodeShrinkRequest(TeaModel):
         self.dbinstance_storage_type = dbinstance_storage_type
         # The information about the node.
         # 
-        # >  This parameter is supported for ApsaraDB RDS for MySQL instances that run RDS Cluster Edition.
+        # >  This parameter is used for ApsaraDB RDS for MySQL instances that run RDS Cluster Edition.
         self.dbnode_shrink = dbnode_shrink
         # Specifies whether to perform a dry run. Valid values: Valid values:
         # 
         # *   **true**: performs a dry run and does not perform the actual request. The system checks items such as the request parameters, request format, service limits, and available resources.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
         self.dry_run = dry_run
-        # Effective time, value:
-        # - Immediate (default value): takes effect immediately.
-        # - MaintainTime: Effective within the operational time period, please refer to ModifyDBInstanceMaintainTime.
+        # The time when you want the change to take effect. Valid values:
+        # 
+        # *   **Immediate** (default): The change immediately takes effect.
+        # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         self.effective_time = effective_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -72910,143 +72488,6 @@ class SwitchDBInstanceVpcResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SwitchDBInstanceVpcResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class SwitchGuardToMasterInstanceRequest(TeaModel):
-    def __init__(
-        self,
-        dbinstance_id: str = None,
-        owner_account: str = None,
-        owner_id: int = None,
-        resource_group_id: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-    ):
-        # The ID of the disaster recovery instance. You can call the DescribeDBInstances operation to query the instance ID.
-        # 
-        # This parameter is required.
-        self.dbinstance_id = dbinstance_id
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        # The resource group ID. You can call the DescribeDBInstanceAttribute to query the resource group ID.
-        self.resource_group_id = resource_group_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dbinstance_id is not None:
-            result['DBInstanceId'] = self.dbinstance_id
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DBInstanceId') is not None:
-            self.dbinstance_id = m.get('DBInstanceId')
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class SwitchGuardToMasterInstanceResponseBody(TeaModel):
-    def __init__(
-        self,
-        dbinstance_id: str = None,
-        request_id: str = None,
-    ):
-        # The instance ID.
-        self.dbinstance_id = dbinstance_id
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.dbinstance_id is not None:
-            result['DBInstanceId'] = self.dbinstance_id
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('DBInstanceId') is not None:
-            self.dbinstance_id = m.get('DBInstanceId')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class SwitchGuardToMasterInstanceResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: SwitchGuardToMasterInstanceResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = SwitchGuardToMasterInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

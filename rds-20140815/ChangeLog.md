@@ -1,3 +1,22 @@
+2024-08-15 Version: 7.0.0
+- Delete API CancelImport.
+- Delete API ModifyDBInstanceConnectionMode.
+- Delete API ModifyDBInstanceProxyConfiguration.
+- Delete API SwitchGuardToMasterInstance.
+- Update API CloneDBInstance: add param ClientToken.
+- Update API CreateBackup: delete param ResourceGroupId.
+- Update API CreateDatabase: delete param ResourceGroupId.
+- Update API CreateMaskingRules: add param RegionId.
+- Update API CreateYouhuiForOrder: update param ResourceOwnerId.
+- Update API DeleteMaskingRules: add param RegionId.
+- Update API DescribeAccountMaskingPrivilege: add param RegionId.
+- Update API DescribeBackups: delete param ResourceGroupId.
+- Update API DescribeBackups: update response param.
+- Update API DescribeDatabases: delete param ResourceGroupId.
+- Update API DescribeDatabases: update response param.
+- Update API DescribeMaskingRules: add param RegionId.
+
+
 2024-07-23 Version: 6.0.1
 - Update API CreateDBInstance: add param AutoCreateProxy.
 - Update API CreateReadOnlyDBInstance: add param AutoCreateProxy.
