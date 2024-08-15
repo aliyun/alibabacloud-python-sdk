@@ -7721,6 +7721,7 @@ class DescribeChannelAccountResponse(TeaModel):
 class DescribeCheckJobsRequest(TeaModel):
     def __init__(
         self,
+        check_job_id: str = None,
         check_type: int = None,
         instance_id: str = None,
         job_name: str = None,
@@ -7728,6 +7729,7 @@ class DescribeCheckJobsRequest(TeaModel):
         page_size: int = None,
         resource_group_id: str = None,
     ):
+        self.check_job_id = check_job_id
         self.check_type = check_type
         self.instance_id = instance_id
         self.job_name = job_name
@@ -7744,6 +7746,8 @@ class DescribeCheckJobsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.check_job_id is not None:
+            result['CheckJobId'] = self.check_job_id
         if self.check_type is not None:
             result['CheckType'] = self.check_type
         if self.instance_id is not None:
@@ -7760,6 +7764,8 @@ class DescribeCheckJobsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CheckJobId') is not None:
+            self.check_job_id = m.get('CheckJobId')
         if m.get('CheckType') is not None:
             self.check_type = m.get('CheckType')
         if m.get('InstanceId') is not None:
@@ -19582,6 +19588,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         dts_job_direction: str = None,
         dts_job_id: str = None,
         dts_job_name: str = None,
+        du_real_usage: str = None,
         du_usage: int = None,
         end_timestamp: str = None,
         error_details: List[DescribeDtsJobsResponseBodyDtsJobListErrorDetails] = None,
@@ -19666,6 +19673,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         self.dts_job_id = dts_job_id
         # The name of the data synchronization task.
         self.dts_job_name = dts_job_name
+        self.du_real_usage = du_real_usage
         # The number of DUs that have been used.
         self.du_usage = du_usage
         # The end of the time range for change tracking. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
@@ -19830,6 +19838,8 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
             result['DtsJobId'] = self.dts_job_id
         if self.dts_job_name is not None:
             result['DtsJobName'] = self.dts_job_name
+        if self.du_real_usage is not None:
+            result['DuRealUsage'] = self.du_real_usage
         if self.du_usage is not None:
             result['DuUsage'] = self.du_usage
         if self.end_timestamp is not None:
@@ -19949,6 +19959,8 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
             self.dts_job_id = m.get('DtsJobId')
         if m.get('DtsJobName') is not None:
             self.dts_job_name = m.get('DtsJobName')
+        if m.get('DuRealUsage') is not None:
+            self.du_real_usage = m.get('DuRealUsage')
         if m.get('DuUsage') is not None:
             self.du_usage = m.get('DuUsage')
         if m.get('EndTimestamp') is not None:

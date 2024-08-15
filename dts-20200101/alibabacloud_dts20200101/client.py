@@ -4074,6 +4074,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.check_job_id):
+            query['CheckJobId'] = request.check_job_id
         if not UtilClient.is_unset(request.check_type):
             query['CheckType'] = request.check_type
         if not UtilClient.is_unset(request.instance_id):
@@ -4119,6 +4121,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.check_job_id):
+            query['CheckJobId'] = request.check_job_id
         if not UtilClient.is_unset(request.check_type):
             query['CheckType'] = request.check_type
         if not UtilClient.is_unset(request.instance_id):
