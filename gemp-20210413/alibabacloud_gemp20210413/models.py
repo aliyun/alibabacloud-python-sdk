@@ -272,9 +272,6 @@ class AddProblemServiceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -498,9 +495,6 @@ class BillingStatisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -621,9 +615,6 @@ class CancelProblemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -732,9 +723,6 @@ class CheckWebhookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -837,9 +825,6 @@ class ConfirmIntegrationConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -875,7 +860,9 @@ class CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanConditions(Tea
         effection: str = None,
         level: str = None,
     ):
+        # This parameter is required.
         self.effection = effection
+        # This parameter is required.
         self.level = level
 
     def validate(self):
@@ -913,11 +900,15 @@ class CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies(Tea
         notice_time: str = None,
         service_group_ids: List[int] = None,
     ):
+        # This parameter is required.
         self.enable_webhook = enable_webhook
         self.escalation_plan_type = escalation_plan_type
+        # This parameter is required.
         self.notice_channels = notice_channels
+        # This parameter is required.
         self.notice_objects = notice_objects
         self.notice_role_list = notice_role_list
+        # This parameter is required.
         self.notice_time = notice_time
         self.service_group_ids = service_group_ids
 
@@ -972,7 +963,9 @@ class CreateEscalationPlanRequestEscalationPlanRules(TeaModel):
         escalation_plan_strategies: List[CreateEscalationPlanRequestEscalationPlanRulesEscalationPlanStrategies] = None,
         escalation_plan_type: str = None,
     ):
+        # This parameter is required.
         self.escalation_plan_conditions = escalation_plan_conditions
+        # This parameter is required.
         self.escalation_plan_strategies = escalation_plan_strategies
         self.escalation_plan_type = escalation_plan_type
 
@@ -1028,6 +1021,7 @@ class CreateEscalationPlanRequestEscalationPlanScopeObjects(TeaModel):
         scope_object_id: int = None,
     ):
         self.scope = scope
+        # This parameter is required.
         self.scope_object_id = scope_object_id
 
     def validate(self):
@@ -1066,9 +1060,13 @@ class CreateEscalationPlanRequest(TeaModel):
     ):
         # clientToken
         self.client_token = client_token
+        # This parameter is required.
         self.escalation_plan_description = escalation_plan_description
+        # This parameter is required.
         self.escalation_plan_name = escalation_plan_name
+        # This parameter is required.
         self.escalation_plan_rules = escalation_plan_rules
+        # This parameter is required.
         self.escalation_plan_scope_objects = escalation_plan_scope_objects
         self.is_global = is_global
 
@@ -1205,9 +1203,6 @@ class CreateEscalationPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1389,9 +1384,6 @@ class CreateIncidentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1430,6 +1422,7 @@ class CreateIncidentSubtotalRequest(TeaModel):
     ):
         self.client_token = client_token
         self.description = description
+        # This parameter is required.
         self.incident_id = incident_id
 
     def validate(self):
@@ -1536,9 +1529,6 @@ class CreateIncidentSubtotalResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1677,9 +1667,6 @@ class CreateIntegrationConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1896,9 +1883,6 @@ class CreateProblemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1944,6 +1928,7 @@ class CreateProblemEffectionServiceRequest(TeaModel):
         self.description = description
         self.level = level
         self.picture_url = picture_url
+        # This parameter is required.
         self.problem_id = problem_id
         self.service_id = service_id
         self.status = status
@@ -2068,9 +2053,6 @@ class CreateProblemEffectionServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2120,6 +2102,7 @@ class CreateProblemMeasureRequest(TeaModel):
         self.content = content
         self.director_id = director_id
         self.plan_finish_time = plan_finish_time
+        # This parameter is required.
         self.problem_id = problem_id
         self.stalker_id = stalker_id
         self.status = status
@@ -2257,9 +2240,6 @@ class CreateProblemMeasureResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2298,6 +2278,7 @@ class CreateProblemSubtotalRequest(TeaModel):
     ):
         self.client_token = client_token
         self.description = description
+        # This parameter is required.
         self.problem_id = problem_id
 
     def validate(self):
@@ -2404,9 +2385,6 @@ class CreateProblemSubtotalResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2448,6 +2426,7 @@ class CreateProblemTimelineRequest(TeaModel):
         self.client_token = client_token
         self.content = content
         self.key_node = key_node
+        # This parameter is required.
         self.problem_id = problem_id
         self.time = time
 
@@ -2563,9 +2542,6 @@ class CreateProblemTimelineResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2604,6 +2580,7 @@ class CreateProblemTimelinesRequest(TeaModel):
     ):
         # clientToken
         self.client_token = client_token
+        # This parameter is required.
         self.problem_id = problem_id
         self.timeline_nodes = timeline_nodes
 
@@ -2711,9 +2688,6 @@ class CreateProblemTimelinesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2870,9 +2844,6 @@ class CreateRichTextResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2909,8 +2880,11 @@ class CreateRouteRuleRequestRouteChildRulesConditions(TeaModel):
         operation_symbol: str = None,
         value: str = None,
     ):
+        # This parameter is required.
         self.key = key
+        # This parameter is required.
         self.operation_symbol = operation_symbol
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -2950,7 +2924,9 @@ class CreateRouteRuleRequestRouteChildRules(TeaModel):
         problem_level: str = None,
     ):
         self.child_condition_relation = child_condition_relation
+        # This parameter is required.
         self.conditions = conditions
+        # This parameter is required.
         self.monitor_source_id = monitor_source_id
         self.problem_level = problem_level
 
@@ -3018,25 +2994,38 @@ class CreateRouteRuleRequest(TeaModel):
         time_window: int = None,
         time_window_unit: str = None,
     ):
+        # This parameter is required.
         self.assign_object_id = assign_object_id
+        # This parameter is required.
         self.assign_object_type = assign_object_type
+        # This parameter is required.
         self.child_rule_relation = child_rule_relation
         self.client_token = client_token
         self.convergence_fields = convergence_fields
         self.convergence_type = convergence_type
         self.coverage_problem_levels = coverage_problem_levels
+        # This parameter is required.
         self.effection = effection
         self.enable_status = enable_status
+        # This parameter is required.
         self.incident_level = incident_level
+        # This parameter is required.
         self.match_count = match_count
+        # This parameter is required.
         self.notify_channels = notify_channels
         self.problem_effection_services = problem_effection_services
         self.problem_level_group = problem_level_group
+        # This parameter is required.
         self.related_service_id = related_service_id
+        # This parameter is required.
         self.route_child_rules = route_child_rules
+        # This parameter is required.
         self.route_type = route_type
+        # This parameter is required.
         self.rule_name = rule_name
+        # This parameter is required.
         self.time_window = time_window
+        # This parameter is required.
         self.time_window_unit = time_window_unit
 
     def validate(self):
@@ -3226,9 +3215,6 @@ class CreateRouteRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3271,6 +3257,7 @@ class CreateServiceRequest(TeaModel):
         self.escalation_plan_id = escalation_plan_id
         self.service_description = service_description
         self.service_group_id_list = service_group_id_list
+        # This parameter is required.
         self.service_name = service_name
 
     def validate(self):
@@ -3384,9 +3371,6 @@ class CreateServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3474,13 +3458,19 @@ class CreateServiceGroupRequest(TeaModel):
         webhook_type: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.enable_webhook = enable_webhook
         self.monitor_source_templates = monitor_source_templates
         self.service_group_description = service_group_description
+        # This parameter is required.
         self.service_group_name = service_group_name
+        # This parameter is required.
         self.user_ids = user_ids
         # webhooklink
+        # 
+        # This parameter is required.
         self.webhook_link = webhook_link
+        # This parameter is required.
         self.webhook_type = webhook_type
 
     def validate(self):
@@ -3614,9 +3604,6 @@ class CreateServiceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3968,7 +3955,9 @@ class CreateServiceGroupSchedulingRequest(TeaModel):
         self.client_token = client_token
         self.fast_scheduling = fast_scheduling
         self.fine_scheduling = fine_scheduling
+        # This parameter is required.
         self.scheduling_way = scheduling_way
+        # This parameter is required.
         self.service_group_id = service_group_id
 
     def validate(self):
@@ -4052,9 +4041,6 @@ class CreateServiceGroupSchedulingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4089,6 +4075,7 @@ class CreateSubscriptionRequestNotifyObjectList(TeaModel):
         self,
         notify_object_id: int = None,
     ):
+        # This parameter is required.
         self.notify_object_id = notify_object_id
 
     def validate(self):
@@ -4232,9 +4219,12 @@ class CreateSubscriptionRequestNotifyStrategyList(TeaModel):
         period_channel: CreateSubscriptionRequestNotifyStrategyListPeriodChannel = None,
         strategies: List[CreateSubscriptionRequestNotifyStrategyListStrategies] = None,
     ):
+        # This parameter is required.
         self.channels = channels
+        # This parameter is required.
         self.instance_type = instance_type
         self.period_channel = period_channel
+        # This parameter is required.
         self.strategies = strategies
 
     def validate(self):
@@ -4285,6 +4275,7 @@ class CreateSubscriptionRequestScopeObjectList(TeaModel):
         self,
         scope_object_id: int = None,
     ):
+        # This parameter is required.
         self.scope_object_id = scope_object_id
 
     def validate(self):
@@ -4324,14 +4315,21 @@ class CreateSubscriptionRequest(TeaModel):
     ):
         self.client_token = client_token
         self.end_time = end_time
+        # This parameter is required.
         self.expired_type = expired_type
+        # This parameter is required.
         self.notify_object_list = notify_object_list
+        # This parameter is required.
         self.notify_object_type = notify_object_type
+        # This parameter is required.
         self.notify_strategy_list = notify_strategy_list
         self.period = period
+        # This parameter is required.
         self.scope = scope
+        # This parameter is required.
         self.scope_object_list = scope_object_list
         self.start_time = start_time
+        # This parameter is required.
         self.subscription_title = subscription_title
 
     def validate(self):
@@ -4496,9 +4494,6 @@ class CreateSubscriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4534,7 +4529,9 @@ class CreateTenantApplicationRequest(TeaModel):
         channel: str = None,
         client_token: str = None,
     ):
+        # This parameter is required.
         self.channel = channel
+        # This parameter is required.
         self.client_token = client_token
 
     def validate(self):
@@ -4643,9 +4640,6 @@ class CreateTenantApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4808,9 +4802,6 @@ class CreateUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4847,6 +4838,7 @@ class DeleteEscalationPlanRequest(TeaModel):
         escalation_plan_id: int = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.escalation_plan_id = escalation_plan_id
 
     def validate(self):
@@ -4913,9 +4905,6 @@ class DeleteEscalationPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5018,9 +5007,6 @@ class DeleteIncidentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5123,9 +5109,6 @@ class DeleteIntegrationConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5228,9 +5211,6 @@ class DeleteProblemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5340,9 +5320,6 @@ class DeleteProblemEffectionServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5451,9 +5428,6 @@ class DeleteProblemMeasureResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5562,9 +5536,6 @@ class DeleteProblemTimelineResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5601,6 +5572,7 @@ class DeleteRouteRuleRequest(TeaModel):
         route_rule_id: int = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.route_rule_id = route_rule_id
 
     def validate(self):
@@ -5666,9 +5638,6 @@ class DeleteRouteRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5771,9 +5740,6 @@ class DeleteServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5876,9 +5842,6 @@ class DeleteServiceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5947,9 +5910,6 @@ class DeleteServiceGroupSchedulingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6070,9 +6030,6 @@ class DeleteServiceGroupUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6169,9 +6126,6 @@ class DeleteSubscriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6208,6 +6162,7 @@ class DeleteUserRequest(TeaModel):
         user_id: int = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -6274,9 +6229,6 @@ class DeleteUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6385,9 +6337,6 @@ class DeliverIncidentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6424,6 +6373,7 @@ class DisableEscalationPlanRequest(TeaModel):
         escalation_plan_id: int = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.escalation_plan_id = escalation_plan_id
 
     def validate(self):
@@ -6490,9 +6440,6 @@ class DisableEscalationPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6595,9 +6542,6 @@ class DisableIntegrationConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6634,6 +6578,7 @@ class DisableRouteRuleRequest(TeaModel):
         route_rule_id: int = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.route_rule_id = route_rule_id
 
     def validate(self):
@@ -6668,6 +6613,7 @@ class DisableRouteRuleResponseBody(TeaModel):
     ):
         # C4BE3837-1A13-413B-A225-2C88188E8A43
         self.data = data
+        # This parameter is required.
         self.request_id = request_id
 
     def validate(self):
@@ -6706,9 +6652,6 @@ class DisableRouteRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6811,9 +6754,6 @@ class DisableServiceGroupWebhookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6910,9 +6850,6 @@ class DisableSubscriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6949,6 +6886,7 @@ class EnableEscalationPlanRequest(TeaModel):
         escalation_plan_id: int = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.escalation_plan_id = escalation_plan_id
 
     def validate(self):
@@ -7015,9 +6953,6 @@ class EnableEscalationPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7120,9 +7055,6 @@ class EnableIntegrationConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7158,7 +7090,9 @@ class EnableRouteRuleRequest(TeaModel):
         client_token: str = None,
         route_rule_id: int = None,
     ):
+        # This parameter is required.
         self.client_token = client_token
+        # This parameter is required.
         self.route_rule_id = route_rule_id
 
     def validate(self):
@@ -7230,9 +7164,6 @@ class EnableRouteRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7335,9 +7266,6 @@ class EnableServiceGroupWebhookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7434,9 +7362,6 @@ class EnableSubscriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7481,6 +7406,7 @@ class FinishIncidentRequest(TeaModel):
         self.incident_finish_reason_description = incident_finish_reason_description
         self.incident_finish_solution = incident_finish_solution
         self.incident_finish_solution_description = incident_finish_solution_description
+        # This parameter is required.
         self.incident_ids = incident_ids
 
     def validate(self):
@@ -7563,9 +7489,6 @@ class FinishIncidentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7668,9 +7591,6 @@ class FinishProblemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7854,9 +7774,6 @@ class GeneratePictureLinkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8138,9 +8055,6 @@ class GeneratePictureUploadSignResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8322,9 +8236,6 @@ class GenerateProblemPictureLinkResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8511,9 +8422,6 @@ class GenerateProblemPictureUploadSignResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8550,6 +8458,7 @@ class GetEscalationPlanRequest(TeaModel):
         escalation_plan_id: int = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.escalation_plan_id = escalation_plan_id
 
     def validate(self):
@@ -9045,9 +8954,6 @@ class GetEscalationPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9082,6 +8988,7 @@ class GetEventRequest(TeaModel):
         self,
         monitor_source_id: int = None,
     ):
+        # This parameter is required.
         self.monitor_source_id = monitor_source_id
 
     def validate(self):
@@ -9197,9 +9104,6 @@ class GetEventResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9349,9 +9253,6 @@ class GetHomePageGuidanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9670,9 +9571,6 @@ class GetIncidentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9997,9 +9895,6 @@ class GetIncidentListByIdListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10150,9 +10045,6 @@ class GetIncidentStatisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10189,6 +10081,7 @@ class GetIncidentSubtotalCountRequest(TeaModel):
         incident_ids: List[int] = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.incident_ids = incident_ids
 
     def validate(self):
@@ -10292,9 +10185,6 @@ class GetIncidentSubtotalCountResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10469,9 +10359,6 @@ class GetIntegrationConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10508,6 +10395,7 @@ class GetProblemRequest(TeaModel):
         problem_id: int = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.problem_id = problem_id
 
     def validate(self):
@@ -10962,6 +10850,8 @@ class GetProblemResponseBodyData(TeaModel):
         self.main_handler_phone = main_handler_phone
         self.preliminary_reason = preliminary_reason
         # ID
+        # 
+        # This parameter is required.
         self.problem_id = problem_id
         self.problem_level = problem_level
         self.problem_name = problem_name
@@ -11245,9 +11135,6 @@ class GetProblemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11429,9 +11316,6 @@ class GetProblemEffectionServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11821,9 +11705,6 @@ class GetProblemImprovementResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12552,9 +12433,6 @@ class GetProblemPreviewResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12705,9 +12583,6 @@ class GetResourceStatisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12864,9 +12739,6 @@ class GetRichTextResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12903,6 +12775,7 @@ class GetRouteRuleRequest(TeaModel):
         route_rule_id: int = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.route_rule_id = route_rule_id
 
     def validate(self):
@@ -13286,9 +13159,6 @@ class GetRouteRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13325,6 +13195,7 @@ class GetServiceRequest(TeaModel):
         service_id: int = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.service_id = service_id
 
     def validate(self):
@@ -13361,6 +13232,7 @@ class GetServiceResponseBodyData(TeaModel):
         service_name: str = None,
         update_time: str = None,
     ):
+        # This parameter is required.
         self.escalation_plan_id = escalation_plan_id
         self.service_description = service_description
         self.service_group_id_list = service_group_id_list
@@ -13456,9 +13328,6 @@ class GetServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13702,9 +13571,6 @@ class GetServiceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13831,9 +13697,6 @@ class GetServiceGroupPersonSchedulingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13870,6 +13733,7 @@ class GetServiceGroupSchedulingRequest(TeaModel):
         service_group_id: int = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.service_group_id = service_group_id
 
     def validate(self):
@@ -14384,9 +14248,6 @@ class GetServiceGroupSchedulingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14617,7 +14478,9 @@ class GetServiceGroupSchedulingPreviewRequest(TeaModel):
         self.end_time = end_time
         self.fast_scheduling = fast_scheduling
         self.fine_scheduling = fine_scheduling
+        # This parameter is required.
         self.scheduling_way = scheduling_way
+        # This parameter is required.
         self.service_group_id = service_group_id
         self.start_time = start_time
 
@@ -14716,9 +14579,6 @@ class GetServiceGroupSchedulingPreviewResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14757,6 +14617,7 @@ class GetServiceGroupSpecialPersonSchedulingRequest(TeaModel):
     ):
         self.client_token = client_token
         self.service_group_id = service_group_id
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -14898,9 +14759,6 @@ class GetServiceGroupSpecialPersonSchedulingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14941,10 +14799,15 @@ class GetSimilarIncidentStatisticsRequest(TeaModel):
         related_service_id: int = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.create_time = create_time
+        # This parameter is required.
         self.events = events
+        # This parameter is required.
         self.incident_id = incident_id
+        # This parameter is required.
         self.incident_title = incident_title
+        # This parameter is required.
         self.related_service_id = related_service_id
 
     def validate(self):
@@ -15381,9 +15244,6 @@ class GetSimilarIncidentStatisticsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15886,9 +15746,6 @@ class GetSubscriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15923,6 +15780,7 @@ class GetTenantApplicationRequest(TeaModel):
         self,
         client_token: str = None,
     ):
+        # This parameter is required.
         self.client_token = client_token
 
     def validate(self):
@@ -16045,9 +15903,6 @@ class GetTenantApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16082,6 +15937,7 @@ class GetTenantStatusRequest(TeaModel):
         self,
         tenant_ram_id: int = None,
     ):
+        # This parameter is required.
         self.tenant_ram_id = tenant_ram_id
 
     def validate(self):
@@ -16178,9 +16034,6 @@ class GetTenantStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16217,6 +16070,7 @@ class GetUserRequest(TeaModel):
         user_id: int = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -16282,6 +16136,7 @@ class GetUserResponseBodyData(TeaModel):
         account_type: str = None,
         create_time: str = None,
         email: str = None,
+        is_active: int = None,
         is_editable_user: bool = None,
         is_related: str = None,
         phone: str = None,
@@ -16296,6 +16151,7 @@ class GetUserResponseBodyData(TeaModel):
         self.create_time = create_time
         # email
         self.email = email
+        self.is_active = is_active
         self.is_editable_user = is_editable_user
         self.is_related = is_related
         self.phone = phone
@@ -16325,6 +16181,8 @@ class GetUserResponseBodyData(TeaModel):
             result['createTime'] = self.create_time
         if self.email is not None:
             result['email'] = self.email
+        if self.is_active is not None:
+            result['isActive'] = self.is_active
         if self.is_editable_user is not None:
             result['isEditableUser'] = self.is_editable_user
         if self.is_related is not None:
@@ -16355,6 +16213,8 @@ class GetUserResponseBodyData(TeaModel):
             self.create_time = m.get('createTime')
         if m.get('email') is not None:
             self.email = m.get('email')
+        if m.get('isActive') is not None:
+            self.is_active = m.get('isActive')
         if m.get('isEditableUser') is not None:
             self.is_editable_user = m.get('isEditableUser')
         if m.get('isRelated') is not None:
@@ -16427,9 +16287,6 @@ class GetUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16533,9 +16390,6 @@ class GetUserGuideStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16824,9 +16678,6 @@ class ListAlertsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16969,9 +16820,6 @@ class ListByMonitorSourceIdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17177,9 +17025,6 @@ class ListChartDataForServiceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17385,9 +17230,6 @@ class ListChartDataForUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17506,9 +17348,6 @@ class ListConfigsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17732,9 +17571,6 @@ class ListDataReportForServiceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17958,9 +17794,6 @@ class ListDataReportForUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18079,9 +17912,6 @@ class ListDictionariesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18227,9 +18057,6 @@ class ListEscalationPlanServicesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18505,9 +18332,6 @@ class ListEscalationPlansResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18727,9 +18551,6 @@ class ListEscalationPlansByNoticeObjectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19500,9 +19321,6 @@ class ListIncidentDetailEscalationPlansResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19731,9 +19549,6 @@ class ListIncidentDetailTimelinesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19902,9 +19717,6 @@ class ListIncidentSubtotalsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20133,9 +19945,6 @@ class ListIncidentTimelinesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20464,9 +20273,6 @@ class ListIncidentsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20656,9 +20462,6 @@ class ListIntegrationConfigTimelinesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20839,9 +20642,6 @@ class ListIntegrationConfigsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20992,9 +20792,6 @@ class ListMonitorSourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21037,6 +20834,7 @@ class ListProblemDetailOperationsRequest(TeaModel):
         self.create_time_sort = create_time_sort
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.problem_id = problem_id
 
     def validate(self):
@@ -21211,9 +21009,6 @@ class ListProblemDetailOperationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21430,9 +21225,6 @@ class ListProblemOperationsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21601,9 +21393,6 @@ class ListProblemSubtotalsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21836,9 +21625,6 @@ class ListProblemTimeLinesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22251,9 +22037,6 @@ class ListProblemsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22552,9 +22335,6 @@ class ListRouteRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22709,9 +22489,6 @@ class ListRouteRulesByAssignWhoIdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22833,9 +22610,6 @@ class ListRouteRulesByServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23009,9 +22783,6 @@ class ListServiceGroupMonitorSourceTemplatesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23328,9 +23099,6 @@ class ListServiceGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23446,9 +23214,6 @@ class ListServiceGroupsByUserIdResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23487,7 +23252,9 @@ class ListServicesRequest(TeaModel):
         service_name: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.service_name = service_name
 
@@ -23664,9 +23431,6 @@ class ListServicesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23712,7 +23476,9 @@ class ListSourceEventsRequest(TeaModel):
         self.client_token = client_token
         # 2020-09-18 13:00:00
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.instance_type = instance_type
         self.page_number = page_number
         self.page_size = page_size
@@ -23927,9 +23693,6 @@ class ListSourceEventsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24085,9 +23848,6 @@ class ListSourceEventsForMonitorSourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24244,9 +24004,6 @@ class ListSubscriptionServiceGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24624,9 +24381,6 @@ class ListSubscriptionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24818,9 +24572,6 @@ class ListTrendForSourceEventResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24858,6 +24609,7 @@ class ListUserSerivceGroupsRequest(TeaModel):
     ):
         # clientToken
         self.client_token = client_token
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -25037,9 +24789,6 @@ class ListUserSerivceGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25145,6 +24894,9 @@ class ListUsersResponseBodyData(TeaModel):
         account_type: int = None,
         app_account: str = None,
         email: str = None,
+        gmt_active: str = None,
+        gmt_create: str = None,
+        is_active: int = None,
         is_editable_user: int = None,
         is_operation: int = None,
         is_ram: int = None,
@@ -25160,6 +24912,9 @@ class ListUsersResponseBodyData(TeaModel):
         self.account_type = account_type
         self.app_account = app_account
         self.email = email
+        self.gmt_active = gmt_active
+        self.gmt_create = gmt_create
+        self.is_active = is_active
         self.is_editable_user = is_editable_user
         self.is_operation = is_operation
         self.is_ram = is_ram
@@ -25187,6 +24942,12 @@ class ListUsersResponseBodyData(TeaModel):
             result['appAccount'] = self.app_account
         if self.email is not None:
             result['email'] = self.email
+        if self.gmt_active is not None:
+            result['gmtActive'] = self.gmt_active
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.is_active is not None:
+            result['isActive'] = self.is_active
         if self.is_editable_user is not None:
             result['isEditableUser'] = self.is_editable_user
         if self.is_operation is not None:
@@ -25219,6 +24980,12 @@ class ListUsersResponseBodyData(TeaModel):
             self.app_account = m.get('appAccount')
         if m.get('email') is not None:
             self.email = m.get('email')
+        if m.get('gmtActive') is not None:
+            self.gmt_active = m.get('gmtActive')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('isActive') is not None:
+            self.is_active = m.get('isActive')
         if m.get('isEditableUser') is not None:
             self.is_editable_user = m.get('isEditableUser')
         if m.get('isOperation') is not None:
@@ -25317,9 +25084,6 @@ class ListUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25421,9 +25185,6 @@ class PushMonitorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25532,9 +25293,6 @@ class RecoverProblemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25673,9 +25431,6 @@ class RefreshIntegrationConfigKeyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25777,9 +25532,6 @@ class RemoveIntegrationConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25882,9 +25634,6 @@ class RemoveProblemServiceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25993,9 +25742,6 @@ class ReplayProblemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26099,9 +25845,6 @@ class RespondIncidentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26210,9 +25953,6 @@ class RevokeProblemRecoveryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26281,9 +26021,6 @@ class UnbindUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26480,8 +26217,10 @@ class UpdateEscalationPlanRequestEscalationPlanScopeObjects(TeaModel):
         scope: str = None,
         scope_object_id: int = None,
     ):
+        # This parameter is required.
         self.id = id
         self.scope = scope
+        # This parameter is required.
         self.scope_object_id = scope_object_id
 
     def validate(self):
@@ -26526,6 +26265,7 @@ class UpdateEscalationPlanRequest(TeaModel):
         # clientToken
         self.client_token = client_token
         self.escalation_plan_description = escalation_plan_description
+        # This parameter is required.
         self.escalation_plan_id = escalation_plan_id
         self.escalation_plan_name = escalation_plan_name
         self.escalation_plan_rules = escalation_plan_rules
@@ -26633,9 +26373,6 @@ class UpdateEscalationPlanResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26676,6 +26413,7 @@ class UpdateIncidentRequest(TeaModel):
     ):
         self.client_token = client_token
         self.effect = effect
+        # This parameter is required.
         self.incident_id = incident_id
         self.incident_level = incident_level
         self.incident_title = incident_title
@@ -26792,9 +26530,6 @@ class UpdateIncidentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26904,9 +26639,6 @@ class UpdateIntegrationConfigResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27057,9 +26789,6 @@ class UpdateProblemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27199,9 +26928,6 @@ class UpdateProblemEffectionServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27388,9 +27114,6 @@ class UpdateProblemImprovementResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27547,9 +27270,6 @@ class UpdateProblemMeasureResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27658,9 +27378,6 @@ class UpdateProblemNoticeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27787,9 +27504,6 @@ class UpdateProblemTimelineResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27940,9 +27654,6 @@ class UpdateRichTextResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -27979,8 +27690,11 @@ class UpdateRouteRuleRequestRouteChildRulesConditions(TeaModel):
         operation_symbol: str = None,
         value: str = None,
     ):
+        # This parameter is required.
         self.key = key
+        # This parameter is required.
         self.operation_symbol = operation_symbol
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -28022,9 +27736,13 @@ class UpdateRouteRuleRequestRouteChildRules(TeaModel):
         problem_level: str = None,
     ):
         self.child_condition_relation = child_condition_relation
+        # This parameter is required.
         self.child_route_rule_id = child_route_rule_id
+        # This parameter is required.
         self.conditions = conditions
+        # This parameter is required.
         self.is_valid_child_rule = is_valid_child_rule
+        # This parameter is required.
         self.monitor_source_id = monitor_source_id
         self.problem_level = problem_level
 
@@ -28100,25 +27818,38 @@ class UpdateRouteRuleRequest(TeaModel):
         time_window: int = None,
         time_window_unit: str = None,
     ):
+        # This parameter is required.
         self.assign_object_id = assign_object_id
+        # This parameter is required.
         self.assign_object_type = assign_object_type
         self.child_rule_relation = child_rule_relation
         self.client_token = client_token
         self.convergence_fields = convergence_fields
         self.convergence_type = convergence_type
         self.coverage_problem_levels = coverage_problem_levels
+        # This parameter is required.
         self.effection = effection
+        # This parameter is required.
         self.incident_level = incident_level
+        # This parameter is required.
         self.match_count = match_count
+        # This parameter is required.
         self.notify_channels = notify_channels
         self.problem_effection_services = problem_effection_services
         self.problem_level_group = problem_level_group
+        # This parameter is required.
         self.related_service_id = related_service_id
+        # This parameter is required.
         self.route_child_rules = route_child_rules
+        # This parameter is required.
         self.route_rule_id = route_rule_id
+        # This parameter is required.
         self.route_type = route_type
+        # This parameter is required.
         self.rule_name = rule_name
+        # This parameter is required.
         self.time_window = time_window
+        # This parameter is required.
         self.time_window_unit = time_window_unit
 
     def validate(self):
@@ -28279,9 +28010,6 @@ class UpdateRouteRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28414,9 +28142,6 @@ class UpdateServiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28505,13 +28230,19 @@ class UpdateServiceGroupRequest(TeaModel):
         webhook_type: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.enable_webhook = enable_webhook
         self.monitor_source_templates = monitor_source_templates
         self.service_group_description = service_group_description
+        # This parameter is required.
         self.service_group_id = service_group_id
+        # This parameter is required.
         self.service_group_name = service_group_name
+        # This parameter is required.
         self.user_ids = user_ids
+        # This parameter is required.
         self.webhook_link = webhook_link
+        # This parameter is required.
         self.webhook_type = webhook_type
 
     def validate(self):
@@ -28614,9 +28345,6 @@ class UpdateServiceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -28980,7 +28708,9 @@ class UpdateServiceGroupSchedulingRequest(TeaModel):
         self.client_token = client_token
         self.fast_scheduling = fast_scheduling
         self.fine_scheduling = fine_scheduling
+        # This parameter is required.
         self.scheduling_way = scheduling_way
+        # This parameter is required.
         self.service_group_id = service_group_id
 
     def validate(self):
@@ -29064,9 +28794,6 @@ class UpdateServiceGroupSchedulingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29106,10 +28833,13 @@ class UpdateServiceGroupSpecialDaySchedulingRequestSchedulingSpecialDays(TeaMode
         scheduling_user_id: int = None,
         scheduling_user_id_list: List[int] = None,
     ):
+        # This parameter is required.
         self.scheduling_end_time = scheduling_end_time
         self.scheduling_object_type = scheduling_object_type
         self.scheduling_order = scheduling_order
+        # This parameter is required.
         self.scheduling_start_time = scheduling_start_time
+        # This parameter is required.
         self.scheduling_user_id = scheduling_user_id
         self.scheduling_user_id_list = scheduling_user_id_list
 
@@ -29162,8 +28892,11 @@ class UpdateServiceGroupSpecialDaySchedulingRequest(TeaModel):
         service_group_id: int = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.scheduling_date = scheduling_date
+        # This parameter is required.
         self.scheduling_special_days = scheduling_special_days
+        # This parameter is required.
         self.service_group_id = service_group_id
 
     def validate(self):
@@ -29246,9 +28979,6 @@ class UpdateServiceGroupSpecialDaySchedulingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29285,6 +29015,7 @@ class UpdateSubscriptionRequestNotifyObjectList(TeaModel):
         notify_object_id: int = None,
     ):
         self.id = id
+        # This parameter is required.
         self.notify_object_id = notify_object_id
 
     def validate(self):
@@ -29451,7 +29182,9 @@ class UpdateSubscriptionRequestNotifyStrategyList(TeaModel):
         instance_type: int = None,
         strategies: List[UpdateSubscriptionRequestNotifyStrategyListStrategies] = None,
     ):
+        # This parameter is required.
         self.instance_type = instance_type
+        # This parameter is required.
         self.strategies = strategies
 
     def validate(self):
@@ -29493,6 +29226,7 @@ class UpdateSubscriptionRequestScopeObjectList(TeaModel):
         scope_object_id: int = None,
     ):
         self.id = id
+        # This parameter is required.
         self.scope_object_id = scope_object_id
 
     def validate(self):
@@ -29535,15 +29269,23 @@ class UpdateSubscriptionRequest(TeaModel):
         subscription_title: str = None,
     ):
         self.end_time = end_time
+        # This parameter is required.
         self.expired_type = expired_type
+        # This parameter is required.
         self.notify_object_list = notify_object_list
+        # This parameter is required.
         self.notify_object_type = notify_object_type
+        # This parameter is required.
         self.notify_strategy_list = notify_strategy_list
         self.period = period
+        # This parameter is required.
         self.scope = scope
+        # This parameter is required.
         self.scope_object_list = scope_object_list
         self.start_time = start_time
+        # This parameter is required.
         self.subscription_id = subscription_id
+        # This parameter is required.
         self.subscription_title = subscription_title
 
     def validate(self):
@@ -29672,9 +29414,6 @@ class UpdateSubscriptionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29720,6 +29459,7 @@ class UpdateUserRequest(TeaModel):
         self.phone = phone
         self.ram_id = ram_id
         self.role_id_list = role_id_list
+        # This parameter is required.
         self.user_id = user_id
         self.username = username
 
@@ -29807,9 +29547,6 @@ class UpdateUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -29912,9 +29649,6 @@ class UpdateUserGuideStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -30218,9 +29952,6 @@ class VerifyRouteRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

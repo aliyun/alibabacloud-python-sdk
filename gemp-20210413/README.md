@@ -28,7 +28,7 @@ pip install alibabacloud_gemp20210413
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/gemp-20210413/ChangeLog.md).
 
 ## References
 

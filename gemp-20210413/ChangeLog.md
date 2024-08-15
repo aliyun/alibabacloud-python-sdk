@@ -1,3 +1,12 @@
+2024-08-15 Version: 1.0.13
+- Update API GeneratePictureLink: update response param.
+- Update API GeneratePictureUploadSign: update response param.
+- Update API GenerateProblemPictureUploadSign: update response param.
+- Update API GetUser: update response param.
+- Update API ListConfigs: update response param.
+- Update API ListUsers: update response param.
+
+
 2023-09-04 Version: 1.0.12
 - Generated python 2021-04-13 for GEMP.
 
