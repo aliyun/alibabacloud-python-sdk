@@ -1,3 +1,8 @@
+2024-08-15 Version: 1.3.3
+- Update API ListDownStreamBindings: update param MaxResults.
+- Update API ListExchangeUpStreamBindings: update param MaxResults.
+
+
 2024-08-14 Version: 1.3.2
 - Update API ListQueueUpStreamBindings: update param MaxResults.
 

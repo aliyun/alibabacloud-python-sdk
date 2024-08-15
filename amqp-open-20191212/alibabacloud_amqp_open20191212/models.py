@@ -2411,8 +2411,6 @@ class ListDownStreamBindingsRequest(TeaModel):
         # This parameter is required.
         self.instance_id = instance_id
         # The maximum number of entries to return.
-        # 
-        # This parameter is required.
         self.max_results = max_results
         # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
@@ -2699,8 +2697,6 @@ class ListExchangeUpStreamBindingsRequest(TeaModel):
         # This parameter is required.
         self.instance_id = instance_id
         # The maximum number of entries to return.
-        # 
-        # This parameter is required.
         self.max_results = max_results
         # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
