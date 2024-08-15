@@ -27717,6 +27717,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_ipv_6gateways_with_options_async(request, runtime)
 
+    def describe_nat_gateway_associate_network_interfaces_with_options(
+        self,
+        request: vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesResponse:
+        """
+        @summary 查询NAT已绑定ENI信息
+        
+        @param request: DescribeNatGatewayAssociateNetworkInterfacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNatGatewayAssociateNetworkInterfacesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNatGatewayAssociateNetworkInterfaces',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_nat_gateway_associate_network_interfaces_with_options_async(
+        self,
+        request: vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesResponse:
+        """
+        @summary 查询NAT已绑定ENI信息
+        
+        @param request: DescribeNatGatewayAssociateNetworkInterfacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNatGatewayAssociateNetworkInterfacesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNatGatewayAssociateNetworkInterfaces',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_nat_gateway_associate_network_interfaces(
+        self,
+        request: vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesRequest,
+    ) -> vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesResponse:
+        """
+        @summary 查询NAT已绑定ENI信息
+        
+        @param request: DescribeNatGatewayAssociateNetworkInterfacesRequest
+        @return: DescribeNatGatewayAssociateNetworkInterfacesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_nat_gateway_associate_network_interfaces_with_options(request, runtime)
+
+    async def describe_nat_gateway_associate_network_interfaces_async(
+        self,
+        request: vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesRequest,
+    ) -> vpc_20160428_models.DescribeNatGatewayAssociateNetworkInterfacesResponse:
+        """
+        @summary 查询NAT已绑定ENI信息
+        
+        @param request: DescribeNatGatewayAssociateNetworkInterfacesRequest
+        @return: DescribeNatGatewayAssociateNetworkInterfacesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_nat_gateway_associate_network_interfaces_with_options_async(request, runtime)
+
     def describe_nat_gateways_with_options(
         self,
         request: vpc_20160428_models.DescribeNatGatewaysRequest,

@@ -44559,6 +44559,440 @@ class DescribeIpv6GatewaysResponse(TeaModel):
         return self
 
 
+class DescribeNatGatewayAssociateNetworkInterfacesRequestFilter(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeNatGatewayAssociateNetworkInterfacesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeNatGatewayAssociateNetworkInterfacesRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        filter: List[DescribeNatGatewayAssociateNetworkInterfacesRequestFilter] = None,
+        max_results: int = None,
+        nat_gateway_id: str = None,
+        next_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        tag: List[DescribeNatGatewayAssociateNetworkInterfacesRequestTag] = None,
+    ):
+        self.client_token = client_token
+        self.filter = filter
+        self.max_results = max_results
+        # This parameter is required.
+        self.nat_gateway_id = nat_gateway_id
+        self.next_token = next_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.tag = tag
+
+    def validate(self):
+        if self.filter:
+            for k in self.filter:
+                if k:
+                    k.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        result['Filter'] = []
+        if self.filter is not None:
+            for k in self.filter:
+                result['Filter'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        self.filter = []
+        if m.get('Filter') is not None:
+            for k in m.get('Filter'):
+                temp_model = DescribeNatGatewayAssociateNetworkInterfacesRequestFilter()
+                self.filter.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeNatGatewayAssociateNetworkInterfacesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterfaceIPv4SetsIPv4Set(TeaModel):
+    def __init__(
+        self,
+        ipv_4address: str = None,
+        primary: bool = None,
+    ):
+        self.ipv_4address = ipv_4address
+        self.primary = primary
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipv_4address is not None:
+            result['IPv4Address'] = self.ipv_4address
+        if self.primary is not None:
+            result['Primary'] = self.primary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IPv4Address') is not None:
+            self.ipv_4address = m.get('IPv4Address')
+        if m.get('Primary') is not None:
+            self.primary = m.get('Primary')
+        return self
+
+
+class DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterfaceIPv4Sets(TeaModel):
+    def __init__(
+        self,
+        ipv_4set: List[DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterfaceIPv4SetsIPv4Set] = None,
+    ):
+        self.ipv_4set = ipv_4set
+
+    def validate(self):
+        if self.ipv_4set:
+            for k in self.ipv_4set:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['IPv4Set'] = []
+        if self.ipv_4set is not None:
+            for k in self.ipv_4set:
+                result['IPv4Set'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ipv_4set = []
+        if m.get('IPv4Set') is not None:
+            for k in m.get('IPv4Set'):
+                temp_model = DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterfaceIPv4SetsIPv4Set()
+                self.ipv_4set.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterface(TeaModel):
+    def __init__(
+        self,
+        ipv_4sets: DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterfaceIPv4Sets = None,
+        network_interface_id: str = None,
+        resource_id: str = None,
+        resource_owner_id: str = None,
+        resource_type: str = None,
+    ):
+        self.ipv_4sets = ipv_4sets
+        self.network_interface_id = network_interface_id
+        self.resource_id = resource_id
+        self.resource_owner_id = resource_owner_id
+        self.resource_type = resource_type
+
+    def validate(self):
+        if self.ipv_4sets:
+            self.ipv_4sets.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipv_4sets is not None:
+            result['IPv4Sets'] = self.ipv_4sets.to_map()
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IPv4Sets') is not None:
+            temp_model = DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterfaceIPv4Sets()
+            self.ipv_4sets = temp_model.from_map(m['IPv4Sets'])
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfaces(TeaModel):
+    def __init__(
+        self,
+        associate_network_interface: List[DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterface] = None,
+    ):
+        self.associate_network_interface = associate_network_interface
+
+    def validate(self):
+        if self.associate_network_interface:
+            for k in self.associate_network_interface:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AssociateNetworkInterface'] = []
+        if self.associate_network_interface is not None:
+            for k in self.associate_network_interface:
+                result['AssociateNetworkInterface'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.associate_network_interface = []
+        if m.get('AssociateNetworkInterface') is not None:
+            for k in m.get('AssociateNetworkInterface'):
+                temp_model = DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfacesAssociateNetworkInterface()
+                self.associate_network_interface.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeNatGatewayAssociateNetworkInterfacesResponseBody(TeaModel):
+    def __init__(
+        self,
+        associate_network_interfaces: DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfaces = None,
+        max_results: int = None,
+        nat_gateway_id: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.associate_network_interfaces = associate_network_interfaces
+        self.max_results = max_results
+        self.nat_gateway_id = nat_gateway_id
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.associate_network_interfaces:
+            self.associate_network_interfaces.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.associate_network_interfaces is not None:
+            result['AssociateNetworkInterfaces'] = self.associate_network_interfaces.to_map()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssociateNetworkInterfaces') is not None:
+            temp_model = DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkInterfaces()
+            self.associate_network_interfaces = temp_model.from_map(m['AssociateNetworkInterfaces'])
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeNatGatewayAssociateNetworkInterfacesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNatGatewayAssociateNetworkInterfacesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNatGatewayAssociateNetworkInterfacesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeNatGatewaysRequestTag(TeaModel):
     def __init__(
         self,
