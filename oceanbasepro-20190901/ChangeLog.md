@@ -1,3 +1,14 @@
+2024-08-15 Version: 7.0.1
+- Update API CreateInstance: update param InstanceName.
+- Update API DescribeInstance: update response param.
+- Update API DescribeOasSQLDetails: add param ParseTable.
+- Update API DescribeOasSQLPlans: update response param.
+- Update API DescribeSQLSamples: update response param.
+- Update API DescribeTenant: update response param.
+- Update API DescribeTenantMetrics: update param TenantId.
+- Update API DescribeTenantMetrics: update param TenantIdList.
+
+
 2024-08-05 Version: 7.0.0
 - Update API DescribeTenant: update response param.
 

@@ -12439,6 +12439,7 @@ class DescribeInstanceResponseBodyInstanceTenantCreatable(TeaModel):
 class DescribeInstanceResponseBodyInstance(TeaModel):
     def __init__(
         self,
+        allow_create_proxy_sql_firewall_rule: bool = None,
         allow_modify_internet_address_connection_limit: bool = None,
         auto_renewal: bool = None,
         auto_upgrade_ob_version: bool = None,
@@ -12486,6 +12487,7 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
         version: str = None,
         zones: List[str] = None,
     ):
+        self.allow_create_proxy_sql_firewall_rule = allow_create_proxy_sql_firewall_rule
         self.allow_modify_internet_address_connection_limit = allow_modify_internet_address_connection_limit
         # The operation that you want to perform. <br>Set the value to **DescribeInstance**.
         self.auto_renewal = auto_renewal
@@ -12567,6 +12569,8 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
             return _map
 
         result = dict()
+        if self.allow_create_proxy_sql_firewall_rule is not None:
+            result['AllowCreateProxySqlFirewallRule'] = self.allow_create_proxy_sql_firewall_rule
         if self.allow_modify_internet_address_connection_limit is not None:
             result['AllowModifyInternetAddressConnectionLimit'] = self.allow_modify_internet_address_connection_limit
         if self.auto_renewal is not None:
@@ -12663,6 +12667,8 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowCreateProxySqlFirewallRule') is not None:
+            self.allow_create_proxy_sql_firewall_rule = m.get('AllowCreateProxySqlFirewallRule')
         if m.get('AllowModifyInternetAddressConnectionLimit') is not None:
             self.allow_modify_internet_address_connection_limit = m.get('AllowModifyInternetAddressConnectionLimit')
         if m.get('AutoRenewal') is not None:
@@ -16403,6 +16409,7 @@ class DescribeOasSQLDetailsRequest(TeaModel):
         dynamic_sql: bool = None,
         end_time: str = None,
         instance_id: str = None,
+        parse_table: bool = None,
         sql_id: str = None,
         start_time: str = None,
         tenant_id: str = None,
@@ -16421,6 +16428,7 @@ class DescribeOasSQLDetailsRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.parse_table = parse_table
         # SQL ID.
         # 
         # This parameter is required.
@@ -16452,6 +16460,8 @@ class DescribeOasSQLDetailsRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.parse_table is not None:
+            result['ParseTable'] = self.parse_table
         if self.sql_id is not None:
             result['SqlId'] = self.sql_id
         if self.start_time is not None:
@@ -16470,6 +16480,8 @@ class DescribeOasSQLDetailsRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('ParseTable') is not None:
+            self.parse_table = m.get('ParseTable')
         if m.get('SqlId') is not None:
             self.sql_id = m.get('SqlId')
         if m.get('StartTime') is not None:
@@ -17703,12 +17715,15 @@ class DescribeOasSQLPlansResponseBodyData(TeaModel):
         hit_diagnosis: bool = None,
         hit_percentage: float = None,
         merged_version: int = None,
+        outline_id: str = None,
+        outline_status: str = None,
         plan_explain: DescribeOasSQLPlansResponseBodyDataPlanExplain = None,
         plan_hash: str = None,
         plan_type: str = None,
         plan_union_hash: str = None,
         plans: List[DescribeOasSQLPlansResponseBodyDataPlans] = None,
         query_sql: str = None,
+        table_scan: bool = None,
     ):
         # Average CPU time (in milliseconds) during the execution period.
         self.avg_cpu_time = avg_cpu_time
@@ -17724,6 +17739,8 @@ class DescribeOasSQLPlansResponseBodyData(TeaModel):
         self.hit_percentage = hit_percentage
         # Merge version.
         self.merged_version = merged_version
+        self.outline_id = outline_id
+        self.outline_status = outline_status
         # Execution plan.
         self.plan_explain = plan_explain
         # The internal identifier of the SQL execution plan in the diagnostic system.
@@ -17736,6 +17753,7 @@ class DescribeOasSQLPlansResponseBodyData(TeaModel):
         self.plans = plans
         # The SQL for the query.
         self.query_sql = query_sql
+        self.table_scan = table_scan
 
     def validate(self):
         if self.plan_explain:
@@ -17765,6 +17783,10 @@ class DescribeOasSQLPlansResponseBodyData(TeaModel):
             result['HitPercentage'] = self.hit_percentage
         if self.merged_version is not None:
             result['MergedVersion'] = self.merged_version
+        if self.outline_id is not None:
+            result['OutlineId'] = self.outline_id
+        if self.outline_status is not None:
+            result['OutlineStatus'] = self.outline_status
         if self.plan_explain is not None:
             result['PlanExplain'] = self.plan_explain.to_map()
         if self.plan_hash is not None:
@@ -17779,6 +17801,8 @@ class DescribeOasSQLPlansResponseBodyData(TeaModel):
                 result['Plans'].append(k.to_map() if k else None)
         if self.query_sql is not None:
             result['QuerySql'] = self.query_sql
+        if self.table_scan is not None:
+            result['TableScan'] = self.table_scan
         return result
 
     def from_map(self, m: dict = None):
@@ -17797,6 +17821,10 @@ class DescribeOasSQLPlansResponseBodyData(TeaModel):
             self.hit_percentage = m.get('HitPercentage')
         if m.get('MergedVersion') is not None:
             self.merged_version = m.get('MergedVersion')
+        if m.get('OutlineId') is not None:
+            self.outline_id = m.get('OutlineId')
+        if m.get('OutlineStatus') is not None:
+            self.outline_status = m.get('OutlineStatus')
         if m.get('PlanExplain') is not None:
             temp_model = DescribeOasSQLPlansResponseBodyDataPlanExplain()
             self.plan_explain = temp_model.from_map(m['PlanExplain'])
@@ -17813,6 +17841,8 @@ class DescribeOasSQLPlansResponseBodyData(TeaModel):
                 self.plans.append(temp_model.from_map(k))
         if m.get('QuerySql') is not None:
             self.query_sql = m.get('QuerySql')
+        if m.get('TableScan') is not None:
+            self.table_scan = m.get('TableScan')
         return self
 
 
@@ -28830,6 +28860,7 @@ class DescribeSQLSamplesResponseBodyData(TeaModel):
         ob_db_id: float = None,
         ob_server_id: float = None,
         ob_user_id: float = None,
+        params_value: str = None,
         partition_count: float = None,
         plan_id: float = None,
         plan_type: str = None,
@@ -28910,6 +28941,7 @@ class DescribeSQLSamplesResponseBodyData(TeaModel):
         self.ob_server_id = ob_server_id
         # User ID.
         self.ob_user_id = ob_user_id
+        self.params_value = params_value
         # Average number of partition accessed during the execution period.
         self.partition_count = partition_count
         # The execution plan ID.
@@ -29025,6 +29057,8 @@ class DescribeSQLSamplesResponseBodyData(TeaModel):
             result['ObServerId'] = self.ob_server_id
         if self.ob_user_id is not None:
             result['ObUserId'] = self.ob_user_id
+        if self.params_value is not None:
+            result['ParamsValue'] = self.params_value
         if self.partition_count is not None:
             result['PartitionCount'] = self.partition_count
         if self.plan_id is not None:
@@ -29135,6 +29169,8 @@ class DescribeSQLSamplesResponseBodyData(TeaModel):
             self.ob_server_id = m.get('ObServerId')
         if m.get('ObUserId') is not None:
             self.ob_user_id = m.get('ObUserId')
+        if m.get('ParamsValue') is not None:
+            self.params_value = m.get('ParamsValue')
         if m.get('PartitionCount') is not None:
             self.partition_count = m.get('PartitionCount')
         if m.get('PlanId') is not None:
@@ -31835,8 +31871,10 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
         intranet_address_status: str = None,
         intranet_port: int = None,
         intranet_rpc_port: int = None,
+        intranet_sql_port: int = None,
         max_connection_limit: int = None,
         max_connection_num: int = None,
+        odp_version: str = None,
         parallel_query_degree: int = None,
         proxy_cluster_id: str = None,
         tenant_endpoint_id: str = None,
@@ -31874,8 +31912,10 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
         # The ID of the tenant.
         self.intranet_port = intranet_port
         self.intranet_rpc_port = intranet_rpc_port
+        self.intranet_sql_port = intranet_sql_port
         self.max_connection_limit = max_connection_limit
         self.max_connection_num = max_connection_num
+        self.odp_version = odp_version
         self.parallel_query_degree = parallel_query_degree
         self.proxy_cluster_id = proxy_cluster_id
         self.tenant_endpoint_id = tenant_endpoint_id
@@ -31932,10 +31972,14 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
             result['IntranetPort'] = self.intranet_port
         if self.intranet_rpc_port is not None:
             result['IntranetRpcPort'] = self.intranet_rpc_port
+        if self.intranet_sql_port is not None:
+            result['IntranetSqlPort'] = self.intranet_sql_port
         if self.max_connection_limit is not None:
             result['MaxConnectionLimit'] = self.max_connection_limit
         if self.max_connection_num is not None:
             result['MaxConnectionNum'] = self.max_connection_num
+        if self.odp_version is not None:
+            result['OdpVersion'] = self.odp_version
         if self.parallel_query_degree is not None:
             result['ParallelQueryDegree'] = self.parallel_query_degree
         if self.proxy_cluster_id is not None:
@@ -31986,10 +32030,14 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
             self.intranet_port = m.get('IntranetPort')
         if m.get('IntranetRpcPort') is not None:
             self.intranet_rpc_port = m.get('IntranetRpcPort')
+        if m.get('IntranetSqlPort') is not None:
+            self.intranet_sql_port = m.get('IntranetSqlPort')
         if m.get('MaxConnectionLimit') is not None:
             self.max_connection_limit = m.get('MaxConnectionLimit')
         if m.get('MaxConnectionNum') is not None:
             self.max_connection_num = m.get('MaxConnectionNum')
+        if m.get('OdpVersion') is not None:
+            self.odp_version = m.get('OdpVersion')
         if m.get('ParallelQueryDegree') is not None:
             self.parallel_query_degree = m.get('ParallelQueryDegree')
         if m.get('ProxyClusterId') is not None:
@@ -32415,6 +32463,7 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         lower_case_table_names: int = None,
         master_intranet_address_zone: str = None,
         max_parallel_query_degree: int = None,
+        odp_version: str = None,
         pay_type: str = None,
         primary_zone: str = None,
         primary_zone_deploy_type: str = None,
@@ -32527,6 +32576,7 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         # ```
         self.master_intranet_address_zone = master_intranet_address_zone
         self.max_parallel_query_degree = max_parallel_query_degree
+        self.odp_version = odp_version
         self.pay_type = pay_type
         # The type of the payment.
         self.primary_zone = primary_zone
@@ -32676,6 +32726,8 @@ class DescribeTenantResponseBodyTenant(TeaModel):
             result['MasterIntranetAddressZone'] = self.master_intranet_address_zone
         if self.max_parallel_query_degree is not None:
             result['MaxParallelQueryDegree'] = self.max_parallel_query_degree
+        if self.odp_version is not None:
+            result['OdpVersion'] = self.odp_version
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         if self.primary_zone is not None:
@@ -32756,6 +32808,8 @@ class DescribeTenantResponseBodyTenant(TeaModel):
             self.master_intranet_address_zone = m.get('MasterIntranetAddressZone')
         if m.get('MaxParallelQueryDegree') is not None:
             self.max_parallel_query_degree = m.get('MaxParallelQueryDegree')
+        if m.get('OdpVersion') is not None:
+            self.odp_version = m.get('OdpVersion')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
         if m.get('PrimaryZone') is not None:
@@ -33117,7 +33171,9 @@ class DescribeTenantMetricsRequest(TeaModel):
         # 
         # This parameter is required.
         self.start_time = start_time
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.tenant_id_list = tenant_id_list
         # 2021-06-13T15:45:43Z
         self.tenant_name = tenant_name

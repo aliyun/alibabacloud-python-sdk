@@ -5831,6 +5831,8 @@ class Client(OpenApiClient):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.parse_table):
+            body['ParseTable'] = request.parse_table
         if not UtilClient.is_unset(request.sql_id):
             body['SqlId'] = request.sql_id
         if not UtilClient.is_unset(request.start_time):
@@ -5878,6 +5880,8 @@ class Client(OpenApiClient):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.parse_table):
+            body['ParseTable'] = request.parse_table
         if not UtilClient.is_unset(request.sql_id):
             body['SqlId'] = request.sql_id
         if not UtilClient.is_unset(request.start_time):
