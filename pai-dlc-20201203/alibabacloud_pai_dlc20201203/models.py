@@ -106,6 +106,45 @@ class AliyunAccounts(TeaModel):
         return self
 
 
+class AssignNodeSpec(TeaModel):
+    def __init__(
+        self,
+        anti_affinity_node_names: str = None,
+        enable_assign_node: bool = None,
+        node_names: str = None,
+    ):
+        self.anti_affinity_node_names = anti_affinity_node_names
+        self.enable_assign_node = enable_assign_node
+        self.node_names = node_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anti_affinity_node_names is not None:
+            result['AntiAffinityNodeNames'] = self.anti_affinity_node_names
+        if self.enable_assign_node is not None:
+            result['EnableAssignNode'] = self.enable_assign_node
+        if self.node_names is not None:
+            result['NodeNames'] = self.node_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AntiAffinityNodeNames') is not None:
+            self.anti_affinity_node_names = m.get('AntiAffinityNodeNames')
+        if m.get('EnableAssignNode') is not None:
+            self.enable_assign_node = m.get('EnableAssignNode')
+        if m.get('NodeNames') is not None:
+            self.node_names = m.get('NodeNames')
+        return self
+
+
 class AssumeUserInfo(TeaModel):
     def __init__(
         self,
@@ -1922,6 +1961,7 @@ class SpotSpec(TeaModel):
 class JobSpec(TeaModel):
     def __init__(
         self,
+        assign_node_spec: AssignNodeSpec = None,
         ecs_spec: str = None,
         extra_pod_spec: ExtraPodSpec = None,
         image: str = None,
@@ -1932,6 +1972,7 @@ class JobSpec(TeaModel):
         type: str = None,
         use_spot_instance: bool = None,
     ):
+        self.assign_node_spec = assign_node_spec
         self.ecs_spec = ecs_spec
         self.extra_pod_spec = extra_pod_spec
         self.image = image
@@ -1943,6 +1984,8 @@ class JobSpec(TeaModel):
         self.use_spot_instance = use_spot_instance
 
     def validate(self):
+        if self.assign_node_spec:
+            self.assign_node_spec.validate()
         if self.extra_pod_spec:
             self.extra_pod_spec.validate()
         if self.image_config:
@@ -1958,6 +2001,8 @@ class JobSpec(TeaModel):
             return _map
 
         result = dict()
+        if self.assign_node_spec is not None:
+            result['AssignNodeSpec'] = self.assign_node_spec.to_map()
         if self.ecs_spec is not None:
             result['EcsSpec'] = self.ecs_spec
         if self.extra_pod_spec is not None:
@@ -1980,6 +2025,9 @@ class JobSpec(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AssignNodeSpec') is not None:
+            temp_model = AssignNodeSpec()
+            self.assign_node_spec = temp_model.from_map(m['AssignNodeSpec'])
         if m.get('EcsSpec') is not None:
             self.ecs_spec = m.get('EcsSpec')
         if m.get('ExtraPodSpec') is not None:
