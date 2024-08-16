@@ -1,3 +1,6 @@
+2024-08-16 Version: 1.4.1
+- Generated python 2022-07-11 for docmind-api.
+
 2024-08-16 Version: 1.4.0
 - Support API GetDocParserResult.
 - Support API QueryDocParserStatus.
