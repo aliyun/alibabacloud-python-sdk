@@ -1795,21 +1795,27 @@ class DescribeColumnsRequest(TeaModel):
     def __init__(
         self,
         current_page: int = None,
+        engine_type: str = None,
         instance_id: int = None,
         instance_name: str = None,
         lang: str = None,
+        model_tag_id: str = None,
         name: str = None,
         page_size: int = None,
         product_code: str = None,
+        product_id: str = None,
         risk_level_id: int = None,
         rule_id: int = None,
         rule_name: str = None,
         sens_level_name: str = None,
         table_id: int = None,
         table_name: str = None,
+        template_id: str = None,
+        template_rule_id: str = None,
     ):
         # The page number of the page to return.
         self.current_page = current_page
+        self.engine_type = engine_type
         # The ID of the instance to which data in the column of the table belongs.
         # 
         # > You can call the [DescribeInstances](~~DescribeRules~~) operation to query the IDs of instances.
@@ -1821,6 +1827,7 @@ class DescribeColumnsRequest(TeaModel):
         # *   **zh_cn**: Chinese
         # *   **en_us**: English
         self.lang = lang
+        self.model_tag_id = model_tag_id
         # The search keyword. Fuzzy match is supported.
         # 
         # For example, if you enter **test**, all columns whose names contain **test** are retrieved.
@@ -1829,6 +1836,7 @@ class DescribeColumnsRequest(TeaModel):
         self.page_size = page_size
         # The name of the service to which data in the column of the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.product_code = product_code
+        self.product_id = product_id
         # The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
         # 
         # *   **1**: N/A
@@ -1857,6 +1865,8 @@ class DescribeColumnsRequest(TeaModel):
         self.table_id = table_id
         # The name of the table.
         self.table_name = table_name
+        self.template_id = template_id
+        self.template_rule_id = template_rule_id
 
     def validate(self):
         pass
@@ -1869,18 +1879,24 @@ class DescribeColumnsRequest(TeaModel):
         result = dict()
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.model_tag_id is not None:
+            result['ModelTagId'] = self.model_tag_id
         if self.name is not None:
             result['Name'] = self.name
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
         if self.risk_level_id is not None:
             result['RiskLevelId'] = self.risk_level_id
         if self.rule_id is not None:
@@ -1893,24 +1909,34 @@ class DescribeColumnsRequest(TeaModel):
             result['TableId'] = self.table_id
         if self.table_name is not None:
             result['TableName'] = self.table_name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_rule_id is not None:
+            result['TemplateRuleId'] = self.template_rule_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('ModelTagId') is not None:
+            self.model_tag_id = m.get('ModelTagId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
         if m.get('RiskLevelId') is not None:
             self.risk_level_id = m.get('RiskLevelId')
         if m.get('RuleId') is not None:
@@ -1923,6 +1949,10 @@ class DescribeColumnsRequest(TeaModel):
             self.table_id = m.get('TableId')
         if m.get('TableName') is not None:
             self.table_name = m.get('TableName')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateRuleId') is not None:
+            self.template_rule_id = m.get('TemplateRuleId')
         return self
 
 
@@ -1982,6 +2012,7 @@ class DescribeColumnsResponseBodyItems(TeaModel):
         odps_risk_level_name: str = None,
         odps_risk_level_value: int = None,
         product_code: str = None,
+        region_id: str = None,
         revision_id: int = None,
         revision_status: int = None,
         risk_level_id: int = None,
@@ -2025,6 +2056,7 @@ class DescribeColumnsResponseBodyItems(TeaModel):
         self.odps_risk_level_value = odps_risk_level_value
         # The name of the service to which data in the column of the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.product_code = product_code
+        self.region_id = region_id
         # The ID of the revision record.
         self.revision_id = revision_id
         # Indicates whether the column is revised. Valid values:
@@ -2104,6 +2136,8 @@ class DescribeColumnsResponseBodyItems(TeaModel):
             result['OdpsRiskLevelValue'] = self.odps_risk_level_value
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.revision_id is not None:
             result['RevisionId'] = self.revision_id
         if self.revision_status is not None:
@@ -2151,6 +2185,8 @@ class DescribeColumnsResponseBodyItems(TeaModel):
             self.odps_risk_level_value = m.get('OdpsRiskLevelValue')
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('RevisionId') is not None:
             self.revision_id = m.get('RevisionId')
         if m.get('RevisionStatus') is not None:
@@ -9196,11 +9232,19 @@ class DescribeOssObjectDetailResponse(TeaModel):
 class DescribeOssObjectDetailV2Request(TeaModel):
     def __init__(
         self,
+        bucket_name: str = None,
         id: str = None,
         lang: str = None,
+        object_key: str = None,
+        service_region_id: str = None,
+        template_id: int = None,
     ):
+        self.bucket_name = bucket_name
         self.id = id
         self.lang = lang
+        self.object_key = object_key
+        self.service_region_id = service_region_id
+        self.template_id = template_id
 
     def validate(self):
         pass
@@ -9211,18 +9255,34 @@ class DescribeOssObjectDetailV2Request(TeaModel):
             return _map
 
         result = dict()
+        if self.bucket_name is not None:
+            result['BucketName'] = self.bucket_name
         if self.id is not None:
             result['Id'] = self.id
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.object_key is not None:
+            result['ObjectKey'] = self.object_key
+        if self.service_region_id is not None:
+            result['ServiceRegionId'] = self.service_region_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BucketName') is not None:
+            self.bucket_name = m.get('BucketName')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('ObjectKey') is not None:
+            self.object_key = m.get('ObjectKey')
+        if m.get('ServiceRegionId') is not None:
+            self.service_region_id = m.get('ServiceRegionId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
         return self
 
 
@@ -10320,6 +10380,7 @@ class DescribeParentInstanceResponseBodyItems(TeaModel):
         local_name: str = None,
         member_account: int = None,
         parent_id: str = None,
+        region_id: str = None,
         resource_type: str = None,
         support_connect_nodes: str = None,
         tenant_id: str = None,
@@ -10340,6 +10401,7 @@ class DescribeParentInstanceResponseBodyItems(TeaModel):
         self.local_name = local_name
         self.member_account = member_account
         self.parent_id = parent_id
+        self.region_id = region_id
         self.resource_type = resource_type
         self.support_connect_nodes = support_connect_nodes
         self.tenant_id = tenant_id
@@ -10382,6 +10444,8 @@ class DescribeParentInstanceResponseBodyItems(TeaModel):
             result['MemberAccount'] = self.member_account
         if self.parent_id is not None:
             result['ParentId'] = self.parent_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         if self.support_connect_nodes is not None:
@@ -10424,6 +10488,8 @@ class DescribeParentInstanceResponseBodyItems(TeaModel):
             self.member_account = m.get('MemberAccount')
         if m.get('ParentId') is not None:
             self.parent_id = m.get('ParentId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         if m.get('SupportConnectNodes') is not None:

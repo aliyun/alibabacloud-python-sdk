@@ -1,3 +1,18 @@
+2024-08-16 Version: 1.2.9
+- Update API DescribeColumns: add param EngineType.
+- Update API DescribeColumns: add param ModelTagId.
+- Update API DescribeColumns: add param ProductId.
+- Update API DescribeColumns: add param TemplateId.
+- Update API DescribeColumns: add param TemplateRuleId.
+- Update API DescribeColumns: update response param.
+- Update API DescribeOssObjectDetailV2: add param BucketName.
+- Update API DescribeOssObjectDetailV2: add param ObjectKey.
+- Update API DescribeOssObjectDetailV2: add param ServiceRegionId.
+- Update API DescribeOssObjectDetailV2: add param TemplateId.
+- Update API DescribeOssObjects: update response param.
+- Update API DescribeParentInstance: update response param.
+
+
 2024-08-13 Version: 1.2.8
 - Update API DescribeOssObjects: add param Marker.
 - Update API DescribeOssObjects: update response param.

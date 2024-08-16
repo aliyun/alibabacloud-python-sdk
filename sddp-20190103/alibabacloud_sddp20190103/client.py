@@ -1290,18 +1290,24 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.engine_type):
+            query['EngineType'] = request.engine_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.model_tag_id):
+            query['ModelTagId'] = request.model_tag_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.product_id):
+            query['ProductId'] = request.product_id
         if not UtilClient.is_unset(request.risk_level_id):
             query['RiskLevelId'] = request.risk_level_id
         if not UtilClient.is_unset(request.rule_id):
@@ -1314,6 +1320,10 @@ class Client(OpenApiClient):
             query['TableId'] = request.table_id
         if not UtilClient.is_unset(request.table_name):
             query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_rule_id):
+            query['TemplateRuleId'] = request.template_rule_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1355,18 +1365,24 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.engine_type):
+            query['EngineType'] = request.engine_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.model_tag_id):
+            query['ModelTagId'] = request.model_tag_id
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.product_code):
             query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.product_id):
+            query['ProductId'] = request.product_id
         if not UtilClient.is_unset(request.risk_level_id):
             query['RiskLevelId'] = request.risk_level_id
         if not UtilClient.is_unset(request.rule_id):
@@ -1379,6 +1395,10 @@ class Client(OpenApiClient):
             query['TableId'] = request.table_id
         if not UtilClient.is_unset(request.table_name):
             query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.template_rule_id):
+            query['TemplateRuleId'] = request.template_rule_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3790,10 +3810,18 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.object_key):
+            query['ObjectKey'] = request.object_key
+        if not UtilClient.is_unset(request.service_region_id):
+            query['ServiceRegionId'] = request.service_region_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3827,10 +3855,18 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.object_key):
+            query['ObjectKey'] = request.object_key
+        if not UtilClient.is_unset(request.service_region_id):
+            query['ServiceRegionId'] = request.service_region_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
