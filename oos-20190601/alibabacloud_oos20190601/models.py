@@ -3931,6 +3931,7 @@ class DeleteExecutionsRequest(TeaModel):
     def __init__(
         self,
         execution_ids: str = None,
+        force: bool = None,
         region_id: str = None,
     ):
         # The execution IDs.
@@ -3939,6 +3940,7 @@ class DeleteExecutionsRequest(TeaModel):
         # 
         # This parameter is required.
         self.execution_ids = execution_ids
+        self.force = force
         # The region ID.
         self.region_id = region_id
 
@@ -3953,6 +3955,8 @@ class DeleteExecutionsRequest(TeaModel):
         result = dict()
         if self.execution_ids is not None:
             result['ExecutionIds'] = self.execution_ids
+        if self.force is not None:
+            result['Force'] = self.force
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -3961,6 +3965,8 @@ class DeleteExecutionsRequest(TeaModel):
         m = m or dict()
         if m.get('ExecutionIds') is not None:
             self.execution_ids = m.get('ExecutionIds')
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self

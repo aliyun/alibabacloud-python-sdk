@@ -1721,6 +1721,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.execution_ids):
             query['ExecutionIds'] = request.execution_ids
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -1758,6 +1760,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.execution_ids):
             query['ExecutionIds'] = request.execution_ids
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
