@@ -333,9 +333,10 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI AddTraficMatchRuleToTrafficMarkingPolicy is deprecated, please use Cbn::2017-09-12::AddTrafficMatchRuleToTrafficMarkingPolicy instead.
         
-        @summary The response.
+        @summary Adds a traffic classification rule to a traffic marking policy.
         
-        @description The ID of the request.
+        @description ### Usage notes
+        The *AddTraficMatchRuleToTrafficMarkingPolicy** operation is deprecated and will be discontinued soon. If you need to add a traffic classification rule to a traffic marking policy, call the [AddTrafficMatchRuleToTrafficMarkingPolicy](https://help.aliyun.com/document_detail/427602.html) operation.
         
         @param request: AddTraficMatchRuleToTrafficMarkingPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -387,9 +388,10 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI AddTraficMatchRuleToTrafficMarkingPolicy is deprecated, please use Cbn::2017-09-12::AddTrafficMatchRuleToTrafficMarkingPolicy instead.
         
-        @summary The response.
+        @summary Adds a traffic classification rule to a traffic marking policy.
         
-        @description The ID of the request.
+        @description ### Usage notes
+        The *AddTraficMatchRuleToTrafficMarkingPolicy** operation is deprecated and will be discontinued soon. If you need to add a traffic classification rule to a traffic marking policy, call the [AddTrafficMatchRuleToTrafficMarkingPolicy](https://help.aliyun.com/document_detail/427602.html) operation.
         
         @param request: AddTraficMatchRuleToTrafficMarkingPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -440,9 +442,10 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI AddTraficMatchRuleToTrafficMarkingPolicy is deprecated, please use Cbn::2017-09-12::AddTrafficMatchRuleToTrafficMarkingPolicy instead.
         
-        @summary The response.
+        @summary Adds a traffic classification rule to a traffic marking policy.
         
-        @description The ID of the request.
+        @description ### Usage notes
+        The *AddTraficMatchRuleToTrafficMarkingPolicy** operation is deprecated and will be discontinued soon. If you need to add a traffic classification rule to a traffic marking policy, call the [AddTrafficMatchRuleToTrafficMarkingPolicy](https://help.aliyun.com/document_detail/427602.html) operation.
         
         @param request: AddTraficMatchRuleToTrafficMarkingPolicyRequest
         @return: AddTraficMatchRuleToTrafficMarkingPolicyResponse
@@ -458,9 +461,10 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI AddTraficMatchRuleToTrafficMarkingPolicy is deprecated, please use Cbn::2017-09-12::AddTrafficMatchRuleToTrafficMarkingPolicy instead.
         
-        @summary The response.
+        @summary Adds a traffic classification rule to a traffic marking policy.
         
-        @description The ID of the request.
+        @description ### Usage notes
+        The *AddTraficMatchRuleToTrafficMarkingPolicy** operation is deprecated and will be discontinued soon. If you need to add a traffic classification rule to a traffic marking policy, call the [AddTrafficMatchRuleToTrafficMarkingPolicy](https://help.aliyun.com/document_detail/427602.html) operation.
         
         @param request: AddTraficMatchRuleToTrafficMarkingPolicyRequest
         @return: AddTraficMatchRuleToTrafficMarkingPolicyResponse
@@ -1167,7 +1171,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateCenResponse:
         """
-        @summary Creates a Cloud Enterprise Network (CEN) instance.
+        @summary Cloud Enterprise Network (CEN) instances are basic network resources that are used to manage interconnected networks. You can use a CEN instance to manage a network that covers one or multiple regions. Before you can connect network instances, you must first call the CreateCen operation to create a CEN instance.
         
         @description *CreateCen** is an asynchronous operation. After you a request is sent, the system returns a request ID and runs the task in the background. You can call **DescribeCens** to query the status of the task.
         If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
@@ -1222,7 +1226,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateCenResponse:
         """
-        @summary Creates a Cloud Enterprise Network (CEN) instance.
+        @summary Cloud Enterprise Network (CEN) instances are basic network resources that are used to manage interconnected networks. You can use a CEN instance to manage a network that covers one or multiple regions. Before you can connect network instances, you must first call the CreateCen operation to create a CEN instance.
         
         @description *CreateCen** is an asynchronous operation. After you a request is sent, the system returns a request ID and runs the task in the background. You can call **DescribeCens** to query the status of the task.
         If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
@@ -1276,7 +1280,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateCenRequest,
     ) -> cbn_20170912_models.CreateCenResponse:
         """
-        @summary Creates a Cloud Enterprise Network (CEN) instance.
+        @summary Cloud Enterprise Network (CEN) instances are basic network resources that are used to manage interconnected networks. You can use a CEN instance to manage a network that covers one or multiple regions. Before you can connect network instances, you must first call the CreateCen operation to create a CEN instance.
         
         @description *CreateCen** is an asynchronous operation. After you a request is sent, the system returns a request ID and runs the task in the background. You can call **DescribeCens** to query the status of the task.
         If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
@@ -1293,7 +1297,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateCenRequest,
     ) -> cbn_20170912_models.CreateCenResponse:
         """
-        @summary Creates a Cloud Enterprise Network (CEN) instance.
+        @summary Cloud Enterprise Network (CEN) instances are basic network resources that are used to manage interconnected networks. You can use a CEN instance to manage a network that covers one or multiple regions. Before you can connect network instances, you must first call the CreateCen operation to create a CEN instance.
         
         @description *CreateCen** is an asynchronous operation. After you a request is sent, the system returns a request ID and runs the task in the background. You can call **DescribeCens** to query the status of the task.
         If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
@@ -2123,7 +2127,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateCenRouteMapResponse:
         """
-        @summary Creates a routing policy.
+        @summary Creates a routing policy. A routing policy filters routing information and facilitates network management.
         
         @description Routing policies are sorted by priority. A smaller value indicates a higher priority. Each routing policy is a collection of conditional statements and execution statements. Starting from the routing policy with the highest priority, the system matches routes against the match conditions specified by routing policies. If a route meets all the match conditions of a routing policy, the system permits or denies the route based on the action specified in the routing policy. You can also modify the attributes of permitted routes. By default, the system permits routes that meet none of the match conditions. For more information, see [Routing policy overview](https://help.aliyun.com/document_detail/124157.html).
         `CreateCenRouteMap` is an asynchronous operation. After you send a request, the routing policy ID is returned but the operation is still being performed in the system background. You can call `DescribeCenRouteMaps` to query the status of a routing policy.
@@ -2227,7 +2231,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateCenRouteMapResponse:
         """
-        @summary Creates a routing policy.
+        @summary Creates a routing policy. A routing policy filters routing information and facilitates network management.
         
         @description Routing policies are sorted by priority. A smaller value indicates a higher priority. Each routing policy is a collection of conditional statements and execution statements. Starting from the routing policy with the highest priority, the system matches routes against the match conditions specified by routing policies. If a route meets all the match conditions of a routing policy, the system permits or denies the route based on the action specified in the routing policy. You can also modify the attributes of permitted routes. By default, the system permits routes that meet none of the match conditions. For more information, see [Routing policy overview](https://help.aliyun.com/document_detail/124157.html).
         `CreateCenRouteMap` is an asynchronous operation. After you send a request, the routing policy ID is returned but the operation is still being performed in the system background. You can call `DescribeCenRouteMaps` to query the status of a routing policy.
@@ -2330,7 +2334,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateCenRouteMapRequest,
     ) -> cbn_20170912_models.CreateCenRouteMapResponse:
         """
-        @summary Creates a routing policy.
+        @summary Creates a routing policy. A routing policy filters routing information and facilitates network management.
         
         @description Routing policies are sorted by priority. A smaller value indicates a higher priority. Each routing policy is a collection of conditional statements and execution statements. Starting from the routing policy with the highest priority, the system matches routes against the match conditions specified by routing policies. If a route meets all the match conditions of a routing policy, the system permits or denies the route based on the action specified in the routing policy. You can also modify the attributes of permitted routes. By default, the system permits routes that meet none of the match conditions. For more information, see [Routing policy overview](https://help.aliyun.com/document_detail/124157.html).
         `CreateCenRouteMap` is an asynchronous operation. After you send a request, the routing policy ID is returned but the operation is still being performed in the system background. You can call `DescribeCenRouteMaps` to query the status of a routing policy.
@@ -2348,7 +2352,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateCenRouteMapRequest,
     ) -> cbn_20170912_models.CreateCenRouteMapResponse:
         """
-        @summary Creates a routing policy.
+        @summary Creates a routing policy. A routing policy filters routing information and facilitates network management.
         
         @description Routing policies are sorted by priority. A smaller value indicates a higher priority. Each routing policy is a collection of conditional statements and execution statements. Starting from the routing policy with the highest priority, the system matches routes against the match conditions specified by routing policies. If a route meets all the match conditions of a routing policy, the system permits or denies the route based on the action specified in the routing policy. You can also modify the attributes of permitted routes. By default, the system permits routes that meet none of the match conditions. For more information, see [Routing policy overview](https://help.aliyun.com/document_detail/124157.html).
         `CreateCenRouteMap` is an asynchronous operation. After you send a request, the routing policy ID is returned but the operation is still being performed in the system background. You can call `DescribeCenRouteMaps` to query the status of a routing policy.
@@ -3235,7 +3239,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateTransitRouterEcrAttachmentResponse:
         """
-        @summary 创建ECR Attachment
+        @summary Attaches an Express Connect Router (ECR) connection to the transit router in the same region.
+        
+        @description    Only Enterprise Edition transit routers support ECR connections.
+        The following methods describe how to attach an ECR connection to an Enterprise Edition transit router:
+        If an Enterprise Edition transit router is created in the region, specify the **EcrId**, **RegionId**, and **TransitRouterId** parameters.
+        If no Enterprise Edition transit router is created in the region, specify the **EcrId**, **CenId**, and **RegionId** parameters. An Enterprise Edition transit router is automatically created when you create an ECR connection.
+        CreateTransitRouterEcrAttachment is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **ListTransitRouterEcrAttachments** operation to query the status of an ECR connection.
+        If the ECR connection is in the **Attaching** state, the ECR connection is being created. In this case, you can query the ECR connection but cannot perform other operations on the ECR connection.
+        If the ECR connection is in the **Attached** state, the ECR connection is created.
+        After you create an ECR connection, the ECR connection is not in route learning or associated forwarding relationships with Enterprise Edition transit routers.
+        After you enable [route learning](https://help.aliyun.com/document_detail/468300.html) between the ECR connection and an Enterprise Edition transit router, the routes of the ECR are automatically advertised to the route tables of the Enterprise Edition transit router.
+        After you create an ECR connection, the routes in the route tables of the Enterprise Edition transit router to which the ECR connection is attached are automatically advertised to the route table of the ECR.
+        ### [](#)Prerequisite
+        The Alibaba Cloud account of the Enterprise Edition transit router and the Alibaba Cloud account of the ECR belong to the same enterprise.
+        The Enterprise Edition transit router and ECR can belong to the same Alibaba Cloud account or different Alibaba Cloud accounts. If the Enterprise Edition transit router and ECR belong to different Alibaba Cloud accounts, grant the transit router permissions on the ECR before you can attach the ECR to the transit router. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
+        **Before you call this operation to attach an ECR connection to an Enterprise Edition transit router, you must call the [CreateExpressConnectRouterAssociation](https://help.aliyun.com/document_detail/2712082.html) operation to create an association between the ECR and transit router.**\
+        *If you call the DeleteTransitRouterEcrAttachment operation to forcefully delete an ECR connection, the association between the ECR connection and Enterprise Edition transit router is deleted.**\
         
         @param request: CreateTransitRouterEcrAttachmentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3296,7 +3316,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateTransitRouterEcrAttachmentResponse:
         """
-        @summary 创建ECR Attachment
+        @summary Attaches an Express Connect Router (ECR) connection to the transit router in the same region.
+        
+        @description    Only Enterprise Edition transit routers support ECR connections.
+        The following methods describe how to attach an ECR connection to an Enterprise Edition transit router:
+        If an Enterprise Edition transit router is created in the region, specify the **EcrId**, **RegionId**, and **TransitRouterId** parameters.
+        If no Enterprise Edition transit router is created in the region, specify the **EcrId**, **CenId**, and **RegionId** parameters. An Enterprise Edition transit router is automatically created when you create an ECR connection.
+        CreateTransitRouterEcrAttachment is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **ListTransitRouterEcrAttachments** operation to query the status of an ECR connection.
+        If the ECR connection is in the **Attaching** state, the ECR connection is being created. In this case, you can query the ECR connection but cannot perform other operations on the ECR connection.
+        If the ECR connection is in the **Attached** state, the ECR connection is created.
+        After you create an ECR connection, the ECR connection is not in route learning or associated forwarding relationships with Enterprise Edition transit routers.
+        After you enable [route learning](https://help.aliyun.com/document_detail/468300.html) between the ECR connection and an Enterprise Edition transit router, the routes of the ECR are automatically advertised to the route tables of the Enterprise Edition transit router.
+        After you create an ECR connection, the routes in the route tables of the Enterprise Edition transit router to which the ECR connection is attached are automatically advertised to the route table of the ECR.
+        ### [](#)Prerequisite
+        The Alibaba Cloud account of the Enterprise Edition transit router and the Alibaba Cloud account of the ECR belong to the same enterprise.
+        The Enterprise Edition transit router and ECR can belong to the same Alibaba Cloud account or different Alibaba Cloud accounts. If the Enterprise Edition transit router and ECR belong to different Alibaba Cloud accounts, grant the transit router permissions on the ECR before you can attach the ECR to the transit router. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
+        **Before you call this operation to attach an ECR connection to an Enterprise Edition transit router, you must call the [CreateExpressConnectRouterAssociation](https://help.aliyun.com/document_detail/2712082.html) operation to create an association between the ECR and transit router.**\
+        *If you call the DeleteTransitRouterEcrAttachment operation to forcefully delete an ECR connection, the association between the ECR connection and Enterprise Edition transit router is deleted.**\
         
         @param request: CreateTransitRouterEcrAttachmentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3356,7 +3392,23 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateTransitRouterEcrAttachmentRequest,
     ) -> cbn_20170912_models.CreateTransitRouterEcrAttachmentResponse:
         """
-        @summary 创建ECR Attachment
+        @summary Attaches an Express Connect Router (ECR) connection to the transit router in the same region.
+        
+        @description    Only Enterprise Edition transit routers support ECR connections.
+        The following methods describe how to attach an ECR connection to an Enterprise Edition transit router:
+        If an Enterprise Edition transit router is created in the region, specify the **EcrId**, **RegionId**, and **TransitRouterId** parameters.
+        If no Enterprise Edition transit router is created in the region, specify the **EcrId**, **CenId**, and **RegionId** parameters. An Enterprise Edition transit router is automatically created when you create an ECR connection.
+        CreateTransitRouterEcrAttachment is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **ListTransitRouterEcrAttachments** operation to query the status of an ECR connection.
+        If the ECR connection is in the **Attaching** state, the ECR connection is being created. In this case, you can query the ECR connection but cannot perform other operations on the ECR connection.
+        If the ECR connection is in the **Attached** state, the ECR connection is created.
+        After you create an ECR connection, the ECR connection is not in route learning or associated forwarding relationships with Enterprise Edition transit routers.
+        After you enable [route learning](https://help.aliyun.com/document_detail/468300.html) between the ECR connection and an Enterprise Edition transit router, the routes of the ECR are automatically advertised to the route tables of the Enterprise Edition transit router.
+        After you create an ECR connection, the routes in the route tables of the Enterprise Edition transit router to which the ECR connection is attached are automatically advertised to the route table of the ECR.
+        ### [](#)Prerequisite
+        The Alibaba Cloud account of the Enterprise Edition transit router and the Alibaba Cloud account of the ECR belong to the same enterprise.
+        The Enterprise Edition transit router and ECR can belong to the same Alibaba Cloud account or different Alibaba Cloud accounts. If the Enterprise Edition transit router and ECR belong to different Alibaba Cloud accounts, grant the transit router permissions on the ECR before you can attach the ECR to the transit router. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
+        **Before you call this operation to attach an ECR connection to an Enterprise Edition transit router, you must call the [CreateExpressConnectRouterAssociation](https://help.aliyun.com/document_detail/2712082.html) operation to create an association between the ECR and transit router.**\
+        *If you call the DeleteTransitRouterEcrAttachment operation to forcefully delete an ECR connection, the association between the ECR connection and Enterprise Edition transit router is deleted.**\
         
         @param request: CreateTransitRouterEcrAttachmentRequest
         @return: CreateTransitRouterEcrAttachmentResponse
@@ -3369,7 +3421,23 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateTransitRouterEcrAttachmentRequest,
     ) -> cbn_20170912_models.CreateTransitRouterEcrAttachmentResponse:
         """
-        @summary 创建ECR Attachment
+        @summary Attaches an Express Connect Router (ECR) connection to the transit router in the same region.
+        
+        @description    Only Enterprise Edition transit routers support ECR connections.
+        The following methods describe how to attach an ECR connection to an Enterprise Edition transit router:
+        If an Enterprise Edition transit router is created in the region, specify the **EcrId**, **RegionId**, and **TransitRouterId** parameters.
+        If no Enterprise Edition transit router is created in the region, specify the **EcrId**, **CenId**, and **RegionId** parameters. An Enterprise Edition transit router is automatically created when you create an ECR connection.
+        CreateTransitRouterEcrAttachment is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **ListTransitRouterEcrAttachments** operation to query the status of an ECR connection.
+        If the ECR connection is in the **Attaching** state, the ECR connection is being created. In this case, you can query the ECR connection but cannot perform other operations on the ECR connection.
+        If the ECR connection is in the **Attached** state, the ECR connection is created.
+        After you create an ECR connection, the ECR connection is not in route learning or associated forwarding relationships with Enterprise Edition transit routers.
+        After you enable [route learning](https://help.aliyun.com/document_detail/468300.html) between the ECR connection and an Enterprise Edition transit router, the routes of the ECR are automatically advertised to the route tables of the Enterprise Edition transit router.
+        After you create an ECR connection, the routes in the route tables of the Enterprise Edition transit router to which the ECR connection is attached are automatically advertised to the route table of the ECR.
+        ### [](#)Prerequisite
+        The Alibaba Cloud account of the Enterprise Edition transit router and the Alibaba Cloud account of the ECR belong to the same enterprise.
+        The Enterprise Edition transit router and ECR can belong to the same Alibaba Cloud account or different Alibaba Cloud accounts. If the Enterprise Edition transit router and ECR belong to different Alibaba Cloud accounts, grant the transit router permissions on the ECR before you can attach the ECR to the transit router. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
+        **Before you call this operation to attach an ECR connection to an Enterprise Edition transit router, you must call the [CreateExpressConnectRouterAssociation](https://help.aliyun.com/document_detail/2712082.html) operation to create an association between the ECR and transit router.**\
+        *If you call the DeleteTransitRouterEcrAttachment operation to forcefully delete an ECR connection, the association between the ECR connection and Enterprise Edition transit router is deleted.**\
         
         @param request: CreateTransitRouterEcrAttachmentRequest
         @return: CreateTransitRouterEcrAttachmentResponse
@@ -3383,7 +3451,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateTransitRouterMulticastDomainResponse:
         """
-        @summary Creates a multicast domain.
+        @summary Creates a multicast domain. A multicast domain is a multicast network in a region. Only resources in the same multicast domain can transmit and receive multicast packets.
         
         @description Before you call this operation, read the following rules:
         Make sure that an Enterprise Edition transit router is deployed in the region where you want to create the multicast domain, and the multicast feature is enabled for the Enterprise Edition transit router. For more information, see [CreateTransitRouter](https://help.aliyun.com/document_detail/261169.html).
@@ -3445,7 +3513,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateTransitRouterMulticastDomainResponse:
         """
-        @summary Creates a multicast domain.
+        @summary Creates a multicast domain. A multicast domain is a multicast network in a region. Only resources in the same multicast domain can transmit and receive multicast packets.
         
         @description Before you call this operation, read the following rules:
         Make sure that an Enterprise Edition transit router is deployed in the region where you want to create the multicast domain, and the multicast feature is enabled for the Enterprise Edition transit router. For more information, see [CreateTransitRouter](https://help.aliyun.com/document_detail/261169.html).
@@ -3506,7 +3574,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateTransitRouterMulticastDomainRequest,
     ) -> cbn_20170912_models.CreateTransitRouterMulticastDomainResponse:
         """
-        @summary Creates a multicast domain.
+        @summary Creates a multicast domain. A multicast domain is a multicast network in a region. Only resources in the same multicast domain can transmit and receive multicast packets.
         
         @description Before you call this operation, read the following rules:
         Make sure that an Enterprise Edition transit router is deployed in the region where you want to create the multicast domain, and the multicast feature is enabled for the Enterprise Edition transit router. For more information, see [CreateTransitRouter](https://help.aliyun.com/document_detail/261169.html).
@@ -3524,7 +3592,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateTransitRouterMulticastDomainRequest,
     ) -> cbn_20170912_models.CreateTransitRouterMulticastDomainResponse:
         """
-        @summary Creates a multicast domain.
+        @summary Creates a multicast domain. A multicast domain is a multicast network in a region. Only resources in the same multicast domain can transmit and receive multicast packets.
         
         @description Before you call this operation, read the following rules:
         Make sure that an Enterprise Edition transit router is deployed in the region where you want to create the multicast domain, and the multicast feature is enabled for the Enterprise Edition transit router. For more information, see [CreateTransitRouter](https://help.aliyun.com/document_detail/261169.html).
@@ -3543,17 +3611,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateTransitRouterPeerAttachmentResponse:
         """
-        @summary Creates an inter-region connection by using Enterprise Edition transit routers. If you want to establish network communication between network instances across regions, such as virtual private clouds (VPCs), virtual border routers (VBRs), Cloud Connect Network (CCN) instances, and IPsec-VPN connections, you must connect the network instances to the transit router in the region, and create an inter-region connection between the transit routers.
+        @summary To connect network instances across regions, such as virtual private clouds (VPCs), virtual border routers (VBRs), and IPsec-VPN connections that are connected to transit routers, you must create an inter-region connection between the network instances that you want to connect. You can call the CreateTransitRouterPeerAttachment operation to create an inter-region connection on an Enterprise Edition transit router.
         
-        @description By default, 1 Kbit/s of bandwidth is provided for inter-region communication between transit routers. This allows you to test the connectivity of inter-region IPv4 networks. To allow services that are deployed in different regions to communicate with each other, you must create an inter-region connection and allocate bandwidth resources to the connection.
-        Enterprise Edition transit routers allow you to allocate bandwidth resources to inter-region connections by using the following methods:
+        @description    Enterprise Edition transit routers allow you to allocate bandwidth resources to inter-region connections by using the following methods:
         **Allocate bandwidth resources from a bandwidth plan**:
-        You must purchase a bandwidth plan, and then allocate bandwidth resources from the bandwidth plan to inter-region connections. For more information, see [CreateCenBandwidthPackage](https://help.aliyun.com/document_detail/65919.html).
+        You must purchase a bandwidth plan, and then allocate bandwidth resources from the bandwidth plan to inter-region connections. For more information about how to purchase a bandwidth plan, see [CreateCenBandwidthPackage](https://help.aliyun.com/document_detail/65919.html).
         **Use pay-by-data-transfer bandwidth resources**:
         You can set a maximum bandwidth value for an inter-region connection. Then, you are charged for the amount of data transfer over the connection. For more information, see [Inter-region data transfer](https://help.aliyun.com/document_detail/337827.html).
-        *CreateTransitRouterPeerAttachment** is an asynchronous operation. After you a request is set, the system returns an inter-region connection ID and runs the task in the background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
-        If an inter-region connection is in the **Attaching** state, the inter-region connection is being created. You can query the inter-region connection but cannot perform other regions.
-        If an inter-region connection is in the **Attached** state, the inter-region connection is created.
+        **CreateTransitRouterPeerAttachment** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
+        If the inter-region connection is in the **Attaching** state, the inter-region connection is being created. In this case, you can query the connection but cannot perform other operations on the connection.
+        If the inter-region connection is in the **Attached** state, the inter-region connection is created.
         
         @param request: CreateTransitRouterPeerAttachmentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3624,17 +3691,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateTransitRouterPeerAttachmentResponse:
         """
-        @summary Creates an inter-region connection by using Enterprise Edition transit routers. If you want to establish network communication between network instances across regions, such as virtual private clouds (VPCs), virtual border routers (VBRs), Cloud Connect Network (CCN) instances, and IPsec-VPN connections, you must connect the network instances to the transit router in the region, and create an inter-region connection between the transit routers.
+        @summary To connect network instances across regions, such as virtual private clouds (VPCs), virtual border routers (VBRs), and IPsec-VPN connections that are connected to transit routers, you must create an inter-region connection between the network instances that you want to connect. You can call the CreateTransitRouterPeerAttachment operation to create an inter-region connection on an Enterprise Edition transit router.
         
-        @description By default, 1 Kbit/s of bandwidth is provided for inter-region communication between transit routers. This allows you to test the connectivity of inter-region IPv4 networks. To allow services that are deployed in different regions to communicate with each other, you must create an inter-region connection and allocate bandwidth resources to the connection.
-        Enterprise Edition transit routers allow you to allocate bandwidth resources to inter-region connections by using the following methods:
+        @description    Enterprise Edition transit routers allow you to allocate bandwidth resources to inter-region connections by using the following methods:
         **Allocate bandwidth resources from a bandwidth plan**:
-        You must purchase a bandwidth plan, and then allocate bandwidth resources from the bandwidth plan to inter-region connections. For more information, see [CreateCenBandwidthPackage](https://help.aliyun.com/document_detail/65919.html).
+        You must purchase a bandwidth plan, and then allocate bandwidth resources from the bandwidth plan to inter-region connections. For more information about how to purchase a bandwidth plan, see [CreateCenBandwidthPackage](https://help.aliyun.com/document_detail/65919.html).
         **Use pay-by-data-transfer bandwidth resources**:
         You can set a maximum bandwidth value for an inter-region connection. Then, you are charged for the amount of data transfer over the connection. For more information, see [Inter-region data transfer](https://help.aliyun.com/document_detail/337827.html).
-        *CreateTransitRouterPeerAttachment** is an asynchronous operation. After you a request is set, the system returns an inter-region connection ID and runs the task in the background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
-        If an inter-region connection is in the **Attaching** state, the inter-region connection is being created. You can query the inter-region connection but cannot perform other regions.
-        If an inter-region connection is in the **Attached** state, the inter-region connection is created.
+        **CreateTransitRouterPeerAttachment** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
+        If the inter-region connection is in the **Attaching** state, the inter-region connection is being created. In this case, you can query the connection but cannot perform other operations on the connection.
+        If the inter-region connection is in the **Attached** state, the inter-region connection is created.
         
         @param request: CreateTransitRouterPeerAttachmentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3704,17 +3770,16 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateTransitRouterPeerAttachmentRequest,
     ) -> cbn_20170912_models.CreateTransitRouterPeerAttachmentResponse:
         """
-        @summary Creates an inter-region connection by using Enterprise Edition transit routers. If you want to establish network communication between network instances across regions, such as virtual private clouds (VPCs), virtual border routers (VBRs), Cloud Connect Network (CCN) instances, and IPsec-VPN connections, you must connect the network instances to the transit router in the region, and create an inter-region connection between the transit routers.
+        @summary To connect network instances across regions, such as virtual private clouds (VPCs), virtual border routers (VBRs), and IPsec-VPN connections that are connected to transit routers, you must create an inter-region connection between the network instances that you want to connect. You can call the CreateTransitRouterPeerAttachment operation to create an inter-region connection on an Enterprise Edition transit router.
         
-        @description By default, 1 Kbit/s of bandwidth is provided for inter-region communication between transit routers. This allows you to test the connectivity of inter-region IPv4 networks. To allow services that are deployed in different regions to communicate with each other, you must create an inter-region connection and allocate bandwidth resources to the connection.
-        Enterprise Edition transit routers allow you to allocate bandwidth resources to inter-region connections by using the following methods:
+        @description    Enterprise Edition transit routers allow you to allocate bandwidth resources to inter-region connections by using the following methods:
         **Allocate bandwidth resources from a bandwidth plan**:
-        You must purchase a bandwidth plan, and then allocate bandwidth resources from the bandwidth plan to inter-region connections. For more information, see [CreateCenBandwidthPackage](https://help.aliyun.com/document_detail/65919.html).
+        You must purchase a bandwidth plan, and then allocate bandwidth resources from the bandwidth plan to inter-region connections. For more information about how to purchase a bandwidth plan, see [CreateCenBandwidthPackage](https://help.aliyun.com/document_detail/65919.html).
         **Use pay-by-data-transfer bandwidth resources**:
         You can set a maximum bandwidth value for an inter-region connection. Then, you are charged for the amount of data transfer over the connection. For more information, see [Inter-region data transfer](https://help.aliyun.com/document_detail/337827.html).
-        *CreateTransitRouterPeerAttachment** is an asynchronous operation. After you a request is set, the system returns an inter-region connection ID and runs the task in the background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
-        If an inter-region connection is in the **Attaching** state, the inter-region connection is being created. You can query the inter-region connection but cannot perform other regions.
-        If an inter-region connection is in the **Attached** state, the inter-region connection is created.
+        **CreateTransitRouterPeerAttachment** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
+        If the inter-region connection is in the **Attaching** state, the inter-region connection is being created. In this case, you can query the connection but cannot perform other operations on the connection.
+        If the inter-region connection is in the **Attached** state, the inter-region connection is created.
         
         @param request: CreateTransitRouterPeerAttachmentRequest
         @return: CreateTransitRouterPeerAttachmentResponse
@@ -3727,17 +3792,16 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateTransitRouterPeerAttachmentRequest,
     ) -> cbn_20170912_models.CreateTransitRouterPeerAttachmentResponse:
         """
-        @summary Creates an inter-region connection by using Enterprise Edition transit routers. If you want to establish network communication between network instances across regions, such as virtual private clouds (VPCs), virtual border routers (VBRs), Cloud Connect Network (CCN) instances, and IPsec-VPN connections, you must connect the network instances to the transit router in the region, and create an inter-region connection between the transit routers.
+        @summary To connect network instances across regions, such as virtual private clouds (VPCs), virtual border routers (VBRs), and IPsec-VPN connections that are connected to transit routers, you must create an inter-region connection between the network instances that you want to connect. You can call the CreateTransitRouterPeerAttachment operation to create an inter-region connection on an Enterprise Edition transit router.
         
-        @description By default, 1 Kbit/s of bandwidth is provided for inter-region communication between transit routers. This allows you to test the connectivity of inter-region IPv4 networks. To allow services that are deployed in different regions to communicate with each other, you must create an inter-region connection and allocate bandwidth resources to the connection.
-        Enterprise Edition transit routers allow you to allocate bandwidth resources to inter-region connections by using the following methods:
+        @description    Enterprise Edition transit routers allow you to allocate bandwidth resources to inter-region connections by using the following methods:
         **Allocate bandwidth resources from a bandwidth plan**:
-        You must purchase a bandwidth plan, and then allocate bandwidth resources from the bandwidth plan to inter-region connections. For more information, see [CreateCenBandwidthPackage](https://help.aliyun.com/document_detail/65919.html).
+        You must purchase a bandwidth plan, and then allocate bandwidth resources from the bandwidth plan to inter-region connections. For more information about how to purchase a bandwidth plan, see [CreateCenBandwidthPackage](https://help.aliyun.com/document_detail/65919.html).
         **Use pay-by-data-transfer bandwidth resources**:
         You can set a maximum bandwidth value for an inter-region connection. Then, you are charged for the amount of data transfer over the connection. For more information, see [Inter-region data transfer](https://help.aliyun.com/document_detail/337827.html).
-        *CreateTransitRouterPeerAttachment** is an asynchronous operation. After you a request is set, the system returns an inter-region connection ID and runs the task in the background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
-        If an inter-region connection is in the **Attaching** state, the inter-region connection is being created. You can query the inter-region connection but cannot perform other regions.
-        If an inter-region connection is in the **Attached** state, the inter-region connection is created.
+        **CreateTransitRouterPeerAttachment** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **ListTransitRouterPeerAttachments** operation to query the status of an inter-region connection.
+        If the inter-region connection is in the **Attaching** state, the inter-region connection is being created. In this case, you can query the connection but cannot perform other operations on the connection.
+        If the inter-region connection is in the **Attached** state, the inter-region connection is created.
         
         @param request: CreateTransitRouterPeerAttachmentRequest
         @return: CreateTransitRouterPeerAttachmentResponse
@@ -4242,12 +4306,15 @@ class Client(OpenApiClient):
         @summary Connects the virtual border routers (VBRs) among which you want to establish network communication to the transit router in the region. Then, the transit router can exchange data between the VBR and CEN instance over private connections.
         
         @description    For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](https://help.aliyun.com/document_detail/181681.html)
-        You can use the following methods to connect a VBR to an Enterprise Edition transit router:
-        If an Enterprise Edition transit router is already created in the region where you want to create a VBR connection, set the **VbrId** and **TransitRouterId** parameters.
-        If no Enterprise Edition transit router is created in the region where you want to create a VBR connection, set the **VbrId**, **CenId**, and **RegionId** parameters. Then, the system automatically creates an Enterprise Edition transit router in the specified region.
-        **CreateTransitRouterVbrAttachment** is an asynchronous operation. After you send a request, the system returns a VBR connection ID and runs the task in the background. You can call the **ListTransitRouterVbrAttachments** operation to query the status of a VBR connection.
-        If a VBR connection is in the **Attaching** state, the VBR connection is being created. You can query the VBR connection but cannot perform other operations.
-        If a VBR connection is in the **Attached** state, the VBR connection is created.
+        You can use the following methods to create a VBR connection on an Enterprise Edition transit router:
+        If an Enterprise Edition transit router is already created in the region, specify the **VbrId**, **RegionId**, and **TransitRouterId** parameters to create a VBR connection.
+        If no Enterprise Edition transit router is already created in the region, specify the **VbrId**, **CenId**, and **RegionId** parameters to create a VBR connection. When you create a VBR connection, the system automatically creates an Enterprise Edition transit router in the specified region.
+        **CreateTransitRouterVbrAttachment** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call **ListTransitRouterVbrAttachments** to query the status of a VBR connection.
+        If the VBR connection is in the **Attaching** state, the VBR connection is being created. In this case, you can query the VBR connection but cannot perform other operations.
+        If the VBR connection is in the **Attached** state, the VBR connection is created.
+        The transit router and the VBR must belong to the same Alibaba Cloud account.
+        Transit routers can connect to VBRs that belong to the same or a different Alibaba Cloud account. To connect a transit router to a VBR that belongs to a different Alibaba Cloud account, grant permissions on the VBR to the transit router. For more information, see [Grant a transit router permissions on a network instance that belongs to another Alibaba Cloud account](https://help.aliyun.com/document_detail/181553.html).
+        After you create a VBR connection, it is not in route learning or associated forwarding relationship with transit router route tables by default.
         
         @param request: CreateTransitRouterVbrAttachmentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4313,12 +4380,15 @@ class Client(OpenApiClient):
         @summary Connects the virtual border routers (VBRs) among which you want to establish network communication to the transit router in the region. Then, the transit router can exchange data between the VBR and CEN instance over private connections.
         
         @description    For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](https://help.aliyun.com/document_detail/181681.html)
-        You can use the following methods to connect a VBR to an Enterprise Edition transit router:
-        If an Enterprise Edition transit router is already created in the region where you want to create a VBR connection, set the **VbrId** and **TransitRouterId** parameters.
-        If no Enterprise Edition transit router is created in the region where you want to create a VBR connection, set the **VbrId**, **CenId**, and **RegionId** parameters. Then, the system automatically creates an Enterprise Edition transit router in the specified region.
-        **CreateTransitRouterVbrAttachment** is an asynchronous operation. After you send a request, the system returns a VBR connection ID and runs the task in the background. You can call the **ListTransitRouterVbrAttachments** operation to query the status of a VBR connection.
-        If a VBR connection is in the **Attaching** state, the VBR connection is being created. You can query the VBR connection but cannot perform other operations.
-        If a VBR connection is in the **Attached** state, the VBR connection is created.
+        You can use the following methods to create a VBR connection on an Enterprise Edition transit router:
+        If an Enterprise Edition transit router is already created in the region, specify the **VbrId**, **RegionId**, and **TransitRouterId** parameters to create a VBR connection.
+        If no Enterprise Edition transit router is already created in the region, specify the **VbrId**, **CenId**, and **RegionId** parameters to create a VBR connection. When you create a VBR connection, the system automatically creates an Enterprise Edition transit router in the specified region.
+        **CreateTransitRouterVbrAttachment** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call **ListTransitRouterVbrAttachments** to query the status of a VBR connection.
+        If the VBR connection is in the **Attaching** state, the VBR connection is being created. In this case, you can query the VBR connection but cannot perform other operations.
+        If the VBR connection is in the **Attached** state, the VBR connection is created.
+        The transit router and the VBR must belong to the same Alibaba Cloud account.
+        Transit routers can connect to VBRs that belong to the same or a different Alibaba Cloud account. To connect a transit router to a VBR that belongs to a different Alibaba Cloud account, grant permissions on the VBR to the transit router. For more information, see [Grant a transit router permissions on a network instance that belongs to another Alibaba Cloud account](https://help.aliyun.com/document_detail/181553.html).
+        After you create a VBR connection, it is not in route learning or associated forwarding relationship with transit router route tables by default.
         
         @param request: CreateTransitRouterVbrAttachmentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4383,12 +4453,15 @@ class Client(OpenApiClient):
         @summary Connects the virtual border routers (VBRs) among which you want to establish network communication to the transit router in the region. Then, the transit router can exchange data between the VBR and CEN instance over private connections.
         
         @description    For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](https://help.aliyun.com/document_detail/181681.html)
-        You can use the following methods to connect a VBR to an Enterprise Edition transit router:
-        If an Enterprise Edition transit router is already created in the region where you want to create a VBR connection, set the **VbrId** and **TransitRouterId** parameters.
-        If no Enterprise Edition transit router is created in the region where you want to create a VBR connection, set the **VbrId**, **CenId**, and **RegionId** parameters. Then, the system automatically creates an Enterprise Edition transit router in the specified region.
-        **CreateTransitRouterVbrAttachment** is an asynchronous operation. After you send a request, the system returns a VBR connection ID and runs the task in the background. You can call the **ListTransitRouterVbrAttachments** operation to query the status of a VBR connection.
-        If a VBR connection is in the **Attaching** state, the VBR connection is being created. You can query the VBR connection but cannot perform other operations.
-        If a VBR connection is in the **Attached** state, the VBR connection is created.
+        You can use the following methods to create a VBR connection on an Enterprise Edition transit router:
+        If an Enterprise Edition transit router is already created in the region, specify the **VbrId**, **RegionId**, and **TransitRouterId** parameters to create a VBR connection.
+        If no Enterprise Edition transit router is already created in the region, specify the **VbrId**, **CenId**, and **RegionId** parameters to create a VBR connection. When you create a VBR connection, the system automatically creates an Enterprise Edition transit router in the specified region.
+        **CreateTransitRouterVbrAttachment** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call **ListTransitRouterVbrAttachments** to query the status of a VBR connection.
+        If the VBR connection is in the **Attaching** state, the VBR connection is being created. In this case, you can query the VBR connection but cannot perform other operations.
+        If the VBR connection is in the **Attached** state, the VBR connection is created.
+        The transit router and the VBR must belong to the same Alibaba Cloud account.
+        Transit routers can connect to VBRs that belong to the same or a different Alibaba Cloud account. To connect a transit router to a VBR that belongs to a different Alibaba Cloud account, grant permissions on the VBR to the transit router. For more information, see [Grant a transit router permissions on a network instance that belongs to another Alibaba Cloud account](https://help.aliyun.com/document_detail/181553.html).
+        After you create a VBR connection, it is not in route learning or associated forwarding relationship with transit router route tables by default.
         
         @param request: CreateTransitRouterVbrAttachmentRequest
         @return: CreateTransitRouterVbrAttachmentResponse
@@ -4404,12 +4477,15 @@ class Client(OpenApiClient):
         @summary Connects the virtual border routers (VBRs) among which you want to establish network communication to the transit router in the region. Then, the transit router can exchange data between the VBR and CEN instance over private connections.
         
         @description    For more information about the regions and zones that support Enterprise Edition transit routers, see [What is CEN?](https://help.aliyun.com/document_detail/181681.html)
-        You can use the following methods to connect a VBR to an Enterprise Edition transit router:
-        If an Enterprise Edition transit router is already created in the region where you want to create a VBR connection, set the **VbrId** and **TransitRouterId** parameters.
-        If no Enterprise Edition transit router is created in the region where you want to create a VBR connection, set the **VbrId**, **CenId**, and **RegionId** parameters. Then, the system automatically creates an Enterprise Edition transit router in the specified region.
-        **CreateTransitRouterVbrAttachment** is an asynchronous operation. After you send a request, the system returns a VBR connection ID and runs the task in the background. You can call the **ListTransitRouterVbrAttachments** operation to query the status of a VBR connection.
-        If a VBR connection is in the **Attaching** state, the VBR connection is being created. You can query the VBR connection but cannot perform other operations.
-        If a VBR connection is in the **Attached** state, the VBR connection is created.
+        You can use the following methods to create a VBR connection on an Enterprise Edition transit router:
+        If an Enterprise Edition transit router is already created in the region, specify the **VbrId**, **RegionId**, and **TransitRouterId** parameters to create a VBR connection.
+        If no Enterprise Edition transit router is already created in the region, specify the **VbrId**, **CenId**, and **RegionId** parameters to create a VBR connection. When you create a VBR connection, the system automatically creates an Enterprise Edition transit router in the specified region.
+        **CreateTransitRouterVbrAttachment** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call **ListTransitRouterVbrAttachments** to query the status of a VBR connection.
+        If the VBR connection is in the **Attaching** state, the VBR connection is being created. In this case, you can query the VBR connection but cannot perform other operations.
+        If the VBR connection is in the **Attached** state, the VBR connection is created.
+        The transit router and the VBR must belong to the same Alibaba Cloud account.
+        Transit routers can connect to VBRs that belong to the same or a different Alibaba Cloud account. To connect a transit router to a VBR that belongs to a different Alibaba Cloud account, grant permissions on the VBR to the transit router. For more information, see [Grant a transit router permissions on a network instance that belongs to another Alibaba Cloud account](https://help.aliyun.com/document_detail/181553.html).
+        After you create a VBR connection, it is not in route learning or associated forwarding relationship with transit router route tables by default.
         
         @param request: CreateTransitRouterVbrAttachmentRequest
         @return: CreateTransitRouterVbrAttachmentResponse
@@ -6815,7 +6891,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DeleteTransitRouterEcrAttachmentResponse:
         """
-        @summary 删除ECR Attachment
+        @summary Deletes an Express Connect Router (ECR) connection from an Enterprise Edition transit router.
+        
+        @description DeleteTransitRouterEcrAttachment is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the ListTransitRouterEcrAttachments operation to query the status of an ECR connection.
+        If the ECR connection is in the Detaching state, the ECR connection is being deleted. In this case, you can query the ECR connection but cannot perform other operations on the ECR connection. If the ECR connection cannot be found, the ECR connection is deleted. Before you call the DeleteTransitRouterEcrAttachment operation, make sure that all request parameters are valid. If a request is invalid, a request ID is returned but the ECR connection is not deleted.
         
         @param request: DeleteTransitRouterEcrAttachmentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6864,7 +6943,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DeleteTransitRouterEcrAttachmentResponse:
         """
-        @summary 删除ECR Attachment
+        @summary Deletes an Express Connect Router (ECR) connection from an Enterprise Edition transit router.
+        
+        @description DeleteTransitRouterEcrAttachment is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the ListTransitRouterEcrAttachments operation to query the status of an ECR connection.
+        If the ECR connection is in the Detaching state, the ECR connection is being deleted. In this case, you can query the ECR connection but cannot perform other operations on the ECR connection. If the ECR connection cannot be found, the ECR connection is deleted. Before you call the DeleteTransitRouterEcrAttachment operation, make sure that all request parameters are valid. If a request is invalid, a request ID is returned but the ECR connection is not deleted.
         
         @param request: DeleteTransitRouterEcrAttachmentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6912,7 +6994,10 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DeleteTransitRouterEcrAttachmentRequest,
     ) -> cbn_20170912_models.DeleteTransitRouterEcrAttachmentResponse:
         """
-        @summary 删除ECR Attachment
+        @summary Deletes an Express Connect Router (ECR) connection from an Enterprise Edition transit router.
+        
+        @description DeleteTransitRouterEcrAttachment is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the ListTransitRouterEcrAttachments operation to query the status of an ECR connection.
+        If the ECR connection is in the Detaching state, the ECR connection is being deleted. In this case, you can query the ECR connection but cannot perform other operations on the ECR connection. If the ECR connection cannot be found, the ECR connection is deleted. Before you call the DeleteTransitRouterEcrAttachment operation, make sure that all request parameters are valid. If a request is invalid, a request ID is returned but the ECR connection is not deleted.
         
         @param request: DeleteTransitRouterEcrAttachmentRequest
         @return: DeleteTransitRouterEcrAttachmentResponse
@@ -6925,7 +7010,10 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DeleteTransitRouterEcrAttachmentRequest,
     ) -> cbn_20170912_models.DeleteTransitRouterEcrAttachmentResponse:
         """
-        @summary 删除ECR Attachment
+        @summary Deletes an Express Connect Router (ECR) connection from an Enterprise Edition transit router.
+        
+        @description DeleteTransitRouterEcrAttachment is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the ListTransitRouterEcrAttachments operation to query the status of an ECR connection.
+        If the ECR connection is in the Detaching state, the ECR connection is being deleted. In this case, you can query the ECR connection but cannot perform other operations on the ECR connection. If the ECR connection cannot be found, the ECR connection is deleted. Before you call the DeleteTransitRouterEcrAttachment operation, make sure that all request parameters are valid. If a request is invalid, a request ID is returned but the ECR connection is not deleted.
         
         @param request: DeleteTransitRouterEcrAttachmentRequest
         @return: DeleteTransitRouterEcrAttachmentResponse
@@ -9523,7 +9611,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DescribeCenRegionDomainRouteEntriesResponse:
         """
-        @summary Queries the routes of a Cloud Enterprise Network (CEN) instance in a specified region.
+        @summary Queries the details about routes in a region for a Cloud Enterprise Network (CEN) instance.
         
         @param request: DescribeCenRegionDomainRouteEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9574,7 +9662,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.DescribeCenRegionDomainRouteEntriesResponse:
         """
-        @summary Queries the routes of a Cloud Enterprise Network (CEN) instance in a specified region.
+        @summary Queries the details about routes in a region for a Cloud Enterprise Network (CEN) instance.
         
         @param request: DescribeCenRegionDomainRouteEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9624,7 +9712,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DescribeCenRegionDomainRouteEntriesRequest,
     ) -> cbn_20170912_models.DescribeCenRegionDomainRouteEntriesResponse:
         """
-        @summary Queries the routes of a Cloud Enterprise Network (CEN) instance in a specified region.
+        @summary Queries the details about routes in a region for a Cloud Enterprise Network (CEN) instance.
         
         @param request: DescribeCenRegionDomainRouteEntriesRequest
         @return: DescribeCenRegionDomainRouteEntriesResponse
@@ -9637,7 +9725,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.DescribeCenRegionDomainRouteEntriesRequest,
     ) -> cbn_20170912_models.DescribeCenRegionDomainRouteEntriesResponse:
         """
-        @summary Queries the routes of a Cloud Enterprise Network (CEN) instance in a specified region.
+        @summary Queries the details about routes in a region for a Cloud Enterprise Network (CEN) instance.
         
         @param request: DescribeCenRegionDomainRouteEntriesRequest
         @return: DescribeCenRegionDomainRouteEntriesResponse
@@ -12401,9 +12489,17 @@ class Client(OpenApiClient):
         """
         @summary Grants a transit router permissions on network instances that belong to another Alibaba Cloud account. To connect a transit router of Account B to a network instance of Account A, you must use Account A to grant permissions to the transit router of Account B.
         
-        @description    `GrantInstanceToTransitRouter` grants transit routers the permissions to connect only to virtual private clouds (VPCs), virtual border routers (VBRs), and IPsec-VPN connections that belong to another Alibaba Cloud account.
-        If you want to grant transit routers permissions to connect to Cloud Connect Network (CCN) instances, call the [GrantInstanceToCbn](https://help.aliyun.com/document_detail/126141.html) operation.
+        @description    The `GrantInstanceToTransitRouter` operation can be used to grant transit routers permissions on network instances that belong to other Alibaba Cloud accounts, including virtual private clouds (VPCs), virtual border routers (VBRs), IPsec-VPN connections, and Express Connect Router (ECRs).
+        To grant transit routers permissions on Cloud Connect Network (CCN) instances, call the [GrantInstanceToCbn](https://help.aliyun.com/document_detail/126141.html) operation.
         Before you call `GrantInstanceToTransitRouter`, take note of the billing rules, permission limits, and prerequisites on permission management of transit routers. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
+        Before you grant a transit router permissions on a network instance, make sure that the following requirements are met:
+        The account to which the network instance belongs and the account to which the transit router belongs are of the same type.
+        The ID of the Alibaba Cloud account to which the transit router belongs is obtained.
+        The ID of the Cloud Enterprise Network (CEN) instance to which the Enterprise Edition transit router belongs is obtained.
+        Before you grant a transit router permissions on a VBR, contact your account manager to acquire permissions on the VBR.
+        Before you grant a transit router permissions on an IPsec-VPN connection, make sure that the IPsec-VPN connection is not associated with a resource.
+        If the IPsec-VPN connection is attached to a VPN gateway, the IPsec-VPN connection cannot be attached to transit routers within the same account or different accounts.
+        If the IPsec-VPN connection is attached to a transit router, detach the IPsec-VPN connection from the transit router. For more information, see [Delete a network instance connection](https://help.aliyun.com/document_detail/181554.html).
         
         @param request: GrantInstanceToTransitRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12458,9 +12554,17 @@ class Client(OpenApiClient):
         """
         @summary Grants a transit router permissions on network instances that belong to another Alibaba Cloud account. To connect a transit router of Account B to a network instance of Account A, you must use Account A to grant permissions to the transit router of Account B.
         
-        @description    `GrantInstanceToTransitRouter` grants transit routers the permissions to connect only to virtual private clouds (VPCs), virtual border routers (VBRs), and IPsec-VPN connections that belong to another Alibaba Cloud account.
-        If you want to grant transit routers permissions to connect to Cloud Connect Network (CCN) instances, call the [GrantInstanceToCbn](https://help.aliyun.com/document_detail/126141.html) operation.
+        @description    The `GrantInstanceToTransitRouter` operation can be used to grant transit routers permissions on network instances that belong to other Alibaba Cloud accounts, including virtual private clouds (VPCs), virtual border routers (VBRs), IPsec-VPN connections, and Express Connect Router (ECRs).
+        To grant transit routers permissions on Cloud Connect Network (CCN) instances, call the [GrantInstanceToCbn](https://help.aliyun.com/document_detail/126141.html) operation.
         Before you call `GrantInstanceToTransitRouter`, take note of the billing rules, permission limits, and prerequisites on permission management of transit routers. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
+        Before you grant a transit router permissions on a network instance, make sure that the following requirements are met:
+        The account to which the network instance belongs and the account to which the transit router belongs are of the same type.
+        The ID of the Alibaba Cloud account to which the transit router belongs is obtained.
+        The ID of the Cloud Enterprise Network (CEN) instance to which the Enterprise Edition transit router belongs is obtained.
+        Before you grant a transit router permissions on a VBR, contact your account manager to acquire permissions on the VBR.
+        Before you grant a transit router permissions on an IPsec-VPN connection, make sure that the IPsec-VPN connection is not associated with a resource.
+        If the IPsec-VPN connection is attached to a VPN gateway, the IPsec-VPN connection cannot be attached to transit routers within the same account or different accounts.
+        If the IPsec-VPN connection is attached to a transit router, detach the IPsec-VPN connection from the transit router. For more information, see [Delete a network instance connection](https://help.aliyun.com/document_detail/181554.html).
         
         @param request: GrantInstanceToTransitRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12514,9 +12618,17 @@ class Client(OpenApiClient):
         """
         @summary Grants a transit router permissions on network instances that belong to another Alibaba Cloud account. To connect a transit router of Account B to a network instance of Account A, you must use Account A to grant permissions to the transit router of Account B.
         
-        @description    `GrantInstanceToTransitRouter` grants transit routers the permissions to connect only to virtual private clouds (VPCs), virtual border routers (VBRs), and IPsec-VPN connections that belong to another Alibaba Cloud account.
-        If you want to grant transit routers permissions to connect to Cloud Connect Network (CCN) instances, call the [GrantInstanceToCbn](https://help.aliyun.com/document_detail/126141.html) operation.
+        @description    The `GrantInstanceToTransitRouter` operation can be used to grant transit routers permissions on network instances that belong to other Alibaba Cloud accounts, including virtual private clouds (VPCs), virtual border routers (VBRs), IPsec-VPN connections, and Express Connect Router (ECRs).
+        To grant transit routers permissions on Cloud Connect Network (CCN) instances, call the [GrantInstanceToCbn](https://help.aliyun.com/document_detail/126141.html) operation.
         Before you call `GrantInstanceToTransitRouter`, take note of the billing rules, permission limits, and prerequisites on permission management of transit routers. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
+        Before you grant a transit router permissions on a network instance, make sure that the following requirements are met:
+        The account to which the network instance belongs and the account to which the transit router belongs are of the same type.
+        The ID of the Alibaba Cloud account to which the transit router belongs is obtained.
+        The ID of the Cloud Enterprise Network (CEN) instance to which the Enterprise Edition transit router belongs is obtained.
+        Before you grant a transit router permissions on a VBR, contact your account manager to acquire permissions on the VBR.
+        Before you grant a transit router permissions on an IPsec-VPN connection, make sure that the IPsec-VPN connection is not associated with a resource.
+        If the IPsec-VPN connection is attached to a VPN gateway, the IPsec-VPN connection cannot be attached to transit routers within the same account or different accounts.
+        If the IPsec-VPN connection is attached to a transit router, detach the IPsec-VPN connection from the transit router. For more information, see [Delete a network instance connection](https://help.aliyun.com/document_detail/181554.html).
         
         @param request: GrantInstanceToTransitRouterRequest
         @return: GrantInstanceToTransitRouterResponse
@@ -12531,9 +12643,17 @@ class Client(OpenApiClient):
         """
         @summary Grants a transit router permissions on network instances that belong to another Alibaba Cloud account. To connect a transit router of Account B to a network instance of Account A, you must use Account A to grant permissions to the transit router of Account B.
         
-        @description    `GrantInstanceToTransitRouter` grants transit routers the permissions to connect only to virtual private clouds (VPCs), virtual border routers (VBRs), and IPsec-VPN connections that belong to another Alibaba Cloud account.
-        If you want to grant transit routers permissions to connect to Cloud Connect Network (CCN) instances, call the [GrantInstanceToCbn](https://help.aliyun.com/document_detail/126141.html) operation.
+        @description    The `GrantInstanceToTransitRouter` operation can be used to grant transit routers permissions on network instances that belong to other Alibaba Cloud accounts, including virtual private clouds (VPCs), virtual border routers (VBRs), IPsec-VPN connections, and Express Connect Router (ECRs).
+        To grant transit routers permissions on Cloud Connect Network (CCN) instances, call the [GrantInstanceToCbn](https://help.aliyun.com/document_detail/126141.html) operation.
         Before you call `GrantInstanceToTransitRouter`, take note of the billing rules, permission limits, and prerequisites on permission management of transit routers. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
+        Before you grant a transit router permissions on a network instance, make sure that the following requirements are met:
+        The account to which the network instance belongs and the account to which the transit router belongs are of the same type.
+        The ID of the Alibaba Cloud account to which the transit router belongs is obtained.
+        The ID of the Cloud Enterprise Network (CEN) instance to which the Enterprise Edition transit router belongs is obtained.
+        Before you grant a transit router permissions on a VBR, contact your account manager to acquire permissions on the VBR.
+        Before you grant a transit router permissions on an IPsec-VPN connection, make sure that the IPsec-VPN connection is not associated with a resource.
+        If the IPsec-VPN connection is attached to a VPN gateway, the IPsec-VPN connection cannot be attached to transit routers within the same account or different accounts.
+        If the IPsec-VPN connection is attached to a transit router, detach the IPsec-VPN connection from the transit router. For more information, see [Delete a network instance connection](https://help.aliyun.com/document_detail/181554.html).
         
         @param request: GrantInstanceToTransitRouterRequest
         @return: GrantInstanceToTransitRouterResponse
@@ -12843,7 +12963,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListCenInterRegionTrafficQosQueuesResponse:
         """
-        @summary Queries the information about a quality of service (QoS) queue.
+        @summary Queries the information about quality of service (QoS) queues.
+        
+        @description You must specify at least one of the *TransitRouterId**, **TrafficQosPolicyId**, and **TrafficQosQueueId** parameters.
+        Make sure that all the request parameters are valid. If a request parameter is invalid, a *request ID** is returned but the QoS queue information is not returned.
         
         @param request: ListCenInterRegionTrafficQosQueuesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12900,7 +13023,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListCenInterRegionTrafficQosQueuesResponse:
         """
-        @summary Queries the information about a quality of service (QoS) queue.
+        @summary Queries the information about quality of service (QoS) queues.
+        
+        @description You must specify at least one of the *TransitRouterId**, **TrafficQosPolicyId**, and **TrafficQosQueueId** parameters.
+        Make sure that all the request parameters are valid. If a request parameter is invalid, a *request ID** is returned but the QoS queue information is not returned.
         
         @param request: ListCenInterRegionTrafficQosQueuesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12956,7 +13082,10 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListCenInterRegionTrafficQosQueuesRequest,
     ) -> cbn_20170912_models.ListCenInterRegionTrafficQosQueuesResponse:
         """
-        @summary Queries the information about a quality of service (QoS) queue.
+        @summary Queries the information about quality of service (QoS) queues.
+        
+        @description You must specify at least one of the *TransitRouterId**, **TrafficQosPolicyId**, and **TrafficQosQueueId** parameters.
+        Make sure that all the request parameters are valid. If a request parameter is invalid, a *request ID** is returned but the QoS queue information is not returned.
         
         @param request: ListCenInterRegionTrafficQosQueuesRequest
         @return: ListCenInterRegionTrafficQosQueuesResponse
@@ -12969,7 +13098,10 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListCenInterRegionTrafficQosQueuesRequest,
     ) -> cbn_20170912_models.ListCenInterRegionTrafficQosQueuesResponse:
         """
-        @summary Queries the information about a quality of service (QoS) queue.
+        @summary Queries the information about quality of service (QoS) queues.
+        
+        @description You must specify at least one of the *TransitRouterId**, **TrafficQosPolicyId**, and **TrafficQosQueueId** parameters.
+        Make sure that all the request parameters are valid. If a request parameter is invalid, a *request ID** is returned but the QoS queue information is not returned.
         
         @param request: ListCenInterRegionTrafficQosQueuesRequest
         @return: ListCenInterRegionTrafficQosQueuesResponse
@@ -13875,7 +14007,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListTransitRouterCidrAllocationResponse:
         """
-        @summary Queries the IP addresses allocated from a CIDR block of a transit router.
+        @summary Queries how a CIDR block is allocated.
         
         @param request: ListTransitRouterCidrAllocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13940,7 +14072,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListTransitRouterCidrAllocationResponse:
         """
-        @summary Queries the IP addresses allocated from a CIDR block of a transit router.
+        @summary Queries how a CIDR block is allocated.
         
         @param request: ListTransitRouterCidrAllocationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14004,7 +14136,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListTransitRouterCidrAllocationRequest,
     ) -> cbn_20170912_models.ListTransitRouterCidrAllocationResponse:
         """
-        @summary Queries the IP addresses allocated from a CIDR block of a transit router.
+        @summary Queries how a CIDR block is allocated.
         
         @param request: ListTransitRouterCidrAllocationRequest
         @return: ListTransitRouterCidrAllocationResponse
@@ -14017,7 +14149,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListTransitRouterCidrAllocationRequest,
     ) -> cbn_20170912_models.ListTransitRouterCidrAllocationResponse:
         """
-        @summary Queries the IP addresses allocated from a CIDR block of a transit router.
+        @summary Queries how a CIDR block is allocated.
         
         @param request: ListTransitRouterCidrAllocationRequest
         @return: ListTransitRouterCidrAllocationResponse
@@ -14031,7 +14163,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListTransitRouterEcrAttachmentsResponse:
         """
-        @summary 查询转发路由器下的ECR连接的详情
+        @summary Queries the information about Express Connect Router (ECR) connections on an Enterprise Edition transit router, such as the connection status, connection ID, and the payer of instance fees.
+        
+        @description You can use the following methods to query ECR connection information:
+        Specify the ID of an Enterprise Edition transit router.
+        Specify the ID of an Enterprise Edition transit router and the ID of the region in which the Enterprise Edition transit router is deployed.
+        Configure the **TransitRouterAttachmentId** parameter to specify the ECR connection that you want to query.
         
         @param request: ListTransitRouterEcrAttachmentsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14086,7 +14223,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListTransitRouterEcrAttachmentsResponse:
         """
-        @summary 查询转发路由器下的ECR连接的详情
+        @summary Queries the information about Express Connect Router (ECR) connections on an Enterprise Edition transit router, such as the connection status, connection ID, and the payer of instance fees.
+        
+        @description You can use the following methods to query ECR connection information:
+        Specify the ID of an Enterprise Edition transit router.
+        Specify the ID of an Enterprise Edition transit router and the ID of the region in which the Enterprise Edition transit router is deployed.
+        Configure the **TransitRouterAttachmentId** parameter to specify the ECR connection that you want to query.
         
         @param request: ListTransitRouterEcrAttachmentsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14140,7 +14282,12 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListTransitRouterEcrAttachmentsRequest,
     ) -> cbn_20170912_models.ListTransitRouterEcrAttachmentsResponse:
         """
-        @summary 查询转发路由器下的ECR连接的详情
+        @summary Queries the information about Express Connect Router (ECR) connections on an Enterprise Edition transit router, such as the connection status, connection ID, and the payer of instance fees.
+        
+        @description You can use the following methods to query ECR connection information:
+        Specify the ID of an Enterprise Edition transit router.
+        Specify the ID of an Enterprise Edition transit router and the ID of the region in which the Enterprise Edition transit router is deployed.
+        Configure the **TransitRouterAttachmentId** parameter to specify the ECR connection that you want to query.
         
         @param request: ListTransitRouterEcrAttachmentsRequest
         @return: ListTransitRouterEcrAttachmentsResponse
@@ -14153,7 +14300,12 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListTransitRouterEcrAttachmentsRequest,
     ) -> cbn_20170912_models.ListTransitRouterEcrAttachmentsResponse:
         """
-        @summary 查询转发路由器下的ECR连接的详情
+        @summary Queries the information about Express Connect Router (ECR) connections on an Enterprise Edition transit router, such as the connection status, connection ID, and the payer of instance fees.
+        
+        @description You can use the following methods to query ECR connection information:
+        Specify the ID of an Enterprise Edition transit router.
+        Specify the ID of an Enterprise Edition transit router and the ID of the region in which the Enterprise Edition transit router is deployed.
+        Configure the **TransitRouterAttachmentId** parameter to specify the ECR connection that you want to query.
         
         @param request: ListTransitRouterEcrAttachmentsRequest
         @return: ListTransitRouterEcrAttachmentsResponse
@@ -17115,7 +17267,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ModifyTransitRouterCidrResponse:
         """
-        @summary Modifies a CIDR block of a transit router.
+        @summary Modifies the CIDR block of a transit router.
         
         @description    Before you modify the CIDR block of a transit router, we recommend that you read the [limits on transit router CIDR blocks](https://help.aliyun.com/document_detail/462635.html).
         If IP addresses within the CIDR block have been allocated to network instances, you cannot modify the CIDR block.
@@ -17181,7 +17333,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ModifyTransitRouterCidrResponse:
         """
-        @summary Modifies a CIDR block of a transit router.
+        @summary Modifies the CIDR block of a transit router.
         
         @description    Before you modify the CIDR block of a transit router, we recommend that you read the [limits on transit router CIDR blocks](https://help.aliyun.com/document_detail/462635.html).
         If IP addresses within the CIDR block have been allocated to network instances, you cannot modify the CIDR block.
@@ -17246,7 +17398,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ModifyTransitRouterCidrRequest,
     ) -> cbn_20170912_models.ModifyTransitRouterCidrResponse:
         """
-        @summary Modifies a CIDR block of a transit router.
+        @summary Modifies the CIDR block of a transit router.
         
         @description    Before you modify the CIDR block of a transit router, we recommend that you read the [limits on transit router CIDR blocks](https://help.aliyun.com/document_detail/462635.html).
         If IP addresses within the CIDR block have been allocated to network instances, you cannot modify the CIDR block.
@@ -17266,7 +17418,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ModifyTransitRouterCidrRequest,
     ) -> cbn_20170912_models.ModifyTransitRouterCidrResponse:
         """
-        @summary Modifies a CIDR block of a transit router.
+        @summary Modifies the CIDR block of a transit router.
         
         @description    Before you modify the CIDR block of a transit router, we recommend that you read the [limits on transit router CIDR blocks](https://help.aliyun.com/document_detail/462635.html).
         If IP addresses within the CIDR block have been allocated to network instances, you cannot modify the CIDR block.
@@ -17671,7 +17823,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.PublishRouteEntriesResponse:
         """
-        @summary Advertises the routes of a virtual private cloud (VPC) or a virtual border router (VBR) to a Cloud Enterprise Network (CEN) instance to which the VPC or VBR is attached.
+        @summary Cloud Enterprise Network (CEN) supports route advertisement. You can call this operation to advertise routes of virtual private clouds (VPCs) or virtual border routers (VBRs) attached to a CEN instance to the CEN instance. Other network instances attached to the CEN instance can learn the routes if route conflicts do not exist.
         
         @description The following table describes whether routes of different types are advertised to CEN by default. You can call the PublishRouteEntries operation to advertise routes to CEN.
         |Route|Network instance|Advertised to CEN by default|
@@ -17734,7 +17886,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.PublishRouteEntriesResponse:
         """
-        @summary Advertises the routes of a virtual private cloud (VPC) or a virtual border router (VBR) to a Cloud Enterprise Network (CEN) instance to which the VPC or VBR is attached.
+        @summary Cloud Enterprise Network (CEN) supports route advertisement. You can call this operation to advertise routes of virtual private clouds (VPCs) or virtual border routers (VBRs) attached to a CEN instance to the CEN instance. Other network instances attached to the CEN instance can learn the routes if route conflicts do not exist.
         
         @description The following table describes whether routes of different types are advertised to CEN by default. You can call the PublishRouteEntries operation to advertise routes to CEN.
         |Route|Network instance|Advertised to CEN by default|
@@ -17796,7 +17948,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.PublishRouteEntriesRequest,
     ) -> cbn_20170912_models.PublishRouteEntriesResponse:
         """
-        @summary Advertises the routes of a virtual private cloud (VPC) or a virtual border router (VBR) to a Cloud Enterprise Network (CEN) instance to which the VPC or VBR is attached.
+        @summary Cloud Enterprise Network (CEN) supports route advertisement. You can call this operation to advertise routes of virtual private clouds (VPCs) or virtual border routers (VBRs) attached to a CEN instance to the CEN instance. Other network instances attached to the CEN instance can learn the routes if route conflicts do not exist.
         
         @description The following table describes whether routes of different types are advertised to CEN by default. You can call the PublishRouteEntries operation to advertise routes to CEN.
         |Route|Network instance|Advertised to CEN by default|
@@ -17823,7 +17975,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.PublishRouteEntriesRequest,
     ) -> cbn_20170912_models.PublishRouteEntriesResponse:
         """
-        @summary Advertises the routes of a virtual private cloud (VPC) or a virtual border router (VBR) to a Cloud Enterprise Network (CEN) instance to which the VPC or VBR is attached.
+        @summary Cloud Enterprise Network (CEN) supports route advertisement. You can call this operation to advertise routes of virtual private clouds (VPCs) or virtual border routers (VBRs) attached to a CEN instance to the CEN instance. Other network instances attached to the CEN instance can learn the routes if route conflicts do not exist.
         
         @description The following table describes whether routes of different types are advertised to CEN by default. You can call the PublishRouteEntries operation to advertise routes to CEN.
         |Route|Network instance|Advertised to CEN by default|
@@ -17976,7 +18128,7 @@ class Client(OpenApiClient):
         @description Enterprise Edition transit routers support only elastic network interfaces (ENIs) as multicast members. You can call the `RegisterTransitRouterMulticastGroupMembers` operation to specify an ENI in the current region or a different region as a multicast member.
         If you specify a value for the **NetworkInterfaceIds** parameter, an ENI in the current region is to be specified as a multicast member. Make sure that the ENI and vSwitch are associated with the multicast group. For more information, see [AssociateTransitRouterMulticastDomain](https://help.aliyun.com/document_detail/429778.html).
         If you specify a value for the **PeerTransitRouterMulticastDomains**, a multicast member in a multicast group that belongs to another region but has the same IP address as the current multicast group is to be specified as a multicast member for the current multicast group. Make sure that an inter-region connection is established between the regions. For more information, see [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261363.html).
-        For example, Multicast Domain 1 is created in the Australia (Sydney) region. Multicast Group 1 is created in Multicast Domain 1. Multicast Domain 2 is created in the UK (London) region. Multicast Group 2 is created in Multicast Domain 2. Multicast Group 1 and Multicast Group 2 use the same IP address. Multicast Group contains a multicast member named Member 2. When you call the `RegisterTransitRouterMulticastGroupMembers` operation to add a multicast member to Multicast Group 1 in the Australia (Sydney) region, you can set *PeerTransitRouterMulticastDomains** to the ID of the Multicast Domain 2 in the UK (London) region. As a result, Member 2 in Multicast Group 2 in the UK (London) region is also added to Multicast Group 1 in the Australia (Sydney) region as a multicast member.
+        For example, you created Multicast Group 1 in Multicast Domain 1, which is in the China (Hangzhou) region. You created Multicast Group 2 in Multicast Domain 2, which is in the China (Shanghai) region. Multicast Group 1 and Multicast Group 2 use the same multicast IP address, and Multicast Member 2 is in Multicast Group 2 in the China (Shanghai) region. If you call the `RegisterTransitRouterMulticastGroupMembers` operation to add multicast members to Multicast Group 1 in the China (Hangzhou) region and set *PeerTransitRouterMulticastDomains** to the ID of Multicast Group 2, which is in the China (Shanghai) region, Multicast Member 2, which is in Multicast Domain 2 in the China (Shanghai) region is added to Multicast Group 1 in the China (Hangzhou) region.
         `RegisterTransitRouterMulticastGroupMembers` is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
         If the multicast member is in the **Registering**, the multicast member is being created. In this case, you can query the multicast member but cannot perform other operations on the multicast member.
         If the multicast member is in the **Registered** state, the multicast member is created.
@@ -18039,7 +18191,7 @@ class Client(OpenApiClient):
         @description Enterprise Edition transit routers support only elastic network interfaces (ENIs) as multicast members. You can call the `RegisterTransitRouterMulticastGroupMembers` operation to specify an ENI in the current region or a different region as a multicast member.
         If you specify a value for the **NetworkInterfaceIds** parameter, an ENI in the current region is to be specified as a multicast member. Make sure that the ENI and vSwitch are associated with the multicast group. For more information, see [AssociateTransitRouterMulticastDomain](https://help.aliyun.com/document_detail/429778.html).
         If you specify a value for the **PeerTransitRouterMulticastDomains**, a multicast member in a multicast group that belongs to another region but has the same IP address as the current multicast group is to be specified as a multicast member for the current multicast group. Make sure that an inter-region connection is established between the regions. For more information, see [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261363.html).
-        For example, Multicast Domain 1 is created in the Australia (Sydney) region. Multicast Group 1 is created in Multicast Domain 1. Multicast Domain 2 is created in the UK (London) region. Multicast Group 2 is created in Multicast Domain 2. Multicast Group 1 and Multicast Group 2 use the same IP address. Multicast Group contains a multicast member named Member 2. When you call the `RegisterTransitRouterMulticastGroupMembers` operation to add a multicast member to Multicast Group 1 in the Australia (Sydney) region, you can set *PeerTransitRouterMulticastDomains** to the ID of the Multicast Domain 2 in the UK (London) region. As a result, Member 2 in Multicast Group 2 in the UK (London) region is also added to Multicast Group 1 in the Australia (Sydney) region as a multicast member.
+        For example, you created Multicast Group 1 in Multicast Domain 1, which is in the China (Hangzhou) region. You created Multicast Group 2 in Multicast Domain 2, which is in the China (Shanghai) region. Multicast Group 1 and Multicast Group 2 use the same multicast IP address, and Multicast Member 2 is in Multicast Group 2 in the China (Shanghai) region. If you call the `RegisterTransitRouterMulticastGroupMembers` operation to add multicast members to Multicast Group 1 in the China (Hangzhou) region and set *PeerTransitRouterMulticastDomains** to the ID of Multicast Group 2, which is in the China (Shanghai) region, Multicast Member 2, which is in Multicast Domain 2 in the China (Shanghai) region is added to Multicast Group 1 in the China (Hangzhou) region.
         `RegisterTransitRouterMulticastGroupMembers` is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
         If the multicast member is in the **Registering**, the multicast member is being created. In this case, you can query the multicast member but cannot perform other operations on the multicast member.
         If the multicast member is in the **Registered** state, the multicast member is created.
@@ -18101,7 +18253,7 @@ class Client(OpenApiClient):
         @description Enterprise Edition transit routers support only elastic network interfaces (ENIs) as multicast members. You can call the `RegisterTransitRouterMulticastGroupMembers` operation to specify an ENI in the current region or a different region as a multicast member.
         If you specify a value for the **NetworkInterfaceIds** parameter, an ENI in the current region is to be specified as a multicast member. Make sure that the ENI and vSwitch are associated with the multicast group. For more information, see [AssociateTransitRouterMulticastDomain](https://help.aliyun.com/document_detail/429778.html).
         If you specify a value for the **PeerTransitRouterMulticastDomains**, a multicast member in a multicast group that belongs to another region but has the same IP address as the current multicast group is to be specified as a multicast member for the current multicast group. Make sure that an inter-region connection is established between the regions. For more information, see [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261363.html).
-        For example, Multicast Domain 1 is created in the Australia (Sydney) region. Multicast Group 1 is created in Multicast Domain 1. Multicast Domain 2 is created in the UK (London) region. Multicast Group 2 is created in Multicast Domain 2. Multicast Group 1 and Multicast Group 2 use the same IP address. Multicast Group contains a multicast member named Member 2. When you call the `RegisterTransitRouterMulticastGroupMembers` operation to add a multicast member to Multicast Group 1 in the Australia (Sydney) region, you can set *PeerTransitRouterMulticastDomains** to the ID of the Multicast Domain 2 in the UK (London) region. As a result, Member 2 in Multicast Group 2 in the UK (London) region is also added to Multicast Group 1 in the Australia (Sydney) region as a multicast member.
+        For example, you created Multicast Group 1 in Multicast Domain 1, which is in the China (Hangzhou) region. You created Multicast Group 2 in Multicast Domain 2, which is in the China (Shanghai) region. Multicast Group 1 and Multicast Group 2 use the same multicast IP address, and Multicast Member 2 is in Multicast Group 2 in the China (Shanghai) region. If you call the `RegisterTransitRouterMulticastGroupMembers` operation to add multicast members to Multicast Group 1 in the China (Hangzhou) region and set *PeerTransitRouterMulticastDomains** to the ID of Multicast Group 2, which is in the China (Shanghai) region, Multicast Member 2, which is in Multicast Domain 2 in the China (Shanghai) region is added to Multicast Group 1 in the China (Hangzhou) region.
         `RegisterTransitRouterMulticastGroupMembers` is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
         If the multicast member is in the **Registering**, the multicast member is being created. In this case, you can query the multicast member but cannot perform other operations on the multicast member.
         If the multicast member is in the **Registered** state, the multicast member is created.
@@ -18122,7 +18274,7 @@ class Client(OpenApiClient):
         @description Enterprise Edition transit routers support only elastic network interfaces (ENIs) as multicast members. You can call the `RegisterTransitRouterMulticastGroupMembers` operation to specify an ENI in the current region or a different region as a multicast member.
         If you specify a value for the **NetworkInterfaceIds** parameter, an ENI in the current region is to be specified as a multicast member. Make sure that the ENI and vSwitch are associated with the multicast group. For more information, see [AssociateTransitRouterMulticastDomain](https://help.aliyun.com/document_detail/429778.html).
         If you specify a value for the **PeerTransitRouterMulticastDomains**, a multicast member in a multicast group that belongs to another region but has the same IP address as the current multicast group is to be specified as a multicast member for the current multicast group. Make sure that an inter-region connection is established between the regions. For more information, see [CreateTransitRouterPeerAttachment](https://help.aliyun.com/document_detail/261363.html).
-        For example, Multicast Domain 1 is created in the Australia (Sydney) region. Multicast Group 1 is created in Multicast Domain 1. Multicast Domain 2 is created in the UK (London) region. Multicast Group 2 is created in Multicast Domain 2. Multicast Group 1 and Multicast Group 2 use the same IP address. Multicast Group contains a multicast member named Member 2. When you call the `RegisterTransitRouterMulticastGroupMembers` operation to add a multicast member to Multicast Group 1 in the Australia (Sydney) region, you can set *PeerTransitRouterMulticastDomains** to the ID of the Multicast Domain 2 in the UK (London) region. As a result, Member 2 in Multicast Group 2 in the UK (London) region is also added to Multicast Group 1 in the Australia (Sydney) region as a multicast member.
+        For example, you created Multicast Group 1 in Multicast Domain 1, which is in the China (Hangzhou) region. You created Multicast Group 2 in Multicast Domain 2, which is in the China (Shanghai) region. Multicast Group 1 and Multicast Group 2 use the same multicast IP address, and Multicast Member 2 is in Multicast Group 2 in the China (Shanghai) region. If you call the `RegisterTransitRouterMulticastGroupMembers` operation to add multicast members to Multicast Group 1 in the China (Hangzhou) region and set *PeerTransitRouterMulticastDomains** to the ID of Multicast Group 2, which is in the China (Shanghai) region, Multicast Member 2, which is in Multicast Domain 2 in the China (Shanghai) region is added to Multicast Group 1 in the China (Hangzhou) region.
         `RegisterTransitRouterMulticastGroupMembers` is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the `ListTransitRouterMulticastGroups` operation to query the status of a multicast member.
         If the multicast member is in the **Registering**, the multicast member is being created. In this case, you can query the multicast member but cannot perform other operations on the multicast member.
         If the multicast member is in the **Registered** state, the multicast member is created.
@@ -18459,7 +18611,7 @@ class Client(OpenApiClient):
         
         @summary Removes a traffic classification rule from a traffic marking policy.
         
-        @description # [](#)Precautions
+        @description ### [](#)Precautions
         The *RemoveTraficMatchRuleFromTrafficMarkingPolicy** operation is deprecated and will be discontinued soon. If you need to delete traffic classification rules from a traffic marking policy, call the [RemoveTrafficMatchRuleFromTrafficMarkingPolicy](https://help.aliyun.com/document_detail/452726.html) operation.
         
         @param request: RemoveTraficMatchRuleFromTrafficMarkingPolicyRequest
@@ -18514,7 +18666,7 @@ class Client(OpenApiClient):
         
         @summary Removes a traffic classification rule from a traffic marking policy.
         
-        @description # [](#)Precautions
+        @description ### [](#)Precautions
         The *RemoveTraficMatchRuleFromTrafficMarkingPolicy** operation is deprecated and will be discontinued soon. If you need to delete traffic classification rules from a traffic marking policy, call the [RemoveTrafficMatchRuleFromTrafficMarkingPolicy](https://help.aliyun.com/document_detail/452726.html) operation.
         
         @param request: RemoveTraficMatchRuleFromTrafficMarkingPolicyRequest
@@ -18568,7 +18720,7 @@ class Client(OpenApiClient):
         
         @summary Removes a traffic classification rule from a traffic marking policy.
         
-        @description # [](#)Precautions
+        @description ### [](#)Precautions
         The *RemoveTraficMatchRuleFromTrafficMarkingPolicy** operation is deprecated and will be discontinued soon. If you need to delete traffic classification rules from a traffic marking policy, call the [RemoveTrafficMatchRuleFromTrafficMarkingPolicy](https://help.aliyun.com/document_detail/452726.html) operation.
         
         @param request: RemoveTraficMatchRuleFromTrafficMarkingPolicyRequest
@@ -18587,7 +18739,7 @@ class Client(OpenApiClient):
         
         @summary Removes a traffic classification rule from a traffic marking policy.
         
-        @description # [](#)Precautions
+        @description ### [](#)Precautions
         The *RemoveTraficMatchRuleFromTrafficMarkingPolicy** operation is deprecated and will be discontinued soon. If you need to delete traffic classification rules from a traffic marking policy, call the [RemoveTrafficMatchRuleFromTrafficMarkingPolicy](https://help.aliyun.com/document_detail/452726.html) operation.
         
         @param request: RemoveTraficMatchRuleFromTrafficMarkingPolicyRequest
@@ -19655,7 +19807,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.UnassociateCenBandwidthPackageResponse:
         """
-        @summary Disassociates a bandwidth plan from a Cloud Enterprise Network (CEN) instance. After a bandwidth plan is disassociated from a CEN instance, you can associate the bandwidth plan with another CEN instance.
+        @summary Disassociates a Cloud Enterprise Network (CEN) from a bandwidth plan. After the disassociation, the bandwidth can be associated with another CEN instance.
         
         @description No inter-region connections are configured in the bandwidth plan. For more information about how to delete inter-region connections, see [SetCenInterRegionBandwidthLimit](https://help.aliyun.com/document_detail/65942.html).
         
@@ -19702,7 +19854,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.UnassociateCenBandwidthPackageResponse:
         """
-        @summary Disassociates a bandwidth plan from a Cloud Enterprise Network (CEN) instance. After a bandwidth plan is disassociated from a CEN instance, you can associate the bandwidth plan with another CEN instance.
+        @summary Disassociates a Cloud Enterprise Network (CEN) from a bandwidth plan. After the disassociation, the bandwidth can be associated with another CEN instance.
         
         @description No inter-region connections are configured in the bandwidth plan. For more information about how to delete inter-region connections, see [SetCenInterRegionBandwidthLimit](https://help.aliyun.com/document_detail/65942.html).
         
@@ -19748,7 +19900,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.UnassociateCenBandwidthPackageRequest,
     ) -> cbn_20170912_models.UnassociateCenBandwidthPackageResponse:
         """
-        @summary Disassociates a bandwidth plan from a Cloud Enterprise Network (CEN) instance. After a bandwidth plan is disassociated from a CEN instance, you can associate the bandwidth plan with another CEN instance.
+        @summary Disassociates a Cloud Enterprise Network (CEN) from a bandwidth plan. After the disassociation, the bandwidth can be associated with another CEN instance.
         
         @description No inter-region connections are configured in the bandwidth plan. For more information about how to delete inter-region connections, see [SetCenInterRegionBandwidthLimit](https://help.aliyun.com/document_detail/65942.html).
         
@@ -19763,7 +19915,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.UnassociateCenBandwidthPackageRequest,
     ) -> cbn_20170912_models.UnassociateCenBandwidthPackageResponse:
         """
-        @summary Disassociates a bandwidth plan from a Cloud Enterprise Network (CEN) instance. After a bandwidth plan is disassociated from a CEN instance, you can associate the bandwidth plan with another CEN instance.
+        @summary Disassociates a Cloud Enterprise Network (CEN) from a bandwidth plan. After the disassociation, the bandwidth can be associated with another CEN instance.
         
         @description No inter-region connections are configured in the bandwidth plan. For more information about how to delete inter-region connections, see [SetCenInterRegionBandwidthLimit](https://help.aliyun.com/document_detail/65942.html).
         
@@ -20563,7 +20715,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeResponse:
         """
-        @summary 更新ECR Attachment
+        @summary Modifies the name and description of an Express Connect Router (ECR) connection on a Enterprise Edition transit router.
+        
+        @description UpdateTransitRouterEcrAttachmentAttribute is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the ListTransitRouterEcrAttachments operation to query the status of an ECR connection.
+        If an ECR connection is in the Modifying state, the ECR connection is being modified. In this case, you can query the ECR connection but cannot perform other operations on the ECR connection. If an ECR connection is in the Attached state, the ECR connection is modified.
         
         @param request: UpdateTransitRouterEcrAttachmentAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20614,7 +20769,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeResponse:
         """
-        @summary 更新ECR Attachment
+        @summary Modifies the name and description of an Express Connect Router (ECR) connection on a Enterprise Edition transit router.
+        
+        @description UpdateTransitRouterEcrAttachmentAttribute is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the ListTransitRouterEcrAttachments operation to query the status of an ECR connection.
+        If an ECR connection is in the Modifying state, the ECR connection is being modified. In this case, you can query the ECR connection but cannot perform other operations on the ECR connection. If an ECR connection is in the Attached state, the ECR connection is modified.
         
         @param request: UpdateTransitRouterEcrAttachmentAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20664,7 +20822,10 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeRequest,
     ) -> cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeResponse:
         """
-        @summary 更新ECR Attachment
+        @summary Modifies the name and description of an Express Connect Router (ECR) connection on a Enterprise Edition transit router.
+        
+        @description UpdateTransitRouterEcrAttachmentAttribute is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the ListTransitRouterEcrAttachments operation to query the status of an ECR connection.
+        If an ECR connection is in the Modifying state, the ECR connection is being modified. In this case, you can query the ECR connection but cannot perform other operations on the ECR connection. If an ECR connection is in the Attached state, the ECR connection is modified.
         
         @param request: UpdateTransitRouterEcrAttachmentAttributeRequest
         @return: UpdateTransitRouterEcrAttachmentAttributeResponse
@@ -20677,7 +20838,10 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeRequest,
     ) -> cbn_20170912_models.UpdateTransitRouterEcrAttachmentAttributeResponse:
         """
-        @summary 更新ECR Attachment
+        @summary Modifies the name and description of an Express Connect Router (ECR) connection on a Enterprise Edition transit router.
+        
+        @description UpdateTransitRouterEcrAttachmentAttribute is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the ListTransitRouterEcrAttachments operation to query the status of an ECR connection.
+        If an ECR connection is in the Modifying state, the ECR connection is being modified. In this case, you can query the ECR connection but cannot perform other operations on the ECR connection. If an ECR connection is in the Attached state, the ECR connection is modified.
         
         @param request: UpdateTransitRouterEcrAttachmentAttributeRequest
         @return: UpdateTransitRouterEcrAttachmentAttributeResponse
@@ -20983,7 +21147,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.UpdateTransitRouterRouteTableResponse:
         """
-        @summary Modifies the name and description of a route table that belongs to an Enterprise Edition transit router.
+        @summary Modifies the name and description of a route table of an Enterprise Edition transit router and enables or disables multi-region equal-cost multi-path (ECMP) routing.
         
         @param request: UpdateTransitRouterRouteTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21036,7 +21200,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.UpdateTransitRouterRouteTableResponse:
         """
-        @summary Modifies the name and description of a route table that belongs to an Enterprise Edition transit router.
+        @summary Modifies the name and description of a route table of an Enterprise Edition transit router and enables or disables multi-region equal-cost multi-path (ECMP) routing.
         
         @param request: UpdateTransitRouterRouteTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21088,7 +21252,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.UpdateTransitRouterRouteTableRequest,
     ) -> cbn_20170912_models.UpdateTransitRouterRouteTableResponse:
         """
-        @summary Modifies the name and description of a route table that belongs to an Enterprise Edition transit router.
+        @summary Modifies the name and description of a route table of an Enterprise Edition transit router and enables or disables multi-region equal-cost multi-path (ECMP) routing.
         
         @param request: UpdateTransitRouterRouteTableRequest
         @return: UpdateTransitRouterRouteTableResponse
@@ -21101,7 +21265,7 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.UpdateTransitRouterRouteTableRequest,
     ) -> cbn_20170912_models.UpdateTransitRouterRouteTableResponse:
         """
-        @summary Modifies the name and description of a route table that belongs to an Enterprise Edition transit router.
+        @summary Modifies the name and description of a route table of an Enterprise Edition transit router and enables or disables multi-region equal-cost multi-path (ECMP) routing.
         
         @param request: UpdateTransitRouterRouteTableRequest
         @return: UpdateTransitRouterRouteTableResponse

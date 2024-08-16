@@ -1,3 +1,8 @@
+2024-08-16 Version: 1.1.5
+- Update API CreateCenInterRegionTrafficQosPolicy: update param TrafficQosQueues.
+- Update API CreateCenInterRegionTrafficQosQueue: update param RemainBandwidthPercent.
+
+
 2024-07-10 Version: 1.1.4
 - Generated python 2017-09-12 for Cbn.
 
