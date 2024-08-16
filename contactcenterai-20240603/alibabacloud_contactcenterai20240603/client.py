@@ -41,6 +41,146 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def analyze_conversation_with_options(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.AnalyzeConversationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.AnalyzeConversationResponse:
+        """
+        @summary 根据类型调用大模型
+        
+        @param request: AnalyzeConversationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AnalyzeConversationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dialogue):
+            body['dialogue'] = request.dialogue
+        if not UtilClient.is_unset(request.example_list):
+            body['exampleList'] = request.example_list
+        if not UtilClient.is_unset(request.fields):
+            body['fields'] = request.fields
+        if not UtilClient.is_unset(request.model_code):
+            body['modelCode'] = request.model_code
+        if not UtilClient.is_unset(request.result_types):
+            body['resultTypes'] = request.result_types
+        if not UtilClient.is_unset(request.scene_name):
+            body['sceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.service_inspection):
+            body['serviceInspection'] = request.service_inspection
+        if not UtilClient.is_unset(request.stream):
+            body['stream'] = request.stream
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AnalyzeConversation',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/ccai/app/{OpenApiUtilClient.get_encode_param(app_id)}/analyze_conversation',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.AnalyzeConversationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def analyze_conversation_with_options_async(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.AnalyzeConversationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.AnalyzeConversationResponse:
+        """
+        @summary 根据类型调用大模型
+        
+        @param request: AnalyzeConversationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AnalyzeConversationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dialogue):
+            body['dialogue'] = request.dialogue
+        if not UtilClient.is_unset(request.example_list):
+            body['exampleList'] = request.example_list
+        if not UtilClient.is_unset(request.fields):
+            body['fields'] = request.fields
+        if not UtilClient.is_unset(request.model_code):
+            body['modelCode'] = request.model_code
+        if not UtilClient.is_unset(request.result_types):
+            body['resultTypes'] = request.result_types
+        if not UtilClient.is_unset(request.scene_name):
+            body['sceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.service_inspection):
+            body['serviceInspection'] = request.service_inspection
+        if not UtilClient.is_unset(request.stream):
+            body['stream'] = request.stream
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AnalyzeConversation',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/ccai/app/{OpenApiUtilClient.get_encode_param(app_id)}/analyze_conversation',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.AnalyzeConversationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def analyze_conversation(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.AnalyzeConversationRequest,
+    ) -> contact_center_ai20240603_models.AnalyzeConversationResponse:
+        """
+        @summary 根据类型调用大模型
+        
+        @param request: AnalyzeConversationRequest
+        @return: AnalyzeConversationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.analyze_conversation_with_options(workspace_id, app_id, request, headers, runtime)
+
+    async def analyze_conversation_async(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.AnalyzeConversationRequest,
+    ) -> contact_center_ai20240603_models.AnalyzeConversationResponse:
+        """
+        @summary 根据类型调用大模型
+        
+        @param request: AnalyzeConversationRequest
+        @return: AnalyzeConversationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.analyze_conversation_with_options_async(workspace_id, app_id, request, headers, runtime)
+
     def run_completion_with_options(
         self,
         workspace_id: str,
