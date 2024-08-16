@@ -1,3 +1,19 @@
+2024-08-16 Version: 7.0.2
+- Update API CreateRumUploadFileUrl: update param FileName.
+- Update API CreateRumUploadFileUrl: update param Pid.
+- Update API GetMultipleTrace: update param EndTime.
+- Update API GetMultipleTrace: update param StartTime.
+- Update API GetRumAppInfo: update param Pid.
+- Update API GetRumDataForPage: update param EndTime.
+- Update API GetRumDataForPage: update param Query.
+- Update API GetRumDataForPage: update param StartTime.
+- Update API GetRumOcuStatisticData: update param EndTime.
+- Update API GetRumOcuStatisticData: update param Page.
+- Update API GetRumOcuStatisticData: update param PageSize.
+- Update API GetRumOcuStatisticData: update param StartTime.
+- Update API GetRumUploadFiles: update param Pid.
+
+
 2024-08-15 Version: 7.0.1
 - Update API DeleteRumUploadFile: add param BatchItems.
 - Update API DeleteRumUploadFile: update param Pid.

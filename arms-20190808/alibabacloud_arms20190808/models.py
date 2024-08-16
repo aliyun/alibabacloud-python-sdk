@@ -3764,9 +3764,11 @@ class AppendInstancesToPrometheusGlobalViewResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Status code. 200 means success, other status codes are exceptions.
         self.code = code
         # The information about the array object.
         self.data = data
+        # Additional message.
         self.message = message
         # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
@@ -12275,8 +12277,12 @@ class CreateRumUploadFileUrlRequest(TeaModel):
         # The type of the file. You can set this parameter to "application/zip", "text/plain", or an empty string.
         self.content_type = content_type
         # The file name.
+        # 
+        # This parameter is required.
         self.file_name = file_name
         # The application ID.
+        # 
+        # This parameter is required.
         self.pid = pid
         # The region ID.
         # 
@@ -17445,10 +17451,15 @@ class DeleteEnvironmentFeatureRequest(TeaModel):
         feature_name: str = None,
         region_id: str = None,
     ):
+        # The ID of the environment.
+        # 
         # This parameter is required.
         self.environment_id = environment_id
+        # The feature name. Valid values: app-agent-pilot, metric-agent, ebpf-agent, and service-check.
+        # 
         # This parameter is required.
         self.feature_name = feature_name
+        # The region ID. Valid values: cn-beijing and cn-hangzhou.
         self.region_id = region_id
 
     def validate(self):
@@ -17488,11 +17499,15 @@ class DeleteEnvironmentFeatureResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
+        # The returned message.
         self.data = data
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -18204,6 +18219,8 @@ class DeleteIntegrationsRequest(TeaModel):
         self,
         integration_id: int = None,
     ):
+        # The ID of the alert integration.
+        # 
         # This parameter is required.
         self.integration_id = integration_id
 
@@ -18233,7 +18250,12 @@ class DeleteIntegrationsResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the alert integration is deleted. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_success = is_success
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -18415,13 +18437,11 @@ class DeletePrometheusAlertRuleRequest(TeaModel):
         alert_id: int = None,
         cluster_id: str = None,
     ):
-        # Indicates whether the alert rule was deleted. Valid values:
-        # 
-        # *   `true`: The alert rule was deleted.
-        # *   `false`: The alert rule failed to be deleted.
+        # The ID of the alert rule. You can call the ListPrometheusAlertRules operation to query the ID of the alert rule.
         # 
         # This parameter is required.
         self.alert_id = alert_id
+        # The cluster ID of the Prometheus monitoring alarm rule.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -18456,10 +18476,16 @@ class DeletePrometheusAlertRuleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code. 200 means success, other status codes are exceptions.
         self.code = code
+        # More Information.
         self.message = message
-        self.request_id = request_id
         # The ID of the request.
+        self.request_id = request_id
+        # Indicates whether the alert rule was deleted. Valid values:
+        # 
+        # *   `true`: The alert rule was deleted.
+        # *   `false`: The alert rule failed to be deleted.
         self.success = success
 
     def validate(self):
@@ -19273,6 +19299,7 @@ class DeleteRumUploadFileRequest(TeaModel):
         uuid: str = None,
         version_id: str = None,
     ):
+        # Information of files to be deleted in JSON array format. If a single file needs to be deleted, this field should be left empty. If multiple files need to be deleted, just fill in this field.
         self.batch_items = batch_items
         # The file name, with the extension.
         self.file_name = file_name
@@ -27740,12 +27767,16 @@ class GetMultipleTraceRequest(TeaModel):
         trace_ids: List[str] = None,
     ):
         # The time when the trace ends. The value is a timestamp. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The start time of the trace. The value is a timestamp. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The trace IDs.
         # 
@@ -29137,9 +29168,9 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         # *   global-view: global aggregation instance
         # *   aliyun-cs: Prometheus instance for Container Service
         self.cluster_type = cluster_type
-        # Backend data storage status.
+        # The data storage status at the backend.
         self.db_instance_status = db_instance_status
-        # Whether to enable access token authentication.
+        # Indicates whether access token authentication is enabled.
         self.enable_auth_token = enable_auth_token
         # The ID of the Grafana workspace.
         self.grafana_instance_id = grafana_instance_id
@@ -29152,9 +29183,7 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         # *   PREPAY: subscription
         # *   POSTPAY: pay-as-you-go
         self.payment_type = payment_type
-        # The product to which the prometheus instance belongs.
-        # - arms
-        # - cms
+        # The product to which the Prometheus instance belongs. Valid values: arms and cms.
         self.product = product
         # The public URL for Pushgateway.
         self.push_gateway_inter_url = push_gateway_inter_url
@@ -29344,7 +29373,7 @@ class GetPrometheusInstanceResponseBody(TeaModel):
     ):
         # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
         self.code = code
-        # The response parameters.
+        # The returned message.
         self.data = data
         # The message returned.
         self.message = message
@@ -30810,6 +30839,8 @@ class GetRumAppInfoRequest(TeaModel):
         # The group to which the application belongs.
         self.app_group = app_group
         # The application ID.
+        # 
+        # This parameter is required.
         self.pid = pid
         # The region ID.
         # 
@@ -31050,6 +31081,7 @@ class GetRumAppInfoResponseBodyData(TeaModel):
         # The application type. Valid values: web, miniapp, ios, and android.
         self.app_type = app_type
         self.bonree_sdkconfig = bonree_sdkconfig
+        # The domain name of the SDK.
         self.cdn_domain = cdn_domain
         # The time when the application was created. The value is a timestamp. Unit: milliseconds.
         self.create_time = create_time
@@ -31855,12 +31887,15 @@ class GetRumDataForPageRequest(TeaModel):
     ):
         self.app_group = app_group
         self.current_page = current_page
+        # This parameter is required.
         self.end_time = end_time
         self.page_size = page_size
         self.pid = pid
+        # This parameter is required.
         self.query = query
         # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -32333,6 +32368,8 @@ class GetRumOcuStatisticDataRequest(TeaModel):
         start_time: int = None,
     ):
         # The end of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The filter condition. Three types of filter conditions are provided:
         # 
@@ -32349,14 +32386,20 @@ class GetRumOcuStatisticDataRequest(TeaModel):
         # *   startTime: The total number of OCUs is grouped by start time.
         self.group = group
         # The page number.
+        # 
+        # This parameter is required.
         self.page = page
         # The number of entries per page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The type of the query. To query non-time series data, set the value to INSTANT. To query time series data, set the value to TIME_SERIES.
         self.query_type = query_type
         # The region ID.
         self.region_id = region_id
         # The beginning of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -32428,6 +32471,8 @@ class GetRumOcuStatisticDataShrinkRequest(TeaModel):
         start_time: int = None,
     ):
         # The end of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The filter condition. Three types of filter conditions are provided:
         # 
@@ -32444,14 +32489,20 @@ class GetRumOcuStatisticDataShrinkRequest(TeaModel):
         # *   startTime: The total number of OCUs is grouped by start time.
         self.group_shrink = group_shrink
         # The page number.
+        # 
+        # This parameter is required.
         self.page = page
         # The number of entries per page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The type of the query. To query non-time series data, set the value to INSTANT. To query time series data, set the value to TIME_SERIES.
         self.query_type = query_type
         # The region ID.
         self.region_id = region_id
         # The beginning of the time range to query. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -32661,6 +32712,8 @@ class GetRumUploadFilesRequest(TeaModel):
         # The file type. Valid values: source-map: SourceMap files. mapping: symbol table files for Android. dsym: dSYM files for iOS.
         self.app_type = app_type
         # The application ID.
+        # 
+        # This parameter is required.
         self.pid = pid
         # The region ID.
         # 
@@ -33935,6 +33988,7 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval(TeaModel):
         self.days = days
         # 当天结束分钟数。
         self.end_minute = end_minute
+        # 周期结束时间 ，格式为yyyy-MM-dd HH。
         self.end_time = end_time
         # 当天结束小时数。
         self.endhour = endhour
@@ -33942,6 +33996,7 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval(TeaModel):
         self.start_hour = start_hour
         # 当天开始拨测时间的分钟数。
         self.start_minute = start_minute
+        # 周期开始时间，格式yyyy-MM-dd HH 。
         self.start_time = start_time
 
     def validate(self):
@@ -33998,8 +34053,14 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList(TeaModel):
     ):
         # 城市编码。
         self.city_code = city_code
+        # 监测类型：
+        # - IDC
+        # - LastMilie
+        # - Mobile
         self.monitor_type = monitor_type
+        # 运营商ID。
         self.net_service_id = net_service_id
+        # 下发次数。
         self.send_count = send_count
 
     def validate(self):
@@ -34669,8 +34730,18 @@ class GetSyntheticTaskDetailResponseBodyTaskDetail(TeaModel):
         # - 720
         # - 1440
         self.interval_time = interval_time
+        # 监测周期类型：
+        # 
+        # 0：每天
+        # 1：自定义扩展频率
         self.interval_type = interval_type
+        # IP类型：
+        # 
+        # 0：自动
+        # 1：IPv4
+        # 2：IPv6
         self.ip_type = ip_type
+        # 拨测任务的检测点列表。
         self.monitor_list = monitor_list
         self.monitor_list_string = monitor_list_string
         self.nav = nav
@@ -34680,6 +34751,13 @@ class GetSyntheticTaskDetailResponseBodyTaskDetail(TeaModel):
         self.task_id = task_id
         # 任务名称。
         self.task_name = task_name
+        # 任务类型：
+        # 
+        # 3：网页性能-IE
+        # 34：网页性能-Chrome
+        # 0：网络质量
+        # 40：文件下载
+        # 7：API性能
         self.task_type = task_type
         # 拨测地址。
         self.url = url
@@ -38938,17 +39016,23 @@ class InstallManagedPrometheusRequest(TeaModel):
         self.cluster_id = cluster_id
         # The name of the cluster. This parameter is required if the ClusterType parameter is set to ecs.
         self.cluster_name = cluster_name
-        # The type of the cluster. Valid values: ask and ecs.
+        # The cluster type.
+        # 
+        # Valid values:
+        # 
+        # *   ecs: ECS
+        # *   one: ACK One
+        # *   ask: ASK
+        # *   pro: Container Monitoring Pro
         # 
         # This parameter is required.
         self.cluster_type = cluster_type
-        # The ID of the Grafana workspace in which the cluster resides. If you set this parameter to free or leave this parameter empty, the cluster is deployed in a shared Grafana workspace.
+        # The ID of the managed Grafana workspace that is associated with the cluster. If you set this parameter to free or leave this parameter empty, the cluster is associated with a shared Grafana workspace.
         self.grafana_instance_id = grafana_instance_id
-        # The parameter is not supported.
+        # This parameter is not supported.
         self.kube_config = kube_config
         # The region ID.
         self.region_id = region_id
-        # Prometheus实例的资源组ID。
         self.resource_group_id = resource_group_id
         # The ID of the security group to which the cluster belongs.
         # 
@@ -44147,8 +44231,11 @@ class ListEnvironmentFeaturesRequest(TeaModel):
     ):
         # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
+        # The environment ID.
+        # 
         # This parameter is required.
         self.environment_id = environment_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -44211,6 +44298,7 @@ class ListEnvironmentFeaturesResponseBodyData(TeaModel):
         self.language = language
         # The latest version number.
         self.latest_version = latest_version
+        # Whether hosted scenario.
         self.managed = managed
         # The name of the feature.
         self.name = name
@@ -44295,12 +44383,18 @@ class ListEnvironmentFeaturesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status Code. Description 200 indicates success.
         self.code = code
         # The returned struct.
         self.data = data
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the alert rule was deleted. Valid values:
+        # 
+        # *   `true`: The alert rule was deleted.
+        # *   `false`: The alert rule failed to be deleted.
         self.success = success
 
     def validate(self):
@@ -48012,6 +48106,8 @@ class ListPrometheusGlobalViewRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -48043,9 +48139,13 @@ class ListPrometheusGlobalViewResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Status code. Description 200 means success.
         self.code = code
+        # The list of global aggregation instances. The value of this parameter is a string in the JSON format.
         self.data = data
+        # More information.
         self.message = message
+        # The ID of the request. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -48578,18 +48678,18 @@ class ListPrometheusInstancesRequest(TeaModel):
         region_id: str = None,
         show_global_view: bool = None,
     ):
-        # Optional instance types (if left blank, all types of instances will be queried):
+        # The cluster type. If you do not specify this parameter, all cluster types are queried. Valid values:
         # 
-        # - cloud-product-prometheus
-        # - ManagedKubernetes
-        # - satellite
-        # - Ask
-        # - remote-write-prometheus
-        # - cloud-monitor-cmee
-        # - ExternalKubernetes
-        # - vpc-prometheus
-        # - cloud-monitor-direct
-        # - Edge Kubernetes
+        # *   cloud-product-prometheus: Prometheus instance for cloud services
+        # *   ManagedKubernetes: ACK managed cluster
+        # *   satellite: Prometheus instance for ARMS OpenTelemetry
+        # *   Ask: ACK Serverless cluster
+        # *   remote-write-prometheus: general-purpose Prometheus instance
+        # *   cloud-monitor-cmee: Hybrid Cloud Monitoring
+        # *   ExternalKubernetes: external Kubernetes cluster registered in ACK
+        # *   vpc-prometheus: Prometheus instance for ECS
+        # *   cloud-monitor-direct: cloud service self-monitoring
+        # *   Edge Kubernetes: ACK Edge cluster
         self.cluster_type = cluster_type
         # The region ID.
         # 
@@ -53402,7 +53502,7 @@ class QueryMetricByPageRequest(TeaModel):
         page_size: int = None,
         start_time: int = None,
     ):
-        # The number of the page to return. Default value: `1`.
+        # The page number. Default value: `1`.
         self.current_page = current_page
         # Custom filter conditions.
         self.custom_filters = custom_filters
@@ -53414,7 +53514,7 @@ class QueryMetricByPageRequest(TeaModel):
         self.end_time = end_time
         # The filter conditions.
         self.filters = filters
-        # The time interval at which data entries are aggregated. Unit: milliseconds. Minimum value: 60000.
+        # The time interval at which you want to query metric data. Unit: milliseconds. Minimum value: 60000.
         self.interval_in_sec = interval_in_sec
         # The measures of the metric that you want to query.
         self.measures = measures
@@ -53431,7 +53531,7 @@ class QueryMetricByPageRequest(TeaModel):
         self.order = order
         # The dimension from which metrics are sorted. You can set this parameter to a supported dimension.
         self.order_by = order_by
-        # The number of entries to return on each page. This parameter is no longer supported. The number of entries to return on each page.
+        # This parameter is no longer supported. The number of entries per page.
         self.page_size = page_size
         # The start of the time range to query. Unit: milliseconds.
         # 
@@ -54361,10 +54461,15 @@ class RestartEnvironmentFeatureRequest(TeaModel):
         feature_name: str = None,
         region_id: str = None,
     ):
+        # The ID of the environment.
+        # 
         # This parameter is required.
         self.environment_id = environment_id
+        # The feature name. Valid values: app-agent-pilot, metric-agent, ebpf-agent, and service-check.
+        # 
         # This parameter is required.
         self.feature_name = feature_name
+        # The region ID. Default value: cn-hangzhou.
         self.region_id = region_id
 
     def validate(self):
@@ -54404,11 +54509,15 @@ class RestartEnvironmentFeatureResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The returned message.
         self.data = data
+        # The error message returned if the request failed.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true false
         self.success = success
 
     def validate(self):
@@ -59963,9 +60072,9 @@ class UninstallManagedPrometheusRequest(TeaModel):
         resource_group_id: str = None,
         vpc_id: str = None,
     ):
-        # The ID of the ASK cluster. This parameter is required if the ClusterType parameter is set to ask.
+        # The ID of the Container Service for Kubernetes (ACK) cluster. This parameter is required when the ClusterType parameter is set to ask or one.
         self.cluster_id = cluster_id
-        # The type of the monitoring object. Valid values: ask and ecs.
+        # The cluster type. Valid values: ask, ecs, and one.
         # 
         # This parameter is required.
         self.cluster_type = cluster_type
@@ -59975,7 +60084,7 @@ class UninstallManagedPrometheusRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group to which the Prometheus instance belongs.
         self.resource_group_id = resource_group_id
-        # The virtual private cloud (VPC) where the ASK cluster or ECS instance resides.
+        # The ID of the virtual private cloud (VPC) where the cluster resides.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -66344,13 +66453,21 @@ class UpgradeEnvironmentFeatureRequest(TeaModel):
         region_id: str = None,
         values: str = None,
     ):
+        # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
+        # The environment ID.
+        # 
         # This parameter is required.
         self.environment_id = environment_id
+        # The feature name. Valid values: app-agent-pilot, metric-agent, ebpf-agent, and service-check.
+        # 
         # This parameter is required.
         self.feature_name = feature_name
+        # The version of the feature.
         self.feature_version = feature_version
+        # The region ID.
         self.region_id = region_id
+        # Specifies whether to enable service discovery. For PodAnnotation, set the value to run or mini. For PodMonitor and ServiceMonitor, set the value to true or false.
         self.values = values
 
     def validate(self):
@@ -66402,11 +66519,18 @@ class UpgradeEnvironmentFeatureResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The status of the job.
         self.data = data
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
