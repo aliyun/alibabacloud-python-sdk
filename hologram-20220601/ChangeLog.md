@@ -1,3 +1,7 @@
+2024-08-16 Version: 1.3.2
+- Update API GetWarehouseDetail: update response param.
+
+
 2024-04-10 Version: 1.3.1
 - Update API CreateInstance: update param body.
 - Update API ScaleInstance: update param body.

@@ -153,6 +153,8 @@ class CreateInstanceRequest(TeaModel):
         # *   PostPaid: pay-as-you-go
         # 
         # > This parameter is invalid for shared instances. Shared instances have fixed specifications and are pay-as-you-go instances.
+        # 
+        # This parameter is required.
         self.charge_type = charge_type
         # The infrequent access (IA) storage space of the instance. Unit: GB.
         # 
@@ -189,6 +191,8 @@ class CreateInstanceRequest(TeaModel):
         self.gateway_count = gateway_count
         self.initial_databases = initial_databases
         # The name of the Hologres instance that you want to purchase. The name must be 2 to 64 characters in length.
+        # 
+        # This parameter is required.
         self.instance_name = instance_name
         # The type of the instance. Valid values:
         # 
@@ -196,6 +200,8 @@ class CreateInstanceRequest(TeaModel):
         # *   Follower: read-only secondary instance
         # *   Warehouse: virtual warehouse instance
         # *   Shared: shared instance
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
         # The ID of the primary instance. This parameter is required for read-only secondary instances.
         # 
@@ -225,6 +231,8 @@ class CreateInstanceRequest(TeaModel):
         # *   By default, this parameter is set to Hour for shared instances.
         self.pricing_cycle = pricing_cycle
         # The ID of the region. You can go to the [OpenAPI Explorer](https://api.aliyun.com/product/Hologram) or the Usage notes section to view the ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group. If you do not specify this parameter, the default resource group of the account is used.
         self.resource_group_id = resource_group_id
@@ -233,10 +241,16 @@ class CreateInstanceRequest(TeaModel):
         # > This parameter is invalid for pay-as-you-go instances.
         self.storage_size = storage_size
         # The ID of the vSwitch. The zone in which the vSwitch resides must be the same as the zone in which the instance resides.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
         # The ID of the virtual private cloud (VPC). The region in which the VPC resides must be the same as the region in which the Hologres instance resides.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
         # The ID of the zone. For more information about how to obtain the ID of the zone, see the Usage notes section.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1685,19 +1699,71 @@ class GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList(TeaModel):
     def __init__(
         self,
         cpu: int = None,
+        default_warehouse: bool = None,
+        elastic_cpu: int = None,
         id: int = None,
         mem: int = None,
         name: str = None,
         node_count: int = None,
+        rebalance_status: str = None,
         status: str = None,
     ):
-        # cpu
+        # The number of CPU cores.
         self.cpu = cpu
-        # id
+        self.default_warehouse = default_warehouse
+        self.elastic_cpu = elastic_cpu
+        # The ID.
         self.id = id
+        # The memory capacity.
         self.mem = mem
+        # The name of the virtual warehouse instance.
         self.name = name
+        # The number of compute nodes.
         self.node_count = node_count
+        self.rebalance_status = rebalance_status
+        # The status.
+        # 
+        # Valid values:
+        # 
+        # *   kRunning
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   kSuspended
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   kInit
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   kFailed
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   kAllocating
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.status = status
 
     def validate(self):
@@ -1711,6 +1777,10 @@ class GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList(TeaModel):
         result = dict()
         if self.cpu is not None:
             result['Cpu'] = self.cpu
+        if self.default_warehouse is not None:
+            result['DefaultWarehouse'] = self.default_warehouse
+        if self.elastic_cpu is not None:
+            result['ElasticCpu'] = self.elastic_cpu
         if self.id is not None:
             result['Id'] = self.id
         if self.mem is not None:
@@ -1719,6 +1789,8 @@ class GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList(TeaModel):
             result['Name'] = self.name
         if self.node_count is not None:
             result['NodeCount'] = self.node_count
+        if self.rebalance_status is not None:
+            result['RebalanceStatus'] = self.rebalance_status
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -1727,6 +1799,10 @@ class GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList(TeaModel):
         m = m or dict()
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
+        if m.get('DefaultWarehouse') is not None:
+            self.default_warehouse = m.get('DefaultWarehouse')
+        if m.get('ElasticCpu') is not None:
+            self.elastic_cpu = m.get('ElasticCpu')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Mem') is not None:
@@ -1735,6 +1811,8 @@ class GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList(TeaModel):
             self.name = m.get('Name')
         if m.get('NodeCount') is not None:
             self.node_count = m.get('NodeCount')
+        if m.get('RebalanceStatus') is not None:
+            self.rebalance_status = m.get('RebalanceStatus')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -1745,10 +1823,15 @@ class GetWarehouseDetailResponseBodyWarehouseDetail(TeaModel):
         self,
         remaining_cpu: str = None,
         reserved_cpu: str = None,
+        timed_elastic_cpu: str = None,
         warehouse_list: List[GetWarehouseDetailResponseBodyWarehouseDetailWarehouseList] = None,
     ):
+        # The remaining unallocated computing resources of the virtual warehouse instance.
         self.remaining_cpu = remaining_cpu
+        # The reserved computing resources. The amount of computing resources in all running virtual warehouses in an instance cannot exceed the amount of reserved computing resources in the virtual warehouses.
         self.reserved_cpu = reserved_cpu
+        self.timed_elastic_cpu = timed_elastic_cpu
+        # The list of virtual warehouses.
         self.warehouse_list = warehouse_list
 
     def validate(self):
@@ -1767,6 +1850,8 @@ class GetWarehouseDetailResponseBodyWarehouseDetail(TeaModel):
             result['RemainingCpu'] = self.remaining_cpu
         if self.reserved_cpu is not None:
             result['ReservedCpu'] = self.reserved_cpu
+        if self.timed_elastic_cpu is not None:
+            result['TimedElasticCpu'] = self.timed_elastic_cpu
         result['WarehouseList'] = []
         if self.warehouse_list is not None:
             for k in self.warehouse_list:
@@ -1779,6 +1864,8 @@ class GetWarehouseDetailResponseBodyWarehouseDetail(TeaModel):
             self.remaining_cpu = m.get('RemainingCpu')
         if m.get('ReservedCpu') is not None:
             self.reserved_cpu = m.get('ReservedCpu')
+        if m.get('TimedElasticCpu') is not None:
+            self.timed_elastic_cpu = m.get('TimedElasticCpu')
         self.warehouse_list = []
         if m.get('WarehouseList') is not None:
             for k in m.get('WarehouseList'):
@@ -1793,8 +1880,9 @@ class GetWarehouseDetailResponseBody(TeaModel):
         request_id: str = None,
         warehouse_detail: GetWarehouseDetailResponseBodyWarehouseDetail = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The values returned.
         self.warehouse_detail = warehouse_detail
 
     def validate(self):
@@ -2507,13 +2595,59 @@ class ListWarehousesResponseBodyWarehouseList(TeaModel):
         node_count: int = None,
         status: str = None,
     ):
-        # cpu
+        # The number of CPU cores.
         self.cpu = cpu
-        # id
+        # The ID.
         self.id = id
+        # The memory capacity.
         self.mem = mem
+        # The name of the virtual warehouse instance.
         self.name = name
+        # The number of compute nodes.
         self.node_count = node_count
+        # The status.
+        # 
+        # Valid values:
+        # 
+        # *   kRunning
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   kSuspended
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   kInit
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   kFailed
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   kAllocating
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.status = status
 
     def validate(self):
@@ -2562,8 +2696,9 @@ class ListWarehousesResponseBody(TeaModel):
         warehouse_list: List[ListWarehousesResponseBodyWarehouseList] = None,
         request_id: str = None,
     ):
+        # The list of virtual warehouse instances.
         self.warehouse_list = warehouse_list
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2653,6 +2788,8 @@ class RenewInstanceRequest(TeaModel):
         # >  If you enable auto-renewal for an instance for which auto-renewal is enabled, an error is reported.
         self.auto_renew = auto_renew
         # The renewal duration. Unit: month.
+        # 
+        # This parameter is required.
         self.duration = duration
 
     def validate(self):
@@ -3112,6 +3249,8 @@ class ScaleInstanceRequest(TeaModel):
         # *   If you set this parameter to UPGRADE, the new specifications must be higher than the original specifications. You must configure at least one of the cpu, storageSize, and coldStorageSize parameters. If you leave a parameter empty, the related configuration remains unchanged.
         # 
         # *   If you set this parameter to DOWNGRADE, the new specifications must be lower than the original specifications. You must configure at least one of the cpu, storageSize, and coldStorageSize parameters. If you leave a parameter empty, the related configuration remains unchanged.
+        # 
+        # This parameter is required.
         self.scale_type = scale_type
         # The standard storage space of the instance. Unit: GB.
         # 
