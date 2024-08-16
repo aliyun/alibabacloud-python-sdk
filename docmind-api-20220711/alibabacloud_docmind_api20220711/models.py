@@ -206,16 +206,143 @@ class AyncTradeDocumentPackageExtractSmartAppResponse(TeaModel):
         return self
 
 
+class GetDocParserResultRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        layout_num: int = None,
+        layout_step_size: int = None,
+    ):
+        self.id = id
+        self.layout_num = layout_num
+        self.layout_step_size = layout_step_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.layout_num is not None:
+            result['LayoutNum'] = self.layout_num
+        if self.layout_step_size is not None:
+            result['LayoutStepSize'] = self.layout_step_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('LayoutNum') is not None:
+            self.layout_num = m.get('LayoutNum')
+        if m.get('LayoutStepSize') is not None:
+            self.layout_step_size = m.get('LayoutStepSize')
+        return self
+
+
+class GetDocParserResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Dict[str, Any] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDocParserResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDocParserResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDocParserResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDocStructureResultRequest(TeaModel):
     def __init__(
         self,
         id: str = None,
         image_strategy: str = None,
         reveal_markdown: bool = None,
+        use_url_response_body: bool = None,
     ):
         self.id = id
         self.image_strategy = image_strategy
         self.reveal_markdown = reveal_markdown
+        self.use_url_response_body = use_url_response_body
 
     def validate(self):
         pass
@@ -232,6 +359,8 @@ class GetDocStructureResultRequest(TeaModel):
             result['ImageStrategy'] = self.image_strategy
         if self.reveal_markdown is not None:
             result['RevealMarkdown'] = self.reveal_markdown
+        if self.use_url_response_body is not None:
+            result['UseUrlResponseBody'] = self.use_url_response_body
         return result
 
     def from_map(self, m: dict = None):
@@ -242,6 +371,8 @@ class GetDocStructureResultRequest(TeaModel):
             self.image_strategy = m.get('ImageStrategy')
         if m.get('RevealMarkdown') is not None:
             self.reveal_markdown = m.get('RevealMarkdown')
+        if m.get('UseUrlResponseBody') is not None:
+            self.use_url_response_body = m.get('UseUrlResponseBody')
         return self
 
 
@@ -1048,6 +1179,154 @@ class GetTableUnderstandingResultResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTableUnderstandingResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryDocParserStatusRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class QueryDocParserStatusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        number_of_successful_parsing: int = None,
+        status: str = None,
+    ):
+        self.number_of_successful_parsing = number_of_successful_parsing
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.number_of_successful_parsing is not None:
+            result['NumberOfSuccessfulParsing'] = self.number_of_successful_parsing
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NumberOfSuccessfulParsing') is not None:
+            self.number_of_successful_parsing = m.get('NumberOfSuccessfulParsing')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class QueryDocParserStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: QueryDocParserStatusResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryDocParserStatusResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class QueryDocParserStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryDocParserStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryDocParserStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2604,12 +2883,14 @@ class SubmitDigitalDocStructureJobRequest(TeaModel):
         file_url: str = None,
         image_strategy: str = None,
         reveal_markdown: bool = None,
+        use_url_response_body: bool = None,
     ):
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url = file_url
         self.image_strategy = image_strategy
         self.reveal_markdown = reveal_markdown
+        self.use_url_response_body = use_url_response_body
 
     def validate(self):
         pass
@@ -2630,6 +2911,8 @@ class SubmitDigitalDocStructureJobRequest(TeaModel):
             result['ImageStrategy'] = self.image_strategy
         if self.reveal_markdown is not None:
             result['RevealMarkdown'] = self.reveal_markdown
+        if self.use_url_response_body is not None:
+            result['UseUrlResponseBody'] = self.use_url_response_body
         return result
 
     def from_map(self, m: dict = None):
@@ -2644,6 +2927,8 @@ class SubmitDigitalDocStructureJobRequest(TeaModel):
             self.image_strategy = m.get('ImageStrategy')
         if m.get('RevealMarkdown') is not None:
             self.reveal_markdown = m.get('RevealMarkdown')
+        if m.get('UseUrlResponseBody') is not None:
+            self.use_url_response_body = m.get('UseUrlResponseBody')
         return self
 
 
@@ -2655,12 +2940,14 @@ class SubmitDigitalDocStructureJobAdvanceRequest(TeaModel):
         file_url_object: BinaryIO = None,
         image_strategy: str = None,
         reveal_markdown: bool = None,
+        use_url_response_body: bool = None,
     ):
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url_object = file_url_object
         self.image_strategy = image_strategy
         self.reveal_markdown = reveal_markdown
+        self.use_url_response_body = use_url_response_body
 
     def validate(self):
         pass
@@ -2681,6 +2968,8 @@ class SubmitDigitalDocStructureJobAdvanceRequest(TeaModel):
             result['ImageStrategy'] = self.image_strategy
         if self.reveal_markdown is not None:
             result['RevealMarkdown'] = self.reveal_markdown
+        if self.use_url_response_body is not None:
+            result['UseUrlResponseBody'] = self.use_url_response_body
         return result
 
     def from_map(self, m: dict = None):
@@ -2695,6 +2984,8 @@ class SubmitDigitalDocStructureJobAdvanceRequest(TeaModel):
             self.image_strategy = m.get('ImageStrategy')
         if m.get('RevealMarkdown') is not None:
             self.reveal_markdown = m.get('RevealMarkdown')
+        if m.get('UseUrlResponseBody') is not None:
+            self.use_url_response_body = m.get('UseUrlResponseBody')
         return self
 
 
@@ -2792,6 +3083,211 @@ class SubmitDigitalDocStructureJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitDigitalDocStructureJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitDocParserJobRequest(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        file_name_extension: str = None,
+        file_url: str = None,
+        formula_enhancement: bool = None,
+    ):
+        self.file_name = file_name
+        self.file_name_extension = file_name_extension
+        self.file_url = file_url
+        self.formula_enhancement = formula_enhancement
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_name_extension is not None:
+            result['FileNameExtension'] = self.file_name_extension
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.formula_enhancement is not None:
+            result['FormulaEnhancement'] = self.formula_enhancement
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileNameExtension') is not None:
+            self.file_name_extension = m.get('FileNameExtension')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('FormulaEnhancement') is not None:
+            self.formula_enhancement = m.get('FormulaEnhancement')
+        return self
+
+
+class SubmitDocParserJobAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        file_name_extension: str = None,
+        file_url_object: BinaryIO = None,
+        formula_enhancement: bool = None,
+    ):
+        self.file_name = file_name
+        self.file_name_extension = file_name_extension
+        self.file_url_object = file_url_object
+        self.formula_enhancement = formula_enhancement
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_name_extension is not None:
+            result['FileNameExtension'] = self.file_name_extension
+        if self.file_url_object is not None:
+            result['FileUrl'] = self.file_url_object
+        if self.formula_enhancement is not None:
+            result['FormulaEnhancement'] = self.formula_enhancement
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileNameExtension') is not None:
+            self.file_name_extension = m.get('FileNameExtension')
+        if m.get('FileUrl') is not None:
+            self.file_url_object = m.get('FileUrl')
+        if m.get('FormulaEnhancement') is not None:
+            self.formula_enhancement = m.get('FormulaEnhancement')
+        return self
+
+
+class SubmitDocParserJobResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class SubmitDocParserJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SubmitDocParserJobResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SubmitDocParserJobResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SubmitDocParserJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitDocParserJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitDocParserJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -225,6 +225,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.aync_trade_document_package_extract_smart_app_with_options_async(request, runtime)
 
+    def get_doc_parser_result_with_options(
+        self,
+        request: docmind_api_20220711_models.GetDocParserResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> docmind_api_20220711_models.GetDocParserResultResponse:
+        """
+        @summary 文档结构化流式接口
+        
+        @param request: GetDocParserResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocParserResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.layout_num):
+            query['LayoutNum'] = request.layout_num
+        if not UtilClient.is_unset(request.layout_step_size):
+            query['LayoutStepSize'] = request.layout_step_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDocParserResult',
+            version='2022-07-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            docmind_api_20220711_models.GetDocParserResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_doc_parser_result_with_options_async(
+        self,
+        request: docmind_api_20220711_models.GetDocParserResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> docmind_api_20220711_models.GetDocParserResultResponse:
+        """
+        @summary 文档结构化流式接口
+        
+        @param request: GetDocParserResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocParserResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.layout_num):
+            query['LayoutNum'] = request.layout_num
+        if not UtilClient.is_unset(request.layout_step_size):
+            query['LayoutStepSize'] = request.layout_step_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDocParserResult',
+            version='2022-07-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            docmind_api_20220711_models.GetDocParserResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_doc_parser_result(
+        self,
+        request: docmind_api_20220711_models.GetDocParserResultRequest,
+    ) -> docmind_api_20220711_models.GetDocParserResultResponse:
+        """
+        @summary 文档结构化流式接口
+        
+        @param request: GetDocParserResultRequest
+        @return: GetDocParserResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_doc_parser_result_with_options(request, runtime)
+
+    async def get_doc_parser_result_async(
+        self,
+        request: docmind_api_20220711_models.GetDocParserResultRequest,
+    ) -> docmind_api_20220711_models.GetDocParserResultResponse:
+        """
+        @summary 文档结构化流式接口
+        
+        @param request: GetDocParserResultRequest
+        @return: GetDocParserResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_doc_parser_result_with_options_async(request, runtime)
+
     def get_doc_structure_result_with_options(
         self,
         request: docmind_api_20220711_models.GetDocStructureResultRequest,
@@ -245,6 +349,8 @@ class Client(OpenApiClient):
             query['ImageStrategy'] = request.image_strategy
         if not UtilClient.is_unset(request.reveal_markdown):
             query['RevealMarkdown'] = request.reveal_markdown
+        if not UtilClient.is_unset(request.use_url_response_body):
+            query['UseUrlResponseBody'] = request.use_url_response_body
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -284,6 +390,8 @@ class Client(OpenApiClient):
             query['ImageStrategy'] = request.image_strategy
         if not UtilClient.is_unset(request.reveal_markdown):
             query['RevealMarkdown'] = request.reveal_markdown
+        if not UtilClient.is_unset(request.use_url_response_body):
+            query['UseUrlResponseBody'] = request.use_url_response_body
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -808,6 +916,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_table_understanding_result_with_options_async(request, runtime)
+
+    def query_doc_parser_status_with_options(
+        self,
+        request: docmind_api_20220711_models.QueryDocParserStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> docmind_api_20220711_models.QueryDocParserStatusResponse:
+        """
+        @summary 获取文档智能解析处理状态
+        
+        @param request: QueryDocParserStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDocParserStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDocParserStatus',
+            version='2022-07-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            docmind_api_20220711_models.QueryDocParserStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_doc_parser_status_with_options_async(
+        self,
+        request: docmind_api_20220711_models.QueryDocParserStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> docmind_api_20220711_models.QueryDocParserStatusResponse:
+        """
+        @summary 获取文档智能解析处理状态
+        
+        @param request: QueryDocParserStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDocParserStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDocParserStatus',
+            version='2022-07-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            docmind_api_20220711_models.QueryDocParserStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_doc_parser_status(
+        self,
+        request: docmind_api_20220711_models.QueryDocParserStatusRequest,
+    ) -> docmind_api_20220711_models.QueryDocParserStatusResponse:
+        """
+        @summary 获取文档智能解析处理状态
+        
+        @param request: QueryDocParserStatusRequest
+        @return: QueryDocParserStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_doc_parser_status_with_options(request, runtime)
+
+    async def query_doc_parser_status_async(
+        self,
+        request: docmind_api_20220711_models.QueryDocParserStatusRequest,
+    ) -> docmind_api_20220711_models.QueryDocParserStatusResponse:
+        """
+        @summary 获取文档智能解析处理状态
+        
+        @param request: QueryDocParserStatusRequest
+        @return: QueryDocParserStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_doc_parser_status_with_options_async(request, runtime)
 
     def submit_convert_image_to_excel_job_with_options(
         self,
@@ -2289,6 +2493,8 @@ class Client(OpenApiClient):
             query['ImageStrategy'] = request.image_strategy
         if not UtilClient.is_unset(request.reveal_markdown):
             query['RevealMarkdown'] = request.reveal_markdown
+        if not UtilClient.is_unset(request.use_url_response_body):
+            query['UseUrlResponseBody'] = request.use_url_response_body
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2332,6 +2538,8 @@ class Client(OpenApiClient):
             query['ImageStrategy'] = request.image_strategy
         if not UtilClient.is_unset(request.reveal_markdown):
             query['RevealMarkdown'] = request.reveal_markdown
+        if not UtilClient.is_unset(request.use_url_response_body):
+            query['UseUrlResponseBody'] = request.use_url_response_body
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2520,6 +2728,258 @@ class Client(OpenApiClient):
             submit_digital_doc_structure_job_req.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
         submit_digital_doc_structure_job_resp = await self.submit_digital_doc_structure_job_with_options_async(submit_digital_doc_structure_job_req, runtime)
         return submit_digital_doc_structure_job_resp
+
+    def submit_doc_parser_job_with_options(
+        self,
+        request: docmind_api_20220711_models.SubmitDocParserJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> docmind_api_20220711_models.SubmitDocParserJobResponse:
+        """
+        @summary 文档智能解析流式输出
+        
+        @param request: SubmitDocParserJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDocParserJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_name_extension):
+            query['FileNameExtension'] = request.file_name_extension
+        if not UtilClient.is_unset(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.formula_enhancement):
+            query['FormulaEnhancement'] = request.formula_enhancement
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitDocParserJob',
+            version='2022-07-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            docmind_api_20220711_models.SubmitDocParserJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_doc_parser_job_with_options_async(
+        self,
+        request: docmind_api_20220711_models.SubmitDocParserJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> docmind_api_20220711_models.SubmitDocParserJobResponse:
+        """
+        @summary 文档智能解析流式输出
+        
+        @param request: SubmitDocParserJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDocParserJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_name_extension):
+            query['FileNameExtension'] = request.file_name_extension
+        if not UtilClient.is_unset(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.formula_enhancement):
+            query['FormulaEnhancement'] = request.formula_enhancement
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitDocParserJob',
+            version='2022-07-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            docmind_api_20220711_models.SubmitDocParserJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_doc_parser_job(
+        self,
+        request: docmind_api_20220711_models.SubmitDocParserJobRequest,
+    ) -> docmind_api_20220711_models.SubmitDocParserJobResponse:
+        """
+        @summary 文档智能解析流式输出
+        
+        @param request: SubmitDocParserJobRequest
+        @return: SubmitDocParserJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_doc_parser_job_with_options(request, runtime)
+
+    async def submit_doc_parser_job_async(
+        self,
+        request: docmind_api_20220711_models.SubmitDocParserJobRequest,
+    ) -> docmind_api_20220711_models.SubmitDocParserJobResponse:
+        """
+        @summary 文档智能解析流式输出
+        
+        @param request: SubmitDocParserJobRequest
+        @return: SubmitDocParserJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_doc_parser_job_with_options_async(request, runtime)
+
+    def submit_doc_parser_job_advance(
+        self,
+        request: docmind_api_20220711_models.SubmitDocParserJobAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> docmind_api_20220711_models.SubmitDocParserJobResponse:
+        # Step 0: init client
+        access_key_id = self._credential.get_access_key_id()
+        access_key_secret = self._credential.get_access_key_secret()
+        security_token = self._credential.get_security_token()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='docmind-api',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        submit_doc_parser_job_req = docmind_api_20220711_models.SubmitDocParserJobRequest()
+        OpenApiUtilClient.convert(request, submit_doc_parser_job_req)
+        if not UtilClient.is_unset(request.file_url_object):
+            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.file_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            oss_client.post_object(upload_request, oss_runtime)
+            submit_doc_parser_job_req.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        submit_doc_parser_job_resp = self.submit_doc_parser_job_with_options(submit_doc_parser_job_req, runtime)
+        return submit_doc_parser_job_resp
+
+    async def submit_doc_parser_job_advance_async(
+        self,
+        request: docmind_api_20220711_models.SubmitDocParserJobAdvanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> docmind_api_20220711_models.SubmitDocParserJobResponse:
+        # Step 0: init client
+        access_key_id = await self._credential.get_access_key_id_async()
+        access_key_secret = await self._credential.get_access_key_secret_async()
+        security_token = await self._credential.get_security_token_async()
+        credential_type = self._credential.get_type()
+        open_platform_endpoint = self._open_platform_endpoint
+        if UtilClient.empty(open_platform_endpoint):
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if UtilClient.is_unset(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            security_token=security_token,
+            type=credential_type,
+            endpoint=open_platform_endpoint,
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        auth_client = OpenPlatformClient(auth_config)
+        auth_request = open_platform_models.AuthorizeFileUploadRequest(
+            product='docmind-api',
+            region_id=self._region_id
+        )
+        auth_response = open_platform_models.AuthorizeFileUploadResponse()
+        oss_config = oss_models.Config(
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            type='access_key',
+            protocol=self._protocol,
+            region_id=self._region_id
+        )
+        oss_client = OSSClient(oss_config)
+        file_obj = file_form_models.FileField()
+        oss_header = oss_models.PostObjectRequestHeader()
+        upload_request = oss_models.PostObjectRequest()
+        oss_runtime = ossutil_models.RuntimeOptions()
+        OpenApiUtilClient.convert(runtime, oss_runtime)
+        submit_doc_parser_job_req = docmind_api_20220711_models.SubmitDocParserJobRequest()
+        OpenApiUtilClient.convert(request, submit_doc_parser_job_req)
+        if not UtilClient.is_unset(request.file_url_object):
+            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
+            oss_config.access_key_id = auth_response.body.access_key_id
+            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
+            oss_client = OSSClient(oss_config)
+            file_obj = file_form_models.FileField(
+                filename=auth_response.body.object_key,
+                content=request.file_url_object,
+                content_type=''
+            )
+            oss_header = oss_models.PostObjectRequestHeader(
+                access_key_id=auth_response.body.access_key_id,
+                policy=auth_response.body.encoded_policy,
+                signature=auth_response.body.signature,
+                key=auth_response.body.object_key,
+                file=file_obj,
+                success_action_status='201'
+            )
+            upload_request = oss_models.PostObjectRequest(
+                bucket_name=auth_response.body.bucket,
+                header=oss_header
+            )
+            await oss_client.post_object_async(upload_request, oss_runtime)
+            submit_doc_parser_job_req.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+        submit_doc_parser_job_resp = await self.submit_doc_parser_job_with_options_async(submit_doc_parser_job_req, runtime)
+        return submit_doc_parser_job_resp
 
     def submit_doc_structure_job_with_options(
         self,

@@ -1,3 +1,11 @@
+2024-08-16 Version: 1.4.0
+- Support API GetDocParserResult.
+- Support API QueryDocParserStatus.
+- Support API SubmitDocParserJob.
+- Update API GetDocStructureResult: add param UseUrlResponseBody.
+- Update API SubmitDigitalDocStructureJob: add param UseUrlResponseBody.
+
+
 2024-06-28 Version: 1.3.1
 - Delete API SubmitDocumentCompareJob.
 - Update API SubmitDocStructureJob: add param AllowPptFormat.
