@@ -16466,6 +16466,7 @@ class ExportInsightSpaceResponseBodyResult(TeaModel):
     def __init__(
         self,
         category: str = None,
+        custom_code: str = None,
         description: str = None,
         gmt_create: int = None,
         gmt_modified: int = None,
@@ -16480,6 +16481,7 @@ class ExportInsightSpaceResponseBodyResult(TeaModel):
         type: str = None,
     ):
         self.category = category
+        self.custom_code = custom_code
         self.description = description
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
@@ -16504,6 +16506,8 @@ class ExportInsightSpaceResponseBodyResult(TeaModel):
         result = dict()
         if self.category is not None:
             result['category'] = self.category
+        if self.custom_code is not None:
+            result['customCode'] = self.custom_code
         if self.description is not None:
             result['description'] = self.description
         if self.gmt_create is not None:
@@ -16534,6 +16538,8 @@ class ExportInsightSpaceResponseBodyResult(TeaModel):
         m = m or dict()
         if m.get('category') is not None:
             self.category = m.get('category')
+        if m.get('customCode') is not None:
+            self.custom_code = m.get('customCode')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('gmtCreate') is not None:

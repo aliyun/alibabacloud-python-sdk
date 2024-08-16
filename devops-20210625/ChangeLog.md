@@ -1,3 +1,7 @@
+2024-08-16 Version: 4.23.2
+- Update API ExportInsightSpace: update response param.
+
+
 2024-08-02 Version: 4.23.1
 - Update API ExportInsightWorkitemStatus: update response param.
 - Update API ExportInsightWorkitemStatusJoinWorkitemDefectExtra: update response param.
