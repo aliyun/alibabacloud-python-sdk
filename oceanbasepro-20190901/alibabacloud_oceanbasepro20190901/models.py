@@ -33171,9 +33171,7 @@ class DescribeTenantMetricsRequest(TeaModel):
         # 
         # This parameter is required.
         self.start_time = start_time
-        # This parameter is required.
         self.tenant_id = tenant_id
-        # This parameter is required.
         self.tenant_id_list = tenant_id_list
         # 2021-06-13T15:45:43Z
         self.tenant_name = tenant_name

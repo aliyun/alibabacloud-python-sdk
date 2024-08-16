@@ -1,3 +1,8 @@
+2024-08-16 Version: 7.0.2
+- Update API DescribeTenantMetrics: update param TenantId.
+- Update API DescribeTenantMetrics: update param TenantIdList.
+
+
 2024-08-15 Version: 7.0.1
 - Update API CreateInstance: update param InstanceName.
 - Update API DescribeInstance: update response param.
