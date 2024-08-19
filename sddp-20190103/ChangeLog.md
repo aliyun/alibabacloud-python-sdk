@@ -1,3 +1,7 @@
+2024-08-19 Version: 1.3.0
+- Support API ScanOssObjectV1.
+
+
 2024-08-16 Version: 1.2.9
 - Update API DescribeColumns: add param EngineType.
 - Update API DescribeColumns: add param ModelTagId.

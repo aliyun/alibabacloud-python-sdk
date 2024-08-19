@@ -13699,6 +13699,188 @@ class ModifyRuleStatusResponse(TeaModel):
         return self
 
 
+class ScanOssObjectV1Request(TeaModel):
+    def __init__(
+        self,
+        bucket_name: str = None,
+        lang: str = None,
+        object_key_list: List[str] = None,
+        service_region_id: str = None,
+        template_id: int = None,
+    ):
+        # This parameter is required.
+        self.bucket_name = bucket_name
+        self.lang = lang
+        # This parameter is required.
+        self.object_key_list = object_key_list
+        # This parameter is required.
+        self.service_region_id = service_region_id
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket_name is not None:
+            result['BucketName'] = self.bucket_name
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.object_key_list is not None:
+            result['ObjectKeyList'] = self.object_key_list
+        if self.service_region_id is not None:
+            result['ServiceRegionId'] = self.service_region_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BucketName') is not None:
+            self.bucket_name = m.get('BucketName')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('ObjectKeyList') is not None:
+            self.object_key_list = m.get('ObjectKeyList')
+        if m.get('ServiceRegionId') is not None:
+            self.service_region_id = m.get('ServiceRegionId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class ScanOssObjectV1ShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        bucket_name: str = None,
+        lang: str = None,
+        object_key_list_shrink: str = None,
+        service_region_id: str = None,
+        template_id: int = None,
+    ):
+        # This parameter is required.
+        self.bucket_name = bucket_name
+        self.lang = lang
+        # This parameter is required.
+        self.object_key_list_shrink = object_key_list_shrink
+        # This parameter is required.
+        self.service_region_id = service_region_id
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket_name is not None:
+            result['BucketName'] = self.bucket_name
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.object_key_list_shrink is not None:
+            result['ObjectKeyList'] = self.object_key_list_shrink
+        if self.service_region_id is not None:
+            result['ServiceRegionId'] = self.service_region_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BucketName') is not None:
+            self.bucket_name = m.get('BucketName')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('ObjectKeyList') is not None:
+            self.object_key_list_shrink = m.get('ObjectKeyList')
+        if m.get('ServiceRegionId') is not None:
+            self.service_region_id = m.get('ServiceRegionId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class ScanOssObjectV1ResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ScanOssObjectV1Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ScanOssObjectV1ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ScanOssObjectV1ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopMaskingProcessRequest(TeaModel):
     def __init__(
         self,

@@ -6212,6 +6212,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_rule_status_with_options_async(request, runtime)
 
+    def scan_oss_object_v1with_options(
+        self,
+        tmp_req: sddp_20190103_models.ScanOssObjectV1Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.ScanOssObjectV1Response:
+        """
+        @summary 创建文件扫描任务
+        
+        @param tmp_req: ScanOssObjectV1Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScanOssObjectV1Response
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sddp_20190103_models.ScanOssObjectV1ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.object_key_list):
+            request.object_key_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.object_key_list, 'ObjectKeyList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.object_key_list_shrink):
+            query['ObjectKeyList'] = request.object_key_list_shrink
+        if not UtilClient.is_unset(request.service_region_id):
+            query['ServiceRegionId'] = request.service_region_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ScanOssObjectV1',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.ScanOssObjectV1Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def scan_oss_object_v1with_options_async(
+        self,
+        tmp_req: sddp_20190103_models.ScanOssObjectV1Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.ScanOssObjectV1Response:
+        """
+        @summary 创建文件扫描任务
+        
+        @param tmp_req: ScanOssObjectV1Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScanOssObjectV1Response
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sddp_20190103_models.ScanOssObjectV1ShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.object_key_list):
+            request.object_key_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.object_key_list, 'ObjectKeyList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.object_key_list_shrink):
+            query['ObjectKeyList'] = request.object_key_list_shrink
+        if not UtilClient.is_unset(request.service_region_id):
+            query['ServiceRegionId'] = request.service_region_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ScanOssObjectV1',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.ScanOssObjectV1Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def scan_oss_object_v1(
+        self,
+        request: sddp_20190103_models.ScanOssObjectV1Request,
+    ) -> sddp_20190103_models.ScanOssObjectV1Response:
+        """
+        @summary 创建文件扫描任务
+        
+        @param request: ScanOssObjectV1Request
+        @return: ScanOssObjectV1Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.scan_oss_object_v1with_options(request, runtime)
+
+    async def scan_oss_object_v1_async(
+        self,
+        request: sddp_20190103_models.ScanOssObjectV1Request,
+    ) -> sddp_20190103_models.ScanOssObjectV1Response:
+        """
+        @summary 创建文件扫描任务
+        
+        @param request: ScanOssObjectV1Request
+        @return: ScanOssObjectV1Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.scan_oss_object_v1with_options_async(request, runtime)
+
     def stop_masking_process_with_options(
         self,
         request: sddp_20190103_models.StopMaskingProcessRequest,
