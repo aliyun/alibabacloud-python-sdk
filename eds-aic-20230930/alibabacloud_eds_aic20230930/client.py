@@ -486,6 +486,8 @@ class Client(OpenApiClient):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.gpu_acceleration):
             query['GpuAcceleration'] = request.gpu_acceleration
         if not UtilClient.is_unset(request.image_id):
@@ -549,6 +551,8 @@ class Client(OpenApiClient):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.gpu_acceleration):
             query['GpuAcceleration'] = request.gpu_acceleration
         if not UtilClient.is_unset(request.image_id):
@@ -744,6 +748,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.image_name):
@@ -783,6 +789,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.image_name):
@@ -932,17 +940,21 @@ class Client(OpenApiClient):
 
     def create_policy_group_with_options(
         self,
-        request: eds_aic_20230930_models.CreatePolicyGroupRequest,
+        tmp_req: eds_aic_20230930_models.CreatePolicyGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.CreatePolicyGroupResponse:
         """
         @summary 创建策略
         
-        @param request: CreatePolicyGroupRequest
+        @param tmp_req: CreatePolicyGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePolicyGroupResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = eds_aic_20230930_models.CreatePolicyGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.net_redirect_policy):
+            request.net_redirect_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.net_redirect_policy, 'NetRedirectPolicy', 'json')
         body = {}
         if not UtilClient.is_unset(request.camera_redirect):
             body['CameraRedirect'] = request.camera_redirect
@@ -952,6 +964,8 @@ class Client(OpenApiClient):
             body['Html5FileTransfer'] = request.html_5file_transfer
         if not UtilClient.is_unset(request.local_drive):
             body['LocalDrive'] = request.local_drive
+        if not UtilClient.is_unset(request.net_redirect_policy_shrink):
+            body['NetRedirectPolicy'] = request.net_redirect_policy_shrink
         if not UtilClient.is_unset(request.policy_group_name):
             body['PolicyGroupName'] = request.policy_group_name
         if not UtilClient.is_unset(request.resolution_height):
@@ -979,17 +993,21 @@ class Client(OpenApiClient):
 
     async def create_policy_group_with_options_async(
         self,
-        request: eds_aic_20230930_models.CreatePolicyGroupRequest,
+        tmp_req: eds_aic_20230930_models.CreatePolicyGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.CreatePolicyGroupResponse:
         """
         @summary 创建策略
         
-        @param request: CreatePolicyGroupRequest
+        @param tmp_req: CreatePolicyGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreatePolicyGroupResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = eds_aic_20230930_models.CreatePolicyGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.net_redirect_policy):
+            request.net_redirect_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.net_redirect_policy, 'NetRedirectPolicy', 'json')
         body = {}
         if not UtilClient.is_unset(request.camera_redirect):
             body['CameraRedirect'] = request.camera_redirect
@@ -999,6 +1017,8 @@ class Client(OpenApiClient):
             body['Html5FileTransfer'] = request.html_5file_transfer
         if not UtilClient.is_unset(request.local_drive):
             body['LocalDrive'] = request.local_drive
+        if not UtilClient.is_unset(request.net_redirect_policy_shrink):
+            body['NetRedirectPolicy'] = request.net_redirect_policy_shrink
         if not UtilClient.is_unset(request.policy_group_name):
             body['PolicyGroupName'] = request.policy_group_name
         if not UtilClient.is_unset(request.resolution_height):
@@ -1682,6 +1702,8 @@ class Client(OpenApiClient):
             query['AndroidInstanceName'] = request.android_instance_name
         if not UtilClient.is_unset(request.instance_group_id):
             query['InstanceGroupId'] = request.instance_group_id
+        if not UtilClient.is_unset(request.instance_group_ids):
+            query['InstanceGroupIds'] = request.instance_group_ids
         if not UtilClient.is_unset(request.key_pair_id):
             query['KeyPairId'] = request.key_pair_id
         if not UtilClient.is_unset(request.max_results):
@@ -1731,6 +1753,8 @@ class Client(OpenApiClient):
             query['AndroidInstanceName'] = request.android_instance_name
         if not UtilClient.is_unset(request.instance_group_id):
             query['InstanceGroupId'] = request.instance_group_id
+        if not UtilClient.is_unset(request.instance_group_ids):
+            query['InstanceGroupIds'] = request.instance_group_ids
         if not UtilClient.is_unset(request.key_pair_id):
             query['KeyPairId'] = request.key_pair_id
         if not UtilClient.is_unset(request.max_results):
@@ -3270,6 +3294,8 @@ class Client(OpenApiClient):
             query['AppIdList'] = request.app_id_list
         if not UtilClient.is_unset(request.instance_group_id_list):
             query['InstanceGroupIdList'] = request.instance_group_id_list
+        if not UtilClient.is_unset(request.instance_id_list):
+            query['InstanceIdList'] = request.instance_id_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3307,6 +3333,8 @@ class Client(OpenApiClient):
             query['AppIdList'] = request.app_id_list
         if not UtilClient.is_unset(request.instance_group_id_list):
             query['InstanceGroupIdList'] = request.instance_group_id_list
+        if not UtilClient.is_unset(request.instance_id_list):
+            query['InstanceIdList'] = request.instance_id_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3874,17 +3902,21 @@ class Client(OpenApiClient):
 
     def modify_policy_group_with_options(
         self,
-        request: eds_aic_20230930_models.ModifyPolicyGroupRequest,
+        tmp_req: eds_aic_20230930_models.ModifyPolicyGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.ModifyPolicyGroupResponse:
         """
         @summary 修改policy
         
-        @param request: ModifyPolicyGroupRequest
+        @param tmp_req: ModifyPolicyGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyPolicyGroupResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = eds_aic_20230930_models.ModifyPolicyGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.net_redirect_policy):
+            request.net_redirect_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.net_redirect_policy, 'NetRedirectPolicy', 'json')
         body = {}
         if not UtilClient.is_unset(request.camera_redirect):
             body['CameraRedirect'] = request.camera_redirect
@@ -3894,6 +3926,8 @@ class Client(OpenApiClient):
             body['Html5FileTransfer'] = request.html_5file_transfer
         if not UtilClient.is_unset(request.local_drive):
             body['LocalDrive'] = request.local_drive
+        if not UtilClient.is_unset(request.net_redirect_policy_shrink):
+            body['NetRedirectPolicy'] = request.net_redirect_policy_shrink
         if not UtilClient.is_unset(request.policy_group_id):
             body['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.policy_group_name):
@@ -3923,17 +3957,21 @@ class Client(OpenApiClient):
 
     async def modify_policy_group_with_options_async(
         self,
-        request: eds_aic_20230930_models.ModifyPolicyGroupRequest,
+        tmp_req: eds_aic_20230930_models.ModifyPolicyGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.ModifyPolicyGroupResponse:
         """
         @summary 修改policy
         
-        @param request: ModifyPolicyGroupRequest
+        @param tmp_req: ModifyPolicyGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyPolicyGroupResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = eds_aic_20230930_models.ModifyPolicyGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.net_redirect_policy):
+            request.net_redirect_policy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.net_redirect_policy, 'NetRedirectPolicy', 'json')
         body = {}
         if not UtilClient.is_unset(request.camera_redirect):
             body['CameraRedirect'] = request.camera_redirect
@@ -3943,6 +3981,8 @@ class Client(OpenApiClient):
             body['Html5FileTransfer'] = request.html_5file_transfer
         if not UtilClient.is_unset(request.local_drive):
             body['LocalDrive'] = request.local_drive
+        if not UtilClient.is_unset(request.net_redirect_policy_shrink):
+            body['NetRedirectPolicy'] = request.net_redirect_policy_shrink
         if not UtilClient.is_unset(request.policy_group_id):
             body['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.policy_group_name):

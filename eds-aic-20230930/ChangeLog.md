@@ -1,3 +1,17 @@
+2024-08-19 Version: 1.3.4
+- Update API CreateAndroidInstanceGroup: add param ClientToken.
+- Update API CreateAndroidInstanceGroup: update param Amount.
+- Update API CreateAndroidInstanceGroup: update response param.
+- Update API CreateCustomImage: add param ClientToken.
+- Update API CreateCustomImage: update response param.
+- Update API CreatePolicyGroup: add param NetRedirectPolicy.
+- Update API DescribeAndroidInstances: add param InstanceGroupIds.
+- Update API InstallApp: add param InstanceIdList.
+- Update API InstallApp: update param InstanceGroupIdList.
+- Update API ListPolicyGroups: update response param.
+- Update API ModifyPolicyGroup: add param NetRedirectPolicy.
+
+
 2024-08-12 Version: 1.3.3
 - Update API RecoveryFile: update param BackupFileId.
 - Update API RecoveryFile: update param BackupFilePath.

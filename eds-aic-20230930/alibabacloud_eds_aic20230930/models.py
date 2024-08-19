@@ -608,6 +608,7 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
         auto_renew: bool = None,
         biz_region_id: str = None,
         charge_type: str = None,
+        client_token: str = None,
         gpu_acceleration: bool = None,
         image_id: str = None,
         instance_group_name: str = None,
@@ -625,6 +626,7 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
         # This parameter is required.
         self.biz_region_id = biz_region_id
         self.charge_type = charge_type
+        self.client_token = client_token
         self.gpu_acceleration = gpu_acceleration
         # This parameter is required.
         self.image_id = image_id
@@ -658,6 +660,8 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             result['BizRegionId'] = self.biz_region_id
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.gpu_acceleration is not None:
             result['GpuAcceleration'] = self.gpu_acceleration
         if self.image_id is not None:
@@ -692,6 +696,8 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             self.biz_region_id = m.get('BizRegionId')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('GpuAcceleration') is not None:
             self.gpu_acceleration = m.get('GpuAcceleration')
         if m.get('ImageId') is not None:
@@ -715,16 +721,14 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
         return self
 
 
-class CreateAndroidInstanceGroupResponseBody(TeaModel):
+class CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos(TeaModel):
     def __init__(
         self,
-        instance_group_ids: List[str] = None,
-        order_id: str = None,
-        request_id: str = None,
+        instance_group_id: str = None,
+        instance_ids: List[str] = None,
     ):
-        self.instance_group_ids = instance_group_ids
-        self.order_id = order_id
-        self.request_id = request_id
+        self.instance_group_id = instance_group_id
+        self.instance_ids = instance_ids
 
     def validate(self):
         pass
@@ -735,8 +739,52 @@ class CreateAndroidInstanceGroupResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.instance_group_id is not None:
+            result['InstanceGroupId'] = self.instance_group_id
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceGroupId') is not None:
+            self.instance_group_id = m.get('InstanceGroupId')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        return self
+
+
+class CreateAndroidInstanceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_group_ids: List[str] = None,
+        instance_group_infos: List[CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos] = None,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        self.instance_group_ids = instance_group_ids
+        self.instance_group_infos = instance_group_infos
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instance_group_infos:
+            for k in self.instance_group_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.instance_group_ids is not None:
             result['InstanceGroupIds'] = self.instance_group_ids
+        result['InstanceGroupInfos'] = []
+        if self.instance_group_infos is not None:
+            for k in self.instance_group_infos:
+                result['InstanceGroupInfos'].append(k.to_map() if k else None)
         if self.order_id is not None:
             result['OrderId'] = self.order_id
         if self.request_id is not None:
@@ -747,6 +795,11 @@ class CreateAndroidInstanceGroupResponseBody(TeaModel):
         m = m or dict()
         if m.get('InstanceGroupIds') is not None:
             self.instance_group_ids = m.get('InstanceGroupIds')
+        self.instance_group_infos = []
+        if m.get('InstanceGroupInfos') is not None:
+            for k in m.get('InstanceGroupInfos'):
+                temp_model = CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos()
+                self.instance_group_infos.append(temp_model.from_map(k))
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
         if m.get('RequestId') is not None:
@@ -942,10 +995,12 @@ class CreateAppResponse(TeaModel):
 class CreateCustomImageRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         description: str = None,
         image_name: str = None,
         instance_id: str = None,
     ):
+        self.client_token = client_token
         self.description = description
         # This parameter is required.
         self.image_name = image_name
@@ -961,6 +1016,8 @@ class CreateCustomImageRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
         if self.image_name is not None:
@@ -971,6 +1028,8 @@ class CreateCustomImageRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('ImageName') is not None:
@@ -983,8 +1042,10 @@ class CreateCustomImageRequest(TeaModel):
 class CreateCustomImageResponseBody(TeaModel):
     def __init__(
         self,
+        image_id: str = None,
         request_id: str = None,
     ):
+        self.image_id = image_id
         self.request_id = request_id
 
     def validate(self):
@@ -996,12 +1057,16 @@ class CreateCustomImageResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -1197,6 +1262,86 @@ class CreateKeyPairResponse(TeaModel):
         return self
 
 
+class CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule(TeaModel):
+    def __init__(
+        self,
+        policy: str = None,
+        rule_type: str = None,
+        target: str = None,
+    ):
+        self.policy = policy
+        self.rule_type = rule_type
+        self.target = target
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        if self.target is not None:
+            result['Target'] = self.target
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        return self
+
+
+class CreatePolicyGroupRequestNetRedirectPolicy(TeaModel):
+    def __init__(
+        self,
+        net_redirect: str = None,
+        net_redirect_rule: List[CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule] = None,
+    ):
+        self.net_redirect = net_redirect
+        self.net_redirect_rule = net_redirect_rule
+
+    def validate(self):
+        if self.net_redirect_rule:
+            for k in self.net_redirect_rule:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.net_redirect is not None:
+            result['NetRedirect'] = self.net_redirect
+        result['NetRedirectRule'] = []
+        if self.net_redirect_rule is not None:
+            for k in self.net_redirect_rule:
+                result['NetRedirectRule'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetRedirect') is not None:
+            self.net_redirect = m.get('NetRedirect')
+        self.net_redirect_rule = []
+        if m.get('NetRedirectRule') is not None:
+            for k in m.get('NetRedirectRule'):
+                temp_model = CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule()
+                self.net_redirect_rule.append(temp_model.from_map(k))
+        return self
+
+
 class CreatePolicyGroupRequest(TeaModel):
     def __init__(
         self,
@@ -1204,6 +1349,7 @@ class CreatePolicyGroupRequest(TeaModel):
         clipboard: str = None,
         html_5file_transfer: str = None,
         local_drive: str = None,
+        net_redirect_policy: CreatePolicyGroupRequestNetRedirectPolicy = None,
         policy_group_name: str = None,
         resolution_height: int = None,
         resolution_width: int = None,
@@ -1212,6 +1358,78 @@ class CreatePolicyGroupRequest(TeaModel):
         self.clipboard = clipboard
         self.html_5file_transfer = html_5file_transfer
         self.local_drive = local_drive
+        self.net_redirect_policy = net_redirect_policy
+        self.policy_group_name = policy_group_name
+        self.resolution_height = resolution_height
+        self.resolution_width = resolution_width
+
+    def validate(self):
+        if self.net_redirect_policy:
+            self.net_redirect_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.camera_redirect is not None:
+            result['CameraRedirect'] = self.camera_redirect
+        if self.clipboard is not None:
+            result['Clipboard'] = self.clipboard
+        if self.html_5file_transfer is not None:
+            result['Html5FileTransfer'] = self.html_5file_transfer
+        if self.local_drive is not None:
+            result['LocalDrive'] = self.local_drive
+        if self.net_redirect_policy is not None:
+            result['NetRedirectPolicy'] = self.net_redirect_policy.to_map()
+        if self.policy_group_name is not None:
+            result['PolicyGroupName'] = self.policy_group_name
+        if self.resolution_height is not None:
+            result['ResolutionHeight'] = self.resolution_height
+        if self.resolution_width is not None:
+            result['ResolutionWidth'] = self.resolution_width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CameraRedirect') is not None:
+            self.camera_redirect = m.get('CameraRedirect')
+        if m.get('Clipboard') is not None:
+            self.clipboard = m.get('Clipboard')
+        if m.get('Html5FileTransfer') is not None:
+            self.html_5file_transfer = m.get('Html5FileTransfer')
+        if m.get('LocalDrive') is not None:
+            self.local_drive = m.get('LocalDrive')
+        if m.get('NetRedirectPolicy') is not None:
+            temp_model = CreatePolicyGroupRequestNetRedirectPolicy()
+            self.net_redirect_policy = temp_model.from_map(m['NetRedirectPolicy'])
+        if m.get('PolicyGroupName') is not None:
+            self.policy_group_name = m.get('PolicyGroupName')
+        if m.get('ResolutionHeight') is not None:
+            self.resolution_height = m.get('ResolutionHeight')
+        if m.get('ResolutionWidth') is not None:
+            self.resolution_width = m.get('ResolutionWidth')
+        return self
+
+
+class CreatePolicyGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        camera_redirect: str = None,
+        clipboard: str = None,
+        html_5file_transfer: str = None,
+        local_drive: str = None,
+        net_redirect_policy_shrink: str = None,
+        policy_group_name: str = None,
+        resolution_height: int = None,
+        resolution_width: int = None,
+    ):
+        self.camera_redirect = camera_redirect
+        self.clipboard = clipboard
+        self.html_5file_transfer = html_5file_transfer
+        self.local_drive = local_drive
+        self.net_redirect_policy_shrink = net_redirect_policy_shrink
         self.policy_group_name = policy_group_name
         self.resolution_height = resolution_height
         self.resolution_width = resolution_width
@@ -1233,6 +1451,8 @@ class CreatePolicyGroupRequest(TeaModel):
             result['Html5FileTransfer'] = self.html_5file_transfer
         if self.local_drive is not None:
             result['LocalDrive'] = self.local_drive
+        if self.net_redirect_policy_shrink is not None:
+            result['NetRedirectPolicy'] = self.net_redirect_policy_shrink
         if self.policy_group_name is not None:
             result['PolicyGroupName'] = self.policy_group_name
         if self.resolution_height is not None:
@@ -1251,6 +1471,8 @@ class CreatePolicyGroupRequest(TeaModel):
             self.html_5file_transfer = m.get('Html5FileTransfer')
         if m.get('LocalDrive') is not None:
             self.local_drive = m.get('LocalDrive')
+        if m.get('NetRedirectPolicy') is not None:
+            self.net_redirect_policy_shrink = m.get('NetRedirectPolicy')
         if m.get('PolicyGroupName') is not None:
             self.policy_group_name = m.get('PolicyGroupName')
         if m.get('ResolutionHeight') is not None:
@@ -2285,6 +2507,7 @@ class DescribeAndroidInstancesRequest(TeaModel):
         android_instance_ids: List[str] = None,
         android_instance_name: str = None,
         instance_group_id: str = None,
+        instance_group_ids: List[str] = None,
         key_pair_id: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -2294,6 +2517,7 @@ class DescribeAndroidInstancesRequest(TeaModel):
         self.android_instance_ids = android_instance_ids
         self.android_instance_name = android_instance_name
         self.instance_group_id = instance_group_id
+        self.instance_group_ids = instance_group_ids
         self.key_pair_id = key_pair_id
         self.max_results = max_results
         self.next_token = next_token
@@ -2315,6 +2539,8 @@ class DescribeAndroidInstancesRequest(TeaModel):
             result['AndroidInstanceName'] = self.android_instance_name
         if self.instance_group_id is not None:
             result['InstanceGroupId'] = self.instance_group_id
+        if self.instance_group_ids is not None:
+            result['InstanceGroupIds'] = self.instance_group_ids
         if self.key_pair_id is not None:
             result['KeyPairId'] = self.key_pair_id
         if self.max_results is not None:
@@ -2335,6 +2561,8 @@ class DescribeAndroidInstancesRequest(TeaModel):
             self.android_instance_name = m.get('AndroidInstanceName')
         if m.get('InstanceGroupId') is not None:
             self.instance_group_id = m.get('InstanceGroupId')
+        if m.get('InstanceGroupIds') is not None:
+            self.instance_group_ids = m.get('InstanceGroupIds')
         if m.get('KeyPairId') is not None:
             self.key_pair_id = m.get('KeyPairId')
         if m.get('MaxResults') is not None:
@@ -5095,9 +5323,11 @@ class InstallAppRequest(TeaModel):
         self,
         app_id_list: List[str] = None,
         instance_group_id_list: List[str] = None,
+        instance_id_list: List[str] = None,
     ):
         self.app_id_list = app_id_list
         self.instance_group_id_list = instance_group_id_list
+        self.instance_id_list = instance_id_list
 
     def validate(self):
         pass
@@ -5112,6 +5342,8 @@ class InstallAppRequest(TeaModel):
             result['AppIdList'] = self.app_id_list
         if self.instance_group_id_list is not None:
             result['InstanceGroupIdList'] = self.instance_group_id_list
+        if self.instance_id_list is not None:
+            result['InstanceIdList'] = self.instance_id_list
         return result
 
     def from_map(self, m: dict = None):
@@ -5120,6 +5352,8 @@ class InstallAppRequest(TeaModel):
             self.app_id_list = m.get('AppIdList')
         if m.get('InstanceGroupIdList') is not None:
             self.instance_group_id_list = m.get('InstanceGroupIdList')
+        if m.get('InstanceIdList') is not None:
+            self.instance_id_list = m.get('InstanceIdList')
         return self
 
 
@@ -5236,6 +5470,86 @@ class ListPolicyGroupsRequest(TeaModel):
         return self
 
 
+class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule(TeaModel):
+    def __init__(
+        self,
+        policy: str = None,
+        rule_type: str = None,
+        target: str = None,
+    ):
+        self.policy = policy
+        self.rule_type = rule_type
+        self.target = target
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        if self.target is not None:
+            result['Target'] = self.target
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        return self
+
+
+class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy(TeaModel):
+    def __init__(
+        self,
+        net_redirect: str = None,
+        net_redirect_rule: List[ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule] = None,
+    ):
+        self.net_redirect = net_redirect
+        self.net_redirect_rule = net_redirect_rule
+
+    def validate(self):
+        if self.net_redirect_rule:
+            for k in self.net_redirect_rule:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.net_redirect is not None:
+            result['NetRedirect'] = self.net_redirect
+        result['NetRedirectRule'] = []
+        if self.net_redirect_rule is not None:
+            for k in self.net_redirect_rule:
+                result['NetRedirectRule'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetRedirect') is not None:
+            self.net_redirect = m.get('NetRedirect')
+        self.net_redirect_rule = []
+        if m.get('NetRedirectRule') is not None:
+            for k in m.get('NetRedirectRule'):
+                temp_model = ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule()
+                self.net_redirect_rule.append(temp_model.from_map(k))
+        return self
+
+
 class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
     def __init__(
         self,
@@ -5244,6 +5558,7 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
         gmt_create: str = None,
         html_5file_transfer: str = None,
         local_drive: str = None,
+        net_redirect_policy: ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy = None,
         policy_group_id: str = None,
         policy_group_name: str = None,
         session_resolution_height: str = None,
@@ -5254,13 +5569,15 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
         self.gmt_create = gmt_create
         self.html_5file_transfer = html_5file_transfer
         self.local_drive = local_drive
+        self.net_redirect_policy = net_redirect_policy
         self.policy_group_id = policy_group_id
         self.policy_group_name = policy_group_name
         self.session_resolution_height = session_resolution_height
         self.session_resolution_width = session_resolution_width
 
     def validate(self):
-        pass
+        if self.net_redirect_policy:
+            self.net_redirect_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5278,6 +5595,8 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
             result['Html5FileTransfer'] = self.html_5file_transfer
         if self.local_drive is not None:
             result['LocalDrive'] = self.local_drive
+        if self.net_redirect_policy is not None:
+            result['NetRedirectPolicy'] = self.net_redirect_policy.to_map()
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
         if self.policy_group_name is not None:
@@ -5300,6 +5619,9 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(TeaModel):
             self.html_5file_transfer = m.get('Html5FileTransfer')
         if m.get('LocalDrive') is not None:
             self.local_drive = m.get('LocalDrive')
+        if m.get('NetRedirectPolicy') is not None:
+            temp_model = ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy()
+            self.net_redirect_policy = temp_model.from_map(m['NetRedirectPolicy'])
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')
         if m.get('PolicyGroupName') is not None:
@@ -5829,6 +6151,86 @@ class ModifyKeyPairNameResponse(TeaModel):
         return self
 
 
+class ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule(TeaModel):
+    def __init__(
+        self,
+        policy: str = None,
+        rule_type: str = None,
+        target: str = None,
+    ):
+        self.policy = policy
+        self.rule_type = rule_type
+        self.target = target
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        if self.target is not None:
+            result['Target'] = self.target
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        return self
+
+
+class ModifyPolicyGroupRequestNetRedirectPolicy(TeaModel):
+    def __init__(
+        self,
+        net_redirect: str = None,
+        net_redirect_rule: List[ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule] = None,
+    ):
+        self.net_redirect = net_redirect
+        self.net_redirect_rule = net_redirect_rule
+
+    def validate(self):
+        if self.net_redirect_rule:
+            for k in self.net_redirect_rule:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.net_redirect is not None:
+            result['NetRedirect'] = self.net_redirect
+        result['NetRedirectRule'] = []
+        if self.net_redirect_rule is not None:
+            for k in self.net_redirect_rule:
+                result['NetRedirectRule'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetRedirect') is not None:
+            self.net_redirect = m.get('NetRedirect')
+        self.net_redirect_rule = []
+        if m.get('NetRedirectRule') is not None:
+            for k in m.get('NetRedirectRule'):
+                temp_model = ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule()
+                self.net_redirect_rule.append(temp_model.from_map(k))
+        return self
+
+
 class ModifyPolicyGroupRequest(TeaModel):
     def __init__(
         self,
@@ -5836,6 +6238,7 @@ class ModifyPolicyGroupRequest(TeaModel):
         clipboard: str = None,
         html_5file_transfer: str = None,
         local_drive: str = None,
+        net_redirect_policy: ModifyPolicyGroupRequestNetRedirectPolicy = None,
         policy_group_id: str = None,
         policy_group_name: str = None,
         resolution_height: int = None,
@@ -5845,6 +6248,84 @@ class ModifyPolicyGroupRequest(TeaModel):
         self.clipboard = clipboard
         self.html_5file_transfer = html_5file_transfer
         self.local_drive = local_drive
+        self.net_redirect_policy = net_redirect_policy
+        self.policy_group_id = policy_group_id
+        self.policy_group_name = policy_group_name
+        self.resolution_height = resolution_height
+        self.resolution_width = resolution_width
+
+    def validate(self):
+        if self.net_redirect_policy:
+            self.net_redirect_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.camera_redirect is not None:
+            result['CameraRedirect'] = self.camera_redirect
+        if self.clipboard is not None:
+            result['Clipboard'] = self.clipboard
+        if self.html_5file_transfer is not None:
+            result['Html5FileTransfer'] = self.html_5file_transfer
+        if self.local_drive is not None:
+            result['LocalDrive'] = self.local_drive
+        if self.net_redirect_policy is not None:
+            result['NetRedirectPolicy'] = self.net_redirect_policy.to_map()
+        if self.policy_group_id is not None:
+            result['PolicyGroupId'] = self.policy_group_id
+        if self.policy_group_name is not None:
+            result['PolicyGroupName'] = self.policy_group_name
+        if self.resolution_height is not None:
+            result['ResolutionHeight'] = self.resolution_height
+        if self.resolution_width is not None:
+            result['ResolutionWidth'] = self.resolution_width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CameraRedirect') is not None:
+            self.camera_redirect = m.get('CameraRedirect')
+        if m.get('Clipboard') is not None:
+            self.clipboard = m.get('Clipboard')
+        if m.get('Html5FileTransfer') is not None:
+            self.html_5file_transfer = m.get('Html5FileTransfer')
+        if m.get('LocalDrive') is not None:
+            self.local_drive = m.get('LocalDrive')
+        if m.get('NetRedirectPolicy') is not None:
+            temp_model = ModifyPolicyGroupRequestNetRedirectPolicy()
+            self.net_redirect_policy = temp_model.from_map(m['NetRedirectPolicy'])
+        if m.get('PolicyGroupId') is not None:
+            self.policy_group_id = m.get('PolicyGroupId')
+        if m.get('PolicyGroupName') is not None:
+            self.policy_group_name = m.get('PolicyGroupName')
+        if m.get('ResolutionHeight') is not None:
+            self.resolution_height = m.get('ResolutionHeight')
+        if m.get('ResolutionWidth') is not None:
+            self.resolution_width = m.get('ResolutionWidth')
+        return self
+
+
+class ModifyPolicyGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        camera_redirect: str = None,
+        clipboard: str = None,
+        html_5file_transfer: str = None,
+        local_drive: str = None,
+        net_redirect_policy_shrink: str = None,
+        policy_group_id: str = None,
+        policy_group_name: str = None,
+        resolution_height: int = None,
+        resolution_width: int = None,
+    ):
+        self.camera_redirect = camera_redirect
+        self.clipboard = clipboard
+        self.html_5file_transfer = html_5file_transfer
+        self.local_drive = local_drive
+        self.net_redirect_policy_shrink = net_redirect_policy_shrink
         self.policy_group_id = policy_group_id
         self.policy_group_name = policy_group_name
         self.resolution_height = resolution_height
@@ -5867,6 +6348,8 @@ class ModifyPolicyGroupRequest(TeaModel):
             result['Html5FileTransfer'] = self.html_5file_transfer
         if self.local_drive is not None:
             result['LocalDrive'] = self.local_drive
+        if self.net_redirect_policy_shrink is not None:
+            result['NetRedirectPolicy'] = self.net_redirect_policy_shrink
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
         if self.policy_group_name is not None:
@@ -5887,6 +6370,8 @@ class ModifyPolicyGroupRequest(TeaModel):
             self.html_5file_transfer = m.get('Html5FileTransfer')
         if m.get('LocalDrive') is not None:
             self.local_drive = m.get('LocalDrive')
+        if m.get('NetRedirectPolicy') is not None:
+            self.net_redirect_policy_shrink = m.get('NetRedirectPolicy')
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')
         if m.get('PolicyGroupName') is not None:
