@@ -289,9 +289,12 @@ class AISearchV2Request(TeaModel):
         self,
         query: str = None,
         session_id: str = None,
+        time_range: str = None,
     ):
+        # This parameter is required.
         self.query = query
         self.session_id = session_id
+        self.time_range = time_range
 
     def validate(self):
         pass
@@ -306,6 +309,8 @@ class AISearchV2Request(TeaModel):
             result['query'] = self.query
         if self.session_id is not None:
             result['sessionId'] = self.session_id
+        if self.time_range is not None:
+            result['timeRange'] = self.time_range
         return result
 
     def from_map(self, m: dict = None):
@@ -314,6 +319,8 @@ class AISearchV2Request(TeaModel):
             self.query = m.get('query')
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')
+        if m.get('timeRange') is not None:
+            self.time_range = m.get('timeRange')
         return self
 
 

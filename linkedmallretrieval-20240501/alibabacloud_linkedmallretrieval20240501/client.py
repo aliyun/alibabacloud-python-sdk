@@ -169,6 +169,8 @@ class Client(OpenApiClient):
             query['query'] = request.query
         if not UtilClient.is_unset(request.session_id):
             query['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.time_range):
+            query['timeRange'] = request.time_range
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -209,6 +211,8 @@ class Client(OpenApiClient):
             query['query'] = request.query
         if not UtilClient.is_unset(request.session_id):
             query['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.time_range):
+            query['timeRange'] = request.time_range
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
