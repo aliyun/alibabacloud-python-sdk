@@ -9316,20 +9316,46 @@ class CreateFailoverTestJobRequest(TeaModel):
         resource_owner_account: str = None,
         resource_type: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # The description of the failover test.
+        # 
+        # The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
+        # If you set the value to true, the system performs only a dry run without actually performing the actual request. If you set the value to false, the system performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The duration of the failover test. Unit: minutes. Valid values: **1 to 4320**.
+        # 
         # This parameter is required.
         self.job_duration = job_duration
+        # The type of the failover test. Valid values:
+        # 
+        # *   **StartNow**\
+        # *   **StartLater**\
+        # 
         # This parameter is required.
         self.job_type = job_type
+        # The name of the failover test.
+        # 
+        # The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the failover test.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
+        # The IDs of failover test resources. You can add at most 16 resources.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
+        # The resource type of the failover test. Set the value to **PHYSICALCONNECTION**.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 
@@ -9403,7 +9429,9 @@ class CreateFailoverTestJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the failover test.
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -80498,6 +80526,269 @@ class ListVpcGatewayEndpointsResponse(TeaModel):
         return self
 
 
+class ListVpcPublishedRouteEntriesRequest(TeaModel):
+    def __init__(
+        self,
+        destination_cidr_block: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        route_table_id: str = None,
+        target_instance_id: str = None,
+        target_type: str = None,
+    ):
+        self.destination_cidr_block = destination_cidr_block
+        self.max_results = max_results
+        self.next_token = next_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.route_table_id = route_table_id
+        self.target_instance_id = target_instance_id
+        # This parameter is required.
+        self.target_type = target_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_cidr_block is not None:
+            result['DestinationCidrBlock'] = self.destination_cidr_block
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        if self.target_instance_id is not None:
+            result['TargetInstanceId'] = self.target_instance_id
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationCidrBlock') is not None:
+            self.destination_cidr_block = m.get('DestinationCidrBlock')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        if m.get('TargetInstanceId') is not None:
+            self.target_instance_id = m.get('TargetInstanceId')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class ListVpcPublishedRouteEntriesResponseBodyRouteEntriesRoutePublishTargets(TeaModel):
+    def __init__(
+        self,
+        publish_status: str = None,
+        publish_target_type: str = None,
+    ):
+        self.publish_status = publish_status
+        self.publish_target_type = publish_target_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.publish_status is not None:
+            result['PublishStatus'] = self.publish_status
+        if self.publish_target_type is not None:
+            result['PublishTargetType'] = self.publish_target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PublishStatus') is not None:
+            self.publish_status = m.get('PublishStatus')
+        if m.get('PublishTargetType') is not None:
+            self.publish_target_type = m.get('PublishTargetType')
+        return self
+
+
+class ListVpcPublishedRouteEntriesResponseBodyRouteEntries(TeaModel):
+    def __init__(
+        self,
+        destination_cidr_block: str = None,
+        route_entry_id: str = None,
+        route_publish_targets: List[ListVpcPublishedRouteEntriesResponseBodyRouteEntriesRoutePublishTargets] = None,
+        route_table_id: str = None,
+    ):
+        self.destination_cidr_block = destination_cidr_block
+        self.route_entry_id = route_entry_id
+        self.route_publish_targets = route_publish_targets
+        self.route_table_id = route_table_id
+
+    def validate(self):
+        if self.route_publish_targets:
+            for k in self.route_publish_targets:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_cidr_block is not None:
+            result['DestinationCidrBlock'] = self.destination_cidr_block
+        if self.route_entry_id is not None:
+            result['RouteEntryId'] = self.route_entry_id
+        result['RoutePublishTargets'] = []
+        if self.route_publish_targets is not None:
+            for k in self.route_publish_targets:
+                result['RoutePublishTargets'].append(k.to_map() if k else None)
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationCidrBlock') is not None:
+            self.destination_cidr_block = m.get('DestinationCidrBlock')
+        if m.get('RouteEntryId') is not None:
+            self.route_entry_id = m.get('RouteEntryId')
+        self.route_publish_targets = []
+        if m.get('RoutePublishTargets') is not None:
+            for k in m.get('RoutePublishTargets'):
+                temp_model = ListVpcPublishedRouteEntriesResponseBodyRouteEntriesRoutePublishTargets()
+                self.route_publish_targets.append(temp_model.from_map(k))
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        return self
+
+
+class ListVpcPublishedRouteEntriesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        route_entries: List[ListVpcPublishedRouteEntriesResponseBodyRouteEntries] = None,
+    ):
+        self.next_token = next_token
+        self.request_id = request_id
+        self.route_entries = route_entries
+
+    def validate(self):
+        if self.route_entries:
+            for k in self.route_entries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['RouteEntries'] = []
+        if self.route_entries is not None:
+            for k in self.route_entries:
+                result['RouteEntries'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.route_entries = []
+        if m.get('RouteEntries') is not None:
+            for k in m.get('RouteEntries'):
+                temp_model = ListVpcPublishedRouteEntriesResponseBodyRouteEntries()
+                self.route_entries.append(temp_model.from_map(k))
+        return self
+
+
+class ListVpcPublishedRouteEntriesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListVpcPublishedRouteEntriesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListVpcPublishedRouteEntriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListVpnCertificateAssociationsRequest(TeaModel):
     def __init__(
         self,
@@ -94638,6 +94929,194 @@ class OpenTrafficMirrorServiceResponse(TeaModel):
         return self
 
 
+class PublishVpcRouteEntriesRequestRouteEntries(TeaModel):
+    def __init__(
+        self,
+        destination_cidr_block: str = None,
+        route_table_id: str = None,
+    ):
+        # This parameter is required.
+        self.destination_cidr_block = destination_cidr_block
+        # This parameter is required.
+        self.route_table_id = route_table_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_cidr_block is not None:
+            result['DestinationCidrBlock'] = self.destination_cidr_block
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationCidrBlock') is not None:
+            self.destination_cidr_block = m.get('DestinationCidrBlock')
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        return self
+
+
+class PublishVpcRouteEntriesRequest(TeaModel):
+    def __init__(
+        self,
+        dry_run: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        route_entries: List[PublishVpcRouteEntriesRequestRouteEntries] = None,
+        target_instance_id: str = None,
+        target_type: str = None,
+    ):
+        self.dry_run = dry_run
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.route_entries = route_entries
+        # This parameter is required.
+        self.target_instance_id = target_instance_id
+        # This parameter is required.
+        self.target_type = target_type
+
+    def validate(self):
+        if self.route_entries:
+            for k in self.route_entries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        result['RouteEntries'] = []
+        if self.route_entries is not None:
+            for k in self.route_entries:
+                result['RouteEntries'].append(k.to_map() if k else None)
+        if self.target_instance_id is not None:
+            result['TargetInstanceId'] = self.target_instance_id
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        self.route_entries = []
+        if m.get('RouteEntries') is not None:
+            for k in m.get('RouteEntries'):
+                temp_model = PublishVpcRouteEntriesRequestRouteEntries()
+                self.route_entries.append(temp_model.from_map(k))
+        if m.get('TargetInstanceId') is not None:
+            self.target_instance_id = m.get('TargetInstanceId')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class PublishVpcRouteEntriesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PublishVpcRouteEntriesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PublishVpcRouteEntriesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PublishVpcRouteEntriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PublishVpnRouteEntryRequest(TeaModel):
     def __init__(
         self,
@@ -102842,6 +103321,194 @@ class VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class WithdrawVpcPublishedRouteEntriesRequestRouteEntries(TeaModel):
+    def __init__(
+        self,
+        destination_cidr_block: str = None,
+        route_table_id: str = None,
+    ):
+        # This parameter is required.
+        self.destination_cidr_block = destination_cidr_block
+        # This parameter is required.
+        self.route_table_id = route_table_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_cidr_block is not None:
+            result['DestinationCidrBlock'] = self.destination_cidr_block
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationCidrBlock') is not None:
+            self.destination_cidr_block = m.get('DestinationCidrBlock')
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        return self
+
+
+class WithdrawVpcPublishedRouteEntriesRequest(TeaModel):
+    def __init__(
+        self,
+        dry_run: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        route_entries: List[WithdrawVpcPublishedRouteEntriesRequestRouteEntries] = None,
+        target_instance_id: str = None,
+        target_type: str = None,
+    ):
+        self.dry_run = dry_run
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.route_entries = route_entries
+        # This parameter is required.
+        self.target_instance_id = target_instance_id
+        # This parameter is required.
+        self.target_type = target_type
+
+    def validate(self):
+        if self.route_entries:
+            for k in self.route_entries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        result['RouteEntries'] = []
+        if self.route_entries is not None:
+            for k in self.route_entries:
+                result['RouteEntries'].append(k.to_map() if k else None)
+        if self.target_instance_id is not None:
+            result['TargetInstanceId'] = self.target_instance_id
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        self.route_entries = []
+        if m.get('RouteEntries') is not None:
+            for k in m.get('RouteEntries'):
+                temp_model = WithdrawVpcPublishedRouteEntriesRequestRouteEntries()
+                self.route_entries.append(temp_model.from_map(k))
+        if m.get('TargetInstanceId') is not None:
+            self.target_instance_id = m.get('TargetInstanceId')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        return self
+
+
+class WithdrawVpcPublishedRouteEntriesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class WithdrawVpcPublishedRouteEntriesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: WithdrawVpcPublishedRouteEntriesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = WithdrawVpcPublishedRouteEntriesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

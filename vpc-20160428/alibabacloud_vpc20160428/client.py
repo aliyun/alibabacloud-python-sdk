@@ -7381,7 +7381,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateFailoverTestJobResponse:
         """
-        @summary 创建故障演练任务
+        @summary Creates a failover test.
+        
+        @description You cannot create a failover test in the following scenarios:
+        You have created a failover test in the region and its type is StartNow.
+        The Express Connect circuit or hosted connection has pending orders or overdue payments.
+        A failover test is already performed on the Express Connect circuit or hosted connection.
+        More than one hosted connection is created over the Express Connect circuit.
+        More than one cross-account VBR is created on the Express Connect circuit.
+        No VBR is associated with the hosted connection.
+        The VLAN ID of the hosted connection is set to 0.
         
         @param request: CreateFailoverTestJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7440,7 +7449,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateFailoverTestJobResponse:
         """
-        @summary 创建故障演练任务
+        @summary Creates a failover test.
+        
+        @description You cannot create a failover test in the following scenarios:
+        You have created a failover test in the region and its type is StartNow.
+        The Express Connect circuit or hosted connection has pending orders or overdue payments.
+        A failover test is already performed on the Express Connect circuit or hosted connection.
+        More than one hosted connection is created over the Express Connect circuit.
+        More than one cross-account VBR is created on the Express Connect circuit.
+        No VBR is associated with the hosted connection.
+        The VLAN ID of the hosted connection is set to 0.
         
         @param request: CreateFailoverTestJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7498,7 +7516,16 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateFailoverTestJobRequest,
     ) -> vpc_20160428_models.CreateFailoverTestJobResponse:
         """
-        @summary 创建故障演练任务
+        @summary Creates a failover test.
+        
+        @description You cannot create a failover test in the following scenarios:
+        You have created a failover test in the region and its type is StartNow.
+        The Express Connect circuit or hosted connection has pending orders or overdue payments.
+        A failover test is already performed on the Express Connect circuit or hosted connection.
+        More than one hosted connection is created over the Express Connect circuit.
+        More than one cross-account VBR is created on the Express Connect circuit.
+        No VBR is associated with the hosted connection.
+        The VLAN ID of the hosted connection is set to 0.
         
         @param request: CreateFailoverTestJobRequest
         @return: CreateFailoverTestJobResponse
@@ -7511,7 +7538,16 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateFailoverTestJobRequest,
     ) -> vpc_20160428_models.CreateFailoverTestJobResponse:
         """
-        @summary 创建故障演练任务
+        @summary Creates a failover test.
+        
+        @description You cannot create a failover test in the following scenarios:
+        You have created a failover test in the region and its type is StartNow.
+        The Express Connect circuit or hosted connection has pending orders or overdue payments.
+        A failover test is already performed on the Express Connect circuit or hosted connection.
+        More than one hosted connection is created over the Express Connect circuit.
+        More than one cross-account VBR is created on the Express Connect circuit.
+        No VBR is associated with the hosted connection.
+        The VLAN ID of the hosted connection is set to 0.
         
         @param request: CreateFailoverTestJobRequest
         @return: CreateFailoverTestJobResponse
@@ -10517,7 +10553,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreatePhysicalConnectionOccupancyOrderResponse:
         """
-        @summary Creates an order for resource usage fees.
+        @summary Creates an order for resource occupation of an Express Connect circuit.
         
         @description >  You can call this operation only when the Express Connect circuit is in the *Complete** state.
         
@@ -10574,7 +10610,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreatePhysicalConnectionOccupancyOrderResponse:
         """
-        @summary Creates an order for resource usage fees.
+        @summary Creates an order for resource occupation of an Express Connect circuit.
         
         @description >  You can call this operation only when the Express Connect circuit is in the *Complete** state.
         
@@ -10630,7 +10666,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreatePhysicalConnectionOccupancyOrderRequest,
     ) -> vpc_20160428_models.CreatePhysicalConnectionOccupancyOrderResponse:
         """
-        @summary Creates an order for resource usage fees.
+        @summary Creates an order for resource occupation of an Express Connect circuit.
         
         @description >  You can call this operation only when the Express Connect circuit is in the *Complete** state.
         
@@ -10645,7 +10681,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreatePhysicalConnectionOccupancyOrderRequest,
     ) -> vpc_20160428_models.CreatePhysicalConnectionOccupancyOrderResponse:
         """
-        @summary Creates an order for resource usage fees.
+        @summary Creates an order for resource occupation of an Express Connect circuit.
         
         @description >  You can call this operation only when the Express Connect circuit is in the *Complete** state.
         
@@ -40015,6 +40051,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_vpc_gateway_endpoints_with_options_async(request, runtime)
 
+    def list_vpc_published_route_entries_with_options(
+        self,
+        request: vpc_20160428_models.ListVpcPublishedRouteEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ListVpcPublishedRouteEntriesResponse:
+        """
+        @summary 查询路由发布情况
+        
+        @param request: ListVpcPublishedRouteEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcPublishedRouteEntriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListVpcPublishedRouteEntries',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ListVpcPublishedRouteEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_vpc_published_route_entries_with_options_async(
+        self,
+        request: vpc_20160428_models.ListVpcPublishedRouteEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.ListVpcPublishedRouteEntriesResponse:
+        """
+        @summary 查询路由发布情况
+        
+        @param request: ListVpcPublishedRouteEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcPublishedRouteEntriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListVpcPublishedRouteEntries',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.ListVpcPublishedRouteEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_vpc_published_route_entries(
+        self,
+        request: vpc_20160428_models.ListVpcPublishedRouteEntriesRequest,
+    ) -> vpc_20160428_models.ListVpcPublishedRouteEntriesResponse:
+        """
+        @summary 查询路由发布情况
+        
+        @param request: ListVpcPublishedRouteEntriesRequest
+        @return: ListVpcPublishedRouteEntriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_vpc_published_route_entries_with_options(request, runtime)
+
+    async def list_vpc_published_route_entries_async(
+        self,
+        request: vpc_20160428_models.ListVpcPublishedRouteEntriesRequest,
+    ) -> vpc_20160428_models.ListVpcPublishedRouteEntriesResponse:
+        """
+        @summary 查询路由发布情况
+        
+        @param request: ListVpcPublishedRouteEntriesRequest
+        @return: ListVpcPublishedRouteEntriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_vpc_published_route_entries_with_options_async(request, runtime)
+
     def list_vpn_certificate_associations_with_options(
         self,
         request: vpc_20160428_models.ListVpnCertificateAssociationsRequest,
@@ -49085,6 +49261,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.open_traffic_mirror_service_with_options_async(request, runtime)
 
+    def publish_vpc_route_entries_with_options(
+        self,
+        request: vpc_20160428_models.PublishVpcRouteEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.PublishVpcRouteEntriesResponse:
+        """
+        @summary 发布VPC路由
+        
+        @param request: PublishVpcRouteEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishVpcRouteEntriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_entries):
+            query['RouteEntries'] = request.route_entries
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PublishVpcRouteEntries',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.PublishVpcRouteEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def publish_vpc_route_entries_with_options_async(
+        self,
+        request: vpc_20160428_models.PublishVpcRouteEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.PublishVpcRouteEntriesResponse:
+        """
+        @summary 发布VPC路由
+        
+        @param request: PublishVpcRouteEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishVpcRouteEntriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_entries):
+            query['RouteEntries'] = request.route_entries
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PublishVpcRouteEntries',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.PublishVpcRouteEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def publish_vpc_route_entries(
+        self,
+        request: vpc_20160428_models.PublishVpcRouteEntriesRequest,
+    ) -> vpc_20160428_models.PublishVpcRouteEntriesResponse:
+        """
+        @summary 发布VPC路由
+        
+        @param request: PublishVpcRouteEntriesRequest
+        @return: PublishVpcRouteEntriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.publish_vpc_route_entries_with_options(request, runtime)
+
+    async def publish_vpc_route_entries_async(
+        self,
+        request: vpc_20160428_models.PublishVpcRouteEntriesRequest,
+    ) -> vpc_20160428_models.PublishVpcRouteEntriesResponse:
+        """
+        @summary 发布VPC路由
+        
+        @param request: PublishVpcRouteEntriesRequest
+        @return: PublishVpcRouteEntriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.publish_vpc_route_entries_with_options_async(request, runtime)
+
     def publish_vpn_route_entry_with_options(
         self,
         request: vpc_20160428_models.PublishVpnRouteEntryRequest,
@@ -55636,3 +55944,135 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.vpc_describe_vpc_nat_gateway_network_interface_quota_with_options_async(request, runtime)
+
+    def withdraw_vpc_published_route_entries_with_options(
+        self,
+        request: vpc_20160428_models.WithdrawVpcPublishedRouteEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.WithdrawVpcPublishedRouteEntriesResponse:
+        """
+        @summary 撤回VPC已发布路由
+        
+        @param request: WithdrawVpcPublishedRouteEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WithdrawVpcPublishedRouteEntriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_entries):
+            query['RouteEntries'] = request.route_entries
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='WithdrawVpcPublishedRouteEntries',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.WithdrawVpcPublishedRouteEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def withdraw_vpc_published_route_entries_with_options_async(
+        self,
+        request: vpc_20160428_models.WithdrawVpcPublishedRouteEntriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.WithdrawVpcPublishedRouteEntriesResponse:
+        """
+        @summary 撤回VPC已发布路由
+        
+        @param request: WithdrawVpcPublishedRouteEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WithdrawVpcPublishedRouteEntriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.route_entries):
+            query['RouteEntries'] = request.route_entries
+        if not UtilClient.is_unset(request.target_instance_id):
+            query['TargetInstanceId'] = request.target_instance_id
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='WithdrawVpcPublishedRouteEntries',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.WithdrawVpcPublishedRouteEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def withdraw_vpc_published_route_entries(
+        self,
+        request: vpc_20160428_models.WithdrawVpcPublishedRouteEntriesRequest,
+    ) -> vpc_20160428_models.WithdrawVpcPublishedRouteEntriesResponse:
+        """
+        @summary 撤回VPC已发布路由
+        
+        @param request: WithdrawVpcPublishedRouteEntriesRequest
+        @return: WithdrawVpcPublishedRouteEntriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.withdraw_vpc_published_route_entries_with_options(request, runtime)
+
+    async def withdraw_vpc_published_route_entries_async(
+        self,
+        request: vpc_20160428_models.WithdrawVpcPublishedRouteEntriesRequest,
+    ) -> vpc_20160428_models.WithdrawVpcPublishedRouteEntriesResponse:
+        """
+        @summary 撤回VPC已发布路由
+        
+        @param request: WithdrawVpcPublishedRouteEntriesRequest
+        @return: WithdrawVpcPublishedRouteEntriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.withdraw_vpc_published_route_entries_with_options_async(request, runtime)

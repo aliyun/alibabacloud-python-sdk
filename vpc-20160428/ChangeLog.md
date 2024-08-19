@@ -1,3 +1,10 @@
+2024-08-19 Version: 6.9.0
+- Support API ListVpcPublishedRouteEntries.
+- Support API PublishVpcRouteEntries.
+- Support API WithdrawVpcPublishedRouteEntries.
+- Update API DescribeEcGrantRelation: update response param.
+
+
 2024-08-15 Version: 6.8.0
 - Support API DescribeNatGatewayAssociateNetworkInterfaces.
 
