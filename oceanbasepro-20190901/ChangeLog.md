@@ -1,3 +1,11 @@
+2024-08-19 Version: 7.1.0
+- Support API DescribeBackupEncryptedString.
+- Support API DescribeInstanceSummary.
+- Support API DescribeRestorableTenants.
+- Support API DescribeStandbyCreateMode.
+- Update API DescribeInstances: update response param.
+
+
 2024-08-16 Version: 7.0.2
 - Update API DescribeTenantMetrics: update param TenantId.
 - Update API DescribeTenantMetrics: update param TenantIdList.

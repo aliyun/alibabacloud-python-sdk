@@ -10384,6 +10384,144 @@ class DescribeAvailableZoneResponse(TeaModel):
         return self
 
 
+class DescribeBackupEncryptedStringRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        tenant_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class DescribeBackupEncryptedStringResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        backup_info_json: str = None,
+    ):
+        self.backup_info_json = backup_info_json
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_info_json is not None:
+            result['BackupInfoJson'] = self.backup_info_json
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupInfoJson') is not None:
+            self.backup_info_json = m.get('BackupInfoJson')
+        return self
+
+
+class DescribeBackupEncryptedStringResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeBackupEncryptedStringResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeBackupEncryptedStringResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeBackupEncryptedStringResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeBackupEncryptedStringResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeBackupEncryptedStringResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeBackupSetDownloadLinkRequest(TeaModel):
     def __init__(
         self,
@@ -13404,6 +13542,273 @@ class DescribeInstanceSecurityConfigsResponse(TeaModel):
         return self
 
 
+class DescribeInstanceSummaryRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList(TeaModel):
+    def __init__(
+        self,
+        expired_instances_count: str = None,
+        immediately_expired_instances_count: str = None,
+        recent_created_instances_count: str = None,
+        region: str = None,
+        running_instances_count: str = None,
+        total_instances_count: str = None,
+    ):
+        self.expired_instances_count = expired_instances_count
+        self.immediately_expired_instances_count = immediately_expired_instances_count
+        self.recent_created_instances_count = recent_created_instances_count
+        self.region = region
+        self.running_instances_count = running_instances_count
+        self.total_instances_count = total_instances_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expired_instances_count is not None:
+            result['ExpiredInstancesCount'] = self.expired_instances_count
+        if self.immediately_expired_instances_count is not None:
+            result['ImmediatelyExpiredInstancesCount'] = self.immediately_expired_instances_count
+        if self.recent_created_instances_count is not None:
+            result['RecentCreatedInstancesCount'] = self.recent_created_instances_count
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.running_instances_count is not None:
+            result['RunningInstancesCount'] = self.running_instances_count
+        if self.total_instances_count is not None:
+            result['TotalInstancesCount'] = self.total_instances_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpiredInstancesCount') is not None:
+            self.expired_instances_count = m.get('ExpiredInstancesCount')
+        if m.get('ImmediatelyExpiredInstancesCount') is not None:
+            self.immediately_expired_instances_count = m.get('ImmediatelyExpiredInstancesCount')
+        if m.get('RecentCreatedInstancesCount') is not None:
+            self.recent_created_instances_count = m.get('RecentCreatedInstancesCount')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RunningInstancesCount') is not None:
+            self.running_instances_count = m.get('RunningInstancesCount')
+        if m.get('TotalInstancesCount') is not None:
+            self.total_instances_count = m.get('TotalInstancesCount')
+        return self
+
+
+class DescribeInstanceSummaryResponseBodyInstanceSummary(TeaModel):
+    def __init__(
+        self,
+        alarm_summary_count: int = None,
+        anomaly_sqlcount: int = None,
+        cluster_instances_count: int = None,
+        expired_instances_count: int = None,
+        immediately_expired_instances_count: int = None,
+        insufficient_disk_instances_count: int = None,
+        over_load_instances_count: int = None,
+        regional_instance_summary_list: List[DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList] = None,
+        running_instances_count: int = None,
+        tenant_instances_count: int = None,
+        total_instances_count: int = None,
+        total_oms_instances_count: int = None,
+    ):
+        self.alarm_summary_count = alarm_summary_count
+        self.anomaly_sqlcount = anomaly_sqlcount
+        self.cluster_instances_count = cluster_instances_count
+        self.expired_instances_count = expired_instances_count
+        self.immediately_expired_instances_count = immediately_expired_instances_count
+        self.insufficient_disk_instances_count = insufficient_disk_instances_count
+        self.over_load_instances_count = over_load_instances_count
+        self.regional_instance_summary_list = regional_instance_summary_list
+        self.running_instances_count = running_instances_count
+        self.tenant_instances_count = tenant_instances_count
+        self.total_instances_count = total_instances_count
+        self.total_oms_instances_count = total_oms_instances_count
+
+    def validate(self):
+        if self.regional_instance_summary_list:
+            for k in self.regional_instance_summary_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alarm_summary_count is not None:
+            result['AlarmSummaryCount'] = self.alarm_summary_count
+        if self.anomaly_sqlcount is not None:
+            result['AnomalySQLCount'] = self.anomaly_sqlcount
+        if self.cluster_instances_count is not None:
+            result['ClusterInstancesCount'] = self.cluster_instances_count
+        if self.expired_instances_count is not None:
+            result['ExpiredInstancesCount'] = self.expired_instances_count
+        if self.immediately_expired_instances_count is not None:
+            result['ImmediatelyExpiredInstancesCount'] = self.immediately_expired_instances_count
+        if self.insufficient_disk_instances_count is not None:
+            result['InsufficientDiskInstancesCount'] = self.insufficient_disk_instances_count
+        if self.over_load_instances_count is not None:
+            result['OverLoadInstancesCount'] = self.over_load_instances_count
+        result['RegionalInstanceSummaryList'] = []
+        if self.regional_instance_summary_list is not None:
+            for k in self.regional_instance_summary_list:
+                result['RegionalInstanceSummaryList'].append(k.to_map() if k else None)
+        if self.running_instances_count is not None:
+            result['RunningInstancesCount'] = self.running_instances_count
+        if self.tenant_instances_count is not None:
+            result['TenantInstancesCount'] = self.tenant_instances_count
+        if self.total_instances_count is not None:
+            result['TotalInstancesCount'] = self.total_instances_count
+        if self.total_oms_instances_count is not None:
+            result['TotalOmsInstancesCount'] = self.total_oms_instances_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlarmSummaryCount') is not None:
+            self.alarm_summary_count = m.get('AlarmSummaryCount')
+        if m.get('AnomalySQLCount') is not None:
+            self.anomaly_sqlcount = m.get('AnomalySQLCount')
+        if m.get('ClusterInstancesCount') is not None:
+            self.cluster_instances_count = m.get('ClusterInstancesCount')
+        if m.get('ExpiredInstancesCount') is not None:
+            self.expired_instances_count = m.get('ExpiredInstancesCount')
+        if m.get('ImmediatelyExpiredInstancesCount') is not None:
+            self.immediately_expired_instances_count = m.get('ImmediatelyExpiredInstancesCount')
+        if m.get('InsufficientDiskInstancesCount') is not None:
+            self.insufficient_disk_instances_count = m.get('InsufficientDiskInstancesCount')
+        if m.get('OverLoadInstancesCount') is not None:
+            self.over_load_instances_count = m.get('OverLoadInstancesCount')
+        self.regional_instance_summary_list = []
+        if m.get('RegionalInstanceSummaryList') is not None:
+            for k in m.get('RegionalInstanceSummaryList'):
+                temp_model = DescribeInstanceSummaryResponseBodyInstanceSummaryRegionalInstanceSummaryList()
+                self.regional_instance_summary_list.append(temp_model.from_map(k))
+        if m.get('RunningInstancesCount') is not None:
+            self.running_instances_count = m.get('RunningInstancesCount')
+        if m.get('TenantInstancesCount') is not None:
+            self.tenant_instances_count = m.get('TenantInstancesCount')
+        if m.get('TotalInstancesCount') is not None:
+            self.total_instances_count = m.get('TotalInstancesCount')
+        if m.get('TotalOmsInstancesCount') is not None:
+            self.total_oms_instances_count = m.get('TotalOmsInstancesCount')
+        return self
+
+
+class DescribeInstanceSummaryResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_summary: DescribeInstanceSummaryResponseBodyInstanceSummary = None,
+        request_id: str = None,
+    ):
+        self.instance_summary = instance_summary
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instance_summary:
+            self.instance_summary.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_summary is not None:
+            result['InstanceSummary'] = self.instance_summary.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceSummary') is not None:
+            temp_model = DescribeInstanceSummaryResponseBodyInstanceSummary()
+            self.instance_summary = temp_model.from_map(m['InstanceSummary'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeInstanceSummaryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInstanceSummaryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceSummaryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeInstanceTagsRequest(TeaModel):
     def __init__(
         self,
@@ -15116,6 +15521,7 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         instance_type: str = None,
         maintain_time: str = None,
         mem: int = None,
+        ob_rpm_version: str = None,
         pay_type: str = None,
         resource: DescribeInstancesResponseBodyInstancesResource = None,
         resource_group_id: str = None,
@@ -15186,6 +15592,7 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         self.maintain_time = maintain_time
         # The memory size of the instance, in GB.
         self.mem = mem
+        self.ob_rpm_version = ob_rpm_version
         # The billing method for the OceanBase cluster. Valid values:  
         # - PREPAY: the subscription billing method.  
         # - POSTPAY: the pay-as-you-go billing method.
@@ -15307,6 +15714,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             result['MaintainTime'] = self.maintain_time
         if self.mem is not None:
             result['Mem'] = self.mem
+        if self.ob_rpm_version is not None:
+            result['ObRpmVersion'] = self.ob_rpm_version
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         if self.resource is not None:
@@ -15374,6 +15783,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             self.maintain_time = m.get('MaintainTime')
         if m.get('Mem') is not None:
             self.mem = m.get('Mem')
+        if m.get('ObRpmVersion') is not None:
+            self.ob_rpm_version = m.get('ObRpmVersion')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
         if m.get('Resource') is not None:
@@ -27845,6 +28256,400 @@ class DescribeRecommendIndexResponse(TeaModel):
         return self
 
 
+class DescribeRestorableTenantsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        is_online: bool = None,
+        is_remote: bool = None,
+        method: str = None,
+        restore_mode: str = None,
+        restore_object_type: str = None,
+        set_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.is_online = is_online
+        self.is_remote = is_remote
+        self.method = method
+        self.restore_mode = restore_mode
+        self.restore_object_type = restore_object_type
+        self.set_id = set_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.is_online is not None:
+            result['IsOnline'] = self.is_online
+        if self.is_remote is not None:
+            result['IsRemote'] = self.is_remote
+        if self.method is not None:
+            result['Method'] = self.method
+        if self.restore_mode is not None:
+            result['RestoreMode'] = self.restore_mode
+        if self.restore_object_type is not None:
+            result['RestoreObjectType'] = self.restore_object_type
+        if self.set_id is not None:
+            result['SetId'] = self.set_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('IsOnline') is not None:
+            self.is_online = m.get('IsOnline')
+        if m.get('IsRemote') is not None:
+            self.is_remote = m.get('IsRemote')
+        if m.get('Method') is not None:
+            self.method = m.get('Method')
+        if m.get('RestoreMode') is not None:
+            self.restore_mode = m.get('RestoreMode')
+        if m.get('RestoreObjectType') is not None:
+            self.restore_object_type = m.get('RestoreObjectType')
+        if m.get('SetId') is not None:
+            self.set_id = m.get('SetId')
+        return self
+
+
+class DescribeRestorableTenantsResponseBodyTenantsBackupSets(TeaModel):
+    def __init__(
+        self,
+        backup_set_id: str = None,
+        checkpoint: str = None,
+        set_id: str = None,
+        tenant_id: str = None,
+    ):
+        self.backup_set_id = backup_set_id
+        self.checkpoint = checkpoint
+        self.set_id = set_id
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_set_id is not None:
+            result['BackupSetId'] = self.backup_set_id
+        if self.checkpoint is not None:
+            result['Checkpoint'] = self.checkpoint
+        if self.set_id is not None:
+            result['SetId'] = self.set_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupSetId') is not None:
+            self.backup_set_id = m.get('BackupSetId')
+        if m.get('Checkpoint') is not None:
+            self.checkpoint = m.get('Checkpoint')
+        if m.get('SetId') is not None:
+            self.set_id = m.get('SetId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        from_archive: bool = None,
+        start_time: str = None,
+        storage_type: str = None,
+    ):
+        self.end_time = end_time
+        self.from_archive = from_archive
+        self.start_time = start_time
+        self.storage_type = storage_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.from_archive is not None:
+            result['FromArchive'] = self.from_archive
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('FromArchive') is not None:
+            self.from_archive = m.get('FromArchive')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        return self
+
+
+class DescribeRestorableTenantsResponseBodyTenants(TeaModel):
+    def __init__(
+        self,
+        backup_bucket_name: str = None,
+        backup_sets: List[DescribeRestorableTenantsResponseBodyTenantsBackupSets] = None,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        cpu_num: int = None,
+        memory_num: int = None,
+        method: str = None,
+        ob_rpm_version: str = None,
+        ob_tenant_id: str = None,
+        ob_version: str = None,
+        source_region: str = None,
+        tenant_alias: str = None,
+        tenant_data_backup_remain_days: int = None,
+        tenant_id: str = None,
+        tenant_mode: int = None,
+        tenant_name: str = None,
+        time_interval_list: List[DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList] = None,
+        unit_num: int = None,
+        used_disk: int = None,
+    ):
+        self.backup_bucket_name = backup_bucket_name
+        self.backup_sets = backup_sets
+        self.cluster_id = cluster_id
+        self.cluster_name = cluster_name
+        self.cpu_num = cpu_num
+        self.memory_num = memory_num
+        self.method = method
+        self.ob_rpm_version = ob_rpm_version
+        self.ob_tenant_id = ob_tenant_id
+        self.ob_version = ob_version
+        self.source_region = source_region
+        self.tenant_alias = tenant_alias
+        self.tenant_data_backup_remain_days = tenant_data_backup_remain_days
+        self.tenant_id = tenant_id
+        self.tenant_mode = tenant_mode
+        self.tenant_name = tenant_name
+        self.time_interval_list = time_interval_list
+        self.unit_num = unit_num
+        self.used_disk = used_disk
+
+    def validate(self):
+        if self.backup_sets:
+            for k in self.backup_sets:
+                if k:
+                    k.validate()
+        if self.time_interval_list:
+            for k in self.time_interval_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_bucket_name is not None:
+            result['BackupBucketName'] = self.backup_bucket_name
+        result['BackupSets'] = []
+        if self.backup_sets is not None:
+            for k in self.backup_sets:
+                result['BackupSets'].append(k.to_map() if k else None)
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.cpu_num is not None:
+            result['CpuNum'] = self.cpu_num
+        if self.memory_num is not None:
+            result['MemoryNum'] = self.memory_num
+        if self.method is not None:
+            result['Method'] = self.method
+        if self.ob_rpm_version is not None:
+            result['ObRpmVersion'] = self.ob_rpm_version
+        if self.ob_tenant_id is not None:
+            result['ObTenantId'] = self.ob_tenant_id
+        if self.ob_version is not None:
+            result['ObVersion'] = self.ob_version
+        if self.source_region is not None:
+            result['SourceRegion'] = self.source_region
+        if self.tenant_alias is not None:
+            result['TenantAlias'] = self.tenant_alias
+        if self.tenant_data_backup_remain_days is not None:
+            result['TenantDataBackupRemainDays'] = self.tenant_data_backup_remain_days
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.tenant_mode is not None:
+            result['TenantMode'] = self.tenant_mode
+        if self.tenant_name is not None:
+            result['TenantName'] = self.tenant_name
+        result['TimeIntervalList'] = []
+        if self.time_interval_list is not None:
+            for k in self.time_interval_list:
+                result['TimeIntervalList'].append(k.to_map() if k else None)
+        if self.unit_num is not None:
+            result['UnitNum'] = self.unit_num
+        if self.used_disk is not None:
+            result['UsedDisk'] = self.used_disk
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupBucketName') is not None:
+            self.backup_bucket_name = m.get('BackupBucketName')
+        self.backup_sets = []
+        if m.get('BackupSets') is not None:
+            for k in m.get('BackupSets'):
+                temp_model = DescribeRestorableTenantsResponseBodyTenantsBackupSets()
+                self.backup_sets.append(temp_model.from_map(k))
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('CpuNum') is not None:
+            self.cpu_num = m.get('CpuNum')
+        if m.get('MemoryNum') is not None:
+            self.memory_num = m.get('MemoryNum')
+        if m.get('Method') is not None:
+            self.method = m.get('Method')
+        if m.get('ObRpmVersion') is not None:
+            self.ob_rpm_version = m.get('ObRpmVersion')
+        if m.get('ObTenantId') is not None:
+            self.ob_tenant_id = m.get('ObTenantId')
+        if m.get('ObVersion') is not None:
+            self.ob_version = m.get('ObVersion')
+        if m.get('SourceRegion') is not None:
+            self.source_region = m.get('SourceRegion')
+        if m.get('TenantAlias') is not None:
+            self.tenant_alias = m.get('TenantAlias')
+        if m.get('TenantDataBackupRemainDays') is not None:
+            self.tenant_data_backup_remain_days = m.get('TenantDataBackupRemainDays')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('TenantMode') is not None:
+            self.tenant_mode = m.get('TenantMode')
+        if m.get('TenantName') is not None:
+            self.tenant_name = m.get('TenantName')
+        self.time_interval_list = []
+        if m.get('TimeIntervalList') is not None:
+            for k in m.get('TimeIntervalList'):
+                temp_model = DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList()
+                self.time_interval_list.append(temp_model.from_map(k))
+        if m.get('UnitNum') is not None:
+            self.unit_num = m.get('UnitNum')
+        if m.get('UsedDisk') is not None:
+            self.used_disk = m.get('UsedDisk')
+        return self
+
+
+class DescribeRestorableTenantsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        tenants: List[DescribeRestorableTenantsResponseBodyTenants] = None,
+        total_count: int = None,
+    ):
+        self.request_id = request_id
+        self.tenants = tenants
+        self.total_count = total_count
+
+    def validate(self):
+        if self.tenants:
+            for k in self.tenants:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Tenants'] = []
+        if self.tenants is not None:
+            for k in self.tenants:
+                result['Tenants'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tenants = []
+        if m.get('Tenants') is not None:
+            for k in m.get('Tenants'):
+                temp_model = DescribeRestorableTenantsResponseBodyTenants()
+                self.tenants.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeRestorableTenantsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRestorableTenantsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRestorableTenantsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSQLDetailsRequest(TeaModel):
     def __init__(
         self,
@@ -31450,6 +32255,144 @@ class DescribeSlowSQLListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSlowSQLListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeStandbyCreateModeRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        tenant_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class DescribeStandbyCreateModeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_mode: str = None,
+    ):
+        self.create_mode = create_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_mode is not None:
+            result['CreateMode'] = self.create_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateMode') is not None:
+            self.create_mode = m.get('CreateMode')
+        return self
+
+
+class DescribeStandbyCreateModeResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeStandbyCreateModeResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeStandbyCreateModeResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeStandbyCreateModeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeStandbyCreateModeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeStandbyCreateModeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

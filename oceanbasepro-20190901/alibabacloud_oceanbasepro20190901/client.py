@@ -4133,6 +4133,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_available_zone_with_options_async(request, runtime)
 
+    def describe_backup_encrypted_string_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeBackupEncryptedStringRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeBackupEncryptedStringResponse:
+        """
+        @summary DescribeBackupEncryptedString
+        
+        @param request: DescribeBackupEncryptedStringRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupEncryptedStringResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupEncryptedString',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeBackupEncryptedStringResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_backup_encrypted_string_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeBackupEncryptedStringRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeBackupEncryptedStringResponse:
+        """
+        @summary DescribeBackupEncryptedString
+        
+        @param request: DescribeBackupEncryptedStringRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupEncryptedStringResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeBackupEncryptedString',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeBackupEncryptedStringResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_backup_encrypted_string(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeBackupEncryptedStringRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeBackupEncryptedStringResponse:
+        """
+        @summary DescribeBackupEncryptedString
+        
+        @param request: DescribeBackupEncryptedStringRequest
+        @return: DescribeBackupEncryptedStringResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_backup_encrypted_string_with_options(request, runtime)
+
+    async def describe_backup_encrypted_string_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeBackupEncryptedStringRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeBackupEncryptedStringResponse:
+        """
+        @summary DescribeBackupEncryptedString
+        
+        @param request: DescribeBackupEncryptedStringRequest
+        @return: DescribeBackupEncryptedStringResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_backup_encrypted_string_with_options_async(request, runtime)
+
     def describe_backup_set_download_link_with_options(
         self,
         request: ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkRequest,
@@ -4972,6 +5072,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_security_configs_with_options_async(request, runtime)
+
+    def describe_instance_summary_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceSummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceSummaryResponse:
+        """
+        @summary 工作台首页获取用户集群数汇总。
+        
+        @param request: DescribeInstanceSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceSummaryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceSummary',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_summary_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceSummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceSummaryResponse:
+        """
+        @summary 工作台首页获取用户集群数汇总。
+        
+        @param request: DescribeInstanceSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceSummaryResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceSummary',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_summary(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceSummaryRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceSummaryResponse:
+        """
+        @summary 工作台首页获取用户集群数汇总。
+        
+        @param request: DescribeInstanceSummaryRequest
+        @return: DescribeInstanceSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_summary_with_options(request, runtime)
+
+    async def describe_instance_summary_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceSummaryRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceSummaryResponse:
+        """
+        @summary 工作台首页获取用户集群数汇总。
+        
+        @param request: DescribeInstanceSummaryRequest
+        @return: DescribeInstanceSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_summary_with_options_async(request, runtime)
 
     def describe_instance_tags_with_options(
         self,
@@ -7585,6 +7785,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_recommend_index_with_options_async(request, runtime)
 
+    def describe_restorable_tenants_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeRestorableTenantsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeRestorableTenantsResponse:
+        """
+        @summary 获取可恢复租户
+        
+        @param request: DescribeRestorableTenantsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestorableTenantsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.is_online):
+            body['IsOnline'] = request.is_online
+        if not UtilClient.is_unset(request.is_remote):
+            body['IsRemote'] = request.is_remote
+        if not UtilClient.is_unset(request.method):
+            body['Method'] = request.method
+        if not UtilClient.is_unset(request.restore_mode):
+            body['RestoreMode'] = request.restore_mode
+        if not UtilClient.is_unset(request.restore_object_type):
+            body['RestoreObjectType'] = request.restore_object_type
+        if not UtilClient.is_unset(request.set_id):
+            body['SetId'] = request.set_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeRestorableTenants',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeRestorableTenantsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_restorable_tenants_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeRestorableTenantsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeRestorableTenantsResponse:
+        """
+        @summary 获取可恢复租户
+        
+        @param request: DescribeRestorableTenantsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRestorableTenantsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.is_online):
+            body['IsOnline'] = request.is_online
+        if not UtilClient.is_unset(request.is_remote):
+            body['IsRemote'] = request.is_remote
+        if not UtilClient.is_unset(request.method):
+            body['Method'] = request.method
+        if not UtilClient.is_unset(request.restore_mode):
+            body['RestoreMode'] = request.restore_mode
+        if not UtilClient.is_unset(request.restore_object_type):
+            body['RestoreObjectType'] = request.restore_object_type
+        if not UtilClient.is_unset(request.set_id):
+            body['SetId'] = request.set_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeRestorableTenants',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeRestorableTenantsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_restorable_tenants(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeRestorableTenantsRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeRestorableTenantsResponse:
+        """
+        @summary 获取可恢复租户
+        
+        @param request: DescribeRestorableTenantsRequest
+        @return: DescribeRestorableTenantsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_restorable_tenants_with_options(request, runtime)
+
+    async def describe_restorable_tenants_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeRestorableTenantsRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeRestorableTenantsResponse:
+        """
+        @summary 获取可恢复租户
+        
+        @param request: DescribeRestorableTenantsRequest
+        @return: DescribeRestorableTenantsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_restorable_tenants_with_options_async(request, runtime)
+
     def describe_sqldetails_with_options(
         self,
         request: ocean_base_pro_20190901_models.DescribeSQLDetailsRequest,
@@ -8736,6 +9056,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_slow_sqllist_with_options_async(request, runtime)
+
+    def describe_standby_create_mode_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeStandbyCreateModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeStandbyCreateModeResponse:
+        """
+        @summary DescribeStandbyCreateMode
+        
+        @param request: DescribeStandbyCreateModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStandbyCreateModeResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeStandbyCreateMode',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeStandbyCreateModeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_standby_create_mode_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeStandbyCreateModeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeStandbyCreateModeResponse:
+        """
+        @summary DescribeStandbyCreateMode
+        
+        @param request: DescribeStandbyCreateModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStandbyCreateModeResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeStandbyCreateMode',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeStandbyCreateModeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_standby_create_mode(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeStandbyCreateModeRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeStandbyCreateModeResponse:
+        """
+        @summary DescribeStandbyCreateMode
+        
+        @param request: DescribeStandbyCreateModeRequest
+        @return: DescribeStandbyCreateModeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_standby_create_mode_with_options(request, runtime)
+
+    async def describe_standby_create_mode_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeStandbyCreateModeRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeStandbyCreateModeResponse:
+        """
+        @summary DescribeStandbyCreateMode
+        
+        @param request: DescribeStandbyCreateModeRequest
+        @return: DescribeStandbyCreateModeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_standby_create_mode_with_options_async(request, runtime)
 
     def describe_tag_values_with_options(
         self,
