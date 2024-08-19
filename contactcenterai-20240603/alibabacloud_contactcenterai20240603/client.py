@@ -61,8 +61,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.dialogue):
             body['dialogue'] = request.dialogue
-        if not UtilClient.is_unset(request.example_list):
-            body['exampleList'] = request.example_list
+        if not UtilClient.is_unset(request.examples):
+            body['examples'] = request.examples
         if not UtilClient.is_unset(request.fields):
             body['fields'] = request.fields
         if not UtilClient.is_unset(request.model_code):
@@ -115,8 +115,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.dialogue):
             body['dialogue'] = request.dialogue
-        if not UtilClient.is_unset(request.example_list):
-            body['exampleList'] = request.example_list
+        if not UtilClient.is_unset(request.examples):
+            body['examples'] = request.examples
         if not UtilClient.is_unset(request.fields):
             body['fields'] = request.fields
         if not UtilClient.is_unset(request.model_code):

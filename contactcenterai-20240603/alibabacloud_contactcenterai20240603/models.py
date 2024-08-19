@@ -81,7 +81,7 @@ class AnalyzeConversationRequestDialogue(TeaModel):
         return self
 
 
-class AnalyzeConversationRequestExampleListSentenceList(TeaModel):
+class AnalyzeConversationRequestExamplesSentences(TeaModel):
     def __init__(
         self,
         chat_id: str = None,
@@ -122,20 +122,20 @@ class AnalyzeConversationRequestExampleListSentenceList(TeaModel):
         return self
 
 
-class AnalyzeConversationRequestExampleList(TeaModel):
+class AnalyzeConversationRequestExamples(TeaModel):
     def __init__(
         self,
         output: str = None,
-        sentence_list: List[AnalyzeConversationRequestExampleListSentenceList] = None,
+        sentences: List[AnalyzeConversationRequestExamplesSentences] = None,
     ):
         # This parameter is required.
         self.output = output
         # This parameter is required.
-        self.sentence_list = sentence_list
+        self.sentences = sentences
 
     def validate(self):
-        if self.sentence_list:
-            for k in self.sentence_list:
+        if self.sentences:
+            for k in self.sentences:
                 if k:
                     k.validate()
 
@@ -147,21 +147,21 @@ class AnalyzeConversationRequestExampleList(TeaModel):
         result = dict()
         if self.output is not None:
             result['output'] = self.output
-        result['sentenceList'] = []
-        if self.sentence_list is not None:
-            for k in self.sentence_list:
-                result['sentenceList'].append(k.to_map() if k else None)
+        result['sentences'] = []
+        if self.sentences is not None:
+            for k in self.sentences:
+                result['sentences'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('output') is not None:
             self.output = m.get('output')
-        self.sentence_list = []
-        if m.get('sentenceList') is not None:
-            for k in m.get('sentenceList'):
-                temp_model = AnalyzeConversationRequestExampleListSentenceList()
-                self.sentence_list.append(temp_model.from_map(k))
+        self.sentences = []
+        if m.get('sentences') is not None:
+            for k in m.get('sentences'):
+                temp_model = AnalyzeConversationRequestExamplesSentences()
+                self.sentences.append(temp_model.from_map(k))
         return self
 
 
@@ -344,7 +344,7 @@ class AnalyzeConversationRequest(TeaModel):
     def __init__(
         self,
         dialogue: AnalyzeConversationRequestDialogue = None,
-        example_list: List[AnalyzeConversationRequestExampleList] = None,
+        examples: List[AnalyzeConversationRequestExamples] = None,
         fields: List[AnalyzeConversationRequestFields] = None,
         model_code: str = None,
         result_types: List[str] = None,
@@ -354,7 +354,7 @@ class AnalyzeConversationRequest(TeaModel):
     ):
         # This parameter is required.
         self.dialogue = dialogue
-        self.example_list = example_list
+        self.examples = examples
         self.fields = fields
         self.model_code = model_code
         # This parameter is required.
@@ -367,8 +367,8 @@ class AnalyzeConversationRequest(TeaModel):
     def validate(self):
         if self.dialogue:
             self.dialogue.validate()
-        if self.example_list:
-            for k in self.example_list:
+        if self.examples:
+            for k in self.examples:
                 if k:
                     k.validate()
         if self.fields:
@@ -386,10 +386,10 @@ class AnalyzeConversationRequest(TeaModel):
         result = dict()
         if self.dialogue is not None:
             result['dialogue'] = self.dialogue.to_map()
-        result['exampleList'] = []
-        if self.example_list is not None:
-            for k in self.example_list:
-                result['exampleList'].append(k.to_map() if k else None)
+        result['examples'] = []
+        if self.examples is not None:
+            for k in self.examples:
+                result['examples'].append(k.to_map() if k else None)
         result['fields'] = []
         if self.fields is not None:
             for k in self.fields:
@@ -411,11 +411,11 @@ class AnalyzeConversationRequest(TeaModel):
         if m.get('dialogue') is not None:
             temp_model = AnalyzeConversationRequestDialogue()
             self.dialogue = temp_model.from_map(m['dialogue'])
-        self.example_list = []
-        if m.get('exampleList') is not None:
-            for k in m.get('exampleList'):
-                temp_model = AnalyzeConversationRequestExampleList()
-                self.example_list.append(temp_model.from_map(k))
+        self.examples = []
+        if m.get('examples') is not None:
+            for k in m.get('examples'):
+                temp_model = AnalyzeConversationRequestExamples()
+                self.examples.append(temp_model.from_map(k))
         self.fields = []
         if m.get('fields') is not None:
             for k in m.get('fields'):

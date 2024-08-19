@@ -1,3 +1,7 @@
+2024-08-19 Version: 3.0.0
+- Update API AnalyzeConversation: update param body.
+
+
 2024-08-16 Version: 2.1.0
 - Support API AnalyzeConversation.
 
