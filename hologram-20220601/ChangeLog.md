@@ -1,3 +1,6 @@
+2024-08-19 Version: 1.3.3
+- Generated python 2022-06-01 for Hologram.
+
 2024-08-16 Version: 1.3.2
 - Update API GetWarehouseDetail: update response param.
 
