@@ -246,6 +246,7 @@ class AddControlPolicyRequest(TeaModel):
         destination: str = None,
         destination_type: str = None,
         direction: str = None,
+        domain_resolve_type: str = None,
         end_time: int = None,
         ip_version: str = None,
         lang: str = None,
@@ -357,6 +358,12 @@ class AddControlPolicyRequest(TeaModel):
         # 
         # This parameter is required.
         self.direction = direction
+        # The domain name resolution method of the access control policy. Valid values:
+        # 
+        # * **FQDN**: fully qualified domain name (FQDN)-based resolution
+        # * **DNS**: DNS-based dynamic resolution
+        # * **FQDN_AND_DNS**: FQDN and DNS-based dynamic resolution
+        self.domain_resolve_type = domain_resolve_type
         # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
         # 
         # >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
@@ -478,6 +485,8 @@ class AddControlPolicyRequest(TeaModel):
             result['DestinationType'] = self.destination_type
         if self.direction is not None:
             result['Direction'] = self.direction
+        if self.domain_resolve_type is not None:
+            result['DomainResolveType'] = self.domain_resolve_type
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.ip_version is not None:
@@ -530,6 +539,8 @@ class AddControlPolicyRequest(TeaModel):
             self.destination_type = m.get('DestinationType')
         if m.get('Direction') is not None:
             self.direction = m.get('Direction')
+        if m.get('DomainResolveType') is not None:
+            self.domain_resolve_type = m.get('DomainResolveType')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('IpVersion') is not None:
@@ -1029,6 +1040,7 @@ class CreateDownloadTaskRequest(TeaModel):
         self,
         lang: str = None,
         task_data: str = None,
+        time_zone: str = None,
     ):
         # The language of the content within the response.
         # 
@@ -1039,6 +1051,8 @@ class CreateDownloadTaskRequest(TeaModel):
         self.lang = lang
         # The query condition of the download task.
         self.task_data = task_data
+        # The time zone of the time information in the downloaded file. The value must be an identifier of a time zone in the Internet Assigned Numbers Authority (IANA) database. The default value is Asia/Shanghai, which indicates UTC+8.
+        self.time_zone = time_zone
 
     def validate(self):
         pass
@@ -1053,6 +1067,8 @@ class CreateDownloadTaskRequest(TeaModel):
             result['Lang'] = self.lang
         if self.task_data is not None:
             result['TaskData'] = self.task_data
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
         return result
 
     def from_map(self, m: dict = None):
@@ -1061,6 +1077,8 @@ class CreateDownloadTaskRequest(TeaModel):
             self.lang = m.get('Lang')
         if m.get('TaskData') is not None:
             self.task_data = m.get('TaskData')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
         return self
 
 
@@ -1780,6 +1798,110 @@ class CreateSecurityProxyResponse(TeaModel):
         return self
 
 
+class CreateSlsLogDispatchRequest(TeaModel):
+    def __init__(
+        self,
+        sls_region_id: str = None,
+        ttl: int = None,
+    ):
+        # The region ID of the Simple Log Service project.
+        self.sls_region_id = sls_region_id
+        # The log retention period. Unit: days.
+        self.ttl = ttl
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sls_region_id is not None:
+            result['SlsRegionId'] = self.sls_region_id
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SlsRegionId') is not None:
+            self.sls_region_id = m.get('SlsRegionId')
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        return self
+
+
+class CreateSlsLogDispatchResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateSlsLogDispatchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSlsLogDispatchResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSlsLogDispatchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateTrFirewallV2Request(TeaModel):
     def __init__(
         self,
@@ -1994,7 +2116,9 @@ class CreateTrFirewallV2RoutePolicyRequestDestCandidateList(TeaModel):
         candidate_id: str = None,
         candidate_type: str = None,
     ):
+        # The ID of the traffic redirection instance.
         self.candidate_id = candidate_id
+        # The type of the traffic redirection instance.
         self.candidate_type = candidate_type
 
     def validate(self):
@@ -2027,7 +2151,9 @@ class CreateTrFirewallV2RoutePolicyRequestSrcCandidateList(TeaModel):
         candidate_id: str = None,
         candidate_type: str = None,
     ):
+        # The ID of the traffic redirection instance.
         self.candidate_id = candidate_id
+        # The type of the traffic redirection instance.
         self.candidate_type = candidate_type
 
     def validate(self):
@@ -2065,12 +2191,26 @@ class CreateTrFirewallV2RoutePolicyRequest(TeaModel):
         policy_type: str = None,
         src_candidate_list: List[CreateTrFirewallV2RoutePolicyRequestSrcCandidateList] = None,
     ):
+        # The secondary traffic redirection instances.
         self.dest_candidate_list = dest_candidate_list
+        # The instance ID of the VPC firewall.
         self.firewall_id = firewall_id
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh** (default): Chinese
+        # *   **en**: English
         self.lang = lang
+        # The description of the traffic redirection instance.
         self.policy_description = policy_description
+        # The name of the traffic redirection instance.
         self.policy_name = policy_name
+        # The type of the traffic redirection scenario of the VPC firewall. Valid values:
+        # 
+        # *   **fullmesh**: interconnected instances
+        # *   **one_to_one**: instance to instance
+        # *   **end_to_end**: instance to instances
         self.policy_type = policy_type
+        # The primary traffic redirection instances.
         self.src_candidate_list = src_candidate_list
 
     def validate(self):
@@ -2145,12 +2285,26 @@ class CreateTrFirewallV2RoutePolicyShrinkRequest(TeaModel):
         policy_type: str = None,
         src_candidate_list_shrink: str = None,
     ):
+        # The secondary traffic redirection instances.
         self.dest_candidate_list_shrink = dest_candidate_list_shrink
+        # The instance ID of the VPC firewall.
         self.firewall_id = firewall_id
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh** (default): Chinese
+        # *   **en**: English
         self.lang = lang
+        # The description of the traffic redirection instance.
         self.policy_description = policy_description
+        # The name of the traffic redirection instance.
         self.policy_name = policy_name
+        # The type of the traffic redirection scenario of the VPC firewall. Valid values:
+        # 
+        # *   **fullmesh**: interconnected instances
+        # *   **one_to_one**: instance to instance
+        # *   **end_to_end**: instance to instances
         self.policy_type = policy_type
+        # The primary traffic redirection instances.
         self.src_candidate_list_shrink = src_candidate_list_shrink
 
     def validate(self):
@@ -2203,7 +2357,9 @@ class CreateTrFirewallV2RoutePolicyResponseBody(TeaModel):
         request_id: str = None,
         tr_firewall_route_policy_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the routing policy.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
 
     def validate(self):
@@ -2686,6 +2842,7 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
         dest_port_type: str = None,
         destination: str = None,
         destination_type: str = None,
+        domain_resolve_type: str = None,
         end_time: int = None,
         lang: str = None,
         member_uid: str = None,
@@ -2762,6 +2919,7 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
         # 
         # This parameter is required.
         self.destination_type = destination_type
+        self.domain_resolve_type = domain_resolve_type
         # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
         # 
         # >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
@@ -2875,6 +3033,8 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
             result['Destination'] = self.destination
         if self.destination_type is not None:
             result['DestinationType'] = self.destination_type
+        if self.domain_resolve_type is not None:
+            result['DomainResolveType'] = self.domain_resolve_type
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.lang is not None:
@@ -2925,6 +3085,8 @@ class CreateVpcFirewallControlPolicyRequest(TeaModel):
             self.destination = m.get('Destination')
         if m.get('DestinationType') is not None:
             self.destination_type = m.get('DestinationType')
+        if m.get('DomainResolveType') is not None:
+            self.domain_resolve_type = m.get('DomainResolveType')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Lang') is not None:
@@ -3158,9 +3320,9 @@ class DeleteControlPolicyRequest(TeaModel):
         lang: str = None,
         source_ip: str = None,
     ):
-        # The ID of the access control policy.
+        # The UUID of the access control policy.
         # 
-        # To delete an access control policy, you must provide the ID of the policy. You can call the [DescribeControlPolicy](https://help.aliyun.com/document_detail/138866.html) operation to query the ID.
+        # To delete an access control policy, you must specify the UUID of the policy. You can call the [DescribeControlPolicy](https://help.aliyun.com/document_detail/138866.html) operation to query the UUID.
         # 
         # This parameter is required.
         self.acl_uuid = acl_uuid
@@ -3170,15 +3332,13 @@ class DeleteControlPolicyRequest(TeaModel):
         # 
         # *   **in**: inbound traffic
         # *   **out**: outbound traffic
-        # 
-        # This parameter is required.
         self.direction = direction
-        # The natural language of the request and response.
+        # The language of the content within the request and response.
         # 
         # Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # *   **zh** (default)
+        # *   **en**\
         self.lang = lang
         # The source IP address of the traffic.
         self.source_ip = source_ip
@@ -3220,7 +3380,7 @@ class DeleteControlPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3514,8 +3674,14 @@ class DeleteFirewallV2RoutePoliciesRequest(TeaModel):
         lang: str = None,
         tr_firewall_route_policy_id: str = None,
     ):
+        # The instance ID of the VPC firewall.
         self.firewall_id = firewall_id
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh** (default): Chinese
+        # *   **en**: English
         self.lang = lang
+        # The ID of the routing policy.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
 
     def validate(self):
@@ -3551,6 +3717,7 @@ class DeleteFirewallV2RoutePoliciesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3977,7 +4144,13 @@ class DeleteSecurityProxyRequest(TeaModel):
         lang: str = None,
         proxy_id: str = None,
     ):
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh** (default): Chinese
+        # *   **en**: English
         self.lang = lang
+        # The ID of the NAT firewall.
+        # 
         # This parameter is required.
         self.proxy_id = proxy_id
 
@@ -4010,6 +4183,7 @@ class DeleteSecurityProxyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5552,9 +5726,9 @@ class DescribeAssetRiskListRequest(TeaModel):
         # 
         # > 
         # 
-        # *   Example of an IPv4 address: 47.97.221.164
+        # *   Example of an IPv4 address: 47.97.XX.XX
         # 
-        # *   Example of an IPv6 address: 2001:db8:ffff:ffff:ffff:\\*\\*\\*\\*:ffff
+        # *   Example of an IPv6 address: 2001:db8:ffff:ffff:ffff:XXXX:ffff
         self.ip_addr_list = ip_addr_list
         # The IP version of the asset that is protected by Cloud Firewall.
         # 
@@ -5968,12 +6142,12 @@ class DescribeControlPolicyRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, access control policies that have descriptions are queried.
         self.description = description
-        # The destination address in the access control policy. Fuzzy match is supported. The value of this parameter depends on the value of the DestinationType parameter.
+        # The destination address in the access control policy. Fuzzy match is supported. The value of this parameter varies based on the value of the DestinationType parameter.
         # 
-        # *   If DestinationType is set to `net`, the value of Destination must be a CIDR block. Example: 10.0.3.0/24.
-        # *   If DestinationType is set to `domain`, the value of Destination must be a domain name. Example: aliyun.
-        # *   If DestinationType is set to `group`, the value of Destination must be the name of an address book. Example: db_group.
-        # *   If DestinationType is set to `location`, the value of Destination must be a location. Example: beijing.
+        # *   If you set DestinationType to `net`, the value of Destination is a CIDR block. Example: 10.0.3.0/24.
+        # *   If you set DestinationType to `domain`, the value of Destination is a domain name. Example: aliyun.
+        # *   If you set DestinationType to `group`, the value of Destination is the name of an address book. Example: db_group.
+        # *   If you set DestinationType to `location`, the value of Destination is the name of a location. For more information about location codes, see AddControlPolicy. Example: ["BJ11", "ZB"].
         # 
         # >  If you do not specify this parameter, access control policies of all destination address types are queried.
         self.destination = destination
@@ -5981,8 +6155,6 @@ class DescribeControlPolicyRequest(TeaModel):
         # 
         # *   **in**: inbound traffic
         # *   **out**: outbound traffic
-        # 
-        # This parameter is required.
         self.direction = direction
         # The IP version of the address in the access control policy. Valid values:
         # 
@@ -6118,6 +6290,7 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
         direction: str = None,
         dns_result: str = None,
         dns_result_time: int = None,
+        domain_resolve_type: str = None,
         end_time: int = None,
         hit_last_time: int = None,
         hit_times: int = None,
@@ -6215,6 +6388,12 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
         self.dns_result = dns_result
         # The time when the Domain Name System (DNS) resolution was performed. The value is a timestamp. Unit: seconds.
         self.dns_result_time = dns_result_time
+        # The domain name resolution method of the access control policy. By default, an access control policy is enabled after the policy is created. Valid values:
+        # 
+        # * **FQDN**: fully qualified domain name (FQDN)-based resolution
+        # * **DNS**: DNS-based dynamic resolution
+        # * **FQDN_AND_DNS**: FQDN and DNS-based dynamic resolution
+        self.domain_resolve_type = domain_resolve_type
         # The time when the access control policy stops taking effect. The value is a timestamp. Unit: seconds. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
         # 
         # >  If RepeatType is set to Permanent, this parameter is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter must be specified.
@@ -6347,6 +6526,8 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
             result['DnsResult'] = self.dns_result
         if self.dns_result_time is not None:
             result['DnsResultTime'] = self.dns_result_time
+        if self.domain_resolve_type is not None:
+            result['DomainResolveType'] = self.domain_resolve_type
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.hit_last_time is not None:
@@ -6423,6 +6604,8 @@ class DescribeControlPolicyResponseBodyPolicys(TeaModel):
             self.dns_result = m.get('DnsResult')
         if m.get('DnsResultTime') is not None:
             self.dns_result_time = m.get('DnsResultTime')
+        if m.get('DomainResolveType') is not None:
+            self.domain_resolve_type = m.get('DomainResolveType')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('HitLastTime') is not None:
@@ -6571,10 +6754,12 @@ class DescribeDefaultIPSConfigRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        source_ip: str = None,
     ):
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh** (default)
+        # *   **en**\
         self.lang = lang
-        self.source_ip = source_ip
 
     def validate(self):
         pass
@@ -6587,40 +6772,52 @@ class DescribeDefaultIPSConfigRequest(TeaModel):
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         return self
 
 
 class DescribeDefaultIPSConfigResponseBody(TeaModel):
     def __init__(
         self,
-        ai_rules: int = None,
         basic_rules: int = None,
         cti_rules: int = None,
-        enable_all_patch: int = None,
-        enable_default: int = None,
         patch_rules: int = None,
         request_id: str = None,
         rule_class: int = None,
         run_mode: int = None,
     ):
-        self.ai_rules = ai_rules
+        # Indicates whether basic protection is enabled. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.basic_rules = basic_rules
+        # Indicates whether threat intelligence is enabled. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.cti_rules = cti_rules
-        self.enable_all_patch = enable_all_patch
-        self.enable_default = enable_default
+        # Indicates whether virtual patching is enabled. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.patch_rules = patch_rules
+        # The request ID.
         self.request_id = request_id
+        # The level of the rule group for the IPS. Valid values:
+        # 
+        # *   **1**: loose
+        # *   **2**: medium
+        # *   **3**: strict
         self.rule_class = rule_class
+        # The mode of the IPS. Valid values:
+        # 
+        # *   **1**: block mode
+        # *   **0**: monitor mode
         self.run_mode = run_mode
 
     def validate(self):
@@ -6632,16 +6829,10 @@ class DescribeDefaultIPSConfigResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.ai_rules is not None:
-            result['AiRules'] = self.ai_rules
         if self.basic_rules is not None:
             result['BasicRules'] = self.basic_rules
         if self.cti_rules is not None:
             result['CtiRules'] = self.cti_rules
-        if self.enable_all_patch is not None:
-            result['EnableAllPatch'] = self.enable_all_patch
-        if self.enable_default is not None:
-            result['EnableDefault'] = self.enable_default
         if self.patch_rules is not None:
             result['PatchRules'] = self.patch_rules
         if self.request_id is not None:
@@ -6654,16 +6845,10 @@ class DescribeDefaultIPSConfigResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AiRules') is not None:
-            self.ai_rules = m.get('AiRules')
         if m.get('BasicRules') is not None:
             self.basic_rules = m.get('BasicRules')
         if m.get('CtiRules') is not None:
             self.cti_rules = m.get('CtiRules')
-        if m.get('EnableAllPatch') is not None:
-            self.enable_all_patch = m.get('EnableAllPatch')
-        if m.get('EnableDefault') is not None:
-            self.enable_default = m.get('EnableDefault')
         if m.get('PatchRules') is not None:
             self.patch_rules = m.get('PatchRules')
         if m.get('RequestId') is not None:
@@ -8348,7 +8533,7 @@ class DescribeInternetTrafficTrendResponseBodyDataList(TeaModel):
         self.in_pps = in_pps
         # The number of new connections.
         self.new_conn = new_conn
-        # The outbound network throughput, which indicates the number of bits that are sent inbound per second. Unit: bit/s.
+        # The outbound network throughput, which indicates the number of bits that are sent outbound per second. Unit: bit/s.
         self.out_bps = out_bps
         # The outbound network throughput, which indicates the total number of bytes that are sent outbound. Unit: bytes.
         self.out_bytes = out_bytes
@@ -8357,6 +8542,8 @@ class DescribeInternetTrafficTrendResponseBodyDataList(TeaModel):
         # The number of requests.
         self.session_count = session_count
         # The time when traffic is generated. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # If processing is not complete at this point in time, -1 is returned for all other fields.
         self.time = time
         # The total outbound and inbound network throughput, which indicates the total number of bits that are sent inbound and outbound per second. Unit: bit/s.
         self.total_bps = total_bps
@@ -8450,6 +8637,7 @@ class DescribeInternetTrafficTrendResponseBody(TeaModel):
         self.data_list = data_list
         # The timestamp generated when the bandwidth reaches the peak value. The value is a UNIX timestamp. Unit: seconds.
         self.max_bandwidth_time = max_bandwidth_time
+        # The maximum volume of excess traffic allowed per day.
         self.max_day_exceed_bytes = max_day_exceed_bytes
         # The maximum inbound network throughput, which indicates the maximum number of bits that are sent inbound per second. Unit: bit/s.
         self.max_in_bps = max_in_bps
@@ -8463,6 +8651,7 @@ class DescribeInternetTrafficTrendResponseBody(TeaModel):
         self.request_id = request_id
         # The total inbound and outbound network throughput, which indicates the total number of bytes that are sent inbound and outbound. Unit: bytes.
         self.total_bytes = total_bytes
+        # The total volume of excess traffic.
         self.total_exceed_bytes = total_exceed_bytes
         # The inbound network throughput, which indicates the total number of bytes that are sent inbound. Unit: bytes.
         self.total_in_bytes = total_in_bytes
@@ -9108,9 +9297,11 @@ class DescribeNatAclPageStatusRequest(TeaModel):
 class DescribeNatAclPageStatusResponseBody(TeaModel):
     def __init__(
         self,
+        detail: str = None,
         nat_acl_page_enable: bool = None,
         request_id: str = None,
     ):
+        self.detail = detail
         # Indicates whether pagination for access control policies for NAT firewalls is supported.
         self.nat_acl_page_enable = nat_acl_page_enable
         # The ID of the request.
@@ -9125,6 +9316,8 @@ class DescribeNatAclPageStatusResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.detail is not None:
+            result['Detail'] = self.detail
         if self.nat_acl_page_enable is not None:
             result['NatAclPageEnable'] = self.nat_acl_page_enable
         if self.request_id is not None:
@@ -9133,6 +9326,8 @@ class DescribeNatAclPageStatusResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
         if m.get('NatAclPageEnable') is not None:
             self.nat_acl_page_enable = m.get('NatAclPageEnable')
         if m.get('RequestId') is not None:
@@ -9768,15 +9963,39 @@ class DescribeNatFirewallListRequest(TeaModel):
         status: str = None,
         vpc_id: str = None,
     ):
+        # The language of the content within the response. Valid values:
+        # *   **zh** (default)
+        # *   **en**\
         self.lang = lang
+        # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
+        # 
+        # Default value: 10. 
+        # 
+        #  Maximum value: 50.
         self.page_size = page_size
+        # The ID of the NAT firewall.
         self.proxy_id = proxy_id
+        # The name of the NAT firewall. The name must be 4 to 50 characters in length, and can contain letters, digits, and underscores (_). The name cannot start with an underscore.
         self.proxy_name = proxy_name
+        # The region ID of the virtual private cloud (VPC).
         self.region_no = region_no
+        # The status of the NAT firewall. Valid values:
+        # 
+        # *   configuring
+        # *   deleting
+        # *   normal
+        # *   abnormal
+        # *   opening
+        # *   closing
+        # *   closed
         self.status = status
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -9843,9 +10062,13 @@ class DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList(TeaMod
         next_hop_type: str = None,
         route_table_id: str = None,
     ):
+        # The destination CIDR block of the default route.
         self.destination_cidr = destination_cidr
+        # The next hop of the original NAT gateway.
         self.next_hop_id = next_hop_id
+        # The network type of the next hop. The value is fixed as NatGateway.
         self.next_hop_type = next_hop_type
+        # The route table to which the default route of the NAT gateway belongs.
         self.route_table_id = route_table_id
 
     def validate(self):
@@ -9897,18 +10120,43 @@ class DescribeNatFirewallListResponseBodyNatFirewallList(TeaModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
+        # The UID of the Alibaba Cloud account.
+        # 
+        # >  The value of this parameter indicates the management account to which the member is added.
         self.ali_uid = ali_uid
+        # The cause of the error.
         self.error_detail = error_detail
+        # The UID of the member in Cloud Firewall.
         self.member_uid = member_uid
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The name of the NAT gateway.
         self.nat_gateway_name = nat_gateway_name
+        # The default route entries of the NAT gateway.
         self.nat_route_entry_list = nat_route_entry_list
+        # The ID of the NAT firewall.
         self.proxy_id = proxy_id
+        # The name of the NAT firewall.
         self.proxy_name = proxy_name
+        # The status of the NAT firewall. Valid values:
+        # 
+        # *   configuring
+        # *   deleting
+        # *   normal
+        # *   abnormal
+        # *   opening
+        # *   closing
+        # *   closed
         self.proxy_status = proxy_status
+        # The region ID of your Cloud Firewall.
+        # 
+        # >  For more information about the supported regions of Cloud Firewall, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
         self.region_id = region_id
+        # Indicates whether the strict mode is enabled. Valid values: 1, which specifies yes, and 0, which specifies no.
         self.strict_mode = strict_mode
+        # The ID of the VPC.
         self.vpc_id = vpc_id
+        # The name of the VPC.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -9994,8 +10242,11 @@ class DescribeNatFirewallListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The NAT firewalls.
         self.nat_firewall_list = nat_firewall_list
+        # The request ID.
         self.request_id = request_id
+        # The total number of NAT firewalls.
         self.total_count = total_count
 
     def validate(self):
@@ -11715,7 +11966,7 @@ class DescribePostpayTrafficDetailRequest(TeaModel):
     ):
         # The page number. Default value: 1.
         self.current_page = current_page
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The end of the time range to query. Specify a value in the YYYYMMDD format.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -11733,14 +11984,15 @@ class DescribePostpayTrafficDetailRequest(TeaModel):
         self.page_size = page_size
         # The instance ID or the IP address of the asset.
         self.search_item = search_item
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The beginning of the time range to query. Specify a value in the YYYYMMDD format.
         # 
         # This parameter is required.
         self.start_time = start_time
         # The traffic type. This parameter is required. Valid values:
         # 
         # *   **EIP_TRAFFIC**: traffic for the Internet firewall
-        # *   **NatGateway_TRAFFIC**: traffic for the NAT firewall
+        # *   **NatGateway_TRAFFIC**: traffic for NAT firewalls
+        # *   **VPC_TRAFFIC**: traffic for virtual private cloud (VPC) firewalls
         # 
         # This parameter is required.
         self.traffic_type = traffic_type
@@ -11800,29 +12052,32 @@ class DescribePostpayTrafficDetailResponseBodyTrafficList(TeaModel):
         instance_id: str = None,
         instance_type: str = None,
         out_bytes: int = None,
+        protection_duration: int = None,
         resource_id: str = None,
         total_bytes: int = None,
         traffic_day: str = None,
         traffic_type: str = None,
     ):
-        # The inbound network throughput, which indicates the total number of bytes that are received. Unit: bytes.
+        # The inbound network throughput, which indicates the total number of bytes that are received Unit: bytes.
         self.in_bytes = in_bytes
         # The instance ID of the asset.
         self.instance_id = instance_id
-        # The type of the asset. This value takes effect only for the Internet firewall.
+        # The asset type. This value takes effect only for the Internet firewall.
         self.instance_type = instance_type
         # The outbound network throughput, which indicates the total number of bytes that are sent. Unit: bytes.
         self.out_bytes = out_bytes
+        self.protection_duration = protection_duration
         # The resource ID. The resource ID for the Internet firewall is the public IP address that is protected the Internet firewall, and the resource ID for a NAT firewall is the instance ID of the NAT firewall.
         self.resource_id = resource_id
-        # The total inbound and outbound network throughput, which indicates the total number of bytes that are sent and received. Unit: bytes.
+        # The total inbound and outbound network throughput, which indicates the total number of bytes that are received and sent. Unit: bytes.
         self.total_bytes = total_bytes
         # The date on which the statistics are collected.
         self.traffic_day = traffic_day
         # The traffic type. Valid values:
         # 
         # *   **EIP_TRAFFIC**: traffic for the Internet firewall
-        # *   **NatGateway_TRAFFIC**: traffic for the NAT firewall
+        # *   **NatGateway_TRAFFIC**: traffic for NAT firewalls
+        # *   **VPC_TRAFFIC**: traffic for VPC firewalls
         self.traffic_type = traffic_type
 
     def validate(self):
@@ -11842,6 +12097,8 @@ class DescribePostpayTrafficDetailResponseBodyTrafficList(TeaModel):
             result['InstanceType'] = self.instance_type
         if self.out_bytes is not None:
             result['OutBytes'] = self.out_bytes
+        if self.protection_duration is not None:
+            result['ProtectionDuration'] = self.protection_duration
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.total_bytes is not None:
@@ -11862,6 +12119,8 @@ class DescribePostpayTrafficDetailResponseBodyTrafficList(TeaModel):
             self.instance_type = m.get('InstanceType')
         if m.get('OutBytes') is not None:
             self.out_bytes = m.get('OutBytes')
+        if m.get('ProtectionDuration') is not None:
+            self.protection_duration = m.get('ProtectionDuration')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('TotalBytes') is not None:
@@ -11884,7 +12143,7 @@ class DescribePostpayTrafficDetailResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # The traffic statistics.
+        # The statistics on traffic.
         self.traffic_list = traffic_list
 
     def validate(self):
@@ -12000,20 +12259,35 @@ class DescribePostpayTrafficTotalResponseBody(TeaModel):
         self,
         request_id: str = None,
         total_assets: int = None,
+        total_bill_traffic: int = None,
+        total_internet_assets: int = None,
+        total_internet_traffic: int = None,
         total_nat_assets: int = None,
         total_nat_traffic: int = None,
         total_traffic: int = None,
+        total_vpc_assets: int = None,
+        total_vpc_traffic: int = None,
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The total number of the assets that are protected by the Internet firewall.
+        # The total number of assets protected all types of firewalls.
         self.total_assets = total_assets
-        # The total number of the assets that are protected by the NAT firewall.
+        # The volume of burstable protected traffic for which fees are generated. Unit: bytes.
+        self.total_bill_traffic = total_bill_traffic
+        # The total number of assets protected by the Internet firewall.
+        self.total_internet_assets = total_internet_assets
+        # The total traffic for the Internet firewall. If you use Cloud Firewall that uses the subscription billing method, this parameter indicates the total volume of burstable protected traffic on the Internet boundary. Unit: bytes.
+        self.total_internet_traffic = total_internet_traffic
+        # The total number of assets protected by NAT firewalls.
         self.total_nat_assets = total_nat_assets
-        # The total traffic for the NAT firewall. Unit: bytes.
+        # The total traffic for NAT firewalls. If you use Cloud Firewall that uses the subscription billing method, this parameter indicates the total volume of burstable protected traffic on the NAT boundary. Unit: bytes.
         self.total_nat_traffic = total_nat_traffic
-        # The total traffic for the Internet firewall. Unit: bytes.
+        # The total volume of traffic. If you use Cloud Firewall that uses the subscription billing method, this parameter indicates the total volume of burstable protected traffic. Unit: bytes.
         self.total_traffic = total_traffic
+        # The total number of assets protected by virtual private cloud (VPC) firewalls.
+        self.total_vpc_assets = total_vpc_assets
+        # The total traffic for VPC firewalls. If you use Cloud Firewall that uses the subscription billing method, this parameter indicates the total volume of burstable protected traffic on the VPC boundary. Unit: bytes.
+        self.total_vpc_traffic = total_vpc_traffic
 
     def validate(self):
         pass
@@ -12028,12 +12302,22 @@ class DescribePostpayTrafficTotalResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.total_assets is not None:
             result['TotalAssets'] = self.total_assets
+        if self.total_bill_traffic is not None:
+            result['TotalBillTraffic'] = self.total_bill_traffic
+        if self.total_internet_assets is not None:
+            result['TotalInternetAssets'] = self.total_internet_assets
+        if self.total_internet_traffic is not None:
+            result['TotalInternetTraffic'] = self.total_internet_traffic
         if self.total_nat_assets is not None:
             result['TotalNatAssets'] = self.total_nat_assets
         if self.total_nat_traffic is not None:
             result['TotalNatTraffic'] = self.total_nat_traffic
         if self.total_traffic is not None:
             result['TotalTraffic'] = self.total_traffic
+        if self.total_vpc_assets is not None:
+            result['TotalVpcAssets'] = self.total_vpc_assets
+        if self.total_vpc_traffic is not None:
+            result['TotalVpcTraffic'] = self.total_vpc_traffic
         return result
 
     def from_map(self, m: dict = None):
@@ -12042,12 +12326,22 @@ class DescribePostpayTrafficTotalResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('TotalAssets') is not None:
             self.total_assets = m.get('TotalAssets')
+        if m.get('TotalBillTraffic') is not None:
+            self.total_bill_traffic = m.get('TotalBillTraffic')
+        if m.get('TotalInternetAssets') is not None:
+            self.total_internet_assets = m.get('TotalInternetAssets')
+        if m.get('TotalInternetTraffic') is not None:
+            self.total_internet_traffic = m.get('TotalInternetTraffic')
         if m.get('TotalNatAssets') is not None:
             self.total_nat_assets = m.get('TotalNatAssets')
         if m.get('TotalNatTraffic') is not None:
             self.total_nat_traffic = m.get('TotalNatTraffic')
         if m.get('TotalTraffic') is not None:
             self.total_traffic = m.get('TotalTraffic')
+        if m.get('TotalVpcAssets') is not None:
+            self.total_vpc_assets = m.get('TotalVpcAssets')
+        if m.get('TotalVpcTraffic') is not None:
+            self.total_vpc_traffic = m.get('TotalVpcTraffic')
         return self
 
 
@@ -13507,7 +13801,7 @@ class DescribeTrFirewallPolicyBackUpAssociationListRequest(TeaModel):
         lang: str = None,
         tr_firewall_route_policy_id: str = None,
     ):
-        # An array that consists of the details about the traffic redirection instance.
+        # The traffic redirection instances.
         self.candidate_list = candidate_list
         # The instance ID of the VPC firewall.
         self.firewall_id = firewall_id
@@ -13567,7 +13861,7 @@ class DescribeTrFirewallPolicyBackUpAssociationListShrinkRequest(TeaModel):
         lang: str = None,
         tr_firewall_route_policy_id: str = None,
     ):
-        # An array that consists of the details about the traffic redirection instance.
+        # The traffic redirection instances.
         self.candidate_list_shrink = candidate_list_shrink
         # The instance ID of the VPC firewall.
         self.firewall_id = firewall_id
@@ -14425,6 +14719,7 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig(TeaModel):
         self,
         basic_rules: int = None,
         enable_all_patch: int = None,
+        rule_class: int = None,
         run_mode: int = None,
     ):
         # Indicates whether basic protection is enabled. Valid values:
@@ -14437,6 +14732,7 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig(TeaModel):
         # *   **1**: yes
         # *   **0**: no
         self.enable_all_patch = enable_all_patch
+        self.rule_class = rule_class
         # The mode of the IPS. Valid values:
         # 
         # *   **1**: block mode
@@ -14456,6 +14752,8 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig(TeaModel):
             result['BasicRules'] = self.basic_rules
         if self.enable_all_patch is not None:
             result['EnableAllPatch'] = self.enable_all_patch
+        if self.rule_class is not None:
+            result['RuleClass'] = self.rule_class
         if self.run_mode is not None:
             result['RunMode'] = self.run_mode
         return result
@@ -14466,6 +14764,8 @@ class DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsIpsConfig(TeaModel):
             self.basic_rules = m.get('BasicRules')
         if m.get('EnableAllPatch') is not None:
             self.enable_all_patch = m.get('EnableAllPatch')
+        if m.get('RuleClass') is not None:
+            self.rule_class = m.get('RuleClass')
         if m.get('RunMode') is not None:
             self.run_mode = m.get('RunMode')
         return self
@@ -14840,10 +15140,18 @@ class DescribeTrFirewallsV2RouteListRequest(TeaModel):
         page_size: str = None,
         tr_firewall_route_policy_id: str = None,
     ):
+        # The page number. Default value: 1.
         self.current_page = current_page
+        # The instance ID of the virtual private cloud (VPC) firewall.
         self.firewall_id = firewall_id
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh** (default): Chinese
+        # *   **en**: English
         self.lang = lang
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The ID of the routing policy.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
 
     def validate(self):
@@ -14890,9 +15198,13 @@ class DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList(TeaModel
         tr_firewall_route_policy_id: str = None,
         tr_firewall_route_table_id: str = None,
     ):
+        # The destination address of the route.
         self.tr_firewall_route_destination = tr_firewall_route_destination
+        # The ID of the next hop for the route.
         self.tr_firewall_route_nexthop = tr_firewall_route_nexthop
+        # The ID of the routing policy.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
+        # The ID of the route table to which the route entry belongs.
         self.tr_firewall_route_table_id = tr_firewall_route_table_id
 
     def validate(self):
@@ -14933,7 +15245,9 @@ class DescribeTrFirewallsV2RouteListResponseBody(TeaModel):
         firewall_route_detail_list: List[DescribeTrFirewallsV2RouteListResponseBodyFirewallRouteDetailList] = None,
         request_id: str = None,
     ):
+        # The route tables of Cloud Firewall.
         self.firewall_route_detail_list = firewall_route_detail_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -16294,6 +16608,7 @@ class DescribeVpcFirewallCenListResponseBodyVpcFirewallsIpsConfig(TeaModel):
         self,
         basic_rules: int = None,
         enable_all_patch: int = None,
+        rule_class: int = None,
         run_mode: int = None,
     ):
         # Indicates whether basic protection is enabled. Valid values:
@@ -16306,6 +16621,7 @@ class DescribeVpcFirewallCenListResponseBodyVpcFirewallsIpsConfig(TeaModel):
         # *   **1**: yes
         # *   **0**: no
         self.enable_all_patch = enable_all_patch
+        self.rule_class = rule_class
         # The mode of the IPS. Valid values:
         # 
         # *   **1**: block mode
@@ -16325,6 +16641,8 @@ class DescribeVpcFirewallCenListResponseBodyVpcFirewallsIpsConfig(TeaModel):
             result['BasicRules'] = self.basic_rules
         if self.enable_all_patch is not None:
             result['EnableAllPatch'] = self.enable_all_patch
+        if self.rule_class is not None:
+            result['RuleClass'] = self.rule_class
         if self.run_mode is not None:
             result['RunMode'] = self.run_mode
         return result
@@ -16335,6 +16653,8 @@ class DescribeVpcFirewallCenListResponseBodyVpcFirewallsIpsConfig(TeaModel):
             self.basic_rules = m.get('BasicRules')
         if m.get('EnableAllPatch') is not None:
             self.enable_all_patch = m.get('EnableAllPatch')
+        if m.get('RuleClass') is not None:
+            self.rule_class = m.get('RuleClass')
         if m.get('RunMode') is not None:
             self.run_mode = m.get('RunMode')
         return self
@@ -16950,6 +17270,7 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
         destination_group_cidrs: List[str] = None,
         destination_group_type: str = None,
         destination_type: str = None,
+        domain_resolve_type: str = None,
         end_time: int = None,
         hit_last_time: int = None,
         hit_times: int = None,
@@ -17032,6 +17353,12 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
         # *   **group**: address book
         # *   **domain**: domain name
         self.destination_type = destination_type
+        # The domain name resolution method of the access control policy. By default, an access control policy is enabled after the policy is created. Valid values:
+        # 
+        # * **FQDN**: fully qualified domain name (FQDN)-based resolution
+        # * **DNS**: DNS-based dynamic resolution
+        # * **FQDN_AND_DNS**: FQDN and DNS-based dynamic resolution
+        self.domain_resolve_type = domain_resolve_type
         # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of StartTime.
         # 
         # >  If RepeatType is set to Permanent, EndTime is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, EndTime must be specified.
@@ -17147,6 +17474,8 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
             result['DestinationGroupType'] = self.destination_group_type
         if self.destination_type is not None:
             result['DestinationType'] = self.destination_type
+        if self.domain_resolve_type is not None:
+            result['DomainResolveType'] = self.domain_resolve_type
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.hit_last_time is not None:
@@ -17217,6 +17546,8 @@ class DescribeVpcFirewallControlPolicyResponseBodyPolicys(TeaModel):
             self.destination_group_type = m.get('DestinationGroupType')
         if m.get('DestinationType') is not None:
             self.destination_type = m.get('DestinationType')
+        if m.get('DomainResolveType') is not None:
+            self.domain_resolve_type = m.get('DomainResolveType')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('HitLastTime') is not None:
@@ -17393,6 +17724,7 @@ class DescribeVpcFirewallDefaultIPSConfigResponseBody(TeaModel):
         basic_rules: int = None,
         enable_all_patch: int = None,
         request_id: str = None,
+        rule_class: int = None,
         run_mode: int = None,
     ):
         # Indicates whether basic policies are enabled. Valid values:
@@ -17407,6 +17739,7 @@ class DescribeVpcFirewallDefaultIPSConfigResponseBody(TeaModel):
         self.enable_all_patch = enable_all_patch
         # The ID of the request.
         self.request_id = request_id
+        self.rule_class = rule_class
         # The mode of the intrusion prevention system (IPS). Valid values:
         # 
         # *   **1**: block mode
@@ -17428,6 +17761,8 @@ class DescribeVpcFirewallDefaultIPSConfigResponseBody(TeaModel):
             result['EnableAllPatch'] = self.enable_all_patch
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.rule_class is not None:
+            result['RuleClass'] = self.rule_class
         if self.run_mode is not None:
             result['RunMode'] = self.run_mode
         return result
@@ -17440,6 +17775,8 @@ class DescribeVpcFirewallDefaultIPSConfigResponseBody(TeaModel):
             self.enable_all_patch = m.get('EnableAllPatch')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('RuleClass') is not None:
+            self.rule_class = m.get('RuleClass')
         if m.get('RunMode') is not None:
             self.run_mode = m.get('RunMode')
         return self
@@ -18306,6 +18643,7 @@ class DescribeVpcFirewallListResponseBodyVpcFirewallsIpsConfig(TeaModel):
         self,
         basic_rules: int = None,
         enable_all_patch: int = None,
+        rule_class: int = None,
         run_mode: int = None,
     ):
         # Indicates whether basic protection is enabled. Valid values:
@@ -18318,6 +18656,7 @@ class DescribeVpcFirewallListResponseBodyVpcFirewallsIpsConfig(TeaModel):
         # *   **1**: yes
         # *   **0**: no
         self.enable_all_patch = enable_all_patch
+        self.rule_class = rule_class
         # The mode of the IPS. Valid values:
         # 
         # *   **1**: block mode
@@ -18337,6 +18676,8 @@ class DescribeVpcFirewallListResponseBodyVpcFirewallsIpsConfig(TeaModel):
             result['BasicRules'] = self.basic_rules
         if self.enable_all_patch is not None:
             result['EnableAllPatch'] = self.enable_all_patch
+        if self.rule_class is not None:
+            result['RuleClass'] = self.rule_class
         if self.run_mode is not None:
             result['RunMode'] = self.run_mode
         return result
@@ -18347,6 +18688,8 @@ class DescribeVpcFirewallListResponseBodyVpcFirewallsIpsConfig(TeaModel):
             self.basic_rules = m.get('BasicRules')
         if m.get('EnableAllPatch') is not None:
             self.enable_all_patch = m.get('EnableAllPatch')
+        if m.get('RuleClass') is not None:
+            self.rule_class = m.get('RuleClass')
         if m.get('RunMode') is not None:
             self.run_mode = m.get('RunMode')
         return self
@@ -20006,6 +20349,7 @@ class ModifyAddressBookRequest(TeaModel):
         group_name: str = None,
         group_uuid: str = None,
         lang: str = None,
+        modify_mode: str = None,
         source_ip: str = None,
         tag_list: List[ModifyAddressBookRequestTagList] = None,
         tag_relation: str = None,
@@ -20040,6 +20384,7 @@ class ModifyAddressBookRequest(TeaModel):
         # *   **zh**: Chinese (default)
         # *   **en**: English
         self.lang = lang
+        self.modify_mode = modify_mode
         # The source IP address of the request.
         self.source_ip = source_ip
         # The ECS tags that you want to match.
@@ -20074,6 +20419,8 @@ class ModifyAddressBookRequest(TeaModel):
             result['GroupUuid'] = self.group_uuid
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.modify_mode is not None:
+            result['ModifyMode'] = self.modify_mode
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
         result['TagList'] = []
@@ -20098,6 +20445,8 @@ class ModifyAddressBookRequest(TeaModel):
             self.group_uuid = m.get('GroupUuid')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('ModifyMode') is not None:
+            self.modify_mode = m.get('ModifyMode')
         if m.get('SourceIp') is not None:
             self.source_ip = m.get('SourceIp')
         self.tag_list = []
@@ -20193,6 +20542,7 @@ class ModifyControlPolicyRequest(TeaModel):
         destination: str = None,
         destination_type: str = None,
         direction: str = None,
+        domain_resolve_type: str = None,
         end_time: int = None,
         lang: str = None,
         proto: str = None,
@@ -20236,9 +20586,13 @@ class ModifyControlPolicyRequest(TeaModel):
         # *   **Memcache**\
         # *   **SSL**\
         # 
-        # >  The value *ANY* indicates all types of applications.
+        # >  The value **ANY** indicates all types of applications.
+        # 
+        # >  You must specify one of the ApplicationNameList and ApplicationName parameters. If you configure both ApplicationNameList and ApplicationName, only the value of ApplicationNameList is used.
         self.application_name = application_name
         # The application names.
+        # 
+        # >  You must specify one of the ApplicationNameList and ApplicationName parameters. If you configure both ApplicationNameList and ApplicationName, only the value of ApplicationNameList is used.
         self.application_name_list = application_name_list
         # The description of the access control policy.
         # 
@@ -20278,6 +20632,12 @@ class ModifyControlPolicyRequest(TeaModel):
         # 
         # This parameter is required.
         self.direction = direction
+        # The domain name resolution method of the access control policy. By default, an access control policy is enabled after the policy is created. Valid values:
+        # 
+        # * **FQDN**: fully qualified domain name (FQDN)-based resolution
+        # * **DNS**: DNS-based dynamic resolution
+        # * **FQDN_AND_DNS**: FQDN and DNS-based dynamic resolution
+        self.domain_resolve_type = domain_resolve_type
         # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of StartTime.
         # 
         # >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
@@ -20287,14 +20647,16 @@ class ModifyControlPolicyRequest(TeaModel):
         # *   **zh**: Chinese (default)
         # *   **en**: English
         self.lang = lang
-        # The protocol type supported by the access control policy. Valid values:
+        # The protocol type that the access control policy supports. Valid values:
         # 
         # *   **ANY**\
         # *   **TCP**\
         # *   **UDP**\
         # *   **ICMP**\
         # 
-        # >  The value *ANY* indicates all types of applications.
+        # >  The value **ANY** indicates all types of applications.
+        # 
+        # >  If the traffic direction is outbound and the destination address is a threat intelligence address book of the domain name type or a cloud service address book, you can set Proto to TCP or ANY. If you set Proto to TCP, you can set ApplicationName to HTTP, HTTPS, SMTP, SMTPS, and SSL. If you set Proto to ANY, you can set ApplicationName to ANY.
         # 
         # This parameter is required.
         self.proto = proto
@@ -20382,6 +20744,8 @@ class ModifyControlPolicyRequest(TeaModel):
             result['DestinationType'] = self.destination_type
         if self.direction is not None:
             result['Direction'] = self.direction
+        if self.domain_resolve_type is not None:
+            result['DomainResolveType'] = self.domain_resolve_type
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.lang is not None:
@@ -20430,6 +20794,8 @@ class ModifyControlPolicyRequest(TeaModel):
             self.destination_type = m.get('DestinationType')
         if m.get('Direction') is not None:
             self.direction = m.get('Direction')
+        if m.get('DomainResolveType') is not None:
+            self.domain_resolve_type = m.get('DomainResolveType')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Lang') is not None:
@@ -20666,30 +21032,50 @@ class ModifyControlPolicyPositionResponse(TeaModel):
 class ModifyDefaultIPSConfigRequest(TeaModel):
     def __init__(
         self,
-        ai_rules: str = None,
         basic_rules: str = None,
         cti_rules: str = None,
-        enable_all_patch: str = None,
-        enable_default: str = None,
         lang: str = None,
         patch_rules: str = None,
         rule_class: str = None,
         run_mode: str = None,
-        source_ip: str = None,
     ):
-        self.ai_rules = ai_rules
+        # Specifies whether to enable basic protection. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
+        # 
         # This parameter is required.
         self.basic_rules = basic_rules
+        # Specifies whether to enable threat intelligence. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
+        # 
         # This parameter is required.
         self.cti_rules = cti_rules
-        self.enable_all_patch = enable_all_patch
-        self.enable_default = enable_default
+        # The language of the content within the request and response. Valid values:
+        # 
+        # *   **zh** (default)
+        # *   **en**\
         self.lang = lang
+        # Specifies whether to enable virtual patching. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no
         self.patch_rules = patch_rules
+        # The level of the rule group for the IPS. Valid values:
+        # 
+        # *   **1**: loose
+        # *   **2**: medium
+        # *   **3**: strict
         self.rule_class = rule_class
+        # The mode of the IPS. Valid values:
+        # 
+        # *   **1**: block mode
+        # *   **0**: monitor mode
+        # 
         # This parameter is required.
         self.run_mode = run_mode
-        self.source_ip = source_ip
 
     def validate(self):
         pass
@@ -20700,16 +21086,10 @@ class ModifyDefaultIPSConfigRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.ai_rules is not None:
-            result['AiRules'] = self.ai_rules
         if self.basic_rules is not None:
             result['BasicRules'] = self.basic_rules
         if self.cti_rules is not None:
             result['CtiRules'] = self.cti_rules
-        if self.enable_all_patch is not None:
-            result['EnableAllPatch'] = self.enable_all_patch
-        if self.enable_default is not None:
-            result['EnableDefault'] = self.enable_default
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.patch_rules is not None:
@@ -20718,22 +21098,14 @@ class ModifyDefaultIPSConfigRequest(TeaModel):
             result['RuleClass'] = self.rule_class
         if self.run_mode is not None:
             result['RunMode'] = self.run_mode
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AiRules') is not None:
-            self.ai_rules = m.get('AiRules')
         if m.get('BasicRules') is not None:
             self.basic_rules = m.get('BasicRules')
         if m.get('CtiRules') is not None:
             self.cti_rules = m.get('CtiRules')
-        if m.get('EnableAllPatch') is not None:
-            self.enable_all_patch = m.get('EnableAllPatch')
-        if m.get('EnableDefault') is not None:
-            self.enable_default = m.get('EnableDefault')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('PatchRules') is not None:
@@ -20742,8 +21114,6 @@ class ModifyDefaultIPSConfigRequest(TeaModel):
             self.rule_class = m.get('RuleClass')
         if m.get('RunMode') is not None:
             self.run_mode = m.get('RunMode')
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
         return self
 
 
@@ -20752,6 +21122,7 @@ class ModifyDefaultIPSConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -21196,14 +21567,16 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
         # 
         # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
-        # The protocol type supported by the access control policy. Valid values:
+        # The protocol type in the access control policy. Valid values:
         # 
         # *   **ANY**\
         # *   **TCP**\
         # *   **UDP**\
         # *   **ICMP**\
         # 
-        # > The value **ANY** indicates all types of protocols.
+        # >  The value **ANY** indicates all types of applications.
+        # 
+        # >  If the destination address type is a threat intelligence address book of the domain name type or a cloud service address book, you can set Proto to TCP. If you set Proto to TCP, you can set application types to HTTP, HTTPS, SMTP, SMTPS, and SSL.
         # 
         # This parameter is required.
         self.proto = proto
@@ -21575,6 +21948,141 @@ class ModifyNatFirewallControlPolicyPositionResponse(TeaModel):
         return self
 
 
+class ModifyObjectGroupOperationRequest(TeaModel):
+    def __init__(
+        self,
+        comment: str = None,
+        direction: str = None,
+        lang: str = None,
+        object_list: List[str] = None,
+        object_operation: str = None,
+        object_type: str = None,
+        source_ip: str = None,
+    ):
+        self.comment = comment
+        # This parameter is required.
+        self.direction = direction
+        self.lang = lang
+        # This parameter is required.
+        self.object_list = object_list
+        # This parameter is required.
+        self.object_operation = object_operation
+        # This parameter is required.
+        self.object_type = object_type
+        self.source_ip = source_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.object_list is not None:
+            result['ObjectList'] = self.object_list
+        if self.object_operation is not None:
+            result['ObjectOperation'] = self.object_operation
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('ObjectList') is not None:
+            self.object_list = m.get('ObjectList')
+        if m.get('ObjectOperation') is not None:
+            self.object_operation = m.get('ObjectOperation')
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
+        return self
+
+
+class ModifyObjectGroupOperationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyObjectGroupOperationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyObjectGroupOperationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyObjectGroupOperationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyPolicyAdvancedConfigRequest(TeaModel):
     def __init__(
         self,
@@ -21701,8 +22209,14 @@ class ModifyTrFirewallV2ConfigurationRequest(TeaModel):
         firewall_name: str = None,
         lang: str = None,
     ):
+        # The instance ID of the VPC firewall.
         self.firewall_id = firewall_id
+        # The instance name of the VPC firewall.
         self.firewall_name = firewall_name
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh** (default): Chinese
+        # *   **en**: English
         self.lang = lang
 
     def validate(self):
@@ -21738,6 +22252,7 @@ class ModifyTrFirewallV2ConfigurationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -21807,7 +22322,9 @@ class ModifyTrFirewallV2RoutePolicyScopeRequestDestCandidateList(TeaModel):
         candidate_id: str = None,
         candidate_type: str = None,
     ):
+        # The ID of the traffic redirection instance.
         self.candidate_id = candidate_id
+        # The type of the traffic redirection instance.
         self.candidate_type = candidate_type
 
     def validate(self):
@@ -21840,7 +22357,9 @@ class ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList(TeaModel):
         candidate_id: str = None,
         candidate_type: str = None,
     ):
+        # The ID of the traffic redirection instance.
         self.candidate_id = candidate_id
+        # The type of the traffic redirection instance.
         self.candidate_type = candidate_type
 
     def validate(self):
@@ -21877,12 +22396,26 @@ class ModifyTrFirewallV2RoutePolicyScopeRequest(TeaModel):
         src_candidate_list: List[ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList] = None,
         tr_firewall_route_policy_id: str = None,
     ):
+        # The secondary traffic redirection instances.
         self.dest_candidate_list = dest_candidate_list
+        # The instance ID of the virtual private cloud (VPC) firewall.
+        # 
         # This parameter is required.
         self.firewall_id = firewall_id
+        # The language of the content within the response. Valid values:
+        # 
+        # *  **zh** (default): Chinese
+        # *  **en**: English
         self.lang = lang
+        # Specifies whether to restore the traffic redirection configurations. Valid values:
+        # 
+        # *   true: roll back
+        # *   false: withdraw
         self.should_recover = should_recover
+        # The primary traffic redirection instances.
         self.src_candidate_list = src_candidate_list
+        # The ID of the routing policy.
+        # 
         # This parameter is required.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
 
@@ -21953,12 +22486,26 @@ class ModifyTrFirewallV2RoutePolicyScopeShrinkRequest(TeaModel):
         src_candidate_list_shrink: str = None,
         tr_firewall_route_policy_id: str = None,
     ):
+        # The secondary traffic redirection instances.
         self.dest_candidate_list_shrink = dest_candidate_list_shrink
+        # The instance ID of the virtual private cloud (VPC) firewall.
+        # 
         # This parameter is required.
         self.firewall_id = firewall_id
+        # The language of the content within the response. Valid values:
+        # 
+        # *  **zh** (default): Chinese
+        # *  **en**: English
         self.lang = lang
+        # Specifies whether to restore the traffic redirection configurations. Valid values:
+        # 
+        # *   true: roll back
+        # *   false: withdraw
         self.should_recover = should_recover
+        # The primary traffic redirection instances.
         self.src_candidate_list_shrink = src_candidate_list_shrink
+        # The ID of the routing policy.
+        # 
         # This parameter is required.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
 
@@ -22008,7 +22555,9 @@ class ModifyTrFirewallV2RoutePolicyScopeResponseBody(TeaModel):
         request_id: str = None,
         tr_firewall_route_policy_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the routing policy.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
 
     def validate(self):
@@ -22632,6 +23181,7 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         dest_port_type: str = None,
         destination: str = None,
         destination_type: str = None,
+        domain_resolve_type: str = None,
         end_time: int = None,
         lang: str = None,
         proto: str = None,
@@ -22661,7 +23211,7 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # 
         # This parameter is required.
         self.acl_uuid = acl_uuid
-        # The application type used in the access control policy.
+        # The type of the application that the access control policy supports.
         # 
         # Valid values:
         # 
@@ -22722,6 +23272,7 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
         # 
         # This parameter is required.
         self.destination_type = destination_type
+        self.domain_resolve_type = domain_resolve_type
         # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of StartTime.
         # 
         # >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
@@ -22845,6 +23396,8 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
             result['Destination'] = self.destination
         if self.destination_type is not None:
             result['DestinationType'] = self.destination_type
+        if self.domain_resolve_type is not None:
+            result['DomainResolveType'] = self.domain_resolve_type
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.lang is not None:
@@ -22893,6 +23446,8 @@ class ModifyVpcFirewallControlPolicyRequest(TeaModel):
             self.destination = m.get('Destination')
         if m.get('DestinationType') is not None:
             self.destination_type = m.get('DestinationType')
+        if m.get('DomainResolveType') is not None:
+            self.domain_resolve_type = m.get('DomainResolveType')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Lang') is not None:
@@ -23010,6 +23565,8 @@ class ModifyVpcFirewallControlPolicyPositionRequest(TeaModel):
         # *   **en**: English
         self.lang = lang
         # The new priority of the access control policy.
+        # 
+        # >  For more information about the valid values of the new priority, see [DescribeVpcFirewallPolicyPriorUsed](https://help.aliyun.com/document_detail/474145.html).
         # 
         # This parameter is required.
         self.new_order = new_order
@@ -23144,6 +23701,7 @@ class ModifyVpcFirewallDefaultIPSConfigRequest(TeaModel):
         enable_all_patch: str = None,
         lang: str = None,
         member_uid: str = None,
+        rule_class: str = None,
         run_mode: str = None,
         source_ip: str = None,
         vpc_firewall_id: str = None,
@@ -23169,6 +23727,7 @@ class ModifyVpcFirewallDefaultIPSConfigRequest(TeaModel):
         self.lang = lang
         # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
+        self.rule_class = rule_class
         # The mode of the intrusion prevention system (IPS). Valid values:
         # 
         # *   **1**: block mode
@@ -23203,6 +23762,8 @@ class ModifyVpcFirewallDefaultIPSConfigRequest(TeaModel):
             result['Lang'] = self.lang
         if self.member_uid is not None:
             result['MemberUid'] = self.member_uid
+        if self.rule_class is not None:
+            result['RuleClass'] = self.rule_class
         if self.run_mode is not None:
             result['RunMode'] = self.run_mode
         if self.source_ip is not None:
@@ -23221,6 +23782,8 @@ class ModifyVpcFirewallDefaultIPSConfigRequest(TeaModel):
             self.lang = m.get('Lang')
         if m.get('MemberUid') is not None:
             self.member_uid = m.get('MemberUid')
+        if m.get('RuleClass') is not None:
+            self.rule_class = m.get('RuleClass')
         if m.get('RunMode') is not None:
             self.run_mode = m.get('RunMode')
         if m.get('SourceIp') is not None:
@@ -24152,6 +24715,7 @@ class ReleasePostInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the Cloud Firewall instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -24182,9 +24746,16 @@ class ReleasePostInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # Indicates whether the release was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.release_status = release_status
+        # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -24494,9 +25065,20 @@ class SwitchSecurityProxyRequest(TeaModel):
         proxy_id: str = None,
         switch: str = None,
     ):
+        # The language of the content within the request and the response. Valid values:
+        # 
+        # *   **zh** (default)
+        # *   **en**\
         self.lang = lang
+        # The ID of the NAT firewall.
+        # 
         # This parameter is required.
         self.proxy_id = proxy_id
+        # Specifies whether to enable the NAT firewall. Valid values:
+        # 
+        # *   open: yes
+        # *   close: no
+        # 
         # This parameter is required.
         self.switch = switch
 
@@ -24533,6 +25115,7 @@ class SwitchSecurityProxyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

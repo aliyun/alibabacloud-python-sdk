@@ -1,3 +1,32 @@
+2024-08-19 Version: 4.0.0
+- Support API CreateSlsLogDispatch.
+- Support API ModifyObjectGroupOperation.
+- Update API AddControlPolicy: add param DomainResolveType.
+- Update API CreateDownloadTask: add param TimeZone.
+- Update API CreateVpcFirewallControlPolicy: add param DomainResolveType.
+- Update API DeleteControlPolicy: update param Direction.
+- Update API DescribeControlPolicy: update param Direction.
+- Update API DescribeControlPolicy: update response param.
+- Update API DescribeDefaultIPSConfig: delete param SourceIp.
+- Update API DescribeDefaultIPSConfig: update response param.
+- Update API DescribeNatAclPageStatus: update response param.
+- Update API DescribePostpayTrafficDetail: update response param.
+- Update API DescribePostpayTrafficTotal: update response param.
+- Update API DescribeTrFirewallsV2List: update response param.
+- Update API DescribeVpcFirewallCenList: update response param.
+- Update API DescribeVpcFirewallControlPolicy: update response param.
+- Update API DescribeVpcFirewallDefaultIPSConfig: update response param.
+- Update API DescribeVpcFirewallList: update response param.
+- Update API ModifyAddressBook: add param ModifyMode.
+- Update API ModifyControlPolicy: add param DomainResolveType.
+- Update API ModifyDefaultIPSConfig: delete param AiRules.
+- Update API ModifyDefaultIPSConfig: delete param EnableAllPatch.
+- Update API ModifyDefaultIPSConfig: delete param EnableDefault.
+- Update API ModifyDefaultIPSConfig: delete param SourceIp.
+- Update API ModifyVpcFirewallControlPolicy: add param DomainResolveType.
+- Update API ModifyVpcFirewallDefaultIPSConfig: add param RuleClass.
+
+
 2024-05-27 Version: 3.6.2
 - Update API DescribeNatFirewallList: update response param.
 

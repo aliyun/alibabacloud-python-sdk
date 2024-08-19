@@ -227,6 +227,8 @@ class Client(OpenApiClient):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.direction):
             query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.domain_resolve_type):
+            query['DomainResolveType'] = request.domain_resolve_type
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.ip_version):
@@ -312,6 +314,8 @@ class Client(OpenApiClient):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.direction):
             query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.domain_resolve_type):
+            query['DomainResolveType'] = request.domain_resolve_type
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.ip_version):
@@ -759,6 +763,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.task_data):
             query['TaskData'] = request.task_data
+        if not UtilClient.is_unset(request.time_zone):
+            query['TimeZone'] = request.time_zone
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -796,6 +802,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.task_data):
             query['TaskData'] = request.task_data
+        if not UtilClient.is_unset(request.time_zone):
+            query['TimeZone'] = request.time_zone
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1043,6 +1051,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateSecurityProxyResponse:
         """
+        @summary 创建安全正向代理
+        
         @param request: CreateSecurityProxyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateSecurityProxyResponse
@@ -1096,6 +1106,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateSecurityProxyResponse:
         """
+        @summary 创建安全正向代理
+        
         @param request: CreateSecurityProxyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateSecurityProxyResponse
@@ -1148,6 +1160,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateSecurityProxyRequest,
     ) -> cloudfw_20171207_models.CreateSecurityProxyResponse:
         """
+        @summary 创建安全正向代理
+        
         @param request: CreateSecurityProxyRequest
         @return: CreateSecurityProxyResponse
         """
@@ -1159,11 +1173,113 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateSecurityProxyRequest,
     ) -> cloudfw_20171207_models.CreateSecurityProxyResponse:
         """
+        @summary 创建安全正向代理
+        
         @param request: CreateSecurityProxyRequest
         @return: CreateSecurityProxyResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_security_proxy_with_options_async(request, runtime)
+
+    def create_sls_log_dispatch_with_options(
+        self,
+        request: cloudfw_20171207_models.CreateSlsLogDispatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateSlsLogDispatchResponse:
+        """
+        @summary 创建云防火墙SLS日志投递
+        
+        @param request: CreateSlsLogDispatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSlsLogDispatchResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.sls_region_id):
+            body['SlsRegionId'] = request.sls_region_id
+        if not UtilClient.is_unset(request.ttl):
+            body['Ttl'] = request.ttl
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSlsLogDispatch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateSlsLogDispatchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sls_log_dispatch_with_options_async(
+        self,
+        request: cloudfw_20171207_models.CreateSlsLogDispatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.CreateSlsLogDispatchResponse:
+        """
+        @summary 创建云防火墙SLS日志投递
+        
+        @param request: CreateSlsLogDispatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSlsLogDispatchResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.sls_region_id):
+            body['SlsRegionId'] = request.sls_region_id
+        if not UtilClient.is_unset(request.ttl):
+            body['Ttl'] = request.ttl
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSlsLogDispatch',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.CreateSlsLogDispatchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sls_log_dispatch(
+        self,
+        request: cloudfw_20171207_models.CreateSlsLogDispatchRequest,
+    ) -> cloudfw_20171207_models.CreateSlsLogDispatchResponse:
+        """
+        @summary 创建云防火墙SLS日志投递
+        
+        @param request: CreateSlsLogDispatchRequest
+        @return: CreateSlsLogDispatchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_sls_log_dispatch_with_options(request, runtime)
+
+    async def create_sls_log_dispatch_async(
+        self,
+        request: cloudfw_20171207_models.CreateSlsLogDispatchRequest,
+    ) -> cloudfw_20171207_models.CreateSlsLogDispatchResponse:
+        """
+        @summary 创建云防火墙SLS日志投递
+        
+        @param request: CreateSlsLogDispatchRequest
+        @return: CreateSlsLogDispatchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_sls_log_dispatch_with_options_async(request, runtime)
 
     def create_tr_firewall_v2with_options(
         self,
@@ -1323,6 +1439,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyResponse:
         """
+        @summary Creates a routing policy for a VPC firewall of a transit router.
+        
         @param tmp_req: CreateTrFirewallV2RoutePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateTrFirewallV2RoutePolicyResponse
@@ -1374,6 +1492,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyResponse:
         """
+        @summary Creates a routing policy for a VPC firewall of a transit router.
+        
         @param tmp_req: CreateTrFirewallV2RoutePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateTrFirewallV2RoutePolicyResponse
@@ -1424,6 +1544,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyRequest,
     ) -> cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyResponse:
         """
+        @summary Creates a routing policy for a VPC firewall of a transit router.
+        
         @param request: CreateTrFirewallV2RoutePolicyRequest
         @return: CreateTrFirewallV2RoutePolicyResponse
         """
@@ -1435,6 +1557,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyRequest,
     ) -> cloudfw_20171207_models.CreateTrFirewallV2RoutePolicyResponse:
         """
+        @summary Creates a routing policy for a VPC firewall of a transit router.
+        
         @param request: CreateTrFirewallV2RoutePolicyRequest
         @return: CreateTrFirewallV2RoutePolicyResponse
         """
@@ -1777,6 +1901,8 @@ class Client(OpenApiClient):
             query['Destination'] = request.destination
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.domain_resolve_type):
+            query['DomainResolveType'] = request.domain_resolve_type
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.lang):
@@ -1860,6 +1986,8 @@ class Client(OpenApiClient):
             query['Destination'] = request.destination
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.domain_resolve_type):
+            query['DomainResolveType'] = request.domain_resolve_type
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.lang):
@@ -2070,7 +2198,7 @@ class Client(OpenApiClient):
         @summary Deletes an access control policy.
         
         @description You can call the DeleteControlPolicy operation to delete an access control policy that applies to inbound or outbound traffic.
-        ## Limits
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DeleteControlPolicyRequest
@@ -2115,7 +2243,7 @@ class Client(OpenApiClient):
         @summary Deletes an access control policy.
         
         @description You can call the DeleteControlPolicy operation to delete an access control policy that applies to inbound or outbound traffic.
-        ## Limits
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DeleteControlPolicyRequest
@@ -2159,7 +2287,7 @@ class Client(OpenApiClient):
         @summary Deletes an access control policy.
         
         @description You can call the DeleteControlPolicy operation to delete an access control policy that applies to inbound or outbound traffic.
-        ## Limits
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DeleteControlPolicyRequest
@@ -2176,7 +2304,7 @@ class Client(OpenApiClient):
         @summary Deletes an access control policy.
         
         @description You can call the DeleteControlPolicy operation to delete an access control policy that applies to inbound or outbound traffic.
-        ## Limits
+        ## [](#qps-)Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DeleteControlPolicyRequest
@@ -2415,6 +2543,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesResponse:
         """
+        @summary Deletes routing policies for a virtual private cloud (VPC) firewall of a transit router.
+        
         @param request: DeleteFirewallV2RoutePoliciesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteFirewallV2RoutePoliciesResponse
@@ -2452,6 +2582,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesResponse:
         """
+        @summary Deletes routing policies for a virtual private cloud (VPC) firewall of a transit router.
+        
         @param request: DeleteFirewallV2RoutePoliciesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteFirewallV2RoutePoliciesResponse
@@ -2488,6 +2620,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesRequest,
     ) -> cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesResponse:
         """
+        @summary Deletes routing policies for a virtual private cloud (VPC) firewall of a transit router.
+        
         @param request: DeleteFirewallV2RoutePoliciesRequest
         @return: DeleteFirewallV2RoutePoliciesResponse
         """
@@ -2499,6 +2633,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesRequest,
     ) -> cloudfw_20171207_models.DeleteFirewallV2RoutePoliciesResponse:
         """
+        @summary Deletes routing policies for a virtual private cloud (VPC) firewall of a transit router.
+        
         @param request: DeleteFirewallV2RoutePoliciesRequest
         @return: DeleteFirewallV2RoutePoliciesResponse
         """
@@ -2847,6 +2983,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteSecurityProxyResponse:
         """
+        @summary Deletes a NAT firewall.
+        
         @param request: DeleteSecurityProxyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteSecurityProxyResponse
@@ -2882,6 +3020,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DeleteSecurityProxyResponse:
         """
+        @summary Deletes a NAT firewall.
+        
         @param request: DeleteSecurityProxyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteSecurityProxyResponse
@@ -2916,6 +3056,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteSecurityProxyRequest,
     ) -> cloudfw_20171207_models.DeleteSecurityProxyResponse:
         """
+        @summary Deletes a NAT firewall.
+        
         @param request: DeleteSecurityProxyRequest
         @return: DeleteSecurityProxyResponse
         """
@@ -2927,6 +3069,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DeleteSecurityProxyRequest,
     ) -> cloudfw_20171207_models.DeleteSecurityProxyResponse:
         """
+        @summary Deletes a NAT firewall.
+        
         @param request: DeleteSecurityProxyRequest
         @return: DeleteSecurityProxyResponse
         """
@@ -4179,6 +4323,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeDefaultIPSConfigResponse:
         """
+        @summary Queries the default configurations of the intrusion prevention system (IPS).
+        
         @param request: DescribeDefaultIPSConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDefaultIPSConfigResponse
@@ -4187,8 +4333,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4214,6 +4358,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeDefaultIPSConfigResponse:
         """
+        @summary Queries the default configurations of the intrusion prevention system (IPS).
+        
         @param request: DescribeDefaultIPSConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeDefaultIPSConfigResponse
@@ -4222,8 +4368,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4248,6 +4392,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeDefaultIPSConfigRequest,
     ) -> cloudfw_20171207_models.DescribeDefaultIPSConfigResponse:
         """
+        @summary Queries the default configurations of the intrusion prevention system (IPS).
+        
         @param request: DescribeDefaultIPSConfigRequest
         @return: DescribeDefaultIPSConfigResponse
         """
@@ -4259,6 +4405,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeDefaultIPSConfigRequest,
     ) -> cloudfw_20171207_models.DescribeDefaultIPSConfigResponse:
         """
+        @summary Queries the default configurations of the intrusion prevention system (IPS).
+        
         @param request: DescribeDefaultIPSConfigRequest
         @return: DescribeDefaultIPSConfigResponse
         """
@@ -5523,7 +5671,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeNatFirewallListResponse:
         """
-        @summary 获取 NAT 防火墙列表
+        @summary Queries details of NAT firewalls.
         
         @param request: DescribeNatFirewallListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5578,7 +5726,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeNatFirewallListResponse:
         """
-        @summary 获取 NAT 防火墙列表
+        @summary Queries details of NAT firewalls.
         
         @param request: DescribeNatFirewallListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5632,7 +5780,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeNatFirewallListRequest,
     ) -> cloudfw_20171207_models.DescribeNatFirewallListResponse:
         """
-        @summary 获取 NAT 防火墙列表
+        @summary Queries details of NAT firewalls.
         
         @param request: DescribeNatFirewallListRequest
         @return: DescribeNatFirewallListResponse
@@ -5645,7 +5793,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeNatFirewallListRequest,
     ) -> cloudfw_20171207_models.DescribeNatFirewallListResponse:
         """
-        @summary 获取 NAT 防火墙列表
+        @summary Queries details of NAT firewalls.
         
         @param request: DescribeNatFirewallListRequest
         @return: DescribeNatFirewallListResponse
@@ -6303,7 +6451,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePostpayTrafficDetailResponse:
         """
-        @summary Queries the traffic details of Cloud Firewall that uses the pay-as-you-go billing method.
+        @summary Queries the details of traffic billed based on the pay-as-you-go billing method.
+        
+        @description If you use Cloud Firewall that uses the pay-as-you-go billing method, you can call this operation to query traffic details accurate to the granularity of specific resource instances. If you use Cloud Firewall that uses the subscription billing method, you can call this operation to query the overall traffic details.
         
         @param request: DescribePostpayTrafficDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6352,7 +6502,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePostpayTrafficDetailResponse:
         """
-        @summary Queries the traffic details of Cloud Firewall that uses the pay-as-you-go billing method.
+        @summary Queries the details of traffic billed based on the pay-as-you-go billing method.
+        
+        @description If you use Cloud Firewall that uses the pay-as-you-go billing method, you can call this operation to query traffic details accurate to the granularity of specific resource instances. If you use Cloud Firewall that uses the subscription billing method, you can call this operation to query the overall traffic details.
         
         @param request: DescribePostpayTrafficDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6400,7 +6552,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribePostpayTrafficDetailRequest,
     ) -> cloudfw_20171207_models.DescribePostpayTrafficDetailResponse:
         """
-        @summary Queries the traffic details of Cloud Firewall that uses the pay-as-you-go billing method.
+        @summary Queries the details of traffic billed based on the pay-as-you-go billing method.
+        
+        @description If you use Cloud Firewall that uses the pay-as-you-go billing method, you can call this operation to query traffic details accurate to the granularity of specific resource instances. If you use Cloud Firewall that uses the subscription billing method, you can call this operation to query the overall traffic details.
         
         @param request: DescribePostpayTrafficDetailRequest
         @return: DescribePostpayTrafficDetailResponse
@@ -6413,7 +6567,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribePostpayTrafficDetailRequest,
     ) -> cloudfw_20171207_models.DescribePostpayTrafficDetailResponse:
         """
-        @summary Queries the traffic details of Cloud Firewall that uses the pay-as-you-go billing method.
+        @summary Queries the details of traffic billed based on the pay-as-you-go billing method.
+        
+        @description If you use Cloud Firewall that uses the pay-as-you-go billing method, you can call this operation to query traffic details accurate to the granularity of specific resource instances. If you use Cloud Firewall that uses the subscription billing method, you can call this operation to query the overall traffic details.
         
         @param request: DescribePostpayTrafficDetailRequest
         @return: DescribePostpayTrafficDetailResponse
@@ -6427,7 +6583,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePostpayTrafficTotalResponse:
         """
-        @summary Queries the total traffic of Cloud Firewall that uses the pay-as-you-go billing method. The traffic for each type of firewall is queried.
+        @summary Queries the total volume of traffic that is billed based on the pay-as-you-go billing method, including all firewalls within the current account.
+        
+        @description You can call this operation to query statistics of the current Cloud Firewall from the date of purchase.
         
         @param request: DescribePostpayTrafficTotalRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6462,7 +6620,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribePostpayTrafficTotalResponse:
         """
-        @summary Queries the total traffic of Cloud Firewall that uses the pay-as-you-go billing method. The traffic for each type of firewall is queried.
+        @summary Queries the total volume of traffic that is billed based on the pay-as-you-go billing method, including all firewalls within the current account.
+        
+        @description You can call this operation to query statistics of the current Cloud Firewall from the date of purchase.
         
         @param request: DescribePostpayTrafficTotalRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6496,7 +6656,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribePostpayTrafficTotalRequest,
     ) -> cloudfw_20171207_models.DescribePostpayTrafficTotalResponse:
         """
-        @summary Queries the total traffic of Cloud Firewall that uses the pay-as-you-go billing method. The traffic for each type of firewall is queried.
+        @summary Queries the total volume of traffic that is billed based on the pay-as-you-go billing method, including all firewalls within the current account.
+        
+        @description You can call this operation to query statistics of the current Cloud Firewall from the date of purchase.
         
         @param request: DescribePostpayTrafficTotalRequest
         @return: DescribePostpayTrafficTotalResponse
@@ -6509,7 +6671,9 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribePostpayTrafficTotalRequest,
     ) -> cloudfw_20171207_models.DescribePostpayTrafficTotalResponse:
         """
-        @summary Queries the total traffic of Cloud Firewall that uses the pay-as-you-go billing method. The traffic for each type of firewall is queried.
+        @summary Queries the total volume of traffic that is billed based on the pay-as-you-go billing method, including all firewalls within the current account.
+        
+        @description You can call this operation to query statistics of the current Cloud Firewall from the date of purchase.
         
         @param request: DescribePostpayTrafficTotalRequest
         @return: DescribePostpayTrafficTotalResponse
@@ -7481,6 +7645,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeTrFirewallsV2RouteListResponse:
         """
+        @summary Queries the route tables of the VPC firewalls that are created for transit routers.
+        
         @param request: DescribeTrFirewallsV2RouteListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeTrFirewallsV2RouteListResponse
@@ -7522,6 +7688,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.DescribeTrFirewallsV2RouteListResponse:
         """
+        @summary Queries the route tables of the VPC firewalls that are created for transit routers.
+        
         @param request: DescribeTrFirewallsV2RouteListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeTrFirewallsV2RouteListResponse
@@ -7562,6 +7730,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeTrFirewallsV2RouteListRequest,
     ) -> cloudfw_20171207_models.DescribeTrFirewallsV2RouteListResponse:
         """
+        @summary Queries the route tables of the VPC firewalls that are created for transit routers.
+        
         @param request: DescribeTrFirewallsV2RouteListRequest
         @return: DescribeTrFirewallsV2RouteListResponse
         """
@@ -7573,6 +7743,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.DescribeTrFirewallsV2RouteListRequest,
     ) -> cloudfw_20171207_models.DescribeTrFirewallsV2RouteListResponse:
         """
+        @summary Queries the route tables of the VPC firewalls that are created for transit routers.
+        
         @param request: DescribeTrFirewallsV2RouteListRequest
         @return: DescribeTrFirewallsV2RouteListResponse
         """
@@ -9377,6 +9549,8 @@ class Client(OpenApiClient):
             query['GroupUuid'] = request.group_uuid
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.tag_list):
@@ -9432,6 +9606,8 @@ class Client(OpenApiClient):
             query['GroupUuid'] = request.group_uuid
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.tag_list):
@@ -9531,6 +9707,8 @@ class Client(OpenApiClient):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.direction):
             query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.domain_resolve_type):
+            query['DomainResolveType'] = request.domain_resolve_type
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.lang):
@@ -9612,6 +9790,8 @@ class Client(OpenApiClient):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.direction):
             query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.domain_resolve_type):
+            query['DomainResolveType'] = request.domain_resolve_type
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.lang):
@@ -9821,22 +10001,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyDefaultIPSConfigResponse:
         """
+        @summary Modifies the default configuration of the intrusion prevention system (IPS).
+        
         @param request: ModifyDefaultIPSConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyDefaultIPSConfigResponse
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.ai_rules):
-            query['AiRules'] = request.ai_rules
         if not UtilClient.is_unset(request.basic_rules):
             query['BasicRules'] = request.basic_rules
         if not UtilClient.is_unset(request.cti_rules):
             query['CtiRules'] = request.cti_rules
-        if not UtilClient.is_unset(request.enable_all_patch):
-            query['EnableAllPatch'] = request.enable_all_patch
-        if not UtilClient.is_unset(request.enable_default):
-            query['EnableDefault'] = request.enable_default
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.patch_rules):
@@ -9845,8 +10021,6 @@ class Client(OpenApiClient):
             query['RuleClass'] = request.rule_class
         if not UtilClient.is_unset(request.run_mode):
             query['RunMode'] = request.run_mode
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9872,22 +10046,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyDefaultIPSConfigResponse:
         """
+        @summary Modifies the default configuration of the intrusion prevention system (IPS).
+        
         @param request: ModifyDefaultIPSConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyDefaultIPSConfigResponse
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.ai_rules):
-            query['AiRules'] = request.ai_rules
         if not UtilClient.is_unset(request.basic_rules):
             query['BasicRules'] = request.basic_rules
         if not UtilClient.is_unset(request.cti_rules):
             query['CtiRules'] = request.cti_rules
-        if not UtilClient.is_unset(request.enable_all_patch):
-            query['EnableAllPatch'] = request.enable_all_patch
-        if not UtilClient.is_unset(request.enable_default):
-            query['EnableDefault'] = request.enable_default
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.patch_rules):
@@ -9896,8 +10066,6 @@ class Client(OpenApiClient):
             query['RuleClass'] = request.rule_class
         if not UtilClient.is_unset(request.run_mode):
             query['RunMode'] = request.run_mode
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9922,6 +10090,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyDefaultIPSConfigRequest,
     ) -> cloudfw_20171207_models.ModifyDefaultIPSConfigResponse:
         """
+        @summary Modifies the default configuration of the intrusion prevention system (IPS).
+        
         @param request: ModifyDefaultIPSConfigRequest
         @return: ModifyDefaultIPSConfigResponse
         """
@@ -9933,6 +10103,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyDefaultIPSConfigRequest,
     ) -> cloudfw_20171207_models.ModifyDefaultIPSConfigResponse:
         """
+        @summary Modifies the default configuration of the intrusion prevention system (IPS).
+        
         @param request: ModifyDefaultIPSConfigRequest
         @return: ModifyDefaultIPSConfigResponse
         """
@@ -10467,6 +10639,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_nat_firewall_control_policy_position_with_options_async(request, runtime)
 
+    def modify_object_group_operation_with_options(
+        self,
+        request: cloudfw_20171207_models.ModifyObjectGroupOperationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyObjectGroupOperationResponse:
+        """
+        @summary 修改对象组操作
+        
+        @param request: ModifyObjectGroupOperationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyObjectGroupOperationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.object_list):
+            query['ObjectList'] = request.object_list
+        if not UtilClient.is_unset(request.object_operation):
+            query['ObjectOperation'] = request.object_operation
+        if not UtilClient.is_unset(request.object_type):
+            query['ObjectType'] = request.object_type
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyObjectGroupOperation',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyObjectGroupOperationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_object_group_operation_with_options_async(
+        self,
+        request: cloudfw_20171207_models.ModifyObjectGroupOperationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.ModifyObjectGroupOperationResponse:
+        """
+        @summary 修改对象组操作
+        
+        @param request: ModifyObjectGroupOperationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyObjectGroupOperationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.object_list):
+            query['ObjectList'] = request.object_list
+        if not UtilClient.is_unset(request.object_operation):
+            query['ObjectOperation'] = request.object_operation
+        if not UtilClient.is_unset(request.object_type):
+            query['ObjectType'] = request.object_type
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyObjectGroupOperation',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.ModifyObjectGroupOperationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_object_group_operation(
+        self,
+        request: cloudfw_20171207_models.ModifyObjectGroupOperationRequest,
+    ) -> cloudfw_20171207_models.ModifyObjectGroupOperationResponse:
+        """
+        @summary 修改对象组操作
+        
+        @param request: ModifyObjectGroupOperationRequest
+        @return: ModifyObjectGroupOperationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_object_group_operation_with_options(request, runtime)
+
+    async def modify_object_group_operation_async(
+        self,
+        request: cloudfw_20171207_models.ModifyObjectGroupOperationRequest,
+    ) -> cloudfw_20171207_models.ModifyObjectGroupOperationResponse:
+        """
+        @summary 修改对象组操作
+        
+        @param request: ModifyObjectGroupOperationRequest
+        @return: ModifyObjectGroupOperationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_object_group_operation_with_options_async(request, runtime)
+
     def modify_policy_advanced_config_with_options(
         self,
         request: cloudfw_20171207_models.ModifyPolicyAdvancedConfigRequest,
@@ -10593,6 +10885,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationResponse:
         """
+        @summary Modifies the configuration of a virtual private cloud (VPC) firewall that is created for a transit router.
+        
         @param request: ModifyTrFirewallV2ConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyTrFirewallV2ConfigurationResponse
@@ -10630,6 +10924,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationResponse:
         """
+        @summary Modifies the configuration of a virtual private cloud (VPC) firewall that is created for a transit router.
+        
         @param request: ModifyTrFirewallV2ConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyTrFirewallV2ConfigurationResponse
@@ -10666,6 +10962,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationRequest,
     ) -> cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationResponse:
         """
+        @summary Modifies the configuration of a virtual private cloud (VPC) firewall that is created for a transit router.
+        
         @param request: ModifyTrFirewallV2ConfigurationRequest
         @return: ModifyTrFirewallV2ConfigurationResponse
         """
@@ -10677,6 +10975,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationRequest,
     ) -> cloudfw_20171207_models.ModifyTrFirewallV2ConfigurationResponse:
         """
+        @summary Modifies the configuration of a virtual private cloud (VPC) firewall that is created for a transit router.
+        
         @param request: ModifyTrFirewallV2ConfigurationRequest
         @return: ModifyTrFirewallV2ConfigurationResponse
         """
@@ -10689,6 +10989,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeResponse:
         """
+        @summary Modifies the effective scope of the routing policy created for the VPC firewall for a transit router.
+        
         @param tmp_req: ModifyTrFirewallV2RoutePolicyScopeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyTrFirewallV2RoutePolicyScopeResponse
@@ -10738,6 +11040,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeResponse:
         """
+        @summary Modifies the effective scope of the routing policy created for the VPC firewall for a transit router.
+        
         @param tmp_req: ModifyTrFirewallV2RoutePolicyScopeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyTrFirewallV2RoutePolicyScopeResponse
@@ -10786,6 +11090,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeRequest,
     ) -> cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeResponse:
         """
+        @summary Modifies the effective scope of the routing policy created for the VPC firewall for a transit router.
+        
         @param request: ModifyTrFirewallV2RoutePolicyScopeRequest
         @return: ModifyTrFirewallV2RoutePolicyScopeResponse
         """
@@ -10797,6 +11103,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeRequest,
     ) -> cloudfw_20171207_models.ModifyTrFirewallV2RoutePolicyScopeResponse:
         """
+        @summary Modifies the effective scope of the routing policy created for the VPC firewall for a transit router.
+        
         @param request: ModifyTrFirewallV2RoutePolicyScopeRequest
         @return: ModifyTrFirewallV2RoutePolicyScopeResponse
         """
@@ -11341,6 +11649,8 @@ class Client(OpenApiClient):
             query['Destination'] = request.destination
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.domain_resolve_type):
+            query['DomainResolveType'] = request.domain_resolve_type
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.lang):
@@ -11422,6 +11732,8 @@ class Client(OpenApiClient):
             query['Destination'] = request.destination
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.domain_resolve_type):
+            query['DomainResolveType'] = request.domain_resolve_type
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.lang):
@@ -11653,6 +11965,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.member_uid):
             query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.rule_class):
+            query['RuleClass'] = request.rule_class
         if not UtilClient.is_unset(request.run_mode):
             query['RunMode'] = request.run_mode
         if not UtilClient.is_unset(request.source_ip):
@@ -11704,6 +12018,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.member_uid):
             query['MemberUid'] = request.member_uid
+        if not UtilClient.is_unset(request.rule_class):
+            query['RuleClass'] = request.rule_class
         if not UtilClient.is_unset(request.run_mode):
             query['RunMode'] = request.run_mode
         if not UtilClient.is_unset(request.source_ip):
@@ -12509,7 +12825,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ReleasePostInstanceResponse:
         """
-        @summary 释放按量付费实例
+        @summary Releases Cloud Firewall that uses the pay-as-you-go billing method.
         
         @param request: ReleasePostInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12544,7 +12860,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.ReleasePostInstanceResponse:
         """
-        @summary 释放按量付费实例
+        @summary Releases Cloud Firewall that uses the pay-as-you-go billing method.
         
         @param request: ReleasePostInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12578,7 +12894,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ReleasePostInstanceRequest,
     ) -> cloudfw_20171207_models.ReleasePostInstanceResponse:
         """
-        @summary 释放按量付费实例
+        @summary Releases Cloud Firewall that uses the pay-as-you-go billing method.
         
         @param request: ReleasePostInstanceRequest
         @return: ReleasePostInstanceResponse
@@ -12591,7 +12907,7 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.ReleasePostInstanceRequest,
     ) -> cloudfw_20171207_models.ReleasePostInstanceResponse:
         """
-        @summary 释放按量付费实例
+        @summary Releases Cloud Firewall that uses the pay-as-you-go billing method.
         
         @param request: ReleasePostInstanceRequest
         @return: ReleasePostInstanceResponse
@@ -12825,6 +13141,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.SwitchSecurityProxyResponse:
         """
+        @summary Enables or disables a NAT firewall.
+        
         @param request: SwitchSecurityProxyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SwitchSecurityProxyResponse
@@ -12862,6 +13180,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.SwitchSecurityProxyResponse:
         """
+        @summary Enables or disables a NAT firewall.
+        
         @param request: SwitchSecurityProxyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SwitchSecurityProxyResponse
@@ -12898,6 +13218,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.SwitchSecurityProxyRequest,
     ) -> cloudfw_20171207_models.SwitchSecurityProxyResponse:
         """
+        @summary Enables or disables a NAT firewall.
+        
         @param request: SwitchSecurityProxyRequest
         @return: SwitchSecurityProxyResponse
         """
@@ -12909,6 +13231,8 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.SwitchSecurityProxyRequest,
     ) -> cloudfw_20171207_models.SwitchSecurityProxyResponse:
         """
+        @summary Enables or disables a NAT firewall.
+        
         @param request: SwitchSecurityProxyRequest
         @return: SwitchSecurityProxyResponse
         """
