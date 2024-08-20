@@ -9219,6 +9219,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         sqlsize: int = None,
         serverless_type: str = None,
         source_dbcluster: str = None,
+        source_region_id: str = None,
         standby_hamode: str = None,
         storage_max: int = None,
         storage_pay_type: str = None,
@@ -9371,6 +9372,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         # The type of the serverless cluster. Only **AgileServerless** can be returned.
         self.serverless_type = serverless_type
         self.source_dbcluster = source_dbcluster
+        self.source_region_id = source_region_id
         # Indicates whether the cross-zone disaster recovery feature is enabled. Valid values: ON OFF 0: Customer Drill Mode
         self.standby_hamode = standby_hamode
         # The maximum storage capacity of the current cluster specification. Unit: bytes.
@@ -9520,6 +9522,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             result['ServerlessType'] = self.serverless_type
         if self.source_dbcluster is not None:
             result['SourceDBCluster'] = self.source_dbcluster
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
         if self.standby_hamode is not None:
             result['StandbyHAMode'] = self.standby_hamode
         if self.storage_max is not None:
@@ -9649,6 +9653,8 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             self.serverless_type = m.get('ServerlessType')
         if m.get('SourceDBCluster') is not None:
             self.source_dbcluster = m.get('SourceDBCluster')
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
         if m.get('StandbyHAMode') is not None:
             self.standby_hamode = m.get('StandbyHAMode')
         if m.get('StorageMax') is not None:
