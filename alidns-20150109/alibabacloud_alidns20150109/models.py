@@ -26368,6 +26368,7 @@ class DescribeInternetDnsLogsResponseBodyLogsLog(TeaModel):
         self,
         dns_msg_id: str = None,
         log_time: int = None,
+        protocol: str = None,
         query_name: str = None,
         query_type: str = None,
         rt: int = None,
@@ -26380,6 +26381,7 @@ class DescribeInternetDnsLogsResponseBodyLogsLog(TeaModel):
     ):
         self.dns_msg_id = dns_msg_id
         self.log_time = log_time
+        self.protocol = protocol
         self.query_name = query_name
         self.query_type = query_type
         self.rt = rt
@@ -26404,6 +26406,8 @@ class DescribeInternetDnsLogsResponseBodyLogsLog(TeaModel):
             result['DnsMsgId'] = self.dns_msg_id
         if self.log_time is not None:
             result['LogTime'] = self.log_time
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
         if self.query_name is not None:
             result['QueryName'] = self.query_name
         if self.query_type is not None:
@@ -26430,6 +26434,8 @@ class DescribeInternetDnsLogsResponseBodyLogsLog(TeaModel):
             self.dns_msg_id = m.get('DnsMsgId')
         if m.get('LogTime') is not None:
             self.log_time = m.get('LogTime')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
         if m.get('QueryName') is not None:
             self.query_name = m.get('QueryName')
         if m.get('QueryType') is not None:
