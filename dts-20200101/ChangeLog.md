@@ -1,3 +1,8 @@
+2024-08-20 Version: 5.7.3
+- Update API CreateDtsInstance: add param DtsRegion.
+- Update API DescribeDtsJobs: update param RegionId.
+
+
 2024-08-15 Version: 5.7.2
 - Update API DescribeCheckJobs: add param CheckJobId.
 - Update API DescribeDtsJobs: update response param.

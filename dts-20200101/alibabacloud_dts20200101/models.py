@@ -4940,6 +4940,7 @@ class CreateDtsInstanceRequest(TeaModel):
         database_count: int = None,
         destination_endpoint_engine_name: str = None,
         destination_region: str = None,
+        dts_region: str = None,
         du: int = None,
         fee_type: str = None,
         instance_class: str = None,
@@ -5005,6 +5006,7 @@ class CreateDtsInstanceRequest(TeaModel):
         # 
         # >  You must specify one of this parameter and the **JobId** parameter.
         self.destination_region = destination_region
+        self.dts_region = dts_region
         # The number of DTS units (DUs) that are assigned to a DTS task that is run on a DTS dedicated cluster. Valid values: **1** to **100**.
         # 
         # > 
@@ -5122,6 +5124,8 @@ class CreateDtsInstanceRequest(TeaModel):
             result['DestinationEndpointEngineName'] = self.destination_endpoint_engine_name
         if self.destination_region is not None:
             result['DestinationRegion'] = self.destination_region
+        if self.dts_region is not None:
+            result['DtsRegion'] = self.dts_region
         if self.du is not None:
             result['Du'] = self.du
         if self.fee_type is not None:
@@ -5170,6 +5174,8 @@ class CreateDtsInstanceRequest(TeaModel):
             self.destination_endpoint_engine_name = m.get('DestinationEndpointEngineName')
         if m.get('DestinationRegion') is not None:
             self.destination_region = m.get('DestinationRegion')
+        if m.get('DtsRegion') is not None:
+            self.dts_region = m.get('DtsRegion')
         if m.get('Du') is not None:
             self.du = m.get('Du')
         if m.get('FeeType') is not None:

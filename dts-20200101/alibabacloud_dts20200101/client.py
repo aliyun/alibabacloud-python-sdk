@@ -2335,6 +2335,8 @@ class Client(OpenApiClient):
             query['DestinationEndpointEngineName'] = request.destination_endpoint_engine_name
         if not UtilClient.is_unset(request.destination_region):
             query['DestinationRegion'] = request.destination_region
+        if not UtilClient.is_unset(request.dts_region):
+            query['DtsRegion'] = request.dts_region
         if not UtilClient.is_unset(request.du):
             query['Du'] = request.du
         if not UtilClient.is_unset(request.fee_type):
@@ -2413,6 +2415,8 @@ class Client(OpenApiClient):
             query['DestinationEndpointEngineName'] = request.destination_endpoint_engine_name
         if not UtilClient.is_unset(request.destination_region):
             query['DestinationRegion'] = request.destination_region
+        if not UtilClient.is_unset(request.dts_region):
+            query['DtsRegion'] = request.dts_region
         if not UtilClient.is_unset(request.du):
             query['Du'] = request.du
         if not UtilClient.is_unset(request.fee_type):
