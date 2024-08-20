@@ -1,3 +1,12 @@
+2024-08-20 Version: 2.4.1
+- Update API BatchDeleteDcdnKvWithHighCapacity: update param Url.
+- Update API BatchPutDcdnKv: update param KvList.
+- Update API BatchPutDcdnKvWithHighCapacity: update param Url.
+- Update API DescribeDcdnKvAccount: update response param.
+- Update API DescribeDcdnKvNamespace: update response param.
+- Update API DescribeDcdnUserDomains: update param DomainName.
+
+
 2024-04-11 Version: 2.4.0
 - Support API RefreshDcdnObjectCacheByCacheTag.
 
