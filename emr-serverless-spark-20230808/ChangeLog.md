@@ -1,3 +1,11 @@
+2024-08-20 Version: 1.4.2
+- Update API ListJobRuns: update response param.
+- Update API ListReleaseVersions: update response param.
+- Update API ListSessionClusters: update response param.
+- Update API ListWorkspaces: update response param.
+- Update API StartJobRun: update param body.
+
+
 2024-07-09 Version: 1.4.1
 - Update API ListSessionClusters: add param kind.
 - Update API ListSessionClusters: update response param.

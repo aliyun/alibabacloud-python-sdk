@@ -1415,8 +1415,12 @@ class Client(OpenApiClient):
             body['codeType'] = request.code_type
         if not UtilClient.is_unset(request.configuration_overrides):
             body['configurationOverrides'] = request.configuration_overrides
+        if not UtilClient.is_unset(request.display_release_version):
+            body['displayReleaseVersion'] = request.display_release_version
         if not UtilClient.is_unset(request.execution_timeout_seconds):
             body['executionTimeoutSeconds'] = request.execution_timeout_seconds
+        if not UtilClient.is_unset(request.fusion):
+            body['fusion'] = request.fusion
         if not UtilClient.is_unset(request.job_driver):
             body['jobDriver'] = request.job_driver
         if not UtilClient.is_unset(request.job_id):
@@ -1476,8 +1480,12 @@ class Client(OpenApiClient):
             body['codeType'] = request.code_type
         if not UtilClient.is_unset(request.configuration_overrides):
             body['configurationOverrides'] = request.configuration_overrides
+        if not UtilClient.is_unset(request.display_release_version):
+            body['displayReleaseVersion'] = request.display_release_version
         if not UtilClient.is_unset(request.execution_timeout_seconds):
             body['executionTimeoutSeconds'] = request.execution_timeout_seconds
+        if not UtilClient.is_unset(request.fusion):
+            body['fusion'] = request.fusion
         if not UtilClient.is_unset(request.job_driver):
             body['jobDriver'] = request.job_driver
         if not UtilClient.is_unset(request.job_id):

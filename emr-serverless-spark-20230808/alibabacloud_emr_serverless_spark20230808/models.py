@@ -758,6 +758,7 @@ class Task(TeaModel):
         extra_artifact_ids: List[str] = None,
         extra_spark_submit_params: str = None,
         files: List[str] = None,
+        fusion: bool = None,
         gmt_created: str = None,
         gmt_modified: str = None,
         has_changed: bool = None,
@@ -798,6 +799,7 @@ class Task(TeaModel):
         self.extra_artifact_ids = extra_artifact_ids
         self.extra_spark_submit_params = extra_spark_submit_params
         self.files = files
+        self.fusion = fusion
         # This parameter is required.
         self.gmt_created = gmt_created
         # This parameter is required.
@@ -875,6 +877,8 @@ class Task(TeaModel):
             result['extraSparkSubmitParams'] = self.extra_spark_submit_params
         if self.files is not None:
             result['files'] = self.files
+        if self.fusion is not None:
+            result['fusion'] = self.fusion
         if self.gmt_created is not None:
             result['gmtCreated'] = self.gmt_created
         if self.gmt_modified is not None:
@@ -955,6 +959,8 @@ class Task(TeaModel):
             self.extra_spark_submit_params = m.get('extraSparkSubmitParams')
         if m.get('files') is not None:
             self.files = m.get('files')
+        if m.get('fusion') is not None:
+            self.fusion = m.get('fusion')
         if m.get('gmtCreated') is not None:
             self.gmt_created = m.get('gmtCreated')
         if m.get('gmtModified') is not None:
@@ -1147,6 +1153,8 @@ class Template(TeaModel):
     def __init__(
         self,
         creator: int = None,
+        display_spark_version: str = None,
+        fusion: bool = None,
         gmt_created: str = None,
         gmt_modified: str = None,
         modifier: int = None,
@@ -1162,6 +1170,8 @@ class Template(TeaModel):
     ):
         # This parameter is required.
         self.creator = creator
+        self.display_spark_version = display_spark_version
+        self.fusion = fusion
         # This parameter is required.
         self.gmt_created = gmt_created
         # This parameter is required.
@@ -1199,6 +1209,10 @@ class Template(TeaModel):
         result = dict()
         if self.creator is not None:
             result['creator'] = self.creator
+        if self.display_spark_version is not None:
+            result['displaySparkVersion'] = self.display_spark_version
+        if self.fusion is not None:
+            result['fusion'] = self.fusion
         if self.gmt_created is not None:
             result['gmtCreated'] = self.gmt_created
         if self.gmt_modified is not None:
@@ -1231,6 +1245,10 @@ class Template(TeaModel):
         m = m or dict()
         if m.get('creator') is not None:
             self.creator = m.get('creator')
+        if m.get('displaySparkVersion') is not None:
+            self.display_spark_version = m.get('displaySparkVersion')
+        if m.get('fusion') is not None:
+            self.fusion = m.get('fusion')
         if m.get('gmtCreated') is not None:
             self.gmt_created = m.get('gmtCreated')
         if m.get('gmtModified') is not None:
@@ -2171,7 +2189,7 @@ class GetSqlStatementResponseBody(TeaModel):
         data: GetSqlStatementResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -2757,8 +2775,10 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
         code_type: str = None,
         configuration_overrides: ListJobRunsResponseBodyJobRunsConfigurationOverrides = None,
         creator: str = None,
+        display_release_version: str = None,
         end_time: int = None,
         execution_timeout_seconds: int = None,
+        fusion: bool = None,
         job_driver: JobDriver = None,
         job_run_id: str = None,
         log: RunLog = None,
@@ -2783,10 +2803,12 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
         self.configuration_overrides = configuration_overrides
         # The ID of the user who created the job.
         self.creator = creator
+        self.display_release_version = display_release_version
         # The end time of the job.
         self.end_time = end_time
         # The timeout period of the job.
         self.execution_timeout_seconds = execution_timeout_seconds
+        self.fusion = fusion
         # The information about Spark Driver.
         self.job_driver = job_driver
         # The job ID.
@@ -2836,10 +2858,14 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
             result['configurationOverrides'] = self.configuration_overrides.to_map()
         if self.creator is not None:
             result['creator'] = self.creator
+        if self.display_release_version is not None:
+            result['displayReleaseVersion'] = self.display_release_version
         if self.end_time is not None:
             result['endTime'] = self.end_time
         if self.execution_timeout_seconds is not None:
             result['executionTimeoutSeconds'] = self.execution_timeout_seconds
+        if self.fusion is not None:
+            result['fusion'] = self.fusion
         if self.job_driver is not None:
             result['jobDriver'] = self.job_driver.to_map()
         if self.job_run_id is not None:
@@ -2875,10 +2901,14 @@ class ListJobRunsResponseBodyJobRuns(TeaModel):
             self.configuration_overrides = temp_model.from_map(m['configurationOverrides'])
         if m.get('creator') is not None:
             self.creator = m.get('creator')
+        if m.get('displayReleaseVersion') is not None:
+            self.display_release_version = m.get('displayReleaseVersion')
         if m.get('endTime') is not None:
             self.end_time = m.get('endTime')
         if m.get('executionTimeoutSeconds') is not None:
             self.execution_timeout_seconds = m.get('executionTimeoutSeconds')
+        if m.get('fusion') is not None:
+            self.fusion = m.get('fusion')
         if m.get('jobDriver') is not None:
             temp_model = JobDriver()
             self.job_driver = temp_model.from_map(m['jobDriver'])
@@ -3079,6 +3109,8 @@ class ListReleaseVersionsResponseBodyReleaseVersions(TeaModel):
         self,
         community_version: str = None,
         cpu_architectures: List[str] = None,
+        display_release_version: str = None,
+        fusion: bool = None,
         gmt_create: int = None,
         iaas_type: str = None,
         release_version: str = None,
@@ -3090,6 +3122,8 @@ class ListReleaseVersionsResponseBodyReleaseVersions(TeaModel):
         self.community_version = community_version
         # The CPU architectures.
         self.cpu_architectures = cpu_architectures
+        self.display_release_version = display_release_version
+        self.fusion = fusion
         # The creation time.
         self.gmt_create = gmt_create
         # The type of the Infrastructure as a Service (IaaS) layer.
@@ -3116,6 +3150,10 @@ class ListReleaseVersionsResponseBodyReleaseVersions(TeaModel):
             result['communityVersion'] = self.community_version
         if self.cpu_architectures is not None:
             result['cpuArchitectures'] = self.cpu_architectures
+        if self.display_release_version is not None:
+            result['displayReleaseVersion'] = self.display_release_version
+        if self.fusion is not None:
+            result['fusion'] = self.fusion
         if self.gmt_create is not None:
             result['gmtCreate'] = self.gmt_create
         if self.iaas_type is not None:
@@ -3136,6 +3174,10 @@ class ListReleaseVersionsResponseBodyReleaseVersions(TeaModel):
             self.community_version = m.get('communityVersion')
         if m.get('cpuArchitectures') is not None:
             self.cpu_architectures = m.get('cpuArchitectures')
+        if m.get('displayReleaseVersion') is not None:
+            self.display_release_version = m.get('displayReleaseVersion')
+        if m.get('fusion') is not None:
+            self.fusion = m.get('fusion')
         if m.get('gmtCreate') is not None:
             self.gmt_create = m.get('gmtCreate')
         if m.get('iaasType') is not None:
@@ -3464,8 +3506,10 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
         application_configs: List[ListSessionClustersResponseBodySessionClustersApplicationConfigs] = None,
         auto_start_configuration: ListSessionClustersResponseBodySessionClustersAutoStartConfiguration = None,
         auto_stop_configuration: ListSessionClustersResponseBodySessionClustersAutoStopConfiguration = None,
+        display_release_version: str = None,
         domain: str = None,
         draft_id: str = None,
+        fusion: bool = None,
         kind: str = None,
         name: str = None,
         queue_name: str = None,
@@ -3484,8 +3528,10 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
         self.auto_start_configuration = auto_start_configuration
         # The automatic termination configurations.
         self.auto_stop_configuration = auto_stop_configuration
+        self.display_release_version = display_release_version
         self.domain = domain
         self.draft_id = draft_id
+        self.fusion = fusion
         self.kind = kind
         # The name of the SQL Compute.
         self.name = name
@@ -3532,10 +3578,14 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
             result['autoStartConfiguration'] = self.auto_start_configuration.to_map()
         if self.auto_stop_configuration is not None:
             result['autoStopConfiguration'] = self.auto_stop_configuration.to_map()
+        if self.display_release_version is not None:
+            result['displayReleaseVersion'] = self.display_release_version
         if self.domain is not None:
             result['domain'] = self.domain
         if self.draft_id is not None:
             result['draftId'] = self.draft_id
+        if self.fusion is not None:
+            result['fusion'] = self.fusion
         if self.kind is not None:
             result['kind'] = self.kind
         if self.name is not None:
@@ -3573,10 +3623,14 @@ class ListSessionClustersResponseBodySessionClusters(TeaModel):
         if m.get('autoStopConfiguration') is not None:
             temp_model = ListSessionClustersResponseBodySessionClustersAutoStopConfiguration()
             self.auto_stop_configuration = temp_model.from_map(m['autoStopConfiguration'])
+        if m.get('displayReleaseVersion') is not None:
+            self.display_release_version = m.get('displayReleaseVersion')
         if m.get('domain') is not None:
             self.domain = m.get('domain')
         if m.get('draftId') is not None:
             self.draft_id = m.get('draftId')
+        if m.get('fusion') is not None:
+            self.fusion = m.get('fusion')
         if m.get('kind') is not None:
             self.kind = m.get('kind')
         if m.get('name') is not None:
@@ -4128,6 +4182,7 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
         auto_renew_period_unit: str = None,
         create_time: int = None,
         dlf_catalog_id: str = None,
+        dlf_type: str = None,
         duration: int = None,
         end_time: int = None,
         fail_reason: str = None,
@@ -4153,6 +4208,7 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
         self.create_time = create_time
         # The information of the Data Lake Formation (DLF) catalog.
         self.dlf_catalog_id = dlf_catalog_id
+        self.dlf_type = dlf_type
         # The subscription period. This parameter is required only if the paymentType parameter is set to Subscription.
         self.duration = duration
         # The time when the workspace was released.
@@ -4202,6 +4258,8 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
             result['createTime'] = self.create_time
         if self.dlf_catalog_id is not None:
             result['dlfCatalogId'] = self.dlf_catalog_id
+        if self.dlf_type is not None:
+            result['dlfType'] = self.dlf_type
         if self.duration is not None:
             result['duration'] = self.duration
         if self.end_time is not None:
@@ -4244,6 +4302,8 @@ class ListWorkspacesResponseBodyWorkspaces(TeaModel):
             self.create_time = m.get('createTime')
         if m.get('dlfCatalogId') is not None:
             self.dlf_catalog_id = m.get('dlfCatalogId')
+        if m.get('dlfType') is not None:
+            self.dlf_type = m.get('dlfType')
         if m.get('duration') is not None:
             self.duration = m.get('duration')
         if m.get('endTime') is not None:
@@ -4465,7 +4525,9 @@ class StartJobRunRequest(TeaModel):
         client_token: str = None,
         code_type: str = None,
         configuration_overrides: StartJobRunRequestConfigurationOverrides = None,
+        display_release_version: str = None,
         execution_timeout_seconds: int = None,
+        fusion: bool = None,
         job_driver: JobDriver = None,
         job_id: str = None,
         name: str = None,
@@ -4484,8 +4546,10 @@ class StartJobRunRequest(TeaModel):
         self.code_type = code_type
         # The advanced configurations of Spark.
         self.configuration_overrides = configuration_overrides
+        self.display_release_version = display_release_version
         # The timeout period of the job.
         self.execution_timeout_seconds = execution_timeout_seconds
+        self.fusion = fusion
         # The information about Spark Driver.
         self.job_driver = job_driver
         # The job ID.
@@ -4523,8 +4587,12 @@ class StartJobRunRequest(TeaModel):
             result['codeType'] = self.code_type
         if self.configuration_overrides is not None:
             result['configurationOverrides'] = self.configuration_overrides.to_map()
+        if self.display_release_version is not None:
+            result['displayReleaseVersion'] = self.display_release_version
         if self.execution_timeout_seconds is not None:
             result['executionTimeoutSeconds'] = self.execution_timeout_seconds
+        if self.fusion is not None:
+            result['fusion'] = self.fusion
         if self.job_driver is not None:
             result['jobDriver'] = self.job_driver.to_map()
         if self.job_id is not None:
@@ -4552,8 +4620,12 @@ class StartJobRunRequest(TeaModel):
         if m.get('configurationOverrides') is not None:
             temp_model = StartJobRunRequestConfigurationOverrides()
             self.configuration_overrides = temp_model.from_map(m['configurationOverrides'])
+        if m.get('displayReleaseVersion') is not None:
+            self.display_release_version = m.get('displayReleaseVersion')
         if m.get('executionTimeoutSeconds') is not None:
             self.execution_timeout_seconds = m.get('executionTimeoutSeconds')
+        if m.get('fusion') is not None:
+            self.fusion = m.get('fusion')
         if m.get('jobDriver') is not None:
             temp_model = JobDriver()
             self.job_driver = temp_model.from_map(m['jobDriver'])
