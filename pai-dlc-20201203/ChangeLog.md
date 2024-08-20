@@ -1,3 +1,11 @@
+2024-08-20 Version: 1.4.13
+- Update API CreateJob: update param body.
+- Update API CreateTensorboard: update param body.
+- Update API ListJobs: add param Accessibility.
+- Update API ListJobs: update param Order.
+- Update API ListTensorboards: add param Accessibility.
+
+
 2024-08-16 Version: 1.4.12
 - Generated python 2020-12-03 for pai-dlc.
 

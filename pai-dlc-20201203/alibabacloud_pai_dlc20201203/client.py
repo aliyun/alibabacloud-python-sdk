@@ -109,6 +109,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.code_source):
             body['CodeSource'] = request.code_source
         if not UtilClient.is_unset(request.credential_config):
@@ -185,6 +187,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.code_source):
             body['CodeSource'] = request.code_source
         if not UtilClient.is_unset(request.credential_config):
@@ -289,6 +293,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.cpu):
             body['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.data_source_id):
@@ -363,6 +369,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.cpu):
             body['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.data_source_id):
@@ -2071,6 +2079,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.business_user_id):
             query['BusinessUserId'] = request.business_user_id
         if not UtilClient.is_unset(request.caller):
@@ -2153,6 +2163,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.business_user_id):
             query['BusinessUserId'] = request.business_user_id
         if not UtilClient.is_unset(request.caller):
@@ -2259,6 +2271,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.display_name):
             query['DisplayName'] = request.display_name
         if not UtilClient.is_unset(request.end_time):
@@ -2333,6 +2347,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.accessibility):
+            query['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.display_name):
             query['DisplayName'] = request.display_name
         if not UtilClient.is_unset(request.end_time):

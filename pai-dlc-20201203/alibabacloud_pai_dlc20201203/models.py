@@ -3307,6 +3307,7 @@ class TensorboardSpec(TeaModel):
 class Tensorboard(TeaModel):
     def __init__(
         self,
+        accessibility: str = None,
         data_source_id: str = None,
         display_name: str = None,
         duration: str = None,
@@ -3329,6 +3330,7 @@ class Tensorboard(TeaModel):
         user_id: str = None,
         username: str = None,
     ):
+        self.accessibility = accessibility
         self.data_source_id = data_source_id
         self.display_name = display_name
         self.duration = duration
@@ -3365,6 +3367,8 @@ class Tensorboard(TeaModel):
             return _map
 
         result = dict()
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
         if self.data_source_id is not None:
             result['DataSourceId'] = self.data_source_id
         if self.display_name is not None:
@@ -3413,6 +3417,8 @@ class Tensorboard(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
         if m.get('DataSourceId') is not None:
             self.data_source_id = m.get('DataSourceId')
         if m.get('DisplayName') is not None:
@@ -3710,6 +3716,7 @@ class CreateJobRequestUserVpc(TeaModel):
 class CreateJobRequest(TeaModel):
     def __init__(
         self,
+        accessibility: str = None,
         code_source: CreateJobRequestCodeSource = None,
         credential_config: CredentialConfig = None,
         data_sources: List[CreateJobRequestDataSources] = None,
@@ -3731,6 +3738,7 @@ class CreateJobRequest(TeaModel):
         user_vpc: CreateJobRequestUserVpc = None,
         workspace_id: str = None,
     ):
+        self.accessibility = accessibility
         self.code_source = code_source
         self.credential_config = credential_config
         self.data_sources = data_sources
@@ -3782,6 +3790,8 @@ class CreateJobRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
         if self.code_source is not None:
             result['CodeSource'] = self.code_source.to_map()
         if self.credential_config is not None:
@@ -3830,6 +3840,8 @@ class CreateJobRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
         if m.get('CodeSource') is not None:
             temp_model = CreateJobRequestCodeSource()
             self.code_source = temp_model.from_map(m['CodeSource'])
@@ -3961,6 +3973,7 @@ class CreateJobResponse(TeaModel):
 class CreateTensorboardRequest(TeaModel):
     def __init__(
         self,
+        accessibility: str = None,
         cpu: int = None,
         data_source_id: str = None,
         data_source_type: str = None,
@@ -3981,6 +3994,7 @@ class CreateTensorboardRequest(TeaModel):
         uri: str = None,
         workspace_id: str = None,
     ):
+        self.accessibility = accessibility
         self.cpu = cpu
         self.data_source_id = data_source_id
         self.data_source_type = data_source_type
@@ -4019,6 +4033,8 @@ class CreateTensorboardRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
         if self.cpu is not None:
             result['Cpu'] = self.cpu
         if self.data_source_id is not None:
@@ -4065,6 +4081,8 @@ class CreateTensorboardRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
         if m.get('DataSourceId') is not None:
@@ -6350,6 +6368,7 @@ class ListJobSanityCheckResultsResponse(TeaModel):
 class ListJobsRequest(TeaModel):
     def __init__(
         self,
+        accessibility: str = None,
         business_user_id: str = None,
         caller: str = None,
         display_name: str = None,
@@ -6372,6 +6391,7 @@ class ListJobsRequest(TeaModel):
         username: str = None,
         workspace_id: str = None,
     ):
+        self.accessibility = accessibility
         self.business_user_id = business_user_id
         self.caller = caller
         self.display_name = display_name
@@ -6403,6 +6423,8 @@ class ListJobsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
         if self.business_user_id is not None:
             result['BusinessUserId'] = self.business_user_id
         if self.caller is not None:
@@ -6449,6 +6471,8 @@ class ListJobsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
         if m.get('BusinessUserId') is not None:
             self.business_user_id = m.get('BusinessUserId')
         if m.get('Caller') is not None:
@@ -6497,6 +6521,7 @@ class ListJobsRequest(TeaModel):
 class ListJobsShrinkRequest(TeaModel):
     def __init__(
         self,
+        accessibility: str = None,
         business_user_id: str = None,
         caller: str = None,
         display_name: str = None,
@@ -6519,6 +6544,7 @@ class ListJobsShrinkRequest(TeaModel):
         username: str = None,
         workspace_id: str = None,
     ):
+        self.accessibility = accessibility
         self.business_user_id = business_user_id
         self.caller = caller
         self.display_name = display_name
@@ -6550,6 +6576,8 @@ class ListJobsShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
         if self.business_user_id is not None:
             result['BusinessUserId'] = self.business_user_id
         if self.caller is not None:
@@ -6596,6 +6624,8 @@ class ListJobsShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
         if m.get('BusinessUserId') is not None:
             self.business_user_id = m.get('BusinessUserId')
         if m.get('Caller') is not None:
@@ -6732,6 +6762,7 @@ class ListJobsResponse(TeaModel):
 class ListTensorboardsRequest(TeaModel):
     def __init__(
         self,
+        accessibility: str = None,
         display_name: str = None,
         end_time: str = None,
         job_id: str = None,
@@ -6752,6 +6783,7 @@ class ListTensorboardsRequest(TeaModel):
         verbose: bool = None,
         workspace_id: str = None,
     ):
+        self.accessibility = accessibility
         self.display_name = display_name
         self.end_time = end_time
         self.job_id = job_id
@@ -6781,6 +6813,8 @@ class ListTensorboardsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
         if self.end_time is not None:
@@ -6823,6 +6857,8 @@ class ListTensorboardsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
         if m.get('EndTime') is not None:
