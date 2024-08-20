@@ -149,6 +149,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.change_resource_group_with_options_async(request, headers, runtime)
 
+    def create_holo_warehouse_with_options(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.CreateHoloWarehouseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.CreateHoloWarehouseResponse:
+        """
+        @summary 创建计算组
+        
+        @param request: CreateHoloWarehouseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHoloWarehouseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cpu):
+            body['cpu'] = request.cpu
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateHoloWarehouse',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/createHoloWarehouse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.CreateHoloWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_holo_warehouse_with_options_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.CreateHoloWarehouseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.CreateHoloWarehouseResponse:
+        """
+        @summary 创建计算组
+        
+        @param request: CreateHoloWarehouseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHoloWarehouseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cpu):
+            body['cpu'] = request.cpu
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateHoloWarehouse',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/createHoloWarehouse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.CreateHoloWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_holo_warehouse(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.CreateHoloWarehouseRequest,
+    ) -> hologram_20220601_models.CreateHoloWarehouseResponse:
+        """
+        @summary 创建计算组
+        
+        @param request: CreateHoloWarehouseRequest
+        @return: CreateHoloWarehouseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_holo_warehouse_with_options(instance_id, request, headers, runtime)
+
+    async def create_holo_warehouse_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.CreateHoloWarehouseRequest,
+    ) -> hologram_20220601_models.CreateHoloWarehouseResponse:
+        """
+        @summary 创建计算组
+        
+        @param request: CreateHoloWarehouseRequest
+        @return: CreateHoloWarehouseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_holo_warehouse_with_options_async(instance_id, request, headers, runtime)
+
     def create_instance_with_options(
         self,
         request: hologram_20220601_models.CreateInstanceRequest,
@@ -404,6 +516,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_instance_with_options_async(request, headers, runtime)
+
+    def delete_holo_warehouse_with_options(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.DeleteHoloWarehouseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.DeleteHoloWarehouseResponse:
+        """
+        @summary 删除计算组
+        
+        @param request: DeleteHoloWarehouseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHoloWarehouseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteHoloWarehouse',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/deleteHoloWarehouse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.DeleteHoloWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_holo_warehouse_with_options_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.DeleteHoloWarehouseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.DeleteHoloWarehouseResponse:
+        """
+        @summary 删除计算组
+        
+        @param request: DeleteHoloWarehouseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHoloWarehouseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteHoloWarehouse',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/deleteHoloWarehouse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.DeleteHoloWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_holo_warehouse(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.DeleteHoloWarehouseRequest,
+    ) -> hologram_20220601_models.DeleteHoloWarehouseResponse:
+        """
+        @summary 删除计算组
+        
+        @param request: DeleteHoloWarehouseRequest
+        @return: DeleteHoloWarehouseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_holo_warehouse_with_options(instance_id, request, headers, runtime)
+
+    async def delete_holo_warehouse_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.DeleteHoloWarehouseRequest,
+    ) -> hologram_20220601_models.DeleteHoloWarehouseResponse:
+        """
+        @summary 删除计算组
+        
+        @param request: DeleteHoloWarehouseRequest
+        @return: DeleteHoloWarehouseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_holo_warehouse_with_options_async(instance_id, request, headers, runtime)
 
     def delete_instance_with_options(
         self,
@@ -1131,6 +1351,226 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_warehouses_with_options_async(instance_id, headers, runtime)
 
+    def rebalance_holo_warehouse_with_options(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RebalanceHoloWarehouseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.RebalanceHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: RebalanceHoloWarehouseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebalanceHoloWarehouseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RebalanceHoloWarehouse',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/rebalanceHoloWarehouse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.RebalanceHoloWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rebalance_holo_warehouse_with_options_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RebalanceHoloWarehouseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.RebalanceHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: RebalanceHoloWarehouseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebalanceHoloWarehouseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RebalanceHoloWarehouse',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/rebalanceHoloWarehouse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.RebalanceHoloWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rebalance_holo_warehouse(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RebalanceHoloWarehouseRequest,
+    ) -> hologram_20220601_models.RebalanceHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: RebalanceHoloWarehouseRequest
+        @return: RebalanceHoloWarehouseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.rebalance_holo_warehouse_with_options(instance_id, request, headers, runtime)
+
+    async def rebalance_holo_warehouse_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RebalanceHoloWarehouseRequest,
+    ) -> hologram_20220601_models.RebalanceHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: RebalanceHoloWarehouseRequest
+        @return: RebalanceHoloWarehouseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.rebalance_holo_warehouse_with_options_async(instance_id, request, headers, runtime)
+
+    def rename_holo_warehouse_with_options(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RenameHoloWarehouseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.RenameHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: RenameHoloWarehouseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenameHoloWarehouseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.new_warehouse_name):
+            body['newWarehouseName'] = request.new_warehouse_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RenameHoloWarehouse',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/renameHoloWarehouse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.RenameHoloWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rename_holo_warehouse_with_options_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RenameHoloWarehouseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.RenameHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: RenameHoloWarehouseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenameHoloWarehouseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.new_warehouse_name):
+            body['newWarehouseName'] = request.new_warehouse_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RenameHoloWarehouse',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/renameHoloWarehouse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.RenameHoloWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rename_holo_warehouse(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RenameHoloWarehouseRequest,
+    ) -> hologram_20220601_models.RenameHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: RenameHoloWarehouseRequest
+        @return: RenameHoloWarehouseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.rename_holo_warehouse_with_options(instance_id, request, headers, runtime)
+
+    async def rename_holo_warehouse_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RenameHoloWarehouseRequest,
+    ) -> hologram_20220601_models.RenameHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: RenameHoloWarehouseRequest
+        @return: RenameHoloWarehouseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.rename_holo_warehouse_with_options_async(instance_id, request, headers, runtime)
+
     def renew_instance_with_options(
         self,
         instance_id: str,
@@ -1263,6 +1703,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.renew_instance_with_options_async(instance_id, request, headers, runtime)
 
+    def restart_holo_warehouse_with_options(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RestartHoloWarehouseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.RestartHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: RestartHoloWarehouseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartHoloWarehouseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RestartHoloWarehouse',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/restartHoloWarehouse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.RestartHoloWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restart_holo_warehouse_with_options_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RestartHoloWarehouseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.RestartHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: RestartHoloWarehouseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartHoloWarehouseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RestartHoloWarehouse',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/restartHoloWarehouse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.RestartHoloWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restart_holo_warehouse(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RestartHoloWarehouseRequest,
+    ) -> hologram_20220601_models.RestartHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: RestartHoloWarehouseRequest
+        @return: RestartHoloWarehouseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.restart_holo_warehouse_with_options(instance_id, request, headers, runtime)
+
+    async def restart_holo_warehouse_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.RestartHoloWarehouseRequest,
+    ) -> hologram_20220601_models.RestartHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: RestartHoloWarehouseRequest
+        @return: RestartHoloWarehouseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.restart_holo_warehouse_with_options_async(instance_id, request, headers, runtime)
+
     def restart_instance_with_options(
         self,
         instance_id: str,
@@ -1353,6 +1901,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.restart_instance_with_options_async(instance_id, headers, runtime)
 
+    def resume_holo_warehouse_with_options(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.ResumeHoloWarehouseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.ResumeHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: ResumeHoloWarehouseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeHoloWarehouseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ResumeHoloWarehouse',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/resumeHoloWarehouse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.ResumeHoloWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_holo_warehouse_with_options_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.ResumeHoloWarehouseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.ResumeHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: ResumeHoloWarehouseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeHoloWarehouseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ResumeHoloWarehouse',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/resumeHoloWarehouse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.ResumeHoloWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_holo_warehouse(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.ResumeHoloWarehouseRequest,
+    ) -> hologram_20220601_models.ResumeHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: ResumeHoloWarehouseRequest
+        @return: ResumeHoloWarehouseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.resume_holo_warehouse_with_options(instance_id, request, headers, runtime)
+
+    async def resume_holo_warehouse_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.ResumeHoloWarehouseRequest,
+    ) -> hologram_20220601_models.ResumeHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: ResumeHoloWarehouseRequest
+        @return: ResumeHoloWarehouseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.resume_holo_warehouse_with_options_async(instance_id, request, headers, runtime)
+
     def resume_instance_with_options(
         self,
         instance_id: str,
@@ -1442,6 +2098,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.resume_instance_with_options_async(instance_id, headers, runtime)
+
+    def scale_holo_warehouse_with_options(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.ScaleHoloWarehouseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.ScaleHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: ScaleHoloWarehouseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScaleHoloWarehouseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cpu):
+            body['cpu'] = request.cpu
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ScaleHoloWarehouse',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/scaleHoloWarehouse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.ScaleHoloWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def scale_holo_warehouse_with_options_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.ScaleHoloWarehouseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.ScaleHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: ScaleHoloWarehouseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScaleHoloWarehouseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cpu):
+            body['cpu'] = request.cpu
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ScaleHoloWarehouse',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/scaleHoloWarehouse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.ScaleHoloWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def scale_holo_warehouse(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.ScaleHoloWarehouseRequest,
+    ) -> hologram_20220601_models.ScaleHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: ScaleHoloWarehouseRequest
+        @return: ScaleHoloWarehouseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.scale_holo_warehouse_with_options(instance_id, request, headers, runtime)
+
+    async def scale_holo_warehouse_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.ScaleHoloWarehouseRequest,
+    ) -> hologram_20220601_models.ScaleHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: ScaleHoloWarehouseRequest
+        @return: ScaleHoloWarehouseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.scale_holo_warehouse_with_options_async(instance_id, request, headers, runtime)
 
     def scale_instance_with_options(
         self,
@@ -1676,6 +2444,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_instance_with_options_async(instance_id, headers, runtime)
+
+    def suspend_holo_warehouse_with_options(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.SuspendHoloWarehouseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.SuspendHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: SuspendHoloWarehouseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendHoloWarehouseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SuspendHoloWarehouse',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/suspendHoloWarehouse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.SuspendHoloWarehouseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def suspend_holo_warehouse_with_options_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.SuspendHoloWarehouseRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> hologram_20220601_models.SuspendHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: SuspendHoloWarehouseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendHoloWarehouseResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SuspendHoloWarehouse',
+            version='2022-06-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/suspendHoloWarehouse',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hologram_20220601_models.SuspendHoloWarehouseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def suspend_holo_warehouse(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.SuspendHoloWarehouseRequest,
+    ) -> hologram_20220601_models.SuspendHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: SuspendHoloWarehouseRequest
+        @return: SuspendHoloWarehouseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.suspend_holo_warehouse_with_options(instance_id, request, headers, runtime)
+
+    async def suspend_holo_warehouse_async(
+        self,
+        instance_id: str,
+        request: hologram_20220601_models.SuspendHoloWarehouseRequest,
+    ) -> hologram_20220601_models.SuspendHoloWarehouseResponse:
+        """
+        @summary 停止计算组
+        
+        @param request: SuspendHoloWarehouseRequest
+        @return: SuspendHoloWarehouseResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.suspend_holo_warehouse_with_options_async(instance_id, request, headers, runtime)
 
     def update_instance_name_with_options(
         self,

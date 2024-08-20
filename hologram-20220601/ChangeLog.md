@@ -1,3 +1,14 @@
+2024-08-20 Version: 1.4.0
+- Support API CreateHoloWarehouse.
+- Support API DeleteHoloWarehouse.
+- Support API RebalanceHoloWarehouse.
+- Support API RenameHoloWarehouse.
+- Support API RestartHoloWarehouse.
+- Support API ResumeHoloWarehouse.
+- Support API ScaleHoloWarehouse.
+- Support API SuspendHoloWarehouse.
+
+
 2024-08-19 Version: 1.3.3
 - Generated python 2022-06-01 for Hologram.
 
