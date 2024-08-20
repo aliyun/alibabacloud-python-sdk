@@ -1232,6 +1232,200 @@ class AddTextFeedbackResponse(TeaModel):
         return self
 
 
+class BatchGetProjectTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id_list: List[str] = None,
+    ):
+        self.task_id_list = task_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id_list is not None:
+            result['taskIdList'] = self.task_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskIdList') is not None:
+            self.task_id_list = m.get('taskIdList')
+        return self
+
+
+class BatchGetProjectTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        task_id_list_shrink: str = None,
+    ):
+        self.task_id_list_shrink = task_id_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id_list_shrink is not None:
+            result['taskIdList'] = self.task_id_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskIdList') is not None:
+            self.task_id_list_shrink = m.get('taskIdList')
+        return self
+
+
+class BatchGetProjectTaskResponseBodyResultList(TeaModel):
+    def __init__(
+        self,
+        error_msg: str = None,
+        status: str = None,
+        task_id: str = None,
+        video_download_url: str = None,
+        video_duration: int = None,
+        video_url: str = None,
+    ):
+        self.error_msg = error_msg
+        self.status = status
+        self.task_id = task_id
+        self.video_download_url = video_download_url
+        self.video_duration = video_duration
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.status is not None:
+            result['status'] = self.status
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.video_download_url is not None:
+            result['videoDownloadUrl'] = self.video_download_url
+        if self.video_duration is not None:
+            result['videoDuration'] = self.video_duration
+        if self.video_url is not None:
+            result['videoUrl'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('videoDownloadUrl') is not None:
+            self.video_download_url = m.get('videoDownloadUrl')
+        if m.get('videoDuration') is not None:
+            self.video_duration = m.get('videoDuration')
+        if m.get('videoUrl') is not None:
+            self.video_url = m.get('videoUrl')
+        return self
+
+
+class BatchGetProjectTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_list: List[BatchGetProjectTaskResponseBodyResultList] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.result_list = result_list
+
+    def validate(self):
+        if self.result_list:
+            for k in self.result_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['resultList'] = []
+        if self.result_list is not None:
+            for k in self.result_list:
+                result['resultList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.result_list = []
+        if m.get('resultList') is not None:
+            for k in m.get('resultList'):
+                temp_model = BatchGetProjectTaskResponseBodyResultList()
+                self.result_list.append(temp_model.from_map(k))
+        return self
+
+
+class BatchGetProjectTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchGetProjectTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchGetProjectTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckSessionRequest(TeaModel):
     def __init__(
         self,

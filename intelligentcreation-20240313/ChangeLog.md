@@ -1,3 +1,7 @@
+2024-08-20 Version: 2.3.0
+- Support API BatchGetProjectTask.
+
+
 2024-08-07 Version: 2.2.0
 - Support API CountText.
 - Update API ListTexts: add param keyword.

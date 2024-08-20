@@ -153,6 +153,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.add_text_feedback_with_options_async(request, headers, runtime)
 
+    def batch_get_project_task_with_options(
+        self,
+        tmp_req: intelligent_creation_20240313_models.BatchGetProjectTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.BatchGetProjectTaskResponse:
+        """
+        @summary 批量查询项目信息
+        
+        @param tmp_req: BatchGetProjectTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetProjectTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = intelligent_creation_20240313_models.BatchGetProjectTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.task_id_list):
+            request.task_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_id_list, 'taskIdList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.task_id_list_shrink):
+            query['taskIdList'] = request.task_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetProjectTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/digitalHuman/project/batchGetProjectTask',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.BatchGetProjectTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_get_project_task_with_options_async(
+        self,
+        tmp_req: intelligent_creation_20240313_models.BatchGetProjectTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.BatchGetProjectTaskResponse:
+        """
+        @summary 批量查询项目信息
+        
+        @param tmp_req: BatchGetProjectTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetProjectTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = intelligent_creation_20240313_models.BatchGetProjectTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.task_id_list):
+            request.task_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.task_id_list, 'taskIdList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.task_id_list_shrink):
+            query['taskIdList'] = request.task_id_list_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchGetProjectTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/digitalHuman/project/batchGetProjectTask',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.BatchGetProjectTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_get_project_task(
+        self,
+        request: intelligent_creation_20240313_models.BatchGetProjectTaskRequest,
+    ) -> intelligent_creation_20240313_models.BatchGetProjectTaskResponse:
+        """
+        @summary 批量查询项目信息
+        
+        @param request: BatchGetProjectTaskRequest
+        @return: BatchGetProjectTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.batch_get_project_task_with_options(request, headers, runtime)
+
+    async def batch_get_project_task_async(
+        self,
+        request: intelligent_creation_20240313_models.BatchGetProjectTaskRequest,
+    ) -> intelligent_creation_20240313_models.BatchGetProjectTaskResponse:
+        """
+        @summary 批量查询项目信息
+        
+        @param request: BatchGetProjectTaskRequest
+        @return: BatchGetProjectTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.batch_get_project_task_with_options_async(request, headers, runtime)
+
     def check_session_with_options(
         self,
         request: intelligent_creation_20240313_models.CheckSessionRequest,
