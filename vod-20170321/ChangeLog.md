@@ -1,3 +1,7 @@
+2024-08-20 Version: 3.1.0
+- Support API DescribeVodDomainMax95BpsData.
+
+
 2024-08-13 Version: 3.0.1
 - Update API CreateAppInfo: add param ResourceGroupId.
 - Update API DescribeVodCertificateList: update response param.

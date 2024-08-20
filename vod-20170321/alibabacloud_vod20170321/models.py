@@ -9184,6 +9184,255 @@ class DescribeVodDomainLogResponse(TeaModel):
         return self
 
 
+class DescribeVodDomainMax95BpsDataRequest(TeaModel):
+    def __init__(
+        self,
+        cycle: str = None,
+        domain_name: str = None,
+        end_time: str = None,
+        owner_id: int = None,
+        start_time: str = None,
+        time_point: str = None,
+    ):
+        self.cycle = cycle
+        self.domain_name = domain_name
+        self.end_time = end_time
+        self.owner_id = owner_id
+        self.start_time = start_time
+        self.time_point = time_point
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cycle is not None:
+            result['Cycle'] = self.cycle
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.time_point is not None:
+            result['TimePoint'] = self.time_point
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cycle') is not None:
+            self.cycle = m.get('Cycle')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TimePoint') is not None:
+            self.time_point = m.get('TimePoint')
+        return self
+
+
+class DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail(TeaModel):
+    def __init__(
+        self,
+        area: str = None,
+        max_95bps: float = None,
+        max_95bps_peak_time: str = None,
+        time_stamp: str = None,
+    ):
+        self.area = area
+        self.max_95bps = max_95bps
+        self.max_95bps_peak_time = max_95bps_peak_time
+        self.time_stamp = time_stamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.area is not None:
+            result['Area'] = self.area
+        if self.max_95bps is not None:
+            result['Max95Bps'] = self.max_95bps
+        if self.max_95bps_peak_time is not None:
+            result['Max95BpsPeakTime'] = self.max_95bps_peak_time
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Area') is not None:
+            self.area = m.get('Area')
+        if m.get('Max95Bps') is not None:
+            self.max_95bps = m.get('Max95Bps')
+        if m.get('Max95BpsPeakTime') is not None:
+            self.max_95bps_peak_time = m.get('Max95BpsPeakTime')
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        return self
+
+
+class DescribeVodDomainMax95BpsDataResponseBodyDetailData(TeaModel):
+    def __init__(
+        self,
+        max_95detail: List[DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail] = None,
+    ):
+        self.max_95detail = max_95detail
+
+    def validate(self):
+        if self.max_95detail:
+            for k in self.max_95detail:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Max95Detail'] = []
+        if self.max_95detail is not None:
+            for k in self.max_95detail:
+                result['Max95Detail'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.max_95detail = []
+        if m.get('Max95Detail') is not None:
+            for k in m.get('Max95Detail'):
+                temp_model = DescribeVodDomainMax95BpsDataResponseBodyDetailDataMax95Detail()
+                self.max_95detail.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVodDomainMax95BpsDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        detail_data: DescribeVodDomainMax95BpsDataResponseBodyDetailData = None,
+        domain_name: str = None,
+        domestic_max_95bps: str = None,
+        end_time: str = None,
+        max_95bps: str = None,
+        overseas_max_95bps: str = None,
+        request_id: str = None,
+        start_time: str = None,
+    ):
+        self.detail_data = detail_data
+        self.domain_name = domain_name
+        self.domestic_max_95bps = domestic_max_95bps
+        self.end_time = end_time
+        self.max_95bps = max_95bps
+        self.overseas_max_95bps = overseas_max_95bps
+        self.request_id = request_id
+        self.start_time = start_time
+
+    def validate(self):
+        if self.detail_data:
+            self.detail_data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.detail_data is not None:
+            result['DetailData'] = self.detail_data.to_map()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.domestic_max_95bps is not None:
+            result['DomesticMax95Bps'] = self.domestic_max_95bps
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.max_95bps is not None:
+            result['Max95Bps'] = self.max_95bps
+        if self.overseas_max_95bps is not None:
+            result['OverseasMax95Bps'] = self.overseas_max_95bps
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DetailData') is not None:
+            temp_model = DescribeVodDomainMax95BpsDataResponseBodyDetailData()
+            self.detail_data = temp_model.from_map(m['DetailData'])
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('DomesticMax95Bps') is not None:
+            self.domestic_max_95bps = m.get('DomesticMax95Bps')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Max95Bps') is not None:
+            self.max_95bps = m.get('Max95Bps')
+        if m.get('OverseasMax95Bps') is not None:
+            self.overseas_max_95bps = m.get('OverseasMax95Bps')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeVodDomainMax95BpsDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVodDomainMax95BpsDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVodDomainMax95BpsDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeVodDomainQpsDataRequest(TeaModel):
     def __init__(
         self,

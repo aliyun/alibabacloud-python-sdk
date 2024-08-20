@@ -6412,6 +6412,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vod_domain_log_with_options_async(request, runtime)
 
+    def describe_vod_domain_max_95bps_data_with_options(
+        self,
+        request: vod_20170321_models.DescribeVodDomainMax95BpsDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainMax95BpsDataResponse:
+        """
+        @param request: DescribeVodDomainMax95BpsDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVodDomainMax95BpsDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainMax95BpsData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainMax95BpsDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vod_domain_max_95bps_data_with_options_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainMax95BpsDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodDomainMax95BpsDataResponse:
+        """
+        @param request: DescribeVodDomainMax95BpsDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVodDomainMax95BpsDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodDomainMax95BpsData',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodDomainMax95BpsDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vod_domain_max_95bps_data(
+        self,
+        request: vod_20170321_models.DescribeVodDomainMax95BpsDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainMax95BpsDataResponse:
+        """
+        @param request: DescribeVodDomainMax95BpsDataRequest
+        @return: DescribeVodDomainMax95BpsDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vod_domain_max_95bps_data_with_options(request, runtime)
+
+    async def describe_vod_domain_max_95bps_data_async(
+        self,
+        request: vod_20170321_models.DescribeVodDomainMax95BpsDataRequest,
+    ) -> vod_20170321_models.DescribeVodDomainMax95BpsDataResponse:
+        """
+        @param request: DescribeVodDomainMax95BpsDataRequest
+        @return: DescribeVodDomainMax95BpsDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vod_domain_max_95bps_data_with_options_async(request, runtime)
+
     def describe_vod_domain_qps_data_with_options(
         self,
         request: vod_20170321_models.DescribeVodDomainQpsDataRequest,
