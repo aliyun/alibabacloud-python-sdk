@@ -26123,6 +26123,7 @@ class ModifyAuditLogConfigRequest(TeaModel):
         self,
         audit_log_status: str = None,
         dbcluster_id: str = None,
+        engine_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -26144,6 +26145,7 @@ class ModifyAuditLogConfigRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.engine_type = engine_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
@@ -26168,6 +26170,8 @@ class ModifyAuditLogConfigRequest(TeaModel):
             result['AuditLogStatus'] = self.audit_log_status
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.engine_type is not None:
+            result['EngineType'] = self.engine_type
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -26186,6 +26190,8 @@ class ModifyAuditLogConfigRequest(TeaModel):
             self.audit_log_status = m.get('AuditLogStatus')
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EngineType') is not None:
+            self.engine_type = m.get('EngineType')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:

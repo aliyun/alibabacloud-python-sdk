@@ -1,3 +1,9 @@
+2024-08-20 Version: 1.3.11
+- Update API GetTableObjects: update param PageNumber.
+- Update API GetTableObjects: update param PageSize.
+- Update API ModifyAuditLogConfig: add param EngineType.
+
+
 2024-08-14 Version: 1.3.10
 - Update API CreateDBResourceGroup: add param Engine.
 - Update API CreateDBResourceGroup: add param EngineParams.

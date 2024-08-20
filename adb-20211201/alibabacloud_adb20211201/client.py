@@ -12947,6 +12947,8 @@ class Client(OpenApiClient):
             query['AuditLogStatus'] = request.audit_log_status
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine_type):
+            query['EngineType'] = request.engine_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -12996,6 +12998,8 @@ class Client(OpenApiClient):
             query['AuditLogStatus'] = request.audit_log_status
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.engine_type):
+            query['EngineType'] = request.engine_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
