@@ -34,6 +34,8 @@ class AddAccountRelationRequest(TeaModel):
         # *   CHECK_FINANCE_INFO: requests to view information about the financial relationship.
         # *   MANAGE_TARGET_INVOICE: allows the member to manage invoices.
         # *   CHECK_TARGET_CONSUMPTION: allows the member to view the bills.
+        # 
+        # The params[PermissionCodes, RoleCodes] can not be null at the same time.
         self.permission_codes = permission_codes
         # The type of the financial relationship. Set the value to enterprise_group.
         # 
@@ -96,7 +98,7 @@ class AddAccountRelationResponseBodyData(TeaModel):
         host_id: str = None,
         relation_id: int = None,
     ):
-        # HostId
+        # The IP address of the request
         self.host_id = host_id
         # The ID of the financial relationship.
         self.relation_id = relation_id
@@ -2686,6 +2688,7 @@ class CreateSavingsPlansInstanceRequest(TeaModel):
         self.duration = duration
         # The time when the savings plan takes effect. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.effective_date = effective_date
+        # The extended parameters.
         self.extend_map = extend_map
         # The payment mode. Valid values:
         # 
@@ -2699,7 +2702,7 @@ class CreateSavingsPlansInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.pool_value = pool_value
-        # The unit of the service duration. This parameter is used together with the During parameter. Valid values:
+        # The unit of the subscription duration. This parameter is used together with Duration. Valid values:
         # 
         # *   Year
         # *   Month
@@ -2718,7 +2721,7 @@ class CreateSavingsPlansInstanceRequest(TeaModel):
         # The type of the savings plan. Valid values:
         # 
         # *   universal: general-purpose type
-        # *   ecs: ECS compute type
+        # *   ecs: Elastic Compute Service (ECS) compute type
         # *   elasticy: elastic type
         # 
         # This parameter is required.
@@ -2809,6 +2812,7 @@ class CreateSavingsPlansInstanceShrinkRequest(TeaModel):
         self.duration = duration
         # The time when the savings plan takes effect. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.effective_date = effective_date
+        # The extended parameters.
         self.extend_map_shrink = extend_map_shrink
         # The payment mode. Valid values:
         # 
@@ -2822,7 +2826,7 @@ class CreateSavingsPlansInstanceShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.pool_value = pool_value
-        # The unit of the service duration. This parameter is used together with the During parameter. Valid values:
+        # The unit of the subscription duration. This parameter is used together with Duration. Valid values:
         # 
         # *   Year
         # *   Month
@@ -2841,7 +2845,7 @@ class CreateSavingsPlansInstanceShrinkRequest(TeaModel):
         # The type of the savings plan. Valid values:
         # 
         # *   universal: general-purpose type
-        # *   ecs: ECS compute type
+        # *   ecs: Elastic Compute Service (ECS) compute type
         # *   elasticy: elastic type
         # 
         # This parameter is required.
@@ -5512,6 +5516,7 @@ class DescribeInstanceBillRequest(TeaModel):
         # The token that is used to indicate the position where the results for the current call start. The parameter must be left empty or set to the value of the NextToken parameter that is returned from the last call. Otherwise, an error is returned. If the parameter is left empty, data is queried from the first item.
         self.next_token = next_token
         self.owner_id = owner_id
+        # The code of the service. The code is the same as that in Cost Center.
         self.pip_code = pip_code
         # The code of the service.
         self.product_code = product_code
@@ -9570,22 +9575,23 @@ class DescribeResourceUsageDetailRequest(TeaModel):
         resource_type: str = None,
         start_period: str = None,
     ):
+        # The ID of the account whose data you want to query. If you do not specify this parameter, the data of the current Alibaba Cloud account and its Resource Access Management (RAM) users is queried. To query the data of a RAM user, specify the ID of the RAM user.
         self.bill_owner_id = bill_owner_id
         # The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
         self.end_period = end_period
-        # The maximum number of entries to return. Default value: 20. Maximum value: 300.
+        # The maximum number of entries to return. Default value: 20. The maximum value is 300.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results. You do not need to set this parameter if you query usage details within a specific time range for the first time. The response returns a token that you can use to query usage details that are displayed on the next page. If a null value is returned for the NextToken parameter, no more usage details can be queried.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken. If NextToken is empty, no next page exists.
         self.next_token = next_token
         # The time granularity at which usage details are queried. Valid values: MONTH, DAY, and HOUR.
         # 
         # This parameter is required.
         self.period_type = period_type
-        # The type of deduction plans whose usage details are queried. Valid values: RI and SCU.
+        # The type of deduction plan whose usage details are queried. Valid values: RI and SCU.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+        # The beginning of the time range to query. The beginning is included in the time range. Specify the time in the yyyy-MM-dd HH:mm:ss format.
         # 
         # This parameter is required.
         self.start_period = start_period
@@ -9661,17 +9667,17 @@ class DescribeResourceUsageDetailResponseBodyDataItems(TeaModel):
         zone: str = None,
         zone_name: str = None,
     ):
-        # The unit that is used to measure the resources deducted from deduction plans.
+        # The unit that is used to measure the resources that are deducted.
         self.capacity_unit = capacity_unit
-        # The currency in which deduction plans were priced.
+        # The type of the currency.
         self.currency = currency
-        # The amount of the resources deducted from deduction plans.
+        # The amount of the deducted resources.
         self.deduct_quantity = deduct_quantity
         # The end of the time range in which the usage details were queried.
         self.end_time = end_time
         # The operating system.
         self.image_type = image_type
-        # The specifications of a deduction plan.
+        # The instance type.
         self.instance_spec = instance_spec
         # The equivalent of pay-as-you-go costs.
         self.postpaid_cost = postpaid_cost
@@ -9683,9 +9689,9 @@ class DescribeResourceUsageDetailResponseBodyDataItems(TeaModel):
         self.region = region
         # The code of the region.
         self.region_no = region_no
-        # The fee of purchased deduction plans.
+        # The fee of the deduction plan.
         self.reservation_cost = reservation_cost
-        # The ID of a deduction plan.
+        # The ID of the deduction plan.
         self.resource_instance_id = resource_instance_id
         # The net savings.
         self.saved_cost = saved_cost
@@ -9693,19 +9699,19 @@ class DescribeResourceUsageDetailResponseBodyDataItems(TeaModel):
         self.start_time = start_time
         # The status of the deduction plan.
         self.status = status
-        # The name of the state.
+        # The name of the status.
         self.status_name = status_name
-        # The total capacity of deduction plans.
+        # The total capacity of the deduction plan.
         self.total_quantity = total_quantity
-        # The usage of deduction plans.
+        # The usage rate of the deduction plan.
         self.usage_percentage = usage_percentage
-        # The ID of the account.
+        # The account ID.
         self.user_id = user_id
         # The username of the account.
         self.user_name = user_name
-        # The code of the zone.
-        self.zone = zone
         # The zone.
+        self.zone = zone
+        # The code of the zone.
         self.zone_name = zone_name
 
     def validate(self):
@@ -9828,7 +9834,7 @@ class DescribeResourceUsageDetailResponseBodyData(TeaModel):
         self.items = items
         # The number of entries returned on the current page.
         self.max_results = max_results
-        # The token of the next page.
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The total number of entries returned.
         self.total_count = total_count
@@ -9882,15 +9888,15 @@ class DescribeResourceUsageDetailResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # The response code.
         self.code = code
         # The returned data.
         self.data = data
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -10280,7 +10286,7 @@ class DescribeSavingsPlansCoverageDetailRequest(TeaModel):
         start_period: str = None,
         token: str = None,
     ):
-        # The ID of the account for which you want to query coverage details. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+        # The ID of the account for which you want to query coverage details.
         self.bill_owner_id = bill_owner_id
         # The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
         self.end_period = end_period
@@ -11559,12 +11565,17 @@ class DescribeSplitItemBillRequest(TeaModel):
         self.granularity = granularity
         # The ID of the instance.
         self.instance_id = instance_id
+        # Specifies whether to filter bills if both the pretax gross amount and pretax amount are 0. Valid values:
+        # 
+        # *   false: does not filter bills.
+        # *   true: filters bills.
         self.is_hide_zero_charge = is_hide_zero_charge
         # The maximum number of entries to query. Default value: 20. Maximum value: 300.
         self.max_results = max_results
         # The token that is used for the next query. The parameter must be left empty or set to the value of the NextToken parameter returned in the last call. Otherwise, an error is returned. If the parameter is left empty, the data is queried from the first entry.
         self.next_token = next_token
         self.owner_id = owner_id
+        # The code of the service. The code is the same as that in Cost Center.
         self.pip_code = pip_code
         # The code of the service.
         self.product_code = product_code
@@ -12243,7 +12254,7 @@ class GetAccountRelationRequest(TeaModel):
         relation_id: int = None,
         request_id: str = None,
     ):
-        # The ID of the financial relationship.
+        # The ID of the financial relationship. Value returned by calling the AddAccountRelation operation.
         self.relation_id = relation_id
         # The unique ID of the request. The ID is used to mark a request and troubleshoot a problem.
         self.request_id = request_id
@@ -12297,6 +12308,14 @@ class GetAccountRelationResponseBodyData(TeaModel):
         # The time when the financial relationship between the management account and the member was established.
         self.start_time = start_time
         # The status of the financial relationship between the management account and the member.
+        # 
+        # - RELATED 【Association established】
+        # - CONFIRMING 【To be confirmed by the other party】
+        # - REJECTED 【Refused by the other party】
+        # - CONNECTION_CANCELED 【Financial sub-account cancel request】
+        # - CONNECTION_MASTER_CANCEL 【Financial master account cancel invitation】
+        # - CHANGE_CONFIRMING 【Relationship change to be confirmed】
+        # - INITIAL 【Initial new relationship status】
         self.status = status
         # The type of the financial relationship.
         self.type = type
@@ -15822,6 +15841,7 @@ class QueryAccountBalanceResponseBodyData(TeaModel):
         self.currency = currency
         # The credit line controlled by MYbank.
         self.mybank_credit_amount = mybank_credit_amount
+        # The quota limit for eco customers.
         self.quota_limit = quota_limit
 
     def validate(self):
@@ -16864,9 +16884,9 @@ class QueryAccountTransactionsRequest(TeaModel):
         self.create_time_end = create_time_end
         # The beginning of the creation time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. Example: 2018-01-01T00:00:00Z.
         self.create_time_start = create_time_start
-        # The number of the page to return.
+        # The number of the page to return. Default value is 1.
         self.page_num = page_num
-        # The number of entries to return on each page.
+        # The number of entries to return on each page. Default value is 20.
         self.page_size = page_size
         # The ID of the order or bill.
         self.record_id = record_id
@@ -17763,9 +17783,7 @@ class QueryBillRequest(TeaModel):
         # *   Subscription
         # *   PayAsYouGo
         # 
-        # **\
-        # 
-        # ****This parameter must be used together with the ProductCode parameter.
+        # This parameter must be used together with the ProductCode parameter.
         self.subscription_type = subscription_type
         # The type of the bill. Valid values:
         # 
@@ -18398,6 +18416,7 @@ class QueryBillOverviewResponseBodyDataItemsItem(TeaModel):
     ):
         # The amount deducted by using credit refunds.
         self.adjust_amount = adjust_amount
+        # The amount paid after the tax is deducted.
         self.after_tax_amount = after_tax_amount
         # The ID of the account to which the bill belongs.
         self.bill_account_id = bill_account_id
@@ -18436,11 +18455,13 @@ class QueryBillOverviewResponseBodyDataItemsItem(TeaModel):
         self.owner_id = owner_id
         # The amount paid in cash. The amount that was deducted by using credit refunds is included.
         self.payment_amount = payment_amount
+        # The currency used for payment.
         self.payment_currency = payment_currency
         # The code of the service. The service code is the same as that displayed in User Center.
         self.pip_code = pip_code
         # The pretax amount.
         self.pretax_amount = pretax_amount
+        # The pretax amount paid in local currency.
         self.pretax_amount_local = pretax_amount_local
         # The pretax gross amount.
         self.pretax_gross_amount = pretax_gross_amount
@@ -18459,6 +18480,7 @@ class QueryBillOverviewResponseBodyDataItemsItem(TeaModel):
         # *   Subscription: the subscription billing method
         # *   PayAsYouGo: the pay-as-you-go billing method
         self.subscription_type = subscription_type
+        # The tax.
         self.tax = tax
 
     def validate(self):
@@ -19100,6 +19122,7 @@ class QueryCashCouponsResponseBodyDataCashCoupon(TeaModel):
         self.cash_coupon_id = cash_coupon_id
         # The code of the voucher.
         self.cash_coupon_no = cash_coupon_no
+        # The description of the voucher.
         self.description = description
         # The time when the voucher took effect.
         self.effective_time = effective_time
@@ -27192,6 +27215,7 @@ class QuerySavingsPlansDiscountRequest(TeaModel):
         pay_mode: str = None,
         region: str = None,
         spec: str = None,
+        spn_commodity_code: str = None,
         spn_type: str = None,
     ):
         # The code of the service.
@@ -27203,6 +27227,11 @@ class QuerySavingsPlansDiscountRequest(TeaModel):
         # This parameter is required.
         self.cycle = cycle
         # The identifier of the language.
+        # 
+        # Valid values:
+        # 
+        # *   EN: English.
+        # *   ZH: Chinese.
         self.locale = locale
         # The code of the pricing module.
         self.module_code = module_code
@@ -27210,7 +27239,7 @@ class QuerySavingsPlansDiscountRequest(TeaModel):
         self.page_num = page_num
         # The number of entries to return on each page.
         self.page_size = page_size
-        # The payment mode.
+        # The payment mode. Valid values: total: all upfront. half: half upfront. zero: no upfront.
         # 
         # This parameter is required.
         self.pay_mode = pay_mode
@@ -27218,7 +27247,8 @@ class QuerySavingsPlansDiscountRequest(TeaModel):
         self.region = region
         # The type of the resource.
         self.spec = spec
-        # The type of the savings plan.
+        self.spn_commodity_code = spn_commodity_code
+        # The type of the savings plan. Valid values: ecs: Elastic Compute Service (ECS) compute type. universal: general-purpose type.
         # 
         # This parameter is required.
         self.spn_type = spn_type
@@ -27250,6 +27280,8 @@ class QuerySavingsPlansDiscountRequest(TeaModel):
             result['Region'] = self.region
         if self.spec is not None:
             result['Spec'] = self.spec
+        if self.spn_commodity_code is not None:
+            result['SpnCommodityCode'] = self.spn_commodity_code
         if self.spn_type is not None:
             result['SpnType'] = self.spn_type
         return result
@@ -27274,6 +27306,8 @@ class QuerySavingsPlansDiscountRequest(TeaModel):
             self.region = m.get('Region')
         if m.get('Spec') is not None:
             self.spec = m.get('Spec')
+        if m.get('SpnCommodityCode') is not None:
+            self.spn_commodity_code = m.get('SpnCommodityCode')
         if m.get('SpnType') is not None:
             self.spn_type = m.get('SpnType')
         return self
@@ -27311,6 +27345,7 @@ class QuerySavingsPlansDiscountResponseBodyDataItems(TeaModel):
         self.pay_mode = pay_mode
         # The ID of the region.
         self.region = region
+        # The region ID of the instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/26231.html) operation to query the region ID of the instance.
         self.region_code = region_code
         # The type of the resource.
         self.spec = spec
@@ -27427,7 +27462,7 @@ class QuerySavingsPlansDiscountResponseBody(TeaModel):
     ):
         # The error code returned.
         self.code = code
-        # The data returned.
+        # data
         self.data = data
         # The error message returned.
         self.message = message
@@ -27553,6 +27588,7 @@ class QuerySavingsPlansInstanceRequestTag(TeaModel):
 class QuerySavingsPlansInstanceRequest(TeaModel):
     def __init__(
         self,
+        commodity_code: str = None,
         end_time: str = None,
         instance_id: str = None,
         locale: str = None,
@@ -27562,6 +27598,7 @@ class QuerySavingsPlansInstanceRequest(TeaModel):
         status: str = None,
         tag: List[QuerySavingsPlansInstanceRequestTag] = None,
     ):
+        self.commodity_code = commodity_code
         # The end of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
         self.end_time = end_time
         # The ID of the savings plan instance.
@@ -27597,6 +27634,8 @@ class QuerySavingsPlansInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.instance_id is not None:
@@ -27619,6 +27658,8 @@ class QuerySavingsPlansInstanceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('InstanceId') is not None:

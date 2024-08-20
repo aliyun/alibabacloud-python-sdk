@@ -109,7 +109,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a financial relationship.
         
-        @description 1\\. For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html). 2. If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
+        @description For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html).
+        If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
         
         @param request: AddAccountRelationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -158,7 +159,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a financial relationship.
         
-        @description 1\\. For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html). 2. If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
+        @description For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html).
+        If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
         
         @param request: AddAccountRelationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -206,7 +208,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a financial relationship.
         
-        @description 1\\. For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html). 2. If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
+        @description For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html).
+        If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
         
         @param request: AddAccountRelationRequest
         @return: AddAccountRelationResponse
@@ -221,7 +224,8 @@ class Client(OpenApiClient):
         """
         @summary Creates a financial relationship.
         
-        @description 1\\. For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html). 2. If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
+        @description For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html).
+        If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
         
         @param request: AddAccountRelationRequest
         @return: AddAccountRelationResponse
@@ -3803,6 +3807,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailResponse:
         """
+        @summary Queries the usage details of savings plans.
+        
         @param request: DescribeSavingsPlansUsageDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSavingsPlansUsageDetailResponse
@@ -3846,6 +3852,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailResponse:
         """
+        @summary Queries the usage details of savings plans.
+        
         @param request: DescribeSavingsPlansUsageDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSavingsPlansUsageDetailResponse
@@ -3888,6 +3896,8 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailRequest,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailResponse:
         """
+        @summary Queries the usage details of savings plans.
+        
         @param request: DescribeSavingsPlansUsageDetailRequest
         @return: DescribeSavingsPlansUsageDetailResponse
         """
@@ -3899,6 +3909,8 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailRequest,
     ) -> bss_open_api_20171214_models.DescribeSavingsPlansUsageDetailResponse:
         """
+        @summary Queries the usage details of savings plans.
+        
         @param request: DescribeSavingsPlansUsageDetailRequest
         @return: DescribeSavingsPlansUsageDetailResponse
         """
@@ -9173,6 +9185,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
@@ -9222,6 +9236,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
@@ -10853,6 +10869,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetResellerUserQuotaResponse:
         """
+        @summary Modify the quota ledger and consumption ledger.
+        
         @param request: SetResellerUserQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetResellerUserQuotaResponse
@@ -10892,6 +10910,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bss_open_api_20171214_models.SetResellerUserQuotaResponse:
         """
+        @summary Modify the quota ledger and consumption ledger.
+        
         @param request: SetResellerUserQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetResellerUserQuotaResponse
@@ -10930,6 +10950,8 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.SetResellerUserQuotaRequest,
     ) -> bss_open_api_20171214_models.SetResellerUserQuotaResponse:
         """
+        @summary Modify the quota ledger and consumption ledger.
+        
         @param request: SetResellerUserQuotaRequest
         @return: SetResellerUserQuotaResponse
         """
@@ -10941,6 +10963,8 @@ class Client(OpenApiClient):
         request: bss_open_api_20171214_models.SetResellerUserQuotaRequest,
     ) -> bss_open_api_20171214_models.SetResellerUserQuotaResponse:
         """
+        @summary Modify the quota ledger and consumption ledger.
+        
         @param request: SetResellerUserQuotaRequest
         @return: SetResellerUserQuotaResponse
         """

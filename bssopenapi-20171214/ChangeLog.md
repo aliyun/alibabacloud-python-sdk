@@ -1,3 +1,8 @@
+2024-08-20 Version: 4.0.2
+- Update API QuerySavingsPlansDiscount: add param SpnCommodityCode.
+- Update API QuerySavingsPlansInstance: add param CommodityCode.
+
+
 2024-07-10 Version: 4.0.1
 - Update API GetOrderDetail: update response param.
 
