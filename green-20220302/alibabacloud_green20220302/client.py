@@ -437,7 +437,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.DescribeUrlModerationResultResponse:
         """
-        @summary 查询 url 检测结果
+        @summary Queries the moderation results based on the ReqId returned by asynchronous URL moderation.
+        
+        @description    Billing: This operation is free of charge.
+        Query timeout: We recommend that you query moderation results at least 480 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for up to 3 days. After 3 days, the results are deleted.
+        You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeUrlModerationResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -472,7 +476,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.DescribeUrlModerationResultResponse:
         """
-        @summary 查询 url 检测结果
+        @summary Queries the moderation results based on the ReqId returned by asynchronous URL moderation.
+        
+        @description    Billing: This operation is free of charge.
+        Query timeout: We recommend that you query moderation results at least 480 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for up to 3 days. After 3 days, the results are deleted.
+        You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeUrlModerationResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -506,7 +514,11 @@ class Client(OpenApiClient):
         request: green_20220302_models.DescribeUrlModerationResultRequest,
     ) -> green_20220302_models.DescribeUrlModerationResultResponse:
         """
-        @summary 查询 url 检测结果
+        @summary Queries the moderation results based on the ReqId returned by asynchronous URL moderation.
+        
+        @description    Billing: This operation is free of charge.
+        Query timeout: We recommend that you query moderation results at least 480 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for up to 3 days. After 3 days, the results are deleted.
+        You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeUrlModerationResultRequest
         @return: DescribeUrlModerationResultResponse
@@ -519,7 +531,11 @@ class Client(OpenApiClient):
         request: green_20220302_models.DescribeUrlModerationResultRequest,
     ) -> green_20220302_models.DescribeUrlModerationResultResponse:
         """
-        @summary 查询 url 检测结果
+        @summary Queries the moderation results based on the ReqId returned by asynchronous URL moderation.
+        
+        @description    Billing: This operation is free of charge.
+        Query timeout: We recommend that you query moderation results at least 480 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for up to 3 days. After 3 days, the results are deleted.
+        You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeUrlModerationResultRequest
         @return: DescribeUrlModerationResultResponse
@@ -733,7 +749,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.ImageModerationResponse:
         """
-        @summary 图片审核
+        @summary Identifies whether an image contains content or elements that violate relevant regulations on network content dissemination, affect the content order of a specific platform, or affect user experience. Image Moderation 2.0 supports over 90 content risk labels and over 100 risk control items. Image Moderation 2.0 of Content Moderation allows you to develop further moderation or governance measures for specific image content based on business scenarios, platform-specific content governance rules, or rich risk labels and scores of confidence levels returned by API calls.
+        
+        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/467826.html)[](https://www.aliyun.com/price/product?#/lvwang/detail/cdibag) of Image Moderation 2.0.
         
         @param request: ImageModerationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -770,7 +788,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220302_models.ImageModerationResponse:
         """
-        @summary 图片审核
+        @summary Identifies whether an image contains content or elements that violate relevant regulations on network content dissemination, affect the content order of a specific platform, or affect user experience. Image Moderation 2.0 supports over 90 content risk labels and over 100 risk control items. Image Moderation 2.0 of Content Moderation allows you to develop further moderation or governance measures for specific image content based on business scenarios, platform-specific content governance rules, or rich risk labels and scores of confidence levels returned by API calls.
+        
+        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/467826.html)[](https://www.aliyun.com/price/product?#/lvwang/detail/cdibag) of Image Moderation 2.0.
         
         @param request: ImageModerationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -806,7 +826,9 @@ class Client(OpenApiClient):
         request: green_20220302_models.ImageModerationRequest,
     ) -> green_20220302_models.ImageModerationResponse:
         """
-        @summary 图片审核
+        @summary Identifies whether an image contains content or elements that violate relevant regulations on network content dissemination, affect the content order of a specific platform, or affect user experience. Image Moderation 2.0 supports over 90 content risk labels and over 100 risk control items. Image Moderation 2.0 of Content Moderation allows you to develop further moderation or governance measures for specific image content based on business scenarios, platform-specific content governance rules, or rich risk labels and scores of confidence levels returned by API calls.
+        
+        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/467826.html)[](https://www.aliyun.com/price/product?#/lvwang/detail/cdibag) of Image Moderation 2.0.
         
         @param request: ImageModerationRequest
         @return: ImageModerationResponse
@@ -819,7 +841,9 @@ class Client(OpenApiClient):
         request: green_20220302_models.ImageModerationRequest,
     ) -> green_20220302_models.ImageModerationResponse:
         """
-        @summary 图片审核
+        @summary Identifies whether an image contains content or elements that violate relevant regulations on network content dissemination, affect the content order of a specific platform, or affect user experience. Image Moderation 2.0 supports over 90 content risk labels and over 100 risk control items. Image Moderation 2.0 of Content Moderation allows you to develop further moderation or governance measures for specific image content based on business scenarios, platform-specific content governance rules, or rich risk labels and scores of confidence levels returned by API calls.
+        
+        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/467826.html)[](https://www.aliyun.com/price/product?#/lvwang/detail/cdibag) of Image Moderation 2.0.
         
         @param request: ImageModerationRequest
         @return: ImageModerationResponse

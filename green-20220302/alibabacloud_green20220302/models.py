@@ -507,10 +507,12 @@ class DescribeImageModerationResultResponseBodyDataResult(TeaModel):
     def __init__(
         self,
         confidence: float = None,
+        description: str = None,
         label: str = None,
     ):
         # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
         self.confidence = confidence
+        self.description = description
         # The labels returned after the image moderation.
         self.label = label
 
@@ -525,6 +527,8 @@ class DescribeImageModerationResultResponseBodyDataResult(TeaModel):
         result = dict()
         if self.confidence is not None:
             result['Confidence'] = self.confidence
+        if self.description is not None:
+            result['Description'] = self.description
         if self.label is not None:
             result['Label'] = self.label
         return result
@@ -533,6 +537,8 @@ class DescribeImageModerationResultResponseBodyDataResult(TeaModel):
         m = m or dict()
         if m.get('Confidence') is not None:
             self.confidence = m.get('Confidence')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('Label') is not None:
             self.label = m.get('Label')
         return self
@@ -1226,7 +1232,7 @@ class DescribeUrlModerationResultRequest(TeaModel):
         self,
         req_id: str = None,
     ):
-        # The reqId field returned by the Url Async Moderation API.
+        # The ReqId field returned by an asynchronous URL moderation operation.
         self.req_id = req_id
 
     def validate(self):
@@ -1256,10 +1262,11 @@ class DescribeUrlModerationResultResponseBodyDataExtraInfo(TeaModel):
         icp_type: str = None,
         site_type: str = None,
     ):
-        # ICP record number.
+        # The ICP number.
         self.icp_no = icp_no
-        # ICP filing type.
+        # The type of the ICP filing.
         self.icp_type = icp_type
+        # The type of site
         self.site_type = site_type
 
     def validate(self):
@@ -1296,9 +1303,9 @@ class DescribeUrlModerationResultResponseBodyDataResult(TeaModel):
         confidence: float = None,
         label: str = None,
     ):
-        # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
+        # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places.
         self.confidence = confidence
-        # The labels returned after the url async moderation.
+        # The labels returned after the asynchronous URL moderation.
         self.label = label
 
     def validate(self):
@@ -1333,13 +1340,13 @@ class DescribeUrlModerationResultResponseBodyData(TeaModel):
         req_id: str = None,
         result: List[DescribeUrlModerationResultResponseBodyDataResult] = None,
     ):
-        # The ID of the moderated object.
+        # The value of dataId that is specified in the API request. If this parameter is not specified in the API request, this field is not available in the response.
         self.data_id = data_id
-        # Supplementary information.
+        # The supplementary information.
         self.extra_info = extra_info
-        # The reqId field returned by the Url Async Moderation API.
+        # The ReqId field returned by an asynchronous URL moderation operation.
         self.req_id = req_id
-        # The results of url async moderation parameters such as the label parameter and the confidence parameter.
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -1393,7 +1400,7 @@ class DescribeUrlModerationResultResponseBody(TeaModel):
         msg: str = None,
         request_id: str = None,
     ):
-        # The returned HTTP status code.
+        # The returned HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
         # The data returned.
         self.data = data
@@ -1800,9 +1807,32 @@ class ImageModerationRequest(TeaModel):
         service: str = None,
         service_parameters: str = None,
     ):
-        # The type of the moderation service.
+        # The moderation services supported by Image Moderation 2.0. Valid values:
+        # 
+        # *   baselineCheck: common baseline moderation
+        # *   baselineCheck_pro: common baseline moderation_Professional
+        # *   baselineCheck_cb: common baseline moderation_For regions outside the Chinese mainland
+        # *   tonalityImprove: content governance moderation
+        # *   aigcCheck: AI-generated image identification
+        # *   profilePhotoCheck: avatar image moderation
+        # *   advertisingCheck: marketing material identification
+        # *   liveStreamCheck: moderation of screenshots of videos and live streams
+        # 
+        # Valid values:
+        # 
+        # *   liveStreamCheck: moderation of screenshots of videos and live streams
+        # *   baselineCheck: common baseline moderation
+        # *   aigcCheck: AI-generated image identification
+        # *   baselineCheck_pro: common baseline moderation_Professional
+        # *   advertisingCheck: marketing material identification
+        # *   baselineCheck_cb: common baseline moderation_For regions outside the Chinese mainland
+        # *   tonalityImprove: content governance moderation
+        # *   profilePhotoCheck: avatar image moderation
         self.service = service
         # The parameters required by the moderation service. The value is a JSON string.
+        # 
+        # *   imageUrl: the URL of the object that you want to moderate. This parameter is required.
+        # *   dataId: the ID of the object that you want to moderate. This parameter is optional.
         self.service_parameters = service_parameters
 
     def validate(self):
@@ -2102,9 +2132,13 @@ class ImageModerationResponseBodyDataExtPublicFigureLocation(TeaModel):
         x: int = None,
         y: int = None,
     ):
+        # The height
         self.h = h
+        # The weight
         self.w = w
+        # X coordinate
         self.x = x
+        # Y coordinate
         self.y = y
 
     def validate(self):
@@ -2150,6 +2184,7 @@ class ImageModerationResponseBodyDataExtPublicFigure(TeaModel):
         self.figure_id = figure_id
         # Identified person name information.
         self.figure_name = figure_name
+        # the data array of location info
         self.location = location
 
     def validate(self):
@@ -2524,11 +2559,13 @@ class ImageModerationResponseBodyDataResult(TeaModel):
     def __init__(
         self,
         confidence: float = None,
+        description: str = None,
         label: str = None,
     ):
         # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
         self.confidence = confidence
-        # The labels returned after the image moderation.
+        self.description = description
+        # The labels returned after the image moderation. Multiple risk labels and the corresponding scores of confidence levels may be returned for an image.
         self.label = label
 
     def validate(self):
@@ -2542,6 +2579,8 @@ class ImageModerationResponseBodyDataResult(TeaModel):
         result = dict()
         if self.confidence is not None:
             result['Confidence'] = self.confidence
+        if self.description is not None:
+            result['Description'] = self.description
         if self.label is not None:
             result['Label'] = self.label
         return result
@@ -2550,6 +2589,8 @@ class ImageModerationResponseBodyDataResult(TeaModel):
         m = m or dict()
         if m.get('Confidence') is not None:
             self.confidence = m.get('Confidence')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('Label') is not None:
             self.label = m.get('Label')
         return self
@@ -2564,10 +2605,12 @@ class ImageModerationResponseBodyData(TeaModel):
         risk_level: str = None,
     ):
         # The ID of the moderated object.
+        # 
+        # >  If you specify the dataId parameter in the request, the value of the dataId parameter is returned in the response.
         self.data_id = data_id
         # Auxiliary reference information.
         self.ext = ext
-        # The results of image moderation parameters such as the label parameter and the confidence parameter.
+        # The results of image moderation parameters such as the label parameter and the confidence parameter, which are an array structure.
         self.result = result
         # Risk Level.
         self.risk_level = risk_level
@@ -2623,13 +2666,13 @@ class ImageModerationResponseBody(TeaModel):
         msg: str = None,
         request_id: str = None,
     ):
-        # The returned HTTP status code.
+        # The returned HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The data returned.
+        # The moderation results.
         self.data = data
         # The message that is returned in response to the request.
         self.msg = msg
-        # The request ID.
+        # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
