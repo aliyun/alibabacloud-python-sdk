@@ -22502,7 +22502,9 @@ class DescribeDcdnKvAccountResponseBodyNamespaceList(TeaModel):
 class DescribeDcdnKvAccountResponseBody(TeaModel):
     def __init__(
         self,
+        capacity: int = None,
         capacity_string: str = None,
+        capacity_used: int = None,
         capacity_used_string: str = None,
         namespace_list: List[DescribeDcdnKvAccountResponseBodyNamespaceList] = None,
         namespace_quota: int = None,
@@ -22510,8 +22512,10 @@ class DescribeDcdnKvAccountResponseBody(TeaModel):
         request_id: str = None,
         status: str = None,
     ):
+        self.capacity = capacity
         # The available capacity of all namespaces.
         self.capacity_string = capacity_string
+        self.capacity_used = capacity_used
         # All namespaces have used capacity.
         self.capacity_used_string = capacity_used_string
         # Details about the namespaces.
@@ -22540,8 +22544,12 @@ class DescribeDcdnKvAccountResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.capacity is not None:
+            result['Capacity'] = self.capacity
         if self.capacity_string is not None:
             result['CapacityString'] = self.capacity_string
+        if self.capacity_used is not None:
+            result['CapacityUsed'] = self.capacity_used
         if self.capacity_used_string is not None:
             result['CapacityUsedString'] = self.capacity_used_string
         result['NamespaceList'] = []
@@ -22560,8 +22568,12 @@ class DescribeDcdnKvAccountResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Capacity') is not None:
+            self.capacity = m.get('Capacity')
         if m.get('CapacityString') is not None:
             self.capacity_string = m.get('CapacityString')
+        if m.get('CapacityUsed') is not None:
+            self.capacity_used = m.get('CapacityUsed')
         if m.get('CapacityUsedString') is not None:
             self.capacity_used_string = m.get('CapacityUsedString')
         self.namespace_list = []
