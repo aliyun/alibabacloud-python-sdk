@@ -3215,6 +3215,8 @@ class DecryptKMSDataKeyRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: str = None,
     ):
+        # The ciphertext to be decrypted.
+        # 
         # This parameter is required.
         self.cipher_text = cipher_text
         self.owner_account = owner_account
@@ -7725,11 +7727,17 @@ class DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo(TeaModel):
         self,
         cert_domain_name: str = None,
         cert_expire_time: str = None,
+        cert_id: str = None,
         cert_life: str = None,
         cert_name: str = None,
         cert_org: str = None,
+        cert_region: str = None,
+        cert_start_time: str = None,
         cert_type: str = None,
+        cert_update_time: str = None,
+        domain_cname_status: str = None,
         domain_name: str = None,
+        server_certificate: str = None,
         server_certificate_status: str = None,
         status: str = None,
     ):
@@ -7737,20 +7745,26 @@ class DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo(TeaModel):
         self.cert_domain_name = cert_domain_name
         # The time at which the certificate expires. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.cert_expire_time = cert_expire_time
+        self.cert_id = cert_id
         # The validity period of the certificate. Unit: months or years.
         self.cert_life = cert_life
         # The certificate name.
         self.cert_name = cert_name
         # The certificate authority (CA) that issued the certificate.
         self.cert_org = cert_org
+        self.cert_region = cert_region
+        self.cert_start_time = cert_start_time
         # The type of the certificate. Valid values:
         # 
         # *   **free**: a free certificate.
         # *   **cas**: a certificate that is purchased from Certificate Management Service.
         # *   **upload**: a user-uploaded certificate.
         self.cert_type = cert_type
+        self.cert_update_time = cert_update_time
+        self.domain_cname_status = domain_cname_status
         # The accelerated domain name whose ICP filing status you want to update.
         self.domain_name = domain_name
+        self.server_certificate = server_certificate
         # The status of the SSL certificate.
         # 
         # *   **on**\
@@ -7782,16 +7796,28 @@ class DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo(TeaModel):
             result['CertDomainName'] = self.cert_domain_name
         if self.cert_expire_time is not None:
             result['CertExpireTime'] = self.cert_expire_time
+        if self.cert_id is not None:
+            result['CertId'] = self.cert_id
         if self.cert_life is not None:
             result['CertLife'] = self.cert_life
         if self.cert_name is not None:
             result['CertName'] = self.cert_name
         if self.cert_org is not None:
             result['CertOrg'] = self.cert_org
+        if self.cert_region is not None:
+            result['CertRegion'] = self.cert_region
+        if self.cert_start_time is not None:
+            result['CertStartTime'] = self.cert_start_time
         if self.cert_type is not None:
             result['CertType'] = self.cert_type
+        if self.cert_update_time is not None:
+            result['CertUpdateTime'] = self.cert_update_time
+        if self.domain_cname_status is not None:
+            result['DomainCnameStatus'] = self.domain_cname_status
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
+        if self.server_certificate is not None:
+            result['ServerCertificate'] = self.server_certificate
         if self.server_certificate_status is not None:
             result['ServerCertificateStatus'] = self.server_certificate_status
         if self.status is not None:
@@ -7804,16 +7830,28 @@ class DescribeVodDomainCertificateInfoResponseBodyCertInfosCertInfo(TeaModel):
             self.cert_domain_name = m.get('CertDomainName')
         if m.get('CertExpireTime') is not None:
             self.cert_expire_time = m.get('CertExpireTime')
+        if m.get('CertId') is not None:
+            self.cert_id = m.get('CertId')
         if m.get('CertLife') is not None:
             self.cert_life = m.get('CertLife')
         if m.get('CertName') is not None:
             self.cert_name = m.get('CertName')
         if m.get('CertOrg') is not None:
             self.cert_org = m.get('CertOrg')
+        if m.get('CertRegion') is not None:
+            self.cert_region = m.get('CertRegion')
+        if m.get('CertStartTime') is not None:
+            self.cert_start_time = m.get('CertStartTime')
         if m.get('CertType') is not None:
             self.cert_type = m.get('CertType')
+        if m.get('CertUpdateTime') is not None:
+            self.cert_update_time = m.get('CertUpdateTime')
+        if m.get('DomainCnameStatus') is not None:
+            self.domain_cname_status = m.get('DomainCnameStatus')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+        if m.get('ServerCertificate') is not None:
+            self.server_certificate = m.get('ServerCertificate')
         if m.get('ServerCertificateStatus') is not None:
             self.server_certificate_status = m.get('ServerCertificateStatus')
         if m.get('Status') is not None:
@@ -13619,6 +13657,284 @@ class DescribeVodRefreshTasksResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeVodRefreshTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeVodSSLCertificateListRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        search_keyword: str = None,
+        security_token: str = None,
+    ):
+        self.domain_name = domain_name
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.search_keyword = search_keyword
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.search_keyword is not None:
+            result['SearchKeyword'] = self.search_keyword
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SearchKeyword') is not None:
+            self.search_keyword = m.get('SearchKeyword')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert(TeaModel):
+    def __init__(
+        self,
+        cert_id: int = None,
+        cert_name: str = None,
+        cert_region: str = None,
+        common: str = None,
+        fingerprint: str = None,
+        issuer: str = None,
+        last_time: int = None,
+    ):
+        self.cert_id = cert_id
+        self.cert_name = cert_name
+        self.cert_region = cert_region
+        self.common = common
+        self.fingerprint = fingerprint
+        self.issuer = issuer
+        self.last_time = last_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_id is not None:
+            result['CertId'] = self.cert_id
+        if self.cert_name is not None:
+            result['CertName'] = self.cert_name
+        if self.cert_region is not None:
+            result['CertRegion'] = self.cert_region
+        if self.common is not None:
+            result['Common'] = self.common
+        if self.fingerprint is not None:
+            result['Fingerprint'] = self.fingerprint
+        if self.issuer is not None:
+            result['Issuer'] = self.issuer
+        if self.last_time is not None:
+            result['LastTime'] = self.last_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertId') is not None:
+            self.cert_id = m.get('CertId')
+        if m.get('CertName') is not None:
+            self.cert_name = m.get('CertName')
+        if m.get('CertRegion') is not None:
+            self.cert_region = m.get('CertRegion')
+        if m.get('Common') is not None:
+            self.common = m.get('Common')
+        if m.get('Fingerprint') is not None:
+            self.fingerprint = m.get('Fingerprint')
+        if m.get('Issuer') is not None:
+            self.issuer = m.get('Issuer')
+        if m.get('LastTime') is not None:
+            self.last_time = m.get('LastTime')
+        return self
+
+
+class DescribeVodSSLCertificateListResponseBodyCertificateListModelCertList(TeaModel):
+    def __init__(
+        self,
+        cert: List[DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert] = None,
+    ):
+        self.cert = cert
+
+    def validate(self):
+        if self.cert:
+            for k in self.cert:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Cert'] = []
+        if self.cert is not None:
+            for k in self.cert:
+                result['Cert'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cert = []
+        if m.get('Cert') is not None:
+            for k in m.get('Cert'):
+                temp_model = DescribeVodSSLCertificateListResponseBodyCertificateListModelCertListCert()
+                self.cert.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeVodSSLCertificateListResponseBodyCertificateListModel(TeaModel):
+    def __init__(
+        self,
+        cert_list: DescribeVodSSLCertificateListResponseBodyCertificateListModelCertList = None,
+        count: int = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.cert_list = cert_list
+        self.count = count
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        if self.cert_list:
+            self.cert_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_list is not None:
+            result['CertList'] = self.cert_list.to_map()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertList') is not None:
+            temp_model = DescribeVodSSLCertificateListResponseBodyCertificateListModelCertList()
+            self.cert_list = temp_model.from_map(m['CertList'])
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeVodSSLCertificateListResponseBody(TeaModel):
+    def __init__(
+        self,
+        certificate_list_model: DescribeVodSSLCertificateListResponseBodyCertificateListModel = None,
+        request_id: str = None,
+    ):
+        self.certificate_list_model = certificate_list_model
+        self.request_id = request_id
+
+    def validate(self):
+        if self.certificate_list_model:
+            self.certificate_list_model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate_list_model is not None:
+            result['CertificateListModel'] = self.certificate_list_model.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertificateListModel') is not None:
+            temp_model = DescribeVodSSLCertificateListResponseBodyCertificateListModel()
+            self.certificate_list_model = temp_model.from_map(m['CertificateListModel'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeVodSSLCertificateListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeVodSSLCertificateListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeVodSSLCertificateListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -35772,6 +36088,163 @@ class SetVodDomainCertificateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetVodDomainCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetVodDomainSSLCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        cert_id: int = None,
+        cert_name: str = None,
+        cert_region: str = None,
+        cert_type: str = None,
+        domain_name: str = None,
+        env: str = None,
+        owner_id: int = None,
+        sslpri: str = None,
+        sslprotocol: str = None,
+        sslpub: str = None,
+        security_token: str = None,
+    ):
+        self.cert_id = cert_id
+        self.cert_name = cert_name
+        self.cert_region = cert_region
+        self.cert_type = cert_type
+        # This parameter is required.
+        self.domain_name = domain_name
+        self.env = env
+        self.owner_id = owner_id
+        self.sslpri = sslpri
+        # This parameter is required.
+        self.sslprotocol = sslprotocol
+        self.sslpub = sslpub
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_id is not None:
+            result['CertId'] = self.cert_id
+        if self.cert_name is not None:
+            result['CertName'] = self.cert_name
+        if self.cert_region is not None:
+            result['CertRegion'] = self.cert_region
+        if self.cert_type is not None:
+            result['CertType'] = self.cert_type
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.sslpri is not None:
+            result['SSLPri'] = self.sslpri
+        if self.sslprotocol is not None:
+            result['SSLProtocol'] = self.sslprotocol
+        if self.sslpub is not None:
+            result['SSLPub'] = self.sslpub
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertId') is not None:
+            self.cert_id = m.get('CertId')
+        if m.get('CertName') is not None:
+            self.cert_name = m.get('CertName')
+        if m.get('CertRegion') is not None:
+            self.cert_region = m.get('CertRegion')
+        if m.get('CertType') is not None:
+            self.cert_type = m.get('CertType')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('SSLPri') is not None:
+            self.sslpri = m.get('SSLPri')
+        if m.get('SSLProtocol') is not None:
+            self.sslprotocol = m.get('SSLProtocol')
+        if m.get('SSLPub') is not None:
+            self.sslpub = m.get('SSLPub')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class SetVodDomainSSLCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetVodDomainSSLCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetVodDomainSSLCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetVodDomainSSLCertificateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

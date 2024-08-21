@@ -8980,6 +8980,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vod_refresh_tasks_with_options_async(request, runtime)
 
+    def describe_vod_sslcertificate_list_with_options(
+        self,
+        request: vod_20170321_models.DescribeVodSSLCertificateListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodSSLCertificateListResponse:
+        """
+        @summary 查询证书列表，支持翻页
+        
+        @param request: DescribeVodSSLCertificateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVodSSLCertificateListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_keyword):
+            query['SearchKeyword'] = request.search_keyword
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodSSLCertificateList',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodSSLCertificateListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vod_sslcertificate_list_with_options_async(
+        self,
+        request: vod_20170321_models.DescribeVodSSLCertificateListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodSSLCertificateListResponse:
+        """
+        @summary 查询证书列表，支持翻页
+        
+        @param request: DescribeVodSSLCertificateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVodSSLCertificateListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_keyword):
+            query['SearchKeyword'] = request.search_keyword
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodSSLCertificateList',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodSSLCertificateListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vod_sslcertificate_list(
+        self,
+        request: vod_20170321_models.DescribeVodSSLCertificateListRequest,
+    ) -> vod_20170321_models.DescribeVodSSLCertificateListResponse:
+        """
+        @summary 查询证书列表，支持翻页
+        
+        @param request: DescribeVodSSLCertificateListRequest
+        @return: DescribeVodSSLCertificateListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vod_sslcertificate_list_with_options(request, runtime)
+
+    async def describe_vod_sslcertificate_list_async(
+        self,
+        request: vod_20170321_models.DescribeVodSSLCertificateListRequest,
+    ) -> vod_20170321_models.DescribeVodSSLCertificateListResponse:
+        """
+        @summary 查询证书列表，支持翻页
+        
+        @param request: DescribeVodSSLCertificateListRequest
+        @return: DescribeVodSSLCertificateListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vod_sslcertificate_list_with_options_async(request, runtime)
+
     def describe_vod_storage_data_with_options(
         self,
         request: vod_20170321_models.DescribeVodStorageDataRequest,
@@ -17695,6 +17811,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.set_vod_domain_certificate_with_options_async(request, runtime)
+
+    def set_vod_domain_sslcertificate_with_options(
+        self,
+        request: vod_20170321_models.SetVodDomainSSLCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.SetVodDomainSSLCertificateResponse:
+        """
+        @summary 设置证书
+        
+        @param request: SetVodDomainSSLCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetVodDomainSSLCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_id):
+            query['CertId'] = request.cert_id
+        if not UtilClient.is_unset(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not UtilClient.is_unset(request.cert_region):
+            query['CertRegion'] = request.cert_region
+        if not UtilClient.is_unset(request.cert_type):
+            query['CertType'] = request.cert_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.env):
+            query['Env'] = request.env
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.sslpri):
+            query['SSLPri'] = request.sslpri
+        if not UtilClient.is_unset(request.sslprotocol):
+            query['SSLProtocol'] = request.sslprotocol
+        if not UtilClient.is_unset(request.sslpub):
+            query['SSLPub'] = request.sslpub
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetVodDomainSSLCertificate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.SetVodDomainSSLCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_vod_domain_sslcertificate_with_options_async(
+        self,
+        request: vod_20170321_models.SetVodDomainSSLCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.SetVodDomainSSLCertificateResponse:
+        """
+        @summary 设置证书
+        
+        @param request: SetVodDomainSSLCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetVodDomainSSLCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cert_id):
+            query['CertId'] = request.cert_id
+        if not UtilClient.is_unset(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not UtilClient.is_unset(request.cert_region):
+            query['CertRegion'] = request.cert_region
+        if not UtilClient.is_unset(request.cert_type):
+            query['CertType'] = request.cert_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.env):
+            query['Env'] = request.env
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.sslpri):
+            query['SSLPri'] = request.sslpri
+        if not UtilClient.is_unset(request.sslprotocol):
+            query['SSLProtocol'] = request.sslprotocol
+        if not UtilClient.is_unset(request.sslpub):
+            query['SSLPub'] = request.sslpub
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetVodDomainSSLCertificate',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.SetVodDomainSSLCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_vod_domain_sslcertificate(
+        self,
+        request: vod_20170321_models.SetVodDomainSSLCertificateRequest,
+    ) -> vod_20170321_models.SetVodDomainSSLCertificateResponse:
+        """
+        @summary 设置证书
+        
+        @param request: SetVodDomainSSLCertificateRequest
+        @return: SetVodDomainSSLCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_vod_domain_sslcertificate_with_options(request, runtime)
+
+    async def set_vod_domain_sslcertificate_async(
+        self,
+        request: vod_20170321_models.SetVodDomainSSLCertificateRequest,
+    ) -> vod_20170321_models.SetVodDomainSSLCertificateResponse:
+        """
+        @summary 设置证书
+        
+        @param request: SetVodDomainSSLCertificateRequest
+        @return: SetVodDomainSSLCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_vod_domain_sslcertificate_with_options_async(request, runtime)
 
     def submit_aiimage_audit_job_with_options(
         self,
