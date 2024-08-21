@@ -2395,6 +2395,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.CreateAlertContactGroupResponse:
         """
+        @summary Creates an alert contact group.
+        
+        @description ***********\
+        
         @param request: CreateAlertContactGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAlertContactGroupResponse
@@ -2432,6 +2436,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.CreateAlertContactGroupResponse:
         """
+        @summary Creates an alert contact group.
+        
+        @description ***********\
+        
         @param request: CreateAlertContactGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAlertContactGroupResponse
@@ -2468,6 +2476,10 @@ class Client(OpenApiClient):
         request: arms20190808_models.CreateAlertContactGroupRequest,
     ) -> arms20190808_models.CreateAlertContactGroupResponse:
         """
+        @summary Creates an alert contact group.
+        
+        @description ***********\
+        
         @param request: CreateAlertContactGroupRequest
         @return: CreateAlertContactGroupResponse
         """
@@ -2479,6 +2491,10 @@ class Client(OpenApiClient):
         request: arms20190808_models.CreateAlertContactGroupRequest,
     ) -> arms20190808_models.CreateAlertContactGroupResponse:
         """
+        @summary Creates an alert contact group.
+        
+        @description ***********\
+        
         @param request: CreateAlertContactGroupRequest
         @return: CreateAlertContactGroupResponse
         """
@@ -2491,7 +2507,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.CreateDispatchRuleResponse:
         """
-        @summary The operation that you want to perform. Set the value to CreateDispatchRule.
+        @summary Creates a dispatch policy.
         
         @param request: CreateDispatchRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2528,7 +2544,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.CreateDispatchRuleResponse:
         """
-        @summary The operation that you want to perform. Set the value to CreateDispatchRule.
+        @summary Creates a dispatch policy.
         
         @param request: CreateDispatchRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2564,7 +2580,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.CreateDispatchRuleRequest,
     ) -> arms20190808_models.CreateDispatchRuleResponse:
         """
-        @summary The operation that you want to perform. Set the value to CreateDispatchRule.
+        @summary Creates a dispatch policy.
         
         @param request: CreateDispatchRuleRequest
         @return: CreateDispatchRuleResponse
@@ -2577,7 +2593,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.CreateDispatchRuleRequest,
     ) -> arms20190808_models.CreateDispatchRuleResponse:
         """
-        @summary The operation that you want to perform. Set the value to CreateDispatchRule.
+        @summary Creates a dispatch policy.
         
         @param request: CreateDispatchRuleRequest
         @return: CreateDispatchRuleResponse
@@ -5255,7 +5271,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.CreateSyntheticTaskResponse:
         """
-        @summary 创建或更新云拨测定时监控任务
+        @summary Creates or updates a synthetic monitoring task.
         
         @param tmp_req: CreateSyntheticTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5334,7 +5350,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.CreateSyntheticTaskResponse:
         """
-        @summary 创建或更新云拨测定时监控任务
+        @summary Creates or updates a synthetic monitoring task.
         
         @param tmp_req: CreateSyntheticTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5412,7 +5428,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.CreateSyntheticTaskRequest,
     ) -> arms20190808_models.CreateSyntheticTaskResponse:
         """
-        @summary 创建或更新云拨测定时监控任务
+        @summary Creates or updates a synthetic monitoring task.
         
         @param request: CreateSyntheticTaskRequest
         @return: CreateSyntheticTaskResponse
@@ -5425,7 +5441,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.CreateSyntheticTaskRequest,
     ) -> arms20190808_models.CreateSyntheticTaskResponse:
         """
-        @summary 创建或更新云拨测定时监控任务
+        @summary Creates or updates a synthetic monitoring task.
         
         @param request: CreateSyntheticTaskRequest
         @return: CreateSyntheticTaskResponse
@@ -6247,6 +6263,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteAlertRulesResponse:
         """
+        @summary Deletes alert rules.
+        
+        @description The current operation is no longer maintained. Call the DeleteAlertRule operation of Alert Management (New) to delete alert rules.
+        
         @param request: DeleteAlertRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteAlertRulesResponse
@@ -6282,6 +6302,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteAlertRulesResponse:
         """
+        @summary Deletes alert rules.
+        
+        @description The current operation is no longer maintained. Call the DeleteAlertRule operation of Alert Management (New) to delete alert rules.
+        
         @param request: DeleteAlertRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteAlertRulesResponse
@@ -6316,6 +6340,10 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeleteAlertRulesRequest,
     ) -> arms20190808_models.DeleteAlertRulesResponse:
         """
+        @summary Deletes alert rules.
+        
+        @description The current operation is no longer maintained. Call the DeleteAlertRule operation of Alert Management (New) to delete alert rules.
+        
         @param request: DeleteAlertRulesRequest
         @return: DeleteAlertRulesResponse
         """
@@ -6327,6 +6355,10 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeleteAlertRulesRequest,
     ) -> arms20190808_models.DeleteAlertRulesResponse:
         """
+        @summary Deletes alert rules.
+        
+        @description The current operation is no longer maintained. Call the DeleteAlertRule operation of Alert Management (New) to delete alert rules.
+        
         @param request: DeleteAlertRulesRequest
         @return: DeleteAlertRulesResponse
         """
@@ -6551,7 +6583,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteContactResponse:
         """
-        @summary The ID of the request.
+        @summary Deletes alert contacts.
         
         @param request: DeleteContactRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6586,7 +6618,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteContactResponse:
         """
-        @summary The ID of the request.
+        @summary Deletes alert contacts.
         
         @param request: DeleteContactRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6620,7 +6652,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeleteContactRequest,
     ) -> arms20190808_models.DeleteContactResponse:
         """
-        @summary The ID of the request.
+        @summary Deletes alert contacts.
         
         @param request: DeleteContactRequest
         @return: DeleteContactResponse
@@ -6633,7 +6665,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeleteContactRequest,
     ) -> arms20190808_models.DeleteContactResponse:
         """
-        @summary The ID of the request.
+        @summary Deletes alert contacts.
         
         @param request: DeleteContactRequest
         @return: DeleteContactResponse
@@ -6743,6 +6775,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteDispatchRuleResponse:
         """
+        @summary Deletes the dispatch policy of a specified ID.
+        
         @param request: DeleteDispatchRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteDispatchRuleResponse
@@ -6778,6 +6812,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteDispatchRuleResponse:
         """
+        @summary Deletes the dispatch policy of a specified ID.
+        
         @param request: DeleteDispatchRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteDispatchRuleResponse
@@ -6812,6 +6848,8 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeleteDispatchRuleRequest,
     ) -> arms20190808_models.DeleteDispatchRuleResponse:
         """
+        @summary Deletes the dispatch policy of a specified ID.
+        
         @param request: DeleteDispatchRuleRequest
         @return: DeleteDispatchRuleResponse
         """
@@ -6823,6 +6861,8 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeleteDispatchRuleRequest,
     ) -> arms20190808_models.DeleteDispatchRuleResponse:
         """
+        @summary Deletes the dispatch policy of a specified ID.
+        
         @param request: DeleteDispatchRuleRequest
         @return: DeleteDispatchRuleResponse
         """
@@ -7567,9 +7607,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteGrafanaWorkspaceResponse:
         """
-        @summary 释放工作区
+        @summary Deletes a Managed Service for Prometheus workspace.
         
-        @description >  You can delete workspaces only in Managed Service for Prometheus Beta Edition, which is `free of charge`.
+        @description    You can delete workspaces only in Managed Service for Prometheus Beta Edition, which is `free of charge`.
+        You cannot delete workspaces in Managed Service for Prometheus Developer Edition, Pro Edition, and Advanced Edition. You can go to the [User Center](https://usercenter2.aliyun.com/refund/refund) to unsubscribe from workspaces.
         
         @param request: DeleteGrafanaWorkspaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7606,9 +7647,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteGrafanaWorkspaceResponse:
         """
-        @summary 释放工作区
+        @summary Deletes a Managed Service for Prometheus workspace.
         
-        @description >  You can delete workspaces only in Managed Service for Prometheus Beta Edition, which is `free of charge`.
+        @description    You can delete workspaces only in Managed Service for Prometheus Beta Edition, which is `free of charge`.
+        You cannot delete workspaces in Managed Service for Prometheus Developer Edition, Pro Edition, and Advanced Edition. You can go to the [User Center](https://usercenter2.aliyun.com/refund/refund) to unsubscribe from workspaces.
         
         @param request: DeleteGrafanaWorkspaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7644,9 +7686,10 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeleteGrafanaWorkspaceRequest,
     ) -> arms20190808_models.DeleteGrafanaWorkspaceResponse:
         """
-        @summary 释放工作区
+        @summary Deletes a Managed Service for Prometheus workspace.
         
-        @description >  You can delete workspaces only in Managed Service for Prometheus Beta Edition, which is `free of charge`.
+        @description    You can delete workspaces only in Managed Service for Prometheus Beta Edition, which is `free of charge`.
+        You cannot delete workspaces in Managed Service for Prometheus Developer Edition, Pro Edition, and Advanced Edition. You can go to the [User Center](https://usercenter2.aliyun.com/refund/refund) to unsubscribe from workspaces.
         
         @param request: DeleteGrafanaWorkspaceRequest
         @return: DeleteGrafanaWorkspaceResponse
@@ -7659,9 +7702,10 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeleteGrafanaWorkspaceRequest,
     ) -> arms20190808_models.DeleteGrafanaWorkspaceResponse:
         """
-        @summary 释放工作区
+        @summary Deletes a Managed Service for Prometheus workspace.
         
-        @description >  You can delete workspaces only in Managed Service for Prometheus Beta Edition, which is `free of charge`.
+        @description    You can delete workspaces only in Managed Service for Prometheus Beta Edition, which is `free of charge`.
+        You cannot delete workspaces in Managed Service for Prometheus Developer Edition, Pro Edition, and Advanced Edition. You can go to the [User Center](https://usercenter2.aliyun.com/refund/refund) to unsubscribe from workspaces.
         
         @param request: DeleteGrafanaWorkspaceRequest
         @return: DeleteGrafanaWorkspaceResponse
@@ -8599,7 +8643,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteRumAppResponse:
         """
-        @summary 删除前端监控应用
+        @summary Deletes a RUM application.
         
         @param request: DeleteRumAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8638,7 +8682,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteRumAppResponse:
         """
-        @summary 删除前端监控应用
+        @summary Deletes a RUM application.
         
         @param request: DeleteRumAppRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8676,7 +8720,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeleteRumAppRequest,
     ) -> arms20190808_models.DeleteRumAppResponse:
         """
-        @summary 删除前端监控应用
+        @summary Deletes a RUM application.
         
         @param request: DeleteRumAppRequest
         @return: DeleteRumAppResponse
@@ -8689,7 +8733,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeleteRumAppRequest,
     ) -> arms20190808_models.DeleteRumAppResponse:
         """
-        @summary 删除前端监控应用
+        @summary Deletes a RUM application.
         
         @param request: DeleteRumAppRequest
         @return: DeleteRumAppResponse
@@ -13455,7 +13499,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetRetcodeLogstoreResponse:
         """
-        @summary 获取前端监控应用SLS存储的详细信息
+        @summary Queries the Log Service project and Logstore that correspond to an application of browser monitoring.
         
         @param request: GetRetcodeLogstoreRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13492,7 +13536,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetRetcodeLogstoreResponse:
         """
-        @summary 获取前端监控应用SLS存储的详细信息
+        @summary Queries the Log Service project and Logstore that correspond to an application of browser monitoring.
         
         @param request: GetRetcodeLogstoreRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13528,7 +13572,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetRetcodeLogstoreRequest,
     ) -> arms20190808_models.GetRetcodeLogstoreResponse:
         """
-        @summary 获取前端监控应用SLS存储的详细信息
+        @summary Queries the Log Service project and Logstore that correspond to an application of browser monitoring.
         
         @param request: GetRetcodeLogstoreRequest
         @return: GetRetcodeLogstoreResponse
@@ -13541,7 +13585,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetRetcodeLogstoreRequest,
     ) -> arms20190808_models.GetRetcodeLogstoreResponse:
         """
-        @summary 获取前端监控应用SLS存储的详细信息
+        @summary Queries the Log Service project and Logstore that correspond to an application of browser monitoring.
         
         @param request: GetRetcodeLogstoreRequest
         @return: GetRetcodeLogstoreResponse
@@ -13895,7 +13939,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetRumDataForPageResponse:
         """
-        @summary 获取前端监控应用sql查询分页结果
+        @summary Queries Real User Monitoring (RUM) data by page.
+        
+        @description Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
         
         @param request: GetRumDataForPageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13944,7 +13990,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetRumDataForPageResponse:
         """
-        @summary 获取前端监控应用sql查询分页结果
+        @summary Queries Real User Monitoring (RUM) data by page.
+        
+        @description Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
         
         @param request: GetRumDataForPageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13992,7 +14040,9 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetRumDataForPageRequest,
     ) -> arms20190808_models.GetRumDataForPageResponse:
         """
-        @summary 获取前端监控应用sql查询分页结果
+        @summary Queries Real User Monitoring (RUM) data by page.
+        
+        @description Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
         
         @param request: GetRumDataForPageRequest
         @return: GetRumDataForPageResponse
@@ -14005,7 +14055,9 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetRumDataForPageRequest,
     ) -> arms20190808_models.GetRumDataForPageResponse:
         """
-        @summary 获取前端监控应用sql查询分页结果
+        @summary Queries Real User Monitoring (RUM) data by page.
+        
+        @description Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
         
         @param request: GetRumDataForPageRequest
         @return: GetRumDataForPageResponse
@@ -14019,7 +14071,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetRumExceptionStackResponse:
         """
-        @summary 获取RUM异常堆栈
+        @summary Queries the exception stack information of a Real User Monitoring (RUM) application.
+        
+        @description Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
         
         @param request: GetRumExceptionStackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14064,7 +14118,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetRumExceptionStackResponse:
         """
-        @summary 获取RUM异常堆栈
+        @summary Queries the exception stack information of a Real User Monitoring (RUM) application.
+        
+        @description Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
         
         @param request: GetRumExceptionStackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14108,7 +14164,9 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetRumExceptionStackRequest,
     ) -> arms20190808_models.GetRumExceptionStackResponse:
         """
-        @summary 获取RUM异常堆栈
+        @summary Queries the exception stack information of a Real User Monitoring (RUM) application.
+        
+        @description Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
         
         @param request: GetRumExceptionStackRequest
         @return: GetRumExceptionStackResponse
@@ -14121,7 +14179,9 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetRumExceptionStackRequest,
     ) -> arms20190808_models.GetRumExceptionStackResponse:
         """
-        @summary 获取RUM异常堆栈
+        @summary Queries the exception stack information of a Real User Monitoring (RUM) application.
+        
+        @description Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
         
         @param request: GetRumExceptionStackRequest
         @return: GetRumExceptionStackResponse
@@ -14923,7 +14983,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetSyntheticTaskMonitorsResponse:
         """
-        @summary 获取拨测任务的监测点信息
+        @summary Obtains the information about synthetic monitoring points.
         
         @param request: GetSyntheticTaskMonitorsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14958,7 +15018,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetSyntheticTaskMonitorsResponse:
         """
-        @summary 获取拨测任务的监测点信息
+        @summary Obtains the information about synthetic monitoring points.
         
         @param request: GetSyntheticTaskMonitorsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14992,7 +15052,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetSyntheticTaskMonitorsRequest,
     ) -> arms20190808_models.GetSyntheticTaskMonitorsResponse:
         """
-        @summary 获取拨测任务的监测点信息
+        @summary Obtains the information about synthetic monitoring points.
         
         @param request: GetSyntheticTaskMonitorsRequest
         @return: GetSyntheticTaskMonitorsResponse
@@ -15005,7 +15065,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetSyntheticTaskMonitorsRequest,
     ) -> arms20190808_models.GetSyntheticTaskMonitorsResponse:
         """
-        @summary 获取拨测任务的监测点信息
+        @summary Obtains the information about synthetic monitoring points.
         
         @param request: GetSyntheticTaskMonitorsRequest
         @return: GetSyntheticTaskMonitorsResponse
@@ -18179,7 +18239,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListGrafanaWorkspaceResponse:
         """
-        @summary 获取指定工作区列表
+        @summary Obtain Specified Workspace List
+        
+        @description >The list returned by this operation includes the workspaces of Developer Edition, Expert Edition, and Advanced Edition. The list does not include the workspaces of Shared Edition.
         
         @param tmp_req: ListGrafanaWorkspaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18224,7 +18286,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListGrafanaWorkspaceResponse:
         """
-        @summary 获取指定工作区列表
+        @summary Obtain Specified Workspace List
+        
+        @description >The list returned by this operation includes the workspaces of Developer Edition, Expert Edition, and Advanced Edition. The list does not include the workspaces of Shared Edition.
         
         @param tmp_req: ListGrafanaWorkspaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18268,7 +18332,9 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListGrafanaWorkspaceRequest,
     ) -> arms20190808_models.ListGrafanaWorkspaceResponse:
         """
-        @summary 获取指定工作区列表
+        @summary Obtain Specified Workspace List
+        
+        @description >The list returned by this operation includes the workspaces of Developer Edition, Expert Edition, and Advanced Edition. The list does not include the workspaces of Shared Edition.
         
         @param request: ListGrafanaWorkspaceRequest
         @return: ListGrafanaWorkspaceResponse
@@ -18281,7 +18347,9 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListGrafanaWorkspaceRequest,
     ) -> arms20190808_models.ListGrafanaWorkspaceResponse:
         """
-        @summary 获取指定工作区列表
+        @summary Obtain Specified Workspace List
+        
+        @description >The list returned by this operation includes the workspaces of Developer Edition, Expert Edition, and Advanced Edition. The list does not include the workspaces of Shared Edition.
         
         @param request: ListGrafanaWorkspaceRequest
         @return: ListGrafanaWorkspaceResponse
@@ -18407,7 +18475,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListIntegrationResponse:
         """
-        @summary Queries alert integrations.
+        @summary Views a list of alert integrations.
         
         @param request: ListIntegrationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18440,7 +18508,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListIntegrationResponse:
         """
-        @summary Queries alert integrations.
+        @summary Views a list of alert integrations.
         
         @param request: ListIntegrationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18472,7 +18540,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListIntegrationRequest,
     ) -> arms20190808_models.ListIntegrationResponse:
         """
-        @summary Queries alert integrations.
+        @summary Views a list of alert integrations.
         
         @param request: ListIntegrationRequest
         @return: ListIntegrationResponse
@@ -18485,7 +18553,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListIntegrationRequest,
     ) -> arms20190808_models.ListIntegrationResponse:
         """
-        @summary Queries alert integrations.
+        @summary Views a list of alert integrations.
         
         @param request: ListIntegrationRequest
         @return: ListIntegrationResponse
@@ -18831,7 +18899,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListPrometheusAlertTemplatesResponse:
         """
-        @summary The available memory on node {{ $labels.instance }} is less than 10%. Available memory: {{ $value }}%\
+        @summary Queries the alert templates of Prometheus Service.
         
         @param request: ListPrometheusAlertTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18868,7 +18936,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListPrometheusAlertTemplatesResponse:
         """
-        @summary The available memory on node {{ $labels.instance }} is less than 10%. Available memory: {{ $value }}%\
+        @summary Queries the alert templates of Prometheus Service.
         
         @param request: ListPrometheusAlertTemplatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18904,7 +18972,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListPrometheusAlertTemplatesRequest,
     ) -> arms20190808_models.ListPrometheusAlertTemplatesResponse:
         """
-        @summary The available memory on node {{ $labels.instance }} is less than 10%. Available memory: {{ $value }}%\
+        @summary Queries the alert templates of Prometheus Service.
         
         @param request: ListPrometheusAlertTemplatesRequest
         @return: ListPrometheusAlertTemplatesResponse
@@ -18917,7 +18985,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListPrometheusAlertTemplatesRequest,
     ) -> arms20190808_models.ListPrometheusAlertTemplatesResponse:
         """
-        @summary The available memory on node {{ $labels.instance }} is less than 10%. Available memory: {{ $value }}%\
+        @summary Queries the alert templates of Prometheus Service.
         
         @param request: ListPrometheusAlertTemplatesRequest
         @return: ListPrometheusAlertTemplatesResponse
@@ -19771,7 +19839,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListSyntheticDetailResponse:
         """
-        @summary 查询拨测明细列表
+        @summary Obtains the results of one or more synthetic tests.
         
         @param tmp_req: ListSyntheticDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19812,7 +19880,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListSyntheticDetailResponse:
         """
-        @summary 查询拨测明细列表
+        @summary Obtains the results of one or more synthetic tests.
         
         @param tmp_req: ListSyntheticDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19852,7 +19920,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListSyntheticDetailRequest,
     ) -> arms20190808_models.ListSyntheticDetailResponse:
         """
-        @summary 查询拨测明细列表
+        @summary Obtains the results of one or more synthetic tests.
         
         @param request: ListSyntheticDetailRequest
         @return: ListSyntheticDetailResponse
@@ -19865,7 +19933,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListSyntheticDetailRequest,
     ) -> arms20190808_models.ListSyntheticDetailResponse:
         """
-        @summary 查询拨测明细列表
+        @summary Obtains the results of one or more synthetic tests.
         
         @param request: ListSyntheticDetailRequest
         @return: ListSyntheticDetailResponse
@@ -21339,7 +21407,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.QueryReleaseMetricResponse:
         """
-        @summary QueryReleaseMetric
+        @summary Queries the metrics that are provided for different versions of a specified Enterprise Distributed Application Service (EDAS) or Kubernetes application.
         
         @param request: QueryReleaseMetricRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21388,7 +21456,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.QueryReleaseMetricResponse:
         """
-        @summary QueryReleaseMetric
+        @summary Queries the metrics that are provided for different versions of a specified Enterprise Distributed Application Service (EDAS) or Kubernetes application.
         
         @param request: QueryReleaseMetricRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21436,7 +21504,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.QueryReleaseMetricRequest,
     ) -> arms20190808_models.QueryReleaseMetricResponse:
         """
-        @summary QueryReleaseMetric
+        @summary Queries the metrics that are provided for different versions of a specified Enterprise Distributed Application Service (EDAS) or Kubernetes application.
         
         @param request: QueryReleaseMetricRequest
         @return: QueryReleaseMetricResponse
@@ -21449,7 +21517,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.QueryReleaseMetricRequest,
     ) -> arms20190808_models.QueryReleaseMetricResponse:
         """
-        @summary QueryReleaseMetric
+        @summary Queries the metrics that are provided for different versions of a specified Enterprise Distributed Application Service (EDAS) or Kubernetes application.
         
         @param request: QueryReleaseMetricRequest
         @return: QueryReleaseMetricResponse
@@ -24795,7 +24863,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UpdateDispatchRuleResponse:
         """
-        @summary The ID of the request.
+        @summary Modifies a dispatch policy.
         
         @param request: UpdateDispatchRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24832,7 +24900,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.UpdateDispatchRuleResponse:
         """
-        @summary The ID of the request.
+        @summary Modifies a dispatch policy.
         
         @param request: UpdateDispatchRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24868,7 +24936,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.UpdateDispatchRuleRequest,
     ) -> arms20190808_models.UpdateDispatchRuleResponse:
         """
-        @summary The ID of the request.
+        @summary Modifies a dispatch policy.
         
         @param request: UpdateDispatchRuleRequest
         @return: UpdateDispatchRuleResponse
@@ -24881,7 +24949,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.UpdateDispatchRuleRequest,
     ) -> arms20190808_models.UpdateDispatchRuleResponse:
         """
-        @summary The ID of the request.
+        @summary Modifies a dispatch policy.
         
         @param request: UpdateDispatchRuleRequest
         @return: UpdateDispatchRuleResponse
