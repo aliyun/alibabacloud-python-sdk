@@ -1,3 +1,28 @@
+2024-08-21 Version: 7.1.0
+- Support API CreateRCDeploymentSet.
+- Support API CreateReplicationLink.
+- Support API DeleteRCDeploymentSet.
+- Support API DeleteRCInstance.
+- Support API DeleteRCInstances.
+- Support API DeleteReplicationLink.
+- Support API DescribeRCDeploymentSets.
+- Support API DescribeRCImageList.
+- Support API DescribeRCInstanceAttribute.
+- Support API DescribeRCInstances.
+- Support API DescribeRCMetricList.
+- Support API DescribeReplicationLinkLogs.
+- Support API ModifyRCInstance.
+- Support API ModifyRCInstanceChargeType.
+- Support API RebootRCInstance.
+- Support API RebuildReplicationLink.
+- Support API ResizeRCInstanceDisk.
+- Support API RunRCInstances.
+- Support API StartRCInstance.
+- Support API StopRCInstance.
+- Support API SyncRCKeyPair.
+- Update API QueryRecommendByCode: update param ResourceOwnerId.
+
+
 2024-08-15 Version: 7.0.0
 - Delete API CancelImport.
 - Delete API ModifyDBInstanceConnectionMode.

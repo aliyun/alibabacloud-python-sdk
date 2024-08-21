@@ -6684,6 +6684,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_postgres_extensions_with_options_async(request, runtime)
 
+    def create_rcdeployment_set_with_options(
+        self,
+        request: rds_20140815_models.CreateRCDeploymentSetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CreateRCDeploymentSetResponse:
+        """
+        @summary 创建RDS CUSTOM部署集
+        
+        @param request: CreateRCDeploymentSetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRCDeploymentSetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deployment_set_name):
+            query['DeploymentSetName'] = request.deployment_set_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.group_count):
+            query['GroupCount'] = request.group_count
+        if not UtilClient.is_unset(request.on_unable_to_redeploy_failed_instance):
+            query['OnUnableToRedeployFailedInstance'] = request.on_unable_to_redeploy_failed_instance
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.strategy):
+            query['Strategy'] = request.strategy
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRCDeploymentSet',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CreateRCDeploymentSetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_rcdeployment_set_with_options_async(
+        self,
+        request: rds_20140815_models.CreateRCDeploymentSetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CreateRCDeploymentSetResponse:
+        """
+        @summary 创建RDS CUSTOM部署集
+        
+        @param request: CreateRCDeploymentSetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRCDeploymentSetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.deployment_set_name):
+            query['DeploymentSetName'] = request.deployment_set_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.group_count):
+            query['GroupCount'] = request.group_count
+        if not UtilClient.is_unset(request.on_unable_to_redeploy_failed_instance):
+            query['OnUnableToRedeployFailedInstance'] = request.on_unable_to_redeploy_failed_instance
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.strategy):
+            query['Strategy'] = request.strategy
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRCDeploymentSet',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CreateRCDeploymentSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_rcdeployment_set(
+        self,
+        request: rds_20140815_models.CreateRCDeploymentSetRequest,
+    ) -> rds_20140815_models.CreateRCDeploymentSetResponse:
+        """
+        @summary 创建RDS CUSTOM部署集
+        
+        @param request: CreateRCDeploymentSetRequest
+        @return: CreateRCDeploymentSetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_rcdeployment_set_with_options(request, runtime)
+
+    async def create_rcdeployment_set_async(
+        self,
+        request: rds_20140815_models.CreateRCDeploymentSetRequest,
+    ) -> rds_20140815_models.CreateRCDeploymentSetResponse:
+        """
+        @summary 创建RDS CUSTOM部署集
+        
+        @param request: CreateRCDeploymentSetRequest
+        @return: CreateRCDeploymentSetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_rcdeployment_set_with_options_async(request, runtime)
+
     def create_read_only_dbinstance_with_options(
         self,
         request: rds_20140815_models.CreateReadOnlyDBInstanceRequest,
@@ -6959,6 +7079,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_read_only_dbinstance_with_options_async(request, runtime)
+
+    def create_replication_link_with_options(
+        self,
+        request: rds_20140815_models.CreateReplicationLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CreateReplicationLinkResponse:
+        """
+        @summary 创建复制链路
+        
+        @param request: CreateReplicationLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateReplicationLinkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.replicator_account):
+            query['ReplicatorAccount'] = request.replicator_account
+        if not UtilClient.is_unset(request.replicator_password):
+            query['ReplicatorPassword'] = request.replicator_password
+        if not UtilClient.is_unset(request.source_address):
+            query['SourceAddress'] = request.source_address
+        if not UtilClient.is_unset(request.source_category):
+            query['SourceCategory'] = request.source_category
+        if not UtilClient.is_unset(request.source_instance_name):
+            query['SourceInstanceName'] = request.source_instance_name
+        if not UtilClient.is_unset(request.source_instance_region_id):
+            query['SourceInstanceRegionId'] = request.source_instance_region_id
+        if not UtilClient.is_unset(request.source_port):
+            query['SourcePort'] = request.source_port
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateReplicationLink',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CreateReplicationLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_replication_link_with_options_async(
+        self,
+        request: rds_20140815_models.CreateReplicationLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.CreateReplicationLinkResponse:
+        """
+        @summary 创建复制链路
+        
+        @param request: CreateReplicationLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateReplicationLinkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.replicator_account):
+            query['ReplicatorAccount'] = request.replicator_account
+        if not UtilClient.is_unset(request.replicator_password):
+            query['ReplicatorPassword'] = request.replicator_password
+        if not UtilClient.is_unset(request.source_address):
+            query['SourceAddress'] = request.source_address
+        if not UtilClient.is_unset(request.source_category):
+            query['SourceCategory'] = request.source_category
+        if not UtilClient.is_unset(request.source_instance_name):
+            query['SourceInstanceName'] = request.source_instance_name
+        if not UtilClient.is_unset(request.source_instance_region_id):
+            query['SourceInstanceRegionId'] = request.source_instance_region_id
+        if not UtilClient.is_unset(request.source_port):
+            query['SourcePort'] = request.source_port
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateReplicationLink',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.CreateReplicationLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_replication_link(
+        self,
+        request: rds_20140815_models.CreateReplicationLinkRequest,
+    ) -> rds_20140815_models.CreateReplicationLinkResponse:
+        """
+        @summary 创建复制链路
+        
+        @param request: CreateReplicationLinkRequest
+        @return: CreateReplicationLinkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_replication_link_with_options(request, runtime)
+
+    async def create_replication_link_async(
+        self,
+        request: rds_20140815_models.CreateReplicationLinkRequest,
+    ) -> rds_20140815_models.CreateReplicationLinkResponse:
+        """
+        @summary 创建复制链路
+        
+        @param request: CreateReplicationLinkRequest
+        @return: CreateReplicationLinkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_replication_link_with_options_async(request, runtime)
 
     def create_secret_with_options(
         self,
@@ -9687,6 +9943,434 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_postgres_extensions_with_options_async(request, runtime)
+
+    def delete_rcdeployment_set_with_options(
+        self,
+        request: rds_20140815_models.DeleteRCDeploymentSetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteRCDeploymentSetResponse:
+        """
+        @summary 删除RDS CUSTOM部署集
+        
+        @param request: DeleteRCDeploymentSetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRCDeploymentSetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.deployment_set_id):
+            query['DeploymentSetId'] = request.deployment_set_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRCDeploymentSet',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteRCDeploymentSetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_rcdeployment_set_with_options_async(
+        self,
+        request: rds_20140815_models.DeleteRCDeploymentSetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteRCDeploymentSetResponse:
+        """
+        @summary 删除RDS CUSTOM部署集
+        
+        @param request: DeleteRCDeploymentSetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRCDeploymentSetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.deployment_set_id):
+            query['DeploymentSetId'] = request.deployment_set_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRCDeploymentSet',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteRCDeploymentSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_rcdeployment_set(
+        self,
+        request: rds_20140815_models.DeleteRCDeploymentSetRequest,
+    ) -> rds_20140815_models.DeleteRCDeploymentSetResponse:
+        """
+        @summary 删除RDS CUSTOM部署集
+        
+        @param request: DeleteRCDeploymentSetRequest
+        @return: DeleteRCDeploymentSetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_rcdeployment_set_with_options(request, runtime)
+
+    async def delete_rcdeployment_set_async(
+        self,
+        request: rds_20140815_models.DeleteRCDeploymentSetRequest,
+    ) -> rds_20140815_models.DeleteRCDeploymentSetResponse:
+        """
+        @summary 删除RDS CUSTOM部署集
+        
+        @param request: DeleteRCDeploymentSetRequest
+        @return: DeleteRCDeploymentSetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_rcdeployment_set_with_options_async(request, runtime)
+
+    def delete_rcinstance_with_options(
+        self,
+        request: rds_20140815_models.DeleteRCInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteRCInstanceResponse:
+        """
+        @summary 删除RDS用户专属主机实例
+        
+        @param request: DeleteRCInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRCInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRCInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteRCInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_rcinstance_with_options_async(
+        self,
+        request: rds_20140815_models.DeleteRCInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteRCInstanceResponse:
+        """
+        @summary 删除RDS用户专属主机实例
+        
+        @param request: DeleteRCInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRCInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRCInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteRCInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_rcinstance(
+        self,
+        request: rds_20140815_models.DeleteRCInstanceRequest,
+    ) -> rds_20140815_models.DeleteRCInstanceResponse:
+        """
+        @summary 删除RDS用户专属主机实例
+        
+        @param request: DeleteRCInstanceRequest
+        @return: DeleteRCInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_rcinstance_with_options(request, runtime)
+
+    async def delete_rcinstance_async(
+        self,
+        request: rds_20140815_models.DeleteRCInstanceRequest,
+    ) -> rds_20140815_models.DeleteRCInstanceResponse:
+        """
+        @summary 删除RDS用户专属主机实例
+        
+        @param request: DeleteRCInstanceRequest
+        @return: DeleteRCInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_rcinstance_with_options_async(request, runtime)
+
+    def delete_rcinstances_with_options(
+        self,
+        tmp_req: rds_20140815_models.DeleteRCInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteRCInstancesResponse:
+        """
+        @summary 批量删除RDS用户专属主机实例
+        
+        @param tmp_req: DeleteRCInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRCInstancesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.DeleteRCInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_id):
+            request.instance_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_id, 'InstanceId', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.instance_id_shrink):
+            query['InstanceId'] = request.instance_id_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.terminate_subscription):
+            query['TerminateSubscription'] = request.terminate_subscription
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRCInstances',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteRCInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_rcinstances_with_options_async(
+        self,
+        tmp_req: rds_20140815_models.DeleteRCInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteRCInstancesResponse:
+        """
+        @summary 批量删除RDS用户专属主机实例
+        
+        @param tmp_req: DeleteRCInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRCInstancesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.DeleteRCInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_id):
+            request.instance_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_id, 'InstanceId', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.force):
+            query['Force'] = request.force
+        if not UtilClient.is_unset(request.instance_id_shrink):
+            query['InstanceId'] = request.instance_id_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.terminate_subscription):
+            query['TerminateSubscription'] = request.terminate_subscription
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRCInstances',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteRCInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_rcinstances(
+        self,
+        request: rds_20140815_models.DeleteRCInstancesRequest,
+    ) -> rds_20140815_models.DeleteRCInstancesResponse:
+        """
+        @summary 批量删除RDS用户专属主机实例
+        
+        @param request: DeleteRCInstancesRequest
+        @return: DeleteRCInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_rcinstances_with_options(request, runtime)
+
+    async def delete_rcinstances_async(
+        self,
+        request: rds_20140815_models.DeleteRCInstancesRequest,
+    ) -> rds_20140815_models.DeleteRCInstancesResponse:
+        """
+        @summary 批量删除RDS用户专属主机实例
+        
+        @param request: DeleteRCInstancesRequest
+        @return: DeleteRCInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_rcinstances_with_options_async(request, runtime)
+
+    def delete_replication_link_with_options(
+        self,
+        request: rds_20140815_models.DeleteReplicationLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteReplicationLinkResponse:
+        """
+        @summary 删除复制链路
+        
+        @param request: DeleteReplicationLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteReplicationLinkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.promote_to_master):
+            query['PromoteToMaster'] = request.promote_to_master
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteReplicationLink',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteReplicationLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_replication_link_with_options_async(
+        self,
+        request: rds_20140815_models.DeleteReplicationLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DeleteReplicationLinkResponse:
+        """
+        @summary 删除复制链路
+        
+        @param request: DeleteReplicationLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteReplicationLinkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.promote_to_master):
+            query['PromoteToMaster'] = request.promote_to_master
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteReplicationLink',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DeleteReplicationLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_replication_link(
+        self,
+        request: rds_20140815_models.DeleteReplicationLinkRequest,
+    ) -> rds_20140815_models.DeleteReplicationLinkResponse:
+        """
+        @summary 删除复制链路
+        
+        @param request: DeleteReplicationLinkRequest
+        @return: DeleteReplicationLinkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_replication_link_with_options(request, runtime)
+
+    async def delete_replication_link_async(
+        self,
+        request: rds_20140815_models.DeleteReplicationLinkRequest,
+    ) -> rds_20140815_models.DeleteReplicationLinkResponse:
+        """
+        @summary 删除复制链路
+        
+        @param request: DeleteReplicationLinkRequest
+        @return: DeleteReplicationLinkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_replication_link_with_options_async(request, runtime)
 
     def delete_secret_with_options(
         self,
@@ -24220,6 +24904,486 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_quick_sale_config_with_options_async(request, runtime)
 
+    def describe_rcdeployment_sets_with_options(
+        self,
+        request: rds_20140815_models.DescribeRCDeploymentSetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCDeploymentSetsResponse:
+        """
+        @summary 描述RDS CUSTOM部署集
+        
+        @param request: DescribeRCDeploymentSetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCDeploymentSetsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCDeploymentSets',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeRCDeploymentSetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rcdeployment_sets_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeRCDeploymentSetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCDeploymentSetsResponse:
+        """
+        @summary 描述RDS CUSTOM部署集
+        
+        @param request: DescribeRCDeploymentSetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCDeploymentSetsResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCDeploymentSets',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeRCDeploymentSetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rcdeployment_sets(
+        self,
+        request: rds_20140815_models.DescribeRCDeploymentSetsRequest,
+    ) -> rds_20140815_models.DescribeRCDeploymentSetsResponse:
+        """
+        @summary 描述RDS CUSTOM部署集
+        
+        @param request: DescribeRCDeploymentSetsRequest
+        @return: DescribeRCDeploymentSetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rcdeployment_sets_with_options(request, runtime)
+
+    async def describe_rcdeployment_sets_async(
+        self,
+        request: rds_20140815_models.DescribeRCDeploymentSetsRequest,
+    ) -> rds_20140815_models.DescribeRCDeploymentSetsResponse:
+        """
+        @summary 描述RDS CUSTOM部署集
+        
+        @param request: DescribeRCDeploymentSetsRequest
+        @return: DescribeRCDeploymentSetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rcdeployment_sets_with_options_async(request, runtime)
+
+    def describe_rcimage_list_with_options(
+        self,
+        request: rds_20140815_models.DescribeRCImageListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCImageListResponse:
+        """
+        @summary 查询镜像资源
+        
+        @param request: DescribeRCImageListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCImageListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCImageList',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeRCImageListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rcimage_list_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeRCImageListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCImageListResponse:
+        """
+        @summary 查询镜像资源
+        
+        @param request: DescribeRCImageListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCImageListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCImageList',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeRCImageListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rcimage_list(
+        self,
+        request: rds_20140815_models.DescribeRCImageListRequest,
+    ) -> rds_20140815_models.DescribeRCImageListResponse:
+        """
+        @summary 查询镜像资源
+        
+        @param request: DescribeRCImageListRequest
+        @return: DescribeRCImageListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rcimage_list_with_options(request, runtime)
+
+    async def describe_rcimage_list_async(
+        self,
+        request: rds_20140815_models.DescribeRCImageListRequest,
+    ) -> rds_20140815_models.DescribeRCImageListResponse:
+        """
+        @summary 查询镜像资源
+        
+        @param request: DescribeRCImageListRequest
+        @return: DescribeRCImageListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rcimage_list_with_options_async(request, runtime)
+
+    def describe_rcinstance_attribute_with_options(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCInstanceAttributeResponse:
+        """
+        @summary 查询RDS用户专属主机实例
+        
+        @param request: DescribeRCInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCInstanceAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCInstanceAttribute',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeRCInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rcinstance_attribute_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCInstanceAttributeResponse:
+        """
+        @summary 查询RDS用户专属主机实例
+        
+        @param request: DescribeRCInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCInstanceAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCInstanceAttribute',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeRCInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rcinstance_attribute(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceAttributeRequest,
+    ) -> rds_20140815_models.DescribeRCInstanceAttributeResponse:
+        """
+        @summary 查询RDS用户专属主机实例
+        
+        @param request: DescribeRCInstanceAttributeRequest
+        @return: DescribeRCInstanceAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rcinstance_attribute_with_options(request, runtime)
+
+    async def describe_rcinstance_attribute_async(
+        self,
+        request: rds_20140815_models.DescribeRCInstanceAttributeRequest,
+    ) -> rds_20140815_models.DescribeRCInstanceAttributeResponse:
+        """
+        @summary 查询RDS用户专属主机实例
+        
+        @param request: DescribeRCInstanceAttributeRequest
+        @return: DescribeRCInstanceAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rcinstance_attribute_with_options_async(request, runtime)
+
+    def describe_rcinstances_with_options(
+        self,
+        request: rds_20140815_models.DescribeRCInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCInstancesResponse:
+        """
+        @summary 查询RC实例列表
+        
+        @param request: DescribeRCInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCInstances',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeRCInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rcinstances_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeRCInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCInstancesResponse:
+        """
+        @summary 查询RC实例列表
+        
+        @param request: DescribeRCInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCInstances',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeRCInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rcinstances(
+        self,
+        request: rds_20140815_models.DescribeRCInstancesRequest,
+    ) -> rds_20140815_models.DescribeRCInstancesResponse:
+        """
+        @summary 查询RC实例列表
+        
+        @param request: DescribeRCInstancesRequest
+        @return: DescribeRCInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rcinstances_with_options(request, runtime)
+
+    async def describe_rcinstances_async(
+        self,
+        request: rds_20140815_models.DescribeRCInstancesRequest,
+    ) -> rds_20140815_models.DescribeRCInstancesResponse:
+        """
+        @summary 查询RC实例列表
+        
+        @param request: DescribeRCInstancesRequest
+        @return: DescribeRCInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rcinstances_with_options_async(request, runtime)
+
+    def describe_rcmetric_list_with_options(
+        self,
+        request: rds_20140815_models.DescribeRCMetricListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCMetricListResponse:
+        """
+        @summary 查询指定云产品的指定监控项的监控数据
+        
+        @param request: DescribeRCMetricListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCMetricListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCMetricList',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeRCMetricListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rcmetric_list_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeRCMetricListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeRCMetricListResponse:
+        """
+        @summary 查询指定云产品的指定监控项的监控数据
+        
+        @param request: DescribeRCMetricListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRCMetricListResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRCMetricList',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeRCMetricListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rcmetric_list(
+        self,
+        request: rds_20140815_models.DescribeRCMetricListRequest,
+    ) -> rds_20140815_models.DescribeRCMetricListResponse:
+        """
+        @summary 查询指定云产品的指定监控项的监控数据
+        
+        @param request: DescribeRCMetricListRequest
+        @return: DescribeRCMetricListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rcmetric_list_with_options(request, runtime)
+
+    async def describe_rcmetric_list_async(
+        self,
+        request: rds_20140815_models.DescribeRCMetricListRequest,
+    ) -> rds_20140815_models.DescribeRCMetricListResponse:
+        """
+        @summary 查询指定云产品的指定监控项的监控数据
+        
+        @param request: DescribeRCMetricListRequest
+        @return: DescribeRCMetricListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rcmetric_list_with_options_async(request, runtime)
+
     def describe_rds_resource_settings_with_options(
         self,
         request: rds_20140815_models.DescribeRdsResourceSettingsRequest,
@@ -24915,6 +26079,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_renewal_price_with_options_async(request, runtime)
+
+    def describe_replication_link_logs_with_options(
+        self,
+        request: rds_20140815_models.DescribeReplicationLinkLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeReplicationLinkLogsResponse:
+        """
+        @summary 查询复制链路操作日志
+        
+        @param request: DescribeReplicationLinkLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeReplicationLinkLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeReplicationLinkLogs',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeReplicationLinkLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_replication_link_logs_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeReplicationLinkLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeReplicationLinkLogsResponse:
+        """
+        @summary 查询复制链路操作日志
+        
+        @param request: DescribeReplicationLinkLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeReplicationLinkLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeReplicationLinkLogs',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeReplicationLinkLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_replication_link_logs(
+        self,
+        request: rds_20140815_models.DescribeReplicationLinkLogsRequest,
+    ) -> rds_20140815_models.DescribeReplicationLinkLogsResponse:
+        """
+        @summary 查询复制链路操作日志
+        
+        @param request: DescribeReplicationLinkLogsRequest
+        @return: DescribeReplicationLinkLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_replication_link_logs_with_options(request, runtime)
+
+    async def describe_replication_link_logs_async(
+        self,
+        request: rds_20140815_models.DescribeReplicationLinkLogsRequest,
+    ) -> rds_20140815_models.DescribeReplicationLinkLogsResponse:
+        """
+        @summary 查询复制链路操作日志
+        
+        @param request: DescribeReplicationLinkLogsRequest
+        @return: DescribeReplicationLinkLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_replication_link_logs_with_options_async(request, runtime)
 
     def describe_resource_details_with_options(
         self,
@@ -37720,6 +39000,238 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_parameter_group_with_options_async(request, runtime)
 
+    def modify_rcinstance_with_options(
+        self,
+        request: rds_20140815_models.ModifyRCInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyRCInstanceResponse:
+        """
+        @summary ModifyRCInstance
+        
+        @param request: ModifyRCInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyRCInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyRCInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyRCInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_rcinstance_with_options_async(
+        self,
+        request: rds_20140815_models.ModifyRCInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyRCInstanceResponse:
+        """
+        @summary ModifyRCInstance
+        
+        @param request: ModifyRCInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyRCInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyRCInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyRCInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_rcinstance(
+        self,
+        request: rds_20140815_models.ModifyRCInstanceRequest,
+    ) -> rds_20140815_models.ModifyRCInstanceResponse:
+        """
+        @summary ModifyRCInstance
+        
+        @param request: ModifyRCInstanceRequest
+        @return: ModifyRCInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_rcinstance_with_options(request, runtime)
+
+    async def modify_rcinstance_async(
+        self,
+        request: rds_20140815_models.ModifyRCInstanceRequest,
+    ) -> rds_20140815_models.ModifyRCInstanceResponse:
+        """
+        @summary ModifyRCInstance
+        
+        @param request: ModifyRCInstanceRequest
+        @return: ModifyRCInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_rcinstance_with_options_async(request, runtime)
+
+    def modify_rcinstance_charge_type_with_options(
+        self,
+        request: rds_20140815_models.ModifyRCInstanceChargeTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyRCInstanceChargeTypeResponse:
+        """
+        @summary 修改RDS用户专属主机实例付费类型
+        
+        @param request: ModifyRCInstanceChargeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyRCInstanceChargeTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.include_data_disks):
+            query['IncludeDataDisks'] = request.include_data_disks
+        if not UtilClient.is_unset(request.instance_charge_type):
+            query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyRCInstanceChargeType',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyRCInstanceChargeTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_rcinstance_charge_type_with_options_async(
+        self,
+        request: rds_20140815_models.ModifyRCInstanceChargeTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyRCInstanceChargeTypeResponse:
+        """
+        @summary 修改RDS用户专属主机实例付费类型
+        
+        @param request: ModifyRCInstanceChargeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyRCInstanceChargeTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.include_data_disks):
+            query['IncludeDataDisks'] = request.include_data_disks
+        if not UtilClient.is_unset(request.instance_charge_type):
+            query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyRCInstanceChargeType',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyRCInstanceChargeTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_rcinstance_charge_type(
+        self,
+        request: rds_20140815_models.ModifyRCInstanceChargeTypeRequest,
+    ) -> rds_20140815_models.ModifyRCInstanceChargeTypeResponse:
+        """
+        @summary 修改RDS用户专属主机实例付费类型
+        
+        @param request: ModifyRCInstanceChargeTypeRequest
+        @return: ModifyRCInstanceChargeTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_rcinstance_charge_type_with_options(request, runtime)
+
+    async def modify_rcinstance_charge_type_async(
+        self,
+        request: rds_20140815_models.ModifyRCInstanceChargeTypeRequest,
+    ) -> rds_20140815_models.ModifyRCInstanceChargeTypeResponse:
+        """
+        @summary 修改RDS用户专属主机实例付费类型
+        
+        @param request: ModifyRCInstanceChargeTypeRequest
+        @return: ModifyRCInstanceChargeTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_rcinstance_charge_type_with_options_async(request, runtime)
+
     def modify_read_write_splitting_connection_with_options(
         self,
         request: rds_20140815_models.ModifyReadWriteSplittingConnectionRequest,
@@ -39676,6 +41188,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_recommend_by_code_with_options_async(request, runtime)
 
+    def reboot_rcinstance_with_options(
+        self,
+        request: rds_20140815_models.RebootRCInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.RebootRCInstanceResponse:
+        """
+        @summary 重启RDS用户专属主机实例
+        
+        @param request: RebootRCInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootRCInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.force_stop):
+            query['ForceStop'] = request.force_stop
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebootRCInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.RebootRCInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reboot_rcinstance_with_options_async(
+        self,
+        request: rds_20140815_models.RebootRCInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.RebootRCInstanceResponse:
+        """
+        @summary 重启RDS用户专属主机实例
+        
+        @param request: RebootRCInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootRCInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.force_stop):
+            query['ForceStop'] = request.force_stop
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebootRCInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.RebootRCInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reboot_rcinstance(
+        self,
+        request: rds_20140815_models.RebootRCInstanceRequest,
+    ) -> rds_20140815_models.RebootRCInstanceResponse:
+        """
+        @summary 重启RDS用户专属主机实例
+        
+        @param request: RebootRCInstanceRequest
+        @return: RebootRCInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.reboot_rcinstance_with_options(request, runtime)
+
+    async def reboot_rcinstance_async(
+        self,
+        request: rds_20140815_models.RebootRCInstanceRequest,
+    ) -> rds_20140815_models.RebootRCInstanceResponse:
+        """
+        @summary 重启RDS用户专属主机实例
+        
+        @param request: RebootRCInstanceRequest
+        @return: RebootRCInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.reboot_rcinstance_with_options_async(request, runtime)
+
     def rebuild_dbinstance_with_options(
         self,
         request: rds_20140815_models.RebuildDBInstanceRequest,
@@ -39807,6 +41427,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.rebuild_dbinstance_with_options_async(request, runtime)
+
+    def rebuild_replication_link_with_options(
+        self,
+        request: rds_20140815_models.RebuildReplicationLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.RebuildReplicationLinkResponse:
+        """
+        @summary Re-creates a data synchronization link for a disaster recovery ApsaraDB RDS instance.
+        
+        @description ### [](#)Supported database engine
+        PostgreSQL
+        
+        @param request: RebuildReplicationLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebuildReplicationLinkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebuildReplicationLink',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.RebuildReplicationLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rebuild_replication_link_with_options_async(
+        self,
+        request: rds_20140815_models.RebuildReplicationLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.RebuildReplicationLinkResponse:
+        """
+        @summary Re-creates a data synchronization link for a disaster recovery ApsaraDB RDS instance.
+        
+        @description ### [](#)Supported database engine
+        PostgreSQL
+        
+        @param request: RebuildReplicationLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebuildReplicationLinkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RebuildReplicationLink',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.RebuildReplicationLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rebuild_replication_link(
+        self,
+        request: rds_20140815_models.RebuildReplicationLinkRequest,
+    ) -> rds_20140815_models.RebuildReplicationLinkResponse:
+        """
+        @summary Re-creates a data synchronization link for a disaster recovery ApsaraDB RDS instance.
+        
+        @description ### [](#)Supported database engine
+        PostgreSQL
+        
+        @param request: RebuildReplicationLinkRequest
+        @return: RebuildReplicationLinkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.rebuild_replication_link_with_options(request, runtime)
+
+    async def rebuild_replication_link_async(
+        self,
+        request: rds_20140815_models.RebuildReplicationLinkRequest,
+    ) -> rds_20140815_models.RebuildReplicationLinkResponse:
+        """
+        @summary Re-creates a data synchronization link for a disaster recovery ApsaraDB RDS instance.
+        
+        @description ### [](#)Supported database engine
+        PostgreSQL
+        
+        @param request: RebuildReplicationLinkRequest
+        @return: RebuildReplicationLinkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.rebuild_replication_link_with_options_async(request, runtime)
 
     def receive_dbinstance_with_options(
         self,
@@ -41272,6 +43000,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reset_account_password_with_options_async(request, runtime)
 
+    def resize_rcinstance_disk_with_options(
+        self,
+        request: rds_20140815_models.ResizeRCInstanceDiskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ResizeRCInstanceDiskResponse:
+        """
+        @summary ResizeRCInstanceDisk
+        
+        @param request: ResizeRCInstanceDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResizeRCInstanceDiskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.new_size):
+            query['NewSize'] = request.new_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResizeRCInstanceDisk',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ResizeRCInstanceDiskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resize_rcinstance_disk_with_options_async(
+        self,
+        request: rds_20140815_models.ResizeRCInstanceDiskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ResizeRCInstanceDiskResponse:
+        """
+        @summary ResizeRCInstanceDisk
+        
+        @param request: ResizeRCInstanceDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResizeRCInstanceDiskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.new_size):
+            query['NewSize'] = request.new_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResizeRCInstanceDisk',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ResizeRCInstanceDiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resize_rcinstance_disk(
+        self,
+        request: rds_20140815_models.ResizeRCInstanceDiskRequest,
+    ) -> rds_20140815_models.ResizeRCInstanceDiskResponse:
+        """
+        @summary ResizeRCInstanceDisk
+        
+        @param request: ResizeRCInstanceDiskRequest
+        @return: ResizeRCInstanceDiskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.resize_rcinstance_disk_with_options(request, runtime)
+
+    async def resize_rcinstance_disk_async(
+        self,
+        request: rds_20140815_models.ResizeRCInstanceDiskRequest,
+    ) -> rds_20140815_models.ResizeRCInstanceDiskResponse:
+        """
+        @summary ResizeRCInstanceDisk
+        
+        @param request: ResizeRCInstanceDiskRequest
+        @return: ResizeRCInstanceDiskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.resize_rcinstance_disk_with_options_async(request, runtime)
+
     def restart_dbinstance_with_options(
         self,
         request: rds_20140815_models.RestartDBInstanceRequest,
@@ -42088,6 +43932,206 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.revoke_operator_permission_with_options_async(request, runtime)
 
+    def run_rcinstances_with_options(
+        self,
+        tmp_req: rds_20140815_models.RunRCInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.RunRCInstancesResponse:
+        """
+        @summary 创建RDS用户专属主机实例
+        
+        @param tmp_req: RunRCInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunRCInstancesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.RunRCInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_disk):
+            request.data_disk_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_disk, 'DataDisk', 'json')
+        if not UtilClient.is_unset(tmp_req.system_disk):
+            request.system_disk_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.system_disk, 'SystemDisk', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.amount):
+            query['Amount'] = request.amount
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.data_disk_shrink):
+            query['DataDisk'] = request.data_disk_shrink
+        if not UtilClient.is_unset(request.deployment_set_id):
+            query['DeploymentSetId'] = request.deployment_set_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_charge_type):
+            query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.internet_max_bandwidth_out):
+            query['InternetMaxBandwidthOut'] = request.internet_max_bandwidth_out
+        if not UtilClient.is_unset(request.io_optimized):
+            query['IoOptimized'] = request.io_optimized
+        if not UtilClient.is_unset(request.key_pair_name):
+            query['KeyPairName'] = request.key_pair_name
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_enhancement_strategy):
+            query['SecurityEnhancementStrategy'] = request.security_enhancement_strategy
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.system_disk_shrink):
+            query['SystemDisk'] = request.system_disk_shrink
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RunRCInstances',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.RunRCInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_rcinstances_with_options_async(
+        self,
+        tmp_req: rds_20140815_models.RunRCInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.RunRCInstancesResponse:
+        """
+        @summary 创建RDS用户专属主机实例
+        
+        @param tmp_req: RunRCInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunRCInstancesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = rds_20140815_models.RunRCInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_disk):
+            request.data_disk_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_disk, 'DataDisk', 'json')
+        if not UtilClient.is_unset(tmp_req.system_disk):
+            request.system_disk_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.system_disk, 'SystemDisk', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.amount):
+            query['Amount'] = request.amount
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.data_disk_shrink):
+            query['DataDisk'] = request.data_disk_shrink
+        if not UtilClient.is_unset(request.deployment_set_id):
+            query['DeploymentSetId'] = request.deployment_set_id
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_charge_type):
+            query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.internet_max_bandwidth_out):
+            query['InternetMaxBandwidthOut'] = request.internet_max_bandwidth_out
+        if not UtilClient.is_unset(request.io_optimized):
+            query['IoOptimized'] = request.io_optimized
+        if not UtilClient.is_unset(request.key_pair_name):
+            query['KeyPairName'] = request.key_pair_name
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_enhancement_strategy):
+            query['SecurityEnhancementStrategy'] = request.security_enhancement_strategy
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.system_disk_shrink):
+            query['SystemDisk'] = request.system_disk_shrink
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RunRCInstances',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.RunRCInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_rcinstances(
+        self,
+        request: rds_20140815_models.RunRCInstancesRequest,
+    ) -> rds_20140815_models.RunRCInstancesResponse:
+        """
+        @summary 创建RDS用户专属主机实例
+        
+        @param request: RunRCInstancesRequest
+        @return: RunRCInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_rcinstances_with_options(request, runtime)
+
+    async def run_rcinstances_async(
+        self,
+        request: rds_20140815_models.RunRCInstancesRequest,
+    ) -> rds_20140815_models.RunRCInstancesResponse:
+        """
+        @summary 创建RDS用户专属主机实例
+        
+        @param request: RunRCInstancesRequest
+        @return: RunRCInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_rcinstances_with_options_async(request, runtime)
+
     def start_dbinstance_with_options(
         self,
         request: rds_20140815_models.StartDBInstanceRequest,
@@ -42288,6 +44332,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.start_dbinstance_with_options_async(request, runtime)
 
+    def start_rcinstance_with_options(
+        self,
+        request: rds_20140815_models.StartRCInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.StartRCInstanceResponse:
+        """
+        @summary 启动RDS用户专属主机实例
+        
+        @param request: StartRCInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartRCInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartRCInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.StartRCInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_rcinstance_with_options_async(
+        self,
+        request: rds_20140815_models.StartRCInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.StartRCInstanceResponse:
+        """
+        @summary 启动RDS用户专属主机实例
+        
+        @param request: StartRCInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartRCInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartRCInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.StartRCInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_rcinstance(
+        self,
+        request: rds_20140815_models.StartRCInstanceRequest,
+    ) -> rds_20140815_models.StartRCInstanceResponse:
+        """
+        @summary 启动RDS用户专属主机实例
+        
+        @param request: StartRCInstanceRequest
+        @return: StartRCInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_rcinstance_with_options(request, runtime)
+
+    async def start_rcinstance_async(
+        self,
+        request: rds_20140815_models.StartRCInstanceRequest,
+    ) -> rds_20140815_models.StartRCInstanceResponse:
+        """
+        @summary 启动RDS用户专属主机实例
+        
+        @param request: StartRCInstanceRequest
+        @return: StartRCInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_rcinstance_with_options_async(request, runtime)
+
     def stop_dbinstance_with_options(
         self,
         request: rds_20140815_models.StopDBInstanceRequest,
@@ -42439,6 +44583,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.stop_dbinstance_with_options_async(request, runtime)
+
+    def stop_rcinstance_with_options(
+        self,
+        request: rds_20140815_models.StopRCInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.StopRCInstanceResponse:
+        """
+        @summary 停止RDS用户专属主机实例
+        
+        @param request: StopRCInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopRCInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.force_stop):
+            query['ForceStop'] = request.force_stop
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopRCInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.StopRCInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_rcinstance_with_options_async(
+        self,
+        request: rds_20140815_models.StopRCInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.StopRCInstanceResponse:
+        """
+        @summary 停止RDS用户专属主机实例
+        
+        @param request: StopRCInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopRCInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.force_stop):
+            query['ForceStop'] = request.force_stop
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StopRCInstance',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.StopRCInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_rcinstance(
+        self,
+        request: rds_20140815_models.StopRCInstanceRequest,
+    ) -> rds_20140815_models.StopRCInstanceResponse:
+        """
+        @summary 停止RDS用户专属主机实例
+        
+        @param request: StopRCInstanceRequest
+        @return: StopRCInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_rcinstance_with_options(request, runtime)
+
+    async def stop_rcinstance_async(
+        self,
+        request: rds_20140815_models.StopRCInstanceRequest,
+    ) -> rds_20140815_models.StopRCInstanceResponse:
+        """
+        @summary 停止RDS用户专属主机实例
+        
+        @param request: StopRCInstanceRequest
+        @return: StopRCInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_rcinstance_with_options_async(request, runtime)
 
     def switch_dbinstance_hawith_options(
         self,
@@ -42935,6 +45183,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.switch_dbinstance_vpc_with_options_async(request, runtime)
+
+    def sync_rckey_pair_with_options(
+        self,
+        request: rds_20140815_models.SyncRCKeyPairRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.SyncRCKeyPairResponse:
+        """
+        @summary 同步密钥对
+        
+        @param request: SyncRCKeyPairRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncRCKeyPairResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_pair_name):
+            query['KeyPairName'] = request.key_pair_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SyncRCKeyPair',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.SyncRCKeyPairResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sync_rckey_pair_with_options_async(
+        self,
+        request: rds_20140815_models.SyncRCKeyPairRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.SyncRCKeyPairResponse:
+        """
+        @summary 同步密钥对
+        
+        @param request: SyncRCKeyPairRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncRCKeyPairResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_pair_name):
+            query['KeyPairName'] = request.key_pair_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SyncRCKeyPair',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.SyncRCKeyPairResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sync_rckey_pair(
+        self,
+        request: rds_20140815_models.SyncRCKeyPairRequest,
+    ) -> rds_20140815_models.SyncRCKeyPairResponse:
+        """
+        @summary 同步密钥对
+        
+        @param request: SyncRCKeyPairRequest
+        @return: SyncRCKeyPairResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.sync_rckey_pair_with_options(request, runtime)
+
+    async def sync_rckey_pair_async(
+        self,
+        request: rds_20140815_models.SyncRCKeyPairRequest,
+    ) -> rds_20140815_models.SyncRCKeyPairResponse:
+        """
+        @summary 同步密钥对
+        
+        @param request: SyncRCKeyPairRequest
+        @return: SyncRCKeyPairResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.sync_rckey_pair_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,
