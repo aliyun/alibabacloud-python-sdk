@@ -3098,6 +3098,7 @@ class DescribeDdosOriginInstanceBillResponseBodyStandardAssetsFlowList(TeaModel)
 class DescribeDdosOriginInstanceBillResponseBody(TeaModel):
     def __init__(
         self,
+        asset_status: int = None,
         debt_status: int = None,
         flow_list: List[DescribeDdosOriginInstanceBillResponseBodyFlowList] = None,
         flow_region: Dict[str, Any] = None,
@@ -3114,6 +3115,7 @@ class DescribeDdosOriginInstanceBillResponseBody(TeaModel):
         total_flow_cn: int = None,
         total_flow_ov: int = None,
     ):
+        self.asset_status = asset_status
         # The payment status. Valid values:
         # 
         # *   **0**: The payment is not overdue.
@@ -3177,6 +3179,8 @@ class DescribeDdosOriginInstanceBillResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.asset_status is not None:
+            result['AssetStatus'] = self.asset_status
         if self.debt_status is not None:
             result['DebtStatus'] = self.debt_status
         result['FlowList'] = []
@@ -3217,6 +3221,8 @@ class DescribeDdosOriginInstanceBillResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AssetStatus') is not None:
+            self.asset_status = m.get('AssetStatus')
         if m.get('DebtStatus') is not None:
             self.debt_status = m.get('DebtStatus')
         self.flow_list = []

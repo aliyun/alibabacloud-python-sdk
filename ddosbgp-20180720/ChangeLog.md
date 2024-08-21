@@ -1,3 +1,7 @@
+2024-08-21 Version: 2.7.2
+- Update API DescribeDdosOriginInstanceBill: update response param.
+
+
 2024-08-13 Version: 2.7.1
 - Update API ListPolicy: add param ProductType.
 - Update API ListPolicy: update param Type.
