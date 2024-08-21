@@ -1,3 +1,7 @@
+2024-08-21 Version: 4.1.13
+- Update API PurchaseReservedInstancesOffering: add param StartTime.
+
+
 2024-08-12 Version: 4.1.12
 - Update API DescribeInstanceHistoryEvents: update response param.
 - Update API DescribeInstances: update response param.
