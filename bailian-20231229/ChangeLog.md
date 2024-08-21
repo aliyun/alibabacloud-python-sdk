@@ -1,3 +1,18 @@
+2024-08-21 Version: 1.8.0
+- Support API CreateMemory.
+- Support API CreateMemoryNode.
+- Support API DeleteMemory.
+- Support API DeleteMemoryNode.
+- Support API GetMemory.
+- Support API GetMemoryNode.
+- Support API ListMemories.
+- Support API ListMemoryNodes.
+- Support API UpdateMemory.
+- Support API UpdateMemoryNode.
+- Update API ApplyFileUploadLease: update param Md5.
+- Update API ListFile: update param MaxResults.
+
+
 2024-08-02 Version: 1.7.0
 - Support API ListFile.
 

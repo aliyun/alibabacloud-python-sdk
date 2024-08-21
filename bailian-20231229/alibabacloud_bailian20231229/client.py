@@ -697,6 +697,226 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_index_with_options_async(workspace_id, request, headers, runtime)
 
+    def create_memory_with_options(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.CreateMemoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.CreateMemoryResponse:
+        """
+        @summary 创建Memory
+        
+        @param request: CreateMemoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMemoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMemory',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.CreateMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_memory_with_options_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.CreateMemoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.CreateMemoryResponse:
+        """
+        @summary 创建Memory
+        
+        @param request: CreateMemoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMemoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMemory',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.CreateMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_memory(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.CreateMemoryRequest,
+    ) -> bailian_20231229_models.CreateMemoryResponse:
+        """
+        @summary 创建Memory
+        
+        @param request: CreateMemoryRequest
+        @return: CreateMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_memory_with_options(workspace_id, request, headers, runtime)
+
+    async def create_memory_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.CreateMemoryRequest,
+    ) -> bailian_20231229_models.CreateMemoryResponse:
+        """
+        @summary 创建Memory
+        
+        @param request: CreateMemoryRequest
+        @return: CreateMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_memory_with_options_async(workspace_id, request, headers, runtime)
+
+    def create_memory_node_with_options(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        request: bailian_20231229_models.CreateMemoryNodeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.CreateMemoryNodeResponse:
+        """
+        @summary 创建记忆Node
+        
+        @param request: CreateMemoryNodeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMemoryNodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['content'] = request.content
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMemoryNode',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories/{OpenApiUtilClient.get_encode_param(memory_id)}/memoryNodes',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.CreateMemoryNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_memory_node_with_options_async(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        request: bailian_20231229_models.CreateMemoryNodeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.CreateMemoryNodeResponse:
+        """
+        @summary 创建记忆Node
+        
+        @param request: CreateMemoryNodeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMemoryNodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['content'] = request.content
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMemoryNode',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories/{OpenApiUtilClient.get_encode_param(memory_id)}/memoryNodes',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.CreateMemoryNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_memory_node(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        request: bailian_20231229_models.CreateMemoryNodeRequest,
+    ) -> bailian_20231229_models.CreateMemoryNodeResponse:
+        """
+        @summary 创建记忆Node
+        
+        @param request: CreateMemoryNodeRequest
+        @return: CreateMemoryNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_memory_node_with_options(workspace_id, memory_id, request, headers, runtime)
+
+    async def create_memory_node_async(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        request: bailian_20231229_models.CreateMemoryNodeRequest,
+    ) -> bailian_20231229_models.CreateMemoryNodeResponse:
+        """
+        @summary 创建记忆Node
+        
+        @param request: CreateMemoryNodeRequest
+        @return: CreateMemoryNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_memory_node_with_options_async(workspace_id, memory_id, request, headers, runtime)
+
     def delete_agent_with_options(
         self,
         workspace_id: str,
@@ -1199,6 +1419,198 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_index_document_with_options_async(workspace_id, request, headers, runtime)
 
+    def delete_memory_with_options(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.DeleteMemoryResponse:
+        """
+        @summary 删除memory
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMemoryResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteMemory',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories/{OpenApiUtilClient.get_encode_param(memory_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_memory_with_options_async(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.DeleteMemoryResponse:
+        """
+        @summary 删除memory
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMemoryResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteMemory',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories/{OpenApiUtilClient.get_encode_param(memory_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_memory(
+        self,
+        workspace_id: str,
+        memory_id: str,
+    ) -> bailian_20231229_models.DeleteMemoryResponse:
+        """
+        @summary 删除memory
+        
+        @return: DeleteMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_memory_with_options(workspace_id, memory_id, headers, runtime)
+
+    async def delete_memory_async(
+        self,
+        workspace_id: str,
+        memory_id: str,
+    ) -> bailian_20231229_models.DeleteMemoryResponse:
+        """
+        @summary 删除memory
+        
+        @return: DeleteMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_memory_with_options_async(workspace_id, memory_id, headers, runtime)
+
+    def delete_memory_node_with_options(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        memory_node_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.DeleteMemoryNodeResponse:
+        """
+        @summary 删除记忆Node
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMemoryNodeResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteMemoryNode',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories/{OpenApiUtilClient.get_encode_param(memory_id)}/memoryNodes/{OpenApiUtilClient.get_encode_param(memory_node_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteMemoryNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_memory_node_with_options_async(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        memory_node_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.DeleteMemoryNodeResponse:
+        """
+        @summary 删除记忆Node
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMemoryNodeResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteMemoryNode',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories/{OpenApiUtilClient.get_encode_param(memory_id)}/memoryNodes/{OpenApiUtilClient.get_encode_param(memory_node_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteMemoryNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_memory_node(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        memory_node_id: str,
+    ) -> bailian_20231229_models.DeleteMemoryNodeResponse:
+        """
+        @summary 删除记忆Node
+        
+        @return: DeleteMemoryNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_memory_node_with_options(workspace_id, memory_id, memory_node_id, headers, runtime)
+
+    async def delete_memory_node_async(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        memory_node_id: str,
+    ) -> bailian_20231229_models.DeleteMemoryNodeResponse:
+        """
+        @summary 删除记忆Node
+        
+        @return: DeleteMemoryNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_memory_node_with_options_async(workspace_id, memory_id, memory_node_id, headers, runtime)
+
     def describe_file_with_options(
         self,
         workspace_id: str,
@@ -1404,6 +1816,198 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_index_job_status_with_options_async(workspace_id, request, headers, runtime)
+
+    def get_memory_with_options(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.GetMemoryResponse:
+        """
+        @summary 获取memory
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMemoryResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMemory',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories/{OpenApiUtilClient.get_encode_param(memory_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_memory_with_options_async(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.GetMemoryResponse:
+        """
+        @summary 获取memory
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMemoryResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMemory',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories/{OpenApiUtilClient.get_encode_param(memory_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_memory(
+        self,
+        workspace_id: str,
+        memory_id: str,
+    ) -> bailian_20231229_models.GetMemoryResponse:
+        """
+        @summary 获取memory
+        
+        @return: GetMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_memory_with_options(workspace_id, memory_id, headers, runtime)
+
+    async def get_memory_async(
+        self,
+        workspace_id: str,
+        memory_id: str,
+    ) -> bailian_20231229_models.GetMemoryResponse:
+        """
+        @summary 获取memory
+        
+        @return: GetMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_memory_with_options_async(workspace_id, memory_id, headers, runtime)
+
+    def get_memory_node_with_options(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        memory_node_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.GetMemoryNodeResponse:
+        """
+        @summary 获取记忆Node
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMemoryNodeResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMemoryNode',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories/{OpenApiUtilClient.get_encode_param(memory_id)}/memoryNodes/{OpenApiUtilClient.get_encode_param(memory_node_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetMemoryNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_memory_node_with_options_async(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        memory_node_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.GetMemoryNodeResponse:
+        """
+        @summary 获取记忆Node
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMemoryNodeResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMemoryNode',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories/{OpenApiUtilClient.get_encode_param(memory_id)}/memoryNodes/{OpenApiUtilClient.get_encode_param(memory_node_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetMemoryNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_memory_node(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        memory_node_id: str,
+    ) -> bailian_20231229_models.GetMemoryNodeResponse:
+        """
+        @summary 获取记忆Node
+        
+        @return: GetMemoryNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_memory_node_with_options(workspace_id, memory_id, memory_node_id, headers, runtime)
+
+    async def get_memory_node_async(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        memory_node_id: str,
+    ) -> bailian_20231229_models.GetMemoryNodeResponse:
+        """
+        @summary 获取记忆Node
+        
+        @return: GetMemoryNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_memory_node_with_options_async(workspace_id, memory_id, memory_node_id, headers, runtime)
 
     def get_published_agent_with_options(
         self,
@@ -2099,6 +2703,234 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_indices_with_options_async(workspace_id, request, headers, runtime)
 
+    def list_memories_with_options(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListMemoriesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListMemoriesResponse:
+        """
+        @summary 获取memory
+        
+        @param request: ListMemoriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMemoriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMemories',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListMemoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_memories_with_options_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListMemoriesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListMemoriesResponse:
+        """
+        @summary 获取memory
+        
+        @param request: ListMemoriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMemoriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMemories',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListMemoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_memories(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListMemoriesRequest,
+    ) -> bailian_20231229_models.ListMemoriesResponse:
+        """
+        @summary 获取memory
+        
+        @param request: ListMemoriesRequest
+        @return: ListMemoriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_memories_with_options(workspace_id, request, headers, runtime)
+
+    async def list_memories_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListMemoriesRequest,
+    ) -> bailian_20231229_models.ListMemoriesResponse:
+        """
+        @summary 获取memory
+        
+        @param request: ListMemoriesRequest
+        @return: ListMemoriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_memories_with_options_async(workspace_id, request, headers, runtime)
+
+    def list_memory_nodes_with_options(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        request: bailian_20231229_models.ListMemoryNodesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListMemoryNodesResponse:
+        """
+        @summary 获取记忆Node列表
+        
+        @param request: ListMemoryNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMemoryNodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMemoryNodes',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories/{OpenApiUtilClient.get_encode_param(memory_id)}/memoryNodes',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListMemoryNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_memory_nodes_with_options_async(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        request: bailian_20231229_models.ListMemoryNodesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListMemoryNodesResponse:
+        """
+        @summary 获取记忆Node列表
+        
+        @param request: ListMemoryNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMemoryNodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMemoryNodes',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories/{OpenApiUtilClient.get_encode_param(memory_id)}/memoryNodes',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListMemoryNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_memory_nodes(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        request: bailian_20231229_models.ListMemoryNodesRequest,
+    ) -> bailian_20231229_models.ListMemoryNodesResponse:
+        """
+        @summary 获取记忆Node列表
+        
+        @param request: ListMemoryNodesRequest
+        @return: ListMemoryNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_memory_nodes_with_options(workspace_id, memory_id, request, headers, runtime)
+
+    async def list_memory_nodes_async(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        request: bailian_20231229_models.ListMemoryNodesRequest,
+    ) -> bailian_20231229_models.ListMemoryNodesResponse:
+        """
+        @summary 获取记忆Node列表
+        
+        @param request: ListMemoryNodesRequest
+        @return: ListMemoryNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_memory_nodes_with_options_async(workspace_id, memory_id, request, headers, runtime)
+
     def list_published_agent_with_options(
         self,
         workspace_id: str,
@@ -2750,3 +3582,231 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_and_publish_agent_with_options_async(workspace_id, app_code, request, headers, runtime)
+
+    def update_memory_with_options(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        request: bailian_20231229_models.UpdateMemoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.UpdateMemoryResponse:
+        """
+        @summary 更新memory
+        
+        @param request: UpdateMemoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMemoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMemory',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories/{OpenApiUtilClient.get_encode_param(memory_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_memory_with_options_async(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        request: bailian_20231229_models.UpdateMemoryRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.UpdateMemoryResponse:
+        """
+        @summary 更新memory
+        
+        @param request: UpdateMemoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMemoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMemory',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories/{OpenApiUtilClient.get_encode_param(memory_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_memory(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        request: bailian_20231229_models.UpdateMemoryRequest,
+    ) -> bailian_20231229_models.UpdateMemoryResponse:
+        """
+        @summary 更新memory
+        
+        @param request: UpdateMemoryRequest
+        @return: UpdateMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_memory_with_options(workspace_id, memory_id, request, headers, runtime)
+
+    async def update_memory_async(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        request: bailian_20231229_models.UpdateMemoryRequest,
+    ) -> bailian_20231229_models.UpdateMemoryResponse:
+        """
+        @summary 更新memory
+        
+        @param request: UpdateMemoryRequest
+        @return: UpdateMemoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_memory_with_options_async(workspace_id, memory_id, request, headers, runtime)
+
+    def update_memory_node_with_options(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        memory_node_id: str,
+        request: bailian_20231229_models.UpdateMemoryNodeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.UpdateMemoryNodeResponse:
+        """
+        @summary 更新记忆Node
+        
+        @param request: UpdateMemoryNodeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMemoryNodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['content'] = request.content
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMemoryNode',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories/{OpenApiUtilClient.get_encode_param(memory_id)}/memoryNodes/{OpenApiUtilClient.get_encode_param(memory_node_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateMemoryNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_memory_node_with_options_async(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        memory_node_id: str,
+        request: bailian_20231229_models.UpdateMemoryNodeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.UpdateMemoryNodeResponse:
+        """
+        @summary 更新记忆Node
+        
+        @param request: UpdateMemoryNodeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMemoryNodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.content):
+            query['content'] = request.content
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMemoryNode',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/memories/{OpenApiUtilClient.get_encode_param(memory_id)}/memoryNodes/{OpenApiUtilClient.get_encode_param(memory_node_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateMemoryNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_memory_node(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        memory_node_id: str,
+        request: bailian_20231229_models.UpdateMemoryNodeRequest,
+    ) -> bailian_20231229_models.UpdateMemoryNodeResponse:
+        """
+        @summary 更新记忆Node
+        
+        @param request: UpdateMemoryNodeRequest
+        @return: UpdateMemoryNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_memory_node_with_options(workspace_id, memory_id, memory_node_id, request, headers, runtime)
+
+    async def update_memory_node_async(
+        self,
+        workspace_id: str,
+        memory_id: str,
+        memory_node_id: str,
+        request: bailian_20231229_models.UpdateMemoryNodeRequest,
+    ) -> bailian_20231229_models.UpdateMemoryNodeResponse:
+        """
+        @summary 更新记忆Node
+        
+        @param request: UpdateMemoryNodeRequest
+        @return: UpdateMemoryNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_memory_node_with_options_async(workspace_id, memory_id, memory_node_id, request, headers, runtime)
