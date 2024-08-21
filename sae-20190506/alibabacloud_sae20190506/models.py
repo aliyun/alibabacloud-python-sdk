@@ -12239,7 +12239,9 @@ class CreateIngressRequest(TeaModel):
         listener_protocol: str = None,
         load_balance_type: str = None,
         namespace_id: str = None,
+        request_timeout: int = None,
         rules: str = None,
+        security_policy_id: str = None,
         slb_id: str = None,
     ):
         self.cert_id = cert_id
@@ -12253,8 +12255,10 @@ class CreateIngressRequest(TeaModel):
         self.load_balance_type = load_balance_type
         # This parameter is required.
         self.namespace_id = namespace_id
+        self.request_timeout = request_timeout
         # This parameter is required.
         self.rules = rules
+        self.security_policy_id = security_policy_id
         # This parameter is required.
         self.slb_id = slb_id
 
@@ -12283,8 +12287,12 @@ class CreateIngressRequest(TeaModel):
             result['LoadBalanceType'] = self.load_balance_type
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
+        if self.request_timeout is not None:
+            result['RequestTimeout'] = self.request_timeout
         if self.rules is not None:
             result['Rules'] = self.rules
+        if self.security_policy_id is not None:
+            result['SecurityPolicyId'] = self.security_policy_id
         if self.slb_id is not None:
             result['SlbId'] = self.slb_id
         return result
@@ -12307,8 +12315,12 @@ class CreateIngressRequest(TeaModel):
             self.load_balance_type = m.get('LoadBalanceType')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
+        if m.get('RequestTimeout') is not None:
+            self.request_timeout = m.get('RequestTimeout')
         if m.get('Rules') is not None:
             self.rules = m.get('Rules')
+        if m.get('SecurityPolicyId') is not None:
+            self.security_policy_id = m.get('SecurityPolicyId')
         if m.get('SlbId') is not None:
             self.slb_id = m.get('SlbId')
         return self
@@ -23724,7 +23736,9 @@ class DescribeIngressResponseBodyData(TeaModel):
         load_balance_type: str = None,
         name: str = None,
         namespace_id: str = None,
+        request_timeout: int = None,
         rules: List[DescribeIngressResponseBodyDataRules] = None,
+        security_policy_id: str = None,
         slb_id: str = None,
         slb_type: str = None,
     ):
@@ -23754,8 +23768,10 @@ class DescribeIngressResponseBodyData(TeaModel):
         self.name = name
         # The ID of the certificate.
         self.namespace_id = namespace_id
+        self.request_timeout = request_timeout
         # The ID of the application specified in the forwarding rule.
         self.rules = rules
+        self.security_policy_id = security_policy_id
         # The type of the SLB instance based on the IP address. Valid values:
         # 
         # *   **internet**: the Internet-facing SLB instance.
@@ -23798,10 +23814,14 @@ class DescribeIngressResponseBodyData(TeaModel):
             result['Name'] = self.name
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
+        if self.request_timeout is not None:
+            result['RequestTimeout'] = self.request_timeout
         result['Rules'] = []
         if self.rules is not None:
             for k in self.rules:
                 result['Rules'].append(k.to_map() if k else None)
+        if self.security_policy_id is not None:
+            result['SecurityPolicyId'] = self.security_policy_id
         if self.slb_id is not None:
             result['SlbId'] = self.slb_id
         if self.slb_type is not None:
@@ -23831,11 +23851,15 @@ class DescribeIngressResponseBodyData(TeaModel):
             self.name = m.get('Name')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
+        if m.get('RequestTimeout') is not None:
+            self.request_timeout = m.get('RequestTimeout')
         self.rules = []
         if m.get('Rules') is not None:
             for k in m.get('Rules'):
                 temp_model = DescribeIngressResponseBodyDataRules()
                 self.rules.append(temp_model.from_map(k))
+        if m.get('SecurityPolicyId') is not None:
+            self.security_policy_id = m.get('SecurityPolicyId')
         if m.get('SlbId') is not None:
             self.slb_id = m.get('SlbId')
         if m.get('SlbType') is not None:
@@ -40458,7 +40482,9 @@ class UpdateIngressRequest(TeaModel):
         listener_port: str = None,
         listener_protocol: str = None,
         load_balance_type: str = None,
+        request_timeout: int = None,
         rules: str = None,
+        security_policy_id: str = None,
     ):
         self.cert_id = cert_id
         self.cert_ids = cert_ids
@@ -40469,7 +40495,9 @@ class UpdateIngressRequest(TeaModel):
         self.listener_port = listener_port
         self.listener_protocol = listener_protocol
         self.load_balance_type = load_balance_type
+        self.request_timeout = request_timeout
         self.rules = rules
+        self.security_policy_id = security_policy_id
 
     def validate(self):
         pass
@@ -40496,8 +40524,12 @@ class UpdateIngressRequest(TeaModel):
             result['ListenerProtocol'] = self.listener_protocol
         if self.load_balance_type is not None:
             result['LoadBalanceType'] = self.load_balance_type
+        if self.request_timeout is not None:
+            result['RequestTimeout'] = self.request_timeout
         if self.rules is not None:
             result['Rules'] = self.rules
+        if self.security_policy_id is not None:
+            result['SecurityPolicyId'] = self.security_policy_id
         return result
 
     def from_map(self, m: dict = None):
@@ -40518,8 +40550,12 @@ class UpdateIngressRequest(TeaModel):
             self.listener_protocol = m.get('ListenerProtocol')
         if m.get('LoadBalanceType') is not None:
             self.load_balance_type = m.get('LoadBalanceType')
+        if m.get('RequestTimeout') is not None:
+            self.request_timeout = m.get('RequestTimeout')
         if m.get('Rules') is not None:
             self.rules = m.get('Rules')
+        if m.get('SecurityPolicyId') is not None:
+            self.security_policy_id = m.get('SecurityPolicyId')
         return self
 
 

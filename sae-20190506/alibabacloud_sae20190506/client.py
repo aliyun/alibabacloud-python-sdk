@@ -1465,6 +1465,10 @@ class Client(OpenApiClient):
             query['LoadBalanceType'] = request.load_balance_type
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.request_timeout):
+            query['RequestTimeout'] = request.request_timeout
+        if not UtilClient.is_unset(request.security_policy_id):
+            query['SecurityPolicyId'] = request.security_policy_id
         if not UtilClient.is_unset(request.slb_id):
             query['SlbId'] = request.slb_id
         body = {}
@@ -1523,6 +1527,10 @@ class Client(OpenApiClient):
             query['LoadBalanceType'] = request.load_balance_type
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.request_timeout):
+            query['RequestTimeout'] = request.request_timeout
+        if not UtilClient.is_unset(request.security_policy_id):
+            query['SecurityPolicyId'] = request.security_policy_id
         if not UtilClient.is_unset(request.slb_id):
             query['SlbId'] = request.slb_id
         body = {}
@@ -13365,6 +13373,10 @@ class Client(OpenApiClient):
             query['ListenerProtocol'] = request.listener_protocol
         if not UtilClient.is_unset(request.load_balance_type):
             query['LoadBalanceType'] = request.load_balance_type
+        if not UtilClient.is_unset(request.request_timeout):
+            query['RequestTimeout'] = request.request_timeout
+        if not UtilClient.is_unset(request.security_policy_id):
+            query['SecurityPolicyId'] = request.security_policy_id
         body = {}
         if not UtilClient.is_unset(request.rules):
             body['Rules'] = request.rules
@@ -13419,6 +13431,10 @@ class Client(OpenApiClient):
             query['ListenerProtocol'] = request.listener_protocol
         if not UtilClient.is_unset(request.load_balance_type):
             query['LoadBalanceType'] = request.load_balance_type
+        if not UtilClient.is_unset(request.request_timeout):
+            query['RequestTimeout'] = request.request_timeout
+        if not UtilClient.is_unset(request.security_policy_id):
+            query['SecurityPolicyId'] = request.security_policy_id
         body = {}
         if not UtilClient.is_unset(request.rules):
             body['Rules'] = request.rules

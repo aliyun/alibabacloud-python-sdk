@@ -1,3 +1,11 @@
+2024-08-21 Version: 1.23.3
+- Update API CreateIngress: add param RequestTimeout.
+- Update API CreateIngress: add param SecurityPolicyId.
+- Update API DescribeIngress: update response param.
+- Update API UpdateIngress: add param RequestTimeout.
+- Update API UpdateIngress: add param SecurityPolicyId.
+
+
 2024-08-12 Version: 1.23.2
 - Update API DescribeApplicationConfig: update response param.
 
