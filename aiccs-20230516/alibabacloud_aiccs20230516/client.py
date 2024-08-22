@@ -193,6 +193,10 @@ class Client(OpenApiClient):
             query['CallTimeList'] = request.call_time_list_shrink
         if not UtilClient.is_unset(request.callback_url):
             query['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.flash_sms_template_id):
+            query['FlashSmsTemplateId'] = request.flash_sms_template_id
+        if not UtilClient.is_unset(request.flash_sms_type):
+            query['FlashSmsType'] = request.flash_sms_type
         if not UtilClient.is_unset(request.max_concurrency):
             query['MaxConcurrency'] = request.max_concurrency
         if not UtilClient.is_unset(request.name):
@@ -276,6 +280,10 @@ class Client(OpenApiClient):
             query['CallTimeList'] = request.call_time_list_shrink
         if not UtilClient.is_unset(request.callback_url):
             query['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.flash_sms_template_id):
+            query['FlashSmsTemplateId'] = request.flash_sms_template_id
+        if not UtilClient.is_unset(request.flash_sms_type):
+            query['FlashSmsType'] = request.flash_sms_type
         if not UtilClient.is_unset(request.max_concurrency):
             query['MaxConcurrency'] = request.max_concurrency
         if not UtilClient.is_unset(request.name):
@@ -801,6 +809,10 @@ class Client(OpenApiClient):
             query['CallTimeList'] = request.call_time_list_shrink
         if not UtilClient.is_unset(request.callback_url):
             query['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.flash_sms_template_id):
+            query['FlashSmsTemplateId'] = request.flash_sms_template_id
+        if not UtilClient.is_unset(request.flash_sms_type):
+            query['FlashSmsType'] = request.flash_sms_type
         if not UtilClient.is_unset(request.max_concurrency):
             query['MaxConcurrency'] = request.max_concurrency
         if not UtilClient.is_unset(request.name):
@@ -884,6 +896,10 @@ class Client(OpenApiClient):
             query['CallTimeList'] = request.call_time_list_shrink
         if not UtilClient.is_unset(request.callback_url):
             query['CallbackUrl'] = request.callback_url
+        if not UtilClient.is_unset(request.flash_sms_template_id):
+            query['FlashSmsTemplateId'] = request.flash_sms_template_id
+        if not UtilClient.is_unset(request.flash_sms_type):
+            query['FlashSmsType'] = request.flash_sms_type
         if not UtilClient.is_unset(request.max_concurrency):
             query['MaxConcurrency'] = request.max_concurrency
         if not UtilClient.is_unset(request.name):

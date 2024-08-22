@@ -331,6 +331,8 @@ class AddTaskRequest(TeaModel):
         self,
         call_time_list: List[AddTaskRequestCallTimeList] = None,
         callback_url: str = None,
+        flash_sms_template_id: int = None,
+        flash_sms_type: int = None,
         max_concurrency: int = None,
         name: str = None,
         owner_id: int = None,
@@ -354,6 +356,10 @@ class AddTaskRequest(TeaModel):
         self.call_time_list = call_time_list
         # 回调地址
         self.callback_url = callback_url
+        # 当发送闪信配置为1时，闪信模板ID必填
+        self.flash_sms_template_id = flash_sms_template_id
+        # 发送闪信配置
+        self.flash_sms_type = flash_sms_type
         # 并发数
         self.max_concurrency = max_concurrency
         # 任务名称
@@ -414,6 +420,10 @@ class AddTaskRequest(TeaModel):
                 result['CallTimeList'].append(k.to_map() if k else None)
         if self.callback_url is not None:
             result['CallbackUrl'] = self.callback_url
+        if self.flash_sms_template_id is not None:
+            result['FlashSmsTemplateId'] = self.flash_sms_template_id
+        if self.flash_sms_type is not None:
+            result['FlashSmsType'] = self.flash_sms_type
         if self.max_concurrency is not None:
             result['MaxConcurrency'] = self.max_concurrency
         if self.name is not None:
@@ -463,6 +473,10 @@ class AddTaskRequest(TeaModel):
                 self.call_time_list.append(temp_model.from_map(k))
         if m.get('CallbackUrl') is not None:
             self.callback_url = m.get('CallbackUrl')
+        if m.get('FlashSmsTemplateId') is not None:
+            self.flash_sms_template_id = m.get('FlashSmsTemplateId')
+        if m.get('FlashSmsType') is not None:
+            self.flash_sms_type = m.get('FlashSmsType')
         if m.get('MaxConcurrency') is not None:
             self.max_concurrency = m.get('MaxConcurrency')
         if m.get('Name') is not None:
@@ -510,6 +524,8 @@ class AddTaskShrinkRequest(TeaModel):
         self,
         call_time_list_shrink: str = None,
         callback_url: str = None,
+        flash_sms_template_id: int = None,
+        flash_sms_type: int = None,
         max_concurrency: int = None,
         name: str = None,
         owner_id: int = None,
@@ -533,6 +549,10 @@ class AddTaskShrinkRequest(TeaModel):
         self.call_time_list_shrink = call_time_list_shrink
         # 回调地址
         self.callback_url = callback_url
+        # 当发送闪信配置为1时，闪信模板ID必填
+        self.flash_sms_template_id = flash_sms_template_id
+        # 发送闪信配置
+        self.flash_sms_type = flash_sms_type
         # 并发数
         self.max_concurrency = max_concurrency
         # 任务名称
@@ -584,6 +604,10 @@ class AddTaskShrinkRequest(TeaModel):
             result['CallTimeList'] = self.call_time_list_shrink
         if self.callback_url is not None:
             result['CallbackUrl'] = self.callback_url
+        if self.flash_sms_template_id is not None:
+            result['FlashSmsTemplateId'] = self.flash_sms_template_id
+        if self.flash_sms_type is not None:
+            result['FlashSmsType'] = self.flash_sms_type
         if self.max_concurrency is not None:
             result['MaxConcurrency'] = self.max_concurrency
         if self.name is not None:
@@ -628,6 +652,10 @@ class AddTaskShrinkRequest(TeaModel):
             self.call_time_list_shrink = m.get('CallTimeList')
         if m.get('CallbackUrl') is not None:
             self.callback_url = m.get('CallbackUrl')
+        if m.get('FlashSmsTemplateId') is not None:
+            self.flash_sms_template_id = m.get('FlashSmsTemplateId')
+        if m.get('FlashSmsType') is not None:
+            self.flash_sms_type = m.get('FlashSmsType')
         if m.get('MaxConcurrency') is not None:
             self.max_concurrency = m.get('MaxConcurrency')
         if m.get('Name') is not None:
@@ -698,6 +726,7 @@ class AddTaskResponseBodyModel(TeaModel):
 class AddTaskResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         message: str = None,
         model: AddTaskResponseBodyModel = None,
@@ -705,6 +734,7 @@ class AddTaskResponseBody(TeaModel):
         success: bool = None,
         timestamp: int = None,
     ):
+        self.access_denied_detail = access_denied_detail
         self.code = code
         self.message = message
         self.model = model
@@ -722,6 +752,8 @@ class AddTaskResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -738,6 +770,8 @@ class AddTaskResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -1884,6 +1918,8 @@ class EditTaskRequest(TeaModel):
         self,
         call_time_list: List[EditTaskRequestCallTimeList] = None,
         callback_url: str = None,
+        flash_sms_template_id: int = None,
+        flash_sms_type: int = None,
         max_concurrency: int = None,
         name: str = None,
         owner_id: int = None,
@@ -1907,6 +1943,10 @@ class EditTaskRequest(TeaModel):
         self.call_time_list = call_time_list
         # 回调地址
         self.callback_url = callback_url
+        # 当发送闪信配置为1时，闪信模板ID必填
+        self.flash_sms_template_id = flash_sms_template_id
+        # 发送闪信配置,默认为0,0不发送闪信.1发送闪信
+        self.flash_sms_type = flash_sms_type
         # 并发数
         self.max_concurrency = max_concurrency
         # 任务名称
@@ -1965,6 +2005,10 @@ class EditTaskRequest(TeaModel):
                 result['CallTimeList'].append(k.to_map() if k else None)
         if self.callback_url is not None:
             result['CallbackUrl'] = self.callback_url
+        if self.flash_sms_template_id is not None:
+            result['FlashSmsTemplateId'] = self.flash_sms_template_id
+        if self.flash_sms_type is not None:
+            result['FlashSmsType'] = self.flash_sms_type
         if self.max_concurrency is not None:
             result['MaxConcurrency'] = self.max_concurrency
         if self.name is not None:
@@ -2014,6 +2058,10 @@ class EditTaskRequest(TeaModel):
                 self.call_time_list.append(temp_model.from_map(k))
         if m.get('CallbackUrl') is not None:
             self.callback_url = m.get('CallbackUrl')
+        if m.get('FlashSmsTemplateId') is not None:
+            self.flash_sms_template_id = m.get('FlashSmsTemplateId')
+        if m.get('FlashSmsType') is not None:
+            self.flash_sms_type = m.get('FlashSmsType')
         if m.get('MaxConcurrency') is not None:
             self.max_concurrency = m.get('MaxConcurrency')
         if m.get('Name') is not None:
@@ -2061,6 +2109,8 @@ class EditTaskShrinkRequest(TeaModel):
         self,
         call_time_list_shrink: str = None,
         callback_url: str = None,
+        flash_sms_template_id: int = None,
+        flash_sms_type: int = None,
         max_concurrency: int = None,
         name: str = None,
         owner_id: int = None,
@@ -2084,6 +2134,10 @@ class EditTaskShrinkRequest(TeaModel):
         self.call_time_list_shrink = call_time_list_shrink
         # 回调地址
         self.callback_url = callback_url
+        # 当发送闪信配置为1时，闪信模板ID必填
+        self.flash_sms_template_id = flash_sms_template_id
+        # 发送闪信配置,默认为0,0不发送闪信.1发送闪信
+        self.flash_sms_type = flash_sms_type
         # 并发数
         self.max_concurrency = max_concurrency
         # 任务名称
@@ -2133,6 +2187,10 @@ class EditTaskShrinkRequest(TeaModel):
             result['CallTimeList'] = self.call_time_list_shrink
         if self.callback_url is not None:
             result['CallbackUrl'] = self.callback_url
+        if self.flash_sms_template_id is not None:
+            result['FlashSmsTemplateId'] = self.flash_sms_template_id
+        if self.flash_sms_type is not None:
+            result['FlashSmsType'] = self.flash_sms_type
         if self.max_concurrency is not None:
             result['MaxConcurrency'] = self.max_concurrency
         if self.name is not None:
@@ -2177,6 +2235,10 @@ class EditTaskShrinkRequest(TeaModel):
             self.call_time_list_shrink = m.get('CallTimeList')
         if m.get('CallbackUrl') is not None:
             self.callback_url = m.get('CallbackUrl')
+        if m.get('FlashSmsTemplateId') is not None:
+            self.flash_sms_template_id = m.get('FlashSmsTemplateId')
+        if m.get('FlashSmsType') is not None:
+            self.flash_sms_type = m.get('FlashSmsType')
         if m.get('MaxConcurrency') is not None:
             self.max_concurrency = m.get('MaxConcurrency')
         if m.get('Name') is not None:
@@ -2247,6 +2309,7 @@ class EditTaskResponseBodyModel(TeaModel):
 class EditTaskResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: int = None,
         message: str = None,
         model: EditTaskResponseBodyModel = None,
@@ -2254,6 +2317,7 @@ class EditTaskResponseBody(TeaModel):
         success: bool = None,
         timestamp: int = None,
     ):
+        self.access_denied_detail = access_denied_detail
         self.code = code
         self.message = message
         self.model = model
@@ -2271,6 +2335,8 @@ class EditTaskResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.message is not None:
@@ -2287,6 +2353,8 @@ class EditTaskResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Message') is not None:
@@ -4964,6 +5032,9 @@ class TaskListResponseBodyModel(TeaModel):
         allow_day_of_week: str = None,
         call_type: int = None,
         create_time: str = None,
+        flash_sms_template_id: int = None,
+        flash_sms_template_name: str = None,
+        flash_sms_type: int = None,
         import_time: str = None,
         intent_tags: List[TaskListResponseBodyModelIntentTags] = None,
         invalid_re_call: int = None,
@@ -4991,6 +5062,12 @@ class TaskListResponseBodyModel(TeaModel):
         self.call_type = call_type
         # 创建时间
         self.create_time = create_time
+        # 闪信模板id
+        self.flash_sms_template_id = flash_sms_template_id
+        # 闪信模板名称
+        self.flash_sms_template_name = flash_sms_template_name
+        # 发送闪信配置，可选0，1；0表示否，1表示是
+        self.flash_sms_type = flash_sms_type
         # 最近导入时间
         self.import_time = import_time
         # 意向标签列表
@@ -5046,6 +5123,12 @@ class TaskListResponseBodyModel(TeaModel):
             result['CallType'] = self.call_type
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.flash_sms_template_id is not None:
+            result['FlashSmsTemplateId'] = self.flash_sms_template_id
+        if self.flash_sms_template_name is not None:
+            result['FlashSmsTemplateName'] = self.flash_sms_template_name
+        if self.flash_sms_type is not None:
+            result['FlashSmsType'] = self.flash_sms_type
         if self.import_time is not None:
             result['ImportTime'] = self.import_time
         result['IntentTags'] = []
@@ -5094,6 +5177,12 @@ class TaskListResponseBodyModel(TeaModel):
             self.call_type = m.get('CallType')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('FlashSmsTemplateId') is not None:
+            self.flash_sms_template_id = m.get('FlashSmsTemplateId')
+        if m.get('FlashSmsTemplateName') is not None:
+            self.flash_sms_template_name = m.get('FlashSmsTemplateName')
+        if m.get('FlashSmsType') is not None:
+            self.flash_sms_type = m.get('FlashSmsType')
         if m.get('ImportTime') is not None:
             self.import_time = m.get('ImportTime')
         self.intent_tags = []
