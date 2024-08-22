@@ -43,9 +43,6 @@ class CancelTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -171,9 +168,6 @@ class CreateResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -281,9 +275,6 @@ class DeleteResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -387,7 +378,7 @@ class GetPriceResponseBodyPriceModuleDetails(TeaModel):
         module_code: str = None,
         module_name: str = None,
         original_cost: float = None,
-        price_type: float = None,
+        price_type: str = None,
     ):
         self.cost_after_discount = cost_after_discount
         self.invoice_discount = invoice_discount
@@ -596,9 +587,6 @@ class GetPriceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1093,9 +1081,6 @@ class GetResourceTypeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1361,9 +1346,6 @@ class GetResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1556,9 +1538,6 @@ class GetTaskResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1594,6 +1573,7 @@ class ListDataSourcesRequest(TeaModel):
         attribute_name: str = None,
         filter: Dict[str, Any] = None,
     ):
+        # This parameter is required.
         self.attribute_name = attribute_name
         self.filter = filter
 
@@ -1627,6 +1607,7 @@ class ListDataSourcesShrinkRequest(TeaModel):
         attribute_name: str = None,
         filter_shrink: str = None,
     ):
+        # This parameter is required.
         self.attribute_name = attribute_name
         self.filter_shrink = filter_shrink
 
@@ -1734,9 +1715,6 @@ class ListDataSourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1936,9 +1914,6 @@ class ListProductsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2535,9 +2510,6 @@ class ListResourceTypesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2651,9 +2623,6 @@ class UpdateResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

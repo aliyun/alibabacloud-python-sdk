@@ -47,6 +47,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.CancelTaskResponse:
+        """
+        @summary 取消任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -72,6 +79,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.CancelTaskResponse:
+        """
+        @summary 取消任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -95,6 +109,11 @@ class Client(OpenApiClient):
         self,
         task_id: str,
     ) -> cloudcontrol_20220830_models.CancelTaskResponse:
+        """
+        @summary 取消任务
+        
+        @return: CancelTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.cancel_task_with_options(task_id, headers, runtime)
@@ -103,6 +122,11 @@ class Client(OpenApiClient):
         self,
         task_id: str,
     ) -> cloudcontrol_20220830_models.CancelTaskResponse:
+        """
+        @summary 取消任务
+        
+        @return: CancelTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.cancel_task_with_options_async(task_id, headers, runtime)
@@ -114,6 +138,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.CreateResourceResponse:
+        """
+        @summary 创建资源
+        
+        @param request_path: the whole path of resource string
+        @param request: CreateResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -148,6 +181,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.CreateResourceResponse:
+        """
+        @summary 创建资源
+        
+        @param request_path: the whole path of resource string
+        @param request: CreateResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -180,6 +222,13 @@ class Client(OpenApiClient):
         request_path: str,
         request: cloudcontrol_20220830_models.CreateResourceRequest,
     ) -> cloudcontrol_20220830_models.CreateResourceResponse:
+        """
+        @summary 创建资源
+        
+        @param request_path: the whole path of resource string
+        @param request: CreateResourceRequest
+        @return: CreateResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_resource_with_options(request_path, request, headers, runtime)
@@ -189,6 +238,13 @@ class Client(OpenApiClient):
         request_path: str,
         request: cloudcontrol_20220830_models.CreateResourceRequest,
     ) -> cloudcontrol_20220830_models.CreateResourceResponse:
+        """
+        @summary 创建资源
+        
+        @param request_path: the whole path of resource string
+        @param request: CreateResourceRequest
+        @return: CreateResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_resource_with_options_async(request_path, request, headers, runtime)
@@ -200,6 +256,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.DeleteResourceResponse:
+        """
+        @summary 删除资源
+        
+        @param request_path: the whole path of resource string
+        @param request: DeleteResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -233,6 +298,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.DeleteResourceResponse:
+        """
+        @summary 删除资源
+        
+        @param request_path: the whole path of resource string
+        @param request: DeleteResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -264,6 +338,13 @@ class Client(OpenApiClient):
         request_path: str,
         request: cloudcontrol_20220830_models.DeleteResourceRequest,
     ) -> cloudcontrol_20220830_models.DeleteResourceResponse:
+        """
+        @summary 删除资源
+        
+        @param request_path: the whole path of resource string
+        @param request: DeleteResourceRequest
+        @return: DeleteResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_resource_with_options(request_path, request, headers, runtime)
@@ -273,6 +354,13 @@ class Client(OpenApiClient):
         request_path: str,
         request: cloudcontrol_20220830_models.DeleteResourceRequest,
     ) -> cloudcontrol_20220830_models.DeleteResourceResponse:
+        """
+        @summary 删除资源
+        
+        @param request_path: the whole path of resource string
+        @param request: DeleteResourceRequest
+        @return: DeleteResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_resource_with_options_async(request_path, request, headers, runtime)
@@ -284,6 +372,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.GetPriceResponse:
+        """
+        @summary 查询价格
+        
+        @param request_path: the whole path of resource string
+        @param tmp_req: GetPriceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPriceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloudcontrol_20220830_models.GetPriceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -321,6 +418,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.GetPriceResponse:
+        """
+        @summary 查询价格
+        
+        @param request_path: the whole path of resource string
+        @param tmp_req: GetPriceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPriceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloudcontrol_20220830_models.GetPriceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -356,6 +462,13 @@ class Client(OpenApiClient):
         request_path: str,
         request: cloudcontrol_20220830_models.GetPriceRequest,
     ) -> cloudcontrol_20220830_models.GetPriceResponse:
+        """
+        @summary 查询价格
+        
+        @param request_path: the whole path of resource string
+        @param request: GetPriceRequest
+        @return: GetPriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_price_with_options(request_path, request, headers, runtime)
@@ -365,6 +478,13 @@ class Client(OpenApiClient):
         request_path: str,
         request: cloudcontrol_20220830_models.GetPriceRequest,
     ) -> cloudcontrol_20220830_models.GetPriceResponse:
+        """
+        @summary 查询价格
+        
+        @param request_path: the whole path of resource string
+        @param request: GetPriceRequest
+        @return: GetPriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_price_with_options_async(request_path, request, headers, runtime)
@@ -375,6 +495,14 @@ class Client(OpenApiClient):
         headers: cloudcontrol_20220830_models.GetResourceTypeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.GetResourceTypeResponse:
+        """
+        @summary 获取资源元数据
+        
+        @param request_path: the whole path of resource string
+        @param headers: GetResourceTypeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceTypeResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -405,6 +533,14 @@ class Client(OpenApiClient):
         headers: cloudcontrol_20220830_models.GetResourceTypeHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.GetResourceTypeResponse:
+        """
+        @summary 获取资源元数据
+        
+        @param request_path: the whole path of resource string
+        @param headers: GetResourceTypeHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceTypeResponse
+        """
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -433,6 +569,12 @@ class Client(OpenApiClient):
         self,
         request_path: str,
     ) -> cloudcontrol_20220830_models.GetResourceTypeResponse:
+        """
+        @summary 获取资源元数据
+        
+        @param request_path: the whole path of resource string
+        @return: GetResourceTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = cloudcontrol_20220830_models.GetResourceTypeHeaders()
         return self.get_resource_type_with_options(request_path, headers, runtime)
@@ -441,6 +583,12 @@ class Client(OpenApiClient):
         self,
         request_path: str,
     ) -> cloudcontrol_20220830_models.GetResourceTypeResponse:
+        """
+        @summary 获取资源元数据
+        
+        @param request_path: the whole path of resource string
+        @return: GetResourceTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = cloudcontrol_20220830_models.GetResourceTypeHeaders()
         return await self.get_resource_type_with_options_async(request_path, headers, runtime)
@@ -452,6 +600,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.GetResourcesResponse:
+        """
+        @summary 查询资源
+        
+        @param request_path: the whole path of resource string
+        @param tmp_req: GetResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloudcontrol_20220830_models.GetResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -493,6 +650,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.GetResourcesResponse:
+        """
+        @summary 查询资源
+        
+        @param request_path: the whole path of resource string
+        @param tmp_req: GetResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloudcontrol_20220830_models.GetResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -532,6 +698,13 @@ class Client(OpenApiClient):
         request_path: str,
         request: cloudcontrol_20220830_models.GetResourcesRequest,
     ) -> cloudcontrol_20220830_models.GetResourcesResponse:
+        """
+        @summary 查询资源
+        
+        @param request_path: the whole path of resource string
+        @param request: GetResourcesRequest
+        @return: GetResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_resources_with_options(request_path, request, headers, runtime)
@@ -541,6 +714,13 @@ class Client(OpenApiClient):
         request_path: str,
         request: cloudcontrol_20220830_models.GetResourcesRequest,
     ) -> cloudcontrol_20220830_models.GetResourcesResponse:
+        """
+        @summary 查询资源
+        
+        @param request_path: the whole path of resource string
+        @param request: GetResourcesRequest
+        @return: GetResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_resources_with_options_async(request_path, request, headers, runtime)
@@ -552,7 +732,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.GetTaskResponse:
         """
-        GET /api/v1/tasks/{taskId}。
+        @summary 查询任务
+        
+        @description GET /api/v1/tasks/{taskId}。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -584,7 +766,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.GetTaskResponse:
         """
-        GET /api/v1/tasks/{taskId}。
+        @summary 查询任务
+        
+        @description GET /api/v1/tasks/{taskId}。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -614,7 +798,9 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> cloudcontrol_20220830_models.GetTaskResponse:
         """
-        GET /api/v1/tasks/{taskId}。
+        @summary 查询任务
+        
+        @description GET /api/v1/tasks/{taskId}。
         
         @return: GetTaskResponse
         """
@@ -627,7 +813,9 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> cloudcontrol_20220830_models.GetTaskResponse:
         """
-        GET /api/v1/tasks/{taskId}。
+        @summary 查询任务
+        
+        @description GET /api/v1/tasks/{taskId}。
         
         @return: GetTaskResponse
         """
@@ -642,6 +830,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.ListDataSourcesResponse:
+        """
+        @summary 列举资源属性可选值
+        
+        @param request_path: the whole path of resource string
+        @param tmp_req: ListDataSourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloudcontrol_20220830_models.ListDataSourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -679,6 +876,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.ListDataSourcesResponse:
+        """
+        @summary 列举资源属性可选值
+        
+        @param request_path: the whole path of resource string
+        @param tmp_req: ListDataSourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = cloudcontrol_20220830_models.ListDataSourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -714,6 +920,13 @@ class Client(OpenApiClient):
         request_path: str,
         request: cloudcontrol_20220830_models.ListDataSourcesRequest,
     ) -> cloudcontrol_20220830_models.ListDataSourcesResponse:
+        """
+        @summary 列举资源属性可选值
+        
+        @param request_path: the whole path of resource string
+        @param request: ListDataSourcesRequest
+        @return: ListDataSourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_data_sources_with_options(request_path, request, headers, runtime)
@@ -723,6 +936,13 @@ class Client(OpenApiClient):
         request_path: str,
         request: cloudcontrol_20220830_models.ListDataSourcesRequest,
     ) -> cloudcontrol_20220830_models.ListDataSourcesResponse:
+        """
+        @summary 列举资源属性可选值
+        
+        @param request_path: the whole path of resource string
+        @param request: ListDataSourcesRequest
+        @return: ListDataSourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_data_sources_with_options_async(request_path, request, headers, runtime)
@@ -735,7 +955,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.ListProductsResponse:
         """
-        GET /api/v1/providers/{provider}/products。
+        @summary 列举资源类型
+        
+        @description GET /api/v1/providers/{provider}/products。
         
         @param request: ListProductsRequest
         @param headers: ListProductsHeaders
@@ -781,7 +1003,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.ListProductsResponse:
         """
-        GET /api/v1/providers/{provider}/products。
+        @summary 列举资源类型
+        
+        @description GET /api/v1/providers/{provider}/products。
         
         @param request: ListProductsRequest
         @param headers: ListProductsHeaders
@@ -825,7 +1049,9 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.ListProductsRequest,
     ) -> cloudcontrol_20220830_models.ListProductsResponse:
         """
-        GET /api/v1/providers/{provider}/products。
+        @summary 列举资源类型
+        
+        @description GET /api/v1/providers/{provider}/products。
         
         @param request: ListProductsRequest
         @return: ListProductsResponse
@@ -840,7 +1066,9 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.ListProductsRequest,
     ) -> cloudcontrol_20220830_models.ListProductsResponse:
         """
-        GET /api/v1/providers/{provider}/products。
+        @summary 列举资源类型
+        
+        @description GET /api/v1/providers/{provider}/products。
         
         @param request: ListProductsRequest
         @return: ListProductsResponse
@@ -858,7 +1086,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.ListResourceTypesResponse:
         """
-        GET /api/v1/providers/{provider}/products/{product}/resourceTypes。
+        @summary 列举资源类型
+        
+        @description GET /api/v1/providers/{provider}/products/{product}/resourceTypes。
         
         @param tmp_req: ListResourceTypesRequest
         @param headers: ListResourceTypesHeaders
@@ -911,7 +1141,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.ListResourceTypesResponse:
         """
-        GET /api/v1/providers/{provider}/products/{product}/resourceTypes。
+        @summary 列举资源类型
+        
+        @description GET /api/v1/providers/{provider}/products/{product}/resourceTypes。
         
         @param tmp_req: ListResourceTypesRequest
         @param headers: ListResourceTypesHeaders
@@ -962,7 +1194,9 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.ListResourceTypesRequest,
     ) -> cloudcontrol_20220830_models.ListResourceTypesResponse:
         """
-        GET /api/v1/providers/{provider}/products/{product}/resourceTypes。
+        @summary 列举资源类型
+        
+        @description GET /api/v1/providers/{provider}/products/{product}/resourceTypes。
         
         @param request: ListResourceTypesRequest
         @return: ListResourceTypesResponse
@@ -978,7 +1212,9 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.ListResourceTypesRequest,
     ) -> cloudcontrol_20220830_models.ListResourceTypesResponse:
         """
-        GET /api/v1/providers/{provider}/products/{product}/resourceTypes。
+        @summary 列举资源类型
+        
+        @description GET /api/v1/providers/{provider}/products/{product}/resourceTypes。
         
         @param request: ListResourceTypesRequest
         @return: ListResourceTypesResponse
@@ -994,6 +1230,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.UpdateResourceResponse:
+        """
+        @summary 更新资源
+        
+        @param request_path: the whole path of resource string
+        @param request: UpdateResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1028,6 +1273,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.UpdateResourceResponse:
+        """
+        @summary 更新资源
+        
+        @param request_path: the whole path of resource string
+        @param request: UpdateResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1060,6 +1314,13 @@ class Client(OpenApiClient):
         request_path: str,
         request: cloudcontrol_20220830_models.UpdateResourceRequest,
     ) -> cloudcontrol_20220830_models.UpdateResourceResponse:
+        """
+        @summary 更新资源
+        
+        @param request_path: the whole path of resource string
+        @param request: UpdateResourceRequest
+        @return: UpdateResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_resource_with_options(request_path, request, headers, runtime)
@@ -1069,6 +1330,13 @@ class Client(OpenApiClient):
         request_path: str,
         request: cloudcontrol_20220830_models.UpdateResourceRequest,
     ) -> cloudcontrol_20220830_models.UpdateResourceResponse:
+        """
+        @summary 更新资源
+        
+        @param request_path: the whole path of resource string
+        @param request: UpdateResourceRequest
+        @return: UpdateResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_resource_with_options_async(request_path, request, headers, runtime)
