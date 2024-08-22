@@ -4169,7 +4169,7 @@ class GetMetricsResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
-        data_points: str = None,
+        datapoints: str = None,
         message: str = None,
         next_token: str = None,
         period: str = None,
@@ -4177,7 +4177,7 @@ class GetMetricsResponseBody(TeaModel):
         success: bool = None,
     ):
         self.code = code
-        self.data_points = data_points
+        self.datapoints = datapoints
         self.message = message
         self.next_token = next_token
         self.period = period
@@ -4195,8 +4195,8 @@ class GetMetricsResponseBody(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
-        if self.data_points is not None:
-            result['DataPoints'] = self.data_points
+        if self.datapoints is not None:
+            result['Datapoints'] = self.datapoints
         if self.message is not None:
             result['Message'] = self.message
         if self.next_token is not None:
@@ -4213,8 +4213,8 @@ class GetMetricsResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        if m.get('DataPoints') is not None:
-            self.data_points = m.get('DataPoints')
+        if m.get('Datapoints') is not None:
+            self.datapoints = m.get('Datapoints')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('NextToken') is not None:

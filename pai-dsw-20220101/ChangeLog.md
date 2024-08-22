@@ -1,3 +1,7 @@
+2024-08-22 Version: 1.5.3
+- Update API GetMetrics: update response param.
+
+
 2024-08-14 Version: 1.5.2
 - Update API ListInstances: add param GpuType.
 - Update API ListInstances: add param ImageName.
