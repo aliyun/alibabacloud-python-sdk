@@ -1549,7 +1549,7 @@ class CreateSqlStatementRequest(TeaModel):
         self.default_database = default_database
         # The maximum number of entries to return. Valid values: 1 to 10000.
         self.limit = limit
-        # The SQL Compute ID. You can create an SQL Compute in the workspace created in EMR Serverless Spark.
+        # The SQL compute ID. You can create an SQL compute in the workspace created in EMR Serverless Spark.
         self.sql_compute_id = sql_compute_id
         # The region ID.
         self.region_id = region_id
@@ -1804,8 +1804,10 @@ class GetJobRunResponseBodyJobRun(TeaModel):
         self,
         code_type: str = None,
         configuration_overrides: GetJobRunResponseBodyJobRunConfigurationOverrides = None,
+        display_release_version: str = None,
         end_time: int = None,
         execution_timeout_seconds: int = None,
+        fusion: bool = None,
         job_driver: JobDriver = None,
         job_run_id: str = None,
         log: RunLog = None,
@@ -1826,12 +1828,14 @@ class GetJobRunResponseBodyJobRun(TeaModel):
         # *   JAR
         # *   PYTHON
         self.code_type = code_type
-        # The task configurations of Spark.
+        # The job configurations of Spark.
         self.configuration_overrides = configuration_overrides
+        self.display_release_version = display_release_version
         # The end time of the job.
         self.end_time = end_time
         # The timeout period of the job.
         self.execution_timeout_seconds = execution_timeout_seconds
+        self.fusion = fusion
         # The information about Spark Driver.
         self.job_driver = job_driver
         # The job ID.
@@ -1883,10 +1887,14 @@ class GetJobRunResponseBodyJobRun(TeaModel):
             result['codeType'] = self.code_type
         if self.configuration_overrides is not None:
             result['configurationOverrides'] = self.configuration_overrides.to_map()
+        if self.display_release_version is not None:
+            result['displayReleaseVersion'] = self.display_release_version
         if self.end_time is not None:
             result['endTime'] = self.end_time
         if self.execution_timeout_seconds is not None:
             result['executionTimeoutSeconds'] = self.execution_timeout_seconds
+        if self.fusion is not None:
+            result['fusion'] = self.fusion
         if self.job_driver is not None:
             result['jobDriver'] = self.job_driver.to_map()
         if self.job_run_id is not None:
@@ -1924,10 +1932,14 @@ class GetJobRunResponseBodyJobRun(TeaModel):
         if m.get('configurationOverrides') is not None:
             temp_model = GetJobRunResponseBodyJobRunConfigurationOverrides()
             self.configuration_overrides = temp_model.from_map(m['configurationOverrides'])
+        if m.get('displayReleaseVersion') is not None:
+            self.display_release_version = m.get('displayReleaseVersion')
         if m.get('endTime') is not None:
             self.end_time = m.get('endTime')
         if m.get('executionTimeoutSeconds') is not None:
             self.execution_timeout_seconds = m.get('executionTimeoutSeconds')
+        if m.get('fusion') is not None:
+            self.fusion = m.get('fusion')
         if m.get('jobDriver') is not None:
             temp_model = JobDriver()
             self.job_driver = temp_model.from_map(m['jobDriver'])
@@ -2189,7 +2201,7 @@ class GetSqlStatementResponseBody(TeaModel):
         data: GetSqlStatementResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The data returned.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -3672,7 +3684,7 @@ class ListSessionClustersResponseBody(TeaModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The SQL Computes.
+        # The SQL computes.
         self.session_clusters = session_clusters
         # The total number of entries returned.
         self.total_count = total_count

@@ -1,3 +1,7 @@
+2024-08-22 Version: 1.4.3
+- Update API GetJobRun: update response param.
+
+
 2024-08-20 Version: 1.4.2
 - Update API ListJobRuns: update response param.
 - Update API ListReleaseVersions: update response param.
