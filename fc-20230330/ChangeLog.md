@@ -1,3 +1,7 @@
+2024-08-22 Version: 4.1.3
+- Update API ListFunctions: add param fcVersion.
+
+
 2024-07-15 Version: 4.1.2
 - Generated python 2023-03-30 for FC.
 

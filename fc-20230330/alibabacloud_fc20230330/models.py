@@ -1123,6 +1123,158 @@ class CustomHealthCheckConfig(TeaModel):
         return self
 
 
+class RegistryAuthConfig(TeaModel):
+    def __init__(
+        self,
+        password: str = None,
+        user_name: str = None,
+    ):
+        self.password = password
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.password is not None:
+            result['password'] = self.password
+        if self.user_name is not None:
+            result['userName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('password') is not None:
+            self.password = m.get('password')
+        if m.get('userName') is not None:
+            self.user_name = m.get('userName')
+        return self
+
+
+class RegistryCertConfig(TeaModel):
+    def __init__(
+        self,
+        insecure: bool = None,
+        root_ca_cert_base_64: str = None,
+    ):
+        self.insecure = insecure
+        self.root_ca_cert_base_64 = root_ca_cert_base_64
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.insecure is not None:
+            result['insecure'] = self.insecure
+        if self.root_ca_cert_base_64 is not None:
+            result['rootCaCertBase64'] = self.root_ca_cert_base_64
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('insecure') is not None:
+            self.insecure = m.get('insecure')
+        if m.get('rootCaCertBase64') is not None:
+            self.root_ca_cert_base_64 = m.get('rootCaCertBase64')
+        return self
+
+
+class RegistryNetworkConfig(TeaModel):
+    def __init__(
+        self,
+        security_group_id: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.security_group_id = security_group_id
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.security_group_id is not None:
+            result['securityGroupId'] = self.security_group_id
+        if self.v_switch_id is not None:
+            result['vSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('securityGroupId') is not None:
+            self.security_group_id = m.get('securityGroupId')
+        if m.get('vSwitchId') is not None:
+            self.v_switch_id = m.get('vSwitchId')
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        return self
+
+
+class RegistryConfig(TeaModel):
+    def __init__(
+        self,
+        auth_config: RegistryAuthConfig = None,
+        cert_config: RegistryCertConfig = None,
+        network_config: RegistryNetworkConfig = None,
+    ):
+        self.auth_config = auth_config
+        self.cert_config = cert_config
+        self.network_config = network_config
+
+    def validate(self):
+        if self.auth_config:
+            self.auth_config.validate()
+        if self.cert_config:
+            self.cert_config.validate()
+        if self.network_config:
+            self.network_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_config is not None:
+            result['authConfig'] = self.auth_config.to_map()
+        if self.cert_config is not None:
+            result['certConfig'] = self.cert_config.to_map()
+        if self.network_config is not None:
+            result['networkConfig'] = self.network_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authConfig') is not None:
+            temp_model = RegistryAuthConfig()
+            self.auth_config = temp_model.from_map(m['authConfig'])
+        if m.get('certConfig') is not None:
+            temp_model = RegistryCertConfig()
+            self.cert_config = temp_model.from_map(m['certConfig'])
+        if m.get('networkConfig') is not None:
+            temp_model = RegistryNetworkConfig()
+            self.network_config = temp_model.from_map(m['networkConfig'])
+        return self
+
+
 class CustomContainerConfig(TeaModel):
     def __init__(
         self,
@@ -1134,6 +1286,7 @@ class CustomContainerConfig(TeaModel):
         health_check_config: CustomHealthCheckConfig = None,
         image: str = None,
         port: int = None,
+        registry_config: RegistryConfig = None,
         resolved_image_uri: str = None,
     ):
         self.acceleration_info = acceleration_info
@@ -1144,6 +1297,7 @@ class CustomContainerConfig(TeaModel):
         self.health_check_config = health_check_config
         self.image = image
         self.port = port
+        self.registry_config = registry_config
         self.resolved_image_uri = resolved_image_uri
 
     def validate(self):
@@ -1151,6 +1305,8 @@ class CustomContainerConfig(TeaModel):
             self.acceleration_info.validate()
         if self.health_check_config:
             self.health_check_config.validate()
+        if self.registry_config:
+            self.registry_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1174,6 +1330,8 @@ class CustomContainerConfig(TeaModel):
             result['image'] = self.image
         if self.port is not None:
             result['port'] = self.port
+        if self.registry_config is not None:
+            result['registryConfig'] = self.registry_config.to_map()
         if self.resolved_image_uri is not None:
             result['resolvedImageUri'] = self.resolved_image_uri
         return result
@@ -1198,6 +1356,9 @@ class CustomContainerConfig(TeaModel):
             self.image = m.get('image')
         if m.get('port') is not None:
             self.port = m.get('port')
+        if m.get('registryConfig') is not None:
+            temp_model = RegistryConfig()
+            self.registry_config = temp_model.from_map(m['registryConfig'])
         if m.get('resolvedImageUri') is not None:
             self.resolved_image_uri = m.get('resolvedImageUri')
         return self
@@ -3996,6 +4157,7 @@ class ScheduledAction(TeaModel):
         schedule_expression: str = None,
         start_time: str = None,
         target: int = None,
+        time_zone: str = None,
     ):
         self.end_time = end_time
         # This parameter is required.
@@ -4005,6 +4167,7 @@ class ScheduledAction(TeaModel):
         self.start_time = start_time
         # This parameter is required.
         self.target = target
+        self.time_zone = time_zone
 
     def validate(self):
         pass
@@ -4025,6 +4188,8 @@ class ScheduledAction(TeaModel):
             result['startTime'] = self.start_time
         if self.target is not None:
             result['target'] = self.target
+        if self.time_zone is not None:
+            result['timeZone'] = self.time_zone
         return result
 
     def from_map(self, m: dict = None):
@@ -4039,6 +4204,8 @@ class ScheduledAction(TeaModel):
             self.start_time = m.get('startTime')
         if m.get('target') is not None:
             self.target = m.get('target')
+        if m.get('timeZone') is not None:
+            self.time_zone = m.get('timeZone')
         return self
 
 
@@ -4052,6 +4219,7 @@ class TargetTrackingPolicy(TeaModel):
         min_capacity: int = None,
         name: str = None,
         start_time: str = None,
+        time_zone: str = None,
     ):
         self.end_time = end_time
         # This parameter is required.
@@ -4065,6 +4233,7 @@ class TargetTrackingPolicy(TeaModel):
         # This parameter is required.
         self.name = name
         self.start_time = start_time
+        self.time_zone = time_zone
 
     def validate(self):
         pass
@@ -4089,6 +4258,8 @@ class TargetTrackingPolicy(TeaModel):
             result['name'] = self.name
         if self.start_time is not None:
             result['startTime'] = self.start_time
+        if self.time_zone is not None:
+            result['timeZone'] = self.time_zone
         return result
 
     def from_map(self, m: dict = None):
@@ -4107,6 +4278,8 @@ class TargetTrackingPolicy(TeaModel):
             self.name = m.get('name')
         if m.get('startTime') is not None:
             self.start_time = m.get('startTime')
+        if m.get('timeZone') is not None:
+            self.time_zone = m.get('timeZone')
         return self
 
 
@@ -6506,7 +6679,7 @@ class GetAsyncTaskRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
-        # The function version or alias.
+        # The version or alias of the function.
         self.qualifier = qualifier
 
     def validate(self):
@@ -6991,6 +7164,9 @@ class InvokeFunctionHeaders(TeaModel):
         x_fc_log_type: str = None,
     ):
         self.common_headers = common_headers
+        # The ID of the asynchronous task. You must enable the asynchronous task feature in advance.
+        # 
+        # >  If you use an SDK to invoke a function, we recommend that you specify a business-related ID to facilitate subsequent operations. For example, a video processing function can use video file names as invocation IDs. This way, you can easily check whether a video is successfully processed or terminated before it is processed. The ID can start only with letters or underscores. An ID can contain *letters, digits (0 - 9), underscores*, and hyphens (-). It can be up to 128 characters in length. If you do not specify the ID of the asynchronous invocation, the system automatically generates an ID.
         self.x_fc_async_task_id = x_fc_async_task_id
         # The type of function invocation. Valid values: Sync and Async.
         self.x_fc_invocation_type = x_fc_invocation_type
@@ -7295,16 +7471,16 @@ class ListAsyncTasksRequest(TeaModel):
         self.next_token = next_token
         # The ID prefix of asynchronous tasks. If this parameter is specified, a list of asynchronous tasks whose IDs match the prefix is returned.
         self.prefix = prefix
-        # The function version or alias.
+        # The version or alias of the function.
         self.qualifier = qualifier
         # The order in which the returned asynchronous tasks are sorted.
         # 
         # *   asc: in ascending order.
         # *   desc: in descending order.
         self.sort_order_by_time = sort_order_by_time
-        # The start time of the period in which the asynchronous tasks are launched.
+        # The start time of the period during which the asynchronous tasks are initiated.
         self.started_time_begin = started_time_begin
-        # The end time of the period in which the asynchronous tasks are launched.
+        # The end time of the period during which the asynchronous tasks are initiated.
         self.started_time_end = started_time_end
         # The state of asynchronous tasks. The following items list the states of an asynchronous task:
         # 
@@ -7664,10 +7840,12 @@ class ListFunctionVersionsResponse(TeaModel):
 class ListFunctionsRequest(TeaModel):
     def __init__(
         self,
+        fc_version: str = None,
         limit: int = None,
         next_token: str = None,
         prefix: str = None,
     ):
+        self.fc_version = fc_version
         # The number of functions to return. The minimum value is 1 and the maximum value is 100.
         self.limit = limit
         # The pagination token.
@@ -7684,6 +7862,8 @@ class ListFunctionsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.fc_version is not None:
+            result['fcVersion'] = self.fc_version
         if self.limit is not None:
             result['limit'] = self.limit
         if self.next_token is not None:
@@ -7694,6 +7874,8 @@ class ListFunctionsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('fcVersion') is not None:
+            self.fc_version = m.get('fcVersion')
         if m.get('limit') is not None:
             self.limit = m.get('limit')
         if m.get('nextToken') is not None:
@@ -8487,7 +8669,7 @@ class PutAsyncInvokeConfigRequest(TeaModel):
         body: PutAsyncInvokeConfigInput = None,
         qualifier: str = None,
     ):
-        # The configurations of asynchronous function invocation.
+        # The asynchronous invocation configurations.
         # 
         # This parameter is required.
         self.body = body
@@ -8640,8 +8822,9 @@ class PutLayerACLRequest(TeaModel):
         acl: str = None,
         public: str = None,
     ):
+        # Specify the access permission of the layer. A value of 1 indicates public and a value of 0 indicates private. The default value is 0.
         self.acl = acl
-        # Specifies whether the layer is a public layer. Valid values: true and false.
+        # Specify whether the layer is a public layer. Valid values: true and false.
         self.public = public
 
     def validate(self):
@@ -8786,7 +8969,7 @@ class StopAsyncTaskRequest(TeaModel):
         self,
         qualifier: str = None,
     ):
-        # The function version or alias.
+        # The version or alias of the function.
         self.qualifier = qualifier
 
     def validate(self):
