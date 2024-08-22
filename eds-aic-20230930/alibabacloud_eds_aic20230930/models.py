@@ -1262,16 +1262,12 @@ class CreateKeyPairResponse(TeaModel):
         return self
 
 
-class CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule(TeaModel):
+class CreatePolicyGroupRequestNetRedirectPolicy(TeaModel):
     def __init__(
         self,
-        policy: str = None,
-        rule_type: str = None,
-        target: str = None,
+        net_redirect: str = None,
     ):
-        self.policy = policy
-        self.rule_type = rule_type
-        self.target = target
+        self.net_redirect = net_redirect
 
     def validate(self):
         pass
@@ -1282,63 +1278,14 @@ class CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule(TeaModel):
             return _map
 
         result = dict()
-        if self.policy is not None:
-            result['Policy'] = self.policy
-        if self.rule_type is not None:
-            result['RuleType'] = self.rule_type
-        if self.target is not None:
-            result['Target'] = self.target
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Policy') is not None:
-            self.policy = m.get('Policy')
-        if m.get('RuleType') is not None:
-            self.rule_type = m.get('RuleType')
-        if m.get('Target') is not None:
-            self.target = m.get('Target')
-        return self
-
-
-class CreatePolicyGroupRequestNetRedirectPolicy(TeaModel):
-    def __init__(
-        self,
-        net_redirect: str = None,
-        net_redirect_rule: List[CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule] = None,
-    ):
-        self.net_redirect = net_redirect
-        self.net_redirect_rule = net_redirect_rule
-
-    def validate(self):
-        if self.net_redirect_rule:
-            for k in self.net_redirect_rule:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
         if self.net_redirect is not None:
             result['NetRedirect'] = self.net_redirect
-        result['NetRedirectRule'] = []
-        if self.net_redirect_rule is not None:
-            for k in self.net_redirect_rule:
-                result['NetRedirectRule'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('NetRedirect') is not None:
             self.net_redirect = m.get('NetRedirect')
-        self.net_redirect_rule = []
-        if m.get('NetRedirectRule') is not None:
-            for k in m.get('NetRedirectRule'):
-                temp_model = CreatePolicyGroupRequestNetRedirectPolicyNetRedirectRule()
-                self.net_redirect_rule.append(temp_model.from_map(k))
         return self
 
 
@@ -4339,6 +4286,7 @@ class DescribeTasksResponseBodyData(TeaModel):
         invoke_id: str = None,
         region_id: str = None,
         resource_id: str = None,
+        result: str = None,
         start_time: str = None,
         task_id: str = None,
         task_status: str = None,
@@ -4348,6 +4296,7 @@ class DescribeTasksResponseBodyData(TeaModel):
         self.invoke_id = invoke_id
         self.region_id = region_id
         self.resource_id = resource_id
+        self.result = result
         self.start_time = start_time
         self.task_id = task_id
         self.task_status = task_status
@@ -4370,6 +4319,8 @@ class DescribeTasksResponseBodyData(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        if self.result is not None:
+            result['Result'] = self.result
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.task_id is not None:
@@ -4390,6 +4341,8 @@ class DescribeTasksResponseBodyData(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('TaskId') is not None:
@@ -5470,16 +5423,12 @@ class ListPolicyGroupsRequest(TeaModel):
         return self
 
 
-class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule(TeaModel):
+class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy(TeaModel):
     def __init__(
         self,
-        policy: str = None,
-        rule_type: str = None,
-        target: str = None,
+        net_redirect: str = None,
     ):
-        self.policy = policy
-        self.rule_type = rule_type
-        self.target = target
+        self.net_redirect = net_redirect
 
     def validate(self):
         pass
@@ -5490,63 +5439,14 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRu
             return _map
 
         result = dict()
-        if self.policy is not None:
-            result['Policy'] = self.policy
-        if self.rule_type is not None:
-            result['RuleType'] = self.rule_type
-        if self.target is not None:
-            result['Target'] = self.target
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Policy') is not None:
-            self.policy = m.get('Policy')
-        if m.get('RuleType') is not None:
-            self.rule_type = m.get('RuleType')
-        if m.get('Target') is not None:
-            self.target = m.get('Target')
-        return self
-
-
-class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy(TeaModel):
-    def __init__(
-        self,
-        net_redirect: str = None,
-        net_redirect_rule: List[ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule] = None,
-    ):
-        self.net_redirect = net_redirect
-        self.net_redirect_rule = net_redirect_rule
-
-    def validate(self):
-        if self.net_redirect_rule:
-            for k in self.net_redirect_rule:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
         if self.net_redirect is not None:
             result['NetRedirect'] = self.net_redirect
-        result['NetRedirectRule'] = []
-        if self.net_redirect_rule is not None:
-            for k in self.net_redirect_rule:
-                result['NetRedirectRule'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('NetRedirect') is not None:
             self.net_redirect = m.get('NetRedirect')
-        self.net_redirect_rule = []
-        if m.get('NetRedirectRule') is not None:
-            for k in m.get('NetRedirectRule'):
-                temp_model = ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyNetRedirectRule()
-                self.net_redirect_rule.append(temp_model.from_map(k))
         return self
 
 
@@ -6151,16 +6051,12 @@ class ModifyKeyPairNameResponse(TeaModel):
         return self
 
 
-class ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule(TeaModel):
+class ModifyPolicyGroupRequestNetRedirectPolicy(TeaModel):
     def __init__(
         self,
-        policy: str = None,
-        rule_type: str = None,
-        target: str = None,
+        net_redirect: str = None,
     ):
-        self.policy = policy
-        self.rule_type = rule_type
-        self.target = target
+        self.net_redirect = net_redirect
 
     def validate(self):
         pass
@@ -6171,63 +6067,14 @@ class ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule(TeaModel):
             return _map
 
         result = dict()
-        if self.policy is not None:
-            result['Policy'] = self.policy
-        if self.rule_type is not None:
-            result['RuleType'] = self.rule_type
-        if self.target is not None:
-            result['Target'] = self.target
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Policy') is not None:
-            self.policy = m.get('Policy')
-        if m.get('RuleType') is not None:
-            self.rule_type = m.get('RuleType')
-        if m.get('Target') is not None:
-            self.target = m.get('Target')
-        return self
-
-
-class ModifyPolicyGroupRequestNetRedirectPolicy(TeaModel):
-    def __init__(
-        self,
-        net_redirect: str = None,
-        net_redirect_rule: List[ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule] = None,
-    ):
-        self.net_redirect = net_redirect
-        self.net_redirect_rule = net_redirect_rule
-
-    def validate(self):
-        if self.net_redirect_rule:
-            for k in self.net_redirect_rule:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
         if self.net_redirect is not None:
             result['NetRedirect'] = self.net_redirect
-        result['NetRedirectRule'] = []
-        if self.net_redirect_rule is not None:
-            for k in self.net_redirect_rule:
-                result['NetRedirectRule'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('NetRedirect') is not None:
             self.net_redirect = m.get('NetRedirect')
-        self.net_redirect_rule = []
-        if m.get('NetRedirectRule') is not None:
-            for k in m.get('NetRedirectRule'):
-                temp_model = ModifyPolicyGroupRequestNetRedirectPolicyNetRedirectRule()
-                self.net_redirect_rule.append(temp_model.from_map(k))
         return self
 
 
