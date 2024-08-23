@@ -1,3 +1,22 @@
+2024-08-23 Version: 4.0.0
+- Update API CheckHadoopNetConnection: add param DataSourceId.
+- Update API CheckHadoopNetConnection: update param EmrInstanceId.
+- Update API CheckJDBCSourceNetConnection: add param DataSourceId.
+- Update API CheckJDBCSourceNetConnection: update param JdbcConnectionString.
+- Update API CreateAccount: add param AccountType.
+- Update API DescribeAccounts: add param AccountType.
+- Update API DescribeAccounts: update response param.
+- Update API DescribeDBInstanceDataBloat: add param Database.
+- Update API DescribeDBInstanceDataBloat: add param OrderBy.
+- Update API DescribeDBInstanceDataSkew: add param Database.
+- Update API DescribeDBInstanceDataSkew: add param OrderBy.
+- Update API DescribeDBInstanceIndexUsage: add param Database.
+- Update API DescribeDBInstanceIndexUsage: add param OrderBy.
+- Update API DescribeDBInstanceIndexUsage: update response param.
+- Update API DescribeHadoopDataSource: update response param.
+- Update API DescribeJDBCDataSource: update response param.
+
+
 2024-08-04 Version: 3.9.1
 - Update API CancelUpsertCollectionDataJob: add param WorkspaceId.
 - Update API CancelUpsertCollectionDataJob: update param DBInstanceId.

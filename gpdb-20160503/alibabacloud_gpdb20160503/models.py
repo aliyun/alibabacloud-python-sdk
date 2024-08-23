@@ -1076,6 +1076,7 @@ class CheckHadoopNetConnectionRequest(TeaModel):
     def __init__(
         self,
         dbinstance_id: str = None,
+        data_source_id: str = None,
         emr_instance_id: str = None,
         region_id: str = None,
     ):
@@ -1083,9 +1084,8 @@ class CheckHadoopNetConnectionRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        self.data_source_id = data_source_id
         # The E-MapReduce (EMR) Hadoop cluster ID.
-        # 
-        # This parameter is required.
         self.emr_instance_id = emr_instance_id
         self.region_id = region_id
 
@@ -1100,6 +1100,8 @@ class CheckHadoopNetConnectionRequest(TeaModel):
         result = dict()
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.data_source_id is not None:
+            result['DataSourceId'] = self.data_source_id
         if self.emr_instance_id is not None:
             result['EmrInstanceId'] = self.emr_instance_id
         if self.region_id is not None:
@@ -1110,6 +1112,8 @@ class CheckHadoopNetConnectionRequest(TeaModel):
         m = m or dict()
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DataSourceId') is not None:
+            self.data_source_id = m.get('DataSourceId')
         if m.get('EmrInstanceId') is not None:
             self.emr_instance_id = m.get('EmrInstanceId')
         if m.get('RegionId') is not None:
@@ -1204,6 +1208,7 @@ class CheckJDBCSourceNetConnectionRequest(TeaModel):
     def __init__(
         self,
         dbinstance_id: str = None,
+        data_source_id: str = None,
         jdbc_connection_string: str = None,
         region_id: str = None,
     ):
@@ -1211,10 +1216,10 @@ class CheckJDBCSourceNetConnectionRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        self.data_source_id = data_source_id
         # The JDBC connection string.
-        # 
-        # This parameter is required.
         self.jdbc_connection_string = jdbc_connection_string
+        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):
@@ -1228,6 +1233,8 @@ class CheckJDBCSourceNetConnectionRequest(TeaModel):
         result = dict()
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.data_source_id is not None:
+            result['DataSourceId'] = self.data_source_id
         if self.jdbc_connection_string is not None:
             result['JdbcConnectionString'] = self.jdbc_connection_string
         if self.region_id is not None:
@@ -1238,6 +1245,8 @@ class CheckJDBCSourceNetConnectionRequest(TeaModel):
         m = m or dict()
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DataSourceId') is not None:
+            self.data_source_id = m.get('DataSourceId')
         if m.get('JdbcConnectionString') is not None:
             self.jdbc_connection_string = m.get('JdbcConnectionString')
         if m.get('RegionId') is not None:
@@ -1448,6 +1457,7 @@ class CreateAccountRequest(TeaModel):
         account_description: str = None,
         account_name: str = None,
         account_password: str = None,
+        account_type: str = None,
         dbinstance_id: str = None,
         database_name: str = None,
         owner_id: int = None,
@@ -1472,6 +1482,7 @@ class CreateAccountRequest(TeaModel):
         # 
         # This parameter is required.
         self.account_password = account_password
+        self.account_type = account_type
         # The ID of the instance.
         # 
         # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
@@ -1499,6 +1510,8 @@ class CreateAccountRequest(TeaModel):
             result['AccountName'] = self.account_name
         if self.account_password is not None:
             result['AccountPassword'] = self.account_password
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
         if self.database_name is not None:
@@ -1517,6 +1530,8 @@ class CreateAccountRequest(TeaModel):
             self.account_name = m.get('AccountName')
         if m.get('AccountPassword') is not None:
             self.account_password = m.get('AccountPassword')
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('DatabaseName') is not None:
@@ -1623,6 +1638,9 @@ class CreateCollectionRequest(TeaModel):
         # 
         # This parameter is required.
         self.collection = collection
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
         self.dbinstance_id = dbinstance_id
         # The number of vector dimensions.
         # 
@@ -6745,7 +6763,7 @@ class DeleteNamespaceRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
         # The name of the manager account that has the rds_superuser permission.
         # 
@@ -7596,10 +7614,12 @@ class DescribeAccountsRequest(TeaModel):
     def __init__(
         self,
         account_name: str = None,
+        account_type: str = None,
         dbinstance_id: str = None,
     ):
         # The name of the database account.
         self.account_name = account_name
+        self.account_type = account_type
         # The instance ID.
         # 
         # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
@@ -7618,6 +7638,8 @@ class DescribeAccountsRequest(TeaModel):
         result = dict()
         if self.account_name is not None:
             result['AccountName'] = self.account_name
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
         return result
@@ -7626,6 +7648,8 @@ class DescribeAccountsRequest(TeaModel):
         m = m or dict()
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
         return self
@@ -7637,6 +7661,7 @@ class DescribeAccountsResponseBodyAccountsDBInstanceAccount(TeaModel):
         account_description: str = None,
         account_name: str = None,
         account_status: str = None,
+        account_type: str = None,
         dbinstance_id: str = None,
     ):
         # The description of the account.
@@ -7649,6 +7674,7 @@ class DescribeAccountsResponseBodyAccountsDBInstanceAccount(TeaModel):
         # *   **1**: The account is in use.
         # *   **3**: The account is being deleted.
         self.account_status = account_status
+        self.account_type = account_type
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
 
@@ -7667,6 +7693,8 @@ class DescribeAccountsResponseBodyAccountsDBInstanceAccount(TeaModel):
             result['AccountName'] = self.account_name
         if self.account_status is not None:
             result['AccountStatus'] = self.account_status
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
         return result
@@ -7679,6 +7707,8 @@ class DescribeAccountsResponseBodyAccountsDBInstanceAccount(TeaModel):
             self.account_name = m.get('AccountName')
         if m.get('AccountStatus') is not None:
             self.account_status = m.get('AccountStatus')
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
         return self
@@ -8651,7 +8681,7 @@ class DescribeCollectionRequest(TeaModel):
         self.collection = collection
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
         # The name of the namespace.
         # 
@@ -10142,6 +10172,8 @@ class DescribeDBInstanceDataBloatRequest(TeaModel):
     def __init__(
         self,
         dbinstance_id: str = None,
+        database: str = None,
+        order_by: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
@@ -10151,6 +10183,8 @@ class DescribeDBInstanceDataBloatRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        self.database = database
+        self.order_by = order_by
         # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
         # The number of entries to return on each page. Valid values:
@@ -10173,6 +10207,10 @@ class DescribeDBInstanceDataBloatRequest(TeaModel):
         result = dict()
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.database is not None:
+            result['Database'] = self.database
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -10183,6 +10221,10 @@ class DescribeDBInstanceDataBloatRequest(TeaModel):
         m = m or dict()
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Database') is not None:
+            self.database = m.get('Database')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -10405,6 +10447,8 @@ class DescribeDBInstanceDataSkewRequest(TeaModel):
     def __init__(
         self,
         dbinstance_id: str = None,
+        database: str = None,
+        order_by: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
@@ -10414,6 +10458,8 @@ class DescribeDBInstanceDataSkewRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        self.database = database
+        self.order_by = order_by
         # The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Valid values:
@@ -10436,6 +10482,10 @@ class DescribeDBInstanceDataSkewRequest(TeaModel):
         result = dict()
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.database is not None:
+            result['Database'] = self.database
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -10446,6 +10496,10 @@ class DescribeDBInstanceDataSkewRequest(TeaModel):
         m = m or dict()
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Database') is not None:
+            self.database = m.get('Database')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -11560,6 +11614,8 @@ class DescribeDBInstanceIndexUsageRequest(TeaModel):
     def __init__(
         self,
         dbinstance_id: str = None,
+        database: str = None,
+        order_by: str = None,
         page_number: int = None,
         page_size: int = None,
     ):
@@ -11569,6 +11625,8 @@ class DescribeDBInstanceIndexUsageRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        self.database = database
+        self.order_by = order_by
         # The page number. Pages start from page 1. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Valid values:
@@ -11591,6 +11649,10 @@ class DescribeDBInstanceIndexUsageRequest(TeaModel):
         result = dict()
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.database is not None:
+            result['Database'] = self.database
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -11601,6 +11663,10 @@ class DescribeDBInstanceIndexUsageRequest(TeaModel):
         m = m or dict()
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Database') is not None:
+            self.database = m.get('Database')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -11710,7 +11776,7 @@ class DescribeDBInstanceIndexUsageResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The time when the table was last deleted, inserted, or updated.
+        # The queried index usage.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -17311,12 +17377,14 @@ class DescribeHadoopDataSourceResponseBody(TeaModel):
         data_source_status: str = None,
         data_source_type: str = None,
         emr_instance_id: str = None,
+        external_data_service_id: str = None,
         hdfsconf: str = None,
         hadoop_core_conf: str = None,
         hadoop_create_type: str = None,
         hadoop_hosts_address: str = None,
         hive_conf: str = None,
         map_reduce_conf: str = None,
+        modify_time: str = None,
         request_id: str = None,
         status_message: str = None,
         yarn_conf: str = None,
@@ -17340,6 +17408,7 @@ class DescribeHadoopDataSourceResponseBody(TeaModel):
         self.data_source_type = data_source_type
         # The E-MapReduce (EMR) Hadoop cluster ID.
         self.emr_instance_id = emr_instance_id
+        self.external_data_service_id = external_data_service_id
         # The content of the Hadoop hdfs-site.xml file.
         self.hdfsconf = hdfsconf
         # The content of the Hadoop core-site.xml file.
@@ -17356,6 +17425,7 @@ class DescribeHadoopDataSourceResponseBody(TeaModel):
         self.hive_conf = hive_conf
         # The content of the Hadoop MapReduceConf file.
         self.map_reduce_conf = map_reduce_conf
+        self.modify_time = modify_time
         # The request ID.
         self.request_id = request_id
         # The information about the service status. For example, if the service is in the exception state, the cause of the exception is displayed. If the service is in the running state, this parameter is left empty.
@@ -17388,6 +17458,8 @@ class DescribeHadoopDataSourceResponseBody(TeaModel):
             result['DataSourceType'] = self.data_source_type
         if self.emr_instance_id is not None:
             result['EmrInstanceId'] = self.emr_instance_id
+        if self.external_data_service_id is not None:
+            result['ExternalDataServiceId'] = self.external_data_service_id
         if self.hdfsconf is not None:
             result['HDFSConf'] = self.hdfsconf
         if self.hadoop_core_conf is not None:
@@ -17400,6 +17472,8 @@ class DescribeHadoopDataSourceResponseBody(TeaModel):
             result['HiveConf'] = self.hive_conf
         if self.map_reduce_conf is not None:
             result['MapReduceConf'] = self.map_reduce_conf
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.status_message is not None:
@@ -17426,6 +17500,8 @@ class DescribeHadoopDataSourceResponseBody(TeaModel):
             self.data_source_type = m.get('DataSourceType')
         if m.get('EmrInstanceId') is not None:
             self.emr_instance_id = m.get('EmrInstanceId')
+        if m.get('ExternalDataServiceId') is not None:
+            self.external_data_service_id = m.get('ExternalDataServiceId')
         if m.get('HDFSConf') is not None:
             self.hdfsconf = m.get('HDFSConf')
         if m.get('HadoopCoreConf') is not None:
@@ -17438,6 +17514,8 @@ class DescribeHadoopDataSourceResponseBody(TeaModel):
             self.hive_conf = m.get('HiveConf')
         if m.get('MapReduceConf') is not None:
             self.map_reduce_conf = m.get('MapReduceConf')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('StatusMessage') is not None:
@@ -18598,9 +18676,11 @@ class DescribeJDBCDataSourceResponseBody(TeaModel):
         data_source_name: str = None,
         data_source_status: str = None,
         data_source_type: str = None,
+        external_data_service_id: str = None,
         jdbcconnection_string: str = None,
         jdbcpassword: str = None,
         jdbcuser_name: str = None,
+        modify_time: str = None,
         request_id: str = None,
         status_message: str = None,
     ):
@@ -18617,12 +18697,14 @@ class DescribeJDBCDataSourceResponseBody(TeaModel):
         self.data_source_status = data_source_status
         # The type of the data source.
         self.data_source_type = data_source_type
+        self.external_data_service_id = external_data_service_id
         # The JDBC connection string.
         self.jdbcconnection_string = jdbcconnection_string
         # The password of the database account.
         self.jdbcpassword = jdbcpassword
         # The name of the database account.
         self.jdbcuser_name = jdbcuser_name
+        self.modify_time = modify_time
         self.request_id = request_id
         self.status_message = status_message
 
@@ -18647,12 +18729,16 @@ class DescribeJDBCDataSourceResponseBody(TeaModel):
             result['DataSourceStatus'] = self.data_source_status
         if self.data_source_type is not None:
             result['DataSourceType'] = self.data_source_type
+        if self.external_data_service_id is not None:
+            result['ExternalDataServiceId'] = self.external_data_service_id
         if self.jdbcconnection_string is not None:
             result['JDBCConnectionString'] = self.jdbcconnection_string
         if self.jdbcpassword is not None:
             result['JDBCPassword'] = self.jdbcpassword
         if self.jdbcuser_name is not None:
             result['JDBCUserName'] = self.jdbcuser_name
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.status_message is not None:
@@ -18673,12 +18759,16 @@ class DescribeJDBCDataSourceResponseBody(TeaModel):
             self.data_source_status = m.get('DataSourceStatus')
         if m.get('DataSourceType') is not None:
             self.data_source_type = m.get('DataSourceType')
+        if m.get('ExternalDataServiceId') is not None:
+            self.external_data_service_id = m.get('ExternalDataServiceId')
         if m.get('JDBCConnectionString') is not None:
             self.jdbcconnection_string = m.get('JDBCConnectionString')
         if m.get('JDBCPassword') is not None:
             self.jdbcpassword = m.get('JDBCPassword')
         if m.get('JDBCUserName') is not None:
             self.jdbcuser_name = m.get('JDBCUserName')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('StatusMessage') is not None:
@@ -19171,7 +19261,7 @@ class DescribeNamespaceRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
         # The name of the manager account that has the rds_superuser permission.
         # 
@@ -24404,7 +24494,7 @@ class ExecuteStatementRequest(TeaModel):
         self.sql = sql
         # The SQL statements.
         self.sqls = sqls
-        # The name of the set of SQL statements that you want to execute.
+        # The name of the set of SQL statements that you want to execute. This parameter takes effect when the RunType parameter is set to asynchronous.
         self.statement_name = statement_name
 
     def validate(self):
@@ -24509,7 +24599,7 @@ class ExecuteStatementShrinkRequest(TeaModel):
         self.sql = sql
         # The SQL statements.
         self.sqls_shrink = sqls_shrink
-        # The name of the set of SQL statements that you want to execute.
+        # The name of the set of SQL statements that you want to execute. This parameter takes effect when the RunType parameter is set to asynchronous.
         self.statement_name = statement_name
 
     def validate(self):
@@ -26067,7 +26157,7 @@ class InitVectorDatabaseRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
         # The name of the manager account that has the rds_superuser permission.
         # 
@@ -26226,7 +26316,7 @@ class ListCollectionsRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
         # The name of the namespace.
         self.namespace = namespace
@@ -33347,7 +33437,15 @@ class QueryCollectionDataRequest(TeaModel):
         # 
         # >  You must specify at least one of the Content and Vector parameters.
         self.content = content
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
+        # The filter condition that is used to query data. Specify the parameter in the WHERE clause format. The parameter is an expression that returns a Boolean value of TRUE or FALSE. The parameter can contain comparison operators, such as Equal To (=), Not Equal To (<> or !=), Greater Than (>), Less Than (<), Greater Than or Equal To (>=), and Less Than or Equal To (<=), logical operators, such as AND, OR, and NOT, and keywords, such as IN, BETWEEN, and LIKE.
+        # 
+        # > 
+        # 
+        # *   For more information, see https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/.
         self.filter = filter
         # The two-way retrieval algorithm. This parameter is empty by default, which specifies that scores of vector search and full-text search are directly compared and sorted without additional weighting or adjustments.
         # 
@@ -33549,7 +33647,15 @@ class QueryCollectionDataShrinkRequest(TeaModel):
         # 
         # >  You must specify at least one of the Content and Vector parameters.
         self.content = content
+        # The instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
+        # The filter condition that is used to query data. Specify the parameter in the WHERE clause format. The parameter is an expression that returns a Boolean value of TRUE or FALSE. The parameter can contain comparison operators, such as Equal To (=), Not Equal To (<> or !=), Greater Than (>), Less Than (<), Greater Than or Equal To (>=), and Less Than or Equal To (<=), logical operators, such as AND, OR, and NOT, and keywords, such as IN, BETWEEN, and LIKE.
+        # 
+        # > 
+        # 
+        # *   For more information, see https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/.
         self.filter = filter
         # The two-way retrieval algorithm. This parameter is empty by default, which specifies that scores of vector search and full-text search are directly compared and sorted without additional weighting or adjustments.
         # 
@@ -33959,6 +34065,11 @@ class QueryContentRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         self.file_name = file_name
         self.file_url = file_url
+        # The filter condition that is used to query data. Specify the parameter in the WHERE clause format. The parameter is an expression that returns a Boolean value of TRUE or FALSE. The parameter can contain comparison operators, such as Equal To (=), Not Equal To (<> or !=), Greater Than (>), Less Than (<), Greater Than or Equal To (>=), and Less Than or Equal To (<=), logical operators, such as AND, OR, and NOT, and keywords, such as IN, BETWEEN, and LIKE.
+        # 
+        # > 
+        # 
+        # *   For more information, see https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/.
         self.filter = filter
         # The two-way retrieval algorithm. This parameter is empty by default, which specifies that scores of vector search and full-text search are directly compared and sorted without additional weighting or adjustments.
         # 
@@ -33990,6 +34101,7 @@ class QueryContentRequest(TeaModel):
         #        }
         #     }
         self.hybrid_search_args = hybrid_search_args
+        # Specifies whether to return the URL of the document. Default value: false.
         self.include_file_url = include_file_url
         # The metadata fields to be returned. Separate multiple fields with commas (,). This parameter is empty by default.
         self.include_metadata_fields = include_metadata_fields
@@ -34144,6 +34256,11 @@ class QueryContentAdvanceRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         self.file_name = file_name
         self.file_url_object = file_url_object
+        # The filter condition that is used to query data. Specify the parameter in the WHERE clause format. The parameter is an expression that returns a Boolean value of TRUE or FALSE. The parameter can contain comparison operators, such as Equal To (=), Not Equal To (<> or !=), Greater Than (>), Less Than (<), Greater Than or Equal To (>=), and Less Than or Equal To (<=), logical operators, such as AND, OR, and NOT, and keywords, such as IN, BETWEEN, and LIKE.
+        # 
+        # > 
+        # 
+        # *   For more information, see https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/.
         self.filter = filter
         # The two-way retrieval algorithm. This parameter is empty by default, which specifies that scores of vector search and full-text search are directly compared and sorted without additional weighting or adjustments.
         # 
@@ -34175,6 +34292,7 @@ class QueryContentAdvanceRequest(TeaModel):
         #        }
         #     }
         self.hybrid_search_args = hybrid_search_args
+        # Specifies whether to return the URL of the document. Default value: false.
         self.include_file_url = include_file_url
         # The metadata fields to be returned. Separate multiple fields with commas (,). This parameter is empty by default.
         self.include_metadata_fields = include_metadata_fields
@@ -34329,6 +34447,11 @@ class QueryContentShrinkRequest(TeaModel):
         self.dbinstance_id = dbinstance_id
         self.file_name = file_name
         self.file_url = file_url
+        # The filter condition that is used to query data. Specify the parameter in the WHERE clause format. The parameter is an expression that returns a Boolean value of TRUE or FALSE. The parameter can contain comparison operators, such as Equal To (=), Not Equal To (<> or !=), Greater Than (>), Less Than (<), Greater Than or Equal To (>=), and Less Than or Equal To (<=), logical operators, such as AND, OR, and NOT, and keywords, such as IN, BETWEEN, and LIKE.
+        # 
+        # > 
+        # 
+        # *   For more information, see https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/.
         self.filter = filter
         # The two-way retrieval algorithm. This parameter is empty by default, which specifies that scores of vector search and full-text search are directly compared and sorted without additional weighting or adjustments.
         # 
@@ -34360,6 +34483,7 @@ class QueryContentShrinkRequest(TeaModel):
         #        }
         #     }
         self.hybrid_search_args_shrink = hybrid_search_args_shrink
+        # Specifies whether to return the URL of the document. Default value: false.
         self.include_file_url = include_file_url
         # The metadata fields to be returned. Separate multiple fields with commas (,). This parameter is empty by default.
         self.include_metadata_fields = include_metadata_fields

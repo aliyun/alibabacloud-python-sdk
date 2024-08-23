@@ -714,6 +714,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
         if not UtilClient.is_unset(request.emr_instance_id):
             query['EmrInstanceId'] = request.emr_instance_id
         if not UtilClient.is_unset(request.region_id):
@@ -753,6 +755,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
         if not UtilClient.is_unset(request.emr_instance_id):
             query['EmrInstanceId'] = request.emr_instance_id
         if not UtilClient.is_unset(request.region_id):
@@ -818,6 +822,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
         if not UtilClient.is_unset(request.jdbc_connection_string):
             query['JdbcConnectionString'] = request.jdbc_connection_string
         if not UtilClient.is_unset(request.region_id):
@@ -857,6 +863,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
         if not UtilClient.is_unset(request.jdbc_connection_string):
             query['JdbcConnectionString'] = request.jdbc_connection_string
         if not UtilClient.is_unset(request.region_id):
@@ -1027,6 +1035,8 @@ class Client(OpenApiClient):
             query['AccountName'] = request.account_name
         if not UtilClient.is_unset(request.account_password):
             query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.account_type):
+            query['AccountType'] = request.account_type
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.database_name):
@@ -1079,6 +1089,8 @@ class Client(OpenApiClient):
             query['AccountName'] = request.account_name
         if not UtilClient.is_unset(request.account_password):
             query['AccountPassword'] = request.account_password
+        if not UtilClient.is_unset(request.account_type):
+            query['AccountType'] = request.account_type
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.database_name):
@@ -5434,6 +5446,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_name):
             query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_type):
+            query['AccountType'] = request.account_type
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
@@ -5475,6 +5489,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_name):
             query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_type):
+            query['AccountType'] = request.account_type
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         req = open_api_models.OpenApiRequest(
@@ -6394,6 +6410,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -6437,6 +6457,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -6514,6 +6538,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -6557,6 +6585,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -7025,6 +7057,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -7067,6 +7103,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
