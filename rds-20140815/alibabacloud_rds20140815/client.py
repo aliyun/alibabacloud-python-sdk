@@ -46712,6 +46712,8 @@ class Client(OpenApiClient):
             query['SwitchTimeMode'] = request.switch_time_mode
         if not UtilClient.is_unset(request.target_major_version):
             query['TargetMajorVersion'] = request.target_major_version
+        if not UtilClient.is_unset(request.upgrade_mode):
+            query['UpgradeMode'] = request.upgrade_mode
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.vpcid):
@@ -46791,6 +46793,8 @@ class Client(OpenApiClient):
             query['SwitchTimeMode'] = request.switch_time_mode
         if not UtilClient.is_unset(request.target_major_version):
             query['TargetMajorVersion'] = request.target_major_version
+        if not UtilClient.is_unset(request.upgrade_mode):
+            query['UpgradeMode'] = request.upgrade_mode
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.vpcid):

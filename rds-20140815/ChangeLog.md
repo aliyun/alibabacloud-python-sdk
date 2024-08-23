@@ -1,3 +1,9 @@
+2024-08-23 Version: 7.1.1
+- Update API RunRCInstances: update param AutoPay.
+- Update API RunRCInstances: update param SecurityGroupId.
+- Update API UpgradeDBInstanceMajorVersion: add param UpgradeMode.
+
+
 2024-08-21 Version: 7.1.0
 - Support API CreateRCDeploymentSet.
 - Support API CreateReplicationLink.

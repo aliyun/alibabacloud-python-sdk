@@ -78451,6 +78451,7 @@ class UpgradeDBInstanceMajorVersionRequest(TeaModel):
         switch_time: str = None,
         switch_time_mode: str = None,
         target_major_version: str = None,
+        upgrade_mode: str = None,
         used_time: str = None,
         vpcid: str = None,
         v_switch_id: str = None,
@@ -78543,6 +78544,7 @@ class UpgradeDBInstanceMajorVersionRequest(TeaModel):
         # 
         # >  You can call the UpgradeDBInstanceMajorVersionPrecheck operation to perform an upgrade check.
         self.target_major_version = target_major_version
+        self.upgrade_mode = upgrade_mode
         # A reserved parameter. You do not need to specify this parameter.
         self.used_time = used_time
         # The VPC ID. You can call the DescribeDBInstanceAttribute operation to query the VPC ID.
@@ -78602,6 +78604,8 @@ class UpgradeDBInstanceMajorVersionRequest(TeaModel):
             result['SwitchTimeMode'] = self.switch_time_mode
         if self.target_major_version is not None:
             result['TargetMajorVersion'] = self.target_major_version
+        if self.upgrade_mode is not None:
+            result['UpgradeMode'] = self.upgrade_mode
         if self.used_time is not None:
             result['UsedTime'] = self.used_time
         if self.vpcid is not None:
@@ -78646,6 +78650,8 @@ class UpgradeDBInstanceMajorVersionRequest(TeaModel):
             self.switch_time_mode = m.get('SwitchTimeMode')
         if m.get('TargetMajorVersion') is not None:
             self.target_major_version = m.get('TargetMajorVersion')
+        if m.get('UpgradeMode') is not None:
+            self.upgrade_mode = m.get('UpgradeMode')
         if m.get('UsedTime') is not None:
             self.used_time = m.get('UsedTime')
         if m.get('VPCId') is not None:
