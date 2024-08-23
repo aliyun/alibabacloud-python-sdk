@@ -1,3 +1,7 @@
+2024-08-23 Version: 2.0.0
+- Update API AISearchV2: update response param.
+
+
 2024-08-19 Version: 1.1.1
 - Update API AISearchV2: add param timeRange.
 - Update API AISearchV2: update param query.

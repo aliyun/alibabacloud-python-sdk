@@ -329,7 +329,7 @@ class AISearchV2ResponseBodyHeader(TeaModel):
         self,
         event: str = None,
         event_id: str = None,
-        response_time: str = None,
+        response_time: int = None,
     ):
         self.event = event
         self.event_id = event_id
