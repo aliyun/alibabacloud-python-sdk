@@ -9374,19 +9374,15 @@ class CreateOrUpdateNotificationPolicyRequest(TeaModel):
         # An array of alert event group objects.
         # 
         # *   If you do not specify the groupingFields field, all alerts will be sent to contacts based on `alertname`.
-        # 
         # *   If you specify the groupingFields field, alerts with the same field will be sent to contacts in one notification.
         # 
-        #     Sample statement:
+        # Sample statement:
         # 
-        # ```
-        # 
-        # { 
-        # "groupWait":5,    // The waiting time for grouping. 
-        # "groupInterval":30,     // The time interval of grouping. 
-        # "groupingFields":["alertname"]       // The field that is used to group alert events. 
-        # }
-        # ```
+        #     { 
+        #     "groupWait":5,    // The waiting time for grouping. 
+        #     "groupInterval":30,     // The time interval of grouping. 
+        #     "groupingFields":["alertname"]       // The field that is used to group alert events. 
+        #     }
         self.group_rule = group_rule
         # The ID of the notification policy.
         # 
@@ -9395,22 +9391,19 @@ class CreateOrUpdateNotificationPolicyRequest(TeaModel):
         self.id = id
         # The integration ID of the ticket system to which alerts are pushed.
         self.integration_id = integration_id
-        # The matching rules. Sample statement:
+        # The matching rules. Format:
         # 
-        # ```
-        # 
-        # [
-        #  {
-        #  "matchingConditions": [
-        #  { 
-        #  "value": "test",    // The value of the matching condition. 
-        #  "key": "alertname",     // The key of the matching condition. 
-        #  "operator": "eq"   // The logical operator of the matching condition, including eq (equal to), neq (not equal to), in (contains), nin (does not contain), re (regular expression match), and nre (regular expression mismatch).   
-        #  }
-        #  ]
-        #  } 
-        #  ]
-        # ```
+        #     [
+        #      {
+        #      "matchingConditions": [
+        #      { 
+        #      "value": "test",    // The value of the matching condition. 
+        #      "key": "alertname",     // The key of the matching condition. 
+        #      "operator": "eq"   // The logical operator of the matching condition, including eq (equal to), neq (not equal to), in (contains), nin (does not contain), re (regular expression match), and nre (regular expression mismatch).   
+        #      }
+        #      ]
+        #      } 
+        #      ]
         self.matching_rules = matching_rules
         # The name of the notification policy.
         # 
@@ -9423,14 +9416,9 @@ class CreateOrUpdateNotificationPolicyRequest(TeaModel):
         #      "notifyEndTime":"23:59",       // The end time of the notification window. 
         #      "notifyChannels":["dingTalk", "email", "sms", "tts", "webhook"],       // The notification methods. Valid values: dingTalk, email, sms, tts, and webhook. 
         #      "notifyObjects":[{       // An array of notification objects. 
-        #      "notifyObjectType":"CONTACT",       // The type of the notification object. Valid values: CONTACT (contact), CONTACT_GROUP (contact group), ARMS_CONTACT (ARMS contact), ARMS_CONTACT_GROUP (ARMS contact group), DING_ROBOT_GROUP (DingTalk, Lark, WeCom, or IM chatbot), and CONTACT_SCHEDULE (user on duty defined by a schedule). 
+        #      "notifyObjectType":"CONTACT",       // The type of the notification object. Valid values: CONTACT (contact), CONTACT_GROUP (contact group), ARMS_CONTACT (ARMS contact), ARMS_CONTACT_GROUP (ARMS contact group), DING_ROBOT_GROUP (DingTalk, Lark, WeCom, or IM robot), and CONTACT_SCHEDULE (user on duty defined by a schedule). 
         #      "notifyObjectId":123,       // The ID of the notification object. 
         #      "notifyObjectName":"test"       // The name of the notification object. 
-        #      "notifyChannels": [ // The notification methods specified for a contact. Valid values: email, sms, and tts.
-        #                     "email",		
-        #                     "sms",
-        #                     "tts"
-        #                 ],
         #      }]
         # 
         # This parameter is required.
@@ -9446,7 +9434,7 @@ class CreateOrUpdateNotificationPolicyRequest(TeaModel):
         self.repeat = repeat
         # The time interval at which a notification is resent for a long-lasting unresolved alert. Unit: seconds.
         self.repeat_interval = repeat_interval
-        # Indicates whether the system sends a notification to the contacts when the status of an alert changes to Resolved. Default value: true. Valid values:
+        # Specifies whether the status of an alert automatically changes to Resolved when all events related to the alert change to the Restored state. ARMS notifies contacts when the alert status changes to Resolved.
         # 
         # *   `true`: The system sends a notification.
         # *   `false`: The system does not send a notification.
@@ -9537,7 +9525,10 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyGroupRule(Te
         self.group_interval = group_interval
         # The waiting time for grouping. Unit: seconds. Default value: 5.
         self.group_wait = group_wait
-        # The field that is used for grouping.
+        # An array of alert event group objects.
+        # 
+        # *   If you do not specify the groupingFields field, all alerts will be sent to contacts based on `alertname`.
+        # *   If you specify the groupingFields field, alerts with the same field will be sent to contacts in one notification.
         self.grouping_fields = grouping_fields
 
     def validate(self):
@@ -9663,17 +9654,17 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRuleNo
     ):
         # The notification methods specified for a contact.
         self.notify_channels = notify_channels
-        # The ID of the notification contact.
+        # The ID of the notification object.
         self.notify_object_id = notify_object_id
         # The name of the notification object.
         self.notify_object_name = notify_object_name
         # The type of the notification object. Valid values:
         # 
-        # *   CONTACT: individual contact
+        # *   CONTACT: contact
         # *   CONTACT_GROUP: contact group
-        # *   ARMS_CONTACT: individual ARMS contact
+        # *   ARMS_CONTACT: ARMS contact
         # *   ARMS_CONTACT_GROUP: ARMS contact group
-        # *   DING_ROBOT_GROUP: DingTalk, Lark, or WeCom IM chatbot
+        # *   DING_ROBOT_GROUP: DingTalk, Lark, WeCom, or IM robot
         # *   CONTACT_SCHEDULE: user on duty defined by a schedule
         self.notify_object_type = notify_object_type
 
@@ -9717,17 +9708,11 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRule(T
         notify_objects: List[CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicyNotifyRuleNotifyObjects] = None,
         notify_start_time: str = None,
     ):
-        # The notification methods. Valid values: 
-        # 
-        # - `dingTalk`: DingTalk
-        # - `email`: email
-        # - `sms`: text message
-        # - `tts`: phone call
-        # - `webhook`: webhook
+        # The notification method.
         self.notify_channels = notify_channels
         # The end time of the notification window.
         self.notify_end_time = notify_end_time
-        # An array of notification contact objects.
+        # An array of notification objects.
         self.notify_objects = notify_objects
         # The start time of the notification window.
         self.notify_start_time = notify_start_time
@@ -9883,25 +9868,25 @@ class CreateOrUpdateNotificationPolicyResponseBodyNotificationPolicy(TeaModel):
         self.id = id
         # The integration ID of the ticket system to which alerts are pushed.
         self.integration_id = integration_id
-        # An array of alert event matching rule objects.
+        # The matching rules.
         self.matching_rules = matching_rules
         # The name of the notification policy.
         self.name = name
         # An array of notification rule objects.
         self.notify_rule = notify_rule
-        # An array of notification template objects.
+        # The notification template.
         self.notify_template = notify_template
-        # Indicates whether a notification is resent for a long-lasting unresolved alert. Default value: true. Valid values:  
+        # Indicates whether a notification is resent for a long-lasting unresolved alert. Default value: true. Valid values:
         # 
-        # - `true`: The system resends a notification for a long-lasting unresolved alert at a specified time interval.
-        # - `false`: The system sends a notification for a long-lasting unresolved alert based on an escalation policy.
+        # *   `true`: The system resends a notification for a long-lasting unresolved alert at a specified time interval.
+        # *   `false`: The system sends a notification for a long-lasting unresolved alert based on an escalation policy.
         self.repeat = repeat
         # The time interval at which a notification is resent for a long-lasting unresolved alert. Unit: seconds.
         self.repeat_interval = repeat_interval
-        # Indicates whether the system sends a notification to the contacts when the status of an alert changes to Resolved. Default value: true. Valid values:   
+        # Indicates whether the status of an alert automatically changes to Resolved when all events related to the alert change to the Restored state. ARMS notifies contacts when the alert status changes to Resolved.
         # 
-        # - `true`: The system sends a notification.
-        # - `false`: The system does not send a notification.
+        # *   `true`: The system sends a notification.
+        # *   `false`: The system does not send a notification.
         self.send_recover_message = send_recover_message
         # Indicates whether the notification policy is enabled. Valid values: enable and disable.
         self.state = state
@@ -20095,16 +20080,16 @@ class DeleteSourceMapRequest(TeaModel):
         pid: str = None,
         region_id: str = None,
     ):
-        # The ID of the SourceMap file.
+        # The IDs of the SourceMap files.
         # 
         # This parameter is required.
         self.fid_list = fid_list
-        # The process ID (PID) of the application.
-        # 
-        # Log on to the ARMS console. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the **Browser Monitoring** page, click the name of an application. The URL in the browser address bar contains the PID of this application in the format of `pid=xxx`. As the browser is encoded, the PID needs to be modified. Assume that the PID contained is `xxx%4074xxx`. You need to **replace** \\*\\*%40 with @\\*\\* and change the PID to `xxx@74xxx`.
+        # The process identifier (PID) of the application.
         # 
         # This parameter is required.
         self.pid = pid
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -20143,16 +20128,16 @@ class DeleteSourceMapShrinkRequest(TeaModel):
         pid: str = None,
         region_id: str = None,
     ):
-        # The ID of the SourceMap file.
+        # The IDs of the SourceMap files.
         # 
         # This parameter is required.
         self.fid_list_shrink = fid_list_shrink
-        # The process ID (PID) of the application.
-        # 
-        # Log on to the ARMS console. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the **Browser Monitoring** page, click the name of an application. The URL in the browser address bar contains the PID of this application in the format of `pid=xxx`. As the browser is encoded, the PID needs to be modified. Assume that the PID contained is `xxx%4074xxx`. You need to **replace** \\*\\*%40 with @\\*\\* and change the PID to `xxx@74xxx`.
+        # The process identifier (PID) of the application.
         # 
         # This parameter is required.
         self.pid = pid
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
@@ -20190,7 +20175,12 @@ class DeleteSourceMapResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the SourceMap files are deleted. Valid values:
+        # 
+        # *   success: The SourceMap files are deleted.
+        # *   false: The SourceMap files fail to be deleted.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -25018,8 +25008,71 @@ class DoInsightsActionRequest(TeaModel):
         data: str = None,
         module: str = None,
     ):
+        # The query parameters. Different module types correspond to different query parameters.
+        # 
+        # *   QueryTopo
+        # 
+        # <!---->
+        # 
+        #     {
+        #         "regionId": string,  # The region ID.
+        #         "startTime": string, # The beginning of the time range to query, in the yyyy-MM-dd HH:mm:ss format.
+        #         "endTime": string, # The end of the time range to query, in the yyyy-MM-dd HH:mm:ss format.
+        #         "edgeFilter": { # The edge filter condition.
+        #             "includeTypes": [EdgeType], # The edge types to be included.
+        #             "excludeTypes": [EdgeType], # The edge types to be excluded.
+        #             "fromNodeFilter": { # The source node filter condition.
+        #                 "includeEntityTypes": [EntityType] # The entity types to be included.
+        #                 "excludeEntityTypes": [EntityType] # The entity types to be excluded.
+        #             },
+        #             "toNodeFilter": {  # The destination node filter condition.
+        #                 "includeEntityTypes": [EntityType] # The entity types to be included.
+        #                 "excludeEntityTypes": [EntityType] # The entity types to be excluded.
+        #             }
+        #         },
+        #         "includeIsolatedNodes": bool, # Specifies whether to include isolated nodes.
+        #         "isolatedNodeFilter": { # The isolated node filter condition.
+        #             "includeEntityTypes": [EntityType] # The entity types to be included.
+        #             "excludeEntityTypes": [EntityType] # The entity types to be excluded.
+        #          },
+        #         "queryMetrics": boolean, # Specifies whether to query related red metrics during the metric query.
+        #         "timeoutSecs": int, # The timeout duration for querying metrics.
+        #     	"redOption": { # A metric query option.
+        #     		"skipRt": boolean,  # Specifies whether to skip querying the response time.
+        #     		"skipCount": boolean, # Specifies whether to skip querying the number of requests.
+        #     		"skipError": boolean # Specifies whether to skip querying the number of errors.
+        #     	}
+        #     }
+        # 
+        # *   QueryTopoRed
+        # 
+        # <!---->
+        # 
+        #     {
+        #         "regionId": string,  # The region ID.
+        #         "startTime": string, # The beginning of the time range to query, in the yyyy-MM-dd HH:mm:ss format.
+        #         "endTime": string,   # The end of the time range to query, in the yyyy-MM-dd HH:mm:ss format.
+        #         "edgeIds": [string]  # The IDs of the edges to query.
+        #         "nodeIds": [string]  # The IDs of the nodes to query.
+        #         "redOption": { # A metric query option.
+        #             "skipRt": boolean,  # Specifies whether to skip querying the response time.
+        #             "skipCount": boolean, # Specifies whether to skip querying the number of requests.
+        #             "skipError": boolean # Specifies whether to skip querying the number of errors.
+        #         }
+        #     }
+        # 
         # This parameter is required.
         self.data = data
+        # The module type. Valid values:
+        # 
+        # *   QueryTopo: queries the topology.
+        # *   QueryTopoRed: queries the red topology metrics, such as the number of requests, response time, and number of errors.
+        # 
+        # Notice: The preceding features are still in canary release and are disabled by default. If you need to enable these features, submit a ticket in the Application Real-Time Monitoring Service (ARMS) console.
+        # 
+        # *\
+        # *\
+        # 
         # This parameter is required.
         self.module = module
 
@@ -25056,11 +25109,48 @@ class DoInsightsActionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code. 200 means success, other status codes are exceptions.
         self.code = code
+        # The response parameters vary with the value of module.
+        # 
+        # *   QueryTopo
+        # 
+        #         {
+        #          "nodes": [Node] # The collection of nodes. For more information, see the "Node" section of this topic.
+        #          "edges": [Edge] # The collection of edges. For more information, see the "Edge" section of this topic.
+        #         }
+        # 
+        # *   QueryTopoRed
+        # 
+        #         {
+        #           "nodeRed": {
+        #           	"nodeId": {
+        #           		"count": double, # The total number of requests in the specified time range.
+        #           		"error": double, # The total number of errors in the specified time range.
+        #           		"rt": double, # The average response time in the specified time range. Unit: milliseconds.
+        #           	}
+        #           },
+        #           "edgeRed": {
+        #           	"edgeId": {
+        #           	    "count": double, # The total number of requests in the specified time range.
+        #           		"error": double, # The total number of errors in the specified time range.
+        #           		"rt": double, # The average response time in the specified time range. Unit: milliseconds.
+        #           	}
+        #           }
+        # 
+        # }
+        # 
+        # ```
+        # ```
         self.data = data
+        # Information returned when the call fails.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Whether the query is successful:
+        # 
+        # - true
+        # - false
         self.success = success
 
     def validate(self):
@@ -47088,7 +47178,7 @@ class ListNotificationPoliciesRequest(TeaModel):
         # 
         # This parameter is required.
         self.page = page
-        # The ID of the region.
+        # The ID of the region. Default value: **cn-hangzhou**.
         self.region_id = region_id
         # The number of entries to return on each page.
         # 
@@ -47146,14 +47236,14 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesGroupRule(
         group_wait: int = None,
         grouping_fields: List[str] = None,
     ):
-        # The time interval for grouping. Unit: seconds. Default value: 30.
+        # The time interval of grouping. Unit: seconds. Default value: 30.
         self.group_interval = group_interval
         # The waiting time for grouping. Unit: seconds. Default value: 5.
         self.group_wait = group_wait
-        # The fields that are used to group events.
+        # An array of alert event group objects.
         # 
-        # *   If this parameter is not returned, all alert notifications are sent to the alert contacts that belong to the `alertname` group. By default, this parameter is not returned.
-        # *   If this parameter is returned, alerts with the same fields are sent to the alert contacts in one notification.
+        # *   If you do not specify the groupingFields field, all alerts will be sent to contacts based on `alertname`.
+        # *   If you specify the groupingFields field, alerts with the same field will be sent to contacts in one notification.
         self.grouping_fields = grouping_fields
 
     def validate(self):
@@ -47285,10 +47375,10 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRule
         self.notify_object_name = notify_object_name
         # The type of the notification object. Valid values:
         # 
-        # *   CONTACT: an individual contact
-        # *   CONTACT_GROUP: a contact group
-        # *   DING_ROBOT: an instant messaging (IM) chatbot
-        # *   CONTACT_SCHEDULE: a person on duty based on an established schedule
+        # - CONTACT: an individual contact
+        # - CONTACT_GROUP: a contact group
+        # - DING_ROBOT: an instant messaging (IM) chatbot
+        # - CONTACT_SCHEDULE: a person on duty based on an established schedule
         self.notify_object_type = notify_object_type
 
     def validate(self):
@@ -47331,7 +47421,7 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRule
         notify_objects: List[ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyRuleNotifyObjects] = None,
         notify_start_time: str = None,
     ):
-        # The notification methods.
+        # The notification method.
         self.notify_channels = notify_channels
         # The end time of the notification window.
         self.notify_end_time = notify_end_time
@@ -47501,15 +47591,15 @@ class ListNotificationPoliciesResponseBodyPageBeanNotificationPolicies(TeaModel)
         self.notify_template = notify_template
         # Indicates whether the system resends notifications for a long-lasting unresolved alert. Valid values:
         # 
-        # *   `true` (default): The system resends notifications for a long-lasting unresolved alert at a specified time interval.
-        # *   `false`: The system resends notifications for a long-lasting unresolved alert based on an escalation policy.
+        # - `true` (default): The system resends notifications for a long-lasting unresolved alert at a specified time interval.
+        # - `false`: The system resends notifications for a long-lasting unresolved alert based on an escalation policy.
         self.repeat = repeat
-        # The time interval at which notifications are resent for a long-lasting unresolved alert. Unit: seconds.
+        # The time interval at which a notification is resent for a long-lasting unresolved alert. Unit: seconds.
         self.repeat_interval = repeat_interval
         # Indicates whether the status of an alert automatically changes to Resolved when all events related to the alert change to the Restored state. The system sends a notification to the alert contacts when the alert status changes to Resolved.
         # 
-        # *   `true` (default): The system sends a notification.
-        # *   `false`: The system does not send a notification.
+        # - `true` (default): The system sends a notification.
+        # - `false`: The system does not send a notification.
         self.send_recover_message = send_recover_message
         # Indicates whether the notification policy is enabled. Valid values: enable and disable.
         self.state = state
