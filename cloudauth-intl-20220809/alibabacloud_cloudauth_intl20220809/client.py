@@ -2065,6 +2065,10 @@ class Client(OpenApiClient):
             query['SceneCode'] = request.scene_code
         if not UtilClient.is_unset(request.security_level):
             query['SecurityLevel'] = request.security_level
+        if not UtilClient.is_unset(request.show_album_icon):
+            query['ShowAlbumIcon'] = request.show_album_icon
+        if not UtilClient.is_unset(request.show_ocr_result):
+            query['ShowOcrResult'] = request.show_ocr_result
         if not UtilClient.is_unset(request.style_config):
             query['StyleConfig'] = request.style_config
         body = {}
@@ -2150,6 +2154,10 @@ class Client(OpenApiClient):
             query['SceneCode'] = request.scene_code
         if not UtilClient.is_unset(request.security_level):
             query['SecurityLevel'] = request.security_level
+        if not UtilClient.is_unset(request.show_album_icon):
+            query['ShowAlbumIcon'] = request.show_album_icon
+        if not UtilClient.is_unset(request.show_ocr_result):
+            query['ShowOcrResult'] = request.show_ocr_result
         if not UtilClient.is_unset(request.style_config):
             query['StyleConfig'] = request.style_config
         body = {}

@@ -3975,6 +3975,8 @@ class InitializeRequest(TeaModel):
         return_url: str = None,
         scene_code: str = None,
         security_level: str = None,
+        show_album_icon: str = None,
+        show_ocr_result: str = None,
         style_config: str = None,
     ):
         self.authorize = authorize
@@ -4002,6 +4004,8 @@ class InitializeRequest(TeaModel):
         self.return_url = return_url
         self.scene_code = scene_code
         self.security_level = security_level
+        self.show_album_icon = show_album_icon
+        self.show_ocr_result = show_ocr_result
         self.style_config = style_config
 
     def validate(self):
@@ -4061,6 +4065,10 @@ class InitializeRequest(TeaModel):
             result['SceneCode'] = self.scene_code
         if self.security_level is not None:
             result['SecurityLevel'] = self.security_level
+        if self.show_album_icon is not None:
+            result['ShowAlbumIcon'] = self.show_album_icon
+        if self.show_ocr_result is not None:
+            result['ShowOcrResult'] = self.show_ocr_result
         if self.style_config is not None:
             result['StyleConfig'] = self.style_config
         return result
@@ -4115,6 +4123,10 @@ class InitializeRequest(TeaModel):
             self.scene_code = m.get('SceneCode')
         if m.get('SecurityLevel') is not None:
             self.security_level = m.get('SecurityLevel')
+        if m.get('ShowAlbumIcon') is not None:
+            self.show_album_icon = m.get('ShowAlbumIcon')
+        if m.get('ShowOcrResult') is not None:
+            self.show_ocr_result = m.get('ShowOcrResult')
         if m.get('StyleConfig') is not None:
             self.style_config = m.get('StyleConfig')
         return self

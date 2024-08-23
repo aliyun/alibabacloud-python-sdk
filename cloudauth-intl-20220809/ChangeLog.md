@@ -1,3 +1,8 @@
+2024-08-23 Version: 2.0.3
+- Update API Initialize: add param ShowAlbumIcon.
+- Update API Initialize: add param ShowOcrResult.
+
+
 2024-06-28 Version: 2.0.2
 - Update API DocOcr: add param IdThreshold.
 - Update API EkycVerify: add param IdThreshold.
