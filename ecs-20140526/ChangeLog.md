@@ -1,3 +1,8 @@
+2024-08-23 Version: 4.2.0
+- Support API RenewElasticityAssurances.
+- Update API ResizeDisk: update response param.
+
+
 2024-08-21 Version: 4.1.13
 - Update API PurchaseReservedInstancesOffering: add param StartTime.
 
