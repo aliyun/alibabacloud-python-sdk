@@ -12908,6 +12908,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_public_media_basic_infos_with_options_async(request, runtime)
 
+    def list_search_lib_with_options(
+        self,
+        request: ice20201109_models.ListSearchLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListSearchLibResponse:
+        """
+        @summary 获取搜索库列表
+        
+        @param request: ListSearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSearchLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSearchLib',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListSearchLibResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_search_lib_with_options_async(
+        self,
+        request: ice20201109_models.ListSearchLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListSearchLibResponse:
+        """
+        @summary 获取搜索库列表
+        
+        @param request: ListSearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSearchLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSearchLib',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListSearchLibResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_search_lib(
+        self,
+        request: ice20201109_models.ListSearchLibRequest,
+    ) -> ice20201109_models.ListSearchLibResponse:
+        """
+        @summary 获取搜索库列表
+        
+        @param request: ListSearchLibRequest
+        @return: ListSearchLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_search_lib_with_options(request, runtime)
+
+    async def list_search_lib_async(
+        self,
+        request: ice20201109_models.ListSearchLibRequest,
+    ) -> ice20201109_models.ListSearchLibResponse:
+        """
+        @summary 获取搜索库列表
+        
+        @param request: ListSearchLibRequest
+        @return: ListSearchLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_search_lib_with_options_async(request, runtime)
+
     def list_smart_jobs_with_options(
         self,
         request: ice20201109_models.ListSmartJobsRequest,
@@ -14969,6 +15069,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.search_editing_project_with_options_async(request, runtime)
+
+    def search_index_job_rerun_with_options(
+        self,
+        request: ice20201109_models.SearchIndexJobRerunRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SearchIndexJobRerunResponse:
+        """
+        @summary 搜索索引任务重新分析
+        
+        @param request: SearchIndexJobRerunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchIndexJobRerunResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.search_lib_name):
+            query['SearchLibName'] = request.search_lib_name
+        if not UtilClient.is_unset(request.task):
+            query['Task'] = request.task
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchIndexJobRerun',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SearchIndexJobRerunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_index_job_rerun_with_options_async(
+        self,
+        request: ice20201109_models.SearchIndexJobRerunRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SearchIndexJobRerunResponse:
+        """
+        @summary 搜索索引任务重新分析
+        
+        @param request: SearchIndexJobRerunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchIndexJobRerunResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_ids):
+            query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.search_lib_name):
+            query['SearchLibName'] = request.search_lib_name
+        if not UtilClient.is_unset(request.task):
+            query['Task'] = request.task
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchIndexJobRerun',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SearchIndexJobRerunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_index_job_rerun(
+        self,
+        request: ice20201109_models.SearchIndexJobRerunRequest,
+    ) -> ice20201109_models.SearchIndexJobRerunResponse:
+        """
+        @summary 搜索索引任务重新分析
+        
+        @param request: SearchIndexJobRerunRequest
+        @return: SearchIndexJobRerunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.search_index_job_rerun_with_options(request, runtime)
+
+    async def search_index_job_rerun_async(
+        self,
+        request: ice20201109_models.SearchIndexJobRerunRequest,
+    ) -> ice20201109_models.SearchIndexJobRerunResponse:
+        """
+        @summary 搜索索引任务重新分析
+        
+        @param request: SearchIndexJobRerunRequest
+        @return: SearchIndexJobRerunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.search_index_job_rerun_with_options_async(request, runtime)
 
     def search_media_with_options(
         self,

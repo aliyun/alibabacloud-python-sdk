@@ -1,3 +1,9 @@
+2024-08-26 Version: 3.5.0
+- Support API ListSearchLib.
+- Support API SearchIndexJobRerun.
+- Update API SearchMedia: update response param.
+
+
 2024-08-26 Version: 3.4.0
 - Support API SubmitSportsHighlightsJob.
 

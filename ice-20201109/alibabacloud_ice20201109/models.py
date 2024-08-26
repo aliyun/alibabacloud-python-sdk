@@ -31097,6 +31097,166 @@ class ListPublicMediaBasicInfosResponse(TeaModel):
         return self
 
 
+class ListSearchLibRequest(TeaModel):
+    def __init__(
+        self,
+        page_no: int = None,
+        page_size: int = None,
+    ):
+        self.page_no = page_no
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListSearchLibResponseBodySearchLibInfoList(TeaModel):
+    def __init__(
+        self,
+        search_lib_name: str = None,
+        status: str = None,
+    ):
+        self.search_lib_name = search_lib_name
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.search_lib_name is not None:
+            result['SearchLibName'] = self.search_lib_name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SearchLibName') is not None:
+            self.search_lib_name = m.get('SearchLibName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListSearchLibResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        request_id: str = None,
+        search_lib_info_list: List[ListSearchLibResponseBodySearchLibInfoList] = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.request_id = request_id
+        self.search_lib_info_list = search_lib_info_list
+        self.success = success
+
+    def validate(self):
+        if self.search_lib_info_list:
+            for k in self.search_lib_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SearchLibInfoList'] = []
+        if self.search_lib_info_list is not None:
+            for k in self.search_lib_info_list:
+                result['SearchLibInfoList'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.search_lib_info_list = []
+        if m.get('SearchLibInfoList') is not None:
+            for k in m.get('SearchLibInfoList'):
+                temp_model = ListSearchLibResponseBodySearchLibInfoList()
+                self.search_lib_info_list.append(temp_model.from_map(k))
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListSearchLibResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSearchLibResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSearchLibResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListSmartJobsRequest(TeaModel):
     def __init__(
         self,
@@ -37993,6 +38153,161 @@ class SearchEditingProjectResponse(TeaModel):
         return self
 
 
+class SearchIndexJobRerunRequest(TeaModel):
+    def __init__(
+        self,
+        media_ids: str = None,
+        search_lib_name: str = None,
+        task: str = None,
+    ):
+        # This parameter is required.
+        self.media_ids = media_ids
+        self.search_lib_name = search_lib_name
+        self.task = task
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_ids is not None:
+            result['MediaIds'] = self.media_ids
+        if self.search_lib_name is not None:
+            result['SearchLibName'] = self.search_lib_name
+        if self.task is not None:
+            result['Task'] = self.task
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaIds') is not None:
+            self.media_ids = m.get('MediaIds')
+        if m.get('SearchLibName') is not None:
+            self.search_lib_name = m.get('SearchLibName')
+        if m.get('Task') is not None:
+            self.task = m.get('Task')
+        return self
+
+
+class SearchIndexJobRerunResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        media_ids_no_exist: List[str] = None,
+    ):
+        self.media_ids_no_exist = media_ids_no_exist
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_ids_no_exist is not None:
+            result['MediaIdsNoExist'] = self.media_ids_no_exist
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaIdsNoExist') is not None:
+            self.media_ids_no_exist = m.get('MediaIdsNoExist')
+        return self
+
+
+class SearchIndexJobRerunResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SearchIndexJobRerunResponseBodyData = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SearchIndexJobRerunResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SearchIndexJobRerunResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SearchIndexJobRerunResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SearchIndexJobRerunResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SearchMediaRequest(TeaModel):
     def __init__(
         self,
@@ -38660,6 +38975,39 @@ class SearchMediaResponseBodyMediaInfoListFileInfoList(TeaModel):
         return self
 
 
+class SearchMediaResponseBodyMediaInfoListIndexStatusList(TeaModel):
+    def __init__(
+        self,
+        index_status: str = None,
+        index_type: str = None,
+    ):
+        self.index_status = index_status
+        self.index_type = index_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index_status is not None:
+            result['IndexStatus'] = self.index_status
+        if self.index_type is not None:
+            result['IndexType'] = self.index_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IndexStatus') is not None:
+            self.index_status = m.get('IndexStatus')
+        if m.get('IndexType') is not None:
+            self.index_type = m.get('IndexType')
+        return self
+
+
 class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(TeaModel):
     def __init__(
         self,
@@ -38848,6 +39196,7 @@ class SearchMediaResponseBodyMediaInfoList(TeaModel):
         ai_data: SearchMediaResponseBodyMediaInfoListAiData = None,
         ai_rough_data: SearchMediaResponseBodyMediaInfoListAiRoughData = None,
         file_info_list: List[SearchMediaResponseBodyMediaInfoListFileInfoList] = None,
+        index_status_list: List[SearchMediaResponseBodyMediaInfoListIndexStatusList] = None,
         media_basic_info: SearchMediaResponseBodyMediaInfoListMediaBasicInfo = None,
         media_id: str = None,
     ):
@@ -38857,6 +39206,7 @@ class SearchMediaResponseBodyMediaInfoList(TeaModel):
         self.ai_rough_data = ai_rough_data
         # The information about the files.
         self.file_info_list = file_info_list
+        self.index_status_list = index_status_list
         # The basic information about the media asset.
         self.media_basic_info = media_basic_info
         # The ID of the media asset.
@@ -38869,6 +39219,10 @@ class SearchMediaResponseBodyMediaInfoList(TeaModel):
             self.ai_rough_data.validate()
         if self.file_info_list:
             for k in self.file_info_list:
+                if k:
+                    k.validate()
+        if self.index_status_list:
+            for k in self.index_status_list:
                 if k:
                     k.validate()
         if self.media_basic_info:
@@ -38888,6 +39242,10 @@ class SearchMediaResponseBodyMediaInfoList(TeaModel):
         if self.file_info_list is not None:
             for k in self.file_info_list:
                 result['FileInfoList'].append(k.to_map() if k else None)
+        result['IndexStatusList'] = []
+        if self.index_status_list is not None:
+            for k in self.index_status_list:
+                result['IndexStatusList'].append(k.to_map() if k else None)
         if self.media_basic_info is not None:
             result['MediaBasicInfo'] = self.media_basic_info.to_map()
         if self.media_id is not None:
@@ -38907,6 +39265,11 @@ class SearchMediaResponseBodyMediaInfoList(TeaModel):
             for k in m.get('FileInfoList'):
                 temp_model = SearchMediaResponseBodyMediaInfoListFileInfoList()
                 self.file_info_list.append(temp_model.from_map(k))
+        self.index_status_list = []
+        if m.get('IndexStatusList') is not None:
+            for k in m.get('IndexStatusList'):
+                temp_model = SearchMediaResponseBodyMediaInfoListIndexStatusList()
+                self.index_status_list.append(temp_model.from_map(k))
         if m.get('MediaBasicInfo') is not None:
             temp_model = SearchMediaResponseBodyMediaInfoListMediaBasicInfo()
             self.media_basic_info = temp_model.from_map(m['MediaBasicInfo'])
