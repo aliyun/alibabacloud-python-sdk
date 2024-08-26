@@ -6537,6 +6537,8 @@ class Client(OpenApiClient):
             body['get_master_url'] = request.get_master_url
         if not UtilClient.is_unset(request.get_without_url):
             body['get_without_url'] = request.get_without_url
+        if not UtilClient.is_unset(request.re_transcode):
+            body['re_transcode'] = request.re_transcode
         if not UtilClient.is_unset(request.share_id):
             body['share_id'] = request.share_id
         if not UtilClient.is_unset(request.template_id):
@@ -6591,6 +6593,8 @@ class Client(OpenApiClient):
             body['get_master_url'] = request.get_master_url
         if not UtilClient.is_unset(request.get_without_url):
             body['get_without_url'] = request.get_without_url
+        if not UtilClient.is_unset(request.re_transcode):
+            body['re_transcode'] = request.re_transcode
         if not UtilClient.is_unset(request.share_id):
             body['share_id'] = request.share_id
         if not UtilClient.is_unset(request.template_id):
@@ -7031,12 +7035,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.drive_file_ids):
             body['drive_file_ids'] = request.drive_file_ids
-        if not UtilClient.is_unset(request.policy):
-            body['policy'] = request.policy
-        if not UtilClient.is_unset(request.recursive):
-            body['recursive'] = request.recursive
-        if not UtilClient.is_unset(request.user_data):
-            body['user_data'] = request.user_data
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -7075,12 +7073,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.drive_file_ids):
             body['drive_file_ids'] = request.drive_file_ids
-        if not UtilClient.is_unset(request.policy):
-            body['policy'] = request.policy
-        if not UtilClient.is_unset(request.recursive):
-            body['recursive'] = request.recursive
-        if not UtilClient.is_unset(request.user_data):
-            body['user_data'] = request.user_data
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)

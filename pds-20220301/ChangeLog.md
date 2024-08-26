@@ -1,3 +1,9 @@
+2024-08-26 Version: 4.0.0
+- Update API GetVideoPreviewPlayInfo: update param body.
+- Update API GetVideoPreviewPlayInfo: update response param.
+- Update API InvestigateFile: update param body.
+
+
 2024-07-31 Version: 3.0.3
 - Generated python 2022-03-01 for pds.
 

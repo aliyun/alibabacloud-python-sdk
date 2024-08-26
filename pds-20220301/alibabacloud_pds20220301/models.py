@@ -4,6 +4,87 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class AIAssistantSession(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        created_at: int = None,
+        custom_labels: List[str] = None,
+        domain_id: str = None,
+        expired_at: int = None,
+        name: str = None,
+        session_id: str = None,
+        status: str = None,
+        updated_at: int = None,
+        user_id: str = None,
+    ):
+        self.client_id = client_id
+        self.created_at = created_at
+        self.custom_labels = custom_labels
+        self.domain_id = domain_id
+        self.expired_at = expired_at
+        self.name = name
+        self.session_id = session_id
+        self.status = status
+        self.updated_at = updated_at
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_id is not None:
+            result['client_id'] = self.client_id
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.custom_labels is not None:
+            result['custom_labels'] = self.custom_labels
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.expired_at is not None:
+            result['expired_at'] = self.expired_at
+        if self.name is not None:
+            result['name'] = self.name
+        if self.session_id is not None:
+            result['session_id'] = self.session_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('client_id') is not None:
+            self.client_id = m.get('client_id')
+        if m.get('created_at') is not None:
+            self.created_at = m.get('created_at')
+        if m.get('custom_labels') is not None:
+            self.custom_labels = m.get('custom_labels')
+        if m.get('domain_id') is not None:
+            self.domain_id = m.get('domain_id')
+        if m.get('expired_at') is not None:
+            self.expired_at = m.get('expired_at')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('session_id') is not None:
+            self.session_id = m.get('session_id')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('updated_at') is not None:
+            self.updated_at = m.get('updated_at')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        return self
+
+
 class LinkInfo(TeaModel):
     def __init__(
         self,
@@ -5880,11 +5961,14 @@ class KnowledgeFile(TeaModel):
         self,
         creator_id: str = None,
         drive_id: str = None,
+        drive_name: str = None,
         file_category: str = None,
         file_created_at: int = None,
         file_creator_id: str = None,
         file_id: str = None,
         file_image_time: int = None,
+        file_last_modifier_id: str = None,
+        file_last_modifier_type: str = None,
         file_name: str = None,
         file_name_path: str = None,
         file_size: int = None,
@@ -5896,11 +5980,14 @@ class KnowledgeFile(TeaModel):
     ):
         self.creator_id = creator_id
         self.drive_id = drive_id
+        self.drive_name = drive_name
         self.file_category = file_category
         self.file_created_at = file_created_at
         self.file_creator_id = file_creator_id
         self.file_id = file_id
         self.file_image_time = file_image_time
+        self.file_last_modifier_id = file_last_modifier_id
+        self.file_last_modifier_type = file_last_modifier_type
         self.file_name = file_name
         self.file_name_path = file_name_path
         self.file_size = file_size
@@ -5923,6 +6010,8 @@ class KnowledgeFile(TeaModel):
             result['creator_id'] = self.creator_id
         if self.drive_id is not None:
             result['drive_id'] = self.drive_id
+        if self.drive_name is not None:
+            result['drive_name'] = self.drive_name
         if self.file_category is not None:
             result['file_category'] = self.file_category
         if self.file_created_at is not None:
@@ -5933,6 +6022,10 @@ class KnowledgeFile(TeaModel):
             result['file_id'] = self.file_id
         if self.file_image_time is not None:
             result['file_image_time'] = self.file_image_time
+        if self.file_last_modifier_id is not None:
+            result['file_last_modifier_id'] = self.file_last_modifier_id
+        if self.file_last_modifier_type is not None:
+            result['file_last_modifier_type'] = self.file_last_modifier_type
         if self.file_name is not None:
             result['file_name'] = self.file_name
         if self.file_name_path is not None:
@@ -5957,6 +6050,8 @@ class KnowledgeFile(TeaModel):
             self.creator_id = m.get('creator_id')
         if m.get('drive_id') is not None:
             self.drive_id = m.get('drive_id')
+        if m.get('drive_name') is not None:
+            self.drive_name = m.get('drive_name')
         if m.get('file_category') is not None:
             self.file_category = m.get('file_category')
         if m.get('file_created_at') is not None:
@@ -5967,6 +6062,10 @@ class KnowledgeFile(TeaModel):
             self.file_id = m.get('file_id')
         if m.get('file_image_time') is not None:
             self.file_image_time = m.get('file_image_time')
+        if m.get('file_last_modifier_id') is not None:
+            self.file_last_modifier_id = m.get('file_last_modifier_id')
+        if m.get('file_last_modifier_type') is not None:
+            self.file_last_modifier_type = m.get('file_last_modifier_type')
         if m.get('file_name') is not None:
             self.file_name = m.get('file_name')
         if m.get('file_name_path') is not None:
@@ -8052,11 +8151,13 @@ class VideoPreviewPlayInfo(TeaModel):
         self,
         category: str = None,
         live_transcoding_task_list: List[VideoPreviewPlayInfoLiveTranscodingTaskList] = None,
+        master_url: str = None,
         meta: VideoPreviewPlayInfoMeta = None,
         offline_video_transcoding_list: List[VideoPreviewPlayInfoOfflineVideoTranscodingList] = None,
     ):
         self.category = category
         self.live_transcoding_task_list = live_transcoding_task_list
+        self.master_url = master_url
         self.meta = meta
         self.offline_video_transcoding_list = offline_video_transcoding_list
 
@@ -8084,6 +8185,8 @@ class VideoPreviewPlayInfo(TeaModel):
         if self.live_transcoding_task_list is not None:
             for k in self.live_transcoding_task_list:
                 result['live_transcoding_task_list'].append(k.to_map() if k else None)
+        if self.master_url is not None:
+            result['master_url'] = self.master_url
         if self.meta is not None:
             result['meta'] = self.meta.to_map()
         result['offline_video_transcoding_list'] = []
@@ -8101,6 +8204,8 @@ class VideoPreviewPlayInfo(TeaModel):
             for k in m.get('live_transcoding_task_list'):
                 temp_model = VideoPreviewPlayInfoLiveTranscodingTaskList()
                 self.live_transcoding_task_list.append(temp_model.from_map(k))
+        if m.get('master_url') is not None:
+            self.master_url = m.get('master_url')
         if m.get('meta') is not None:
             temp_model = VideoPreviewPlayInfoMeta()
             self.meta = temp_model.from_map(m['meta'])
@@ -15912,6 +16017,7 @@ class GetVideoPreviewPlayInfoRequest(TeaModel):
         file_id: str = None,
         get_master_url: bool = None,
         get_without_url: bool = None,
+        re_transcode: bool = None,
         share_id: str = None,
         template_id: str = None,
         url_expire_sec: int = None,
@@ -15934,6 +16040,7 @@ class GetVideoPreviewPlayInfoRequest(TeaModel):
         self.get_master_url = get_master_url
         # Specifies whether not to query the playback URL. If you set this parameter to true, only transcoding metadata is returned. The video is not transcoded in the TS format, and the playback URL is not returned. If you set this parameter to false, the playback URL is returned. If the video has not been transcoded by using the template specified by template_id, the transcoding process is triggered. You are charged for the value-added service fees generated for transcoding.
         self.get_without_url = get_without_url
+        self.re_transcode = re_transcode
         # The share ID. If you want to manage a file by using a sharing link, carry the `x-share-token` header in the request and specify share_id. In this case, `drive_id` is invalid. Otherwise, use an `AccessKey pair` or `access token` for authentication and specify `drive_id`. You must specify at least either `share_id` or `drive_id`.
         self.share_id = share_id
         # The ID of the definition template. If you leave this parameter empty, all definition templates are available.
@@ -15960,6 +16067,8 @@ class GetVideoPreviewPlayInfoRequest(TeaModel):
             result['get_master_url'] = self.get_master_url
         if self.get_without_url is not None:
             result['get_without_url'] = self.get_without_url
+        if self.re_transcode is not None:
+            result['re_transcode'] = self.re_transcode
         if self.share_id is not None:
             result['share_id'] = self.share_id
         if self.template_id is not None:
@@ -15980,6 +16089,8 @@ class GetVideoPreviewPlayInfoRequest(TeaModel):
             self.get_master_url = m.get('get_master_url')
         if m.get('get_without_url') is not None:
             self.get_without_url = m.get('get_without_url')
+        if m.get('re_transcode') is not None:
+            self.re_transcode = m.get('re_transcode')
         if m.get('share_id') is not None:
             self.share_id = m.get('share_id')
         if m.get('template_id') is not None:
@@ -15992,24 +16103,18 @@ class GetVideoPreviewPlayInfoRequest(TeaModel):
 class GetVideoPreviewPlayInfoResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
         domain_id: str = None,
         drive_id: str = None,
         file_id: str = None,
-        master_url: str = None,
-        message: str = None,
         share_id: str = None,
         video_preview_play_info: VideoPreviewPlayInfo = None,
     ):
-        self.code = code
         # The domain ID.
         self.domain_id = domain_id
         # The drive ID.
         self.drive_id = drive_id
         # The file ID.
         self.file_id = file_id
-        self.master_url = master_url
-        self.message = message
         # The share ID.
         self.share_id = share_id
         # The information about video playback.
@@ -16025,18 +16130,12 @@ class GetVideoPreviewPlayInfoResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['code'] = self.code
         if self.domain_id is not None:
             result['domain_id'] = self.domain_id
         if self.drive_id is not None:
             result['drive_id'] = self.drive_id
         if self.file_id is not None:
             result['file_id'] = self.file_id
-        if self.master_url is not None:
-            result['master_url'] = self.master_url
-        if self.message is not None:
-            result['message'] = self.message
         if self.share_id is not None:
             result['share_id'] = self.share_id
         if self.video_preview_play_info is not None:
@@ -16045,18 +16144,12 @@ class GetVideoPreviewPlayInfoResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('code') is not None:
-            self.code = m.get('code')
         if m.get('domain_id') is not None:
             self.domain_id = m.get('domain_id')
         if m.get('drive_id') is not None:
             self.drive_id = m.get('drive_id')
         if m.get('file_id') is not None:
             self.file_id = m.get('file_id')
-        if m.get('master_url') is not None:
-            self.master_url = m.get('master_url')
-        if m.get('message') is not None:
-            self.message = m.get('message')
         if m.get('share_id') is not None:
             self.share_id = m.get('share_id')
         if m.get('video_preview_play_info') is not None:
@@ -16499,66 +16592,19 @@ class InvestigateFileRequestDriveFileIds(TeaModel):
         return self
 
 
-class InvestigateFileRequestPolicy(TeaModel):
-    def __init__(
-        self,
-        first_product_name: str = None,
-        mtee_code: str = None,
-        provider: str = None,
-    ):
-        self.first_product_name = first_product_name
-        self.mtee_code = mtee_code
-        self.provider = provider
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.first_product_name is not None:
-            result['first_product_name'] = self.first_product_name
-        if self.mtee_code is not None:
-            result['mtee_code'] = self.mtee_code
-        if self.provider is not None:
-            result['provider'] = self.provider
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('first_product_name') is not None:
-            self.first_product_name = m.get('first_product_name')
-        if m.get('mtee_code') is not None:
-            self.mtee_code = m.get('mtee_code')
-        if m.get('provider') is not None:
-            self.provider = m.get('provider')
-        return self
-
-
 class InvestigateFileRequest(TeaModel):
     def __init__(
         self,
         drive_file_ids: List[InvestigateFileRequestDriveFileIds] = None,
-        policy: InvestigateFileRequestPolicy = None,
-        recursive: bool = None,
-        user_data: str = None,
     ):
         # This parameter is required.
         self.drive_file_ids = drive_file_ids
-        self.policy = policy
-        self.recursive = recursive
-        self.user_data = user_data
 
     def validate(self):
         if self.drive_file_ids:
             for k in self.drive_file_ids:
                 if k:
                     k.validate()
-        if self.policy:
-            self.policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -16570,12 +16616,6 @@ class InvestigateFileRequest(TeaModel):
         if self.drive_file_ids is not None:
             for k in self.drive_file_ids:
                 result['drive_file_ids'].append(k.to_map() if k else None)
-        if self.policy is not None:
-            result['policy'] = self.policy.to_map()
-        if self.recursive is not None:
-            result['recursive'] = self.recursive
-        if self.user_data is not None:
-            result['user_data'] = self.user_data
         return result
 
     def from_map(self, m: dict = None):
@@ -16585,13 +16625,6 @@ class InvestigateFileRequest(TeaModel):
             for k in m.get('drive_file_ids'):
                 temp_model = InvestigateFileRequestDriveFileIds()
                 self.drive_file_ids.append(temp_model.from_map(k))
-        if m.get('policy') is not None:
-            temp_model = InvestigateFileRequestPolicy()
-            self.policy = temp_model.from_map(m['policy'])
-        if m.get('recursive') is not None:
-            self.recursive = m.get('recursive')
-        if m.get('user_data') is not None:
-            self.user_data = m.get('user_data')
         return self
 
 
