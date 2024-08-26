@@ -1089,6 +1089,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_filter_document_list_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_history_list_by_biz_type_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetHistoryListByBizTypeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetHistoryListByBizTypeResponse:
+        """
+        @summary 分页查询文档库列表
+        
+        @param request: GetHistoryListByBizTypeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHistoryListByBizTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['bizId'] = request.biz_id
+        if not UtilClient.is_unset(request.biz_type):
+            query['bizType'] = request.biz_type
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetHistoryListByBizType',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/history/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GetHistoryListByBizTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_history_list_by_biz_type_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetHistoryListByBizTypeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetHistoryListByBizTypeResponse:
+        """
+        @summary 分页查询文档库列表
+        
+        @param request: GetHistoryListByBizTypeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHistoryListByBizTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['bizId'] = request.biz_id
+        if not UtilClient.is_unset(request.biz_type):
+            query['bizType'] = request.biz_type
+        if not UtilClient.is_unset(request.page):
+            query['page'] = request.page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetHistoryListByBizType',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/history/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GetHistoryListByBizTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_history_list_by_biz_type(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetHistoryListByBizTypeRequest,
+    ) -> dian_jin_20240628_models.GetHistoryListByBizTypeResponse:
+        """
+        @summary 分页查询文档库列表
+        
+        @param request: GetHistoryListByBizTypeRequest
+        @return: GetHistoryListByBizTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_history_list_by_biz_type_with_options(workspace_id, request, headers, runtime)
+
+    async def get_history_list_by_biz_type_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetHistoryListByBizTypeRequest,
+    ) -> dian_jin_20240628_models.GetHistoryListByBizTypeResponse:
+        """
+        @summary 分页查询文档库列表
+        
+        @param request: GetHistoryListByBizTypeRequest
+        @return: GetHistoryListByBizTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_history_list_by_biz_type_with_options_async(workspace_id, request, headers, runtime)
+
     def get_library_with_options(
         self,
         workspace_id: str,
@@ -2000,6 +2120,182 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.run_chat_result_generation_with_options_async(workspace_id, request, headers, runtime)
+
+    def run_library_chat_generation_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.RunLibraryChatGenerationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.RunLibraryChatGenerationResponse:
+        """
+        @summary 获取生成式对话结果
+        
+        @param request: RunLibraryChatGenerationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunLibraryChatGenerationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id_list):
+            body['docIdList'] = request.doc_id_list
+        if not UtilClient.is_unset(request.enable_follow_up):
+            body['enableFollowUp'] = request.enable_follow_up
+        if not UtilClient.is_unset(request.enable_multi_query):
+            body['enableMultiQuery'] = request.enable_multi_query
+        if not UtilClient.is_unset(request.enable_open_qa):
+            body['enableOpenQa'] = request.enable_open_qa
+        if not UtilClient.is_unset(request.follow_up_llm):
+            body['followUpLlm'] = request.follow_up_llm
+        if not UtilClient.is_unset(request.library_id):
+            body['libraryId'] = request.library_id
+        if not UtilClient.is_unset(request.llm_type):
+            body['llmType'] = request.llm_type
+        if not UtilClient.is_unset(request.multi_query_llm):
+            body['multiQueryLlm'] = request.multi_query_llm
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        if not UtilClient.is_unset(request.query_criteria):
+            body['queryCriteria'] = request.query_criteria
+        if not UtilClient.is_unset(request.rerank_type):
+            body['rerankType'] = request.rerank_type
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.stream):
+            body['stream'] = request.stream
+        if not UtilClient.is_unset(request.sub_query_list):
+            body['subQueryList'] = request.sub_query_list
+        if not UtilClient.is_unset(request.text_search_parameter):
+            body['textSearchParameter'] = request.text_search_parameter
+        if not UtilClient.is_unset(request.top_k):
+            body['topK'] = request.top_k
+        if not UtilClient.is_unset(request.vector_search_parameter):
+            body['vectorSearchParameter'] = request.vector_search_parameter
+        if not UtilClient.is_unset(request.with_document_reference):
+            body['withDocumentReference'] = request.with_document_reference
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunLibraryChatGeneration',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/run/library/chat/generation',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.RunLibraryChatGenerationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_library_chat_generation_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.RunLibraryChatGenerationRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.RunLibraryChatGenerationResponse:
+        """
+        @summary 获取生成式对话结果
+        
+        @param request: RunLibraryChatGenerationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunLibraryChatGenerationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id_list):
+            body['docIdList'] = request.doc_id_list
+        if not UtilClient.is_unset(request.enable_follow_up):
+            body['enableFollowUp'] = request.enable_follow_up
+        if not UtilClient.is_unset(request.enable_multi_query):
+            body['enableMultiQuery'] = request.enable_multi_query
+        if not UtilClient.is_unset(request.enable_open_qa):
+            body['enableOpenQa'] = request.enable_open_qa
+        if not UtilClient.is_unset(request.follow_up_llm):
+            body['followUpLlm'] = request.follow_up_llm
+        if not UtilClient.is_unset(request.library_id):
+            body['libraryId'] = request.library_id
+        if not UtilClient.is_unset(request.llm_type):
+            body['llmType'] = request.llm_type
+        if not UtilClient.is_unset(request.multi_query_llm):
+            body['multiQueryLlm'] = request.multi_query_llm
+        if not UtilClient.is_unset(request.query):
+            body['query'] = request.query
+        if not UtilClient.is_unset(request.query_criteria):
+            body['queryCriteria'] = request.query_criteria
+        if not UtilClient.is_unset(request.rerank_type):
+            body['rerankType'] = request.rerank_type
+        if not UtilClient.is_unset(request.session_id):
+            body['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.stream):
+            body['stream'] = request.stream
+        if not UtilClient.is_unset(request.sub_query_list):
+            body['subQueryList'] = request.sub_query_list
+        if not UtilClient.is_unset(request.text_search_parameter):
+            body['textSearchParameter'] = request.text_search_parameter
+        if not UtilClient.is_unset(request.top_k):
+            body['topK'] = request.top_k
+        if not UtilClient.is_unset(request.vector_search_parameter):
+            body['vectorSearchParameter'] = request.vector_search_parameter
+        if not UtilClient.is_unset(request.with_document_reference):
+            body['withDocumentReference'] = request.with_document_reference
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunLibraryChatGeneration',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/run/library/chat/generation',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.RunLibraryChatGenerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_library_chat_generation(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.RunLibraryChatGenerationRequest,
+    ) -> dian_jin_20240628_models.RunLibraryChatGenerationResponse:
+        """
+        @summary 获取生成式对话结果
+        
+        @param request: RunLibraryChatGenerationRequest
+        @return: RunLibraryChatGenerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.run_library_chat_generation_with_options(workspace_id, request, headers, runtime)
+
+    async def run_library_chat_generation_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.RunLibraryChatGenerationRequest,
+    ) -> dian_jin_20240628_models.RunLibraryChatGenerationResponse:
+        """
+        @summary 获取生成式对话结果
+        
+        @param request: RunLibraryChatGenerationRequest
+        @return: RunLibraryChatGenerationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.run_library_chat_generation_with_options_async(workspace_id, request, headers, runtime)
 
     def update_document_with_options(
         self,

@@ -2426,6 +2426,311 @@ class GetFilterDocumentListResponse(TeaModel):
         return self
 
 
+class GetHistoryListByBizTypeRequest(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        biz_type: str = None,
+        page: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.biz_id = biz_id
+        # This parameter is required.
+        self.biz_type = biz_type
+        self.page = page
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['bizId'] = self.biz_id
+        if self.biz_type is not None:
+            result['bizType'] = self.biz_type
+        if self.page is not None:
+            result['page'] = self.page
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bizId') is not None:
+            self.biz_id = m.get('bizId')
+        if m.get('bizType') is not None:
+            self.biz_type = m.get('bizType')
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        return self
+
+
+class GetHistoryListByBizTypeResponseBodyDataRecords(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        biz_type: str = None,
+        extra_message: Any = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        llm_answer: str = None,
+        llm_prompt: str = None,
+        llm_type: str = None,
+        session_id: str = None,
+        user_query: str = None,
+    ):
+        self.biz_id = biz_id
+        self.biz_type = biz_type
+        self.extra_message = extra_message
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.llm_answer = llm_answer
+        self.llm_prompt = llm_prompt
+        self.llm_type = llm_type
+        self.session_id = session_id
+        self.user_query = user_query
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['bizId'] = self.biz_id
+        if self.biz_type is not None:
+            result['bizType'] = self.biz_type
+        if self.extra_message is not None:
+            result['extraMessage'] = self.extra_message
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        if self.llm_answer is not None:
+            result['llmAnswer'] = self.llm_answer
+        if self.llm_prompt is not None:
+            result['llmPrompt'] = self.llm_prompt
+        if self.llm_type is not None:
+            result['llmType'] = self.llm_type
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.user_query is not None:
+            result['userQuery'] = self.user_query
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bizId') is not None:
+            self.biz_id = m.get('bizId')
+        if m.get('bizType') is not None:
+            self.biz_type = m.get('bizType')
+        if m.get('extraMessage') is not None:
+            self.extra_message = m.get('extraMessage')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('llmAnswer') is not None:
+            self.llm_answer = m.get('llmAnswer')
+        if m.get('llmPrompt') is not None:
+            self.llm_prompt = m.get('llmPrompt')
+        if m.get('llmType') is not None:
+            self.llm_type = m.get('llmType')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('userQuery') is not None:
+            self.user_query = m.get('userQuery')
+        return self
+
+
+class GetHistoryListByBizTypeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        page_size: int = None,
+        records: List[GetHistoryListByBizTypeResponseBodyDataRecords] = None,
+        total_pages: int = None,
+        total_records: int = None,
+    ):
+        self.current_page = current_page
+        self.page_size = page_size
+        self.records = records
+        self.total_pages = total_pages
+        self.total_records = total_records
+
+    def validate(self):
+        if self.records:
+            for k in self.records:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['currentPage'] = self.current_page
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        result['records'] = []
+        if self.records is not None:
+            for k in self.records:
+                result['records'].append(k.to_map() if k else None)
+        if self.total_pages is not None:
+            result['totalPages'] = self.total_pages
+        if self.total_records is not None:
+            result['totalRecords'] = self.total_records
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('currentPage') is not None:
+            self.current_page = m.get('currentPage')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        self.records = []
+        if m.get('records') is not None:
+            for k in m.get('records'):
+                temp_model = GetHistoryListByBizTypeResponseBodyDataRecords()
+                self.records.append(temp_model.from_map(k))
+        if m.get('totalPages') is not None:
+            self.total_pages = m.get('totalPages')
+        if m.get('totalRecords') is not None:
+            self.total_records = m.get('totalRecords')
+        return self
+
+
+class GetHistoryListByBizTypeResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost: int = None,
+        data: GetHistoryListByBizTypeResponseBodyData = None,
+        data_type: str = None,
+        err_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time: str = None,
+    ):
+        self.cost = cost
+        self.data = data
+        self.data_type = data_type
+        self.err_code = err_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time = time
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.data_type is not None:
+            result['dataType'] = self.data_type
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.time is not None:
+            result['time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            self.cost = m.get('cost')
+        if m.get('data') is not None:
+            temp_model = GetHistoryListByBizTypeResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('dataType') is not None:
+            self.data_type = m.get('dataType')
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        return self
+
+
+class GetHistoryListByBizTypeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetHistoryListByBizTypeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetHistoryListByBizTypeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetLibraryRequest(TeaModel):
     def __init__(
         self,
@@ -5955,6 +6260,457 @@ class RunChatResultGenerationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RunChatResultGenerationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RunLibraryChatGenerationRequestQueryCriteriaAnd(TeaModel):
+    def __init__(
+        self,
+        boost: float = None,
+        key: str = None,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.boost = boost
+        self.key = key
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.boost is not None:
+            result['boost'] = self.boost
+        if self.key is not None:
+            result['key'] = self.key
+        if self.operator is not None:
+            result['operator'] = self.operator
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('boost') is not None:
+            self.boost = m.get('boost')
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('operator') is not None:
+            self.operator = m.get('operator')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class RunLibraryChatGenerationRequestQueryCriteriaOr(TeaModel):
+    def __init__(
+        self,
+        boost: float = None,
+        key: str = None,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.boost = boost
+        self.key = key
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.boost is not None:
+            result['boost'] = self.boost
+        if self.key is not None:
+            result['key'] = self.key
+        if self.operator is not None:
+            result['operator'] = self.operator
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('boost') is not None:
+            self.boost = m.get('boost')
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('operator') is not None:
+            self.operator = m.get('operator')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class RunLibraryChatGenerationRequestQueryCriteria(TeaModel):
+    def __init__(
+        self,
+        and_: List[RunLibraryChatGenerationRequestQueryCriteriaAnd] = None,
+        or_: List[RunLibraryChatGenerationRequestQueryCriteriaOr] = None,
+    ):
+        self.and_ = and_
+        self.or_ = or_
+
+    def validate(self):
+        if self.and_:
+            for k in self.and_:
+                if k:
+                    k.validate()
+        if self.or_:
+            for k in self.or_:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['and'] = []
+        if self.and_ is not None:
+            for k in self.and_:
+                result['and'].append(k.to_map() if k else None)
+        result['or'] = []
+        if self.or_ is not None:
+            for k in self.or_:
+                result['or'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.and_ = []
+        if m.get('and') is not None:
+            for k in m.get('and'):
+                temp_model = RunLibraryChatGenerationRequestQueryCriteriaAnd()
+                self.and_.append(temp_model.from_map(k))
+        self.or_ = []
+        if m.get('or') is not None:
+            for k in m.get('or'):
+                temp_model = RunLibraryChatGenerationRequestQueryCriteriaOr()
+                self.or_.append(temp_model.from_map(k))
+        return self
+
+
+class RunLibraryChatGenerationRequestTextSearchParameter(TeaModel):
+    def __init__(
+        self,
+        limit: int = None,
+        search_analyzer_type: str = None,
+    ):
+        self.limit = limit
+        self.search_analyzer_type = search_analyzer_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.search_analyzer_type is not None:
+            result['searchAnalyzerType'] = self.search_analyzer_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('searchAnalyzerType') is not None:
+            self.search_analyzer_type = m.get('searchAnalyzerType')
+        return self
+
+
+class RunLibraryChatGenerationRequestVectorSearchParameter(TeaModel):
+    def __init__(
+        self,
+        limit: int = None,
+    ):
+        self.limit = limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.limit is not None:
+            result['limit'] = self.limit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        return self
+
+
+class RunLibraryChatGenerationRequest(TeaModel):
+    def __init__(
+        self,
+        doc_id_list: List[str] = None,
+        enable_follow_up: bool = None,
+        enable_multi_query: bool = None,
+        enable_open_qa: bool = None,
+        follow_up_llm: str = None,
+        library_id: str = None,
+        llm_type: str = None,
+        multi_query_llm: str = None,
+        query: str = None,
+        query_criteria: RunLibraryChatGenerationRequestQueryCriteria = None,
+        rerank_type: str = None,
+        session_id: str = None,
+        stream: bool = None,
+        sub_query_list: List[str] = None,
+        text_search_parameter: RunLibraryChatGenerationRequestTextSearchParameter = None,
+        top_k: int = None,
+        vector_search_parameter: RunLibraryChatGenerationRequestVectorSearchParameter = None,
+        with_document_reference: bool = None,
+    ):
+        self.doc_id_list = doc_id_list
+        self.enable_follow_up = enable_follow_up
+        self.enable_multi_query = enable_multi_query
+        self.enable_open_qa = enable_open_qa
+        self.follow_up_llm = follow_up_llm
+        # This parameter is required.
+        self.library_id = library_id
+        # This parameter is required.
+        self.llm_type = llm_type
+        self.multi_query_llm = multi_query_llm
+        # This parameter is required.
+        self.query = query
+        self.query_criteria = query_criteria
+        self.rerank_type = rerank_type
+        # sessionId
+        self.session_id = session_id
+        self.stream = stream
+        self.sub_query_list = sub_query_list
+        self.text_search_parameter = text_search_parameter
+        self.top_k = top_k
+        self.vector_search_parameter = vector_search_parameter
+        self.with_document_reference = with_document_reference
+
+    def validate(self):
+        if self.query_criteria:
+            self.query_criteria.validate()
+        if self.text_search_parameter:
+            self.text_search_parameter.validate()
+        if self.vector_search_parameter:
+            self.vector_search_parameter.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_id_list is not None:
+            result['docIdList'] = self.doc_id_list
+        if self.enable_follow_up is not None:
+            result['enableFollowUp'] = self.enable_follow_up
+        if self.enable_multi_query is not None:
+            result['enableMultiQuery'] = self.enable_multi_query
+        if self.enable_open_qa is not None:
+            result['enableOpenQa'] = self.enable_open_qa
+        if self.follow_up_llm is not None:
+            result['followUpLlm'] = self.follow_up_llm
+        if self.library_id is not None:
+            result['libraryId'] = self.library_id
+        if self.llm_type is not None:
+            result['llmType'] = self.llm_type
+        if self.multi_query_llm is not None:
+            result['multiQueryLlm'] = self.multi_query_llm
+        if self.query is not None:
+            result['query'] = self.query
+        if self.query_criteria is not None:
+            result['queryCriteria'] = self.query_criteria.to_map()
+        if self.rerank_type is not None:
+            result['rerankType'] = self.rerank_type
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.stream is not None:
+            result['stream'] = self.stream
+        if self.sub_query_list is not None:
+            result['subQueryList'] = self.sub_query_list
+        if self.text_search_parameter is not None:
+            result['textSearchParameter'] = self.text_search_parameter.to_map()
+        if self.top_k is not None:
+            result['topK'] = self.top_k
+        if self.vector_search_parameter is not None:
+            result['vectorSearchParameter'] = self.vector_search_parameter.to_map()
+        if self.with_document_reference is not None:
+            result['withDocumentReference'] = self.with_document_reference
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('docIdList') is not None:
+            self.doc_id_list = m.get('docIdList')
+        if m.get('enableFollowUp') is not None:
+            self.enable_follow_up = m.get('enableFollowUp')
+        if m.get('enableMultiQuery') is not None:
+            self.enable_multi_query = m.get('enableMultiQuery')
+        if m.get('enableOpenQa') is not None:
+            self.enable_open_qa = m.get('enableOpenQa')
+        if m.get('followUpLlm') is not None:
+            self.follow_up_llm = m.get('followUpLlm')
+        if m.get('libraryId') is not None:
+            self.library_id = m.get('libraryId')
+        if m.get('llmType') is not None:
+            self.llm_type = m.get('llmType')
+        if m.get('multiQueryLlm') is not None:
+            self.multi_query_llm = m.get('multiQueryLlm')
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        if m.get('queryCriteria') is not None:
+            temp_model = RunLibraryChatGenerationRequestQueryCriteria()
+            self.query_criteria = temp_model.from_map(m['queryCriteria'])
+        if m.get('rerankType') is not None:
+            self.rerank_type = m.get('rerankType')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('stream') is not None:
+            self.stream = m.get('stream')
+        if m.get('subQueryList') is not None:
+            self.sub_query_list = m.get('subQueryList')
+        if m.get('textSearchParameter') is not None:
+            temp_model = RunLibraryChatGenerationRequestTextSearchParameter()
+            self.text_search_parameter = temp_model.from_map(m['textSearchParameter'])
+        if m.get('topK') is not None:
+            self.top_k = m.get('topK')
+        if m.get('vectorSearchParameter') is not None:
+            temp_model = RunLibraryChatGenerationRequestVectorSearchParameter()
+            self.vector_search_parameter = temp_model.from_map(m['vectorSearchParameter'])
+        if m.get('withDocumentReference') is not None:
+            self.with_document_reference = m.get('withDocumentReference')
+        return self
+
+
+class RunLibraryChatGenerationResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost: int = None,
+        data: Any = None,
+        data_type: str = None,
+        err_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time: str = None,
+    ):
+        self.cost = cost
+        self.data = data
+        self.data_type = data_type
+        self.err_code = err_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost
+        if self.data is not None:
+            result['data'] = self.data
+        if self.data_type is not None:
+            result['dataType'] = self.data_type
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.time is not None:
+            result['time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            self.cost = m.get('cost')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('dataType') is not None:
+            self.data_type = m.get('dataType')
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        return self
+
+
+class RunLibraryChatGenerationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunLibraryChatGenerationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunLibraryChatGenerationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

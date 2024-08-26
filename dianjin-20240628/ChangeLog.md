@@ -1,3 +1,8 @@
+2024-08-26 Version: 1.1.0
+- Support API GetHistoryListByBizType.
+- Support API RunLibraryChatGeneration.
+
+
 2024-08-23 Version: 1.0.1
 - Generated python 2024-06-28 for DianJin.
 
