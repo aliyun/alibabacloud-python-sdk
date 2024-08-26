@@ -1,3 +1,7 @@
+2024-08-26 Version: 3.4.0
+- Support API SubmitSportsHighlightsJob.
+
+
 2024-08-14 Version: 3.3.1
 - Update API ListMediaProducingJobs: add param ProjectId.
 
