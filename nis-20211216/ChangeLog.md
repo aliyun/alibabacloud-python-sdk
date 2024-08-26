@@ -1,3 +1,19 @@
+2024-08-26 Version: 2.2.0
+- Support API DeleteNisInspectionReport.
+- Support API DeleteNisInspectionTask.
+- Support API DescribeNisInspectionRecommendationResources.
+- Support API DescribeNisInspectionReportCheckItems.
+- Support API DescribeNisInspectionReportStatus.
+- Support API DescribeNisInspectionReportSummary.
+- Support API DescribeNisInspectionTask.
+- Support API ListNisInspectionResourceType.
+- Support API ListNisInspectionTaskReports.
+- Support API ListNisInspectionTasks.
+- Support API StartNisInspectionTask.
+- Support API UpdateNisInspectionTask.
+- Update API GetNisNetworkMetrics: update param MetricName.
+
+
 2024-07-04 Version: 2.1.0
 - Support API GetNisNetworkMetrics.
 - Support API GetNisNetworkRanking.

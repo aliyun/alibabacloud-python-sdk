@@ -637,17 +637,744 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_network_reachable_analysis_with_options_async(request, runtime)
 
+    def delete_nis_inspection_report_with_options(
+        self,
+        request: nis_20211216_models.DeleteNisInspectionReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.DeleteNisInspectionReportResponse:
+        """
+        @summary 删除报告
+        
+        @param request: DeleteNisInspectionReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNisInspectionReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_report_id):
+            query['InspectionReportId'] = request.inspection_report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNisInspectionReport',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.DeleteNisInspectionReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_nis_inspection_report_with_options_async(
+        self,
+        request: nis_20211216_models.DeleteNisInspectionReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.DeleteNisInspectionReportResponse:
+        """
+        @summary 删除报告
+        
+        @param request: DeleteNisInspectionReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNisInspectionReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_report_id):
+            query['InspectionReportId'] = request.inspection_report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNisInspectionReport',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.DeleteNisInspectionReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_nis_inspection_report(
+        self,
+        request: nis_20211216_models.DeleteNisInspectionReportRequest,
+    ) -> nis_20211216_models.DeleteNisInspectionReportResponse:
+        """
+        @summary 删除报告
+        
+        @param request: DeleteNisInspectionReportRequest
+        @return: DeleteNisInspectionReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_nis_inspection_report_with_options(request, runtime)
+
+    async def delete_nis_inspection_report_async(
+        self,
+        request: nis_20211216_models.DeleteNisInspectionReportRequest,
+    ) -> nis_20211216_models.DeleteNisInspectionReportResponse:
+        """
+        @summary 删除报告
+        
+        @param request: DeleteNisInspectionReportRequest
+        @return: DeleteNisInspectionReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_nis_inspection_report_with_options_async(request, runtime)
+
+    def delete_nis_inspection_task_with_options(
+        self,
+        request: nis_20211216_models.DeleteNisInspectionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.DeleteNisInspectionTaskResponse:
+        """
+        @summary 删除巡检任务
+        
+        @param request: DeleteNisInspectionTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNisInspectionTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_task_id):
+            query['InspectionTaskId'] = request.inspection_task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNisInspectionTask',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.DeleteNisInspectionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_nis_inspection_task_with_options_async(
+        self,
+        request: nis_20211216_models.DeleteNisInspectionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.DeleteNisInspectionTaskResponse:
+        """
+        @summary 删除巡检任务
+        
+        @param request: DeleteNisInspectionTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNisInspectionTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_task_id):
+            query['InspectionTaskId'] = request.inspection_task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNisInspectionTask',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.DeleteNisInspectionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_nis_inspection_task(
+        self,
+        request: nis_20211216_models.DeleteNisInspectionTaskRequest,
+    ) -> nis_20211216_models.DeleteNisInspectionTaskResponse:
+        """
+        @summary 删除巡检任务
+        
+        @param request: DeleteNisInspectionTaskRequest
+        @return: DeleteNisInspectionTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_nis_inspection_task_with_options(request, runtime)
+
+    async def delete_nis_inspection_task_async(
+        self,
+        request: nis_20211216_models.DeleteNisInspectionTaskRequest,
+    ) -> nis_20211216_models.DeleteNisInspectionTaskResponse:
+        """
+        @summary 删除巡检任务
+        
+        @param request: DeleteNisInspectionTaskRequest
+        @return: DeleteNisInspectionTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_nis_inspection_task_with_options_async(request, runtime)
+
+    def describe_nis_inspection_recommendation_resources_with_options(
+        self,
+        request: nis_20211216_models.DescribeNisInspectionRecommendationResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.DescribeNisInspectionRecommendationResourcesResponse:
+        """
+        @summary 受影响资源列表
+        
+        @param request: DescribeNisInspectionRecommendationResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNisInspectionRecommendationResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_report_id):
+            query['InspectionReportId'] = request.inspection_report_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.recommendation_code):
+            query['RecommendationCode'] = request.recommendation_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNisInspectionRecommendationResources',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.DescribeNisInspectionRecommendationResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_nis_inspection_recommendation_resources_with_options_async(
+        self,
+        request: nis_20211216_models.DescribeNisInspectionRecommendationResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.DescribeNisInspectionRecommendationResourcesResponse:
+        """
+        @summary 受影响资源列表
+        
+        @param request: DescribeNisInspectionRecommendationResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNisInspectionRecommendationResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_report_id):
+            query['InspectionReportId'] = request.inspection_report_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.recommendation_code):
+            query['RecommendationCode'] = request.recommendation_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNisInspectionRecommendationResources',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.DescribeNisInspectionRecommendationResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_nis_inspection_recommendation_resources(
+        self,
+        request: nis_20211216_models.DescribeNisInspectionRecommendationResourcesRequest,
+    ) -> nis_20211216_models.DescribeNisInspectionRecommendationResourcesResponse:
+        """
+        @summary 受影响资源列表
+        
+        @param request: DescribeNisInspectionRecommendationResourcesRequest
+        @return: DescribeNisInspectionRecommendationResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_nis_inspection_recommendation_resources_with_options(request, runtime)
+
+    async def describe_nis_inspection_recommendation_resources_async(
+        self,
+        request: nis_20211216_models.DescribeNisInspectionRecommendationResourcesRequest,
+    ) -> nis_20211216_models.DescribeNisInspectionRecommendationResourcesResponse:
+        """
+        @summary 受影响资源列表
+        
+        @param request: DescribeNisInspectionRecommendationResourcesRequest
+        @return: DescribeNisInspectionRecommendationResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_nis_inspection_recommendation_resources_with_options_async(request, runtime)
+
+    def describe_nis_inspection_report_check_items_with_options(
+        self,
+        tmp_req: nis_20211216_models.DescribeNisInspectionReportCheckItemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.DescribeNisInspectionReportCheckItemsResponse:
+        """
+        @summary 报告巡检项列表
+        
+        @param tmp_req: DescribeNisInspectionReportCheckItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNisInspectionReportCheckItemsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = nis_20211216_models.DescribeNisInspectionReportCheckItemsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_type):
+            request.resource_type_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_type, 'ResourceType', 'json')
+        if not UtilClient.is_unset(tmp_req.risk_level):
+            request.risk_level_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.risk_level, 'RiskLevel', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.category_code):
+            query['CategoryCode'] = request.category_code
+        if not UtilClient.is_unset(request.inspection_report_id):
+            query['InspectionReportId'] = request.inspection_report_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_type_shrink):
+            query['ResourceType'] = request.resource_type_shrink
+        if not UtilClient.is_unset(request.risk_level_shrink):
+            query['RiskLevel'] = request.risk_level_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNisInspectionReportCheckItems',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.DescribeNisInspectionReportCheckItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_nis_inspection_report_check_items_with_options_async(
+        self,
+        tmp_req: nis_20211216_models.DescribeNisInspectionReportCheckItemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.DescribeNisInspectionReportCheckItemsResponse:
+        """
+        @summary 报告巡检项列表
+        
+        @param tmp_req: DescribeNisInspectionReportCheckItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNisInspectionReportCheckItemsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = nis_20211216_models.DescribeNisInspectionReportCheckItemsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_type):
+            request.resource_type_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_type, 'ResourceType', 'json')
+        if not UtilClient.is_unset(tmp_req.risk_level):
+            request.risk_level_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.risk_level, 'RiskLevel', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.category_code):
+            query['CategoryCode'] = request.category_code
+        if not UtilClient.is_unset(request.inspection_report_id):
+            query['InspectionReportId'] = request.inspection_report_id
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_type_shrink):
+            query['ResourceType'] = request.resource_type_shrink
+        if not UtilClient.is_unset(request.risk_level_shrink):
+            query['RiskLevel'] = request.risk_level_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNisInspectionReportCheckItems',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.DescribeNisInspectionReportCheckItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_nis_inspection_report_check_items(
+        self,
+        request: nis_20211216_models.DescribeNisInspectionReportCheckItemsRequest,
+    ) -> nis_20211216_models.DescribeNisInspectionReportCheckItemsResponse:
+        """
+        @summary 报告巡检项列表
+        
+        @param request: DescribeNisInspectionReportCheckItemsRequest
+        @return: DescribeNisInspectionReportCheckItemsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_nis_inspection_report_check_items_with_options(request, runtime)
+
+    async def describe_nis_inspection_report_check_items_async(
+        self,
+        request: nis_20211216_models.DescribeNisInspectionReportCheckItemsRequest,
+    ) -> nis_20211216_models.DescribeNisInspectionReportCheckItemsResponse:
+        """
+        @summary 报告巡检项列表
+        
+        @param request: DescribeNisInspectionReportCheckItemsRequest
+        @return: DescribeNisInspectionReportCheckItemsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_nis_inspection_report_check_items_with_options_async(request, runtime)
+
+    def describe_nis_inspection_report_status_with_options(
+        self,
+        request: nis_20211216_models.DescribeNisInspectionReportStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.DescribeNisInspectionReportStatusResponse:
+        """
+        @summary 查询报告状态
+        
+        @param request: DescribeNisInspectionReportStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNisInspectionReportStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_report_id):
+            query['InspectionReportId'] = request.inspection_report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNisInspectionReportStatus',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.DescribeNisInspectionReportStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_nis_inspection_report_status_with_options_async(
+        self,
+        request: nis_20211216_models.DescribeNisInspectionReportStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.DescribeNisInspectionReportStatusResponse:
+        """
+        @summary 查询报告状态
+        
+        @param request: DescribeNisInspectionReportStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNisInspectionReportStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_report_id):
+            query['InspectionReportId'] = request.inspection_report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNisInspectionReportStatus',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.DescribeNisInspectionReportStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_nis_inspection_report_status(
+        self,
+        request: nis_20211216_models.DescribeNisInspectionReportStatusRequest,
+    ) -> nis_20211216_models.DescribeNisInspectionReportStatusResponse:
+        """
+        @summary 查询报告状态
+        
+        @param request: DescribeNisInspectionReportStatusRequest
+        @return: DescribeNisInspectionReportStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_nis_inspection_report_status_with_options(request, runtime)
+
+    async def describe_nis_inspection_report_status_async(
+        self,
+        request: nis_20211216_models.DescribeNisInspectionReportStatusRequest,
+    ) -> nis_20211216_models.DescribeNisInspectionReportStatusResponse:
+        """
+        @summary 查询报告状态
+        
+        @param request: DescribeNisInspectionReportStatusRequest
+        @return: DescribeNisInspectionReportStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_nis_inspection_report_status_with_options_async(request, runtime)
+
+    def describe_nis_inspection_report_summary_with_options(
+        self,
+        request: nis_20211216_models.DescribeNisInspectionReportSummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.DescribeNisInspectionReportSummaryResponse:
+        """
+        @summary 报告总结信息
+        
+        @param request: DescribeNisInspectionReportSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNisInspectionReportSummaryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_report_id):
+            query['InspectionReportId'] = request.inspection_report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNisInspectionReportSummary',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.DescribeNisInspectionReportSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_nis_inspection_report_summary_with_options_async(
+        self,
+        request: nis_20211216_models.DescribeNisInspectionReportSummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.DescribeNisInspectionReportSummaryResponse:
+        """
+        @summary 报告总结信息
+        
+        @param request: DescribeNisInspectionReportSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNisInspectionReportSummaryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_report_id):
+            query['InspectionReportId'] = request.inspection_report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNisInspectionReportSummary',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.DescribeNisInspectionReportSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_nis_inspection_report_summary(
+        self,
+        request: nis_20211216_models.DescribeNisInspectionReportSummaryRequest,
+    ) -> nis_20211216_models.DescribeNisInspectionReportSummaryResponse:
+        """
+        @summary 报告总结信息
+        
+        @param request: DescribeNisInspectionReportSummaryRequest
+        @return: DescribeNisInspectionReportSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_nis_inspection_report_summary_with_options(request, runtime)
+
+    async def describe_nis_inspection_report_summary_async(
+        self,
+        request: nis_20211216_models.DescribeNisInspectionReportSummaryRequest,
+    ) -> nis_20211216_models.DescribeNisInspectionReportSummaryResponse:
+        """
+        @summary 报告总结信息
+        
+        @param request: DescribeNisInspectionReportSummaryRequest
+        @return: DescribeNisInspectionReportSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_nis_inspection_report_summary_with_options_async(request, runtime)
+
+    def describe_nis_inspection_task_with_options(
+        self,
+        request: nis_20211216_models.DescribeNisInspectionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.DescribeNisInspectionTaskResponse:
+        """
+        @summary 查询巡检任务
+        
+        @param request: DescribeNisInspectionTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNisInspectionTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_task_id):
+            query['InspectionTaskId'] = request.inspection_task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNisInspectionTask',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.DescribeNisInspectionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_nis_inspection_task_with_options_async(
+        self,
+        request: nis_20211216_models.DescribeNisInspectionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.DescribeNisInspectionTaskResponse:
+        """
+        @summary 查询巡检任务
+        
+        @param request: DescribeNisInspectionTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNisInspectionTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_task_id):
+            query['InspectionTaskId'] = request.inspection_task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNisInspectionTask',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.DescribeNisInspectionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_nis_inspection_task(
+        self,
+        request: nis_20211216_models.DescribeNisInspectionTaskRequest,
+    ) -> nis_20211216_models.DescribeNisInspectionTaskResponse:
+        """
+        @summary 查询巡检任务
+        
+        @param request: DescribeNisInspectionTaskRequest
+        @return: DescribeNisInspectionTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_nis_inspection_task_with_options(request, runtime)
+
+    async def describe_nis_inspection_task_async(
+        self,
+        request: nis_20211216_models.DescribeNisInspectionTaskRequest,
+    ) -> nis_20211216_models.DescribeNisInspectionTaskResponse:
+        """
+        @summary 查询巡检任务
+        
+        @param request: DescribeNisInspectionTaskRequest
+        @return: DescribeNisInspectionTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_nis_inspection_task_with_options_async(request, runtime)
+
     def get_internet_tuple_with_options(
         self,
         tmp_req: nis_20211216_models.GetInternetTupleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.GetInternetTupleResponse:
         """
+        @deprecated OpenAPI GetInternetTuple is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+        
         @summary Queries the rankings of Internet traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Internet traffic data can be ranked by metrics such as traffic volumes and the number of packets.
         
         @param tmp_req: GetInternetTupleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetInternetTupleResponse
+        Deprecated
         """
         UtilClient.validate_model(tmp_req)
         request = nis_20211216_models.GetInternetTupleShrinkRequest()
@@ -726,11 +1453,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.GetInternetTupleResponse:
         """
+        @deprecated OpenAPI GetInternetTuple is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+        
         @summary Queries the rankings of Internet traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Internet traffic data can be ranked by metrics such as traffic volumes and the number of packets.
         
         @param tmp_req: GetInternetTupleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetInternetTupleResponse
+        Deprecated
         """
         UtilClient.validate_model(tmp_req)
         request = nis_20211216_models.GetInternetTupleShrinkRequest()
@@ -808,10 +1538,13 @@ class Client(OpenApiClient):
         request: nis_20211216_models.GetInternetTupleRequest,
     ) -> nis_20211216_models.GetInternetTupleResponse:
         """
+        @deprecated OpenAPI GetInternetTuple is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+        
         @summary Queries the rankings of Internet traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Internet traffic data can be ranked by metrics such as traffic volumes and the number of packets.
         
         @param request: GetInternetTupleRequest
         @return: GetInternetTupleResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.get_internet_tuple_with_options(request, runtime)
@@ -821,10 +1554,13 @@ class Client(OpenApiClient):
         request: nis_20211216_models.GetInternetTupleRequest,
     ) -> nis_20211216_models.GetInternetTupleResponse:
         """
+        @deprecated OpenAPI GetInternetTuple is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+        
         @summary Queries the rankings of Internet traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Internet traffic data can be ranked by metrics such as traffic volumes and the number of packets.
         
         @param request: GetInternetTupleRequest
         @return: GetInternetTupleResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_internet_tuple_with_options_async(request, runtime)
@@ -835,11 +1571,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.GetNatTopNResponse:
         """
+        @deprecated OpenAPI GetNatTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+        
         @summary Queries the real-time SNAT performance ranking of a NAT gateway.
         
         @param request: GetNatTopNRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetNatTopNResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -882,11 +1621,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.GetNatTopNResponse:
         """
+        @deprecated OpenAPI GetNatTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+        
         @summary Queries the real-time SNAT performance ranking of a NAT gateway.
         
         @param request: GetNatTopNRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetNatTopNResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -928,10 +1670,13 @@ class Client(OpenApiClient):
         request: nis_20211216_models.GetNatTopNRequest,
     ) -> nis_20211216_models.GetNatTopNResponse:
         """
+        @deprecated OpenAPI GetNatTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+        
         @summary Queries the real-time SNAT performance ranking of a NAT gateway.
         
         @param request: GetNatTopNRequest
         @return: GetNatTopNResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.get_nat_top_nwith_options(request, runtime)
@@ -941,10 +1686,13 @@ class Client(OpenApiClient):
         request: nis_20211216_models.GetNatTopNRequest,
     ) -> nis_20211216_models.GetNatTopNResponse:
         """
+        @deprecated OpenAPI GetNatTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+        
         @summary Queries the real-time SNAT performance ranking of a NAT gateway.
         
         @param request: GetNatTopNRequest
         @return: GetNatTopNResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_nat_top_nwith_options_async(request, runtime)
@@ -1355,11 +2103,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.GetTransitRouterFlowTopNResponse:
         """
+        @deprecated OpenAPI GetTransitRouterFlowTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+        
         @summary Queries the rankings of inter-region traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Inter-region traffic data can be ranked by metrics such as traffic volumes and the number of packets.
         
         @param tmp_req: GetTransitRouterFlowTopNRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTransitRouterFlowTopNResponse
+        Deprecated
         """
         UtilClient.validate_model(tmp_req)
         request = nis_20211216_models.GetTransitRouterFlowTopNShrinkRequest()
@@ -1428,11 +2179,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.GetTransitRouterFlowTopNResponse:
         """
+        @deprecated OpenAPI GetTransitRouterFlowTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+        
         @summary Queries the rankings of inter-region traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Inter-region traffic data can be ranked by metrics such as traffic volumes and the number of packets.
         
         @param tmp_req: GetTransitRouterFlowTopNRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTransitRouterFlowTopNResponse
+        Deprecated
         """
         UtilClient.validate_model(tmp_req)
         request = nis_20211216_models.GetTransitRouterFlowTopNShrinkRequest()
@@ -1500,10 +2254,13 @@ class Client(OpenApiClient):
         request: nis_20211216_models.GetTransitRouterFlowTopNRequest,
     ) -> nis_20211216_models.GetTransitRouterFlowTopNResponse:
         """
+        @deprecated OpenAPI GetTransitRouterFlowTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+        
         @summary Queries the rankings of inter-region traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Inter-region traffic data can be ranked by metrics such as traffic volumes and the number of packets.
         
         @param request: GetTransitRouterFlowTopNRequest
         @return: GetTransitRouterFlowTopNResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.get_transit_router_flow_top_nwith_options(request, runtime)
@@ -1513,10 +2270,13 @@ class Client(OpenApiClient):
         request: nis_20211216_models.GetTransitRouterFlowTopNRequest,
     ) -> nis_20211216_models.GetTransitRouterFlowTopNResponse:
         """
+        @deprecated OpenAPI GetTransitRouterFlowTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+        
         @summary Queries the rankings of inter-region traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Inter-region traffic data can be ranked by metrics such as traffic volumes and the number of packets.
         
         @param request: GetTransitRouterFlowTopNRequest
         @return: GetTransitRouterFlowTopNResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_transit_router_flow_top_nwith_options_async(request, runtime)
@@ -1527,11 +2287,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.GetVbrFlowTopNResponse:
         """
+        @deprecated OpenAPI GetVbrFlowTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+        
         @summary Queries the rankings of hybrid cloud traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Hybrid cloud traffic data can be ranked by metrics such as traffic volumes and the number of packets.
         
         @param tmp_req: GetVbrFlowTopNRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetVbrFlowTopNResponse
+        Deprecated
         """
         UtilClient.validate_model(tmp_req)
         request = nis_20211216_models.GetVbrFlowTopNShrinkRequest()
@@ -1600,11 +2363,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> nis_20211216_models.GetVbrFlowTopNResponse:
         """
+        @deprecated OpenAPI GetVbrFlowTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+        
         @summary Queries the rankings of hybrid cloud traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Hybrid cloud traffic data can be ranked by metrics such as traffic volumes and the number of packets.
         
         @param tmp_req: GetVbrFlowTopNRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetVbrFlowTopNResponse
+        Deprecated
         """
         UtilClient.validate_model(tmp_req)
         request = nis_20211216_models.GetVbrFlowTopNShrinkRequest()
@@ -1672,10 +2438,13 @@ class Client(OpenApiClient):
         request: nis_20211216_models.GetVbrFlowTopNRequest,
     ) -> nis_20211216_models.GetVbrFlowTopNResponse:
         """
+        @deprecated OpenAPI GetVbrFlowTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+        
         @summary Queries the rankings of hybrid cloud traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Hybrid cloud traffic data can be ranked by metrics such as traffic volumes and the number of packets.
         
         @param request: GetVbrFlowTopNRequest
         @return: GetVbrFlowTopNResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.get_vbr_flow_top_nwith_options(request, runtime)
@@ -1685,10 +2454,503 @@ class Client(OpenApiClient):
         request: nis_20211216_models.GetVbrFlowTopNRequest,
     ) -> nis_20211216_models.GetVbrFlowTopNResponse:
         """
+        @deprecated OpenAPI GetVbrFlowTopN is deprecated, please use nis::2021-12-16::GetNisNetworkRanking instead.
+        
         @summary Queries the rankings of hybrid cloud traffic data in the form of 1-tuple, 2-tuple, or 5-tuple. Hybrid cloud traffic data can be ranked by metrics such as traffic volumes and the number of packets.
         
         @param request: GetVbrFlowTopNRequest
         @return: GetVbrFlowTopNResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_vbr_flow_top_nwith_options_async(request, runtime)
+
+    def list_nis_inspection_resource_type_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.ListNisInspectionResourceTypeResponse:
+        """
+        @summary 巡检资源类型列表
+        
+        @param request: ListNisInspectionResourceTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNisInspectionResourceTypeResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListNisInspectionResourceType',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.ListNisInspectionResourceTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_nis_inspection_resource_type_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.ListNisInspectionResourceTypeResponse:
+        """
+        @summary 巡检资源类型列表
+        
+        @param request: ListNisInspectionResourceTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNisInspectionResourceTypeResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListNisInspectionResourceType',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.ListNisInspectionResourceTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_nis_inspection_resource_type(self) -> nis_20211216_models.ListNisInspectionResourceTypeResponse:
+        """
+        @summary 巡检资源类型列表
+        
+        @return: ListNisInspectionResourceTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_nis_inspection_resource_type_with_options(runtime)
+
+    async def list_nis_inspection_resource_type_async(self) -> nis_20211216_models.ListNisInspectionResourceTypeResponse:
+        """
+        @summary 巡检资源类型列表
+        
+        @return: ListNisInspectionResourceTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_nis_inspection_resource_type_with_options_async(runtime)
+
+    def list_nis_inspection_task_reports_with_options(
+        self,
+        request: nis_20211216_models.ListNisInspectionTaskReportsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.ListNisInspectionTaskReportsResponse:
+        """
+        @summary 查询巡检报告列表
+        
+        @param request: ListNisInspectionTaskReportsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNisInspectionTaskReportsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_task_id):
+            query['InspectionTaskId'] = request.inspection_task_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNisInspectionTaskReports',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.ListNisInspectionTaskReportsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_nis_inspection_task_reports_with_options_async(
+        self,
+        request: nis_20211216_models.ListNisInspectionTaskReportsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.ListNisInspectionTaskReportsResponse:
+        """
+        @summary 查询巡检报告列表
+        
+        @param request: ListNisInspectionTaskReportsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNisInspectionTaskReportsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_task_id):
+            query['InspectionTaskId'] = request.inspection_task_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNisInspectionTaskReports',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.ListNisInspectionTaskReportsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_nis_inspection_task_reports(
+        self,
+        request: nis_20211216_models.ListNisInspectionTaskReportsRequest,
+    ) -> nis_20211216_models.ListNisInspectionTaskReportsResponse:
+        """
+        @summary 查询巡检报告列表
+        
+        @param request: ListNisInspectionTaskReportsRequest
+        @return: ListNisInspectionTaskReportsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_nis_inspection_task_reports_with_options(request, runtime)
+
+    async def list_nis_inspection_task_reports_async(
+        self,
+        request: nis_20211216_models.ListNisInspectionTaskReportsRequest,
+    ) -> nis_20211216_models.ListNisInspectionTaskReportsResponse:
+        """
+        @summary 查询巡检报告列表
+        
+        @param request: ListNisInspectionTaskReportsRequest
+        @return: ListNisInspectionTaskReportsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_nis_inspection_task_reports_with_options_async(request, runtime)
+
+    def list_nis_inspection_tasks_with_options(
+        self,
+        request: nis_20211216_models.ListNisInspectionTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.ListNisInspectionTasksResponse:
+        """
+        @summary 巡检任务列表
+        
+        @param request: ListNisInspectionTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNisInspectionTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_name):
+            query['InspectionName'] = request.inspection_name
+        if not UtilClient.is_unset(request.inspection_project):
+            query['InspectionProject'] = request.inspection_project
+        if not UtilClient.is_unset(request.inspection_task_id):
+            query['InspectionTaskId'] = request.inspection_task_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNisInspectionTasks',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.ListNisInspectionTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_nis_inspection_tasks_with_options_async(
+        self,
+        request: nis_20211216_models.ListNisInspectionTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.ListNisInspectionTasksResponse:
+        """
+        @summary 巡检任务列表
+        
+        @param request: ListNisInspectionTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNisInspectionTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_name):
+            query['InspectionName'] = request.inspection_name
+        if not UtilClient.is_unset(request.inspection_project):
+            query['InspectionProject'] = request.inspection_project
+        if not UtilClient.is_unset(request.inspection_task_id):
+            query['InspectionTaskId'] = request.inspection_task_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNisInspectionTasks',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.ListNisInspectionTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_nis_inspection_tasks(
+        self,
+        request: nis_20211216_models.ListNisInspectionTasksRequest,
+    ) -> nis_20211216_models.ListNisInspectionTasksResponse:
+        """
+        @summary 巡检任务列表
+        
+        @param request: ListNisInspectionTasksRequest
+        @return: ListNisInspectionTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_nis_inspection_tasks_with_options(request, runtime)
+
+    async def list_nis_inspection_tasks_async(
+        self,
+        request: nis_20211216_models.ListNisInspectionTasksRequest,
+    ) -> nis_20211216_models.ListNisInspectionTasksResponse:
+        """
+        @summary 巡检任务列表
+        
+        @param request: ListNisInspectionTasksRequest
+        @return: ListNisInspectionTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_nis_inspection_tasks_with_options_async(request, runtime)
+
+    def start_nis_inspection_task_with_options(
+        self,
+        request: nis_20211216_models.StartNisInspectionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.StartNisInspectionTaskResponse:
+        """
+        @summary 请补充描述开启任务
+        
+        @param request: StartNisInspectionTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartNisInspectionTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_task_id):
+            query['InspectionTaskId'] = request.inspection_task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartNisInspectionTask',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.StartNisInspectionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_nis_inspection_task_with_options_async(
+        self,
+        request: nis_20211216_models.StartNisInspectionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.StartNisInspectionTaskResponse:
+        """
+        @summary 请补充描述开启任务
+        
+        @param request: StartNisInspectionTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartNisInspectionTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_task_id):
+            query['InspectionTaskId'] = request.inspection_task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartNisInspectionTask',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.StartNisInspectionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_nis_inspection_task(
+        self,
+        request: nis_20211216_models.StartNisInspectionTaskRequest,
+    ) -> nis_20211216_models.StartNisInspectionTaskResponse:
+        """
+        @summary 请补充描述开启任务
+        
+        @param request: StartNisInspectionTaskRequest
+        @return: StartNisInspectionTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_nis_inspection_task_with_options(request, runtime)
+
+    async def start_nis_inspection_task_async(
+        self,
+        request: nis_20211216_models.StartNisInspectionTaskRequest,
+    ) -> nis_20211216_models.StartNisInspectionTaskResponse:
+        """
+        @summary 请补充描述开启任务
+        
+        @param request: StartNisInspectionTaskRequest
+        @return: StartNisInspectionTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_nis_inspection_task_with_options_async(request, runtime)
+
+    def update_nis_inspection_task_with_options(
+        self,
+        request: nis_20211216_models.UpdateNisInspectionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.UpdateNisInspectionTaskResponse:
+        """
+        @summary 修改巡检项
+        
+        @param request: UpdateNisInspectionTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNisInspectionTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_task_id):
+            query['InspectionTaskId'] = request.inspection_task_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateNisInspectionTask',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.UpdateNisInspectionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_nis_inspection_task_with_options_async(
+        self,
+        request: nis_20211216_models.UpdateNisInspectionTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nis_20211216_models.UpdateNisInspectionTaskResponse:
+        """
+        @summary 修改巡检项
+        
+        @param request: UpdateNisInspectionTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNisInspectionTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.inspection_task_id):
+            query['InspectionTaskId'] = request.inspection_task_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateNisInspectionTask',
+            version='2021-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nis_20211216_models.UpdateNisInspectionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_nis_inspection_task(
+        self,
+        request: nis_20211216_models.UpdateNisInspectionTaskRequest,
+    ) -> nis_20211216_models.UpdateNisInspectionTaskResponse:
+        """
+        @summary 修改巡检项
+        
+        @param request: UpdateNisInspectionTaskRequest
+        @return: UpdateNisInspectionTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_nis_inspection_task_with_options(request, runtime)
+
+    async def update_nis_inspection_task_async(
+        self,
+        request: nis_20211216_models.UpdateNisInspectionTaskRequest,
+    ) -> nis_20211216_models.UpdateNisInspectionTaskResponse:
+        """
+        @summary 修改巡检项
+        
+        @param request: UpdateNisInspectionTaskRequest
+        @return: UpdateNisInspectionTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_nis_inspection_task_with_options_async(request, runtime)

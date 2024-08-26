@@ -992,6 +992,1421 @@ class DeleteNetworkReachableAnalysisResponse(TeaModel):
         return self
 
 
+class DeleteNisInspectionReportRequest(TeaModel):
+    def __init__(
+        self,
+        inspection_report_id: str = None,
+    ):
+        # This parameter is required.
+        self.inspection_report_id = inspection_report_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inspection_report_id is not None:
+            result['InspectionReportId'] = self.inspection_report_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InspectionReportId') is not None:
+            self.inspection_report_id = m.get('InspectionReportId')
+        return self
+
+
+class DeleteNisInspectionReportResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteNisInspectionReportResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteNisInspectionReportResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteNisInspectionReportResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteNisInspectionTaskRequest(TeaModel):
+    def __init__(
+        self,
+        inspection_task_id: str = None,
+    ):
+        # This parameter is required.
+        self.inspection_task_id = inspection_task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inspection_task_id is not None:
+            result['InspectionTaskId'] = self.inspection_task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InspectionTaskId') is not None:
+            self.inspection_task_id = m.get('InspectionTaskId')
+        return self
+
+
+class DeleteNisInspectionTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteNisInspectionTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteNisInspectionTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteNisInspectionTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeNisInspectionRecommendationResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        inspection_report_id: str = None,
+        language: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        recommendation_code: str = None,
+    ):
+        # This parameter is required.
+        self.inspection_report_id = inspection_report_id
+        self.language = language
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.recommendation_code = recommendation_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inspection_report_id is not None:
+            result['InspectionReportId'] = self.inspection_report_id
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.recommendation_code is not None:
+            result['RecommendationCode'] = self.recommendation_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InspectionReportId') is not None:
+            self.inspection_report_id = m.get('InspectionReportId')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RecommendationCode') is not None:
+            self.recommendation_code = m.get('RecommendationCode')
+        return self
+
+
+class DescribeNisInspectionRecommendationResourcesResponseBodyResourceList(TeaModel):
+    def __init__(
+        self,
+        analysis_data: str = None,
+        resource_id: str = None,
+        resource_name: str = None,
+    ):
+        self.analysis_data = analysis_data
+        self.resource_id = resource_id
+        self.resource_name = resource_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analysis_data is not None:
+            result['AnalysisData'] = self.analysis_data
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnalysisData') is not None:
+            self.analysis_data = m.get('AnalysisData')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        return self
+
+
+class DescribeNisInspectionRecommendationResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        inspection_report_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        resource_list: List[DescribeNisInspectionRecommendationResourcesResponseBodyResourceList] = None,
+        total_count: int = None,
+    ):
+        self.inspection_report_id = inspection_report_id
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.resource_list = resource_list
+        self.total_count = total_count
+
+    def validate(self):
+        if self.resource_list:
+            for k in self.resource_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inspection_report_id is not None:
+            result['InspectionReportId'] = self.inspection_report_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResourceList'] = []
+        if self.resource_list is not None:
+            for k in self.resource_list:
+                result['ResourceList'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InspectionReportId') is not None:
+            self.inspection_report_id = m.get('InspectionReportId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.resource_list = []
+        if m.get('ResourceList') is not None:
+            for k in m.get('ResourceList'):
+                temp_model = DescribeNisInspectionRecommendationResourcesResponseBodyResourceList()
+                self.resource_list.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeNisInspectionRecommendationResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNisInspectionRecommendationResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNisInspectionRecommendationResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeNisInspectionReportCheckItemsRequest(TeaModel):
+    def __init__(
+        self,
+        category_code: str = None,
+        inspection_report_id: str = None,
+        language: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        resource_type: List[str] = None,
+        risk_level: List[str] = None,
+    ):
+        self.category_code = category_code
+        # This parameter is required.
+        self.inspection_report_id = inspection_report_id
+        self.language = language
+        self.max_results = max_results
+        self.next_token = next_token
+        self.resource_type = resource_type
+        self.risk_level = risk_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_code is not None:
+            result['CategoryCode'] = self.category_code
+        if self.inspection_report_id is not None:
+            result['InspectionReportId'] = self.inspection_report_id
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryCode') is not None:
+            self.category_code = m.get('CategoryCode')
+        if m.get('InspectionReportId') is not None:
+            self.inspection_report_id = m.get('InspectionReportId')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        return self
+
+
+class DescribeNisInspectionReportCheckItemsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        category_code: str = None,
+        inspection_report_id: str = None,
+        language: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        resource_type_shrink: str = None,
+        risk_level_shrink: str = None,
+    ):
+        self.category_code = category_code
+        # This parameter is required.
+        self.inspection_report_id = inspection_report_id
+        self.language = language
+        self.max_results = max_results
+        self.next_token = next_token
+        self.resource_type_shrink = resource_type_shrink
+        self.risk_level_shrink = risk_level_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_code is not None:
+            result['CategoryCode'] = self.category_code
+        if self.inspection_report_id is not None:
+            result['InspectionReportId'] = self.inspection_report_id
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.resource_type_shrink is not None:
+            result['ResourceType'] = self.resource_type_shrink
+        if self.risk_level_shrink is not None:
+            result['RiskLevel'] = self.risk_level_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryCode') is not None:
+            self.category_code = m.get('CategoryCode')
+        if m.get('InspectionReportId') is not None:
+            self.inspection_report_id = m.get('InspectionReportId')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ResourceType') is not None:
+            self.resource_type_shrink = m.get('ResourceType')
+        if m.get('RiskLevel') is not None:
+            self.risk_level_shrink = m.get('RiskLevel')
+        return self
+
+
+class DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListCheckResultList(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        risk_level: str = None,
+    ):
+        self.count = count
+        self.risk_level = risk_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        return self
+
+
+class DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList(TeaModel):
+    def __init__(
+        self,
+        abnormality: str = None,
+        metadata: str = None,
+        reason: str = None,
+        recommendation_code: str = None,
+        risk_level: str = None,
+        suggestion: str = None,
+    ):
+        self.abnormality = abnormality
+        self.metadata = metadata
+        self.reason = reason
+        self.recommendation_code = recommendation_code
+        self.risk_level = risk_level
+        self.suggestion = suggestion
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.abnormality is not None:
+            result['Abnormality'] = self.abnormality
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.recommendation_code is not None:
+            result['RecommendationCode'] = self.recommendation_code
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        if self.suggestion is not None:
+            result['Suggestion'] = self.suggestion
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Abnormality') is not None:
+            self.abnormality = m.get('Abnormality')
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('RecommendationCode') is not None:
+            self.recommendation_code = m.get('RecommendationCode')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        if m.get('Suggestion') is not None:
+            self.suggestion = m.get('Suggestion')
+        return self
+
+
+class DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList(TeaModel):
+    def __init__(
+        self,
+        category_code: str = None,
+        check_item_code: str = None,
+        check_item_name: str = None,
+        check_result_list: List[DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListCheckResultList] = None,
+        description: str = None,
+        recommendation_list: List[DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList] = None,
+        resource_type: str = None,
+    ):
+        self.category_code = category_code
+        self.check_item_code = check_item_code
+        self.check_item_name = check_item_name
+        self.check_result_list = check_result_list
+        self.description = description
+        self.recommendation_list = recommendation_list
+        self.resource_type = resource_type
+
+    def validate(self):
+        if self.check_result_list:
+            for k in self.check_result_list:
+                if k:
+                    k.validate()
+        if self.recommendation_list:
+            for k in self.recommendation_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_code is not None:
+            result['CategoryCode'] = self.category_code
+        if self.check_item_code is not None:
+            result['CheckItemCode'] = self.check_item_code
+        if self.check_item_name is not None:
+            result['CheckItemName'] = self.check_item_name
+        result['CheckResultList'] = []
+        if self.check_result_list is not None:
+            for k in self.check_result_list:
+                result['CheckResultList'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['Description'] = self.description
+        result['RecommendationList'] = []
+        if self.recommendation_list is not None:
+            for k in self.recommendation_list:
+                result['RecommendationList'].append(k.to_map() if k else None)
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryCode') is not None:
+            self.category_code = m.get('CategoryCode')
+        if m.get('CheckItemCode') is not None:
+            self.check_item_code = m.get('CheckItemCode')
+        if m.get('CheckItemName') is not None:
+            self.check_item_name = m.get('CheckItemName')
+        self.check_result_list = []
+        if m.get('CheckResultList') is not None:
+            for k in m.get('CheckResultList'):
+                temp_model = DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListCheckResultList()
+                self.check_result_list.append(temp_model.from_map(k))
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.recommendation_list = []
+        if m.get('RecommendationList') is not None:
+            for k in m.get('RecommendationList'):
+                temp_model = DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList()
+                self.recommendation_list.append(temp_model.from_map(k))
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class DescribeNisInspectionReportCheckItemsResponseBody(TeaModel):
+    def __init__(
+        self,
+        check_item_list: List[DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList] = None,
+        inspection_report_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.check_item_list = check_item_list
+        self.inspection_report_id = inspection_report_id
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.check_item_list:
+            for k in self.check_item_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CheckItemList'] = []
+        if self.check_item_list is not None:
+            for k in self.check_item_list:
+                result['CheckItemList'].append(k.to_map() if k else None)
+        if self.inspection_report_id is not None:
+            result['InspectionReportId'] = self.inspection_report_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.check_item_list = []
+        if m.get('CheckItemList') is not None:
+            for k in m.get('CheckItemList'):
+                temp_model = DescribeNisInspectionReportCheckItemsResponseBodyCheckItemList()
+                self.check_item_list.append(temp_model.from_map(k))
+        if m.get('InspectionReportId') is not None:
+            self.inspection_report_id = m.get('InspectionReportId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeNisInspectionReportCheckItemsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNisInspectionReportCheckItemsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNisInspectionReportCheckItemsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeNisInspectionReportStatusRequest(TeaModel):
+    def __init__(
+        self,
+        inspection_report_id: str = None,
+    ):
+        # This parameter is required.
+        self.inspection_report_id = inspection_report_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inspection_report_id is not None:
+            result['InspectionReportId'] = self.inspection_report_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InspectionReportId') is not None:
+            self.inspection_report_id = m.get('InspectionReportId')
+        return self
+
+
+class DescribeNisInspectionReportStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        inspection_project: str = None,
+        inspection_report_id: str = None,
+        inspection_task_id: str = None,
+        inspection_task_name: str = None,
+        request_id: str = None,
+        start_time: str = None,
+        status: str = None,
+    ):
+        self.end_time = end_time
+        self.inspection_project = inspection_project
+        self.inspection_report_id = inspection_report_id
+        self.inspection_task_id = inspection_task_id
+        self.inspection_task_name = inspection_task_name
+        self.request_id = request_id
+        self.start_time = start_time
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.inspection_project is not None:
+            result['InspectionProject'] = self.inspection_project
+        if self.inspection_report_id is not None:
+            result['InspectionReportId'] = self.inspection_report_id
+        if self.inspection_task_id is not None:
+            result['InspectionTaskId'] = self.inspection_task_id
+        if self.inspection_task_name is not None:
+            result['InspectionTaskName'] = self.inspection_task_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InspectionProject') is not None:
+            self.inspection_project = m.get('InspectionProject')
+        if m.get('InspectionReportId') is not None:
+            self.inspection_report_id = m.get('InspectionReportId')
+        if m.get('InspectionTaskId') is not None:
+            self.inspection_task_id = m.get('InspectionTaskId')
+        if m.get('InspectionTaskName') is not None:
+            self.inspection_task_name = m.get('InspectionTaskName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeNisInspectionReportStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNisInspectionReportStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNisInspectionReportStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeNisInspectionReportSummaryRequest(TeaModel):
+    def __init__(
+        self,
+        inspection_report_id: str = None,
+    ):
+        # This parameter is required.
+        self.inspection_report_id = inspection_report_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inspection_report_id is not None:
+            result['InspectionReportId'] = self.inspection_report_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InspectionReportId') is not None:
+            self.inspection_report_id = m.get('InspectionReportId')
+        return self
+
+
+class DescribeNisInspectionReportSummaryResponseBodySummaryPassRateSummary(TeaModel):
+    def __init__(
+        self,
+        pass_rate: float = None,
+        pass_rate_scope: str = None,
+    ):
+        self.pass_rate = pass_rate
+        self.pass_rate_scope = pass_rate_scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.pass_rate is not None:
+            result['PassRate'] = self.pass_rate
+        if self.pass_rate_scope is not None:
+            result['PassRateScope'] = self.pass_rate_scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PassRate') is not None:
+            self.pass_rate = m.get('PassRate')
+        if m.get('PassRateScope') is not None:
+            self.pass_rate_scope = m.get('PassRateScope')
+        return self
+
+
+class DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary(TeaModel):
+    def __init__(
+        self,
+        resource_count: int = None,
+        risk_count: int = None,
+        risk_level: str = None,
+        risk_type: str = None,
+    ):
+        self.resource_count = resource_count
+        self.risk_count = risk_count
+        self.risk_level = risk_level
+        self.risk_type = risk_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_count is not None:
+            result['ResourceCount'] = self.resource_count
+        if self.risk_count is not None:
+            result['RiskCount'] = self.risk_count
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        if self.risk_type is not None:
+            result['RiskType'] = self.risk_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceCount') is not None:
+            self.resource_count = m.get('ResourceCount')
+        if m.get('RiskCount') is not None:
+            self.risk_count = m.get('RiskCount')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        if m.get('RiskType') is not None:
+            self.risk_type = m.get('RiskType')
+        return self
+
+
+class DescribeNisInspectionReportSummaryResponseBodySummary(TeaModel):
+    def __init__(
+        self,
+        check_item_count: int = None,
+        check_resource_count: int = None,
+        pass_rate_summary: List[DescribeNisInspectionReportSummaryResponseBodySummaryPassRateSummary] = None,
+        risk_summary: List[DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary] = None,
+    ):
+        self.check_item_count = check_item_count
+        self.check_resource_count = check_resource_count
+        self.pass_rate_summary = pass_rate_summary
+        self.risk_summary = risk_summary
+
+    def validate(self):
+        if self.pass_rate_summary:
+            for k in self.pass_rate_summary:
+                if k:
+                    k.validate()
+        if self.risk_summary:
+            for k in self.risk_summary:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_item_count is not None:
+            result['CheckItemCount'] = self.check_item_count
+        if self.check_resource_count is not None:
+            result['CheckResourceCount'] = self.check_resource_count
+        result['PassRateSummary'] = []
+        if self.pass_rate_summary is not None:
+            for k in self.pass_rate_summary:
+                result['PassRateSummary'].append(k.to_map() if k else None)
+        result['RiskSummary'] = []
+        if self.risk_summary is not None:
+            for k in self.risk_summary:
+                result['RiskSummary'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckItemCount') is not None:
+            self.check_item_count = m.get('CheckItemCount')
+        if m.get('CheckResourceCount') is not None:
+            self.check_resource_count = m.get('CheckResourceCount')
+        self.pass_rate_summary = []
+        if m.get('PassRateSummary') is not None:
+            for k in m.get('PassRateSummary'):
+                temp_model = DescribeNisInspectionReportSummaryResponseBodySummaryPassRateSummary()
+                self.pass_rate_summary.append(temp_model.from_map(k))
+        self.risk_summary = []
+        if m.get('RiskSummary') is not None:
+            for k in m.get('RiskSummary'):
+                temp_model = DescribeNisInspectionReportSummaryResponseBodySummaryRiskSummary()
+                self.risk_summary.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeNisInspectionReportSummaryResponseBody(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        inspection_report_id: str = None,
+        inspection_task_id: str = None,
+        request_id: str = None,
+        start_time: str = None,
+        status: str = None,
+        summary: DescribeNisInspectionReportSummaryResponseBodySummary = None,
+    ):
+        self.end_time = end_time
+        self.inspection_report_id = inspection_report_id
+        self.inspection_task_id = inspection_task_id
+        self.request_id = request_id
+        self.start_time = start_time
+        self.status = status
+        self.summary = summary
+
+    def validate(self):
+        if self.summary:
+            self.summary.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.inspection_report_id is not None:
+            result['InspectionReportId'] = self.inspection_report_id
+        if self.inspection_task_id is not None:
+            result['InspectionTaskId'] = self.inspection_task_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.summary is not None:
+            result['Summary'] = self.summary.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InspectionReportId') is not None:
+            self.inspection_report_id = m.get('InspectionReportId')
+        if m.get('InspectionTaskId') is not None:
+            self.inspection_task_id = m.get('InspectionTaskId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Summary') is not None:
+            temp_model = DescribeNisInspectionReportSummaryResponseBodySummary()
+            self.summary = temp_model.from_map(m['Summary'])
+        return self
+
+
+class DescribeNisInspectionReportSummaryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNisInspectionReportSummaryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNisInspectionReportSummaryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeNisInspectionTaskRequest(TeaModel):
+    def __init__(
+        self,
+        inspection_task_id: str = None,
+    ):
+        # This parameter is required.
+        self.inspection_task_id = inspection_task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inspection_task_id is not None:
+            result['InspectionTaskId'] = self.inspection_task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InspectionTaskId') is not None:
+            self.inspection_task_id = m.get('InspectionTaskId')
+        return self
+
+
+class DescribeNisInspectionTaskResponseBodyCheckResourceList(TeaModel):
+    def __init__(
+        self,
+        check_scope: str = None,
+        resource_type: str = None,
+    ):
+        self.check_scope = check_scope
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_scope is not None:
+            result['CheckScope'] = self.check_scope
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckScope') is not None:
+            self.check_scope = m.get('CheckScope')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class DescribeNisInspectionTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        check_resource_list: List[DescribeNisInspectionTaskResponseBodyCheckResourceList] = None,
+        create_time: str = None,
+        inspection_interval: str = None,
+        inspection_name: str = None,
+        inspection_project: str = None,
+        inspection_task_id: str = None,
+        inspection_trigger_time: str = None,
+        last_update_report_id: str = None,
+        last_update_time: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.check_resource_list = check_resource_list
+        self.create_time = create_time
+        self.inspection_interval = inspection_interval
+        self.inspection_name = inspection_name
+        self.inspection_project = inspection_project
+        self.inspection_task_id = inspection_task_id
+        self.inspection_trigger_time = inspection_trigger_time
+        self.last_update_report_id = last_update_report_id
+        self.last_update_time = last_update_time
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        if self.check_resource_list:
+            for k in self.check_resource_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CheckResourceList'] = []
+        if self.check_resource_list is not None:
+            for k in self.check_resource_list:
+                result['CheckResourceList'].append(k.to_map() if k else None)
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.inspection_interval is not None:
+            result['InspectionInterval'] = self.inspection_interval
+        if self.inspection_name is not None:
+            result['InspectionName'] = self.inspection_name
+        if self.inspection_project is not None:
+            result['InspectionProject'] = self.inspection_project
+        if self.inspection_task_id is not None:
+            result['InspectionTaskId'] = self.inspection_task_id
+        if self.inspection_trigger_time is not None:
+            result['InspectionTriggerTime'] = self.inspection_trigger_time
+        if self.last_update_report_id is not None:
+            result['LastUpdateReportId'] = self.last_update_report_id
+        if self.last_update_time is not None:
+            result['LastUpdateTime'] = self.last_update_time
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.check_resource_list = []
+        if m.get('CheckResourceList') is not None:
+            for k in m.get('CheckResourceList'):
+                temp_model = DescribeNisInspectionTaskResponseBodyCheckResourceList()
+                self.check_resource_list.append(temp_model.from_map(k))
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('InspectionInterval') is not None:
+            self.inspection_interval = m.get('InspectionInterval')
+        if m.get('InspectionName') is not None:
+            self.inspection_name = m.get('InspectionName')
+        if m.get('InspectionProject') is not None:
+            self.inspection_project = m.get('InspectionProject')
+        if m.get('InspectionTaskId') is not None:
+            self.inspection_task_id = m.get('InspectionTaskId')
+        if m.get('InspectionTriggerTime') is not None:
+            self.inspection_trigger_time = m.get('InspectionTriggerTime')
+        if m.get('LastUpdateReportId') is not None:
+            self.last_update_report_id = m.get('LastUpdateReportId')
+        if m.get('LastUpdateTime') is not None:
+            self.last_update_time = m.get('LastUpdateTime')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeNisInspectionTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNisInspectionTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNisInspectionTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetInternetTupleRequest(TeaModel):
     def __init__(
         self,
@@ -4153,6 +5568,706 @@ class GetVbrFlowTopNResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetVbrFlowTopNResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListNisInspectionResourceTypeResponseBodyResourceTypeList(TeaModel):
+    def __init__(
+        self,
+        resource_type: str = None,
+    ):
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class ListNisInspectionResourceTypeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resource_type_list: List[ListNisInspectionResourceTypeResponseBodyResourceTypeList] = None,
+    ):
+        self.request_id = request_id
+        self.resource_type_list = resource_type_list
+
+    def validate(self):
+        if self.resource_type_list:
+            for k in self.resource_type_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResourceTypeList'] = []
+        if self.resource_type_list is not None:
+            for k in self.resource_type_list:
+                result['ResourceTypeList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.resource_type_list = []
+        if m.get('ResourceTypeList') is not None:
+            for k in m.get('ResourceTypeList'):
+                temp_model = ListNisInspectionResourceTypeResponseBodyResourceTypeList()
+                self.resource_type_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListNisInspectionResourceTypeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListNisInspectionResourceTypeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListNisInspectionResourceTypeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListNisInspectionTaskReportsRequest(TeaModel):
+    def __init__(
+        self,
+        inspection_task_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        # This parameter is required.
+        self.inspection_task_id = inspection_task_id
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inspection_task_id is not None:
+            result['InspectionTaskId'] = self.inspection_task_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InspectionTaskId') is not None:
+            self.inspection_task_id = m.get('InspectionTaskId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListNisInspectionTaskReportsResponseBodyInspectionReportList(TeaModel):
+    def __init__(
+        self,
+        inspection_report_id: str = None,
+    ):
+        self.inspection_report_id = inspection_report_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inspection_report_id is not None:
+            result['InspectionReportId'] = self.inspection_report_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InspectionReportId') is not None:
+            self.inspection_report_id = m.get('InspectionReportId')
+        return self
+
+
+class ListNisInspectionTaskReportsResponseBody(TeaModel):
+    def __init__(
+        self,
+        inspection_report_list: List[ListNisInspectionTaskReportsResponseBodyInspectionReportList] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.inspection_report_list = inspection_report_list
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.inspection_report_list:
+            for k in self.inspection_report_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InspectionReportList'] = []
+        if self.inspection_report_list is not None:
+            for k in self.inspection_report_list:
+                result['InspectionReportList'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.inspection_report_list = []
+        if m.get('InspectionReportList') is not None:
+            for k in m.get('InspectionReportList'):
+                temp_model = ListNisInspectionTaskReportsResponseBodyInspectionReportList()
+                self.inspection_report_list.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListNisInspectionTaskReportsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListNisInspectionTaskReportsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListNisInspectionTaskReportsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListNisInspectionTasksRequest(TeaModel):
+    def __init__(
+        self,
+        inspection_name: str = None,
+        inspection_project: str = None,
+        inspection_task_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        status: str = None,
+    ):
+        self.inspection_name = inspection_name
+        self.inspection_project = inspection_project
+        self.inspection_task_id = inspection_task_id
+        self.max_results = max_results
+        self.next_token = next_token
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inspection_name is not None:
+            result['InspectionName'] = self.inspection_name
+        if self.inspection_project is not None:
+            result['InspectionProject'] = self.inspection_project
+        if self.inspection_task_id is not None:
+            result['InspectionTaskId'] = self.inspection_task_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InspectionName') is not None:
+            self.inspection_name = m.get('InspectionName')
+        if m.get('InspectionProject') is not None:
+            self.inspection_project = m.get('InspectionProject')
+        if m.get('InspectionTaskId') is not None:
+            self.inspection_task_id = m.get('InspectionTaskId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListNisInspectionTasksResponseBodyInspectionTaskList(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        inspection_name: str = None,
+        inspection_project: str = None,
+        inspection_task_id: str = None,
+        last_update_report_id: str = None,
+        status: str = None,
+    ):
+        self.create_time = create_time
+        self.inspection_name = inspection_name
+        self.inspection_project = inspection_project
+        self.inspection_task_id = inspection_task_id
+        self.last_update_report_id = last_update_report_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.inspection_name is not None:
+            result['InspectionName'] = self.inspection_name
+        if self.inspection_project is not None:
+            result['InspectionProject'] = self.inspection_project
+        if self.inspection_task_id is not None:
+            result['InspectionTaskId'] = self.inspection_task_id
+        if self.last_update_report_id is not None:
+            result['LastUpdateReportId'] = self.last_update_report_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('InspectionName') is not None:
+            self.inspection_name = m.get('InspectionName')
+        if m.get('InspectionProject') is not None:
+            self.inspection_project = m.get('InspectionProject')
+        if m.get('InspectionTaskId') is not None:
+            self.inspection_task_id = m.get('InspectionTaskId')
+        if m.get('LastUpdateReportId') is not None:
+            self.last_update_report_id = m.get('LastUpdateReportId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListNisInspectionTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        inspection_task_list: List[ListNisInspectionTasksResponseBodyInspectionTaskList] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.inspection_task_list = inspection_task_list
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.inspection_task_list:
+            for k in self.inspection_task_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InspectionTaskList'] = []
+        if self.inspection_task_list is not None:
+            for k in self.inspection_task_list:
+                result['InspectionTaskList'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.inspection_task_list = []
+        if m.get('InspectionTaskList') is not None:
+            for k in m.get('InspectionTaskList'):
+                temp_model = ListNisInspectionTasksResponseBodyInspectionTaskList()
+                self.inspection_task_list.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListNisInspectionTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListNisInspectionTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListNisInspectionTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartNisInspectionTaskRequest(TeaModel):
+    def __init__(
+        self,
+        inspection_task_id: str = None,
+    ):
+        # This parameter is required.
+        self.inspection_task_id = inspection_task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inspection_task_id is not None:
+            result['InspectionTaskId'] = self.inspection_task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InspectionTaskId') is not None:
+            self.inspection_task_id = m.get('InspectionTaskId')
+        return self
+
+
+class StartNisInspectionTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        inspection_report_id: str = None,
+        request_id: str = None,
+    ):
+        self.inspection_report_id = inspection_report_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inspection_report_id is not None:
+            result['InspectionReportId'] = self.inspection_report_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InspectionReportId') is not None:
+            self.inspection_report_id = m.get('InspectionReportId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartNisInspectionTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartNisInspectionTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartNisInspectionTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateNisInspectionTaskRequest(TeaModel):
+    def __init__(
+        self,
+        inspection_task_id: str = None,
+        status: str = None,
+    ):
+        # This parameter is required.
+        self.inspection_task_id = inspection_task_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.inspection_task_id is not None:
+            result['InspectionTaskId'] = self.inspection_task_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InspectionTaskId') is not None:
+            self.inspection_task_id = m.get('InspectionTaskId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UpdateNisInspectionTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateNisInspectionTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateNisInspectionTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateNisInspectionTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
