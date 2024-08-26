@@ -1,3 +1,18 @@
+2024-08-26 Version: 3.15.0
+- Support API SaveSingleTaskForReserveDropListDomain.
+- Update API CheckDomain: update response param.
+- Update API GetOperationOssUploadPolicy: update param AuditType.
+- Update API QueryAdvancedDomainList: add param IsPremiumDomain.
+- Update API QueryDomainList: update response param.
+- Update API QueryEmailVerification: update param Email.
+- Update API QueryRegistrantProfiles: add param Remark.
+- Update API QueryRegistrantProfiles: update response param.
+- Update API QueryTaskDetailList: update response param.
+- Update API SaveBatchDomainRemark: update param InstanceIds.
+- Update API SaveBatchTaskForCreatingOrderActivate: update param OrderActivateParam.
+- Update API SaveDomainGroup: update param DomainGroupName.
+
+
 2024-04-12 Version: 3.14.13
 - Update API SaveBatchTaskForReserveDropListDomain: update param Domains.
 

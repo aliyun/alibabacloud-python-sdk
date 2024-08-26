@@ -12,6 +12,7 @@ class AcknowledgeTaskResultRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.lang = lang
+        # This parameter is required.
         self.task_detail_no = task_detail_no
         self.user_client_ip = user_client_ip
 
@@ -124,6 +125,7 @@ class BatchFuzzyMatchDomainSensitiveWordRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.keyword = keyword
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -382,8 +384,12 @@ class CancelDomainVerificationRequest(TeaModel):
         # 
         # *   **DOMAINAUDIT**: review a domain name review.
         # *   **AUDITCONTACT**: review a contact.
+        # 
+        # This parameter is required.
         self.action_type = action_type
-        # Thee instance ID of the domain name. You can call the [QueryDomainList](~~67712~~) operation to query the instance ID.
+        # Thee instance ID of the domain name. You can call the [QueryDomainList](https://help.aliyun.com/document_detail/67712.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language of the error message to return if the request fails. Valid values:
         # 
@@ -502,6 +508,7 @@ class CancelOperationAuditRequest(TeaModel):
         audit_record_id: int = None,
         lang: str = None,
     ):
+        # This parameter is required.
         self.audit_record_id = audit_record_id
         self.lang = lang
 
@@ -605,8 +612,10 @@ class CancelQualificationVerificationRequest(TeaModel):
         qualification_type: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
+        # This parameter is required.
         self.qualification_type = qualification_type
         self.user_client_ip = user_client_ip
 
@@ -718,6 +727,7 @@ class CancelTaskRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.lang = lang
+        # This parameter is required.
         self.task_no = task_no
         self.user_client_ip = user_client_ip
 
@@ -827,7 +837,9 @@ class ChangeResourceGroupRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.lang = lang
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_type = resource_type
         self.user_client_ip = user_client_ip
@@ -951,6 +963,7 @@ class CheckDomainRequest(TeaModel):
         fee_period: int = None,
         lang: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.fee_command = fee_command
         self.fee_currency = fee_currency
@@ -993,6 +1006,80 @@ class CheckDomainRequest(TeaModel):
         return self
 
 
+class CheckDomainResponseBodyStaticPriceInfoPriceInfo(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        money: float = None,
+        period: int = None,
+    ):
+        self.action = action
+        self.money = money
+        self.period = period
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['action'] = self.action
+        if self.money is not None:
+            result['money'] = self.money
+        if self.period is not None:
+            result['period'] = self.period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('action') is not None:
+            self.action = m.get('action')
+        if m.get('money') is not None:
+            self.money = m.get('money')
+        if m.get('period') is not None:
+            self.period = m.get('period')
+        return self
+
+
+class CheckDomainResponseBodyStaticPriceInfo(TeaModel):
+    def __init__(
+        self,
+        price_info: List[CheckDomainResponseBodyStaticPriceInfoPriceInfo] = None,
+    ):
+        self.price_info = price_info
+
+    def validate(self):
+        if self.price_info:
+            for k in self.price_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PriceInfo'] = []
+        if self.price_info is not None:
+            for k in self.price_info:
+                result['PriceInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.price_info = []
+        if m.get('PriceInfo') is not None:
+            for k in m.get('PriceInfo'):
+                temp_model = CheckDomainResponseBodyStaticPriceInfoPriceInfo()
+                self.price_info.append(temp_model.from_map(k))
+        return self
+
+
 class CheckDomainResponseBody(TeaModel):
     def __init__(
         self,
@@ -1003,6 +1090,7 @@ class CheckDomainResponseBody(TeaModel):
         price: int = None,
         reason: str = None,
         request_id: str = None,
+        static_price_info: CheckDomainResponseBodyStaticPriceInfo = None,
     ):
         self.avail = avail
         self.domain_name = domain_name
@@ -1011,9 +1099,11 @@ class CheckDomainResponseBody(TeaModel):
         self.price = price
         self.reason = reason
         self.request_id = request_id
+        self.static_price_info = static_price_info
 
     def validate(self):
-        pass
+        if self.static_price_info:
+            self.static_price_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1035,6 +1125,8 @@ class CheckDomainResponseBody(TeaModel):
             result['Reason'] = self.reason
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.static_price_info is not None:
+            result['StaticPriceInfo'] = self.static_price_info.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -1053,6 +1145,9 @@ class CheckDomainResponseBody(TeaModel):
             self.reason = m.get('Reason')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('StaticPriceInfo') is not None:
+            temp_model = CheckDomainResponseBodyStaticPriceInfo()
+            self.static_price_info = temp_model.from_map(m['StaticPriceInfo'])
         return self
 
 
@@ -1104,6 +1199,7 @@ class CheckDomainSunriseClaimRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -1224,7 +1320,9 @@ class CheckMaxYearOfServerLockRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.check_action = check_action
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -1343,6 +1441,7 @@ class CheckProcessingServerLockApplyRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.fee_period = fee_period
         self.lang = lang
@@ -1462,6 +1561,7 @@ class CheckTransferInFeasibilityRequest(TeaModel):
         transfer_authorization_code: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.transfer_authorization_code = transfer_authorization_code
@@ -1599,7 +1699,9 @@ class ConfirmTransferInEmailRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.email = email
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -1781,6 +1883,7 @@ class DeleteContactTemplatesRequest(TeaModel):
         registrant_profile_ids: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.registrant_profile_ids = registrant_profile_ids
         self.user_client_ip = user_client_ip
 
@@ -1883,6 +1986,7 @@ class DeleteDomainGroupRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_group_id = domain_group_id
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -1990,6 +2094,7 @@ class DeleteEmailVerificationRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.email = email
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -2205,6 +2310,7 @@ class DeleteRegistrantProfileRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.lang = lang
+        # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
         self.user_client_ip = user_client_ip
 
@@ -2311,6 +2417,8 @@ class DomainSpecialBizCancelRequest(TeaModel):
         user_client_ip: str = None,
     ):
         # The business ID.
+        # 
+        # This parameter is required.
         self.biz_id = biz_id
         # The IP address of the client.
         self.user_client_ip = user_client_ip
@@ -2492,6 +2600,7 @@ class EmailVerifiedRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.email = email
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -2599,6 +2708,7 @@ class FuzzyMatchDomainSensitiveWordRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.keyword = keyword
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -2787,6 +2897,7 @@ class GetOperationOssUploadPolicyRequest(TeaModel):
         audit_type: int = None,
         lang: str = None,
     ):
+        # This parameter is required.
         self.audit_type = audit_type
         self.lang = lang
 
@@ -3679,6 +3790,7 @@ class LookupTmchNoticeRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.claim_key = claim_key
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -4366,7 +4478,9 @@ class PollTaskResultRequest(TeaModel):
         self.domain_name = domain_name
         self.instance_id = instance_id
         self.lang = lang
+        # This parameter is required.
         self.page_num = page_num
+        # This parameter is required.
         self.page_size = page_size
         self.task_no = task_no
         self.task_result_status = task_result_status
@@ -4713,6 +4827,7 @@ class QueryAdvancedDomainListRequest(TeaModel):
         excluded_suffix: bool = None,
         expiration_date_sort: bool = None,
         form: int = None,
+        is_premium_domain: bool = None,
         key_word: str = None,
         key_word_prefix: bool = None,
         key_word_suffix: bool = None,
@@ -4742,11 +4857,14 @@ class QueryAdvancedDomainListRequest(TeaModel):
         self.excluded_suffix = excluded_suffix
         self.expiration_date_sort = expiration_date_sort
         self.form = form
+        self.is_premium_domain = is_premium_domain
         self.key_word = key_word
         self.key_word_prefix = key_word_prefix
         self.key_word_suffix = key_word_suffix
         self.lang = lang
+        # This parameter is required.
         self.page_num = page_num
+        # This parameter is required.
         self.page_size = page_size
         self.product_domain_type = product_domain_type
         self.product_domain_type_sort = product_domain_type_sort
@@ -4794,6 +4912,8 @@ class QueryAdvancedDomainListRequest(TeaModel):
             result['ExpirationDateSort'] = self.expiration_date_sort
         if self.form is not None:
             result['Form'] = self.form
+        if self.is_premium_domain is not None:
+            result['IsPremiumDomain'] = self.is_premium_domain
         if self.key_word is not None:
             result['KeyWord'] = self.key_word
         if self.key_word_prefix is not None:
@@ -4856,6 +4976,8 @@ class QueryAdvancedDomainListRequest(TeaModel):
             self.expiration_date_sort = m.get('ExpirationDateSort')
         if m.get('Form') is not None:
             self.form = m.get('Form')
+        if m.get('IsPremiumDomain') is not None:
+            self.is_premium_domain = m.get('IsPremiumDomain')
         if m.get('KeyWord') is not None:
             self.key_word = m.get('KeyWord')
         if m.get('KeyWordPrefix') is not None:
@@ -5309,6 +5431,7 @@ class QueryArtExtensionRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -5483,7 +5606,9 @@ class QueryChangeLogListRequest(TeaModel):
         self.domain_name = domain_name
         self.end_date = end_date
         self.lang = lang
+        # This parameter is required.
         self.page_num = page_num
+        # This parameter is required.
         self.page_size = page_size
         self.start_date = start_date
         self.user_client_ip = user_client_ip
@@ -5750,7 +5875,9 @@ class QueryContactInfoRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.contact_type = contact_type
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -5964,6 +6091,7 @@ class QueryDSRecordRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -6130,6 +6258,7 @@ class QueryDnsHostRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -6526,6 +6655,8 @@ class QueryDomainByDomainNameRequest(TeaModel):
         user_client_ip: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The language of the error message to return if the request fails. Valid values:
         # 
@@ -6702,7 +6833,7 @@ class QueryDomainByDomainNameResponseBody(TeaModel):
     ):
         # The Domain Name System (DNS) servers of the domain name.
         self.dns_list = dns_list
-        # The ID of the domain name group. You can call the [QueryDomainGroupList](~~69362~~) operation to query the ID of the domain name group.
+        # The ID of the domain name group. You can call the [QueryDomainGroupList](https://help.aliyun.com/document_detail/69362.html) operation to query the ID of the domain name group.
         self.domain_group_id = domain_group_id
         # The name of the domain name group.
         self.domain_group_name = domain_group_name
@@ -7015,6 +7146,7 @@ class QueryDomainByInstanceIdRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -7720,8 +7852,12 @@ class QueryDomainListRequest(TeaModel):
         # >  If this parameter is not specified, the domain names are sorted by the time when they were added to the database.
         self.order_key_type = order_key_type
         # The page number.
+        # 
+        # This parameter is required.
         self.page_num = page_num
         # The number of entries per page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The type of the domain name. Valid values:
         # 
@@ -7911,6 +8047,7 @@ class QueryDomainListResponseBodyDataDomain(TeaModel):
     def __init__(
         self,
         ccompany: str = None,
+        chgholder_status: str = None,
         domain_audit_status: str = None,
         domain_group_id: str = None,
         domain_group_name: str = None,
@@ -7933,6 +8070,7 @@ class QueryDomainListResponseBodyDataDomain(TeaModel):
     ):
         # The name of the domain name registrant.
         self.ccompany = ccompany
+        self.chgholder_status = chgholder_status
         # The state of real-name verification for the domain name. Valid values:
         # 
         # *   **FAILED**: Real-name verification for the domain name fails.
@@ -8003,6 +8141,8 @@ class QueryDomainListResponseBodyDataDomain(TeaModel):
         result = dict()
         if self.ccompany is not None:
             result['Ccompany'] = self.ccompany
+        if self.chgholder_status is not None:
+            result['ChgholderStatus'] = self.chgholder_status
         if self.domain_audit_status is not None:
             result['DomainAuditStatus'] = self.domain_audit_status
         if self.domain_group_id is not None:
@@ -8047,6 +8187,8 @@ class QueryDomainListResponseBodyDataDomain(TeaModel):
         m = m or dict()
         if m.get('Ccompany') is not None:
             self.ccompany = m.get('Ccompany')
+        if m.get('ChgholderStatus') is not None:
+            self.chgholder_status = m.get('ChgholderStatus')
         if m.get('DomainAuditStatus') is not None:
             self.domain_audit_status = m.get('DomainAuditStatus')
         if m.get('DomainGroupId') is not None:
@@ -8252,6 +8394,7 @@ class QueryDomainRealNameVerificationInfoRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.fetch_image = fetch_image
         self.lang = lang
@@ -9118,8 +9261,12 @@ class QueryDomainSpecialBizInfoByDomainRequest(TeaModel):
         user_client_ip: str = None,
     ):
         # The business type.
+        # 
+        # This parameter is required.
         self.biz_type = biz_type
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The IP address of the client.
         self.user_client_ip = user_client_ip
@@ -9874,6 +10021,7 @@ class QueryEmailVerificationRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.email = email
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -10041,6 +10189,7 @@ class QueryEnsAssociationRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -10155,8 +10304,10 @@ class QueryFailReasonForDomainRealNameVerificationRequest(TeaModel):
         real_name_verification_action: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.real_name_verification_action = real_name_verification_action
         self.user_client_ip = user_client_ip
 
@@ -10321,6 +10472,7 @@ class QueryFailReasonForRegistrantProfileRealNameVerificationRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.lang = lang
+        # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
         self.user_client_ip = user_client_ip
 
@@ -10476,9 +10628,12 @@ class QueryFailingReasonListForQualificationRequest(TeaModel):
         qualification_type: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
+        # This parameter is required.
         self.limit = limit
+        # This parameter is required.
         self.qualification_type = qualification_type
         self.user_client_ip = user_client_ip
 
@@ -10640,6 +10795,7 @@ class QueryLocalEnsAssociationRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -10752,6 +10908,7 @@ class QueryOperationAuditInfoDetailRequest(TeaModel):
         audit_record_id: int = None,
         lang: str = None,
     ):
+        # This parameter is required.
         self.audit_record_id = audit_record_id
         self.lang = lang
 
@@ -11159,8 +11316,10 @@ class QueryQualificationDetailRequest(TeaModel):
         qualification_type: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
+        # This parameter is required.
         self.qualification_type = qualification_type
         self.user_client_ip = user_client_ip
 
@@ -11368,6 +11527,7 @@ class QueryRegistrantProfileRealNameVerificationInfoRequest(TeaModel):
     ):
         self.fetch_image = fetch_image
         self.lang = lang
+        # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
         self.user_client_ip = user_client_ip
 
@@ -11526,6 +11686,7 @@ class QueryRegistrantProfilesRequest(TeaModel):
         registrant_profile_id: int = None,
         registrant_profile_type: str = None,
         registrant_type: str = None,
+        remark: str = None,
         user_client_ip: str = None,
         zh_registrant_organization: str = None,
     ):
@@ -11539,6 +11700,7 @@ class QueryRegistrantProfilesRequest(TeaModel):
         self.registrant_profile_id = registrant_profile_id
         self.registrant_profile_type = registrant_profile_type
         self.registrant_type = registrant_type
+        self.remark = remark
         self.user_client_ip = user_client_ip
         self.zh_registrant_organization = zh_registrant_organization
 
@@ -11571,6 +11733,8 @@ class QueryRegistrantProfilesRequest(TeaModel):
             result['RegistrantProfileType'] = self.registrant_profile_type
         if self.registrant_type is not None:
             result['RegistrantType'] = self.registrant_type
+        if self.remark is not None:
+            result['Remark'] = self.remark
         if self.user_client_ip is not None:
             result['UserClientIp'] = self.user_client_ip
         if self.zh_registrant_organization is not None:
@@ -11599,6 +11763,8 @@ class QueryRegistrantProfilesRequest(TeaModel):
             self.registrant_profile_type = m.get('RegistrantProfileType')
         if m.get('RegistrantType') is not None:
             self.registrant_type = m.get('RegistrantType')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         if m.get('UserClientIp') is not None:
             self.user_client_ip = m.get('UserClientIp')
         if m.get('ZhRegistrantOrganization') is not None:
@@ -11626,6 +11792,7 @@ class QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile(Tea
         registrant_profile_id: int = None,
         registrant_profile_type: str = None,
         registrant_type: str = None,
+        remark: str = None,
         tel_area: str = None,
         tel_ext: str = None,
         telephone: str = None,
@@ -11653,6 +11820,7 @@ class QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile(Tea
         self.registrant_profile_id = registrant_profile_id
         self.registrant_profile_type = registrant_profile_type
         self.registrant_type = registrant_type
+        self.remark = remark
         self.tel_area = tel_area
         self.tel_ext = tel_ext
         self.telephone = telephone
@@ -11706,6 +11874,8 @@ class QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile(Tea
             result['RegistrantProfileType'] = self.registrant_profile_type
         if self.registrant_type is not None:
             result['RegistrantType'] = self.registrant_type
+        if self.remark is not None:
+            result['Remark'] = self.remark
         if self.tel_area is not None:
             result['TelArea'] = self.tel_area
         if self.tel_ext is not None:
@@ -11762,6 +11932,8 @@ class QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile(Tea
             self.registrant_profile_type = m.get('RegistrantProfileType')
         if m.get('RegistrantType') is not None:
             self.registrant_type = m.get('RegistrantType')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         if m.get('TelArea') is not None:
             self.tel_area = m.get('TelArea')
         if m.get('TelExt') is not None:
@@ -12112,8 +12284,10 @@ class QueryTaskDetailHistoryRequest(TeaModel):
         self.domain_name = domain_name
         self.domain_name_cursor = domain_name_cursor
         self.lang = lang
+        # This parameter is required.
         self.page_size = page_size
         self.task_detail_no_cursor = task_detail_no_cursor
+        # This parameter is required.
         self.task_no = task_no
         self.task_status = task_status
         self.user_client_ip = user_client_ip
@@ -12668,8 +12842,11 @@ class QueryTaskDetailListRequest(TeaModel):
         self.domain_name = domain_name
         self.instance_id = instance_id
         self.lang = lang
+        # This parameter is required.
         self.page_num = page_num
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.task_no = task_no
         self.task_status = task_status
         self.user_client_ip = user_client_ip
@@ -12728,6 +12905,7 @@ class QueryTaskDetailListResponseBodyDataTaskDetail(TeaModel):
         create_time: str = None,
         domain_name: str = None,
         error_msg: str = None,
+        fail_reason: str = None,
         instance_id: str = None,
         task_detail_no: str = None,
         task_no: str = None,
@@ -12742,6 +12920,7 @@ class QueryTaskDetailListResponseBodyDataTaskDetail(TeaModel):
         self.create_time = create_time
         self.domain_name = domain_name
         self.error_msg = error_msg
+        self.fail_reason = fail_reason
         self.instance_id = instance_id
         self.task_detail_no = task_detail_no
         self.task_no = task_no
@@ -12768,6 +12947,8 @@ class QueryTaskDetailListResponseBodyDataTaskDetail(TeaModel):
             result['DomainName'] = self.domain_name
         if self.error_msg is not None:
             result['ErrorMsg'] = self.error_msg
+        if self.fail_reason is not None:
+            result['FailReason'] = self.fail_reason
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.task_detail_no is not None:
@@ -12798,6 +12979,8 @@ class QueryTaskDetailListResponseBodyDataTaskDetail(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('ErrorMsg') is not None:
             self.error_msg = m.get('ErrorMsg')
+        if m.get('FailReason') is not None:
+            self.fail_reason = m.get('FailReason')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('TaskDetailNo') is not None:
@@ -12983,6 +13166,7 @@ class QueryTaskInfoHistoryRequest(TeaModel):
         self.create_time_cursor = create_time_cursor
         self.end_create_time = end_create_time
         self.lang = lang
+        # This parameter is required.
         self.page_size = page_size
         self.task_no_cursor = task_no_cursor
         self.user_client_ip = user_client_ip
@@ -13459,7 +13643,9 @@ class QueryTaskListRequest(TeaModel):
         self.begin_create_time = begin_create_time
         self.end_create_time = end_create_time
         self.lang = lang
+        # This parameter is required.
         self.page_num = page_num
+        # This parameter is required.
         self.page_size = page_size
         self.user_client_ip = user_client_ip
 
@@ -13738,6 +13924,7 @@ class QueryTransferInByInstanceIdRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -13978,7 +14165,9 @@ class QueryTransferInListRequest(TeaModel):
     ):
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.page_num = page_num
+        # This parameter is required.
         self.page_size = page_size
         self.simple_transfer_in_status = simple_transfer_in_status
         self.submission_end_date = submission_end_date
@@ -14334,6 +14523,7 @@ class QueryTransferOutInfoRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -14486,10 +14676,14 @@ class RegistrantProfileRealNameVerificationRequest(TeaModel):
         registrant_profile_id: int = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.identity_credential = identity_credential
+        # This parameter is required.
         self.identity_credential_no = identity_credential_no
+        # This parameter is required.
         self.identity_credential_type = identity_credential_type
         self.lang = lang
+        # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
         self.user_client_ip = user_client_ip
 
@@ -14608,6 +14802,7 @@ class ResendEmailVerificationRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.email = email
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -14822,6 +15017,7 @@ class ResetQualificationVerificationRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -14930,6 +15126,7 @@ class SaveBatchDomainRemarkRequest(TeaModel):
         remark: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.instance_ids = instance_ids
         self.lang = lang
         self.remark = remark
@@ -15185,6 +15382,7 @@ class SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam(TeaModel):
         self.country = country
         self.dns_1 = dns_1
         self.dns_2 = dns_2
+        # This parameter is required.
         self.domain_name = domain_name
         self.email = email
         self.enable_domain_proxy = enable_domain_proxy
@@ -15344,6 +15542,7 @@ class SaveBatchTaskForCreatingOrderActivateRequest(TeaModel):
     ):
         self.coupon_no = coupon_no
         self.lang = lang
+        # This parameter is required.
         self.order_activate_param = order_activate_param
         self.promotion_no = promotion_no
         self.use_coupon = use_coupon
@@ -15522,6 +15721,7 @@ class SaveBatchTaskForCreatingOrderRedeemRequest(TeaModel):
     ):
         self.coupon_no = coupon_no
         self.lang = lang
+        # This parameter is required.
         self.order_redeem_param = order_redeem_param
         self.promotion_no = promotion_no
         self.use_coupon = use_coupon
@@ -15706,6 +15906,7 @@ class SaveBatchTaskForCreatingOrderRenewRequest(TeaModel):
     ):
         self.coupon_no = coupon_no
         self.lang = lang
+        # This parameter is required.
         self.order_renew_param = order_renew_param
         self.promotion_no = promotion_no
         self.use_coupon = use_coupon
@@ -15896,6 +16097,7 @@ class SaveBatchTaskForCreatingOrderTransferRequest(TeaModel):
     ):
         self.coupon_no = coupon_no
         self.lang = lang
+        # This parameter is required.
         self.order_transfer_param = order_transfer_param
         self.promotion_no = promotion_no
         self.use_coupon = use_coupon
@@ -16036,8 +16238,10 @@ class SaveBatchTaskForDomainNameProxyServiceRequest(TeaModel):
         status: bool = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.status = status
         self.user_client_ip = user_client_ip
 
@@ -16155,6 +16359,8 @@ class SaveBatchTaskForGenerateDomainCertificateRequest(TeaModel):
         user_client_ip: str = None,
     ):
         # The domain names.
+        # 
+        # This parameter is required.
         self.domain_names = domain_names
         # The language of the error message to return if the request fails. Valid values:
         # 
@@ -16202,6 +16408,8 @@ class SaveBatchTaskForGenerateDomainCertificateShrinkRequest(TeaModel):
         user_client_ip: str = None,
     ):
         # The domain names.
+        # 
+        # This parameter is required.
         self.domain_names_shrink = domain_names_shrink
         # The language of the error message to return if the request fails. Valid values:
         # 
@@ -16326,7 +16534,9 @@ class SaveBatchTaskForModifyingDomainDnsRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.aliyun_dns = aliyun_dns
+        # This parameter is required.
         self.domain_name = domain_name
         self.domain_name_server = domain_name_server
         self.lang = lang
@@ -16451,6 +16661,7 @@ class SaveBatchTaskForReserveDropListDomainRequestDomains(TeaModel):
     ):
         self.dns_1 = dns_1
         self.dns_2 = dns_2
+        # This parameter is required.
         self.domain_name = domain_name
 
     def validate(self):
@@ -16487,7 +16698,9 @@ class SaveBatchTaskForReserveDropListDomainRequest(TeaModel):
         contact_template_id: str = None,
         domains: List[SaveBatchTaskForReserveDropListDomainRequestDomains] = None,
     ):
+        # This parameter is required.
         self.contact_template_id = contact_template_id
+        # This parameter is required.
         self.domains = domains
 
     def validate(self):
@@ -16604,8 +16817,10 @@ class SaveBatchTaskForTransferProhibitionLockRequest(TeaModel):
         status: bool = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.status = status
         self.user_client_ip = user_client_ip
 
@@ -16723,8 +16938,10 @@ class SaveBatchTaskForUpdateProhibitionLockRequest(TeaModel):
         status: bool = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.status = status
         self.user_client_ip = user_client_ip
 
@@ -16862,8 +17079,10 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest(TeaModel):
     ):
         self.address = address
         self.city = city
+        # This parameter is required.
         self.contact_type = contact_type
         self.country = country
+        # This parameter is required.
         self.domain_name = domain_name
         self.email = email
         self.lang = lang
@@ -16871,6 +17090,7 @@ class SaveBatchTaskForUpdatingContactInfoByNewContactRequest(TeaModel):
         self.province = province
         self.registrant_name = registrant_name
         self.registrant_organization = registrant_organization
+        # This parameter is required.
         self.registrant_type = registrant_type
         self.tel_area = tel_area
         self.tel_ext = tel_ext
@@ -17071,9 +17291,12 @@ class SaveBatchTaskForUpdatingContactInfoByRegistrantProfileIdRequest(TeaModel):
         transfer_out_prohibited: bool = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.contact_type = contact_type
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
         self.transfer_out_prohibited = transfer_out_prohibited
         self.user_client_ip = user_client_ip
@@ -17201,6 +17424,7 @@ class SaveDomainGroupRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.domain_group_id = domain_group_id
+        # This parameter is required.
         self.domain_group_name = domain_group_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -17824,10 +18048,15 @@ class SaveSingleTaskForAddingDSRecordRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.algorithm = algorithm
+        # This parameter is required.
         self.digest = digest
+        # This parameter is required.
         self.digest_type = digest_type
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.key_tag = key_tag
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -17957,6 +18186,7 @@ class SaveSingleTaskForApplyQuickTransferOutOpenlyRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -18070,6 +18300,7 @@ class SaveSingleTaskForApprovingTransferOutRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -18184,7 +18415,9 @@ class SaveSingleTaskForAssociatingEnsRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.address = address
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -18302,6 +18535,7 @@ class SaveSingleTaskForCancelingTransferInRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -18415,6 +18649,7 @@ class SaveSingleTaskForCancelingTransferOutRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -18530,8 +18765,11 @@ class SaveSingleTaskForCreatingDnsHostRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.dns_name = dns_name
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.ip = ip
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -18690,6 +18928,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest(TeaModel):
         self.coupon_no = coupon_no
         self.dns_1 = dns_1
         self.dns_2 = dns_2
+        # This parameter is required.
         self.domain_name = domain_name
         self.email = email
         self.enable_domain_proxy = enable_domain_proxy
@@ -18952,7 +19191,9 @@ class SaveSingleTaskForCreatingOrderRedeemRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.coupon_no = coupon_no
+        # This parameter is required.
         self.current_expiration_date = current_expiration_date
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.promotion_no = promotion_no
@@ -19096,10 +19337,13 @@ class SaveSingleTaskForCreatingOrderRenewRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.coupon_no = coupon_no
+        # This parameter is required.
         self.current_expiration_date = current_expiration_date
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.promotion_no = promotion_no
+        # This parameter is required.
         self.subscription_duration = subscription_duration
         self.use_coupon = use_coupon
         self.use_promotion = use_promotion
@@ -19245,12 +19489,15 @@ class SaveSingleTaskForCreatingOrderTransferRequest(TeaModel):
         use_promotion: bool = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.authorization_code = authorization_code
         self.coupon_no = coupon_no
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.permit_premium_transfer = permit_premium_transfer
         self.promotion_no = promotion_no
+        # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
         self.use_coupon = use_coupon
         self.use_promotion = use_promotion
@@ -19394,7 +19641,9 @@ class SaveSingleTaskForDeletingDSRecordRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.key_tag = key_tag
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -19513,7 +19762,9 @@ class SaveSingleTaskForDeletingDnsHostRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.dns_name = dns_name
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -19631,6 +19882,7 @@ class SaveSingleTaskForDisassociatingEnsRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -19745,8 +19997,10 @@ class SaveSingleTaskForDomainNameProxyServiceRequest(TeaModel):
         status: bool = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.status = status
         self.user_client_ip = user_client_ip
 
@@ -19864,6 +20118,8 @@ class SaveSingleTaskForGenerateDomainCertificateRequest(TeaModel):
         user_client_ip: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The language of the error message to return if the request fails. Valid values:
         # 
@@ -19990,10 +20246,15 @@ class SaveSingleTaskForModifyingDSRecordRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.algorithm = algorithm
+        # This parameter is required.
         self.digest = digest
+        # This parameter is required.
         self.digest_type = digest_type
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.key_tag = key_tag
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -20125,8 +20386,11 @@ class SaveSingleTaskForModifyingDnsHostRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.dns_name = dns_name
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.ip = ip
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -20248,6 +20512,7 @@ class SaveSingleTaskForQueryingTransferAuthorizationCodeRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -20354,6 +20619,127 @@ class SaveSingleTaskForQueryingTransferAuthorizationCodeResponse(TeaModel):
         return self
 
 
+class SaveSingleTaskForReserveDropListDomainRequest(TeaModel):
+    def __init__(
+        self,
+        contact_template_id: str = None,
+        dns_1: str = None,
+        dns_2: str = None,
+        domain_name: str = None,
+    ):
+        # This parameter is required.
+        self.contact_template_id = contact_template_id
+        self.dns_1 = dns_1
+        self.dns_2 = dns_2
+        # This parameter is required.
+        self.domain_name = domain_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.contact_template_id is not None:
+            result['ContactTemplateId'] = self.contact_template_id
+        if self.dns_1 is not None:
+            result['Dns1'] = self.dns_1
+        if self.dns_2 is not None:
+            result['Dns2'] = self.dns_2
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContactTemplateId') is not None:
+            self.contact_template_id = m.get('ContactTemplateId')
+        if m.get('Dns1') is not None:
+            self.dns_1 = m.get('Dns1')
+        if m.get('Dns2') is not None:
+            self.dns_2 = m.get('Dns2')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        return self
+
+
+class SaveSingleTaskForReserveDropListDomainResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_no: str = None,
+    ):
+        self.request_id = request_id
+        self.task_no = task_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_no is not None:
+            result['TaskNo'] = self.task_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskNo') is not None:
+            self.task_no = m.get('TaskNo')
+        return self
+
+
+class SaveSingleTaskForReserveDropListDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SaveSingleTaskForReserveDropListDomainResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SaveSingleTaskForReserveDropListDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SaveSingleTaskForSaveArtExtensionRequest(TeaModel):
     def __init__(
         self,
@@ -20372,6 +20758,7 @@ class SaveSingleTaskForSaveArtExtensionRequest(TeaModel):
     ):
         self.date_or_period = date_or_period
         self.dimensions = dimensions
+        # This parameter is required.
         self.domain_name = domain_name
         self.features = features
         self.inscriptions_and_markings = inscriptions_and_markings
@@ -20528,6 +20915,7 @@ class SaveSingleTaskForSynchronizingDSRecordRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -20641,6 +21029,7 @@ class SaveSingleTaskForSynchronizingDnsHostRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -20755,8 +21144,10 @@ class SaveSingleTaskForTransferProhibitionLockRequest(TeaModel):
         status: bool = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.status = status
         self.user_client_ip = user_client_ip
 
@@ -20874,8 +21265,10 @@ class SaveSingleTaskForUpdateProhibitionLockRequest(TeaModel):
         status: bool = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.status = status
         self.user_client_ip = user_client_ip
 
@@ -20997,10 +21390,13 @@ class SaveSingleTaskForUpdatingContactInfoRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.add_transfer_lock = add_transfer_lock
+        # This parameter is required.
         self.contact_type = contact_type
+        # This parameter is required.
         self.domain_name = domain_name
         self.instance_id = instance_id
         self.lang = lang
+        # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
         self.user_client_ip = user_client_ip
 
@@ -21129,6 +21525,7 @@ class SaveTaskForSubmittingDomainDeleteRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -21245,9 +21642,13 @@ class SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.identity_credential = identity_credential
+        # This parameter is required.
         self.identity_credential_no = identity_credential_no
+        # This parameter is required.
         self.identity_credential_type = identity_credential_type
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -21375,9 +21776,12 @@ class SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDReques
         registrant_profile_id: int = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
+        # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
         self.user_client_ip = user_client_ip
 
@@ -21522,20 +21926,28 @@ class SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest(TeaModel):
         self.address = address
         self.city = city
         self.country = country
+        # This parameter is required.
         self.domain_name = domain_name
         self.email = email
+        # This parameter is required.
         self.identity_credential = identity_credential
+        # This parameter is required.
         self.identity_credential_no = identity_credential_no
+        # This parameter is required.
         self.identity_credential_type = identity_credential_type
         self.lang = lang
         self.postal_code = postal_code
         self.province = province
         self.registrant_name = registrant_name
         self.registrant_organization = registrant_organization
+        # This parameter is required.
         self.registrant_type = registrant_type
+        # This parameter is required.
         self.tel_area = tel_area
         self.tel_ext = tel_ext
+        # This parameter is required.
         self.telephone = telephone
+        # This parameter is required.
         self.transfer_out_prohibited = transfer_out_prohibited
         self.user_client_ip = user_client_ip
         self.zh_address = zh_address
@@ -21739,9 +22151,12 @@ class SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest(TeaModel):
         transfer_out_prohibited: bool = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
+        # This parameter is required.
         self.transfer_out_prohibited = transfer_out_prohibited
         self.user_client_ip = user_client_ip
 
@@ -22511,6 +22926,7 @@ class SetDefaultRegistrantProfileRequest(TeaModel):
         registrant_profile_id: int = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.registrant_profile_id = registrant_profile_id
         self.user_client_ip = user_client_ip
 
@@ -22612,7 +23028,9 @@ class SetupDomainAutoRenewRequest(TeaModel):
         instance_id: str = None,
         operation: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.operation = operation
 
     def validate(self):
@@ -22919,6 +23337,7 @@ class SubmitEmailVerificationRequest(TeaModel):
         send_if_exist: bool = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.email = email
         self.lang = lang
         self.send_if_exist = send_if_exist
@@ -23195,7 +23614,9 @@ class SubmitOperationAuditInfoRequest(TeaModel):
         lang: str = None,
     ):
         self.audit_info = audit_info
+        # This parameter is required.
         self.audit_type = audit_type
+        # This parameter is required.
         self.domain_name = domain_name
         self.id = id
         self.lang = lang
@@ -23437,6 +23858,7 @@ class TransferInCheckMailTokenRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.lang = lang
+        # This parameter is required.
         self.token = token
         self.user_client_ip = user_client_ip
 
@@ -23615,8 +24037,10 @@ class TransferInReenterTransferAuthorizationCodeRequest(TeaModel):
         transfer_authorization_code: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        # This parameter is required.
         self.transfer_authorization_code = transfer_authorization_code
         self.user_client_ip = user_client_ip
 
@@ -23727,6 +24151,7 @@ class TransferInRefetchWhoisEmailRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -23834,6 +24259,7 @@ class TransferInResendMailTokenRequest(TeaModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
         self.user_client_ip = user_client_ip
@@ -23945,11 +24371,14 @@ class UpdateDomainToDomainGroupRequest(TeaModel):
         replace: bool = None,
         user_client_ip: str = None,
     ):
+        # This parameter is required.
         self.data_source = data_source
+        # This parameter is required.
         self.domain_group_id = domain_group_id
         self.domain_name = domain_name
         self.file_to_upload = file_to_upload
         self.lang = lang
+        # This parameter is required.
         self.replace = replace
         self.user_client_ip = user_client_ip
 
@@ -24282,6 +24711,7 @@ class VerifyEmailRequest(TeaModel):
         user_client_ip: str = None,
     ):
         self.lang = lang
+        # This parameter is required.
         self.token = token
         self.user_client_ip = user_client_ip
 
