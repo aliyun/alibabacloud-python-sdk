@@ -1763,7 +1763,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateAppCodeResponse:
         """
-        @summary 创建新的AppCode
+        @summary Adds an AppCode to an application.
         
         @param request: CreateAppCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1800,7 +1800,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateAppCodeResponse:
         """
-        @summary 创建新的AppCode
+        @summary Adds an AppCode to an application.
         
         @param request: CreateAppCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1836,7 +1836,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateAppCodeRequest,
     ) -> cloud_api20160714_models.CreateAppCodeResponse:
         """
-        @summary 创建新的AppCode
+        @summary Adds an AppCode to an application.
         
         @param request: CreateAppCodeRequest
         @return: CreateAppCodeResponse
@@ -1849,7 +1849,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateAppCodeRequest,
     ) -> cloud_api20160714_models.CreateAppCodeResponse:
         """
-        @summary 创建新的AppCode
+        @summary Adds an AppCode to an application.
         
         @param request: CreateAppCodeRequest
         @return: CreateAppCodeResponse
@@ -1863,7 +1863,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateAppKeyResponse:
         """
-        @summary 创建新的AK、SK
+        @summary Adds an AppKey and AppSecret pair to an application.
         
         @param request: CreateAppKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1902,7 +1902,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.CreateAppKeyResponse:
         """
-        @summary 创建新的AK、SK
+        @summary Adds an AppKey and AppSecret pair to an application.
         
         @param request: CreateAppKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1940,7 +1940,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateAppKeyRequest,
     ) -> cloud_api20160714_models.CreateAppKeyResponse:
         """
-        @summary 创建新的AK、SK
+        @summary Adds an AppKey and AppSecret pair to an application.
         
         @param request: CreateAppKeyRequest
         @return: CreateAppKeyResponse
@@ -1953,7 +1953,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.CreateAppKeyRequest,
     ) -> cloud_api20160714_models.CreateAppKeyResponse:
         """
-        @summary 创建新的AK、SK
+        @summary Adds an AppKey and AppSecret pair to an application.
         
         @param request: CreateAppKeyRequest
         @return: CreateAppKeyResponse
@@ -3735,7 +3735,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteApiResponse:
         """
-        @summary Deletes an API.
+        @summary Deletes the definition of a specified API.
         
         @description    This operation is intended for API providers and cannot be undone after it is complete.
         An API that is running in the runtime environment must be unpublished before you can delete the API.****\
@@ -3778,7 +3778,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteApiResponse:
         """
-        @summary Deletes an API.
+        @summary Deletes the definition of a specified API.
         
         @description    This operation is intended for API providers and cannot be undone after it is complete.
         An API that is running in the runtime environment must be unpublished before you can delete the API.****\
@@ -3820,7 +3820,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteApiRequest,
     ) -> cloud_api20160714_models.DeleteApiResponse:
         """
-        @summary Deletes an API.
+        @summary Deletes the definition of a specified API.
         
         @description    This operation is intended for API providers and cannot be undone after it is complete.
         An API that is running in the runtime environment must be unpublished before you can delete the API.****\
@@ -3837,7 +3837,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteApiRequest,
     ) -> cloud_api20160714_models.DeleteApiResponse:
         """
-        @summary Deletes an API.
+        @summary Deletes the definition of a specified API.
         
         @description    This operation is intended for API providers and cannot be undone after it is complete.
         An API that is running in the runtime environment must be unpublished before you can delete the API.****\
@@ -4319,7 +4319,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteAppCodeResponse:
         """
-        @summary 删除新的AppCode
+        @summary Deletes the AppCode of an application.
         
         @param request: DeleteAppCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4356,7 +4356,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteAppCodeResponse:
         """
-        @summary 删除新的AppCode
+        @summary Deletes the AppCode of an application.
         
         @param request: DeleteAppCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4392,7 +4392,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteAppCodeRequest,
     ) -> cloud_api20160714_models.DeleteAppCodeResponse:
         """
-        @summary 删除新的AppCode
+        @summary Deletes the AppCode of an application.
         
         @param request: DeleteAppCodeRequest
         @return: DeleteAppCodeResponse
@@ -4405,7 +4405,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteAppCodeRequest,
     ) -> cloud_api20160714_models.DeleteAppCodeResponse:
         """
-        @summary 删除新的AppCode
+        @summary Deletes the AppCode of an application.
         
         @param request: DeleteAppCodeRequest
         @return: DeleteAppCodeResponse
@@ -4419,7 +4419,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteAppKeyResponse:
         """
-        @summary 删除新的AppKey
+        @summary Deletes the AppKey and AppSecret of an application.
         
         @param request: DeleteAppKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4456,7 +4456,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteAppKeyResponse:
         """
-        @summary 删除新的AppKey
+        @summary Deletes the AppKey and AppSecret of an application.
         
         @param request: DeleteAppKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4492,7 +4492,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteAppKeyRequest,
     ) -> cloud_api20160714_models.DeleteAppKeyResponse:
         """
-        @summary 删除新的AppKey
+        @summary Deletes the AppKey and AppSecret of an application.
         
         @param request: DeleteAppKeyRequest
         @return: DeleteAppKeyResponse
@@ -4505,7 +4505,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteAppKeyRequest,
     ) -> cloud_api20160714_models.DeleteAppKeyResponse:
         """
-        @summary 删除新的AppKey
+        @summary Deletes the AppKey and AppSecret of an application.
         
         @param request: DeleteAppKeyRequest
         @return: DeleteAppKeyResponse
@@ -4931,7 +4931,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteDomainResponse:
         """
-        @summary Unbinds a custom domain name from a specified API group.
+        @summary Unbinds a custom domain name from an API group.
         
         @description    This operation is intended for API providers.
         If the specified domain name does not exist, a successful response will still appear.
@@ -4974,7 +4974,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteDomainResponse:
         """
-        @summary Unbinds a custom domain name from a specified API group.
+        @summary Unbinds a custom domain name from an API group.
         
         @description    This operation is intended for API providers.
         If the specified domain name does not exist, a successful response will still appear.
@@ -5016,7 +5016,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteDomainRequest,
     ) -> cloud_api20160714_models.DeleteDomainResponse:
         """
-        @summary Unbinds a custom domain name from a specified API group.
+        @summary Unbinds a custom domain name from an API group.
         
         @description    This operation is intended for API providers.
         If the specified domain name does not exist, a successful response will still appear.
@@ -5033,7 +5033,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteDomainRequest,
     ) -> cloud_api20160714_models.DeleteDomainResponse:
         """
-        @summary Unbinds a custom domain name from a specified API group.
+        @summary Unbinds a custom domain name from an API group.
         
         @description    This operation is intended for API providers.
         If the specified domain name does not exist, a successful response will still appear.
@@ -5475,7 +5475,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteModelResponse:
         """
-        @summary Deletes a model from Model Management for an API group.
+        @summary Deletes a model.
         
         @param request: DeleteModelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5512,7 +5512,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DeleteModelResponse:
         """
-        @summary Deletes a model from Model Management for an API group.
+        @summary Deletes a model.
         
         @param request: DeleteModelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5548,7 +5548,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteModelRequest,
     ) -> cloud_api20160714_models.DeleteModelResponse:
         """
-        @summary Deletes a model from Model Management for an API group.
+        @summary Deletes a model.
         
         @param request: DeleteModelRequest
         @return: DeleteModelResponse
@@ -5561,7 +5561,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DeleteModelRequest,
     ) -> cloud_api20160714_models.DeleteModelResponse:
         """
-        @summary Deletes a model from Model Management for an API group.
+        @summary Deletes a model.
         
         @param request: DeleteModelRequest
         @return: DeleteModelResponse
@@ -9291,6 +9291,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisByVpcAccessResponse:
         """
+        @summary Queries the APIs that are associated with a virtual private cloud (VPC) access authorization in a region.
+        
         @param request: DescribeApisByVpcAccessRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeApisByVpcAccessResponse
@@ -9330,6 +9332,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeApisByVpcAccessResponse:
         """
+        @summary Queries the APIs that are associated with a virtual private cloud (VPC) access authorization in a region.
+        
         @param request: DescribeApisByVpcAccessRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeApisByVpcAccessResponse
@@ -9368,6 +9372,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisByVpcAccessRequest,
     ) -> cloud_api20160714_models.DescribeApisByVpcAccessResponse:
         """
+        @summary Queries the APIs that are associated with a virtual private cloud (VPC) access authorization in a region.
+        
         @param request: DescribeApisByVpcAccessRequest
         @return: DescribeApisByVpcAccessResponse
         """
@@ -9379,6 +9385,8 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeApisByVpcAccessRequest,
     ) -> cloud_api20160714_models.DescribeApisByVpcAccessResponse:
         """
+        @summary Queries the APIs that are associated with a virtual private cloud (VPC) access authorization in a region.
+        
         @param request: DescribeApisByVpcAccessRequest
         @return: DescribeApisByVpcAccessResponse
         """
@@ -9767,7 +9775,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAppSecuritiesResponse:
         """
-        @summary 查询APP的密钥信息
+        @summary Queries the key-related information of an application.
         
         @param request: DescribeAppSecuritiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9804,7 +9812,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAppSecuritiesResponse:
         """
-        @summary 查询APP的密钥信息
+        @summary Queries the key-related information of an application.
         
         @param request: DescribeAppSecuritiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9840,7 +9848,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAppSecuritiesRequest,
     ) -> cloud_api20160714_models.DescribeAppSecuritiesResponse:
         """
-        @summary 查询APP的密钥信息
+        @summary Queries the key-related information of an application.
         
         @param request: DescribeAppSecuritiesRequest
         @return: DescribeAppSecuritiesResponse
@@ -9853,7 +9861,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAppSecuritiesRequest,
     ) -> cloud_api20160714_models.DescribeAppSecuritiesResponse:
         """
-        @summary 查询APP的密钥信息
+        @summary Queries the key-related information of an application.
         
         @param request: DescribeAppSecuritiesRequest
         @return: DescribeAppSecuritiesResponse
@@ -9979,10 +9987,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAppsResponse:
         """
-        @summary Queries the apps. App information is returned only to the app owner.
+        @summary Queries the apps of a user. App information is returned only to the app owner.
         
         @description    This API is intended for API providers.
-        API providers can use the app IDs or their Apsara Stack tenant accounts to query app information.
+        API providers can use the app IDs or their Alibaba Cloud accounts to query app information.
         Each provider can call this operation for a maximum of 200 times every day in a region.
         
         @param request: DescribeAppsRequest
@@ -10026,10 +10034,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeAppsResponse:
         """
-        @summary Queries the apps. App information is returned only to the app owner.
+        @summary Queries the apps of a user. App information is returned only to the app owner.
         
         @description    This API is intended for API providers.
-        API providers can use the app IDs or their Apsara Stack tenant accounts to query app information.
+        API providers can use the app IDs or their Alibaba Cloud accounts to query app information.
         Each provider can call this operation for a maximum of 200 times every day in a region.
         
         @param request: DescribeAppsRequest
@@ -10072,10 +10080,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAppsRequest,
     ) -> cloud_api20160714_models.DescribeAppsResponse:
         """
-        @summary Queries the apps. App information is returned only to the app owner.
+        @summary Queries the apps of a user. App information is returned only to the app owner.
         
         @description    This API is intended for API providers.
-        API providers can use the app IDs or their Apsara Stack tenant accounts to query app information.
+        API providers can use the app IDs or their Alibaba Cloud accounts to query app information.
         Each provider can call this operation for a maximum of 200 times every day in a region.
         
         @param request: DescribeAppsRequest
@@ -10089,10 +10097,10 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeAppsRequest,
     ) -> cloud_api20160714_models.DescribeAppsResponse:
         """
-        @summary Queries the apps. App information is returned only to the app owner.
+        @summary Queries the apps of a user. App information is returned only to the app owner.
         
         @description    This API is intended for API providers.
-        API providers can use the app IDs or their Apsara Stack tenant accounts to query app information.
+        API providers can use the app IDs or their Alibaba Cloud accounts to query app information.
         Each provider can call this operation for a maximum of 200 times every day in a region.
         
         @param request: DescribeAppsRequest
@@ -11335,9 +11343,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDeployedApisResponse:
         """
-        @summary Queries the APIs that are published to and running in an environment.
+        @summary Queries the APIs that have been published to a specified environment.
         
-        @description    This operation is intended for API callers.
+        @description    This API is intended for API providers.
         
         @param request: DescribeDeployedApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11392,9 +11400,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDeployedApisResponse:
         """
-        @summary Queries the APIs that are published to and running in an environment.
+        @summary Queries the APIs that have been published to a specified environment.
         
-        @description    This operation is intended for API callers.
+        @description    This API is intended for API providers.
         
         @param request: DescribeDeployedApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11448,9 +11456,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDeployedApisRequest,
     ) -> cloud_api20160714_models.DescribeDeployedApisResponse:
         """
-        @summary Queries the APIs that are published to and running in an environment.
+        @summary Queries the APIs that have been published to a specified environment.
         
-        @description    This operation is intended for API callers.
+        @description    This API is intended for API providers.
         
         @param request: DescribeDeployedApisRequest
         @return: DescribeDeployedApisResponse
@@ -11463,9 +11471,9 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDeployedApisRequest,
     ) -> cloud_api20160714_models.DescribeDeployedApisResponse:
         """
-        @summary Queries the APIs that are published to and running in an environment.
+        @summary Queries the APIs that have been published to a specified environment.
         
-        @description    This operation is intended for API callers.
+        @description    This API is intended for API providers.
         
         @param request: DescribeDeployedApisRequest
         @return: DescribeDeployedApisResponse
@@ -11479,7 +11487,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDomainResponse:
         """
-        @summary Queries the details about a bound custom domain name, including the system assigned second-level domain name, custom domain name, and SSL certificate.
+        @summary Queries details about a bound custom domain name, including the automatically assigned second-level domain name, custom domain name, and SSL certificate.
         
         @param request: DescribeDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11518,7 +11526,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeDomainResponse:
         """
-        @summary Queries the details about a bound custom domain name, including the system assigned second-level domain name, custom domain name, and SSL certificate.
+        @summary Queries details about a bound custom domain name, including the automatically assigned second-level domain name, custom domain name, and SSL certificate.
         
         @param request: DescribeDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11556,7 +11564,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDomainRequest,
     ) -> cloud_api20160714_models.DescribeDomainResponse:
         """
-        @summary Queries the details about a bound custom domain name, including the system assigned second-level domain name, custom domain name, and SSL certificate.
+        @summary Queries details about a bound custom domain name, including the automatically assigned second-level domain name, custom domain name, and SSL certificate.
         
         @param request: DescribeDomainRequest
         @return: DescribeDomainResponse
@@ -11569,7 +11577,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeDomainRequest,
     ) -> cloud_api20160714_models.DescribeDomainResponse:
         """
-        @summary Queries the details about a bound custom domain name, including the system assigned second-level domain name, custom domain name, and SSL certificate.
+        @summary Queries details about a bound custom domain name, including the automatically assigned second-level domain name, custom domain name, and SSL certificate.
         
         @param request: DescribeDomainRequest
         @return: DescribeDomainResponse
@@ -12139,7 +12147,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceClusterInfoResponse:
         """
-        @summary 查询专享实例集群的详情
+        @summary Queries the information about a dedicated instance cluster.
         
         @param request: DescribeInstanceClusterInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12176,7 +12184,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceClusterInfoResponse:
         """
-        @summary 查询专享实例集群的详情
+        @summary Queries the information about a dedicated instance cluster.
         
         @param request: DescribeInstanceClusterInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12212,7 +12220,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceClusterInfoRequest,
     ) -> cloud_api20160714_models.DescribeInstanceClusterInfoResponse:
         """
-        @summary 查询专享实例集群的详情
+        @summary Queries the information about a dedicated instance cluster.
         
         @param request: DescribeInstanceClusterInfoRequest
         @return: DescribeInstanceClusterInfoResponse
@@ -12225,7 +12233,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceClusterInfoRequest,
     ) -> cloud_api20160714_models.DescribeInstanceClusterInfoResponse:
         """
-        @summary 查询专享实例集群的详情
+        @summary Queries the information about a dedicated instance cluster.
         
         @param request: DescribeInstanceClusterInfoRequest
         @return: DescribeInstanceClusterInfoResponse
@@ -12239,7 +12247,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceClusterListResponse:
         """
-        @summary 查询专享实例集群列表
+        @summary Queries dedicated instance clusters.
         
         @param request: DescribeInstanceClusterListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12282,7 +12290,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeInstanceClusterListResponse:
         """
-        @summary 查询专享实例集群列表
+        @summary Queries dedicated instance clusters.
         
         @param request: DescribeInstanceClusterListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12324,7 +12332,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceClusterListRequest,
     ) -> cloud_api20160714_models.DescribeInstanceClusterListResponse:
         """
-        @summary 查询专享实例集群列表
+        @summary Queries dedicated instance clusters.
         
         @param request: DescribeInstanceClusterListRequest
         @return: DescribeInstanceClusterListResponse
@@ -12337,7 +12345,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeInstanceClusterListRequest,
     ) -> cloud_api20160714_models.DescribeInstanceClusterListResponse:
         """
-        @summary 查询专享实例集群列表
+        @summary Queries dedicated instance clusters.
         
         @param request: DescribeInstanceClusterListRequest
         @return: DescribeInstanceClusterListResponse
@@ -13923,7 +13931,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeModelsResponse:
         """
-        @summary Obtains the created models of an API group.
+        @summary Queries the created models of an API group.
         
         @description    Fuzzy queries are supported.
         
@@ -13970,7 +13978,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribeModelsResponse:
         """
-        @summary Obtains the created models of an API group.
+        @summary Queries the created models of an API group.
         
         @description    Fuzzy queries are supported.
         
@@ -14016,7 +14024,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeModelsRequest,
     ) -> cloud_api20160714_models.DescribeModelsResponse:
         """
-        @summary Obtains the created models of an API group.
+        @summary Queries the created models of an API group.
         
         @description    Fuzzy queries are supported.
         
@@ -14031,7 +14039,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribeModelsRequest,
     ) -> cloud_api20160714_models.DescribeModelsResponse:
         """
-        @summary Obtains the created models of an API group.
+        @summary Queries the created models of an API group.
         
         @description    Fuzzy queries are supported.
         
@@ -14735,7 +14743,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePurchasedApiGroupsResponse:
         """
-        @summary Queries API groups that are purchased from Alibaba Cloud Marketplace.
+        @summary Queries the API groups purchased from Alibaba Cloud Marketplace.
         
         @param request: DescribePurchasedApiGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14774,7 +14782,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.DescribePurchasedApiGroupsResponse:
         """
-        @summary Queries API groups that are purchased from Alibaba Cloud Marketplace.
+        @summary Queries the API groups purchased from Alibaba Cloud Marketplace.
         
         @param request: DescribePurchasedApiGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14812,7 +14820,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePurchasedApiGroupsRequest,
     ) -> cloud_api20160714_models.DescribePurchasedApiGroupsResponse:
         """
-        @summary Queries API groups that are purchased from Alibaba Cloud Marketplace.
+        @summary Queries the API groups purchased from Alibaba Cloud Marketplace.
         
         @param request: DescribePurchasedApiGroupsRequest
         @return: DescribePurchasedApiGroupsResponse
@@ -14825,7 +14833,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.DescribePurchasedApiGroupsRequest,
     ) -> cloud_api20160714_models.DescribePurchasedApiGroupsResponse:
         """
-        @summary Queries API groups that are purchased from Alibaba Cloud Marketplace.
+        @summary Queries the API groups purchased from Alibaba Cloud Marketplace.
         
         @param request: DescribePurchasedApiGroupsRequest
         @return: DescribePurchasedApiGroupsResponse
@@ -17814,6 +17822,8 @@ class Client(OpenApiClient):
             query['DefaultDomain'] = request.default_domain
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.filter_app_code_for_backend):
+            query['FilterAppCodeForBackend'] = request.filter_app_code_for_backend
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.group_name):
@@ -17878,6 +17888,8 @@ class Client(OpenApiClient):
             query['DefaultDomain'] = request.default_domain
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.filter_app_code_for_backend):
+            query['FilterAppCodeForBackend'] = request.filter_app_code_for_backend
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.group_name):
@@ -20389,7 +20401,7 @@ class Client(OpenApiClient):
         
         @description    This operation is intended for API providers.
         You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
-        A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to access APIs.
+        A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to call APIs.
         You can call this operation to reactivate the domain name to resume normal access.
         
         @param request: ReactivateDomainRequest
@@ -20433,7 +20445,7 @@ class Client(OpenApiClient):
         
         @description    This operation is intended for API providers.
         You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
-        A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to access APIs.
+        A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to call APIs.
         You can call this operation to reactivate the domain name to resume normal access.
         
         @param request: ReactivateDomainRequest
@@ -20476,7 +20488,7 @@ class Client(OpenApiClient):
         
         @description    This operation is intended for API providers.
         You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
-        A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to access APIs.
+        A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to call APIs.
         You can call this operation to reactivate the domain name to resume normal access.
         
         @param request: ReactivateDomainRequest
@@ -20494,7 +20506,7 @@ class Client(OpenApiClient):
         
         @description    This operation is intended for API providers.
         You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
-        A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to access APIs.
+        A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to call APIs.
         You can call this operation to reactivate the domain name to resume normal access.
         
         @param request: ReactivateDomainRequest
@@ -21693,7 +21705,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ResetAppCodeResponse:
         """
-        @summary Resets the AppCode of an app.
+        @summary Resets the AppCode of an application. You can call this operation only once per minute.
         
         @param request: ResetAppCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21732,7 +21744,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.ResetAppCodeResponse:
         """
-        @summary Resets the AppCode of an app.
+        @summary Resets the AppCode of an application. You can call this operation only once per minute.
         
         @param request: ResetAppCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21770,7 +21782,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ResetAppCodeRequest,
     ) -> cloud_api20160714_models.ResetAppCodeResponse:
         """
-        @summary Resets the AppCode of an app.
+        @summary Resets the AppCode of an application. You can call this operation only once per minute.
         
         @param request: ResetAppCodeRequest
         @return: ResetAppCodeResponse
@@ -21783,7 +21795,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.ResetAppCodeRequest,
     ) -> cloud_api20160714_models.ResetAppCodeResponse:
         """
-        @summary Resets the AppCode of an app.
+        @summary Resets the AppCode of an application. You can call this operation only once per minute.
         
         @param request: ResetAppCodeRequest
         @return: ResetAppCodeResponse
@@ -22444,8 +22456,8 @@ class Client(OpenApiClient):
         @summary Authorizes a specified application to call multiple APIs.
         
         @description    This operation is intended for API providers and callers.
-        API providers can authorize any apps to call their APIs.
-        API callers can authorize their own apps to call the APIs that they have purchased.
+        API providers can authorize all applications to call their APIs.
+        API callers can authorize their own applications to call the APIs that they have purchased.
         
         @param request: SetApisAuthoritiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22495,8 +22507,8 @@ class Client(OpenApiClient):
         @summary Authorizes a specified application to call multiple APIs.
         
         @description    This operation is intended for API providers and callers.
-        API providers can authorize any apps to call their APIs.
-        API callers can authorize their own apps to call the APIs that they have purchased.
+        API providers can authorize all applications to call their APIs.
+        API callers can authorize their own applications to call the APIs that they have purchased.
         
         @param request: SetApisAuthoritiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22545,8 +22557,8 @@ class Client(OpenApiClient):
         @summary Authorizes a specified application to call multiple APIs.
         
         @description    This operation is intended for API providers and callers.
-        API providers can authorize any apps to call their APIs.
-        API callers can authorize their own apps to call the APIs that they have purchased.
+        API providers can authorize all applications to call their APIs.
+        API callers can authorize their own applications to call the APIs that they have purchased.
         
         @param request: SetApisAuthoritiesRequest
         @return: SetApisAuthoritiesResponse
@@ -22562,8 +22574,8 @@ class Client(OpenApiClient):
         @summary Authorizes a specified application to call multiple APIs.
         
         @description    This operation is intended for API providers and callers.
-        API providers can authorize any apps to call their APIs.
-        API callers can authorize their own apps to call the APIs that they have purchased.
+        API providers can authorize all applications to call their APIs.
+        API callers can authorize their own applications to call the APIs that they have purchased.
         
         @param request: SetApisAuthoritiesRequest
         @return: SetApisAuthoritiesResponse
@@ -22692,8 +22704,8 @@ class Client(OpenApiClient):
         @summary Grants access permissions on a specified API to multiple applications.
         
         @description    This operation is intended for API providers and callers.
-        API providers can authorize any apps to call their APIs.
-        API callers can authorize their own apps to call the APIs that they have purchased.
+        API providers can authorize all applications to call their APIs.
+        API callers can authorize their own applications to call the APIs that they have purchased.
         
         @param request: SetAppsAuthoritiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22743,8 +22755,8 @@ class Client(OpenApiClient):
         @summary Grants access permissions on a specified API to multiple applications.
         
         @description    This operation is intended for API providers and callers.
-        API providers can authorize any apps to call their APIs.
-        API callers can authorize their own apps to call the APIs that they have purchased.
+        API providers can authorize all applications to call their APIs.
+        API callers can authorize their own applications to call the APIs that they have purchased.
         
         @param request: SetAppsAuthoritiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22793,8 +22805,8 @@ class Client(OpenApiClient):
         @summary Grants access permissions on a specified API to multiple applications.
         
         @description    This operation is intended for API providers and callers.
-        API providers can authorize any apps to call their APIs.
-        API callers can authorize their own apps to call the APIs that they have purchased.
+        API providers can authorize all applications to call their APIs.
+        API callers can authorize their own applications to call the APIs that they have purchased.
         
         @param request: SetAppsAuthoritiesRequest
         @return: SetAppsAuthoritiesResponse
@@ -22810,8 +22822,8 @@ class Client(OpenApiClient):
         @summary Grants access permissions on a specified API to multiple applications.
         
         @description    This operation is intended for API providers and callers.
-        API providers can authorize any apps to call their APIs.
-        API callers can authorize their own apps to call the APIs that they have purchased.
+        API providers can authorize all applications to call their APIs.
+        API callers can authorize their own applications to call the APIs that they have purchased.
         
         @param request: SetAppsAuthoritiesRequest
         @return: SetAppsAuthoritiesResponse
@@ -22941,7 +22953,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetDomainCertificateResponse:
         """
-        @summary Uploads an SSL certificate for a custom domain name.
+        @summary Uploads an SSL certificate for a specified custom domain name.
         
         @description    This operation is intended for API providers.
         The SSL certificate must match the custom domain name.
@@ -22994,7 +23006,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloud_api20160714_models.SetDomainCertificateResponse:
         """
-        @summary Uploads an SSL certificate for a custom domain name.
+        @summary Uploads an SSL certificate for a specified custom domain name.
         
         @description    This operation is intended for API providers.
         The SSL certificate must match the custom domain name.
@@ -23046,7 +23058,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetDomainCertificateRequest,
     ) -> cloud_api20160714_models.SetDomainCertificateResponse:
         """
-        @summary Uploads an SSL certificate for a custom domain name.
+        @summary Uploads an SSL certificate for a specified custom domain name.
         
         @description    This operation is intended for API providers.
         The SSL certificate must match the custom domain name.
@@ -23063,7 +23075,7 @@ class Client(OpenApiClient):
         request: cloud_api20160714_models.SetDomainCertificateRequest,
     ) -> cloud_api20160714_models.SetDomainCertificateResponse:
         """
-        @summary Uploads an SSL certificate for a custom domain name.
+        @summary Uploads an SSL certificate for a specified custom domain name.
         
         @description    This operation is intended for API providers.
         The SSL certificate must match the custom domain name.
@@ -23895,12 +23907,6 @@ class Client(OpenApiClient):
         """
         @summary Switches the definition of an API in a specified runtime environment to a historical version.
         
-        @description    This API is intended for API providers.
-        The historical version can be obtained by calling the **DescribeHistoryApis** operation.
-        Only APIs that have been published more than once have historical versions.
-        This operation can only be performed on running APIs. Exercise caution when you perform this operation because the operation cannot be undone. The operation takes up to 5 seconds.
-        The switch operation is essentially a publish operation. A reason for this operation must be provided.
-        
         @param request: SwitchApiRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SwitchApiResponse
@@ -23946,12 +23952,6 @@ class Client(OpenApiClient):
         """
         @summary Switches the definition of an API in a specified runtime environment to a historical version.
         
-        @description    This API is intended for API providers.
-        The historical version can be obtained by calling the **DescribeHistoryApis** operation.
-        Only APIs that have been published more than once have historical versions.
-        This operation can only be performed on running APIs. Exercise caution when you perform this operation because the operation cannot be undone. The operation takes up to 5 seconds.
-        The switch operation is essentially a publish operation. A reason for this operation must be provided.
-        
         @param request: SwitchApiRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SwitchApiResponse
@@ -23996,12 +23996,6 @@ class Client(OpenApiClient):
         """
         @summary Switches the definition of an API in a specified runtime environment to a historical version.
         
-        @description    This API is intended for API providers.
-        The historical version can be obtained by calling the **DescribeHistoryApis** operation.
-        Only APIs that have been published more than once have historical versions.
-        This operation can only be performed on running APIs. Exercise caution when you perform this operation because the operation cannot be undone. The operation takes up to 5 seconds.
-        The switch operation is essentially a publish operation. A reason for this operation must be provided.
-        
         @param request: SwitchApiRequest
         @return: SwitchApiResponse
         """
@@ -24014,12 +24008,6 @@ class Client(OpenApiClient):
     ) -> cloud_api20160714_models.SwitchApiResponse:
         """
         @summary Switches the definition of an API in a specified runtime environment to a historical version.
-        
-        @description    This API is intended for API providers.
-        The historical version can be obtained by calling the **DescribeHistoryApis** operation.
-        Only APIs that have been published more than once have historical versions.
-        This operation can only be performed on running APIs. Exercise caution when you perform this operation because the operation cannot be undone. The operation takes up to 5 seconds.
-        The switch operation is essentially a publish operation. A reason for this operation must be provided.
         
         @param request: SwitchApiRequest
         @return: SwitchApiResponse
