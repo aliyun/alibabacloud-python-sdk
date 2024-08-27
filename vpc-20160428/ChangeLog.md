@@ -1,3 +1,10 @@
+2024-08-27 Version: 6.9.1
+- Update API CreateVpc: add param EnableDnsHostname.
+- Update API DescribeVpcAttribute: update response param.
+- Update API DescribeVpcs: update response param.
+- Update API ModifyVpcAttribute: add param EnableDnsHostname.
+
+
 2024-08-19 Version: 6.9.0
 - Support API ListVpcPublishedRouteEntries.
 - Support API PublishVpcRouteEntries.

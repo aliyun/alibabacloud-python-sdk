@@ -13884,6 +13884,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.enable_dns_hostname):
+            query['EnableDnsHostname'] = request.enable_dns_hostname
         if not UtilClient.is_unset(request.enable_ipv_6):
             query['EnableIpv6'] = request.enable_ipv_6
         if not UtilClient.is_unset(request.ipv_4cidr_mask):
@@ -13964,6 +13966,8 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.enable_dns_hostname):
+            query['EnableDnsHostname'] = request.enable_dns_hostname
         if not UtilClient.is_unset(request.enable_ipv_6):
             query['EnableIpv6'] = request.enable_ipv_6
         if not UtilClient.is_unset(request.ipv_4cidr_mask):
@@ -46960,6 +46964,8 @@ class Client(OpenApiClient):
             query['CidrBlock'] = request.cidr_block
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_dns_hostname):
+            query['EnableDnsHostname'] = request.enable_dns_hostname
         if not UtilClient.is_unset(request.enable_ipv_6):
             query['EnableIPv6'] = request.enable_ipv_6
         if not UtilClient.is_unset(request.ipv_6cidr_block):
@@ -47020,6 +47026,8 @@ class Client(OpenApiClient):
             query['CidrBlock'] = request.cidr_block
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.enable_dns_hostname):
+            query['EnableDnsHostname'] = request.enable_dns_hostname
         if not UtilClient.is_unset(request.enable_ipv_6):
             query['EnableIPv6'] = request.enable_ipv_6
         if not UtilClient.is_unset(request.ipv_6cidr_block):

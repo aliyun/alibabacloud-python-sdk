@@ -2133,7 +2133,7 @@ class AllocateEipSegmentAddressRequest(TeaModel):
         # 
         # This parameter is required.
         self.eip_mask = eip_mask
-        # The metering method of the contiguous EIP group. Valid values:
+        # The metering method of contiguous EIPs. Valid values:
         # 
         # *   **PayByBandwidth** (default)
         # *   **PayByTraffic**\
@@ -20060,6 +20060,7 @@ class CreateVpcRequest(TeaModel):
         client_token: str = None,
         description: str = None,
         dry_run: bool = None,
+        enable_dns_hostname: bool = None,
         enable_ipv_6: bool = None,
         ipv_4cidr_mask: int = None,
         ipv_4ipam_pool_id: str = None,
@@ -20095,6 +20096,7 @@ class CreateVpcRequest(TeaModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        self.enable_dns_hostname = enable_dns_hostname
         # Specifies whether to enable IPv6. Valid values:
         # 
         # *   **false** (default)
@@ -20159,6 +20161,8 @@ class CreateVpcRequest(TeaModel):
             result['Description'] = self.description
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.enable_dns_hostname is not None:
+            result['EnableDnsHostname'] = self.enable_dns_hostname
         if self.enable_ipv_6 is not None:
             result['EnableIpv6'] = self.enable_ipv_6
         if self.ipv_4cidr_mask is not None:
@@ -20201,6 +20205,8 @@ class CreateVpcRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('EnableDnsHostname') is not None:
+            self.enable_dns_hostname = m.get('EnableDnsHostname')
         if m.get('EnableIpv6') is not None:
             self.enable_ipv_6 = m.get('EnableIpv6')
         if m.get('Ipv4CidrMask') is not None:
@@ -58892,6 +58898,7 @@ class DescribeVpcAttributeResponseBody(TeaModel):
         description: str = None,
         dhcp_options_set_id: str = None,
         dhcp_options_set_status: str = None,
+        dns_hostname_status: str = None,
         enabled_ipv_6: bool = None,
         ipv_4gateway_id: str = None,
         ipv_6cidr_block: str = None,
@@ -58939,6 +58946,7 @@ class DescribeVpcAttributeResponseBody(TeaModel):
         # *   **Deleted**\
         # *   **Pending**\
         self.dhcp_options_set_status = dhcp_options_set_status
+        self.dns_hostname_status = dns_hostname_status
         # Indicates whether the VPC enables IPv6 .
         # - true
         # - false
@@ -59029,6 +59037,8 @@ class DescribeVpcAttributeResponseBody(TeaModel):
             result['DhcpOptionsSetId'] = self.dhcp_options_set_id
         if self.dhcp_options_set_status is not None:
             result['DhcpOptionsSetStatus'] = self.dhcp_options_set_status
+        if self.dns_hostname_status is not None:
+            result['DnsHostnameStatus'] = self.dns_hostname_status
         if self.enabled_ipv_6 is not None:
             result['EnabledIpv6'] = self.enabled_ipv_6
         if self.ipv_4gateway_id is not None:
@@ -59090,6 +59100,8 @@ class DescribeVpcAttributeResponseBody(TeaModel):
             self.dhcp_options_set_id = m.get('DhcpOptionsSetId')
         if m.get('DhcpOptionsSetStatus') is not None:
             self.dhcp_options_set_status = m.get('DhcpOptionsSetStatus')
+        if m.get('DnsHostnameStatus') is not None:
+            self.dns_hostname_status = m.get('DnsHostnameStatus')
         if m.get('EnabledIpv6') is not None:
             self.enabled_ipv_6 = m.get('EnabledIpv6')
         if m.get('Ipv4GatewayId') is not None:
@@ -59653,6 +59665,7 @@ class DescribeVpcsResponseBodyVpcsVpc(TeaModel):
         description: str = None,
         dhcp_options_set_id: str = None,
         dhcp_options_set_status: str = None,
+        dns_hostname_status: str = None,
         enabled_ipv_6: bool = None,
         ipv_6cidr_block: str = None,
         ipv_6cidr_blocks: DescribeVpcsResponseBodyVpcsVpcIpv6CidrBlocks = None,
@@ -59688,6 +59701,7 @@ class DescribeVpcsResponseBodyVpcsVpc(TeaModel):
         # *   **Deleted**\
         # *   **Pending**\
         self.dhcp_options_set_status = dhcp_options_set_status
+        self.dns_hostname_status = dns_hostname_status
         self.enabled_ipv_6 = enabled_ipv_6
         # The IPv6 CIDR block of the VPC.
         self.ipv_6cidr_block = ipv_6cidr_block
@@ -59764,6 +59778,8 @@ class DescribeVpcsResponseBodyVpcsVpc(TeaModel):
             result['DhcpOptionsSetId'] = self.dhcp_options_set_id
         if self.dhcp_options_set_status is not None:
             result['DhcpOptionsSetStatus'] = self.dhcp_options_set_status
+        if self.dns_hostname_status is not None:
+            result['DnsHostnameStatus'] = self.dns_hostname_status
         if self.enabled_ipv_6 is not None:
             result['EnabledIpv6'] = self.enabled_ipv_6
         if self.ipv_6cidr_block is not None:
@@ -59814,6 +59830,8 @@ class DescribeVpcsResponseBodyVpcsVpc(TeaModel):
             self.dhcp_options_set_id = m.get('DhcpOptionsSetId')
         if m.get('DhcpOptionsSetStatus') is not None:
             self.dhcp_options_set_status = m.get('DhcpOptionsSetStatus')
+        if m.get('DnsHostnameStatus') is not None:
+            self.dns_hostname_status = m.get('DnsHostnameStatus')
         if m.get('EnabledIpv6') is not None:
             self.enabled_ipv_6 = m.get('EnabledIpv6')
         if m.get('Ipv6CidrBlock') is not None:
@@ -90130,6 +90148,7 @@ class ModifyVpcAttributeRequest(TeaModel):
         self,
         cidr_block: str = None,
         description: str = None,
+        enable_dns_hostname: bool = None,
         enable_ipv_6: bool = None,
         ipv_6cidr_block: str = None,
         ipv_6isp: str = None,
@@ -90151,6 +90170,7 @@ class ModifyVpcAttributeRequest(TeaModel):
         # 
         # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         self.description = description
+        self.enable_dns_hostname = enable_dns_hostname
         # Specifies whether to enable IPv6 CIDR blocks. Valid values:
         # 
         # *   **true**\
@@ -90197,6 +90217,8 @@ class ModifyVpcAttributeRequest(TeaModel):
             result['CidrBlock'] = self.cidr_block
         if self.description is not None:
             result['Description'] = self.description
+        if self.enable_dns_hostname is not None:
+            result['EnableDnsHostname'] = self.enable_dns_hostname
         if self.enable_ipv_6 is not None:
             result['EnableIPv6'] = self.enable_ipv_6
         if self.ipv_6cidr_block is not None:
@@ -90225,6 +90247,8 @@ class ModifyVpcAttributeRequest(TeaModel):
             self.cidr_block = m.get('CidrBlock')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EnableDnsHostname') is not None:
+            self.enable_dns_hostname = m.get('EnableDnsHostname')
         if m.get('EnableIPv6') is not None:
             self.enable_ipv_6 = m.get('EnableIPv6')
         if m.get('Ipv6CidrBlock') is not None:
