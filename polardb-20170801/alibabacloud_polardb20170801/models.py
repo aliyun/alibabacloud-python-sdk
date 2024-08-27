@@ -15723,6 +15723,7 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
         self,
         dbcluster_id: str = None,
         dbendpoint_id: str = None,
+        dbnode_id: str = None,
         end_time: str = None,
         interval: str = None,
         key: str = None,
@@ -15735,6 +15736,7 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
         self.dbcluster_id = dbcluster_id
         # The ID of the endpoint.
         self.dbendpoint_id = dbendpoint_id
+        self.dbnode_id = dbnode_id
         # The end of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         # 
         # This parameter is required.
@@ -15765,6 +15767,8 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
             result['DBClusterId'] = self.dbcluster_id
         if self.dbendpoint_id is not None:
             result['DBEndpointId'] = self.dbendpoint_id
+        if self.dbnode_id is not None:
+            result['DBNodeId'] = self.dbnode_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.interval is not None:
@@ -15783,6 +15787,8 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('DBEndpointId') is not None:
             self.dbendpoint_id = m.get('DBEndpointId')
+        if m.get('DBNodeId') is not None:
+            self.dbnode_id = m.get('DBNodeId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('Interval') is not None:

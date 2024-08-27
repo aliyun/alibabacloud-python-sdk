@@ -1,3 +1,7 @@
+2024-08-27 Version: 5.1.11
+- Update API DescribeDBProxyPerformance: add param DBNodeId.
+
+
 2024-08-20 Version: 5.1.10
 - Update API DescribeDBClusterAttribute: update response param.
 - Update API FailoverDBCluster: add param TargetZoneType.
