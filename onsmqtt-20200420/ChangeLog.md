@@ -1,3 +1,24 @@
+2024-08-27 Version: 1.3.0
+- Support API CloseConnection.
+- Update API AddCustomAuthIdentity: update param Secret.
+- Update API ApplyToken: update response param.
+- Update API GetCaCertificate: update response param.
+- Update API GetDeviceCertificate: update response param.
+- Update API GetDeviceCredential: update response param.
+- Update API ListCaCertificate: update response param.
+- Update API ListDeviceCertificate: update response param.
+- Update API ListDeviceCertificateByCaSn: update response param.
+- Update API QueryCustomAuthIdentity: update param Username.
+- Update API QueryCustomAuthIdentity: update response param.
+- Update API QueryToken: update param Token.
+- Update API RefreshDeviceCredential: update response param.
+- Update API RegisterCaCertificate: update param CaContent.
+- Update API RegisterCaCertificate: update param VerificationContent.
+- Update API RegisterDeviceCredential: update response param.
+- Update API RevokeToken: update param Token.
+- Update API UpdateCustomAuthIdentity: update param Secret.
+
+
 2024-03-25 Version: 1.2.0
 - Support API AddCustomAuthConnectBlack.
 - Support API AddCustomAuthIdentity.

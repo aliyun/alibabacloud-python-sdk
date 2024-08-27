@@ -10,7 +10,9 @@ class ActiveCaCertificateRequest(TeaModel):
         mqtt_instance_id: str = None,
         sn: str = None,
     ):
+        # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
+        # This parameter is required.
         self.sn = sn
 
     def validate(self):
@@ -118,8 +120,11 @@ class ActiveDeviceCertificateRequest(TeaModel):
         device_sn: str = None,
         mqtt_instance_id: str = None,
     ):
+        # This parameter is required.
         self.ca_sn = ca_sn
+        # This parameter is required.
         self.device_sn = device_sn
+        # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
 
     def validate(self):
@@ -230,7 +235,13 @@ class AddCustomAuthConnectBlackRequest(TeaModel):
         client_id: str = None,
         instance_id: str = None,
     ):
+        # The client ID of the device whose connections you want to disable.
+        # 
+        # This parameter is required.
         self.client_id = client_id
+        # The ID of the ApsaraMQ for MQTT instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -265,10 +276,13 @@ class AddCustomAuthConnectBlackResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The value 200 indicates that the request is successful.
         self.code = code
+        # The message returned.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -354,11 +368,25 @@ class AddCustomAuthIdentityRequest(TeaModel):
         sign_mode: str = None,
         username: str = None,
     ):
+        # The client ID if you set IdentityType to CLIENT.
         self.client_id = client_id
+        # The identity type. Valid values: USER and CLIENT.
+        # 
+        # This parameter is required.
         self.identity_type = identity_type
+        # The ID of the Message Queue for MQTT instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The AccessKey secret.
+        # 
+        # This parameter is required.
         self.secret = secret
+        # The signature verification mode. ORIGIN: compares the password and the AccessKey secret. SIGNED: uses the HMAC_SHA1 algorithm to sign the client ID to obtain a password and then compares the password.
         self.sign_mode = sign_mode
+        # The username.
+        # 
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -409,10 +437,13 @@ class AddCustomAuthIdentityResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request is successful.
         self.code = code
+        # The message returned.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -498,11 +529,29 @@ class AddCustomAuthPermissionRequest(TeaModel):
         permit_action: str = None,
         topic: str = None,
     ):
+        # Specify whether to allow or deny the permissions.
+        # 
+        # This parameter is required.
         self.effect = effect
+        # The username or client ID.
+        # 
+        # This parameter is required.
         self.identity = identity
+        # The identity type. Valid values: USER and CLIENT.
+        # 
+        # This parameter is required.
         self.identity_type = identity_type
+        # The ID of the ApsaraMQ for MQTT instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The permissions that you want to add.
+        # 
+        # This parameter is required.
         self.permit_action = permit_action
+        # The topic on which you want to add the permissions. Multi-level topics and wildcard characters are supported.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -553,10 +602,13 @@ class AddCustomAuthPermissionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request is successful.
         self.code = code
+        # The error message returned.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -645,18 +697,26 @@ class ApplyTokenRequest(TeaModel):
         # *   **R**: read-only. You can only subscribe to the specified topics.
         # *   **W**: write-only. You can only send messages to the specified topics.
         # *   **R,W**: read and write. You can send messages to and subscribe to the specified topics. Separate **R** and **W** with a comma (,).
+        # 
+        # This parameter is required.
         self.actions = actions
         # The timestamp that indicates the point in time when the token expires. Unit: milliseconds. The minimum validity period of a token is 60 seconds, and the maximum validity period of a token is 30 days. If you specify a validity period of more than 30 days for a token, no errors are returned. However, the token is valid only for 30 days.
         # 
         # For example, you want to specify a validity period of 60 seconds for a token. If the current system timestamp is 1609434061000, you must set this parameter to **1609434121000**. The value is calculated by using the following formula: 1609434061000 + 60 x 1000 = 1609434121000.
+        # 
+        # This parameter is required.
         self.expire_time = expire_time
         # The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can obtain the instance ID on the **Instance Details** page that corresponds to the instance in the [ApsaraMQ for MQTT console](https://mqtt.console.aliyun.com/).
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The topics on the ApsaraMQ for MQTT instance. Separate multiple topics with commas (,). Each token can be used to access up to 100 topics. Multiple topics are sorted in alphabetic order. MQTT wildcards, including single-level wildcards represented by plus signs (+) and multi-level wildcards represented by number signs (#), can be used for the Resources parameter that you register to apply for a token.
         # 
         # For example, if you set the **Resources** parameter to Topic1/+ when you apply for a token, the ApsaraMQ for MQTT client can manage the topics in Topic1/xxx. If you set the **Resources** parameter to Topic1/# when you apply for a token, the ApsaraMQ for MQTT client can manage topics of any level in Topic1/xxx/xxx/xxx.
         # 
-        # >  ApsaraMQ for MQTT supports subtopics. You can specify subtopics in the code for messaging instead of configuring them in the ApsaraMQ for MQTT console. Forward slashes (/) are used to separate topics of different levels. For more information, see [Terms](~~42420~~).
+        # >  ApsaraMQ for MQTT supports subtopics. You can specify subtopics in the code for messaging instead of configuring them in the ApsaraMQ for MQTT console. Forward slashes (/) are used to separate topics of different levels. For more information, see [Terms](https://help.aliyun.com/document_detail/42420.html).
+        # 
+        # This parameter is required.
         self.resources = resources
 
     def validate(self):
@@ -776,8 +836,12 @@ class BatchQuerySessionByClientIdsRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ApsaraMQ for MQTT clients.
+        # 
+        # This parameter is required.
         self.client_id_list = client_id_list
         # The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can obtain the instance ID on the **Instance Details** page that corresponds to the instance in the [ApsaraMQ for MQTT console](https://mqtt.console.aliyun.com).
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -810,7 +874,7 @@ class BatchQuerySessionByClientIdsResponseBodyOnlineStatusList(TeaModel):
         client_id: str = None,
         online_status: bool = None,
     ):
-        # The ID of the ApsaraMQ for MQTT client. For more information about client IDs, see [Terms](~~42420~~).
+        # The ID of the ApsaraMQ for MQTT client. For more information about client IDs, see [Terms](https://help.aliyun.com/document_detail/42420.html).
         self.client_id = client_id
         # Indicates whether the ApsaraMQ for MQTT client is online. Valid values:
         # 
@@ -926,6 +990,128 @@ class BatchQuerySessionByClientIdsResponse(TeaModel):
         return self
 
 
+class CloseConnectionRequest(TeaModel):
+    def __init__(
+        self,
+        client_id: str = None,
+        instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.client_id = client_id
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_id is not None:
+            result['ClientId'] = self.client_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientId') is not None:
+            self.client_id = m.get('ClientId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class CloseConnectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CloseConnectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CloseConnectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CloseConnectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateGroupIdRequest(TeaModel):
     def __init__(
         self,
@@ -934,10 +1120,14 @@ class CreateGroupIdRequest(TeaModel):
     ):
         # The ID of the group that you want to create. The group ID must meet the following conventions:
         # 
-        # *   The ID must be 7 to 64 characters in length. It must start with GID\_ or GID- and can contain only letters, digits, hyphens (-), and underscores (\_).
-        # *   The ID cannot be changed after the group is created. For more information, see [Terms](~~42420~~).
+        # *   The ID must be 7 to 64 characters in length. It must start with GID_ or GID- and can contain only letters, digits, hyphens (-), and underscores (_).
+        # *   The ID cannot be changed after the group is created. For more information, see [Terms](https://help.aliyun.com/document_detail/42420.html).
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The ID of the ApsaraMQ for MQTT instance to which the group belongs.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -1039,7 +1229,9 @@ class DeleteCaCertificateRequest(TeaModel):
         mqtt_instance_id: str = None,
         sn: str = None,
     ):
+        # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
+        # This parameter is required.
         self.sn = sn
 
     def validate(self):
@@ -1146,7 +1338,9 @@ class DeleteCustomAuthConnectBlackRequest(TeaModel):
         client_id: str = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -1268,9 +1462,22 @@ class DeleteCustomAuthIdentityRequest(TeaModel):
         instance_id: str = None,
         username: str = None,
     ):
+        # The client ID if you set IdentityType to CLIENT.
         self.client_id = client_id
+        # The identity type. Valid values:
+        # 
+        # *   USER
+        # *   CLIENT
+        # 
+        # This parameter is required.
         self.identity_type = identity_type
+        # The ID of the ApsaraMQ for MQTT instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The username.
+        # 
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -1313,10 +1520,13 @@ class DeleteCustomAuthIdentityResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request is successful. Other status codes indicate that the request failed.
         self.code = code
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -1400,9 +1610,24 @@ class DeleteCustomAuthPermissionRequest(TeaModel):
         instance_id: str = None,
         topic: str = None,
     ):
+        # The username or client ID.
+        # 
+        # This parameter is required.
         self.identity = identity
+        # The identity type. Valid values:
+        # 
+        # *   USER
+        # *   CLIENT
+        # 
+        # This parameter is required.
         self.identity_type = identity_type
+        # The ID of the ApsaraMQ for MQTT instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The topic on which you want to grant permissions. Multi-level topics and Wildcard characters are supported.
+        # 
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
@@ -1445,10 +1670,13 @@ class DeleteCustomAuthPermissionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The message returned.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -1531,8 +1759,11 @@ class DeleteDeviceCertificateRequest(TeaModel):
         device_sn: str = None,
         mqtt_instance_id: str = None,
     ):
+        # This parameter is required.
         self.ca_sn = ca_sn
+        # This parameter is required.
         self.device_sn = device_sn
+        # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
 
     def validate(self):
@@ -1644,8 +1875,12 @@ class DeleteGroupIdRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the group that you want to delete.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The ID of the ApsaraMQ for MQTT instance from which you want to delete a group.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -1747,7 +1982,9 @@ class GetCaCertificateRequest(TeaModel):
         mqtt_instance_id: str = None,
         sn: str = None,
     ):
+        # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
+        # This parameter is required.
         self.sn = sn
 
     def validate(self):
@@ -1926,8 +2163,11 @@ class GetDeviceCertificateRequest(TeaModel):
         device_sn: str = None,
         mqtt_instance_id: str = None,
     ):
+        # This parameter is required.
         self.ca_sn = ca_sn
+        # This parameter is required.
         self.device_sn = device_sn
+        # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
 
     def validate(self):
@@ -2104,8 +2344,12 @@ class GetDeviceCredentialRequest(TeaModel):
         instance_id: str = None,
     ):
         # The client ID of the device whose access credential you want to query.
+        # 
+        # This parameter is required.
         self.client_id = client_id
         # The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can obtain the instance ID on the **Instance Details** page that corresponds to the instance in the ApsaraMQ for MQTT console.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -2278,6 +2522,7 @@ class GetRegisterCodeRequest(TeaModel):
         self,
         mqtt_instance_id: str = None,
     ):
+        # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
 
     def validate(self):
@@ -2380,7 +2625,9 @@ class InactivateCaCertificateRequest(TeaModel):
         mqtt_instance_id: str = None,
         sn: str = None,
     ):
+        # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
+        # This parameter is required.
         self.sn = sn
 
     def validate(self):
@@ -2488,8 +2735,11 @@ class InactivateDeviceCertificateRequest(TeaModel):
         device_sn: str = None,
         mqtt_instance_id: str = None,
     ):
+        # This parameter is required.
         self.ca_sn = ca_sn
+        # This parameter is required.
         self.device_sn = device_sn
+        # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
 
     def validate(self):
@@ -2601,8 +2851,11 @@ class ListCaCertificateRequest(TeaModel):
         page_no: str = None,
         page_size: str = None,
     ):
+        # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
+        # This parameter is required.
         self.page_no = page_no
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -2838,8 +3091,11 @@ class ListDeviceCertificateRequest(TeaModel):
         page_no: str = None,
         page_size: str = None,
     ):
+        # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
+        # This parameter is required.
         self.page_no = page_no
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -3070,9 +3326,13 @@ class ListDeviceCertificateByCaSnRequest(TeaModel):
         page_no: str = None,
         page_size: str = None,
     ):
+        # This parameter is required.
         self.ca_sn = ca_sn
+        # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
+        # This parameter is required.
         self.page_no = page_no
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -3308,10 +3568,13 @@ class ListDeviceCredentialClientIdRequest(TeaModel):
         page_no: str = None,
         page_size: str = None,
     ):
+        # This parameter is required.
         self.group_id = group_id
+        # This parameter is required.
         self.instance_id = instance_id
         self.next_token = next_token
         self.page_no = page_no
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -3483,6 +3746,8 @@ class ListGroupIdRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the ApsaraMQ for MQTT instance whose groups you want to query.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -3656,9 +3921,17 @@ class QueryCustomAuthConnectBlackRequest(TeaModel):
         next_token: str = None,
         size: int = None,
     ):
+        # The ID of the client to be queried.
         self.client_id = client_id
+        # The ID of the ApsaraMQ for MQTT instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
+        # The number of clients to be queried. Maximum value: 100.
+        # 
+        # This parameter is required.
         self.size = size
 
     def validate(self):
@@ -3700,8 +3973,11 @@ class QueryCustomAuthConnectBlackResponseBodyDataResults(TeaModel):
         effect: str = None,
         permit_action: str = None,
     ):
+        # The client ID.
         self.client_id = client_id
+        # Indicates whether to allow or deny access.
         self.effect = effect
+        # The authorized permissions.
         self.permit_action = permit_action
 
     def validate(self):
@@ -3738,7 +4014,9 @@ class QueryCustomAuthConnectBlackResponseBodyData(TeaModel):
         next_token: str = None,
         results: List[QueryCustomAuthConnectBlackResponseBodyDataResults] = None,
     ):
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The returned results.
         self.results = results
 
     def validate(self):
@@ -3782,11 +4060,15 @@ class QueryCustomAuthConnectBlackResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request is successful. Other status codes indicate that the request failed. For a list of error codes, see Error codes.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -3878,11 +4160,26 @@ class QueryCustomAuthIdentityRequest(TeaModel):
         size: int = None,
         username: str = None,
     ):
+        # The client ID if you set IdentityType to CLIENT.
         self.client_id = client_id
+        # The identity type.
+        # 
+        # Valid values:
+        # 
+        # *   USER
+        # *   CLIENT
         self.identity_type = identity_type
+        # The ID of the ApsaraMQ for MQTT instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
+        # The number of identities to be queried. Maximum value: 100.
+        # 
+        # This parameter is required.
         self.size = size
+        # The username.
         self.username = username
 
     def validate(self):
@@ -3934,10 +4231,18 @@ class QueryCustomAuthIdentityResponseBodyDataResults(TeaModel):
         sign_mode: str = None,
         username: str = None,
     ):
+        # The client ID if IdentityType is set to CLIENT.
         self.client_id = client_id
+        # The identity type. Valid values:
+        # 
+        # *   USER
+        # *   CLIENT
         self.identity_type = identity_type
+        # The AccessKey secret.
         self.secret = secret
+        # The signature verification mode. ORIGIN: compares the password and the AccessKey secret. SIGNED: uses the HMAC_SHA1 algorithm to sign the client ID to obtain a password and then compares the password.
         self.sign_mode = sign_mode
+        # The username.
         self.username = username
 
     def validate(self):
@@ -3982,7 +4287,9 @@ class QueryCustomAuthIdentityResponseBodyData(TeaModel):
         next_token: str = None,
         results: List[QueryCustomAuthIdentityResponseBodyDataResults] = None,
     ):
+        # If excess return values exist, this parameter is returned.
         self.next_token = next_token
+        # The returned results.
         self.results = results
 
     def validate(self):
@@ -4026,11 +4333,15 @@ class QueryCustomAuthIdentityResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request is successful. Other status codes indicate that the request failed. For a list of error codes, see Error codes.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -4122,11 +4433,26 @@ class QueryCustomAuthPermissionRequest(TeaModel):
         size: int = None,
         topic: str = None,
     ):
+        # The username or client ID.
         self.identity = identity
+        # The identity type.
+        # 
+        # Valid values:
+        # 
+        # *   USER
+        # *   CLIENT
         self.identity_type = identity_type
+        # The ID of the ApsaraMQ for MQTT instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
+        # The number of queries to be returned. Maximum value: 100.
+        # 
+        # This parameter is required.
         self.size = size
+        # The topic whose authorization information you want to query. Multi-level topics and wildcard characters are supported.
         self.topic = topic
 
     def validate(self):
@@ -4178,10 +4504,18 @@ class QueryCustomAuthPermissionResponseBodyDataResults(TeaModel):
         permit_action: str = None,
         topic: str = None,
     ):
+        # Indicates whether to allow or deny access.
         self.effect = effect
+        # The username or client ID.
         self.identity = identity
+        # The identity type. Valid values:
+        # 
+        # *   USER
+        # *   CLIENT
         self.identity_type = identity_type
+        # The authorized permissions.
         self.permit_action = permit_action
+        # The topic name. Multi-level topics and wildcard characters are supported.
         self.topic = topic
 
     def validate(self):
@@ -4226,7 +4560,9 @@ class QueryCustomAuthPermissionResponseBodyData(TeaModel):
         next_token: str = None,
         results: List[QueryCustomAuthPermissionResponseBodyDataResults] = None,
     ):
+        # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
         self.next_token = next_token
+        # The response results.
         self.results = results
 
     def validate(self):
@@ -4270,11 +4606,15 @@ class QueryCustomAuthPermissionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -4369,18 +4709,32 @@ class QueryMqttTraceDeviceRequest(TeaModel):
         reverse: bool = None,
     ):
         # The beginning of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+        # 
+        # This parameter is required.
         self.begin_time = begin_time
         # The client ID of the device whose trace you want to query.
+        # 
+        # This parameter is required.
         self.client_id = client_id
         # The number of the page to return. Pages start from page 1. If the input parameter value is greater than the total number of pages, the returned result is empty.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The end of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can view the instance ID in the **Basic Information** section on the **Instance Details** page that corresponds to the instance in the ApsaraMQ for MQTT console.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the region where the ApsaraMQ for MQTT instance resides. For more information, see [Endpoints](~~181438~~).
+        # The ID of the region where the ApsaraMQ for MQTT instance resides. For more information, see [Endpoints](https://help.aliyun.com/document_detail/181438.html).
+        # 
+        # This parameter is required.
         self.mqtt_region_id = mqtt_region_id
         # The number of entries to return on each page. Valid values: 1 to 100.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # Specifies whether the returned results are displayed in reverse chronological order. Valid values:
         # 
@@ -4630,18 +4984,32 @@ class QueryMqttTraceMessageOfClientRequest(TeaModel):
         reverse: bool = None,
     ):
         # The beginning of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+        # 
+        # This parameter is required.
         self.begin_time = begin_time
         # The client ID of the device whose messages you want to query.
+        # 
+        # This parameter is required.
         self.client_id = client_id
         # The number of the page to return. Pages start from page 1. If the input parameter value is greater than the total number of pages, the returned result is empty.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The end of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can view the instance ID in the **Basic Information** section of the **Instance Details** page that corresponds to the instance in the ApsaraMQ for MQTT console.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the region where the ApsaraMQ for MQTT instance resides. For more information, see [Endpoints](~~181438~~).
+        # The ID of the region where the ApsaraMQ for MQTT instance resides. For more information, see [Endpoints](https://help.aliyun.com/document_detail/181438.html).
+        # 
+        # This parameter is required.
         self.mqtt_region_id = mqtt_region_id
         # The number of entries to return on each page. Valid values: 1 to 100.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # Specifies whether the returned results are displayed in reverse chronological order. Valid values:
         # 
@@ -4889,14 +5257,24 @@ class QueryMqttTraceMessagePublishRequest(TeaModel):
         msg_id: str = None,
     ):
         # The beginning of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+        # 
+        # This parameter is required.
         self.begin_time = begin_time
         # The end of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can view the instance ID in the **Basic Information** section on the **Instance Details** page that corresponds to the instance in the ApsaraMQ for MQTT console.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the region where the ApsaraMQ for MQTT instance resides. For more information, see [Endpoints](~~181438~~).
+        # The ID of the region where the ApsaraMQ for MQTT instance resides. For more information, see [Endpoints](https://help.aliyun.com/document_detail/181438.html).
+        # 
+        # This parameter is required.
         self.mqtt_region_id = mqtt_region_id
         # The message ID.
+        # 
+        # This parameter is required.
         self.msg_id = msg_id
 
     def validate(self):
@@ -5105,20 +5483,34 @@ class QueryMqttTraceMessageSubscribeRequest(TeaModel):
         reverse: bool = None,
     ):
         # The beginning of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+        # 
+        # This parameter is required.
         self.begin_time = begin_time
         # The ID of the client that subscribes to the message. If you do not specify this parameter, the IDs of all clients that subscribe to the message are returned.
         self.client_id = client_id
         # The number of the page to return. Pages start from page 1. If the input parameter value is greater than the total number of pages, the returned result is empty.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # The end of the time range to query. The value of this parameter is a UNIX timestamp in milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can view the instance ID in the **Basic Information** section of the **Instance Details** page that corresponds to the instance in the ApsaraMQ for MQTT console.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the region where the ApsaraMQ for MQTT instance resides. For more information, see [Endpoints](~~181438~~).
+        # The ID of the region where the ApsaraMQ for MQTT instance resides. For more information, see [Endpoints](https://help.aliyun.com/document_detail/181438.html).
+        # 
+        # This parameter is required.
         self.mqtt_region_id = mqtt_region_id
         # The message ID.
+        # 
+        # This parameter is required.
         self.msg_id = msg_id
         # The number of entries to return on each page. Valid values: 1 to 100.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # Specifies whether the returned results are displayed in reverse chronological order. Valid values:
         # 
@@ -5364,8 +5756,12 @@ class QuerySessionByClientIdRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the ApsaraMQ for MQTT client that you want to query.
+        # 
+        # This parameter is required.
         self.client_id = client_id
         # The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can obtain the instance ID on the **Instance Details** page that corresponds to the instance in the [ApsaraMQ for MQTT console](https://mqtt.console.aliyun.com).
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -5478,8 +5874,12 @@ class QueryTokenRequest(TeaModel):
         token: str = None,
     ):
         # The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can obtain the instance ID on the **Instance Details** page that corresponds to the instance in the [ApsaraMQ for MQTT console](https://mqtt.console.aliyun.com/).
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The token that you want to query.
+        # 
+        # This parameter is required.
         self.token = token
 
     def validate(self):
@@ -5592,8 +5992,12 @@ class RefreshDeviceCredentialRequest(TeaModel):
         instance_id: str = None,
     ):
         # The client ID of the device whose access credential you want to update.
+        # 
+        # This parameter is required.
         self.client_id = client_id
         # The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can obtain the instance ID on the **Instance Details** page that corresponds to the instance in the ApsaraMQ for MQTT console.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -5769,9 +6173,13 @@ class RegisterCaCertificateRequest(TeaModel):
         mqtt_instance_id: str = None,
         verification_content: str = None,
     ):
+        # This parameter is required.
         self.ca_content = ca_content
+        # This parameter is required.
         self.ca_name = ca_name
+        # This parameter is required.
         self.mqtt_instance_id = mqtt_instance_id
+        # This parameter is required.
         self.verification_content = verification_content
 
     def validate(self):
@@ -5887,8 +6295,12 @@ class RegisterDeviceCredentialRequest(TeaModel):
         instance_id: str = None,
     ):
         # The client ID of the device for which you want to create an access credential.
+        # 
+        # This parameter is required.
         self.client_id = client_id
         # The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can obtain the instance ID on the **Instance Details** page that corresponds to the instance in the ApsaraMQ for MQTT console.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -6063,8 +6475,12 @@ class RevokeTokenRequest(TeaModel):
         token: str = None,
     ):
         # The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can obtain the instance ID on the **Instance Details** page that corresponds to the instance in the [ApsaraMQ for MQTT console](https://mqtt.console.aliyun.com/).
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The token that you want to revoke.
+        # 
+        # This parameter is required.
         self.token = token
 
     def validate(self):
@@ -6168,10 +6584,16 @@ class SendMessageRequest(TeaModel):
         payload: str = None,
     ):
         # The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can view the instance ID in the **Basic Information** section on the **Instance Details** page that corresponds to the instance in the [ApsaraMQ for MQTT console](https://mqtt.console.aliyun.com).
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The topic to which you want to send a message on the ApsaraMQ for MQTT instance.
+        # 
+        # This parameter is required.
         self.mqtt_topic = mqtt_topic
         # The message content, which is the payload of the message. We recommend that you encode the content in Base64 to prevent non-printable characters from being transmitted.
+        # 
+        # This parameter is required.
         self.payload = payload
 
     def validate(self):
@@ -6285,8 +6707,12 @@ class UnRegisterDeviceCredentialRequest(TeaModel):
         instance_id: str = None,
     ):
         # The client ID of the device whose access credential you want to deregister.
+        # 
+        # This parameter is required.
         self.client_id = client_id
         # The ID of the ApsaraMQ for MQTT instance. The ID must be consistent with the ID of the instance that the ApsaraMQ for MQTT client uses. You can obtain the instance ID on the **Instance Details** page that corresponds to the instance in the ApsaraMQ for MQTT console.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -6392,11 +6818,30 @@ class UpdateCustomAuthIdentityRequest(TeaModel):
         sign_mode: str = None,
         username: str = None,
     ):
+        # The client ID if you set IdentityType to CLIENT.
         self.client_id = client_id
+        # The identity type. Valid values:
+        # 
+        # *   USER
+        # *   CLIENT
+        # 
+        # This parameter is required.
         self.identity_type = identity_type
+        # The ID of the ApsaraMQ for MQTT instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The AccessKey secret.
+        # 
+        # This parameter is required.
         self.secret = secret
+        # The signature verification mode. ORIGIN: compares the password and AccessKey secret. SIGNED: uses the HMAC_SHA1 algorithm to sign the client ID to obtain a password and then compares the password.
+        # 
+        # This parameter is required.
         self.sign_mode = sign_mode
+        # The username.
+        # 
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -6447,10 +6892,13 @@ class UpdateCustomAuthIdentityResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -6536,11 +6984,17 @@ class UpdateCustomAuthPermissionRequest(TeaModel):
         permit_action: str = None,
         topic: str = None,
     ):
+        # This parameter is required.
         self.effect = effect
+        # This parameter is required.
         self.identity = identity
+        # This parameter is required.
         self.identity_type = identity_type
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.permit_action = permit_action
+        # This parameter is required.
         self.topic = topic
 
     def validate(self):
