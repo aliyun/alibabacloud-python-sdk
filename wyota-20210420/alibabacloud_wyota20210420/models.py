@@ -9026,10 +9026,12 @@ class ListTerminalsResponseBodyData(TeaModel):
         current_login_user: str = None,
         ipv_4: str = None,
         location_info: str = None,
+        manage_time: str = None,
         model: str = None,
         online: bool = None,
         password_free_login_user: str = None,
         serial_number: str = None,
+        set_password_free_login_user_time: str = None,
         terminal_group_id: str = None,
         uuid: str = None,
     ):
@@ -9040,10 +9042,12 @@ class ListTerminalsResponseBodyData(TeaModel):
         self.current_login_user = current_login_user
         self.ipv_4 = ipv_4
         self.location_info = location_info
+        self.manage_time = manage_time
         self.model = model
         self.online = online
         self.password_free_login_user = password_free_login_user
         self.serial_number = serial_number
+        self.set_password_free_login_user_time = set_password_free_login_user_time
         self.terminal_group_id = terminal_group_id
         self.uuid = uuid
 
@@ -9070,6 +9074,8 @@ class ListTerminalsResponseBodyData(TeaModel):
             result['Ipv4'] = self.ipv_4
         if self.location_info is not None:
             result['LocationInfo'] = self.location_info
+        if self.manage_time is not None:
+            result['ManageTime'] = self.manage_time
         if self.model is not None:
             result['Model'] = self.model
         if self.online is not None:
@@ -9078,6 +9084,8 @@ class ListTerminalsResponseBodyData(TeaModel):
             result['PasswordFreeLoginUser'] = self.password_free_login_user
         if self.serial_number is not None:
             result['SerialNumber'] = self.serial_number
+        if self.set_password_free_login_user_time is not None:
+            result['SetPasswordFreeLoginUserTime'] = self.set_password_free_login_user_time
         if self.terminal_group_id is not None:
             result['TerminalGroupId'] = self.terminal_group_id
         if self.uuid is not None:
@@ -9100,6 +9108,8 @@ class ListTerminalsResponseBodyData(TeaModel):
             self.ipv_4 = m.get('Ipv4')
         if m.get('LocationInfo') is not None:
             self.location_info = m.get('LocationInfo')
+        if m.get('ManageTime') is not None:
+            self.manage_time = m.get('ManageTime')
         if m.get('Model') is not None:
             self.model = m.get('Model')
         if m.get('Online') is not None:
@@ -9108,6 +9118,8 @@ class ListTerminalsResponseBodyData(TeaModel):
             self.password_free_login_user = m.get('PasswordFreeLoginUser')
         if m.get('SerialNumber') is not None:
             self.serial_number = m.get('SerialNumber')
+        if m.get('SetPasswordFreeLoginUserTime') is not None:
+            self.set_password_free_login_user_time = m.get('SetPasswordFreeLoginUserTime')
         if m.get('TerminalGroupId') is not None:
             self.terminal_group_id = m.get('TerminalGroupId')
         if m.get('Uuid') is not None:
