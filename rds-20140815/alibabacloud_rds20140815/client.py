@@ -5053,6 +5053,8 @@ class Client(OpenApiClient):
             query['DBInstanceStorage'] = request.dbinstance_storage
         if not UtilClient.is_unset(request.dbinstance_storage_type):
             query['DBInstanceStorageType'] = request.dbinstance_storage_type
+        if not UtilClient.is_unset(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
@@ -5081,6 +5083,8 @@ class Client(OpenApiClient):
             query['RestoreTime'] = request.restore_time
         if not UtilClient.is_unset(request.restore_type):
             query['RestoreType'] = request.restore_type
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleARN'] = request.role_arn
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
         if not UtilClient.is_unset(request.source_dbinstance_name):
@@ -5157,6 +5161,8 @@ class Client(OpenApiClient):
             query['DBInstanceStorage'] = request.dbinstance_storage
         if not UtilClient.is_unset(request.dbinstance_storage_type):
             query['DBInstanceStorageType'] = request.dbinstance_storage_type
+        if not UtilClient.is_unset(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
         if not UtilClient.is_unset(request.engine):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.engine_version):
@@ -5185,6 +5191,8 @@ class Client(OpenApiClient):
             query['RestoreTime'] = request.restore_time
         if not UtilClient.is_unset(request.restore_type):
             query['RestoreType'] = request.restore_type
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleARN'] = request.role_arn
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
         if not UtilClient.is_unset(request.source_dbinstance_name):
@@ -20842,7 +20850,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeHistoryEventsStatResponse:
         """
-        @summary 事件中心事件统计
+        @summary Queries event statistics in the event center.
         
         @param request: DescribeHistoryEventsStatRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20885,7 +20893,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeHistoryEventsStatResponse:
         """
-        @summary 事件中心事件统计
+        @summary Queries event statistics in the event center.
         
         @param request: DescribeHistoryEventsStatRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20927,7 +20935,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeHistoryEventsStatRequest,
     ) -> rds_20140815_models.DescribeHistoryEventsStatResponse:
         """
-        @summary 事件中心事件统计
+        @summary Queries event statistics in the event center.
         
         @param request: DescribeHistoryEventsStatRequest
         @return: DescribeHistoryEventsStatResponse
@@ -20940,7 +20948,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeHistoryEventsStatRequest,
     ) -> rds_20140815_models.DescribeHistoryEventsStatResponse:
         """
-        @summary 事件中心事件统计
+        @summary Queries event statistics in the event center.
         
         @param request: DescribeHistoryEventsStatRequest
         @return: DescribeHistoryEventsStatResponse

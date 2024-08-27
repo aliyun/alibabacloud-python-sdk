@@ -1,3 +1,11 @@
+2024-08-27 Version: 7.1.2
+- Update API CreateDBInstance: update param InstanceNetworkType.
+- Update API CreateDdrInstance: add param EncryptionKey.
+- Update API CreateDdrInstance: add param RoleARN.
+- Update API CreateDdrInstance: update response param.
+- Update API CreateReadOnlyDBInstance: update param InstanceNetworkType.
+
+
 2024-08-23 Version: 7.1.1
 - Update API RunRCInstances: update param AutoPay.
 - Update API RunRCInstances: update param SecurityGroupId.

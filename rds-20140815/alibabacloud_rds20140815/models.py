@@ -4402,11 +4402,10 @@ class CreateDBInstanceRequest(TeaModel):
         # > *   After you submit a request to create multiple ApsaraDB RDS for MySQL instances, this operation returns **TaskId**, **RequestId**, and **Message**. You can call the DescribeDBInstanceAttribute operation to query the information about an instance.
         # > *   If the value of the **Engine** parameter is not **MySQL** and the value of the Amount parameter is greater than **1**, this operation fails and returns an error code `InvalidParam.Engine`.
         self.amount = amount
-        # 是否自动创建代理。取值范围：
+        # Specifies whether to automatically create a proxy. Valid values:
         # 
-        # - **true**：开启自动创建，默认为通用代理。
-        # 
-        # - **false**：不开启自动创建。
+        # *   **true**: automatically creates a proxy. By default, general-purpose proxies are enabled.
+        # *   **false**: does not automatically create a proxy.
         self.auto_create_proxy = auto_create_proxy
         # Specifies whether to enable the automatic payment feature. Valid values:
         # 
@@ -4438,7 +4437,12 @@ class CreateDBInstanceRequest(TeaModel):
         self.babelfish_config = babelfish_config
         # A deprecated parameter. You do not need to specify this parameter.
         self.bpe_enabled = bpe_enabled
-        # An invalid parameter. You do not need to specify this parameter.
+        # Specifies whether to enable the I/O burst feature of general ESSDs. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # >  For more information about the I/O burst feature of general ESSDs, see [What are general ESSDs?](https://help.aliyun.com/document_detail/2340501.html)
         self.bursting_enabled = bursting_enabled
         # The additional business information about the instance.
         self.business_info = business_info
@@ -4464,7 +4468,12 @@ class CreateDBInstanceRequest(TeaModel):
         self.category = category
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # A reserved parameter.
+        # Specifies whether to enable the data archiving feature of general ESSDs. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # >  For more information about the data archiving feature of general ESSDs, see [Use the data archiving feature of general ESSDs](https://help.aliyun.com/document_detail/2701832.html).
         self.cold_data_enabled = cold_data_enabled
         # The connection mode of the instance. Valid values:
         # 
@@ -4509,17 +4518,18 @@ class CreateDBInstanceRequest(TeaModel):
         # The storage type of the instance. Valid values:
         # 
         # *   **local_ssd**: local SSD. This is the recommended storage type.
+        # *   **general_essd**: general Enterprise SSD (ESSD). This is the recommended storage type.
+        # *   **cloud_essd**: PL1 ESSD
+        # *   **cloud_essd2**: PL2 ESSD
+        # *   **cloud_essd3**: PL3 ESSD
         # *   **cloud_ssd**: standard SSD. This storage type is not recommended. Standard SSDs are no longer available for purchase in some Alibaba Cloud regions.
-        # *   **cloud_essd**: enhanced SSD (ESSD) of performance level 1 (PL1).
-        # *   **cloud_essd2**: ESSD of PL2.
-        # *   **cloud_essd3**: ESSD of PL3.
         # 
         # The default value of this parameter is determined by the instance type specified by the **DBInstanceClass** parameter.
         # 
         # *   If the instance type specifies the local SSD storage type, the default value of this parameter is **local_ssd**.
         # *   If the instance type specifies the standard SSD or ESSD storage type, the default value of this parameter is **cloud_essd**.
         # 
-        # >  Serverless instances use only ESSDs of PL1. If you create a serverless instance, you must set this parameter to **cloud_essd**.
+        # >  Serverless instances support only PL1 ESSDs and general ESSDs.
         self.dbinstance_storage_type = dbinstance_storage_type
         # Specifies whether the table name is case-sensitive. Valid values:
         # 
@@ -4613,15 +4623,16 @@ class CreateDBInstanceRequest(TeaModel):
         # *   **VPC**: virtual private cloud (VPC)
         # *   **Classic**: the classic network
         # 
-        # > 
-        # 
-        # *   If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
-        # 
-        # *   If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
-        # 
-        # *   If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
+        # > *   If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
+        # > *   If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
+        # > *   If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
         self.instance_network_type = instance_network_type
-        # A reserved parameter.
+        # Specifies whether to enable the I/O acceleration feature of general ESSDs. Valid values:
+        # 
+        # *   **1**: enabled
+        # *   **0**: disabled
+        # 
+        # >  For more information about the I/O acceleration feature of general ESSDs, see [Introduction](https://help.aliyun.com/document_detail/2527067.html).
         self.io_acceleration_enabled = io_acceleration_enabled
         # The billing method of the instance. Valid values:
         # 
@@ -5142,11 +5153,10 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # > *   After you submit a request to create multiple ApsaraDB RDS for MySQL instances, this operation returns **TaskId**, **RequestId**, and **Message**. You can call the DescribeDBInstanceAttribute operation to query the information about an instance.
         # > *   If the value of the **Engine** parameter is not **MySQL** and the value of the Amount parameter is greater than **1**, this operation fails and returns an error code `InvalidParam.Engine`.
         self.amount = amount
-        # 是否自动创建代理。取值范围：
+        # Specifies whether to automatically create a proxy. Valid values:
         # 
-        # - **true**：开启自动创建，默认为通用代理。
-        # 
-        # - **false**：不开启自动创建。
+        # *   **true**: automatically creates a proxy. By default, general-purpose proxies are enabled.
+        # *   **false**: does not automatically create a proxy.
         self.auto_create_proxy = auto_create_proxy
         # Specifies whether to enable the automatic payment feature. Valid values:
         # 
@@ -5178,7 +5188,12 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.babelfish_config = babelfish_config
         # A deprecated parameter. You do not need to specify this parameter.
         self.bpe_enabled = bpe_enabled
-        # An invalid parameter. You do not need to specify this parameter.
+        # Specifies whether to enable the I/O burst feature of general ESSDs. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # >  For more information about the I/O burst feature of general ESSDs, see [What are general ESSDs?](https://help.aliyun.com/document_detail/2340501.html)
         self.bursting_enabled = bursting_enabled
         # The additional business information about the instance.
         self.business_info = business_info
@@ -5204,7 +5219,12 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.category = category
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # A reserved parameter.
+        # Specifies whether to enable the data archiving feature of general ESSDs. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # >  For more information about the data archiving feature of general ESSDs, see [Use the data archiving feature of general ESSDs](https://help.aliyun.com/document_detail/2701832.html).
         self.cold_data_enabled = cold_data_enabled
         # The connection mode of the instance. Valid values:
         # 
@@ -5249,17 +5269,18 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # The storage type of the instance. Valid values:
         # 
         # *   **local_ssd**: local SSD. This is the recommended storage type.
+        # *   **general_essd**: general Enterprise SSD (ESSD). This is the recommended storage type.
+        # *   **cloud_essd**: PL1 ESSD
+        # *   **cloud_essd2**: PL2 ESSD
+        # *   **cloud_essd3**: PL3 ESSD
         # *   **cloud_ssd**: standard SSD. This storage type is not recommended. Standard SSDs are no longer available for purchase in some Alibaba Cloud regions.
-        # *   **cloud_essd**: enhanced SSD (ESSD) of performance level 1 (PL1).
-        # *   **cloud_essd2**: ESSD of PL2.
-        # *   **cloud_essd3**: ESSD of PL3.
         # 
         # The default value of this parameter is determined by the instance type specified by the **DBInstanceClass** parameter.
         # 
         # *   If the instance type specifies the local SSD storage type, the default value of this parameter is **local_ssd**.
         # *   If the instance type specifies the standard SSD or ESSD storage type, the default value of this parameter is **cloud_essd**.
         # 
-        # >  Serverless instances use only ESSDs of PL1. If you create a serverless instance, you must set this parameter to **cloud_essd**.
+        # >  Serverless instances support only PL1 ESSDs and general ESSDs.
         self.dbinstance_storage_type = dbinstance_storage_type
         # Specifies whether the table name is case-sensitive. Valid values:
         # 
@@ -5353,15 +5374,16 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # *   **VPC**: virtual private cloud (VPC)
         # *   **Classic**: the classic network
         # 
-        # > 
-        # 
-        # *   If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
-        # 
-        # *   If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
-        # 
-        # *   If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
+        # > *   If the instance runs MySQL and uses cloud disks, you must set this parameter to **VPC**.
+        # > *   If the instance runs PostgreSQL or MariaDB, you must set this parameter to **VPC**.
+        # > *   If the instance runs SQL Server Basic or SQL Server Web, you can set this parameter to VPC or Classic. If the instance runs other database engine, you must set this parameter to **VPC**.
         self.instance_network_type = instance_network_type
-        # A reserved parameter.
+        # Specifies whether to enable the I/O acceleration feature of general ESSDs. Valid values:
+        # 
+        # *   **1**: enabled
+        # *   **0**: disabled
+        # 
+        # >  For more information about the I/O acceleration feature of general ESSDs, see [Introduction](https://help.aliyun.com/document_detail/2527067.html).
         self.io_acceleration_enabled = io_acceleration_enabled
         # The billing method of the instance. Valid values:
         # 
@@ -7701,6 +7723,7 @@ class CreateDdrInstanceRequest(TeaModel):
         dbinstance_net_type: str = None,
         dbinstance_storage: int = None,
         dbinstance_storage_type: str = None,
+        encryption_key: str = None,
         engine: str = None,
         engine_version: str = None,
         instance_network_type: str = None,
@@ -7715,6 +7738,7 @@ class CreateDdrInstanceRequest(TeaModel):
         resource_owner_id: int = None,
         restore_time: str = None,
         restore_type: str = None,
+        role_arn: str = None,
         security_iplist: str = None,
         source_dbinstance_name: str = None,
         source_region: str = None,
@@ -7758,6 +7782,7 @@ class CreateDdrInstanceRequest(TeaModel):
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the destination instance. Only the local SSD storage type is supported. Default value: **local_ssd**.
         self.dbinstance_storage_type = dbinstance_storage_type
+        self.encryption_key = encryption_key
         # The database engine of the destination instance. Valid values:
         # 
         # *   **MySQL**\
@@ -7820,6 +7845,7 @@ class CreateDdrInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.restore_type = restore_type
+        self.role_arn = role_arn
         # The IP address whitelist of the destination instance. If you want to add more than one entry to the IP address whitelist, separate the entries with commas (,). Each entry must be unique. You can add a maximum of 1,000 entries. For more information, see [Configure an IP address whitelist for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/43185.html). The entries in the IP address whitelist must be in one of the following formats:
         # 
         # *   IP address. Example: 10.23.12.24.
@@ -7887,6 +7913,8 @@ class CreateDdrInstanceRequest(TeaModel):
             result['DBInstanceStorage'] = self.dbinstance_storage
         if self.dbinstance_storage_type is not None:
             result['DBInstanceStorageType'] = self.dbinstance_storage_type
+        if self.encryption_key is not None:
+            result['EncryptionKey'] = self.encryption_key
         if self.engine is not None:
             result['Engine'] = self.engine
         if self.engine_version is not None:
@@ -7915,6 +7943,8 @@ class CreateDdrInstanceRequest(TeaModel):
             result['RestoreTime'] = self.restore_time
         if self.restore_type is not None:
             result['RestoreType'] = self.restore_type
+        if self.role_arn is not None:
+            result['RoleARN'] = self.role_arn
         if self.security_iplist is not None:
             result['SecurityIPList'] = self.security_iplist
         if self.source_dbinstance_name is not None:
@@ -7951,6 +7981,8 @@ class CreateDdrInstanceRequest(TeaModel):
             self.dbinstance_storage = m.get('DBInstanceStorage')
         if m.get('DBInstanceStorageType') is not None:
             self.dbinstance_storage_type = m.get('DBInstanceStorageType')
+        if m.get('EncryptionKey') is not None:
+            self.encryption_key = m.get('EncryptionKey')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
         if m.get('EngineVersion') is not None:
@@ -7979,6 +8011,8 @@ class CreateDdrInstanceRequest(TeaModel):
             self.restore_time = m.get('RestoreTime')
         if m.get('RestoreType') is not None:
             self.restore_type = m.get('RestoreType')
+        if m.get('RoleARN') is not None:
+            self.role_arn = m.get('RoleARN')
         if m.get('SecurityIPList') is not None:
             self.security_iplist = m.get('SecurityIPList')
         if m.get('SourceDBInstanceName') is not None:
@@ -10692,11 +10726,10 @@ class CreateReadOnlyDBInstanceRequest(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # 是否自动创建代理。取值范围：
+        # Specifies whether to automatically create database proxies. Valid values:
         # 
-        # - **true**：开启自动创建，默认为通用代理。
-        # 
-        # - **false**：不开启自动创建。
+        # *   **true**: enables the feature. By default, general-purpose database proxies are created.
+        # *   **false**: disables the feature. No database proxies are created.
         self.auto_create_proxy = auto_create_proxy
         # Specifies whether to enable the automatic payment feature. Valid values:
         # 
@@ -51859,9 +51892,9 @@ class DescribeSQLLogFilesRequest(TeaModel):
         self.file_name = file_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Valid values: **1 to 100000**. Default value: **1**.
+        # The page number. Valid values: **1 to 100000**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid value: **30 to 200**. Default value: **30**.
+        # The number of entries per page. Valid values: **30 to 200**. Default value: **30**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -65686,12 +65719,10 @@ class ModifyDBInstanceTDERequest(TeaModel):
         self.encryption_key = encryption_key
         # Specifies whether to replace the key. Valid values:
         # 
-        # *   **true**: replaces the key.
-        # *   **false**: does not replace the key.
+        # *   **true**\
+        # *   **false** (default)
         # 
-        # Default value: **false**\
-        # 
-        # > This parameter is available only when the instance runs PostgreSQL.
+        # >  This parameter is available for only ApsaraDB RDS for PostgreSQL instances.
         self.is_rotate = is_rotate
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -73891,7 +73922,7 @@ class RenewInstanceRequest(TeaModel):
         # *   **True**: enables automatic payment. Make sure that your Alibaba Cloud account has adequate balance.
         # *   **False** (default): disables automatic payment. You have to manually pay the order in the console.
         # 
-        # >  For more information about how to manually pay the order in the console, see the following topics:
+        # >  For more information about how to renew the instance in the console, see the following topics:
         # 
         # *   [Manually renew an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96050.html)
         # 
