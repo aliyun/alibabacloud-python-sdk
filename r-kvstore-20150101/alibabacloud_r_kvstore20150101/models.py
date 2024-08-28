@@ -16241,16 +16241,21 @@ class DescribeParameterGroupSupportParamRequest(TeaModel):
     ):
         # The service category. Valid values:
         # 
-        # *   **standard**: Community Edition
-        # *   **enterprise**: Enhanced Edition (Tair)
+        # *   **standard**: ApsaraDB for Redis Community Edition
+        # *   **enterprise**: ApsaraDB for Redis Enhanced Edition (Tair)
         self.category = category
         # The engine type. Valid values:
         # 
-        # *   **redis**: Redis or Tair DRAM-based instances
-        # *   **tair_pena**: Tair persistent memory-optimized instances
-        # *   **tair_pdb**: Tair ESSD-based instances
+        # *   **redis**: ApsaraDB for Redis Community Edition instance or Tair DRAM-based instance
+        # *   **tair_pena**: Tair persistent memory-optimized instance
+        # *   **tair_pdb**: Tair ESSD/SSD-based instance
         self.engine_type = engine_type
-        # The engine version.
+        # The compatible engine version. Valid values:
+        # 
+        # *   For ApsaraDB for Redis Community Edition instances, set the parameter to **5.0**, **6.0**, or **7.0**.
+        # *   For Tair DRAM-based instances that are compatible with Redis 5.0 or Redis 6.0, set the parameter to **5.0** or **6.0**.
+        # *   For Tair persistent memory-optimized instances that are compatible with Redis 6.0, set the parameter to **1.0**.
+        # *   For Tair ESSD-based instances that are compatible with Redis 6.0, set the parameter to **1.0**. For Tair SSD-based instances that are compatible with Redis 6.0, set the parameter to **2.0**.
         # 
         # This parameter is required.
         self.engine_version = engine_version
@@ -17909,6 +17914,7 @@ class DescribePriceRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
+        shard_count: int = None,
         zone_id: str = None,
     ):
         # The extended information such as the promotional event ID and business information.
@@ -17978,6 +17984,7 @@ class DescribePriceRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        self.shard_count = shard_count
         # The zone ID of the instance. You can call the [DescribeZones](https://help.aliyun.com/document_detail/94527.html) operation to query the most recent zone list.
         self.zone_id = zone_id
 
@@ -18028,6 +18035,8 @@ class DescribePriceRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
+        if self.shard_count is not None:
+            result['ShardCount'] = self.shard_count
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -18072,6 +18081,8 @@ class DescribePriceRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')
+        if m.get('ShardCount') is not None:
+            self.shard_count = m.get('ShardCount')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -26343,6 +26354,7 @@ class ModifyInstanceParameterRequest(TeaModel):
         owner_id: int = None,
         parameter_group_id: str = None,
         parameters: str = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
@@ -26353,6 +26365,8 @@ class ModifyInstanceParameterRequest(TeaModel):
         self.owner_id = owner_id
         self.parameter_group_id = parameter_group_id
         self.parameters = parameters
+        # This parameter is required.
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
@@ -26376,6 +26390,8 @@ class ModifyInstanceParameterRequest(TeaModel):
             result['ParameterGroupId'] = self.parameter_group_id
         if self.parameters is not None:
             result['Parameters'] = self.parameters
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -26396,6 +26412,8 @@ class ModifyInstanceParameterRequest(TeaModel):
             self.parameter_group_id = m.get('ParameterGroupId')
         if m.get('Parameters') is not None:
             self.parameters = m.get('Parameters')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -27427,6 +27445,8 @@ class ModifyParameterGroupRequest(TeaModel):
         # 
         # *   The name can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
         # *   The name can be 8 to 64 characters in length.
+        # 
+        # This parameter is required.
         self.parameter_group_name = parameter_group_name
         # A JSON-formatted object that specifies the parameter-value pairs. Format: {"Parameter 1":"Value 1","Parameter 2":"Value 2"...}. The specified value overwrites the original content.
         # 

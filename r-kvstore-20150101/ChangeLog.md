@@ -1,3 +1,10 @@
+2024-08-28 Version: 4.2.1
+- Update API CreateTairInstance: update param EngineVersion.
+- Update API DescribePrice: add param ShardCount.
+- Update API ModifyInstanceParameter: update param RegionId.
+- Update API ModifyParameterGroup: update param ParameterGroupName.
+
+
 2024-07-19 Version: 4.2.0
 - Support API DescribeActiveOperationTasks.
 - Support API ModifyActiveOperationTasks.

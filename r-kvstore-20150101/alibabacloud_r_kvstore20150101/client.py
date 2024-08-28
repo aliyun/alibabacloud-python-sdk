@@ -31,7 +31,6 @@ class Client(OpenApiClient):
             'cn-shenzhen': 'r-kvstore.aliyuncs.com',
             'cn-heyuan': 'r-kvstore.aliyuncs.com',
             'cn-guangzhou': 'r-kvstore.aliyuncs.com',
-            'cn-hongkong': 'r-kvstore.aliyuncs.com',
             'cn-hangzhou-finance': 'r-kvstore.aliyuncs.com',
             'cn-shanghai-finance-1': 'r-kvstore.aliyuncs.com',
             'cn-shenzhen-finance-1': 'r-kvstore.aliyuncs.com',
@@ -7645,7 +7644,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse:
         """
-        @summary Queries a list of parameters that can be configured for different versions of parameter templates.
+        @summary Queries the parameters that can be configured in parameter templates across different database versions.
         
         @param request: DescribeParameterGroupSupportParamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7694,7 +7693,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse:
         """
-        @summary Queries a list of parameters that can be configured for different versions of parameter templates.
+        @summary Queries the parameters that can be configured in parameter templates across different database versions.
         
         @param request: DescribeParameterGroupSupportParamRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7742,7 +7741,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeParameterGroupSupportParamRequest,
     ) -> r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse:
         """
-        @summary Queries a list of parameters that can be configured for different versions of parameter templates.
+        @summary Queries the parameters that can be configured in parameter templates across different database versions.
         
         @param request: DescribeParameterGroupSupportParamRequest
         @return: DescribeParameterGroupSupportParamResponse
@@ -7755,7 +7754,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeParameterGroupSupportParamRequest,
     ) -> r_kvstore_20150101_models.DescribeParameterGroupSupportParamResponse:
         """
-        @summary Queries a list of parameters that can be configured for different versions of parameter templates.
+        @summary Queries the parameters that can be configured in parameter templates across different database versions.
         
         @param request: DescribeParameterGroupSupportParamRequest
         @return: DescribeParameterGroupSupportParamResponse
@@ -8435,6 +8434,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.shard_count):
+            query['ShardCount'] = request.shard_count
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
@@ -8508,6 +8509,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.shard_count):
+            query['ShardCount'] = request.shard_count
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
@@ -13239,6 +13242,8 @@ class Client(OpenApiClient):
             query['ParameterGroupId'] = request.parameter_group_id
         if not UtilClient.is_unset(request.parameters):
             query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -13288,6 +13293,8 @@ class Client(OpenApiClient):
             query['ParameterGroupId'] = request.parameter_group_id
         if not UtilClient.is_unset(request.parameters):
             query['Parameters'] = request.parameters
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
