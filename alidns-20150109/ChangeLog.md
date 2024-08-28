@@ -1,3 +1,8 @@
+2024-08-28 Version: 3.5.5
+- Update API DescribePdnsUdpIpSegments: update response param.
+- Update API DescribePdnsUserInfo: update response param.
+
+
 2024-08-20 Version: 3.5.4
 - Update API DescribeInternetDnsLogs: update response param.
 

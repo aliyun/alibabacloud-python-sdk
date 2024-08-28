@@ -5075,6 +5075,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeCloudGtmInstanceConfigFullInfoResponse:
         """
+        @summary Queries the complete configuration information about a Global Traffic Manager (GTM) instance, including the details about the access domain name, alert notifications, address pools, and addresses.
+        
         @param request: DescribeCloudGtmInstanceConfigFullInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCloudGtmInstanceConfigFullInfoResponse
@@ -5114,6 +5116,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeCloudGtmInstanceConfigFullInfoResponse:
         """
+        @summary Queries the complete configuration information about a Global Traffic Manager (GTM) instance, including the details about the access domain name, alert notifications, address pools, and addresses.
+        
         @param request: DescribeCloudGtmInstanceConfigFullInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCloudGtmInstanceConfigFullInfoResponse
@@ -5152,6 +5156,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeCloudGtmInstanceConfigFullInfoRequest,
     ) -> alidns_20150109_models.DescribeCloudGtmInstanceConfigFullInfoResponse:
         """
+        @summary Queries the complete configuration information about a Global Traffic Manager (GTM) instance, including the details about the access domain name, alert notifications, address pools, and addresses.
+        
         @param request: DescribeCloudGtmInstanceConfigFullInfoRequest
         @return: DescribeCloudGtmInstanceConfigFullInfoResponse
         """
@@ -5163,6 +5169,8 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeCloudGtmInstanceConfigFullInfoRequest,
     ) -> alidns_20150109_models.DescribeCloudGtmInstanceConfigFullInfoResponse:
         """
+        @summary Queries the complete configuration information about a Global Traffic Manager (GTM) instance, including the details about the access domain name, alert notifications, address pools, and addresses.
+        
         @param request: DescribeCloudGtmInstanceConfigFullInfoRequest
         @return: DescribeCloudGtmInstanceConfigFullInfoResponse
         """

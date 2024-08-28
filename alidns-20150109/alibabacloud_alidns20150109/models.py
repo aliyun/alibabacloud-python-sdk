@@ -8689,9 +8689,18 @@ class DescribeCloudGtmInstanceConfigFullInfoRequest(TeaModel):
         config_id: str = None,
         instance_id: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+        # 
+        # You can call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the value of ConfigId for the access domain name.
         self.config_id = config_id
+        # The ID of the GTM 3.0 instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -8777,25 +8786,75 @@ class DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolA
         update_timestamp: int = None,
         weight_value: int = None,
     ):
+        # IP address or domain name.
         self.address = address
+        # The address ID. This ID uniquely identifies the address.
         self.address_id = address_id
+        # Address ownership information, not supported in the current version.
         self.attribute_info = attribute_info
+        # The failover mode that is used when address exceptions are identified. Valid values:
+        # 
+        # *   auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
+        # *   manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
         self.available_mode = available_mode
+        # The availability state of the address. Valid values:
+        # 
+        # *   available
+        # *   unavailable
         self.available_status = available_status
+        # Address creation time.
         self.create_time = create_time
+        # Address creation time (timestamp).
         self.create_timestamp = create_timestamp
+        # The enabling state of the address. Valid values:
+        # 
+        # *   enable
+        # *   disable
         self.enable_status = enable_status
+        # The condition for determining the health state of the address. Valid values:
+        # 
+        # *   any_ok: The health check results of at least one health check template are normal.
+        # *   p30_ok: The health check results of at least 30% of health check templates are normal.
+        # *   p50_ok: The health check results of at least 50% of health check templates are normal.
+        # *   p70_ok: The health check results of at least 70% of health check templates are normal.
+        # *   all_ok: The health check results of all health check templates are normal.
         self.health_judgement = health_judgement
+        # The health check state of the address. Valid values:
+        # 
+        # *   ok: The address passes all health checks of the referenced health check templates.
+        # *   ok_alert: The address fails some health checks of the referenced health check templates but the address is deemed normal.
+        # *   ok_no_monitor: The address does not reference any health check template and is normal.
+        # *   exceptional: The address fails some or all health checks of the referenced health check templates and the address is deemed abnormal.
         self.health_status = health_status
+        # The availability state of the address when AvailableMode is set to manual. Valid values:
+        # 
+        # *   available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+        # *   unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
         self.manual_available_status = manual_available_status
+        # Address name.
         self.name = name
+        # The remark of the address.
         self.remark = remark
+        # Request source list.
         self.request_source = request_source
+        # Indicates whether it is a sequential (non-preemptive) mode scheduling object, applicable to hybrid cloud management scenarios: 
+        # 
+        # - true: yes
+        # - false: no
         self.seq_non_preemptive_schedule = seq_non_preemptive_schedule
+        # Sequence number, indicating the priority of address return, where smaller numbers have higher priority.
         self.serial_number = serial_number
+        # The type of the address. Valid values:
+        # 
+        # *   IPV4: the IPv4 address
+        # *   IPv6: the IPv6 address
+        # *   domain: the domain name
         self.type = type
+        # Last modified time of the address.
         self.update_time = update_time
+        # The last modification time of the address (timestamp).
         self.update_timestamp = update_timestamp
+        # Weight value (an integer between 1 and 100, inclusive), allowing different weight values to be set for each address, enabling resolution queries to return addresses in proportion to their weights.
         self.weight_value = weight_value
 
     def validate(self):
@@ -8980,23 +9039,68 @@ class DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool(
         update_timestamp: int = None,
         weight_value: int = None,
     ):
+        # Load balancing policy among addresses in the address pool:
+        # - round_robin: Round-robin, for any source of DNS resolution requests, returns all addresses and rotates their order for each request.
+        # - sequence: Sequential, for any source of DNS resolution requests, returns the address with the smaller sequence number (the sequence number indicates the priority of the address return, with smaller numbers having higher priority). If the address with the smaller sequence number is unavailable, the next address with a smaller sequence number is returned.
+        # - weight: Weighted, supports setting different weight values for each address to realize returning addresses according to the weight ratio for resolution queries.
+        # - source_nearest: Source-nearest, i.e., intelligent resolution function, where GTM can return different addresses based on the source of different DNS resolution requests, achieving the effect of users accessing nearby.
         self.address_lb_strategy = address_lb_strategy
+        # The ID of the address pool. This ID uniquely identifies the address pool.
         self.address_pool_id = address_pool_id
+        # Address pool name.
         self.address_pool_name = address_pool_name
+        # Address pool type:
+        # - IPv4
+        # - IPv6
+        # - domain
         self.address_pool_type = address_pool_type
+        # The addresses.
         self.addresses = addresses
+        # The availability state of the address pool. Valid values:
+        # 
+        # *   Available
+        # *   unavailable
         self.available_status = available_status
+        # Address pool creation time.
         self.create_time = create_time
+        # Address pool creation time (timestamp).
         self.create_timestamp = create_timestamp
+        # The enabling state of the address pool. Valid values:
+        # 
+        # *   enable
+        # *   disable
         self.enable_status = enable_status
+        # The condition for determining the health state of the address pool. Valid values:
+        # 
+        # *   any_ok: At least one address in the address pool is available.
+        # *   p30_ok: At least 30% of the addresses in the address pool are available.
+        # *   p50_ok: At least 50% of the addresses in the address pool are available.
+        # *   p70_ok: At least 70% of the addresses in the address pool are available.
+        # *   all_ok: All addresses in the address pool are available.
         self.health_judgement = health_judgement
+        # Address pool health status:
+        # - ok: Normal, all addresses referenced by the address pool are available.
+        # - ok_alert: Warning, some addresses referenced by the address pool are unavailable, but the address pool status is deemed normal. In the warning state, available address pools are resolved normally, while unavailable ones stop resolving.
+        # - exceptional: Abnormal, some or all of the addresses referenced by the address pool are unavailable, and the address pool status is determined to be abnormal.
         self.health_status = health_status
+        # Parse the list of request sources.
         self.request_source = request_source
+        # Indicates whether it is a sequential (non-preemptive) scheduling object for hybrid cloud management scenarios: 
+        # - true: yes 
+        # - false: no
         self.seq_non_preemptive_schedule = seq_non_preemptive_schedule
+        # The mode used if the address with the smallest sequence number is recovered. This parameter is required only when AddressLbStrategy is set to sequence. Valid values:
+        # 
+        # *   preemptive: The address with the smallest sequence number is preferentially used if this address is recovered.
+        # *   non_preemptive: The current address is still used even if the address with the smallest sequence number is recovered.
         self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        # Sequence number. For any parsing request from any source, the address pool with the smaller sequence number is returned (the sequence number indicates the priority of the address pool returned, with smaller numbers having higher priority).
         self.serial_number = serial_number
+        # Last modification time of the address pool.
         self.update_time = update_time
+        # Last modification time of the address pool (timestamp).
         self.update_timestamp = update_timestamp
+        # Weight value (an integer between 1 and 100, inclusive), allowing different weight values to be set for each address pool, enabling resolution queries to return address pools according to the weighted ratio.
         self.weight_value = weight_value
 
     def validate(self):
@@ -9156,30 +9260,84 @@ class DescribeCloudGtmInstanceConfigFullInfoResponseBody(TeaModel):
         update_timestamp: int = None,
         version_code: str = None,
     ):
+        # The policy for load balancing between address pools. Valid values:
+        # 
+        # *   round_robin: All address pools are returned for DNS requests from any source. All address pools are sorted in round-robin mode each time they are returned.
+        # *   sequence: The address pool with the smallest sequence number is preferentially returned for DNS requests from any source. The sequence number indicates the priority for returning the address pool. A smaller sequence number indicates a higher priority. If the address pool with the smallest sequence number is unavailable, the address pool with the second smallest sequence number is returned.
+        # *   weight: You can set a different weight value for each address pool. This way, address pools are returned based on the weight values.
+        # *   source_nearest: GTM returns different addresses based on the sources of DNS requests. This way, users can access nearby addresses.
         self.address_pool_lb_strategy = address_pool_lb_strategy
+        # The address pools.
         self.address_pools = address_pools
+        # Alert notification configuration.
         self.alert_config = alert_config
+        # Alert notification group.
         self.alert_group = alert_group
+        # The availability state of the access domain name. Valid values:
+        # 
+        # *   available: If the access domain name is **enabled** and the health state of the access domain name is **Normal**, the access domain name is deemed **available**.
+        # *   unavailable: If the access domain name is **disabled** or the health state of the access domain name is **Abnormal**, the access domain name is deemed **unavailable**.
         self.available_status = available_status
+        # The commodity code. Valid values:
+        # 
+        # *   dns_gtm_public_cn: the commodity code on the China site (aliyun.com)
+        # *   dns_gtm_public_intl: the commodity code on the international site (alibabacloud.com)
         self.commodity_code = commodity_code
+        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
         self.config_id = config_id
+        # Instance creation time.
         self.create_time = create_time
+        # Instance creation time (timestamp).
         self.create_timestamp = create_timestamp
+        # The enabling state of the access domain name. Valid values:
+        # 
+        # *   enable: The access domain name is enabled and the intelligent scheduling policy of the corresponding GTM instance takes effect.
+        # *   disable: The access domain name is disabled and the intelligent scheduling policy of the corresponding GTM instance does not take effect.
         self.enable_status = enable_status
+        # The health state of the access domain name. Valid values:
+        # 
+        # *   ok: The health state of the access domain name is Normal and all address pools that are referenced by the access domain name are available.
+        # *   ok_alert: The health state of the access domain name is Warning and some of the address pools that are referenced by the access domain name are unavailable. In this case, the available address pools are normally used for DNS resolution, but the unavailable address pools cannot be used for DNS resolution.
+        # *   exceptional: The health state of the access domain name is Abnormal and all address pools that are referenced by the access domain name are unavailable. In this case, addresses in the non-empty address pool with the smallest sequence number are preferentially used for fallback resolution. This returns DNS results for clients as much as possible.
         self.health_status = health_status
+        # The ID of the GTM 3.0 instance.
         self.instance_id = instance_id
+        # Schedule instance name.
         self.instance_name = instance_name
+        # Remarks of the configuration of domain instance.
         self.remark = remark
+        # Unique request identification code.
         self.request_id = request_id
+        # The GTM access domain name. The value of this parameter is composed of the value of ScheduleHostname and the value of ScheduleZoneName.
         self.schedule_domain_name = schedule_domain_name
+        # Host name of the domain accessed by GTM.
         self.schedule_hostname = schedule_hostname
+        # DNS record types for the ScheduleDomainName:
+        # - A: IPv4 address
+        # - AAAA: IPv6 address
+        # - CNAME: Domain name
         self.schedule_rr_type = schedule_rr_type
+        # The allocation mode of the access domain name. Valid values:
+        # 
+        # *   custom: custom allocation. You must specify a custom hostname and associate the hostname with a zone or subzone within the account to which the GTM instance belongs to generate an access domain name.
+        # *   sys_assign: The system assigns an access domain name by default. This mode is no longer supported. Do not choose this mode.
         self.schedule_zone_mode = schedule_zone_mode
+        # The zone (such as example.com) or subzone (such as a.example.com) associated with the GTM access domain name. In most cases, the zone or subzone is hosted in Authoritative DNS Resolution of the Alibaba Cloud DNS console within the account to which the GTM instance belongs.
         self.schedule_zone_name = schedule_zone_name
+        # The mode used if the address pool with the smallest sequence number is recovered. This parameter is required when AddressPoolLbStrategy is set to sequence. Valid values:
+        # 
+        # *   preemptive: The address pool with the smallest sequence number is preferentially used if this address pool is recovered.
+        # *   non_preemptive: The current address pool is still used even if the address pool with the smallest sequence number is recovered.
         self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        # Global TTL (in seconds), the TTL value for resolving the access domain to addresses in the address pool, which affects the caching time of DNS records in the ISP\\"s LocalDNS. Custom TTL values are supported.
         self.ttl = ttl
+        # Last modified time.
         self.update_time = update_time
+        # Last modified time (timestamp).
         self.update_timestamp = update_timestamp
+        # Global Traffic Management version 3.0 instances:
+        # - standard: Standard Edition
+        # - ultimate: Ultimate Edition
         self.version_code = version_code
 
     def validate(self):
@@ -29536,16 +29694,22 @@ class DescribePdnsUdpIpSegmentsResponseBodyIpSegments(TeaModel):
     def __init__(
         self,
         create_date: str = None,
+        create_timestamp: int = None,
+        id: str = None,
         ip: str = None,
         mask: int = None,
         name: str = None,
+        secret_key: str = None,
         state: str = None,
         update_date: str = None,
     ):
         self.create_date = create_date
+        self.create_timestamp = create_timestamp
+        self.id = id
         self.ip = ip
         self.mask = mask
         self.name = name
+        self.secret_key = secret_key
         self.state = state
         self.update_date = update_date
 
@@ -29560,12 +29724,18 @@ class DescribePdnsUdpIpSegmentsResponseBodyIpSegments(TeaModel):
         result = dict()
         if self.create_date is not None:
             result['CreateDate'] = self.create_date
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.id is not None:
+            result['Id'] = self.id
         if self.ip is not None:
             result['Ip'] = self.ip
         if self.mask is not None:
             result['Mask'] = self.mask
         if self.name is not None:
             result['Name'] = self.name
+        if self.secret_key is not None:
+            result['SecretKey'] = self.secret_key
         if self.state is not None:
             result['State'] = self.state
         if self.update_date is not None:
@@ -29576,12 +29746,18 @@ class DescribePdnsUdpIpSegmentsResponseBodyIpSegments(TeaModel):
         m = m or dict()
         if m.get('CreateDate') is not None:
             self.create_date = m.get('CreateDate')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
         if m.get('Mask') is not None:
             self.mask = m.get('Mask')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('SecretKey') is not None:
+            self.secret_key = m.get('SecretKey')
         if m.get('State') is not None:
             self.state = m.get('State')
         if m.get('UpdateDate') is not None:
@@ -29727,6 +29903,7 @@ class DescribePdnsUserInfoResponseBodyUserInfo(TeaModel):
         self,
         available_service: str = None,
         pdns_id: int = None,
+        secret_key: str = None,
         service_type: str = None,
         state: str = None,
         statistic_switch_status: str = None,
@@ -29734,6 +29911,7 @@ class DescribePdnsUserInfoResponseBodyUserInfo(TeaModel):
     ):
         self.available_service = available_service
         self.pdns_id = pdns_id
+        self.secret_key = secret_key
         self.service_type = service_type
         self.state = state
         self.statistic_switch_status = statistic_switch_status
@@ -29752,6 +29930,8 @@ class DescribePdnsUserInfoResponseBodyUserInfo(TeaModel):
             result['AvailableService'] = self.available_service
         if self.pdns_id is not None:
             result['PdnsId'] = self.pdns_id
+        if self.secret_key is not None:
+            result['SecretKey'] = self.secret_key
         if self.service_type is not None:
             result['ServiceType'] = self.service_type
         if self.state is not None:
@@ -29768,6 +29948,8 @@ class DescribePdnsUserInfoResponseBodyUserInfo(TeaModel):
             self.available_service = m.get('AvailableService')
         if m.get('PdnsId') is not None:
             self.pdns_id = m.get('PdnsId')
+        if m.get('SecretKey') is not None:
+            self.secret_key = m.get('SecretKey')
         if m.get('ServiceType') is not None:
             self.service_type = m.get('ServiceType')
         if m.get('State') is not None:
