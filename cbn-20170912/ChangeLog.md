@@ -1,3 +1,15 @@
+2024-08-28 Version: 1.1.6
+- Update API AssociateTransitRouterMulticastDomain: update param VSwitchIds.
+- Update API CreateCenInterRegionTrafficQosPolicy: add param BandwidthGuaranteeMode.
+- Update API CreateCenInterRegionTrafficQosPolicy: update param TrafficQosQueues.
+- Update API CreateCenInterRegionTrafficQosQueue: add param Bandwidth.
+- Update API DisassociateTransitRouterMulticastDomain: update param VSwitchIds.
+- Update API ListCenInterRegionTrafficQosPolicies: update response param.
+- Update API ListCenInterRegionTrafficQosQueues: add param EffectiveBandwidthFilter.
+- Update API ListCenInterRegionTrafficQosQueues: update response param.
+- Update API UpdateCenInterRegionTrafficQosQueueAttribute: add param Bandwidth.
+
+
 2024-08-16 Version: 1.1.5
 - Update API CreateCenInterRegionTrafficQosPolicy: update param TrafficQosQueues.
 - Update API CreateCenInterRegionTrafficQosQueue: update param RemainBandwidthPercent.

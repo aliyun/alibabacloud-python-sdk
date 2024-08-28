@@ -2369,11 +2369,13 @@ class CreateCenChildInstanceRouteEntryToCenResponse(TeaModel):
 class CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues(TeaModel):
     def __init__(
         self,
+        bandwidth: str = None,
         dscps: List[int] = None,
         qos_queue_description: str = None,
         qos_queue_name: str = None,
         remain_bandwidth_percent: str = None,
     ):
+        self.bandwidth = bandwidth
         # The Differentiated Services Code Point (DSCP) value that matches the current queue.
         # 
         # Each QoS policy supports at most three queues. You can specify at most 60 DSCP values for each queue. Separate multiple DCSP values with commas (,).
@@ -2408,6 +2410,8 @@ class CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues(TeaModel):
             return _map
 
         result = dict()
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
         if self.dscps is not None:
             result['Dscps'] = self.dscps
         if self.qos_queue_description is not None:
@@ -2420,6 +2424,8 @@ class CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
         if m.get('Dscps') is not None:
             self.dscps = m.get('Dscps')
         if m.get('QosQueueDescription') is not None:
@@ -2434,6 +2440,7 @@ class CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues(TeaModel):
 class CreateCenInterRegionTrafficQosPolicyRequest(TeaModel):
     def __init__(
         self,
+        bandwidth_guarantee_mode: str = None,
         client_token: str = None,
         dry_run: bool = None,
         owner_account: str = None,
@@ -2446,6 +2453,7 @@ class CreateCenInterRegionTrafficQosPolicyRequest(TeaModel):
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
+        self.bandwidth_guarantee_mode = bandwidth_guarantee_mode
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
@@ -2492,6 +2500,8 @@ class CreateCenInterRegionTrafficQosPolicyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.bandwidth_guarantee_mode is not None:
+            result['BandwidthGuaranteeMode'] = self.bandwidth_guarantee_mode
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
@@ -2520,6 +2530,8 @@ class CreateCenInterRegionTrafficQosPolicyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BandwidthGuaranteeMode') is not None:
+            self.bandwidth_guarantee_mode = m.get('BandwidthGuaranteeMode')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
@@ -2627,6 +2639,7 @@ class CreateCenInterRegionTrafficQosPolicyResponse(TeaModel):
 class CreateCenInterRegionTrafficQosQueueRequest(TeaModel):
     def __init__(
         self,
+        bandwidth: int = None,
         client_token: str = None,
         dry_run: bool = None,
         dscps: List[int] = None,
@@ -2639,6 +2652,7 @@ class CreateCenInterRegionTrafficQosQueueRequest(TeaModel):
         resource_owner_id: int = None,
         traffic_qos_policy_id: str = None,
     ):
+        self.bandwidth = bandwidth
         self.client_token = client_token
         self.dry_run = dry_run
         # This parameter is required.
@@ -2662,6 +2676,8 @@ class CreateCenInterRegionTrafficQosQueueRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
@@ -2688,6 +2704,8 @@ class CreateCenInterRegionTrafficQosQueueRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
@@ -21382,14 +21400,18 @@ class ListCenInterRegionTrafficQosPoliciesRequest(TeaModel):
 class ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQosQueues(TeaModel):
     def __init__(
         self,
+        bandwidth: str = None,
         dscps: List[int] = None,
+        effective_bandwidth: str = None,
         qos_queue_description: str = None,
         qos_queue_id: str = None,
         qos_queue_name: str = None,
         remain_bandwidth_percent: int = None,
     ):
+        self.bandwidth = bandwidth
         # The differentiated services code point (DSCP) value that is used to match packets.
         self.dscps = dscps
+        self.effective_bandwidth = effective_bandwidth
         # The description of the queue.
         self.qos_queue_description = qos_queue_description
         # The queue ID.
@@ -21408,8 +21430,12 @@ class ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQ
             return _map
 
         result = dict()
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
         if self.dscps is not None:
             result['Dscps'] = self.dscps
+        if self.effective_bandwidth is not None:
+            result['EffectiveBandwidth'] = self.effective_bandwidth
         if self.qos_queue_description is not None:
             result['QosQueueDescription'] = self.qos_queue_description
         if self.qos_queue_id is not None:
@@ -21422,8 +21448,12 @@ class ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQ
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
         if m.get('Dscps') is not None:
             self.dscps = m.get('Dscps')
+        if m.get('EffectiveBandwidth') is not None:
+            self.effective_bandwidth = m.get('EffectiveBandwidth')
         if m.get('QosQueueDescription') is not None:
             self.qos_queue_description = m.get('QosQueueDescription')
         if m.get('QosQueueId') is not None:
@@ -21438,6 +21468,7 @@ class ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPoliciesTrafficQ
 class ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies(TeaModel):
     def __init__(
         self,
+        bandwidth_guarantee_mode: str = None,
         traffic_qos_policy_description: str = None,
         traffic_qos_policy_id: str = None,
         traffic_qos_policy_name: str = None,
@@ -21446,6 +21477,7 @@ class ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies(TeaMode
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
+        self.bandwidth_guarantee_mode = bandwidth_guarantee_mode
         # The description of the QoS policy.
         self.traffic_qos_policy_description = traffic_qos_policy_description
         # The ID of the QoS policy.
@@ -21478,6 +21510,8 @@ class ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies(TeaMode
             return _map
 
         result = dict()
+        if self.bandwidth_guarantee_mode is not None:
+            result['BandwidthGuaranteeMode'] = self.bandwidth_guarantee_mode
         if self.traffic_qos_policy_description is not None:
             result['TrafficQosPolicyDescription'] = self.traffic_qos_policy_description
         if self.traffic_qos_policy_id is not None:
@@ -21498,6 +21532,8 @@ class ListCenInterRegionTrafficQosPoliciesResponseBodyTrafficQosPolicies(TeaMode
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BandwidthGuaranteeMode') is not None:
+            self.bandwidth_guarantee_mode = m.get('BandwidthGuaranteeMode')
         if m.get('TrafficQosPolicyDescription') is not None:
             self.traffic_qos_policy_description = m.get('TrafficQosPolicyDescription')
         if m.get('TrafficQosPolicyId') is not None:
@@ -21626,9 +21662,43 @@ class ListCenInterRegionTrafficQosPoliciesResponse(TeaModel):
         return self
 
 
+class ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter(TeaModel):
+    def __init__(
+        self,
+        gte: int = None,
+        lte: int = None,
+    ):
+        self.gte = gte
+        self.lte = lte
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gte is not None:
+            result['Gte'] = self.gte
+        if self.lte is not None:
+            result['Lte'] = self.lte
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Gte') is not None:
+            self.gte = m.get('Gte')
+        if m.get('Lte') is not None:
+            self.lte = m.get('Lte')
+        return self
+
+
 class ListCenInterRegionTrafficQosQueuesRequest(TeaModel):
     def __init__(
         self,
+        effective_bandwidth_filter: ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter = None,
         max_results: int = None,
         next_token: str = None,
         owner_account: str = None,
@@ -21642,6 +21712,7 @@ class ListCenInterRegionTrafficQosQueuesRequest(TeaModel):
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
+        self.effective_bandwidth_filter = effective_bandwidth_filter
         # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results.
@@ -21671,7 +21742,8 @@ class ListCenInterRegionTrafficQosQueuesRequest(TeaModel):
         self.transit_router_id = transit_router_id
 
     def validate(self):
-        pass
+        if self.effective_bandwidth_filter:
+            self.effective_bandwidth_filter.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -21679,6 +21751,8 @@ class ListCenInterRegionTrafficQosQueuesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.effective_bandwidth_filter is not None:
+            result['EffectiveBandwidthFilter'] = self.effective_bandwidth_filter.to_map()
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -21707,6 +21781,9 @@ class ListCenInterRegionTrafficQosQueuesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EffectiveBandwidthFilter') is not None:
+            temp_model = ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter()
+            self.effective_bandwidth_filter = temp_model.from_map(m['EffectiveBandwidthFilter'])
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -21737,7 +21814,9 @@ class ListCenInterRegionTrafficQosQueuesRequest(TeaModel):
 class ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues(TeaModel):
     def __init__(
         self,
+        bandwidth: str = None,
         dscps: List[int] = None,
+        effective_bandwidth: str = None,
         remain_bandwidth_percent: int = None,
         status: str = None,
         traffic_qos_policy_id: str = None,
@@ -21747,8 +21826,10 @@ class ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues(TeaModel):
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
+        self.bandwidth = bandwidth
         # The Differentiated Services Code Point (DSCP) value that matches the current QoS queue.
         self.dscps = dscps
+        self.effective_bandwidth = effective_bandwidth
         # The percentage of the inter-region bandwidth that can be consumed by the QoS queue.
         # 
         # A value of **1** indicates that the QoS queue can consume at most 1% of the inter-region bandwidth.
@@ -21781,8 +21862,12 @@ class ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues(TeaModel):
             return _map
 
         result = dict()
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
         if self.dscps is not None:
             result['Dscps'] = self.dscps
+        if self.effective_bandwidth is not None:
+            result['EffectiveBandwidth'] = self.effective_bandwidth
         if self.remain_bandwidth_percent is not None:
             result['RemainBandwidthPercent'] = self.remain_bandwidth_percent
         if self.status is not None:
@@ -21803,8 +21888,12 @@ class ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
         if m.get('Dscps') is not None:
             self.dscps = m.get('Dscps')
+        if m.get('EffectiveBandwidth') is not None:
+            self.effective_bandwidth = m.get('EffectiveBandwidth')
         if m.get('RemainBandwidthPercent') is not None:
             self.remain_bandwidth_percent = m.get('RemainBandwidthPercent')
         if m.get('Status') is not None:
@@ -34520,6 +34609,7 @@ class UpdateCenInterRegionTrafficQosPolicyAttributeResponse(TeaModel):
 class UpdateCenInterRegionTrafficQosQueueAttributeRequest(TeaModel):
     def __init__(
         self,
+        bandwidth: int = None,
         client_token: str = None,
         dry_run: bool = None,
         dscps: List[int] = None,
@@ -34532,6 +34622,7 @@ class UpdateCenInterRegionTrafficQosQueueAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
@@ -34573,6 +34664,8 @@ class UpdateCenInterRegionTrafficQosQueueAttributeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
@@ -34599,6 +34692,8 @@ class UpdateCenInterRegionTrafficQosQueueAttributeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
