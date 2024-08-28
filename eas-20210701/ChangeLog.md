@@ -1,3 +1,8 @@
+2024-08-28 Version: 5.1.0
+- Support API ListTenantAddons.
+- Support API ReinstallTenantAddon.
+
+
 2024-08-28 Version: 5.0.0
 - Support API CreateAclPolicy.
 - Support API DeleteAclPolicy.

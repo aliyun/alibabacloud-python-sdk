@@ -9856,6 +9856,7 @@ class ListServicesRequest(TeaModel):
     ):
         # The field that is used for fuzzy matches. The system performs fuzzy matches only by service name.
         self.filter = filter
+        # The ID of the private gateway.
         self.gateway = gateway
         # The name of the service group. For more information about how to query the name of a service group, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
         self.group_name = group_name
@@ -10176,6 +10177,7 @@ class ListServicesShrinkRequest(TeaModel):
     ):
         # The field that is used for fuzzy matches. The system performs fuzzy matches only by service name.
         self.filter = filter
+        # The ID of the private gateway.
         self.gateway = gateway
         # The name of the service group. For more information about how to query the name of a service group, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
         self.group_name = group_name
@@ -10575,6 +10577,195 @@ class ListServicesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListServicesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTenantAddonsResponseBodyAddons(TeaModel):
+    def __init__(
+        self,
+        attributes: Dict[str, str] = None,
+        name: str = None,
+    ):
+        self.attributes = attributes
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListTenantAddonsResponseBody(TeaModel):
+    def __init__(
+        self,
+        addons: List[ListTenantAddonsResponseBodyAddons] = None,
+        request_id: str = None,
+    ):
+        self.addons = addons
+        self.request_id = request_id
+
+    def validate(self):
+        if self.addons:
+            for k in self.addons:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Addons'] = []
+        if self.addons is not None:
+            for k in self.addons:
+                result['Addons'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.addons = []
+        if m.get('Addons') is not None:
+            for k in m.get('Addons'):
+                temp_model = ListTenantAddonsResponseBodyAddons()
+                self.addons.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListTenantAddonsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTenantAddonsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTenantAddonsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReinstallTenantAddonResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ReinstallTenantAddonResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReinstallTenantAddonResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReinstallTenantAddonResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -6552,6 +6552,182 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_services_with_options_async(request, headers, runtime)
 
+    def list_tenant_addons_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListTenantAddonsResponse:
+        """
+        @summary 获取租户配置列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTenantAddonsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListTenantAddons',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/tenantaddons',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListTenantAddonsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tenant_addons_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListTenantAddonsResponse:
+        """
+        @summary 获取租户配置列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTenantAddonsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListTenantAddons',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/tenantaddons',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListTenantAddonsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tenant_addons(self) -> eas_20210701_models.ListTenantAddonsResponse:
+        """
+        @summary 获取租户配置列表
+        
+        @return: ListTenantAddonsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_tenant_addons_with_options(headers, runtime)
+
+    async def list_tenant_addons_async(self) -> eas_20210701_models.ListTenantAddonsResponse:
+        """
+        @summary 获取租户配置列表
+        
+        @return: ListTenantAddonsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_tenant_addons_with_options_async(headers, runtime)
+
+    def reinstall_tenant_addon_with_options(
+        self,
+        cluster_id: str,
+        tenant_addon_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ReinstallTenantAddonResponse:
+        """
+        @summary 重置租户配置
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReinstallTenantAddonResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ReinstallTenantAddon',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/tenantaddons/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(tenant_addon_name)}/reinstall',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ReinstallTenantAddonResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reinstall_tenant_addon_with_options_async(
+        self,
+        cluster_id: str,
+        tenant_addon_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ReinstallTenantAddonResponse:
+        """
+        @summary 重置租户配置
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReinstallTenantAddonResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ReinstallTenantAddon',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/tenantaddons/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(tenant_addon_name)}/reinstall',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ReinstallTenantAddonResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reinstall_tenant_addon(
+        self,
+        cluster_id: str,
+        tenant_addon_name: str,
+    ) -> eas_20210701_models.ReinstallTenantAddonResponse:
+        """
+        @summary 重置租户配置
+        
+        @return: ReinstallTenantAddonResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.reinstall_tenant_addon_with_options(cluster_id, tenant_addon_name, headers, runtime)
+
+    async def reinstall_tenant_addon_async(
+        self,
+        cluster_id: str,
+        tenant_addon_name: str,
+    ) -> eas_20210701_models.ReinstallTenantAddonResponse:
+        """
+        @summary 重置租户配置
+        
+        @return: ReinstallTenantAddonResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.reinstall_tenant_addon_with_options_async(cluster_id, tenant_addon_name, headers, runtime)
+
     def release_service_with_options(
         self,
         cluster_id: str,
