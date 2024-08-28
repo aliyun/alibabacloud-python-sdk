@@ -1,3 +1,7 @@
+2024-08-28 Version: 8.0.1
+- Update API DescribeDBInstanceAttribute: update response param.
+
+
 2024-08-01 Version: 8.0.0
 - Support API RestartNode.
 - Delete API RestoreDBInstance.

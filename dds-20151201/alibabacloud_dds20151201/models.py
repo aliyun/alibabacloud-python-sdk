@@ -8290,6 +8290,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverLi
     def __init__(
         self,
         connect_string: str = None,
+        lock_mode: str = None,
         max_connections: int = None,
         max_iops: int = None,
         node_class: str = None,
@@ -8301,6 +8302,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverLi
     ):
         # The endpoint of the Configserver node.
         self.connect_string = connect_string
+        self.lock_mode = lock_mode
         # The maximum number of connections to the Configserver node.
         self.max_connections = max_connections
         # The maximum IOPS of the Configserver node.
@@ -8329,6 +8331,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverLi
         result = dict()
         if self.connect_string is not None:
             result['ConnectString'] = self.connect_string
+        if self.lock_mode is not None:
+            result['LockMode'] = self.lock_mode
         if self.max_connections is not None:
             result['MaxConnections'] = self.max_connections
         if self.max_iops is not None:
@@ -8351,6 +8355,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverLi
         m = m or dict()
         if m.get('ConnectString') is not None:
             self.connect_string = m.get('ConnectString')
+        if m.get('LockMode') is not None:
+            self.lock_mode = m.get('LockMode')
         if m.get('MaxConnections') is not None:
             self.max_connections = m.get('MaxConnections')
         if m.get('MaxIOPS') is not None:
@@ -8409,6 +8415,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMong
     def __init__(
         self,
         connect_sting: str = None,
+        lock_mode: str = None,
         max_connections: int = None,
         max_iops: int = None,
         node_class: str = None,
@@ -8422,6 +8429,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMong
     ):
         # The endpoint of the mongos node.
         self.connect_sting = connect_sting
+        self.lock_mode = lock_mode
         # The maximum number of connections to the mongos node.
         self.max_connections = max_connections
         # The maximum IOPS of the mongos node.
@@ -8458,6 +8466,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMong
         result = dict()
         if self.connect_sting is not None:
             result['ConnectSting'] = self.connect_sting
+        if self.lock_mode is not None:
+            result['LockMode'] = self.lock_mode
         if self.max_connections is not None:
             result['MaxConnections'] = self.max_connections
         if self.max_iops is not None:
@@ -8484,6 +8494,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMong
         m = m or dict()
         if m.get('ConnectSting') is not None:
             self.connect_sting = m.get('ConnectSting')
+        if m.get('LockMode') is not None:
+            self.lock_mode = m.get('LockMode')
         if m.get('MaxConnections') is not None:
             self.max_connections = m.get('MaxConnections')
         if m.get('MaxIOPS') is not None:
@@ -8663,6 +8675,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShard
     def __init__(
         self,
         connect_string: str = None,
+        lock_mode: str = None,
         max_connections: int = None,
         max_disk_mbps: str = None,
         max_iops: int = None,
@@ -8676,6 +8689,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShard
     ):
         # The endpoint of the shard node.
         self.connect_string = connect_string
+        self.lock_mode = lock_mode
         # The maximum number of connections to the shard node.
         self.max_connections = max_connections
         # shard节点的最大云盘吞吐量。
@@ -8708,6 +8722,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShard
         result = dict()
         if self.connect_string is not None:
             result['ConnectString'] = self.connect_string
+        if self.lock_mode is not None:
+            result['LockMode'] = self.lock_mode
         if self.max_connections is not None:
             result['MaxConnections'] = self.max_connections
         if self.max_disk_mbps is not None:
@@ -8734,6 +8750,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShard
         m = m or dict()
         if m.get('ConnectString') is not None:
             self.connect_string = m.get('ConnectString')
+        if m.get('LockMode') is not None:
+            self.lock_mode = m.get('LockMode')
         if m.get('MaxConnections') is not None:
             self.max_connections = m.get('MaxConnections')
         if m.get('MaxDiskMbps') is not None:
