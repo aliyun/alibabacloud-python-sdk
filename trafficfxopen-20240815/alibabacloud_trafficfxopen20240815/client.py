@@ -148,3 +148,137 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_token_with_options_async(request, headers, runtime)
+
+    def search_with_options(
+        self,
+        request: traffic_fx_open_20240815_models.SearchRequest,
+        headers: traffic_fx_open_20240815_models.SearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> traffic_fx_open_20240815_models.SearchResponse:
+        """
+        @summary 分销报价接口
+        
+        @param request: SearchRequest
+        @param headers: SearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.scene):
+            body['scene'] = request.scene
+        if not UtilClient.is_unset(request.search_param):
+            body['searchParam'] = request.search_param
+        if not UtilClient.is_unset(request.source):
+            body['source'] = request.source
+        if not UtilClient.is_unset(request.terminal):
+            body['terminal'] = request.terminal
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_airticket_access_token):
+            real_headers['xAcsAirticketAccessToken'] = UtilClient.to_jsonstring(headers.x_acs_airticket_access_token)
+        if not UtilClient.is_unset(headers.x_acs_airticket_language):
+            real_headers['xAcsAirticketLanguage'] = UtilClient.to_jsonstring(headers.x_acs_airticket_language)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Search',
+            version='2024-08-15',
+            protocol='HTTPS',
+            pathname=f'/v1/distribution/trade/search',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            traffic_fx_open_20240815_models.SearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_with_options_async(
+        self,
+        request: traffic_fx_open_20240815_models.SearchRequest,
+        headers: traffic_fx_open_20240815_models.SearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> traffic_fx_open_20240815_models.SearchResponse:
+        """
+        @summary 分销报价接口
+        
+        @param request: SearchRequest
+        @param headers: SearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.scene):
+            body['scene'] = request.scene
+        if not UtilClient.is_unset(request.search_param):
+            body['searchParam'] = request.search_param
+        if not UtilClient.is_unset(request.source):
+            body['source'] = request.source
+        if not UtilClient.is_unset(request.terminal):
+            body['terminal'] = request.terminal
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_airticket_access_token):
+            real_headers['xAcsAirticketAccessToken'] = UtilClient.to_jsonstring(headers.x_acs_airticket_access_token)
+        if not UtilClient.is_unset(headers.x_acs_airticket_language):
+            real_headers['xAcsAirticketLanguage'] = UtilClient.to_jsonstring(headers.x_acs_airticket_language)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Search',
+            version='2024-08-15',
+            protocol='HTTPS',
+            pathname=f'/v1/distribution/trade/search',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            traffic_fx_open_20240815_models.SearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search(
+        self,
+        request: traffic_fx_open_20240815_models.SearchRequest,
+    ) -> traffic_fx_open_20240815_models.SearchResponse:
+        """
+        @summary 分销报价接口
+        
+        @param request: SearchRequest
+        @return: SearchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = traffic_fx_open_20240815_models.SearchHeaders()
+        return self.search_with_options(request, headers, runtime)
+
+    async def search_async(
+        self,
+        request: traffic_fx_open_20240815_models.SearchRequest,
+    ) -> traffic_fx_open_20240815_models.SearchResponse:
+        """
+        @summary 分销报价接口
+        
+        @param request: SearchRequest
+        @return: SearchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = traffic_fx_open_20240815_models.SearchHeaders()
+        return await self.search_with_options_async(request, headers, runtime)
