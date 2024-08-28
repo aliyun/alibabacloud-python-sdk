@@ -1,3 +1,9 @@
+2024-08-28 Version: 1.0.5
+- Update API GetInstanceDetail: update response param.
+- Update API ListInstances: add param ResourceGroupId.
+- Update API ListInstances: update response param.
+
+
 2024-08-03 Version: 1.0.4
 - Update API UpdatePublicNetworkStatus: update param Cidr.
 - Update API UpdatePublicNetworkStatus: update param PublicNetworkEnabled.

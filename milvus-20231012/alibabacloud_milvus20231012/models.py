@@ -463,6 +463,87 @@ class GetInstanceDetailResponseBodyDataClusterInfo(TeaModel):
         return self
 
 
+class GetInstanceDetailResponseBodyDataMeasureConfig(TeaModel):
+    def __init__(
+        self,
+        data_node_cu_num: int = None,
+        data_node_replica: int = None,
+        index_node_cu_num: int = None,
+        index_node_replica: int = None,
+        mix_coodinator_node_cu_num: int = None,
+        mix_coodinator_node_replica: int = None,
+        proxy_node_cu_num: int = None,
+        proxy_node_replica: int = None,
+        query_node_cu_num: int = None,
+        query_node_replica: int = None,
+    ):
+        self.data_node_cu_num = data_node_cu_num
+        self.data_node_replica = data_node_replica
+        self.index_node_cu_num = index_node_cu_num
+        self.index_node_replica = index_node_replica
+        self.mix_coodinator_node_cu_num = mix_coodinator_node_cu_num
+        self.mix_coodinator_node_replica = mix_coodinator_node_replica
+        self.proxy_node_cu_num = proxy_node_cu_num
+        self.proxy_node_replica = proxy_node_replica
+        self.query_node_cu_num = query_node_cu_num
+        self.query_node_replica = query_node_replica
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_node_cu_num is not None:
+            result['DataNodeCuNum'] = self.data_node_cu_num
+        if self.data_node_replica is not None:
+            result['DataNodeReplica'] = self.data_node_replica
+        if self.index_node_cu_num is not None:
+            result['IndexNodeCuNum'] = self.index_node_cu_num
+        if self.index_node_replica is not None:
+            result['IndexNodeReplica'] = self.index_node_replica
+        if self.mix_coodinator_node_cu_num is not None:
+            result['MixCoodinatorNodeCuNum'] = self.mix_coodinator_node_cu_num
+        if self.mix_coodinator_node_replica is not None:
+            result['MixCoodinatorNodeReplica'] = self.mix_coodinator_node_replica
+        if self.proxy_node_cu_num is not None:
+            result['ProxyNodeCuNum'] = self.proxy_node_cu_num
+        if self.proxy_node_replica is not None:
+            result['ProxyNodeReplica'] = self.proxy_node_replica
+        if self.query_node_cu_num is not None:
+            result['QueryNodeCuNum'] = self.query_node_cu_num
+        if self.query_node_replica is not None:
+            result['QueryNodeReplica'] = self.query_node_replica
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataNodeCuNum') is not None:
+            self.data_node_cu_num = m.get('DataNodeCuNum')
+        if m.get('DataNodeReplica') is not None:
+            self.data_node_replica = m.get('DataNodeReplica')
+        if m.get('IndexNodeCuNum') is not None:
+            self.index_node_cu_num = m.get('IndexNodeCuNum')
+        if m.get('IndexNodeReplica') is not None:
+            self.index_node_replica = m.get('IndexNodeReplica')
+        if m.get('MixCoodinatorNodeCuNum') is not None:
+            self.mix_coodinator_node_cu_num = m.get('MixCoodinatorNodeCuNum')
+        if m.get('MixCoodinatorNodeReplica') is not None:
+            self.mix_coodinator_node_replica = m.get('MixCoodinatorNodeReplica')
+        if m.get('ProxyNodeCuNum') is not None:
+            self.proxy_node_cu_num = m.get('ProxyNodeCuNum')
+        if m.get('ProxyNodeReplica') is not None:
+            self.proxy_node_replica = m.get('ProxyNodeReplica')
+        if m.get('QueryNodeCuNum') is not None:
+            self.query_node_cu_num = m.get('QueryNodeCuNum')
+        if m.get('QueryNodeReplica') is not None:
+            self.query_node_replica = m.get('QueryNodeReplica')
+        return self
+
+
 class GetInstanceDetailResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -475,11 +556,13 @@ class GetInstanceDetailResponseBodyData(TeaModel):
         expire_time: int = None,
         instance_id: str = None,
         instance_status: str = None,
+        measure_config: GetInstanceDetailResponseBodyDataMeasureConfig = None,
         open_public_net: bool = None,
         package_type: str = None,
         pay_type: int = None,
         product_code: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         running_time: int = None,
         sg_id: str = None,
         template_version: str = None,
@@ -498,11 +581,13 @@ class GetInstanceDetailResponseBodyData(TeaModel):
         self.expire_time = expire_time
         self.instance_id = instance_id
         self.instance_status = instance_status
+        self.measure_config = measure_config
         self.open_public_net = open_public_net
         self.package_type = package_type
         self.pay_type = pay_type
         self.product_code = product_code
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.running_time = running_time
         self.sg_id = sg_id
         self.template_version = template_version
@@ -515,6 +600,8 @@ class GetInstanceDetailResponseBodyData(TeaModel):
     def validate(self):
         if self.cluster_info:
             self.cluster_info.validate()
+        if self.measure_config:
+            self.measure_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -540,6 +627,8 @@ class GetInstanceDetailResponseBodyData(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_status is not None:
             result['InstanceStatus'] = self.instance_status
+        if self.measure_config is not None:
+            result['MeasureConfig'] = self.measure_config.to_map()
         if self.open_public_net is not None:
             result['OpenPublicNet'] = self.open_public_net
         if self.package_type is not None:
@@ -550,6 +639,8 @@ class GetInstanceDetailResponseBodyData(TeaModel):
             result['ProductCode'] = self.product_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.running_time is not None:
             result['RunningTime'] = self.running_time
         if self.sg_id is not None:
@@ -589,6 +680,9 @@ class GetInstanceDetailResponseBodyData(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceStatus') is not None:
             self.instance_status = m.get('InstanceStatus')
+        if m.get('MeasureConfig') is not None:
+            temp_model = GetInstanceDetailResponseBodyDataMeasureConfig()
+            self.measure_config = temp_model.from_map(m['MeasureConfig'])
         if m.get('OpenPublicNet') is not None:
             self.open_public_net = m.get('OpenPublicNet')
         if m.get('PackageType') is not None:
@@ -599,6 +693,8 @@ class GetInstanceDetailResponseBodyData(TeaModel):
             self.product_code = m.get('ProductCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RunningTime') is not None:
             self.running_time = m.get('RunningTime')
         if m.get('SgId') is not None:
@@ -732,12 +828,14 @@ class ListInstancesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
     ):
         self.cluster_id = cluster_id
         self.cluster_name = cluster_name
         self.page_number = page_number
         self.page_size = page_size
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -758,6 +856,8 @@ class ListInstancesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -772,6 +872,8 @@ class ListInstancesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -911,6 +1013,7 @@ class ListInstancesResponseBodyData(TeaModel):
         pay_type: int = None,
         product_code: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         running_time: int = None,
         sg_id: str = None,
         vpc_id: str = None,
@@ -928,6 +1031,7 @@ class ListInstancesResponseBodyData(TeaModel):
         self.pay_type = pay_type
         self.product_code = product_code
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.running_time = running_time
         self.sg_id = sg_id
         self.vpc_id = vpc_id
@@ -966,6 +1070,8 @@ class ListInstancesResponseBodyData(TeaModel):
             result['ProductCode'] = self.product_code
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.running_time is not None:
             result['RunningTime'] = self.running_time
         if self.sg_id is not None:
@@ -1003,6 +1109,8 @@ class ListInstancesResponseBodyData(TeaModel):
             self.product_code = m.get('ProductCode')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RunningTime') is not None:
             self.running_time = m.get('RunningTime')
         if m.get('SgId') is not None:
