@@ -1,3 +1,11 @@
+2024-08-28 Version: 1.23.4
+- Update API CreateApplication: add param EnableNewArms.
+- Update API DeployApplication: add param EnableNewArms.
+- Update API DescribeApplicationConfig: update response param.
+- Update API DescribeWebCustomDomain: update response param.
+- Update API ListWebCustomDomains: update param NamespaceId.
+
+
 2024-08-21 Version: 1.23.3
 - Update API CreateIngress: add param RequestTimeout.
 - Update API CreateIngress: add param SecurityPolicyId.

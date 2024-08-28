@@ -4744,6 +4744,74 @@ class CreateWebApplicationInput(TeaModel):
         return self
 
 
+class PathConfig(TeaModel):
+    def __init__(
+        self,
+        application_name: str = None,
+        path: str = None,
+    ):
+        self.application_name = application_name
+        self.path = path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_name is not None:
+            result['applicationName'] = self.application_name
+        if self.path is not None:
+            result['path'] = self.path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('applicationName') is not None:
+            self.application_name = m.get('applicationName')
+        if m.get('path') is not None:
+            self.path = m.get('path')
+        return self
+
+
+class RouteConfig(TeaModel):
+    def __init__(
+        self,
+        routes: List[PathConfig] = None,
+    ):
+        self.routes = routes
+
+    def validate(self):
+        if self.routes:
+            for k in self.routes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['routes'] = []
+        if self.routes is not None:
+            for k in self.routes:
+                result['routes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.routes = []
+        if m.get('routes') is not None:
+            for k in m.get('routes'):
+                temp_model = PathConfig()
+                self.routes.append(temp_model.from_map(k))
+        return self
+
+
 class WebCertConfig(TeaModel):
     def __init__(
         self,
@@ -4855,6 +4923,7 @@ class CreateWebCustomDomainInput(TeaModel):
         default_forwarding_app_name: str = None,
         domain_name: str = None,
         protocol: str = None,
+        route_config: RouteConfig = None,
         web_cert_config: WebCertConfig = None,
         web_tlsconfig: WebTLSConfig = None,
         web_wafconfig: WebWAFConfig = None,
@@ -4863,11 +4932,14 @@ class CreateWebCustomDomainInput(TeaModel):
         # This parameter is required.
         self.domain_name = domain_name
         self.protocol = protocol
+        self.route_config = route_config
         self.web_cert_config = web_cert_config
         self.web_tlsconfig = web_tlsconfig
         self.web_wafconfig = web_wafconfig
 
     def validate(self):
+        if self.route_config:
+            self.route_config.validate()
         if self.web_cert_config:
             self.web_cert_config.validate()
         if self.web_tlsconfig:
@@ -4887,6 +4959,8 @@ class CreateWebCustomDomainInput(TeaModel):
             result['DomainName'] = self.domain_name
         if self.protocol is not None:
             result['Protocol'] = self.protocol
+        if self.route_config is not None:
+            result['RouteConfig'] = self.route_config.to_map()
         if self.web_cert_config is not None:
             result['WebCertConfig'] = self.web_cert_config.to_map()
         if self.web_tlsconfig is not None:
@@ -4903,6 +4977,9 @@ class CreateWebCustomDomainInput(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
+        if m.get('RouteConfig') is not None:
+            temp_model = RouteConfig()
+            self.route_config = temp_model.from_map(m['RouteConfig'])
         if m.get('WebCertConfig') is not None:
             temp_model = WebCertConfig()
             self.web_cert_config = temp_model.from_map(m['WebCertConfig'])
@@ -4912,74 +4989,6 @@ class CreateWebCustomDomainInput(TeaModel):
         if m.get('WebWAFConfig') is not None:
             temp_model = WebWAFConfig()
             self.web_wafconfig = temp_model.from_map(m['WebWAFConfig'])
-        return self
-
-
-class PathConfig(TeaModel):
-    def __init__(
-        self,
-        application_name: str = None,
-        path: str = None,
-    ):
-        self.application_name = application_name
-        self.path = path
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.application_name is not None:
-            result['applicationName'] = self.application_name
-        if self.path is not None:
-            result['path'] = self.path
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('applicationName') is not None:
-            self.application_name = m.get('applicationName')
-        if m.get('path') is not None:
-            self.path = m.get('path')
-        return self
-
-
-class RouteConfig(TeaModel):
-    def __init__(
-        self,
-        routes: List[PathConfig] = None,
-    ):
-        self.routes = routes
-
-    def validate(self):
-        if self.routes:
-            for k in self.routes:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['routes'] = []
-        if self.routes is not None:
-            for k in self.routes:
-                result['routes'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.routes = []
-        if m.get('routes') is not None:
-            for k in m.get('routes'):
-                temp_model = PathConfig()
-                self.routes.append(temp_model.from_map(k))
         return self
 
 
@@ -7307,29 +7316,33 @@ class ListWebApplicationsBody(TeaModel):
 class WebCustomDomain(TeaModel):
     def __init__(
         self,
-        account_id: str = None,
         created_time: str = None,
         default_forwarding_app_name: str = None,
         domain_name: str = None,
         last_modified_time: str = None,
         namespace_id: str = None,
         protocol: str = None,
+        route_config: RouteConfig = None,
         web_cert_config: WebCertConfig = None,
         web_tlsconfig: WebTLSConfig = None,
         web_wafconfig: WebWAFConfig = None,
+        account_id: str = None,
     ):
-        self.account_id = account_id
         self.created_time = created_time
         self.default_forwarding_app_name = default_forwarding_app_name
         self.domain_name = domain_name
         self.last_modified_time = last_modified_time
         self.namespace_id = namespace_id
         self.protocol = protocol
+        self.route_config = route_config
         self.web_cert_config = web_cert_config
         self.web_tlsconfig = web_tlsconfig
         self.web_wafconfig = web_wafconfig
+        self.account_id = account_id
 
     def validate(self):
+        if self.route_config:
+            self.route_config.validate()
         if self.web_cert_config:
             self.web_cert_config.validate()
         if self.web_tlsconfig:
@@ -7343,8 +7356,6 @@ class WebCustomDomain(TeaModel):
             return _map
 
         result = dict()
-        if self.account_id is not None:
-            result['AccountId'] = self.account_id
         if self.created_time is not None:
             result['CreatedTime'] = self.created_time
         if self.default_forwarding_app_name is not None:
@@ -7357,18 +7368,20 @@ class WebCustomDomain(TeaModel):
             result['NamespaceId'] = self.namespace_id
         if self.protocol is not None:
             result['Protocol'] = self.protocol
+        if self.route_config is not None:
+            result['RouteConfig'] = self.route_config.to_map()
         if self.web_cert_config is not None:
             result['WebCertConfig'] = self.web_cert_config.to_map()
         if self.web_tlsconfig is not None:
             result['WebTLSConfig'] = self.web_tlsconfig.to_map()
         if self.web_wafconfig is not None:
             result['WebWAFConfig'] = self.web_wafconfig.to_map()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccountId') is not None:
-            self.account_id = m.get('AccountId')
         if m.get('CreatedTime') is not None:
             self.created_time = m.get('CreatedTime')
         if m.get('DefaultForwardingAppName') is not None:
@@ -7381,6 +7394,9 @@ class WebCustomDomain(TeaModel):
             self.namespace_id = m.get('NamespaceId')
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
+        if m.get('RouteConfig') is not None:
+            temp_model = RouteConfig()
+            self.route_config = temp_model.from_map(m['RouteConfig'])
         if m.get('WebCertConfig') is not None:
             temp_model = WebCertConfig()
             self.web_cert_config = temp_model.from_map(m['WebCertConfig'])
@@ -7390,6 +7406,8 @@ class WebCustomDomain(TeaModel):
         if m.get('WebWAFConfig') is not None:
             temp_model = WebWAFConfig()
             self.web_wafconfig = temp_model.from_map(m['WebWAFConfig'])
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
         return self
 
 
@@ -9068,17 +9086,21 @@ class UpdateWebCustomDomainInput(TeaModel):
         self,
         default_forwarding_app_name: str = None,
         protocol: str = None,
+        route_config: RouteConfig = None,
         web_cert_config: WebCertConfig = None,
         web_tlsconfig: WebTLSConfig = None,
         web_wafconfig: WebWAFConfig = None,
     ):
         self.default_forwarding_app_name = default_forwarding_app_name
         self.protocol = protocol
+        self.route_config = route_config
         self.web_cert_config = web_cert_config
         self.web_tlsconfig = web_tlsconfig
         self.web_wafconfig = web_wafconfig
 
     def validate(self):
+        if self.route_config:
+            self.route_config.validate()
         if self.web_cert_config:
             self.web_cert_config.validate()
         if self.web_tlsconfig:
@@ -9096,6 +9118,8 @@ class UpdateWebCustomDomainInput(TeaModel):
             result['DefaultForwardingAppName'] = self.default_forwarding_app_name
         if self.protocol is not None:
             result['Protocol'] = self.protocol
+        if self.route_config is not None:
+            result['RouteConfig'] = self.route_config.to_map()
         if self.web_cert_config is not None:
             result['WebCertConfig'] = self.web_cert_config.to_map()
         if self.web_tlsconfig is not None:
@@ -9110,6 +9134,9 @@ class UpdateWebCustomDomainInput(TeaModel):
             self.default_forwarding_app_name = m.get('DefaultForwardingAppName')
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
+        if m.get('RouteConfig') is not None:
+            temp_model = RouteConfig()
+            self.route_config = temp_model.from_map(m['RouteConfig'])
         if m.get('WebCertConfig') is not None:
             temp_model = WebCertConfig()
             self.web_cert_config = temp_model.from_map(m['WebCertConfig'])
@@ -10769,6 +10796,7 @@ class CreateApplicationRequest(TeaModel):
         deploy: bool = None,
         edas_container_version: str = None,
         enable_ebpf: str = None,
+        enable_new_arms: bool = None,
         envs: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
@@ -10846,6 +10874,7 @@ class CreateApplicationRequest(TeaModel):
         # 3.5.3
         self.edas_container_version = edas_container_version
         self.enable_ebpf = enable_ebpf
+        self.enable_new_arms = enable_new_arms
         # [{"name":"envtmp","value":"0"}]
         self.envs = envs
         self.image_pull_secrets = image_pull_secrets
@@ -10970,6 +10999,8 @@ class CreateApplicationRequest(TeaModel):
             result['EdasContainerVersion'] = self.edas_container_version
         if self.enable_ebpf is not None:
             result['EnableEbpf'] = self.enable_ebpf
+        if self.enable_new_arms is not None:
+            result['EnableNewArms'] = self.enable_new_arms
         if self.envs is not None:
             result['Envs'] = self.envs
         if self.image_pull_secrets is not None:
@@ -11096,6 +11127,8 @@ class CreateApplicationRequest(TeaModel):
             self.edas_container_version = m.get('EdasContainerVersion')
         if m.get('EnableEbpf') is not None:
             self.enable_ebpf = m.get('EnableEbpf')
+        if m.get('EnableNewArms') is not None:
+            self.enable_new_arms = m.get('EnableNewArms')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
         if m.get('ImagePullSecrets') is not None:
@@ -11816,14 +11849,21 @@ class CreateConfigMapRequest(TeaModel):
         name: str = None,
         namespace_id: str = None,
     ):
+        # The key-value pairs of the ConfigMap in the JSON format. Format:
+        # 
+        # {"Data":"{"k1":"v1", "k2":"v2"}"}
+        # 
+        # k specifies a key and v specifies a value. For more information, see [Manage a Kubernetes ConfigMap](https://help.aliyun.com/document_detail/171326.html).
+        # 
         # This parameter is required.
         self.data = data
+        # The description. The description must be 1 to 255 characters in length, and cannot contain spaces.
         self.description = description
-        # cn-hangzhou
+        # The name of the ConfigMap. The name can contain digits, letters, and underscores (_). The name must start with a letter.
         # 
         # This parameter is required.
         self.name = name
-        # The ID of the request.
+        # The ID of the namespace to which the ConfigMap instance belongs.
         # 
         # This parameter is required.
         self.namespace_id = namespace_id
@@ -11865,10 +11905,7 @@ class CreateConfigMapResponseBodyData(TeaModel):
         self,
         config_map_id: int = None,
     ):
-        # The returned error code. Valid values:
-        # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+        # The ID of the ConfigMap that was created.
         self.config_map_id = config_map_id
 
     def validate(self):
@@ -11902,26 +11939,30 @@ class CreateConfigMapResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # Indicates whether the ConfigMap instance was created. Valid values:
-        # 
-        # *   **true**: The instance was created.
-        # *   **false**: The call failed to be created.
-        self.code = code
-        # The ID of the ConfigMap instance that was created.
-        self.data = data
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: indicates that the call was successful.
-        # *   **3xx**: indicates that the call was redirected.
-        # *   **4xx**: indicates that the call failed.
-        # *   **5xx**: indicates that a server error occurred.
-        self.error_code = error_code
-        # The ID of the trace. The ID is used to query the details of a request.
-        self.message = message
-        # The returned information.
-        self.request_id = request_id
-        self.success = success
+        # *   **2xx**: The call was successful.
+        # *   **3xx**: The call was redirected.
+        # *   **4xx**: The call failed.
+        # *   **5xx**: A server error occurred.
+        self.code = code
         # The returned result.
+        self.data = data
+        # The error code. Valid values:
+        # 
+        # *   If the call is successful, the **ErrorCode** parameter is not returned.
+        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        self.error_code = error_code
+        # The returned message.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the ConfigMap was created. Valid values:
+        # 
+        # *   **true**: The ConfigMap was created.
+        # *   **false**: The ConfigMap failed to be created.
+        self.success = success
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -15559,6 +15600,7 @@ class DeployApplicationRequest(TeaModel):
         edas_container_version: str = None,
         enable_ahas: str = None,
         enable_grey_tag_route: bool = None,
+        enable_new_arms: bool = None,
         envs: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
@@ -15674,6 +15716,7 @@ class DeployApplicationRequest(TeaModel):
         # *   **true**: The canary release rules are enabled.
         # *   **false**: The canary release rules are disabled.
         self.enable_grey_tag_route = enable_grey_tag_route
+        self.enable_new_arms = enable_new_arms
         # The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Take note of the following rules:
         # 
         # *   Customize
@@ -15919,6 +15962,8 @@ class DeployApplicationRequest(TeaModel):
             result['EnableAhas'] = self.enable_ahas
         if self.enable_grey_tag_route is not None:
             result['EnableGreyTagRoute'] = self.enable_grey_tag_route
+        if self.enable_new_arms is not None:
+            result['EnableNewArms'] = self.enable_new_arms
         if self.envs is not None:
             result['Envs'] = self.envs
         if self.image_pull_secrets is not None:
@@ -16043,6 +16088,8 @@ class DeployApplicationRequest(TeaModel):
             self.enable_ahas = m.get('EnableAhas')
         if m.get('EnableGreyTagRoute') is not None:
             self.enable_grey_tag_route = m.get('EnableGreyTagRoute')
+        if m.get('EnableNewArms') is not None:
+            self.enable_new_arms = m.get('EnableNewArms')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
         if m.get('ImagePullSecrets') is not None:
@@ -16987,6 +17034,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         enable_ahas: str = None,
         enable_grey_tag_route: bool = None,
         enable_idle: bool = None,
+        enable_new_arms: bool = None,
         envs: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
@@ -17107,6 +17155,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         # *   **false**: The canary release rules are disabled.
         self.enable_grey_tag_route = enable_grey_tag_route
         self.enable_idle = enable_idle
+        self.enable_new_arms = enable_new_arms
         # The environment variables. Variable description:
         # 
         # *   **name**: the name of the environment variable.
@@ -17398,6 +17447,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['EnableGreyTagRoute'] = self.enable_grey_tag_route
         if self.enable_idle is not None:
             result['EnableIdle'] = self.enable_idle
+        if self.enable_new_arms is not None:
+            result['EnableNewArms'] = self.enable_new_arms
         if self.envs is not None:
             result['Envs'] = self.envs
         if self.image_pull_secrets is not None:
@@ -17547,6 +17598,8 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.enable_grey_tag_route = m.get('EnableGreyTagRoute')
         if m.get('EnableIdle') is not None:
             self.enable_idle = m.get('EnableIdle')
+        if m.get('EnableNewArms') is not None:
+            self.enable_new_arms = m.get('EnableNewArms')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
         if m.get('ImagePullSecrets') is not None:
@@ -28294,7 +28347,7 @@ class DescribeWebCustomDomainResponse(TeaModel):
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: WebCustomDomainBody = None,
+        body: WebCustomDomain = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -28325,7 +28378,7 @@ class DescribeWebCustomDomainResponse(TeaModel):
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
-            temp_model = WebCustomDomainBody()
+            temp_model = WebCustomDomain()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -36000,7 +36053,6 @@ class ListWebCustomDomainsRequest(TeaModel):
     ):
         self.application_id = application_id
         self.limit = limit
-        # This parameter is required.
         self.namespace_id = namespace_id
         self.next_token = next_token
         self.prefix = prefix

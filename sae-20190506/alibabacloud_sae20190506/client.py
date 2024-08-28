@@ -723,6 +723,8 @@ class Client(OpenApiClient):
             query['EdasContainerVersion'] = request.edas_container_version
         if not UtilClient.is_unset(request.enable_ebpf):
             query['EnableEbpf'] = request.enable_ebpf
+        if not UtilClient.is_unset(request.enable_new_arms):
+            query['EnableNewArms'] = request.enable_new_arms
         if not UtilClient.is_unset(request.envs):
             query['Envs'] = request.envs
         if not UtilClient.is_unset(request.image_pull_secrets):
@@ -881,6 +883,8 @@ class Client(OpenApiClient):
             query['EdasContainerVersion'] = request.edas_container_version
         if not UtilClient.is_unset(request.enable_ebpf):
             query['EnableEbpf'] = request.enable_ebpf
+        if not UtilClient.is_unset(request.enable_new_arms):
+            query['EnableNewArms'] = request.enable_new_arms
         if not UtilClient.is_unset(request.envs):
             query['Envs'] = request.envs
         if not UtilClient.is_unset(request.image_pull_secrets):
@@ -1188,7 +1192,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateConfigMapResponse:
         """
-        @summary name
+        @summary Create a ConfigMap in a namespace.
         
         @param request: CreateConfigMapRequest
         @param headers: map
@@ -1234,7 +1238,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sae_20190506_models.CreateConfigMapResponse:
         """
-        @summary name
+        @summary Create a ConfigMap in a namespace.
         
         @param request: CreateConfigMapRequest
         @param headers: map
@@ -1278,7 +1282,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateConfigMapRequest,
     ) -> sae_20190506_models.CreateConfigMapResponse:
         """
-        @summary name
+        @summary Create a ConfigMap in a namespace.
         
         @param request: CreateConfigMapRequest
         @return: CreateConfigMapResponse
@@ -1292,7 +1296,7 @@ class Client(OpenApiClient):
         request: sae_20190506_models.CreateConfigMapRequest,
     ) -> sae_20190506_models.CreateConfigMapResponse:
         """
-        @summary name
+        @summary Create a ConfigMap in a namespace.
         
         @param request: CreateConfigMapRequest
         @return: CreateConfigMapResponse
@@ -3651,6 +3655,8 @@ class Client(OpenApiClient):
             query['EnableAhas'] = request.enable_ahas
         if not UtilClient.is_unset(request.enable_grey_tag_route):
             query['EnableGreyTagRoute'] = request.enable_grey_tag_route
+        if not UtilClient.is_unset(request.enable_new_arms):
+            query['EnableNewArms'] = request.enable_new_arms
         if not UtilClient.is_unset(request.envs):
             query['Envs'] = request.envs
         if not UtilClient.is_unset(request.image_pull_secrets):
@@ -3809,6 +3815,8 @@ class Client(OpenApiClient):
             query['EnableAhas'] = request.enable_ahas
         if not UtilClient.is_unset(request.enable_grey_tag_route):
             query['EnableGreyTagRoute'] = request.enable_grey_tag_route
+        if not UtilClient.is_unset(request.enable_new_arms):
+            query['EnableNewArms'] = request.enable_new_arms
         if not UtilClient.is_unset(request.envs):
             query['Envs'] = request.envs
         if not UtilClient.is_unset(request.image_pull_secrets):
