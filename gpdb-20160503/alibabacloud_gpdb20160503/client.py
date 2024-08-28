@@ -1016,10 +1016,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateAccountResponse:
         """
-        @summary Creates a privileged account for an AnalyticDB for PostgreSQL instance.
+        @summary Creates an initial account for an AnalyticDB for PostgreSQL instance.
         
-        @description    Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
-        You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](https://help.aliyun.com/document_detail/50206.html).
+        @description    Before you can use an AnalyticDB for PostgreSQL instance, you must create an initial account for the instance.
+        You can call this operation to create only initial accounts. For information about how to create other types of accounts, see [Create a database account](https://help.aliyun.com/document_detail/50206.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1070,10 +1070,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateAccountResponse:
         """
-        @summary Creates a privileged account for an AnalyticDB for PostgreSQL instance.
+        @summary Creates an initial account for an AnalyticDB for PostgreSQL instance.
         
-        @description    Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
-        You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](https://help.aliyun.com/document_detail/50206.html).
+        @description    Before you can use an AnalyticDB for PostgreSQL instance, you must create an initial account for the instance.
+        You can call this operation to create only initial accounts. For information about how to create other types of accounts, see [Create a database account](https://help.aliyun.com/document_detail/50206.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1123,10 +1123,10 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateAccountRequest,
     ) -> gpdb_20160503_models.CreateAccountResponse:
         """
-        @summary Creates a privileged account for an AnalyticDB for PostgreSQL instance.
+        @summary Creates an initial account for an AnalyticDB for PostgreSQL instance.
         
-        @description    Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
-        You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](https://help.aliyun.com/document_detail/50206.html).
+        @description    Before you can use an AnalyticDB for PostgreSQL instance, you must create an initial account for the instance.
+        You can call this operation to create only initial accounts. For information about how to create other types of accounts, see [Create a database account](https://help.aliyun.com/document_detail/50206.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1141,10 +1141,10 @@ class Client(OpenApiClient):
         request: gpdb_20160503_models.CreateAccountRequest,
     ) -> gpdb_20160503_models.CreateAccountResponse:
         """
-        @summary Creates a privileged account for an AnalyticDB for PostgreSQL instance.
+        @summary Creates an initial account for an AnalyticDB for PostgreSQL instance.
         
-        @description    Before you can use an AnalyticDB for PostgreSQL instance, you must create a privileged account for the instance.
-        You can call this operation to create only privileged accounts. For information about how to create other types of accounts, see [Create a database account](https://help.aliyun.com/document_detail/50206.html).
+        @description    Before you can use an AnalyticDB for PostgreSQL instance, you must create an initial account for the instance.
+        You can call this operation to create only initial accounts. For information about how to create other types of accounts, see [Create a database account](https://help.aliyun.com/document_detail/50206.html).
         ## Limits
         You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -18619,6 +18619,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.hybrid_search_args):
             request.hybrid_search_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hybrid_search_args, 'HybridSearchArgs', 'json')
+        if not UtilClient.is_unset(tmp_req.relational_table_filter):
+            request.relational_table_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.relational_table_filter, 'RelationalTableFilter', 'json')
         if not UtilClient.is_unset(tmp_req.vector):
             request.vector_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vector, 'Vector', 'json')
         query = {}
@@ -18652,6 +18654,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.relational_table_filter_shrink):
+            query['RelationalTableFilter'] = request.relational_table_filter_shrink
         if not UtilClient.is_unset(request.top_k):
             query['TopK'] = request.top_k
         if not UtilClient.is_unset(request.vector_shrink):
@@ -18694,6 +18698,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.hybrid_search_args):
             request.hybrid_search_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hybrid_search_args, 'HybridSearchArgs', 'json')
+        if not UtilClient.is_unset(tmp_req.relational_table_filter):
+            request.relational_table_filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.relational_table_filter, 'RelationalTableFilter', 'json')
         if not UtilClient.is_unset(tmp_req.vector):
             request.vector_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.vector, 'Vector', 'json')
         query = {}
@@ -18727,6 +18733,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.relational_table_filter_shrink):
+            query['RelationalTableFilter'] = request.relational_table_filter_shrink
         if not UtilClient.is_unset(request.top_k):
             query['TopK'] = request.top_k
         if not UtilClient.is_unset(request.vector_shrink):

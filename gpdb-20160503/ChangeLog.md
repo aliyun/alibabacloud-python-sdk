@@ -1,3 +1,7 @@
+2024-08-28 Version: 4.0.1
+- Update API QueryCollectionData: add param RelationalTableFilter.
+
+
 2024-08-23 Version: 4.0.0
 - Update API CheckHadoopNetConnection: add param DataSourceId.
 - Update API CheckHadoopNetConnection: update param EmrInstanceId.

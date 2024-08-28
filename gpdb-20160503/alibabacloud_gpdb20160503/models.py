@@ -1463,9 +1463,9 @@ class CreateAccountRequest(TeaModel):
         owner_id: int = None,
         resource_group_id: str = None,
     ):
-        # The description of the privileged account.
+        # The description of the initial account.
         self.account_description = account_description
-        # The name of the privileged account.
+        # The name of the initial account.
         # 
         # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
@@ -1474,14 +1474,14 @@ class CreateAccountRequest(TeaModel):
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The password of the privileged account.
-        # 
+        # The password of the initial account.
         # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         # *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
         # *   The password must be 8 to 32 characters in length.
         # 
         # This parameter is required.
         self.account_password = account_password
+        # The type of the initial account. Default value: Super, which specifies a privileged account. To create a standard account, set the value to Normal.
         self.account_type = account_type
         # The ID of the instance.
         # 
@@ -14874,7 +14874,7 @@ class DescribeDataShareInstancesRequest(TeaModel):
         search_value: str = None,
     ):
         self.owner_id = owner_id
-        # The page number. Pages start from page 1. Default value: 1
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values:
         # 
@@ -28016,7 +28016,7 @@ class ListNamespacesRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
         # The name of the manager account that has the rds_superuser permission.
         # 
@@ -29804,10 +29804,7 @@ class ListTagResourcesRequest(TeaModel):
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The storage mode of the instance. Valid values:
-        # 
-        # *   `instance`: reserved storage mode
-        # *   `ALIYUN::GPDB::INSTANCE`: elastic storage mode
+        # The resource type. Set the value to instance.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -30192,7 +30189,7 @@ class ModifyBackupPolicyRequest(TeaModel):
         # 
         # Default value: true.
         self.enable_recovery_point = enable_recovery_point
-        # The cycle based on which you want to perform a backup. Separate multiple values with commas (,). Valid values:
+        # The cycle based on which backups are performed. If more than one day of the week is specified, the days of the week are separated by commas (,). Valid values:
         # 
         # *   Monday
         # *   Tuesday
@@ -33405,6 +33402,51 @@ class PauseInstanceResponse(TeaModel):
         return self
 
 
+class QueryCollectionDataRequestRelationalTableFilter(TeaModel):
+    def __init__(
+        self,
+        collection_metadata_field: str = None,
+        condition: str = None,
+        table_field: str = None,
+        table_name: str = None,
+    ):
+        self.collection_metadata_field = collection_metadata_field
+        self.condition = condition
+        self.table_field = table_field
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection_metadata_field is not None:
+            result['CollectionMetadataField'] = self.collection_metadata_field
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.table_field is not None:
+            result['TableField'] = self.table_field
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CollectionMetadataField') is not None:
+            self.collection_metadata_field = m.get('CollectionMetadataField')
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('TableField') is not None:
+            self.table_field = m.get('TableField')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
 class QueryCollectionDataRequest(TeaModel):
     def __init__(
         self,
@@ -33423,6 +33465,7 @@ class QueryCollectionDataRequest(TeaModel):
         order_by: str = None,
         owner_id: int = None,
         region_id: str = None,
+        relational_table_filter: QueryCollectionDataRequestRelationalTableFilter = None,
         top_k: int = None,
         vector: List[float] = None,
         workspace_id: str = None,
@@ -33519,6 +33562,7 @@ class QueryCollectionDataRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.relational_table_filter = relational_table_filter
         # This parameter is required.
         self.top_k = top_k
         # The vector data. The length of the value must be the same as that of the Dimension parameter in the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) operation.
@@ -33528,7 +33572,8 @@ class QueryCollectionDataRequest(TeaModel):
         self.workspace_id = workspace_id
 
     def validate(self):
-        pass
+        if self.relational_table_filter:
+            self.relational_table_filter.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -33566,6 +33611,8 @@ class QueryCollectionDataRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.relational_table_filter is not None:
+            result['RelationalTableFilter'] = self.relational_table_filter.to_map()
         if self.top_k is not None:
             result['TopK'] = self.top_k
         if self.vector is not None:
@@ -33606,6 +33653,9 @@ class QueryCollectionDataRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RelationalTableFilter') is not None:
+            temp_model = QueryCollectionDataRequestRelationalTableFilter()
+            self.relational_table_filter = temp_model.from_map(m['RelationalTableFilter'])
         if m.get('TopK') is not None:
             self.top_k = m.get('TopK')
         if m.get('Vector') is not None:
@@ -33633,6 +33683,7 @@ class QueryCollectionDataShrinkRequest(TeaModel):
         order_by: str = None,
         owner_id: int = None,
         region_id: str = None,
+        relational_table_filter_shrink: str = None,
         top_k: int = None,
         vector_shrink: str = None,
         workspace_id: str = None,
@@ -33729,6 +33780,7 @@ class QueryCollectionDataShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.relational_table_filter_shrink = relational_table_filter_shrink
         # This parameter is required.
         self.top_k = top_k
         # The vector data. The length of the value must be the same as that of the Dimension parameter in the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) operation.
@@ -33776,6 +33828,8 @@ class QueryCollectionDataShrinkRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.relational_table_filter_shrink is not None:
+            result['RelationalTableFilter'] = self.relational_table_filter_shrink
         if self.top_k is not None:
             result['TopK'] = self.top_k
         if self.vector_shrink is not None:
@@ -33816,6 +33870,8 @@ class QueryCollectionDataShrinkRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RelationalTableFilter') is not None:
+            self.relational_table_filter_shrink = m.get('RelationalTableFilter')
         if m.get('TopK') is not None:
             self.top_k = m.get('TopK')
         if m.get('Vector') is not None:
