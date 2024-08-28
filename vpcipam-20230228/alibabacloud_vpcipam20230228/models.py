@@ -148,6 +148,7 @@ class ChangeResourceGroupRequest(TeaModel):
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -285,6 +286,7 @@ class CreateIpamRequest(TeaModel):
         self.dry_run = dry_run
         self.ipam_description = ipam_description
         self.ipam_name = ipam_name
+        # This parameter is required.
         self.operating_region_list = operating_region_list
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -357,15 +359,21 @@ class CreateIpamRequest(TeaModel):
 class CreateIpamResponseBody(TeaModel):
     def __init__(
         self,
+        default_resource_discovery_association_id: str = None,
+        default_resource_discovery_id: str = None,
         ipam_id: str = None,
         private_default_scope_id: str = None,
         public_default_scope_id: str = None,
         request_id: str = None,
+        resource_discovery_association_count: int = None,
     ):
+        self.default_resource_discovery_association_id = default_resource_discovery_association_id
+        self.default_resource_discovery_id = default_resource_discovery_id
         self.ipam_id = ipam_id
         self.private_default_scope_id = private_default_scope_id
         self.public_default_scope_id = public_default_scope_id
         self.request_id = request_id
+        self.resource_discovery_association_count = resource_discovery_association_count
 
     def validate(self):
         pass
@@ -376,6 +384,10 @@ class CreateIpamResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.default_resource_discovery_association_id is not None:
+            result['DefaultResourceDiscoveryAssociationId'] = self.default_resource_discovery_association_id
+        if self.default_resource_discovery_id is not None:
+            result['DefaultResourceDiscoveryId'] = self.default_resource_discovery_id
         if self.ipam_id is not None:
             result['IpamId'] = self.ipam_id
         if self.private_default_scope_id is not None:
@@ -384,10 +396,16 @@ class CreateIpamResponseBody(TeaModel):
             result['PublicDefaultScopeId'] = self.public_default_scope_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_discovery_association_count is not None:
+            result['ResourceDiscoveryAssociationCount'] = self.resource_discovery_association_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DefaultResourceDiscoveryAssociationId') is not None:
+            self.default_resource_discovery_association_id = m.get('DefaultResourceDiscoveryAssociationId')
+        if m.get('DefaultResourceDiscoveryId') is not None:
+            self.default_resource_discovery_id = m.get('DefaultResourceDiscoveryId')
         if m.get('IpamId') is not None:
             self.ipam_id = m.get('IpamId')
         if m.get('PrivateDefaultScopeId') is not None:
@@ -396,6 +414,8 @@ class CreateIpamResponseBody(TeaModel):
             self.public_default_scope_id = m.get('PublicDefaultScopeId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceDiscoveryAssociationCount') is not None:
+            self.resource_discovery_association_count = m.get('ResourceDiscoveryAssociationCount')
         return self
 
 
@@ -3433,6 +3453,8 @@ class ListIpamsResponseBodyIpams(TeaModel):
     def __init__(
         self,
         create_time: str = None,
+        default_resource_discovery_association_id: str = None,
+        default_resource_discovery_id: str = None,
         ipam_description: str = None,
         ipam_id: str = None,
         ipam_name: str = None,
@@ -3442,11 +3464,14 @@ class ListIpamsResponseBodyIpams(TeaModel):
         private_default_scope_id: str = None,
         public_default_scope_id: str = None,
         region_id: str = None,
+        resource_discovery_association_count: int = None,
         resource_group_id: str = None,
         scope_count: int = None,
         tags: List[ListIpamsResponseBodyIpamsTags] = None,
     ):
         self.create_time = create_time
+        self.default_resource_discovery_association_id = default_resource_discovery_association_id
+        self.default_resource_discovery_id = default_resource_discovery_id
         self.ipam_description = ipam_description
         self.ipam_id = ipam_id
         self.ipam_name = ipam_name
@@ -3456,6 +3481,7 @@ class ListIpamsResponseBodyIpams(TeaModel):
         self.private_default_scope_id = private_default_scope_id
         self.public_default_scope_id = public_default_scope_id
         self.region_id = region_id
+        self.resource_discovery_association_count = resource_discovery_association_count
         self.resource_group_id = resource_group_id
         self.scope_count = scope_count
         self.tags = tags
@@ -3474,6 +3500,10 @@ class ListIpamsResponseBodyIpams(TeaModel):
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.default_resource_discovery_association_id is not None:
+            result['DefaultResourceDiscoveryAssociationId'] = self.default_resource_discovery_association_id
+        if self.default_resource_discovery_id is not None:
+            result['DefaultResourceDiscoveryId'] = self.default_resource_discovery_id
         if self.ipam_description is not None:
             result['IpamDescription'] = self.ipam_description
         if self.ipam_id is not None:
@@ -3492,6 +3522,8 @@ class ListIpamsResponseBodyIpams(TeaModel):
             result['PublicDefaultScopeId'] = self.public_default_scope_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_discovery_association_count is not None:
+            result['ResourceDiscoveryAssociationCount'] = self.resource_discovery_association_count
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.scope_count is not None:
@@ -3506,6 +3538,10 @@ class ListIpamsResponseBodyIpams(TeaModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DefaultResourceDiscoveryAssociationId') is not None:
+            self.default_resource_discovery_association_id = m.get('DefaultResourceDiscoveryAssociationId')
+        if m.get('DefaultResourceDiscoveryId') is not None:
+            self.default_resource_discovery_id = m.get('DefaultResourceDiscoveryId')
         if m.get('IpamDescription') is not None:
             self.ipam_description = m.get('IpamDescription')
         if m.get('IpamId') is not None:
@@ -3524,6 +3560,8 @@ class ListIpamsResponseBodyIpams(TeaModel):
             self.public_default_scope_id = m.get('PublicDefaultScopeId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceDiscoveryAssociationCount') is not None:
+            self.resource_discovery_association_count = m.get('ResourceDiscoveryAssociationCount')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ScopeCount') is not None:
