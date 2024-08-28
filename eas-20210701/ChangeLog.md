@@ -1,3 +1,17 @@
+2024-08-28 Version: 5.0.0
+- Support API CreateAclPolicy.
+- Support API DeleteAclPolicy.
+- Support API ListAclPolicy.
+- Support API ListGateway.
+- Update API CloneService: add param Labels.
+- Update API CloneService: update param body.
+- Update API CreateGateway: update param body.
+- Update API DescribeGateway: update response param.
+- Update API ListResourceServices: update response param.
+- Update API ListServices: add param Gateway.
+- Update API UpdateGateway: update param body.
+
+
 2024-07-19 Version: 4.2.1
 - Update API CreateResourceLog: update param body.
 - Update API DescribeServiceCronScaler: update param ClusterId.

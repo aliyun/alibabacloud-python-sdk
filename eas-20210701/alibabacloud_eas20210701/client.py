@@ -62,21 +62,29 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.CloneServiceRequest,
+        tmp_req: eas_20210701_models.CloneServiceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CloneServiceResponse:
         """
         @summary Clones a service.
         
-        @param request: CloneServiceRequest
+        @param tmp_req: CloneServiceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: CloneServiceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.CloneServiceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.labels):
+            request.labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.labels_shrink):
+            query['Labels'] = request.labels_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=request.body
         )
         params = open_api_models.Params(
@@ -99,21 +107,29 @@ class Client(OpenApiClient):
         self,
         cluster_id: str,
         service_name: str,
-        request: eas_20210701_models.CloneServiceRequest,
+        tmp_req: eas_20210701_models.CloneServiceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.CloneServiceResponse:
         """
         @summary Clones a service.
         
-        @param request: CloneServiceRequest
+        @param tmp_req: CloneServiceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: CloneServiceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.CloneServiceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.labels):
+            request.labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.labels_shrink):
+            query['Labels'] = request.labels_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=request.body
         )
         params = open_api_models.Params(
@@ -257,6 +273,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.commit_service_with_options_async(cluster_id, service_name, headers, runtime)
+
+    def create_acl_policy_with_options(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        tmp_req: eas_20210701_models.CreateAclPolicyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.CreateAclPolicyResponse:
+        """
+        @summary 创建网关访问权限ACL Policy
+        
+        @param tmp_req: CreateAclPolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAclPolicyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.CreateAclPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.acl_policy_list):
+            request.acl_policy_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.acl_policy_list, 'AclPolicyList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.acl_policy_list_shrink):
+            query['AclPolicyList'] = request.acl_policy_list_shrink
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAclPolicy',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/acl_policy',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateAclPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_acl_policy_with_options_async(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        tmp_req: eas_20210701_models.CreateAclPolicyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.CreateAclPolicyResponse:
+        """
+        @summary 创建网关访问权限ACL Policy
+        
+        @param tmp_req: CreateAclPolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAclPolicyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.CreateAclPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.acl_policy_list):
+            request.acl_policy_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.acl_policy_list, 'AclPolicyList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.acl_policy_list_shrink):
+            query['AclPolicyList'] = request.acl_policy_list_shrink
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAclPolicy',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/acl_policy',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.CreateAclPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_acl_policy(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.CreateAclPolicyRequest,
+    ) -> eas_20210701_models.CreateAclPolicyResponse:
+        """
+        @summary 创建网关访问权限ACL Policy
+        
+        @param request: CreateAclPolicyRequest
+        @return: CreateAclPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_acl_policy_with_options(cluster_id, gateway_id, request, headers, runtime)
+
+    async def create_acl_policy_async(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.CreateAclPolicyRequest,
+    ) -> eas_20210701_models.CreateAclPolicyResponse:
+        """
+        @summary 创建网关访问权限ACL Policy
+        
+        @param request: CreateAclPolicyRequest
+        @return: CreateAclPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_acl_policy_with_options_async(cluster_id, gateway_id, request, headers, runtime)
 
     def create_app_service_with_options(
         self,
@@ -519,6 +659,8 @@ class Client(OpenApiClient):
             body['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.replicas):
+            body['Replicas'] = request.replicas
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -567,6 +709,8 @@ class Client(OpenApiClient):
             body['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.replicas):
+            body['Replicas'] = request.replicas
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -1609,6 +1753,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_service_mirror_with_options_async(cluster_id, service_name, request, headers, runtime)
+
+    def delete_acl_policy_with_options(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        tmp_req: eas_20210701_models.DeleteAclPolicyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DeleteAclPolicyResponse:
+        """
+        @summary 移除网关acl policy entry
+        
+        @param tmp_req: DeleteAclPolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAclPolicyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.DeleteAclPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.acl_policy_list):
+            request.acl_policy_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.acl_policy_list, 'AclPolicyList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.acl_policy_list_shrink):
+            query['AclPolicyList'] = request.acl_policy_list_shrink
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAclPolicy',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/acl_policy',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteAclPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_acl_policy_with_options_async(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        tmp_req: eas_20210701_models.DeleteAclPolicyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.DeleteAclPolicyResponse:
+        """
+        @summary 移除网关acl policy entry
+        
+        @param tmp_req: DeleteAclPolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAclPolicyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = eas_20210701_models.DeleteAclPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.acl_policy_list):
+            request.acl_policy_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.acl_policy_list, 'AclPolicyList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.acl_policy_list_shrink):
+            query['AclPolicyList'] = request.acl_policy_list_shrink
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAclPolicy',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/acl_policy',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.DeleteAclPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_acl_policy(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.DeleteAclPolicyRequest,
+    ) -> eas_20210701_models.DeleteAclPolicyResponse:
+        """
+        @summary 移除网关acl policy entry
+        
+        @param request: DeleteAclPolicyRequest
+        @return: DeleteAclPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_acl_policy_with_options(cluster_id, gateway_id, request, headers, runtime)
+
+    async def delete_acl_policy_async(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.DeleteAclPolicyRequest,
+    ) -> eas_20210701_models.DeleteAclPolicyResponse:
+        """
+        @summary 移除网关acl policy entry
+        
+        @param request: DeleteAclPolicyRequest
+        @return: DeleteAclPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_acl_policy_with_options_async(cluster_id, gateway_id, request, headers, runtime)
 
     def delete_benchmark_task_with_options(
         self,
@@ -4668,6 +4936,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.develop_service_with_options_async(cluster_id, service_name, request, headers, runtime)
 
+    def list_acl_policy_with_options(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.ListAclPolicyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListAclPolicyResponse:
+        """
+        @summary 查询网关所有ACL Policy
+        
+        @param request: ListAclPolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAclPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAclPolicy',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/acl_policy',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListAclPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_acl_policy_with_options_async(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.ListAclPolicyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListAclPolicyResponse:
+        """
+        @summary 查询网关所有ACL Policy
+        
+        @param request: ListAclPolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAclPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAclPolicy',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways/{OpenApiUtilClient.get_encode_param(cluster_id)}/{OpenApiUtilClient.get_encode_param(gateway_id)}/acl_policy',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListAclPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_acl_policy(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.ListAclPolicyRequest,
+    ) -> eas_20210701_models.ListAclPolicyResponse:
+        """
+        @summary 查询网关所有ACL Policy
+        
+        @param request: ListAclPolicyRequest
+        @return: ListAclPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_acl_policy_with_options(cluster_id, gateway_id, request, headers, runtime)
+
+    async def list_acl_policy_async(
+        self,
+        cluster_id: str,
+        gateway_id: str,
+        request: eas_20210701_models.ListAclPolicyRequest,
+    ) -> eas_20210701_models.ListAclPolicyResponse:
+        """
+        @summary 查询网关所有ACL Policy
+        
+        @param request: ListAclPolicyRequest
+        @return: ListAclPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_acl_policy_with_options_async(cluster_id, gateway_id, request, headers, runtime)
+
     def list_benchmark_task_with_options(
         self,
         request: eas_20210701_models.ListBenchmarkTaskRequest,
@@ -4783,6 +5163,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_benchmark_task_with_options_async(request, headers, runtime)
+
+    def list_gateway_with_options(
+        self,
+        request: eas_20210701_models.ListGatewayRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListGatewayResponse:
+        """
+        @summary 列举gateway
+        
+        @param request: ListGatewayRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_name):
+            query['GatewayName'] = request.gateway_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGateway',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGatewayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_gateway_with_options_async(
+        self,
+        request: eas_20210701_models.ListGatewayRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> eas_20210701_models.ListGatewayResponse:
+        """
+        @summary 列举gateway
+        
+        @param request: ListGatewayRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gateway_id):
+            query['GatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.gateway_name):
+            query['GatewayName'] = request.gateway_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListGateway',
+            version='2021-07-01',
+            protocol='HTTPS',
+            pathname=f'/api/v2/gateways',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eas_20210701_models.ListGatewayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_gateway(
+        self,
+        request: eas_20210701_models.ListGatewayRequest,
+    ) -> eas_20210701_models.ListGatewayResponse:
+        """
+        @summary 列举gateway
+        
+        @param request: ListGatewayRequest
+        @return: ListGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_gateway_with_options(request, headers, runtime)
+
+    async def list_gateway_async(
+        self,
+        request: eas_20210701_models.ListGatewayRequest,
+    ) -> eas_20210701_models.ListGatewayResponse:
+        """
+        @summary 列举gateway
+        
+        @param request: ListGatewayRequest
+        @return: ListGatewayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_gateway_with_options_async(request, headers, runtime)
 
     def list_gateway_intranet_linked_vpc_with_options(
         self,
@@ -5271,12 +5767,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListResourceServicesResponse:
         """
+        @deprecated OpenAPI ListResourceServices is deprecated
+        
         @summary Queries a list of services that are deployed in the dedicated resource group.
         
         @param request: ListResourceServicesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListResourceServicesResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -5313,12 +5812,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eas_20210701_models.ListResourceServicesResponse:
         """
+        @deprecated OpenAPI ListResourceServices is deprecated
+        
         @summary Queries a list of services that are deployed in the dedicated resource group.
         
         @param request: ListResourceServicesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListResourceServicesResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -5353,10 +5855,13 @@ class Client(OpenApiClient):
         request: eas_20210701_models.ListResourceServicesRequest,
     ) -> eas_20210701_models.ListResourceServicesResponse:
         """
+        @deprecated OpenAPI ListResourceServices is deprecated
+        
         @summary Queries a list of services that are deployed in the dedicated resource group.
         
         @param request: ListResourceServicesRequest
         @return: ListResourceServicesResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -5369,10 +5874,13 @@ class Client(OpenApiClient):
         request: eas_20210701_models.ListResourceServicesRequest,
     ) -> eas_20210701_models.ListResourceServicesResponse:
         """
+        @deprecated OpenAPI ListResourceServices is deprecated
+        
         @summary Queries a list of services that are deployed in the dedicated resource group.
         
         @param request: ListResourceServicesRequest
         @return: ListResourceServicesResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
@@ -5894,6 +6402,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.gateway):
+            query['Gateway'] = request.gateway
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.label_shrink):
@@ -5964,6 +6474,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.gateway):
+            query['Gateway'] = request.gateway
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.label_shrink):
@@ -6896,8 +7408,12 @@ class Client(OpenApiClient):
             body['EnableIntranet'] = request.enable_intranet
         if not UtilClient.is_unset(request.instance_type):
             body['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.is_default):
+            body['IsDefault'] = request.is_default
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.replicas):
+            body['Replicas'] = request.replicas
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -6942,8 +7458,12 @@ class Client(OpenApiClient):
             body['EnableIntranet'] = request.enable_intranet
         if not UtilClient.is_unset(request.instance_type):
             body['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.is_default):
+            body['IsDefault'] = request.is_default
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
+        if not UtilClient.is_unset(request.replicas):
+            body['Replicas'] = request.replicas
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
