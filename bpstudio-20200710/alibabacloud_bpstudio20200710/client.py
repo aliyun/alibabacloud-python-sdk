@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: bpstudio_20200710_models.BillingApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20200710_models.BillingApplicationResponse:
+        """
+        @summary BillingApplication
+        
+        @param request: BillingApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BillingApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.month):
@@ -78,6 +85,13 @@ class Client(OpenApiClient):
         request: bpstudio_20200710_models.BillingApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20200710_models.BillingApplicationResponse:
+        """
+        @summary BillingApplication
+        
+        @param request: BillingApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BillingApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.month):
@@ -109,6 +123,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20200710_models.BillingApplicationRequest,
     ) -> bpstudio_20200710_models.BillingApplicationResponse:
+        """
+        @summary BillingApplication
+        
+        @param request: BillingApplicationRequest
+        @return: BillingApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.billing_application_with_options(request, runtime)
 
@@ -116,6 +136,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20200710_models.BillingApplicationRequest,
     ) -> bpstudio_20200710_models.BillingApplicationResponse:
+        """
+        @summary BillingApplication
+        
+        @param request: BillingApplicationRequest
+        @return: BillingApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.billing_application_with_options_async(request, runtime)
 
@@ -124,6 +150,13 @@ class Client(OpenApiClient):
         request: bpstudio_20200710_models.GetDeployDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20200710_models.GetDeployDetailResponse:
+        """
+        @summary 分页查询部署清单
+        
+        @param request: GetDeployDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeployDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -166,6 +199,13 @@ class Client(OpenApiClient):
         request: bpstudio_20200710_models.GetDeployDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20200710_models.GetDeployDetailResponse:
+        """
+        @summary 分页查询部署清单
+        
+        @param request: GetDeployDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeployDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -207,6 +247,12 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20200710_models.GetDeployDetailRequest,
     ) -> bpstudio_20200710_models.GetDeployDetailResponse:
+        """
+        @summary 分页查询部署清单
+        
+        @param request: GetDeployDetailRequest
+        @return: GetDeployDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_deploy_detail_with_options(request, runtime)
 
@@ -214,5 +260,11 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20200710_models.GetDeployDetailRequest,
     ) -> bpstudio_20200710_models.GetDeployDetailResponse:
+        """
+        @summary 分页查询部署清单
+        
+        @param request: GetDeployDetailRequest
+        @return: GetDeployDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_deploy_detail_with_options_async(request, runtime)

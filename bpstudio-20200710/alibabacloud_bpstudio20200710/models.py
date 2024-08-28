@@ -100,9 +100,6 @@ class BillingApplicationResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -144,8 +141,11 @@ class GetDeployDetailRequest(TeaModel):
         resource_name: str = None,
         resource_type: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.max_results = max_results
+        # This parameter is required.
         self.next_token = next_token
         self.ref_id = ref_id
         self.resource_group_id = resource_group_id
@@ -234,6 +234,51 @@ class GetDeployDetailResponseBodyDataResourceListOperation(TeaModel):
         return self
 
 
+class GetDeployDetailResponseBodyDataResourceListResourceTimeList(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+        creation_end_time: int = None,
+        creation_start_time: int = None,
+        id: int = None,
+    ):
+        self.biz_id = biz_id
+        self.creation_end_time = creation_end_time
+        self.creation_start_time = creation_start_time
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.creation_end_time is not None:
+            result['CreationEndTime'] = self.creation_end_time
+        if self.creation_start_time is not None:
+            result['CreationStartTime'] = self.creation_start_time
+        if self.id is not None:
+            result['id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('CreationEndTime') is not None:
+            self.creation_end_time = m.get('CreationEndTime')
+        if m.get('CreationStartTime') is not None:
+            self.creation_start_time = m.get('CreationStartTime')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        return self
+
+
 class GetDeployDetailResponseBodyDataResourceList(TeaModel):
     def __init__(
         self,
@@ -248,6 +293,7 @@ class GetDeployDetailResponseBodyDataResourceList(TeaModel):
         remark: str = None,
         resource_code: str = None,
         resource_id: str = None,
+        resource_time_list: List[GetDeployDetailResponseBodyDataResourceListResourceTimeList] = None,
         resource_type: str = None,
         status: str = None,
     ):
@@ -262,12 +308,17 @@ class GetDeployDetailResponseBodyDataResourceList(TeaModel):
         self.remark = remark
         self.resource_code = resource_code
         self.resource_id = resource_id
+        self.resource_time_list = resource_time_list
         self.resource_type = resource_type
         self.status = status
 
     def validate(self):
         if self.operation:
             self.operation.validate()
+        if self.resource_time_list:
+            for k in self.resource_time_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -297,6 +348,10 @@ class GetDeployDetailResponseBodyDataResourceList(TeaModel):
             result['ResourceCode'] = self.resource_code
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        result['ResourceTimeList'] = []
+        if self.resource_time_list is not None:
+            for k in self.resource_time_list:
+                result['ResourceTimeList'].append(k.to_map() if k else None)
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         if self.status is not None:
@@ -328,6 +383,11 @@ class GetDeployDetailResponseBodyDataResourceList(TeaModel):
             self.resource_code = m.get('ResourceCode')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        self.resource_time_list = []
+        if m.get('ResourceTimeList') is not None:
+            for k in m.get('ResourceTimeList'):
+                temp_model = GetDeployDetailResponseBodyDataResourceListResourceTimeList()
+                self.resource_time_list.append(temp_model.from_map(k))
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         if m.get('Status') is not None:
@@ -537,9 +597,6 @@ class GetDeployDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
