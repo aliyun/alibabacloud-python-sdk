@@ -1,3 +1,13 @@
+2024-08-29 Version: 5.4.0
+- Support API CreateMetricStore.
+- Support API DeleteMetricStore.
+- Support API GetMetricStore.
+- Support API ListMetricStores.
+- Support API UpdateMetricStore.
+- Update API CreateLogStore: update param body.
+- Update API UpdateLogStore: update param body.
+
+
 2024-08-02 Version: 5.3.0
 - Support API CreateDownloadJob.
 - Support API DeleteDownloadJob.

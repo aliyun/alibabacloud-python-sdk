@@ -4020,6 +4020,7 @@ class Logstore(TeaModel):
         logstore_name: str = None,
         max_split_shard: int = None,
         mode: str = None,
+        processor_id: str = None,
         product_type: str = None,
         shard_count: int = None,
         telemetry_type: str = None,
@@ -4037,6 +4038,7 @@ class Logstore(TeaModel):
         self.logstore_name = logstore_name
         self.max_split_shard = max_split_shard
         self.mode = mode
+        self.processor_id = processor_id
         self.product_type = product_type
         # This parameter is required.
         self.shard_count = shard_count
@@ -4076,6 +4078,8 @@ class Logstore(TeaModel):
             result['maxSplitShard'] = self.max_split_shard
         if self.mode is not None:
             result['mode'] = self.mode
+        if self.processor_id is not None:
+            result['processorId'] = self.processor_id
         if self.product_type is not None:
             result['productType'] = self.product_type
         if self.shard_count is not None:
@@ -4111,6 +4115,8 @@ class Logstore(TeaModel):
             self.max_split_shard = m.get('maxSplitShard')
         if m.get('mode') is not None:
             self.mode = m.get('mode')
+        if m.get('processorId') is not None:
+            self.processor_id = m.get('processorId')
         if m.get('productType') is not None:
             self.product_type = m.get('productType')
         if m.get('shardCount') is not None:
@@ -4796,13 +4802,22 @@ class CreateAlertRequest(TeaModel):
         name: str = None,
         schedule: Schedule = None,
     ):
+        # The detailed configurations of the alert rule.
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # The description of the alert rule.
         self.description = description
+        # The display name of the alert rule.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The name of the alert rule. Make sure that the name is unique in a project.
+        # 
         # This parameter is required.
         self.name = name
+        # The scheduling configurations of the alert rule.
+        # 
         # This parameter is required.
         self.schedule = schedule
 
@@ -5804,31 +5819,33 @@ class CreateLogStoreRequest(TeaModel):
         logstore_name: str = None,
         max_split_shard: int = None,
         mode: str = None,
+        processor_id: str = None,
         shard_count: int = None,
         telemetry_type: str = None,
         ttl: int = None,
     ):
-        # Specifies whether to record public IP addresses. Default value: false. Valid values:
+        # Specifies whether to record public IP addresses. Default value: false.
         # 
         # *   true
         # *   false
         self.append_meta = append_meta
-        # Specifies whether to enable automatic sharding. Valid values:
+        # Specifies whether to enable automatic sharding.
         # 
         # *   true
         # *   false
         self.auto_split = auto_split
-        # Specifies whether to enable the web tracking feature. Default value: false. Valid values:
+        # Specifies whether to enable the web tracking feature. Default value: false.
         # 
         # *   true
         # *   false
         self.enable_tracking = enable_tracking
-        # The data structure of the encryption configuration.
+        # The data structure of the encryption configuration. The following parameters are included: `enable`, `encrypt_type`, and `user_cmk_info`. For more information, see [EncryptConf](https://help.aliyun.com/document_detail/409461.html).
         self.encrypt_conf = encrypt_conf
-        # The retention period of data in the hot storage tier of the Logstore. Unit: days. You can specify a value that ranges from 30 to the value of ttl.
+        # The retention period of data in the hot storage tier of the Logstore. Valid values: 7 to 3000. Unit: days.
         # 
-        # Hot data that is stored for longer than the period specified by hot_ttl is converted to cold data. For more information, see [Enable hot and cold-tiered storage for a Logstore](https://help.aliyun.com/document_detail/308645.html).
+        # After the retention period that is specified for the hot storage tier elapses, the data is moved to the Infrequent Access (IA) storage tier. For more information, see [Enable hot and cold-tiered storage for a Logstore](https://help.aliyun.com/document_detail/308645.html).
         self.hot_ttl = hot_ttl
+        # The retention period of data in the IA storage tier of the Logstore. You must set this parameter to at least 30 days. After the data retention period that you specify for the IA storage tier elapses, the data is moved to the Archive storage tier.
         self.infrequent_access_ttl = infrequent_access_ttl
         # The name of the Logstore. The name must meet the following requirements:
         # 
@@ -5839,27 +5856,28 @@ class CreateLogStoreRequest(TeaModel):
         # 
         # This parameter is required.
         self.logstore_name = logstore_name
-        # The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 64.
+        # The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 256.
         # 
-        # > If you set autoSplit to true, you must configure this parameter.
+        # >  If you set autoSplit to true, you must specify maxSplitShard.
         self.max_split_shard = max_split_shard
-        # The type of the Logstore. Log Service provides the following types of Logstores: Standard Logstores and Query Logstores. Valid values:
+        # The type of the Logstore. Simple Log Service provides two types of Logstores: Standard Logstores and Query Logstores. Valid values:
         # 
         # *   **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
-        # *   **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the amount of data is large, the log retention period is long, or log analysis is not required. Log retention periods of weeks or months are considered long.
+        # *   **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the amount of data is large, the log retention period is long, or log analysis is not required. If logs are stored for weeks or months, the log retention period is considered long.
         self.mode = mode
+        self.processor_id = processor_id
         # The number of shards.
         # 
-        # > You cannot call the CreateLogStore operation to change the number of shards. You can call the SplitShard or MergeShards operation to change the number of shards.
+        # >  You cannot call the CreateLogStore operation to change the number of shards. You can call the SplitShard or MergeShards operation to change the number of shards.
         # 
         # This parameter is required.
         self.shard_count = shard_count
         # The type of the observable data. Valid values:
         # 
-        # *   None: logs
-        # *   Metrics: metrics
+        # *   **None** (default): log data
+        # *   **Metrics**: metric data
         self.telemetry_type = telemetry_type
-        # The retention period of data. Unit: days. Valid values: 1 to 3000. If you set this parameter to 3650, data is permanently stored.
+        # The retention period of data. Unit: days. Valid values: 1 to 3000. If you set this parameter to 3650, logs are permanently stored.
         # 
         # This parameter is required.
         self.ttl = ttl
@@ -5892,6 +5910,8 @@ class CreateLogStoreRequest(TeaModel):
             result['maxSplitShard'] = self.max_split_shard
         if self.mode is not None:
             result['mode'] = self.mode
+        if self.processor_id is not None:
+            result['processorId'] = self.processor_id
         if self.shard_count is not None:
             result['shardCount'] = self.shard_count
         if self.telemetry_type is not None:
@@ -5921,6 +5941,8 @@ class CreateLogStoreRequest(TeaModel):
             self.max_split_shard = m.get('maxSplitShard')
         if m.get('mode') is not None:
             self.mode = m.get('mode')
+        if m.get('processorId') is not None:
+            self.processor_id = m.get('processorId')
         if m.get('shardCount') is not None:
             self.shard_count = m.get('shardCount')
         if m.get('telemetryType') is not None:
@@ -6343,6 +6365,105 @@ class CreateMachineGroupResponse(TeaModel):
         return self
 
 
+class CreateMetricStoreRequest(TeaModel):
+    def __init__(
+        self,
+        auto_split: bool = None,
+        max_split_shard: int = None,
+        metric_type: str = None,
+        mode: str = None,
+        name: str = None,
+        shard_count: int = None,
+        ttl: int = None,
+    ):
+        self.auto_split = auto_split
+        self.max_split_shard = max_split_shard
+        self.metric_type = metric_type
+        self.mode = mode
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.shard_count = shard_count
+        # This parameter is required.
+        self.ttl = ttl
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_split is not None:
+            result['autoSplit'] = self.auto_split
+        if self.max_split_shard is not None:
+            result['maxSplitShard'] = self.max_split_shard
+        if self.metric_type is not None:
+            result['metricType'] = self.metric_type
+        if self.mode is not None:
+            result['mode'] = self.mode
+        if self.name is not None:
+            result['name'] = self.name
+        if self.shard_count is not None:
+            result['shardCount'] = self.shard_count
+        if self.ttl is not None:
+            result['ttl'] = self.ttl
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoSplit') is not None:
+            self.auto_split = m.get('autoSplit')
+        if m.get('maxSplitShard') is not None:
+            self.max_split_shard = m.get('maxSplitShard')
+        if m.get('metricType') is not None:
+            self.metric_type = m.get('metricType')
+        if m.get('mode') is not None:
+            self.mode = m.get('mode')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('shardCount') is not None:
+            self.shard_count = m.get('shardCount')
+        if m.get('ttl') is not None:
+            self.ttl = m.get('ttl')
+        return self
+
+
+class CreateMetricStoreResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class CreateOSSExportRequest(TeaModel):
     def __init__(
         self,
@@ -6351,11 +6472,18 @@ class CreateOSSExportRequest(TeaModel):
         display_name: str = None,
         name: str = None,
     ):
+        # The configuration details of the job.
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # The description of the job.
         self.description = description
+        # The display name of the job.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The unique identifier of the OSS data shipping job.
+        # 
         # This parameter is required.
         self.name = name
 
@@ -6434,11 +6562,18 @@ class CreateOSSHDFSExportRequest(TeaModel):
         display_name: str = None,
         name: str = None,
     ):
+        # The configuration details of the job.
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # The description of the job.
         self.description = description
+        # The display name of the job.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The unique identifier of the OSS data shipping job.
+        # 
         # This parameter is required.
         self.name = name
 
@@ -6611,7 +6746,7 @@ class CreateOssExternalStoreRequestParameterColumns(TeaModel):
         # 
         # This parameter is required.
         self.name = name
-        # The type of the field.
+        # The data type of the field.
         # 
         # This parameter is required.
         self.type = type
@@ -6650,11 +6785,11 @@ class CreateOssExternalStoreRequestParameter(TeaModel):
         endpoint: str = None,
         objects: List[str] = None,
     ):
-        # The AccessKey ID of your account.
+        # The AccessKey ID.
         # 
         # This parameter is required.
         self.accessid = accessid
-        # The AccessKey secret of your account.
+        # The AccessKey secret.
         # 
         # This parameter is required.
         self.accesskey = accesskey
@@ -6662,15 +6797,15 @@ class CreateOssExternalStoreRequestParameter(TeaModel):
         # 
         # This parameter is required.
         self.bucket = bucket
-        # The fields that are associated to the external store.
+        # The associated fields.
         # 
         # This parameter is required.
         self.columns = columns
-        # The Object Storage Service (OSS) endpoint.
+        # The OSS endpoint. For more information, see [Regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
         # 
         # This parameter is required.
         self.endpoint = endpoint
-        # The names of the OSS objects that are associated to the external store.
+        # The associated OSS objects. Valid values of n: 1 to 100.
         # 
         # This parameter is required.
         self.objects = objects
@@ -6734,7 +6869,7 @@ class CreateOssExternalStoreRequest(TeaModel):
         # 
         # This parameter is required.
         self.external_store_name = external_store_name
-        # The parameters that are configured for the external store.
+        # The parameters of the external store.
         # 
         # This parameter is required.
         self.parameter = parameter
@@ -7272,8 +7407,12 @@ class CreateSqlInstanceRequest(TeaModel):
         cu: int = None,
         use_as_default: bool = None,
     ):
+        # The number of compute units (CUs). When you use the Dedicated SQL feature, CUs are used in parallel.
+        # 
         # This parameter is required.
         self.cu = cu
+        # Specifies whether to enable the Dedicated SQL feature for the project. If you set this parameter to true, the Dedicated SQL feature is enabled for the specified project and takes effect for all query statements that you execute in the project, including the query statements for alerts and dashboards.
+        # 
         # This parameter is required.
         self.use_as_default = use_as_default
 
@@ -7341,10 +7480,20 @@ class CreateStoreViewRequest(TeaModel):
         store_type: str = None,
         stores: List[StoreViewStore] = None,
     ):
+        # The name of the dataset.
+        # 
+        # *   The name can contain lowercase letters, digits, and underscores (_).
+        # *   The name must start with a lowercase letter.
+        # *   The name must be 3 to 62 characters in length.
+        # 
         # This parameter is required.
         self.name = name
+        # The type of the dataset. Valid values: metricstore and logstore.
+        # 
         # This parameter is required.
         self.store_type = store_type
+        # The Logstores or Metricstores.
+        # 
         # This parameter is required.
         self.stores = stores
 
@@ -8080,6 +8229,39 @@ class DeleteLogtailPipelineConfigResponse(TeaModel):
 
 
 class DeleteMachineGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class DeleteMetricStoreResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -9358,11 +9540,11 @@ class GetContextLogsRequest(TeaModel):
         pack_meta: str = None,
         type: str = None,
     ):
-        # The number of logs that you want to obtain and are generated before the generation time of the start log. Valid values: (0,100].
+        # The number of logs that you want to obtain and are generated before the generation time of the start log. Valid values: `(0,100]`.
         # 
         # This parameter is required.
         self.back_lines = back_lines
-        # The number of logs that you want to obtain and are generated after the generation time of the start log. Valid values: (0,100].
+        # The number of logs that you want to obtain and are generated after the generation time of the start log. Valid values: `(0,100]`.
         # 
         # This parameter is required.
         self.forward_lines = forward_lines
@@ -10561,6 +10743,7 @@ class GetLogStoreMeteringModeResponseBody(TeaModel):
         self,
         metering_mode: str = None,
     ):
+        # The billing mode. Default value: ChargeByFunction. Valid values: ChargeByFunction and ChargeByDataIngest.
         self.metering_mode = metering_mode
 
     def validate(self):
@@ -10871,28 +11054,29 @@ class GetLogsV2Request(TeaModel):
         to: int = None,
         topic: str = None,
     ):
-        # Specifies whether to page forward or backward for the scan-based query or the phrase search.
+        # Specifies whether to page forward or backward for the scan-based query or phrase search.
         self.forward = forward
         # The beginning of the time range to query. The value is the log time that is specified when log data is written.
         # 
-        # The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a timestamp that follows the UNIX time format. It is the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # This parameter is required.
         self.from_ = from_
+        # Specifies whether to highlight the returned result.
         self.highlight = highlight
-        # The maximum number of logs to return for the request. This parameter takes effect only when the query parameter is set to a search statement. Minimum value: 0. Maximum value: 100. Default value: 100.
+        # The maximum number of logs to return for the request. This parameter takes effect only when the query parameter is set to a search statement. Valid values: 0 to 100. Default value: 100.
         self.line = line
         # The line from which the query starts. This parameter takes effect only when the query parameter is set to a search statement. Default value: 0.
         self.offset = offset
         # Specifies whether to enable the SQL enhancement feature. By default, the feature is disabled.
         self.power_sql = power_sql
-        # The search statement or the query statement. For more information, see the "Log search overview" and "Log analysis overview" topics.
+        # The search statement or query statement. For more information, see the "Log search overview" and "Log analysis overview" topics.
         # 
-        # If you add set session parallel_sql=true; to the analytic statement in the query parameter, Dedicated SQL is used. For example, you can set the query parameter to \\* | set session parallel_sql=true; select count(\\*) as pv.
+        # If you add set session parallel_sql=true; to the analytic statement in the query parameter, Dedicated SQL is used. Example: \\* | set session parallel_sql=true; select count(\\*) as pv.
         # 
-        # Note: If you specify an analytic statement in the query parameter, the line and offset parameters do not take effect in this operation. In this case, we recommend that you set the line and offset parameters to 0 and use the LIMIT clause to limit the number of logs to return on each page. For more information, see the "Perform paged queries" topic.
+        # Note: If you specify an analytic statement in the query parameter, the line and offset parameters do not take effect in this operation. In this case, we recommend that you set the line and offset parameters to 0 and use the LIMIT clause to specify the number of logs to return on each page. For more information, see the "Perform paged queries" topic.
         self.query = query
-        # Specifies whether to return logs in reverse chronological order of log timestamps. The log timestamps are accurate to the minute. Valid values:
+        # Specifies whether to return logs in reverse chronological order of log timestamps. The log timestamps are accurate to minutes. Valid values:
         # 
         # true: Logs are returned in reverse chronological order of log timestamps. false (default): Logs are returned in chronological order of log timestamps. Note: The reverse parameter takes effect only when the query parameter is set to a search statement. The reverse parameter specifies the method used to sort returned logs. If the query parameter is set to a query statement, the reverse parameter does not take effect. The method used to sort returned logs is specified by the ORDER BY clause in the analytic statement. If you use the keyword asc in the ORDER BY clause, the logs are sorted in chronological order. If you use the keyword desc in the ORDER BY clause, the logs are sorted in reverse chronological order. By default, asc is used in the ORDER BY clause.
         self.reverse = reverse
@@ -10900,7 +11084,7 @@ class GetLogsV2Request(TeaModel):
         self.session = session
         # The end of the time range to query. The value is the log time that is specified when log data is written.
         # 
-        # The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a timestamp that follows the UNIX time format. It is the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # This parameter is required.
         self.to = to
@@ -11048,7 +11232,7 @@ class GetLogsV2ResponseBodyMeta(TeaModel):
         # Indicates whether the query is an SQL query.
         self.has_sql = has_sql
         self.highlights = highlights
-        # Indicates whether the returned result is accurate.
+        # Indicates whether the returned result is accurate to seconds.
         self.is_accurate = is_accurate
         # All keys in the query result.
         self.keys = keys
@@ -11194,7 +11378,7 @@ class GetLogsV2ResponseBody(TeaModel):
     ):
         # The returned result.
         self.data = data
-        # The metadata that is returned.
+        # The metadata of the returned data.
         self.meta = meta
 
     def validate(self):
@@ -11461,11 +11645,128 @@ class GetMachineGroupResponse(TeaModel):
         return self
 
 
+class GetMetricStoreResponseBody(TeaModel):
+    def __init__(
+        self,
+        auto_split: bool = None,
+        create_time: int = None,
+        last_modify_time: int = None,
+        max_split_shard: int = None,
+        metric_type: str = None,
+        mode: str = None,
+        name: str = None,
+        shard_count: int = None,
+        ttl: int = None,
+    ):
+        self.auto_split = auto_split
+        self.create_time = create_time
+        self.last_modify_time = last_modify_time
+        self.max_split_shard = max_split_shard
+        self.metric_type = metric_type
+        self.mode = mode
+        self.name = name
+        self.shard_count = shard_count
+        self.ttl = ttl
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_split is not None:
+            result['autoSplit'] = self.auto_split
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.last_modify_time is not None:
+            result['lastModifyTime'] = self.last_modify_time
+        if self.max_split_shard is not None:
+            result['maxSplitShard'] = self.max_split_shard
+        if self.metric_type is not None:
+            result['metricType'] = self.metric_type
+        if self.mode is not None:
+            result['mode'] = self.mode
+        if self.name is not None:
+            result['name'] = self.name
+        if self.shard_count is not None:
+            result['shardCount'] = self.shard_count
+        if self.ttl is not None:
+            result['ttl'] = self.ttl
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoSplit') is not None:
+            self.auto_split = m.get('autoSplit')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('lastModifyTime') is not None:
+            self.last_modify_time = m.get('lastModifyTime')
+        if m.get('maxSplitShard') is not None:
+            self.max_split_shard = m.get('maxSplitShard')
+        if m.get('metricType') is not None:
+            self.metric_type = m.get('metricType')
+        if m.get('mode') is not None:
+            self.mode = m.get('mode')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('shardCount') is not None:
+            self.shard_count = m.get('shardCount')
+        if m.get('ttl') is not None:
+            self.ttl = m.get('ttl')
+        return self
+
+
+class GetMetricStoreResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMetricStoreResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMetricStoreResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetMetricStoreMeteringModeResponseBody(TeaModel):
     def __init__(
         self,
         metering_mode: str = None,
     ):
+        # The billing mode. Default value: ChargeByFunction. Valid values: ChargeByFunction and ChargeByDataIngest.
         self.metering_mode = metering_mode
 
     def validate(self):
@@ -12040,7 +12341,27 @@ class GetStoreViewResponseBody(TeaModel):
         store_type: str = None,
         stores: List[StoreViewStore] = None,
     ):
+        # The type of the dataset.
+        # 
+        # Valid values:
+        # 
+        # *   metricstore
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   logstore
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.store_type = store_type
+        # The Logstores or Metricstores.
         self.stores = stores
 
     def validate(self):
@@ -12123,8 +12444,11 @@ class GetStoreViewIndexResponseBodyIndexes(TeaModel):
         logstore: str = None,
         project: str = None,
     ):
+        # The index configurations of the Logstore.
         self.index = index
+        # The name of the Logstore.
         self.logstore = logstore
+        # The name of the project to which the Logstore belongs.
         self.project = project
 
     def validate(self):
@@ -12162,6 +12486,7 @@ class GetStoreViewIndexResponseBody(TeaModel):
         self,
         indexes: List[GetStoreViewIndexResponseBodyIndexes] = None,
     ):
+        # The index configurations.
         self.indexes = indexes
 
     def validate(self):
@@ -12279,8 +12604,11 @@ class ListAlertsResponseBody(TeaModel):
         results: List[Alert] = None,
         total: int = None,
     ):
+        # The number of alert rules that are returned.
         self.count = count
+        # The alert rules.
         self.results = results
+        # The total number of alert rules in the project.
         self.total = total
 
     def validate(self):
@@ -13219,7 +13547,7 @@ class ListConfigRequest(TeaModel):
         offset: int = None,
         size: int = None,
     ):
-        # The name of the Logtail configuration.
+        # The name of the Logtail configuration, which is used for fuzzy match.
         self.config_name = config_name
         # The name of the Logstore.
         # 
@@ -14731,6 +15059,131 @@ class ListMachinesResponse(TeaModel):
         return self
 
 
+class ListMetricStoresRequest(TeaModel):
+    def __init__(
+        self,
+        mode: str = None,
+        name: str = None,
+        offset: int = None,
+        size: int = None,
+    ):
+        self.mode = mode
+        self.name = name
+        self.offset = offset
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mode is not None:
+            result['mode'] = self.mode
+        if self.name is not None:
+            result['name'] = self.name
+        if self.offset is not None:
+            result['offset'] = self.offset
+        if self.size is not None:
+            result['size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('mode') is not None:
+            self.mode = m.get('mode')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('offset') is not None:
+            self.offset = m.get('offset')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        return self
+
+
+class ListMetricStoresResponseBody(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        metricstores: List[str] = None,
+        total: int = None,
+    ):
+        self.count = count
+        self.metricstores = metricstores
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['count'] = self.count
+        if self.metricstores is not None:
+            result['metricstores'] = self.metricstores
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        if m.get('metricstores') is not None:
+            self.metricstores = m.get('metricstores')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListMetricStoresResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListMetricStoresResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListMetricStoresResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListOSSExportsRequest(TeaModel):
     def __init__(
         self,
@@ -15031,8 +15484,11 @@ class ListOSSIngestionsResponseBody(TeaModel):
         results: List[OSSIngestion] = None,
         total: int = None,
     ):
+        # The number of OSS data import jobs that are returned.
         self.count = count
+        # The OSS data import jobs.
         self.results = results
+        # The total number of OSS data import jobs in the project.
         self.total = total
 
     def validate(self):
@@ -15390,6 +15846,7 @@ class ListScheduledSQLsRequest(TeaModel):
         offset: int = None,
         size: int = None,
     ):
+        # The name of the Logstore.
         self.logstore = logstore
         self.offset = offset
         self.size = size
@@ -15565,9 +16022,31 @@ class ListStoreViewsRequest(TeaModel):
         size: int = None,
         store_type: str = None,
     ):
+        # The dataset name that is used for fuzzy match.
         self.name = name
+        # The offset of the datasets to return. Default value: 0.
         self.offset = offset
+        # The number of datasets to return. Default value: 100.
         self.size = size
+        # The type of the datasets to return. By default, datasets are not filtered by type.
+        # 
+        # Valid values:
+        # 
+        # *   metricstore
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   logstore
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.store_type = store_type
 
     def validate(self):
@@ -15609,8 +16088,11 @@ class ListStoreViewsResponseBody(TeaModel):
         storeviews: List[str] = None,
         total: int = None,
     ):
+        # The number of returned datasets.
         self.count = count
+        # The dataset names.
         self.storeviews = storeviews
+        # The total number of datasets in the project.
         self.total = total
 
     def validate(self):
@@ -17162,11 +17644,18 @@ class UpdateAlertRequest(TeaModel):
         display_name: str = None,
         schedule: Schedule = None,
     ):
+        # The detailed configurations of the alert rule.
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # The description of the alert rule.
         self.description = description
+        # The display name of the alert rule.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The scheduling settings of the alert rule.
+        # 
         # This parameter is required.
         self.schedule = schedule
 
@@ -17875,6 +18364,7 @@ class UpdateLogStoreRequest(TeaModel):
         logstore_name: str = None,
         max_split_shard: int = None,
         mode: str = None,
+        processor_id: str = None,
         shard_count: int = None,
         telemetry_type: str = None,
         ttl: int = None,
@@ -17896,32 +18386,34 @@ class UpdateLogStoreRequest(TeaModel):
         self.enable_tracking = enable_tracking
         # The data structure of the encryption configuration.
         self.encrypt_conf = encrypt_conf
-        # The retention period of data in the hot storage tier of the Logstore. Minimum value: 30. Unit: day. You can specify a value that ranges from 30 to the value of ttl. Hot data that is stored for longer than the period specified by hot_ttl is converted to cold data. For more information, see [Enable hot and cold-tiered storage for a Logstore](https://help.aliyun.com/document_detail/308645.html).
+        # The retention period of data in the hot storage tier of the Logstore. Valid values: 7 to 3000. Unit: days. After the retention period that is specified for the hot storage tier elapses, the data is moved to the Infrequent Access (IA) storage tier. For more information, see [Enable hot and cold-tiered storage for a Logstore](https://help.aliyun.com/document_detail/308645.html).
         self.hot_ttl = hot_ttl
+        # The retention period of data in the IA storage tier of the Logstore. You must set this parameter to at least 30 days. After the data retention period that you specify for the IA storage tier elapses, the data is moved to the Archive storage tier.
         self.infrequent_access_ttl = infrequent_access_ttl
         # The name of the Logstore.
         # 
         # This parameter is required.
         self.logstore_name = logstore_name
-        # The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 64.
+        # The maximum number of shards into which existing shards can be automatically split. Valid values: 1 to 256.
         # 
-        # > If you set autoSplit to true, you must specify maxSplitShard.
+        # >  If you set autoSplit to true, you must specify maxSplitShard.
         self.max_split_shard = max_split_shard
-        # The type of the Logstore. Simple Log Service provides two types of Logstores: Standard Logstores and Query Logstores.
+        # The type of the Logstore. Simple Log Service provides two types of Logstores: Standard Logstores and Query Logstores. Valid values:
         # 
         # *   **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
-        # *   **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the volume of data is large, the log retention period is long, or log analysis is not required. Log retention periods of weeks or months are considered long.
+        # *   **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the amount of data is large, the log retention period is long, or log analysis is not required. If logs are stored for weeks or months, the log retention period is considered long.
         self.mode = mode
+        self.processor_id = processor_id
         # The number of shards.
         # 
-        # > You cannot call the UpdateLogstore operation to change the number of shards. You can call the SplitShard or MergeShards operation to change the number of shards.
+        # >  You cannot call the UpdateLogStore operation to change the number of shards. You can call the SplitShard or MergeShards operation to change the number of shards.
         self.shard_count = shard_count
-        # The type of the log that you want to query. Valid values:
+        # The type of the observable data. Valid values:
         # 
-        # *   None: all types of logs.
-        # *   Metrics: metrics.
+        # *   None (default): log data.
+        # *   Metrics: metric data.
         self.telemetry_type = telemetry_type
-        # The retention period of data. Unit: day. Valid values: 1 to 3650. If you set ttl to 3650, data is permanently stored.
+        # The retention period of data. Unit: days. Valid values: 1 to 3650. If you set this parameter to 3650, logs are permanently stored.
         # 
         # This parameter is required.
         self.ttl = ttl
@@ -17954,6 +18446,8 @@ class UpdateLogStoreRequest(TeaModel):
             result['maxSplitShard'] = self.max_split_shard
         if self.mode is not None:
             result['mode'] = self.mode
+        if self.processor_id is not None:
+            result['processorId'] = self.processor_id
         if self.shard_count is not None:
             result['shardCount'] = self.shard_count
         if self.telemetry_type is not None:
@@ -17983,6 +18477,8 @@ class UpdateLogStoreRequest(TeaModel):
             self.max_split_shard = m.get('maxSplitShard')
         if m.get('mode') is not None:
             self.mode = m.get('mode')
+        if m.get('processorId') is not None:
+            self.processor_id = m.get('processorId')
         if m.get('shardCount') is not None:
             self.shard_count = m.get('shardCount')
         if m.get('telemetryType') is not None:
@@ -18533,6 +19029,84 @@ class UpdateMachineGroupMachineResponse(TeaModel):
         return self
 
 
+class UpdateMetricStoreRequest(TeaModel):
+    def __init__(
+        self,
+        auto_split: bool = None,
+        max_split_shard: int = None,
+        mode: str = None,
+        ttl: int = None,
+    ):
+        self.auto_split = auto_split
+        self.max_split_shard = max_split_shard
+        self.mode = mode
+        self.ttl = ttl
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_split is not None:
+            result['autoSplit'] = self.auto_split
+        if self.max_split_shard is not None:
+            result['maxSplitShard'] = self.max_split_shard
+        if self.mode is not None:
+            result['mode'] = self.mode
+        if self.ttl is not None:
+            result['ttl'] = self.ttl
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoSplit') is not None:
+            self.auto_split = m.get('autoSplit')
+        if m.get('maxSplitShard') is not None:
+            self.max_split_shard = m.get('maxSplitShard')
+        if m.get('mode') is not None:
+            self.mode = m.get('mode')
+        if m.get('ttl') is not None:
+            self.ttl = m.get('ttl')
+        return self
+
+
+class UpdateMetricStoreResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class UpdateMetricStoreMeteringModeRequest(TeaModel):
     def __init__(
         self,
@@ -18601,8 +19175,11 @@ class UpdateOSSExportRequest(TeaModel):
         description: str = None,
         display_name: str = None,
     ):
+        # The configuration details of the job.
         self.configuration = configuration
+        # The description of the job.
         self.description = description
+        # The display name of the job.
         self.display_name = display_name
 
     def validate(self):
@@ -18675,8 +19252,11 @@ class UpdateOSSHDFSExportRequest(TeaModel):
         description: str = None,
         display_name: str = None,
     ):
+        # The configuration details of the job.
         self.configuration = configuration
+        # The description of the job.
         self.description = description
+        # The display name of the job.
         self.display_name = display_name
 
     def validate(self):
@@ -18750,11 +19330,17 @@ class UpdateOSSIngestionRequest(TeaModel):
         display_name: str = None,
         schedule: Schedule = None,
     ):
+        # The configurations of the OSS data import job.
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # The description of the OSS data import job.
         self.description = description
+        # The display name of the OSS data import job.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The scheduling type. By default, you do not need to specify this parameter. If you want to import data at regular intervals, such as importing data every Monday at 08: 00., you can specify a cron expression.
         self.schedule = schedule
 
     def validate(self):
@@ -19533,8 +20119,30 @@ class UpdateStoreViewRequest(TeaModel):
         store_type: str = None,
         stores: List[StoreViewStore] = None,
     ):
+        # The type of the dataset.
+        # 
+        # Valid values:
+        # 
+        # *   metricstore
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   logstore
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
         # This parameter is required.
         self.store_type = store_type
+        # The Logstores or Metricstores.
+        # 
         # This parameter is required.
         self.stores = stores
 
