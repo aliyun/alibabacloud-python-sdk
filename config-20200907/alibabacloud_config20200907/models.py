@@ -23086,6 +23086,8 @@ class ListAggregateDiscoveredResourcesRequest(TeaModel):
     def __init__(
         self,
         aggregator_id: str = None,
+        end_update_timestamp: int = None,
+        exclude_resource_types: str = None,
         max_results: int = None,
         next_token: str = None,
         regions: str = None,
@@ -23094,6 +23096,7 @@ class ListAggregateDiscoveredResourcesRequest(TeaModel):
         resource_id: str = None,
         resource_owner_id: int = None,
         resource_types: str = None,
+        start_update_timestamp: int = None,
     ):
         # The ID of the account group.
         # 
@@ -23101,6 +23104,8 @@ class ListAggregateDiscoveredResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
+        self.end_update_timestamp = end_update_timestamp
+        self.exclude_resource_types = exclude_resource_types
         # The maximum number of entries to return for a single request. Valid values: 1 to 100.
         # 
         # This parameter is required.
@@ -23121,6 +23126,7 @@ class ListAggregateDiscoveredResourcesRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The type of the resource. Separate multiple resource types with commas (,).
         self.resource_types = resource_types
+        self.start_update_timestamp = start_update_timestamp
 
     def validate(self):
         pass
@@ -23133,6 +23139,10 @@ class ListAggregateDiscoveredResourcesRequest(TeaModel):
         result = dict()
         if self.aggregator_id is not None:
             result['AggregatorId'] = self.aggregator_id
+        if self.end_update_timestamp is not None:
+            result['EndUpdateTimestamp'] = self.end_update_timestamp
+        if self.exclude_resource_types is not None:
+            result['ExcludeResourceTypes'] = self.exclude_resource_types
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -23149,12 +23159,18 @@ class ListAggregateDiscoveredResourcesRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.resource_types is not None:
             result['ResourceTypes'] = self.resource_types
+        if self.start_update_timestamp is not None:
+            result['StartUpdateTimestamp'] = self.start_update_timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AggregatorId') is not None:
             self.aggregator_id = m.get('AggregatorId')
+        if m.get('EndUpdateTimestamp') is not None:
+            self.end_update_timestamp = m.get('EndUpdateTimestamp')
+        if m.get('ExcludeResourceTypes') is not None:
+            self.exclude_resource_types = m.get('ExcludeResourceTypes')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -23171,6 +23187,8 @@ class ListAggregateDiscoveredResourcesRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('ResourceTypes') is not None:
             self.resource_types = m.get('ResourceTypes')
+        if m.get('StartUpdateTimestamp') is not None:
+            self.start_update_timestamp = m.get('StartUpdateTimestamp')
         return self
 
 
@@ -23188,6 +23206,7 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDisc
         resource_status: str = None,
         resource_type: str = None,
         tags: str = None,
+        update_time: int = None,
         version: int = None,
     ):
         # The ID of the Alibaba Cloud account to which the resource belongs. We recommend that you use the ResourceOwnerId parameter.
@@ -23218,6 +23237,7 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDisc
         self.resource_type = resource_type
         # The tags of the resource.
         self.tags = tags
+        self.update_time = update_time
         # The build version of the resource.
         self.version = version
 
@@ -23252,6 +23272,8 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDisc
             result['ResourceType'] = self.resource_type
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
         if self.version is not None:
             result['Version'] = self.version
         return result
@@ -23280,6 +23302,8 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDisc
             self.resource_type = m.get('ResourceType')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
         if m.get('Version') is not None:
             self.version = m.get('Version')
         return self
@@ -27146,13 +27170,18 @@ class ListConfigRulesResponse(TeaModel):
 class ListDiscoveredResourcesRequest(TeaModel):
     def __init__(
         self,
+        end_update_timestamp: int = None,
+        exclude_resource_types: str = None,
         max_results: int = None,
         next_token: str = None,
         regions: str = None,
         resource_deleted: int = None,
         resource_id: str = None,
         resource_types: str = None,
+        start_update_timestamp: int = None,
     ):
+        self.end_update_timestamp = end_update_timestamp
+        self.exclude_resource_types = exclude_resource_types
         # The maximum number of entries returned for a single request. Valid values: 1 to 100.
         # 
         # This parameter is required.
@@ -27170,6 +27199,7 @@ class ListDiscoveredResourcesRequest(TeaModel):
         self.resource_id = resource_id
         # The type of the resource. Separate multiple resource types with commas (,).
         self.resource_types = resource_types
+        self.start_update_timestamp = start_update_timestamp
 
     def validate(self):
         pass
@@ -27180,6 +27210,10 @@ class ListDiscoveredResourcesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.end_update_timestamp is not None:
+            result['EndUpdateTimestamp'] = self.end_update_timestamp
+        if self.exclude_resource_types is not None:
+            result['ExcludeResourceTypes'] = self.exclude_resource_types
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -27192,10 +27226,16 @@ class ListDiscoveredResourcesRequest(TeaModel):
             result['ResourceId'] = self.resource_id
         if self.resource_types is not None:
             result['ResourceTypes'] = self.resource_types
+        if self.start_update_timestamp is not None:
+            result['StartUpdateTimestamp'] = self.start_update_timestamp
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EndUpdateTimestamp') is not None:
+            self.end_update_timestamp = m.get('EndUpdateTimestamp')
+        if m.get('ExcludeResourceTypes') is not None:
+            self.exclude_resource_types = m.get('ExcludeResourceTypes')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -27208,6 +27248,8 @@ class ListDiscoveredResourcesRequest(TeaModel):
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceTypes') is not None:
             self.resource_types = m.get('ResourceTypes')
+        if m.get('StartUpdateTimestamp') is not None:
+            self.start_update_timestamp = m.get('StartUpdateTimestamp')
         return self
 
 
@@ -27224,6 +27266,7 @@ class ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredRes
         resource_status: str = None,
         resource_type: str = None,
         tags: str = None,
+        update_time: int = None,
         version: int = None,
     ):
         # The ID of the Alibaba Cloud account to which the resource belongs.
@@ -27252,6 +27295,7 @@ class ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredRes
         self.resource_type = resource_type
         # The tags of the resource.
         self.tags = tags
+        self.update_time = update_time
         # The version of the resource change.
         self.version = version
 
@@ -27284,6 +27328,8 @@ class ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredRes
             result['ResourceType'] = self.resource_type
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
         if self.version is not None:
             result['Version'] = self.version
         return result
@@ -27310,6 +27356,8 @@ class ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredRes
             self.resource_type = m.get('ResourceType')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
         if m.get('Version') is not None:
             self.version = m.get('Version')
         return self

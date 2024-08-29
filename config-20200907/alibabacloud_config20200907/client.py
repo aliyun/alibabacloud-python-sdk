@@ -10445,6 +10445,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
             query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.end_update_timestamp):
+            query['EndUpdateTimestamp'] = request.end_update_timestamp
+        if not UtilClient.is_unset(request.exclude_resource_types):
+            query['ExcludeResourceTypes'] = request.exclude_resource_types
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -10461,6 +10465,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.resource_types):
             query['ResourceTypes'] = request.resource_types
+        if not UtilClient.is_unset(request.start_update_timestamp):
+            query['StartUpdateTimestamp'] = request.start_update_timestamp
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10498,6 +10504,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
             query['AggregatorId'] = request.aggregator_id
+        if not UtilClient.is_unset(request.end_update_timestamp):
+            query['EndUpdateTimestamp'] = request.end_update_timestamp
+        if not UtilClient.is_unset(request.exclude_resource_types):
+            query['ExcludeResourceTypes'] = request.exclude_resource_types
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -10514,6 +10524,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.resource_types):
             query['ResourceTypes'] = request.resource_types
+        if not UtilClient.is_unset(request.start_update_timestamp):
+            query['StartUpdateTimestamp'] = request.start_update_timestamp
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11071,7 +11083,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains resources in a specific account group based on the fields in the resource properties by using a SELECT statement.
         
-        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\))
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema]
         >
         Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
         For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
@@ -11114,7 +11126,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains resources in a specific account group based on the fields in the resource properties by using a SELECT statement.
         
-        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\))
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema]
         >
         Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
         For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
@@ -11156,7 +11168,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains resources in a specific account group based on the fields in the resource properties by using a SELECT statement.
         
-        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\))
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema]
         >
         Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
         For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
@@ -11175,7 +11187,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains resources in a specific account group based on the fields in the resource properties by using a SELECT statement.
         
-        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\))
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema]
         >
         Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
         For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
@@ -11941,6 +11953,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.end_update_timestamp):
+            query['EndUpdateTimestamp'] = request.end_update_timestamp
+        if not UtilClient.is_unset(request.exclude_resource_types):
+            query['ExcludeResourceTypes'] = request.exclude_resource_types
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -11953,6 +11969,8 @@ class Client(OpenApiClient):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_types):
             query['ResourceTypes'] = request.resource_types
+        if not UtilClient.is_unset(request.start_update_timestamp):
+            query['StartUpdateTimestamp'] = request.start_update_timestamp
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -11988,6 +12006,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.end_update_timestamp):
+            query['EndUpdateTimestamp'] = request.end_update_timestamp
+        if not UtilClient.is_unset(request.exclude_resource_types):
+            query['ExcludeResourceTypes'] = request.exclude_resource_types
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -12000,6 +12022,8 @@ class Client(OpenApiClient):
             query['ResourceId'] = request.resource_id
         if not UtilClient.is_unset(request.resource_types):
             query['ResourceTypes'] = request.resource_types
+        if not UtilClient.is_unset(request.start_update_timestamp):
+            query['StartUpdateTimestamp'] = request.start_update_timestamp
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12995,7 +13019,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains resources based on the fields in the resource properties by using a SELECT statement.
         
-        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\)).
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema].
         >
         Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
         For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
@@ -13036,7 +13060,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains resources based on the fields in the resource properties by using a SELECT statement.
         
-        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\)).
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema].
         >
         Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
         For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
@@ -13076,7 +13100,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains resources based on the fields in the resource properties by using a SELECT statement.
         
-        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\)).
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema].
         >
         Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
         For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
@@ -13095,7 +13119,7 @@ class Client(OpenApiClient):
         """
         @summary Obtains resources based on the fields in the resource properties by using a SELECT statement.
         
-        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema](javascript:void\\(0\\)).
+        @description When you write a `SELECT` statement, you must obtain the fields and the data types of the fields from the property file of the resource type. For more information about property files, see [Alibaba Cloud Config Resource Schema].
         >
         Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
         For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).

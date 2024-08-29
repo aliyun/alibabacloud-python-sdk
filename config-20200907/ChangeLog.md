@@ -1,3 +1,15 @@
+2024-08-29 Version: 3.0.8
+- Update API ListAggregateDiscoveredResources: add param EndUpdateTimestamp.
+- Update API ListAggregateDiscoveredResources: add param ExcludeResourceTypes.
+- Update API ListAggregateDiscoveredResources: add param StartUpdateTimestamp.
+- Update API ListAggregateDiscoveredResources: update response param.
+- Update API ListDiscoveredResources: add param EndUpdateTimestamp.
+- Update API ListDiscoveredResources: add param ExcludeResourceTypes.
+- Update API ListDiscoveredResources: add param StartUpdateTimestamp.
+- Update API ListDiscoveredResources: update param MaxResults.
+- Update API ListDiscoveredResources: update response param.
+
+
 2024-08-07 Version: 3.0.7
 - Generated python 2020-09-07 for Config.
 
