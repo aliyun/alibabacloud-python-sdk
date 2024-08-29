@@ -9,6 +9,7 @@ class AppFailBackRequest(TeaModel):
         self,
         application_id: str = None,
     ):
+        # The application ID.
         self.application_id = application_id
 
     def validate(self):
@@ -39,9 +40,13 @@ class AppFailBackResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The disaster recovery switchback task ID.
         self.data = data
+        # The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -123,7 +128,9 @@ class AppFailOverRequest(TeaModel):
         application_id: str = None,
         fail_zone: str = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # The destination zone to which you want to switch the disaster recovery application.
         self.fail_zone = fail_zone
 
     def validate(self):
@@ -158,9 +165,13 @@ class AppFailOverResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The disaster recovery switchover task ID.
         self.data = data
+        # The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -426,7 +437,7 @@ class CreateApplicationRequest(TeaModel):
         name: str = None,
         resource_group_id: str = None,
         template_id: str = None,
-        variables: Dict[str, str] = None,
+        variables: Dict[str, Any] = None,
     ):
         # The ID of the region.
         self.area_id = area_id
@@ -1948,6 +1959,185 @@ class GetApplicationResponse(TeaModel):
         return self
 
 
+class GetApplicationVariables4FailRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class GetApplicationVariables4FailResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        attribute: str = None,
+        default_value: str = None,
+        place_holder: str = None,
+        region: str = None,
+        value: str = None,
+        variable: str = None,
+    ):
+        self.attribute = attribute
+        self.default_value = default_value
+        self.place_holder = place_holder
+        self.region = region
+        self.value = value
+        self.variable = variable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attribute is not None:
+            result['Attribute'] = self.attribute
+        if self.default_value is not None:
+            result['DefaultValue'] = self.default_value
+        if self.place_holder is not None:
+            result['PlaceHolder'] = self.place_holder
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.variable is not None:
+            result['Variable'] = self.variable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attribute') is not None:
+            self.attribute = m.get('Attribute')
+        if m.get('DefaultValue') is not None:
+            self.default_value = m.get('DefaultValue')
+        if m.get('PlaceHolder') is not None:
+            self.place_holder = m.get('PlaceHolder')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('Variable') is not None:
+            self.variable = m.get('Variable')
+        return self
+
+
+class GetApplicationVariables4FailResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[GetApplicationVariables4FailResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetApplicationVariables4FailResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetApplicationVariables4FailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetApplicationVariables4FailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetApplicationVariables4FailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetExecuteOperationResultRequest(TeaModel):
     def __init__(
         self,
@@ -2131,6 +2321,7 @@ class GetFoTaskStatusRequest(TeaModel):
         self,
         task_id: int = None,
     ):
+        # The disaster recovery switchover task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -2161,9 +2352,13 @@ class GetFoTaskStatusResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The status of the switchover task.
         self.data = data
+        # The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2245,7 +2440,9 @@ class GetPotentialFailZonesRequest(TeaModel):
         is_plan_id: bool = None,
         object_id: str = None,
     ):
+        # Specifies whether the value of this parameter is the ID of a disaster recovery set.
         self.is_plan_id = is_plan_id
+        # If you set IsPlanId to false, specify the ID of a disaster recovery application. If you set IsPlanId to true, specify the ID of a disaster recovery set.
         self.object_id = object_id
 
     def validate(self):
@@ -2280,9 +2477,13 @@ class GetPotentialFailZonesResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The zones where the current disaster recovery service can be switched.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2809,6 +3010,7 @@ class InitAppFailOverRequest(TeaModel):
         self,
         application_id: str = None,
     ):
+        # The application ID.
         self.application_id = application_id
 
     def validate(self):
@@ -2839,9 +3041,13 @@ class InitAppFailOverResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The switchover task ID.
         self.data = data
+        # The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3181,9 +3387,13 @@ class ListFoCreatedAppsResponseBodyData(TeaModel):
         status: str = None,
         title: str = None,
     ):
+        # 应用ID
         self.application_id = application_id
+        # The URL of an error report.
         self.report_url = report_url
+        # The status of the disaster recovery plan.
         self.status = status
+        # The title.
         self.title = title
 
     def validate(self):
@@ -3226,10 +3436,13 @@ class ListFoCreatedAppsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The information about disaster recovery plans.
         self.data = data
+        # The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3839,6 +4052,120 @@ class ListTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReConfigApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        variables: str = None,
+    ):
+        self.app_id = app_id
+        self.variables = variables
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.variables is not None:
+            result['Variables'] = self.variables
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Variables') is not None:
+            self.variables = m.get('Variables')
+        return self
+
+
+class ReConfigApplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ReConfigApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReConfigApplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReConfigApplicationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -1,3 +1,9 @@
+2024-08-29 Version: 5.0.0
+- Support API GetApplicationVariables4Fail.
+- Support API ReConfigApplication.
+- Update API CreateApplication: update param Variables.
+
+
 2024-07-29 Version: 4.2.1
 - Generated python 2021-09-31 for BPStudio.
 

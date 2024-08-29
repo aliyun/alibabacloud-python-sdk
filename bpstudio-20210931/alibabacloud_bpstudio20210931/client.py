@@ -47,7 +47,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.AppFailBackResponse:
         """
-        @summary 容灾应用切回
+        @summary Switches a disaster recovery application back to the primary zone.
+        
+        @description You can call this operation to switch a disaster recovery application back to the primary zone.
         
         @param request: AppFailBackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -82,7 +84,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.AppFailBackResponse:
         """
-        @summary 容灾应用切回
+        @summary Switches a disaster recovery application back to the primary zone.
+        
+        @description You can call this operation to switch a disaster recovery application back to the primary zone.
         
         @param request: AppFailBackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -116,7 +120,9 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.AppFailBackRequest,
     ) -> bpstudio_20210931_models.AppFailBackResponse:
         """
-        @summary 容灾应用切回
+        @summary Switches a disaster recovery application back to the primary zone.
+        
+        @description You can call this operation to switch a disaster recovery application back to the primary zone.
         
         @param request: AppFailBackRequest
         @return: AppFailBackResponse
@@ -129,7 +135,9 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.AppFailBackRequest,
     ) -> bpstudio_20210931_models.AppFailBackResponse:
         """
-        @summary 容灾应用切回
+        @summary Switches a disaster recovery application back to the primary zone.
+        
+        @description You can call this operation to switch a disaster recovery application back to the primary zone.
         
         @param request: AppFailBackRequest
         @return: AppFailBackResponse
@@ -143,7 +151,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.AppFailOverResponse:
         """
-        @summary 容灾应用切换
+        @summary Switches a disaster recovery application to another supported zone.
+        
+        @description You can call this operation to switch a disaster recovery application to another supported zone.
         
         @param request: AppFailOverRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -180,7 +190,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.AppFailOverResponse:
         """
-        @summary 容灾应用切换
+        @summary Switches a disaster recovery application to another supported zone.
+        
+        @description You can call this operation to switch a disaster recovery application to another supported zone.
         
         @param request: AppFailOverRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -216,7 +228,9 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.AppFailOverRequest,
     ) -> bpstudio_20210931_models.AppFailOverResponse:
         """
-        @summary 容灾应用切换
+        @summary Switches a disaster recovery application to another supported zone.
+        
+        @description You can call this operation to switch a disaster recovery application to another supported zone.
         
         @param request: AppFailOverRequest
         @return: AppFailOverResponse
@@ -229,7 +243,9 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.AppFailOverRequest,
     ) -> bpstudio_20210931_models.AppFailOverResponse:
         """
-        @summary 容灾应用切换
+        @summary Switches a disaster recovery application to another supported zone.
+        
+        @description You can call this operation to switch a disaster recovery application to another supported zone.
         
         @param request: AppFailOverRequest
         @return: AppFailOverResponse
@@ -1045,6 +1061,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_application_with_options_async(request, runtime)
 
+    def get_application_variables_4fail_with_options(
+        self,
+        request: bpstudio_20210931_models.GetApplicationVariables4FailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.GetApplicationVariables4FailResponse:
+        """
+        @summary 获取需要重新配置的变量列表
+        
+        @param request: GetApplicationVariables4FailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationVariables4FailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApplicationVariables4Fail',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.GetApplicationVariables4FailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_application_variables_4fail_with_options_async(
+        self,
+        request: bpstudio_20210931_models.GetApplicationVariables4FailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.GetApplicationVariables4FailResponse:
+        """
+        @summary 获取需要重新配置的变量列表
+        
+        @param request: GetApplicationVariables4FailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationVariables4FailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetApplicationVariables4Fail',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.GetApplicationVariables4FailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_application_variables_4fail(
+        self,
+        request: bpstudio_20210931_models.GetApplicationVariables4FailRequest,
+    ) -> bpstudio_20210931_models.GetApplicationVariables4FailResponse:
+        """
+        @summary 获取需要重新配置的变量列表
+        
+        @param request: GetApplicationVariables4FailRequest
+        @return: GetApplicationVariables4FailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_application_variables_4fail_with_options(request, runtime)
+
+    async def get_application_variables_4fail_async(
+        self,
+        request: bpstudio_20210931_models.GetApplicationVariables4FailRequest,
+    ) -> bpstudio_20210931_models.GetApplicationVariables4FailResponse:
+        """
+        @summary 获取需要重新配置的变量列表
+        
+        @param request: GetApplicationVariables4FailRequest
+        @return: GetApplicationVariables4FailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_application_variables_4fail_with_options_async(request, runtime)
+
     def get_execute_operation_result_with_options(
         self,
         request: bpstudio_20210931_models.GetExecuteOperationResultRequest,
@@ -1151,7 +1263,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetFoTaskStatusResponse:
         """
-        @summary 获取容灾切换任务状态
+        @summary Queries the status of a disaster recovery switchover task by task ID.
+        
+        @description You can call this operation to query the status of a disaster recovery switchover task by task ID.
         
         @param request: GetFoTaskStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1186,7 +1300,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetFoTaskStatusResponse:
         """
-        @summary 获取容灾切换任务状态
+        @summary Queries the status of a disaster recovery switchover task by task ID.
+        
+        @description You can call this operation to query the status of a disaster recovery switchover task by task ID.
         
         @param request: GetFoTaskStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1220,7 +1336,9 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.GetFoTaskStatusRequest,
     ) -> bpstudio_20210931_models.GetFoTaskStatusResponse:
         """
-        @summary 获取容灾切换任务状态
+        @summary Queries the status of a disaster recovery switchover task by task ID.
+        
+        @description You can call this operation to query the status of a disaster recovery switchover task by task ID.
         
         @param request: GetFoTaskStatusRequest
         @return: GetFoTaskStatusResponse
@@ -1233,7 +1351,9 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.GetFoTaskStatusRequest,
     ) -> bpstudio_20210931_models.GetFoTaskStatusResponse:
         """
-        @summary 获取容灾切换任务状态
+        @summary Queries the status of a disaster recovery switchover task by task ID.
+        
+        @description You can call this operation to query the status of a disaster recovery switchover task by task ID.
         
         @param request: GetFoTaskStatusRequest
         @return: GetFoTaskStatusResponse
@@ -1247,7 +1367,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetPotentialFailZonesResponse:
         """
-        @summary 获取容灾服务可切换的可用区列表
+        @summary Queries the zones where the specified disaster recovery service can be switched.
+        
+        @description You can call this operation to query the zones where the specified disaster recovery service can be switched.
         
         @param request: GetPotentialFailZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1284,7 +1406,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetPotentialFailZonesResponse:
         """
-        @summary 获取容灾服务可切换的可用区列表
+        @summary Queries the zones where the specified disaster recovery service can be switched.
+        
+        @description You can call this operation to query the zones where the specified disaster recovery service can be switched.
         
         @param request: GetPotentialFailZonesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1320,7 +1444,9 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.GetPotentialFailZonesRequest,
     ) -> bpstudio_20210931_models.GetPotentialFailZonesResponse:
         """
-        @summary 获取容灾服务可切换的可用区列表
+        @summary Queries the zones where the specified disaster recovery service can be switched.
+        
+        @description You can call this operation to query the zones where the specified disaster recovery service can be switched.
         
         @param request: GetPotentialFailZonesRequest
         @return: GetPotentialFailZonesResponse
@@ -1333,7 +1459,9 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.GetPotentialFailZonesRequest,
     ) -> bpstudio_20210931_models.GetPotentialFailZonesResponse:
         """
-        @summary 获取容灾服务可切换的可用区列表
+        @summary Queries the zones where the specified disaster recovery service can be switched.
+        
+        @description You can call this operation to query the zones where the specified disaster recovery service can be switched.
         
         @param request: GetPotentialFailZonesRequest
         @return: GetPotentialFailZonesResponse
@@ -1567,7 +1695,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.InitAppFailOverResponse:
         """
-        @summary 准备应用切换
+        @summary Prepares for application switchover and initiates a switchover task.
+        
+        @description You can call this operation to prepare for application switchover and initiate a switchover task.
         
         @param request: InitAppFailOverRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1602,7 +1732,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.InitAppFailOverResponse:
         """
-        @summary 准备应用切换
+        @summary Prepares for application switchover and initiates a switchover task.
+        
+        @description You can call this operation to prepare for application switchover and initiate a switchover task.
         
         @param request: InitAppFailOverRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1636,7 +1768,9 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.InitAppFailOverRequest,
     ) -> bpstudio_20210931_models.InitAppFailOverResponse:
         """
-        @summary 准备应用切换
+        @summary Prepares for application switchover and initiates a switchover task.
+        
+        @description You can call this operation to prepare for application switchover and initiate a switchover task.
         
         @param request: InitAppFailOverRequest
         @return: InitAppFailOverResponse
@@ -1649,7 +1783,9 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.InitAppFailOverRequest,
     ) -> bpstudio_20210931_models.InitAppFailOverResponse:
         """
-        @summary 准备应用切换
+        @summary Prepares for application switchover and initiates a switchover task.
+        
+        @description You can call this operation to prepare for application switchover and initiate a switchover task.
         
         @param request: InitAppFailOverRequest
         @return: InitAppFailOverResponse
@@ -1786,7 +1922,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ListFoCreatedAppsResponse:
         """
-        @summary 获取已经创建的APP
+        @summary Queries disaster recovery plans.
+        
+        @description You can call this operation to query all disaster recovery plans.
         
         @param request: ListFoCreatedAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1814,7 +1952,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.ListFoCreatedAppsResponse:
         """
-        @summary 获取已经创建的APP
+        @summary Queries disaster recovery plans.
+        
+        @description You can call this operation to query all disaster recovery plans.
         
         @param request: ListFoCreatedAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1839,7 +1979,9 @@ class Client(OpenApiClient):
 
     def list_fo_created_apps(self) -> bpstudio_20210931_models.ListFoCreatedAppsResponse:
         """
-        @summary 获取已经创建的APP
+        @summary Queries disaster recovery plans.
+        
+        @description You can call this operation to query all disaster recovery plans.
         
         @return: ListFoCreatedAppsResponse
         """
@@ -1848,7 +1990,9 @@ class Client(OpenApiClient):
 
     async def list_fo_created_apps_async(self) -> bpstudio_20210931_models.ListFoCreatedAppsResponse:
         """
-        @summary 获取已经创建的APP
+        @summary Queries disaster recovery plans.
+        
+        @description You can call this operation to query all disaster recovery plans.
         
         @return: ListFoCreatedAppsResponse
         """
@@ -2096,6 +2240,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_template_with_options_async(request, runtime)
+
+    def re_config_application_with_options(
+        self,
+        request: bpstudio_20210931_models.ReConfigApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.ReConfigApplicationResponse:
+        """
+        @summary 重新配置应用
+        
+        @param request: ReConfigApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReConfigApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.variables):
+            body['Variables'] = request.variables
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReConfigApplication',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.ReConfigApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def re_config_application_with_options_async(
+        self,
+        request: bpstudio_20210931_models.ReConfigApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.ReConfigApplicationResponse:
+        """
+        @summary 重新配置应用
+        
+        @param request: ReConfigApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReConfigApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.variables):
+            body['Variables'] = request.variables
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReConfigApplication',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.ReConfigApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def re_config_application(
+        self,
+        request: bpstudio_20210931_models.ReConfigApplicationRequest,
+    ) -> bpstudio_20210931_models.ReConfigApplicationResponse:
+        """
+        @summary 重新配置应用
+        
+        @param request: ReConfigApplicationRequest
+        @return: ReConfigApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.re_config_application_with_options(request, runtime)
+
+    async def re_config_application_async(
+        self,
+        request: bpstudio_20210931_models.ReConfigApplicationRequest,
+    ) -> bpstudio_20210931_models.ReConfigApplicationResponse:
+        """
+        @summary 重新配置应用
+        
+        @param request: ReConfigApplicationRequest
+        @return: ReConfigApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.re_config_application_with_options_async(request, runtime)
 
     def release_application_with_options(
         self,
