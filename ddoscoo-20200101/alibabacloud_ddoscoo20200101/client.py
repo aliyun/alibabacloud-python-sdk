@@ -2177,6 +2177,8 @@ class Client(OpenApiClient):
             query['FrontendProtocol'] = request.frontend_protocol
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.proxy_enable):
+            query['ProxyEnable'] = request.proxy_enable
         if not UtilClient.is_unset(request.real_servers):
             query['RealServers'] = request.real_servers
         req = open_api_models.OpenApiRequest(
@@ -2222,6 +2224,8 @@ class Client(OpenApiClient):
             query['FrontendProtocol'] = request.frontend_protocol
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.proxy_enable):
+            query['ProxyEnable'] = request.proxy_enable
         if not UtilClient.is_unset(request.real_servers):
             query['RealServers'] = request.real_servers
         req = open_api_models.OpenApiRequest(
@@ -3841,7 +3845,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DeleteWebCCRule is deprecated, please use ddoscoo::2020-01-01::DeleteWebCCRuleV2 instead.
         
-        @summary Deletes custom frequency control rules of a website.
+        @summary Deletes a custom frequency control rule of a website.
         
         @param request: DeleteWebCCRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3883,7 +3887,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DeleteWebCCRule is deprecated, please use ddoscoo::2020-01-01::DeleteWebCCRuleV2 instead.
         
-        @summary Deletes custom frequency control rules of a website.
+        @summary Deletes a custom frequency control rule of a website.
         
         @param request: DeleteWebCCRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3924,7 +3928,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DeleteWebCCRule is deprecated, please use ddoscoo::2020-01-01::DeleteWebCCRuleV2 instead.
         
-        @summary Deletes custom frequency control rules of a website.
+        @summary Deletes a custom frequency control rule of a website.
         
         @param request: DeleteWebCCRuleRequest
         @return: DeleteWebCCRuleResponse
@@ -3940,7 +3944,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DeleteWebCCRule is deprecated, please use ddoscoo::2020-01-01::DeleteWebCCRuleV2 instead.
         
-        @summary Deletes custom frequency control rules of a website.
+        @summary Deletes a custom frequency control rule of a website.
         
         @param request: DeleteWebCCRuleRequest
         @return: DeleteWebCCRuleResponse
@@ -4919,7 +4923,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeBackSourceCidrResponse:
         """
-        @summary Queries the back-to-origin CIDR blocks of Anti-DDoS Pro or Anti-DDoS Premium.
+        @summary Queries the back-to-origin CIDR blocks of Anti-DDoS Proxy.
         
         @param request: DescribeBackSourceCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4958,7 +4962,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeBackSourceCidrResponse:
         """
-        @summary Queries the back-to-origin CIDR blocks of Anti-DDoS Pro or Anti-DDoS Premium.
+        @summary Queries the back-to-origin CIDR blocks of Anti-DDoS Proxy.
         
         @param request: DescribeBackSourceCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4996,7 +5000,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeBackSourceCidrRequest,
     ) -> ddoscoo_20200101_models.DescribeBackSourceCidrResponse:
         """
-        @summary Queries the back-to-origin CIDR blocks of Anti-DDoS Pro or Anti-DDoS Premium.
+        @summary Queries the back-to-origin CIDR blocks of Anti-DDoS Proxy.
         
         @param request: DescribeBackSourceCidrRequest
         @return: DescribeBackSourceCidrResponse
@@ -5009,7 +5013,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeBackSourceCidrRequest,
     ) -> ddoscoo_20200101_models.DescribeBackSourceCidrResponse:
         """
-        @summary Queries the back-to-origin CIDR blocks of Anti-DDoS Pro or Anti-DDoS Premium.
+        @summary Queries the back-to-origin CIDR blocks of Anti-DDoS Proxy.
         
         @param request: DescribeBackSourceCidrRequest
         @return: DescribeBackSourceCidrResponse
@@ -14935,7 +14939,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DisableWebCCResponse:
         """
-        @summary Disables the Frequency Control policy for a website.
+        @summary Disables frequency control for a website.
         
         @param request: DisableWebCCRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14972,7 +14976,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DisableWebCCResponse:
         """
-        @summary Disables the Frequency Control policy for a website.
+        @summary Disables frequency control for a website.
         
         @param request: DisableWebCCRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15008,7 +15012,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DisableWebCCRequest,
     ) -> ddoscoo_20200101_models.DisableWebCCResponse:
         """
-        @summary Disables the Frequency Control policy for a website.
+        @summary Disables frequency control for a website.
         
         @param request: DisableWebCCRequest
         @return: DisableWebCCResponse
@@ -15021,7 +15025,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DisableWebCCRequest,
     ) -> ddoscoo_20200101_models.DisableWebCCResponse:
         """
-        @summary Disables the Frequency Control policy for a website.
+        @summary Disables frequency control for a website.
         
         @param request: DisableWebCCRequest
         @return: DisableWebCCResponse
@@ -15035,7 +15039,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DisableWebCCRuleResponse:
         """
-        @summary Turns off the Custom Rule switch of the Frequency Control policy for a website.
+        @summary Disables custom frequency control rules for a website.
         
         @param request: DisableWebCCRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15072,7 +15076,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DisableWebCCRuleResponse:
         """
-        @summary Turns off the Custom Rule switch of the Frequency Control policy for a website.
+        @summary Disables custom frequency control rules for a website.
         
         @param request: DisableWebCCRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15108,7 +15112,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DisableWebCCRuleRequest,
     ) -> ddoscoo_20200101_models.DisableWebCCRuleResponse:
         """
-        @summary Turns off the Custom Rule switch of the Frequency Control policy for a website.
+        @summary Disables custom frequency control rules for a website.
         
         @param request: DisableWebCCRuleRequest
         @return: DisableWebCCRuleResponse
@@ -15121,7 +15125,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DisableWebCCRuleRequest,
     ) -> ddoscoo_20200101_models.DisableWebCCRuleResponse:
         """
-        @summary Turns off the Custom Rule switch of the Frequency Control policy for a website.
+        @summary Disables custom frequency control rules for a website.
         
         @param request: DisableWebCCRuleRequest
         @return: DisableWebCCRuleResponse
@@ -15719,7 +15723,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.EnableWebCCRuleResponse:
         """
-        @summary Turns on the Custom Rule switch of the Frequency Control policy for a website.
+        @summary Enables custom frequency control rules for a website.
         
         @param request: EnableWebCCRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15756,7 +15760,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.EnableWebCCRuleResponse:
         """
-        @summary Turns on the Custom Rule switch of the Frequency Control policy for a website.
+        @summary Enables custom frequency control rules for a website.
         
         @param request: EnableWebCCRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15792,7 +15796,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.EnableWebCCRuleRequest,
     ) -> ddoscoo_20200101_models.EnableWebCCRuleResponse:
         """
-        @summary Turns on the Custom Rule switch of the Frequency Control policy for a website.
+        @summary Enables custom frequency control rules for a website.
         
         @param request: EnableWebCCRuleRequest
         @return: EnableWebCCRuleResponse
@@ -15805,7 +15809,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.EnableWebCCRuleRequest,
     ) -> ddoscoo_20200101_models.EnableWebCCRuleResponse:
         """
-        @summary Turns on the Custom Rule switch of the Frequency Control policy for a website.
+        @summary Enables custom frequency control rules for a website.
         
         @param request: EnableWebCCRuleRequest
         @return: EnableWebCCRuleResponse
@@ -17465,6 +17469,8 @@ class Client(OpenApiClient):
             query['FrontendProtocol'] = request.frontend_protocol
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.proxy_enable):
+            query['ProxyEnable'] = request.proxy_enable
         if not UtilClient.is_unset(request.real_servers):
             query['RealServers'] = request.real_servers
         req = open_api_models.OpenApiRequest(
@@ -17510,6 +17516,8 @@ class Client(OpenApiClient):
             query['FrontendProtocol'] = request.frontend_protocol
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.proxy_enable):
+            query['ProxyEnable'] = request.proxy_enable
         if not UtilClient.is_unset(request.real_servers):
             query['RealServers'] = request.real_servers
         req = open_api_models.OpenApiRequest(
@@ -18099,7 +18107,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.ModifyWebAIProtectModeResponse:
         """
-        @summary Changes the mode of the Intelligent Protection policy for a website.
+        @summary Changes the mode of the intelligent protection feature for a website.
         
         @param request: ModifyWebAIProtectModeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18138,7 +18146,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.ModifyWebAIProtectModeResponse:
         """
-        @summary Changes the mode of the Intelligent Protection policy for a website.
+        @summary Changes the mode of the intelligent protection feature for a website.
         
         @param request: ModifyWebAIProtectModeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18176,7 +18184,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.ModifyWebAIProtectModeRequest,
     ) -> ddoscoo_20200101_models.ModifyWebAIProtectModeResponse:
         """
-        @summary Changes the mode of the Intelligent Protection policy for a website.
+        @summary Changes the mode of the intelligent protection feature for a website.
         
         @param request: ModifyWebAIProtectModeRequest
         @return: ModifyWebAIProtectModeResponse
@@ -18189,7 +18197,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.ModifyWebAIProtectModeRequest,
     ) -> ddoscoo_20200101_models.ModifyWebAIProtectModeResponse:
         """
-        @summary Changes the mode of the Intelligent Protection policy for a website.
+        @summary Changes the mode of the intelligent protection feature for a website.
         
         @param request: ModifyWebAIProtectModeRequest
         @return: ModifyWebAIProtectModeResponse
@@ -19411,7 +19419,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.ModifyWebPreciseAccessSwitchResponse:
         """
-        @summary Enables or disables the Accurate Access Control policy for a website.
+        @summary Enables or disables accurate access control for a website.
         
         @param request: ModifyWebPreciseAccessSwitchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19450,7 +19458,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.ModifyWebPreciseAccessSwitchResponse:
         """
-        @summary Enables or disables the Accurate Access Control policy for a website.
+        @summary Enables or disables accurate access control for a website.
         
         @param request: ModifyWebPreciseAccessSwitchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19488,7 +19496,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.ModifyWebPreciseAccessSwitchRequest,
     ) -> ddoscoo_20200101_models.ModifyWebPreciseAccessSwitchResponse:
         """
-        @summary Enables or disables the Accurate Access Control policy for a website.
+        @summary Enables or disables accurate access control for a website.
         
         @param request: ModifyWebPreciseAccessSwitchRequest
         @return: ModifyWebPreciseAccessSwitchResponse
@@ -19501,7 +19509,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.ModifyWebPreciseAccessSwitchRequest,
     ) -> ddoscoo_20200101_models.ModifyWebPreciseAccessSwitchResponse:
         """
-        @summary Enables or disables the Accurate Access Control policy for a website.
+        @summary Enables or disables accurate access control for a website.
         
         @param request: ModifyWebPreciseAccessSwitchRequest
         @return: ModifyWebPreciseAccessSwitchResponse

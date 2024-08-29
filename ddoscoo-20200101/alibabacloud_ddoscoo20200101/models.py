@@ -249,8 +249,12 @@ class AssociateWebCertRequest(TeaModel):
     ):
         self.cert = cert
         self.cert_id = cert_id
+        # The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
+        # 
+        # >  You can specify only one of this parameter and the CertId parameter.
         self.cert_identifier = cert_identifier
         self.cert_name = cert_name
+        # The region of the certificate. Valid values: **cn-hangzhou** and **ap-southeast-1**. Default value: **cn-hangzhou**.
         self.cert_region = cert_region
         # This parameter is required.
         self.domain = domain
@@ -311,7 +315,7 @@ class AssociateWebCertResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2532,7 +2536,7 @@ class CreateNetworkRulesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2603,6 +2607,7 @@ class CreatePortRequest(TeaModel):
         frontend_port: str = None,
         frontend_protocol: str = None,
         instance_id: str = None,
+        proxy_enable: int = None,
         real_servers: List[str] = None,
     ):
         # The port of the origin server. Valid values: **0** to **65535**.
@@ -2624,6 +2629,7 @@ class CreatePortRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.proxy_enable = proxy_enable
         # An array that consists of the IP addresses of origin servers.
         # 
         # This parameter is required.
@@ -2646,6 +2652,8 @@ class CreatePortRequest(TeaModel):
             result['FrontendProtocol'] = self.frontend_protocol
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.proxy_enable is not None:
+            result['ProxyEnable'] = self.proxy_enable
         if self.real_servers is not None:
             result['RealServers'] = self.real_servers
         return result
@@ -2660,6 +2668,8 @@ class CreatePortRequest(TeaModel):
             self.frontend_protocol = m.get('FrontendProtocol')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('ProxyEnable') is not None:
+            self.proxy_enable = m.get('ProxyEnable')
         if m.get('RealServers') is not None:
             self.real_servers = m.get('RealServers')
         return self
@@ -4667,7 +4677,7 @@ class DeleteWebCCRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6085,7 +6095,7 @@ class DescribeBackSourceCidrRequest(TeaModel):
         line: str = None,
         resource_group_id: str = None,
     ):
-        # The IP version of the back-to-origin CIDR block.
+        # The IP version of the back-to-origin CIDR blocks.
         # 
         # *   **Ipv4**\
         # *   **Ipv6**\
@@ -12948,9 +12958,11 @@ class DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos(TeaModel):
         status: str = None,
         tls_version: str = None,
     ):
+        # Indicates whether a custom certificate is configured.
         self.cert_configured = cert_configured
         # The IP address of the instance.
         self.eip = eip
+        # The type of the instance.
         self.function_version = function_version
         # The IP address-based forwarding mode of the instance. Valid values:
         # 
@@ -12962,6 +12974,7 @@ class DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos(TeaModel):
         # *   **Ipv4**: IPv4
         # *   **Ipv6**: IPv6
         self.ip_version = ip_version
+        # Indicates whether the TLS 1.3 version is supported.
         self.ssl_13enabled = ssl_13enabled
         # The status of the instance. Valid values:
         # 
@@ -12971,6 +12984,7 @@ class DescribeInstanceDetailsResponseBodyInstanceDetailsEipInfos(TeaModel):
         # *   **blackhole**: indicates that blackhole filtering is triggered for the asset that is protected by the instance.
         # *   **punished**: indicates that the instance is in penalty.
         self.status = status
+        # The Transport Layer Security (TLS) version that is configured.
         self.tls_version = tls_version
 
     def validate(self):
@@ -13028,7 +13042,7 @@ class DescribeInstanceDetailsResponseBodyInstanceDetails(TeaModel):
         instance_id: str = None,
         line: str = None,
     ):
-        # The information about the IP address of the instance.
+        # The IP address information about the Anti-DDoS Proxy instance.
         self.eip_infos = eip_infos
         # The ID of the instance.
         self.instance_id = instance_id
@@ -13077,9 +13091,9 @@ class DescribeInstanceDetailsResponseBody(TeaModel):
         instance_details: List[DescribeInstanceDetailsResponseBodyInstanceDetails] = None,
         request_id: str = None,
     ):
-        # The IP address and ISP line information about the instance.
+        # The IP address and ISP line information about the Anti-DDoS Proxy instance.
         self.instance_details = instance_details
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16127,7 +16141,10 @@ class DescribeNetworkRulesResponseBodyNetworkRules(TeaModel):
         frontend_port: int = None,
         instance_id: str = None,
         is_auto_create: bool = None,
+        payload_rule_enable: int = None,
         protocol: str = None,
+        proxy_enable: int = None,
+        proxy_status: str = None,
         real_servers: List[str] = None,
         remark: str = None,
     ):
@@ -16142,11 +16159,14 @@ class DescribeNetworkRulesResponseBodyNetworkRules(TeaModel):
         # *   **true**\
         # *   **false**\
         self.is_auto_create = is_auto_create
+        self.payload_rule_enable = payload_rule_enable
         # The forwarding protocol. Valid values:
         # 
         # *   **tcp**\
         # *   **udp**\
         self.protocol = protocol
+        self.proxy_enable = proxy_enable
+        self.proxy_status = proxy_status
         # The IP addresses of origin servers.
         self.real_servers = real_servers
         # The remarks of the port forwarding rule.
@@ -16169,8 +16189,14 @@ class DescribeNetworkRulesResponseBodyNetworkRules(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.is_auto_create is not None:
             result['IsAutoCreate'] = self.is_auto_create
+        if self.payload_rule_enable is not None:
+            result['PayloadRuleEnable'] = self.payload_rule_enable
         if self.protocol is not None:
             result['Protocol'] = self.protocol
+        if self.proxy_enable is not None:
+            result['ProxyEnable'] = self.proxy_enable
+        if self.proxy_status is not None:
+            result['ProxyStatus'] = self.proxy_status
         if self.real_servers is not None:
             result['RealServers'] = self.real_servers
         if self.remark is not None:
@@ -16187,8 +16213,14 @@ class DescribeNetworkRulesResponseBodyNetworkRules(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('IsAutoCreate') is not None:
             self.is_auto_create = m.get('IsAutoCreate')
+        if m.get('PayloadRuleEnable') is not None:
+            self.payload_rule_enable = m.get('PayloadRuleEnable')
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
+        if m.get('ProxyEnable') is not None:
+            self.proxy_enable = m.get('ProxyEnable')
+        if m.get('ProxyStatus') is not None:
+            self.proxy_status = m.get('ProxyStatus')
         if m.get('RealServers') is not None:
             self.real_servers = m.get('RealServers')
         if m.get('Remark') is not None:
@@ -22353,23 +22385,23 @@ class DescribeWebCCRulesResponseBodyWebCCRules(TeaModel):
         ttl: int = None,
         uri: str = None,
     ):
-        # The blocking type. Valid values:
+        # The action triggered if the rule is matched. Valid values:
         # 
-        # *   **close**: blocks requests.
-        # *   **captcha**: enables Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification.
+        # *   **close**: The requests that match the rule are blocked.
+        # *   **captcha**: Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification for the requests that match the rule is implemented.
         self.act = act
-        # The number of requests that are allowed from an individual IP address. Valid values: **2** to **2000**.
+        # The number of requests that are allowed from a single IP address. Valid values: **2** to **2000**.
         self.count = count
-        # The check intervals. Valid values: **5** to **10800**. Unit: seconds.
+        # The check interval. Valid values: **5** to **10800**. Unit: seconds.
         self.interval = interval
         # The match mode. Valid values:
         # 
-        # *   **prefix**: prefix match
-        # *   **match**: exact match
+        # *   **prefix**: prefix match.
+        # *   **match**: exact match.
         self.mode = mode
         # The name of the rule.
         self.name = name
-        # The blocking duration. Valid values: **1** to **1440**. Unit: minutes.
+        # The validity period. Valid values: **1** to **1440**. Unit: minutes.
         self.ttl = ttl
         # The check path.
         self.uri = uri
@@ -22425,11 +22457,11 @@ class DescribeWebCCRulesResponseBody(TeaModel):
         total_count: int = None,
         web_ccrules: List[DescribeWebCCRulesResponseBodyWebCCRules] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of returned custom frequency control rules.
+        # The total number of custom frequency control rules.
         self.total_count = total_count
-        # An array that consists of the details of the custom frequency control rule.
+        # The custom frequency control rule.
         self.web_ccrules = web_ccrules
 
     def validate(self):
@@ -25276,7 +25308,7 @@ class DisableWebCCResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25384,7 +25416,7 @@ class DisableWebCCRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26118,7 +26150,7 @@ class EnableWebCCRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -28103,6 +28135,7 @@ class ModifyPortRequest(TeaModel):
         frontend_port: str = None,
         frontend_protocol: str = None,
         instance_id: str = None,
+        proxy_enable: int = None,
         real_servers: List[str] = None,
     ):
         # The port of the origin server. Valid values: **0** to **65535**.
@@ -28126,6 +28159,7 @@ class ModifyPortRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.proxy_enable = proxy_enable
         # An array that consists of the IP addresses of origin servers.
         # 
         # This parameter is required.
@@ -28148,6 +28182,8 @@ class ModifyPortRequest(TeaModel):
             result['FrontendProtocol'] = self.frontend_protocol
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.proxy_enable is not None:
+            result['ProxyEnable'] = self.proxy_enable
         if self.real_servers is not None:
             result['RealServers'] = self.real_servers
         return result
@@ -28162,6 +28198,8 @@ class ModifyPortRequest(TeaModel):
             self.frontend_protocol = m.get('FrontendProtocol')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('ProxyEnable') is not None:
+            self.proxy_enable = m.get('ProxyEnable')
         if m.get('RealServers') is not None:
             self.real_servers = m.get('RealServers')
         return self
@@ -29001,7 +29039,7 @@ class ModifyWebAIProtectModeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -30517,7 +30555,7 @@ class ModifyWebPreciseAccessSwitchResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

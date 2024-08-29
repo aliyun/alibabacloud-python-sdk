@@ -1,3 +1,9 @@
+2024-08-29 Version: 2.4.3
+- Update API CreatePort: add param ProxyEnable.
+- Update API DescribeNetworkRules: update response param.
+- Update API ModifyPort: add param ProxyEnable.
+
+
 2024-07-30 Version: 2.4.2
 - Update API DescribeWebCCRulesV2: update response param.
 
