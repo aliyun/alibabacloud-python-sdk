@@ -4115,6 +4115,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetUserBuyStatusResponse:
         """
+        @summary 获取用户购买状态
+        
         @param request: GetUserBuyStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetUserBuyStatusResponse
@@ -4148,6 +4150,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> green_20220926_models.GetUserBuyStatusResponse:
         """
+        @summary 获取用户购买状态
+        
         @param request: GetUserBuyStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetUserBuyStatusResponse
@@ -4180,6 +4184,8 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetUserBuyStatusRequest,
     ) -> green_20220926_models.GetUserBuyStatusResponse:
         """
+        @summary 获取用户购买状态
+        
         @param request: GetUserBuyStatusRequest
         @return: GetUserBuyStatusResponse
         """
@@ -4191,6 +4197,8 @@ class Client(OpenApiClient):
         request: green_20220926_models.GetUserBuyStatusRequest,
     ) -> green_20220926_models.GetUserBuyStatusResponse:
         """
+        @summary 获取用户购买状态
+        
         @param request: GetUserBuyStatusRequest
         @return: GetUserBuyStatusResponse
         """
