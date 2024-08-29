@@ -2421,6 +2421,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.enable_global_domain_name):
+            query['EnableGlobalDomainName'] = request.enable_global_domain_name
         if not UtilClient.is_unset(request.gdndescription):
             query['GDNDescription'] = request.gdndescription
         if not UtilClient.is_unset(request.owner_account):
@@ -2472,6 +2474,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.enable_global_domain_name):
+            query['EnableGlobalDomainName'] = request.enable_global_domain_name
         if not UtilClient.is_unset(request.gdndescription):
             query['GDNDescription'] = request.gdndescription
         if not UtilClient.is_unset(request.owner_account):
@@ -15437,6 +15441,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.planned_end_time):
             query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_flashing_off_time):
+            query['PlannedFlashingOffTime'] = request.planned_flashing_off_time
         if not UtilClient.is_unset(request.planned_start_time):
             query['PlannedStartTime'] = request.planned_start_time
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -15494,6 +15500,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.planned_end_time):
             query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_flashing_off_time):
+            query['PlannedFlashingOffTime'] = request.planned_flashing_off_time
         if not UtilClient.is_unset(request.planned_start_time):
             query['PlannedStartTime'] = request.planned_start_time
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -15695,6 +15703,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.planned_end_time):
             query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_flashing_off_time):
+            query['PlannedFlashingOffTime'] = request.planned_flashing_off_time
         if not UtilClient.is_unset(request.planned_start_time):
             query['PlannedStartTime'] = request.planned_start_time
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -15750,6 +15760,8 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.planned_end_time):
             query['PlannedEndTime'] = request.planned_end_time
+        if not UtilClient.is_unset(request.planned_flashing_off_time):
+            query['PlannedFlashingOffTime'] = request.planned_flashing_off_time
         if not UtilClient.is_unset(request.planned_start_time):
             query['PlannedStartTime'] = request.planned_start_time
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -15953,6 +15965,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.enable_global_domain_name):
+            query['EnableGlobalDomainName'] = request.enable_global_domain_name
         if not UtilClient.is_unset(request.gdndescription):
             query['GDNDescription'] = request.gdndescription
         if not UtilClient.is_unset(request.gdnid):
@@ -16002,6 +16016,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.enable_global_domain_name):
+            query['EnableGlobalDomainName'] = request.enable_global_domain_name
         if not UtilClient.is_unset(request.gdndescription):
             query['GDNDescription'] = request.gdndescription
         if not UtilClient.is_unset(request.gdnid):

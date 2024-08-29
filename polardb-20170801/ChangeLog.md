@@ -1,3 +1,13 @@
+2024-08-29 Version: 5.1.12
+- Update API CreateGlobalDatabaseNetwork: add param EnableGlobalDomainName.
+- Update API DescribeGlobalDatabaseNetwork: update response param.
+- Update API DescribeScheduleTasks: update response param.
+- Update API ModifyDBNodeClass: add param PlannedFlashingOffTime.
+- Update API ModifyDBNodesClass: add param PlannedFlashingOffTime.
+- Update API ModifyGlobalDatabaseNetwork: add param EnableGlobalDomainName.
+- Update API ModifyGlobalDatabaseNetwork: update param GDNDescription.
+
+
 2024-08-27 Version: 5.1.11
 - Update API DescribeDBProxyPerformance: add param DBNodeId.
 

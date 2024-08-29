@@ -3412,6 +3412,7 @@ class CreateGlobalDatabaseNetworkRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        enable_global_domain_name: bool = None,
         gdndescription: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -3424,6 +3425,7 @@ class CreateGlobalDatabaseNetworkRequest(TeaModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        self.enable_global_domain_name = enable_global_domain_name
         # The description of the GDN. The description must meet the following requirements:
         # 
         # *   It cannot start with [http:// or https://.](http://https://。)
@@ -3450,6 +3452,8 @@ class CreateGlobalDatabaseNetworkRequest(TeaModel):
         result = dict()
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.enable_global_domain_name is not None:
+            result['EnableGlobalDomainName'] = self.enable_global_domain_name
         if self.gdndescription is not None:
             result['GDNDescription'] = self.gdndescription
         if self.owner_account is not None:
@@ -3470,6 +3474,8 @@ class CreateGlobalDatabaseNetworkRequest(TeaModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EnableGlobalDomainName') is not None:
+            self.enable_global_domain_name = m.get('EnableGlobalDomainName')
         if m.get('GDNDescription') is not None:
             self.gdndescription = m.get('GDNDescription')
         if m.get('OwnerAccount') is not None:
@@ -17206,6 +17212,7 @@ class DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes(TeaModel):
 class DescribeGlobalDatabaseNetworkResponseBodyDBClusters(TeaModel):
     def __init__(
         self,
+        category: str = None,
         dbcluster_description: str = None,
         dbcluster_id: str = None,
         dbcluster_status: str = None,
@@ -17222,6 +17229,7 @@ class DescribeGlobalDatabaseNetworkResponseBodyDBClusters(TeaModel):
         serverless_type: str = None,
         storage_used: str = None,
     ):
+        self.category = category
         # The description of the cluster.
         self.dbcluster_description = dbcluster_description
         # The ID of the cluster.
@@ -17282,6 +17290,8 @@ class DescribeGlobalDatabaseNetworkResponseBodyDBClusters(TeaModel):
             return _map
 
         result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
         if self.dbcluster_description is not None:
             result['DBClusterDescription'] = self.dbcluster_description
         if self.dbcluster_id is not None:
@@ -17318,6 +17328,8 @@ class DescribeGlobalDatabaseNetworkResponseBodyDBClusters(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
         if m.get('DBClusterDescription') is not None:
             self.dbcluster_description = m.get('DBClusterDescription')
         if m.get('DBClusterId') is not None:
@@ -17366,6 +17378,7 @@ class DescribeGlobalDatabaseNetworkResponseBody(TeaModel):
         gdndescription: str = None,
         gdnid: str = None,
         gdnstatus: str = None,
+        global_domain_name: str = None,
         request_id: str = None,
         resource_group_id: str = None,
     ):
@@ -17398,6 +17411,7 @@ class DescribeGlobalDatabaseNetworkResponseBody(TeaModel):
         # *   **locked**: The GDN is locked. If the GDN is locked, you cannot perform operations on clusters in the GDN.
         # *   **removing_member**: The secondary cluster is being removed from the GDN.
         self.gdnstatus = gdnstatus
+        self.global_domain_name = global_domain_name
         # The ID of the request.
         self.request_id = request_id
         # The ID of the resource group.
@@ -17441,6 +17455,8 @@ class DescribeGlobalDatabaseNetworkResponseBody(TeaModel):
             result['GDNId'] = self.gdnid
         if self.gdnstatus is not None:
             result['GDNStatus'] = self.gdnstatus
+        if self.global_domain_name is not None:
+            result['GlobalDomainName'] = self.global_domain_name
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.resource_group_id is not None:
@@ -17473,6 +17489,8 @@ class DescribeGlobalDatabaseNetworkResponseBody(TeaModel):
             self.gdnid = m.get('GDNId')
         if m.get('GDNStatus') is not None:
             self.gdnstatus = m.get('GDNStatus')
+        if m.get('GlobalDomainName') is not None:
+            self.global_domain_name = m.get('GlobalDomainName')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('ResourceGroupId') is not None:
@@ -20947,6 +20965,7 @@ class DescribeScheduleTasksResponseBodyDataTimerInfos(TeaModel):
         db_cluster_status: str = None,
         order_id: str = None,
         planned_end_time: str = None,
+        planned_flashing_off_time: str = None,
         planned_start_time: str = None,
         planned_time: str = None,
         region: str = None,
@@ -20968,6 +20987,7 @@ class DescribeScheduleTasksResponseBodyDataTimerInfos(TeaModel):
         self.order_id = order_id
         # The latest start time of the task that you specified when you created the scheduled task. The time is displayed in UTC.
         self.planned_end_time = planned_end_time
+        self.planned_flashing_off_time = planned_flashing_off_time
         # The earliest start time of the task that you specified when you created the scheduled task. The time is displayed in UTC.
         self.planned_start_time = planned_start_time
         # The expected start time of the task. The time is displayed in UTC.
@@ -21005,6 +21025,8 @@ class DescribeScheduleTasksResponseBodyDataTimerInfos(TeaModel):
             result['OrderId'] = self.order_id
         if self.planned_end_time is not None:
             result['PlannedEndTime'] = self.planned_end_time
+        if self.planned_flashing_off_time is not None:
+            result['PlannedFlashingOffTime'] = self.planned_flashing_off_time
         if self.planned_start_time is not None:
             result['PlannedStartTime'] = self.planned_start_time
         if self.planned_time is not None:
@@ -21033,6 +21055,8 @@ class DescribeScheduleTasksResponseBodyDataTimerInfos(TeaModel):
             self.order_id = m.get('OrderId')
         if m.get('PlannedEndTime') is not None:
             self.planned_end_time = m.get('PlannedEndTime')
+        if m.get('PlannedFlashingOffTime') is not None:
+            self.planned_flashing_off_time = m.get('PlannedFlashingOffTime')
         if m.get('PlannedStartTime') is not None:
             self.planned_start_time = m.get('PlannedStartTime')
         if m.get('PlannedTime') is not None:
@@ -28349,6 +28373,7 @@ class ModifyDBNodeClassRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         planned_end_time: str = None,
+        planned_flashing_off_time: str = None,
         planned_start_time: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -28384,6 +28409,7 @@ class ModifyDBNodeClassRequest(TeaModel):
         # > *   The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
         # >*   By default, if you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is set to `Value of PlannedEndTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is `2021-01-14T09:30:00Z`.
         self.planned_end_time = planned_end_time
+        self.planned_flashing_off_time = planned_flashing_off_time
         # The earliest start time to upgrade the specifications within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
         # 
         # >*   This parameter takes effect only when `ModifyType` is set to `Upgrade`.
@@ -28423,6 +28449,8 @@ class ModifyDBNodeClassRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.planned_end_time is not None:
             result['PlannedEndTime'] = self.planned_end_time
+        if self.planned_flashing_off_time is not None:
+            result['PlannedFlashingOffTime'] = self.planned_flashing_off_time
         if self.planned_start_time is not None:
             result['PlannedStartTime'] = self.planned_start_time
         if self.resource_owner_account is not None:
@@ -28451,6 +28479,8 @@ class ModifyDBNodeClassRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('PlannedEndTime') is not None:
             self.planned_end_time = m.get('PlannedEndTime')
+        if m.get('PlannedFlashingOffTime') is not None:
+            self.planned_flashing_off_time = m.get('PlannedFlashingOffTime')
         if m.get('PlannedStartTime') is not None:
             self.planned_start_time = m.get('PlannedStartTime')
         if m.get('ResourceOwnerAccount') is not None:
@@ -28756,6 +28786,7 @@ class ModifyDBNodesClassRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         planned_end_time: str = None,
+        planned_flashing_off_time: str = None,
         planned_start_time: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -28785,6 +28816,7 @@ class ModifyDBNodesClassRequest(TeaModel):
         # >*   The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
         # >*   By default, if you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is set to `Value of PlannedEndTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is `2021-01-14T09:30:00Z`.
         self.planned_end_time = planned_end_time
+        self.planned_flashing_off_time = planned_flashing_off_time
         # The earliest start time to upgrade the specifications within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
         # 
         # > *   This parameter takes effect only when `ModifyType` is set to `Upgrade`.
@@ -28827,6 +28859,8 @@ class ModifyDBNodesClassRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.planned_end_time is not None:
             result['PlannedEndTime'] = self.planned_end_time
+        if self.planned_flashing_off_time is not None:
+            result['PlannedFlashingOffTime'] = self.planned_flashing_off_time
         if self.planned_start_time is not None:
             result['PlannedStartTime'] = self.planned_start_time
         if self.resource_owner_account is not None:
@@ -28856,6 +28890,8 @@ class ModifyDBNodesClassRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('PlannedEndTime') is not None:
             self.planned_end_time = m.get('PlannedEndTime')
+        if m.get('PlannedFlashingOffTime') is not None:
+            self.planned_flashing_off_time = m.get('PlannedFlashingOffTime')
         if m.get('PlannedStartTime') is not None:
             self.planned_start_time = m.get('PlannedStartTime')
         if m.get('ResourceOwnerAccount') is not None:
@@ -29120,6 +29156,7 @@ class ModifyDBNodesParametersResponse(TeaModel):
 class ModifyGlobalDatabaseNetworkRequest(TeaModel):
     def __init__(
         self,
+        enable_global_domain_name: bool = None,
         gdndescription: str = None,
         gdnid: str = None,
         owner_account: str = None,
@@ -29129,14 +29166,13 @@ class ModifyGlobalDatabaseNetworkRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        self.enable_global_domain_name = enable_global_domain_name
         # The description of the GDN. The description must meet the following requirements:
         # 
         # *   It cannot start with `http://` or `https://`.
         # *   It must start with a letter.
         # *   It can contain letters, digits, underscores (_), and hyphens (-).
         # *   It must be 2 to 126 characters in length.
-        # 
-        # This parameter is required.
         self.gdndescription = gdndescription
         # The ID of the GDN.
         # 
@@ -29159,6 +29195,8 @@ class ModifyGlobalDatabaseNetworkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.enable_global_domain_name is not None:
+            result['EnableGlobalDomainName'] = self.enable_global_domain_name
         if self.gdndescription is not None:
             result['GDNDescription'] = self.gdndescription
         if self.gdnid is not None:
@@ -29179,6 +29217,8 @@ class ModifyGlobalDatabaseNetworkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableGlobalDomainName') is not None:
+            self.enable_global_domain_name = m.get('EnableGlobalDomainName')
         if m.get('GDNDescription') is not None:
             self.gdndescription = m.get('GDNDescription')
         if m.get('GDNId') is not None:
