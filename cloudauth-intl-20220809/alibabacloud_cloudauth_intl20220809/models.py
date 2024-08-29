@@ -3486,11 +3486,15 @@ class FaceLivenessRequest(TeaModel):
 class FaceLivenessResponseBodyResultExtFaceInfo(TeaModel):
     def __init__(
         self,
+        face_age: int = None,
         face_attack: str = None,
+        face_gender: str = None,
         face_quality_score: float = None,
         occlusion_result: str = None,
     ):
+        self.face_age = face_age
         self.face_attack = face_attack
+        self.face_gender = face_gender
         self.face_quality_score = face_quality_score
         self.occlusion_result = occlusion_result
 
@@ -3503,8 +3507,12 @@ class FaceLivenessResponseBodyResultExtFaceInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.face_age is not None:
+            result['FaceAge'] = self.face_age
         if self.face_attack is not None:
             result['FaceAttack'] = self.face_attack
+        if self.face_gender is not None:
+            result['FaceGender'] = self.face_gender
         if self.face_quality_score is not None:
             result['FaceQualityScore'] = self.face_quality_score
         if self.occlusion_result is not None:
@@ -3513,8 +3521,12 @@ class FaceLivenessResponseBodyResultExtFaceInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FaceAge') is not None:
+            self.face_age = m.get('FaceAge')
         if m.get('FaceAttack') is not None:
             self.face_attack = m.get('FaceAttack')
+        if m.get('FaceGender') is not None:
+            self.face_gender = m.get('FaceGender')
         if m.get('FaceQualityScore') is not None:
             self.face_quality_score = m.get('FaceQualityScore')
         if m.get('OcclusionResult') is not None:

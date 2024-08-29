@@ -1,3 +1,7 @@
+2024-08-29 Version: 2.0.4
+- Update API FaceLiveness: update response param.
+
+
 2024-08-23 Version: 2.0.3
 - Update API Initialize: add param ShowAlbumIcon.
 - Update API Initialize: add param ShowOcrResult.
