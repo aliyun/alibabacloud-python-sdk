@@ -44977,6 +44977,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
         if not UtilClient.is_unset(request.new_next_hop_id):
             query['NewNextHopId'] = request.new_next_hop_id
         if not UtilClient.is_unset(request.new_next_hop_type):
@@ -44995,6 +44997,8 @@ class Client(OpenApiClient):
             query['RouteEntryId'] = request.route_entry_id
         if not UtilClient.is_unset(request.route_entry_name):
             query['RouteEntryName'] = request.route_entry_name
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -45032,6 +45036,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.destination_cidr_block):
+            query['DestinationCidrBlock'] = request.destination_cidr_block
         if not UtilClient.is_unset(request.new_next_hop_id):
             query['NewNextHopId'] = request.new_next_hop_id
         if not UtilClient.is_unset(request.new_next_hop_type):
@@ -45050,6 +45056,8 @@ class Client(OpenApiClient):
             query['RouteEntryId'] = request.route_entry_id
         if not UtilClient.is_unset(request.route_entry_name):
             query['RouteEntryName'] = request.route_entry_name
+        if not UtilClient.is_unset(request.route_table_id):
+            query['RouteTableId'] = request.route_table_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

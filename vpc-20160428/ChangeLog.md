@@ -1,3 +1,9 @@
+2024-08-29 Version: 6.9.2
+- Update API ModifyRouteEntry: add param DestinationCidrBlock.
+- Update API ModifyRouteEntry: add param RouteTableId.
+- Update API ModifyRouteEntry: update param RouteEntryId.
+
+
 2024-08-27 Version: 6.9.1
 - Update API CreateVpc: add param EnableDnsHostname.
 - Update API DescribeVpcAttribute: update response param.

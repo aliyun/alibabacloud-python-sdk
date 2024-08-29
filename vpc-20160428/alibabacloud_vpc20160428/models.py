@@ -86961,6 +86961,7 @@ class ModifyRouteEntryRequest(TeaModel):
     def __init__(
         self,
         description: str = None,
+        destination_cidr_block: str = None,
         new_next_hop_id: str = None,
         new_next_hop_type: str = None,
         owner_account: str = None,
@@ -86970,11 +86971,13 @@ class ModifyRouteEntryRequest(TeaModel):
         resource_owner_id: int = None,
         route_entry_id: str = None,
         route_entry_name: str = None,
+        route_table_id: str = None,
     ):
         # The description of the route entry.
         # 
         # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         self.description = description
+        self.destination_cidr_block = destination_cidr_block
         # The ID of the new next hop instance.
         self.new_next_hop_id = new_next_hop_id
         # The new next hop type of the route.
@@ -86990,13 +86993,12 @@ class ModifyRouteEntryRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the custom route entry.
-        # 
-        # This parameter is required.
         self.route_entry_id = route_entry_id
         # The name of the route entry.
         # 
         # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.route_entry_name = route_entry_name
+        self.route_table_id = route_table_id
 
     def validate(self):
         pass
@@ -87009,6 +87011,8 @@ class ModifyRouteEntryRequest(TeaModel):
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
+        if self.destination_cidr_block is not None:
+            result['DestinationCidrBlock'] = self.destination_cidr_block
         if self.new_next_hop_id is not None:
             result['NewNextHopId'] = self.new_next_hop_id
         if self.new_next_hop_type is not None:
@@ -87027,12 +87031,16 @@ class ModifyRouteEntryRequest(TeaModel):
             result['RouteEntryId'] = self.route_entry_id
         if self.route_entry_name is not None:
             result['RouteEntryName'] = self.route_entry_name
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DestinationCidrBlock') is not None:
+            self.destination_cidr_block = m.get('DestinationCidrBlock')
         if m.get('NewNextHopId') is not None:
             self.new_next_hop_id = m.get('NewNextHopId')
         if m.get('NewNextHopType') is not None:
@@ -87051,6 +87059,8 @@ class ModifyRouteEntryRequest(TeaModel):
             self.route_entry_id = m.get('RouteEntryId')
         if m.get('RouteEntryName') is not None:
             self.route_entry_name = m.get('RouteEntryName')
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
         return self
 
 
