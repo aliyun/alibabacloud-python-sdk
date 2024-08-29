@@ -1,3 +1,6 @@
+2024-08-29 Version: 1.8.1
+- Generated python 2023-12-29 for bailian.
+
 2024-08-21 Version: 1.8.0
 - Support API CreateMemory.
 - Support API CreateMemoryNode.
