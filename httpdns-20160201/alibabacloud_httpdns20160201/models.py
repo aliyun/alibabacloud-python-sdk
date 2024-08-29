@@ -11,6 +11,7 @@ class AddDomainRequest(TeaModel):
         domain_name: str = None,
     ):
         self.account_id = account_id
+        # This parameter is required.
         self.domain_name = domain_name
 
     def validate(self):
@@ -74,14 +75,14 @@ class AddDomainResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: AddDomainResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -93,6 +94,8 @@ class AddDomainResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -101,6 +104,8 @@ class AddDomainResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddDomainResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -114,6 +119,7 @@ class DeleteDomainRequest(TeaModel):
         domain_name: str = None,
     ):
         self.account_id = account_id
+        # This parameter is required.
         self.domain_name = domain_name
 
     def validate(self):
@@ -177,14 +183,14 @@ class DeleteDomainResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteDomainResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -196,6 +202,8 @@ class DeleteDomainResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -204,6 +212,8 @@ class DeleteDomainResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDomainResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -368,14 +378,14 @@ class DescribeDomainsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DescribeDomainsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -387,6 +397,8 @@ class DescribeDomainsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -395,6 +407,8 @@ class DescribeDomainsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDomainsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -408,19 +422,23 @@ class GetAccountInfoResponseBodyAccountInfo(TeaModel):
         month_free_count: int = None,
         month_https_resolve_count: int = None,
         month_resolve_count: int = None,
+        package_count: int = None,
         sign_secret: str = None,
         signed_count: int = None,
         unsigned_count: int = None,
         unsigned_enabled: bool = None,
+        user_status: int = None,
     ):
         self.account_id = account_id
         self.month_free_count = month_free_count
         self.month_https_resolve_count = month_https_resolve_count
         self.month_resolve_count = month_resolve_count
+        self.package_count = package_count
         self.sign_secret = sign_secret
         self.signed_count = signed_count
         self.unsigned_count = unsigned_count
         self.unsigned_enabled = unsigned_enabled
+        self.user_status = user_status
 
     def validate(self):
         pass
@@ -439,6 +457,8 @@ class GetAccountInfoResponseBodyAccountInfo(TeaModel):
             result['MonthHttpsResolveCount'] = self.month_https_resolve_count
         if self.month_resolve_count is not None:
             result['MonthResolveCount'] = self.month_resolve_count
+        if self.package_count is not None:
+            result['PackageCount'] = self.package_count
         if self.sign_secret is not None:
             result['SignSecret'] = self.sign_secret
         if self.signed_count is not None:
@@ -447,6 +467,8 @@ class GetAccountInfoResponseBodyAccountInfo(TeaModel):
             result['UnsignedCount'] = self.unsigned_count
         if self.unsigned_enabled is not None:
             result['UnsignedEnabled'] = self.unsigned_enabled
+        if self.user_status is not None:
+            result['UserStatus'] = self.user_status
         return result
 
     def from_map(self, m: dict = None):
@@ -459,6 +481,8 @@ class GetAccountInfoResponseBodyAccountInfo(TeaModel):
             self.month_https_resolve_count = m.get('MonthHttpsResolveCount')
         if m.get('MonthResolveCount') is not None:
             self.month_resolve_count = m.get('MonthResolveCount')
+        if m.get('PackageCount') is not None:
+            self.package_count = m.get('PackageCount')
         if m.get('SignSecret') is not None:
             self.sign_secret = m.get('SignSecret')
         if m.get('SignedCount') is not None:
@@ -467,6 +491,8 @@ class GetAccountInfoResponseBodyAccountInfo(TeaModel):
             self.unsigned_count = m.get('UnsignedCount')
         if m.get('UnsignedEnabled') is not None:
             self.unsigned_enabled = m.get('UnsignedEnabled')
+        if m.get('UserStatus') is not None:
+            self.user_status = m.get('UserStatus')
         return self
 
 
@@ -509,14 +535,14 @@ class GetAccountInfoResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetAccountInfoResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -528,6 +554,8 @@ class GetAccountInfoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -536,6 +564,8 @@ class GetAccountInfoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAccountInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -548,7 +578,9 @@ class GetResolveCountSummaryRequest(TeaModel):
         granularity: str = None,
         time_span: int = None,
     ):
+        # This parameter is required.
         self.granularity = granularity
+        # This parameter is required.
         self.time_span = time_span
 
     def validate(self):
@@ -659,14 +691,14 @@ class GetResolveCountSummaryResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetResolveCountSummaryResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -678,6 +710,8 @@ class GetResolveCountSummaryResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -686,6 +720,8 @@ class GetResolveCountSummaryResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetResolveCountSummaryResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -700,9 +736,12 @@ class GetResolveStatisticsRequest(TeaModel):
         protocol_name: str = None,
         time_span: int = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.granularity = granularity
         self.protocol_name = protocol_name
+        # This parameter is required.
         self.time_span = time_span
 
     def validate(self):
@@ -844,14 +883,14 @@ class GetResolveStatisticsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetResolveStatisticsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -863,6 +902,8 @@ class GetResolveStatisticsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -871,6 +912,8 @@ class GetResolveStatisticsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetResolveStatisticsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -882,9 +925,11 @@ class ListDomainsRequest(TeaModel):
         self,
         page_number: int = None,
         page_size: int = None,
+        search: str = None,
     ):
         self.page_number = page_number
         self.page_size = page_size
+        self.search = search
 
     def validate(self):
         pass
@@ -899,6 +944,8 @@ class ListDomainsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.search is not None:
+            result['Search'] = self.search
         return result
 
     def from_map(self, m: dict = None):
@@ -907,6 +954,8 @@ class ListDomainsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Search') is not None:
+            self.search = m.get('Search')
         return self
 
 
@@ -918,12 +967,14 @@ class ListDomainsResponseBodyDomainInfosDomainInfo(TeaModel):
         resolved_6: int = None,
         resolved_https: int = None,
         resolved_https_6: int = None,
+        time_modified: int = None,
     ):
         self.domain_name = domain_name
         self.resolved = resolved
         self.resolved_6 = resolved_6
         self.resolved_https = resolved_https
         self.resolved_https_6 = resolved_https_6
+        self.time_modified = time_modified
 
     def validate(self):
         pass
@@ -944,6 +995,8 @@ class ListDomainsResponseBodyDomainInfosDomainInfo(TeaModel):
             result['ResolvedHttps'] = self.resolved_https
         if self.resolved_https_6 is not None:
             result['ResolvedHttps6'] = self.resolved_https_6
+        if self.time_modified is not None:
+            result['TimeModified'] = self.time_modified
         return result
 
     def from_map(self, m: dict = None):
@@ -958,6 +1011,8 @@ class ListDomainsResponseBodyDomainInfosDomainInfo(TeaModel):
             self.resolved_https = m.get('ResolvedHttps')
         if m.get('ResolvedHttps6') is not None:
             self.resolved_https_6 = m.get('ResolvedHttps6')
+        if m.get('TimeModified') is not None:
+            self.time_modified = m.get('TimeModified')
         return self
 
 
@@ -1053,14 +1108,14 @@ class ListDomainsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListDomainsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1072,6 +1127,8 @@ class ListDomainsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1080,6 +1137,8 @@ class ListDomainsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDomainsResponseBody()
             self.body = temp_model.from_map(m['body'])

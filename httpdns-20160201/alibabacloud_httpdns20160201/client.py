@@ -46,13 +46,19 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.AddDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.AddDomainResponse:
+        """
+        @param request: AddDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        query['AccountId'] = request.account_id
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddDomain',
@@ -62,7 +68,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -75,13 +81,19 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.AddDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.AddDomainResponse:
+        """
+        @param request: AddDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        query['AccountId'] = request.account_id
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='AddDomain',
@@ -91,7 +103,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -103,6 +115,10 @@ class Client(OpenApiClient):
         self,
         request: httpdns_20160201_models.AddDomainRequest,
     ) -> httpdns_20160201_models.AddDomainResponse:
+        """
+        @param request: AddDomainRequest
+        @return: AddDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_domain_with_options(request, runtime)
 
@@ -110,6 +126,10 @@ class Client(OpenApiClient):
         self,
         request: httpdns_20160201_models.AddDomainRequest,
     ) -> httpdns_20160201_models.AddDomainResponse:
+        """
+        @param request: AddDomainRequest
+        @return: AddDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_domain_with_options_async(request, runtime)
 
@@ -118,13 +138,19 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.DeleteDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.DeleteDomainResponse:
+        """
+        @param request: DeleteDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        query['AccountId'] = request.account_id
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDomain',
@@ -134,7 +160,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -147,13 +173,19 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.DeleteDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.DeleteDomainResponse:
+        """
+        @param request: DeleteDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        query['AccountId'] = request.account_id
-        query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DeleteDomain',
@@ -163,7 +195,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -175,6 +207,10 @@ class Client(OpenApiClient):
         self,
         request: httpdns_20160201_models.DeleteDomainRequest,
     ) -> httpdns_20160201_models.DeleteDomainResponse:
+        """
+        @param request: DeleteDomainRequest
+        @return: DeleteDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_domain_with_options(request, runtime)
 
@@ -182,6 +218,10 @@ class Client(OpenApiClient):
         self,
         request: httpdns_20160201_models.DeleteDomainRequest,
     ) -> httpdns_20160201_models.DeleteDomainResponse:
+        """
+        @param request: DeleteDomainRequest
+        @return: DeleteDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_domain_with_options_async(request, runtime)
 
@@ -190,14 +230,21 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.DescribeDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.DescribeDomainsResponse:
+        """
+        @param request: DescribeDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        query['AccountId'] = request.account_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomains',
@@ -207,7 +254,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -220,14 +267,21 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.DescribeDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.DescribeDomainsResponse:
+        """
+        @param request: DescribeDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        query['AccountId'] = request.account_id
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeDomains',
@@ -237,7 +291,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -249,6 +303,10 @@ class Client(OpenApiClient):
         self,
         request: httpdns_20160201_models.DescribeDomainsRequest,
     ) -> httpdns_20160201_models.DescribeDomainsResponse:
+        """
+        @param request: DescribeDomainsRequest
+        @return: DescribeDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_domains_with_options(request, runtime)
 
@@ -256,6 +314,10 @@ class Client(OpenApiClient):
         self,
         request: httpdns_20160201_models.DescribeDomainsRequest,
     ) -> httpdns_20160201_models.DescribeDomainsResponse:
+        """
+        @param request: DescribeDomainsRequest
+        @return: DescribeDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_domains_with_options_async(request, runtime)
 
@@ -263,6 +325,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.GetAccountInfoResponse:
+        """
+        @param request: GetAccountInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountInfoResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetAccountInfo',
@@ -272,7 +339,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -284,6 +351,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.GetAccountInfoResponse:
+        """
+        @param request: GetAccountInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountInfoResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetAccountInfo',
@@ -293,7 +365,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -302,10 +374,16 @@ class Client(OpenApiClient):
         )
 
     def get_account_info(self) -> httpdns_20160201_models.GetAccountInfoResponse:
+        """
+        @return: GetAccountInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_account_info_with_options(runtime)
 
     async def get_account_info_async(self) -> httpdns_20160201_models.GetAccountInfoResponse:
+        """
+        @return: GetAccountInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_account_info_with_options_async(runtime)
 
@@ -314,13 +392,19 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.GetResolveCountSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.GetResolveCountSummaryResponse:
+        """
+        @param request: GetResolveCountSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResolveCountSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        query['Granularity'] = request.granularity
-        query['TimeSpan'] = request.time_span
+        if not UtilClient.is_unset(request.granularity):
+            query['Granularity'] = request.granularity
+        if not UtilClient.is_unset(request.time_span):
+            query['TimeSpan'] = request.time_span
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetResolveCountSummary',
@@ -330,7 +414,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -343,13 +427,19 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.GetResolveCountSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.GetResolveCountSummaryResponse:
+        """
+        @param request: GetResolveCountSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResolveCountSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        query['Granularity'] = request.granularity
-        query['TimeSpan'] = request.time_span
+        if not UtilClient.is_unset(request.granularity):
+            query['Granularity'] = request.granularity
+        if not UtilClient.is_unset(request.time_span):
+            query['TimeSpan'] = request.time_span
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetResolveCountSummary',
@@ -359,7 +449,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -371,6 +461,10 @@ class Client(OpenApiClient):
         self,
         request: httpdns_20160201_models.GetResolveCountSummaryRequest,
     ) -> httpdns_20160201_models.GetResolveCountSummaryResponse:
+        """
+        @param request: GetResolveCountSummaryRequest
+        @return: GetResolveCountSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_resolve_count_summary_with_options(request, runtime)
 
@@ -378,6 +472,10 @@ class Client(OpenApiClient):
         self,
         request: httpdns_20160201_models.GetResolveCountSummaryRequest,
     ) -> httpdns_20160201_models.GetResolveCountSummaryResponse:
+        """
+        @param request: GetResolveCountSummaryRequest
+        @return: GetResolveCountSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_resolve_count_summary_with_options_async(request, runtime)
 
@@ -386,15 +484,23 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.GetResolveStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.GetResolveStatisticsResponse:
+        """
+        @param request: GetResolveStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResolveStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['Granularity'] = request.granularity
-        query['ProtocolName'] = request.protocol_name
-        query['TimeSpan'] = request.time_span
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.granularity):
+            query['Granularity'] = request.granularity
+        if not UtilClient.is_unset(request.protocol_name):
+            query['ProtocolName'] = request.protocol_name
+        if not UtilClient.is_unset(request.time_span):
+            query['TimeSpan'] = request.time_span
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetResolveStatistics',
@@ -404,7 +510,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -417,15 +523,23 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.GetResolveStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.GetResolveStatisticsResponse:
+        """
+        @param request: GetResolveStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResolveStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        query['DomainName'] = request.domain_name
-        query['Granularity'] = request.granularity
-        query['ProtocolName'] = request.protocol_name
-        query['TimeSpan'] = request.time_span
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.granularity):
+            query['Granularity'] = request.granularity
+        if not UtilClient.is_unset(request.protocol_name):
+            query['ProtocolName'] = request.protocol_name
+        if not UtilClient.is_unset(request.time_span):
+            query['TimeSpan'] = request.time_span
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetResolveStatistics',
@@ -435,7 +549,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -447,6 +561,10 @@ class Client(OpenApiClient):
         self,
         request: httpdns_20160201_models.GetResolveStatisticsRequest,
     ) -> httpdns_20160201_models.GetResolveStatisticsResponse:
+        """
+        @param request: GetResolveStatisticsRequest
+        @return: GetResolveStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_resolve_statistics_with_options(request, runtime)
 
@@ -454,6 +572,10 @@ class Client(OpenApiClient):
         self,
         request: httpdns_20160201_models.GetResolveStatisticsRequest,
     ) -> httpdns_20160201_models.GetResolveStatisticsResponse:
+        """
+        @param request: GetResolveStatisticsRequest
+        @return: GetResolveStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_resolve_statistics_with_options_async(request, runtime)
 
@@ -462,13 +584,21 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.ListDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.ListDomainsResponse:
+        """
+        @param request: ListDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDomainsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search):
+            query['Search'] = request.search
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDomains',
@@ -478,7 +608,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -491,13 +621,21 @@ class Client(OpenApiClient):
         request: httpdns_20160201_models.ListDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> httpdns_20160201_models.ListDomainsResponse:
+        """
+        @param request: ListDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDomainsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        query['PageNumber'] = request.page_number
-        query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search):
+            query['Search'] = request.search
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=UtilClient.to_map(request)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListDomains',
@@ -507,7 +645,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='RPC',
-            req_body_type='json',
+            req_body_type='formData',
             body_type='json'
         )
         return TeaCore.from_map(
@@ -519,6 +657,10 @@ class Client(OpenApiClient):
         self,
         request: httpdns_20160201_models.ListDomainsRequest,
     ) -> httpdns_20160201_models.ListDomainsResponse:
+        """
+        @param request: ListDomainsRequest
+        @return: ListDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_domains_with_options(request, runtime)
 
@@ -526,5 +668,9 @@ class Client(OpenApiClient):
         self,
         request: httpdns_20160201_models.ListDomainsRequest,
     ) -> httpdns_20160201_models.ListDomainsResponse:
+        """
+        @param request: ListDomainsRequest
+        @return: ListDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_domains_with_options_async(request, runtime)
