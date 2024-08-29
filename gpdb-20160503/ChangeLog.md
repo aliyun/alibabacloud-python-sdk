@@ -1,3 +1,9 @@
+2024-08-29 Version: 4.0.2
+- Update API DescribeDataBackups: update param EndTime.
+- Update API DescribeDataBackups: update param StartTime.
+- Update API ModifyMasterSpec: update param MasterCU.
+
+
 2024-08-28 Version: 4.0.1
 - Update API QueryCollectionData: add param RelationalTableFilter.
 

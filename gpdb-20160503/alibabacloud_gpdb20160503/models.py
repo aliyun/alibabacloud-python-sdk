@@ -14368,8 +14368,6 @@ class DescribeDataBackupsRequest(TeaModel):
         # If you do not specify this parameter, the backup sets of full backup are returned.
         self.data_type = data_type
         # The end of the time range to query. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
-        # 
-        # This parameter is required.
         self.end_time = end_time
         # The page number. Pages start from page 1. Default value: 1
         self.page_number = page_number
@@ -14382,8 +14380,6 @@ class DescribeDataBackupsRequest(TeaModel):
         # Default value: 30.
         self.page_size = page_size
         # The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
-        # 
-        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -31819,6 +31815,8 @@ class ModifyMasterSpecRequest(TeaModel):
         # *   32 CU
         # 
         # >  You are charged for coordinator node resources of more than 8 compute units (CUs).
+        # 
+        # This parameter is required.
         self.master_cu = master_cu
         # The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
