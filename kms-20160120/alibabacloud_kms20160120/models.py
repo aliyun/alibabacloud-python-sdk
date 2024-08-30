@@ -9053,6 +9053,33 @@ class GetSecretValueRequest(TeaModel):
         return self
 
 
+class GetSecretValueResponseBodyVersionStages(TeaModel):
+    def __init__(
+        self,
+        version_stage: List[str] = None,
+    ):
+        self.version_stage = version_stage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.version_stage is not None:
+            result['VersionStage'] = self.version_stage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VersionStage') is not None:
+            self.version_stage = m.get('VersionStage')
+        return self
+
+
 class GetSecretValueResponseBody(TeaModel):
     def __init__(
         self,
@@ -9068,7 +9095,7 @@ class GetSecretValueResponseBody(TeaModel):
         secret_name: str = None,
         secret_type: str = None,
         version_id: str = None,
-        version_stages: List[str] = None,
+        version_stages: GetSecretValueResponseBodyVersionStages = None,
     ):
         # Indicates whether automatic rotation is enabled. Valid values:
         # 
@@ -9133,7 +9160,8 @@ class GetSecretValueResponseBody(TeaModel):
         self.version_stages = version_stages
 
     def validate(self):
-        pass
+        if self.version_stages:
+            self.version_stages.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9166,7 +9194,7 @@ class GetSecretValueResponseBody(TeaModel):
         if self.version_id is not None:
             result['VersionId'] = self.version_id
         if self.version_stages is not None:
-            result['VersionStages'] = self.version_stages
+            result['VersionStages'] = self.version_stages.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -9196,7 +9224,8 @@ class GetSecretValueResponseBody(TeaModel):
         if m.get('VersionId') is not None:
             self.version_id = m.get('VersionId')
         if m.get('VersionStages') is not None:
-            self.version_stages = m.get('VersionStages')
+            temp_model = GetSecretValueResponseBodyVersionStages()
+            self.version_stages = temp_model.from_map(m['VersionStages'])
         return self
 
 
