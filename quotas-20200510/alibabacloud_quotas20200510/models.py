@@ -2444,6 +2444,7 @@ class GetQuotaApplicationResponseBodyQuotaApplication(TeaModel):
         product_code: str = None,
         quota_action_code: str = None,
         quota_arn: str = None,
+        quota_category: str = None,
         quota_description: str = None,
         quota_name: str = None,
         quota_unit: str = None,
@@ -2480,6 +2481,7 @@ class GetQuotaApplicationResponseBodyQuotaApplication(TeaModel):
         self.quota_action_code = quota_action_code
         # The Alibaba Cloud Resource Name (ARN) of the quota.
         self.quota_arn = quota_arn
+        self.quota_category = quota_category
         # The description of the quota.
         self.quota_description = quota_description
         # The name of the quota.
@@ -2529,6 +2531,8 @@ class GetQuotaApplicationResponseBodyQuotaApplication(TeaModel):
             result['QuotaActionCode'] = self.quota_action_code
         if self.quota_arn is not None:
             result['QuotaArn'] = self.quota_arn
+        if self.quota_category is not None:
+            result['QuotaCategory'] = self.quota_category
         if self.quota_description is not None:
             result['QuotaDescription'] = self.quota_description
         if self.quota_name is not None:
@@ -2567,6 +2571,8 @@ class GetQuotaApplicationResponseBodyQuotaApplication(TeaModel):
             self.quota_action_code = m.get('QuotaActionCode')
         if m.get('QuotaArn') is not None:
             self.quota_arn = m.get('QuotaArn')
+        if m.get('QuotaCategory') is not None:
+            self.quota_category = m.get('QuotaCategory')
         if m.get('QuotaDescription') is not None:
             self.quota_description = m.get('QuotaDescription')
         if m.get('QuotaName') is not None:
@@ -5890,6 +5896,7 @@ class ListQuotaApplicationsResponseBodyQuotaApplications(TeaModel):
         product_code: str = None,
         quota_action_code: str = None,
         quota_arn: str = None,
+        quota_category: str = None,
         quota_description: str = None,
         quota_name: str = None,
         quota_unit: str = None,
@@ -5927,6 +5934,7 @@ class ListQuotaApplicationsResponseBodyQuotaApplications(TeaModel):
         self.quota_action_code = quota_action_code
         # The Alibaba Cloud Resource Name (ARN) of the quota.
         self.quota_arn = quota_arn
+        self.quota_category = quota_category
         # The description of the quota.
         self.quota_description = quota_description
         # The name of the quota.
@@ -5981,6 +5989,8 @@ class ListQuotaApplicationsResponseBodyQuotaApplications(TeaModel):
             result['QuotaActionCode'] = self.quota_action_code
         if self.quota_arn is not None:
             result['QuotaArn'] = self.quota_arn
+        if self.quota_category is not None:
+            result['QuotaCategory'] = self.quota_category
         if self.quota_description is not None:
             result['QuotaDescription'] = self.quota_description
         if self.quota_name is not None:
@@ -6024,6 +6034,8 @@ class ListQuotaApplicationsResponseBodyQuotaApplications(TeaModel):
             self.quota_action_code = m.get('QuotaActionCode')
         if m.get('QuotaArn') is not None:
             self.quota_arn = m.get('QuotaArn')
+        if m.get('QuotaCategory') is not None:
+            self.quota_category = m.get('QuotaCategory')
         if m.get('QuotaDescription') is not None:
             self.quota_description = m.get('QuotaDescription')
         if m.get('QuotaName') is not None:

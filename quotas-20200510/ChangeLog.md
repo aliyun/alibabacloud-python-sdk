@@ -1,3 +1,8 @@
+2024-08-30 Version: 1.2.1
+- Update API GetQuotaApplication: update response param.
+- Update API ListQuotaApplications: update response param.
+
+
 2024-06-30 Version: 1.2.0
 - Support API GetQuotaApplicationApproval.
 - Support API RemindQuotaApplicationApproval.
