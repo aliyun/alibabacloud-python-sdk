@@ -1,3 +1,11 @@
+2024-08-30 Version: 1.0.4
+- Update API DescribeAppOtaVersion: update response param.
+- Update API UpdateTerminalPolicy: add param BackgroundModeTitle.
+- Update API UpdateTerminalPolicy: add param EnableBackgroundMode.
+- Update API UpdateTerminalPolicy: add param EnableScheduledReboot.
+- Update API UpdateTerminalPolicy: add param ScheduledReboot.
+
+
 2024-08-27 Version: 1.0.3
 - Update API ListTerminals: update response param.
 

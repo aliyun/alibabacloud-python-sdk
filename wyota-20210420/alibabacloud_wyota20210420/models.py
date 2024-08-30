@@ -2414,6 +2414,7 @@ class DescribeAppOtaVersionResponseBodyDataAppOtaInfoDTOList(TeaModel):
         gmt_create: str = None,
         md_5: str = None,
         os_type: str = None,
+        ota_type: int = None,
         project: str = None,
         protocol_type: str = None,
         release_note: str = None,
@@ -2432,6 +2433,7 @@ class DescribeAppOtaVersionResponseBodyDataAppOtaInfoDTOList(TeaModel):
         self.gmt_create = gmt_create
         self.md_5 = md_5
         self.os_type = os_type
+        self.ota_type = ota_type
         self.project = project
         self.protocol_type = protocol_type
         self.release_note = release_note
@@ -2466,6 +2468,8 @@ class DescribeAppOtaVersionResponseBodyDataAppOtaInfoDTOList(TeaModel):
             result['Md5'] = self.md_5
         if self.os_type is not None:
             result['OsType'] = self.os_type
+        if self.ota_type is not None:
+            result['OtaType'] = self.ota_type
         if self.project is not None:
             result['Project'] = self.project
         if self.protocol_type is not None:
@@ -2504,6 +2508,8 @@ class DescribeAppOtaVersionResponseBodyDataAppOtaInfoDTOList(TeaModel):
             self.md_5 = m.get('Md5')
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')
+        if m.get('OtaType') is not None:
+            self.ota_type = m.get('OtaType')
         if m.get('Project') is not None:
             self.project = m.get('Project')
         if m.get('ProtocolType') is not None:
@@ -12954,13 +12960,16 @@ class UpdateLabelResponse(TeaModel):
 class UpdateTerminalPolicyRequest(TeaModel):
     def __init__(
         self,
+        background_mode_title: str = None,
         display_layout: str = None,
         display_resolution: str = None,
         display_scale_ratio: str = None,
         enable_auto_lock_screen: int = None,
         enable_auto_login: int = None,
+        enable_background_mode: int = None,
         enable_bluetooth: int = None,
         enable_modify_password: int = None,
+        enable_scheduled_reboot: int = None,
         enable_scheduled_shutdown: int = None,
         enable_switch_personal: int = None,
         enable_wlan: int = None,
@@ -12971,17 +12980,21 @@ class UpdateTerminalPolicyRequest(TeaModel):
         power_button_define_for_as: int = None,
         power_button_define_for_ns: int = None,
         power_on_behavior: int = None,
+        scheduled_reboot: str = None,
         scheduled_shutdown: str = None,
         setting_lock: int = None,
         terminal_policy_id: str = None,
     ):
+        self.background_mode_title = background_mode_title
         self.display_layout = display_layout
         self.display_resolution = display_resolution
         self.display_scale_ratio = display_scale_ratio
         self.enable_auto_lock_screen = enable_auto_lock_screen
         self.enable_auto_login = enable_auto_login
+        self.enable_background_mode = enable_background_mode
         self.enable_bluetooth = enable_bluetooth
         self.enable_modify_password = enable_modify_password
+        self.enable_scheduled_reboot = enable_scheduled_reboot
         self.enable_scheduled_shutdown = enable_scheduled_shutdown
         self.enable_switch_personal = enable_switch_personal
         self.enable_wlan = enable_wlan
@@ -12992,6 +13005,7 @@ class UpdateTerminalPolicyRequest(TeaModel):
         self.power_button_define_for_as = power_button_define_for_as
         self.power_button_define_for_ns = power_button_define_for_ns
         self.power_on_behavior = power_on_behavior
+        self.scheduled_reboot = scheduled_reboot
         self.scheduled_shutdown = scheduled_shutdown
         self.setting_lock = setting_lock
         self.terminal_policy_id = terminal_policy_id
@@ -13005,6 +13019,8 @@ class UpdateTerminalPolicyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.background_mode_title is not None:
+            result['BackgroundModeTitle'] = self.background_mode_title
         if self.display_layout is not None:
             result['DisplayLayout'] = self.display_layout
         if self.display_resolution is not None:
@@ -13015,10 +13031,14 @@ class UpdateTerminalPolicyRequest(TeaModel):
             result['EnableAutoLockScreen'] = self.enable_auto_lock_screen
         if self.enable_auto_login is not None:
             result['EnableAutoLogin'] = self.enable_auto_login
+        if self.enable_background_mode is not None:
+            result['EnableBackgroundMode'] = self.enable_background_mode
         if self.enable_bluetooth is not None:
             result['EnableBluetooth'] = self.enable_bluetooth
         if self.enable_modify_password is not None:
             result['EnableModifyPassword'] = self.enable_modify_password
+        if self.enable_scheduled_reboot is not None:
+            result['EnableScheduledReboot'] = self.enable_scheduled_reboot
         if self.enable_scheduled_shutdown is not None:
             result['EnableScheduledShutdown'] = self.enable_scheduled_shutdown
         if self.enable_switch_personal is not None:
@@ -13039,6 +13059,8 @@ class UpdateTerminalPolicyRequest(TeaModel):
             result['PowerButtonDefineForNs'] = self.power_button_define_for_ns
         if self.power_on_behavior is not None:
             result['PowerOnBehavior'] = self.power_on_behavior
+        if self.scheduled_reboot is not None:
+            result['ScheduledReboot'] = self.scheduled_reboot
         if self.scheduled_shutdown is not None:
             result['ScheduledShutdown'] = self.scheduled_shutdown
         if self.setting_lock is not None:
@@ -13049,6 +13071,8 @@ class UpdateTerminalPolicyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackgroundModeTitle') is not None:
+            self.background_mode_title = m.get('BackgroundModeTitle')
         if m.get('DisplayLayout') is not None:
             self.display_layout = m.get('DisplayLayout')
         if m.get('DisplayResolution') is not None:
@@ -13059,10 +13083,14 @@ class UpdateTerminalPolicyRequest(TeaModel):
             self.enable_auto_lock_screen = m.get('EnableAutoLockScreen')
         if m.get('EnableAutoLogin') is not None:
             self.enable_auto_login = m.get('EnableAutoLogin')
+        if m.get('EnableBackgroundMode') is not None:
+            self.enable_background_mode = m.get('EnableBackgroundMode')
         if m.get('EnableBluetooth') is not None:
             self.enable_bluetooth = m.get('EnableBluetooth')
         if m.get('EnableModifyPassword') is not None:
             self.enable_modify_password = m.get('EnableModifyPassword')
+        if m.get('EnableScheduledReboot') is not None:
+            self.enable_scheduled_reboot = m.get('EnableScheduledReboot')
         if m.get('EnableScheduledShutdown') is not None:
             self.enable_scheduled_shutdown = m.get('EnableScheduledShutdown')
         if m.get('EnableSwitchPersonal') is not None:
@@ -13083,6 +13111,8 @@ class UpdateTerminalPolicyRequest(TeaModel):
             self.power_button_define_for_ns = m.get('PowerButtonDefineForNs')
         if m.get('PowerOnBehavior') is not None:
             self.power_on_behavior = m.get('PowerOnBehavior')
+        if m.get('ScheduledReboot') is not None:
+            self.scheduled_reboot = m.get('ScheduledReboot')
         if m.get('ScheduledShutdown') is not None:
             self.scheduled_shutdown = m.get('ScheduledShutdown')
         if m.get('SettingLock') is not None:
