@@ -1664,6 +1664,7 @@ class GetApplicationResponseBodyDataResourceList(TeaModel):
         self,
         charge_type: str = None,
         lifecycle: str = None,
+        node_label: str = None,
         remark: str = None,
         resource_code: str = None,
         resource_id: str = None,
@@ -1675,6 +1676,7 @@ class GetApplicationResponseBodyDataResourceList(TeaModel):
         self.charge_type = charge_type
         # The resource tag.
         self.lifecycle = lifecycle
+        self.node_label = node_label
         # The deployment result.
         self.remark = remark
         # The service code.
@@ -1701,6 +1703,8 @@ class GetApplicationResponseBodyDataResourceList(TeaModel):
             result['ChargeType'] = self.charge_type
         if self.lifecycle is not None:
             result['Lifecycle'] = self.lifecycle
+        if self.node_label is not None:
+            result['NodeLabel'] = self.node_label
         if self.remark is not None:
             result['Remark'] = self.remark
         if self.resource_code is not None:
@@ -1721,6 +1725,8 @@ class GetApplicationResponseBodyDataResourceList(TeaModel):
             self.charge_type = m.get('ChargeType')
         if m.get('Lifecycle') is not None:
             self.lifecycle = m.get('Lifecycle')
+        if m.get('NodeLabel') is not None:
+            self.node_label = m.get('NodeLabel')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
         if m.get('ResourceCode') is not None:
@@ -1742,6 +1748,7 @@ class GetApplicationResponseBodyData(TeaModel):
         application_id: str = None,
         checklist: List[GetApplicationResponseBodyDataChecklist] = None,
         create_time: str = None,
+        deploy_percent: float = None,
         description: str = None,
         error: str = None,
         image_url: str = None,
@@ -1758,6 +1765,7 @@ class GetApplicationResponseBodyData(TeaModel):
         self.checklist = checklist
         # The time when the app was created
         self.create_time = create_time
+        self.deploy_percent = deploy_percent
         # Application description
         self.description = description
         # The resource type.
@@ -1805,6 +1813,8 @@ class GetApplicationResponseBodyData(TeaModel):
                 result['Checklist'].append(k.to_map() if k else None)
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.deploy_percent is not None:
+            result['DeployPercent'] = self.deploy_percent
         if self.description is not None:
             result['Description'] = self.description
         if self.error is not None:
@@ -1840,6 +1850,8 @@ class GetApplicationResponseBodyData(TeaModel):
                 self.checklist.append(temp_model.from_map(k))
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DeployPercent') is not None:
+            self.deploy_percent = m.get('DeployPercent')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('Error') is not None:

@@ -1,3 +1,7 @@
+2024-08-30 Version: 5.0.1
+- Update API GetApplication: update response param.
+
+
 2024-08-29 Version: 5.0.0
 - Support API GetApplicationVariables4Fail.
 - Support API ReConfigApplication.
