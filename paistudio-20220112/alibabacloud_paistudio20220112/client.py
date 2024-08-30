@@ -59,12 +59,132 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def check_instance_web_terminal_with_options(
+        self,
+        training_job_id: str,
+        instance_id: str,
+        request: pai_studio_20220112_models.CheckInstanceWebTerminalRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.CheckInstanceWebTerminalResponse:
+        """
+        @summary 检查WebTerminal
+        
+        @param request: CheckInstanceWebTerminalRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckInstanceWebTerminalResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.check_info):
+            body['CheckInfo'] = request.check_info
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckInstanceWebTerminal',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/webterminals/action/check',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.CheckInstanceWebTerminalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_instance_web_terminal_with_options_async(
+        self,
+        training_job_id: str,
+        instance_id: str,
+        request: pai_studio_20220112_models.CheckInstanceWebTerminalRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.CheckInstanceWebTerminalResponse:
+        """
+        @summary 检查WebTerminal
+        
+        @param request: CheckInstanceWebTerminalRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckInstanceWebTerminalResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.check_info):
+            body['CheckInfo'] = request.check_info
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckInstanceWebTerminal',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/webterminals/action/check',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.CheckInstanceWebTerminalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_instance_web_terminal(
+        self,
+        training_job_id: str,
+        instance_id: str,
+        request: pai_studio_20220112_models.CheckInstanceWebTerminalRequest,
+    ) -> pai_studio_20220112_models.CheckInstanceWebTerminalResponse:
+        """
+        @summary 检查WebTerminal
+        
+        @param request: CheckInstanceWebTerminalRequest
+        @return: CheckInstanceWebTerminalResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.check_instance_web_terminal_with_options(training_job_id, instance_id, request, headers, runtime)
+
+    async def check_instance_web_terminal_async(
+        self,
+        training_job_id: str,
+        instance_id: str,
+        request: pai_studio_20220112_models.CheckInstanceWebTerminalRequest,
+    ) -> pai_studio_20220112_models.CheckInstanceWebTerminalResponse:
+        """
+        @summary 检查WebTerminal
+        
+        @param request: CheckInstanceWebTerminalRequest
+        @return: CheckInstanceWebTerminalResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.check_instance_web_terminal_with_options_async(training_job_id, instance_id, request, headers, runtime)
+
     def create_algorithm_with_options(
         self,
         request: pai_studio_20220112_models.CreateAlgorithmRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.CreateAlgorithmResponse:
+        """
+        @summary 创建新的算法
+        
+        @param request: CreateAlgorithmRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAlgorithmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.algorithm_description):
@@ -101,6 +221,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.CreateAlgorithmResponse:
+        """
+        @summary 创建新的算法
+        
+        @param request: CreateAlgorithmRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAlgorithmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.algorithm_description):
@@ -135,6 +263,12 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.CreateAlgorithmRequest,
     ) -> pai_studio_20220112_models.CreateAlgorithmResponse:
+        """
+        @summary 创建新的算法
+        
+        @param request: CreateAlgorithmRequest
+        @return: CreateAlgorithmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_algorithm_with_options(request, headers, runtime)
@@ -143,6 +277,12 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.CreateAlgorithmRequest,
     ) -> pai_studio_20220112_models.CreateAlgorithmResponse:
+        """
+        @summary 创建新的算法
+        
+        @param request: CreateAlgorithmRequest
+        @return: CreateAlgorithmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_algorithm_with_options_async(request, headers, runtime)
@@ -155,6 +295,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.CreateAlgorithmVersionResponse:
+        """
+        @summary 创建一个新的算法版本
+        
+        @param tmp_req: CreateAlgorithmVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAlgorithmVersionResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_studio_20220112_models.CreateAlgorithmVersionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -191,6 +339,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.CreateAlgorithmVersionResponse:
+        """
+        @summary 创建一个新的算法版本
+        
+        @param tmp_req: CreateAlgorithmVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAlgorithmVersionResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_studio_20220112_models.CreateAlgorithmVersionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -225,6 +381,12 @@ class Client(OpenApiClient):
         algorithm_version: str,
         request: pai_studio_20220112_models.CreateAlgorithmVersionRequest,
     ) -> pai_studio_20220112_models.CreateAlgorithmVersionResponse:
+        """
+        @summary 创建一个新的算法版本
+        
+        @param request: CreateAlgorithmVersionRequest
+        @return: CreateAlgorithmVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_algorithm_version_with_options(algorithm_id, algorithm_version, request, headers, runtime)
@@ -235,9 +397,109 @@ class Client(OpenApiClient):
         algorithm_version: str,
         request: pai_studio_20220112_models.CreateAlgorithmVersionRequest,
     ) -> pai_studio_20220112_models.CreateAlgorithmVersionResponse:
+        """
+        @summary 创建一个新的算法版本
+        
+        @param request: CreateAlgorithmVersionRequest
+        @return: CreateAlgorithmVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_algorithm_version_with_options_async(algorithm_id, algorithm_version, request, headers, runtime)
+
+    def create_instance_web_terminal_with_options(
+        self,
+        training_job_id: str,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.CreateInstanceWebTerminalResponse:
+        """
+        @summary 创建WebTerminal
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceWebTerminalResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreateInstanceWebTerminal',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/webterminals',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.CreateInstanceWebTerminalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_instance_web_terminal_with_options_async(
+        self,
+        training_job_id: str,
+        instance_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.CreateInstanceWebTerminalResponse:
+        """
+        @summary 创建WebTerminal
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceWebTerminalResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='CreateInstanceWebTerminal',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/webterminals',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.CreateInstanceWebTerminalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_instance_web_terminal(
+        self,
+        training_job_id: str,
+        instance_id: str,
+    ) -> pai_studio_20220112_models.CreateInstanceWebTerminalResponse:
+        """
+        @summary 创建WebTerminal
+        
+        @return: CreateInstanceWebTerminalResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_instance_web_terminal_with_options(training_job_id, instance_id, headers, runtime)
+
+    async def create_instance_web_terminal_async(
+        self,
+        training_job_id: str,
+        instance_id: str,
+    ) -> pai_studio_20220112_models.CreateInstanceWebTerminalResponse:
+        """
+        @summary 创建WebTerminal
+        
+        @return: CreateInstanceWebTerminalResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_instance_web_terminal_with_options_async(training_job_id, instance_id, headers, runtime)
 
     def create_quota_with_options(
         self,
@@ -245,6 +507,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.CreateQuotaResponse:
+        """
+        @summary 创建Quota
+        
+        @param request: CreateQuotaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQuotaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.allocate_strategy):
@@ -293,6 +563,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.CreateQuotaResponse:
+        """
+        @summary 创建Quota
+        
+        @param request: CreateQuotaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQuotaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.allocate_strategy):
@@ -339,6 +617,12 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.CreateQuotaRequest,
     ) -> pai_studio_20220112_models.CreateQuotaResponse:
+        """
+        @summary 创建Quota
+        
+        @param request: CreateQuotaRequest
+        @return: CreateQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_quota_with_options(request, headers, runtime)
@@ -347,6 +631,12 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.CreateQuotaRequest,
     ) -> pai_studio_20220112_models.CreateQuotaResponse:
+        """
+        @summary 创建Quota
+        
+        @param request: CreateQuotaRequest
+        @return: CreateQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_quota_with_options_async(request, headers, runtime)
@@ -357,6 +647,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.CreateResourceGroupResponse:
+        """
+        @summary 创建资源组
+        
+        @param request: CreateResourceGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.computing_resource_provider):
@@ -397,6 +695,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.CreateResourceGroupResponse:
+        """
+        @summary 创建资源组
+        
+        @param request: CreateResourceGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.computing_resource_provider):
@@ -435,6 +741,12 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.CreateResourceGroupRequest,
     ) -> pai_studio_20220112_models.CreateResourceGroupResponse:
+        """
+        @summary 创建资源组
+        
+        @param request: CreateResourceGroupRequest
+        @return: CreateResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_resource_group_with_options(request, headers, runtime)
@@ -443,6 +755,12 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.CreateResourceGroupRequest,
     ) -> pai_studio_20220112_models.CreateResourceGroupResponse:
+        """
+        @summary 创建资源组
+        
+        @param request: CreateResourceGroupRequest
+        @return: CreateResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_resource_group_with_options_async(request, headers, runtime)
@@ -453,6 +771,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.CreateTrainingJobResponse:
+        """
+        @summary 创建TrainingJob
+        
+        @param request: CreateTrainingJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTrainingJobResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.algorithm_name):
@@ -467,6 +793,8 @@ class Client(OpenApiClient):
             body['CodeDir'] = request.code_dir
         if not UtilClient.is_unset(request.compute_resource):
             body['ComputeResource'] = request.compute_resource
+        if not UtilClient.is_unset(request.environments):
+            body['Environments'] = request.environments
         if not UtilClient.is_unset(request.experiment_config):
             body['ExperimentConfig'] = request.experiment_config
         if not UtilClient.is_unset(request.hyper_parameters):
@@ -477,6 +805,8 @@ class Client(OpenApiClient):
             body['Labels'] = request.labels
         if not UtilClient.is_unset(request.output_channels):
             body['OutputChannels'] = request.output_channels
+        if not UtilClient.is_unset(request.python_requirements):
+            body['PythonRequirements'] = request.python_requirements
         if not UtilClient.is_unset(request.role_arn):
             body['RoleArn'] = request.role_arn
         if not UtilClient.is_unset(request.scheduler):
@@ -517,6 +847,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.CreateTrainingJobResponse:
+        """
+        @summary 创建TrainingJob
+        
+        @param request: CreateTrainingJobRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTrainingJobResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.algorithm_name):
@@ -531,6 +869,8 @@ class Client(OpenApiClient):
             body['CodeDir'] = request.code_dir
         if not UtilClient.is_unset(request.compute_resource):
             body['ComputeResource'] = request.compute_resource
+        if not UtilClient.is_unset(request.environments):
+            body['Environments'] = request.environments
         if not UtilClient.is_unset(request.experiment_config):
             body['ExperimentConfig'] = request.experiment_config
         if not UtilClient.is_unset(request.hyper_parameters):
@@ -541,6 +881,8 @@ class Client(OpenApiClient):
             body['Labels'] = request.labels
         if not UtilClient.is_unset(request.output_channels):
             body['OutputChannels'] = request.output_channels
+        if not UtilClient.is_unset(request.python_requirements):
+            body['PythonRequirements'] = request.python_requirements
         if not UtilClient.is_unset(request.role_arn):
             body['RoleArn'] = request.role_arn
         if not UtilClient.is_unset(request.scheduler):
@@ -579,6 +921,12 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.CreateTrainingJobRequest,
     ) -> pai_studio_20220112_models.CreateTrainingJobResponse:
+        """
+        @summary 创建TrainingJob
+        
+        @param request: CreateTrainingJobRequest
+        @return: CreateTrainingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_training_job_with_options(request, headers, runtime)
@@ -587,9 +935,199 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.CreateTrainingJobRequest,
     ) -> pai_studio_20220112_models.CreateTrainingJobResponse:
+        """
+        @summary 创建TrainingJob
+        
+        @param request: CreateTrainingJobRequest
+        @return: CreateTrainingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_training_job_with_options_async(request, headers, runtime)
+
+    def delete_algorithm_with_options(
+        self,
+        algorithm_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.DeleteAlgorithmResponse:
+        """
+        @summary 删除算法
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAlgorithmResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteAlgorithm',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algorithms/{OpenApiUtilClient.get_encode_param(algorithm_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.DeleteAlgorithmResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_algorithm_with_options_async(
+        self,
+        algorithm_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.DeleteAlgorithmResponse:
+        """
+        @summary 删除算法
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAlgorithmResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteAlgorithm',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algorithms/{OpenApiUtilClient.get_encode_param(algorithm_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.DeleteAlgorithmResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_algorithm(
+        self,
+        algorithm_id: str,
+    ) -> pai_studio_20220112_models.DeleteAlgorithmResponse:
+        """
+        @summary 删除算法
+        
+        @return: DeleteAlgorithmResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_algorithm_with_options(algorithm_id, headers, runtime)
+
+    async def delete_algorithm_async(
+        self,
+        algorithm_id: str,
+    ) -> pai_studio_20220112_models.DeleteAlgorithmResponse:
+        """
+        @summary 删除算法
+        
+        @return: DeleteAlgorithmResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_algorithm_with_options_async(algorithm_id, headers, runtime)
+
+    def delete_algorithm_version_with_options(
+        self,
+        algorithm_id: str,
+        algorithm_version: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.DeleteAlgorithmVersionResponse:
+        """
+        @summary 删除算法版本
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAlgorithmVersionResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteAlgorithmVersion',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algorithms/{OpenApiUtilClient.get_encode_param(algorithm_id)}/versions/{OpenApiUtilClient.get_encode_param(algorithm_version)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.DeleteAlgorithmVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_algorithm_version_with_options_async(
+        self,
+        algorithm_id: str,
+        algorithm_version: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.DeleteAlgorithmVersionResponse:
+        """
+        @summary 删除算法版本
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAlgorithmVersionResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteAlgorithmVersion',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algorithms/{OpenApiUtilClient.get_encode_param(algorithm_id)}/versions/{OpenApiUtilClient.get_encode_param(algorithm_version)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.DeleteAlgorithmVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_algorithm_version(
+        self,
+        algorithm_id: str,
+        algorithm_version: str,
+    ) -> pai_studio_20220112_models.DeleteAlgorithmVersionResponse:
+        """
+        @summary 删除算法版本
+        
+        @return: DeleteAlgorithmVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_algorithm_version_with_options(algorithm_id, algorithm_version, headers, runtime)
+
+    async def delete_algorithm_version_async(
+        self,
+        algorithm_id: str,
+        algorithm_version: str,
+    ) -> pai_studio_20220112_models.DeleteAlgorithmVersionResponse:
+        """
+        @summary 删除算法版本
+        
+        @return: DeleteAlgorithmVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_algorithm_version_with_options_async(algorithm_id, algorithm_version, headers, runtime)
 
     def delete_machine_group_with_options(
         self,
@@ -597,6 +1135,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.DeleteMachineGroupResponse:
+        """
+        @deprecated OpenAPI DeleteMachineGroup is deprecated
+        
+        @summary delete machine group
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMachineGroupResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -622,6 +1170,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.DeleteMachineGroupResponse:
+        """
+        @deprecated OpenAPI DeleteMachineGroup is deprecated
+        
+        @summary delete machine group
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMachineGroupResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -645,6 +1203,14 @@ class Client(OpenApiClient):
         self,
         machine_group_id: str,
     ) -> pai_studio_20220112_models.DeleteMachineGroupResponse:
+        """
+        @deprecated OpenAPI DeleteMachineGroup is deprecated
+        
+        @summary delete machine group
+        
+        @return: DeleteMachineGroupResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_machine_group_with_options(machine_group_id, headers, runtime)
@@ -653,6 +1219,14 @@ class Client(OpenApiClient):
         self,
         machine_group_id: str,
     ) -> pai_studio_20220112_models.DeleteMachineGroupResponse:
+        """
+        @deprecated OpenAPI DeleteMachineGroup is deprecated
+        
+        @summary delete machine group
+        
+        @return: DeleteMachineGroupResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_machine_group_with_options_async(machine_group_id, headers, runtime)
@@ -663,6 +1237,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.DeleteQuotaResponse:
+        """
+        @summary 删除Quota
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQuotaResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -688,6 +1269,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.DeleteQuotaResponse:
+        """
+        @summary 删除Quota
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQuotaResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -711,6 +1299,11 @@ class Client(OpenApiClient):
         self,
         quota_id: str,
     ) -> pai_studio_20220112_models.DeleteQuotaResponse:
+        """
+        @summary 删除Quota
+        
+        @return: DeleteQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_quota_with_options(quota_id, headers, runtime)
@@ -719,6 +1312,11 @@ class Client(OpenApiClient):
         self,
         quota_id: str,
     ) -> pai_studio_20220112_models.DeleteQuotaResponse:
+        """
+        @summary 删除Quota
+        
+        @return: DeleteQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_quota_with_options_async(quota_id, headers, runtime)
@@ -729,6 +1327,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.DeleteResourceGroupResponse:
+        """
+        @summary 删除资源组
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -754,6 +1359,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.DeleteResourceGroupResponse:
+        """
+        @summary 删除资源组
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -777,6 +1389,11 @@ class Client(OpenApiClient):
         self,
         resource_group_id: str,
     ) -> pai_studio_20220112_models.DeleteResourceGroupResponse:
+        """
+        @summary 删除资源组
+        
+        @return: DeleteResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_resource_group_with_options(resource_group_id, headers, runtime)
@@ -785,6 +1402,11 @@ class Client(OpenApiClient):
         self,
         resource_group_id: str,
     ) -> pai_studio_20220112_models.DeleteResourceGroupResponse:
+        """
+        @summary 删除资源组
+        
+        @return: DeleteResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_resource_group_with_options_async(resource_group_id, headers, runtime)
@@ -796,6 +1418,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.DeleteResourceGroupMachineGroupResponse:
+        """
+        @deprecated OpenAPI DeleteResourceGroupMachineGroup is deprecated
+        
+        @summary delete machine group
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceGroupMachineGroupResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -822,6 +1454,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.DeleteResourceGroupMachineGroupResponse:
+        """
+        @deprecated OpenAPI DeleteResourceGroupMachineGroup is deprecated
+        
+        @summary delete machine group
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceGroupMachineGroupResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -846,6 +1488,14 @@ class Client(OpenApiClient):
         machine_group_id: str,
         resource_group_id: str,
     ) -> pai_studio_20220112_models.DeleteResourceGroupMachineGroupResponse:
+        """
+        @deprecated OpenAPI DeleteResourceGroupMachineGroup is deprecated
+        
+        @summary delete machine group
+        
+        @return: DeleteResourceGroupMachineGroupResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_resource_group_machine_group_with_options(machine_group_id, resource_group_id, headers, runtime)
@@ -855,9 +1505,215 @@ class Client(OpenApiClient):
         machine_group_id: str,
         resource_group_id: str,
     ) -> pai_studio_20220112_models.DeleteResourceGroupMachineGroupResponse:
+        """
+        @deprecated OpenAPI DeleteResourceGroupMachineGroup is deprecated
+        
+        @summary delete machine group
+        
+        @return: DeleteResourceGroupMachineGroupResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_resource_group_machine_group_with_options_async(machine_group_id, resource_group_id, headers, runtime)
+
+    def delete_training_job_with_options(
+        self,
+        training_job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.DeleteTrainingJobResponse:
+        """
+        @summary 删除一个TrainingJob
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTrainingJobResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteTrainingJob',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.DeleteTrainingJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_training_job_with_options_async(
+        self,
+        training_job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.DeleteTrainingJobResponse:
+        """
+        @summary 删除一个TrainingJob
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTrainingJobResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteTrainingJob',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.DeleteTrainingJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_training_job(
+        self,
+        training_job_id: str,
+    ) -> pai_studio_20220112_models.DeleteTrainingJobResponse:
+        """
+        @summary 删除一个TrainingJob
+        
+        @return: DeleteTrainingJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_training_job_with_options(training_job_id, headers, runtime)
+
+    async def delete_training_job_async(
+        self,
+        training_job_id: str,
+    ) -> pai_studio_20220112_models.DeleteTrainingJobResponse:
+        """
+        @summary 删除一个TrainingJob
+        
+        @return: DeleteTrainingJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_training_job_with_options_async(training_job_id, headers, runtime)
+
+    def delete_training_job_labels_with_options(
+        self,
+        training_job_id: str,
+        request: pai_studio_20220112_models.DeleteTrainingJobLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.DeleteTrainingJobLabelsResponse:
+        """
+        @summary 删除TrainingJob的Labels
+        
+        @param request: DeleteTrainingJobLabelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTrainingJobLabelsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keys):
+            query['Keys'] = request.keys
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTrainingJobLabels',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/labels',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.DeleteTrainingJobLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_training_job_labels_with_options_async(
+        self,
+        training_job_id: str,
+        request: pai_studio_20220112_models.DeleteTrainingJobLabelsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.DeleteTrainingJobLabelsResponse:
+        """
+        @summary 删除TrainingJob的Labels
+        
+        @param request: DeleteTrainingJobLabelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTrainingJobLabelsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keys):
+            query['Keys'] = request.keys
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTrainingJobLabels',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/labels',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.DeleteTrainingJobLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_training_job_labels(
+        self,
+        training_job_id: str,
+        request: pai_studio_20220112_models.DeleteTrainingJobLabelsRequest,
+    ) -> pai_studio_20220112_models.DeleteTrainingJobLabelsResponse:
+        """
+        @summary 删除TrainingJob的Labels
+        
+        @param request: DeleteTrainingJobLabelsRequest
+        @return: DeleteTrainingJobLabelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_training_job_labels_with_options(training_job_id, request, headers, runtime)
+
+    async def delete_training_job_labels_async(
+        self,
+        training_job_id: str,
+        request: pai_studio_20220112_models.DeleteTrainingJobLabelsRequest,
+    ) -> pai_studio_20220112_models.DeleteTrainingJobLabelsResponse:
+        """
+        @summary 删除TrainingJob的Labels
+        
+        @param request: DeleteTrainingJobLabelsRequest
+        @return: DeleteTrainingJobLabelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_training_job_labels_with_options_async(training_job_id, request, headers, runtime)
 
     def get_algorithm_with_options(
         self,
@@ -865,6 +1721,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetAlgorithmResponse:
+        """
+        @summary 获取一个算法信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAlgorithmResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -890,6 +1753,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetAlgorithmResponse:
+        """
+        @summary 获取一个算法信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAlgorithmResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -913,6 +1783,11 @@ class Client(OpenApiClient):
         self,
         algorithm_id: str,
     ) -> pai_studio_20220112_models.GetAlgorithmResponse:
+        """
+        @summary 获取一个算法信息
+        
+        @return: GetAlgorithmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_algorithm_with_options(algorithm_id, headers, runtime)
@@ -921,6 +1796,11 @@ class Client(OpenApiClient):
         self,
         algorithm_id: str,
     ) -> pai_studio_20220112_models.GetAlgorithmResponse:
+        """
+        @summary 获取一个算法信息
+        
+        @return: GetAlgorithmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_algorithm_with_options_async(algorithm_id, headers, runtime)
@@ -932,6 +1812,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetAlgorithmVersionResponse:
+        """
+        @summary 创建一个新的算法版本
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAlgorithmVersionResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -958,6 +1845,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetAlgorithmVersionResponse:
+        """
+        @summary 创建一个新的算法版本
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAlgorithmVersionResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -982,6 +1876,11 @@ class Client(OpenApiClient):
         algorithm_id: str,
         algorithm_version: str,
     ) -> pai_studio_20220112_models.GetAlgorithmVersionResponse:
+        """
+        @summary 创建一个新的算法版本
+        
+        @return: GetAlgorithmVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_algorithm_version_with_options(algorithm_id, algorithm_version, headers, runtime)
@@ -991,6 +1890,11 @@ class Client(OpenApiClient):
         algorithm_id: str,
         algorithm_version: str,
     ) -> pai_studio_20220112_models.GetAlgorithmVersionResponse:
+        """
+        @summary 创建一个新的算法版本
+        
+        @return: GetAlgorithmVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_algorithm_version_with_options_async(algorithm_id, algorithm_version, headers, runtime)
@@ -1001,6 +1905,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetMachineGroupResponse:
+        """
+        @deprecated OpenAPI GetMachineGroup is deprecated
+        
+        @summary get machine group
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMachineGroupResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1026,6 +1940,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetMachineGroupResponse:
+        """
+        @deprecated OpenAPI GetMachineGroup is deprecated
+        
+        @summary get machine group
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMachineGroupResponse
+        Deprecated
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1049,6 +1973,14 @@ class Client(OpenApiClient):
         self,
         machine_group_id: str,
     ) -> pai_studio_20220112_models.GetMachineGroupResponse:
+        """
+        @deprecated OpenAPI GetMachineGroup is deprecated
+        
+        @summary get machine group
+        
+        @return: GetMachineGroupResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_machine_group_with_options(machine_group_id, headers, runtime)
@@ -1057,6 +1989,14 @@ class Client(OpenApiClient):
         self,
         machine_group_id: str,
     ) -> pai_studio_20220112_models.GetMachineGroupResponse:
+        """
+        @deprecated OpenAPI GetMachineGroup is deprecated
+        
+        @summary get machine group
+        
+        @return: GetMachineGroupResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_machine_group_with_options_async(machine_group_id, headers, runtime)
@@ -1069,6 +2009,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetNodeMetricsResponse:
+        """
+        @summary get resource group node metrics
+        
+        @param request: GetNodeMetricsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -1109,6 +2057,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetNodeMetricsResponse:
+        """
+        @summary get resource group node metrics
+        
+        @param request: GetNodeMetricsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNodeMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -1147,6 +2103,12 @@ class Client(OpenApiClient):
         metric_type: str,
         request: pai_studio_20220112_models.GetNodeMetricsRequest,
     ) -> pai_studio_20220112_models.GetNodeMetricsResponse:
+        """
+        @summary get resource group node metrics
+        
+        @param request: GetNodeMetricsRequest
+        @return: GetNodeMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_node_metrics_with_options(resource_group_id, metric_type, request, headers, runtime)
@@ -1157,6 +2119,12 @@ class Client(OpenApiClient):
         metric_type: str,
         request: pai_studio_20220112_models.GetNodeMetricsRequest,
     ) -> pai_studio_20220112_models.GetNodeMetricsResponse:
+        """
+        @summary get resource group node metrics
+        
+        @param request: GetNodeMetricsRequest
+        @return: GetNodeMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_node_metrics_with_options_async(resource_group_id, metric_type, request, headers, runtime)
@@ -1164,11 +2132,25 @@ class Client(OpenApiClient):
     def get_quota_with_options(
         self,
         quota_id: str,
+        request: pai_studio_20220112_models.GetQuotaRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetQuotaResponse:
+        """
+        @summary 获取Quota
+        
+        @param request: GetQuotaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetQuota',
@@ -1189,11 +2171,25 @@ class Client(OpenApiClient):
     async def get_quota_with_options_async(
         self,
         quota_id: str,
+        request: pai_studio_20220112_models.GetQuotaRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetQuotaResponse:
+        """
+        @summary 获取Quota
+        
+        @param request: GetQuotaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQuotaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetQuota',
@@ -1214,18 +2210,32 @@ class Client(OpenApiClient):
     def get_quota(
         self,
         quota_id: str,
+        request: pai_studio_20220112_models.GetQuotaRequest,
     ) -> pai_studio_20220112_models.GetQuotaResponse:
+        """
+        @summary 获取Quota
+        
+        @param request: GetQuotaRequest
+        @return: GetQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_quota_with_options(quota_id, headers, runtime)
+        return self.get_quota_with_options(quota_id, request, headers, runtime)
 
     async def get_quota_async(
         self,
         quota_id: str,
+        request: pai_studio_20220112_models.GetQuotaRequest,
     ) -> pai_studio_20220112_models.GetQuotaResponse:
+        """
+        @summary 获取Quota
+        
+        @param request: GetQuotaRequest
+        @return: GetQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_quota_with_options_async(quota_id, headers, runtime)
+        return await self.get_quota_with_options_async(quota_id, request, headers, runtime)
 
     def get_resource_group_with_options(
         self,
@@ -1234,6 +2244,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetResourceGroupResponse:
+        """
+        @summary get resource group by group id
+        
+        @param tmp_req: GetResourceGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_studio_20220112_models.GetResourceGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1271,6 +2289,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetResourceGroupResponse:
+        """
+        @summary get resource group by group id
+        
+        @param tmp_req: GetResourceGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_studio_20220112_models.GetResourceGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1306,6 +2332,12 @@ class Client(OpenApiClient):
         resource_group_id: str,
         request: pai_studio_20220112_models.GetResourceGroupRequest,
     ) -> pai_studio_20220112_models.GetResourceGroupResponse:
+        """
+        @summary get resource group by group id
+        
+        @param request: GetResourceGroupRequest
+        @return: GetResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_resource_group_with_options(resource_group_id, request, headers, runtime)
@@ -1315,6 +2347,12 @@ class Client(OpenApiClient):
         resource_group_id: str,
         request: pai_studio_20220112_models.GetResourceGroupRequest,
     ) -> pai_studio_20220112_models.GetResourceGroupResponse:
+        """
+        @summary get resource group by group id
+        
+        @param request: GetResourceGroupRequest
+        @return: GetResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_resource_group_with_options_async(resource_group_id, request, headers, runtime)
@@ -1327,6 +2365,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetResourceGroupMachineGroupResponse:
+        """
+        @summary get machine group
+        
+        @param tmp_req: GetResourceGroupMachineGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupMachineGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_studio_20220112_models.GetResourceGroupMachineGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1363,6 +2409,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetResourceGroupMachineGroupResponse:
+        """
+        @summary get machine group
+        
+        @param tmp_req: GetResourceGroupMachineGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupMachineGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_studio_20220112_models.GetResourceGroupMachineGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1397,6 +2451,12 @@ class Client(OpenApiClient):
         resource_group_id: str,
         request: pai_studio_20220112_models.GetResourceGroupMachineGroupRequest,
     ) -> pai_studio_20220112_models.GetResourceGroupMachineGroupResponse:
+        """
+        @summary get machine group
+        
+        @param request: GetResourceGroupMachineGroupRequest
+        @return: GetResourceGroupMachineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_resource_group_machine_group_with_options(machine_group_id, resource_group_id, request, headers, runtime)
@@ -1407,6 +2467,12 @@ class Client(OpenApiClient):
         resource_group_id: str,
         request: pai_studio_20220112_models.GetResourceGroupMachineGroupRequest,
     ) -> pai_studio_20220112_models.GetResourceGroupMachineGroupResponse:
+        """
+        @summary get machine group
+        
+        @param request: GetResourceGroupMachineGroupRequest
+        @return: GetResourceGroupMachineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_resource_group_machine_group_with_options_async(machine_group_id, resource_group_id, request, headers, runtime)
@@ -1417,6 +2483,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetResourceGroupRequestResponse:
+        """
+        @summary get resource group requested resource by resource group id
+        
+        @param request: GetResourceGroupRequestRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupRequestResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.pod_status):
@@ -1449,6 +2523,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetResourceGroupRequestResponse:
+        """
+        @summary get resource group requested resource by resource group id
+        
+        @param request: GetResourceGroupRequestRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupRequestResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.pod_status):
@@ -1479,6 +2561,12 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.GetResourceGroupRequestRequest,
     ) -> pai_studio_20220112_models.GetResourceGroupRequestResponse:
+        """
+        @summary get resource group requested resource by resource group id
+        
+        @param request: GetResourceGroupRequestRequest
+        @return: GetResourceGroupRequestResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_resource_group_request_with_options(request, headers, runtime)
@@ -1487,6 +2575,12 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.GetResourceGroupRequestRequest,
     ) -> pai_studio_20220112_models.GetResourceGroupRequestResponse:
+        """
+        @summary get resource group requested resource by resource group id
+        
+        @param request: GetResourceGroupRequestRequest
+        @return: GetResourceGroupRequestResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_resource_group_request_with_options_async(request, headers, runtime)
@@ -1497,6 +2591,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetResourceGroupTotalResponse:
+        """
+        @summary get resource group total resource by group id
+        
+        @param request: GetResourceGroupTotalRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupTotalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_group_id):
@@ -1527,6 +2629,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetResourceGroupTotalResponse:
+        """
+        @summary get resource group total resource by group id
+        
+        @param request: GetResourceGroupTotalRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupTotalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_group_id):
@@ -1555,6 +2665,12 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.GetResourceGroupTotalRequest,
     ) -> pai_studio_20220112_models.GetResourceGroupTotalResponse:
+        """
+        @summary get resource group total resource by group id
+        
+        @param request: GetResourceGroupTotalRequest
+        @return: GetResourceGroupTotalResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_resource_group_total_with_options(request, headers, runtime)
@@ -1563,9 +2679,123 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.GetResourceGroupTotalRequest,
     ) -> pai_studio_20220112_models.GetResourceGroupTotalResponse:
+        """
+        @summary get resource group total resource by group id
+        
+        @param request: GetResourceGroupTotalRequest
+        @return: GetResourceGroupTotalResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_resource_group_total_with_options_async(request, headers, runtime)
+
+    def get_token_with_options(
+        self,
+        request: pai_studio_20220112_models.GetTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.GetTokenResponse:
+        """
+        @summary 调用GetToken获取临时鉴权信息
+        
+        @param request: GetTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.expire_time):
+            query['ExpireTime'] = request.expire_time
+        if not UtilClient.is_unset(request.training_job_id):
+            query['TrainingJobId'] = request.training_job_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetToken',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tokens',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.GetTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_token_with_options_async(
+        self,
+        request: pai_studio_20220112_models.GetTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.GetTokenResponse:
+        """
+        @summary 调用GetToken获取临时鉴权信息
+        
+        @param request: GetTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.expire_time):
+            query['ExpireTime'] = request.expire_time
+        if not UtilClient.is_unset(request.training_job_id):
+            query['TrainingJobId'] = request.training_job_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetToken',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tokens',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.GetTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_token(
+        self,
+        request: pai_studio_20220112_models.GetTokenRequest,
+    ) -> pai_studio_20220112_models.GetTokenResponse:
+        """
+        @summary 调用GetToken获取临时鉴权信息
+        
+        @param request: GetTokenRequest
+        @return: GetTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_token_with_options(request, headers, runtime)
+
+    async def get_token_async(
+        self,
+        request: pai_studio_20220112_models.GetTokenRequest,
+    ) -> pai_studio_20220112_models.GetTokenResponse:
+        """
+        @summary 调用GetToken获取临时鉴权信息
+        
+        @param request: GetTokenRequest
+        @return: GetTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_token_with_options_async(request, headers, runtime)
 
     def get_training_job_with_options(
         self,
@@ -1573,6 +2803,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetTrainingJobResponse:
+        """
+        @summary 获取TrainingJob的详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTrainingJobResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1598,6 +2835,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetTrainingJobResponse:
+        """
+        @summary 获取TrainingJob的详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTrainingJobResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1621,6 +2865,11 @@ class Client(OpenApiClient):
         self,
         training_job_id: str,
     ) -> pai_studio_20220112_models.GetTrainingJobResponse:
+        """
+        @summary 获取TrainingJob的详情
+        
+        @return: GetTrainingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_training_job_with_options(training_job_id, headers, runtime)
@@ -1629,9 +2878,212 @@ class Client(OpenApiClient):
         self,
         training_job_id: str,
     ) -> pai_studio_20220112_models.GetTrainingJobResponse:
+        """
+        @summary 获取TrainingJob的详情
+        
+        @return: GetTrainingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_training_job_with_options_async(training_job_id, headers, runtime)
+
+    def get_training_job_error_info_with_options(
+        self,
+        training_job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.GetTrainingJobErrorInfoResponse:
+        """
+        @summary 获取Training Job的算法错误信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTrainingJobErrorInfoResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetTrainingJobErrorInfo',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/errorinfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.GetTrainingJobErrorInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_training_job_error_info_with_options_async(
+        self,
+        training_job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.GetTrainingJobErrorInfoResponse:
+        """
+        @summary 获取Training Job的算法错误信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTrainingJobErrorInfoResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetTrainingJobErrorInfo',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/errorinfo',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.GetTrainingJobErrorInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_training_job_error_info(
+        self,
+        training_job_id: str,
+    ) -> pai_studio_20220112_models.GetTrainingJobErrorInfoResponse:
+        """
+        @summary 获取Training Job的算法错误信息
+        
+        @return: GetTrainingJobErrorInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_training_job_error_info_with_options(training_job_id, headers, runtime)
+
+    async def get_training_job_error_info_async(
+        self,
+        training_job_id: str,
+    ) -> pai_studio_20220112_models.GetTrainingJobErrorInfoResponse:
+        """
+        @summary 获取Training Job的算法错误信息
+        
+        @return: GetTrainingJobErrorInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_training_job_error_info_with_options_async(training_job_id, headers, runtime)
+
+    def get_training_job_latest_metrics_with_options(
+        self,
+        training_job_id: str,
+        request: pai_studio_20220112_models.GetTrainingJobLatestMetricsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.GetTrainingJobLatestMetricsResponse:
+        """
+        @summary 获取TrainingJob最近的Metrics
+        
+        @param request: GetTrainingJobLatestMetricsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTrainingJobLatestMetricsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.names):
+            query['Names'] = request.names
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTrainingJobLatestMetrics',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/latestmetrics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.GetTrainingJobLatestMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_training_job_latest_metrics_with_options_async(
+        self,
+        training_job_id: str,
+        request: pai_studio_20220112_models.GetTrainingJobLatestMetricsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.GetTrainingJobLatestMetricsResponse:
+        """
+        @summary 获取TrainingJob最近的Metrics
+        
+        @param request: GetTrainingJobLatestMetricsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTrainingJobLatestMetricsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.names):
+            query['Names'] = request.names
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTrainingJobLatestMetrics',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/latestmetrics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.GetTrainingJobLatestMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_training_job_latest_metrics(
+        self,
+        training_job_id: str,
+        request: pai_studio_20220112_models.GetTrainingJobLatestMetricsRequest,
+    ) -> pai_studio_20220112_models.GetTrainingJobLatestMetricsResponse:
+        """
+        @summary 获取TrainingJob最近的Metrics
+        
+        @param request: GetTrainingJobLatestMetricsRequest
+        @return: GetTrainingJobLatestMetricsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_training_job_latest_metrics_with_options(training_job_id, request, headers, runtime)
+
+    async def get_training_job_latest_metrics_async(
+        self,
+        training_job_id: str,
+        request: pai_studio_20220112_models.GetTrainingJobLatestMetricsRequest,
+    ) -> pai_studio_20220112_models.GetTrainingJobLatestMetricsResponse:
+        """
+        @summary 获取TrainingJob最近的Metrics
+        
+        @param request: GetTrainingJobLatestMetricsRequest
+        @return: GetTrainingJobLatestMetricsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_training_job_latest_metrics_with_options_async(training_job_id, request, headers, runtime)
 
     def get_user_view_metrics_with_options(
         self,
@@ -1640,6 +3092,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetUserViewMetricsResponse:
+        """
+        @summary get user view  metrics
+        
+        @param request: GetUserViewMetricsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserViewMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order):
@@ -1683,6 +3143,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.GetUserViewMetricsResponse:
+        """
+        @summary get user view  metrics
+        
+        @param request: GetUserViewMetricsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserViewMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order):
@@ -1724,6 +3192,12 @@ class Client(OpenApiClient):
         resource_group_id: str,
         request: pai_studio_20220112_models.GetUserViewMetricsRequest,
     ) -> pai_studio_20220112_models.GetUserViewMetricsResponse:
+        """
+        @summary get user view  metrics
+        
+        @param request: GetUserViewMetricsRequest
+        @return: GetUserViewMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_user_view_metrics_with_options(resource_group_id, request, headers, runtime)
@@ -1733,6 +3207,12 @@ class Client(OpenApiClient):
         resource_group_id: str,
         request: pai_studio_20220112_models.GetUserViewMetricsRequest,
     ) -> pai_studio_20220112_models.GetUserViewMetricsResponse:
+        """
+        @summary get user view  metrics
+        
+        @param request: GetUserViewMetricsRequest
+        @return: GetUserViewMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_user_view_metrics_with_options_async(resource_group_id, request, headers, runtime)
@@ -1744,6 +3224,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListAlgorithmVersionsResponse:
+        """
+        @summary 获取算法的所有版本信息
+        
+        @param request: ListAlgorithmVersionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAlgorithmVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -1777,6 +3265,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListAlgorithmVersionsResponse:
+        """
+        @summary 获取算法的所有版本信息
+        
+        @param request: ListAlgorithmVersionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAlgorithmVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -1808,6 +3304,12 @@ class Client(OpenApiClient):
         algorithm_id: str,
         request: pai_studio_20220112_models.ListAlgorithmVersionsRequest,
     ) -> pai_studio_20220112_models.ListAlgorithmVersionsResponse:
+        """
+        @summary 获取算法的所有版本信息
+        
+        @param request: ListAlgorithmVersionsRequest
+        @return: ListAlgorithmVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_algorithm_versions_with_options(algorithm_id, request, headers, runtime)
@@ -1817,6 +3319,12 @@ class Client(OpenApiClient):
         algorithm_id: str,
         request: pai_studio_20220112_models.ListAlgorithmVersionsRequest,
     ) -> pai_studio_20220112_models.ListAlgorithmVersionsResponse:
+        """
+        @summary 获取算法的所有版本信息
+        
+        @param request: ListAlgorithmVersionsRequest
+        @return: ListAlgorithmVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_algorithm_versions_with_options_async(algorithm_id, request, headers, runtime)
@@ -1827,6 +3335,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListAlgorithmsResponse:
+        """
+        @summary 获取算法列表
+        
+        @param request: ListAlgorithmsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAlgorithmsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.algorithm_id):
@@ -1867,6 +3383,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListAlgorithmsResponse:
+        """
+        @summary 获取算法列表
+        
+        @param request: ListAlgorithmsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAlgorithmsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.algorithm_id):
@@ -1905,6 +3429,12 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.ListAlgorithmsRequest,
     ) -> pai_studio_20220112_models.ListAlgorithmsResponse:
+        """
+        @summary 获取算法列表
+        
+        @param request: ListAlgorithmsRequest
+        @return: ListAlgorithmsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_algorithms_with_options(request, headers, runtime)
@@ -1913,9 +3443,175 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.ListAlgorithmsRequest,
     ) -> pai_studio_20220112_models.ListAlgorithmsResponse:
+        """
+        @summary 获取算法列表
+        
+        @param request: ListAlgorithmsRequest
+        @return: ListAlgorithmsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_algorithms_with_options_async(request, headers, runtime)
+
+    def list_nodes_with_options(
+        self,
+        request: pai_studio_20220112_models.ListNodesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.ListNodesResponse:
+        """
+        @summary 获取资源节点列表
+        
+        @param request: ListNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accelerator_type):
+            query['AcceleratorType'] = request.accelerator_type
+        if not UtilClient.is_unset(request.filter_by_quota_id):
+            query['FilterByQuotaId'] = request.filter_by_quota_id
+        if not UtilClient.is_unset(request.filter_by_resource_group_ids):
+            query['FilterByResourceGroupIds'] = request.filter_by_resource_group_ids
+        if not UtilClient.is_unset(request.gputype):
+            query['GPUType'] = request.gputype
+        if not UtilClient.is_unset(request.node_names):
+            query['NodeNames'] = request.node_names
+        if not UtilClient.is_unset(request.node_statuses):
+            query['NodeStatuses'] = request.node_statuses
+        if not UtilClient.is_unset(request.node_types):
+            query['NodeTypes'] = request.node_types
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.order_statuses):
+            query['OrderStatuses'] = request.order_statuses
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.quota_id):
+            query['QuotaId'] = request.quota_id
+        if not UtilClient.is_unset(request.resource_group_ids):
+            query['ResourceGroupIds'] = request.resource_group_ids
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNodes',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/nodes',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.ListNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_nodes_with_options_async(
+        self,
+        request: pai_studio_20220112_models.ListNodesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.ListNodesResponse:
+        """
+        @summary 获取资源节点列表
+        
+        @param request: ListNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accelerator_type):
+            query['AcceleratorType'] = request.accelerator_type
+        if not UtilClient.is_unset(request.filter_by_quota_id):
+            query['FilterByQuotaId'] = request.filter_by_quota_id
+        if not UtilClient.is_unset(request.filter_by_resource_group_ids):
+            query['FilterByResourceGroupIds'] = request.filter_by_resource_group_ids
+        if not UtilClient.is_unset(request.gputype):
+            query['GPUType'] = request.gputype
+        if not UtilClient.is_unset(request.node_names):
+            query['NodeNames'] = request.node_names
+        if not UtilClient.is_unset(request.node_statuses):
+            query['NodeStatuses'] = request.node_statuses
+        if not UtilClient.is_unset(request.node_types):
+            query['NodeTypes'] = request.node_types
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.order_statuses):
+            query['OrderStatuses'] = request.order_statuses
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.quota_id):
+            query['QuotaId'] = request.quota_id
+        if not UtilClient.is_unset(request.resource_group_ids):
+            query['ResourceGroupIds'] = request.resource_group_ids
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNodes',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/nodes',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.ListNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_nodes(
+        self,
+        request: pai_studio_20220112_models.ListNodesRequest,
+    ) -> pai_studio_20220112_models.ListNodesResponse:
+        """
+        @summary 获取资源节点列表
+        
+        @param request: ListNodesRequest
+        @return: ListNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_nodes_with_options(request, headers, runtime)
+
+    async def list_nodes_async(
+        self,
+        request: pai_studio_20220112_models.ListNodesRequest,
+    ) -> pai_studio_20220112_models.ListNodesResponse:
+        """
+        @summary 获取资源节点列表
+        
+        @param request: ListNodesRequest
+        @return: ListNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_nodes_with_options_async(request, headers, runtime)
 
     def list_quotas_with_options(
         self,
@@ -1923,6 +3619,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListQuotasResponse:
+        """
+        @summary 获取Quota列表
+        
+        @param request: ListQuotasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQuotasResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.labels):
@@ -1947,8 +3651,12 @@ class Client(OpenApiClient):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.statuses):
             query['Statuses'] = request.statuses
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
         if not UtilClient.is_unset(request.workspace_ids):
             query['WorkspaceIds'] = request.workspace_ids
+        if not UtilClient.is_unset(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1975,6 +3683,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListQuotasResponse:
+        """
+        @summary 获取Quota列表
+        
+        @param request: ListQuotasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQuotasResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.labels):
@@ -1999,8 +3715,12 @@ class Client(OpenApiClient):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.statuses):
             query['Statuses'] = request.statuses
+        if not UtilClient.is_unset(request.verbose):
+            query['Verbose'] = request.verbose
         if not UtilClient.is_unset(request.workspace_ids):
             query['WorkspaceIds'] = request.workspace_ids
+        if not UtilClient.is_unset(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2025,6 +3745,12 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.ListQuotasRequest,
     ) -> pai_studio_20220112_models.ListQuotasResponse:
+        """
+        @summary 获取Quota列表
+        
+        @param request: ListQuotasRequest
+        @return: ListQuotasResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_quotas_with_options(request, headers, runtime)
@@ -2033,6 +3759,12 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.ListQuotasRequest,
     ) -> pai_studio_20220112_models.ListQuotasResponse:
+        """
+        @summary 获取Quota列表
+        
+        @param request: ListQuotasRequest
+        @return: ListQuotasResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_quotas_with_options_async(request, headers, runtime)
@@ -2044,6 +3776,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListResourceGroupMachineGroupsResponse:
+        """
+        @summary list machine groups
+        
+        @param request: ListResourceGroupMachineGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupMachineGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.creator_id):
@@ -2054,6 +3794,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
+        if not UtilClient.is_unset(request.order_instance_id):
+            query['OrderInstanceId'] = request.order_instance_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -2095,6 +3837,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListResourceGroupMachineGroupsResponse:
+        """
+        @summary list machine groups
+        
+        @param request: ListResourceGroupMachineGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupMachineGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.creator_id):
@@ -2105,6 +3855,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
+        if not UtilClient.is_unset(request.order_instance_id):
+            query['OrderInstanceId'] = request.order_instance_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -2144,6 +3896,12 @@ class Client(OpenApiClient):
         resource_group_id: str,
         request: pai_studio_20220112_models.ListResourceGroupMachineGroupsRequest,
     ) -> pai_studio_20220112_models.ListResourceGroupMachineGroupsResponse:
+        """
+        @summary list machine groups
+        
+        @param request: ListResourceGroupMachineGroupsRequest
+        @return: ListResourceGroupMachineGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_resource_group_machine_groups_with_options(resource_group_id, request, headers, runtime)
@@ -2153,6 +3911,12 @@ class Client(OpenApiClient):
         resource_group_id: str,
         request: pai_studio_20220112_models.ListResourceGroupMachineGroupsRequest,
     ) -> pai_studio_20220112_models.ListResourceGroupMachineGroupsResponse:
+        """
+        @summary list machine groups
+        
+        @param request: ListResourceGroupMachineGroupsRequest
+        @return: ListResourceGroupMachineGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_resource_group_machine_groups_with_options_async(resource_group_id, request, headers, runtime)
@@ -2163,6 +3927,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListResourceGroupsResponse:
+        """
+        @summary list resource group
+        
+        @param request: ListResourceGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.computing_resource_provider):
@@ -2209,6 +3981,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListResourceGroupsResponse:
+        """
+        @summary list resource group
+        
+        @param request: ListResourceGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.computing_resource_provider):
@@ -2253,6 +4033,12 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.ListResourceGroupsRequest,
     ) -> pai_studio_20220112_models.ListResourceGroupsResponse:
+        """
+        @summary list resource group
+        
+        @param request: ListResourceGroupsRequest
+        @return: ListResourceGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_resource_groups_with_options(request, headers, runtime)
@@ -2261,9 +4047,383 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.ListResourceGroupsRequest,
     ) -> pai_studio_20220112_models.ListResourceGroupsResponse:
+        """
+        @summary list resource group
+        
+        @param request: ListResourceGroupsRequest
+        @return: ListResourceGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_resource_groups_with_options_async(request, headers, runtime)
+
+    def list_training_job_events_with_options(
+        self,
+        training_job_id: str,
+        request: pai_studio_20220112_models.ListTrainingJobEventsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.ListTrainingJobEventsResponse:
+        """
+        @summary 获取指定TrainingJob的事件。
+        
+        @param request: ListTrainingJobEventsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTrainingJobEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTrainingJobEvents',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/events',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.ListTrainingJobEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_training_job_events_with_options_async(
+        self,
+        training_job_id: str,
+        request: pai_studio_20220112_models.ListTrainingJobEventsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.ListTrainingJobEventsResponse:
+        """
+        @summary 获取指定TrainingJob的事件。
+        
+        @param request: ListTrainingJobEventsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTrainingJobEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTrainingJobEvents',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/events',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.ListTrainingJobEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_training_job_events(
+        self,
+        training_job_id: str,
+        request: pai_studio_20220112_models.ListTrainingJobEventsRequest,
+    ) -> pai_studio_20220112_models.ListTrainingJobEventsResponse:
+        """
+        @summary 获取指定TrainingJob的事件。
+        
+        @param request: ListTrainingJobEventsRequest
+        @return: ListTrainingJobEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_training_job_events_with_options(training_job_id, request, headers, runtime)
+
+    async def list_training_job_events_async(
+        self,
+        training_job_id: str,
+        request: pai_studio_20220112_models.ListTrainingJobEventsRequest,
+    ) -> pai_studio_20220112_models.ListTrainingJobEventsResponse:
+        """
+        @summary 获取指定TrainingJob的事件。
+        
+        @param request: ListTrainingJobEventsRequest
+        @return: ListTrainingJobEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_training_job_events_with_options_async(training_job_id, request, headers, runtime)
+
+    def list_training_job_instance_events_with_options(
+        self,
+        training_job_id: str,
+        instance_id: str,
+        request: pai_studio_20220112_models.ListTrainingJobInstanceEventsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.ListTrainingJobInstanceEventsResponse:
+        """
+        @summary 获取指定Instance（TrainingJob的运行单元）的日志。
+        
+        @param request: ListTrainingJobInstanceEventsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTrainingJobInstanceEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTrainingJobInstanceEvents',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/events',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.ListTrainingJobInstanceEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_training_job_instance_events_with_options_async(
+        self,
+        training_job_id: str,
+        instance_id: str,
+        request: pai_studio_20220112_models.ListTrainingJobInstanceEventsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.ListTrainingJobInstanceEventsResponse:
+        """
+        @summary 获取指定Instance（TrainingJob的运行单元）的日志。
+        
+        @param request: ListTrainingJobInstanceEventsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTrainingJobInstanceEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTrainingJobInstanceEvents',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/events',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.ListTrainingJobInstanceEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_training_job_instance_events(
+        self,
+        training_job_id: str,
+        instance_id: str,
+        request: pai_studio_20220112_models.ListTrainingJobInstanceEventsRequest,
+    ) -> pai_studio_20220112_models.ListTrainingJobInstanceEventsResponse:
+        """
+        @summary 获取指定Instance（TrainingJob的运行单元）的日志。
+        
+        @param request: ListTrainingJobInstanceEventsRequest
+        @return: ListTrainingJobInstanceEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_training_job_instance_events_with_options(training_job_id, instance_id, request, headers, runtime)
+
+    async def list_training_job_instance_events_async(
+        self,
+        training_job_id: str,
+        instance_id: str,
+        request: pai_studio_20220112_models.ListTrainingJobInstanceEventsRequest,
+    ) -> pai_studio_20220112_models.ListTrainingJobInstanceEventsResponse:
+        """
+        @summary 获取指定Instance（TrainingJob的运行单元）的日志。
+        
+        @param request: ListTrainingJobInstanceEventsRequest
+        @return: ListTrainingJobInstanceEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_training_job_instance_events_with_options_async(training_job_id, instance_id, request, headers, runtime)
+
+    def list_training_job_instance_metrics_with_options(
+        self,
+        training_job_id: str,
+        request: pai_studio_20220112_models.ListTrainingJobInstanceMetricsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.ListTrainingJobInstanceMetricsResponse:
+        """
+        @summary 获取Training Job实例的Metrics
+        
+        @param request: ListTrainingJobInstanceMetricsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTrainingJobInstanceMetricsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.metric_type):
+            query['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.time_step):
+            query['TimeStep'] = request.time_step
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTrainingJobInstanceMetrics',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/instancemetrics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.ListTrainingJobInstanceMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_training_job_instance_metrics_with_options_async(
+        self,
+        training_job_id: str,
+        request: pai_studio_20220112_models.ListTrainingJobInstanceMetricsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.ListTrainingJobInstanceMetricsResponse:
+        """
+        @summary 获取Training Job实例的Metrics
+        
+        @param request: ListTrainingJobInstanceMetricsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTrainingJobInstanceMetricsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.metric_type):
+            query['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.time_step):
+            query['TimeStep'] = request.time_step
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTrainingJobInstanceMetrics',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/instancemetrics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.ListTrainingJobInstanceMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_training_job_instance_metrics(
+        self,
+        training_job_id: str,
+        request: pai_studio_20220112_models.ListTrainingJobInstanceMetricsRequest,
+    ) -> pai_studio_20220112_models.ListTrainingJobInstanceMetricsResponse:
+        """
+        @summary 获取Training Job实例的Metrics
+        
+        @param request: ListTrainingJobInstanceMetricsRequest
+        @return: ListTrainingJobInstanceMetricsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_training_job_instance_metrics_with_options(training_job_id, request, headers, runtime)
+
+    async def list_training_job_instance_metrics_async(
+        self,
+        training_job_id: str,
+        request: pai_studio_20220112_models.ListTrainingJobInstanceMetricsRequest,
+    ) -> pai_studio_20220112_models.ListTrainingJobInstanceMetricsResponse:
+        """
+        @summary 获取Training Job实例的Metrics
+        
+        @param request: ListTrainingJobInstanceMetricsRequest
+        @return: ListTrainingJobInstanceMetricsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_training_job_instance_metrics_with_options_async(training_job_id, request, headers, runtime)
 
     def list_training_job_logs_with_options(
         self,
@@ -2272,6 +4432,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListTrainingJobLogsResponse:
+        """
+        @summary 获取Training Job的日志
+        
+        @param request: ListTrainingJobLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTrainingJobLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -2313,6 +4481,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListTrainingJobLogsResponse:
+        """
+        @summary 获取Training Job的日志
+        
+        @param request: ListTrainingJobLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTrainingJobLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -2352,6 +4528,12 @@ class Client(OpenApiClient):
         training_job_id: str,
         request: pai_studio_20220112_models.ListTrainingJobLogsRequest,
     ) -> pai_studio_20220112_models.ListTrainingJobLogsResponse:
+        """
+        @summary 获取Training Job的日志
+        
+        @param request: ListTrainingJobLogsRequest
+        @return: ListTrainingJobLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_training_job_logs_with_options(training_job_id, request, headers, runtime)
@@ -2361,6 +4543,12 @@ class Client(OpenApiClient):
         training_job_id: str,
         request: pai_studio_20220112_models.ListTrainingJobLogsRequest,
     ) -> pai_studio_20220112_models.ListTrainingJobLogsResponse:
+        """
+        @summary 获取Training Job的日志
+        
+        @param request: ListTrainingJobLogsRequest
+        @return: ListTrainingJobLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_training_job_logs_with_options_async(training_job_id, request, headers, runtime)
@@ -2372,6 +4560,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListTrainingJobMetricsResponse:
+        """
+        @summary 获取Training Job的Metrics
+        
+        @param request: ListTrainingJobMetricsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTrainingJobMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -2413,6 +4609,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListTrainingJobMetricsResponse:
+        """
+        @summary 获取Training Job的Metrics
+        
+        @param request: ListTrainingJobMetricsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTrainingJobMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -2452,6 +4656,12 @@ class Client(OpenApiClient):
         training_job_id: str,
         request: pai_studio_20220112_models.ListTrainingJobMetricsRequest,
     ) -> pai_studio_20220112_models.ListTrainingJobMetricsResponse:
+        """
+        @summary 获取Training Job的Metrics
+        
+        @param request: ListTrainingJobMetricsRequest
+        @return: ListTrainingJobMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_training_job_metrics_with_options(training_job_id, request, headers, runtime)
@@ -2461,9 +4671,105 @@ class Client(OpenApiClient):
         training_job_id: str,
         request: pai_studio_20220112_models.ListTrainingJobMetricsRequest,
     ) -> pai_studio_20220112_models.ListTrainingJobMetricsResponse:
+        """
+        @summary 获取Training Job的Metrics
+        
+        @param request: ListTrainingJobMetricsRequest
+        @return: ListTrainingJobMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_training_job_metrics_with_options_async(training_job_id, request, headers, runtime)
+
+    def list_training_job_output_models_with_options(
+        self,
+        training_job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.ListTrainingJobOutputModelsResponse:
+        """
+        @summary 获取Training Job 产出的所有模型信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTrainingJobOutputModelsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListTrainingJobOutputModels',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/outputmodels',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.ListTrainingJobOutputModelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_training_job_output_models_with_options_async(
+        self,
+        training_job_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.ListTrainingJobOutputModelsResponse:
+        """
+        @summary 获取Training Job 产出的所有模型信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTrainingJobOutputModelsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListTrainingJobOutputModels',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/trainingjobs/{OpenApiUtilClient.get_encode_param(training_job_id)}/outputmodels',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.ListTrainingJobOutputModelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_training_job_output_models(
+        self,
+        training_job_id: str,
+    ) -> pai_studio_20220112_models.ListTrainingJobOutputModelsResponse:
+        """
+        @summary 获取Training Job 产出的所有模型信息
+        
+        @return: ListTrainingJobOutputModelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_training_job_output_models_with_options(training_job_id, headers, runtime)
+
+    async def list_training_job_output_models_async(
+        self,
+        training_job_id: str,
+    ) -> pai_studio_20220112_models.ListTrainingJobOutputModelsResponse:
+        """
+        @summary 获取Training Job 产出的所有模型信息
+        
+        @return: ListTrainingJobOutputModelsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_training_job_output_models_with_options_async(training_job_id, headers, runtime)
 
     def list_training_jobs_with_options(
         self,
@@ -2471,6 +4777,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListTrainingJobsResponse:
+        """
+        @summary 获取TrainingJob的列表
+        
+        @param tmp_req: ListTrainingJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTrainingJobsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_studio_20220112_models.ListTrainingJobsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2531,6 +4845,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ListTrainingJobsResponse:
+        """
+        @summary 获取TrainingJob的列表
+        
+        @param tmp_req: ListTrainingJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTrainingJobsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_studio_20220112_models.ListTrainingJobsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2589,6 +4911,12 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.ListTrainingJobsRequest,
     ) -> pai_studio_20220112_models.ListTrainingJobsResponse:
+        """
+        @summary 获取TrainingJob的列表
+        
+        @param request: ListTrainingJobsRequest
+        @return: ListTrainingJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_training_jobs_with_options(request, headers, runtime)
@@ -2597,6 +4925,12 @@ class Client(OpenApiClient):
         self,
         request: pai_studio_20220112_models.ListTrainingJobsRequest,
     ) -> pai_studio_20220112_models.ListTrainingJobsResponse:
+        """
+        @summary 获取TrainingJob的列表
+        
+        @param request: ListTrainingJobsRequest
+        @return: ListTrainingJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_training_jobs_with_options_async(request, headers, runtime)
@@ -2608,6 +4942,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ScaleQuotaResponse:
+        """
+        @summary 扩缩容Quota
+        
+        @param request: ScaleQuotaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScaleQuotaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.min):
@@ -2641,6 +4983,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.ScaleQuotaResponse:
+        """
+        @summary 扩缩容Quota
+        
+        @param request: ScaleQuotaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScaleQuotaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.min):
@@ -2672,6 +5022,12 @@ class Client(OpenApiClient):
         quota_id: str,
         request: pai_studio_20220112_models.ScaleQuotaRequest,
     ) -> pai_studio_20220112_models.ScaleQuotaResponse:
+        """
+        @summary 扩缩容Quota
+        
+        @param request: ScaleQuotaRequest
+        @return: ScaleQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.scale_quota_with_options(quota_id, request, headers, runtime)
@@ -2681,6 +5037,12 @@ class Client(OpenApiClient):
         quota_id: str,
         request: pai_studio_20220112_models.ScaleQuotaRequest,
     ) -> pai_studio_20220112_models.ScaleQuotaResponse:
+        """
+        @summary 扩缩容Quota
+        
+        @param request: ScaleQuotaRequest
+        @return: ScaleQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.scale_quota_with_options_async(quota_id, request, headers, runtime)
@@ -2691,6 +5053,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.StopTrainingJobResponse:
+        """
+        @summary 停止一个TrainingJob
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopTrainingJobResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2716,6 +5085,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.StopTrainingJobResponse:
+        """
+        @summary 停止一个TrainingJob
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopTrainingJobResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2739,6 +5115,11 @@ class Client(OpenApiClient):
         self,
         training_job_id: str,
     ) -> pai_studio_20220112_models.StopTrainingJobResponse:
+        """
+        @summary 停止一个TrainingJob
+        
+        @return: StopTrainingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.stop_training_job_with_options(training_job_id, headers, runtime)
@@ -2747,6 +5128,11 @@ class Client(OpenApiClient):
         self,
         training_job_id: str,
     ) -> pai_studio_20220112_models.StopTrainingJobResponse:
+        """
+        @summary 停止一个TrainingJob
+        
+        @return: StopTrainingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_training_job_with_options_async(training_job_id, headers, runtime)
@@ -2758,6 +5144,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.UpdateAlgorithmResponse:
+        """
+        @summary 更新算法
+        
+        @param request: UpdateAlgorithmRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAlgorithmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.algorithm_description):
@@ -2791,6 +5185,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.UpdateAlgorithmResponse:
+        """
+        @summary 更新算法
+        
+        @param request: UpdateAlgorithmRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAlgorithmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.algorithm_description):
@@ -2822,6 +5224,12 @@ class Client(OpenApiClient):
         algorithm_id: str,
         request: pai_studio_20220112_models.UpdateAlgorithmRequest,
     ) -> pai_studio_20220112_models.UpdateAlgorithmResponse:
+        """
+        @summary 更新算法
+        
+        @param request: UpdateAlgorithmRequest
+        @return: UpdateAlgorithmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_algorithm_with_options(algorithm_id, request, headers, runtime)
@@ -2831,6 +5239,12 @@ class Client(OpenApiClient):
         algorithm_id: str,
         request: pai_studio_20220112_models.UpdateAlgorithmRequest,
     ) -> pai_studio_20220112_models.UpdateAlgorithmResponse:
+        """
+        @summary 更新算法
+        
+        @param request: UpdateAlgorithmRequest
+        @return: UpdateAlgorithmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_algorithm_with_options_async(algorithm_id, request, headers, runtime)
@@ -2843,6 +5257,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.UpdateAlgorithmVersionResponse:
+        """
+        @summary 更新算法
+        
+        @param tmp_req: UpdateAlgorithmVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAlgorithmVersionResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_studio_20220112_models.UpdateAlgorithmVersionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2879,6 +5301,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.UpdateAlgorithmVersionResponse:
+        """
+        @summary 更新算法
+        
+        @param tmp_req: UpdateAlgorithmVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAlgorithmVersionResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pai_studio_20220112_models.UpdateAlgorithmVersionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2913,6 +5343,12 @@ class Client(OpenApiClient):
         algorithm_version: str,
         request: pai_studio_20220112_models.UpdateAlgorithmVersionRequest,
     ) -> pai_studio_20220112_models.UpdateAlgorithmVersionResponse:
+        """
+        @summary 更新算法
+        
+        @param request: UpdateAlgorithmVersionRequest
+        @return: UpdateAlgorithmVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_algorithm_version_with_options(algorithm_id, algorithm_version, request, headers, runtime)
@@ -2923,6 +5359,12 @@ class Client(OpenApiClient):
         algorithm_version: str,
         request: pai_studio_20220112_models.UpdateAlgorithmVersionRequest,
     ) -> pai_studio_20220112_models.UpdateAlgorithmVersionResponse:
+        """
+        @summary 更新算法
+        
+        @param request: UpdateAlgorithmVersionRequest
+        @return: UpdateAlgorithmVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_algorithm_version_with_options_async(algorithm_id, algorithm_version, request, headers, runtime)
@@ -2934,6 +5376,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.UpdateQuotaResponse:
+        """
+        @summary 更新Quota
+        
+        @param request: UpdateQuotaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateQuotaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -2942,6 +5392,10 @@ class Client(OpenApiClient):
             body['Labels'] = request.labels
         if not UtilClient.is_unset(request.queue_strategy):
             body['QueueStrategy'] = request.queue_strategy
+        if not UtilClient.is_unset(request.quota_config):
+            body['QuotaConfig'] = request.quota_config
+        if not UtilClient.is_unset(request.quota_name):
+            body['QuotaName'] = request.quota_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -2969,6 +5423,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.UpdateQuotaResponse:
+        """
+        @summary 更新Quota
+        
+        @param request: UpdateQuotaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateQuotaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -2977,6 +5439,10 @@ class Client(OpenApiClient):
             body['Labels'] = request.labels
         if not UtilClient.is_unset(request.queue_strategy):
             body['QueueStrategy'] = request.queue_strategy
+        if not UtilClient.is_unset(request.quota_config):
+            body['QuotaConfig'] = request.quota_config
+        if not UtilClient.is_unset(request.quota_name):
+            body['QuotaName'] = request.quota_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -3002,6 +5468,12 @@ class Client(OpenApiClient):
         quota_id: str,
         request: pai_studio_20220112_models.UpdateQuotaRequest,
     ) -> pai_studio_20220112_models.UpdateQuotaResponse:
+        """
+        @summary 更新Quota
+        
+        @param request: UpdateQuotaRequest
+        @return: UpdateQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_quota_with_options(quota_id, request, headers, runtime)
@@ -3011,6 +5483,12 @@ class Client(OpenApiClient):
         quota_id: str,
         request: pai_studio_20220112_models.UpdateQuotaRequest,
     ) -> pai_studio_20220112_models.UpdateQuotaResponse:
+        """
+        @summary 更新Quota
+        
+        @param request: UpdateQuotaRequest
+        @return: UpdateQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_quota_with_options_async(quota_id, request, headers, runtime)
@@ -3022,6 +5500,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.UpdateResourceGroupResponse:
+        """
+        @summary 更新Resource Group
+        
+        @param request: UpdateResourceGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -3059,6 +5545,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.UpdateResourceGroupResponse:
+        """
+        @summary 更新Resource Group
+        
+        @param request: UpdateResourceGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -3094,6 +5588,12 @@ class Client(OpenApiClient):
         resource_group_id: str,
         request: pai_studio_20220112_models.UpdateResourceGroupRequest,
     ) -> pai_studio_20220112_models.UpdateResourceGroupResponse:
+        """
+        @summary 更新Resource Group
+        
+        @param request: UpdateResourceGroupRequest
+        @return: UpdateResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_resource_group_with_options(resource_group_id, request, headers, runtime)
@@ -3103,6 +5603,12 @@ class Client(OpenApiClient):
         resource_group_id: str,
         request: pai_studio_20220112_models.UpdateResourceGroupRequest,
     ) -> pai_studio_20220112_models.UpdateResourceGroupResponse:
+        """
+        @summary 更新Resource Group
+        
+        @param request: UpdateResourceGroupRequest
+        @return: UpdateResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_resource_group_with_options_async(resource_group_id, request, headers, runtime)
@@ -3114,6 +5620,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.UpdateTrainingJobLabelsResponse:
+        """
+        @summary 更新一个TrainingJob的Labels
+        
+        @param request: UpdateTrainingJobLabelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTrainingJobLabelsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.labels):
@@ -3145,6 +5659,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_studio_20220112_models.UpdateTrainingJobLabelsResponse:
+        """
+        @summary 更新一个TrainingJob的Labels
+        
+        @param request: UpdateTrainingJobLabelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTrainingJobLabelsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.labels):
@@ -3174,6 +5696,12 @@ class Client(OpenApiClient):
         training_job_id: str,
         request: pai_studio_20220112_models.UpdateTrainingJobLabelsRequest,
     ) -> pai_studio_20220112_models.UpdateTrainingJobLabelsResponse:
+        """
+        @summary 更新一个TrainingJob的Labels
+        
+        @param request: UpdateTrainingJobLabelsRequest
+        @return: UpdateTrainingJobLabelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_training_job_labels_with_options(training_job_id, request, headers, runtime)
@@ -3183,6 +5711,12 @@ class Client(OpenApiClient):
         training_job_id: str,
         request: pai_studio_20220112_models.UpdateTrainingJobLabelsRequest,
     ) -> pai_studio_20220112_models.UpdateTrainingJobLabelsResponse:
+        """
+        @summary 更新一个TrainingJob的Labels
+        
+        @param request: UpdateTrainingJobLabelsRequest
+        @return: UpdateTrainingJobLabelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_training_job_labels_with_options_async(training_job_id, request, headers, runtime)

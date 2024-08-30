@@ -43,7 +43,9 @@ class AlgorithmSpecComputeResourcePolicy(TeaModel):
         value: str = None,
         version: str = None,
     ):
+        # This parameter is required.
         self.value = value
+        # This parameter is required.
         self.version = version
 
     def validate(self):
@@ -75,6 +77,7 @@ class AlgorithmSpecComputeResource(TeaModel):
         self,
         policy: AlgorithmSpecComputeResourcePolicy = None,
     ):
+        # This parameter is required.
         self.policy = policy
 
     def validate(self):
@@ -346,9 +349,11 @@ class HyperParameterDefinition(TeaModel):
         self.default_value = default_value
         self.description = description
         self.display_name = display_name
+        # This parameter is required.
         self.name = name
         self.range = range
         self.required = required
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -407,6 +412,7 @@ class Channel(TeaModel):
         supported_channel_types: List[str] = None,
     ):
         self.description = description
+        # This parameter is required.
         self.name = name
         self.properties = properties
         self.required = required
@@ -456,7 +462,9 @@ class MetricDefinition(TeaModel):
         regex: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.regex = regex
 
     def validate(self):
@@ -494,8 +502,11 @@ class ConditionExpression(TeaModel):
         operator: str = None,
         values: List[str] = None,
     ):
+        # This parameter is required.
         self.key = key
+        # This parameter is required.
         self.operator = operator
+        # This parameter is required.
         self.values = values
 
     def validate(self):
@@ -545,12 +556,15 @@ class AlgorithmSpec(TeaModel):
         supports_distributed_training: bool = None,
     ):
         self.code_dir = code_dir
+        # This parameter is required.
         self.command = command
         self.compute_resource = compute_resource
         self.customization = customization
         self.hyper_parameters = hyper_parameters
+        # This parameter is required.
         self.image = image
         self.input_channels = input_channels
+        # This parameter is required.
         self.job_type = job_type
         self.metric_definitions = metric_definitions
         self.output_channels = output_channels
@@ -761,7 +775,9 @@ class ChannelProperty(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -802,10 +818,13 @@ class ComponentSpec(TeaModel):
         resource_requirements: List[ConditionExpression] = None,
     ):
         self.code_dir = code_dir
+        # This parameter is required.
         self.command = command
         self.hyper_parameters = hyper_parameters
+        # This parameter is required.
         self.image = image
         self.input_channels = input_channels
+        # This parameter is required.
         self.job_type = job_type
         self.metric_definitions = metric_definitions
         self.output_channels = output_channels
@@ -999,6 +1018,168 @@ class GPUInfo(TeaModel):
         return self
 
 
+class GPUMetric(TeaModel):
+    def __init__(
+        self,
+        index: int = None,
+        model: str = None,
+        status: int = None,
+        usage_rate: float = None,
+    ):
+        self.index = index
+        self.model = model
+        self.status = status
+        self.usage_rate = usage_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.usage_rate is not None:
+            result['UsageRate'] = self.usage_rate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UsageRate') is not None:
+            self.usage_rate = m.get('UsageRate')
+        return self
+
+
+class JobSettings(TeaModel):
+    def __init__(
+        self,
+        advanced_settings: Dict[str, Any] = None,
+        business_user_id: str = None,
+        caller: str = None,
+        driver: str = None,
+        enable_error_monitoring_in_aimaster: bool = None,
+        enable_oss_append: bool = None,
+        enable_rdma: bool = None,
+        enable_sanity_check: bool = None,
+        enable_tide_resource: bool = None,
+        error_monitoring_args: str = None,
+        job_reserved_minutes: int = None,
+        job_reserved_policy: str = None,
+        oversold_type: str = None,
+        pipeline_id: str = None,
+        sanity_check_args: str = None,
+        tags: Dict[str, str] = None,
+    ):
+        self.advanced_settings = advanced_settings
+        self.business_user_id = business_user_id
+        self.caller = caller
+        self.driver = driver
+        self.enable_error_monitoring_in_aimaster = enable_error_monitoring_in_aimaster
+        self.enable_oss_append = enable_oss_append
+        self.enable_rdma = enable_rdma
+        self.enable_sanity_check = enable_sanity_check
+        self.enable_tide_resource = enable_tide_resource
+        self.error_monitoring_args = error_monitoring_args
+        self.job_reserved_minutes = job_reserved_minutes
+        self.job_reserved_policy = job_reserved_policy
+        self.oversold_type = oversold_type
+        self.pipeline_id = pipeline_id
+        self.sanity_check_args = sanity_check_args
+        self.tags = tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advanced_settings is not None:
+            result['AdvancedSettings'] = self.advanced_settings
+        if self.business_user_id is not None:
+            result['BusinessUserId'] = self.business_user_id
+        if self.caller is not None:
+            result['Caller'] = self.caller
+        if self.driver is not None:
+            result['Driver'] = self.driver
+        if self.enable_error_monitoring_in_aimaster is not None:
+            result['EnableErrorMonitoringInAIMaster'] = self.enable_error_monitoring_in_aimaster
+        if self.enable_oss_append is not None:
+            result['EnableOssAppend'] = self.enable_oss_append
+        if self.enable_rdma is not None:
+            result['EnableRDMA'] = self.enable_rdma
+        if self.enable_sanity_check is not None:
+            result['EnableSanityCheck'] = self.enable_sanity_check
+        if self.enable_tide_resource is not None:
+            result['EnableTideResource'] = self.enable_tide_resource
+        if self.error_monitoring_args is not None:
+            result['ErrorMonitoringArgs'] = self.error_monitoring_args
+        if self.job_reserved_minutes is not None:
+            result['JobReservedMinutes'] = self.job_reserved_minutes
+        if self.job_reserved_policy is not None:
+            result['JobReservedPolicy'] = self.job_reserved_policy
+        if self.oversold_type is not None:
+            result['OversoldType'] = self.oversold_type
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        if self.sanity_check_args is not None:
+            result['SanityCheckArgs'] = self.sanity_check_args
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdvancedSettings') is not None:
+            self.advanced_settings = m.get('AdvancedSettings')
+        if m.get('BusinessUserId') is not None:
+            self.business_user_id = m.get('BusinessUserId')
+        if m.get('Caller') is not None:
+            self.caller = m.get('Caller')
+        if m.get('Driver') is not None:
+            self.driver = m.get('Driver')
+        if m.get('EnableErrorMonitoringInAIMaster') is not None:
+            self.enable_error_monitoring_in_aimaster = m.get('EnableErrorMonitoringInAIMaster')
+        if m.get('EnableOssAppend') is not None:
+            self.enable_oss_append = m.get('EnableOssAppend')
+        if m.get('EnableRDMA') is not None:
+            self.enable_rdma = m.get('EnableRDMA')
+        if m.get('EnableSanityCheck') is not None:
+            self.enable_sanity_check = m.get('EnableSanityCheck')
+        if m.get('EnableTideResource') is not None:
+            self.enable_tide_resource = m.get('EnableTideResource')
+        if m.get('ErrorMonitoringArgs') is not None:
+            self.error_monitoring_args = m.get('ErrorMonitoringArgs')
+        if m.get('JobReservedMinutes') is not None:
+            self.job_reserved_minutes = m.get('JobReservedMinutes')
+        if m.get('JobReservedPolicy') is not None:
+            self.job_reserved_policy = m.get('JobReservedPolicy')
+        if m.get('OversoldType') is not None:
+            self.oversold_type = m.get('OversoldType')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        if m.get('SanityCheckArgs') is not None:
+            self.sanity_check_args = m.get('SanityCheckArgs')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
 class JobViewMetric(TeaModel):
     def __init__(
         self,
@@ -1173,6 +1354,7 @@ class MachineGroup(TeaModel):
         gmt_modified_time: str = None,
         gmt_started_time: str = None,
         machine_group_id: str = None,
+        order_instance_id: str = None,
         payment_duration: str = None,
         payment_duration_unit: str = None,
         payment_type: str = None,
@@ -1191,6 +1373,7 @@ class MachineGroup(TeaModel):
         self.gmt_modified_time = gmt_modified_time
         self.gmt_started_time = gmt_started_time
         self.machine_group_id = machine_group_id
+        self.order_instance_id = order_instance_id
         self.payment_duration = payment_duration
         self.payment_duration_unit = payment_duration_unit
         self.payment_type = payment_type
@@ -1227,6 +1410,8 @@ class MachineGroup(TeaModel):
             result['GmtStartedTime'] = self.gmt_started_time
         if self.machine_group_id is not None:
             result['MachineGroupID'] = self.machine_group_id
+        if self.order_instance_id is not None:
+            result['OrderInstanceId'] = self.order_instance_id
         if self.payment_duration is not None:
             result['PaymentDuration'] = self.payment_duration
         if self.payment_duration_unit is not None:
@@ -1265,6 +1450,8 @@ class MachineGroup(TeaModel):
             self.gmt_started_time = m.get('GmtStartedTime')
         if m.get('MachineGroupID') is not None:
             self.machine_group_id = m.get('MachineGroupID')
+        if m.get('OrderInstanceId') is not None:
+            self.order_instance_id = m.get('OrderInstanceId')
         if m.get('PaymentDuration') is not None:
             self.payment_duration = m.get('PaymentDuration')
         if m.get('PaymentDurationUnit') is not None:
@@ -1350,6 +1537,39 @@ class QuotaIdName(TeaModel):
         return self
 
 
+class UserInfo(TeaModel):
+    def __init__(
+        self,
+        user_id: str = None,
+        user_name: str = None,
+    ):
+        self.user_id = user_id
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
 class Node(TeaModel):
     def __init__(
         self,
@@ -1363,16 +1583,25 @@ class Node(TeaModel):
         gmt_expired_time: str = None,
         gmt_modified_time: str = None,
         is_bound: bool = None,
+        limit_cpu: str = None,
+        limit_gpu: str = None,
+        limit_memory: str = None,
         machine_group_id: str = None,
         memory: str = None,
         node_name: str = None,
         node_status: str = None,
         node_type: str = None,
         order_status: str = None,
+        pod_num: int = None,
         reason_code: str = None,
         reason_message: str = None,
+        request_cpu: str = None,
+        request_gpu: str = None,
+        request_memory: str = None,
         resource_group_id: str = None,
         resource_group_name: str = None,
+        users: List[UserInfo] = None,
+        workload_num: int = None,
     ):
         self.accelerator_type = accelerator_type
         self.bound_quotas = bound_quotas
@@ -1384,20 +1613,33 @@ class Node(TeaModel):
         self.gmt_expired_time = gmt_expired_time
         self.gmt_modified_time = gmt_modified_time
         self.is_bound = is_bound
+        self.limit_cpu = limit_cpu
+        self.limit_gpu = limit_gpu
+        self.limit_memory = limit_memory
         self.machine_group_id = machine_group_id
         self.memory = memory
         self.node_name = node_name
         self.node_status = node_status
         self.node_type = node_type
         self.order_status = order_status
+        self.pod_num = pod_num
         self.reason_code = reason_code
         self.reason_message = reason_message
+        self.request_cpu = request_cpu
+        self.request_gpu = request_gpu
+        self.request_memory = request_memory
         self.resource_group_id = resource_group_id
         self.resource_group_name = resource_group_name
+        self.users = users
+        self.workload_num = workload_num
 
     def validate(self):
         if self.bound_quotas:
             for k in self.bound_quotas:
+                if k:
+                    k.validate()
+        if self.users:
+            for k in self.users:
                 if k:
                     k.validate()
 
@@ -1429,6 +1671,12 @@ class Node(TeaModel):
             result['GmtModifiedTime'] = self.gmt_modified_time
         if self.is_bound is not None:
             result['IsBound'] = self.is_bound
+        if self.limit_cpu is not None:
+            result['LimitCPU'] = self.limit_cpu
+        if self.limit_gpu is not None:
+            result['LimitGPU'] = self.limit_gpu
+        if self.limit_memory is not None:
+            result['LimitMemory'] = self.limit_memory
         if self.machine_group_id is not None:
             result['MachineGroupId'] = self.machine_group_id
         if self.memory is not None:
@@ -1441,14 +1689,28 @@ class Node(TeaModel):
             result['NodeType'] = self.node_type
         if self.order_status is not None:
             result['OrderStatus'] = self.order_status
+        if self.pod_num is not None:
+            result['PodNum'] = self.pod_num
         if self.reason_code is not None:
             result['ReasonCode'] = self.reason_code
         if self.reason_message is not None:
             result['ReasonMessage'] = self.reason_message
+        if self.request_cpu is not None:
+            result['RequestCPU'] = self.request_cpu
+        if self.request_gpu is not None:
+            result['RequestGPU'] = self.request_gpu
+        if self.request_memory is not None:
+            result['RequestMemory'] = self.request_memory
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_group_name is not None:
             result['ResourceGroupName'] = self.resource_group_name
+        result['Users'] = []
+        if self.users is not None:
+            for k in self.users:
+                result['Users'].append(k.to_map() if k else None)
+        if self.workload_num is not None:
+            result['WorkloadNum'] = self.workload_num
         return result
 
     def from_map(self, m: dict = None):
@@ -1476,6 +1738,12 @@ class Node(TeaModel):
             self.gmt_modified_time = m.get('GmtModifiedTime')
         if m.get('IsBound') is not None:
             self.is_bound = m.get('IsBound')
+        if m.get('LimitCPU') is not None:
+            self.limit_cpu = m.get('LimitCPU')
+        if m.get('LimitGPU') is not None:
+            self.limit_gpu = m.get('LimitGPU')
+        if m.get('LimitMemory') is not None:
+            self.limit_memory = m.get('LimitMemory')
         if m.get('MachineGroupId') is not None:
             self.machine_group_id = m.get('MachineGroupId')
         if m.get('Memory') is not None:
@@ -1488,14 +1756,112 @@ class Node(TeaModel):
             self.node_type = m.get('NodeType')
         if m.get('OrderStatus') is not None:
             self.order_status = m.get('OrderStatus')
+        if m.get('PodNum') is not None:
+            self.pod_num = m.get('PodNum')
         if m.get('ReasonCode') is not None:
             self.reason_code = m.get('ReasonCode')
         if m.get('ReasonMessage') is not None:
             self.reason_message = m.get('ReasonMessage')
+        if m.get('RequestCPU') is not None:
+            self.request_cpu = m.get('RequestCPU')
+        if m.get('RequestGPU') is not None:
+            self.request_gpu = m.get('RequestGPU')
+        if m.get('RequestMemory') is not None:
+            self.request_memory = m.get('RequestMemory')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceGroupName') is not None:
             self.resource_group_name = m.get('ResourceGroupName')
+        self.users = []
+        if m.get('Users') is not None:
+            for k in m.get('Users'):
+                temp_model = UserInfo()
+                self.users.append(temp_model.from_map(k))
+        if m.get('WorkloadNum') is not None:
+            self.workload_num = m.get('WorkloadNum')
+        return self
+
+
+class NodeGPUMetric(TeaModel):
+    def __init__(
+        self,
+        accelerator_type: str = None,
+        gpucount: int = None,
+        gpumetrics: List[GPUMetric] = None,
+        gputype: str = None,
+        memory_util: float = None,
+        node_id: str = None,
+        node_type: str = None,
+        total_memory: float = None,
+        used_memory: float = None,
+    ):
+        self.accelerator_type = accelerator_type
+        self.gpucount = gpucount
+        self.gpumetrics = gpumetrics
+        self.gputype = gputype
+        self.memory_util = memory_util
+        self.node_id = node_id
+        self.node_type = node_type
+        self.total_memory = total_memory
+        self.used_memory = used_memory
+
+    def validate(self):
+        if self.gpumetrics:
+            for k in self.gpumetrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accelerator_type is not None:
+            result['AcceleratorType'] = self.accelerator_type
+        if self.gpucount is not None:
+            result['GPUCount'] = self.gpucount
+        result['GPUMetrics'] = []
+        if self.gpumetrics is not None:
+            for k in self.gpumetrics:
+                result['GPUMetrics'].append(k.to_map() if k else None)
+        if self.gputype is not None:
+            result['GPUType'] = self.gputype
+        if self.memory_util is not None:
+            result['MemoryUtil'] = self.memory_util
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
+        if self.total_memory is not None:
+            result['TotalMemory'] = self.total_memory
+        if self.used_memory is not None:
+            result['UsedMemory'] = self.used_memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceleratorType') is not None:
+            self.accelerator_type = m.get('AcceleratorType')
+        if m.get('GPUCount') is not None:
+            self.gpucount = m.get('GPUCount')
+        self.gpumetrics = []
+        if m.get('GPUMetrics') is not None:
+            for k in m.get('GPUMetrics'):
+                temp_model = GPUMetric()
+                self.gpumetrics.append(temp_model.from_map(k))
+        if m.get('GPUType') is not None:
+            self.gputype = m.get('GPUType')
+        if m.get('MemoryUtil') is not None:
+            self.memory_util = m.get('MemoryUtil')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
+        if m.get('TotalMemory') is not None:
+            self.total_memory = m.get('TotalMemory')
+        if m.get('UsedMemory') is not None:
+            self.used_memory = m.get('UsedMemory')
         return self
 
 
@@ -1543,6 +1909,238 @@ class NodeMetric(TeaModel):
                 self.metrics.append(temp_model.from_map(k))
         if m.get('NodeID') is not None:
             self.node_id = m.get('NodeID')
+        return self
+
+
+class ResourceAmount(TeaModel):
+    def __init__(
+        self,
+        cpu: str = None,
+        gpu: str = None,
+        gputype: str = None,
+        memory: str = None,
+    ):
+        self.cpu = cpu
+        self.gpu = gpu
+        self.gputype = gputype
+        self.memory = memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['CPU'] = self.cpu
+        if self.gpu is not None:
+            result['GPU'] = self.gpu
+        if self.gputype is not None:
+            result['GPUType'] = self.gputype
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPU') is not None:
+            self.cpu = m.get('CPU')
+        if m.get('GPU') is not None:
+            self.gpu = m.get('GPU')
+        if m.get('GPUType') is not None:
+            self.gputype = m.get('GPUType')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        return self
+
+
+class NodePodInfo(TeaModel):
+    def __init__(
+        self,
+        phase: str = None,
+        pod_ip: str = None,
+        pod_name: str = None,
+        pod_namespace: str = None,
+        resource_spec: ResourceAmount = None,
+        workload_id: str = None,
+        workload_type: str = None,
+    ):
+        self.phase = phase
+        self.pod_ip = pod_ip
+        self.pod_name = pod_name
+        self.pod_namespace = pod_namespace
+        self.resource_spec = resource_spec
+        self.workload_id = workload_id
+        self.workload_type = workload_type
+
+    def validate(self):
+        if self.resource_spec:
+            self.resource_spec.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        if self.pod_ip is not None:
+            result['PodIP'] = self.pod_ip
+        if self.pod_name is not None:
+            result['PodName'] = self.pod_name
+        if self.pod_namespace is not None:
+            result['PodNamespace'] = self.pod_namespace
+        if self.resource_spec is not None:
+            result['ResourceSpec'] = self.resource_spec.to_map()
+        if self.workload_id is not None:
+            result['WorkloadId'] = self.workload_id
+        if self.workload_type is not None:
+            result['WorkloadType'] = self.workload_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        if m.get('PodIP') is not None:
+            self.pod_ip = m.get('PodIP')
+        if m.get('PodName') is not None:
+            self.pod_name = m.get('PodName')
+        if m.get('PodNamespace') is not None:
+            self.pod_namespace = m.get('PodNamespace')
+        if m.get('ResourceSpec') is not None:
+            temp_model = ResourceAmount()
+            self.resource_spec = temp_model.from_map(m['ResourceSpec'])
+        if m.get('WorkloadId') is not None:
+            self.workload_id = m.get('WorkloadId')
+        if m.get('WorkloadType') is not None:
+            self.workload_type = m.get('WorkloadType')
+        return self
+
+
+class NodeSnapshotWorkloads(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        workload_id: str = None,
+        workload_type: str = None,
+    ):
+        self.name = name
+        self.workload_id = workload_id
+        self.workload_type = workload_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.workload_id is not None:
+            result['WorkloadId'] = self.workload_id
+        if self.workload_type is not None:
+            result['WorkloadType'] = self.workload_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('WorkloadId') is not None:
+            self.workload_id = m.get('WorkloadId')
+        if m.get('WorkloadType') is not None:
+            self.workload_type = m.get('WorkloadType')
+        return self
+
+
+class NodeSnapshot(TeaModel):
+    def __init__(
+        self,
+        ancestor_quota_workload_num: int = None,
+        descendant_quota_workload_num: int = None,
+        node_name: str = None,
+        request_cpu: str = None,
+        request_gpu: str = None,
+        request_memory: str = None,
+        self_quota_workload_num: int = None,
+        workload_num: int = None,
+        workloads: List[NodeSnapshotWorkloads] = None,
+    ):
+        self.ancestor_quota_workload_num = ancestor_quota_workload_num
+        self.descendant_quota_workload_num = descendant_quota_workload_num
+        self.node_name = node_name
+        self.request_cpu = request_cpu
+        self.request_gpu = request_gpu
+        self.request_memory = request_memory
+        self.self_quota_workload_num = self_quota_workload_num
+        self.workload_num = workload_num
+        self.workloads = workloads
+
+    def validate(self):
+        if self.workloads:
+            for k in self.workloads:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ancestor_quota_workload_num is not None:
+            result['AncestorQuotaWorkloadNum'] = self.ancestor_quota_workload_num
+        if self.descendant_quota_workload_num is not None:
+            result['DescendantQuotaWorkloadNum'] = self.descendant_quota_workload_num
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.request_cpu is not None:
+            result['RequestCPU'] = self.request_cpu
+        if self.request_gpu is not None:
+            result['RequestGPU'] = self.request_gpu
+        if self.request_memory is not None:
+            result['RequestMemory'] = self.request_memory
+        if self.self_quota_workload_num is not None:
+            result['SelfQuotaWorkloadNum'] = self.self_quota_workload_num
+        if self.workload_num is not None:
+            result['WorkloadNum'] = self.workload_num
+        result['Workloads'] = []
+        if self.workloads is not None:
+            for k in self.workloads:
+                result['Workloads'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AncestorQuotaWorkloadNum') is not None:
+            self.ancestor_quota_workload_num = m.get('AncestorQuotaWorkloadNum')
+        if m.get('DescendantQuotaWorkloadNum') is not None:
+            self.descendant_quota_workload_num = m.get('DescendantQuotaWorkloadNum')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('RequestCPU') is not None:
+            self.request_cpu = m.get('RequestCPU')
+        if m.get('RequestGPU') is not None:
+            self.request_gpu = m.get('RequestGPU')
+        if m.get('RequestMemory') is not None:
+            self.request_memory = m.get('RequestMemory')
+        if m.get('SelfQuotaWorkloadNum') is not None:
+            self.self_quota_workload_num = m.get('SelfQuotaWorkloadNum')
+        if m.get('WorkloadNum') is not None:
+            self.workload_num = m.get('WorkloadNum')
+        self.workloads = []
+        if m.get('Workloads') is not None:
+            for k in m.get('Workloads'):
+                temp_model = NodeSnapshotWorkloads()
+                self.workloads.append(temp_model.from_map(k))
         return self
 
 
@@ -1828,56 +2426,12 @@ class Permission(TeaModel):
         return self
 
 
-class ResourceAmount(TeaModel):
-    def __init__(
-        self,
-        cpu: str = None,
-        gpu: str = None,
-        gputype: str = None,
-        memory: str = None,
-    ):
-        self.cpu = cpu
-        self.gpu = gpu
-        self.gputype = gputype
-        self.memory = memory
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cpu is not None:
-            result['CPU'] = self.cpu
-        if self.gpu is not None:
-            result['GPU'] = self.gpu
-        if self.gputype is not None:
-            result['GPUType'] = self.gputype
-        if self.memory is not None:
-            result['Memory'] = self.memory
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CPU') is not None:
-            self.cpu = m.get('CPU')
-        if m.get('GPU') is not None:
-            self.gpu = m.get('GPU')
-        if m.get('GPUType') is not None:
-            self.gputype = m.get('GPUType')
-        if m.get('Memory') is not None:
-            self.memory = m.get('Memory')
-        return self
-
-
 class QueueInfo(TeaModel):
     def __init__(
         self,
         code: str = None,
         code_type: str = None,
+        gmt_created_time: str = None,
         gmt_dequeued_time: str = None,
         gmt_enqueued_time: str = None,
         gmt_position_modified_time: str = None,
@@ -1891,12 +2445,15 @@ class QueueInfo(TeaModel):
         status: str = None,
         sub_status: str = None,
         user_id: str = None,
+        user_name: str = None,
         workload_id: str = None,
+        workload_name: str = None,
         workload_type: str = None,
         workspace_id: str = None,
     ):
         self.code = code
         self.code_type = code_type
+        self.gmt_created_time = gmt_created_time
         self.gmt_dequeued_time = gmt_dequeued_time
         self.gmt_enqueued_time = gmt_enqueued_time
         self.gmt_position_modified_time = gmt_position_modified_time
@@ -1910,7 +2467,9 @@ class QueueInfo(TeaModel):
         self.status = status
         self.sub_status = sub_status
         self.user_id = user_id
+        self.user_name = user_name
         self.workload_id = workload_id
+        self.workload_name = workload_name
         self.workload_type = workload_type
         self.workspace_id = workspace_id
 
@@ -1928,6 +2487,8 @@ class QueueInfo(TeaModel):
             result['Code'] = self.code
         if self.code_type is not None:
             result['CodeType'] = self.code_type
+        if self.gmt_created_time is not None:
+            result['GmtCreatedTime'] = self.gmt_created_time
         if self.gmt_dequeued_time is not None:
             result['GmtDequeuedTime'] = self.gmt_dequeued_time
         if self.gmt_enqueued_time is not None:
@@ -1954,8 +2515,12 @@ class QueueInfo(TeaModel):
             result['SubStatus'] = self.sub_status
         if self.user_id is not None:
             result['UserId'] = self.user_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
         if self.workload_id is not None:
             result['WorkloadId'] = self.workload_id
+        if self.workload_name is not None:
+            result['WorkloadName'] = self.workload_name
         if self.workload_type is not None:
             result['WorkloadType'] = self.workload_type
         if self.workspace_id is not None:
@@ -1968,6 +2533,8 @@ class QueueInfo(TeaModel):
             self.code = m.get('Code')
         if m.get('CodeType') is not None:
             self.code_type = m.get('CodeType')
+        if m.get('GmtCreatedTime') is not None:
+            self.gmt_created_time = m.get('GmtCreatedTime')
         if m.get('GmtDequeuedTime') is not None:
             self.gmt_dequeued_time = m.get('GmtDequeuedTime')
         if m.get('GmtEnqueuedTime') is not None:
@@ -1995,8 +2562,12 @@ class QueueInfo(TeaModel):
             self.sub_status = m.get('SubStatus')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
         if m.get('WorkloadId') is not None:
             self.workload_id = m.get('WorkloadId')
+        if m.get('WorkloadName') is not None:
+            self.workload_name = m.get('WorkloadName')
         if m.get('WorkloadType') is not None:
             self.workload_type = m.get('WorkloadType')
         if m.get('WorkspaceId') is not None:
@@ -2214,6 +2785,7 @@ class QuotaConfig(TeaModel):
         acs: ACS = None,
         cluster_id: str = None,
         default_gpudriver: str = None,
+        enable_preempt_subquota_workloads: bool = None,
         resource_specs: List[WorkspaceSpecs] = None,
         support_gpudrivers: List[str] = None,
         support_rdma: bool = None,
@@ -2222,6 +2794,7 @@ class QuotaConfig(TeaModel):
         self.acs = acs
         self.cluster_id = cluster_id
         self.default_gpudriver = default_gpudriver
+        self.enable_preempt_subquota_workloads = enable_preempt_subquota_workloads
         self.resource_specs = resource_specs
         self.support_gpudrivers = support_gpudrivers
         self.support_rdma = support_rdma
@@ -2249,6 +2822,8 @@ class QuotaConfig(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.default_gpudriver is not None:
             result['DefaultGPUDriver'] = self.default_gpudriver
+        if self.enable_preempt_subquota_workloads is not None:
+            result['EnablePreemptSubquotaWorkloads'] = self.enable_preempt_subquota_workloads
         result['ResourceSpecs'] = []
         if self.resource_specs is not None:
             for k in self.resource_specs:
@@ -2270,6 +2845,8 @@ class QuotaConfig(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('DefaultGPUDriver') is not None:
             self.default_gpudriver = m.get('DefaultGPUDriver')
+        if m.get('EnablePreemptSubquotaWorkloads') is not None:
+            self.enable_preempt_subquota_workloads = m.get('EnablePreemptSubquotaWorkloads')
         self.resource_specs = []
         if m.get('ResourceSpecs') is not None:
             for k in m.get('ResourceSpecs'):
@@ -2547,6 +3124,45 @@ class Quota(TeaModel):
             for k in m.get('Workspaces'):
                 temp_model = WorkspaceIdName()
                 self.workspaces.append(temp_model.from_map(k))
+        return self
+
+
+class QuotaJob(TeaModel):
+    def __init__(
+        self,
+        queuing: int = None,
+        running: int = None,
+        total: int = None,
+    ):
+        self.queuing = queuing
+        self.running = running
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.queuing is not None:
+            result['Queuing'] = self.queuing
+        if self.running is not None:
+            result['Running'] = self.running
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Queuing') is not None:
+            self.queuing = m.get('Queuing')
+        if m.get('Running') is not None:
+            self.running = m.get('Running')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
         return self
 
 
@@ -2867,6 +3483,215 @@ class QuotaNodeViewMetric(TeaModel):
         return self
 
 
+class WorkloadDetails(TeaModel):
+    def __init__(
+        self,
+        dlc: QuotaJob = None,
+        dsw: QuotaJob = None,
+        eas: QuotaJob = None,
+        summary: QuotaJob = None,
+    ):
+        self.dlc = dlc
+        self.dsw = dsw
+        self.eas = eas
+        self.summary = summary
+
+    def validate(self):
+        if self.dlc:
+            self.dlc.validate()
+        if self.dsw:
+            self.dsw.validate()
+        if self.eas:
+            self.eas.validate()
+        if self.summary:
+            self.summary.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dlc is not None:
+            result['DLC'] = self.dlc.to_map()
+        if self.dsw is not None:
+            result['DSW'] = self.dsw.to_map()
+        if self.eas is not None:
+            result['EAS'] = self.eas.to_map()
+        if self.summary is not None:
+            result['Summary'] = self.summary.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DLC') is not None:
+            temp_model = QuotaJob()
+            self.dlc = temp_model.from_map(m['DLC'])
+        if m.get('DSW') is not None:
+            temp_model = QuotaJob()
+            self.dsw = temp_model.from_map(m['DSW'])
+        if m.get('EAS') is not None:
+            temp_model = QuotaJob()
+            self.eas = temp_model.from_map(m['EAS'])
+        if m.get('Summary') is not None:
+            temp_model = QuotaJob()
+            self.summary = temp_model.from_map(m['Summary'])
+        return self
+
+
+class QuotaTopo(TeaModel):
+    def __init__(
+        self,
+        depth: str = None,
+        parent_quota_id: str = None,
+        quota_details: QuotaDetails = None,
+        quota_id: str = None,
+        quota_name: str = None,
+        resource_type: str = None,
+        workload_details: WorkloadDetails = None,
+    ):
+        self.depth = depth
+        self.parent_quota_id = parent_quota_id
+        self.quota_details = quota_details
+        self.quota_id = quota_id
+        self.quota_name = quota_name
+        self.resource_type = resource_type
+        self.workload_details = workload_details
+
+    def validate(self):
+        if self.quota_details:
+            self.quota_details.validate()
+        if self.workload_details:
+            self.workload_details.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.depth is not None:
+            result['Depth'] = self.depth
+        if self.parent_quota_id is not None:
+            result['ParentQuotaId'] = self.parent_quota_id
+        if self.quota_details is not None:
+            result['QuotaDetails'] = self.quota_details.to_map()
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
+        if self.quota_name is not None:
+            result['QuotaName'] = self.quota_name
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.workload_details is not None:
+            result['WorkloadDetails'] = self.workload_details.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Depth') is not None:
+            self.depth = m.get('Depth')
+        if m.get('ParentQuotaId') is not None:
+            self.parent_quota_id = m.get('ParentQuotaId')
+        if m.get('QuotaDetails') is not None:
+            temp_model = QuotaDetails()
+            self.quota_details = temp_model.from_map(m['QuotaDetails'])
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
+        if m.get('QuotaName') is not None:
+            self.quota_name = m.get('QuotaName')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('WorkloadDetails') is not None:
+            temp_model = WorkloadDetails()
+            self.workload_details = temp_model.from_map(m['WorkloadDetails'])
+        return self
+
+
+class QuotaUserResources(TeaModel):
+    def __init__(
+        self,
+        submitted: ResourceAmount = None,
+        used: ResourceAmount = None,
+    ):
+        self.submitted = submitted
+        self.used = used
+
+    def validate(self):
+        if self.submitted:
+            self.submitted.validate()
+        if self.used:
+            self.used.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.submitted is not None:
+            result['Submitted'] = self.submitted.to_map()
+        if self.used is not None:
+            result['Used'] = self.used.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Submitted') is not None:
+            temp_model = ResourceAmount()
+            self.submitted = temp_model.from_map(m['Submitted'])
+        if m.get('Used') is not None:
+            temp_model = ResourceAmount()
+            self.used = temp_model.from_map(m['Used'])
+        return self
+
+
+class QuotaUser(TeaModel):
+    def __init__(
+        self,
+        resources: QuotaUserResources = None,
+        user_id: str = None,
+        username: str = None,
+        workload_count: int = None,
+    ):
+        self.resources = resources
+        self.user_id = user_id
+        self.username = username
+        self.workload_count = workload_count
+
+    def validate(self):
+        if self.resources:
+            self.resources.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resources is not None:
+            result['Resources'] = self.resources.to_map()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.username is not None:
+            result['Username'] = self.username
+        if self.workload_count is not None:
+            result['WorkloadCount'] = self.workload_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Resources') is not None:
+            temp_model = QuotaUserResources()
+            self.resources = temp_model.from_map(m['Resources'])
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        if m.get('WorkloadCount') is not None:
+            self.workload_count = m.get('WorkloadCount')
+        return self
+
+
 class QuotaUserViewMetric(TeaModel):
     def __init__(
         self,
@@ -3017,6 +3842,62 @@ class QuotaUserViewMetric(TeaModel):
             self.total_memory = m.get('TotalMemory')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        return self
+
+
+class ResourceDiagnosisDetail(TeaModel):
+    def __init__(
+        self,
+        exceed_resources: List[str] = None,
+        limit: ResourceAmount = None,
+        status: str = None,
+        used: ResourceAmount = None,
+        workload_ids: List[str] = None,
+    ):
+        self.exceed_resources = exceed_resources
+        self.limit = limit
+        self.status = status
+        self.used = used
+        self.workload_ids = workload_ids
+
+    def validate(self):
+        if self.limit:
+            self.limit.validate()
+        if self.used:
+            self.used.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exceed_resources is not None:
+            result['ExceedResources'] = self.exceed_resources
+        if self.limit is not None:
+            result['Limit'] = self.limit.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.used is not None:
+            result['Used'] = self.used.to_map()
+        if self.workload_ids is not None:
+            result['WorkloadIds'] = self.workload_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExceedResources') is not None:
+            self.exceed_resources = m.get('ExceedResources')
+        if m.get('Limit') is not None:
+            temp_model = ResourceAmount()
+            self.limit = temp_model.from_map(m['Limit'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Used') is not None:
+            temp_model = ResourceAmount()
+            self.used = temp_model.from_map(m['Used'])
+        if m.get('WorkloadIds') is not None:
+            self.workload_ids = m.get('WorkloadIds')
         return self
 
 
@@ -3243,6 +4124,189 @@ class ResourceOperation(TeaModel):
         return self
 
 
+class SpotPriceItem(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+        spot_discount: float = None,
+        timestamp: str = None,
+        zone_id: str = None,
+    ):
+        self.instance_type = instance_type
+        self.spot_discount = spot_discount
+        self.timestamp = timestamp
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.spot_discount is not None:
+            result['SpotDiscount'] = self.spot_discount
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('SpotDiscount') is not None:
+            self.spot_discount = m.get('SpotDiscount')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class SpotStockPreview(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+        spot_discount: float = None,
+        stock_status: str = None,
+    ):
+        self.instance_type = instance_type
+        self.spot_discount = spot_discount
+        self.stock_status = stock_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.spot_discount is not None:
+            result['SpotDiscount'] = self.spot_discount
+        if self.stock_status is not None:
+            result['StockStatus'] = self.stock_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('SpotDiscount') is not None:
+            self.spot_discount = m.get('SpotDiscount')
+        if m.get('StockStatus') is not None:
+            self.stock_status = m.get('StockStatus')
+        return self
+
+
+class TimeRangeFilter(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class UnschedulableNodeDetail(TeaModel):
+    def __init__(
+        self,
+        nodes: List[str] = None,
+        reason: str = None,
+    ):
+        self.nodes = nodes
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.nodes is not None:
+            result['Nodes'] = self.nodes
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Nodes') is not None:
+            self.nodes = m.get('Nodes')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        return self
+
+
+class UserQuotaPermission(TeaModel):
+    def __init__(
+        self,
+        permissions: List[str] = None,
+        quota_id: str = None,
+    ):
+        self.permissions = permissions
+        self.quota_id = quota_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.permissions is not None:
+            result['Permissions'] = self.permissions
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Permissions') is not None:
+            self.permissions = m.get('Permissions')
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
+        return self
+
+
 class UserViewMetric(TeaModel):
     def __init__(
         self,
@@ -3399,6 +4463,101 @@ class UserViewMetric(TeaModel):
             self.total_memory = m.get('TotalMemory')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        return self
+
+
+class CheckInstanceWebTerminalRequest(TeaModel):
+    def __init__(
+        self,
+        check_info: str = None,
+    ):
+        self.check_info = check_info
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_info is not None:
+            result['CheckInfo'] = self.check_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckInfo') is not None:
+            self.check_info = m.get('CheckInfo')
+        return self
+
+
+class CheckInstanceWebTerminalResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CheckInstanceWebTerminalResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckInstanceWebTerminalResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckInstanceWebTerminalResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -3647,6 +4806,80 @@ class CreateAlgorithmVersionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateAlgorithmVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateInstanceWebTerminalResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        web_terminal_id: str = None,
+    ):
+        self.request_id = request_id
+        self.web_terminal_id = web_terminal_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.web_terminal_id is not None:
+            result['WebTerminalId'] = self.web_terminal_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('WebTerminalId') is not None:
+            self.web_terminal_id = m.get('WebTerminalId')
+        return self
+
+
+class CreateInstanceWebTerminalResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateInstanceWebTerminalResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateInstanceWebTerminalResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3929,6 +5162,7 @@ class CreateResourceGroupResponseBody(TeaModel):
         resource_group_id: str = None,
     ):
         self.request_id = request_id
+        # ResourceGroup ID。
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -4047,6 +5281,39 @@ class CreateTrainingJobRequestComputeResourceInstanceSpec(TeaModel):
         return self
 
 
+class CreateTrainingJobRequestComputeResourceSpotSpec(TeaModel):
+    def __init__(
+        self,
+        spot_discount_limit: float = None,
+        spot_strategy: str = None,
+    ):
+        self.spot_discount_limit = spot_discount_limit
+        self.spot_strategy = spot_strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.spot_discount_limit is not None:
+            result['SpotDiscountLimit'] = self.spot_discount_limit
+        if self.spot_strategy is not None:
+            result['SpotStrategy'] = self.spot_strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SpotDiscountLimit') is not None:
+            self.spot_discount_limit = m.get('SpotDiscountLimit')
+        if m.get('SpotStrategy') is not None:
+            self.spot_strategy = m.get('SpotStrategy')
+        return self
+
+
 class CreateTrainingJobRequestComputeResource(TeaModel):
     def __init__(
         self,
@@ -4055,16 +5322,22 @@ class CreateTrainingJobRequestComputeResource(TeaModel):
         instance_count: int = None,
         instance_spec: CreateTrainingJobRequestComputeResourceInstanceSpec = None,
         resource_id: str = None,
+        spot_spec: CreateTrainingJobRequestComputeResourceSpotSpec = None,
+        use_spot_instance: bool = None,
     ):
         self.ecs_count = ecs_count
         self.ecs_spec = ecs_spec
         self.instance_count = instance_count
         self.instance_spec = instance_spec
         self.resource_id = resource_id
+        self.spot_spec = spot_spec
+        self.use_spot_instance = use_spot_instance
 
     def validate(self):
         if self.instance_spec:
             self.instance_spec.validate()
+        if self.spot_spec:
+            self.spot_spec.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4082,6 +5355,10 @@ class CreateTrainingJobRequestComputeResource(TeaModel):
             result['InstanceSpec'] = self.instance_spec.to_map()
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        if self.spot_spec is not None:
+            result['SpotSpec'] = self.spot_spec.to_map()
+        if self.use_spot_instance is not None:
+            result['UseSpotInstance'] = self.use_spot_instance
         return result
 
     def from_map(self, m: dict = None):
@@ -4097,6 +5374,11 @@ class CreateTrainingJobRequestComputeResource(TeaModel):
             self.instance_spec = temp_model.from_map(m['InstanceSpec'])
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        if m.get('SpotSpec') is not None:
+            temp_model = CreateTrainingJobRequestComputeResourceSpotSpec()
+            self.spot_spec = temp_model.from_map(m['SpotSpec'])
+        if m.get('UseSpotInstance') is not None:
+            self.use_spot_instance = m.get('UseSpotInstance')
         return self
 
 
@@ -4166,10 +5448,12 @@ class CreateTrainingJobRequestInputChannels(TeaModel):
         dataset_id: str = None,
         input_uri: str = None,
         name: str = None,
+        options: str = None,
     ):
         self.dataset_id = dataset_id
         self.input_uri = input_uri
         self.name = name
+        self.options = options
 
     def validate(self):
         pass
@@ -4186,6 +5470,8 @@ class CreateTrainingJobRequestInputChannels(TeaModel):
             result['InputUri'] = self.input_uri
         if self.name is not None:
             result['Name'] = self.name
+        if self.options is not None:
+            result['Options'] = self.options
         return result
 
     def from_map(self, m: dict = None):
@@ -4196,6 +5482,8 @@ class CreateTrainingJobRequestInputChannels(TeaModel):
             self.input_uri = m.get('InputUri')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
         return self
 
 
@@ -4356,6 +5644,7 @@ class CreateTrainingJobRequestUserVpc(TeaModel):
         self.extended_cidrs = extended_cidrs
         self.security_group_id = security_group_id
         self.switch_id = switch_id
+        # VPC ID。
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4403,11 +5692,13 @@ class CreateTrainingJobRequest(TeaModel):
         algorithm_version: str = None,
         code_dir: Location = None,
         compute_resource: CreateTrainingJobRequestComputeResource = None,
+        environments: Dict[str, str] = None,
         experiment_config: CreateTrainingJobRequestExperimentConfig = None,
         hyper_parameters: List[CreateTrainingJobRequestHyperParameters] = None,
         input_channels: List[CreateTrainingJobRequestInputChannels] = None,
         labels: List[CreateTrainingJobRequestLabels] = None,
         output_channels: List[CreateTrainingJobRequestOutputChannels] = None,
+        python_requirements: List[str] = None,
         role_arn: str = None,
         scheduler: CreateTrainingJobRequestScheduler = None,
         settings: CreateTrainingJobRequestSettings = None,
@@ -4422,17 +5713,21 @@ class CreateTrainingJobRequest(TeaModel):
         self.algorithm_version = algorithm_version
         self.code_dir = code_dir
         self.compute_resource = compute_resource
+        self.environments = environments
         self.experiment_config = experiment_config
         self.hyper_parameters = hyper_parameters
         self.input_channels = input_channels
         self.labels = labels
         self.output_channels = output_channels
+        self.python_requirements = python_requirements
         self.role_arn = role_arn
         self.scheduler = scheduler
         self.settings = settings
         self.training_job_description = training_job_description
+        # This parameter is required.
         self.training_job_name = training_job_name
         self.user_vpc = user_vpc
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -4485,6 +5780,8 @@ class CreateTrainingJobRequest(TeaModel):
             result['CodeDir'] = self.code_dir.to_map()
         if self.compute_resource is not None:
             result['ComputeResource'] = self.compute_resource.to_map()
+        if self.environments is not None:
+            result['Environments'] = self.environments
         if self.experiment_config is not None:
             result['ExperimentConfig'] = self.experiment_config.to_map()
         result['HyperParameters'] = []
@@ -4503,6 +5800,8 @@ class CreateTrainingJobRequest(TeaModel):
         if self.output_channels is not None:
             for k in self.output_channels:
                 result['OutputChannels'].append(k.to_map() if k else None)
+        if self.python_requirements is not None:
+            result['PythonRequirements'] = self.python_requirements
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
         if self.scheduler is not None:
@@ -4536,6 +5835,8 @@ class CreateTrainingJobRequest(TeaModel):
         if m.get('ComputeResource') is not None:
             temp_model = CreateTrainingJobRequestComputeResource()
             self.compute_resource = temp_model.from_map(m['ComputeResource'])
+        if m.get('Environments') is not None:
+            self.environments = m.get('Environments')
         if m.get('ExperimentConfig') is not None:
             temp_model = CreateTrainingJobRequestExperimentConfig()
             self.experiment_config = temp_model.from_map(m['ExperimentConfig'])
@@ -4559,6 +5860,8 @@ class CreateTrainingJobRequest(TeaModel):
             for k in m.get('OutputChannels'):
                 temp_model = CreateTrainingJobRequestOutputChannels()
                 self.output_channels.append(temp_model.from_map(k))
+        if m.get('PythonRequirements') is not None:
+            self.python_requirements = m.get('PythonRequirements')
         if m.get('RoleArn') is not None:
             self.role_arn = m.get('RoleArn')
         if m.get('Scheduler') is not None:
@@ -4649,6 +5952,142 @@ class CreateTrainingJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateTrainingJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAlgorithmResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteAlgorithmResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAlgorithmResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAlgorithmResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAlgorithmVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteAlgorithmVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAlgorithmVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAlgorithmVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4950,6 +6389,170 @@ class DeleteResourceGroupMachineGroupResponse(TeaModel):
         return self
 
 
+class DeleteTrainingJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteTrainingJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteTrainingJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteTrainingJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteTrainingJobLabelsRequest(TeaModel):
+    def __init__(
+        self,
+        keys: str = None,
+    ):
+        # This parameter is required.
+        self.keys = keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keys is not None:
+            result['Keys'] = self.keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keys') is not None:
+            self.keys = m.get('Keys')
+        return self
+
+
+class DeleteTrainingJobLabelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteTrainingJobLabelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteTrainingJobLabelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteTrainingJobLabelsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetAlgorithmResponseBody(TeaModel):
     def __init__(
         self,
@@ -5209,6 +6812,7 @@ class GetMachineGroupResponseBody(TeaModel):
         gmt_started: str = None,
         machine_group_id: str = None,
         order_id: str = None,
+        order_instance_id: str = None,
         pairesource_id: str = None,
         pay_type: str = None,
         pricing_cycle: str = None,
@@ -5227,6 +6831,7 @@ class GetMachineGroupResponseBody(TeaModel):
         self.gmt_started = gmt_started
         self.machine_group_id = machine_group_id
         self.order_id = order_id
+        self.order_instance_id = order_instance_id
         self.pairesource_id = pairesource_id
         self.pay_type = pay_type
         self.pricing_cycle = pricing_cycle
@@ -5264,6 +6869,8 @@ class GetMachineGroupResponseBody(TeaModel):
             result['MachineGroupID'] = self.machine_group_id
         if self.order_id is not None:
             result['OrderID'] = self.order_id
+        if self.order_instance_id is not None:
+            result['OrderInstanceId'] = self.order_instance_id
         if self.pairesource_id is not None:
             result['PAIResourceID'] = self.pairesource_id
         if self.pay_type is not None:
@@ -5302,6 +6909,8 @@ class GetMachineGroupResponseBody(TeaModel):
             self.machine_group_id = m.get('MachineGroupID')
         if m.get('OrderID') is not None:
             self.order_id = m.get('OrderID')
+        if m.get('OrderInstanceId') is not None:
+            self.order_instance_id = m.get('OrderInstanceId')
         if m.get('PAIResourceID') is not None:
             self.pairesource_id = m.get('PAIResourceID')
         if m.get('PayType') is not None:
@@ -5496,6 +7105,33 @@ class GetNodeMetricsResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = GetNodeMetricsResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetQuotaRequest(TeaModel):
+    def __init__(
+        self,
+        verbose: bool = None,
+    ):
+        self.verbose = verbose
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.verbose is not None:
+            result['Verbose'] = self.verbose
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Verbose') is not None:
+            self.verbose = m.get('Verbose')
         return self
 
 
@@ -6357,6 +7993,7 @@ class GetResourceGroupRequestRequest(TeaModel):
         resource_group_id: str = None,
     ):
         self.pod_status = pod_status
+        # This parameter is required.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -6598,6 +8235,114 @@ class GetResourceGroupTotalResponse(TeaModel):
         return self
 
 
+class GetTokenRequest(TeaModel):
+    def __init__(
+        self,
+        expire_time: int = None,
+        training_job_id: str = None,
+    ):
+        self.expire_time = expire_time
+        # This parameter is required.
+        self.training_job_id = training_job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.training_job_id is not None:
+            result['TrainingJobId'] = self.training_job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('TrainingJobId') is not None:
+            self.training_job_id = m.get('TrainingJobId')
+        return self
+
+
+class GetTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        token: str = None,
+    ):
+        self.request_id = request_id
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class GetTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTrainingJobResponseBodyComputeResourceInstanceSpec(TeaModel):
     def __init__(
         self,
@@ -6649,6 +8394,39 @@ class GetTrainingJobResponseBodyComputeResourceInstanceSpec(TeaModel):
         return self
 
 
+class GetTrainingJobResponseBodyComputeResourceSpotSpec(TeaModel):
+    def __init__(
+        self,
+        spot_discount_limit: float = None,
+        spot_strategy: str = None,
+    ):
+        self.spot_discount_limit = spot_discount_limit
+        self.spot_strategy = spot_strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.spot_discount_limit is not None:
+            result['SpotDiscountLimit'] = self.spot_discount_limit
+        if self.spot_strategy is not None:
+            result['SpotStrategy'] = self.spot_strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SpotDiscountLimit') is not None:
+            self.spot_discount_limit = m.get('SpotDiscountLimit')
+        if m.get('SpotStrategy') is not None:
+            self.spot_strategy = m.get('SpotStrategy')
+        return self
+
+
 class GetTrainingJobResponseBodyComputeResource(TeaModel):
     def __init__(
         self,
@@ -6657,16 +8435,24 @@ class GetTrainingJobResponseBodyComputeResource(TeaModel):
         instance_count: int = None,
         instance_spec: GetTrainingJobResponseBodyComputeResourceInstanceSpec = None,
         resource_id: str = None,
+        resource_name: str = None,
+        spot_spec: GetTrainingJobResponseBodyComputeResourceSpotSpec = None,
+        use_spot_instance: bool = None,
     ):
         self.ecs_count = ecs_count
         self.ecs_spec = ecs_spec
         self.instance_count = instance_count
         self.instance_spec = instance_spec
         self.resource_id = resource_id
+        self.resource_name = resource_name
+        self.spot_spec = spot_spec
+        self.use_spot_instance = use_spot_instance
 
     def validate(self):
         if self.instance_spec:
             self.instance_spec.validate()
+        if self.spot_spec:
+            self.spot_spec.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6684,6 +8470,12 @@ class GetTrainingJobResponseBodyComputeResource(TeaModel):
             result['InstanceSpec'] = self.instance_spec.to_map()
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.spot_spec is not None:
+            result['SpotSpec'] = self.spot_spec.to_map()
+        if self.use_spot_instance is not None:
+            result['UseSpotInstance'] = self.use_spot_instance
         return result
 
     def from_map(self, m: dict = None):
@@ -6699,6 +8491,13 @@ class GetTrainingJobResponseBodyComputeResource(TeaModel):
             self.instance_spec = temp_model.from_map(m['InstanceSpec'])
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('SpotSpec') is not None:
+            temp_model = GetTrainingJobResponseBodyComputeResourceSpotSpec()
+            self.spot_spec = temp_model.from_map(m['SpotSpec'])
+        if m.get('UseSpotInstance') is not None:
+            self.use_spot_instance = m.get('UseSpotInstance')
         return self
 
 
@@ -6774,10 +8573,12 @@ class GetTrainingJobResponseBodyInputChannels(TeaModel):
         dataset_id: str = None,
         input_uri: str = None,
         name: str = None,
+        options: str = None,
     ):
         self.dataset_id = dataset_id
         self.input_uri = input_uri
         self.name = name
+        self.options = options
 
     def validate(self):
         pass
@@ -6794,6 +8595,8 @@ class GetTrainingJobResponseBodyInputChannels(TeaModel):
             result['InputUri'] = self.input_uri
         if self.name is not None:
             result['Name'] = self.name
+        if self.options is not None:
+            result['Options'] = self.options
         return result
 
     def from_map(self, m: dict = None):
@@ -6804,6 +8607,8 @@ class GetTrainingJobResponseBodyInputChannels(TeaModel):
             self.input_uri = m.get('InputUri')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
         return self
 
 
@@ -7228,6 +9033,7 @@ class GetTrainingJobResponseBodyUserVpc(TeaModel):
         self.extended_cidrs = extended_cidrs
         self.security_group_id = security_group_id
         self.switch_id = switch_id
+        # VPC ID。
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -7272,6 +9078,7 @@ class GetTrainingJobResponseBody(TeaModel):
         algorithm_version: str = None,
         compute_resource: GetTrainingJobResponseBodyComputeResource = None,
         duration: int = None,
+        environments: Dict[str, str] = None,
         experiment_config: GetTrainingJobResponseBodyExperimentConfig = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
@@ -7284,6 +9091,7 @@ class GetTrainingJobResponseBody(TeaModel):
         latest_progress: GetTrainingJobResponseBodyLatestProgress = None,
         output_channels: List[GetTrainingJobResponseBodyOutputChannels] = None,
         output_model: GetTrainingJobResponseBodyOutputModel = None,
+        python_requirements: List[str] = None,
         reason_code: str = None,
         reason_message: str = None,
         request_id: str = None,
@@ -7307,6 +9115,7 @@ class GetTrainingJobResponseBody(TeaModel):
         self.algorithm_version = algorithm_version
         self.compute_resource = compute_resource
         self.duration = duration
+        self.environments = environments
         self.experiment_config = experiment_config
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
@@ -7319,6 +9128,7 @@ class GetTrainingJobResponseBody(TeaModel):
         self.latest_progress = latest_progress
         self.output_channels = output_channels
         self.output_model = output_model
+        self.python_requirements = python_requirements
         self.reason_code = reason_code
         self.reason_message = reason_message
         self.request_id = request_id
@@ -7401,6 +9211,8 @@ class GetTrainingJobResponseBody(TeaModel):
             result['ComputeResource'] = self.compute_resource.to_map()
         if self.duration is not None:
             result['Duration'] = self.duration
+        if self.environments is not None:
+            result['Environments'] = self.environments
         if self.experiment_config is not None:
             result['ExperimentConfig'] = self.experiment_config.to_map()
         if self.gmt_create_time is not None:
@@ -7437,6 +9249,8 @@ class GetTrainingJobResponseBody(TeaModel):
                 result['OutputChannels'].append(k.to_map() if k else None)
         if self.output_model is not None:
             result['OutputModel'] = self.output_model.to_map()
+        if self.python_requirements is not None:
+            result['PythonRequirements'] = self.python_requirements
         if self.reason_code is not None:
             result['ReasonCode'] = self.reason_code
         if self.reason_message is not None:
@@ -7489,6 +9303,8 @@ class GetTrainingJobResponseBody(TeaModel):
             self.compute_resource = temp_model.from_map(m['ComputeResource'])
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+        if m.get('Environments') is not None:
+            self.environments = m.get('Environments')
         if m.get('ExperimentConfig') is not None:
             temp_model = GetTrainingJobResponseBodyExperimentConfig()
             self.experiment_config = temp_model.from_map(m['ExperimentConfig'])
@@ -7534,6 +9350,8 @@ class GetTrainingJobResponseBody(TeaModel):
         if m.get('OutputModel') is not None:
             temp_model = GetTrainingJobResponseBodyOutputModel()
             self.output_model = temp_model.from_map(m['OutputModel'])
+        if m.get('PythonRequirements') is not None:
+            self.python_requirements = m.get('PythonRequirements')
         if m.get('ReasonCode') is not None:
             self.reason_code = m.get('ReasonCode')
         if m.get('ReasonMessage') is not None:
@@ -7614,6 +9432,270 @@ class GetTrainingJobResponse(TeaModel):
         return self
 
 
+class GetTrainingJobErrorInfoResponseBodyErrorInfo(TeaModel):
+    def __init__(
+        self,
+        additional_info: str = None,
+        code: str = None,
+        message: str = None,
+    ):
+        self.additional_info = additional_info
+        self.code = code
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.additional_info is not None:
+            result['AdditionalInfo'] = self.additional_info
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdditionalInfo') is not None:
+            self.additional_info = m.get('AdditionalInfo')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        return self
+
+
+class GetTrainingJobErrorInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_info: GetTrainingJobErrorInfoResponseBodyErrorInfo = None,
+        request_id: str = None,
+    ):
+        self.error_info = error_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.error_info:
+            self.error_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_info is not None:
+            result['ErrorInfo'] = self.error_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorInfo') is not None:
+            temp_model = GetTrainingJobErrorInfoResponseBodyErrorInfo()
+            self.error_info = temp_model.from_map(m['ErrorInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetTrainingJobErrorInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTrainingJobErrorInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTrainingJobErrorInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTrainingJobLatestMetricsRequest(TeaModel):
+    def __init__(
+        self,
+        names: str = None,
+    ):
+        self.names = names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.names is not None:
+            result['Names'] = self.names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Names') is not None:
+            self.names = m.get('Names')
+        return self
+
+
+class GetTrainingJobLatestMetricsResponseBodyMetrics(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        timestamp: str = None,
+        value: float = None,
+    ):
+        self.name = name
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.timestamp = timestamp
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetTrainingJobLatestMetricsResponseBody(TeaModel):
+    def __init__(
+        self,
+        metrics: List[GetTrainingJobLatestMetricsResponseBodyMetrics] = None,
+        request_id: str = None,
+    ):
+        self.metrics = metrics
+        self.request_id = request_id
+
+    def validate(self):
+        if self.metrics:
+            for k in self.metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Metrics'] = []
+        if self.metrics is not None:
+            for k in self.metrics:
+                result['Metrics'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.metrics = []
+        if m.get('Metrics') is not None:
+            for k in m.get('Metrics'):
+                temp_model = GetTrainingJobLatestMetricsResponseBodyMetrics()
+                self.metrics.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetTrainingJobLatestMetricsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTrainingJobLatestMetricsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTrainingJobLatestMetricsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetUserViewMetricsRequest(TeaModel):
     def __init__(
         self,
@@ -7626,7 +9708,9 @@ class GetUserViewMetricsRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.order = order
+        # This parameter is required.
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.sort_by = sort_by
         self.time_step = time_step
@@ -8184,6 +10268,205 @@ class ListAlgorithmsResponse(TeaModel):
         return self
 
 
+class ListNodesRequest(TeaModel):
+    def __init__(
+        self,
+        accelerator_type: str = None,
+        filter_by_quota_id: str = None,
+        filter_by_resource_group_ids: str = None,
+        gputype: str = None,
+        node_names: str = None,
+        node_statuses: str = None,
+        node_types: str = None,
+        order: str = None,
+        order_statuses: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        quota_id: str = None,
+        resource_group_ids: str = None,
+        sort_by: str = None,
+        verbose: bool = None,
+    ):
+        self.accelerator_type = accelerator_type
+        self.filter_by_quota_id = filter_by_quota_id
+        self.filter_by_resource_group_ids = filter_by_resource_group_ids
+        self.gputype = gputype
+        self.node_names = node_names
+        self.node_statuses = node_statuses
+        self.node_types = node_types
+        self.order = order
+        self.order_statuses = order_statuses
+        self.page_number = page_number
+        self.page_size = page_size
+        self.quota_id = quota_id
+        self.resource_group_ids = resource_group_ids
+        self.sort_by = sort_by
+        self.verbose = verbose
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accelerator_type is not None:
+            result['AcceleratorType'] = self.accelerator_type
+        if self.filter_by_quota_id is not None:
+            result['FilterByQuotaId'] = self.filter_by_quota_id
+        if self.filter_by_resource_group_ids is not None:
+            result['FilterByResourceGroupIds'] = self.filter_by_resource_group_ids
+        if self.gputype is not None:
+            result['GPUType'] = self.gputype
+        if self.node_names is not None:
+            result['NodeNames'] = self.node_names
+        if self.node_statuses is not None:
+            result['NodeStatuses'] = self.node_statuses
+        if self.node_types is not None:
+            result['NodeTypes'] = self.node_types
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.order_statuses is not None:
+            result['OrderStatuses'] = self.order_statuses
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
+        if self.resource_group_ids is not None:
+            result['ResourceGroupIds'] = self.resource_group_ids
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.verbose is not None:
+            result['Verbose'] = self.verbose
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceleratorType') is not None:
+            self.accelerator_type = m.get('AcceleratorType')
+        if m.get('FilterByQuotaId') is not None:
+            self.filter_by_quota_id = m.get('FilterByQuotaId')
+        if m.get('FilterByResourceGroupIds') is not None:
+            self.filter_by_resource_group_ids = m.get('FilterByResourceGroupIds')
+        if m.get('GPUType') is not None:
+            self.gputype = m.get('GPUType')
+        if m.get('NodeNames') is not None:
+            self.node_names = m.get('NodeNames')
+        if m.get('NodeStatuses') is not None:
+            self.node_statuses = m.get('NodeStatuses')
+        if m.get('NodeTypes') is not None:
+            self.node_types = m.get('NodeTypes')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('OrderStatuses') is not None:
+            self.order_statuses = m.get('OrderStatuses')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
+        if m.get('ResourceGroupIds') is not None:
+            self.resource_group_ids = m.get('ResourceGroupIds')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('Verbose') is not None:
+            self.verbose = m.get('Verbose')
+        return self
+
+
+class ListNodesResponseBody(TeaModel):
+    def __init__(
+        self,
+        nodes: List[Node] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.nodes = nodes
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.nodes:
+            for k in self.nodes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Nodes'] = []
+        if self.nodes is not None:
+            for k in self.nodes:
+                result['Nodes'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.nodes = []
+        if m.get('Nodes') is not None:
+            for k in m.get('Nodes'):
+                temp_model = Node()
+                self.nodes.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListNodesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListNodesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListNodesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListQuotasRequest(TeaModel):
     def __init__(
         self,
@@ -8198,7 +10481,9 @@ class ListQuotasRequest(TeaModel):
         resource_type: str = None,
         sort_by: str = None,
         statuses: str = None,
+        verbose: bool = None,
         workspace_ids: str = None,
+        workspace_name: str = None,
     ):
         self.labels = labels
         self.layout_mode = layout_mode
@@ -8211,7 +10496,9 @@ class ListQuotasRequest(TeaModel):
         self.resource_type = resource_type
         self.sort_by = sort_by
         self.statuses = statuses
+        self.verbose = verbose
         self.workspace_ids = workspace_ids
+        self.workspace_name = workspace_name
 
     def validate(self):
         pass
@@ -8244,8 +10531,12 @@ class ListQuotasRequest(TeaModel):
             result['SortBy'] = self.sort_by
         if self.statuses is not None:
             result['Statuses'] = self.statuses
+        if self.verbose is not None:
+            result['Verbose'] = self.verbose
         if self.workspace_ids is not None:
             result['WorkspaceIds'] = self.workspace_ids
+        if self.workspace_name is not None:
+            result['WorkspaceName'] = self.workspace_name
         return result
 
     def from_map(self, m: dict = None):
@@ -8272,8 +10563,12 @@ class ListQuotasRequest(TeaModel):
             self.sort_by = m.get('SortBy')
         if m.get('Statuses') is not None:
             self.statuses = m.get('Statuses')
+        if m.get('Verbose') is not None:
+            self.verbose = m.get('Verbose')
         if m.get('WorkspaceIds') is not None:
             self.workspace_ids = m.get('WorkspaceIds')
+        if m.get('WorkspaceName') is not None:
+            self.workspace_name = m.get('WorkspaceName')
         return self
 
 
@@ -8372,6 +10667,7 @@ class ListResourceGroupMachineGroupsRequest(TeaModel):
         ecs_spec: str = None,
         name: str = None,
         order: str = None,
+        order_instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
         payment_duration: str = None,
@@ -8384,6 +10680,7 @@ class ListResourceGroupMachineGroupsRequest(TeaModel):
         self.ecs_spec = ecs_spec
         self.name = name
         self.order = order
+        self.order_instance_id = order_instance_id
         self.page_number = page_number
         self.page_size = page_size
         self.payment_duration = payment_duration
@@ -8409,6 +10706,8 @@ class ListResourceGroupMachineGroupsRequest(TeaModel):
             result['Name'] = self.name
         if self.order is not None:
             result['Order'] = self.order
+        if self.order_instance_id is not None:
+            result['OrderInstanceId'] = self.order_instance_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -8435,6 +10734,8 @@ class ListResourceGroupMachineGroupsRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('Order') is not None:
             self.order = m.get('Order')
+        if m.get('OrderInstanceId') is not None:
+            self.order_instance_id = m.get('OrderInstanceId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -8624,6 +10925,7 @@ class ListResourceGroupsResponseBody(TeaModel):
     ):
         self.request_id = request_id
         self.resource_groups = resource_groups
+        # This parameter is required.
         self.total_count = total_count
 
     def validate(self):
@@ -8703,6 +11005,476 @@ class ListResourceGroupsResponse(TeaModel):
         return self
 
 
+class ListTrainingJobEventsRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        start_time: str = None,
+    ):
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.end_time = end_time
+        self.page_number = page_number
+        self.page_size = page_size
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class ListTrainingJobEventsResponseBody(TeaModel):
+    def __init__(
+        self,
+        events: List[str] = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        self.events = events
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.events is not None:
+            result['Events'] = self.events
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Events') is not None:
+            self.events = m.get('Events')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListTrainingJobEventsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTrainingJobEventsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTrainingJobEventsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTrainingJobInstanceEventsRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        start_time: str = None,
+    ):
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.end_time = end_time
+        self.page_number = page_number
+        self.page_size = page_size
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class ListTrainingJobInstanceEventsResponseBody(TeaModel):
+    def __init__(
+        self,
+        events: List[str] = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        self.events = events
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.events is not None:
+            result['Events'] = self.events
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Events') is not None:
+            self.events = m.get('Events')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListTrainingJobInstanceEventsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTrainingJobInstanceEventsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTrainingJobInstanceEventsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTrainingJobInstanceMetricsRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        instance_id: str = None,
+        metric_type: str = None,
+        start_time: str = None,
+        time_step: str = None,
+    ):
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.end_time = end_time
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.metric_type = metric_type
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.start_time = start_time
+        self.time_step = time_step
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.time_step is not None:
+            result['TimeStep'] = self.time_step
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('TimeStep') is not None:
+            self.time_step = m.get('TimeStep')
+        return self
+
+
+class ListTrainingJobInstanceMetricsResponseBodyInstanceMetricsMetrics(TeaModel):
+    def __init__(
+        self,
+        time: str = None,
+        value: float = None,
+    ):
+        self.time = time
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.time is not None:
+            result['Time'] = self.time
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Time') is not None:
+            self.time = m.get('Time')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTrainingJobInstanceMetricsResponseBodyInstanceMetrics(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        metrics: List[ListTrainingJobInstanceMetricsResponseBodyInstanceMetricsMetrics] = None,
+        node_name: str = None,
+    ):
+        self.instance_id = instance_id
+        self.metrics = metrics
+        self.node_name = node_name
+
+    def validate(self):
+        if self.metrics:
+            for k in self.metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        result['Metrics'] = []
+        if self.metrics is not None:
+            for k in self.metrics:
+                result['Metrics'].append(k.to_map() if k else None)
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        self.metrics = []
+        if m.get('Metrics') is not None:
+            for k in m.get('Metrics'):
+                temp_model = ListTrainingJobInstanceMetricsResponseBodyInstanceMetricsMetrics()
+                self.metrics.append(temp_model.from_map(k))
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        return self
+
+
+class ListTrainingJobInstanceMetricsResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_metrics: List[ListTrainingJobInstanceMetricsResponseBodyInstanceMetrics] = None,
+        request_id: str = None,
+    ):
+        self.instance_metrics = instance_metrics
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instance_metrics:
+            for k in self.instance_metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceMetrics'] = []
+        if self.instance_metrics is not None:
+            for k in self.instance_metrics:
+                result['InstanceMetrics'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_metrics = []
+        if m.get('InstanceMetrics') is not None:
+            for k in m.get('InstanceMetrics'):
+                temp_model = ListTrainingJobInstanceMetricsResponseBodyInstanceMetrics()
+                self.instance_metrics.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListTrainingJobInstanceMetricsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTrainingJobInstanceMetricsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTrainingJobInstanceMetricsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTrainingJobLogsRequest(TeaModel):
     def __init__(
         self,
@@ -8713,10 +11485,12 @@ class ListTrainingJobLogsRequest(TeaModel):
         start_time: str = None,
         worker_id: str = None,
     ):
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.end_time = end_time
         self.instance_id = instance_id
         self.page_number = page_number
         self.page_size = page_size
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.start_time = start_time
         self.worker_id = worker_id
 
@@ -8850,11 +11624,13 @@ class ListTrainingJobMetricsRequest(TeaModel):
         page_size: int = None,
         start_time: str = None,
     ):
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.end_time = end_time
         self.name = name
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.start_time = start_time
 
     def validate(self):
@@ -8905,6 +11681,7 @@ class ListTrainingJobMetricsResponseBodyMetrics(TeaModel):
         value: float = None,
     ):
         self.name = name
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.timestamp = timestamp
         self.value = value
 
@@ -9014,6 +11791,204 @@ class ListTrainingJobMetricsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListTrainingJobMetricsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTrainingJobOutputModelsResponseBodyOutputModelsLabels(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTrainingJobOutputModelsResponseBodyOutputModels(TeaModel):
+    def __init__(
+        self,
+        compression_spec: Dict[str, Any] = None,
+        evaluation_spec: Dict[str, Any] = None,
+        inference_spec: Dict[str, Any] = None,
+        labels: List[ListTrainingJobOutputModelsResponseBodyOutputModelsLabels] = None,
+        metrics: Dict[str, Any] = None,
+        output_channel_name: str = None,
+        source_id: str = None,
+        source_type: str = None,
+        training_spec: Dict[str, Any] = None,
+        uri: str = None,
+    ):
+        self.compression_spec = compression_spec
+        self.evaluation_spec = evaluation_spec
+        self.inference_spec = inference_spec
+        self.labels = labels
+        self.metrics = metrics
+        self.output_channel_name = output_channel_name
+        self.source_id = source_id
+        self.source_type = source_type
+        self.training_spec = training_spec
+        self.uri = uri
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compression_spec is not None:
+            result['CompressionSpec'] = self.compression_spec
+        if self.evaluation_spec is not None:
+            result['EvaluationSpec'] = self.evaluation_spec
+        if self.inference_spec is not None:
+            result['InferenceSpec'] = self.inference_spec
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        if self.metrics is not None:
+            result['Metrics'] = self.metrics
+        if self.output_channel_name is not None:
+            result['OutputChannelName'] = self.output_channel_name
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.training_spec is not None:
+            result['TrainingSpec'] = self.training_spec
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompressionSpec') is not None:
+            self.compression_spec = m.get('CompressionSpec')
+        if m.get('EvaluationSpec') is not None:
+            self.evaluation_spec = m.get('EvaluationSpec')
+        if m.get('InferenceSpec') is not None:
+            self.inference_spec = m.get('InferenceSpec')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = ListTrainingJobOutputModelsResponseBodyOutputModelsLabels()
+                self.labels.append(temp_model.from_map(k))
+        if m.get('Metrics') is not None:
+            self.metrics = m.get('Metrics')
+        if m.get('OutputChannelName') is not None:
+            self.output_channel_name = m.get('OutputChannelName')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('TrainingSpec') is not None:
+            self.training_spec = m.get('TrainingSpec')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class ListTrainingJobOutputModelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        output_models: List[ListTrainingJobOutputModelsResponseBodyOutputModels] = None,
+    ):
+        self.output_models = output_models
+
+    def validate(self):
+        if self.output_models:
+            for k in self.output_models:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['OutputModels'] = []
+        if self.output_models is not None:
+            for k in self.output_models:
+                result['OutputModels'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.output_models = []
+        if m.get('OutputModels') is not None:
+            for k in m.get('OutputModels'):
+                temp_model = ListTrainingJobOutputModelsResponseBodyOutputModels()
+                self.output_models.append(temp_model.from_map(k))
+        return self
+
+
+class ListTrainingJobOutputModelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTrainingJobOutputModelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTrainingJobOutputModelsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9287,12 +12262,14 @@ class ListTrainingJobsResponseBodyTrainingJobsComputeResource(TeaModel):
         instance_count: int = None,
         instance_spec: ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec = None,
         resource_id: str = None,
+        resource_name: str = None,
     ):
         self.ecs_count = ecs_count
         self.ecs_spec = ecs_spec
         self.instance_count = instance_count
         self.instance_spec = instance_spec
         self.resource_id = resource_id
+        self.resource_name = resource_name
 
     def validate(self):
         if self.instance_spec:
@@ -9314,6 +12291,8 @@ class ListTrainingJobsResponseBodyTrainingJobsComputeResource(TeaModel):
             result['InstanceSpec'] = self.instance_spec.to_map()
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
         return result
 
     def from_map(self, m: dict = None):
@@ -9329,6 +12308,8 @@ class ListTrainingJobsResponseBodyTrainingJobsComputeResource(TeaModel):
             self.instance_spec = temp_model.from_map(m['InstanceSpec'])
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
         return self
 
 
@@ -9600,6 +12581,7 @@ class ListTrainingJobsResponseBodyTrainingJobsUserVpc(TeaModel):
         self.extended_cidrs = extended_cidrs
         self.security_group_id = security_group_id
         self.switch_id = switch_id
+        # VPC ID。
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -9645,6 +12627,7 @@ class ListTrainingJobsResponseBodyTrainingJobs(TeaModel):
         algorithm_provider: str = None,
         algorithm_version: str = None,
         compute_resource: ListTrainingJobsResponseBodyTrainingJobsComputeResource = None,
+        environments: Dict[str, str] = None,
         experiment_config: ListTrainingJobsResponseBodyTrainingJobsExperimentConfig = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
@@ -9653,6 +12636,7 @@ class ListTrainingJobsResponseBodyTrainingJobs(TeaModel):
         is_temp_algo: bool = None,
         labels: List[ListTrainingJobsResponseBodyTrainingJobsLabels] = None,
         output_channels: List[ListTrainingJobsResponseBodyTrainingJobsOutputChannels] = None,
+        python_requirements: List[str] = None,
         reason_code: str = None,
         reason_message: str = None,
         role_arn: str = None,
@@ -9670,6 +12654,7 @@ class ListTrainingJobsResponseBodyTrainingJobs(TeaModel):
         self.algorithm_provider = algorithm_provider
         self.algorithm_version = algorithm_version
         self.compute_resource = compute_resource
+        self.environments = environments
         self.experiment_config = experiment_config
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
@@ -9678,6 +12663,7 @@ class ListTrainingJobsResponseBodyTrainingJobs(TeaModel):
         self.is_temp_algo = is_temp_algo
         self.labels = labels
         self.output_channels = output_channels
+        self.python_requirements = python_requirements
         self.reason_code = reason_code
         self.reason_message = reason_message
         self.role_arn = role_arn
@@ -9735,6 +12721,8 @@ class ListTrainingJobsResponseBodyTrainingJobs(TeaModel):
             result['AlgorithmVersion'] = self.algorithm_version
         if self.compute_resource is not None:
             result['ComputeResource'] = self.compute_resource.to_map()
+        if self.environments is not None:
+            result['Environments'] = self.environments
         if self.experiment_config is not None:
             result['ExperimentConfig'] = self.experiment_config.to_map()
         if self.gmt_create_time is not None:
@@ -9759,6 +12747,8 @@ class ListTrainingJobsResponseBodyTrainingJobs(TeaModel):
         if self.output_channels is not None:
             for k in self.output_channels:
                 result['OutputChannels'].append(k.to_map() if k else None)
+        if self.python_requirements is not None:
+            result['PythonRequirements'] = self.python_requirements
         if self.reason_code is not None:
             result['ReasonCode'] = self.reason_code
         if self.reason_message is not None:
@@ -9798,6 +12788,8 @@ class ListTrainingJobsResponseBodyTrainingJobs(TeaModel):
         if m.get('ComputeResource') is not None:
             temp_model = ListTrainingJobsResponseBodyTrainingJobsComputeResource()
             self.compute_resource = temp_model.from_map(m['ComputeResource'])
+        if m.get('Environments') is not None:
+            self.environments = m.get('Environments')
         if m.get('ExperimentConfig') is not None:
             temp_model = ListTrainingJobsResponseBodyTrainingJobsExperimentConfig()
             self.experiment_config = temp_model.from_map(m['ExperimentConfig'])
@@ -9827,6 +12819,8 @@ class ListTrainingJobsResponseBodyTrainingJobs(TeaModel):
             for k in m.get('OutputChannels'):
                 temp_model = ListTrainingJobsResponseBodyTrainingJobsOutputChannels()
                 self.output_channels.append(temp_model.from_map(k))
+        if m.get('PythonRequirements') is not None:
+            self.python_requirements = m.get('PythonRequirements')
         if m.get('ReasonCode') is not None:
             self.reason_code = m.get('ReasonCode')
         if m.get('ReasonMessage') is not None:
@@ -10368,16 +13362,22 @@ class UpdateQuotaRequest(TeaModel):
         description: str = None,
         labels: List[Label] = None,
         queue_strategy: str = None,
+        quota_config: QuotaConfig = None,
+        quota_name: str = None,
     ):
         self.description = description
         self.labels = labels
         self.queue_strategy = queue_strategy
+        self.quota_config = quota_config
+        self.quota_name = quota_name
 
     def validate(self):
         if self.labels:
             for k in self.labels:
                 if k:
                     k.validate()
+        if self.quota_config:
+            self.quota_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10393,6 +13393,10 @@ class UpdateQuotaRequest(TeaModel):
                 result['Labels'].append(k.to_map() if k else None)
         if self.queue_strategy is not None:
             result['QueueStrategy'] = self.queue_strategy
+        if self.quota_config is not None:
+            result['QuotaConfig'] = self.quota_config.to_map()
+        if self.quota_name is not None:
+            result['QuotaName'] = self.quota_name
         return result
 
     def from_map(self, m: dict = None):
@@ -10406,6 +13410,11 @@ class UpdateQuotaRequest(TeaModel):
                 self.labels.append(temp_model.from_map(k))
         if m.get('QueueStrategy') is not None:
             self.queue_strategy = m.get('QueueStrategy')
+        if m.get('QuotaConfig') is not None:
+            temp_model = QuotaConfig()
+            self.quota_config = temp_model.from_map(m['QuotaConfig'])
+        if m.get('QuotaName') is not None:
+            self.quota_name = m.get('QuotaName')
         return self
 
 

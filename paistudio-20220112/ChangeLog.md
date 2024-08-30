@@ -1,3 +1,30 @@
+2024-08-30 Version: 1.2.0
+- Support API CheckInstanceWebTerminal.
+- Support API CreateInstanceWebTerminal.
+- Support API DeleteAlgorithm.
+- Support API DeleteAlgorithmVersion.
+- Support API DeleteTrainingJob.
+- Support API DeleteTrainingJobLabels.
+- Support API GetToken.
+- Support API GetTrainingJobErrorInfo.
+- Support API GetTrainingJobLatestMetrics.
+- Support API ListNodes.
+- Support API ListTrainingJobEvents.
+- Support API ListTrainingJobInstanceEvents.
+- Support API ListTrainingJobInstanceMetrics.
+- Support API ListTrainingJobOutputModels.
+- Update API CreateTrainingJob: update param body.
+- Update API GetMachineGroup: update response param.
+- Update API GetQuota: add param Verbose.
+- Update API GetTrainingJob: update response param.
+- Update API ListQuotas: add param Verbose.
+- Update API ListQuotas: add param WorkspaceName.
+- Update API ListQuotas: update response param.
+- Update API ListResourceGroupMachineGroups: add param OrderInstanceId.
+- Update API ListTrainingJobs: update response param.
+- Update API UpdateQuota: update param body.
+
+
 2024-03-19 Version: 1.1.6
 - Update API ListQuotas: update response param.
 
