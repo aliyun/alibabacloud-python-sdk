@@ -1794,36 +1794,34 @@ class CreateGatewayRequest(TeaModel):
         name: str = None,
         replicas: int = None,
     ):
-        # The name of the resource group.
+        # The resource group ID. To obtain a resource group ID, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
         self.resource_name = resource_name
         # Specifies whether to enable Internet access. Default value: false.
         # 
         # Valid values:
         # 
         # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.enable_internet = enable_internet
-        # Specifies whether to enable internal network access. Default value: true.
+        # Specifies whether to enable private access. Default value: true.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_intranet = enable_intranet
-        # The instance type used for the private gateway.
+        # The instance type used by the private gateway. Valid values:
+        # 
+        # *   2c4g
+        # *   4c8g
+        # *   8c16g
+        # *   16c32g
         # 
         # This parameter is required.
         self.instance_type = instance_type
-        # The private gateway alias.
+        # The alias of the private gateway.
         self.name = name
+        # The number of nodes in the private gateway.
         self.replicas = replicas
 
     def validate(self):
@@ -5259,22 +5257,50 @@ class DescribeGatewayResponseBody(TeaModel):
         self.external_cluster_id = external_cluster_id
         # The ID of the private gateway.
         self.gateway_id = gateway_id
-        # The private gateway alias.
+        # The alias of the private gateway.
         self.gateway_name = gateway_name
-        # The instance type used for the private gateway.
+        # The instance type used by the private gateway.
+        # 
+        # Valid values:
+        # 
+        # *   8c16g
+        # *   4c8g
+        # *   2c4g
+        # *   16c32g
         self.instance_type = instance_type
         # The public endpoint.
         self.internet_domain = internet_domain
         # Indicates whether Internet access is enabled.
         self.internet_enabled = internet_enabled
+        # Indicates whether Internet access is enabled.
+        # 
+        # Valid values:
+        # 
+        # *   Creating: Internet access is being enabled.
+        # *   Failed: Internet access failed to be enabled or deleted.
+        # *   Running: Internet access is running.
+        # *   Deleted: Internet access is deleted.
+        # *   Deleting: Internet access is being deleted.
         self.internet_status = internet_status
         # The internal endpoint.
         self.intranet_domain = intranet_domain
+        # Indicates whether it is the default private gateway.
         self.is_default = is_default
+        # The number of nodes in the private gateway.
         self.replicas = replicas
         # The request ID.
         self.request_id = request_id
-        # The state of the private gateway.
+        # The status of the private gateway.
+        # 
+        # Valid values:
+        # 
+        # *   Creating
+        # *   Stopped
+        # *   Failed
+        # *   Running
+        # *   Deleted
+        # *   Deleting
+        # *   Waiting
         self.status = status
         # The time when the private gateway was updated. The time is displayed in UTC.
         self.update_time = update_time
@@ -7303,7 +7329,7 @@ class ListAclPolicyRequest(TeaModel):
         return self
 
 
-class ListAclPolicyResponseBodyInternetAclPolicyList(TeaModel):
+class ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList(TeaModel):
     def __init__(
         self,
         comment: str = None,
@@ -7336,7 +7362,42 @@ class ListAclPolicyResponseBodyInternetAclPolicyList(TeaModel):
         return self
 
 
-class ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList(TeaModel):
+class ListAclPolicyResponseBodyInternetAclPolicyList(TeaModel):
+    def __init__(
+        self,
+        acl_policy_list: List[ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList] = None,
+    ):
+        self.acl_policy_list = acl_policy_list
+
+    def validate(self):
+        if self.acl_policy_list:
+            for k in self.acl_policy_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AclPolicyList'] = []
+        if self.acl_policy_list is not None:
+            for k in self.acl_policy_list:
+                result['AclPolicyList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.acl_policy_list = []
+        if m.get('AclPolicyList') is not None:
+            for k in m.get('AclPolicyList'):
+                temp_model = ListAclPolicyResponseBodyInternetAclPolicyListAclPolicyList()
+                self.acl_policy_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList(TeaModel):
     def __init__(
         self,
         comment: str = None,
@@ -7372,15 +7433,15 @@ class ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList(Tea
 class ListAclPolicyResponseBodyIntranetVpcAclPolicyList(TeaModel):
     def __init__(
         self,
-        intranet_acl_policy_list: List[ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList] = None,
+        acl_policy_list: List[ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList] = None,
         vpc_id: str = None,
     ):
-        self.intranet_acl_policy_list = intranet_acl_policy_list
+        self.acl_policy_list = acl_policy_list
         self.vpc_id = vpc_id
 
     def validate(self):
-        if self.intranet_acl_policy_list:
-            for k in self.intranet_acl_policy_list:
+        if self.acl_policy_list:
+            for k in self.acl_policy_list:
                 if k:
                     k.validate()
 
@@ -7390,21 +7451,21 @@ class ListAclPolicyResponseBodyIntranetVpcAclPolicyList(TeaModel):
             return _map
 
         result = dict()
-        result['IntranetAclPolicyList'] = []
-        if self.intranet_acl_policy_list is not None:
-            for k in self.intranet_acl_policy_list:
-                result['IntranetAclPolicyList'].append(k.to_map() if k else None)
+        result['AclPolicyList'] = []
+        if self.acl_policy_list is not None:
+            for k in self.acl_policy_list:
+                result['AclPolicyList'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.intranet_acl_policy_list = []
-        if m.get('IntranetAclPolicyList') is not None:
-            for k in m.get('IntranetAclPolicyList'):
-                temp_model = ListAclPolicyResponseBodyIntranetVpcAclPolicyListIntranetAclPolicyList()
-                self.intranet_acl_policy_list.append(temp_model.from_map(k))
+        self.acl_policy_list = []
+        if m.get('AclPolicyList') is not None:
+            for k in m.get('AclPolicyList'):
+                temp_model = ListAclPolicyResponseBodyIntranetVpcAclPolicyListAclPolicyList()
+                self.acl_policy_list.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -11569,9 +11630,11 @@ class UpdateGatewayRequest(TeaModel):
         self.enable_intranet = enable_intranet
         # The instance type used for the private gateway.
         self.instance_type = instance_type
+        # Indicates whether it is the default private gateway.
         self.is_default = is_default
         # The private gateway alias.
         self.name = name
+        # The number of nodes in the private gateway.
         self.replicas = replicas
 
     def validate(self):

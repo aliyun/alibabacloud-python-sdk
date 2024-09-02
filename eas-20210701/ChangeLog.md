@@ -1,3 +1,7 @@
+2024-09-02 Version: 6.0.0
+- Update API ListAclPolicy: update response param.
+
+
 2024-08-28 Version: 5.1.0
 - Support API ListTenantAddons.
 - Support API ReinstallTenantAddon.
