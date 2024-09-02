@@ -1,3 +1,7 @@
+2024-09-02 Version: 8.0.0
+- Update API DescribeRestorableTenants: update response param.
+
+
 2024-08-19 Version: 7.1.0
 - Support API DescribeBackupEncryptedString.
 - Support API DescribeInstanceSummary.

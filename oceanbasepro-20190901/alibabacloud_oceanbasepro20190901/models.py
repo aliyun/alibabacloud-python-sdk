@@ -28427,7 +28427,7 @@ class DescribeRestorableTenantsResponseBodyTenants(TeaModel):
         tenant_alias: str = None,
         tenant_data_backup_remain_days: int = None,
         tenant_id: str = None,
-        tenant_mode: int = None,
+        tenant_mode: str = None,
         tenant_name: str = None,
         time_interval_list: List[DescribeRestorableTenantsResponseBodyTenantsTimeIntervalList] = None,
         unit_num: int = None,
