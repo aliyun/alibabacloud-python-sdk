@@ -1,3 +1,9 @@
+2024-09-02 Version: 5.4.1
+- Update API CreateIndex: update param body.
+- Update API GetIndex: update response param.
+- Update API UpdateIndex: update param body.
+
+
 2024-08-29 Version: 5.4.0
 - Support API CreateMetricStore.
 - Support API DeleteMetricStore.

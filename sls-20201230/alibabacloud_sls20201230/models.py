@@ -1344,6 +1344,148 @@ class Histogram(TeaModel):
         return self
 
 
+class IndexJsonKey(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        case_sensitive: bool = None,
+        chn: bool = None,
+        doc_value: bool = None,
+        token: List[str] = None,
+        type: str = None,
+    ):
+        self.alias = alias
+        self.case_sensitive = case_sensitive
+        self.chn = chn
+        self.doc_value = doc_value
+        self.token = token
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['alias'] = self.alias
+        if self.case_sensitive is not None:
+            result['caseSensitive'] = self.case_sensitive
+        if self.chn is not None:
+            result['chn'] = self.chn
+        if self.doc_value is not None:
+            result['doc_value'] = self.doc_value
+        if self.token is not None:
+            result['token'] = self.token
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alias') is not None:
+            self.alias = m.get('alias')
+        if m.get('caseSensitive') is not None:
+            self.case_sensitive = m.get('caseSensitive')
+        if m.get('chn') is not None:
+            self.chn = m.get('chn')
+        if m.get('doc_value') is not None:
+            self.doc_value = m.get('doc_value')
+        if m.get('token') is not None:
+            self.token = m.get('token')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class IndexKey(TeaModel):
+    def __init__(
+        self,
+        alias: str = None,
+        case_sensitive: bool = None,
+        chn: bool = None,
+        doc_value: bool = None,
+        index_all: bool = None,
+        json_keys: Dict[str, IndexJsonKey] = None,
+        max_depth: int = None,
+        token: List[str] = None,
+        type: str = None,
+    ):
+        self.alias = alias
+        self.case_sensitive = case_sensitive
+        self.chn = chn
+        self.doc_value = doc_value
+        self.index_all = index_all
+        self.json_keys = json_keys
+        self.max_depth = max_depth
+        self.token = token
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.json_keys:
+            for v in self.json_keys.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alias is not None:
+            result['alias'] = self.alias
+        if self.case_sensitive is not None:
+            result['caseSensitive'] = self.case_sensitive
+        if self.chn is not None:
+            result['chn'] = self.chn
+        if self.doc_value is not None:
+            result['doc_value'] = self.doc_value
+        if self.index_all is not None:
+            result['index_all'] = self.index_all
+        result['json_keys'] = {}
+        if self.json_keys is not None:
+            for k, v in self.json_keys.items():
+                result['json_keys'][k] = v.to_map()
+        if self.max_depth is not None:
+            result['max_depth'] = self.max_depth
+        if self.token is not None:
+            result['token'] = self.token
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('alias') is not None:
+            self.alias = m.get('alias')
+        if m.get('caseSensitive') is not None:
+            self.case_sensitive = m.get('caseSensitive')
+        if m.get('chn') is not None:
+            self.chn = m.get('chn')
+        if m.get('doc_value') is not None:
+            self.doc_value = m.get('doc_value')
+        if m.get('index_all') is not None:
+            self.index_all = m.get('index_all')
+        self.json_keys = {}
+        if m.get('json_keys') is not None:
+            for k, v in m.get('json_keys').items():
+                temp_model = IndexJsonKey()
+                self.json_keys[k] = temp_model.from_map(v)
+        if m.get('max_depth') is not None:
+            self.max_depth = m.get('max_depth')
+        if m.get('token') is not None:
+            self.token = m.get('token')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
 class IngestProcessorConfiguration(TeaModel):
     def __init__(
         self,
@@ -3789,85 +3931,22 @@ class IndexLine(TeaModel):
         return self
 
 
-class IndexKeysValue(TeaModel):
-    def __init__(
-        self,
-        chn: bool = None,
-        case_sensitive: bool = None,
-        token: List[str] = None,
-        alias: str = None,
-        type: str = None,
-        doc_value: bool = None,
-    ):
-        self.chn = chn
-        self.case_sensitive = case_sensitive
-        self.token = token
-        self.alias = alias
-        # This parameter is required.
-        self.type = type
-        self.doc_value = doc_value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.chn is not None:
-            result['chn'] = self.chn
-        if self.case_sensitive is not None:
-            result['caseSensitive'] = self.case_sensitive
-        if self.token is not None:
-            result['token'] = self.token
-        if self.alias is not None:
-            result['alias'] = self.alias
-        if self.type is not None:
-            result['type'] = self.type
-        if self.doc_value is not None:
-            result['doc_value'] = self.doc_value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('chn') is not None:
-            self.chn = m.get('chn')
-        if m.get('caseSensitive') is not None:
-            self.case_sensitive = m.get('caseSensitive')
-        if m.get('token') is not None:
-            self.token = m.get('token')
-        if m.get('alias') is not None:
-            self.alias = m.get('alias')
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        if m.get('doc_value') is not None:
-            self.doc_value = m.get('doc_value')
-        return self
-
-
 class Index(TeaModel):
     def __init__(
         self,
-        keys: Dict[str, IndexKeysValue] = None,
-        last_modify_time: int = None,
+        keys: Dict[str, IndexKey] = None,
         line: IndexLine = None,
         log_reduce: bool = None,
         log_reduce_black_list: List[str] = None,
         log_reduce_white_list: List[str] = None,
         max_text_len: int = None,
-        ttl: int = None,
     ):
         self.keys = keys
-        self.last_modify_time = last_modify_time
         self.line = line
         self.log_reduce = log_reduce
         self.log_reduce_black_list = log_reduce_black_list
         self.log_reduce_white_list = log_reduce_white_list
         self.max_text_len = max_text_len
-        # This parameter is required.
-        self.ttl = ttl
 
     def validate(self):
         if self.keys:
@@ -3887,8 +3966,6 @@ class Index(TeaModel):
         if self.keys is not None:
             for k, v in self.keys.items():
                 result['keys'][k] = v.to_map()
-        if self.last_modify_time is not None:
-            result['lastModifyTime'] = self.last_modify_time
         if self.line is not None:
             result['line'] = self.line.to_map()
         if self.log_reduce is not None:
@@ -3899,8 +3976,6 @@ class Index(TeaModel):
             result['log_reduce_white_list'] = self.log_reduce_white_list
         if self.max_text_len is not None:
             result['max_text_len'] = self.max_text_len
-        if self.ttl is not None:
-            result['ttl'] = self.ttl
         return result
 
     def from_map(self, m: dict = None):
@@ -3908,10 +3983,8 @@ class Index(TeaModel):
         self.keys = {}
         if m.get('keys') is not None:
             for k, v in m.get('keys').items():
-                temp_model = IndexKeysValue()
+                temp_model = IndexKey()
                 self.keys[k] = temp_model.from_map(v)
-        if m.get('lastModifyTime') is not None:
-            self.last_modify_time = m.get('lastModifyTime')
         if m.get('line') is not None:
             temp_model = IndexLine()
             self.line = temp_model.from_map(m['line'])
@@ -3923,8 +3996,6 @@ class Index(TeaModel):
             self.log_reduce_white_list = m.get('log_reduce_white_list')
         if m.get('max_text_len') is not None:
             self.max_text_len = m.get('max_text_len')
-        if m.get('ttl') is not None:
-            self.ttl = m.get('ttl')
         return self
 
 
@@ -4426,89 +4497,6 @@ class Shard(TeaModel):
             self.shard_id = m.get('shardID')
         if m.get('status') is not None:
             self.status = m.get('status')
-        return self
-
-
-class KeysValue(TeaModel):
-    def __init__(
-        self,
-        case_sensitive: bool = None,
-        chn: bool = None,
-        type: str = None,
-        alias: str = None,
-        token: List[str] = None,
-        doc_value: bool = None,
-        vector_index: str = None,
-        embedding: str = None,
-    ):
-        # Specifies whether to enable case sensitivity. This parameter is required only when **type** is set to **text**. Valid values:
-        # 
-        # *   true
-        # *   false (default)
-        self.case_sensitive = case_sensitive
-        # Specifies whether to include Chinese characters. This parameter is required only when **type** is set to **text**. Valid values:
-        # 
-        # *   true
-        # *   false (default)
-        self.chn = chn
-        # The data type of the field value. Valid values: text, json, double, and long.
-        # 
-        # This parameter is required.
-        self.type = type
-        # The alias of the field.
-        self.alias = alias
-        # The delimiters that are used to split text.
-        self.token = token
-        # Specifies whether to turn on Enable Analytics for the field.
-        self.doc_value = doc_value
-        self.vector_index = vector_index
-        self.embedding = embedding
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.case_sensitive is not None:
-            result['caseSensitive'] = self.case_sensitive
-        if self.chn is not None:
-            result['chn'] = self.chn
-        if self.type is not None:
-            result['type'] = self.type
-        if self.alias is not None:
-            result['alias'] = self.alias
-        if self.token is not None:
-            result['token'] = self.token
-        if self.doc_value is not None:
-            result['doc_value'] = self.doc_value
-        if self.vector_index is not None:
-            result['vector_index'] = self.vector_index
-        if self.embedding is not None:
-            result['embedding'] = self.embedding
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('caseSensitive') is not None:
-            self.case_sensitive = m.get('caseSensitive')
-        if m.get('chn') is not None:
-            self.chn = m.get('chn')
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        if m.get('alias') is not None:
-            self.alias = m.get('alias')
-        if m.get('token') is not None:
-            self.token = m.get('token')
-        if m.get('doc_value') is not None:
-            self.doc_value = m.get('doc_value')
-        if m.get('vector_index') is not None:
-            self.vector_index = m.get('vector_index')
-        if m.get('embedding') is not None:
-            self.embedding = m.get('embedding')
         return self
 
 
@@ -5629,103 +5617,17 @@ class CreateETLResponse(TeaModel):
         return self
 
 
-class CreateIndexRequestLine(TeaModel):
-    def __init__(
-        self,
-        case_sensitive: bool = None,
-        chn: bool = None,
-        exclude_keys: List[str] = None,
-        include_keys: List[str] = None,
-        token: List[str] = None,
-    ):
-        # Specifies whether to enable case sensitivity. Valid values:
-        # 
-        # *   true
-        # *   false (default)
-        self.case_sensitive = case_sensitive
-        # Specifies whether to include Chinese characters. Valid values:
-        # 
-        # *   true
-        # *   false (default)
-        self.chn = chn
-        # The excluded fields. You cannot specify both include_keys and exclude_keys.
-        self.exclude_keys = exclude_keys
-        # The included fields. You cannot specify both include_keys and exclude_keys.
-        self.include_keys = include_keys
-        # The delimiters. You can specify a delimiter to delimit the content of a field value. For more information about delimiters, see Example.
-        # 
-        # This parameter is required.
-        self.token = token
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.case_sensitive is not None:
-            result['caseSensitive'] = self.case_sensitive
-        if self.chn is not None:
-            result['chn'] = self.chn
-        if self.exclude_keys is not None:
-            result['exclude_keys'] = self.exclude_keys
-        if self.include_keys is not None:
-            result['include_keys'] = self.include_keys
-        if self.token is not None:
-            result['token'] = self.token
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('caseSensitive') is not None:
-            self.case_sensitive = m.get('caseSensitive')
-        if m.get('chn') is not None:
-            self.chn = m.get('chn')
-        if m.get('exclude_keys') is not None:
-            self.exclude_keys = m.get('exclude_keys')
-        if m.get('include_keys') is not None:
-            self.include_keys = m.get('include_keys')
-        if m.get('token') is not None:
-            self.token = m.get('token')
-        return self
-
-
 class CreateIndexRequest(TeaModel):
     def __init__(
         self,
-        keys: Dict[str, KeysValue] = None,
-        line: CreateIndexRequestLine = None,
-        log_reduce: bool = None,
-        log_reduce_black_list: List[str] = None,
-        log_reduce_white_list: List[str] = None,
-        max_text_len: int = None,
-        ttl: int = None,
+        body: Index = None,
     ):
-        # The configuration of field indexes. A field index is a key-value pair in which the key specifies the name of the field and the value specifies the index configuration of the field. You must specify this parameter, the line parameter, or both parameters. For more information, see Example.
-        self.keys = keys
-        # The configuration of full-text indexes. You must specify this parameter, the keys parameter, or both parameters. For more information, see Example.
-        self.line = line
-        # Specifies whether to turn on LogReduce. After you turn on LogReduce, either the whitelist or blacklist takes effect.
-        self.log_reduce = log_reduce
-        # The fields in the blacklist that you want to use to cluster logs.
-        self.log_reduce_black_list = log_reduce_black_list
-        # The fields in the whitelist that you want to use to cluster logs.
-        self.log_reduce_white_list = log_reduce_white_list
-        # The maximum length of a field value that can be retained. Default value: 2048. Unit: bytes. The default value is equal to 2 KB. You can change the value of max_text_len. Valid values: 64 to 16384.
-        self.max_text_len = max_text_len
-        # The retention period of logs. Unit: days. Valid values: 7, 30, and 90.
-        self.ttl = ttl
+        # The request body.
+        self.body = body
 
     def validate(self):
-        if self.keys:
-            for v in self.keys.values():
-                if v:
-                    v.validate()
-        if self.line:
-            self.line.validate()
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5733,44 +5635,15 @@ class CreateIndexRequest(TeaModel):
             return _map
 
         result = dict()
-        result['keys'] = {}
-        if self.keys is not None:
-            for k, v in self.keys.items():
-                result['keys'][k] = v.to_map()
-        if self.line is not None:
-            result['line'] = self.line.to_map()
-        if self.log_reduce is not None:
-            result['log_reduce'] = self.log_reduce
-        if self.log_reduce_black_list is not None:
-            result['log_reduce_black_list'] = self.log_reduce_black_list
-        if self.log_reduce_white_list is not None:
-            result['log_reduce_white_list'] = self.log_reduce_white_list
-        if self.max_text_len is not None:
-            result['max_text_len'] = self.max_text_len
-        if self.ttl is not None:
-            result['ttl'] = self.ttl
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.keys = {}
-        if m.get('keys') is not None:
-            for k, v in m.get('keys').items():
-                temp_model = KeysValue()
-                self.keys[k] = temp_model.from_map(v)
-        if m.get('line') is not None:
-            temp_model = CreateIndexRequestLine()
-            self.line = temp_model.from_map(m['line'])
-        if m.get('log_reduce') is not None:
-            self.log_reduce = m.get('log_reduce')
-        if m.get('log_reduce_black_list') is not None:
-            self.log_reduce_black_list = m.get('log_reduce_black_list')
-        if m.get('log_reduce_white_list') is not None:
-            self.log_reduce_white_list = m.get('log_reduce_white_list')
-        if m.get('max_text_len') is not None:
-            self.max_text_len = m.get('max_text_len')
-        if m.get('ttl') is not None:
-            self.ttl = m.get('ttl')
+        if m.get('body') is not None:
+            temp_model = Index()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -10516,6 +10389,8 @@ class GetIndexResponseBodyLine(TeaModel):
         # The included fields.
         self.include_keys = include_keys
         # The delimiters.
+        # 
+        # This parameter is required.
         self.token = token
 
     def validate(self):
@@ -10558,7 +10433,7 @@ class GetIndexResponseBody(TeaModel):
     def __init__(
         self,
         index_mode: str = None,
-        keys: Dict[str, KeysValue] = None,
+        keys: Dict[str, IndexKey] = None,
         last_modify_time: int = None,
         line: GetIndexResponseBodyLine = None,
         log_reduce: bool = None,
@@ -10587,6 +10462,8 @@ class GetIndexResponseBody(TeaModel):
         # The storage type. The value is fixed as pg.
         self.storage = storage
         # The lifecycle of the index file. Valid values: 7, 30, and 90. Unit: day.
+        # 
+        # This parameter is required.
         self.ttl = ttl
 
     def validate(self):
@@ -10634,7 +10511,7 @@ class GetIndexResponseBody(TeaModel):
         self.keys = {}
         if m.get('keys') is not None:
             for k, v in m.get('keys').items():
-                temp_model = KeysValue()
+                temp_model = IndexKey()
                 self.keys[k] = temp_model.from_map(v)
         if m.get('lastModifyTime') is not None:
             self.last_modify_time = m.get('lastModifyTime')
@@ -16813,115 +16690,6 @@ class PutWebtrackingResponse(TeaModel):
         return self
 
 
-class QueryMLServiceResultsRequest(TeaModel):
-    def __init__(
-        self,
-        allow_builtin: bool = None,
-        body: MLServiceAnalysisParam = None,
-    ):
-        self.allow_builtin = allow_builtin
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.allow_builtin is not None:
-            result['allowBuiltin'] = self.allow_builtin
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('allowBuiltin') is not None:
-            self.allow_builtin = m.get('allowBuiltin')
-        if m.get('body') is not None:
-            temp_model = MLServiceAnalysisParam()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class QueryMLServiceResultsResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: List[Dict[str, str]] = None,
-        status: Dict[str, str] = None,
-    ):
-        self.data = data
-        self.status = status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['data'] = self.data
-        if self.status is not None:
-            result['status'] = self.status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('data') is not None:
-            self.data = m.get('data')
-        if m.get('status') is not None:
-            self.status = m.get('status')
-        return self
-
-
-class QueryMLServiceResultsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: QueryMLServiceResultsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = QueryMLServiceResultsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class RefreshTokenRequest(TeaModel):
     def __init__(
         self,
@@ -18168,109 +17936,17 @@ class UpdateETLResponse(TeaModel):
         return self
 
 
-class UpdateIndexRequestLine(TeaModel):
-    def __init__(
-        self,
-        case_sensitive: bool = None,
-        chn: bool = None,
-        exclude_keys: List[str] = None,
-        include_keys: List[str] = None,
-        token: List[str] = None,
-    ):
-        # Specifies whether to enable case sensitivity. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # This parameter is required.
-        self.case_sensitive = case_sensitive
-        # Specifies whether to include Chinese characters. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # This parameter is required.
-        self.chn = chn
-        # The excluded fields. You cannot specify both include_keys and exclude_keys.
-        self.exclude_keys = exclude_keys
-        # The included fields. You cannot specify both include_keys and exclude_keys.
-        self.include_keys = include_keys
-        # The delimiters that are used to split text.
-        # 
-        # This parameter is required.
-        self.token = token
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.case_sensitive is not None:
-            result['caseSensitive'] = self.case_sensitive
-        if self.chn is not None:
-            result['chn'] = self.chn
-        if self.exclude_keys is not None:
-            result['exclude_keys'] = self.exclude_keys
-        if self.include_keys is not None:
-            result['include_keys'] = self.include_keys
-        if self.token is not None:
-            result['token'] = self.token
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('caseSensitive') is not None:
-            self.case_sensitive = m.get('caseSensitive')
-        if m.get('chn') is not None:
-            self.chn = m.get('chn')
-        if m.get('exclude_keys') is not None:
-            self.exclude_keys = m.get('exclude_keys')
-        if m.get('include_keys') is not None:
-            self.include_keys = m.get('include_keys')
-        if m.get('token') is not None:
-            self.token = m.get('token')
-        return self
-
-
 class UpdateIndexRequest(TeaModel):
     def __init__(
         self,
-        keys: Dict[str, KeysValue] = None,
-        line: UpdateIndexRequestLine = None,
-        log_reduce: bool = None,
-        log_reduce_black_list: List[str] = None,
-        log_reduce_white_list: List[str] = None,
-        max_text_len: int = None,
-        ttl: int = None,
+        body: Index = None,
     ):
-        # The configuration of field indexes. A field index is a key-value pair in which the key specifies the name of the field and the value specifies the index configuration of the field.
-        self.keys = keys
-        # The configuration of full-text indexes.
-        self.line = line
-        # Specifies whether to turn on LogReduce. If you turn on LogReduce, only one of `log_reduce_white_list` and `log_reduce_black_list` takes effect.
-        self.log_reduce = log_reduce
-        # The fields in the blacklist that you want to use to cluster logs.
-        self.log_reduce_black_list = log_reduce_black_list
-        # The fields in the whitelist that you want to use to cluster logs.
-        self.log_reduce_white_list = log_reduce_white_list
-        # The maximum length of a field value that can be retained.
-        self.max_text_len = max_text_len
-        # The retention period of data. Unit: days. Valid values: 7, 30, and 90.
-        # 
-        # This parameter is required.
-        self.ttl = ttl
+        # The request body.
+        self.body = body
 
     def validate(self):
-        if self.keys:
-            for v in self.keys.values():
-                if v:
-                    v.validate()
-        if self.line:
-            self.line.validate()
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -18278,44 +17954,15 @@ class UpdateIndexRequest(TeaModel):
             return _map
 
         result = dict()
-        result['keys'] = {}
-        if self.keys is not None:
-            for k, v in self.keys.items():
-                result['keys'][k] = v.to_map()
-        if self.line is not None:
-            result['line'] = self.line.to_map()
-        if self.log_reduce is not None:
-            result['log_reduce'] = self.log_reduce
-        if self.log_reduce_black_list is not None:
-            result['log_reduce_black_list'] = self.log_reduce_black_list
-        if self.log_reduce_white_list is not None:
-            result['log_reduce_white_list'] = self.log_reduce_white_list
-        if self.max_text_len is not None:
-            result['max_text_len'] = self.max_text_len
-        if self.ttl is not None:
-            result['ttl'] = self.ttl
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.keys = {}
-        if m.get('keys') is not None:
-            for k, v in m.get('keys').items():
-                temp_model = KeysValue()
-                self.keys[k] = temp_model.from_map(v)
-        if m.get('line') is not None:
-            temp_model = UpdateIndexRequestLine()
-            self.line = temp_model.from_map(m['line'])
-        if m.get('log_reduce') is not None:
-            self.log_reduce = m.get('log_reduce')
-        if m.get('log_reduce_black_list') is not None:
-            self.log_reduce_black_list = m.get('log_reduce_black_list')
-        if m.get('log_reduce_white_list') is not None:
-            self.log_reduce_white_list = m.get('log_reduce_white_list')
-        if m.get('max_text_len') is not None:
-            self.max_text_len = m.get('max_text_len')
-        if m.get('ttl') is not None:
-            self.ttl = m.get('ttl')
+        if m.get('body') is not None:
+            temp_model = Index()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 

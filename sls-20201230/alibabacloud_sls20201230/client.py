@@ -1745,25 +1745,10 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        body = {}
-        if not UtilClient.is_unset(request.keys):
-            body['keys'] = request.keys
-        if not UtilClient.is_unset(request.line):
-            body['line'] = request.line
-        if not UtilClient.is_unset(request.log_reduce):
-            body['log_reduce'] = request.log_reduce
-        if not UtilClient.is_unset(request.log_reduce_black_list):
-            body['log_reduce_black_list'] = request.log_reduce_black_list
-        if not UtilClient.is_unset(request.log_reduce_white_list):
-            body['log_reduce_white_list'] = request.log_reduce_white_list
-        if not UtilClient.is_unset(request.max_text_len):
-            body['max_text_len'] = request.max_text_len
-        if not UtilClient.is_unset(request.ttl):
-            body['ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateIndex',
@@ -1802,25 +1787,10 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        body = {}
-        if not UtilClient.is_unset(request.keys):
-            body['keys'] = request.keys
-        if not UtilClient.is_unset(request.line):
-            body['line'] = request.line
-        if not UtilClient.is_unset(request.log_reduce):
-            body['log_reduce'] = request.log_reduce
-        if not UtilClient.is_unset(request.log_reduce_black_list):
-            body['log_reduce_black_list'] = request.log_reduce_black_list
-        if not UtilClient.is_unset(request.log_reduce_white_list):
-            body['log_reduce_white_list'] = request.log_reduce_white_list
-        if not UtilClient.is_unset(request.max_text_len):
-            body['max_text_len'] = request.max_text_len
-        if not UtilClient.is_unset(request.ttl):
-            body['ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='CreateIndex',
@@ -15860,128 +15830,6 @@ class Client(OpenApiClient):
         headers = {}
         return await self.put_webtracking_with_options_async(project, logstore_name, request, headers, runtime)
 
-    def query_mlservice_results_with_options(
-        self,
-        service_name: str,
-        request: sls_20201230_models.QueryMLServiceResultsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.QueryMLServiceResultsResponse:
-        """
-        @deprecated OpenAPI QueryMLServiceResults is deprecated
-        
-        @summary queryMLServiceResults
-        
-        @param request: QueryMLServiceResultsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryMLServiceResultsResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.allow_builtin):
-            query['allowBuiltin'] = request.allow_builtin
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(request.body)
-        )
-        params = open_api_models.Params(
-            action='QueryMLServiceResults',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/ml/service/{service_name}/analysis',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.QueryMLServiceResultsResponse(),
-            self.execute(params, req, runtime)
-        )
-
-    async def query_mlservice_results_with_options_async(
-        self,
-        service_name: str,
-        request: sls_20201230_models.QueryMLServiceResultsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.QueryMLServiceResultsResponse:
-        """
-        @deprecated OpenAPI QueryMLServiceResults is deprecated
-        
-        @summary queryMLServiceResults
-        
-        @param request: QueryMLServiceResultsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryMLServiceResultsResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.allow_builtin):
-            query['allowBuiltin'] = request.allow_builtin
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(request.body)
-        )
-        params = open_api_models.Params(
-            action='QueryMLServiceResults',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/ml/service/{service_name}/analysis',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.QueryMLServiceResultsResponse(),
-            await self.execute_async(params, req, runtime)
-        )
-
-    def query_mlservice_results(
-        self,
-        service_name: str,
-        request: sls_20201230_models.QueryMLServiceResultsRequest,
-    ) -> sls_20201230_models.QueryMLServiceResultsResponse:
-        """
-        @deprecated OpenAPI QueryMLServiceResults is deprecated
-        
-        @summary queryMLServiceResults
-        
-        @param request: QueryMLServiceResultsRequest
-        @return: QueryMLServiceResultsResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.query_mlservice_results_with_options(service_name, request, headers, runtime)
-
-    async def query_mlservice_results_async(
-        self,
-        service_name: str,
-        request: sls_20201230_models.QueryMLServiceResultsRequest,
-    ) -> sls_20201230_models.QueryMLServiceResultsResponse:
-        """
-        @deprecated OpenAPI QueryMLServiceResults is deprecated
-        
-        @summary queryMLServiceResults
-        
-        @param request: QueryMLServiceResultsRequest
-        @return: QueryMLServiceResultsResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.query_mlservice_results_with_options_async(service_name, request, headers, runtime)
-
     def refresh_token_with_options(
         self,
         request: sls_20201230_models.RefreshTokenRequest,
@@ -18378,25 +18226,10 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        body = {}
-        if not UtilClient.is_unset(request.keys):
-            body['keys'] = request.keys
-        if not UtilClient.is_unset(request.line):
-            body['line'] = request.line
-        if not UtilClient.is_unset(request.log_reduce):
-            body['log_reduce'] = request.log_reduce
-        if not UtilClient.is_unset(request.log_reduce_black_list):
-            body['log_reduce_black_list'] = request.log_reduce_black_list
-        if not UtilClient.is_unset(request.log_reduce_white_list):
-            body['log_reduce_white_list'] = request.log_reduce_white_list
-        if not UtilClient.is_unset(request.max_text_len):
-            body['max_text_len'] = request.max_text_len
-        if not UtilClient.is_unset(request.ttl):
-            body['ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='UpdateIndex',
@@ -18436,25 +18269,10 @@ class Client(OpenApiClient):
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
-        body = {}
-        if not UtilClient.is_unset(request.keys):
-            body['keys'] = request.keys
-        if not UtilClient.is_unset(request.line):
-            body['line'] = request.line
-        if not UtilClient.is_unset(request.log_reduce):
-            body['log_reduce'] = request.log_reduce
-        if not UtilClient.is_unset(request.log_reduce_black_list):
-            body['log_reduce_black_list'] = request.log_reduce_black_list
-        if not UtilClient.is_unset(request.log_reduce_white_list):
-            body['log_reduce_white_list'] = request.log_reduce_white_list
-        if not UtilClient.is_unset(request.max_text_len):
-            body['max_text_len'] = request.max_text_len
-        if not UtilClient.is_unset(request.ttl):
-            body['ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            body=OpenApiUtilClient.parse_to_map(request.body)
         )
         params = open_api_models.Params(
             action='UpdateIndex',
