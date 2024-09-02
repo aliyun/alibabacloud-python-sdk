@@ -1,3 +1,20 @@
+2024-09-02 Version: 3.0.0
+- Support API CreateAppGroupCredentials.
+- Delete API RankPreviewQuery.
+- Update API CreateApp: add param body.
+- Update API CreateApp: update param body.
+- Update API CreateApp: update response param.
+- Update API CreateAppGroup: add param body.
+- Update API CreateAppGroup: update param body.
+- Update API CreateAppGroup: update response param.
+- Update API DescribeApp: update response param.
+- Update API DescribeAppGroup: update response param.
+- Update API DescribeApps: update response param.
+- Update API ListAppGroups: update response param.
+- Update API ModifyAppGroup: update response param.
+- Update API ModifyAppGroupQuota: update response param.
+
+
 2023-11-24 Version: 2.0.0
 - Generated python 2017-12-25 for OpenSearch.
 

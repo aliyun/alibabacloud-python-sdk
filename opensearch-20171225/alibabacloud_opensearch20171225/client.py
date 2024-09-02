@@ -49,6 +49,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.BindESUserAnalyzerResponse:
+        """
+        @summary Binds a custom analyzer to an Elasticsearch instance.
+        
+        @param request: BindESUserAnalyzerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindESUserAnalyzerResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -78,6 +86,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.BindESUserAnalyzerResponse:
+        """
+        @summary Binds a custom analyzer to an Elasticsearch instance.
+        
+        @param request: BindESUserAnalyzerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindESUserAnalyzerResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -105,6 +121,12 @@ class Client(OpenApiClient):
         es_instance_id: str,
         request: open_search_20171225_models.BindESUserAnalyzerRequest,
     ) -> open_search_20171225_models.BindESUserAnalyzerResponse:
+        """
+        @summary Binds a custom analyzer to an Elasticsearch instance.
+        
+        @param request: BindESUserAnalyzerRequest
+        @return: BindESUserAnalyzerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.bind_esuser_analyzer_with_options(app_group_identity, es_instance_id, request, headers, runtime)
@@ -115,6 +137,12 @@ class Client(OpenApiClient):
         es_instance_id: str,
         request: open_search_20171225_models.BindESUserAnalyzerRequest,
     ) -> open_search_20171225_models.BindESUserAnalyzerResponse:
+        """
+        @summary Binds a custom analyzer to an Elasticsearch instance.
+        
+        @param request: BindESUserAnalyzerRequest
+        @return: BindESUserAnalyzerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.bind_esuser_analyzer_with_options_async(app_group_identity, es_instance_id, request, headers, runtime)
@@ -126,6 +154,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.BindEsInstanceResponse:
+        """
+        @summary Binds an Elasticsearch instance.
+        
+        @param request: BindEsInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindEsInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.body):
@@ -157,6 +193,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.BindEsInstanceResponse:
+        """
+        @summary Binds an Elasticsearch instance.
+        
+        @param request: BindEsInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindEsInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.body):
@@ -186,6 +230,12 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.BindEsInstanceRequest,
     ) -> open_search_20171225_models.BindEsInstanceResponse:
+        """
+        @summary Binds an Elasticsearch instance.
+        
+        @param request: BindEsInstanceRequest
+        @return: BindEsInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.bind_es_instance_with_options(app_group_identity, request, headers, runtime)
@@ -195,6 +245,12 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.BindEsInstanceRequest,
     ) -> open_search_20171225_models.BindEsInstanceResponse:
+        """
+        @summary Binds an Elasticsearch instance.
+        
+        @param request: BindEsInstanceRequest
+        @return: BindEsInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.bind_es_instance_with_options_async(app_group_identity, request, headers, runtime)
@@ -207,6 +263,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CompileSortScriptResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CompileSortScriptResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -234,6 +295,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CompileSortScriptResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CompileSortScriptResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -259,6 +325,9 @@ class Client(OpenApiClient):
         script_name: str,
         app_version_id: str,
     ) -> open_search_20171225_models.CompileSortScriptResponse:
+        """
+        @return: CompileSortScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.compile_sort_script_with_options(app_group_identity, script_name, app_version_id, headers, runtime)
@@ -269,6 +338,9 @@ class Client(OpenApiClient):
         script_name: str,
         app_version_id: str,
     ) -> open_search_20171225_models.CompileSortScriptResponse:
+        """
+        @return: CompileSortScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.compile_sort_script_with_options_async(app_group_identity, script_name, app_version_id, headers, runtime)
@@ -282,6 +354,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestExperimentResponse:
+        """
+        @summary Creates an experiment.
+        
+        @param request: CreateABTestExperimentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateABTestExperimentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -316,6 +396,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestExperimentResponse:
+        """
+        @summary Creates an experiment.
+        
+        @param request: CreateABTestExperimentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateABTestExperimentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -348,6 +436,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: open_search_20171225_models.CreateABTestExperimentRequest,
     ) -> open_search_20171225_models.CreateABTestExperimentResponse:
+        """
+        @summary Creates an experiment.
+        
+        @param request: CreateABTestExperimentRequest
+        @return: CreateABTestExperimentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_abtest_experiment_with_options(app_group_identity, scene_id, group_id, request, headers, runtime)
@@ -359,6 +453,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: open_search_20171225_models.CreateABTestExperimentRequest,
     ) -> open_search_20171225_models.CreateABTestExperimentResponse:
+        """
+        @summary Creates an experiment.
+        
+        @param request: CreateABTestExperimentRequest
+        @return: CreateABTestExperimentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_abtest_experiment_with_options_async(app_group_identity, scene_id, group_id, request, headers, runtime)
@@ -371,6 +471,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestGroupResponse:
+        """
+        @summary Creates a test group.
+        
+        @param request: CreateABTestGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateABTestGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -404,6 +512,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestGroupResponse:
+        """
+        @summary Creates a test group.
+        
+        @param request: CreateABTestGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateABTestGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -435,6 +551,12 @@ class Client(OpenApiClient):
         scene_id: str,
         request: open_search_20171225_models.CreateABTestGroupRequest,
     ) -> open_search_20171225_models.CreateABTestGroupResponse:
+        """
+        @summary Creates a test group.
+        
+        @param request: CreateABTestGroupRequest
+        @return: CreateABTestGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_abtest_group_with_options(app_group_identity, scene_id, request, headers, runtime)
@@ -445,6 +567,12 @@ class Client(OpenApiClient):
         scene_id: str,
         request: open_search_20171225_models.CreateABTestGroupRequest,
     ) -> open_search_20171225_models.CreateABTestGroupResponse:
+        """
+        @summary Creates a test group.
+        
+        @param request: CreateABTestGroupRequest
+        @return: CreateABTestGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_abtest_group_with_options_async(app_group_identity, scene_id, request, headers, runtime)
@@ -456,6 +584,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestSceneResponse:
+        """
+        @param request: CreateABTestSceneRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateABTestSceneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -488,6 +622,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateABTestSceneResponse:
+        """
+        @param request: CreateABTestSceneRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateABTestSceneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -518,6 +658,10 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.CreateABTestSceneRequest,
     ) -> open_search_20171225_models.CreateABTestSceneResponse:
+        """
+        @param request: CreateABTestSceneRequest
+        @return: CreateABTestSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_abtest_scene_with_options(app_group_identity, request, headers, runtime)
@@ -527,6 +671,10 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.CreateABTestSceneRequest,
     ) -> open_search_20171225_models.CreateABTestSceneResponse:
+        """
+        @param request: CreateABTestSceneRequest
+        @return: CreateABTestSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_abtest_scene_with_options_async(app_group_identity, request, headers, runtime)
@@ -539,10 +687,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateAppResponse:
         """
-        When you create a standard application, a new version of the application is created if the specified application name already exists.
-        *   When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
-        *   When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
-        *   When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
+        @summary Creates a version for an OpenSearch application.
+        
+        @description    When you create a standard application, a new version of the application is created if the specified application name already exists.
+        When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
+        When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+        When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
         
         @param request: CreateAppRequest
         @param headers: map
@@ -553,10 +703,37 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.auto_switch):
+            body['autoSwitch'] = request.auto_switch
+        if not UtilClient.is_unset(request.cluster):
+            body['cluster'] = request.cluster
+        if not UtilClient.is_unset(request.data_sources):
+            body['dataSources'] = request.data_sources
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.domain):
+            body['domain'] = request.domain
+        if not UtilClient.is_unset(request.fetch_fields):
+            body['fetchFields'] = request.fetch_fields
+        if not UtilClient.is_unset(request.first_ranks):
+            body['firstRanks'] = request.first_ranks
+        if not UtilClient.is_unset(request.network_type):
+            body['networkType'] = request.network_type
+        if not UtilClient.is_unset(request.query_processors):
+            body['queryProcessors'] = request.query_processors
+        if not UtilClient.is_unset(request.schema):
+            body['schema'] = request.schema
+        if not UtilClient.is_unset(request.schemas):
+            body['schemas'] = request.schemas
+        if not UtilClient.is_unset(request.second_ranks):
+            body['secondRanks'] = request.second_ranks
+        if not UtilClient.is_unset(request.summaries):
+            body['summaries'] = request.summaries
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(request.body)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateApp',
@@ -582,10 +759,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateAppResponse:
         """
-        When you create a standard application, a new version of the application is created if the specified application name already exists.
-        *   When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
-        *   When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
-        *   When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
+        @summary Creates a version for an OpenSearch application.
+        
+        @description    When you create a standard application, a new version of the application is created if the specified application name already exists.
+        When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
+        When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+        When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
         
         @param request: CreateAppRequest
         @param headers: map
@@ -596,10 +775,37 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dry_run):
             query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.auto_switch):
+            body['autoSwitch'] = request.auto_switch
+        if not UtilClient.is_unset(request.cluster):
+            body['cluster'] = request.cluster
+        if not UtilClient.is_unset(request.data_sources):
+            body['dataSources'] = request.data_sources
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.domain):
+            body['domain'] = request.domain
+        if not UtilClient.is_unset(request.fetch_fields):
+            body['fetchFields'] = request.fetch_fields
+        if not UtilClient.is_unset(request.first_ranks):
+            body['firstRanks'] = request.first_ranks
+        if not UtilClient.is_unset(request.network_type):
+            body['networkType'] = request.network_type
+        if not UtilClient.is_unset(request.query_processors):
+            body['queryProcessors'] = request.query_processors
+        if not UtilClient.is_unset(request.schema):
+            body['schema'] = request.schema
+        if not UtilClient.is_unset(request.schemas):
+            body['schemas'] = request.schemas
+        if not UtilClient.is_unset(request.second_ranks):
+            body['secondRanks'] = request.second_ranks
+        if not UtilClient.is_unset(request.summaries):
+            body['summaries'] = request.summaries
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(request.body)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateApp',
@@ -623,10 +829,12 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.CreateAppRequest,
     ) -> open_search_20171225_models.CreateAppResponse:
         """
-        When you create a standard application, a new version of the application is created if the specified application name already exists.
-        *   When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
-        *   When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
-        *   When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
+        @summary Creates a version for an OpenSearch application.
+        
+        @description    When you create a standard application, a new version of the application is created if the specified application name already exists.
+        When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
+        When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+        When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
         
         @param request: CreateAppRequest
         @return: CreateAppResponse
@@ -641,10 +849,12 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.CreateAppRequest,
     ) -> open_search_20171225_models.CreateAppResponse:
         """
-        When you create a standard application, a new version of the application is created if the specified application name already exists.
-        *   When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
-        *   When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
-        *   When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
+        @summary Creates a version for an OpenSearch application.
+        
+        @description    When you create a standard application, a new version of the application is created if the specified application name already exists.
+        When you create a version of an existing application, you must specify the autoSwitch and realtimeShared parameters.
+        When you create a version of an existing application, the value of the quota parameter is the same as that of the quota parameter in the previous version of the application.
+        When you create a version of an existing application, the modification of the value of the quota parameter does not take effect.
         
         @param request: CreateAppRequest
         @return: CreateAppResponse
@@ -659,10 +869,29 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateAppGroupResponse:
+        """
+        @summary Create an OpenSearch application.
+        
+        @param request: CreateAppGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppGroupResponse
+        """
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.charge_type):
+            body['chargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.quota):
+            body['quota'] = request.quota
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(request.body)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateAppGroup',
@@ -686,10 +915,29 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateAppGroupResponse:
+        """
+        @summary Create an OpenSearch application.
+        
+        @param request: CreateAppGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppGroupResponse
+        """
         UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.charge_type):
+            body['chargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.quota):
+            body['quota'] = request.quota
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=OpenApiUtilClient.parse_to_map(request.body)
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateAppGroup',
@@ -711,6 +959,12 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.CreateAppGroupRequest,
     ) -> open_search_20171225_models.CreateAppGroupResponse:
+        """
+        @summary Create an OpenSearch application.
+        
+        @param request: CreateAppGroupRequest
+        @return: CreateAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_app_group_with_options(request, headers, runtime)
@@ -719,9 +973,123 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.CreateAppGroupRequest,
     ) -> open_search_20171225_models.CreateAppGroupResponse:
+        """
+        @summary Create an OpenSearch application.
+        
+        @param request: CreateAppGroupRequest
+        @return: CreateAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_app_group_with_options_async(request, headers, runtime)
+
+    def create_app_group_credentials_with_options(
+        self,
+        app_group_identity: str,
+        request: open_search_20171225_models.CreateAppGroupCredentialsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.CreateAppGroupCredentialsResponse:
+        """
+        @param request: CreateAppGroupCredentialsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppGroupCredentialsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAppGroupCredentials',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/credentials',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.CreateAppGroupCredentialsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_app_group_credentials_with_options_async(
+        self,
+        app_group_identity: str,
+        request: open_search_20171225_models.CreateAppGroupCredentialsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> open_search_20171225_models.CreateAppGroupCredentialsResponse:
+        """
+        @param request: CreateAppGroupCredentialsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppGroupCredentialsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
+        body = {}
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAppGroupCredentials',
+            version='2017-12-25',
+            protocol='HTTPS',
+            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/credentials',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            open_search_20171225_models.CreateAppGroupCredentialsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_app_group_credentials(
+        self,
+        app_group_identity: str,
+        request: open_search_20171225_models.CreateAppGroupCredentialsRequest,
+    ) -> open_search_20171225_models.CreateAppGroupCredentialsResponse:
+        """
+        @param request: CreateAppGroupCredentialsRequest
+        @return: CreateAppGroupCredentialsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_app_group_credentials_with_options(app_group_identity, request, headers, runtime)
+
+    async def create_app_group_credentials_async(
+        self,
+        app_group_identity: str,
+        request: open_search_20171225_models.CreateAppGroupCredentialsRequest,
+    ) -> open_search_20171225_models.CreateAppGroupCredentialsResponse:
+        """
+        @param request: CreateAppGroupCredentialsRequest
+        @return: CreateAppGroupCredentialsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_app_group_credentials_with_options_async(app_group_identity, request, headers, runtime)
 
     def create_first_rank_with_options(
         self,
@@ -731,6 +1099,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateFirstRankResponse:
+        """
+        @summary Creates a rough sort expression for a version of an OpenSearch application. If you set dryRun to true, this operation checks the specified rough sort expression. By default, the value of dryRun is false if you do not set this parameter.
+        
+        @param request: CreateFirstRankRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFirstRankResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -764,6 +1140,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateFirstRankResponse:
+        """
+        @summary Creates a rough sort expression for a version of an OpenSearch application. If you set dryRun to true, this operation checks the specified rough sort expression. By default, the value of dryRun is false if you do not set this parameter.
+        
+        @param request: CreateFirstRankRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFirstRankResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -795,6 +1179,12 @@ class Client(OpenApiClient):
         app_id: str,
         request: open_search_20171225_models.CreateFirstRankRequest,
     ) -> open_search_20171225_models.CreateFirstRankResponse:
+        """
+        @summary Creates a rough sort expression for a version of an OpenSearch application. If you set dryRun to true, this operation checks the specified rough sort expression. By default, the value of dryRun is false if you do not set this parameter.
+        
+        @param request: CreateFirstRankRequest
+        @return: CreateFirstRankResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_first_rank_with_options(app_group_identity, app_id, request, headers, runtime)
@@ -805,6 +1195,12 @@ class Client(OpenApiClient):
         app_id: str,
         request: open_search_20171225_models.CreateFirstRankRequest,
     ) -> open_search_20171225_models.CreateFirstRankResponse:
+        """
+        @summary Creates a rough sort expression for a version of an OpenSearch application. If you set dryRun to true, this operation checks the specified rough sort expression. By default, the value of dryRun is false if you do not set this parameter.
+        
+        @param request: CreateFirstRankRequest
+        @return: CreateFirstRankResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_first_rank_with_options_async(app_group_identity, app_id, request, headers, runtime)
@@ -818,7 +1214,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateFunctionInstanceResponse:
         """
-        You can call the [GetFunctionCurrentVersion](~~421377~~) operation to query the latest version of the current feature. The response of the operation includes the createParameters parameter that is used to create an algorithm instance, the usageParameters parameter, and the requirements for setting these parameters.
+        @summary Creates an algorithm instance of a feature.
+        
+        @description You can call the [GetFunctionCurrentVersion](https://help.aliyun.com/document_detail/421377.html) operation to query the latest version of a feature. The response of the operation includes the createParameters parameter that is used to create an algorithm instance, the usageParameters parameter, and the requirements for setting these parameters.
         
         @param request: CreateFunctionInstanceRequest
         @param headers: map
@@ -870,7 +1268,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateFunctionInstanceResponse:
         """
-        You can call the [GetFunctionCurrentVersion](~~421377~~) operation to query the latest version of the current feature. The response of the operation includes the createParameters parameter that is used to create an algorithm instance, the usageParameters parameter, and the requirements for setting these parameters.
+        @summary Creates an algorithm instance of a feature.
+        
+        @description You can call the [GetFunctionCurrentVersion](https://help.aliyun.com/document_detail/421377.html) operation to query the latest version of a feature. The response of the operation includes the createParameters parameter that is used to create an algorithm instance, the usageParameters parameter, and the requirements for setting these parameters.
         
         @param request: CreateFunctionInstanceRequest
         @param headers: map
@@ -920,7 +1320,9 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.CreateFunctionInstanceRequest,
     ) -> open_search_20171225_models.CreateFunctionInstanceResponse:
         """
-        You can call the [GetFunctionCurrentVersion](~~421377~~) operation to query the latest version of the current feature. The response of the operation includes the createParameters parameter that is used to create an algorithm instance, the usageParameters parameter, and the requirements for setting these parameters.
+        @summary Creates an algorithm instance of a feature.
+        
+        @description You can call the [GetFunctionCurrentVersion](https://help.aliyun.com/document_detail/421377.html) operation to query the latest version of a feature. The response of the operation includes the createParameters parameter that is used to create an algorithm instance, the usageParameters parameter, and the requirements for setting these parameters.
         
         @param request: CreateFunctionInstanceRequest
         @return: CreateFunctionInstanceResponse
@@ -936,7 +1338,9 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.CreateFunctionInstanceRequest,
     ) -> open_search_20171225_models.CreateFunctionInstanceResponse:
         """
-        You can call the [GetFunctionCurrentVersion](~~421377~~) operation to query the latest version of the current feature. The response of the operation includes the createParameters parameter that is used to create an algorithm instance, the usageParameters parameter, and the requirements for setting these parameters.
+        @summary Creates an algorithm instance of a feature.
+        
+        @description You can call the [GetFunctionCurrentVersion](https://help.aliyun.com/document_detail/421377.html) operation to query the latest version of a feature. The response of the operation includes the createParameters parameter that is used to create an algorithm instance, the usageParameters parameter, and the requirements for setting these parameters.
         
         @param request: CreateFunctionInstanceRequest
         @return: CreateFunctionInstanceResponse
@@ -953,6 +1357,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateFunctionResourceResponse:
+        """
+        @summary Creates an algorithm resource for a specific feature.
+        
+        @param request: CreateFunctionResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFunctionResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data):
@@ -991,6 +1403,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateFunctionResourceResponse:
+        """
+        @summary Creates an algorithm resource for a specific feature.
+        
+        @param request: CreateFunctionResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFunctionResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data):
@@ -1027,6 +1447,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: open_search_20171225_models.CreateFunctionResourceRequest,
     ) -> open_search_20171225_models.CreateFunctionResourceResponse:
+        """
+        @summary Creates an algorithm resource for a specific feature.
+        
+        @param request: CreateFunctionResourceRequest
+        @return: CreateFunctionResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_function_resource_with_options(app_group_identity, function_name, request, headers, runtime)
@@ -1037,6 +1463,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: open_search_20171225_models.CreateFunctionResourceRequest,
     ) -> open_search_20171225_models.CreateFunctionResourceResponse:
+        """
+        @summary Creates an algorithm resource for a specific feature.
+        
+        @param request: CreateFunctionResourceRequest
+        @return: CreateFunctionResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_function_resource_with_options_async(app_group_identity, function_name, request, headers, runtime)
@@ -1049,6 +1481,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateFunctionTaskResponse:
+        """
+        @summary Starts a training task for an algorithm instance.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFunctionTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1076,6 +1515,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateFunctionTaskResponse:
+        """
+        @summary Starts a training task for an algorithm instance.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFunctionTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1101,6 +1547,11 @@ class Client(OpenApiClient):
         function_name: str,
         instance_name: str,
     ) -> open_search_20171225_models.CreateFunctionTaskResponse:
+        """
+        @summary Starts a training task for an algorithm instance.
+        
+        @return: CreateFunctionTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_function_task_with_options(app_group_identity, function_name, instance_name, headers, runtime)
@@ -1111,6 +1562,11 @@ class Client(OpenApiClient):
         function_name: str,
         instance_name: str,
     ) -> open_search_20171225_models.CreateFunctionTaskResponse:
+        """
+        @summary Starts a training task for an algorithm instance.
+        
+        @return: CreateFunctionTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_function_task_with_options_async(app_group_identity, function_name, instance_name, headers, runtime)
@@ -1121,6 +1577,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateInterventionDictionaryResponse:
+        """
+        @summary Create an intervention dictionary.
+        
+        @param request: CreateInterventionDictionaryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInterventionDictionaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -1159,6 +1623,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateInterventionDictionaryResponse:
+        """
+        @summary Create an intervention dictionary.
+        
+        @param request: CreateInterventionDictionaryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInterventionDictionaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -1195,6 +1667,12 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.CreateInterventionDictionaryRequest,
     ) -> open_search_20171225_models.CreateInterventionDictionaryResponse:
+        """
+        @summary Create an intervention dictionary.
+        
+        @param request: CreateInterventionDictionaryRequest
+        @return: CreateInterventionDictionaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_intervention_dictionary_with_options(request, headers, runtime)
@@ -1203,6 +1681,12 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.CreateInterventionDictionaryRequest,
     ) -> open_search_20171225_models.CreateInterventionDictionaryResponse:
+        """
+        @summary Create an intervention dictionary.
+        
+        @param request: CreateInterventionDictionaryRequest
+        @return: CreateInterventionDictionaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_intervention_dictionary_with_options_async(request, headers, runtime)
@@ -1215,6 +1699,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateQueryProcessorResponse:
+        """
+        @summary Creates a query analysis rule. If you set dryRun to true, this operation checks the specified query analysis rule. By default, the value of dryRun is false if you do not set this parameter.
+        
+        @param request: CreateQueryProcessorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQueryProcessorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -1248,6 +1740,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateQueryProcessorResponse:
+        """
+        @summary Creates a query analysis rule. If you set dryRun to true, this operation checks the specified query analysis rule. By default, the value of dryRun is false if you do not set this parameter.
+        
+        @param request: CreateQueryProcessorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQueryProcessorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -1279,6 +1779,12 @@ class Client(OpenApiClient):
         app_id: str,
         request: open_search_20171225_models.CreateQueryProcessorRequest,
     ) -> open_search_20171225_models.CreateQueryProcessorResponse:
+        """
+        @summary Creates a query analysis rule. If you set dryRun to true, this operation checks the specified query analysis rule. By default, the value of dryRun is false if you do not set this parameter.
+        
+        @param request: CreateQueryProcessorRequest
+        @return: CreateQueryProcessorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_query_processor_with_options(app_group_identity, app_id, request, headers, runtime)
@@ -1289,6 +1795,12 @@ class Client(OpenApiClient):
         app_id: str,
         request: open_search_20171225_models.CreateQueryProcessorRequest,
     ) -> open_search_20171225_models.CreateQueryProcessorResponse:
+        """
+        @summary Creates a query analysis rule. If you set dryRun to true, this operation checks the specified query analysis rule. By default, the value of dryRun is false if you do not set this parameter.
+        
+        @param request: CreateQueryProcessorRequest
+        @return: CreateQueryProcessorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_query_processor_with_options_async(app_group_identity, app_id, request, headers, runtime)
@@ -1300,6 +1812,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateScheduledTaskResponse:
+        """
+        @param request: CreateScheduledTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateScheduledTaskResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1328,6 +1846,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateScheduledTaskResponse:
+        """
+        @param request: CreateScheduledTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateScheduledTaskResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1354,6 +1878,10 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.CreateScheduledTaskRequest,
     ) -> open_search_20171225_models.CreateScheduledTaskResponse:
+        """
+        @param request: CreateScheduledTaskRequest
+        @return: CreateScheduledTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_scheduled_task_with_options(app_group_identity, request, headers, runtime)
@@ -1363,6 +1891,10 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.CreateScheduledTaskRequest,
     ) -> open_search_20171225_models.CreateScheduledTaskResponse:
+        """
+        @param request: CreateScheduledTaskRequest
+        @return: CreateScheduledTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_scheduled_task_with_options_async(app_group_identity, request, headers, runtime)
@@ -1375,6 +1907,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateSearchStrategyResponse:
+        """
+        @summary Creates a query policy.
+        
+        @param request: CreateSearchStrategyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSearchStrategyResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1404,6 +1944,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateSearchStrategyResponse:
+        """
+        @summary Creates a query policy.
+        
+        @param request: CreateSearchStrategyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSearchStrategyResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -1431,6 +1979,12 @@ class Client(OpenApiClient):
         app_id: str,
         request: open_search_20171225_models.CreateSearchStrategyRequest,
     ) -> open_search_20171225_models.CreateSearchStrategyResponse:
+        """
+        @summary Creates a query policy.
+        
+        @param request: CreateSearchStrategyRequest
+        @return: CreateSearchStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_search_strategy_with_options(app_group_identity, app_id, request, headers, runtime)
@@ -1441,6 +1995,12 @@ class Client(OpenApiClient):
         app_id: str,
         request: open_search_20171225_models.CreateSearchStrategyRequest,
     ) -> open_search_20171225_models.CreateSearchStrategyResponse:
+        """
+        @summary Creates a query policy.
+        
+        @param request: CreateSearchStrategyRequest
+        @return: CreateSearchStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_search_strategy_with_options_async(app_group_identity, app_id, request, headers, runtime)
@@ -1453,6 +2013,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateSecondRankResponse:
+        """
+        @summary Creates a fine sort expression for a version of an OpenSearch application. If you set dryRun to true, this operation checks the specified fine sort expression. The default value of dryRun is false if you do not set this parameter.
+        
+        @param request: CreateSecondRankRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecondRankResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -1486,6 +2054,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateSecondRankResponse:
+        """
+        @summary Creates a fine sort expression for a version of an OpenSearch application. If you set dryRun to true, this operation checks the specified fine sort expression. The default value of dryRun is false if you do not set this parameter.
+        
+        @param request: CreateSecondRankRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecondRankResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -1517,6 +2093,12 @@ class Client(OpenApiClient):
         app_id: str,
         request: open_search_20171225_models.CreateSecondRankRequest,
     ) -> open_search_20171225_models.CreateSecondRankResponse:
+        """
+        @summary Creates a fine sort expression for a version of an OpenSearch application. If you set dryRun to true, this operation checks the specified fine sort expression. The default value of dryRun is false if you do not set this parameter.
+        
+        @param request: CreateSecondRankRequest
+        @return: CreateSecondRankResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_second_rank_with_options(app_group_identity, app_id, request, headers, runtime)
@@ -1527,6 +2109,12 @@ class Client(OpenApiClient):
         app_id: str,
         request: open_search_20171225_models.CreateSecondRankRequest,
     ) -> open_search_20171225_models.CreateSecondRankResponse:
+        """
+        @summary Creates a fine sort expression for a version of an OpenSearch application. If you set dryRun to true, this operation checks the specified fine sort expression. The default value of dryRun is false if you do not set this parameter.
+        
+        @param request: CreateSecondRankRequest
+        @return: CreateSecondRankResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_second_rank_with_options_async(app_group_identity, app_id, request, headers, runtime)
@@ -1539,6 +2127,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateSortScriptResponse:
+        """
+        @summary Creates a sort script.
+        
+        @param request: CreateSortScriptRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSortScriptResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.scope):
@@ -1575,6 +2171,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateSortScriptResponse:
+        """
+        @summary Creates a sort script.
+        
+        @param request: CreateSortScriptRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSortScriptResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.scope):
@@ -1609,6 +2213,12 @@ class Client(OpenApiClient):
         app_version_id: str,
         request: open_search_20171225_models.CreateSortScriptRequest,
     ) -> open_search_20171225_models.CreateSortScriptResponse:
+        """
+        @summary Creates a sort script.
+        
+        @param request: CreateSortScriptRequest
+        @return: CreateSortScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_sort_script_with_options(app_group_identity, app_version_id, request, headers, runtime)
@@ -1619,6 +2229,12 @@ class Client(OpenApiClient):
         app_version_id: str,
         request: open_search_20171225_models.CreateSortScriptRequest,
     ) -> open_search_20171225_models.CreateSortScriptResponse:
+        """
+        @summary Creates a sort script.
+        
+        @param request: CreateSortScriptRequest
+        @return: CreateSortScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_sort_script_with_options_async(app_group_identity, app_version_id, request, headers, runtime)
@@ -1630,9 +2246,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateUserAnalyzerResponse:
         """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=CreateUserAnalyzer\\&type=ROA\\&version=2017-12-25)
-        
         @param request: CreateUserAnalyzerRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1681,9 +2294,6 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.CreateUserAnalyzerResponse:
         """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=CreateUserAnalyzer\\&type=ROA\\&version=2017-12-25)
-        
         @param request: CreateUserAnalyzerRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1730,9 +2340,6 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.CreateUserAnalyzerRequest,
     ) -> open_search_20171225_models.CreateUserAnalyzerResponse:
         """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=CreateUserAnalyzer\\&type=ROA\\&version=2017-12-25)
-        
         @param request: CreateUserAnalyzerRequest
         @return: CreateUserAnalyzerResponse
         """
@@ -1745,9 +2352,6 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.CreateUserAnalyzerRequest,
     ) -> open_search_20171225_models.CreateUserAnalyzerResponse:
         """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=OpenSearch\\&api=CreateUserAnalyzer\\&type=ROA\\&version=2017-12-25)
-        
         @param request: CreateUserAnalyzerRequest
         @return: CreateUserAnalyzerResponse
         """
@@ -1764,6 +2368,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestExperimentResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteABTestExperimentResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1792,6 +2401,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestExperimentResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteABTestExperimentResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1818,6 +2432,9 @@ class Client(OpenApiClient):
         group_id: str,
         experiment_id: str,
     ) -> open_search_20171225_models.DeleteABTestExperimentResponse:
+        """
+        @return: DeleteABTestExperimentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_abtest_experiment_with_options(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
@@ -1829,6 +2446,9 @@ class Client(OpenApiClient):
         group_id: str,
         experiment_id: str,
     ) -> open_search_20171225_models.DeleteABTestExperimentResponse:
+        """
+        @return: DeleteABTestExperimentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_abtest_experiment_with_options_async(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
@@ -1841,6 +2461,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestGroupResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteABTestGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1868,6 +2493,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestGroupResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteABTestGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1893,6 +2523,9 @@ class Client(OpenApiClient):
         scene_id: str,
         group_id: str,
     ) -> open_search_20171225_models.DeleteABTestGroupResponse:
+        """
+        @return: DeleteABTestGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_abtest_group_with_options(app_group_identity, scene_id, group_id, headers, runtime)
@@ -1903,6 +2536,9 @@ class Client(OpenApiClient):
         scene_id: str,
         group_id: str,
     ) -> open_search_20171225_models.DeleteABTestGroupResponse:
+        """
+        @return: DeleteABTestGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_abtest_group_with_options_async(app_group_identity, scene_id, group_id, headers, runtime)
@@ -1914,6 +2550,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestSceneResponse:
+        """
+        @summary Deletes an A/B test scenario.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteABTestSceneResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1940,6 +2583,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteABTestSceneResponse:
+        """
+        @summary Deletes an A/B test scenario.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteABTestSceneResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1964,6 +2614,11 @@ class Client(OpenApiClient):
         app_group_identity: str,
         scene_id: str,
     ) -> open_search_20171225_models.DeleteABTestSceneResponse:
+        """
+        @summary Deletes an A/B test scenario.
+        
+        @return: DeleteABTestSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_abtest_scene_with_options(app_group_identity, scene_id, headers, runtime)
@@ -1973,6 +2628,11 @@ class Client(OpenApiClient):
         app_group_identity: str,
         scene_id: str,
     ) -> open_search_20171225_models.DeleteABTestSceneResponse:
+        """
+        @summary Deletes an A/B test scenario.
+        
+        @return: DeleteABTestSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_abtest_scene_with_options_async(app_group_identity, scene_id, headers, runtime)
@@ -1985,6 +2645,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteFunctionInstanceResponse:
+        """
+        @summary Deletes an algorithm instance. Before you delete an instance, make sure that it is not in use to prevent service interruptions.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFunctionInstanceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2012,6 +2679,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteFunctionInstanceResponse:
+        """
+        @summary Deletes an algorithm instance. Before you delete an instance, make sure that it is not in use to prevent service interruptions.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFunctionInstanceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2037,6 +2711,11 @@ class Client(OpenApiClient):
         function_name: str,
         instance_name: str,
     ) -> open_search_20171225_models.DeleteFunctionInstanceResponse:
+        """
+        @summary Deletes an algorithm instance. Before you delete an instance, make sure that it is not in use to prevent service interruptions.
+        
+        @return: DeleteFunctionInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_function_instance_with_options(app_group_identity, function_name, instance_name, headers, runtime)
@@ -2047,6 +2726,11 @@ class Client(OpenApiClient):
         function_name: str,
         instance_name: str,
     ) -> open_search_20171225_models.DeleteFunctionInstanceResponse:
+        """
+        @summary Deletes an algorithm instance. Before you delete an instance, make sure that it is not in use to prevent service interruptions.
+        
+        @return: DeleteFunctionInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_function_instance_with_options_async(app_group_identity, function_name, instance_name, headers, runtime)
@@ -2059,6 +2743,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteFunctionResourceResponse:
+        """
+        @summary Deletes an algorithm resource.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFunctionResourceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2086,6 +2777,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteFunctionResourceResponse:
+        """
+        @summary Deletes an algorithm resource.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFunctionResourceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2111,6 +2809,11 @@ class Client(OpenApiClient):
         function_name: str,
         resource_name: str,
     ) -> open_search_20171225_models.DeleteFunctionResourceResponse:
+        """
+        @summary Deletes an algorithm resource.
+        
+        @return: DeleteFunctionResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_function_resource_with_options(app_group_identity, function_name, resource_name, headers, runtime)
@@ -2121,6 +2824,11 @@ class Client(OpenApiClient):
         function_name: str,
         resource_name: str,
     ) -> open_search_20171225_models.DeleteFunctionResourceResponse:
+        """
+        @summary Deletes an algorithm resource.
+        
+        @return: DeleteFunctionResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_function_resource_with_options_async(app_group_identity, function_name, resource_name, headers, runtime)
@@ -2134,6 +2842,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteFunctionTaskResponse:
+        """
+        @summary Deletes a training task. The training task in progress cannot be deleted.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFunctionTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2162,6 +2877,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteFunctionTaskResponse:
+        """
+        @summary Deletes a training task. The training task in progress cannot be deleted.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFunctionTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2188,6 +2910,11 @@ class Client(OpenApiClient):
         instance_name: str,
         generation: str,
     ) -> open_search_20171225_models.DeleteFunctionTaskResponse:
+        """
+        @summary Deletes a training task. The training task in progress cannot be deleted.
+        
+        @return: DeleteFunctionTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_function_task_with_options(app_group_identity, function_name, instance_name, generation, headers, runtime)
@@ -2199,6 +2926,11 @@ class Client(OpenApiClient):
         instance_name: str,
         generation: str,
     ) -> open_search_20171225_models.DeleteFunctionTaskResponse:
+        """
+        @summary Deletes a training task. The training task in progress cannot be deleted.
+        
+        @return: DeleteFunctionTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_function_task_with_options_async(app_group_identity, function_name, instance_name, generation, headers, runtime)
@@ -2211,6 +2943,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteSortScriptResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSortScriptResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2238,6 +2975,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteSortScriptResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSortScriptResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2263,6 +3005,9 @@ class Client(OpenApiClient):
         script_name: str,
         app_version_id: str,
     ) -> open_search_20171225_models.DeleteSortScriptResponse:
+        """
+        @return: DeleteSortScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_sort_script_with_options(app_group_identity, script_name, app_version_id, headers, runtime)
@@ -2273,6 +3018,9 @@ class Client(OpenApiClient):
         script_name: str,
         app_version_id: str,
     ) -> open_search_20171225_models.DeleteSortScriptResponse:
+        """
+        @return: DeleteSortScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_sort_script_with_options_async(app_group_identity, script_name, app_version_id, headers, runtime)
@@ -2286,6 +3034,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteSortScriptFileResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSortScriptFileResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2314,6 +3067,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DeleteSortScriptFileResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSortScriptFileResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2340,6 +3098,9 @@ class Client(OpenApiClient):
         script_name: str,
         file_name: str,
     ) -> open_search_20171225_models.DeleteSortScriptFileResponse:
+        """
+        @return: DeleteSortScriptFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_sort_script_file_with_options(app_group_identity, app_version_id, script_name, file_name, headers, runtime)
@@ -2351,6 +3112,9 @@ class Client(OpenApiClient):
         script_name: str,
         file_name: str,
     ) -> open_search_20171225_models.DeleteSortScriptFileResponse:
+        """
+        @return: DeleteSortScriptFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_sort_script_file_with_options_async(app_group_identity, app_version_id, script_name, file_name, headers, runtime)
@@ -2364,6 +3128,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestExperimentResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeABTestExperimentResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2392,6 +3161,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestExperimentResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeABTestExperimentResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2418,6 +3192,9 @@ class Client(OpenApiClient):
         group_id: str,
         experiment_id: str,
     ) -> open_search_20171225_models.DescribeABTestExperimentResponse:
+        """
+        @return: DescribeABTestExperimentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_abtest_experiment_with_options(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
@@ -2429,6 +3206,9 @@ class Client(OpenApiClient):
         group_id: str,
         experiment_id: str,
     ) -> open_search_20171225_models.DescribeABTestExperimentResponse:
+        """
+        @return: DescribeABTestExperimentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_abtest_experiment_with_options_async(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
@@ -2441,6 +3221,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestGroupResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeABTestGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2468,6 +3253,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestGroupResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeABTestGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2493,6 +3283,9 @@ class Client(OpenApiClient):
         scene_id: str,
         group_id: str,
     ) -> open_search_20171225_models.DescribeABTestGroupResponse:
+        """
+        @return: DescribeABTestGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_abtest_group_with_options(app_group_identity, scene_id, group_id, headers, runtime)
@@ -2503,6 +3296,9 @@ class Client(OpenApiClient):
         scene_id: str,
         group_id: str,
     ) -> open_search_20171225_models.DescribeABTestGroupResponse:
+        """
+        @return: DescribeABTestGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_abtest_group_with_options_async(app_group_identity, scene_id, group_id, headers, runtime)
@@ -2514,6 +3310,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestSceneResponse:
+        """
+        @summary Queries the information about an A/B test scenario.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeABTestSceneResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2540,6 +3343,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeABTestSceneResponse:
+        """
+        @summary Queries the information about an A/B test scenario.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeABTestSceneResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2564,6 +3374,11 @@ class Client(OpenApiClient):
         app_group_identity: str,
         scene_id: str,
     ) -> open_search_20171225_models.DescribeABTestSceneResponse:
+        """
+        @summary Queries the information about an A/B test scenario.
+        
+        @return: DescribeABTestSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_abtest_scene_with_options(app_group_identity, scene_id, headers, runtime)
@@ -2573,6 +3388,11 @@ class Client(OpenApiClient):
         app_group_identity: str,
         scene_id: str,
     ) -> open_search_20171225_models.DescribeABTestSceneResponse:
+        """
+        @summary Queries the information about an A/B test scenario.
+        
+        @return: DescribeABTestSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_abtest_scene_with_options_async(app_group_identity, scene_id, headers, runtime)
@@ -2584,6 +3404,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2610,6 +3435,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2634,6 +3464,9 @@ class Client(OpenApiClient):
         app_group_identity: str,
         app_id: str,
     ) -> open_search_20171225_models.DescribeAppResponse:
+        """
+        @return: DescribeAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_app_with_options(app_group_identity, app_id, headers, runtime)
@@ -2643,6 +3476,9 @@ class Client(OpenApiClient):
         app_group_identity: str,
         app_id: str,
     ) -> open_search_20171225_models.DescribeAppResponse:
+        """
+        @return: DescribeAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_app_with_options_async(app_group_identity, app_id, headers, runtime)
@@ -2653,6 +3489,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppGroupResponse:
+        """
+        @summary Queries the details of an OpenSearch application.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2678,6 +3521,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppGroupResponse:
+        """
+        @summary Queries the details of an OpenSearch application.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2701,6 +3551,11 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.DescribeAppGroupResponse:
+        """
+        @summary Queries the details of an OpenSearch application.
+        
+        @return: DescribeAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_app_group_with_options(app_group_identity, headers, runtime)
@@ -2709,6 +3564,11 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.DescribeAppGroupResponse:
+        """
+        @summary Queries the details of an OpenSearch application.
+        
+        @return: DescribeAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_app_group_with_options_async(app_group_identity, headers, runtime)
@@ -2720,6 +3580,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppStatisticsResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppStatisticsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2746,6 +3611,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppStatisticsResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppStatisticsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2770,6 +3640,9 @@ class Client(OpenApiClient):
         app_group_identity: str,
         app_id: str,
     ) -> open_search_20171225_models.DescribeAppStatisticsResponse:
+        """
+        @return: DescribeAppStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_app_statistics_with_options(app_group_identity, app_id, headers, runtime)
@@ -2779,6 +3652,9 @@ class Client(OpenApiClient):
         app_group_identity: str,
         app_id: str,
     ) -> open_search_20171225_models.DescribeAppStatisticsResponse:
+        """
+        @return: DescribeAppStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_app_statistics_with_options_async(app_group_identity, app_id, headers, runtime)
@@ -2789,6 +3665,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppsResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2814,6 +3695,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeAppsResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2837,6 +3723,9 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.DescribeAppsResponse:
+        """
+        @return: DescribeAppsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_apps_with_options(app_group_identity, headers, runtime)
@@ -2845,6 +3734,9 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.DescribeAppsResponse:
+        """
+        @return: DescribeAppsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_apps_with_options_async(app_group_identity, headers, runtime)
@@ -2856,6 +3748,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeDataCollctionResponse:
+        """
+        @summary Queries the details of a data collection task of an application.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataCollctionResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2882,6 +3781,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeDataCollctionResponse:
+        """
+        @summary Queries the details of a data collection task of an application.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataCollctionResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2906,6 +3812,11 @@ class Client(OpenApiClient):
         app_group_identity: str,
         data_collection_identity: str,
     ) -> open_search_20171225_models.DescribeDataCollctionResponse:
+        """
+        @summary Queries the details of a data collection task of an application.
+        
+        @return: DescribeDataCollctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_data_collction_with_options(app_group_identity, data_collection_identity, headers, runtime)
@@ -2915,6 +3826,11 @@ class Client(OpenApiClient):
         app_group_identity: str,
         data_collection_identity: str,
     ) -> open_search_20171225_models.DescribeDataCollctionResponse:
+        """
+        @summary Queries the details of a data collection task of an application.
+        
+        @return: DescribeDataCollctionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_data_collction_with_options_async(app_group_identity, data_collection_identity, headers, runtime)
@@ -2927,6 +3843,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeFirstRankResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFirstRankResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2954,6 +3875,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeFirstRankResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFirstRankResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2979,6 +3905,9 @@ class Client(OpenApiClient):
         app_id: str,
         name: str,
     ) -> open_search_20171225_models.DescribeFirstRankResponse:
+        """
+        @return: DescribeFirstRankResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_first_rank_with_options(app_group_identity, app_id, name, headers, runtime)
@@ -2989,6 +3918,9 @@ class Client(OpenApiClient):
         app_id: str,
         name: str,
     ) -> open_search_20171225_models.DescribeFirstRankResponse:
+        """
+        @return: DescribeFirstRankResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_first_rank_with_options_async(app_group_identity, app_id, name, headers, runtime)
@@ -2999,6 +3931,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeInterventionDictionaryResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInterventionDictionaryResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3024,6 +3961,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeInterventionDictionaryResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInterventionDictionaryResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3047,6 +3989,9 @@ class Client(OpenApiClient):
         self,
         name: str,
     ) -> open_search_20171225_models.DescribeInterventionDictionaryResponse:
+        """
+        @return: DescribeInterventionDictionaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_intervention_dictionary_with_options(name, headers, runtime)
@@ -3055,6 +4000,9 @@ class Client(OpenApiClient):
         self,
         name: str,
     ) -> open_search_20171225_models.DescribeInterventionDictionaryResponse:
+        """
+        @return: DescribeInterventionDictionaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_intervention_dictionary_with_options_async(name, headers, runtime)
@@ -3067,6 +4015,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeQueryProcessorResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeQueryProcessorResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3094,6 +4047,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeQueryProcessorResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeQueryProcessorResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3119,6 +4077,9 @@ class Client(OpenApiClient):
         app_id: str,
         name: str,
     ) -> open_search_20171225_models.DescribeQueryProcessorResponse:
+        """
+        @return: DescribeQueryProcessorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_query_processor_with_options(app_group_identity, app_id, name, headers, runtime)
@@ -3129,6 +4090,9 @@ class Client(OpenApiClient):
         app_id: str,
         name: str,
     ) -> open_search_20171225_models.DescribeQueryProcessorResponse:
+        """
+        @return: DescribeQueryProcessorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_query_processor_with_options_async(app_group_identity, app_id, name, headers, runtime)
@@ -3138,6 +4102,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeRegionsResponse:
+        """
+        @summary Queries the endpoints of all regions that support OpenSearch.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3162,6 +4133,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeRegionsResponse:
+        """
+        @summary Queries the endpoints of all regions that support OpenSearch.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3182,11 +4160,21 @@ class Client(OpenApiClient):
         )
 
     def describe_regions(self) -> open_search_20171225_models.DescribeRegionsResponse:
+        """
+        @summary Queries the endpoints of all regions that support OpenSearch.
+        
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_regions_with_options(headers, runtime)
 
     async def describe_regions_async(self) -> open_search_20171225_models.DescribeRegionsResponse:
+        """
+        @summary Queries the endpoints of all regions that support OpenSearch.
+        
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_regions_with_options_async(headers, runtime)
@@ -3198,6 +4186,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeScheduledTaskResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeScheduledTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3224,6 +4217,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeScheduledTaskResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeScheduledTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3248,6 +4246,9 @@ class Client(OpenApiClient):
         app_group_identity: str,
         task_id: str,
     ) -> open_search_20171225_models.DescribeScheduledTaskResponse:
+        """
+        @return: DescribeScheduledTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_scheduled_task_with_options(app_group_identity, task_id, headers, runtime)
@@ -3257,6 +4258,9 @@ class Client(OpenApiClient):
         app_group_identity: str,
         task_id: str,
     ) -> open_search_20171225_models.DescribeScheduledTaskResponse:
+        """
+        @return: DescribeScheduledTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_scheduled_task_with_options_async(app_group_identity, task_id, headers, runtime)
@@ -3269,6 +4273,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeSecondRankResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecondRankResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3296,6 +4305,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeSecondRankResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecondRankResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3321,6 +4335,9 @@ class Client(OpenApiClient):
         app_id: str,
         name: str,
     ) -> open_search_20171225_models.DescribeSecondRankResponse:
+        """
+        @return: DescribeSecondRankResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_second_rank_with_options(app_group_identity, app_id, name, headers, runtime)
@@ -3331,6 +4348,9 @@ class Client(OpenApiClient):
         app_id: str,
         name: str,
     ) -> open_search_20171225_models.DescribeSecondRankResponse:
+        """
+        @return: DescribeSecondRankResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_second_rank_with_options_async(app_group_identity, app_id, name, headers, runtime)
@@ -3341,6 +4361,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeSlowQueryStatusResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSlowQueryStatusResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3366,6 +4391,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeSlowQueryStatusResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSlowQueryStatusResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3389,6 +4419,9 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.DescribeSlowQueryStatusResponse:
+        """
+        @return: DescribeSlowQueryStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_slow_query_status_with_options(app_group_identity, headers, runtime)
@@ -3397,6 +4430,9 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.DescribeSlowQueryStatusResponse:
+        """
+        @return: DescribeSlowQueryStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_slow_query_status_with_options_async(app_group_identity, headers, runtime)
@@ -3408,6 +4444,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeUserAnalyzerResponse:
+        """
+        @param request: DescribeUserAnalyzerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserAnalyzerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.with_):
@@ -3439,6 +4481,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DescribeUserAnalyzerResponse:
+        """
+        @param request: DescribeUserAnalyzerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserAnalyzerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.with_):
@@ -3468,6 +4516,10 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.DescribeUserAnalyzerRequest,
     ) -> open_search_20171225_models.DescribeUserAnalyzerResponse:
+        """
+        @param request: DescribeUserAnalyzerRequest
+        @return: DescribeUserAnalyzerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_user_analyzer_with_options(name, request, headers, runtime)
@@ -3477,6 +4529,10 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.DescribeUserAnalyzerRequest,
     ) -> open_search_20171225_models.DescribeUserAnalyzerResponse:
+        """
+        @param request: DescribeUserAnalyzerRequest
+        @return: DescribeUserAnalyzerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_user_analyzer_with_options_async(name, request, headers, runtime)
@@ -3487,6 +4543,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DisableSlowQueryResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableSlowQueryResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3512,6 +4573,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.DisableSlowQueryResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableSlowQueryResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3535,6 +4601,9 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.DisableSlowQueryResponse:
+        """
+        @return: DisableSlowQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.disable_slow_query_with_options(app_group_identity, headers, runtime)
@@ -3543,6 +4612,9 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.DisableSlowQueryResponse:
+        """
+        @return: DisableSlowQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.disable_slow_query_with_options_async(app_group_identity, headers, runtime)
@@ -3553,6 +4625,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.EnableSlowQueryResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableSlowQueryResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3578,6 +4655,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.EnableSlowQueryResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableSlowQueryResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3601,6 +4683,9 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.EnableSlowQueryResponse:
+        """
+        @return: EnableSlowQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.enable_slow_query_with_options(app_group_identity, headers, runtime)
@@ -3609,6 +4694,9 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.EnableSlowQueryResponse:
+        """
+        @return: EnableSlowQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.enable_slow_query_with_options_async(app_group_identity, headers, runtime)
@@ -3619,6 +4707,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GenerateMergedTableResponse:
+        """
+        @summary Queries the information about a wide table that is generated after a JOIN operation is performed on multiple tables.
+        
+        @param request: GenerateMergedTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateMergedTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.spec):
@@ -3650,6 +4746,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GenerateMergedTableResponse:
+        """
+        @summary Queries the information about a wide table that is generated after a JOIN operation is performed on multiple tables.
+        
+        @param request: GenerateMergedTableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateMergedTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.spec):
@@ -3679,6 +4783,12 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.GenerateMergedTableRequest,
     ) -> open_search_20171225_models.GenerateMergedTableResponse:
+        """
+        @summary Queries the information about a wide table that is generated after a JOIN operation is performed on multiple tables.
+        
+        @param request: GenerateMergedTableRequest
+        @return: GenerateMergedTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.generate_merged_table_with_options(request, headers, runtime)
@@ -3687,6 +4797,12 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.GenerateMergedTableRequest,
     ) -> open_search_20171225_models.GenerateMergedTableResponse:
+        """
+        @summary Queries the information about a wide table that is generated after a JOIN operation is performed on multiple tables.
+        
+        @param request: GenerateMergedTableRequest
+        @return: GenerateMergedTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.generate_merged_table_with_options_async(request, headers, runtime)
@@ -3698,6 +4814,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetDomainResponse:
+        """
+        @summary Queries the type of an industry.
+        
+        @param request: GetDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_group_identity):
@@ -3729,6 +4853,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetDomainResponse:
+        """
+        @summary Queries the type of an industry.
+        
+        @param request: GetDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_group_identity):
@@ -3758,6 +4890,12 @@ class Client(OpenApiClient):
         domain_name: str,
         request: open_search_20171225_models.GetDomainRequest,
     ) -> open_search_20171225_models.GetDomainResponse:
+        """
+        @summary Queries the type of an industry.
+        
+        @param request: GetDomainRequest
+        @return: GetDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_domain_with_options(domain_name, request, headers, runtime)
@@ -3767,6 +4905,12 @@ class Client(OpenApiClient):
         domain_name: str,
         request: open_search_20171225_models.GetDomainRequest,
     ) -> open_search_20171225_models.GetDomainResponse:
+        """
+        @summary Queries the type of an industry.
+        
+        @param request: GetDomainRequest
+        @return: GetDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_domain_with_options_async(domain_name, request, headers, runtime)
@@ -3778,6 +4922,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionCurrentVersionResponse:
+        """
+        @summary Queries the version information about the current feature when you create an instance.
+        
+        @param request: GetFunctionCurrentVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionCurrentVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -3815,6 +4967,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionCurrentVersionResponse:
+        """
+        @summary Queries the version information about the current feature when you create an instance.
+        
+        @param request: GetFunctionCurrentVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionCurrentVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -3850,6 +5010,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: open_search_20171225_models.GetFunctionCurrentVersionRequest,
     ) -> open_search_20171225_models.GetFunctionCurrentVersionResponse:
+        """
+        @summary Queries the version information about the current feature when you create an instance.
+        
+        @param request: GetFunctionCurrentVersionRequest
+        @return: GetFunctionCurrentVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_function_current_version_with_options(function_name, request, headers, runtime)
@@ -3859,6 +5025,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: open_search_20171225_models.GetFunctionCurrentVersionRequest,
     ) -> open_search_20171225_models.GetFunctionCurrentVersionResponse:
+        """
+        @summary Queries the version information about the current feature when you create an instance.
+        
+        @param request: GetFunctionCurrentVersionRequest
+        @return: GetFunctionCurrentVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_function_current_version_with_options_async(function_name, request, headers, runtime)
@@ -3870,6 +5042,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionDefaultInstanceResponse:
+        """
+        @summary Queries the algorithm instance that an application uses by default.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionDefaultInstanceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3896,6 +5075,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionDefaultInstanceResponse:
+        """
+        @summary Queries the algorithm instance that an application uses by default.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionDefaultInstanceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3920,6 +5106,11 @@ class Client(OpenApiClient):
         app_group_identity: str,
         function_name: str,
     ) -> open_search_20171225_models.GetFunctionDefaultInstanceResponse:
+        """
+        @summary Queries the algorithm instance that an application uses by default.
+        
+        @return: GetFunctionDefaultInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_function_default_instance_with_options(app_group_identity, function_name, headers, runtime)
@@ -3929,6 +5120,11 @@ class Client(OpenApiClient):
         app_group_identity: str,
         function_name: str,
     ) -> open_search_20171225_models.GetFunctionDefaultInstanceResponse:
+        """
+        @summary Queries the algorithm instance that an application uses by default.
+        
+        @return: GetFunctionDefaultInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_function_default_instance_with_options_async(app_group_identity, function_name, headers, runtime)
@@ -3942,6 +5138,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionInstanceResponse:
+        """
+        @summary Queries the details of an algorithm instance by instance name.
+        
+        @param request: GetFunctionInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.output):
@@ -3975,6 +5179,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionInstanceResponse:
+        """
+        @summary Queries the details of an algorithm instance by instance name.
+        
+        @param request: GetFunctionInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.output):
@@ -4006,6 +5218,12 @@ class Client(OpenApiClient):
         instance_name: str,
         request: open_search_20171225_models.GetFunctionInstanceRequest,
     ) -> open_search_20171225_models.GetFunctionInstanceResponse:
+        """
+        @summary Queries the details of an algorithm instance by instance name.
+        
+        @param request: GetFunctionInstanceRequest
+        @return: GetFunctionInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_function_instance_with_options(app_group_identity, function_name, instance_name, request, headers, runtime)
@@ -4017,6 +5235,12 @@ class Client(OpenApiClient):
         instance_name: str,
         request: open_search_20171225_models.GetFunctionInstanceRequest,
     ) -> open_search_20171225_models.GetFunctionInstanceResponse:
+        """
+        @summary Queries the details of an algorithm instance by instance name.
+        
+        @param request: GetFunctionInstanceRequest
+        @return: GetFunctionInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_function_instance_with_options_async(app_group_identity, function_name, instance_name, request, headers, runtime)
@@ -4030,6 +5254,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionResourceResponse:
+        """
+        @summary Queries an algorithm resource.
+        
+        @param request: GetFunctionResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.output):
@@ -4063,6 +5295,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionResourceResponse:
+        """
+        @summary Queries an algorithm resource.
+        
+        @param request: GetFunctionResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.output):
@@ -4094,6 +5334,12 @@ class Client(OpenApiClient):
         resource_name: str,
         request: open_search_20171225_models.GetFunctionResourceRequest,
     ) -> open_search_20171225_models.GetFunctionResourceResponse:
+        """
+        @summary Queries an algorithm resource.
+        
+        @param request: GetFunctionResourceRequest
+        @return: GetFunctionResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_function_resource_with_options(app_group_identity, function_name, resource_name, request, headers, runtime)
@@ -4105,6 +5351,12 @@ class Client(OpenApiClient):
         resource_name: str,
         request: open_search_20171225_models.GetFunctionResourceRequest,
     ) -> open_search_20171225_models.GetFunctionResourceResponse:
+        """
+        @summary Queries an algorithm resource.
+        
+        @param request: GetFunctionResourceRequest
+        @return: GetFunctionResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_function_resource_with_options_async(app_group_identity, function_name, resource_name, request, headers, runtime)
@@ -4118,6 +5370,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionTaskResponse:
+        """
+        @summary Queries the details of a training task.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4146,6 +5405,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionTaskResponse:
+        """
+        @summary Queries the details of a training task.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4172,6 +5438,11 @@ class Client(OpenApiClient):
         instance_name: str,
         generation: str,
     ) -> open_search_20171225_models.GetFunctionTaskResponse:
+        """
+        @summary Queries the details of a training task.
+        
+        @return: GetFunctionTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_function_task_with_options(app_group_identity, function_name, instance_name, generation, headers, runtime)
@@ -4183,6 +5454,11 @@ class Client(OpenApiClient):
         instance_name: str,
         generation: str,
     ) -> open_search_20171225_models.GetFunctionTaskResponse:
+        """
+        @summary Queries the details of a training task.
+        
+        @return: GetFunctionTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_function_task_with_options_async(app_group_identity, function_name, instance_name, generation, headers, runtime)
@@ -4194,6 +5470,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionVersionResponse:
+        """
+        @summary Queries version information by version ID.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionVersionResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4220,6 +5503,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetFunctionVersionResponse:
+        """
+        @summary Queries version information by version ID.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionVersionResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4244,6 +5534,11 @@ class Client(OpenApiClient):
         function_name: str,
         version_id: str,
     ) -> open_search_20171225_models.GetFunctionVersionResponse:
+        """
+        @summary Queries version information by version ID.
+        
+        @return: GetFunctionVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_function_version_with_options(function_name, version_id, headers, runtime)
@@ -4253,6 +5548,11 @@ class Client(OpenApiClient):
         function_name: str,
         version_id: str,
     ) -> open_search_20171225_models.GetFunctionVersionResponse:
+        """
+        @summary Queries version information by version ID.
+        
+        @return: GetFunctionVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_function_version_with_options_async(function_name, version_id, headers, runtime)
@@ -4265,6 +5565,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetScriptFileNamesResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetScriptFileNamesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4292,6 +5597,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetScriptFileNamesResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetScriptFileNamesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4317,6 +5627,9 @@ class Client(OpenApiClient):
         app_version_id: str,
         script_name: str,
     ) -> open_search_20171225_models.GetScriptFileNamesResponse:
+        """
+        @return: GetScriptFileNamesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_script_file_names_with_options(app_group_identity, app_version_id, script_name, headers, runtime)
@@ -4327,6 +5640,9 @@ class Client(OpenApiClient):
         app_version_id: str,
         script_name: str,
     ) -> open_search_20171225_models.GetScriptFileNamesResponse:
+        """
+        @return: GetScriptFileNamesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_script_file_names_with_options_async(app_group_identity, app_version_id, script_name, headers, runtime)
@@ -4339,6 +5655,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetSearchStrategyResponse:
+        """
+        @summary Queries the details of a query policy.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSearchStrategyResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4366,6 +5689,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetSearchStrategyResponse:
+        """
+        @summary Queries the details of a query policy.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSearchStrategyResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4391,6 +5721,11 @@ class Client(OpenApiClient):
         app_id: str,
         strategy_name: str,
     ) -> open_search_20171225_models.GetSearchStrategyResponse:
+        """
+        @summary Queries the details of a query policy.
+        
+        @return: GetSearchStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_search_strategy_with_options(app_group_identity, app_id, strategy_name, headers, runtime)
@@ -4401,6 +5736,11 @@ class Client(OpenApiClient):
         app_id: str,
         strategy_name: str,
     ) -> open_search_20171225_models.GetSearchStrategyResponse:
+        """
+        @summary Queries the details of a query policy.
+        
+        @return: GetSearchStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_search_strategy_with_options_async(app_group_identity, app_id, strategy_name, headers, runtime)
@@ -4413,6 +5753,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetSortScriptResponse:
+        """
+        @summary Queries the details of a sort script.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSortScriptResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4440,6 +5787,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetSortScriptResponse:
+        """
+        @summary Queries the details of a sort script.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSortScriptResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4465,6 +5819,11 @@ class Client(OpenApiClient):
         script_name: str,
         app_version_id: str,
     ) -> open_search_20171225_models.GetSortScriptResponse:
+        """
+        @summary Queries the details of a sort script.
+        
+        @return: GetSortScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_sort_script_with_options(app_group_identity, script_name, app_version_id, headers, runtime)
@@ -4475,6 +5834,11 @@ class Client(OpenApiClient):
         script_name: str,
         app_version_id: str,
     ) -> open_search_20171225_models.GetSortScriptResponse:
+        """
+        @summary Queries the details of a sort script.
+        
+        @return: GetSortScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_sort_script_with_options_async(app_group_identity, script_name, app_version_id, headers, runtime)
@@ -4488,6 +5852,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetSortScriptFileResponse:
+        """
+        @summary Queries the content of a sort script.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSortScriptFileResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4516,6 +5887,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.GetSortScriptFileResponse:
+        """
+        @summary Queries the content of a sort script.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSortScriptFileResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4542,6 +5920,11 @@ class Client(OpenApiClient):
         app_version_id: str,
         file_name: str,
     ) -> open_search_20171225_models.GetSortScriptFileResponse:
+        """
+        @summary Queries the content of a sort script.
+        
+        @return: GetSortScriptFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_sort_script_file_with_options(app_group_identity, script_name, app_version_id, file_name, headers, runtime)
@@ -4553,6 +5936,11 @@ class Client(OpenApiClient):
         app_version_id: str,
         file_name: str,
     ) -> open_search_20171225_models.GetSortScriptFileResponse:
+        """
+        @summary Queries the content of a sort script.
+        
+        @return: GetSortScriptFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_sort_script_file_with_options_async(app_group_identity, script_name, app_version_id, file_name, headers, runtime)
@@ -4565,6 +5953,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestExperimentsResponse:
+        """
+        @summary Queries a list of experiments.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListABTestExperimentsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4592,6 +5987,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestExperimentsResponse:
+        """
+        @summary Queries a list of experiments.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListABTestExperimentsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4617,6 +6019,11 @@ class Client(OpenApiClient):
         scene_id: str,
         group_id: str,
     ) -> open_search_20171225_models.ListABTestExperimentsResponse:
+        """
+        @summary Queries a list of experiments.
+        
+        @return: ListABTestExperimentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_abtest_experiments_with_options(app_group_identity, scene_id, group_id, headers, runtime)
@@ -4627,6 +6034,11 @@ class Client(OpenApiClient):
         scene_id: str,
         group_id: str,
     ) -> open_search_20171225_models.ListABTestExperimentsResponse:
+        """
+        @summary Queries a list of experiments.
+        
+        @return: ListABTestExperimentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_abtest_experiments_with_options_async(app_group_identity, scene_id, group_id, headers, runtime)
@@ -4640,6 +6052,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestFixedFlowDividersResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListABTestFixedFlowDividersResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4668,6 +6085,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestFixedFlowDividersResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListABTestFixedFlowDividersResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4694,6 +6116,9 @@ class Client(OpenApiClient):
         group_id: str,
         experiment_id: str,
     ) -> open_search_20171225_models.ListABTestFixedFlowDividersResponse:
+        """
+        @return: ListABTestFixedFlowDividersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_abtest_fixed_flow_dividers_with_options(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
@@ -4705,6 +6130,9 @@ class Client(OpenApiClient):
         group_id: str,
         experiment_id: str,
     ) -> open_search_20171225_models.ListABTestFixedFlowDividersResponse:
+        """
+        @return: ListABTestFixedFlowDividersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_abtest_fixed_flow_dividers_with_options_async(app_group_identity, scene_id, group_id, experiment_id, headers, runtime)
@@ -4716,6 +6144,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestGroupsResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListABTestGroupsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4742,6 +6175,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestGroupsResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListABTestGroupsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4766,6 +6204,9 @@ class Client(OpenApiClient):
         app_group_identity: str,
         scene_id: str,
     ) -> open_search_20171225_models.ListABTestGroupsResponse:
+        """
+        @return: ListABTestGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_abtest_groups_with_options(app_group_identity, scene_id, headers, runtime)
@@ -4775,6 +6216,9 @@ class Client(OpenApiClient):
         app_group_identity: str,
         scene_id: str,
     ) -> open_search_20171225_models.ListABTestGroupsResponse:
+        """
+        @return: ListABTestGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_abtest_groups_with_options_async(app_group_identity, scene_id, headers, runtime)
@@ -4785,6 +6229,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestScenesResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListABTestScenesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4810,6 +6259,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListABTestScenesResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListABTestScenesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4833,6 +6287,9 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.ListABTestScenesResponse:
+        """
+        @return: ListABTestScenesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_abtest_scenes_with_options(app_group_identity, headers, runtime)
@@ -4841,6 +6298,9 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.ListABTestScenesResponse:
+        """
+        @return: ListABTestScenesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_abtest_scenes_with_options_async(app_group_identity, headers, runtime)
@@ -4852,9 +6312,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListAppGroupsResponse:
         """
-        This operation allows you to query applications by application name, instance ID, and application type.
-        *   This operation can sort the applications based on their creation time.
-        *   This operation supports the parameters for paging.
+        @summary Queries a list of OpenSearch applications.
+        
+        @description    This operation allows you to query applications by application name, instance ID, and application type.
+        This operation allows you to sort the applications based on their creation time.
+        This operation supports the parameters for paging.
         
         @param tmp_req: ListAppGroupsRequest
         @param headers: map
@@ -4910,9 +6372,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListAppGroupsResponse:
         """
-        This operation allows you to query applications by application name, instance ID, and application type.
-        *   This operation can sort the applications based on their creation time.
-        *   This operation supports the parameters for paging.
+        @summary Queries a list of OpenSearch applications.
+        
+        @description    This operation allows you to query applications by application name, instance ID, and application type.
+        This operation allows you to sort the applications based on their creation time.
+        This operation supports the parameters for paging.
         
         @param tmp_req: ListAppGroupsRequest
         @param headers: map
@@ -4966,9 +6430,11 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.ListAppGroupsRequest,
     ) -> open_search_20171225_models.ListAppGroupsResponse:
         """
-        This operation allows you to query applications by application name, instance ID, and application type.
-        *   This operation can sort the applications based on their creation time.
-        *   This operation supports the parameters for paging.
+        @summary Queries a list of OpenSearch applications.
+        
+        @description    This operation allows you to query applications by application name, instance ID, and application type.
+        This operation allows you to sort the applications based on their creation time.
+        This operation supports the parameters for paging.
         
         @param request: ListAppGroupsRequest
         @return: ListAppGroupsResponse
@@ -4982,9 +6448,11 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.ListAppGroupsRequest,
     ) -> open_search_20171225_models.ListAppGroupsResponse:
         """
-        This operation allows you to query applications by application name, instance ID, and application type.
-        *   This operation can sort the applications based on their creation time.
-        *   This operation supports the parameters for paging.
+        @summary Queries a list of OpenSearch applications.
+        
+        @description    This operation allows you to query applications by application name, instance ID, and application type.
+        This operation allows you to sort the applications based on their creation time.
+        This operation supports the parameters for paging.
         
         @param request: ListAppGroupsRequest
         @return: ListAppGroupsResponse
@@ -5000,6 +6468,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDataCollectionsResponse:
+        """
+        @param request: ListDataCollectionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataCollectionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -5033,6 +6507,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDataCollectionsResponse:
+        """
+        @param request: ListDataCollectionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataCollectionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -5064,6 +6544,10 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.ListDataCollectionsRequest,
     ) -> open_search_20171225_models.ListDataCollectionsResponse:
+        """
+        @param request: ListDataCollectionsRequest
+        @return: ListDataCollectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_data_collections_with_options(app_group_identity, request, headers, runtime)
@@ -5073,6 +6557,10 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.ListDataCollectionsRequest,
     ) -> open_search_20171225_models.ListDataCollectionsResponse:
+        """
+        @param request: ListDataCollectionsRequest
+        @return: ListDataCollectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_data_collections_with_options_async(app_group_identity, request, headers, runtime)
@@ -5084,6 +6572,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDataSourceTableFieldsResponse:
+        """
+        @summary Queries all fields in a table of a data source. This operation is for internal use only.
+        
+        @param request: ListDataSourceTableFieldsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourceTableFieldsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.params):
@@ -5117,6 +6613,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDataSourceTableFieldsResponse:
+        """
+        @summary Queries all fields in a table of a data source. This operation is for internal use only.
+        
+        @param request: ListDataSourceTableFieldsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourceTableFieldsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.params):
@@ -5148,6 +6652,12 @@ class Client(OpenApiClient):
         data_source_type: str,
         request: open_search_20171225_models.ListDataSourceTableFieldsRequest,
     ) -> open_search_20171225_models.ListDataSourceTableFieldsResponse:
+        """
+        @summary Queries all fields in a table of a data source. This operation is for internal use only.
+        
+        @param request: ListDataSourceTableFieldsRequest
+        @return: ListDataSourceTableFieldsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_data_source_table_fields_with_options(data_source_type, request, headers, runtime)
@@ -5157,6 +6667,12 @@ class Client(OpenApiClient):
         data_source_type: str,
         request: open_search_20171225_models.ListDataSourceTableFieldsRequest,
     ) -> open_search_20171225_models.ListDataSourceTableFieldsResponse:
+        """
+        @summary Queries all fields in a table of a data source. This operation is for internal use only.
+        
+        @param request: ListDataSourceTableFieldsRequest
+        @return: ListDataSourceTableFieldsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_data_source_table_fields_with_options_async(data_source_type, request, headers, runtime)
@@ -5168,6 +6684,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDataSourceTablesResponse:
+        """
+        @param request: ListDataSourceTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourceTablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.params):
@@ -5199,6 +6721,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListDataSourceTablesResponse:
+        """
+        @param request: ListDataSourceTablesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourceTablesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.params):
@@ -5228,6 +6756,10 @@ class Client(OpenApiClient):
         data_source_type: str,
         request: open_search_20171225_models.ListDataSourceTablesRequest,
     ) -> open_search_20171225_models.ListDataSourceTablesResponse:
+        """
+        @param request: ListDataSourceTablesRequest
+        @return: ListDataSourceTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_data_source_tables_with_options(data_source_type, request, headers, runtime)
@@ -5237,6 +6769,10 @@ class Client(OpenApiClient):
         data_source_type: str,
         request: open_search_20171225_models.ListDataSourceTablesRequest,
     ) -> open_search_20171225_models.ListDataSourceTablesResponse:
+        """
+        @param request: ListDataSourceTablesRequest
+        @return: ListDataSourceTablesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_data_source_tables_with_options_async(data_source_type, request, headers, runtime)
@@ -5248,6 +6784,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListFirstRanksResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFirstRanksResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5274,6 +6815,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListFirstRanksResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFirstRanksResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5298,6 +6844,9 @@ class Client(OpenApiClient):
         app_group_identity: str,
         app_id: str,
     ) -> open_search_20171225_models.ListFirstRanksResponse:
+        """
+        @return: ListFirstRanksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_first_ranks_with_options(app_group_identity, app_id, headers, runtime)
@@ -5307,6 +6856,9 @@ class Client(OpenApiClient):
         app_group_identity: str,
         app_id: str,
     ) -> open_search_20171225_models.ListFirstRanksResponse:
+        """
+        @return: ListFirstRanksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_first_ranks_with_options_async(app_group_identity, app_id, headers, runtime)
@@ -5319,6 +6871,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListFunctionInstancesResponse:
+        """
+        @summary Queries all algorithm instances of a user, which meet specified conditions.
+        
+        @param request: ListFunctionInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_type):
@@ -5361,6 +6921,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListFunctionInstancesResponse:
+        """
+        @summary Queries all algorithm instances of a user, which meet specified conditions.
+        
+        @param request: ListFunctionInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.function_type):
@@ -5401,6 +6969,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: open_search_20171225_models.ListFunctionInstancesRequest,
     ) -> open_search_20171225_models.ListFunctionInstancesResponse:
+        """
+        @summary Queries all algorithm instances of a user, which meet specified conditions.
+        
+        @param request: ListFunctionInstancesRequest
+        @return: ListFunctionInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_function_instances_with_options(app_group_identity, function_name, request, headers, runtime)
@@ -5411,6 +6985,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: open_search_20171225_models.ListFunctionInstancesRequest,
     ) -> open_search_20171225_models.ListFunctionInstancesResponse:
+        """
+        @summary Queries all algorithm instances of a user, which meet specified conditions.
+        
+        @param request: ListFunctionInstancesRequest
+        @return: ListFunctionInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_function_instances_with_options_async(app_group_identity, function_name, request, headers, runtime)
@@ -5423,6 +7003,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListFunctionResourcesResponse:
+        """
+        @summary Queries algorithm resources.
+        
+        @param request: ListFunctionResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.output):
@@ -5461,6 +7049,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListFunctionResourcesResponse:
+        """
+        @summary Queries algorithm resources.
+        
+        @param request: ListFunctionResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.output):
@@ -5497,6 +7093,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: open_search_20171225_models.ListFunctionResourcesRequest,
     ) -> open_search_20171225_models.ListFunctionResourcesResponse:
+        """
+        @summary Queries algorithm resources.
+        
+        @param request: ListFunctionResourcesRequest
+        @return: ListFunctionResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_function_resources_with_options(app_group_identity, function_name, request, headers, runtime)
@@ -5507,6 +7109,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: open_search_20171225_models.ListFunctionResourcesRequest,
     ) -> open_search_20171225_models.ListFunctionResourcesResponse:
+        """
+        @summary Queries algorithm resources.
+        
+        @param request: ListFunctionResourcesRequest
+        @return: ListFunctionResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_function_resources_with_options_async(app_group_identity, function_name, request, headers, runtime)
@@ -5520,6 +7128,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListFunctionTasksResponse:
+        """
+        @summary Queries the training tasks. The returned results are sorted by start time in descending order.
+        
+        @param request: ListFunctionTasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -5561,6 +7177,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListFunctionTasksResponse:
+        """
+        @summary Queries the training tasks. The returned results are sorted by start time in descending order.
+        
+        @param request: ListFunctionTasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -5600,6 +7224,12 @@ class Client(OpenApiClient):
         instance_name: str,
         request: open_search_20171225_models.ListFunctionTasksRequest,
     ) -> open_search_20171225_models.ListFunctionTasksResponse:
+        """
+        @summary Queries the training tasks. The returned results are sorted by start time in descending order.
+        
+        @param request: ListFunctionTasksRequest
+        @return: ListFunctionTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_function_tasks_with_options(app_group_identity, function_name, instance_name, request, headers, runtime)
@@ -5611,6 +7241,12 @@ class Client(OpenApiClient):
         instance_name: str,
         request: open_search_20171225_models.ListFunctionTasksRequest,
     ) -> open_search_20171225_models.ListFunctionTasksResponse:
+        """
+        @summary Queries the training tasks. The returned results are sorted by start time in descending order.
+        
+        @param request: ListFunctionTasksRequest
+        @return: ListFunctionTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_function_tasks_with_options_async(app_group_identity, function_name, instance_name, request, headers, runtime)
@@ -5621,6 +7257,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionariesResponse:
+        """
+        @param request: ListInterventionDictionariesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInterventionDictionariesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -5655,6 +7297,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionariesResponse:
+        """
+        @param request: ListInterventionDictionariesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInterventionDictionariesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -5687,6 +7335,10 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.ListInterventionDictionariesRequest,
     ) -> open_search_20171225_models.ListInterventionDictionariesResponse:
+        """
+        @param request: ListInterventionDictionariesRequest
+        @return: ListInterventionDictionariesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_intervention_dictionaries_with_options(request, headers, runtime)
@@ -5695,6 +7347,10 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.ListInterventionDictionariesRequest,
     ) -> open_search_20171225_models.ListInterventionDictionariesResponse:
+        """
+        @param request: ListInterventionDictionariesRequest
+        @return: ListInterventionDictionariesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_intervention_dictionaries_with_options_async(request, headers, runtime)
@@ -5706,6 +7362,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryEntriesResponse:
+        """
+        @summary Queries the intervention entries in an intervention dictionary.
+        
+        @param request: ListInterventionDictionaryEntriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInterventionDictionaryEntriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -5741,6 +7405,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryEntriesResponse:
+        """
+        @summary Queries the intervention entries in an intervention dictionary.
+        
+        @param request: ListInterventionDictionaryEntriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInterventionDictionaryEntriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -5774,6 +7446,12 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.ListInterventionDictionaryEntriesRequest,
     ) -> open_search_20171225_models.ListInterventionDictionaryEntriesResponse:
+        """
+        @summary Queries the intervention entries in an intervention dictionary.
+        
+        @param request: ListInterventionDictionaryEntriesRequest
+        @return: ListInterventionDictionaryEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_intervention_dictionary_entries_with_options(name, request, headers, runtime)
@@ -5783,6 +7461,12 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.ListInterventionDictionaryEntriesRequest,
     ) -> open_search_20171225_models.ListInterventionDictionaryEntriesResponse:
+        """
+        @summary Queries the intervention entries in an intervention dictionary.
+        
+        @param request: ListInterventionDictionaryEntriesRequest
+        @return: ListInterventionDictionaryEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_intervention_dictionary_entries_with_options_async(name, request, headers, runtime)
@@ -5794,6 +7478,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryNerResultsResponse:
+        """
+        @param request: ListInterventionDictionaryNerResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInterventionDictionaryNerResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.query):
@@ -5825,6 +7515,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryNerResultsResponse:
+        """
+        @param request: ListInterventionDictionaryNerResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInterventionDictionaryNerResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.query):
@@ -5854,6 +7550,10 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.ListInterventionDictionaryNerResultsRequest,
     ) -> open_search_20171225_models.ListInterventionDictionaryNerResultsResponse:
+        """
+        @param request: ListInterventionDictionaryNerResultsRequest
+        @return: ListInterventionDictionaryNerResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_intervention_dictionary_ner_results_with_options(name, request, headers, runtime)
@@ -5863,6 +7563,10 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.ListInterventionDictionaryNerResultsRequest,
     ) -> open_search_20171225_models.ListInterventionDictionaryNerResultsResponse:
+        """
+        @param request: ListInterventionDictionaryNerResultsRequest
+        @return: ListInterventionDictionaryNerResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_intervention_dictionary_ner_results_with_options_async(name, request, headers, runtime)
@@ -5873,6 +7577,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryRelatedEntitiesResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInterventionDictionaryRelatedEntitiesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5898,6 +7607,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListInterventionDictionaryRelatedEntitiesResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInterventionDictionaryRelatedEntitiesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5921,6 +7635,9 @@ class Client(OpenApiClient):
         self,
         name: str,
     ) -> open_search_20171225_models.ListInterventionDictionaryRelatedEntitiesResponse:
+        """
+        @return: ListInterventionDictionaryRelatedEntitiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_intervention_dictionary_related_entities_with_options(name, headers, runtime)
@@ -5929,6 +7646,9 @@ class Client(OpenApiClient):
         self,
         name: str,
     ) -> open_search_20171225_models.ListInterventionDictionaryRelatedEntitiesResponse:
+        """
+        @return: ListInterventionDictionaryRelatedEntitiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_intervention_dictionary_related_entities_with_options_async(name, headers, runtime)
@@ -5940,6 +7660,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListProceedingsResponse:
+        """
+        @summary 查看当前的处理流
+        
+        @param request: ListProceedingsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProceedingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter_finished):
@@ -5971,6 +7699,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListProceedingsResponse:
+        """
+        @summary 查看当前的处理流
+        
+        @param request: ListProceedingsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProceedingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter_finished):
@@ -6000,6 +7736,12 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.ListProceedingsRequest,
     ) -> open_search_20171225_models.ListProceedingsResponse:
+        """
+        @summary 查看当前的处理流
+        
+        @param request: ListProceedingsRequest
+        @return: ListProceedingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_proceedings_with_options(app_group_identity, request, headers, runtime)
@@ -6009,6 +7751,12 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.ListProceedingsRequest,
     ) -> open_search_20171225_models.ListProceedingsResponse:
+        """
+        @summary 查看当前的处理流
+        
+        @param request: ListProceedingsRequest
+        @return: ListProceedingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_proceedings_with_options_async(app_group_identity, request, headers, runtime)
@@ -6022,6 +7770,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListQueryProcessorAnalyzerResultsResponse:
+        """
+        @summary Queries the results of a query analysis test. This API operation is available only to existing applications of OpenSearch Open Source Compatible Edition.
+        
+        @param request: ListQueryProcessorAnalyzerResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQueryProcessorAnalyzerResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.text):
@@ -6055,6 +7811,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListQueryProcessorAnalyzerResultsResponse:
+        """
+        @summary Queries the results of a query analysis test. This API operation is available only to existing applications of OpenSearch Open Source Compatible Edition.
+        
+        @param request: ListQueryProcessorAnalyzerResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQueryProcessorAnalyzerResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.text):
@@ -6086,6 +7850,12 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.ListQueryProcessorAnalyzerResultsRequest,
     ) -> open_search_20171225_models.ListQueryProcessorAnalyzerResultsResponse:
+        """
+        @summary Queries the results of a query analysis test. This API operation is available only to existing applications of OpenSearch Open Source Compatible Edition.
+        
+        @param request: ListQueryProcessorAnalyzerResultsRequest
+        @return: ListQueryProcessorAnalyzerResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_query_processor_analyzer_results_with_options(app_group_identity, app_id, name, request, headers, runtime)
@@ -6097,6 +7867,12 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.ListQueryProcessorAnalyzerResultsRequest,
     ) -> open_search_20171225_models.ListQueryProcessorAnalyzerResultsResponse:
+        """
+        @summary Queries the results of a query analysis test. This API operation is available only to existing applications of OpenSearch Open Source Compatible Edition.
+        
+        @param request: ListQueryProcessorAnalyzerResultsRequest
+        @return: ListQueryProcessorAnalyzerResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_query_processor_analyzer_results_with_options_async(app_group_identity, app_id, name, request, headers, runtime)
@@ -6107,6 +7883,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListQueryProcessorNersResponse:
+        """
+        @summary Queries the recommended priority settings of entity types for named entity recognition (NER).
+        
+        @param request: ListQueryProcessorNersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQueryProcessorNersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain):
@@ -6137,6 +7921,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListQueryProcessorNersResponse:
+        """
+        @summary Queries the recommended priority settings of entity types for named entity recognition (NER).
+        
+        @param request: ListQueryProcessorNersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQueryProcessorNersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain):
@@ -6165,6 +7957,12 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.ListQueryProcessorNersRequest,
     ) -> open_search_20171225_models.ListQueryProcessorNersResponse:
+        """
+        @summary Queries the recommended priority settings of entity types for named entity recognition (NER).
+        
+        @param request: ListQueryProcessorNersRequest
+        @return: ListQueryProcessorNersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_query_processor_ners_with_options(request, headers, runtime)
@@ -6173,6 +7971,12 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.ListQueryProcessorNersRequest,
     ) -> open_search_20171225_models.ListQueryProcessorNersResponse:
+        """
+        @summary Queries the recommended priority settings of entity types for named entity recognition (NER).
+        
+        @param request: ListQueryProcessorNersRequest
+        @return: ListQueryProcessorNersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_query_processor_ners_with_options_async(request, headers, runtime)
@@ -6185,6 +7989,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListQueryProcessorsResponse:
+        """
+        @summary Queries a list of query analysis rules that are configured for a version of an OpenSearch application.
+        
+        @param request: ListQueryProcessorsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQueryProcessorsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.is_active):
@@ -6217,6 +8029,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListQueryProcessorsResponse:
+        """
+        @summary Queries a list of query analysis rules that are configured for a version of an OpenSearch application.
+        
+        @param request: ListQueryProcessorsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQueryProcessorsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.is_active):
@@ -6247,6 +8067,12 @@ class Client(OpenApiClient):
         app_id: str,
         request: open_search_20171225_models.ListQueryProcessorsRequest,
     ) -> open_search_20171225_models.ListQueryProcessorsResponse:
+        """
+        @summary Queries a list of query analysis rules that are configured for a version of an OpenSearch application.
+        
+        @param request: ListQueryProcessorsRequest
+        @return: ListQueryProcessorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_query_processors_with_options(app_group_identity, app_id, request, headers, runtime)
@@ -6257,6 +8083,12 @@ class Client(OpenApiClient):
         app_id: str,
         request: open_search_20171225_models.ListQueryProcessorsRequest,
     ) -> open_search_20171225_models.ListQueryProcessorsResponse:
+        """
+        @summary Queries a list of query analysis rules that are configured for a version of an OpenSearch application.
+        
+        @param request: ListQueryProcessorsRequest
+        @return: ListQueryProcessorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_query_processors_with_options_async(app_group_identity, app_id, request, headers, runtime)
@@ -6268,6 +8100,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListQuotaReviewTasksResponse:
+        """
+        @summary Queries tickets that are submitted to apply for quotas for an OpenSearch application.
+        
+        @param request: ListQuotaReviewTasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQuotaReviewTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -6301,6 +8141,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListQuotaReviewTasksResponse:
+        """
+        @summary Queries tickets that are submitted to apply for quotas for an OpenSearch application.
+        
+        @param request: ListQuotaReviewTasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQuotaReviewTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -6332,6 +8180,12 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.ListQuotaReviewTasksRequest,
     ) -> open_search_20171225_models.ListQuotaReviewTasksResponse:
+        """
+        @summary Queries tickets that are submitted to apply for quotas for an OpenSearch application.
+        
+        @param request: ListQuotaReviewTasksRequest
+        @return: ListQuotaReviewTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_quota_review_tasks_with_options(app_group_identity, request, headers, runtime)
@@ -6341,6 +8195,12 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.ListQuotaReviewTasksRequest,
     ) -> open_search_20171225_models.ListQuotaReviewTasksResponse:
+        """
+        @summary Queries tickets that are submitted to apply for quotas for an OpenSearch application.
+        
+        @param request: ListQuotaReviewTasksRequest
+        @return: ListQuotaReviewTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_quota_review_tasks_with_options_async(app_group_identity, request, headers, runtime)
@@ -6352,6 +8212,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListScheduledTasksResponse:
+        """
+        @summary Queries a list of scheduled tasks of an OpenSearch application.
+        
+        @param request: ListScheduledTasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListScheduledTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -6387,6 +8255,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListScheduledTasksResponse:
+        """
+        @summary Queries a list of scheduled tasks of an OpenSearch application.
+        
+        @param request: ListScheduledTasksRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListScheduledTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -6420,6 +8296,12 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.ListScheduledTasksRequest,
     ) -> open_search_20171225_models.ListScheduledTasksResponse:
+        """
+        @summary Queries a list of scheduled tasks of an OpenSearch application.
+        
+        @param request: ListScheduledTasksRequest
+        @return: ListScheduledTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_scheduled_tasks_with_options(app_group_identity, request, headers, runtime)
@@ -6429,6 +8311,12 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.ListScheduledTasksRequest,
     ) -> open_search_20171225_models.ListScheduledTasksResponse:
+        """
+        @summary Queries a list of scheduled tasks of an OpenSearch application.
+        
+        @param request: ListScheduledTasksRequest
+        @return: ListScheduledTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_scheduled_tasks_with_options_async(app_group_identity, request, headers, runtime)
@@ -6440,6 +8328,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSearchStrategiesResponse:
+        """
+        @summary Queries the details of query policies.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSearchStrategiesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6466,6 +8361,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSearchStrategiesResponse:
+        """
+        @summary Queries the details of query policies.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSearchStrategiesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6490,6 +8392,11 @@ class Client(OpenApiClient):
         app_group_identity: str,
         app_id: str,
     ) -> open_search_20171225_models.ListSearchStrategiesResponse:
+        """
+        @summary Queries the details of query policies.
+        
+        @return: ListSearchStrategiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_search_strategies_with_options(app_group_identity, app_id, headers, runtime)
@@ -6499,6 +8406,11 @@ class Client(OpenApiClient):
         app_group_identity: str,
         app_id: str,
     ) -> open_search_20171225_models.ListSearchStrategiesResponse:
+        """
+        @summary Queries the details of query policies.
+        
+        @return: ListSearchStrategiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_search_strategies_with_options_async(app_group_identity, app_id, headers, runtime)
@@ -6510,6 +8422,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSecondRanksResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecondRanksResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6536,6 +8453,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSecondRanksResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecondRanksResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6560,6 +8482,9 @@ class Client(OpenApiClient):
         app_group_identity: str,
         app_id: str,
     ) -> open_search_20171225_models.ListSecondRanksResponse:
+        """
+        @return: ListSecondRanksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_second_ranks_with_options(app_group_identity, app_id, headers, runtime)
@@ -6569,6 +8494,9 @@ class Client(OpenApiClient):
         app_group_identity: str,
         app_id: str,
     ) -> open_search_20171225_models.ListSecondRanksResponse:
+        """
+        @return: ListSecondRanksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_second_ranks_with_options_async(app_group_identity, app_id, headers, runtime)
@@ -6579,6 +8507,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSlowQueryCategoriesResponse:
+        """
+        @summary Queries the suggestions that are provided by Optimization Master for slow queries.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSlowQueryCategoriesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6604,6 +8539,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSlowQueryCategoriesResponse:
+        """
+        @summary Queries the suggestions that are provided by Optimization Master for slow queries.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSlowQueryCategoriesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6627,6 +8569,11 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.ListSlowQueryCategoriesResponse:
+        """
+        @summary Queries the suggestions that are provided by Optimization Master for slow queries.
+        
+        @return: ListSlowQueryCategoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_slow_query_categories_with_options(app_group_identity, headers, runtime)
@@ -6635,6 +8582,11 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.ListSlowQueryCategoriesResponse:
+        """
+        @summary Queries the suggestions that are provided by Optimization Master for slow queries.
+        
+        @return: ListSlowQueryCategoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_slow_query_categories_with_options_async(app_group_identity, headers, runtime)
@@ -6646,6 +8598,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSlowQueryQueriesResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSlowQueryQueriesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6672,6 +8629,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSlowQueryQueriesResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSlowQueryQueriesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6696,6 +8658,9 @@ class Client(OpenApiClient):
         app_group_identity: str,
         category_index: str,
     ) -> open_search_20171225_models.ListSlowQueryQueriesResponse:
+        """
+        @return: ListSlowQueryQueriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_slow_query_queries_with_options(app_group_identity, category_index, headers, runtime)
@@ -6705,6 +8670,9 @@ class Client(OpenApiClient):
         app_group_identity: str,
         category_index: str,
     ) -> open_search_20171225_models.ListSlowQueryQueriesResponse:
+        """
+        @return: ListSlowQueryQueriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_slow_query_queries_with_options_async(app_group_identity, category_index, headers, runtime)
@@ -6716,6 +8684,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSortExpressionsResponse:
+        """
+        @summary Queries a list of sort expressions that are configured for a version of an OpenSearch application.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSortExpressionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6742,6 +8717,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSortExpressionsResponse:
+        """
+        @summary Queries a list of sort expressions that are configured for a version of an OpenSearch application.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSortExpressionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6766,6 +8748,11 @@ class Client(OpenApiClient):
         app_group_identity: str,
         app_id: str,
     ) -> open_search_20171225_models.ListSortExpressionsResponse:
+        """
+        @summary Queries a list of sort expressions that are configured for a version of an OpenSearch application.
+        
+        @return: ListSortExpressionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_sort_expressions_with_options(app_group_identity, app_id, headers, runtime)
@@ -6775,6 +8762,11 @@ class Client(OpenApiClient):
         app_group_identity: str,
         app_id: str,
     ) -> open_search_20171225_models.ListSortExpressionsResponse:
+        """
+        @summary Queries a list of sort expressions that are configured for a version of an OpenSearch application.
+        
+        @return: ListSortExpressionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_sort_expressions_with_options_async(app_group_identity, app_id, headers, runtime)
@@ -6786,6 +8778,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSortScriptsResponse:
+        """
+        @summary Queries all sort scripts of an application version.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSortScriptsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6812,6 +8811,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListSortScriptsResponse:
+        """
+        @summary Queries all sort scripts of an application version.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSortScriptsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6836,6 +8842,11 @@ class Client(OpenApiClient):
         app_group_identity: str,
         app_version_id: str,
     ) -> open_search_20171225_models.ListSortScriptsResponse:
+        """
+        @summary Queries all sort scripts of an application version.
+        
+        @return: ListSortScriptsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_sort_scripts_with_options(app_group_identity, app_version_id, headers, runtime)
@@ -6845,6 +8856,11 @@ class Client(OpenApiClient):
         app_group_identity: str,
         app_version_id: str,
     ) -> open_search_20171225_models.ListSortScriptsResponse:
+        """
+        @summary Queries all sort scripts of an application version.
+        
+        @return: ListSortScriptsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_sort_scripts_with_options_async(app_group_identity, app_version_id, headers, runtime)
@@ -6857,6 +8873,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListStatisticLogsResponse:
+        """
+        @summary Queries log statistics, such as application error logs, hotword rankings, and slow query logs.
+        
+        @param request: ListStatisticLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStatisticLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.columns):
@@ -6903,6 +8927,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListStatisticLogsResponse:
+        """
+        @summary Queries log statistics, such as application error logs, hotword rankings, and slow query logs.
+        
+        @param request: ListStatisticLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStatisticLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.columns):
@@ -6947,6 +8979,12 @@ class Client(OpenApiClient):
         module_name: str,
         request: open_search_20171225_models.ListStatisticLogsRequest,
     ) -> open_search_20171225_models.ListStatisticLogsResponse:
+        """
+        @summary Queries log statistics, such as application error logs, hotword rankings, and slow query logs.
+        
+        @param request: ListStatisticLogsRequest
+        @return: ListStatisticLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_statistic_logs_with_options(app_group_identity, module_name, request, headers, runtime)
@@ -6957,6 +8995,12 @@ class Client(OpenApiClient):
         module_name: str,
         request: open_search_20171225_models.ListStatisticLogsRequest,
     ) -> open_search_20171225_models.ListStatisticLogsResponse:
+        """
+        @summary Queries log statistics, such as application error logs, hotword rankings, and slow query logs.
+        
+        @param request: ListStatisticLogsRequest
+        @return: ListStatisticLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_statistic_logs_with_options_async(app_group_identity, module_name, request, headers, runtime)
@@ -6969,6 +9013,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListStatisticReportResponse:
+        """
+        @param request: ListStatisticReportRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStatisticReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.columns):
@@ -7011,6 +9061,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListStatisticReportResponse:
+        """
+        @param request: ListStatisticReportRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStatisticReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.columns):
@@ -7051,6 +9107,10 @@ class Client(OpenApiClient):
         module_name: str,
         request: open_search_20171225_models.ListStatisticReportRequest,
     ) -> open_search_20171225_models.ListStatisticReportResponse:
+        """
+        @param request: ListStatisticReportRequest
+        @return: ListStatisticReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_statistic_report_with_options(app_group_identity, module_name, request, headers, runtime)
@@ -7061,6 +9121,10 @@ class Client(OpenApiClient):
         module_name: str,
         request: open_search_20171225_models.ListStatisticReportRequest,
     ) -> open_search_20171225_models.ListStatisticReportResponse:
+        """
+        @param request: ListStatisticReportRequest
+        @return: ListStatisticReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_statistic_report_with_options_async(app_group_identity, module_name, request, headers, runtime)
@@ -7071,6 +9135,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListTagResourcesResponse:
+        """
+        @summary Queries tagged resources.
+        
+        @param tmp_req: ListTagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = open_search_20171225_models.ListTagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7113,6 +9185,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListTagResourcesResponse:
+        """
+        @summary Queries tagged resources.
+        
+        @param tmp_req: ListTagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = open_search_20171225_models.ListTagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7153,6 +9233,12 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.ListTagResourcesRequest,
     ) -> open_search_20171225_models.ListTagResourcesResponse:
+        """
+        @summary Queries tagged resources.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_tag_resources_with_options(request, headers, runtime)
@@ -7161,6 +9247,12 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.ListTagResourcesRequest,
     ) -> open_search_20171225_models.ListTagResourcesResponse:
+        """
+        @summary Queries tagged resources.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_tag_resources_with_options_async(request, headers, runtime)
@@ -7172,6 +9264,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListUserAnalyzerEntriesResponse:
+        """
+        @summary Queries the entries of a custom analyzer.
+        
+        @param request: ListUserAnalyzerEntriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserAnalyzerEntriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -7207,6 +9307,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListUserAnalyzerEntriesResponse:
+        """
+        @summary Queries the entries of a custom analyzer.
+        
+        @param request: ListUserAnalyzerEntriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserAnalyzerEntriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -7240,6 +9348,12 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.ListUserAnalyzerEntriesRequest,
     ) -> open_search_20171225_models.ListUserAnalyzerEntriesResponse:
+        """
+        @summary Queries the entries of a custom analyzer.
+        
+        @param request: ListUserAnalyzerEntriesRequest
+        @return: ListUserAnalyzerEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_user_analyzer_entries_with_options(name, request, headers, runtime)
@@ -7249,6 +9363,12 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.ListUserAnalyzerEntriesRequest,
     ) -> open_search_20171225_models.ListUserAnalyzerEntriesResponse:
+        """
+        @summary Queries the entries of a custom analyzer.
+        
+        @param request: ListUserAnalyzerEntriesRequest
+        @return: ListUserAnalyzerEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_user_analyzer_entries_with_options_async(name, request, headers, runtime)
@@ -7259,6 +9379,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListUserAnalyzersResponse:
+        """
+        @summary Queries the custom analyzers that belong to the current account.
+        
+        @param request: ListUserAnalyzersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserAnalyzersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -7291,6 +9419,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ListUserAnalyzersResponse:
+        """
+        @summary Queries the custom analyzers that belong to the current account.
+        
+        @param request: ListUserAnalyzersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserAnalyzersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -7321,6 +9457,12 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.ListUserAnalyzersRequest,
     ) -> open_search_20171225_models.ListUserAnalyzersResponse:
+        """
+        @summary Queries the custom analyzers that belong to the current account.
+        
+        @param request: ListUserAnalyzersRequest
+        @return: ListUserAnalyzersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_user_analyzers_with_options(request, headers, runtime)
@@ -7329,6 +9471,12 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.ListUserAnalyzersRequest,
     ) -> open_search_20171225_models.ListUserAnalyzersResponse:
+        """
+        @summary Queries the custom analyzers that belong to the current account.
+        
+        @param request: ListUserAnalyzersRequest
+        @return: ListUserAnalyzersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_user_analyzers_with_options_async(request, headers, runtime)
@@ -7340,6 +9488,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyAppGroupResponse:
+        """
+        @summary Modifies the properties of an OpenSearch application or sets the online version of an OpenSearch application.
+        
+        @param request: ModifyAppGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -7381,6 +9537,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyAppGroupResponse:
+        """
+        @summary Modifies the properties of an OpenSearch application or sets the online version of an OpenSearch application.
+        
+        @param request: ModifyAppGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -7420,6 +9584,12 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.ModifyAppGroupRequest,
     ) -> open_search_20171225_models.ModifyAppGroupResponse:
+        """
+        @summary Modifies the properties of an OpenSearch application or sets the online version of an OpenSearch application.
+        
+        @param request: ModifyAppGroupRequest
+        @return: ModifyAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.modify_app_group_with_options(app_group_identity, request, headers, runtime)
@@ -7429,6 +9599,12 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.ModifyAppGroupRequest,
     ) -> open_search_20171225_models.ModifyAppGroupResponse:
+        """
+        @summary Modifies the properties of an OpenSearch application or sets the online version of an OpenSearch application.
+        
+        @param request: ModifyAppGroupRequest
+        @return: ModifyAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.modify_app_group_with_options_async(app_group_identity, request, headers, runtime)
@@ -7440,6 +9616,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyAppGroupQuotaResponse:
+        """
+        @param request: ModifyAppGroupQuotaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppGroupQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -7472,6 +9654,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyAppGroupQuotaResponse:
+        """
+        @param request: ModifyAppGroupQuotaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppGroupQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -7502,6 +9690,10 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.ModifyAppGroupQuotaRequest,
     ) -> open_search_20171225_models.ModifyAppGroupQuotaResponse:
+        """
+        @param request: ModifyAppGroupQuotaRequest
+        @return: ModifyAppGroupQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.modify_app_group_quota_with_options(app_group_identity, request, headers, runtime)
@@ -7511,6 +9703,10 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.ModifyAppGroupQuotaRequest,
     ) -> open_search_20171225_models.ModifyAppGroupQuotaResponse:
+        """
+        @param request: ModifyAppGroupQuotaRequest
+        @return: ModifyAppGroupQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.modify_app_group_quota_with_options_async(app_group_identity, request, headers, runtime)
@@ -7524,6 +9720,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyFirstRankResponse:
+        """
+        @summary Modifies a rough sort expression for an OpenSearch application. If you set dryRun to true, this operation checks the rough sort expression after the expression is modified. If you do not specify this parameter, false is used by default.
+        
+        @param request: ModifyFirstRankRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFirstRankResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -7558,6 +9762,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyFirstRankResponse:
+        """
+        @summary Modifies a rough sort expression for an OpenSearch application. If you set dryRun to true, this operation checks the rough sort expression after the expression is modified. If you do not specify this parameter, false is used by default.
+        
+        @param request: ModifyFirstRankRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFirstRankResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -7590,6 +9802,12 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.ModifyFirstRankRequest,
     ) -> open_search_20171225_models.ModifyFirstRankResponse:
+        """
+        @summary Modifies a rough sort expression for an OpenSearch application. If you set dryRun to true, this operation checks the rough sort expression after the expression is modified. If you do not specify this parameter, false is used by default.
+        
+        @param request: ModifyFirstRankRequest
+        @return: ModifyFirstRankResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.modify_first_rank_with_options(app_group_identity, app_id, name, request, headers, runtime)
@@ -7601,6 +9819,12 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.ModifyFirstRankRequest,
     ) -> open_search_20171225_models.ModifyFirstRankResponse:
+        """
+        @summary Modifies a rough sort expression for an OpenSearch application. If you set dryRun to true, this operation checks the rough sort expression after the expression is modified. If you do not specify this parameter, false is used by default.
+        
+        @param request: ModifyFirstRankRequest
+        @return: ModifyFirstRankResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.modify_first_rank_with_options_async(app_group_identity, app_id, name, request, headers, runtime)
@@ -7614,6 +9838,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyQueryProcessorResponse:
+        """
+        @summary Modifies a query analysis rule for a specific application version. If you set dryRun to true, this operation checks the specified query analysis rule. By default, the value of dryRun is false if you do not specify this parameter.
+        
+        @param request: ModifyQueryProcessorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyQueryProcessorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -7648,6 +9880,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyQueryProcessorResponse:
+        """
+        @summary Modifies a query analysis rule for a specific application version. If you set dryRun to true, this operation checks the specified query analysis rule. By default, the value of dryRun is false if you do not specify this parameter.
+        
+        @param request: ModifyQueryProcessorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyQueryProcessorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -7680,6 +9920,12 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.ModifyQueryProcessorRequest,
     ) -> open_search_20171225_models.ModifyQueryProcessorResponse:
+        """
+        @summary Modifies a query analysis rule for a specific application version. If you set dryRun to true, this operation checks the specified query analysis rule. By default, the value of dryRun is false if you do not specify this parameter.
+        
+        @param request: ModifyQueryProcessorRequest
+        @return: ModifyQueryProcessorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.modify_query_processor_with_options(app_group_identity, app_id, name, request, headers, runtime)
@@ -7691,6 +9937,12 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.ModifyQueryProcessorRequest,
     ) -> open_search_20171225_models.ModifyQueryProcessorResponse:
+        """
+        @summary Modifies a query analysis rule for a specific application version. If you set dryRun to true, this operation checks the specified query analysis rule. By default, the value of dryRun is false if you do not specify this parameter.
+        
+        @param request: ModifyQueryProcessorRequest
+        @return: ModifyQueryProcessorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.modify_query_processor_with_options_async(app_group_identity, app_id, name, request, headers, runtime)
@@ -7703,6 +9955,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyScheduledTaskResponse:
+        """
+        @summary Modifies a scheduled task.
+        
+        @param request: ModifyScheduledTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyScheduledTaskResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -7732,6 +9992,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifyScheduledTaskResponse:
+        """
+        @summary Modifies a scheduled task.
+        
+        @param request: ModifyScheduledTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyScheduledTaskResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -7759,6 +10027,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: open_search_20171225_models.ModifyScheduledTaskRequest,
     ) -> open_search_20171225_models.ModifyScheduledTaskResponse:
+        """
+        @summary Modifies a scheduled task.
+        
+        @param request: ModifyScheduledTaskRequest
+        @return: ModifyScheduledTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.modify_scheduled_task_with_options(app_group_identity, task_id, request, headers, runtime)
@@ -7769,6 +10043,12 @@ class Client(OpenApiClient):
         task_id: str,
         request: open_search_20171225_models.ModifyScheduledTaskRequest,
     ) -> open_search_20171225_models.ModifyScheduledTaskResponse:
+        """
+        @summary Modifies a scheduled task.
+        
+        @param request: ModifyScheduledTaskRequest
+        @return: ModifyScheduledTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.modify_scheduled_task_with_options_async(app_group_identity, task_id, request, headers, runtime)
@@ -7782,6 +10062,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifySecondRankResponse:
+        """
+        @summary Modifies a fine sort expression that is configured for a specific OpenSearch application version. If you set dryRun to true, the specified fine sort expression is checked after the expression is modified. By default, the value of dryRun is false if you do not specify this parameter.
+        
+        @param request: ModifySecondRankRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySecondRankResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -7816,6 +10104,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ModifySecondRankResponse:
+        """
+        @summary Modifies a fine sort expression that is configured for a specific OpenSearch application version. If you set dryRun to true, the specified fine sort expression is checked after the expression is modified. By default, the value of dryRun is false if you do not specify this parameter.
+        
+        @param request: ModifySecondRankRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySecondRankResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -7848,6 +10144,12 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.ModifySecondRankRequest,
     ) -> open_search_20171225_models.ModifySecondRankResponse:
+        """
+        @summary Modifies a fine sort expression that is configured for a specific OpenSearch application version. If you set dryRun to true, the specified fine sort expression is checked after the expression is modified. By default, the value of dryRun is false if you do not specify this parameter.
+        
+        @param request: ModifySecondRankRequest
+        @return: ModifySecondRankResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.modify_second_rank_with_options(app_group_identity, app_id, name, request, headers, runtime)
@@ -7859,6 +10161,12 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.ModifySecondRankRequest,
     ) -> open_search_20171225_models.ModifySecondRankResponse:
+        """
+        @summary Modifies a fine sort expression that is configured for a specific OpenSearch application version. If you set dryRun to true, the specified fine sort expression is checked after the expression is modified. By default, the value of dryRun is false if you do not specify this parameter.
+        
+        @param request: ModifySecondRankRequest
+        @return: ModifySecondRankResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.modify_second_rank_with_options_async(app_group_identity, app_id, name, request, headers, runtime)
@@ -7870,6 +10178,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PushInterventionDictionaryEntriesResponse:
+        """
+        @summary Accepts the changes in intervention entries.
+        
+        @param request: PushInterventionDictionaryEntriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushInterventionDictionaryEntriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -7902,6 +10218,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PushInterventionDictionaryEntriesResponse:
+        """
+        @summary Accepts the changes in intervention entries.
+        
+        @param request: PushInterventionDictionaryEntriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushInterventionDictionaryEntriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -7932,6 +10256,12 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.PushInterventionDictionaryEntriesRequest,
     ) -> open_search_20171225_models.PushInterventionDictionaryEntriesResponse:
+        """
+        @summary Accepts the changes in intervention entries.
+        
+        @param request: PushInterventionDictionaryEntriesRequest
+        @return: PushInterventionDictionaryEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.push_intervention_dictionary_entries_with_options(name, request, headers, runtime)
@@ -7941,6 +10271,12 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.PushInterventionDictionaryEntriesRequest,
     ) -> open_search_20171225_models.PushInterventionDictionaryEntriesResponse:
+        """
+        @summary Accepts the changes in intervention entries.
+        
+        @param request: PushInterventionDictionaryEntriesRequest
+        @return: PushInterventionDictionaryEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.push_intervention_dictionary_entries_with_options_async(name, request, headers, runtime)
@@ -7952,6 +10288,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PushUserAnalyzerEntriesResponse:
+        """
+        @summary Accepts the changes in the entries of a custom analyzer.
+        
+        @param request: PushUserAnalyzerEntriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushUserAnalyzerEntriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -7987,6 +10331,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.PushUserAnalyzerEntriesResponse:
+        """
+        @summary Accepts the changes in the entries of a custom analyzer.
+        
+        @param request: PushUserAnalyzerEntriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushUserAnalyzerEntriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -8020,6 +10372,12 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.PushUserAnalyzerEntriesRequest,
     ) -> open_search_20171225_models.PushUserAnalyzerEntriesResponse:
+        """
+        @summary Accepts the changes in the entries of a custom analyzer.
+        
+        @param request: PushUserAnalyzerEntriesRequest
+        @return: PushUserAnalyzerEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.push_user_analyzer_entries_with_options(name, request, headers, runtime)
@@ -8029,79 +10387,15 @@ class Client(OpenApiClient):
         name: str,
         request: open_search_20171225_models.PushUserAnalyzerEntriesRequest,
     ) -> open_search_20171225_models.PushUserAnalyzerEntriesResponse:
+        """
+        @summary Accepts the changes in the entries of a custom analyzer.
+        
+        @param request: PushUserAnalyzerEntriesRequest
+        @return: PushUserAnalyzerEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.push_user_analyzer_entries_with_options_async(name, request, headers, runtime)
-
-    def rank_preview_query_with_options(
-        self,
-        app_group_identity: str,
-        model_name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.RankPreviewQueryResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='RankPreviewQuery',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}/actions/query-rank',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.RankPreviewQueryResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def rank_preview_query_with_options_async(
-        self,
-        app_group_identity: str,
-        model_name: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> open_search_20171225_models.RankPreviewQueryResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='RankPreviewQuery',
-            version='2017-12-25',
-            protocol='HTTPS',
-            pathname=f'/v4/openapi/app-groups/{OpenApiUtilClient.get_encode_param(app_group_identity)}/algorithm/models/{OpenApiUtilClient.get_encode_param(model_name)}/actions/query-rank',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            open_search_20171225_models.RankPreviewQueryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def rank_preview_query(
-        self,
-        app_group_identity: str,
-        model_name: str,
-    ) -> open_search_20171225_models.RankPreviewQueryResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.rank_preview_query_with_options(app_group_identity, model_name, headers, runtime)
-
-    async def rank_preview_query_async(
-        self,
-        app_group_identity: str,
-        model_name: str,
-    ) -> open_search_20171225_models.RankPreviewQueryResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.rank_preview_query_with_options_async(app_group_identity, model_name, headers, runtime)
 
     def release_sort_script_with_options(
         self,
@@ -8111,6 +10405,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ReleaseSortScriptResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseSortScriptResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8138,6 +10437,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ReleaseSortScriptResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseSortScriptResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8163,6 +10467,9 @@ class Client(OpenApiClient):
         script_name: str,
         app_version_id: str,
     ) -> open_search_20171225_models.ReleaseSortScriptResponse:
+        """
+        @return: ReleaseSortScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.release_sort_script_with_options(app_group_identity, script_name, app_version_id, headers, runtime)
@@ -8173,6 +10480,9 @@ class Client(OpenApiClient):
         script_name: str,
         app_version_id: str,
     ) -> open_search_20171225_models.ReleaseSortScriptResponse:
+        """
+        @return: ReleaseSortScriptResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.release_sort_script_with_options_async(app_group_identity, script_name, app_version_id, headers, runtime)
@@ -8184,6 +10494,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveAppResponse:
+        """
+        @summary Deletes a version of an OpenSearch application.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveAppResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8210,6 +10527,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveAppResponse:
+        """
+        @summary Deletes a version of an OpenSearch application.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveAppResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8234,6 +10558,11 @@ class Client(OpenApiClient):
         app_group_identity: str,
         app_id: str,
     ) -> open_search_20171225_models.RemoveAppResponse:
+        """
+        @summary Deletes a version of an OpenSearch application.
+        
+        @return: RemoveAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.remove_app_with_options(app_group_identity, app_id, headers, runtime)
@@ -8243,6 +10572,11 @@ class Client(OpenApiClient):
         app_group_identity: str,
         app_id: str,
     ) -> open_search_20171225_models.RemoveAppResponse:
+        """
+        @summary Deletes a version of an OpenSearch application.
+        
+        @return: RemoveAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.remove_app_with_options_async(app_group_identity, app_id, headers, runtime)
@@ -8253,6 +10587,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveAppGroupResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveAppGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8278,6 +10617,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveAppGroupResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveAppGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8301,6 +10645,9 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.RemoveAppGroupResponse:
+        """
+        @return: RemoveAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.remove_app_group_with_options(app_group_identity, headers, runtime)
@@ -8309,6 +10656,9 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.RemoveAppGroupResponse:
+        """
+        @return: RemoveAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.remove_app_group_with_options_async(app_group_identity, headers, runtime)
@@ -8320,6 +10670,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveDataCollectionResponse:
+        """
+        @summary Disables data collection.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveDataCollectionResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8346,6 +10703,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveDataCollectionResponse:
+        """
+        @summary Disables data collection.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveDataCollectionResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8370,6 +10734,11 @@ class Client(OpenApiClient):
         app_group_identity: str,
         data_collection_identity: str,
     ) -> open_search_20171225_models.RemoveDataCollectionResponse:
+        """
+        @summary Disables data collection.
+        
+        @return: RemoveDataCollectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.remove_data_collection_with_options(app_group_identity, data_collection_identity, headers, runtime)
@@ -8379,6 +10748,11 @@ class Client(OpenApiClient):
         app_group_identity: str,
         data_collection_identity: str,
     ) -> open_search_20171225_models.RemoveDataCollectionResponse:
+        """
+        @summary Disables data collection.
+        
+        @return: RemoveDataCollectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.remove_data_collection_with_options_async(app_group_identity, data_collection_identity, headers, runtime)
@@ -8391,6 +10765,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveFirstRankResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveFirstRankResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8418,6 +10797,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveFirstRankResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveFirstRankResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8443,6 +10827,9 @@ class Client(OpenApiClient):
         app_id: str,
         name: str,
     ) -> open_search_20171225_models.RemoveFirstRankResponse:
+        """
+        @return: RemoveFirstRankResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.remove_first_rank_with_options(app_group_identity, app_id, name, headers, runtime)
@@ -8453,6 +10840,9 @@ class Client(OpenApiClient):
         app_id: str,
         name: str,
     ) -> open_search_20171225_models.RemoveFirstRankResponse:
+        """
+        @return: RemoveFirstRankResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.remove_first_rank_with_options_async(app_group_identity, app_id, name, headers, runtime)
@@ -8463,6 +10853,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveInterventionDictionaryResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveInterventionDictionaryResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8488,6 +10883,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveInterventionDictionaryResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveInterventionDictionaryResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8511,6 +10911,9 @@ class Client(OpenApiClient):
         self,
         name: str,
     ) -> open_search_20171225_models.RemoveInterventionDictionaryResponse:
+        """
+        @return: RemoveInterventionDictionaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.remove_intervention_dictionary_with_options(name, headers, runtime)
@@ -8519,6 +10922,9 @@ class Client(OpenApiClient):
         self,
         name: str,
     ) -> open_search_20171225_models.RemoveInterventionDictionaryResponse:
+        """
+        @return: RemoveInterventionDictionaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.remove_intervention_dictionary_with_options_async(name, headers, runtime)
@@ -8531,6 +10937,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveQueryProcessorResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveQueryProcessorResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8558,6 +10969,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveQueryProcessorResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveQueryProcessorResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8583,6 +10999,9 @@ class Client(OpenApiClient):
         app_id: str,
         name: str,
     ) -> open_search_20171225_models.RemoveQueryProcessorResponse:
+        """
+        @return: RemoveQueryProcessorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.remove_query_processor_with_options(app_group_identity, app_id, name, headers, runtime)
@@ -8593,6 +11012,9 @@ class Client(OpenApiClient):
         app_id: str,
         name: str,
     ) -> open_search_20171225_models.RemoveQueryProcessorResponse:
+        """
+        @return: RemoveQueryProcessorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.remove_query_processor_with_options_async(app_group_identity, app_id, name, headers, runtime)
@@ -8604,6 +11026,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveScheduledTaskResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveScheduledTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8630,6 +11057,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveScheduledTaskResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveScheduledTaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8654,6 +11086,9 @@ class Client(OpenApiClient):
         app_group_identity: str,
         task_id: str,
     ) -> open_search_20171225_models.RemoveScheduledTaskResponse:
+        """
+        @return: RemoveScheduledTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.remove_scheduled_task_with_options(app_group_identity, task_id, headers, runtime)
@@ -8663,6 +11098,9 @@ class Client(OpenApiClient):
         app_group_identity: str,
         task_id: str,
     ) -> open_search_20171225_models.RemoveScheduledTaskResponse:
+        """
+        @return: RemoveScheduledTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.remove_scheduled_task_with_options_async(app_group_identity, task_id, headers, runtime)
@@ -8675,6 +11113,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveSearchStrategyResponse:
+        """
+        @summary Deletes a query policy.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveSearchStrategyResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8702,6 +11147,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveSearchStrategyResponse:
+        """
+        @summary Deletes a query policy.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveSearchStrategyResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8727,6 +11179,11 @@ class Client(OpenApiClient):
         app_id: str,
         strategy_name: str,
     ) -> open_search_20171225_models.RemoveSearchStrategyResponse:
+        """
+        @summary Deletes a query policy.
+        
+        @return: RemoveSearchStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.remove_search_strategy_with_options(app_group_identity, app_id, strategy_name, headers, runtime)
@@ -8737,6 +11194,11 @@ class Client(OpenApiClient):
         app_id: str,
         strategy_name: str,
     ) -> open_search_20171225_models.RemoveSearchStrategyResponse:
+        """
+        @summary Deletes a query policy.
+        
+        @return: RemoveSearchStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.remove_search_strategy_with_options_async(app_group_identity, app_id, strategy_name, headers, runtime)
@@ -8749,6 +11211,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveSecondRankResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveSecondRankResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8776,6 +11243,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveSecondRankResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveSecondRankResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8801,6 +11273,9 @@ class Client(OpenApiClient):
         app_id: str,
         name: str,
     ) -> open_search_20171225_models.RemoveSecondRankResponse:
+        """
+        @return: RemoveSecondRankResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.remove_second_rank_with_options(app_group_identity, app_id, name, headers, runtime)
@@ -8811,6 +11286,9 @@ class Client(OpenApiClient):
         app_id: str,
         name: str,
     ) -> open_search_20171225_models.RemoveSecondRankResponse:
+        """
+        @return: RemoveSecondRankResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.remove_second_rank_with_options_async(app_group_identity, app_id, name, headers, runtime)
@@ -8821,6 +11299,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveUserAnalyzerResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveUserAnalyzerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8846,6 +11329,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RemoveUserAnalyzerResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveUserAnalyzerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8869,6 +11357,9 @@ class Client(OpenApiClient):
         self,
         name: str,
     ) -> open_search_20171225_models.RemoveUserAnalyzerResponse:
+        """
+        @return: RemoveUserAnalyzerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.remove_user_analyzer_with_options(name, headers, runtime)
@@ -8877,6 +11368,9 @@ class Client(OpenApiClient):
         self,
         name: str,
     ) -> open_search_20171225_models.RemoveUserAnalyzerResponse:
+        """
+        @return: RemoveUserAnalyzerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.remove_user_analyzer_with_options_async(name, headers, runtime)
@@ -8888,6 +11382,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RenewAppGroupResponse:
+        """
+        @summary Renews an application. This operation is not available now. You must renew an application in the OpenSearch console.
+        
+        @param request: RenewAppGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewAppGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -8920,6 +11422,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.RenewAppGroupResponse:
+        """
+        @summary Renews an application. This operation is not available now. You must renew an application in the OpenSearch console.
+        
+        @param request: RenewAppGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewAppGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -8950,6 +11460,12 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.RenewAppGroupRequest,
     ) -> open_search_20171225_models.RenewAppGroupResponse:
+        """
+        @summary Renews an application. This operation is not available now. You must renew an application in the OpenSearch console.
+        
+        @param request: RenewAppGroupRequest
+        @return: RenewAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.renew_app_group_with_options(app_group_identity, request, headers, runtime)
@@ -8959,6 +11475,12 @@ class Client(OpenApiClient):
         app_group_identity: str,
         request: open_search_20171225_models.RenewAppGroupRequest,
     ) -> open_search_20171225_models.RenewAppGroupResponse:
+        """
+        @summary Renews an application. This operation is not available now. You must renew an application in the OpenSearch console.
+        
+        @param request: RenewAppGroupRequest
+        @return: RenewAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.renew_app_group_with_options_async(app_group_identity, request, headers, runtime)
@@ -8969,6 +11491,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ReplaceAppGroupCommodityCodeResponse:
+        """
+        @summary Converts a service-based application to an instance-based application.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReplaceAppGroupCommodityCodeResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8994,6 +11523,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ReplaceAppGroupCommodityCodeResponse:
+        """
+        @summary Converts a service-based application to an instance-based application.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReplaceAppGroupCommodityCodeResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9017,6 +11553,11 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.ReplaceAppGroupCommodityCodeResponse:
+        """
+        @summary Converts a service-based application to an instance-based application.
+        
+        @return: ReplaceAppGroupCommodityCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.replace_app_group_commodity_code_with_options(app_group_identity, headers, runtime)
@@ -9025,6 +11566,11 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.ReplaceAppGroupCommodityCodeResponse:
+        """
+        @summary Converts a service-based application to an instance-based application.
+        
+        @return: ReplaceAppGroupCommodityCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.replace_app_group_commodity_code_with_options_async(app_group_identity, headers, runtime)
@@ -9039,6 +11585,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.SaveSortScriptFileResponse:
+        """
+        @summary Uploads a sort script.
+        
+        @param request: SaveSortScriptFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveSortScriptFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -9075,6 +11629,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.SaveSortScriptFileResponse:
+        """
+        @summary Uploads a sort script.
+        
+        @param request: SaveSortScriptFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveSortScriptFileResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -9109,6 +11671,12 @@ class Client(OpenApiClient):
         file_name: str,
         request: open_search_20171225_models.SaveSortScriptFileRequest,
     ) -> open_search_20171225_models.SaveSortScriptFileResponse:
+        """
+        @summary Uploads a sort script.
+        
+        @param request: SaveSortScriptFileRequest
+        @return: SaveSortScriptFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.save_sort_script_file_with_options(app_group_identity, script_name, app_version_id, file_name, request, headers, runtime)
@@ -9121,6 +11689,12 @@ class Client(OpenApiClient):
         file_name: str,
         request: open_search_20171225_models.SaveSortScriptFileRequest,
     ) -> open_search_20171225_models.SaveSortScriptFileResponse:
+        """
+        @summary Uploads a sort script.
+        
+        @param request: SaveSortScriptFileRequest
+        @return: SaveSortScriptFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.save_sort_script_file_with_options_async(app_group_identity, script_name, app_version_id, file_name, request, headers, runtime)
@@ -9131,6 +11705,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.StartSlowQueryAnalyzerResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartSlowQueryAnalyzerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9156,6 +11735,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.StartSlowQueryAnalyzerResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartSlowQueryAnalyzerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9179,6 +11763,9 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.StartSlowQueryAnalyzerResponse:
+        """
+        @return: StartSlowQueryAnalyzerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.start_slow_query_analyzer_with_options(app_group_identity, headers, runtime)
@@ -9187,6 +11774,9 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.StartSlowQueryAnalyzerResponse:
+        """
+        @return: StartSlowQueryAnalyzerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.start_slow_query_analyzer_with_options_async(app_group_identity, headers, runtime)
@@ -9197,6 +11787,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -9231,6 +11829,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -9263,6 +11869,12 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.TagResourcesRequest,
     ) -> open_search_20171225_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.tag_resources_with_options(request, headers, runtime)
@@ -9271,6 +11883,12 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.TagResourcesRequest,
     ) -> open_search_20171225_models.TagResourcesResponse:
+        """
+        @summary Adds tags to resources.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.tag_resources_with_options_async(request, headers, runtime)
@@ -9284,7 +11902,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UnbindESUserAnalyzerResponse:
         """
-        The ID of the request.
+        @summary Unbinds a custom analyzer from an Elasticsearch instance.
+        
+        @description You can call this operation to unbind a custom analyzer from an Elasticsearch instance.
         
         @param request: UnbindESUserAnalyzerRequest
         @param headers: map
@@ -9321,7 +11941,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UnbindESUserAnalyzerResponse:
         """
-        The ID of the request.
+        @summary Unbinds a custom analyzer from an Elasticsearch instance.
+        
+        @description You can call this operation to unbind a custom analyzer from an Elasticsearch instance.
         
         @param request: UnbindESUserAnalyzerRequest
         @param headers: map
@@ -9356,7 +11978,9 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.UnbindESUserAnalyzerRequest,
     ) -> open_search_20171225_models.UnbindESUserAnalyzerResponse:
         """
-        The ID of the request.
+        @summary Unbinds a custom analyzer from an Elasticsearch instance.
+        
+        @description You can call this operation to unbind a custom analyzer from an Elasticsearch instance.
         
         @param request: UnbindESUserAnalyzerRequest
         @return: UnbindESUserAnalyzerResponse
@@ -9372,7 +11996,9 @@ class Client(OpenApiClient):
         request: open_search_20171225_models.UnbindESUserAnalyzerRequest,
     ) -> open_search_20171225_models.UnbindESUserAnalyzerResponse:
         """
-        The ID of the request.
+        @summary Unbinds a custom analyzer from an Elasticsearch instance.
+        
+        @description You can call this operation to unbind a custom analyzer from an Elasticsearch instance.
         
         @param request: UnbindESUserAnalyzerRequest
         @return: UnbindESUserAnalyzerResponse
@@ -9387,6 +12013,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UnbindEsInstanceResponse:
+        """
+        @summary Unbinds an Elasticsearch instance from an OpenSearch application.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindEsInstanceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9412,6 +12045,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UnbindEsInstanceResponse:
+        """
+        @summary Unbinds an Elasticsearch instance from an OpenSearch application.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindEsInstanceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9435,6 +12075,11 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.UnbindEsInstanceResponse:
+        """
+        @summary Unbinds an Elasticsearch instance from an OpenSearch application.
+        
+        @return: UnbindEsInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.unbind_es_instance_with_options(app_group_identity, headers, runtime)
@@ -9443,6 +12088,11 @@ class Client(OpenApiClient):
         self,
         app_group_identity: str,
     ) -> open_search_20171225_models.UnbindEsInstanceResponse:
+        """
+        @summary Unbinds an Elasticsearch instance from an OpenSearch application.
+        
+        @return: UnbindEsInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.unbind_es_instance_with_options_async(app_group_identity, headers, runtime)
@@ -9453,6 +12103,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UntagResourcesResponse:
+        """
+        @summary Remove tags from resources.
+        
+        @param tmp_req: UntagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = open_search_20171225_models.UntagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9495,6 +12153,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UntagResourcesResponse:
+        """
+        @summary Remove tags from resources.
+        
+        @param tmp_req: UntagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = open_search_20171225_models.UntagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9535,6 +12201,12 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.UntagResourcesRequest,
     ) -> open_search_20171225_models.UntagResourcesResponse:
+        """
+        @summary Remove tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.untag_resources_with_options(request, headers, runtime)
@@ -9543,6 +12215,12 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.UntagResourcesRequest,
     ) -> open_search_20171225_models.UntagResourcesResponse:
+        """
+        @summary Remove tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.untag_resources_with_options_async(request, headers, runtime)
@@ -9557,6 +12235,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestExperimentResponse:
+        """
+        @summary Modifies the parameters of an A/B test.
+        
+        @param request: UpdateABTestExperimentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateABTestExperimentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -9592,6 +12278,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestExperimentResponse:
+        """
+        @summary Modifies the parameters of an A/B test.
+        
+        @param request: UpdateABTestExperimentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateABTestExperimentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -9625,6 +12319,12 @@ class Client(OpenApiClient):
         experiment_id: str,
         request: open_search_20171225_models.UpdateABTestExperimentRequest,
     ) -> open_search_20171225_models.UpdateABTestExperimentResponse:
+        """
+        @summary Modifies the parameters of an A/B test.
+        
+        @param request: UpdateABTestExperimentRequest
+        @return: UpdateABTestExperimentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_abtest_experiment_with_options(app_group_identity, scene_id, group_id, experiment_id, request, headers, runtime)
@@ -9637,6 +12337,12 @@ class Client(OpenApiClient):
         experiment_id: str,
         request: open_search_20171225_models.UpdateABTestExperimentRequest,
     ) -> open_search_20171225_models.UpdateABTestExperimentResponse:
+        """
+        @summary Modifies the parameters of an A/B test.
+        
+        @param request: UpdateABTestExperimentRequest
+        @return: UpdateABTestExperimentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_abtest_experiment_with_options_async(app_group_identity, scene_id, group_id, experiment_id, request, headers, runtime)
@@ -9651,6 +12357,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestFixedFlowDividersResponse:
+        """
+        @summary Modifies whitelists.
+        
+        @param request: UpdateABTestFixedFlowDividersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateABTestFixedFlowDividersResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -9682,6 +12396,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestFixedFlowDividersResponse:
+        """
+        @summary Modifies whitelists.
+        
+        @param request: UpdateABTestFixedFlowDividersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateABTestFixedFlowDividersResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -9711,6 +12433,12 @@ class Client(OpenApiClient):
         experiment_id: str,
         request: open_search_20171225_models.UpdateABTestFixedFlowDividersRequest,
     ) -> open_search_20171225_models.UpdateABTestFixedFlowDividersResponse:
+        """
+        @summary Modifies whitelists.
+        
+        @param request: UpdateABTestFixedFlowDividersRequest
+        @return: UpdateABTestFixedFlowDividersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_abtest_fixed_flow_dividers_with_options(app_group_identity, scene_id, group_id, experiment_id, request, headers, runtime)
@@ -9723,6 +12451,12 @@ class Client(OpenApiClient):
         experiment_id: str,
         request: open_search_20171225_models.UpdateABTestFixedFlowDividersRequest,
     ) -> open_search_20171225_models.UpdateABTestFixedFlowDividersResponse:
+        """
+        @summary Modifies whitelists.
+        
+        @param request: UpdateABTestFixedFlowDividersRequest
+        @return: UpdateABTestFixedFlowDividersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_abtest_fixed_flow_dividers_with_options_async(app_group_identity, scene_id, group_id, experiment_id, request, headers, runtime)
@@ -9736,6 +12470,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestGroupResponse:
+        """
+        @summary Modifies a test group.
+        
+        @param request: UpdateABTestGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateABTestGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -9770,6 +12512,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestGroupResponse:
+        """
+        @summary Modifies a test group.
+        
+        @param request: UpdateABTestGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateABTestGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -9802,6 +12552,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: open_search_20171225_models.UpdateABTestGroupRequest,
     ) -> open_search_20171225_models.UpdateABTestGroupResponse:
+        """
+        @summary Modifies a test group.
+        
+        @param request: UpdateABTestGroupRequest
+        @return: UpdateABTestGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_abtest_group_with_options(app_group_identity, scene_id, group_id, request, headers, runtime)
@@ -9813,6 +12569,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: open_search_20171225_models.UpdateABTestGroupRequest,
     ) -> open_search_20171225_models.UpdateABTestGroupResponse:
+        """
+        @summary Modifies a test group.
+        
+        @param request: UpdateABTestGroupRequest
+        @return: UpdateABTestGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_abtest_group_with_options_async(app_group_identity, scene_id, group_id, request, headers, runtime)
@@ -9825,6 +12587,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestSceneResponse:
+        """
+        @summary Modifies an A/B test scenario.
+        
+        @param request: UpdateABTestSceneRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateABTestSceneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -9858,6 +12628,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateABTestSceneResponse:
+        """
+        @summary Modifies an A/B test scenario.
+        
+        @param request: UpdateABTestSceneRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateABTestSceneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -9889,6 +12667,12 @@ class Client(OpenApiClient):
         scene_id: str,
         request: open_search_20171225_models.UpdateABTestSceneRequest,
     ) -> open_search_20171225_models.UpdateABTestSceneResponse:
+        """
+        @summary Modifies an A/B test scenario.
+        
+        @param request: UpdateABTestSceneRequest
+        @return: UpdateABTestSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_abtest_scene_with_options(app_group_identity, scene_id, request, headers, runtime)
@@ -9899,6 +12683,12 @@ class Client(OpenApiClient):
         scene_id: str,
         request: open_search_20171225_models.UpdateABTestSceneRequest,
     ) -> open_search_20171225_models.UpdateABTestSceneResponse:
+        """
+        @summary Modifies an A/B test scenario.
+        
+        @param request: UpdateABTestSceneRequest
+        @return: UpdateABTestSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_abtest_scene_with_options_async(app_group_identity, scene_id, request, headers, runtime)
@@ -9911,6 +12701,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateFetchFieldsResponse:
+        """
+        @param request: UpdateFetchFieldsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFetchFieldsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -9944,6 +12740,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateFetchFieldsResponse:
+        """
+        @param request: UpdateFetchFieldsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFetchFieldsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -9975,6 +12777,10 @@ class Client(OpenApiClient):
         app_id: str,
         request: open_search_20171225_models.UpdateFetchFieldsRequest,
     ) -> open_search_20171225_models.UpdateFetchFieldsResponse:
+        """
+        @param request: UpdateFetchFieldsRequest
+        @return: UpdateFetchFieldsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_fetch_fields_with_options(app_group_identity, app_id, request, headers, runtime)
@@ -9985,6 +12791,10 @@ class Client(OpenApiClient):
         app_id: str,
         request: open_search_20171225_models.UpdateFetchFieldsRequest,
     ) -> open_search_20171225_models.UpdateFetchFieldsResponse:
+        """
+        @param request: UpdateFetchFieldsRequest
+        @return: UpdateFetchFieldsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_fetch_fields_with_options_async(app_group_identity, app_id, request, headers, runtime)
@@ -9997,6 +12807,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateFunctionDefaultInstanceResponse:
+        """
+        @summary Sets the default algorithm instance used by the specified application. The new algorithm instance automatically overwrites the most recently set default instance. If no instance is set, the default instance is canceled.
+        
+        @param request: UpdateFunctionDefaultInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFunctionDefaultInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_name):
@@ -10029,6 +12847,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateFunctionDefaultInstanceResponse:
+        """
+        @summary Sets the default algorithm instance used by the specified application. The new algorithm instance automatically overwrites the most recently set default instance. If no instance is set, the default instance is canceled.
+        
+        @param request: UpdateFunctionDefaultInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFunctionDefaultInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_name):
@@ -10059,6 +12885,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: open_search_20171225_models.UpdateFunctionDefaultInstanceRequest,
     ) -> open_search_20171225_models.UpdateFunctionDefaultInstanceResponse:
+        """
+        @summary Sets the default algorithm instance used by the specified application. The new algorithm instance automatically overwrites the most recently set default instance. If no instance is set, the default instance is canceled.
+        
+        @param request: UpdateFunctionDefaultInstanceRequest
+        @return: UpdateFunctionDefaultInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_function_default_instance_with_options(app_group_identity, function_name, request, headers, runtime)
@@ -10069,6 +12901,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: open_search_20171225_models.UpdateFunctionDefaultInstanceRequest,
     ) -> open_search_20171225_models.UpdateFunctionDefaultInstanceResponse:
+        """
+        @summary Sets the default algorithm instance used by the specified application. The new algorithm instance automatically overwrites the most recently set default instance. If no instance is set, the default instance is canceled.
+        
+        @param request: UpdateFunctionDefaultInstanceRequest
+        @return: UpdateFunctionDefaultInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_function_default_instance_with_options_async(app_group_identity, function_name, request, headers, runtime)
@@ -10082,6 +12920,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateFunctionInstanceResponse:
+        """
+        @summary Updates an algorithm instance.
+        
+        @param request: UpdateFunctionInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFunctionInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.create_parameters):
@@ -10121,6 +12967,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateFunctionInstanceResponse:
+        """
+        @summary Updates an algorithm instance.
+        
+        @param request: UpdateFunctionInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFunctionInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.create_parameters):
@@ -10158,6 +13012,12 @@ class Client(OpenApiClient):
         instance_name: str,
         request: open_search_20171225_models.UpdateFunctionInstanceRequest,
     ) -> open_search_20171225_models.UpdateFunctionInstanceResponse:
+        """
+        @summary Updates an algorithm instance.
+        
+        @param request: UpdateFunctionInstanceRequest
+        @return: UpdateFunctionInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_function_instance_with_options(app_group_identity, function_name, instance_name, request, headers, runtime)
@@ -10169,6 +13029,12 @@ class Client(OpenApiClient):
         instance_name: str,
         request: open_search_20171225_models.UpdateFunctionInstanceRequest,
     ) -> open_search_20171225_models.UpdateFunctionInstanceResponse:
+        """
+        @summary Updates an algorithm instance.
+        
+        @param request: UpdateFunctionInstanceRequest
+        @return: UpdateFunctionInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_function_instance_with_options_async(app_group_identity, function_name, instance_name, request, headers, runtime)
@@ -10182,6 +13048,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateFunctionResourceResponse:
+        """
+        @summary Updates an algorithm resource.
+        
+        @description You can call this operation to update the information about resources by resource name. You can modify only the values of data and description.
+        
+        @param request: UpdateFunctionResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFunctionResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data):
@@ -10217,6 +13093,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateFunctionResourceResponse:
+        """
+        @summary Updates an algorithm resource.
+        
+        @description You can call this operation to update the information about resources by resource name. You can modify only the values of data and description.
+        
+        @param request: UpdateFunctionResourceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFunctionResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data):
@@ -10250,6 +13136,14 @@ class Client(OpenApiClient):
         resource_name: str,
         request: open_search_20171225_models.UpdateFunctionResourceRequest,
     ) -> open_search_20171225_models.UpdateFunctionResourceResponse:
+        """
+        @summary Updates an algorithm resource.
+        
+        @description You can call this operation to update the information about resources by resource name. You can modify only the values of data and description.
+        
+        @param request: UpdateFunctionResourceRequest
+        @return: UpdateFunctionResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_function_resource_with_options(app_group_identity, function_name, resource_name, request, headers, runtime)
@@ -10261,6 +13155,14 @@ class Client(OpenApiClient):
         resource_name: str,
         request: open_search_20171225_models.UpdateFunctionResourceRequest,
     ) -> open_search_20171225_models.UpdateFunctionResourceResponse:
+        """
+        @summary Updates an algorithm resource.
+        
+        @description You can call this operation to update the information about resources by resource name. You can modify only the values of data and description.
+        
+        @param request: UpdateFunctionResourceRequest
+        @return: UpdateFunctionResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_function_resource_with_options_async(app_group_identity, function_name, resource_name, request, headers, runtime)
@@ -10274,6 +13176,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateSearchStrategyResponse:
+        """
+        @summary Modifies a query policy.
+        
+        @param request: UpdateSearchStrategyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSearchStrategyResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -10304,6 +13214,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateSearchStrategyResponse:
+        """
+        @summary Modifies a query policy.
+        
+        @param request: UpdateSearchStrategyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSearchStrategyResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -10332,6 +13250,12 @@ class Client(OpenApiClient):
         strategy_name: str,
         request: open_search_20171225_models.UpdateSearchStrategyRequest,
     ) -> open_search_20171225_models.UpdateSearchStrategyResponse:
+        """
+        @summary Modifies a query policy.
+        
+        @param request: UpdateSearchStrategyRequest
+        @return: UpdateSearchStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_search_strategy_with_options(app_group_identity, app_id, strategy_name, request, headers, runtime)
@@ -10343,6 +13267,12 @@ class Client(OpenApiClient):
         strategy_name: str,
         request: open_search_20171225_models.UpdateSearchStrategyRequest,
     ) -> open_search_20171225_models.UpdateSearchStrategyResponse:
+        """
+        @summary Modifies a query policy.
+        
+        @param request: UpdateSearchStrategyRequest
+        @return: UpdateSearchStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_search_strategy_with_options_async(app_group_identity, app_id, strategy_name, request, headers, runtime)
@@ -10356,7 +13286,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateSortScriptResponse:
         """
-        You can call this operation to modify the description of a sort script.
+        @summary Modifies the description of a sort script.
+        
+        @description You can call this operation to modify the description of a sort script.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -10390,7 +13322,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateSortScriptResponse:
         """
-        You can call this operation to modify the description of a sort script.
+        @summary Modifies the description of a sort script.
+        
+        @description You can call this operation to modify the description of a sort script.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -10422,7 +13356,9 @@ class Client(OpenApiClient):
         script_name: str,
     ) -> open_search_20171225_models.UpdateSortScriptResponse:
         """
-        You can call this operation to modify the description of a sort script.
+        @summary Modifies the description of a sort script.
+        
+        @description You can call this operation to modify the description of a sort script.
         
         @return: UpdateSortScriptResponse
         """
@@ -10437,7 +13373,9 @@ class Client(OpenApiClient):
         script_name: str,
     ) -> open_search_20171225_models.UpdateSortScriptResponse:
         """
-        You can call this operation to modify the description of a sort script.
+        @summary Modifies the description of a sort script.
+        
+        @description You can call this operation to modify the description of a sort script.
         
         @return: UpdateSortScriptResponse
         """
@@ -10453,6 +13391,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateSummariesResponse:
+        """
+        @summary Updates summaries. A dry run is supported.
+        
+        @param request: UpdateSummariesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSummariesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -10486,6 +13432,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.UpdateSummariesResponse:
+        """
+        @summary Updates summaries. A dry run is supported.
+        
+        @param request: UpdateSummariesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSummariesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -10517,6 +13471,12 @@ class Client(OpenApiClient):
         app_id: str,
         request: open_search_20171225_models.UpdateSummariesRequest,
     ) -> open_search_20171225_models.UpdateSummariesResponse:
+        """
+        @summary Updates summaries. A dry run is supported.
+        
+        @param request: UpdateSummariesRequest
+        @return: UpdateSummariesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_summaries_with_options(app_group_identity, app_id, request, headers, runtime)
@@ -10527,6 +13487,12 @@ class Client(OpenApiClient):
         app_id: str,
         request: open_search_20171225_models.UpdateSummariesRequest,
     ) -> open_search_20171225_models.UpdateSummariesResponse:
+        """
+        @summary Updates summaries. A dry run is supported.
+        
+        @param request: UpdateSummariesRequest
+        @return: UpdateSummariesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_summaries_with_options_async(app_group_identity, app_id, request, headers, runtime)
@@ -10537,6 +13503,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ValidateDataSourcesResponse:
+        """
+        @summary Verifies data sources.
+        
+        @param request: ValidateDataSourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateDataSourcesResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -10564,6 +13538,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> open_search_20171225_models.ValidateDataSourcesResponse:
+        """
+        @summary Verifies data sources.
+        
+        @param request: ValidateDataSourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateDataSourcesResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -10589,6 +13571,12 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.ValidateDataSourcesRequest,
     ) -> open_search_20171225_models.ValidateDataSourcesResponse:
+        """
+        @summary Verifies data sources.
+        
+        @param request: ValidateDataSourcesRequest
+        @return: ValidateDataSourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.validate_data_sources_with_options(request, headers, runtime)
@@ -10597,6 +13585,12 @@ class Client(OpenApiClient):
         self,
         request: open_search_20171225_models.ValidateDataSourcesRequest,
     ) -> open_search_20171225_models.ValidateDataSourcesResponse:
+        """
+        @summary Verifies data sources.
+        
+        @param request: ValidateDataSourcesRequest
+        @return: ValidateDataSourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.validate_data_sources_with_options_async(request, headers, runtime)
