@@ -1,3 +1,7 @@
+2024-09-03 Version: 6.1.1
+- Update API GetFile: update response param.
+
+
 2024-09-03 Version: 6.1.0
 - Support API ListTables.
 - Update API CreateFile: add param ApplyScheduleImmediately.

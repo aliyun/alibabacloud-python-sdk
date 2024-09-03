@@ -30425,22 +30425,53 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
         return self
 
 
+class GetFileResponseBodyDataResourceDownloadLink(TeaModel):
+    def __init__(
+        self,
+        download_link: str = None,
+    ):
+        self.download_link = download_link
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.download_link is not None:
+            result['downloadLink'] = self.download_link
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('downloadLink') is not None:
+            self.download_link = m.get('downloadLink')
+        return self
+
+
 class GetFileResponseBodyData(TeaModel):
     def __init__(
         self,
         file: GetFileResponseBodyDataFile = None,
         node_configuration: GetFileResponseBodyDataNodeConfiguration = None,
+        resource_download_link: GetFileResponseBodyDataResourceDownloadLink = None,
     ):
         # The basic information about the file.
         self.file = file
         # The scheduling configurations of the file.
         self.node_configuration = node_configuration
+        self.resource_download_link = resource_download_link
 
     def validate(self):
         if self.file:
             self.file.validate()
         if self.node_configuration:
             self.node_configuration.validate()
+        if self.resource_download_link:
+            self.resource_download_link.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -30452,6 +30483,8 @@ class GetFileResponseBodyData(TeaModel):
             result['File'] = self.file.to_map()
         if self.node_configuration is not None:
             result['NodeConfiguration'] = self.node_configuration.to_map()
+        if self.resource_download_link is not None:
+            result['ResourceDownloadLink'] = self.resource_download_link.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -30462,6 +30495,9 @@ class GetFileResponseBodyData(TeaModel):
         if m.get('NodeConfiguration') is not None:
             temp_model = GetFileResponseBodyDataNodeConfiguration()
             self.node_configuration = temp_model.from_map(m['NodeConfiguration'])
+        if m.get('ResourceDownloadLink') is not None:
+            temp_model = GetFileResponseBodyDataResourceDownloadLink()
+            self.resource_download_link = temp_model.from_map(m['ResourceDownloadLink'])
         return self
 
 
