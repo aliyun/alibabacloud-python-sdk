@@ -1,3 +1,7 @@
+2024-09-03 Version: 5.1.0
+- Support API GetApplicationVariables.
+
+
 2024-08-30 Version: 5.0.1
 - Update API GetApplication: update response param.
 
