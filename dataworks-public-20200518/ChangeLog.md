@@ -1,3 +1,10 @@
+2024-09-03 Version: 6.1.0
+- Support API ListTables.
+- Update API CreateFile: add param ApplyScheduleImmediately.
+- Update API GetFile: update response param.
+- Update API UpdateFile: add param ApplyScheduleImmediately.
+
+
 2024-08-14 Version: 6.0.1
 - Update API DeleteLineageRelation: add param RelationshipType.
 

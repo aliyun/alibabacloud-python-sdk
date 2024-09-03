@@ -6194,6 +6194,7 @@ class CreateFileRequest(TeaModel):
     def __init__(
         self,
         advanced_settings: str = None,
+        apply_schedule_immediately: bool = None,
         auto_parsing: bool = None,
         auto_rerun_interval_millis: int = None,
         auto_rerun_times: int = None,
@@ -6231,6 +6232,7 @@ class CreateFileRequest(TeaModel):
         # 
         # The value of this parameter must be in the JSON format.
         self.advanced_settings = advanced_settings
+        self.apply_schedule_immediately = apply_schedule_immediately
         # Specifies whether to enable the automatic parsing feature for the file. Valid values:
         # 
         # *   true
@@ -6384,6 +6386,8 @@ class CreateFileRequest(TeaModel):
         result = dict()
         if self.advanced_settings is not None:
             result['AdvancedSettings'] = self.advanced_settings
+        if self.apply_schedule_immediately is not None:
+            result['ApplyScheduleImmediately'] = self.apply_schedule_immediately
         if self.auto_parsing is not None:
             result['AutoParsing'] = self.auto_parsing
         if self.auto_rerun_interval_millis is not None:
@@ -6450,6 +6454,8 @@ class CreateFileRequest(TeaModel):
         m = m or dict()
         if m.get('AdvancedSettings') is not None:
             self.advanced_settings = m.get('AdvancedSettings')
+        if m.get('ApplyScheduleImmediately') is not None:
+            self.apply_schedule_immediately = m.get('ApplyScheduleImmediately')
         if m.get('AutoParsing') is not None:
             self.auto_parsing = m.get('AutoParsing')
         if m.get('AutoRerunIntervalMillis') is not None:
@@ -30191,6 +30197,7 @@ class GetFileResponseBodyDataNodeConfigurationOutputParameters(TeaModel):
 class GetFileResponseBodyDataNodeConfiguration(TeaModel):
     def __init__(
         self,
+        apply_schedule_immediately: str = None,
         auto_rerun_interval_millis: int = None,
         auto_rerun_times: int = None,
         cron_express: str = None,
@@ -30210,6 +30217,7 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
         start_immediately: bool = None,
         stop: bool = None,
     ):
+        self.apply_schedule_immediately = apply_schedule_immediately
         # The interval between automatic reruns after an error occurs. Unit: milliseconds.
         # 
         # This parameter corresponds to the Rerun Interval parameter that is displayed after the Auto Rerun upon Error check box is selected in the Schedule section of the Properties tab in the [DataWorks console](https://workbench.data.aliyun.com/console).
@@ -30314,6 +30322,8 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
             return _map
 
         result = dict()
+        if self.apply_schedule_immediately is not None:
+            result['ApplyScheduleImmediately'] = self.apply_schedule_immediately
         if self.auto_rerun_interval_millis is not None:
             result['AutoRerunIntervalMillis'] = self.auto_rerun_interval_millis
         if self.auto_rerun_times is not None:
@@ -30362,6 +30372,8 @@ class GetFileResponseBodyDataNodeConfiguration(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApplyScheduleImmediately') is not None:
+            self.apply_schedule_immediately = m.get('ApplyScheduleImmediately')
         if m.get('AutoRerunIntervalMillis') is not None:
             self.auto_rerun_interval_millis = m.get('AutoRerunIntervalMillis')
         if m.get('AutoRerunTimes') is not None:
@@ -67297,6 +67309,262 @@ class ListTableThemeResponse(TeaModel):
         return self
 
 
+class ListTablesRequest(TeaModel):
+    def __init__(
+        self,
+        data_source_type: str = None,
+        next_token: str = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.data_source_type = data_source_type
+        self.next_token = next_token
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListTablesResponseBodyDataTableEntityListEntityContent(TeaModel):
+    def __init__(
+        self,
+        data_source_qualified_name: str = None,
+        data_source_unique_id: str = None,
+        database_name: str = None,
+        instance_id: str = None,
+        project_name: str = None,
+        table_name: str = None,
+    ):
+        self.data_source_qualified_name = data_source_qualified_name
+        self.data_source_unique_id = data_source_unique_id
+        self.database_name = database_name
+        self.instance_id = instance_id
+        self.project_name = project_name
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source_qualified_name is not None:
+            result['DataSourceQualifiedName'] = self.data_source_qualified_name
+        if self.data_source_unique_id is not None:
+            result['DataSourceUniqueId'] = self.data_source_unique_id
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourceQualifiedName') is not None:
+            self.data_source_qualified_name = m.get('DataSourceQualifiedName')
+        if m.get('DataSourceUniqueId') is not None:
+            self.data_source_unique_id = m.get('DataSourceUniqueId')
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class ListTablesResponseBodyDataTableEntityList(TeaModel):
+    def __init__(
+        self,
+        entity_content: ListTablesResponseBodyDataTableEntityListEntityContent = None,
+        entity_qualified_name: str = None,
+    ):
+        self.entity_content = entity_content
+        self.entity_qualified_name = entity_qualified_name
+
+    def validate(self):
+        if self.entity_content:
+            self.entity_content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entity_content is not None:
+            result['EntityContent'] = self.entity_content.to_map()
+        if self.entity_qualified_name is not None:
+            result['EntityQualifiedName'] = self.entity_qualified_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EntityContent') is not None:
+            temp_model = ListTablesResponseBodyDataTableEntityListEntityContent()
+            self.entity_content = temp_model.from_map(m['EntityContent'])
+        if m.get('EntityQualifiedName') is not None:
+            self.entity_qualified_name = m.get('EntityQualifiedName')
+        return self
+
+
+class ListTablesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        table_entity_list: List[ListTablesResponseBodyDataTableEntityList] = None,
+        total: int = None,
+    ):
+        self.next_token = next_token
+        self.table_entity_list = table_entity_list
+        self.total = total
+
+    def validate(self):
+        if self.table_entity_list:
+            for k in self.table_entity_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['TableEntityList'] = []
+        if self.table_entity_list is not None:
+            for k in self.table_entity_list:
+                result['TableEntityList'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.table_entity_list = []
+        if m.get('TableEntityList') is not None:
+            for k in m.get('TableEntityList'):
+                temp_model = ListTablesResponseBodyDataTableEntityList()
+                self.table_entity_list.append(temp_model.from_map(k))
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListTablesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListTablesResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListTablesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListTablesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTablesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTablesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTopicsRequest(TeaModel):
     def __init__(
         self,
@@ -78628,6 +78896,7 @@ class UpdateFileRequest(TeaModel):
     def __init__(
         self,
         advanced_settings: str = None,
+        apply_schedule_immediately: bool = None,
         auto_parsing: bool = None,
         auto_rerun_interval_millis: int = None,
         auto_rerun_times: int = None,
@@ -78664,6 +78933,7 @@ class UpdateFileRequest(TeaModel):
         # 
         # This parameter is configured in the JSON format.
         self.advanced_settings = advanced_settings
+        self.apply_schedule_immediately = apply_schedule_immediately
         # Specifies whether the automatic parsing feature is enabled for the file. Valid values:
         # 
         # *   true: The automatic parsing feature is enabled for the file.
@@ -78809,6 +79079,8 @@ class UpdateFileRequest(TeaModel):
         result = dict()
         if self.advanced_settings is not None:
             result['AdvancedSettings'] = self.advanced_settings
+        if self.apply_schedule_immediately is not None:
+            result['ApplyScheduleImmediately'] = self.apply_schedule_immediately
         if self.auto_parsing is not None:
             result['AutoParsing'] = self.auto_parsing
         if self.auto_rerun_interval_millis is not None:
@@ -78873,6 +79145,8 @@ class UpdateFileRequest(TeaModel):
         m = m or dict()
         if m.get('AdvancedSettings') is not None:
             self.advanced_settings = m.get('AdvancedSettings')
+        if m.get('ApplyScheduleImmediately') is not None:
+            self.apply_schedule_immediately = m.get('ApplyScheduleImmediately')
         if m.get('AutoParsing') is not None:
             self.auto_parsing = m.get('AutoParsing')
         if m.get('AutoRerunIntervalMillis') is not None:
