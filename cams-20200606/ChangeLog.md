@@ -1,3 +1,7 @@
+2024-09-03 Version: 1.5.1
+- Update API QueryChatappBindWaba: update response param.
+
+
 2024-07-25 Version: 1.5.0
 - Support API GetConversationalAutomation.
 - Support API GetWhatsappHealthStatus.

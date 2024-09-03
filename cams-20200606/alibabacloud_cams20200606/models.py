@@ -1962,11 +1962,11 @@ class ChatappPhoneNumberDeregisterRequest(TeaModel):
         cust_space_id: str = None,
         phone_number: str = None,
     ):
-        # The space ID of the user within the independent software vendor (ISV) account.
+        # The space ID of the RAM user within the independent software vendor (ISV) account.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
-        # The phone number.
+        # The phone number that you want to deregister.
         # 
         # This parameter is required.
         self.phone_number = phone_number
@@ -3979,6 +3979,8 @@ class CreatePhoneMessageQrdlRequest(TeaModel):
         self.cust_space_id = cust_space_id
         # This parameter is required.
         self.generate_qr_image = generate_qr_image
+        # The phone number. Add the country code before the phone number.
+        # 
         # This parameter is required.
         self.phone_number = phone_number
         # This parameter is required.
@@ -4028,6 +4030,7 @@ class CreatePhoneMessageQrdlResponseBodyData(TeaModel):
     ):
         self.deep_link_url = deep_link_url
         self.generate_qr_image = generate_qr_image
+        # The phone number.
         self.phone_number = phone_number
         self.prefilled_message = prefilled_message
         self.qr_image_url = qr_image_url
@@ -4082,9 +4085,10 @@ class CreatePhoneMessageQrdlResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.code = code
+        # The returned data.
         self.data = data
         self.message = message
-        # Id of the request。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4353,7 +4357,7 @@ class DeleteFlowRequest(TeaModel):
         cust_space_id: str = None,
         flow_id: str = None,
     ):
-        # The space ID of the user within the independent software vendor (ISV) account.
+        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
         # The Flow ID.
         # 
@@ -4475,6 +4479,8 @@ class DeletePhoneMessageQrdlRequest(TeaModel):
         qrdl_code: str = None,
     ):
         self.cust_space_id = cust_space_id
+        # The phone number. Add the country code before the phone number.
+        # 
         # This parameter is required.
         self.phone_number = phone_number
         # This parameter is required.
@@ -4517,7 +4523,7 @@ class DeletePhoneMessageQrdlResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
-        # Id of the request。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4595,8 +4601,9 @@ class DeprecateFlowRequest(TeaModel):
         cust_space_id: str = None,
         flow_id: str = None,
     ):
+        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # Flow ID。
+        # The Flow ID.
         # 
         # This parameter is required.
         self.flow_id = flow_id
@@ -4634,7 +4641,7 @@ class DeprecateFlowResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
-        # Id of the request。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4841,15 +4848,20 @@ class GetChatappPhoneNumberMetricRequest(TeaModel):
         phone_number: str = None,
         start: int = None,
     ):
-        # The space ID of the user within the ISV account.
+        # The space ID of the RAM user within the ISV account.
         self.cust_space_id = cust_space_id
         # The end of the time range to query.
         # 
         # This parameter is required.
         self.end = end
-        # The metric granularity.
+        # The granularity of the metric.
+        # 
+        # Valid values:
+        # 
+        # *   DAILY
+        # *   HALF_HOUR
         self.granularity = granularity
-        # The verification code used to verify whether the RAM user is authorized by the independent software vendor (ISV) account.
+        # The independent software vendor (ISV) verification code, which is used to verify whether the RAM user is authorized by the ISV account.
         self.isv_code = isv_code
         # The business phone number.
         self.phone_number = phone_number
@@ -4912,12 +4924,11 @@ class GetChatappPhoneNumberMetricResponseBodyData(TeaModel):
         self.delivered_count = delivered_count
         # The end of the time range that you queried.
         self.end = end
-        # The metric granularity.
+        # The granularity of the metric.
         # 
-        # >  Valid values:
+        # Valid values:
         # 
         # *   DAILY
-        # 
         # *   HALF_HOUR
         self.granularity = granularity
         # The business phone number.
@@ -5977,19 +5988,20 @@ class GetChatappTemplateMetricRequest(TeaModel):
         template_code: str = None,
         template_type: str = None,
     ):
-        # The space ID of the user within the ISV account.
+        # The space ID of the RAM user within the ISV account.
         self.cust_space_id = cust_space_id
         # The end of the time range to query.
         # 
         # This parameter is required.
         self.end = end
-        # The metric granularity.
+        # The granularity of the metric.
         # 
-        # >  Valid values:
+        # Valid values:
         # 
         # *   DAILY
+        # *   HALF_HOUR
         self.granularity = granularity
-        # The verification code used to verify whether the RAM user is authorized by the independent software vendor (ISV) account.
+        # The independent software vendor (ISV) verification code, which is used to verify whether the RAM user is authorized by the ISV account.
         self.isv_code = isv_code
         # The template language.
         self.language = language
@@ -6001,7 +6013,12 @@ class GetChatappTemplateMetricRequest(TeaModel):
         # 
         # This parameter is required.
         self.template_code = template_code
-        # The template type. Valid values: WHATSAPP and VIBER. If you do not specify this parameter, WHATSAPP is used by default.
+        # The template type. If you do not specify this parameter, the default value WHATSAPP is used.
+        # 
+        # Valid values:
+        # 
+        # *   VIBER
+        # *   WHATSAPP
         self.template_type = template_type
 
     def validate(self):
@@ -6065,13 +6082,11 @@ class GetChatappTemplateMetricResponseBodyDataCliented(TeaModel):
         self.count = count
         # The button type.
         # 
-        # >  Valid values:
-        # 
-        # *   url_button
-        # 
-        # *   quick_relpy_button
+        # Valid values:
         # 
         # *   phone_number_button
+        # *   url_button
+        # *   quick_relpy_button
         self.type = type
 
     def validate(self):
@@ -7102,7 +7117,7 @@ class GetFlowRequest(TeaModel):
         cust_space_id: str = None,
         flow_id: str = None,
     ):
-        # The space ID of the user within the independent software vendor (ISV) account.
+        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
         # The Flow ID.
         # 
@@ -7147,11 +7162,11 @@ class GetFlowResponseBodyData(TeaModel):
     ):
         # The categories of the Flow.
         self.categories = categories
-        # The API version.
+        # The version number of the API.
         self.data_api_version = data_api_version
         # The Flow ID.
         self.flow_id = flow_id
-        # The name of the Flow.
+        # The Flow name.
         self.flow_name = flow_name
         # The JSON version.
         self.jsonversion = jsonversion
@@ -7334,8 +7349,9 @@ class GetFlowJSONAssestRequest(TeaModel):
         cust_space_id: str = None,
         flow_id: str = None,
     ):
+        # The space ID of the user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # Flow ID。
+        # The Flow ID.
         # 
         # This parameter is required.
         self.flow_id = flow_id
@@ -7370,8 +7386,9 @@ class GetFlowJSONAssestResponseBodyData(TeaModel):
         file_path: str = None,
         flow_id: str = None,
     ):
+        # The file path.
         self.file_path = file_path
-        # flow ID。
+        # The Flow ID.
         self.flow_id = flow_id
 
     def validate(self):
@@ -7407,9 +7424,10 @@ class GetFlowJSONAssestResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.code = code
+        # The returned data.
         self.data = data
         self.message = message
-        # Id of the request。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7493,7 +7511,7 @@ class GetFlowPreviewUrlRequest(TeaModel):
         cust_space_id: str = None,
         flow_id: str = None,
     ):
-        # The space ID of the user within the independent software vendor (ISV) account.
+        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
         # The Flow ID.
         # 
@@ -7843,7 +7861,9 @@ class GetPermissionByCodeRequest(TeaModel):
     ):
         # This parameter is required.
         self.code = code
+        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
+        # The permissions.
         self.permissions = permissions
 
     def validate(self):
@@ -7883,7 +7903,9 @@ class GetPermissionByCodeShrinkRequest(TeaModel):
     ):
         # This parameter is required.
         self.code = code
+        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
+        # The permissions.
         self.permissions_shrink = permissions_shrink
 
     def validate(self):
@@ -7921,9 +7943,13 @@ class GetPermissionByCodeResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   For more information about other response codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         self.message = message
-        # Id of the request。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8002,6 +8028,8 @@ class GetPhoneEncryptionPublicKeyRequest(TeaModel):
         phone_number: str = None,
     ):
         self.cust_space_id = cust_space_id
+        # The phone number.
+        # 
         # This parameter is required.
         self.phone_number = phone_number
 
@@ -8036,8 +8064,14 @@ class GetPhoneEncryptionPublicKeyResponseBodyData(TeaModel):
         encryption_public_key_status: str = None,
         phone_number: str = None,
     ):
+        # The public key.
         self.encryption_public_key = encryption_public_key
+        # The validity state of the public key. Valid values:
+        # 
+        # *   MISMATCH: The public key is invalid.
+        # *   VALID: The public key is valid.
         self.encryption_public_key_status = encryption_public_key_status
+        # The phone number.
         self.phone_number = phone_number
 
     def validate(self):
@@ -8077,9 +8111,10 @@ class GetPhoneEncryptionPublicKeyResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.code = code
+        # The returned data.
         self.data = data
         self.message = message
-        # Id of the request。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8415,7 +8450,10 @@ class GetPreValidatePhoneIdResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response code. The value OK indicates the request was successful.
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   For more information about other response codes, see [Error codes](https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
         self.code = code
         # The returned data.
         self.data = data
@@ -9623,9 +9661,9 @@ class ListFlowRequest(TeaModel):
         flow_name: str = None,
         page: ListFlowRequestPage = None,
     ):
-        # The space ID of the user within the independent software vendor (ISV) account.
+        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The name of the Flow.
+        # The name of the Flow that you want to query. If FlowName is left empty, the information about all Flows is queried.
         self.flow_name = flow_name
         # The returned pages.
         self.page = page
@@ -9667,9 +9705,9 @@ class ListFlowShrinkRequest(TeaModel):
         flow_name: str = None,
         page_shrink: str = None,
     ):
-        # The space ID of the user within the independent software vendor (ISV) account.
+        # The space ID of the RAM user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The name of the Flow.
+        # The name of the Flow that you want to query. If FlowName is left empty, the information about all Flows is queried.
         self.flow_name = flow_name
         # The returned pages.
         self.page_shrink = page_shrink
@@ -9713,7 +9751,7 @@ class ListFlowResponseBodyData(TeaModel):
         self.categories = categories
         # The Flow ID.
         self.flow_id = flow_id
-        # The name of the Flow.
+        # The Flow name.
         self.flow_name = flow_name
 
     def validate(self):
@@ -9849,6 +9887,8 @@ class ListPhoneMessageQrdlRequest(TeaModel):
         phone_number: str = None,
     ):
         self.cust_space_id = cust_space_id
+        # The phone number. Add the country code before the phone number.
+        # 
         # This parameter is required.
         self.phone_number = phone_number
 
@@ -9886,11 +9926,17 @@ class ListPhoneMessageQrdlResponseBodyData(TeaModel):
         qr_image_url: str = None,
         qrdl_code: str = None,
     ):
+        # The URL of the deep link.
         self.deep_link_url = deep_link_url
+        # The format of the generated image.
         self.generate_qr_image = generate_qr_image
+        # The phone number.
         self.phone_number = phone_number
+        # The message content.
         self.prefilled_message = prefilled_message
+        # The URL of the QR code.
         self.qr_image_url = qr_image_url
+        # The mode of the quick-response (QR) code.
         self.qrdl_code = qrdl_code
 
     def validate(self):
@@ -9942,9 +9988,10 @@ class ListPhoneMessageQrdlResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.code = code
+        # The returned data.
         self.data = data
         self.message = message
-        # Id of the request。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -11527,7 +11574,7 @@ class ModifyFlowRequest(TeaModel):
         flow_id: str = None,
         flow_name: str = None,
     ):
-        # The categories of the Flow.
+        # The information about the categories of the Flow.
         # 
         # This parameter is required.
         self.categories = categories
@@ -11580,7 +11627,7 @@ class ModifyFlowShrinkRequest(TeaModel):
         flow_id: str = None,
         flow_name: str = None,
     ):
-        # The categories of the Flow.
+        # The information about the categories of the Flow.
         # 
         # This parameter is required.
         self.categories_shrink = categories_shrink
@@ -11636,7 +11683,7 @@ class ModifyFlowResponseBodyData(TeaModel):
         self.categories = categories
         # The Flow ID.
         self.flow_id = flow_id
-        # The name of the Flow.
+        # The Flow name.
         self.flow_name = flow_name
 
     def validate(self):
@@ -12246,6 +12293,8 @@ class QueryChatappBindWabaResponseBodyData(TeaModel):
         self,
         account_review_status: str = None,
         auth_international_rate_eligibility: Dict[str, Any] = None,
+        business_id: str = None,
+        business_name: str = None,
         currency: str = None,
         id: str = None,
         message_template_namespace: str = None,
@@ -12265,6 +12314,8 @@ class QueryChatappBindWabaResponseBodyData(TeaModel):
         # *   DISABLED: The WABA was forbidden.
         self.account_review_status = account_review_status
         self.auth_international_rate_eligibility = auth_international_rate_eligibility
+        self.business_id = business_id
+        self.business_name = business_name
         # The currency.
         self.currency = currency
         # The ID of the WhatsApp Business account.
@@ -12288,6 +12339,10 @@ class QueryChatappBindWabaResponseBodyData(TeaModel):
             result['AccountReviewStatus'] = self.account_review_status
         if self.auth_international_rate_eligibility is not None:
             result['AuthInternationalRateEligibility'] = self.auth_international_rate_eligibility
+        if self.business_id is not None:
+            result['BusinessId'] = self.business_id
+        if self.business_name is not None:
+            result['BusinessName'] = self.business_name
         if self.currency is not None:
             result['Currency'] = self.currency
         if self.id is not None:
@@ -12306,6 +12361,10 @@ class QueryChatappBindWabaResponseBodyData(TeaModel):
             self.account_review_status = m.get('AccountReviewStatus')
         if m.get('AuthInternationalRateEligibility') is not None:
             self.auth_international_rate_eligibility = m.get('AuthInternationalRateEligibility')
+        if m.get('BusinessId') is not None:
+            self.business_id = m.get('BusinessId')
+        if m.get('BusinessName') is not None:
+            self.business_name = m.get('BusinessName')
         if m.get('Currency') is not None:
             self.currency = m.get('Currency')
         if m.get('Id') is not None:
@@ -15353,7 +15412,7 @@ class UpdateFlowJSONAssetRequest(TeaModel):
         self.cust_space_id = cust_space_id
         # This parameter is required.
         self.file_path = file_path
-        # Flow ID。
+        # The Flow ID.
         # 
         # This parameter is required.
         self.flow_id = flow_id
@@ -15391,7 +15450,7 @@ class UpdateFlowJSONAssetResponseBodyData(TeaModel):
         self,
         flow_id: str = None,
     ):
-        # Flow ID。
+        # The Flow ID.
         self.flow_id = flow_id
 
     def validate(self):
@@ -15423,9 +15482,10 @@ class UpdateFlowJSONAssetResponseBody(TeaModel):
         request_id: str = None,
     ):
         self.code = code
+        # The returned data.
         self.data = data
         self.message = message
-        # Id of the request。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15513,6 +15573,8 @@ class UpdatePhoneEncryptionPublicKeyRequest(TeaModel):
         self.cust_space_id = cust_space_id
         # This parameter is required.
         self.encryption_public_key = encryption_public_key
+        # The phone number.
+        # 
         # This parameter is required.
         self.phone_number = phone_number
 
@@ -15553,7 +15615,7 @@ class UpdatePhoneEncryptionPublicKeyResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
-        # Id of the request。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15748,7 +15810,7 @@ class UpdatePhoneMessageQrdlResponseBody(TeaModel):
         self.code = code
         self.data = data
         self.message = message
-        # Id of the request。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
