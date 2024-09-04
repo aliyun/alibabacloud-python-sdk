@@ -1362,7 +1362,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateBindingResponse:
         """
-        @summary 创建绑定
+        @summary 创建一个绑定任务，将 IMM 的数据集和 OSS Bucket 进行绑定，自动对其文件进行索引。
         
         @param request: CreateBindingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1401,7 +1401,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateBindingResponse:
         """
-        @summary 创建绑定
+        @summary 创建一个绑定任务，将 IMM 的数据集和 OSS Bucket 进行绑定，自动对其文件进行索引。
         
         @param request: CreateBindingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1439,7 +1439,7 @@ class Client(OpenApiClient):
         request: imm_20200930_models.CreateBindingRequest,
     ) -> imm_20200930_models.CreateBindingResponse:
         """
-        @summary 创建绑定
+        @summary 创建一个绑定任务，将 IMM 的数据集和 OSS Bucket 进行绑定，自动对其文件进行索引。
         
         @param request: CreateBindingRequest
         @return: CreateBindingResponse
@@ -1452,7 +1452,7 @@ class Client(OpenApiClient):
         request: imm_20200930_models.CreateBindingRequest,
     ) -> imm_20200930_models.CreateBindingResponse:
         """
-        @summary 创建绑定
+        @summary 创建一个绑定任务，将 IMM 的数据集和 OSS Bucket 进行绑定，自动对其文件进行索引。
         
         @param request: CreateBindingRequest
         @return: CreateBindingResponse
@@ -7402,7 +7402,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetBindingResponse:
         """
-        @summary 获取绑定
+        @summary 获取一个绑定任务的运行详情。
         
         @param request: GetBindingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7441,7 +7441,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.GetBindingResponse:
         """
-        @summary 获取绑定
+        @summary 获取一个绑定任务的运行详情。
         
         @param request: GetBindingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7479,7 +7479,7 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetBindingRequest,
     ) -> imm_20200930_models.GetBindingResponse:
         """
-        @summary 获取绑定
+        @summary 获取一个绑定任务的运行详情。
         
         @param request: GetBindingRequest
         @return: GetBindingResponse
@@ -7492,7 +7492,7 @@ class Client(OpenApiClient):
         request: imm_20200930_models.GetBindingRequest,
     ) -> imm_20200930_models.GetBindingResponse:
         """
-        @summary 获取绑定
+        @summary 获取一个绑定任务的运行详情。
         
         @param request: GetBindingRequest
         @return: GetBindingResponse
@@ -11001,6 +11001,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.media_types):
             request.media_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.media_types, 'MediaTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.smart_cluster_ids):
+            request.smart_cluster_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.smart_cluster_ids, 'SmartClusterIds', 'json')
         if not UtilClient.is_unset(tmp_req.with_fields):
             request.with_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.with_fields, 'WithFields', 'json')
         query = {}
@@ -11016,6 +11018,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.query):
             query['Query'] = request.query
+        if not UtilClient.is_unset(request.smart_cluster_ids_shrink):
+            query['SmartClusterIds'] = request.smart_cluster_ids_shrink
         if not UtilClient.is_unset(request.with_fields_shrink):
             query['WithFields'] = request.with_fields_shrink
         req = open_api_models.OpenApiRequest(
@@ -11054,6 +11058,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.media_types):
             request.media_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.media_types, 'MediaTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.smart_cluster_ids):
+            request.smart_cluster_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.smart_cluster_ids, 'SmartClusterIds', 'json')
         if not UtilClient.is_unset(tmp_req.with_fields):
             request.with_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.with_fields, 'WithFields', 'json')
         query = {}
@@ -11069,6 +11075,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.query):
             query['Query'] = request.query
+        if not UtilClient.is_unset(request.smart_cluster_ids_shrink):
+            query['SmartClusterIds'] = request.smart_cluster_ids_shrink
         if not UtilClient.is_unset(request.with_fields_shrink):
             query['WithFields'] = request.with_fields_shrink
         req = open_api_models.OpenApiRequest(

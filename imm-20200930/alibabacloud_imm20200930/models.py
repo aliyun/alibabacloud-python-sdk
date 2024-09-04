@@ -789,6 +789,92 @@ class AlgorithmDefinition(TeaModel):
         return self
 
 
+class ReferenceFile(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        object_id: str = None,
+        project_name: str = None,
+        uri: str = None,
+    ):
+        self.dataset_name = dataset_name
+        self.object_id = object_id
+        self.project_name = project_name
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.uri is not None:
+            result['URI'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        return self
+
+
+class Answer(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        references: List[ReferenceFile] = None,
+    ):
+        self.content = content
+        self.references = references
+
+    def validate(self):
+        if self.references:
+            for k in self.references:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        result['References'] = []
+        if self.references is not None:
+            for k in self.references:
+                result['References'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        self.references = []
+        if m.get('References') is not None:
+            for k in m.get('References'):
+                temp_model = ReferenceFile()
+                self.references.append(temp_model.from_map(k))
+        return self
+
+
 class App(TeaModel):
     def __init__(
         self,
@@ -1543,6 +1629,282 @@ class Codes(TeaModel):
         return self
 
 
+class ElementContent(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        time_range: List[int] = None,
+        type: str = None,
+        url: str = None,
+    ):
+        self.content = content
+        self.time_range = time_range
+        self.type = type
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.time_range is not None:
+            result['TimeRange'] = self.time_range
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.url is not None:
+            result['URL'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('TimeRange') is not None:
+            self.time_range = m.get('TimeRange')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('URL') is not None:
+            self.url = m.get('URL')
+        return self
+
+
+class ElementRelation(TeaModel):
+    def __init__(
+        self,
+        object_id: str = None,
+        type: str = None,
+    ):
+        self.object_id = object_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class Element(TeaModel):
+    def __init__(
+        self,
+        element_contents: List[ElementContent] = None,
+        element_relations: List[ElementRelation] = None,
+        element_type: str = None,
+        object_id: str = None,
+        semantic_similarity: float = None,
+    ):
+        self.element_contents = element_contents
+        self.element_relations = element_relations
+        self.element_type = element_type
+        self.object_id = object_id
+        self.semantic_similarity = semantic_similarity
+
+    def validate(self):
+        if self.element_contents:
+            for k in self.element_contents:
+                if k:
+                    k.validate()
+        if self.element_relations:
+            for k in self.element_relations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ElementContents'] = []
+        if self.element_contents is not None:
+            for k in self.element_contents:
+                result['ElementContents'].append(k.to_map() if k else None)
+        result['ElementRelations'] = []
+        if self.element_relations is not None:
+            for k in self.element_relations:
+                result['ElementRelations'].append(k.to_map() if k else None)
+        if self.element_type is not None:
+            result['ElementType'] = self.element_type
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.semantic_similarity is not None:
+            result['SemanticSimilarity'] = self.semantic_similarity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.element_contents = []
+        if m.get('ElementContents') is not None:
+            for k in m.get('ElementContents'):
+                temp_model = ElementContent()
+                self.element_contents.append(temp_model.from_map(k))
+        self.element_relations = []
+        if m.get('ElementRelations') is not None:
+            for k in m.get('ElementRelations'):
+                temp_model = ElementRelation()
+                self.element_relations.append(temp_model.from_map(k))
+        if m.get('ElementType') is not None:
+            self.element_type = m.get('ElementType')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('SemanticSimilarity') is not None:
+            self.semantic_similarity = m.get('SemanticSimilarity')
+        return self
+
+
+class ContextualFile(TeaModel):
+    def __init__(
+        self,
+        content_type: str = None,
+        dataset_name: str = None,
+        elements: List[Element] = None,
+        media_type: str = None,
+        ossuri: str = None,
+        object_id: str = None,
+        owner_id: str = None,
+        project_name: str = None,
+        uri: str = None,
+    ):
+        self.content_type = content_type
+        self.dataset_name = dataset_name
+        self.elements = elements
+        self.media_type = media_type
+        self.ossuri = ossuri
+        self.object_id = object_id
+        self.owner_id = owner_id
+        self.project_name = project_name
+        self.uri = uri
+
+    def validate(self):
+        if self.elements:
+            for k in self.elements:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content_type is not None:
+            result['ContentType'] = self.content_type
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        result['Elements'] = []
+        if self.elements is not None:
+            for k in self.elements:
+                result['Elements'].append(k.to_map() if k else None)
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
+        if self.ossuri is not None:
+            result['OSSURI'] = self.ossuri
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.uri is not None:
+            result['URI'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContentType') is not None:
+            self.content_type = m.get('ContentType')
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        self.elements = []
+        if m.get('Elements') is not None:
+            for k in m.get('Elements'):
+                temp_model = Element()
+                self.elements.append(temp_model.from_map(k))
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
+        if m.get('OSSURI') is not None:
+            self.ossuri = m.get('OSSURI')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('URI') is not None:
+            self.uri = m.get('URI')
+        return self
+
+
+class ContextualMessage(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        files: List[ContextualFile] = None,
+        role: str = None,
+    ):
+        self.content = content
+        self.files = files
+        self.role = role
+
+    def validate(self):
+        if self.files:
+            for k in self.files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        result['Files'] = []
+        if self.files is not None:
+            for k in self.files:
+                result['Files'].append(k.to_map() if k else None)
+        if self.role is not None:
+            result['Role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        self.files = []
+        if m.get('Files') is not None:
+            for k in m.get('Files'):
+                temp_model = ContextualFile()
+                self.files.append(temp_model.from_map(k))
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        return self
+
+
 class CredentialConfigChain(TeaModel):
     def __init__(
         self,
@@ -2174,86 +2536,6 @@ class Dataset(TeaModel):
             self.total_file_size = m.get('TotalFileSize')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
-        return self
-
-
-class ElementContent(TeaModel):
-    def __init__(
-        self,
-        content: str = None,
-        time_range: List[int] = None,
-        type: str = None,
-        url: str = None,
-    ):
-        self.content = content
-        self.time_range = time_range
-        self.type = type
-        self.url = url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.content is not None:
-            result['Content'] = self.content
-        if self.time_range is not None:
-            result['TimeRange'] = self.time_range
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.url is not None:
-            result['URL'] = self.url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Content') is not None:
-            self.content = m.get('Content')
-        if m.get('TimeRange') is not None:
-            self.time_range = m.get('TimeRange')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('URL') is not None:
-            self.url = m.get('URL')
-        return self
-
-
-class Element(TeaModel):
-    def __init__(
-        self,
-        element_contents: List[ElementContent] = None,
-    ):
-        self.element_contents = element_contents
-
-    def validate(self):
-        if self.element_contents:
-            for k in self.element_contents:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['ElementContents'] = []
-        if self.element_contents is not None:
-            for k in self.element_contents:
-                result['ElementContents'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.element_contents = []
-        if m.get('ElementContents') is not None:
-            for k in m.get('ElementContents'):
-                temp_model = ElementContent()
-                self.element_contents.append(temp_model.from_map(k))
         return self
 
 
@@ -3876,6 +4158,73 @@ class FigureClusterForReq(TeaModel):
             self.name = m.get('Name')
         if m.get('ObjectId') is not None:
             self.object_id = m.get('ObjectId')
+        return self
+
+
+class FileSmartCluster(TeaModel):
+    def __init__(
+        self,
+        similarity: float = None,
+        smart_cluster_id: str = None,
+    ):
+        self.similarity = similarity
+        self.smart_cluster_id = smart_cluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.similarity is not None:
+            result['Similarity'] = self.similarity
+        if self.smart_cluster_id is not None:
+            result['SmartClusterId'] = self.smart_cluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Similarity') is not None:
+            self.similarity = m.get('Similarity')
+        if m.get('SmartClusterId') is not None:
+            self.smart_cluster_id = m.get('SmartClusterId')
+        return self
+
+
+class FunctionCall(TeaModel):
+    def __init__(
+        self,
+        arguments: str = None,
+        name: str = None,
+    ):
+        self.arguments = arguments
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arguments is not None:
+            result['Arguments'] = self.arguments
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Arguments') is not None:
+            self.arguments = m.get('Arguments')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         return self
 
 
@@ -6002,6 +6351,41 @@ class TimeRange(TeaModel):
             self.end = m.get('End')
         if m.get('Start') is not None:
             self.start = m.get('Start')
+        return self
+
+
+class ToolCall(TeaModel):
+    def __init__(
+        self,
+        function: FunctionCall = None,
+        type: str = None,
+    ):
+        self.function = function
+        self.type = type
+
+    def validate(self):
+        if self.function:
+            self.function.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.function is not None:
+            result['Function'] = self.function.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Function') is not None:
+            temp_model = FunctionCall()
+            self.function = temp_model.from_map(m['Function'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -24313,6 +24697,7 @@ class SemanticQueryRequest(TeaModel):
         next_token: str = None,
         project_name: str = None,
         query: str = None,
+        smart_cluster_ids: List[str] = None,
         with_fields: List[str] = None,
     ):
         # This parameter is required.
@@ -24324,6 +24709,7 @@ class SemanticQueryRequest(TeaModel):
         self.project_name = project_name
         # This parameter is required.
         self.query = query
+        self.smart_cluster_ids = smart_cluster_ids
         self.with_fields = with_fields
 
     def validate(self):
@@ -24347,6 +24733,8 @@ class SemanticQueryRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.query is not None:
             result['Query'] = self.query
+        if self.smart_cluster_ids is not None:
+            result['SmartClusterIds'] = self.smart_cluster_ids
         if self.with_fields is not None:
             result['WithFields'] = self.with_fields
         return result
@@ -24365,6 +24753,8 @@ class SemanticQueryRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('Query') is not None:
             self.query = m.get('Query')
+        if m.get('SmartClusterIds') is not None:
+            self.smart_cluster_ids = m.get('SmartClusterIds')
         if m.get('WithFields') is not None:
             self.with_fields = m.get('WithFields')
         return self
@@ -24379,6 +24769,7 @@ class SemanticQueryShrinkRequest(TeaModel):
         next_token: str = None,
         project_name: str = None,
         query: str = None,
+        smart_cluster_ids_shrink: str = None,
         with_fields_shrink: str = None,
     ):
         # This parameter is required.
@@ -24390,6 +24781,7 @@ class SemanticQueryShrinkRequest(TeaModel):
         self.project_name = project_name
         # This parameter is required.
         self.query = query
+        self.smart_cluster_ids_shrink = smart_cluster_ids_shrink
         self.with_fields_shrink = with_fields_shrink
 
     def validate(self):
@@ -24413,6 +24805,8 @@ class SemanticQueryShrinkRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.query is not None:
             result['Query'] = self.query
+        if self.smart_cluster_ids_shrink is not None:
+            result['SmartClusterIds'] = self.smart_cluster_ids_shrink
         if self.with_fields_shrink is not None:
             result['WithFields'] = self.with_fields_shrink
         return result
@@ -24431,6 +24825,8 @@ class SemanticQueryShrinkRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('Query') is not None:
             self.query = m.get('Query')
+        if m.get('SmartClusterIds') is not None:
+            self.smart_cluster_ids_shrink = m.get('SmartClusterIds')
         if m.get('WithFields') is not None:
             self.with_fields_shrink = m.get('WithFields')
         return self

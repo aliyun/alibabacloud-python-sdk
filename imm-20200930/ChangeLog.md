@@ -1,3 +1,12 @@
+2024-09-04 Version: 4.5.5
+- Update API CreateBinding: update param DatasetName.
+- Update API CreateBinding: update param ProjectName.
+- Update API CreateBinding: update param URI.
+- Update API CreateBinding: update response param.
+- Update API GetBinding: update response param.
+- Update API SemanticQuery: add param SmartClusterIds.
+
+
 2024-07-30 Version: 4.5.4
 - Update API BatchGetFileMeta: add param WithFields.
 - Update API GetFileMeta: add param WithFields.
