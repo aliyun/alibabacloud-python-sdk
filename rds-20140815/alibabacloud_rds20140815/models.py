@@ -2218,7 +2218,7 @@ class CloneDBInstanceRequest(TeaModel):
         zone_id_slave_1: str = None,
         zone_id_slave_2: str = None,
     ):
-        # Specifies whether to enable the automatic payment feature. Valid values:
+        # Specifies whether to enable the automatic payment feature for the new instance. Valid values:
         # 
         # 1.  **true**: enables the feature. You must make sure that your account balance is sufficient.
         # 2.  **false**: disables the feature. An unpaid order is generated.
@@ -2270,21 +2270,22 @@ class CloneDBInstanceRequest(TeaModel):
         # 
         # > By default, the new instance has the same storage capacity as the original primary instance.
         self.dbinstance_storage = dbinstance_storage
-        # The storage type of the instance. Valid values:
+        # The storage type of the new instance. Valid values:
         # 
-        # *   **local_ssd**: local SSDs
-        # *   **cloud_ssd**: standard SSDs
-        # *   **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
-        # *   **cloud_essd2**: ESSDs of PL2
-        # *   **cloud_essd3**: ESSD of PL3
+        # *   **general_essd** (recommend): general Enterprise SSD (ESSD)
+        # *   **local_ssd**: local SSD
+        # *   **cloud_ssd**: standard SSD
+        # *   **cloud_essd**: performance level 1 (PL1) ESSD
+        # *   **cloud_essd2**: PL2 ESSD
+        # *   **cloud_essd3**: PL3 ESSD
         # 
-        # > Serverless instances support only ESSDs of PL 1. For a serverless instance, you must set this parameter to **cloud_essd**.
+        # >  Serverless instances support only PL1 ESSDs and general ESSDs.
         self.dbinstance_storage_type = dbinstance_storage_type
         # The name of the database. If you specify more than one database, the value is in the following format: `Original database name 1,Original database name 2`.
         self.db_names = db_names
         # The ID of the dedicated cluster.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # Specifies whether to enable the release protection feature for the instance. Valid values:
+        # Specifies whether to enable the release protection feature for the new instance. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
@@ -2532,7 +2533,7 @@ class CloneDBInstanceShrinkRequest(TeaModel):
         zone_id_slave_1: str = None,
         zone_id_slave_2: str = None,
     ):
-        # Specifies whether to enable the automatic payment feature. Valid values:
+        # Specifies whether to enable the automatic payment feature for the new instance. Valid values:
         # 
         # 1.  **true**: enables the feature. You must make sure that your account balance is sufficient.
         # 2.  **false**: disables the feature. An unpaid order is generated.
@@ -2584,21 +2585,22 @@ class CloneDBInstanceShrinkRequest(TeaModel):
         # 
         # > By default, the new instance has the same storage capacity as the original primary instance.
         self.dbinstance_storage = dbinstance_storage
-        # The storage type of the instance. Valid values:
+        # The storage type of the new instance. Valid values:
         # 
-        # *   **local_ssd**: local SSDs
-        # *   **cloud_ssd**: standard SSDs
-        # *   **cloud_essd**: enhanced SSDs (ESSDs) of performance level 1 (PL1)
-        # *   **cloud_essd2**: ESSDs of PL2
-        # *   **cloud_essd3**: ESSD of PL3
+        # *   **general_essd** (recommend): general Enterprise SSD (ESSD)
+        # *   **local_ssd**: local SSD
+        # *   **cloud_ssd**: standard SSD
+        # *   **cloud_essd**: performance level 1 (PL1) ESSD
+        # *   **cloud_essd2**: PL2 ESSD
+        # *   **cloud_essd3**: PL3 ESSD
         # 
-        # > Serverless instances support only ESSDs of PL 1. For a serverless instance, you must set this parameter to **cloud_essd**.
+        # >  Serverless instances support only PL1 ESSDs and general ESSDs.
         self.dbinstance_storage_type = dbinstance_storage_type
         # The name of the database. If you specify more than one database, the value is in the following format: `Original database name 1,Original database name 2`.
         self.db_names = db_names
         # The ID of the dedicated cluster.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # Specifies whether to enable the release protection feature for the instance. Valid values:
+        # Specifies whether to enable the release protection feature for the new instance. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
@@ -3548,7 +3550,7 @@ class CreateAccountRequest(TeaModel):
         # *   **Super**: privileged account.
         # *   **Sysadmin**: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
         # 
-        # Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, see [Create a system admin account](https://help.aliyun.com/document_detail/170736.html).
+        # Before you create a system admin account, check whether the instance meets all prerequisites. For more information, see [Create a system admin account](https://help.aliyun.com/document_detail/170736.html).
         self.account_type = account_type
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         # 
@@ -11144,18 +11146,41 @@ class CreateReplicationLinkRequest(TeaModel):
         task_id: int = None,
         task_name: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # Specifies whether to perform a dry run. Valid values:
+        # 
+        # *   **true**: performs a dry run but does not create the instance. The system checks items such as the request parameters, request format, service limits, and available resources.
+        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, the instance is created.
+        # 
         # This parameter is required.
         self.dry_run = dry_run
+        # The account of the database that is used for data synchronization.
         self.replicator_account = replicator_account
+        # The password of the account.
         self.replicator_password = replicator_password
+        # The endpoint of the source instance.
         self.source_address = source_address
+        # The type of the source instance. Valid values:
+        # 
+        # *   **other**: other instances
+        # *   **aliyunRDS**: an ApsaraDB RDS instance
         self.source_category = source_category
+        # The name of the source instance.
+        # 
+        # >  You must specify this parameter if **SourceCategory** is set to **aliyunRDS**.
         self.source_instance_name = source_instance_name
+        # The ID of the region where the source instance is located.
+        # 
+        # >  You must specify this parameter if **SourceCategory** is set to **aliyunRDS**.
         self.source_instance_region_id = source_instance_region_id
+        # The port number of the source instance.
         self.source_port = source_port
+        # The task ID of the successful dry run.
         self.task_id = task_id
+        # The name of the task. You can specify a custom task name. If you do not specify this parameter, ApsaraDB RDS automatically generates a task name.
         self.task_name = task_name
 
     def validate(self):
@@ -11226,9 +11251,13 @@ class CreateReplicationLinkResponseBody(TeaModel):
         task_id: int = None,
         task_name: str = None,
     ):
+        # The ID of the instance.
         self.dbinstance_id = dbinstance_id
+        # The request ID.
         self.request_id = request_id
+        # The ID of the task.
         self.task_id = task_id
+        # The name of the task.
         self.task_name = task_name
 
     def validate(self):
@@ -14622,8 +14651,15 @@ class DeleteReplicationLinkRequest(TeaModel):
         promote_to_master: bool = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # Specifies whether to promote the disaster recovery instance to the primary instance. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
         # This parameter is required.
         self.promote_to_master = promote_to_master
         self.resource_owner_id = resource_owner_id
@@ -14664,9 +14700,13 @@ class DeleteReplicationLinkResponseBody(TeaModel):
         task_id: int = None,
         task_name: str = None,
     ):
+        # The ID of the instance.
         self.dbinstance_id = dbinstance_id
+        # The request ID.
         self.request_id = request_id
+        # The ID of the task.
         self.task_id = task_id
+        # The name of the task.
         self.task_name = task_name
 
     def validate(self):
@@ -19065,6 +19105,7 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         support_modify_backup_priority: bool = None,
         support_released_keep: int = None,
         support_volume_shadow_copy: int = None,
+        supports_high_frequency_backup: int = None,
     ):
         # The number of archived backup files that are retained.
         self.archive_backup_keep_count = archive_backup_keep_count
@@ -19188,6 +19229,7 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         # 
         # >  This parameter is returned only when the instance runs SQL Server.
         self.support_volume_shadow_copy = support_volume_shadow_copy
+        self.supports_high_frequency_backup = supports_high_frequency_backup
 
     def validate(self):
         pass
@@ -19254,6 +19296,8 @@ class DescribeBackupPolicyResponseBody(TeaModel):
             result['SupportReleasedKeep'] = self.support_released_keep
         if self.support_volume_shadow_copy is not None:
             result['SupportVolumeShadowCopy'] = self.support_volume_shadow_copy
+        if self.supports_high_frequency_backup is not None:
+            result['SupportsHighFrequencyBackup'] = self.supports_high_frequency_backup
         return result
 
     def from_map(self, m: dict = None):
@@ -19314,6 +19358,8 @@ class DescribeBackupPolicyResponseBody(TeaModel):
             self.support_released_keep = m.get('SupportReleasedKeep')
         if m.get('SupportVolumeShadowCopy') is not None:
             self.support_volume_shadow_copy = m.get('SupportVolumeShadowCopy')
+        if m.get('SupportsHighFrequencyBackup') is not None:
+            self.supports_high_frequency_backup = m.get('SupportsHighFrequencyBackup')
         return self
 
 
@@ -24149,9 +24195,11 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInst
 class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra(TeaModel):
     def __init__(
         self,
+        account_security_policy: str = None,
         dbinstance_ids: DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds = None,
         recovery_model: str = None,
     ):
+        self.account_security_policy = account_security_policy
         # The instance IDs.
         self.dbinstance_ids = dbinstance_ids
         # The recovery model. Valid values: Simple and Full.
@@ -24167,6 +24215,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra(TeaMo
             return _map
 
         result = dict()
+        if self.account_security_policy is not None:
+            result['AccountSecurityPolicy'] = self.account_security_policy
         if self.dbinstance_ids is not None:
             result['DBInstanceIds'] = self.dbinstance_ids.to_map()
         if self.recovery_model is not None:
@@ -24175,6 +24225,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra(TeaMo
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountSecurityPolicy') is not None:
+            self.account_security_policy = m.get('AccountSecurityPolicy')
         if m.get('DBInstanceIds') is not None:
             temp_model = DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds()
             self.dbinstance_ids = temp_model.from_map(m['DBInstanceIds'])
@@ -24403,6 +24455,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         dbmax_quantity: int = None,
         dedicated_host_group_id: str = None,
         deletion_protection: bool = None,
+        disaster_recovery_info: str = None,
+        disaster_recovery_instances: str = None,
         engine: str = None,
         engine_version: str = None,
         expire_time: str = None,
@@ -24558,6 +24612,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # *   **true**\
         # *   **false**\
         self.deletion_protection = deletion_protection
+        self.disaster_recovery_info = disaster_recovery_info
+        self.disaster_recovery_instances = disaster_recovery_instances
         # The database engine of the instance. Valid values:
         # 
         # *   **MySQL**\
@@ -24776,6 +24832,10 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             result['DedicatedHostGroupId'] = self.dedicated_host_group_id
         if self.deletion_protection is not None:
             result['DeletionProtection'] = self.deletion_protection
+        if self.disaster_recovery_info is not None:
+            result['DisasterRecoveryInfo'] = self.disaster_recovery_info
+        if self.disaster_recovery_instances is not None:
+            result['DisasterRecoveryInstances'] = self.disaster_recovery_instances
         if self.engine is not None:
             result['Engine'] = self.engine
         if self.engine_version is not None:
@@ -24934,6 +24994,10 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             self.dedicated_host_group_id = m.get('DedicatedHostGroupId')
         if m.get('DeletionProtection') is not None:
             self.deletion_protection = m.get('DeletionProtection')
+        if m.get('DisasterRecoveryInfo') is not None:
+            self.disaster_recovery_info = m.get('DisasterRecoveryInfo')
+        if m.get('DisasterRecoveryInstances') is not None:
+            self.disaster_recovery_instances = m.get('DisasterRecoveryInstances')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
         if m.get('EngineVersion') is not None:
@@ -39143,17 +39207,17 @@ class DescribeHistoryTasksStatRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The task status. Valid values:
+        # The status of the task. Valid values:
         # 
-        # *   Scheduled
-        # *   Running
-        # *   Succeed
-        # *   Failed
-        # *   Cancelling
-        # *   Canceled
-        # *   Waiting
+        # *   **Scheduled**\
+        # *   **Running**\
+        # *   **Succeed**\
+        # *   **Failed**\
+        # *   **Cancelling**\
+        # *   **Canceled**\
+        # *   **Waiting**\
         # 
-        # Separate multiple states with commas (,). This parameter is empty by default, which indicates that tasks in all states are queried.
+        # Separate multiple statuses with commas (,). By default, this parameter is left empty. This indicates that tasks in all statuses are queried.
         self.status = status
         # The task ID.
         self.task_id = task_id
@@ -39244,15 +39308,15 @@ class DescribeHistoryTasksStatResponseBodyItems(TeaModel):
         status: str = None,
         total_count: int = None,
     ):
-        # The task status. Valid values:
+        # The status of the task. Valid values:
         # 
-        # *   Scheduled
-        # *   Running
-        # *   Succeed
-        # *   Failed
-        # *   Cancelling
-        # *   Canceled
-        # *   Waiting
+        # *   **Scheduled**\
+        # *   **Running**\
+        # *   **Succeed**\
+        # *   **Failed**\
+        # *   **Cancelling**\
+        # *   **Canceled**\
+        # *   **Waiting**\
         self.status = status
         # The total number of tasks.
         self.total_count = total_count
@@ -39287,7 +39351,7 @@ class DescribeHistoryTasksStatResponseBody(TeaModel):
         items: List[DescribeHistoryTasksStatResponseBodyItems] = None,
         request_id: str = None,
     ):
-        # The information about the task.
+        # The queried tasks.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -45900,6 +45964,7 @@ class DescribePostgresExtensionsResponseBodyInstalledExtensions(TeaModel):
         owner: str = None,
         priority: str = None,
         requires: str = None,
+        uid: str = None,
     ):
         # The category of the extension.
         # 
@@ -45932,6 +45997,7 @@ class DescribePostgresExtensionsResponseBodyInstalledExtensions(TeaModel):
         self.priority = priority
         # The extensions on which the current extension depends when it is installed.
         self.requires = requires
+        self.uid = uid
 
     def validate(self):
         pass
@@ -45958,6 +46024,8 @@ class DescribePostgresExtensionsResponseBodyInstalledExtensions(TeaModel):
             result['Priority'] = self.priority
         if self.requires is not None:
             result['Requires'] = self.requires
+        if self.uid is not None:
+            result['Uid'] = self.uid
         return result
 
     def from_map(self, m: dict = None):
@@ -45978,6 +46046,8 @@ class DescribePostgresExtensionsResponseBodyInstalledExtensions(TeaModel):
             self.priority = m.get('Priority')
         if m.get('Requires') is not None:
             self.requires = m.get('Requires')
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
         return self
 
 
@@ -45992,6 +46062,7 @@ class DescribePostgresExtensionsResponseBodyUninstalledExtensions(TeaModel):
         owner: str = None,
         priority: str = None,
         requires: str = None,
+        uid: str = None,
     ):
         # The category of the extension.
         self.category = category
@@ -46009,6 +46080,7 @@ class DescribePostgresExtensionsResponseBodyUninstalledExtensions(TeaModel):
         self.priority = priority
         # The extensions on which the current extension depends when it is installed.
         self.requires = requires
+        self.uid = uid
 
     def validate(self):
         pass
@@ -46035,6 +46107,8 @@ class DescribePostgresExtensionsResponseBodyUninstalledExtensions(TeaModel):
             result['Priority'] = self.priority
         if self.requires is not None:
             result['Requires'] = self.requires
+        if self.uid is not None:
+            result['Uid'] = self.uid
         return result
 
     def from_map(self, m: dict = None):
@@ -46055,6 +46129,8 @@ class DescribePostgresExtensionsResponseBodyUninstalledExtensions(TeaModel):
             self.priority = m.get('Priority')
         if m.get('Requires') is not None:
             self.requires = m.get('Requires')
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
         return self
 
 
@@ -50805,12 +50881,28 @@ class DescribeReplicationLinkLogsRequest(TeaModel):
         task_name: str = None,
         task_type: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the task. You can call the **CreateReplicationLink** operation to create the task ID of the disaster recovery instance.
         self.task_id = task_id
+        # The name of the task. You can call the **CreateReplicationLink** operation to create a disaster recovery instance. You can specify a task name in the request parameters of the call.
         self.task_name = task_name
+        # The type of the task. Valid values:
+        # 
+        # *   **create**: creates a synchronization link.
+        # *   **create-dryrun**: performs a precheck before a synchronization link is created.
+        # 
+        # Valid values:
+        # 
+        # *   create: creates a replication link.
+        # *   create-dryrun: performs a precheck before a replication link is created.
+        # 
         # This parameter is required.
         self.task_type = task_type
 
@@ -50874,21 +50966,56 @@ class DescribeReplicationLinkLogsResponseBodyItems(TeaModel):
         task_status: str = None,
         task_type: str = None,
     ):
+        # The details of the task.
         self.detail = detail
+        # The creation time. The time is displayed in UTC.
         self.gmt_created = gmt_created
+        # The modification time. The time is displayed in UTC.
         self.gmt_modified = gmt_modified
+        # The synchronization information. This parameter is a reserved parameter.
         self.replication_info = replication_info
+        # The status of the synchronization. Valid values:
+        # 
+        # *   **steaming**: The synchronization is in progress.
+        # *   **finish**: The synchronization is complete.
+        # *   **disconnect**: The synchronization is disconnected.
         self.replication_state = replication_state
+        # The account of the database that is used for data synchronization.
         self.replicator_account = replicator_account
+        # The password of the account.
         self.replicator_password = replicator_password
+        # The endpoint of the source instance.
         self.source_address = source_address
+        # The type of the source instance. Valid values:
+        # 
+        # *   other: other instances
+        # *   aliyunRDS: an ApsaraDB RDS instance
         self.source_category = source_category
+        # The port number of the source instance.
         self.source_port = source_port
+        # The destination instance ID.
         self.target_instance_id = target_instance_id
+        # The ID of the task.
         self.task_id = task_id
+        # The name of the task.
         self.task_name = task_name
+        # The stage of the task. Valid values:
+        # 
+        # *   **precheck**: the precheck stage.
+        # *   **basebackup**: the basic backup stage.
+        # *   **startup**: the startup stage.
+        # *   **increment**: the incremental synchronization stage.
         self.task_stage = task_stage
+        # The status of the task. Valid values:
+        # 
+        # *   **success**\
+        # *   **failure**\
+        # *   **running**\
         self.task_status = task_status
+        # The type of the task. Valid values:
+        # 
+        # *   **create**: creates a synchronization link.
+        # *   **create-dryrun**: performs a precheck before a synchronization link is created.
         self.task_type = task_type
 
     def validate(self):
@@ -50979,9 +51106,13 @@ class DescribeReplicationLinkLogsResponseBody(TeaModel):
         request_id: str = None,
         total_size: int = None,
     ):
+        # The ID of the instance.
         self.dbinstance_id = dbinstance_id
+        # The items.
         self.items = items
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):
@@ -52198,9 +52329,9 @@ class DescribeSQLLogRecordsRequest(TeaModel):
         # 
         # *   When you call this operation and set the **Form** parameter to **File** to generate an audit file, you cannot filter log entries by keyword.
         # *   You can specify up to 10 keywords. The keywords are evaluated by using the **AND** operator. Separate multiple keywords with spaces.
-        # *   If a field name in the specified SQL statement is enclosed in backquotes (\\`) and you want to use the field name as a keyword, you must enter the backquotes (\\`) as part of the field name. For example, if the field name is \\`id\\`, enter \\`id\\` instead of id.
+        # *   If a field name in the specified SQL statement is enclosed in grave accents (\\`) and you want to use the field name as a keyword, you must enter the grave accents (\\`) as part of the field name. For example, if the field name is \\`id\\`, enter \\`id\\` instead of id.
         # 
-        # >  After you enter a keyword, the system matches the keyword based on the **Database**, **User**, and **QueryKeywords** parameters. The parameters are evaluated by using the **OR** operator.
+        # >  After you enter a keyword, the system matches the keyword based on the **Database**, **User**, and **QueryKeywords** parameters. The parameters are evaluated by using the **AND** operator.
         self.query_keywords = query_keywords
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -61255,8 +61386,11 @@ class ModifyBackupPolicyRequest(TeaModel):
         # *   **True** or **1**: enables the log backup feature.
         # *   **False** or **0**: disables the log backup feature.
         # 
-        # > *   You must specify this parameter when you set the **BackupPolicyMode** parameter to **LogBackupPolicy**.
-        # > *   This parameter takes effect only when you set the **BackupPolicyMode** parameter to **LogBackupPolicy**.
+        # > 
+        # 
+        # *   You must specify this parameter when you set the **BackupPolicyMode** parameter to **LogBackupPolicy**.
+        # 
+        # *   This parameter takes effect only when you set the **BackupPolicyMode** parameter to **LogBackupPolicy**.
         self.enable_backup_log = enable_backup_log
         # Specifies whether to enable incremental backup. Valid values:
         # 
@@ -61291,8 +61425,11 @@ class ModifyBackupPolicyRequest(TeaModel):
         self.log_backup_frequency = log_backup_frequency
         # The number of binary log files that you want to retain on the instance. Default value: **60**. Valid values: **6** to **100**.
         # 
-        # > *   This parameter takes effect only when you set the **BackupPolicyMode** parameter to **LogBackupPolicy**.
-        # > *   If the instance runs MySQL, you can set this parameter to \\*\\*-1\\*\\*. The value \\*\\*-1\\*\\* specifies that an unlimited number of binary log files can be retained on the instance.
+        # > 
+        # 
+        # *   This parameter takes effect only when you set the **BackupPolicyMode** parameter to **LogBackupPolicy**.
+        # 
+        # *   If the instance runs MySQL, you can set this parameter to \\*\\*-1\\*\\*. The value \\*\\*-1\\*\\* specifies that an unlimited number of binary log files can be retained on the instance.
         self.log_backup_local_retention_number = log_backup_local_retention_number
         # The number of days for which the log backup is retained. Valid values: **7 to 730**. The log backup retention period cannot be longer than the data backup retention period.
         # 
@@ -65144,9 +65281,9 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         self.direction = direction
         # The effective time. Valid values:
         # 
-        # *   **Immediate** (default)
+        # *   **Immediate** (default): The effective time immediately takes effect.
         # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
-        # *   **ScheduleTime**: The change takes effect at the point in time that you specify. The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
+        # *   **ScheduleTime**: The effective time takes effect at the point in time that you specify. The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
         self.effective_time = effective_time
         # The database engine version of the instance.
         # 
@@ -65419,9 +65556,9 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         self.direction = direction
         # The effective time. Valid values:
         # 
-        # *   **Immediate** (default)
+        # *   **Immediate** (default): The effective time immediately takes effect.
         # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
-        # *   **ScheduleTime**: The change takes effect at the point in time that you specify. The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
+        # *   **ScheduleTime**: The effective time takes effect at the point in time that you specify. The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
         self.effective_time = effective_time
         # The database engine version of the instance.
         # 
@@ -69188,9 +69325,9 @@ class ModifyParameterRequest(TeaModel):
         self.switch_time = switch_time
         # The time at which the modification takes effect. Valid values:
         # 
-        # *   **Immediate**: immediately modifies the parameter. This is the default value.
-        # *   **MaintainTime**: modifies the parameter during the maintenance window of the instance. You can call the ModifyDBInstanceMaintainTime operation to change the maintenance window.
-        # *   **ScheduleTime**: modifies the parameter at the point in time that you specify. If you specify this value, you must also specify **SwitchTime**.
+        # - **Immediate**: immediately modifies the parameter. This is the default value.
+        # - **MaintainTime**: modifies the parameter during the maintenance window of the instance. You can call the ModifyDBInstanceMaintainTime operation to change the maintenance window.
+        # - **ScheduleTime**: modifies the parameter at the point in time that you specify. If you specify this value, you must also specify **SwitchTime**.
         self.switch_time_mode = switch_time_mode
 
     def validate(self):
@@ -78490,47 +78627,47 @@ class UpgradeDBInstanceMajorVersionRequest(TeaModel):
         zone_id_slave_1: str = None,
         zone_id_slave_2: str = None,
     ):
-        # The time at which the system collects the statistics of the new instance. Valid values:
+        # Specify the point in time at which the system collects the statistics of the instance.
         # 
-        # *   Before: ApsaraDB RDS collects the statistics of the new instance before the switchover to ensure service stability. If the original instance contains a large amount of data, the upgrade may require a long period of time.
-        # *   After: ApsaraDB RDS collects the statistics of the new instance after the switchover to accelerate the upgrade. If you access tables for which no statistics are generated, the execution plans that you specify may be inaccurate. In addition, your database service may be unavailable during peak hours.
+        # *   **Before**: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
+        # *   **After**: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
         # 
-        # > If you set SwitchOver to false, the value Before of this parameter specifies that ApsaraDB RDS collects the statistics of the new instance before the new instance starts to process read and write requests, and the value After of this parameter specifies that ApsaraDB RDS collects the statistics of the new instance after the new instance starts to process read and write requests.
+        # >  If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
         self.collect_stat_mode = collect_stat_mode
-        # The instance type of the new instance. The CPU and memory specifications of the new instance must be higher than or equal to the CPU and memory specifications of the original instance.
+        # The new instance type of the instance. The new CPU and memory specifications of the instance must be higher than or equal to the original CPU and memory specifications. If you set the **UpgradeMode** parameter to **inPlaceUpgrade**, you **do not need to configure** this parameter.
         # 
-        # For example, if the instance type of the original instance is `pg.n2.small.2c`, which provides 1 core and 2 GB of memory, the instance type of the new instance can be `pg.n2.medium.2c`, which provides 2 cores and 4 GB of memory.
+        # For example, you can upgrade the instance type from `pg.n2.small.2c` to `pg.n2.medium.2c`. The pg.n2.small.2c instance type provides 1 CPU core and 2 GB of memory. The pg.n2.medium.2c instance type provides 2 CPU cores and 4 GB of memory.
         # 
-        # > For more information about instance types in ApsaraDB RDS for PostgreSQL, see [Primary ApsaraDB RDS for PostgreSQL instance types](https://help.aliyun.com/document_detail/276990.html).
+        # >  For more information about the instance types of ApsaraDB RDS for PostgreSQL instances, see [Instance types for primary ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/276990.html).
         self.dbinstance_class = dbinstance_class
         # The ID of the original instance.
         self.dbinstance_id = dbinstance_id
-        # The storage capacity of the new instance.
-        # 
-        # Unit: GB
+        # The new storage capacity of the instance. Unit: GB If you set the **UpgradeMode** parameter to **inPlaceUpgrade**, you **do not need to configure** this parameter.
         # 
         # Valid values:
         # 
-        # *   Valid values if you use enhanced SSDs (ESSDs) of performance level 1 (PL1): 20 to 3200
-        # *   Valid values if you use ESSDs of PL2: 500 to 3200
-        # *   Valid values if you use ESSDs of PL3: 1500 to 3200
+        # *   **PL1 ESSD**: 20 GB to 32,000 GB
+        # *   **PL2 ESSD**: 500 GB to 3,200 GB
+        # *   **PL3 ESSD**: 1,500 GB to 3,200 GB
+        # *   **General ESSD**: 40 GB to 2,000 GB
         # 
-        # > If the original instance uses local disks, you can reduce the storage capacity of the instance when you upgrade the major engine version of the instance. For more information about the minimum available storage capacity, see [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/203309.html).
+        # >  If the original instance uses local disks, you can reduce the storage capacity of the instance when you upgrade the major engine version of the instance. For more information about the minimum storage capacity, see [Upgrade the major engine version](https://help.aliyun.com/document_detail/203309.html).
         self.dbinstance_storage = dbinstance_storage
-        # The storage type of the new instance.
+        # The storage type of the instance that runs the required major engine version.
         # 
         # Valid values:
         # 
-        # *   cloud_ssd: standard SSDs
-        # *   cloud_essd: ESSD of PL1
-        # *   cloud_essd2: ESSD of PL2
-        # *   cloud_essd3: ESSD of PL3
+        # *   **cloud_ssd**: standard SSD
+        # *   **cloud_essd**: performance level 1 (PL1) Enterprise SSD (ESSD)
+        # *   **cloud_essd2**: PL2 ESSD
+        # *   **cloud_essd3**: PL3 ESSD
+        # *   **general_essd**: general ESSD
         # 
-        # The major engine version upgrade feature is based on cloud disk snapshots. You can select a storage type based on the following conditions:
+        # The major engine version upgrade feature is developed based on snapshots for cloud disks. You can select a storage type after the upgrade based on the following items:
         # 
-        # *   If the original instance uses standard SSDs, you can set this parameter to cloud_ssd.
-        # *   If the original instance uses ESSDs, you can set this parameter to cloud_essd, cloud_essd2, or cloud_essd3.
-        # *   If the original instance uses local disks, you can set this parameter to cloud_essd, cloud_essd2, or cloud_essd3.
+        # *   If the original instance uses standard SSDs, set this parameter to cloud_ssd.
+        # *   If the original instance uses ESSDs, set this parameter to cloud_essd, cloud_essd2, cloud_essd3, or general_essd.
+        # *   If the original instance uses local SSDs, set this parameter to cloud_essd, cloud_essd2, cloud_essd3, or general_essd.
         self.dbinstance_storage_type = dbinstance_storage_type
         # The network type of the new instance. Set the value to VPC. The major engine version upgrade feature is supported only for instances that reside in VPCs.
         # 
@@ -78547,49 +78684,64 @@ class UpgradeDBInstanceMajorVersionRequest(TeaModel):
         # The internal IP address of the new instance. You do not need to specify this parameter. The system automatically assigns an internal IP address based on the values of the VPCId and vSwitchId parameters.
         self.private_ip_address = private_ip_address
         self.resource_owner_id = resource_owner_id
-        # Specifies whether the system automatically switches your workloads over to the new instance after data is migrated to the new instance.
+        # Specifies whether to switch your workloads over to the instance that runs the required major engine version based on your business requirements.
         # 
         # Valid values:
         # 
-        # *   true
-        # *   false Before you perform an upgrade, we recommend that you set this parameter to false to test whether the new major engine version is compatible with your workloads.
+        # *   **true**: The system automatically switches workloads over to the instance. This configuration method is used to perform an upgrade after you verify that the new major engine version is compatible with your workloads.
+        # *   **false**: The system does not automatically switch your workloads over to the instance. In most cases, this configuration method is used to test whether the new major engine version is compatible with your workloads before you perform the upgrade.
         # 
-        # > *   If you set this parameter to true, you must take note of the following information:
-        # > *   After the switchover is complete, you cannot roll your workloads back to the original instance. Proceed with caution.
-        # > *   During the switchover, the original instance processes only read requests. We recommend that you perform the switchover during off-peak hours.
-        # > *   If read-only instances are attached to the original instance, you can set this parameter only to false. In this case, the read-only instances that are attached to the original instance cannot be cloned. After the upgrade is complete, you must create read-only instances for the new instance.
-        # > *   If you set this parameter to false, you must take note of the following information:
-        # > *   The data migration does not interrupt your workloads on the original instance.
-        # > *   After data is migrated to the new instance, you must update the endpoint configuration on your application. This update requires you to replace the endpoint of the original instance with the endpoint of the new instance. For more information about how to view the endpoint of an instance, see [View and change the internal and public endpoints and port numbers of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96788.html).
+        # > 
+        # 
+        # *   If you set this parameter to true, you must take note of the following items:
+        # 
+        #     *   After the switchover is complete, you cannot roll your workloads back to the original instance. Proceed with caution.
+        #     *   During the switchover, the original instance processes only read requests. We recommend that you perform the switchover during off-peak hours.
+        #     *   If read-only instances are attached to the original instance, you can set this parameter only to false. In this case, the read-only instances that are attached to the original instance cannot be cloned. After the upgrade is complete, you must create read-only instances for the instance.
+        # 
+        # *   If you set this parameter to false, you must take note of the following items:
+        # 
+        #     *   The data migration does not interrupt your workloads on the original instance.
+        #     *   After data is migrated to the instance that runs the required major engine version, you must update the endpoint configuration in your application. This update requires you to replace the endpoint of the original instance with the endpoint of the instance that runs the required major engine version. For more information about how to view the endpoint of an instance, see [Viewing and change of the internal and public endpoints and port numbers](https://help.aliyun.com/document_detail/96788.html).
         self.switch_over = switch_over
         # A reserved parameter. You do not need to specify this parameter.
         self.switch_time = switch_time
-        # The switchover time. This parameter is used together with SwitchOver. This parameter is available only when **SwitchOver** is set to **true**.
+        # The point in time at which the workloads are switched over. This parameter is used together with the SwitchOver parameter. This parameter is available only when you set the **SwitchOver** parameter to **true**.
         # 
         # Valid values:
         # 
-        # *   Immediate: The settings immediately take effect.
-        # *   MaintainTime: The settings take effect during the maintenance window of the instance. You can call the ModifyDBInstanceMaintainTime operation to change the maintenance window of an instance.
+        # *   **Immediate**: The workloads are immediately switched over.
+        # *   **MaintainTime**: The workloads are switched over within the maintenance window that you specify. You can call the ModifyDBInstanceMaintainTime operation to change the maintenance window of an instance.
         self.switch_time_mode = switch_time_mode
         # The major engine version of the new instance. The value of this parameter must be the major engine version on which an upgrade check is performed.
         # 
         # >  You can call the UpgradeDBInstanceMajorVersionPrecheck operation to perform an upgrade check.
         self.target_major_version = target_major_version
+        # The upgrade mode. This parameter is required when you set the **SwitchOver** parameter to **true**. Valid values:
+        # 
+        # *   **inPlaceUpgrade**: local upgrade. The major engine version upgrade is performed on the original instance, and no new instance is created. After the upgrade, the original instance runs the required major engine version and inherits the original orders, name, tags, alert rules in CloudMonitor, and backup settings.
+        # *   **blueGreenDeployment**: blue-green deployment. After the major engine version of the instance is upgraded, the original instance is retained and a new instance is created. Fees are generated for the new instance based on the billing method that you specified. However, no fees are generated for the creation of the new instance. After the upgrade is complete, fees are generated for both the original and new instances and the new instance cannot enjoy the discounts provided for the original instance.
         self.upgrade_mode = upgrade_mode
         # A reserved parameter. You do not need to specify this parameter.
         self.used_time = used_time
-        # The VPC ID. You can call the DescribeDBInstanceAttribute operation to query the VPC ID.
+        # The virtual private cloud (VPC) ID of the instance. If you set the **UpgradeMode** parameter to **inPlaceUpgrade**, you **do not need to configure** this parameter.
+        # 
+        # You can call the DescribeDBInstanceAttribute operation to query the VPC ID of the original instance.
         self.vpcid = vpcid
-        # *   If the original instance runs RDS Basic Edition, you must enter the vSwitch ID of the new instance.
-        # *   If the original instance runs RDS High-availability Edition, you must enter the vSwitch ID of the new instance and the vSwitch ID of the secondary instance of the new instance. Separate the vSwitch IDs with commas (,).
+        # The vSwitch ID of the instance that runs the required major engine version. If you set the **UpgradeMode** parameter to **inPlaceUpgrade**, you **do not need to configure** this parameter.
+        # 
+        # *   If the original instance runs RDS Basic Edition, configure the vSwitch ID for the instance that runs the required major engine version.
+        # *   If the original instance runs RDS High-availability Edition, configure the vSwitch IDs for the instance that runs the required major engine version and its secondary instance. Separate the vSwitch IDs with commas (,).
         # 
         # >  The vSwitches that you specify must reside in the same zone as the original instance. You can call the DescribeVSwitches operation to query the vSwitch IDs.
         self.v_switch_id = v_switch_id
-        # The ID of the zone to which the new primary instance belongs. You can call the DescribeRegions operation to query zone IDs.
+        # The ID of the zone to which the primary instance that runs the required major engine version belongs. If you set the **UpgradeMode** parameter to **inPlaceUpgrade**, you **do not need to configure** this parameter.
+        # 
+        # You can call the DescribeRegions operation to query zone IDs.
         # 
         # You can select a zone that belongs to the region in which the original instance resides.
         self.zone_id = zone_id
-        # The ID of the zone to which the new secondary instance belongs. This parameter is available only when the original instance runs RDS High-availability Edition.
+        # The ID of the zone to which the secondary instance runs the required major engine version belongs. This parameter is available only when the original instance runs RDS High-availability Edition. If you set the **UpgradeMode** parameter to **inPlaceUpgrade**, you **do not need to configure** this parameter.
         # 
         # You can select a zone that belongs to the region in which the original instance resides.
         # 
