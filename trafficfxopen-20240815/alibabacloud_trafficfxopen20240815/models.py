@@ -616,7 +616,6 @@ class SearchRequest(TeaModel):
         self.source = source
         # This parameter is required.
         self.terminal = terminal
-        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):

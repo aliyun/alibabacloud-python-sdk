@@ -1,3 +1,7 @@
+2024-09-04 Version: 1.2.1
+- Update API Search: update param userId.
+
+
 2024-09-04 Version: 1.2.0
 - Support API ConvertUrl.
 
