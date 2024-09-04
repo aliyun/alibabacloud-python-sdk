@@ -105,10 +105,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.CancelSubscriptionBillResponse:
         """
-        Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
+        @summary Cancels the subscription to multi-level bills as an Alibaba Cloud eco-partner.
+        
+        @description Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
         You can call this operation to cancel the subscription to only one type of bill at a time.
         After the subscription to a type of bill is canceled, bills of this type are no longer pushed to the specified Object Storage Service (OSS) bucket.
-        **This topic is published only on the international site (alibabacloud.com).
+        *This topic is published only on the international site (alibabacloud.com).
         
         @param request: CancelSubscriptionBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -143,10 +145,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.CancelSubscriptionBillResponse:
         """
-        Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
+        @summary Cancels the subscription to multi-level bills as an Alibaba Cloud eco-partner.
+        
+        @description Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
         You can call this operation to cancel the subscription to only one type of bill at a time.
         After the subscription to a type of bill is canceled, bills of this type are no longer pushed to the specified Object Storage Service (OSS) bucket.
-        **This topic is published only on the international site (alibabacloud.com).
+        *This topic is published only on the international site (alibabacloud.com).
         
         @param request: CancelSubscriptionBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -180,10 +184,12 @@ class Client(OpenApiClient):
         request: agency_20221216_models.CancelSubscriptionBillRequest,
     ) -> agency_20221216_models.CancelSubscriptionBillResponse:
         """
-        Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
+        @summary Cancels the subscription to multi-level bills as an Alibaba Cloud eco-partner.
+        
+        @description Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
         You can call this operation to cancel the subscription to only one type of bill at a time.
         After the subscription to a type of bill is canceled, bills of this type are no longer pushed to the specified Object Storage Service (OSS) bucket.
-        **This topic is published only on the international site (alibabacloud.com).
+        *This topic is published only on the international site (alibabacloud.com).
         
         @param request: CancelSubscriptionBillRequest
         @return: CancelSubscriptionBillResponse
@@ -196,10 +202,12 @@ class Client(OpenApiClient):
         request: agency_20221216_models.CancelSubscriptionBillRequest,
     ) -> agency_20221216_models.CancelSubscriptionBillResponse:
         """
-        Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
+        @summary Cancels the subscription to multi-level bills as an Alibaba Cloud eco-partner.
+        
+        @description Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
         You can call this operation to cancel the subscription to only one type of bill at a time.
         After the subscription to a type of bill is canceled, bills of this type are no longer pushed to the specified Object Storage Service (OSS) bucket.
-        **This topic is published only on the international site (alibabacloud.com).
+        *This topic is published only on the international site (alibabacloud.com).
         
         @param request: CancelSubscriptionBillRequest
         @return: CancelSubscriptionBillResponse
@@ -207,11 +215,174 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_subscription_bill_with_options_async(request, runtime)
 
+    def create_coupon_template_with_options(
+        self,
+        tmp_req: agency_20221216_models.CreateCouponTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.CreateCouponTemplateResponse:
+        """
+        @summary 创建优惠券模板
+        
+        @param tmp_req: CreateCouponTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCouponTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = agency_20221216_models.CreateCouponTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.product_type):
+            request.product_type_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.product_type, 'ProductType', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.applicable_products):
+            query['ApplicableProducts'] = request.applicable_products
+        if not UtilClient.is_unset(request.cost_bearer):
+            query['CostBearer'] = request.cost_bearer
+        if not UtilClient.is_unset(request.coupon_description):
+            query['CouponDescription'] = request.coupon_description
+        if not UtilClient.is_unset(request.expireddate):
+            query['Expireddate'] = request.expireddate
+        if not UtilClient.is_unset(request.limit_per_person):
+            query['LimitPerPerson'] = request.limit_per_person
+        if not UtilClient.is_unset(request.product_type_shrink):
+            query['ProductType'] = request.product_type_shrink
+        if not UtilClient.is_unset(request.purchase_type):
+            query['PurchaseType'] = request.purchase_type
+        if not UtilClient.is_unset(request.reason_for_application):
+            query['ReasonForApplication'] = request.reason_for_application
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.vailddate):
+            query['Vailddate'] = request.vailddate
+        if not UtilClient.is_unset(request.vaildperioddays):
+            query['Vaildperioddays'] = request.vaildperioddays
+        if not UtilClient.is_unset(request.valid_until):
+            query['ValidUntil'] = request.valid_until
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCouponTemplate',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.CreateCouponTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_coupon_template_with_options_async(
+        self,
+        tmp_req: agency_20221216_models.CreateCouponTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.CreateCouponTemplateResponse:
+        """
+        @summary 创建优惠券模板
+        
+        @param tmp_req: CreateCouponTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCouponTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = agency_20221216_models.CreateCouponTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.product_type):
+            request.product_type_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.product_type, 'ProductType', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.applicable_products):
+            query['ApplicableProducts'] = request.applicable_products
+        if not UtilClient.is_unset(request.cost_bearer):
+            query['CostBearer'] = request.cost_bearer
+        if not UtilClient.is_unset(request.coupon_description):
+            query['CouponDescription'] = request.coupon_description
+        if not UtilClient.is_unset(request.expireddate):
+            query['Expireddate'] = request.expireddate
+        if not UtilClient.is_unset(request.limit_per_person):
+            query['LimitPerPerson'] = request.limit_per_person
+        if not UtilClient.is_unset(request.product_type_shrink):
+            query['ProductType'] = request.product_type_shrink
+        if not UtilClient.is_unset(request.purchase_type):
+            query['PurchaseType'] = request.purchase_type
+        if not UtilClient.is_unset(request.reason_for_application):
+            query['ReasonForApplication'] = request.reason_for_application
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.vailddate):
+            query['Vailddate'] = request.vailddate
+        if not UtilClient.is_unset(request.vaildperioddays):
+            query['Vaildperioddays'] = request.vaildperioddays
+        if not UtilClient.is_unset(request.valid_until):
+            query['ValidUntil'] = request.valid_until
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCouponTemplate',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.CreateCouponTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_coupon_template(
+        self,
+        request: agency_20221216_models.CreateCouponTemplateRequest,
+    ) -> agency_20221216_models.CreateCouponTemplateResponse:
+        """
+        @summary 创建优惠券模板
+        
+        @param request: CreateCouponTemplateRequest
+        @return: CreateCouponTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_coupon_template_with_options(request, runtime)
+
+    async def create_coupon_template_async(
+        self,
+        request: agency_20221216_models.CreateCouponTemplateRequest,
+    ) -> agency_20221216_models.CreateCouponTemplateResponse:
+        """
+        @summary 创建优惠券模板
+        
+        @param request: CreateCouponTemplateRequest
+        @return: CreateCouponTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_coupon_template_with_options_async(request, runtime)
+
     def create_customer_with_options(
         self,
         request: agency_20221216_models.CreateCustomerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.CreateCustomerResponse:
+        """
+        @summary This function is designed for create a customer who is to be invited.
+        
+        @param request: CreateCustomerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.customer_name):
@@ -248,6 +419,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.CreateCustomerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.CreateCustomerResponse:
+        """
+        @summary This function is designed for create a customer who is to be invited.
+        
+        @param request: CreateCustomerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.customer_name):
@@ -283,6 +461,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.CreateCustomerRequest,
     ) -> agency_20221216_models.CreateCustomerResponse:
+        """
+        @summary This function is designed for create a customer who is to be invited.
+        
+        @param request: CreateCustomerRequest
+        @return: CreateCustomerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_customer_with_options(request, runtime)
 
@@ -290,6 +474,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.CreateCustomerRequest,
     ) -> agency_20221216_models.CreateCustomerResponse:
+        """
+        @summary This function is designed for create a customer who is to be invited.
+        
+        @param request: CreateCustomerRequest
+        @return: CreateCustomerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_customer_with_options_async(request, runtime)
 
@@ -298,6 +488,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.CustomerQuotaRecordListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.CustomerQuotaRecordListResponse:
+        """
+        @summary Query quota adjustment list of Distribution Customer from International Site. Not available on Domestic Site.
+        
+        @param request: CustomerQuotaRecordListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CustomerQuotaRecordListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -324,6 +521,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.CustomerQuotaRecordListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.CustomerQuotaRecordListResponse:
+        """
+        @summary Query quota adjustment list of Distribution Customer from International Site. Not available on Domestic Site.
+        
+        @param request: CustomerQuotaRecordListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CustomerQuotaRecordListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -349,6 +553,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.CustomerQuotaRecordListRequest,
     ) -> agency_20221216_models.CustomerQuotaRecordListResponse:
+        """
+        @summary Query quota adjustment list of Distribution Customer from International Site. Not available on Domestic Site.
+        
+        @param request: CustomerQuotaRecordListRequest
+        @return: CustomerQuotaRecordListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.customer_quota_record_list_with_options(request, runtime)
 
@@ -356,6 +566,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.CustomerQuotaRecordListRequest,
     ) -> agency_20221216_models.CustomerQuotaRecordListResponse:
+        """
+        @summary Query quota adjustment list of Distribution Customer from International Site. Not available on Domestic Site.
+        
+        @param request: CustomerQuotaRecordListRequest
+        @return: CustomerQuotaRecordListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.customer_quota_record_list_with_options_async(request, runtime)
 
@@ -365,7 +581,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.DeductOutstandingBalanceResponse:
         """
-        Note that sometimes you may find that the customer\\"s Used Credit is negative. This indicates that there is no need to restore the Used Credit, and its ready for customer\\"s usage. This phenomenon occurs because a refund is generated while the customer\\"s credit is full, thereby triggered additional increasing on the customer\\"s credit.
+        @summary This API is used to offset the Deducted Credit of a Distribution Customer. For example, if the current Deducted Credit is 500 and the Available Credit is 1000, by offsetting 300, the Deducted Credit will then become 200, and the Available Credit becomes 1300.
+        
+        @description Note that sometimes you may find that the customer\\"s Used Credit is negative. This indicates that there is no need to restore the Used Credit, and its ready for customer\\"s usage. This phenomenon occurs because a refund is generated while the customer\\"s credit is full, thereby triggered additional increasing on the customer\\"s credit.
         For example, if the customer\\"s maximum Available Credit is 1000 with no usage, and a refund of 300 occurs, the Used Credit will become -300.
         
         @param request: DeductOutstandingBalanceRequest
@@ -403,7 +621,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.DeductOutstandingBalanceResponse:
         """
-        Note that sometimes you may find that the customer\\"s Used Credit is negative. This indicates that there is no need to restore the Used Credit, and its ready for customer\\"s usage. This phenomenon occurs because a refund is generated while the customer\\"s credit is full, thereby triggered additional increasing on the customer\\"s credit.
+        @summary This API is used to offset the Deducted Credit of a Distribution Customer. For example, if the current Deducted Credit is 500 and the Available Credit is 1000, by offsetting 300, the Deducted Credit will then become 200, and the Available Credit becomes 1300.
+        
+        @description Note that sometimes you may find that the customer\\"s Used Credit is negative. This indicates that there is no need to restore the Used Credit, and its ready for customer\\"s usage. This phenomenon occurs because a refund is generated while the customer\\"s credit is full, thereby triggered additional increasing on the customer\\"s credit.
         For example, if the customer\\"s maximum Available Credit is 1000 with no usage, and a refund of 300 occurs, the Used Credit will become -300.
         
         @param request: DeductOutstandingBalanceRequest
@@ -440,7 +660,9 @@ class Client(OpenApiClient):
         request: agency_20221216_models.DeductOutstandingBalanceRequest,
     ) -> agency_20221216_models.DeductOutstandingBalanceResponse:
         """
-        Note that sometimes you may find that the customer\\"s Used Credit is negative. This indicates that there is no need to restore the Used Credit, and its ready for customer\\"s usage. This phenomenon occurs because a refund is generated while the customer\\"s credit is full, thereby triggered additional increasing on the customer\\"s credit.
+        @summary This API is used to offset the Deducted Credit of a Distribution Customer. For example, if the current Deducted Credit is 500 and the Available Credit is 1000, by offsetting 300, the Deducted Credit will then become 200, and the Available Credit becomes 1300.
+        
+        @description Note that sometimes you may find that the customer\\"s Used Credit is negative. This indicates that there is no need to restore the Used Credit, and its ready for customer\\"s usage. This phenomenon occurs because a refund is generated while the customer\\"s credit is full, thereby triggered additional increasing on the customer\\"s credit.
         For example, if the customer\\"s maximum Available Credit is 1000 with no usage, and a refund of 300 occurs, the Used Credit will become -300.
         
         @param request: DeductOutstandingBalanceRequest
@@ -454,7 +676,9 @@ class Client(OpenApiClient):
         request: agency_20221216_models.DeductOutstandingBalanceRequest,
     ) -> agency_20221216_models.DeductOutstandingBalanceResponse:
         """
-        Note that sometimes you may find that the customer\\"s Used Credit is negative. This indicates that there is no need to restore the Used Credit, and its ready for customer\\"s usage. This phenomenon occurs because a refund is generated while the customer\\"s credit is full, thereby triggered additional increasing on the customer\\"s credit.
+        @summary This API is used to offset the Deducted Credit of a Distribution Customer. For example, if the current Deducted Credit is 500 and the Available Credit is 1000, by offsetting 300, the Deducted Credit will then become 200, and the Available Credit becomes 1300.
+        
+        @description Note that sometimes you may find that the customer\\"s Used Credit is negative. This indicates that there is no need to restore the Used Credit, and its ready for customer\\"s usage. This phenomenon occurs because a refund is generated while the customer\\"s credit is full, thereby triggered additional increasing on the customer\\"s credit.
         For example, if the customer\\"s maximum Available Credit is 1000 with no usage, and a refund of 300 occurs, the Used Credit will become -300.
         
         @param request: DeductOutstandingBalanceRequest
@@ -469,8 +693,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.EditEndUserStatusResponse:
         """
-        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
-        **This content is only published on the international site. **\
+        @summary Set the after-shutdown instance status for post-pay End Users as a Reseller.
+        
+        @description The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        *This content is only published on the international site. **\
         
         @param request: EditEndUserStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -503,8 +729,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.EditEndUserStatusResponse:
         """
-        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
-        **This content is only published on the international site. **\
+        @summary Set the after-shutdown instance status for post-pay End Users as a Reseller.
+        
+        @description The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        *This content is only published on the international site. **\
         
         @param request: EditEndUserStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -536,8 +764,10 @@ class Client(OpenApiClient):
         request: agency_20221216_models.EditEndUserStatusRequest,
     ) -> agency_20221216_models.EditEndUserStatusResponse:
         """
-        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
-        **This content is only published on the international site. **\
+        @summary Set the after-shutdown instance status for post-pay End Users as a Reseller.
+        
+        @description The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        *This content is only published on the international site. **\
         
         @param request: EditEndUserStatusRequest
         @return: EditEndUserStatusResponse
@@ -550,8 +780,10 @@ class Client(OpenApiClient):
         request: agency_20221216_models.EditEndUserStatusRequest,
     ) -> agency_20221216_models.EditEndUserStatusResponse:
         """
-        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
-        **This content is only published on the international site. **\
+        @summary Set the after-shutdown instance status for post-pay End Users as a Reseller.
+        
+        @description The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        *This content is only published on the international site. **\
         
         @param request: EditEndUserStatusRequest
         @return: EditEndUserStatusResponse
@@ -565,8 +797,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.EditNewBuyStatusResponse:
         """
-        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
-        **This content is only published on the international site. **\
+        @summary Set the New Buy status for Sub-Customer as a Partner.
+        
+        @description The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        *This content is only published on the international site. **\
         
         @param request: EditNewBuyStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -603,8 +837,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.EditNewBuyStatusResponse:
         """
-        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
-        **This content is only published on the international site. **\
+        @summary Set the New Buy status for Sub-Customer as a Partner.
+        
+        @description The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        *This content is only published on the international site. **\
         
         @param request: EditNewBuyStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -640,8 +876,10 @@ class Client(OpenApiClient):
         request: agency_20221216_models.EditNewBuyStatusRequest,
     ) -> agency_20221216_models.EditNewBuyStatusResponse:
         """
-        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
-        **This content is only published on the international site. **\
+        @summary Set the New Buy status for Sub-Customer as a Partner.
+        
+        @description The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        *This content is only published on the international site. **\
         
         @param request: EditNewBuyStatusRequest
         @return: EditNewBuyStatusResponse
@@ -654,8 +892,10 @@ class Client(OpenApiClient):
         request: agency_20221216_models.EditNewBuyStatusRequest,
     ) -> agency_20221216_models.EditNewBuyStatusResponse:
         """
-        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
-        **This content is only published on the international site. **\
+        @summary Set the New Buy status for Sub-Customer as a Partner.
+        
+        @description The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        *This content is only published on the international site. **\
         
         @param request: EditNewBuyStatusRequest
         @return: EditNewBuyStatusResponse
@@ -669,8 +909,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.EditZeroCreditShutdownResponse:
         """
-        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
-        **This content is only published on the international site. **\
+        @summary Modify the End User\\"s Shutdown Policy as a Reseller.
+        
+        @description The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        *This content is only published on the international site. **\
         
         @param request: EditZeroCreditShutdownRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -707,8 +949,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.EditZeroCreditShutdownResponse:
         """
-        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
-        **This content is only published on the international site. **\
+        @summary Modify the End User\\"s Shutdown Policy as a Reseller.
+        
+        @description The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        *This content is only published on the international site. **\
         
         @param request: EditZeroCreditShutdownRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -744,8 +988,10 @@ class Client(OpenApiClient):
         request: agency_20221216_models.EditZeroCreditShutdownRequest,
     ) -> agency_20221216_models.EditZeroCreditShutdownResponse:
         """
-        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
-        **This content is only published on the international site. **\
+        @summary Modify the End User\\"s Shutdown Policy as a Reseller.
+        
+        @description The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        *This content is only published on the international site. **\
         
         @param request: EditZeroCreditShutdownRequest
         @return: EditZeroCreditShutdownResponse
@@ -758,8 +1004,10 @@ class Client(OpenApiClient):
         request: agency_20221216_models.EditZeroCreditShutdownRequest,
     ) -> agency_20221216_models.EditZeroCreditShutdownResponse:
         """
-        The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
-        **This content is only published on the international site. **\
+        @summary Modify the End User\\"s Shutdown Policy as a Reseller.
+        
+        @description The caller should be the Partner as identified in the Alibaba Cloud distribution model. </br>
+        *This content is only published on the international site. **\
         
         @param request: EditZeroCreditShutdownRequest
         @return: EditZeroCreditShutdownResponse
@@ -773,7 +1021,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.ExportCustomerQuotaRecordResponse:
         """
-        Caller must be a Partner from International Site, either Distribution or Reseller will do.
+        @summary Export quota amount adjustment history as a Distribution Customer from International Site. Only available on International Site.
+        
+        @description Caller must be a Partner from International Site, either Distribution or Reseller will do.
         
         @param request: ExportCustomerQuotaRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -816,7 +1066,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.ExportCustomerQuotaRecordResponse:
         """
-        Caller must be a Partner from International Site, either Distribution or Reseller will do.
+        @summary Export quota amount adjustment history as a Distribution Customer from International Site. Only available on International Site.
+        
+        @description Caller must be a Partner from International Site, either Distribution or Reseller will do.
         
         @param request: ExportCustomerQuotaRecordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -858,7 +1110,9 @@ class Client(OpenApiClient):
         request: agency_20221216_models.ExportCustomerQuotaRecordRequest,
     ) -> agency_20221216_models.ExportCustomerQuotaRecordResponse:
         """
-        Caller must be a Partner from International Site, either Distribution or Reseller will do.
+        @summary Export quota amount adjustment history as a Distribution Customer from International Site. Only available on International Site.
+        
+        @description Caller must be a Partner from International Site, either Distribution or Reseller will do.
         
         @param request: ExportCustomerQuotaRecordRequest
         @return: ExportCustomerQuotaRecordResponse
@@ -871,7 +1125,9 @@ class Client(OpenApiClient):
         request: agency_20221216_models.ExportCustomerQuotaRecordRequest,
     ) -> agency_20221216_models.ExportCustomerQuotaRecordResponse:
         """
-        Caller must be a Partner from International Site, either Distribution or Reseller will do.
+        @summary Export quota amount adjustment history as a Distribution Customer from International Site. Only available on International Site.
+        
+        @description Caller must be a Partner from International Site, either Distribution or Reseller will do.
         
         @param request: ExportCustomerQuotaRecordRequest
         @return: ExportCustomerQuotaRecordResponse
@@ -884,6 +1140,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.GetAccountInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.GetAccountInfoResponse:
+        """
+        @summary Return Distribution Customer\\"s account information.
+        
+        @param request: GetAccountInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -910,6 +1173,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.GetAccountInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.GetAccountInfoResponse:
+        """
+        @summary Return Distribution Customer\\"s account information.
+        
+        @param request: GetAccountInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -935,6 +1205,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.GetAccountInfoRequest,
     ) -> agency_20221216_models.GetAccountInfoResponse:
+        """
+        @summary Return Distribution Customer\\"s account information.
+        
+        @param request: GetAccountInfoRequest
+        @return: GetAccountInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_account_info_with_options(request, runtime)
 
@@ -942,14 +1218,119 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.GetAccountInfoRequest,
     ) -> agency_20221216_models.GetAccountInfoResponse:
+        """
+        @summary Return Distribution Customer\\"s account information.
+        
+        @param request: GetAccountInfoRequest
+        @return: GetAccountInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_account_info_with_options_async(request, runtime)
+
+    def get_coupondeduct_product_code_with_options(
+        self,
+        request: agency_20221216_models.GetCoupondeductProductCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.GetCoupondeductProductCodeResponse:
+        """
+        @summary 国际渠道分销优惠券可抵扣产品
+        
+        @param request: GetCoupondeductProductCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCoupondeductProductCodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCoupondeductProductCode',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.GetCoupondeductProductCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_coupondeduct_product_code_with_options_async(
+        self,
+        request: agency_20221216_models.GetCoupondeductProductCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.GetCoupondeductProductCodeResponse:
+        """
+        @summary 国际渠道分销优惠券可抵扣产品
+        
+        @param request: GetCoupondeductProductCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCoupondeductProductCodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCoupondeductProductCode',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.GetCoupondeductProductCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_coupondeduct_product_code(
+        self,
+        request: agency_20221216_models.GetCoupondeductProductCodeRequest,
+    ) -> agency_20221216_models.GetCoupondeductProductCodeResponse:
+        """
+        @summary 国际渠道分销优惠券可抵扣产品
+        
+        @param request: GetCoupondeductProductCodeRequest
+        @return: GetCoupondeductProductCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_coupondeduct_product_code_with_options(request, runtime)
+
+    async def get_coupondeduct_product_code_async(
+        self,
+        request: agency_20221216_models.GetCoupondeductProductCodeRequest,
+    ) -> agency_20221216_models.GetCoupondeductProductCodeResponse:
+        """
+        @summary 国际渠道分销优惠券可抵扣产品
+        
+        @param request: GetCoupondeductProductCodeRequest
+        @return: GetCoupondeductProductCodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_coupondeduct_product_code_with_options_async(request, runtime)
 
     def get_credit_info_with_options(
         self,
         request: agency_20221216_models.GetCreditInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.GetCreditInfoResponse:
+        """
+        @summary Query Credit Control information of Distribution Customers. The PopCreditInfoJson in the Return Parameter will be empty if the Distribution Customer is an Agency. This function is only available for Resellers and Distributors.
+        
+        @param request: GetCreditInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCreditInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -976,6 +1357,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.GetCreditInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.GetCreditInfoResponse:
+        """
+        @summary Query Credit Control information of Distribution Customers. The PopCreditInfoJson in the Return Parameter will be empty if the Distribution Customer is an Agency. This function is only available for Resellers and Distributors.
+        
+        @param request: GetCreditInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCreditInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1001,6 +1389,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.GetCreditInfoRequest,
     ) -> agency_20221216_models.GetCreditInfoResponse:
+        """
+        @summary Query Credit Control information of Distribution Customers. The PopCreditInfoJson in the Return Parameter will be empty if the Distribution Customer is an Agency. This function is only available for Resellers and Distributors.
+        
+        @param request: GetCreditInfoRequest
+        @return: GetCreditInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_credit_info_with_options(request, runtime)
 
@@ -1008,14 +1402,119 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.GetCreditInfoRequest,
     ) -> agency_20221216_models.GetCreditInfoResponse:
+        """
+        @summary Query Credit Control information of Distribution Customers. The PopCreditInfoJson in the Return Parameter will be empty if the Distribution Customer is an Agency. This function is only available for Resellers and Distributors.
+        
+        @param request: GetCreditInfoRequest
+        @return: GetCreditInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_credit_info_with_options_async(request, runtime)
+
+    def get_customer_orders_with_options(
+        self,
+        request: agency_20221216_models.GetCustomerOrdersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.GetCustomerOrdersResponse:
+        """
+        @summary 客户订单查询
+        
+        @param request: GetCustomerOrdersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomerOrdersResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCustomerOrders',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.GetCustomerOrdersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_customer_orders_with_options_async(
+        self,
+        request: agency_20221216_models.GetCustomerOrdersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.GetCustomerOrdersResponse:
+        """
+        @summary 客户订单查询
+        
+        @param request: GetCustomerOrdersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomerOrdersResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCustomerOrders',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.GetCustomerOrdersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_customer_orders(
+        self,
+        request: agency_20221216_models.GetCustomerOrdersRequest,
+    ) -> agency_20221216_models.GetCustomerOrdersResponse:
+        """
+        @summary 客户订单查询
+        
+        @param request: GetCustomerOrdersRequest
+        @return: GetCustomerOrdersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_customer_orders_with_options(request, runtime)
+
+    async def get_customer_orders_async(
+        self,
+        request: agency_20221216_models.GetCustomerOrdersRequest,
+    ) -> agency_20221216_models.GetCustomerOrdersResponse:
+        """
+        @summary 客户订单查询
+        
+        @param request: GetCustomerOrdersRequest
+        @return: GetCustomerOrdersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_customer_orders_with_options_async(request, runtime)
 
     def get_daily_bill_with_options(
         self,
         request: agency_20221216_models.GetDailyBillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.GetDailyBillResponse:
+        """
+        @summary Issue Distributor\\"s daily Bill. This function is only available for Resellers and Distributors.
+        
+        @param request: GetDailyBillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDailyBillResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner):
@@ -1048,6 +1547,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.GetDailyBillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.GetDailyBillResponse:
+        """
+        @summary Issue Distributor\\"s daily Bill. This function is only available for Resellers and Distributors.
+        
+        @param request: GetDailyBillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDailyBillResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner):
@@ -1079,6 +1585,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.GetDailyBillRequest,
     ) -> agency_20221216_models.GetDailyBillResponse:
+        """
+        @summary Issue Distributor\\"s daily Bill. This function is only available for Resellers and Distributors.
+        
+        @param request: GetDailyBillRequest
+        @return: GetDailyBillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_daily_bill_with_options(request, runtime)
 
@@ -1086,6 +1598,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.GetDailyBillRequest,
     ) -> agency_20221216_models.GetDailyBillResponse:
+        """
+        @summary Issue Distributor\\"s daily Bill. This function is only available for Resellers and Distributors.
+        
+        @param request: GetDailyBillRequest
+        @return: GetDailyBillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_daily_bill_with_options_async(request, runtime)
 
@@ -1094,6 +1612,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.GetInviteStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.GetInviteStatusResponse:
+        """
+        @summary Query invitation status of customer who have been created and invited.
+        
+        @param request: GetInviteStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInviteStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.invite_status_list):
@@ -1122,6 +1647,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.GetInviteStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.GetInviteStatusResponse:
+        """
+        @summary Query invitation status of customer who have been created and invited.
+        
+        @param request: GetInviteStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInviteStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.invite_status_list):
@@ -1149,6 +1681,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.GetInviteStatusRequest,
     ) -> agency_20221216_models.GetInviteStatusResponse:
+        """
+        @summary Query invitation status of customer who have been created and invited.
+        
+        @param request: GetInviteStatusRequest
+        @return: GetInviteStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_invite_status_with_options(request, runtime)
 
@@ -1156,6 +1694,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.GetInviteStatusRequest,
     ) -> agency_20221216_models.GetInviteStatusResponse:
+        """
+        @summary Query invitation status of customer who have been created and invited.
+        
+        @param request: GetInviteStatusRequest
+        @return: GetInviteStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_invite_status_with_options_async(request, runtime)
 
@@ -1164,6 +1708,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.GetMonthlyBillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.GetMonthlyBillResponse:
+        """
+        @summary Issue Distributor\\"s Monthly Bill. This function is only available for Resellers and Distributors.
+        
+        @param request: GetMonthlyBillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMonthlyBillResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner):
@@ -1196,6 +1747,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.GetMonthlyBillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.GetMonthlyBillResponse:
+        """
+        @summary Issue Distributor\\"s Monthly Bill. This function is only available for Resellers and Distributors.
+        
+        @param request: GetMonthlyBillRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMonthlyBillResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bill_owner):
@@ -1227,6 +1785,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.GetMonthlyBillRequest,
     ) -> agency_20221216_models.GetMonthlyBillResponse:
+        """
+        @summary Issue Distributor\\"s Monthly Bill. This function is only available for Resellers and Distributors.
+        
+        @param request: GetMonthlyBillRequest
+        @return: GetMonthlyBillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_monthly_bill_with_options(request, runtime)
 
@@ -1234,6 +1798,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.GetMonthlyBillRequest,
     ) -> agency_20221216_models.GetMonthlyBillResponse:
+        """
+        @summary Issue Distributor\\"s Monthly Bill. This function is only available for Resellers and Distributors.
+        
+        @param request: GetMonthlyBillRequest
+        @return: GetMonthlyBillResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_monthly_bill_with_options_async(request, runtime)
 
@@ -1242,6 +1812,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.GetUnassociatedCustomerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.GetUnassociatedCustomerResponse:
+        """
+        @summary Query all the Unassociated Customer.
+        
+        @param request: GetUnassociatedCustomerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUnassociatedCustomerResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1268,6 +1845,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.GetUnassociatedCustomerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.GetUnassociatedCustomerResponse:
+        """
+        @summary Query all the Unassociated Customer.
+        
+        @param request: GetUnassociatedCustomerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUnassociatedCustomerResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1293,6 +1877,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.GetUnassociatedCustomerRequest,
     ) -> agency_20221216_models.GetUnassociatedCustomerResponse:
+        """
+        @summary Query all the Unassociated Customer.
+        
+        @param request: GetUnassociatedCustomerRequest
+        @return: GetUnassociatedCustomerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_unassociated_customer_with_options(request, runtime)
 
@@ -1300,6 +1890,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.GetUnassociatedCustomerRequest,
     ) -> agency_20221216_models.GetUnassociatedCustomerResponse:
+        """
+        @summary Query all the Unassociated Customer.
+        
+        @param request: GetUnassociatedCustomerRequest
+        @return: GetUnassociatedCustomerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_unassociated_customer_with_options_async(request, runtime)
 
@@ -1309,7 +1905,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.InviteSubAccountResponse:
         """
-        The current API request rate for the Cloud Product has not been disclosed.
+        @summary Initiate the Partner registration invitation.
+        
+        @description The current API request rate for the Cloud Product has not been disclosed.
         
         @param request: InviteSubAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1344,7 +1942,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.InviteSubAccountResponse:
         """
-        The current API request rate for the Cloud Product has not been disclosed.
+        @summary Initiate the Partner registration invitation.
+        
+        @description The current API request rate for the Cloud Product has not been disclosed.
         
         @param request: InviteSubAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1378,7 +1978,9 @@ class Client(OpenApiClient):
         request: agency_20221216_models.InviteSubAccountRequest,
     ) -> agency_20221216_models.InviteSubAccountResponse:
         """
-        The current API request rate for the Cloud Product has not been disclosed.
+        @summary Initiate the Partner registration invitation.
+        
+        @description The current API request rate for the Cloud Product has not been disclosed.
         
         @param request: InviteSubAccountRequest
         @return: InviteSubAccountResponse
@@ -1391,7 +1993,9 @@ class Client(OpenApiClient):
         request: agency_20221216_models.InviteSubAccountRequest,
     ) -> agency_20221216_models.InviteSubAccountResponse:
         """
-        The current API request rate for the Cloud Product has not been disclosed.
+        @summary Initiate the Partner registration invitation.
+        
+        @description The current API request rate for the Cloud Product has not been disclosed.
         
         @param request: InviteSubAccountRequest
         @return: InviteSubAccountResponse
@@ -1399,12 +2003,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.invite_sub_account_with_options_async(request, runtime)
 
+    def issue_coupon_for_customer_with_options(
+        self,
+        request: agency_20221216_models.IssueCouponForCustomerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.IssueCouponForCustomerResponse:
+        """
+        @summary 发放优惠券
+        
+        @param request: IssueCouponForCustomerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IssueCouponForCustomerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.coupon_template_id):
+            query['CouponTemplateId'] = request.coupon_template_id
+        if not UtilClient.is_unset(request.uidlist):
+            query['Uidlist'] = request.uidlist
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IssueCouponForCustomer',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.IssueCouponForCustomerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def issue_coupon_for_customer_with_options_async(
+        self,
+        request: agency_20221216_models.IssueCouponForCustomerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> agency_20221216_models.IssueCouponForCustomerResponse:
+        """
+        @summary 发放优惠券
+        
+        @param request: IssueCouponForCustomerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IssueCouponForCustomerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.coupon_template_id):
+            query['CouponTemplateId'] = request.coupon_template_id
+        if not UtilClient.is_unset(request.uidlist):
+            query['Uidlist'] = request.uidlist
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IssueCouponForCustomer',
+            version='2022-12-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            agency_20221216_models.IssueCouponForCustomerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def issue_coupon_for_customer(
+        self,
+        request: agency_20221216_models.IssueCouponForCustomerRequest,
+    ) -> agency_20221216_models.IssueCouponForCustomerResponse:
+        """
+        @summary 发放优惠券
+        
+        @param request: IssueCouponForCustomerRequest
+        @return: IssueCouponForCustomerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.issue_coupon_for_customer_with_options(request, runtime)
+
+    async def issue_coupon_for_customer_async(
+        self,
+        request: agency_20221216_models.IssueCouponForCustomerRequest,
+    ) -> agency_20221216_models.IssueCouponForCustomerResponse:
+        """
+        @summary 发放优惠券
+        
+        @param request: IssueCouponForCustomerRequest
+        @return: IssueCouponForCustomerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.issue_coupon_for_customer_with_options_async(request, runtime)
+
     def list_countries_with_options(
         self,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.ListCountriesResponse:
         """
-        The current API request rate for cloud products has not been disclosed.
+        @summary This function is available for all Distributors. It displays the corresponding region code information based on the operable countries as agreed in the Distributor\\"s contract.
+        
+        @description The current API request rate for cloud products has not been disclosed.
         
         @param request: ListCountriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1432,7 +2142,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.ListCountriesResponse:
         """
-        The current API request rate for cloud products has not been disclosed.
+        @summary This function is available for all Distributors. It displays the corresponding region code information based on the operable countries as agreed in the Distributor\\"s contract.
+        
+        @description The current API request rate for cloud products has not been disclosed.
         
         @param request: ListCountriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1457,7 +2169,9 @@ class Client(OpenApiClient):
 
     def list_countries(self) -> agency_20221216_models.ListCountriesResponse:
         """
-        The current API request rate for cloud products has not been disclosed.
+        @summary This function is available for all Distributors. It displays the corresponding region code information based on the operable countries as agreed in the Distributor\\"s contract.
+        
+        @description The current API request rate for cloud products has not been disclosed.
         
         @return: ListCountriesResponse
         """
@@ -1466,7 +2180,9 @@ class Client(OpenApiClient):
 
     async def list_countries_async(self) -> agency_20221216_models.ListCountriesResponse:
         """
-        The current API request rate for cloud products has not been disclosed.
+        @summary This function is available for all Distributors. It displays the corresponding region code information based on the operable countries as agreed in the Distributor\\"s contract.
+        
+        @description The current API request rate for cloud products has not been disclosed.
         
         @return: ListCountriesResponse
         """
@@ -1478,6 +2194,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.ListCouponUsageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.ListCouponUsageResponse:
+        """
+        @summary 优惠券使用量列表查询
+        
+        @param request: ListCouponUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCouponUsageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account):
@@ -1516,6 +2239,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.ListCouponUsageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.ListCouponUsageResponse:
+        """
+        @summary 优惠券使用量列表查询
+        
+        @param request: ListCouponUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCouponUsageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account):
@@ -1553,6 +2283,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.ListCouponUsageRequest,
     ) -> agency_20221216_models.ListCouponUsageResponse:
+        """
+        @summary 优惠券使用量列表查询
+        
+        @param request: ListCouponUsageRequest
+        @return: ListCouponUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_coupon_usage_with_options(request, runtime)
 
@@ -1560,6 +2296,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.ListCouponUsageRequest,
     ) -> agency_20221216_models.ListCouponUsageResponse:
+        """
+        @summary 优惠券使用量列表查询
+        
+        @param request: ListCouponUsageRequest
+        @return: ListCouponUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_coupon_usage_with_options_async(request, runtime)
 
@@ -1569,7 +2311,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.QuotaListExportPagedResponse:
         """
-        Caller must be a Partner from International Site, either Distribution or Reseller will do.
+        @summary Check the result of export quota list as a Distribution Customer from International Site. Only available on International Site.
+        
+        @description Caller must be a Partner from International Site, either Distribution or Reseller will do.
         
         @param request: QuotaListExportPagedRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1602,7 +2346,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.QuotaListExportPagedResponse:
         """
-        Caller must be a Partner from International Site, either Distribution or Reseller will do.
+        @summary Check the result of export quota list as a Distribution Customer from International Site. Only available on International Site.
+        
+        @description Caller must be a Partner from International Site, either Distribution or Reseller will do.
         
         @param request: QuotaListExportPagedRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1634,7 +2380,9 @@ class Client(OpenApiClient):
         request: agency_20221216_models.QuotaListExportPagedRequest,
     ) -> agency_20221216_models.QuotaListExportPagedResponse:
         """
-        Caller must be a Partner from International Site, either Distribution or Reseller will do.
+        @summary Check the result of export quota list as a Distribution Customer from International Site. Only available on International Site.
+        
+        @description Caller must be a Partner from International Site, either Distribution or Reseller will do.
         
         @param request: QuotaListExportPagedRequest
         @return: QuotaListExportPagedResponse
@@ -1647,7 +2395,9 @@ class Client(OpenApiClient):
         request: agency_20221216_models.QuotaListExportPagedRequest,
     ) -> agency_20221216_models.QuotaListExportPagedResponse:
         """
-        Caller must be a Partner from International Site, either Distribution or Reseller will do.
+        @summary Check the result of export quota list as a Distribution Customer from International Site. Only available on International Site.
+        
+        @description Caller must be a Partner from International Site, either Distribution or Reseller will do.
         
         @param request: QuotaListExportPagedRequest
         @return: QuotaListExportPagedResponse
@@ -1660,6 +2410,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.ResendEmailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.ResendEmailResponse:
+        """
+        @summary Resend invitation email.
+        
+        @param request: ResendEmailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResendEmailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.invite_id):
@@ -1688,6 +2445,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.ResendEmailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.ResendEmailResponse:
+        """
+        @summary Resend invitation email.
+        
+        @param request: ResendEmailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResendEmailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.invite_id):
@@ -1715,6 +2479,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.ResendEmailRequest,
     ) -> agency_20221216_models.ResendEmailResponse:
+        """
+        @summary Resend invitation email.
+        
+        @param request: ResendEmailRequest
+        @return: ResendEmailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.resend_email_with_options(request, runtime)
 
@@ -1722,6 +2492,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.ResendEmailRequest,
     ) -> agency_20221216_models.ResendEmailResponse:
+        """
+        @summary Resend invitation email.
+        
+        @param request: ResendEmailRequest
+        @return: ResendEmailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.resend_email_with_options_async(request, runtime)
 
@@ -1730,6 +2506,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.SetAccountInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.SetAccountInfoResponse:
+        """
+        @summary This function is designed for Sub Account information maintenance, including Nickname and Remark.
+        
+        @param request: SetAccountInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetAccountInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_nickname):
@@ -1764,6 +2547,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.SetAccountInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.SetAccountInfoResponse:
+        """
+        @summary This function is designed for Sub Account information maintenance, including Nickname and Remark.
+        
+        @param request: SetAccountInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetAccountInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_nickname):
@@ -1797,6 +2587,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.SetAccountInfoRequest,
     ) -> agency_20221216_models.SetAccountInfoResponse:
+        """
+        @summary This function is designed for Sub Account information maintenance, including Nickname and Remark.
+        
+        @param request: SetAccountInfoRequest
+        @return: SetAccountInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_account_info_with_options(request, runtime)
 
@@ -1804,6 +2600,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.SetAccountInfoRequest,
     ) -> agency_20221216_models.SetAccountInfoResponse:
+        """
+        @summary This function is designed for Sub Account information maintenance, including Nickname and Remark.
+        
+        @param request: SetAccountInfoRequest
+        @return: SetAccountInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_account_info_with_options_async(request, runtime)
 
@@ -1812,6 +2614,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.SetCreditLineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.SetCreditLineResponse:
+        """
+        @summary Set Credit Line for Distribution Customers. This function is only available for Resellers and Distributors.
+        
+        @param request: SetCreditLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetCreditLineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.credit_line):
@@ -1842,6 +2651,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.SetCreditLineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.SetCreditLineResponse:
+        """
+        @summary Set Credit Line for Distribution Customers. This function is only available for Resellers and Distributors.
+        
+        @param request: SetCreditLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetCreditLineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.credit_line):
@@ -1871,6 +2687,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.SetCreditLineRequest,
     ) -> agency_20221216_models.SetCreditLineResponse:
+        """
+        @summary Set Credit Line for Distribution Customers. This function is only available for Resellers and Distributors.
+        
+        @param request: SetCreditLineRequest
+        @return: SetCreditLineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_credit_line_with_options(request, runtime)
 
@@ -1878,6 +2700,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.SetCreditLineRequest,
     ) -> agency_20221216_models.SetCreditLineResponse:
+        """
+        @summary Set Credit Line for Distribution Customers. This function is only available for Resellers and Distributors.
+        
+        @param request: SetCreditLineRequest
+        @return: SetCreditLineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_credit_line_with_options_async(request, runtime)
 
@@ -1886,6 +2714,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.SetWarningThresholdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.SetWarningThresholdResponse:
+        """
+        @summary You can use this API to set the threshold for the use of credit control. When the customer credit control reaches below the threshold, it will pass through the notification email distributor. This feature is for Reseller and Distributor only.
+        
+        @param request: SetWarningThresholdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetWarningThresholdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.uid):
@@ -1916,6 +2751,13 @@ class Client(OpenApiClient):
         request: agency_20221216_models.SetWarningThresholdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.SetWarningThresholdResponse:
+        """
+        @summary You can use this API to set the threshold for the use of credit control. When the customer credit control reaches below the threshold, it will pass through the notification email distributor. This feature is for Reseller and Distributor only.
+        
+        @param request: SetWarningThresholdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetWarningThresholdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.uid):
@@ -1945,6 +2787,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.SetWarningThresholdRequest,
     ) -> agency_20221216_models.SetWarningThresholdResponse:
+        """
+        @summary You can use this API to set the threshold for the use of credit control. When the customer credit control reaches below the threshold, it will pass through the notification email distributor. This feature is for Reseller and Distributor only.
+        
+        @param request: SetWarningThresholdRequest
+        @return: SetWarningThresholdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_warning_threshold_with_options(request, runtime)
 
@@ -1952,6 +2800,12 @@ class Client(OpenApiClient):
         self,
         request: agency_20221216_models.SetWarningThresholdRequest,
     ) -> agency_20221216_models.SetWarningThresholdResponse:
+        """
+        @summary You can use this API to set the threshold for the use of credit control. When the customer credit control reaches below the threshold, it will pass through the notification email distributor. This feature is for Reseller and Distributor only.
+        
+        @param request: SetWarningThresholdRequest
+        @return: SetWarningThresholdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_warning_threshold_with_options_async(request, runtime)
 
@@ -1961,32 +2815,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.SubscriptionBillResponse:
         """
-        Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
-        *   You can call this operation to subscribe to only one type of bill at a time.
-        *   After the subscription to a type of bill is generated, the bill for the previous day is pushed on a daily basis from the next day. On the fifth day of each month, the full-data bill for the previous month is pushed.
-        *   A daily bill may be delayed. The delayed bill is pushed the next day after it is generated. The delayed bill may contain the bill data that is delayed until the previous day. We recommend that you query the full-data bill for the previous month at the beginning of each month.
-        *   Your account must be granted the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/?spm=api-workbench.API%20Document.0.0.68c71e0fhmTSJp#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
-        *   The following file name formats are supported for bills:
+        @summary Generates the subscription to multi-level bills as an Alibaba Cloud eco-partner.
+        
+        @description    Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
+        You can call this operation to subscribe to only one type of bill at a time.
+        After the subscription to a type of bill is generated, the bill for the previous day is pushed on a daily basis from the next day. On the fifth day of each month, the full-data bill for the previous month is pushed.
+        A daily bill may be delayed. The delayed bill is pushed the next day after it is generated. The delayed bill may contain the bill data that is delayed until the previous day. We recommend that you query the full-data bill for the previous month at the beginning of each month.
+        Your account must be granted the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/?spm=api-workbench.API%20Document.0.0.68c71e0fhmTSJp#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
+        The following file name formats are supported for bills:
         ```
         BillingItemDetailForBillingPeriod
         
-        File name format of a daily bill: UID_PartnerBillingItemDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_BillingItemDetail_20190310_0001_01.
+        File name format of a daily bill: UID_PartnerBillingItemDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169*_BillingItemDetail_20190310_0001_01.
         
-        File name format of a monthly full-data bill: UID_PartnerBillingItemDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetail_201903_0001_01.
+        File name format of a monthly full-data bill: UID_PartnerBillingItemDetail_YYYYMM_SquenceNo_fileNo. Example: 169*_BillingItemDetail_201903_0001_01.
         InstanceDetailForBillingPeriod
         
-        File name format of a daily bill: UID_PartnerInstanceDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_InstanceDetail_20190310_0001_01.
+        File name format of a daily bill: UID_PartnerInstanceDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169*_InstanceDetail_20190310_0001_01.
         
-        File name format of a monthly full-data bill: UID_PartnerInstanceDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetail_201903_1999-0001_01.
+        File name format of a monthly full-data bill: UID_PartnerInstanceDetail_YYYYMM_SquenceNo_fileNo. Example: 169*_InstanceDetail_201903_1999-0001_01.
         BillingItemDetailMonthly
         
-        File name format of a daily bill: UID_PartnerBillingItemDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
+        File name format of a daily bill: UID_PartnerBillingItemDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169*_BillingItemDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
         InstanceDetailMonthly
         
-        File name format of a daily bill: UID_PartnerInstanceDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
+        File name format of a daily bill: UID_PartnerInstanceDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169*_InstanceDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
         The fileNo field exists only when the number of bill rows reaches the maximum rows in a single bill file and the bill is split into multiple files.
         ```
-        **This topic is published only on the international site (alibabacloud.com).
+        *This topic is published only on the international site (alibabacloud.com).
         
         @param request: SubscriptionBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2031,32 +2887,34 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> agency_20221216_models.SubscriptionBillResponse:
         """
-        Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
-        *   You can call this operation to subscribe to only one type of bill at a time.
-        *   After the subscription to a type of bill is generated, the bill for the previous day is pushed on a daily basis from the next day. On the fifth day of each month, the full-data bill for the previous month is pushed.
-        *   A daily bill may be delayed. The delayed bill is pushed the next day after it is generated. The delayed bill may contain the bill data that is delayed until the previous day. We recommend that you query the full-data bill for the previous month at the beginning of each month.
-        *   Your account must be granted the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/?spm=api-workbench.API%20Document.0.0.68c71e0fhmTSJp#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
-        *   The following file name formats are supported for bills:
+        @summary Generates the subscription to multi-level bills as an Alibaba Cloud eco-partner.
+        
+        @description    Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
+        You can call this operation to subscribe to only one type of bill at a time.
+        After the subscription to a type of bill is generated, the bill for the previous day is pushed on a daily basis from the next day. On the fifth day of each month, the full-data bill for the previous month is pushed.
+        A daily bill may be delayed. The delayed bill is pushed the next day after it is generated. The delayed bill may contain the bill data that is delayed until the previous day. We recommend that you query the full-data bill for the previous month at the beginning of each month.
+        Your account must be granted the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/?spm=api-workbench.API%20Document.0.0.68c71e0fhmTSJp#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
+        The following file name formats are supported for bills:
         ```
         BillingItemDetailForBillingPeriod
         
-        File name format of a daily bill: UID_PartnerBillingItemDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_BillingItemDetail_20190310_0001_01.
+        File name format of a daily bill: UID_PartnerBillingItemDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169*_BillingItemDetail_20190310_0001_01.
         
-        File name format of a monthly full-data bill: UID_PartnerBillingItemDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetail_201903_0001_01.
+        File name format of a monthly full-data bill: UID_PartnerBillingItemDetail_YYYYMM_SquenceNo_fileNo. Example: 169*_BillingItemDetail_201903_0001_01.
         InstanceDetailForBillingPeriod
         
-        File name format of a daily bill: UID_PartnerInstanceDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_InstanceDetail_20190310_0001_01.
+        File name format of a daily bill: UID_PartnerInstanceDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169*_InstanceDetail_20190310_0001_01.
         
-        File name format of a monthly full-data bill: UID_PartnerInstanceDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetail_201903_1999-0001_01.
+        File name format of a monthly full-data bill: UID_PartnerInstanceDetail_YYYYMM_SquenceNo_fileNo. Example: 169*_InstanceDetail_201903_1999-0001_01.
         BillingItemDetailMonthly
         
-        File name format of a daily bill: UID_PartnerBillingItemDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
+        File name format of a daily bill: UID_PartnerBillingItemDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169*_BillingItemDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
         InstanceDetailMonthly
         
-        File name format of a daily bill: UID_PartnerInstanceDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
+        File name format of a daily bill: UID_PartnerInstanceDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169*_InstanceDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
         The fileNo field exists only when the number of bill rows reaches the maximum rows in a single bill file and the bill is split into multiple files.
         ```
-        **This topic is published only on the international site (alibabacloud.com).
+        *This topic is published only on the international site (alibabacloud.com).
         
         @param request: SubscriptionBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2100,32 +2958,34 @@ class Client(OpenApiClient):
         request: agency_20221216_models.SubscriptionBillRequest,
     ) -> agency_20221216_models.SubscriptionBillResponse:
         """
-        Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
-        *   You can call this operation to subscribe to only one type of bill at a time.
-        *   After the subscription to a type of bill is generated, the bill for the previous day is pushed on a daily basis from the next day. On the fifth day of each month, the full-data bill for the previous month is pushed.
-        *   A daily bill may be delayed. The delayed bill is pushed the next day after it is generated. The delayed bill may contain the bill data that is delayed until the previous day. We recommend that you query the full-data bill for the previous month at the beginning of each month.
-        *   Your account must be granted the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/?spm=api-workbench.API%20Document.0.0.68c71e0fhmTSJp#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
-        *   The following file name formats are supported for bills:
+        @summary Generates the subscription to multi-level bills as an Alibaba Cloud eco-partner.
+        
+        @description    Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
+        You can call this operation to subscribe to only one type of bill at a time.
+        After the subscription to a type of bill is generated, the bill for the previous day is pushed on a daily basis from the next day. On the fifth day of each month, the full-data bill for the previous month is pushed.
+        A daily bill may be delayed. The delayed bill is pushed the next day after it is generated. The delayed bill may contain the bill data that is delayed until the previous day. We recommend that you query the full-data bill for the previous month at the beginning of each month.
+        Your account must be granted the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/?spm=api-workbench.API%20Document.0.0.68c71e0fhmTSJp#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
+        The following file name formats are supported for bills:
         ```
         BillingItemDetailForBillingPeriod
         
-        File name format of a daily bill: UID_PartnerBillingItemDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_BillingItemDetail_20190310_0001_01.
+        File name format of a daily bill: UID_PartnerBillingItemDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169*_BillingItemDetail_20190310_0001_01.
         
-        File name format of a monthly full-data bill: UID_PartnerBillingItemDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetail_201903_0001_01.
+        File name format of a monthly full-data bill: UID_PartnerBillingItemDetail_YYYYMM_SquenceNo_fileNo. Example: 169*_BillingItemDetail_201903_0001_01.
         InstanceDetailForBillingPeriod
         
-        File name format of a daily bill: UID_PartnerInstanceDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_InstanceDetail_20190310_0001_01.
+        File name format of a daily bill: UID_PartnerInstanceDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169*_InstanceDetail_20190310_0001_01.
         
-        File name format of a monthly full-data bill: UID_PartnerInstanceDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetail_201903_1999-0001_01.
+        File name format of a monthly full-data bill: UID_PartnerInstanceDetail_YYYYMM_SquenceNo_fileNo. Example: 169*_InstanceDetail_201903_1999-0001_01.
         BillingItemDetailMonthly
         
-        File name format of a daily bill: UID_PartnerBillingItemDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
+        File name format of a daily bill: UID_PartnerBillingItemDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169*_BillingItemDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
         InstanceDetailMonthly
         
-        File name format of a daily bill: UID_PartnerInstanceDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
+        File name format of a daily bill: UID_PartnerInstanceDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169*_InstanceDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
         The fileNo field exists only when the number of bill rows reaches the maximum rows in a single bill file and the bill is split into multiple files.
         ```
-        **This topic is published only on the international site (alibabacloud.com).
+        *This topic is published only on the international site (alibabacloud.com).
         
         @param request: SubscriptionBillRequest
         @return: SubscriptionBillResponse
@@ -2138,32 +2998,34 @@ class Client(OpenApiClient):
         request: agency_20221216_models.SubscriptionBillRequest,
     ) -> agency_20221216_models.SubscriptionBillResponse:
         """
-        Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
-        *   You can call this operation to subscribe to only one type of bill at a time.
-        *   After the subscription to a type of bill is generated, the bill for the previous day is pushed on a daily basis from the next day. On the fifth day of each month, the full-data bill for the previous month is pushed.
-        *   A daily bill may be delayed. The delayed bill is pushed the next day after it is generated. The delayed bill may contain the bill data that is delayed until the previous day. We recommend that you query the full-data bill for the previous month at the beginning of each month.
-        *   Your account must be granted the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/?spm=api-workbench.API%20Document.0.0.68c71e0fhmTSJp#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
-        *   The following file name formats are supported for bills:
+        @summary Generates the subscription to multi-level bills as an Alibaba Cloud eco-partner.
+        
+        @description    Make sure that you are a distributor of the Alibaba Cloud international ecosystem.
+        You can call this operation to subscribe to only one type of bill at a time.
+        After the subscription to a type of bill is generated, the bill for the previous day is pushed on a daily basis from the next day. On the fifth day of each month, the full-data bill for the previous month is pushed.
+        A daily bill may be delayed. The delayed bill is pushed the next day after it is generated. The delayed bill may contain the bill data that is delayed until the previous day. We recommend that you query the full-data bill for the previous month at the beginning of each month.
+        Your account must be granted the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/?spm=api-workbench.API%20Document.0.0.68c71e0fhmTSJp#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
+        The following file name formats are supported for bills:
         ```
         BillingItemDetailForBillingPeriod
         
-        File name format of a daily bill: UID_PartnerBillingItemDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_BillingItemDetail_20190310_0001_01.
+        File name format of a daily bill: UID_PartnerBillingItemDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169*_BillingItemDetail_20190310_0001_01.
         
-        File name format of a monthly full-data bill: UID_PartnerBillingItemDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetail_201903_0001_01.
+        File name format of a monthly full-data bill: UID_PartnerBillingItemDetail_YYYYMM_SquenceNo_fileNo. Example: 169*_BillingItemDetail_201903_0001_01.
         InstanceDetailForBillingPeriod
         
-        File name format of a daily bill: UID_PartnerInstanceDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169**_InstanceDetail_20190310_0001_01.
+        File name format of a daily bill: UID_PartnerInstanceDetail_YYYYMMDD_SquenceNo_fileNo. Example: 169*_InstanceDetail_20190310_0001_01.
         
-        File name format of a monthly full-data bill: UID_PartnerInstanceDetail_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetail_201903_1999-0001_01.
+        File name format of a monthly full-data bill: UID_PartnerInstanceDetail_YYYYMM_SquenceNo_fileNo. Example: 169*_InstanceDetail_201903_1999-0001_01.
         BillingItemDetailMonthly
         
-        File name format of a daily bill: UID_PartnerBillingItemDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_BillingItemDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
+        File name format of a daily bill: UID_PartnerBillingItemDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169*_BillingItemDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
         InstanceDetailMonthly
         
-        File name format of a daily bill: UID_PartnerInstanceDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169**_InstanceDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
+        File name format of a daily bill: UID_PartnerInstanceDetailMonthly_YYYYMM_SquenceNo_fileNo. Example: 169*_InstanceDetailMonthly_201903_0001_01. This bill contains the bill data that is generated from the beginning of the current month to the fifth day of the next month.
         The fileNo field exists only when the number of bill rows reaches the maximum rows in a single bill file and the bill is split into multiple files.
         ```
-        **This topic is published only on the international site (alibabacloud.com).
+        *This topic is published only on the international site (alibabacloud.com).
         
         @param request: SubscriptionBillRequest
         @return: SubscriptionBillResponse

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import Dict, List, Any
 
 
 class CancelSubscriptionBillRequest(TeaModel):
@@ -10,6 +10,8 @@ class CancelSubscriptionBillRequest(TeaModel):
         subscribe_type: str = None,
     ):
         # The type of the bill to which you want to cancel the subscription. Valid values: PartnerBillingItemDetailForBillingPeriod, PartnerBillingItemDetailMonthly, PartnerInstanceDetailForBillingPeriod, and PartnerInstanceDetailMonthly.
+        # 
+        # This parameter is required.
         self.subscribe_type = subscribe_type
 
     def validate(self):
@@ -129,6 +131,420 @@ class CancelSubscriptionBillResponse(TeaModel):
         return self
 
 
+class CreateCouponTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        applicable_products: str = None,
+        cost_bearer: str = None,
+        coupon_description: str = None,
+        expireddate: str = None,
+        limit_per_person: str = None,
+        product_type: List[str] = None,
+        purchase_type: str = None,
+        reason_for_application: str = None,
+        template_name: str = None,
+        vailddate: str = None,
+        vaildperioddays: str = None,
+        valid_until: str = None,
+        value: str = None,
+    ):
+        # This parameter is required.
+        self.accept_language = accept_language
+        # This parameter is required.
+        self.applicable_products = applicable_products
+        # This parameter is required.
+        self.cost_bearer = cost_bearer
+        self.coupon_description = coupon_description
+        self.expireddate = expireddate
+        # This parameter is required.
+        self.limit_per_person = limit_per_person
+        self.product_type = product_type
+        self.purchase_type = purchase_type
+        # This parameter is required.
+        self.reason_for_application = reason_for_application
+        # This parameter is required.
+        self.template_name = template_name
+        self.vailddate = vailddate
+        self.vaildperioddays = vaildperioddays
+        # This parameter is required.
+        self.valid_until = valid_until
+        # This parameter is required.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.applicable_products is not None:
+            result['ApplicableProducts'] = self.applicable_products
+        if self.cost_bearer is not None:
+            result['CostBearer'] = self.cost_bearer
+        if self.coupon_description is not None:
+            result['CouponDescription'] = self.coupon_description
+        if self.expireddate is not None:
+            result['Expireddate'] = self.expireddate
+        if self.limit_per_person is not None:
+            result['LimitPerPerson'] = self.limit_per_person
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.purchase_type is not None:
+            result['PurchaseType'] = self.purchase_type
+        if self.reason_for_application is not None:
+            result['ReasonForApplication'] = self.reason_for_application
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.vailddate is not None:
+            result['Vailddate'] = self.vailddate
+        if self.vaildperioddays is not None:
+            result['Vaildperioddays'] = self.vaildperioddays
+        if self.valid_until is not None:
+            result['ValidUntil'] = self.valid_until
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ApplicableProducts') is not None:
+            self.applicable_products = m.get('ApplicableProducts')
+        if m.get('CostBearer') is not None:
+            self.cost_bearer = m.get('CostBearer')
+        if m.get('CouponDescription') is not None:
+            self.coupon_description = m.get('CouponDescription')
+        if m.get('Expireddate') is not None:
+            self.expireddate = m.get('Expireddate')
+        if m.get('LimitPerPerson') is not None:
+            self.limit_per_person = m.get('LimitPerPerson')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('PurchaseType') is not None:
+            self.purchase_type = m.get('PurchaseType')
+        if m.get('ReasonForApplication') is not None:
+            self.reason_for_application = m.get('ReasonForApplication')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('Vailddate') is not None:
+            self.vailddate = m.get('Vailddate')
+        if m.get('Vaildperioddays') is not None:
+            self.vaildperioddays = m.get('Vaildperioddays')
+        if m.get('ValidUntil') is not None:
+            self.valid_until = m.get('ValidUntil')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateCouponTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        applicable_products: str = None,
+        cost_bearer: str = None,
+        coupon_description: str = None,
+        expireddate: str = None,
+        limit_per_person: str = None,
+        product_type_shrink: str = None,
+        purchase_type: str = None,
+        reason_for_application: str = None,
+        template_name: str = None,
+        vailddate: str = None,
+        vaildperioddays: str = None,
+        valid_until: str = None,
+        value: str = None,
+    ):
+        # This parameter is required.
+        self.accept_language = accept_language
+        # This parameter is required.
+        self.applicable_products = applicable_products
+        # This parameter is required.
+        self.cost_bearer = cost_bearer
+        self.coupon_description = coupon_description
+        self.expireddate = expireddate
+        # This parameter is required.
+        self.limit_per_person = limit_per_person
+        self.product_type_shrink = product_type_shrink
+        self.purchase_type = purchase_type
+        # This parameter is required.
+        self.reason_for_application = reason_for_application
+        # This parameter is required.
+        self.template_name = template_name
+        self.vailddate = vailddate
+        self.vaildperioddays = vaildperioddays
+        # This parameter is required.
+        self.valid_until = valid_until
+        # This parameter is required.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.applicable_products is not None:
+            result['ApplicableProducts'] = self.applicable_products
+        if self.cost_bearer is not None:
+            result['CostBearer'] = self.cost_bearer
+        if self.coupon_description is not None:
+            result['CouponDescription'] = self.coupon_description
+        if self.expireddate is not None:
+            result['Expireddate'] = self.expireddate
+        if self.limit_per_person is not None:
+            result['LimitPerPerson'] = self.limit_per_person
+        if self.product_type_shrink is not None:
+            result['ProductType'] = self.product_type_shrink
+        if self.purchase_type is not None:
+            result['PurchaseType'] = self.purchase_type
+        if self.reason_for_application is not None:
+            result['ReasonForApplication'] = self.reason_for_application
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.vailddate is not None:
+            result['Vailddate'] = self.vailddate
+        if self.vaildperioddays is not None:
+            result['Vaildperioddays'] = self.vaildperioddays
+        if self.valid_until is not None:
+            result['ValidUntil'] = self.valid_until
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ApplicableProducts') is not None:
+            self.applicable_products = m.get('ApplicableProducts')
+        if m.get('CostBearer') is not None:
+            self.cost_bearer = m.get('CostBearer')
+        if m.get('CouponDescription') is not None:
+            self.coupon_description = m.get('CouponDescription')
+        if m.get('Expireddate') is not None:
+            self.expireddate = m.get('Expireddate')
+        if m.get('LimitPerPerson') is not None:
+            self.limit_per_person = m.get('LimitPerPerson')
+        if m.get('ProductType') is not None:
+            self.product_type_shrink = m.get('ProductType')
+        if m.get('PurchaseType') is not None:
+            self.purchase_type = m.get('PurchaseType')
+        if m.get('ReasonForApplication') is not None:
+            self.reason_for_application = m.get('ReasonForApplication')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('Vailddate') is not None:
+            self.vailddate = m.get('Vailddate')
+        if m.get('Vaildperioddays') is not None:
+            self.vaildperioddays = m.get('Vaildperioddays')
+        if m.get('ValidUntil') is not None:
+            self.valid_until = m.get('ValidUntil')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateCouponTemplateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        applicable_products: str = None,
+        cost_bearer: str = None,
+        coupon_template_id: int = None,
+        create_time: str = None,
+        expireddate: str = None,
+        product_type: List[str] = None,
+        status: str = None,
+        template_name: str = None,
+        vailddate: str = None,
+        vaildperioddays: str = None,
+        valid_until: str = None,
+        value: str = None,
+    ):
+        self.applicable_products = applicable_products
+        self.cost_bearer = cost_bearer
+        self.coupon_template_id = coupon_template_id
+        self.create_time = create_time
+        self.expireddate = expireddate
+        self.product_type = product_type
+        self.status = status
+        self.template_name = template_name
+        self.vailddate = vailddate
+        self.vaildperioddays = vaildperioddays
+        self.valid_until = valid_until
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.applicable_products is not None:
+            result['ApplicableProducts'] = self.applicable_products
+        if self.cost_bearer is not None:
+            result['CostBearer'] = self.cost_bearer
+        if self.coupon_template_id is not None:
+            result['CouponTemplateID'] = self.coupon_template_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.expireddate is not None:
+            result['Expireddate'] = self.expireddate
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.vailddate is not None:
+            result['Vailddate'] = self.vailddate
+        if self.vaildperioddays is not None:
+            result['Vaildperioddays'] = self.vaildperioddays
+        if self.valid_until is not None:
+            result['ValidUntil'] = self.valid_until
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicableProducts') is not None:
+            self.applicable_products = m.get('ApplicableProducts')
+        if m.get('CostBearer') is not None:
+            self.cost_bearer = m.get('CostBearer')
+        if m.get('CouponTemplateID') is not None:
+            self.coupon_template_id = m.get('CouponTemplateID')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Expireddate') is not None:
+            self.expireddate = m.get('Expireddate')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('Vailddate') is not None:
+            self.vailddate = m.get('Vailddate')
+        if m.get('Vaildperioddays') is not None:
+            self.vaildperioddays = m.get('Vaildperioddays')
+        if m.get('ValidUntil') is not None:
+            self.valid_until = m.get('ValidUntil')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateCouponTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateCouponTemplateResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateCouponTemplateResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateCouponTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCouponTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCouponTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateCustomerRequest(TeaModel):
     def __init__(
         self,
@@ -138,15 +554,23 @@ class CreateCustomerRequest(TeaModel):
         customer_trade: str = None,
         nation: str = None,
     ):
-        # Customer\"s name.
+        # Customer\\"s name.
+        # 
+        # This parameter is required.
         self.customer_name = customer_name
         # The source/channel that allow client to connected with us. Please enumerate with Customer Source.
+        # 
+        # This parameter is required.
         self.customer_source = customer_source
-        # The sub-industry that Customer\"s business belongs to. Please enumerate with Customer Trade.
+        # The sub-industry that Customer\\"s business belongs to. Please enumerate with Customer Trade.
         self.customer_sub_trade = customer_sub_trade
-        # The industry that Customer\"s business belongs to. Please enumerate with Customer Trade.
+        # The industry that Customer\\"s business belongs to. Please enumerate with Customer Trade.
+        # 
+        # This parameter is required.
         self.customer_trade = customer_trade
         # The region that Customer choose to launch the Cloud Service. Please use ListCountries to confirm the valid region list for current UID.
+        # 
+        # This parameter is required.
         self.nation = nation
 
     def validate(self):
@@ -196,7 +620,7 @@ class CreateCustomerResponseBody(TeaModel):
     ):
         # Code indicating whether the call was successful.
         self.code = code
-        # Data indicating whether a customer was successfully created. If it\"s "true", the Message contains CID.
+        # Data indicating whether a customer was successfully created. If it\\"s "true", the Message contains CID.
         self.data = data
         # Massage indicating whether the call was successful.
         self.message = message
@@ -294,8 +718,12 @@ class CustomerQuotaRecordListRequest(TeaModel):
         start_date: str = None,
     ):
         # End Date Format: yyyy-MM-dd
+        # 
+        # This parameter is required.
         self.end_date = end_date
         # Customer UID
+        # 
+        # This parameter is required.
         self.end_user_pk = end_user_pk
         # Multilingual Parameters, the default language is English.</br>
         # en: English</br>
@@ -306,12 +734,20 @@ class CustomerQuotaRecordListRequest(TeaModel):
         # all All types</br>
         # quota_create Create quota</br>
         # quota_amount_adjust Adjust the amount of quota</br>
+        # 
+        # This parameter is required.
         self.operation_type = operation_type
         # Pagination, current page number, starting from 1.
+        # 
+        # This parameter is required.
         self.page_no = page_no
         # Pagination, record number on each page. Maximum 100.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # Start Date Format: yyyy-MM-dd
+        # 
+        # This parameter is required.
         self.start_date = start_date
 
     def validate(self):
@@ -381,7 +817,7 @@ class CustomerQuotaRecordListResponseBodyData(TeaModel):
         self.operation_type_code = operation_type_code
         # The description of submitted quota adjustment operation.
         self.operation_type_desc = operation_type_desc
-        # The UID of operator(Partner\"s UID).
+        # The UID of operator(Partner\\"s UID).
         self.operation_uid = operation_uid
         # Updated quota amount
         self.update_after_amount = update_after_amount
@@ -564,8 +1000,12 @@ class DeductOutstandingBalanceRequest(TeaModel):
         uid: int = None,
     ):
         # The Deducted Credit to be offset.
+        # 
+        # This parameter is required.
         self.deduct_amount = deduct_amount
         # Account UID of Distribution Customer.
+        # 
+        # This parameter is required.
         self.uid = uid
 
     def validate(self):
@@ -1098,8 +1538,12 @@ class ExportCustomerQuotaRecordRequest(TeaModel):
         start_date: str = None,
     ):
         # End Date Format:  yyyy-MM-dd
+        # 
+        # This parameter is required.
         self.end_date = end_date
         # Customer UID
+        # 
+        # This parameter is required.
         self.end_user_pk = end_user_pk
         # Multilingual Parameters, the default language is English.</br>
         # en: English</br>
@@ -1110,8 +1554,12 @@ class ExportCustomerQuotaRecordRequest(TeaModel):
         # all All types</br>
         # quota_create Create quota</br>
         # quota_amount_adjust Adjust the amount of quota</br>
+        # 
+        # This parameter is required.
         self.operation_type = operation_type
         # Start Date Format:  yyyy-MM-dd
+        # 
+        # This parameter is required.
         self.start_date = start_date
 
     def validate(self):
@@ -1285,16 +1733,22 @@ class GetAccountInfoRequest(TeaModel):
         uid: int = None,
         user_type: str = None,
     ):
-        # Pagination, current page.
+        # Message
+        # 
+        # This parameter is required.
         self.current_page = current_page
-        # Pagination, record number on each page, maximum 20.
+        # Success
+        # 
+        # This parameter is required.
         self.page_size = page_size
-        # Account UID of Distribution Customer. This parameter and the UserType parameter must have one filled. If this parameter is empty, then check all Distribution Customer accounts of the selected UserType.
+        # 10 (Value <= 20)
         self.uid = uid
-        # Distribution Customer\"s Account Type:
-        # - 1 End User
-        # - 2 Enterprise
-        # - 3 T2 Partner
+        # Result Code - Error Code. Value Range:
+        # - 200 OK
+        # - 1109 System Error
+        # - 3029: Invalid UID
+        # - 3062: UID and UserType are both empty.
+        # - 3063: UserType value out of range.
         self.user_type = user_type
 
     def validate(self):
@@ -1346,35 +1800,37 @@ class GetAccountInfoResponseBodyAccountInfoListAccountInfo(TeaModel):
         sub_account_type: int = None,
         uid: int = None,
     ):
+        # The E-mail of Distribution Customer.
+        self.account_nickname = account_nickname
+        # Account CID of Distribution Customer.
+        self.aliyun_id = aliyun_id
+        # XXX Technology LTD.
+        self.association_success_time = association_success_time
+        # customer\\"s CID
+        self.cid = cid
+        # customer manager
+        self.customer_bd = customer_bd
+        # The account have Shutdown-delay Privilege, After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.
+        self.delay_amount = delay_amount
+        # Partner\\"s Shutdown Policy Management for Sub Account.
+        # 1: delayStop. The account have Shutdown-delay Privilege, After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.
+        # 2: noStop. Partner will manually manage Shutdown Status for Sub Account. Meanwhile, System would not manage the resource\\"s life-circle of Sub Account.
+        # 3: immediatelyStop. Once valid quota of Sub Account falls below 0 and be identified as defaulting account, it will trigger the instance shutdown immediately.
+        self.delay_status = delay_status
+        # Sub Account
+        self.email = email
+        # Account UID of Distribution Customer.
+        self.mobile = mobile
+        # Purchase Forbidden：Ban the new purchase action
+        # normal：Normal--End Use can issue Cloud Resource order immediately.
+        self.new_buy_status = new_buy_status
+        # Valid mobile number of Distribution Customer.
+        self.remark = remark
         # The name of Sub Account:
         # 1.	Use the official name of Company, if Sub Account is an enterprise.
         # 2.	Use the official name of Partner, if Sub Account is a T2 reseller.
-        self.account_nickname = account_nickname
-        # Alibaba Cloud Login name of Distribution Customer.
-        self.aliyun_id = aliyun_id
-        # The time that Distribution Customer successfully associated with Distributor.
-        self.association_success_time = association_success_time
-        # Account CID of Distribution Customer.
-        self.cid = cid
-        self.customer_bd = customer_bd
-        self.delay_amount = delay_amount
-        self.delay_status = delay_status
-        # The E-mail of Distribution Customer.
-        self.email = email
-        # Valid mobile number of Distribution Customer.
-        self.mobile = mobile
-        self.new_buy_status = new_buy_status
-        # Description of Distribution Customer.
-        self.remark = remark
-        # Account Type:
-        # - 1 Agency\"s End User
-        # - 2 Reseller\"s End User
-        # - 3 Enterprise
-        # - 4 T2 Agency Partner
-        # - 5 T2 Reseller Partner
-        # - 6 T2 Agency+Reseller Partner
         self.sub_account_type = sub_account_type
-        # Account UID of Distribution Customer.
+        # Request ID, the unique request identifier generated by Alibaba Cloud.
         self.uid = uid
 
     def validate(self):
@@ -1487,11 +1943,11 @@ class GetAccountInfoResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
-        # Pagination, current page.
+        # Account Information
         self.page = page
-        # Pagination, record number on each page.
+        # Pagination, current page.
         self.page_size = page_size
-        # Pagination, page volume in total.
+        # List of Account Information
         self.total = total
 
     def validate(self):
@@ -1532,22 +1988,23 @@ class GetAccountInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # List of Account Information
+        # Account Type:
+        # - 1 Agency\\"s End User
+        # - 2 Reseller\\"s End User
+        # - 3 Enterprise
+        # - 4 T2 Agency Partner
+        # - 5 T2 Reseller Partner
+        # - 6 T2 Agency+Reseller Partner
         self.account_info_list = account_info_list
-        # Result Code - Error Code. Value Range:
-        # - 200 OK
-        # - 1109 System Error
-        # - 3029: Invalid UID
-        # - 3062: UID and UserType are both empty.
-        # - 3063: UserType value out of range.
-        self.code = code
-        # Message
-        self.message = message
-        # Pagination Information
-        self.page_info = page_info
-        # Request ID, the unique request identifier generated by Alibaba Cloud.
-        self.request_id = request_id
         # Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
+        self.code = code
+        # message
+        self.message = message
+        # Pagination, page volume in total.
+        self.page_info = page_info
+        # Request id, a unique identifier generated by Alibaba cloud for the request.
+        self.request_id = request_id
+        # Pagination, record number on each page.
         self.success = success
 
     def validate(self):
@@ -1636,12 +2093,170 @@ class GetAccountInfoResponse(TeaModel):
         return self
 
 
+class GetCoupondeductProductCodeRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+    ):
+        # This parameter is required.
+        self.accept_language = accept_language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        return self
+
+
+class GetCoupondeductProductCodeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        product_type: Any = None,
+    ):
+        self.product_type = product_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        return self
+
+
+class GetCoupondeductProductCodeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[GetCoupondeductProductCodeResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetCoupondeductProductCodeResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetCoupondeductProductCodeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCoupondeductProductCodeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCoupondeductProductCodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetCreditInfoRequest(TeaModel):
     def __init__(
         self,
         uid: int = None,
     ):
         # Sub Account UID
+        # 
+        # This parameter is required.
         self.uid = uid
 
     def validate(self):
@@ -1689,12 +2304,12 @@ class GetCreditInfoResponseBodyData(TeaModel):
         self.consumed_undeducted_value = consumed_undeducted_value
         # The Credit Line of Sub Account
         self.credit_line = credit_line
-        # The Credit have been consumed by Sub Account, and haven\"t be paid.
+        # The Credit have been consumed by Sub Account, and haven\\"t be paid.
         self.outstanding_balance = outstanding_balance
         # The systematic controlling policy for resource management, specifically when the available Credit of Sub Account falls to 0 or less.</br>
         # 
         # - 1: delayStop. The account have Shutdown-delay Privilege,  After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.</br>
-        # - 2: noStop. Partner will manually manage Shutdown Status for Sub Account. Meanwhile, System would not manage the resource\"s life-circle of Sub Account.</br>
+        # - 2: noStop. Partner will manually manage Shutdown Status for Sub Account. Meanwhile, System would not manage the resource\\"s life-circle of Sub Account.</br>
         # - 3: immediatelyStop. Once valid quota of Sub Account falls below 0 and be identified as defaulting account, it will trigger the instance shutdown immediately.</br>
         self.zero_credit_shutdown_policy = zero_credit_shutdown_policy
         # Manage order operation.
@@ -1851,6 +2466,340 @@ class GetCreditInfoResponse(TeaModel):
         return self
 
 
+class GetCustomerOrdersRequest(TeaModel):
+    def __init__(
+        self,
+        customer_account: str = None,
+        customer_manager: str = None,
+        customer_uid: int = None,
+        end_date: str = None,
+        order_id: int = None,
+        order_source: int = None,
+        order_status: int = None,
+        order_type: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        product_type: str = None,
+        start_date: str = None,
+        time_type: int = None,
+    ):
+        self.customer_account = customer_account
+        self.customer_manager = customer_manager
+        self.customer_uid = customer_uid
+        # This parameter is required.
+        self.end_date = end_date
+        self.order_id = order_id
+        self.order_source = order_source
+        self.order_status = order_status
+        self.order_type = order_type
+        # This parameter is required.
+        self.page_no = page_no
+        # This parameter is required.
+        self.page_size = page_size
+        self.product_type = product_type
+        # This parameter is required.
+        self.start_date = start_date
+        # This parameter is required.
+        self.time_type = time_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.customer_account is not None:
+            result['CustomerAccount'] = self.customer_account
+        if self.customer_manager is not None:
+            result['CustomerManager'] = self.customer_manager
+        if self.customer_uid is not None:
+            result['CustomerUid'] = self.customer_uid
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.order_source is not None:
+            result['OrderSource'] = self.order_source
+        if self.order_status is not None:
+            result['OrderStatus'] = self.order_status
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        if self.time_type is not None:
+            result['TimeType'] = self.time_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomerAccount') is not None:
+            self.customer_account = m.get('CustomerAccount')
+        if m.get('CustomerManager') is not None:
+            self.customer_manager = m.get('CustomerManager')
+        if m.get('CustomerUid') is not None:
+            self.customer_uid = m.get('CustomerUid')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OrderSource') is not None:
+            self.order_source = m.get('OrderSource')
+        if m.get('OrderStatus') is not None:
+            self.order_status = m.get('OrderStatus')
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        if m.get('TimeType') is not None:
+            self.time_type = m.get('TimeType')
+        return self
+
+
+class GetCustomerOrdersResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        customer_account: str = None,
+        customer_manager: str = None,
+        customer_no: int = None,
+        order_id: int = None,
+        order_source: str = None,
+        order_status: int = None,
+        order_type: str = None,
+        original_cost: float = None,
+        payment_method: str = None,
+        payment_time: str = None,
+        pretax_cost: float = None,
+        product_detail: str = None,
+        product_type: str = None,
+        time_to_order: str = None,
+    ):
+        self.customer_account = customer_account
+        self.customer_manager = customer_manager
+        self.customer_no = customer_no
+        self.order_id = order_id
+        self.order_source = order_source
+        self.order_status = order_status
+        self.order_type = order_type
+        self.original_cost = original_cost
+        self.payment_method = payment_method
+        self.payment_time = payment_time
+        self.pretax_cost = pretax_cost
+        self.product_detail = product_detail
+        self.product_type = product_type
+        self.time_to_order = time_to_order
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.customer_account is not None:
+            result['CustomerAccount'] = self.customer_account
+        if self.customer_manager is not None:
+            result['CustomerManager'] = self.customer_manager
+        if self.customer_no is not None:
+            result['CustomerNo'] = self.customer_no
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.order_source is not None:
+            result['OrderSource'] = self.order_source
+        if self.order_status is not None:
+            result['OrderStatus'] = self.order_status
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.original_cost is not None:
+            result['OriginalCost'] = self.original_cost
+        if self.payment_method is not None:
+            result['PaymentMethod'] = self.payment_method
+        if self.payment_time is not None:
+            result['PaymentTime'] = self.payment_time
+        if self.pretax_cost is not None:
+            result['PretaxCost'] = self.pretax_cost
+        if self.product_detail is not None:
+            result['ProductDetail'] = self.product_detail
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+        if self.time_to_order is not None:
+            result['TimeToOrder'] = self.time_to_order
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomerAccount') is not None:
+            self.customer_account = m.get('CustomerAccount')
+        if m.get('CustomerManager') is not None:
+            self.customer_manager = m.get('CustomerManager')
+        if m.get('CustomerNo') is not None:
+            self.customer_no = m.get('CustomerNo')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OrderSource') is not None:
+            self.order_source = m.get('OrderSource')
+        if m.get('OrderStatus') is not None:
+            self.order_status = m.get('OrderStatus')
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('OriginalCost') is not None:
+            self.original_cost = m.get('OriginalCost')
+        if m.get('PaymentMethod') is not None:
+            self.payment_method = m.get('PaymentMethod')
+        if m.get('PaymentTime') is not None:
+            self.payment_time = m.get('PaymentTime')
+        if m.get('PretaxCost') is not None:
+            self.pretax_cost = m.get('PretaxCost')
+        if m.get('ProductDetail') is not None:
+            self.product_detail = m.get('ProductDetail')
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+        if m.get('TimeToOrder') is not None:
+            self.time_to_order = m.get('TimeToOrder')
+        return self
+
+
+class GetCustomerOrdersResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[GetCustomerOrdersResponseBodyData] = None,
+        message: str = None,
+        msg: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.msg = msg
+        self.page_no = page_no
+        self.page_size = page_size
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.msg is not None:
+            result['Msg'] = self.msg
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetCustomerOrdersResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetCustomerOrdersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCustomerOrdersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCustomerOrdersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDailyBillRequest(TeaModel):
     def __init__(
         self,
@@ -1861,6 +2810,8 @@ class GetDailyBillRequest(TeaModel):
         # Bill Owner type. Value Range:</br>
         # 1: Master account</br>
         # 2: Sub account</br>
+        # 
+        # This parameter is required.
         self.bill_owner = bill_owner
         # BillType. Value Range:</br>
         # 
@@ -1868,8 +2819,12 @@ class GetDailyBillRequest(TeaModel):
         # - DailyBill (Deprecated)
         # - DailyInstanceBill (Deprecated)
         # - DailyInstanceBillV2
+        # 
+        # This parameter is required.
         self.bill_type = bill_type
         # Billing date. Format YYYY-MM-DD
+        # 
+        # This parameter is required.
         self.date = date
 
     def validate(self):
@@ -2095,6 +3050,8 @@ class GetInviteStatusRequest(TeaModel):
     ):
         # inviteId list</br>
         # `Sub-levels <= 5`
+        # 
+        # This parameter is required.
         self.invite_status_list = invite_status_list
 
     def validate(self):
@@ -2139,7 +3096,7 @@ class GetInviteStatusResponseBodyDataInviteStatusInviteStatusList(TeaModel):
         # The time that Distribution Customer successfully associated with Distributor.</br>
         # This value will be empty if there is no existing association.
         self.association_success_time = association_success_time
-        # Distribution Customer\"s CID
+        # Distribution Customer\\"s CID
         self.cid = cid
         # The time of email been sent out.
         self.gmt_create = gmt_create
@@ -2152,11 +3109,11 @@ class GetInviteStatusResponseBodyDataInviteStatusInviteStatusList(TeaModel):
         # * 3 Registration URL have been visited, but no submitted sheet/ticket.
         self.status = status
         # Account Type:
-        # - 1 Agency\"s End User
-        # - 2 Reseller\"s End User
+        # - 1 Agency\\"s End User
+        # - 2 Reseller\\"s End User
         # - 5 T2 Reseller Partner
         self.sub_account_type = sub_account_type
-        # Distribution Customer\"s UID
+        # Distribution Customer\\"s UID
         self.uid = uid
 
     def validate(self):
@@ -2402,6 +3359,8 @@ class GetMonthlyBillRequest(TeaModel):
         # Bill Owner type. Value Range:</br>
         # 1: Master account</br>
         # 2: Sub account</br>
+        # 
+        # This parameter is required.
         self.bill_owner = bill_owner
         # Value Range:
         # 
@@ -2414,8 +3373,12 @@ class GetMonthlyBillRequest(TeaModel):
         # - MonthlyRefundAdjustInvoce 
         # - MonthlyInstanceConsumeV2 
         # - MarginReportV2
+        # 
+        # This parameter is required.
         self.bill_type = bill_type
         # Billing Month, Format is YYYY-MM
+        # 
+        # This parameter is required.
         self.month = month
 
     def validate(self):
@@ -2634,8 +3597,12 @@ class GetUnassociatedCustomerRequest(TeaModel):
         page_size: int = None,
     ):
         # Pagination, current page.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # Pagination, record number on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -2926,30 +3893,44 @@ class InviteSubAccountRequestAccountInfoList(TeaModel):
         # The name of Sub Account:</br>
         # 1. Use the official name of Company, if Sub Account is an enterprise.</br>
         # 2. Use the official name of Partner, if Sub Account is a T2 reseller.</br>
+        # 
+        # This parameter is required.
         self.account_nickname = account_nickname
         # The total budget Credit of Sub Account that distributed by Partner.
+        # 
+        # This parameter is required.
         self.credit_line = credit_line
         self.customer_bd = customer_bd
         # Customer ID, Returning ID from CreateCustomer API.
+        # 
+        # This parameter is required.
         self.customer_id = customer_id
         # The email address of End User,  which will receive the invitation email.
+        # 
+        # This parameter is required.
         self.email_address = email_address
         # Initial Order Status</br>
-        # 1. ban：Ban the new purchase action--After End User finish registration and authorization, they can\"t issue Cloud Resource order immediately. Partner should manually update the "Order Control" settings as "Normal" to enable new order.</br>
+        # 1. ban：Ban the new purchase action--After End User finish registration and authorization, they can\\"t issue Cloud Resource order immediately. Partner should manually update the "Order Control" settings as "Normal" to enable new order.</br>
         # 2. normal：Normal--After End User finished registration and authorization, they can issue Cloud Resource order immediately.</br>
+        # 
+        # This parameter is required.
         self.new_buy_status = new_buy_status
         # Description of Sub Account.
         self.remark = remark
         # The type of Sub Account</br>
         # 
-        # 1 Agency\"s End User</br>
-        # 2 Reseller\"s End user</br>
-        # 5 Reseller\"s T2 Partner</br>
+        # 1 Agency\\"s End User</br>
+        # 2 Reseller\\"s End user</br>
+        # 5 Reseller\\"s T2 Partner</br>
+        # 
+        # This parameter is required.
         self.sub_account_type = sub_account_type
-        # Partner\"s Shutdown Policy Management for Sub Account.</br>
+        # Partner\\"s Shutdown Policy Management for Sub Account.</br>
         # 1: delayStop. The account have Shutdown-delay Privilege,  After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.</br>
-        # 2: noStop. Partner will manually manage Shutdown Status for Sub Account. Meanwhile, System would not manage the resource\"s life-circle of Sub Account.</br>
+        # 2: noStop. Partner will manually manage Shutdown Status for Sub Account. Meanwhile, System would not manage the resource\\"s life-circle of Sub Account.</br>
         # 3: immediatelyStop. Once valid quota of Sub Account falls below 0 and be identified as defaulting account, it will trigger the instance shutdown immediately.</br>
+        # 
+        # This parameter is required.
         self.zero_credit_shutdown_policy = zero_credit_shutdown_policy
 
     def validate(self):
@@ -3011,6 +3992,8 @@ class InviteSubAccountRequest(TeaModel):
     ):
         # List of invited account information,  less than 5 accounts at a time.</br>
         # `Sub-levels <= 5`
+        # 
+        # This parameter is required.
         self.account_info_list = account_info_list
 
     def validate(self):
@@ -3266,6 +4249,181 @@ class InviteSubAccountResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = InviteSubAccountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class IssueCouponForCustomerRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        coupon_template_id: int = None,
+        uidlist: str = None,
+    ):
+        self.accept_language = accept_language
+        # This parameter is required.
+        self.coupon_template_id = coupon_template_id
+        # This parameter is required.
+        self.uidlist = uidlist
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.coupon_template_id is not None:
+            result['CouponTemplateId'] = self.coupon_template_id
+        if self.uidlist is not None:
+            result['Uidlist'] = self.uidlist
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('CouponTemplateId') is not None:
+            self.coupon_template_id = m.get('CouponTemplateId')
+        if m.get('Uidlist') is not None:
+            self.uidlist = m.get('Uidlist')
+        return self
+
+
+class IssueCouponForCustomerResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        coupon_template_id: int = None,
+        create_time: str = None,
+        uidlist: str = None,
+    ):
+        self.coupon_template_id = coupon_template_id
+        self.create_time = create_time
+        self.uidlist = uidlist
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.coupon_template_id is not None:
+            result['CouponTemplateId'] = self.coupon_template_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.uidlist is not None:
+            result['Uidlist'] = self.uidlist
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CouponTemplateId') is not None:
+            self.coupon_template_id = m.get('CouponTemplateId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Uidlist') is not None:
+            self.uidlist = m.get('Uidlist')
+        return self
+
+
+class IssueCouponForCustomerResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        data: IssueCouponForCustomerResponseBodyData = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+        self.data = data
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('data') is not None:
+            temp_model = IssueCouponForCustomerResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        return self
+
+
+class IssueCouponForCustomerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: IssueCouponForCustomerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = IssueCouponForCustomerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3651,6 +4809,8 @@ class QuotaListExportPagedRequest(TeaModel):
         page_size: int = None,
     ):
         # Pagination, current page number, starting from 1.
+        # 
+        # This parameter is required.
         self.current_page = current_page
         # Multilingual Parameters, the default language is English.</br>
         # en: English</br>
@@ -3658,6 +4818,8 @@ class QuotaListExportPagedRequest(TeaModel):
         # ja: Japanese </br>
         self.language = language
         # Pagination, record number on each page, maximum 100.
+        # 
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -3880,6 +5042,8 @@ class ResendEmailRequest(TeaModel):
     ):
         # Invitation ID, from interface InviteSubAccount </br>
         # Note: This field type is Long, which may result in precision loss in serialization/deserialization process. Please ensure the value does not exceed 9007199254740991.
+        # 
+        # This parameter is required.
         self.invite_id = invite_id
 
     def validate(self):
@@ -3916,7 +5080,7 @@ class ResendEmailResponseBody(TeaModel):
         # * 1109: System error
         # * 3058: Frequent sending, the limit is 10 emails in every 5 minutes.
         # * 3057: InviteId is empty.
-        # * 3060: Can\"t find sending record of given InviteId.
+        # * 3060: Can\\"t find sending record of given InviteId.
         # * 3061: Registration URL is expired, unable to resend.
         self.code = code
         # Result message
@@ -4007,14 +5171,19 @@ class SetAccountInfoRequest(TeaModel):
         remark: str = None,
         uid: int = None,
     ):
-        # Sub Account Nickname. 
-        # * Use the official name of Company, if Sub Account is an enterprise.
-        # * Use the official name of Partner, if Sub Account is a T2 reseller.
+        # Result Code:
+        # *   200 OK
+        # *   1109 System error
+        # *   3030 Sub Account Nickname exceeds maximum length,  maximum length 150 bytes.
+        # *   3031 Remark exceeds maximum length,  maximum length 3000 bytes.
         self.account_nickname = account_nickname
+        # Customer manager（limited 50 character）
         self.customer_bd = customer_bd
-        # Description of Sub Account.
+        # success
         self.remark = remark
-        # The UID of Sub Account.
+        # Request ID, Alibaba Cloud will track errors with this.
+        # 
+        # This parameter is required.
         self.uid = uid
 
     def validate(self):
@@ -4057,17 +5226,9 @@ class SetAccountInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Result Code:
-        # *   200 OK
-        # *   1109 System error
-        # *   3030 Sub Account Nickname exceeds maximum length,  maximum length 150 bytes.
-        # *   3031 Remark exceeds maximum length,  maximum length 3000 bytes.
         self.code = code
-        # Message information
         self.message = message
-        # Request ID, Alibaba Cloud will track errors with this.
         self.request_id = request_id
-        # Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
         self.success = success
 
     def validate(self):
@@ -4150,8 +5311,12 @@ class SetCreditLineRequest(TeaModel):
         uid: int = None,
     ):
         # New Credit Line
+        # 
+        # This parameter is required.
         self.credit_line = credit_line
         # The UID of Sub Account.
+        # 
+        # This parameter is required.
         self.uid = uid
 
     def validate(self):
@@ -4279,8 +5444,12 @@ class SetWarningThresholdRequest(TeaModel):
         warning_value: str = None,
     ):
         # The UID of the partner‘s customer.
+        # 
+        # This parameter is required.
         self.uid = uid
         # Percentage, 1 to 100. When the available credit limit is lower than the credit limit percentage, an email is sent to the main account.
+        # 
+        # This parameter is required.
         self.warning_value = warning_value
 
     def validate(self):
@@ -4415,24 +5584,34 @@ class SubscriptionBillRequest(TeaModel):
         # The start month from which the bills are pushed. Specify the value in the yyyy-MM format.
         # 
         # After the subscription is generated, the system automatically pushes the bill data that is generated from the month that you specified to the current point in time. Data of up to six months can be pushed. The current month is included. If you subscribe to the bills for more than six months, the subscription is invalid.
+        # 
+        # This parameter is required.
         self.begin_billing_cycle = begin_billing_cycle
         # The file format of the bill. Valid values: csv and parquet.
         # 
         # If you subscribe to the bills of multiple file formats, we recommend that you store the bills in different OSS buckets to prevent file overwriting.
+        # 
+        # This parameter is required.
         self.bill_format = bill_format
         # The ID of the user to which the OSS bucket belongs.
         # 
         # If you are an eco-partner of Alibaba Cloud and you need to push the bills to the OSS bucket of a subordinate partner account, you must set this parameter to the ID of the subordinate partner account and grant the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/?spm=api-workbench.API%20Document.0.0.68c71e0fhmTSJp#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission to the subordinate partner account.
         # 
         # If you are an eco-partner of Alibaba Cloud and you need to push the bills to the OSS bucket of your own account, your account must be granted the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/?spm=api-workbench.API%20Document.0.0.68c71e0fhmTSJp#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
+        # 
+        # This parameter is required.
         self.bucket_owner_id = bucket_owner_id
         # The name of the Object Storage Service (OSS) bucket in which you want to store the bills.
+        # 
+        # This parameter is required.
         self.subscribe_bucket = subscribe_bucket
         # The maximum rows in a single bill file. If the number of bill rows exceed the upper limit, the bill is automatically split into multiple files. The name of each split file is in the `uid_billType_billCycle_SquenceNo_fileNo` format.
         # 
         # Files whose names are the same except for the fileNo field are of the same type and belong to the same billing cycle.
         self.subscribe_segment_size = subscribe_segment_size
         # The type of the bill to which you want to subscribe. Valid values: PartnerBillingItemDetailForBillingPeriod, PartnerBillingItemDetailMonthly, PartnerInstanceDetailForBillingPeriod, and PartnerInstanceDetailMonthly.
+        # 
+        # This parameter is required.
         self.subscribe_type = subscribe_type
 
     def validate(self):

@@ -1,3 +1,10 @@
+2024-09-04 Version: 1.5.0
+- Support API CreateCouponTemplate.
+- Support API GetCoupondeductProductCode.
+- Support API GetCustomerOrders.
+- Support API IssueCouponForCustomer.
+
+
 2024-04-18 Version: 1.4.0
 - Support API CustomerQuotaRecordList.
 - Support API ExportCustomerQuotaRecord.
