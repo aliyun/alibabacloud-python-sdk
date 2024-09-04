@@ -199,6 +199,7 @@ class BankMetaVerifyRequest(TeaModel):
         self,
         bank_card: str = None,
         identify_num: str = None,
+        identity_type: str = None,
         mobile: str = None,
         param_type: str = None,
         product_type: str = None,
@@ -207,6 +208,7 @@ class BankMetaVerifyRequest(TeaModel):
     ):
         self.bank_card = bank_card
         self.identify_num = identify_num
+        self.identity_type = identity_type
         self.mobile = mobile
         self.param_type = param_type
         self.product_type = product_type
@@ -226,6 +228,8 @@ class BankMetaVerifyRequest(TeaModel):
             result['BankCard'] = self.bank_card
         if self.identify_num is not None:
             result['IdentifyNum'] = self.identify_num
+        if self.identity_type is not None:
+            result['IdentityType'] = self.identity_type
         if self.mobile is not None:
             result['Mobile'] = self.mobile
         if self.param_type is not None:
@@ -244,6 +248,8 @@ class BankMetaVerifyRequest(TeaModel):
             self.bank_card = m.get('BankCard')
         if m.get('IdentifyNum') is not None:
             self.identify_num = m.get('IdentifyNum')
+        if m.get('IdentityType') is not None:
+            self.identity_type = m.get('IdentityType')
         if m.get('Mobile') is not None:
             self.mobile = m.get('Mobile')
         if m.get('ParamType') is not None:

@@ -189,6 +189,8 @@ class Client(OpenApiClient):
             query['BankCard'] = request.bank_card
         if not UtilClient.is_unset(request.identify_num):
             query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.identity_type):
+            query['IdentityType'] = request.identity_type
         if not UtilClient.is_unset(request.mobile):
             query['Mobile'] = request.mobile
         if not UtilClient.is_unset(request.param_type):
@@ -236,6 +238,8 @@ class Client(OpenApiClient):
             query['BankCard'] = request.bank_card
         if not UtilClient.is_unset(request.identify_num):
             query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.identity_type):
+            query['IdentityType'] = request.identity_type
         if not UtilClient.is_unset(request.mobile):
             query['Mobile'] = request.mobile
         if not UtilClient.is_unset(request.param_type):

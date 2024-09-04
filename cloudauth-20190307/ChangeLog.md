@@ -1,3 +1,7 @@
+2024-09-04 Version: 2.7.3
+- Update API BankMetaVerify: add param IdentityType.
+
+
 2024-08-12 Version: 2.7.2
 - Update API InitFaceVerify: add param AppQualityCheck.
 - Update API InitFaceVerify: update param FaceContrastPicture.
