@@ -3074,6 +3074,7 @@ class CreateClusterRequest(TeaModel):
         keep_instance_name: bool = None,
         key_pair: str = None,
         kubernetes_version: str = None,
+        load_balancer_id: str = None,
         load_balancer_spec: str = None,
         logging_type: str = None,
         login_password: str = None,
@@ -3316,6 +3317,7 @@ class CreateClusterRequest(TeaModel):
         # 
         # You can create clusters of the latest two Kubernetes versions in the ACK console. If you want to create clusters that run earlier Kubernetes versions, use the API. For more information about the Kubernetes versions supported by ACK, see [Release notes on Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
         self.kubernetes_version = kubernetes_version
+        self.load_balancer_id = load_balancer_id
         # The specification of the Server Load Balancer (SLB) instance. Valid values:
         # 
         # *   slb.s1.small
@@ -3716,6 +3718,8 @@ class CreateClusterRequest(TeaModel):
             result['key_pair'] = self.key_pair
         if self.kubernetes_version is not None:
             result['kubernetes_version'] = self.kubernetes_version
+        if self.load_balancer_id is not None:
+            result['load_balancer_id'] = self.load_balancer_id
         if self.load_balancer_spec is not None:
             result['load_balancer_spec'] = self.load_balancer_spec
         if self.logging_type is not None:
@@ -3913,6 +3917,8 @@ class CreateClusterRequest(TeaModel):
             self.key_pair = m.get('key_pair')
         if m.get('kubernetes_version') is not None:
             self.kubernetes_version = m.get('kubernetes_version')
+        if m.get('load_balancer_id') is not None:
+            self.load_balancer_id = m.get('load_balancer_id')
         if m.get('load_balancer_spec') is not None:
             self.load_balancer_spec = m.get('load_balancer_spec')
         if m.get('logging_type') is not None:
@@ -6407,7 +6413,7 @@ class DeleteAlertContactShrinkRequest(TeaModel):
         return self
 
 
-class DeleteAlertContactResponseBody(TeaModel):
+class DeleteAlertContactResponseBodyResult(TeaModel):
     def __init__(
         self,
         status: bool = None,
@@ -6446,12 +6452,47 @@ class DeleteAlertContactResponseBody(TeaModel):
         return self
 
 
+class DeleteAlertContactResponseBody(TeaModel):
+    def __init__(
+        self,
+        result: List[DeleteAlertContactResponseBodyResult] = None,
+    ):
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = DeleteAlertContactResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        return self
+
+
 class DeleteAlertContactResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: List[DeleteAlertContactResponseBody] = None,
+        body: DeleteAlertContactResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -6459,9 +6500,7 @@ class DeleteAlertContactResponse(TeaModel):
 
     def validate(self):
         if self.body:
-            for k in self.body:
-                if k:
-                    k.validate()
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6473,10 +6512,8 @@ class DeleteAlertContactResponse(TeaModel):
             result['headers'] = self.headers
         if self.status_code is not None:
             result['statusCode'] = self.status_code
-        result['body'] = []
         if self.body is not None:
-            for k in self.body:
-                result['body'].append(k.to_map() if k else None)
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -6485,11 +6522,9 @@ class DeleteAlertContactResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
-        self.body = []
         if m.get('body') is not None:
-            for k in m.get('body'):
-                temp_model = DeleteAlertContactResponseBody()
-                self.body.append(temp_model.from_map(k))
+            temp_model = DeleteAlertContactResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 

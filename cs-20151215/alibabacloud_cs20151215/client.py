@@ -1566,6 +1566,8 @@ class Client(OpenApiClient):
             body['key_pair'] = request.key_pair
         if not UtilClient.is_unset(request.kubernetes_version):
             body['kubernetes_version'] = request.kubernetes_version
+        if not UtilClient.is_unset(request.load_balancer_id):
+            body['load_balancer_id'] = request.load_balancer_id
         if not UtilClient.is_unset(request.load_balancer_spec):
             body['load_balancer_spec'] = request.load_balancer_spec
         if not UtilClient.is_unset(request.logging_type):
@@ -1792,6 +1794,8 @@ class Client(OpenApiClient):
             body['key_pair'] = request.key_pair
         if not UtilClient.is_unset(request.kubernetes_version):
             body['kubernetes_version'] = request.kubernetes_version
+        if not UtilClient.is_unset(request.load_balancer_id):
+            body['load_balancer_id'] = request.load_balancer_id
         if not UtilClient.is_unset(request.load_balancer_spec):
             body['load_balancer_spec'] = request.load_balancer_spec
         if not UtilClient.is_unset(request.logging_type):

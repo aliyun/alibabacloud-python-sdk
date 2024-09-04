@@ -1,3 +1,10 @@
+2024-09-04 Version: 4.7.4
+- Update API CreateCluster: update param body.
+- Update API DeleteAlertContact: update response param.
+- Update API DeleteAlertContactGroup: update response param.
+- Update API DescribeSubaccountK8sClusterUserConfig: update response param.
+
+
 2024-08-14 Version: 4.7.3
 - Update API UpgradeCluster: update param body.
 
