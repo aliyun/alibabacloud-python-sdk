@@ -41,6 +41,152 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def convert_url_with_options(
+        self,
+        request: traffic_fx_open_20240815_models.ConvertUrlRequest,
+        headers: traffic_fx_open_20240815_models.ConvertUrlHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> traffic_fx_open_20240815_models.ConvertUrlResponse:
+        """
+        @summary 转换联登链接
+        
+        @param request: ConvertUrlRequest
+        @param headers: ConvertUrlHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConvertUrlResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.country_calling_code):
+            body['countryCallingCode'] = request.country_calling_code
+        if not UtilClient.is_unset(request.jump_url):
+            body['jumpUrl'] = request.jump_url
+        if not UtilClient.is_unset(request.phone):
+            body['phone'] = request.phone
+        if not UtilClient.is_unset(request.scene):
+            body['scene'] = request.scene
+        if not UtilClient.is_unset(request.source):
+            body['source'] = request.source
+        if not UtilClient.is_unset(request.third_id):
+            body['thirdId'] = request.third_id
+        if not UtilClient.is_unset(request.uid):
+            body['uid'] = request.uid
+        if not UtilClient.is_unset(request.xenv):
+            body['xenv'] = request.xenv
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_airticket_access_token):
+            real_headers['xAcsAirticketAccessToken'] = UtilClient.to_jsonstring(headers.x_acs_airticket_access_token)
+        if not UtilClient.is_unset(headers.x_acs_airticket_language):
+            real_headers['xAcsAirticketLanguage'] = UtilClient.to_jsonstring(headers.x_acs_airticket_language)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConvertUrl',
+            version='2024-08-15',
+            protocol='HTTPS',
+            pathname=f'/v1/distribution/trade/convertUrl',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            traffic_fx_open_20240815_models.ConvertUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def convert_url_with_options_async(
+        self,
+        request: traffic_fx_open_20240815_models.ConvertUrlRequest,
+        headers: traffic_fx_open_20240815_models.ConvertUrlHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> traffic_fx_open_20240815_models.ConvertUrlResponse:
+        """
+        @summary 转换联登链接
+        
+        @param request: ConvertUrlRequest
+        @param headers: ConvertUrlHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConvertUrlResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.country_calling_code):
+            body['countryCallingCode'] = request.country_calling_code
+        if not UtilClient.is_unset(request.jump_url):
+            body['jumpUrl'] = request.jump_url
+        if not UtilClient.is_unset(request.phone):
+            body['phone'] = request.phone
+        if not UtilClient.is_unset(request.scene):
+            body['scene'] = request.scene
+        if not UtilClient.is_unset(request.source):
+            body['source'] = request.source
+        if not UtilClient.is_unset(request.third_id):
+            body['thirdId'] = request.third_id
+        if not UtilClient.is_unset(request.uid):
+            body['uid'] = request.uid
+        if not UtilClient.is_unset(request.xenv):
+            body['xenv'] = request.xenv
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_airticket_access_token):
+            real_headers['xAcsAirticketAccessToken'] = UtilClient.to_jsonstring(headers.x_acs_airticket_access_token)
+        if not UtilClient.is_unset(headers.x_acs_airticket_language):
+            real_headers['xAcsAirticketLanguage'] = UtilClient.to_jsonstring(headers.x_acs_airticket_language)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConvertUrl',
+            version='2024-08-15',
+            protocol='HTTPS',
+            pathname=f'/v1/distribution/trade/convertUrl',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            traffic_fx_open_20240815_models.ConvertUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def convert_url(
+        self,
+        request: traffic_fx_open_20240815_models.ConvertUrlRequest,
+    ) -> traffic_fx_open_20240815_models.ConvertUrlResponse:
+        """
+        @summary 转换联登链接
+        
+        @param request: ConvertUrlRequest
+        @return: ConvertUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = traffic_fx_open_20240815_models.ConvertUrlHeaders()
+        return self.convert_url_with_options(request, headers, runtime)
+
+    async def convert_url_async(
+        self,
+        request: traffic_fx_open_20240815_models.ConvertUrlRequest,
+    ) -> traffic_fx_open_20240815_models.ConvertUrlResponse:
+        """
+        @summary 转换联登链接
+        
+        @param request: ConvertUrlRequest
+        @return: ConvertUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = traffic_fx_open_20240815_models.ConvertUrlHeaders()
+        return await self.convert_url_with_options_async(request, headers, runtime)
+
     def get_token_with_options(
         self,
         request: traffic_fx_open_20240815_models.GetTokenRequest,
