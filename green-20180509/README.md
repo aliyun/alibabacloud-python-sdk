@@ -28,7 +28,7 @@ pip install alibabacloud_green20180509
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/green-20180509/ChangeLog.md).
 
 ## References
 

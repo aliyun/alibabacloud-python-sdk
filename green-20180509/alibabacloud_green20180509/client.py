@@ -61,41 +61,44 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def add_faces(
-        self,
-        request: green_20180509_models.AddFacesRequest,
-    ) -> green_20180509_models.AddFacesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.add_faces_with_options(request, headers, runtime)
-
-    async def add_faces_async(
-        self,
-        request: green_20180509_models.AddFacesRequest,
-    ) -> green_20180509_models.AddFacesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.add_faces_with_options_async(request, headers, runtime)
-
     def add_faces_with_options(
         self,
         request: green_20180509_models.AddFacesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.AddFacesResponse:
+        """
+        @summary 添加人脸
+        
+        @param request: AddFacesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddFacesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='AddFaces',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/face/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.AddFacesResponse(),
-            self.do_roarequest('AddFaces', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/face/add', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_faces_with_options_async(
@@ -104,36 +107,67 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.AddFacesResponse:
+        """
+        @summary 添加人脸
+        
+        @param request: AddFacesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddFacesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='AddFaces',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/face/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.AddFacesResponse(),
-            await self.do_roarequest_async('AddFaces', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/face/add', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def add_groups(
+    def add_faces(
         self,
-        request: green_20180509_models.AddGroupsRequest,
-    ) -> green_20180509_models.AddGroupsResponse:
+        request: green_20180509_models.AddFacesRequest,
+    ) -> green_20180509_models.AddFacesResponse:
+        """
+        @summary 添加人脸
+        
+        @param request: AddFacesRequest
+        @return: AddFacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.add_groups_with_options(request, headers, runtime)
+        return self.add_faces_with_options(request, headers, runtime)
 
-    async def add_groups_async(
+    async def add_faces_async(
         self,
-        request: green_20180509_models.AddGroupsRequest,
-    ) -> green_20180509_models.AddGroupsResponse:
+        request: green_20180509_models.AddFacesRequest,
+    ) -> green_20180509_models.AddFacesResponse:
+        """
+        @summary 添加人脸
+        
+        @param request: AddFacesRequest
+        @return: AddFacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.add_groups_with_options_async(request, headers, runtime)
+        return await self.add_faces_with_options_async(request, headers, runtime)
 
     def add_groups_with_options(
         self,
@@ -141,19 +175,38 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.AddGroupsResponse:
+        """
+        @summary 添加分组
+        
+        @param request: AddGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='AddGroups',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/person/groups/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.AddGroupsResponse(),
-            self.do_roarequest('AddGroups', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/groups/add', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_groups_with_options_async(
@@ -162,36 +215,67 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.AddGroupsResponse:
+        """
+        @summary 添加分组
+        
+        @param request: AddGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='AddGroups',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/person/groups/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.AddGroupsResponse(),
-            await self.do_roarequest_async('AddGroups', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/groups/add', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def add_person(
+    def add_groups(
         self,
-        request: green_20180509_models.AddPersonRequest,
-    ) -> green_20180509_models.AddPersonResponse:
+        request: green_20180509_models.AddGroupsRequest,
+    ) -> green_20180509_models.AddGroupsResponse:
+        """
+        @summary 添加分组
+        
+        @param request: AddGroupsRequest
+        @return: AddGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.add_person_with_options(request, headers, runtime)
+        return self.add_groups_with_options(request, headers, runtime)
 
-    async def add_person_async(
+    async def add_groups_async(
         self,
-        request: green_20180509_models.AddPersonRequest,
-    ) -> green_20180509_models.AddPersonResponse:
+        request: green_20180509_models.AddGroupsRequest,
+    ) -> green_20180509_models.AddGroupsResponse:
+        """
+        @summary 添加分组
+        
+        @param request: AddGroupsRequest
+        @return: AddGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.add_person_with_options_async(request, headers, runtime)
+        return await self.add_groups_with_options_async(request, headers, runtime)
 
     def add_person_with_options(
         self,
@@ -199,19 +283,38 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.AddPersonResponse:
+        """
+        @summary 添加个体
+        
+        @param request: AddPersonRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddPersonResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='AddPerson',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/person/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.AddPersonResponse(),
-            self.do_roarequest('AddPerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/add', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_person_with_options_async(
@@ -220,36 +323,67 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.AddPersonResponse:
+        """
+        @summary 添加个体
+        
+        @param request: AddPersonRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddPersonResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='AddPerson',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/person/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.AddPersonResponse(),
-            await self.do_roarequest_async('AddPerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/add', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def add_similarity_image(
+    def add_person(
         self,
-        request: green_20180509_models.AddSimilarityImageRequest,
-    ) -> green_20180509_models.AddSimilarityImageResponse:
+        request: green_20180509_models.AddPersonRequest,
+    ) -> green_20180509_models.AddPersonResponse:
+        """
+        @summary 添加个体
+        
+        @param request: AddPersonRequest
+        @return: AddPersonResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.add_similarity_image_with_options(request, headers, runtime)
+        return self.add_person_with_options(request, headers, runtime)
 
-    async def add_similarity_image_async(
+    async def add_person_async(
         self,
-        request: green_20180509_models.AddSimilarityImageRequest,
-    ) -> green_20180509_models.AddSimilarityImageResponse:
+        request: green_20180509_models.AddPersonRequest,
+    ) -> green_20180509_models.AddPersonResponse:
+        """
+        @summary 添加个体
+        
+        @param request: AddPersonRequest
+        @return: AddPersonResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.add_similarity_image_with_options_async(request, headers, runtime)
+        return await self.add_person_with_options_async(request, headers, runtime)
 
     def add_similarity_image_with_options(
         self,
@@ -257,6 +391,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.AddSimilarityImageResponse:
+        """
+        @summary 添加相似图
+        
+        @param request: AddSimilarityImageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSimilarityImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -265,9 +407,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='AddSimilarityImage',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/similarity/image/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.AddSimilarityImageResponse(),
-            self.do_roarequest('AddSimilarityImage', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/image/add', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_similarity_image_with_options_async(
@@ -276,6 +429,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.AddSimilarityImageResponse:
+        """
+        @summary 添加相似图
+        
+        @param request: AddSimilarityImageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSimilarityImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -284,26 +445,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='AddSimilarityImage',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/similarity/image/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.AddSimilarityImageResponse(),
-            await self.do_roarequest_async('AddSimilarityImage', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/image/add', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def add_similarity_library(
+    def add_similarity_image(
         self,
-        request: green_20180509_models.AddSimilarityLibraryRequest,
-    ) -> green_20180509_models.AddSimilarityLibraryResponse:
+        request: green_20180509_models.AddSimilarityImageRequest,
+    ) -> green_20180509_models.AddSimilarityImageResponse:
+        """
+        @summary 添加相似图
+        
+        @param request: AddSimilarityImageRequest
+        @return: AddSimilarityImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.add_similarity_library_with_options(request, headers, runtime)
+        return self.add_similarity_image_with_options(request, headers, runtime)
 
-    async def add_similarity_library_async(
+    async def add_similarity_image_async(
         self,
-        request: green_20180509_models.AddSimilarityLibraryRequest,
-    ) -> green_20180509_models.AddSimilarityLibraryResponse:
+        request: green_20180509_models.AddSimilarityImageRequest,
+    ) -> green_20180509_models.AddSimilarityImageResponse:
+        """
+        @summary 添加相似图
+        
+        @param request: AddSimilarityImageRequest
+        @return: AddSimilarityImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.add_similarity_library_with_options_async(request, headers, runtime)
+        return await self.add_similarity_image_with_options_async(request, headers, runtime)
 
     def add_similarity_library_with_options(
         self,
@@ -311,6 +495,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.AddSimilarityLibraryResponse:
+        """
+        @summary 添加相似图库
+        
+        @param request: AddSimilarityLibraryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSimilarityLibraryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -319,9 +511,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='AddSimilarityLibrary',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/similarity/library/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.AddSimilarityLibraryResponse(),
-            self.do_roarequest('AddSimilarityLibrary', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/library/add', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_similarity_library_with_options_async(
@@ -330,6 +533,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.AddSimilarityLibraryResponse:
+        """
+        @summary 添加相似图库
+        
+        @param request: AddSimilarityLibraryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSimilarityLibraryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -338,26 +549,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='AddSimilarityLibrary',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/similarity/library/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.AddSimilarityLibraryResponse(),
-            await self.do_roarequest_async('AddSimilarityLibrary', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/library/add', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def add_video_dna(
+    def add_similarity_library(
         self,
-        request: green_20180509_models.AddVideoDnaRequest,
-    ) -> green_20180509_models.AddVideoDnaResponse:
+        request: green_20180509_models.AddSimilarityLibraryRequest,
+    ) -> green_20180509_models.AddSimilarityLibraryResponse:
+        """
+        @summary 添加相似图库
+        
+        @param request: AddSimilarityLibraryRequest
+        @return: AddSimilarityLibraryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.add_video_dna_with_options(request, headers, runtime)
+        return self.add_similarity_library_with_options(request, headers, runtime)
 
-    async def add_video_dna_async(
+    async def add_similarity_library_async(
         self,
-        request: green_20180509_models.AddVideoDnaRequest,
-    ) -> green_20180509_models.AddVideoDnaResponse:
+        request: green_20180509_models.AddSimilarityLibraryRequest,
+    ) -> green_20180509_models.AddSimilarityLibraryResponse:
+        """
+        @summary 添加相似图库
+        
+        @param request: AddSimilarityLibraryRequest
+        @return: AddSimilarityLibraryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.add_video_dna_with_options_async(request, headers, runtime)
+        return await self.add_similarity_library_with_options_async(request, headers, runtime)
 
     def add_video_dna_with_options(
         self,
@@ -365,6 +599,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.AddVideoDnaResponse:
+        """
+        @summary 添加视频Dna
+        
+        @param request: AddVideoDnaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddVideoDnaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -373,9 +615,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='AddVideoDna',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/dna/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.AddVideoDnaResponse(),
-            self.do_roarequest('AddVideoDna', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/add', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_video_dna_with_options_async(
@@ -384,6 +637,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.AddVideoDnaResponse:
+        """
+        @summary 添加视频Dna
+        
+        @param request: AddVideoDnaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddVideoDnaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -392,26 +653,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='AddVideoDna',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/dna/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.AddVideoDnaResponse(),
-            await self.do_roarequest_async('AddVideoDna', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/add', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def add_video_dna_group(
+    def add_video_dna(
         self,
-        request: green_20180509_models.AddVideoDnaGroupRequest,
-    ) -> green_20180509_models.AddVideoDnaGroupResponse:
+        request: green_20180509_models.AddVideoDnaRequest,
+    ) -> green_20180509_models.AddVideoDnaResponse:
+        """
+        @summary 添加视频Dna
+        
+        @param request: AddVideoDnaRequest
+        @return: AddVideoDnaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.add_video_dna_group_with_options(request, headers, runtime)
+        return self.add_video_dna_with_options(request, headers, runtime)
 
-    async def add_video_dna_group_async(
+    async def add_video_dna_async(
         self,
-        request: green_20180509_models.AddVideoDnaGroupRequest,
-    ) -> green_20180509_models.AddVideoDnaGroupResponse:
+        request: green_20180509_models.AddVideoDnaRequest,
+    ) -> green_20180509_models.AddVideoDnaResponse:
+        """
+        @summary 添加视频Dna
+        
+        @param request: AddVideoDnaRequest
+        @return: AddVideoDnaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.add_video_dna_group_with_options_async(request, headers, runtime)
+        return await self.add_video_dna_with_options_async(request, headers, runtime)
 
     def add_video_dna_group_with_options(
         self,
@@ -419,6 +703,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.AddVideoDnaGroupResponse:
+        """
+        @summary 添加视频Dna分组
+        
+        @param request: AddVideoDnaGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddVideoDnaGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -427,9 +719,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='AddVideoDnaGroup',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/dna/group/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.AddVideoDnaGroupResponse(),
-            self.do_roarequest('AddVideoDnaGroup', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/group/add', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_video_dna_group_with_options_async(
@@ -438,6 +741,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.AddVideoDnaGroupResponse:
+        """
+        @summary 添加视频Dna分组
+        
+        @param request: AddVideoDnaGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddVideoDnaGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -446,26 +757,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='AddVideoDnaGroup',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/dna/group/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.AddVideoDnaGroupResponse(),
-            await self.do_roarequest_async('AddVideoDnaGroup', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/group/add', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def delete_faces(
+    def add_video_dna_group(
         self,
-        request: green_20180509_models.DeleteFacesRequest,
-    ) -> green_20180509_models.DeleteFacesResponse:
+        request: green_20180509_models.AddVideoDnaGroupRequest,
+    ) -> green_20180509_models.AddVideoDnaGroupResponse:
+        """
+        @summary 添加视频Dna分组
+        
+        @param request: AddVideoDnaGroupRequest
+        @return: AddVideoDnaGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_faces_with_options(request, headers, runtime)
+        return self.add_video_dna_group_with_options(request, headers, runtime)
 
-    async def delete_faces_async(
+    async def add_video_dna_group_async(
         self,
-        request: green_20180509_models.DeleteFacesRequest,
-    ) -> green_20180509_models.DeleteFacesResponse:
+        request: green_20180509_models.AddVideoDnaGroupRequest,
+    ) -> green_20180509_models.AddVideoDnaGroupResponse:
+        """
+        @summary 添加视频Dna分组
+        
+        @param request: AddVideoDnaGroupRequest
+        @return: AddVideoDnaGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_faces_with_options_async(request, headers, runtime)
+        return await self.add_video_dna_group_with_options_async(request, headers, runtime)
 
     def delete_faces_with_options(
         self,
@@ -473,19 +807,38 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.DeleteFacesResponse:
+        """
+        @summary 删除人脸
+        
+        @param request: DeleteFacesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFacesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteFaces',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/face/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.DeleteFacesResponse(),
-            self.do_roarequest('DeleteFaces', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/face/delete', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_faces_with_options_async(
@@ -494,36 +847,67 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.DeleteFacesResponse:
+        """
+        @summary 删除人脸
+        
+        @param request: DeleteFacesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFacesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteFaces',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/face/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.DeleteFacesResponse(),
-            await self.do_roarequest_async('DeleteFaces', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/face/delete', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def delete_groups(
+    def delete_faces(
         self,
-        request: green_20180509_models.DeleteGroupsRequest,
-    ) -> green_20180509_models.DeleteGroupsResponse:
+        request: green_20180509_models.DeleteFacesRequest,
+    ) -> green_20180509_models.DeleteFacesResponse:
+        """
+        @summary 删除人脸
+        
+        @param request: DeleteFacesRequest
+        @return: DeleteFacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_groups_with_options(request, headers, runtime)
+        return self.delete_faces_with_options(request, headers, runtime)
 
-    async def delete_groups_async(
+    async def delete_faces_async(
         self,
-        request: green_20180509_models.DeleteGroupsRequest,
-    ) -> green_20180509_models.DeleteGroupsResponse:
+        request: green_20180509_models.DeleteFacesRequest,
+    ) -> green_20180509_models.DeleteFacesResponse:
+        """
+        @summary 删除人脸
+        
+        @param request: DeleteFacesRequest
+        @return: DeleteFacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_groups_with_options_async(request, headers, runtime)
+        return await self.delete_faces_with_options_async(request, headers, runtime)
 
     def delete_groups_with_options(
         self,
@@ -531,19 +915,38 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.DeleteGroupsResponse:
+        """
+        @summary 删除分组
+        
+        @param request: DeleteGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteGroups',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/person/groups/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.DeleteGroupsResponse(),
-            self.do_roarequest('DeleteGroups', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/groups/delete', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_groups_with_options_async(
@@ -552,36 +955,67 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.DeleteGroupsResponse:
+        """
+        @summary 删除分组
+        
+        @param request: DeleteGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteGroups',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/person/groups/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.DeleteGroupsResponse(),
-            await self.do_roarequest_async('DeleteGroups', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/groups/delete', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def delete_person(
+    def delete_groups(
         self,
-        request: green_20180509_models.DeletePersonRequest,
-    ) -> green_20180509_models.DeletePersonResponse:
+        request: green_20180509_models.DeleteGroupsRequest,
+    ) -> green_20180509_models.DeleteGroupsResponse:
+        """
+        @summary 删除分组
+        
+        @param request: DeleteGroupsRequest
+        @return: DeleteGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_person_with_options(request, headers, runtime)
+        return self.delete_groups_with_options(request, headers, runtime)
 
-    async def delete_person_async(
+    async def delete_groups_async(
         self,
-        request: green_20180509_models.DeletePersonRequest,
-    ) -> green_20180509_models.DeletePersonResponse:
+        request: green_20180509_models.DeleteGroupsRequest,
+    ) -> green_20180509_models.DeleteGroupsResponse:
+        """
+        @summary 删除分组
+        
+        @param request: DeleteGroupsRequest
+        @return: DeleteGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_person_with_options_async(request, headers, runtime)
+        return await self.delete_groups_with_options_async(request, headers, runtime)
 
     def delete_person_with_options(
         self,
@@ -589,19 +1023,38 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.DeletePersonResponse:
+        """
+        @summary 删除个体
+        
+        @param request: DeletePersonRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePersonResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeletePerson',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/person/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.DeletePersonResponse(),
-            self.do_roarequest('DeletePerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/delete', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_person_with_options_async(
@@ -610,36 +1063,67 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.DeletePersonResponse:
+        """
+        @summary 删除个体
+        
+        @param request: DeletePersonRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePersonResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeletePerson',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/person/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.DeletePersonResponse(),
-            await self.do_roarequest_async('DeletePerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/delete', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def delete_similarity_image(
+    def delete_person(
         self,
-        request: green_20180509_models.DeleteSimilarityImageRequest,
-    ) -> green_20180509_models.DeleteSimilarityImageResponse:
+        request: green_20180509_models.DeletePersonRequest,
+    ) -> green_20180509_models.DeletePersonResponse:
+        """
+        @summary 删除个体
+        
+        @param request: DeletePersonRequest
+        @return: DeletePersonResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_similarity_image_with_options(request, headers, runtime)
+        return self.delete_person_with_options(request, headers, runtime)
 
-    async def delete_similarity_image_async(
+    async def delete_person_async(
         self,
-        request: green_20180509_models.DeleteSimilarityImageRequest,
-    ) -> green_20180509_models.DeleteSimilarityImageResponse:
+        request: green_20180509_models.DeletePersonRequest,
+    ) -> green_20180509_models.DeletePersonResponse:
+        """
+        @summary 删除个体
+        
+        @param request: DeletePersonRequest
+        @return: DeletePersonResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_similarity_image_with_options_async(request, headers, runtime)
+        return await self.delete_person_with_options_async(request, headers, runtime)
 
     def delete_similarity_image_with_options(
         self,
@@ -647,6 +1131,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.DeleteSimilarityImageResponse:
+        """
+        @summary 删除相似图
+        
+        @param request: DeleteSimilarityImageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSimilarityImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -655,9 +1147,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteSimilarityImage',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/similarity/image/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.DeleteSimilarityImageResponse(),
-            self.do_roarequest('DeleteSimilarityImage', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/image/delete', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_similarity_image_with_options_async(
@@ -666,6 +1169,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.DeleteSimilarityImageResponse:
+        """
+        @summary 删除相似图
+        
+        @param request: DeleteSimilarityImageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSimilarityImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -674,26 +1185,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteSimilarityImage',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/similarity/image/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.DeleteSimilarityImageResponse(),
-            await self.do_roarequest_async('DeleteSimilarityImage', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/image/delete', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def delete_similarity_library(
+    def delete_similarity_image(
         self,
-        request: green_20180509_models.DeleteSimilarityLibraryRequest,
-    ) -> green_20180509_models.DeleteSimilarityLibraryResponse:
+        request: green_20180509_models.DeleteSimilarityImageRequest,
+    ) -> green_20180509_models.DeleteSimilarityImageResponse:
+        """
+        @summary 删除相似图
+        
+        @param request: DeleteSimilarityImageRequest
+        @return: DeleteSimilarityImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_similarity_library_with_options(request, headers, runtime)
+        return self.delete_similarity_image_with_options(request, headers, runtime)
 
-    async def delete_similarity_library_async(
+    async def delete_similarity_image_async(
         self,
-        request: green_20180509_models.DeleteSimilarityLibraryRequest,
-    ) -> green_20180509_models.DeleteSimilarityLibraryResponse:
+        request: green_20180509_models.DeleteSimilarityImageRequest,
+    ) -> green_20180509_models.DeleteSimilarityImageResponse:
+        """
+        @summary 删除相似图
+        
+        @param request: DeleteSimilarityImageRequest
+        @return: DeleteSimilarityImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_similarity_library_with_options_async(request, headers, runtime)
+        return await self.delete_similarity_image_with_options_async(request, headers, runtime)
 
     def delete_similarity_library_with_options(
         self,
@@ -701,6 +1235,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.DeleteSimilarityLibraryResponse:
+        """
+        @summary 删除相似图库
+        
+        @param request: DeleteSimilarityLibraryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSimilarityLibraryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -709,9 +1251,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteSimilarityLibrary',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/similarity/library/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.DeleteSimilarityLibraryResponse(),
-            self.do_roarequest('DeleteSimilarityLibrary', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/library/delete', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_similarity_library_with_options_async(
@@ -720,6 +1273,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.DeleteSimilarityLibraryResponse:
+        """
+        @summary 删除相似图库
+        
+        @param request: DeleteSimilarityLibraryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSimilarityLibraryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -728,26 +1289,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteSimilarityLibrary',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/similarity/library/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.DeleteSimilarityLibraryResponse(),
-            await self.do_roarequest_async('DeleteSimilarityLibrary', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/library/delete', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def delete_video_dna(
+    def delete_similarity_library(
         self,
-        request: green_20180509_models.DeleteVideoDnaRequest,
-    ) -> green_20180509_models.DeleteVideoDnaResponse:
+        request: green_20180509_models.DeleteSimilarityLibraryRequest,
+    ) -> green_20180509_models.DeleteSimilarityLibraryResponse:
+        """
+        @summary 删除相似图库
+        
+        @param request: DeleteSimilarityLibraryRequest
+        @return: DeleteSimilarityLibraryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_video_dna_with_options(request, headers, runtime)
+        return self.delete_similarity_library_with_options(request, headers, runtime)
 
-    async def delete_video_dna_async(
+    async def delete_similarity_library_async(
         self,
-        request: green_20180509_models.DeleteVideoDnaRequest,
-    ) -> green_20180509_models.DeleteVideoDnaResponse:
+        request: green_20180509_models.DeleteSimilarityLibraryRequest,
+    ) -> green_20180509_models.DeleteSimilarityLibraryResponse:
+        """
+        @summary 删除相似图库
+        
+        @param request: DeleteSimilarityLibraryRequest
+        @return: DeleteSimilarityLibraryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_video_dna_with_options_async(request, headers, runtime)
+        return await self.delete_similarity_library_with_options_async(request, headers, runtime)
 
     def delete_video_dna_with_options(
         self,
@@ -755,6 +1339,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.DeleteVideoDnaResponse:
+        """
+        @summary 删除视频Dna
+        
+        @param request: DeleteVideoDnaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVideoDnaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -763,9 +1355,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteVideoDna',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/dna/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.DeleteVideoDnaResponse(),
-            self.do_roarequest('DeleteVideoDna', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/delete', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_video_dna_with_options_async(
@@ -774,6 +1377,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.DeleteVideoDnaResponse:
+        """
+        @summary 删除视频Dna
+        
+        @param request: DeleteVideoDnaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVideoDnaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -782,26 +1393,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteVideoDna',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/dna/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.DeleteVideoDnaResponse(),
-            await self.do_roarequest_async('DeleteVideoDna', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/delete', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def delete_video_dna_group(
+    def delete_video_dna(
         self,
-        request: green_20180509_models.DeleteVideoDnaGroupRequest,
-    ) -> green_20180509_models.DeleteVideoDnaGroupResponse:
+        request: green_20180509_models.DeleteVideoDnaRequest,
+    ) -> green_20180509_models.DeleteVideoDnaResponse:
+        """
+        @summary 删除视频Dna
+        
+        @param request: DeleteVideoDnaRequest
+        @return: DeleteVideoDnaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_video_dna_group_with_options(request, headers, runtime)
+        return self.delete_video_dna_with_options(request, headers, runtime)
 
-    async def delete_video_dna_group_async(
+    async def delete_video_dna_async(
         self,
-        request: green_20180509_models.DeleteVideoDnaGroupRequest,
-    ) -> green_20180509_models.DeleteVideoDnaGroupResponse:
+        request: green_20180509_models.DeleteVideoDnaRequest,
+    ) -> green_20180509_models.DeleteVideoDnaResponse:
+        """
+        @summary 删除视频Dna
+        
+        @param request: DeleteVideoDnaRequest
+        @return: DeleteVideoDnaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_video_dna_group_with_options_async(request, headers, runtime)
+        return await self.delete_video_dna_with_options_async(request, headers, runtime)
 
     def delete_video_dna_group_with_options(
         self,
@@ -809,6 +1443,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.DeleteVideoDnaGroupResponse:
+        """
+        @summary 删除视频Dna分组
+        
+        @param request: DeleteVideoDnaGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVideoDnaGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -817,9 +1459,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteVideoDnaGroup',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/dna/group/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.DeleteVideoDnaGroupResponse(),
-            self.do_roarequest('DeleteVideoDnaGroup', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/group/delete', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def delete_video_dna_group_with_options_async(
@@ -828,6 +1481,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.DeleteVideoDnaGroupResponse:
+        """
+        @summary 删除视频Dna分组
+        
+        @param request: DeleteVideoDnaGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVideoDnaGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -836,26 +1497,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DeleteVideoDnaGroup',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/dna/group/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.DeleteVideoDnaGroupResponse(),
-            await self.do_roarequest_async('DeleteVideoDnaGroup', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/group/delete', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def detect_face(
+    def delete_video_dna_group(
         self,
-        request: green_20180509_models.DetectFaceRequest,
-    ) -> green_20180509_models.DetectFaceResponse:
+        request: green_20180509_models.DeleteVideoDnaGroupRequest,
+    ) -> green_20180509_models.DeleteVideoDnaGroupResponse:
+        """
+        @summary 删除视频Dna分组
+        
+        @param request: DeleteVideoDnaGroupRequest
+        @return: DeleteVideoDnaGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.detect_face_with_options(request, headers, runtime)
+        return self.delete_video_dna_group_with_options(request, headers, runtime)
 
-    async def detect_face_async(
+    async def delete_video_dna_group_async(
         self,
-        request: green_20180509_models.DetectFaceRequest,
-    ) -> green_20180509_models.DetectFaceResponse:
+        request: green_20180509_models.DeleteVideoDnaGroupRequest,
+    ) -> green_20180509_models.DeleteVideoDnaGroupResponse:
+        """
+        @summary 删除视频Dna分组
+        
+        @param request: DeleteVideoDnaGroupRequest
+        @return: DeleteVideoDnaGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.detect_face_with_options_async(request, headers, runtime)
+        return await self.delete_video_dna_group_with_options_async(request, headers, runtime)
 
     def detect_face_with_options(
         self,
@@ -863,6 +1547,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.DetectFaceResponse:
+        """
+        @summary 人脸属性检测
+        
+        @param request: DetectFaceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectFaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -871,9 +1563,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DetectFace',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/face/detect',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.DetectFaceResponse(),
-            self.do_roarequest('DetectFace', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/face/detect', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def detect_face_with_options_async(
@@ -882,6 +1585,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.DetectFaceResponse:
+        """
+        @summary 人脸属性检测
+        
+        @param request: DetectFaceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectFaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -890,26 +1601,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='DetectFace',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/face/detect',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.DetectFaceResponse(),
-            await self.do_roarequest_async('DetectFace', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/face/detect', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def file_async_scan(
+    def detect_face(
         self,
-        request: green_20180509_models.FileAsyncScanRequest,
-    ) -> green_20180509_models.FileAsyncScanResponse:
+        request: green_20180509_models.DetectFaceRequest,
+    ) -> green_20180509_models.DetectFaceResponse:
+        """
+        @summary 人脸属性检测
+        
+        @param request: DetectFaceRequest
+        @return: DetectFaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.file_async_scan_with_options(request, headers, runtime)
+        return self.detect_face_with_options(request, headers, runtime)
 
-    async def file_async_scan_async(
+    async def detect_face_async(
         self,
-        request: green_20180509_models.FileAsyncScanRequest,
-    ) -> green_20180509_models.FileAsyncScanResponse:
+        request: green_20180509_models.DetectFaceRequest,
+    ) -> green_20180509_models.DetectFaceResponse:
+        """
+        @summary 人脸属性检测
+        
+        @param request: DetectFaceRequest
+        @return: DetectFaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.file_async_scan_with_options_async(request, headers, runtime)
+        return await self.detect_face_with_options_async(request, headers, runtime)
 
     def file_async_scan_with_options(
         self,
@@ -917,6 +1651,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.FileAsyncScanResponse:
+        """
+        @summary 文件异步检测
+        
+        @param request: FileAsyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FileAsyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -925,9 +1667,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='FileAsyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/file/asyncscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.FileAsyncScanResponse(),
-            self.do_roarequest('FileAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/file/asyncscan', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def file_async_scan_with_options_async(
@@ -936,6 +1689,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.FileAsyncScanResponse:
+        """
+        @summary 文件异步检测
+        
+        @param request: FileAsyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FileAsyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -944,26 +1705,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='FileAsyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/file/asyncscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.FileAsyncScanResponse(),
-            await self.do_roarequest_async('FileAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/file/asyncscan', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def file_async_scan_results(
+    def file_async_scan(
         self,
-        request: green_20180509_models.FileAsyncScanResultsRequest,
-    ) -> green_20180509_models.FileAsyncScanResultsResponse:
+        request: green_20180509_models.FileAsyncScanRequest,
+    ) -> green_20180509_models.FileAsyncScanResponse:
+        """
+        @summary 文件异步检测
+        
+        @param request: FileAsyncScanRequest
+        @return: FileAsyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.file_async_scan_results_with_options(request, headers, runtime)
+        return self.file_async_scan_with_options(request, headers, runtime)
 
-    async def file_async_scan_results_async(
+    async def file_async_scan_async(
         self,
-        request: green_20180509_models.FileAsyncScanResultsRequest,
-    ) -> green_20180509_models.FileAsyncScanResultsResponse:
+        request: green_20180509_models.FileAsyncScanRequest,
+    ) -> green_20180509_models.FileAsyncScanResponse:
+        """
+        @summary 文件异步检测
+        
+        @param request: FileAsyncScanRequest
+        @return: FileAsyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.file_async_scan_results_with_options_async(request, headers, runtime)
+        return await self.file_async_scan_with_options_async(request, headers, runtime)
 
     def file_async_scan_results_with_options(
         self,
@@ -971,6 +1755,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.FileAsyncScanResultsResponse:
+        """
+        @summary 文件异步检测结果
+        
+        @param request: FileAsyncScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FileAsyncScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -979,9 +1771,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='FileAsyncScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/file/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.FileAsyncScanResultsResponse(),
-            self.do_roarequest('FileAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/file/results', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def file_async_scan_results_with_options_async(
@@ -990,6 +1793,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.FileAsyncScanResultsResponse:
+        """
+        @summary 文件异步检测结果
+        
+        @param request: FileAsyncScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FileAsyncScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -997,81 +1808,132 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FileAsyncScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/file/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             green_20180509_models.FileAsyncScanResultsResponse(),
-            await self.do_roarequest_async('FileAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/file/results', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def get_add_video_dna_results(
+    def file_async_scan_results(
         self,
-        request: green_20180509_models.GetAddVideoDnaResultsRequest,
-    ) -> green_20180509_models.GetAddVideoDnaResultsResponse:
+        request: green_20180509_models.FileAsyncScanResultsRequest,
+    ) -> green_20180509_models.FileAsyncScanResultsResponse:
+        """
+        @summary 文件异步检测结果
+        
+        @param request: FileAsyncScanResultsRequest
+        @return: FileAsyncScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_add_video_dna_results_with_options(request, headers, runtime)
+        return self.file_async_scan_results_with_options(request, headers, runtime)
 
-    async def get_add_video_dna_results_async(
+    async def file_async_scan_results_async(
         self,
-        request: green_20180509_models.GetAddVideoDnaResultsRequest,
-    ) -> green_20180509_models.GetAddVideoDnaResultsResponse:
+        request: green_20180509_models.FileAsyncScanResultsRequest,
+    ) -> green_20180509_models.FileAsyncScanResultsResponse:
+        """
+        @summary 文件异步检测结果
+        
+        @param request: FileAsyncScanResultsRequest
+        @return: FileAsyncScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_add_video_dna_results_with_options_async(request, headers, runtime)
+        return await self.file_async_scan_results_with_options_async(request, headers, runtime)
 
-    def get_add_video_dna_results_with_options(
+    def file_async_scan_v2with_options(
         self,
-        request: green_20180509_models.GetAddVideoDnaResultsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> green_20180509_models.GetAddVideoDnaResultsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_info):
-            query['ClientInfo'] = request.client_info
+    ) -> green_20180509_models.FileAsyncScanV2Response:
+        """
+        @summary 文件检测新版本
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FileAsyncScanV2Response
+        """
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='FileAsyncScanV2',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/file/asyncscanv2',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
-            green_20180509_models.GetAddVideoDnaResultsResponse(),
-            self.do_roarequest('GetAddVideoDnaResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/add/results', 'none', req, runtime)
+            green_20180509_models.FileAsyncScanV2Response(),
+            self.call_api(params, req, runtime)
         )
 
-    async def get_add_video_dna_results_with_options_async(
+    async def file_async_scan_v2with_options_async(
         self,
-        request: green_20180509_models.GetAddVideoDnaResultsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> green_20180509_models.GetAddVideoDnaResultsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_info):
-            query['ClientInfo'] = request.client_info
+    ) -> green_20180509_models.FileAsyncScanV2Response:
+        """
+        @summary 文件检测新版本
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FileAsyncScanV2Response
+        """
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='FileAsyncScanV2',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/file/asyncscanv2',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
-            green_20180509_models.GetAddVideoDnaResultsResponse(),
-            await self.do_roarequest_async('GetAddVideoDnaResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/dna/add/results', 'none', req, runtime)
+            green_20180509_models.FileAsyncScanV2Response(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    def get_faces(
-        self,
-        request: green_20180509_models.GetFacesRequest,
-    ) -> green_20180509_models.GetFacesResponse:
+    def file_async_scan_v2(self) -> green_20180509_models.FileAsyncScanV2Response:
+        """
+        @summary 文件检测新版本
+        
+        @return: FileAsyncScanV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_faces_with_options(request, headers, runtime)
+        return self.file_async_scan_v2with_options(headers, runtime)
 
-    async def get_faces_async(
-        self,
-        request: green_20180509_models.GetFacesRequest,
-    ) -> green_20180509_models.GetFacesResponse:
+    async def file_async_scan_v2_async(self) -> green_20180509_models.FileAsyncScanV2Response:
+        """
+        @summary 文件检测新版本
+        
+        @return: FileAsyncScanV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_faces_with_options_async(request, headers, runtime)
+        return await self.file_async_scan_v2with_options_async(headers, runtime)
 
     def get_faces_with_options(
         self,
@@ -1079,19 +1941,38 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.GetFacesResponse:
+        """
+        @summary 获取人脸列表
+        
+        @param request: GetFacesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFacesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetFaces',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/faces',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.GetFacesResponse(),
-            self.do_roarequest('GetFaces', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/faces', 'json', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_faces_with_options_async(
@@ -1100,36 +1981,67 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.GetFacesResponse:
+        """
+        @summary 获取人脸列表
+        
+        @param request: GetFacesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFacesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetFaces',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/faces',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.GetFacesResponse(),
-            await self.do_roarequest_async('GetFaces', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/faces', 'json', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def get_groups(
+    def get_faces(
         self,
-        request: green_20180509_models.GetGroupsRequest,
-    ) -> green_20180509_models.GetGroupsResponse:
+        request: green_20180509_models.GetFacesRequest,
+    ) -> green_20180509_models.GetFacesResponse:
+        """
+        @summary 获取人脸列表
+        
+        @param request: GetFacesRequest
+        @return: GetFacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_groups_with_options(request, headers, runtime)
+        return self.get_faces_with_options(request, headers, runtime)
 
-    async def get_groups_async(
+    async def get_faces_async(
         self,
-        request: green_20180509_models.GetGroupsRequest,
-    ) -> green_20180509_models.GetGroupsResponse:
+        request: green_20180509_models.GetFacesRequest,
+    ) -> green_20180509_models.GetFacesResponse:
+        """
+        @summary 获取人脸列表
+        
+        @param request: GetFacesRequest
+        @return: GetFacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_groups_with_options_async(request, headers, runtime)
+        return await self.get_faces_with_options_async(request, headers, runtime)
 
     def get_groups_with_options(
         self,
@@ -1137,19 +2049,38 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.GetGroupsResponse:
+        """
+        @summary 获取组列表
+        
+        @param request: GetGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetGroups',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/groups',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.GetGroupsResponse(),
-            self.do_roarequest('GetGroups', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/groups', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_groups_with_options_async(
@@ -1158,36 +2089,67 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.GetGroupsResponse:
+        """
+        @summary 获取组列表
+        
+        @param request: GetGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetGroups',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/groups',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.GetGroupsResponse(),
-            await self.do_roarequest_async('GetGroups', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/groups', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def get_person(
+    def get_groups(
         self,
-        request: green_20180509_models.GetPersonRequest,
-    ) -> green_20180509_models.GetPersonResponse:
+        request: green_20180509_models.GetGroupsRequest,
+    ) -> green_20180509_models.GetGroupsResponse:
+        """
+        @summary 获取组列表
+        
+        @param request: GetGroupsRequest
+        @return: GetGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_person_with_options(request, headers, runtime)
+        return self.get_groups_with_options(request, headers, runtime)
 
-    async def get_person_async(
+    async def get_groups_async(
         self,
-        request: green_20180509_models.GetPersonRequest,
-    ) -> green_20180509_models.GetPersonResponse:
+        request: green_20180509_models.GetGroupsRequest,
+    ) -> green_20180509_models.GetGroupsResponse:
+        """
+        @summary 获取组列表
+        
+        @param request: GetGroupsRequest
+        @return: GetGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_person_with_options_async(request, headers, runtime)
+        return await self.get_groups_with_options_async(request, headers, runtime)
 
     def get_person_with_options(
         self,
@@ -1195,19 +2157,38 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.GetPersonResponse:
+        """
+        @summary 获取单个个体
+        
+        @param request: GetPersonRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPersonResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetPerson',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/person',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.GetPersonResponse(),
-            self.do_roarequest('GetPerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_person_with_options_async(
@@ -1216,36 +2197,67 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.GetPersonResponse:
+        """
+        @summary 获取单个个体
+        
+        @param request: GetPersonRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPersonResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetPerson',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/person',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.GetPersonResponse(),
-            await self.do_roarequest_async('GetPerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def get_persons(
+    def get_person(
         self,
-        request: green_20180509_models.GetPersonsRequest,
-    ) -> green_20180509_models.GetPersonsResponse:
+        request: green_20180509_models.GetPersonRequest,
+    ) -> green_20180509_models.GetPersonResponse:
+        """
+        @summary 获取单个个体
+        
+        @param request: GetPersonRequest
+        @return: GetPersonResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_persons_with_options(request, headers, runtime)
+        return self.get_person_with_options(request, headers, runtime)
 
-    async def get_persons_async(
+    async def get_person_async(
         self,
-        request: green_20180509_models.GetPersonsRequest,
-    ) -> green_20180509_models.GetPersonsResponse:
+        request: green_20180509_models.GetPersonRequest,
+    ) -> green_20180509_models.GetPersonResponse:
+        """
+        @summary 获取单个个体
+        
+        @param request: GetPersonRequest
+        @return: GetPersonResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_persons_with_options_async(request, headers, runtime)
+        return await self.get_person_with_options_async(request, headers, runtime)
 
     def get_persons_with_options(
         self,
@@ -1253,19 +2265,38 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.GetPersonsResponse:
+        """
+        @summary 获取个体列表
+        
+        @param request: GetPersonsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPersonsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetPersons',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/group/persons',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.GetPersonsResponse(),
-            self.do_roarequest('GetPersons', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/group/persons', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_persons_with_options_async(
@@ -1274,36 +2305,67 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.GetPersonsResponse:
+        """
+        @summary 获取个体列表
+        
+        @param request: GetPersonsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPersonsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetPersons',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/group/persons',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.GetPersonsResponse(),
-            await self.do_roarequest_async('GetPersons', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/group/persons', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def get_similarity_image(
+    def get_persons(
         self,
-        request: green_20180509_models.GetSimilarityImageRequest,
-    ) -> green_20180509_models.GetSimilarityImageResponse:
+        request: green_20180509_models.GetPersonsRequest,
+    ) -> green_20180509_models.GetPersonsResponse:
+        """
+        @summary 获取个体列表
+        
+        @param request: GetPersonsRequest
+        @return: GetPersonsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_similarity_image_with_options(request, headers, runtime)
+        return self.get_persons_with_options(request, headers, runtime)
 
-    async def get_similarity_image_async(
+    async def get_persons_async(
         self,
-        request: green_20180509_models.GetSimilarityImageRequest,
-    ) -> green_20180509_models.GetSimilarityImageResponse:
+        request: green_20180509_models.GetPersonsRequest,
+    ) -> green_20180509_models.GetPersonsResponse:
+        """
+        @summary 获取个体列表
+        
+        @param request: GetPersonsRequest
+        @return: GetPersonsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_similarity_image_with_options_async(request, headers, runtime)
+        return await self.get_persons_with_options_async(request, headers, runtime)
 
     def get_similarity_image_with_options(
         self,
@@ -1311,6 +2373,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.GetSimilarityImageResponse:
+        """
+        @summary 获取相似图
+        
+        @param request: GetSimilarityImageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSimilarityImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1319,9 +2389,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetSimilarityImage',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/similarity/image/get',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.GetSimilarityImageResponse(),
-            self.do_roarequest('GetSimilarityImage', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/image/get', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_similarity_image_with_options_async(
@@ -1330,6 +2411,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.GetSimilarityImageResponse:
+        """
+        @summary 获取相似图
+        
+        @param request: GetSimilarityImageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSimilarityImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1338,26 +2427,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetSimilarityImage',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/similarity/image/get',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.GetSimilarityImageResponse(),
-            await self.do_roarequest_async('GetSimilarityImage', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/image/get', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def get_similarity_library(
+    def get_similarity_image(
         self,
-        request: green_20180509_models.GetSimilarityLibraryRequest,
-    ) -> green_20180509_models.GetSimilarityLibraryResponse:
+        request: green_20180509_models.GetSimilarityImageRequest,
+    ) -> green_20180509_models.GetSimilarityImageResponse:
+        """
+        @summary 获取相似图
+        
+        @param request: GetSimilarityImageRequest
+        @return: GetSimilarityImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_similarity_library_with_options(request, headers, runtime)
+        return self.get_similarity_image_with_options(request, headers, runtime)
 
-    async def get_similarity_library_async(
+    async def get_similarity_image_async(
         self,
-        request: green_20180509_models.GetSimilarityLibraryRequest,
-    ) -> green_20180509_models.GetSimilarityLibraryResponse:
+        request: green_20180509_models.GetSimilarityImageRequest,
+    ) -> green_20180509_models.GetSimilarityImageResponse:
+        """
+        @summary 获取相似图
+        
+        @param request: GetSimilarityImageRequest
+        @return: GetSimilarityImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_similarity_library_with_options_async(request, headers, runtime)
+        return await self.get_similarity_image_with_options_async(request, headers, runtime)
 
     def get_similarity_library_with_options(
         self,
@@ -1365,6 +2477,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.GetSimilarityLibraryResponse:
+        """
+        @summary 获取相似图库
+        
+        @param request: GetSimilarityLibraryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSimilarityLibraryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1373,9 +2493,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetSimilarityLibrary',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/similarity/library/get',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.GetSimilarityLibraryResponse(),
-            self.do_roarequest('GetSimilarityLibrary', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/library/get', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_similarity_library_with_options_async(
@@ -1384,6 +2515,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.GetSimilarityLibraryResponse:
+        """
+        @summary 获取相似图库
+        
+        @param request: GetSimilarityLibraryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSimilarityLibraryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1392,26 +2531,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='GetSimilarityLibrary',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/similarity/library/get',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.GetSimilarityLibraryResponse(),
-            await self.do_roarequest_async('GetSimilarityLibrary', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/library/get', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def image_async_manual_scan(
+    def get_similarity_library(
         self,
-        request: green_20180509_models.ImageAsyncManualScanRequest,
-    ) -> green_20180509_models.ImageAsyncManualScanResponse:
+        request: green_20180509_models.GetSimilarityLibraryRequest,
+    ) -> green_20180509_models.GetSimilarityLibraryResponse:
+        """
+        @summary 获取相似图库
+        
+        @param request: GetSimilarityLibraryRequest
+        @return: GetSimilarityLibraryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.image_async_manual_scan_with_options(request, headers, runtime)
+        return self.get_similarity_library_with_options(request, headers, runtime)
 
-    async def image_async_manual_scan_async(
+    async def get_similarity_library_async(
         self,
-        request: green_20180509_models.ImageAsyncManualScanRequest,
-    ) -> green_20180509_models.ImageAsyncManualScanResponse:
+        request: green_20180509_models.GetSimilarityLibraryRequest,
+    ) -> green_20180509_models.GetSimilarityLibraryResponse:
+        """
+        @summary 获取相似图库
+        
+        @param request: GetSimilarityLibraryRequest
+        @return: GetSimilarityLibraryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.image_async_manual_scan_with_options_async(request, headers, runtime)
+        return await self.get_similarity_library_with_options_async(request, headers, runtime)
 
     def image_async_manual_scan_with_options(
         self,
@@ -1419,6 +2581,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.ImageAsyncManualScanResponse:
+        """
+        @summary 图片人工异步审核
+        
+        @param request: ImageAsyncManualScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImageAsyncManualScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1427,9 +2597,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ImageAsyncManualScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/image/manual/asyncScan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.ImageAsyncManualScanResponse(),
-            self.do_roarequest('ImageAsyncManualScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/manual/asyncScan', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def image_async_manual_scan_with_options_async(
@@ -1438,6 +2619,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.ImageAsyncManualScanResponse:
+        """
+        @summary 图片人工异步审核
+        
+        @param request: ImageAsyncManualScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImageAsyncManualScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1446,26 +2635,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ImageAsyncManualScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/image/manual/asyncScan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.ImageAsyncManualScanResponse(),
-            await self.do_roarequest_async('ImageAsyncManualScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/manual/asyncScan', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def image_async_manual_scan_results(
+    def image_async_manual_scan(
         self,
-        request: green_20180509_models.ImageAsyncManualScanResultsRequest,
-    ) -> green_20180509_models.ImageAsyncManualScanResultsResponse:
+        request: green_20180509_models.ImageAsyncManualScanRequest,
+    ) -> green_20180509_models.ImageAsyncManualScanResponse:
+        """
+        @summary 图片人工异步审核
+        
+        @param request: ImageAsyncManualScanRequest
+        @return: ImageAsyncManualScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.image_async_manual_scan_results_with_options(request, headers, runtime)
+        return self.image_async_manual_scan_with_options(request, headers, runtime)
 
-    async def image_async_manual_scan_results_async(
+    async def image_async_manual_scan_async(
         self,
-        request: green_20180509_models.ImageAsyncManualScanResultsRequest,
-    ) -> green_20180509_models.ImageAsyncManualScanResultsResponse:
+        request: green_20180509_models.ImageAsyncManualScanRequest,
+    ) -> green_20180509_models.ImageAsyncManualScanResponse:
+        """
+        @summary 图片人工异步审核
+        
+        @param request: ImageAsyncManualScanRequest
+        @return: ImageAsyncManualScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.image_async_manual_scan_results_with_options_async(request, headers, runtime)
+        return await self.image_async_manual_scan_with_options_async(request, headers, runtime)
 
     def image_async_manual_scan_results_with_options(
         self,
@@ -1473,6 +2685,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.ImageAsyncManualScanResultsResponse:
+        """
+        @summary 图片人工异步审核结果
+        
+        @param request: ImageAsyncManualScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImageAsyncManualScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1481,9 +2701,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ImageAsyncManualScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/image/manual/scan/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.ImageAsyncManualScanResultsResponse(),
-            self.do_roarequest('ImageAsyncManualScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/manual/scan/results', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def image_async_manual_scan_results_with_options_async(
@@ -1492,6 +2723,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.ImageAsyncManualScanResultsResponse:
+        """
+        @summary 图片人工异步审核结果
+        
+        @param request: ImageAsyncManualScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImageAsyncManualScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1500,26 +2739,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ImageAsyncManualScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/image/manual/scan/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.ImageAsyncManualScanResultsResponse(),
-            await self.do_roarequest_async('ImageAsyncManualScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/manual/scan/results', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def image_async_scan(
+    def image_async_manual_scan_results(
         self,
-        request: green_20180509_models.ImageAsyncScanRequest,
-    ) -> green_20180509_models.ImageAsyncScanResponse:
+        request: green_20180509_models.ImageAsyncManualScanResultsRequest,
+    ) -> green_20180509_models.ImageAsyncManualScanResultsResponse:
+        """
+        @summary 图片人工异步审核结果
+        
+        @param request: ImageAsyncManualScanResultsRequest
+        @return: ImageAsyncManualScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.image_async_scan_with_options(request, headers, runtime)
+        return self.image_async_manual_scan_results_with_options(request, headers, runtime)
 
-    async def image_async_scan_async(
+    async def image_async_manual_scan_results_async(
         self,
-        request: green_20180509_models.ImageAsyncScanRequest,
-    ) -> green_20180509_models.ImageAsyncScanResponse:
+        request: green_20180509_models.ImageAsyncManualScanResultsRequest,
+    ) -> green_20180509_models.ImageAsyncManualScanResultsResponse:
+        """
+        @summary 图片人工异步审核结果
+        
+        @param request: ImageAsyncManualScanResultsRequest
+        @return: ImageAsyncManualScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.image_async_scan_with_options_async(request, headers, runtime)
+        return await self.image_async_manual_scan_results_with_options_async(request, headers, runtime)
 
     def image_async_scan_with_options(
         self,
@@ -1527,6 +2789,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.ImageAsyncScanResponse:
+        """
+        @summary 图片异步检测
+        
+        @param request: ImageAsyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImageAsyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1535,9 +2805,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ImageAsyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/image/asyncscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.ImageAsyncScanResponse(),
-            self.do_roarequest('ImageAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/asyncscan', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def image_async_scan_with_options_async(
@@ -1546,6 +2827,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.ImageAsyncScanResponse:
+        """
+        @summary 图片异步检测
+        
+        @param request: ImageAsyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImageAsyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1554,26 +2843,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ImageAsyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/image/asyncscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.ImageAsyncScanResponse(),
-            await self.do_roarequest_async('ImageAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/asyncscan', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def image_async_scan_results(
+    def image_async_scan(
         self,
-        request: green_20180509_models.ImageAsyncScanResultsRequest,
-    ) -> green_20180509_models.ImageAsyncScanResultsResponse:
+        request: green_20180509_models.ImageAsyncScanRequest,
+    ) -> green_20180509_models.ImageAsyncScanResponse:
+        """
+        @summary 图片异步检测
+        
+        @param request: ImageAsyncScanRequest
+        @return: ImageAsyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.image_async_scan_results_with_options(request, headers, runtime)
+        return self.image_async_scan_with_options(request, headers, runtime)
 
-    async def image_async_scan_results_async(
+    async def image_async_scan_async(
         self,
-        request: green_20180509_models.ImageAsyncScanResultsRequest,
-    ) -> green_20180509_models.ImageAsyncScanResultsResponse:
+        request: green_20180509_models.ImageAsyncScanRequest,
+    ) -> green_20180509_models.ImageAsyncScanResponse:
+        """
+        @summary 图片异步检测
+        
+        @param request: ImageAsyncScanRequest
+        @return: ImageAsyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.image_async_scan_results_with_options_async(request, headers, runtime)
+        return await self.image_async_scan_with_options_async(request, headers, runtime)
 
     def image_async_scan_results_with_options(
         self,
@@ -1581,6 +2893,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.ImageAsyncScanResultsResponse:
+        """
+        @summary 图片异步检测结果
+        
+        @param request: ImageAsyncScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImageAsyncScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1589,9 +2909,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ImageAsyncScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/image/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.ImageAsyncScanResultsResponse(),
-            self.do_roarequest('ImageAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/results', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def image_async_scan_results_with_options_async(
@@ -1600,6 +2931,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.ImageAsyncScanResultsResponse:
+        """
+        @summary 图片异步检测结果
+        
+        @param request: ImageAsyncScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImageAsyncScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1608,26 +2947,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ImageAsyncScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/image/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.ImageAsyncScanResultsResponse(),
-            await self.do_roarequest_async('ImageAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/results', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def image_scan_feedback(
+    def image_async_scan_results(
         self,
-        request: green_20180509_models.ImageScanFeedbackRequest,
-    ) -> green_20180509_models.ImageScanFeedbackResponse:
+        request: green_20180509_models.ImageAsyncScanResultsRequest,
+    ) -> green_20180509_models.ImageAsyncScanResultsResponse:
+        """
+        @summary 图片异步检测结果
+        
+        @param request: ImageAsyncScanResultsRequest
+        @return: ImageAsyncScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.image_scan_feedback_with_options(request, headers, runtime)
+        return self.image_async_scan_results_with_options(request, headers, runtime)
 
-    async def image_scan_feedback_async(
+    async def image_async_scan_results_async(
         self,
-        request: green_20180509_models.ImageScanFeedbackRequest,
-    ) -> green_20180509_models.ImageScanFeedbackResponse:
+        request: green_20180509_models.ImageAsyncScanResultsRequest,
+    ) -> green_20180509_models.ImageAsyncScanResultsResponse:
+        """
+        @summary 图片异步检测结果
+        
+        @param request: ImageAsyncScanResultsRequest
+        @return: ImageAsyncScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.image_scan_feedback_with_options_async(request, headers, runtime)
+        return await self.image_async_scan_results_with_options_async(request, headers, runtime)
 
     def image_scan_feedback_with_options(
         self,
@@ -1635,6 +2997,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.ImageScanFeedbackResponse:
+        """
+        @summary 图片检测反馈
+        
+        @param request: ImageScanFeedbackRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImageScanFeedbackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1643,9 +3013,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ImageScanFeedback',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/image/feedback',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.ImageScanFeedbackResponse(),
-            self.do_roarequest('ImageScanFeedback', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/feedback', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def image_scan_feedback_with_options_async(
@@ -1654,6 +3035,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.ImageScanFeedbackResponse:
+        """
+        @summary 图片检测反馈
+        
+        @param request: ImageScanFeedbackRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImageScanFeedbackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1662,26 +3051,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ImageScanFeedback',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/image/feedback',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.ImageScanFeedbackResponse(),
-            await self.do_roarequest_async('ImageScanFeedback', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/feedback', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def image_sync_scan(
+    def image_scan_feedback(
         self,
-        request: green_20180509_models.ImageSyncScanRequest,
-    ) -> green_20180509_models.ImageSyncScanResponse:
+        request: green_20180509_models.ImageScanFeedbackRequest,
+    ) -> green_20180509_models.ImageScanFeedbackResponse:
+        """
+        @summary 图片检测反馈
+        
+        @param request: ImageScanFeedbackRequest
+        @return: ImageScanFeedbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.image_sync_scan_with_options(request, headers, runtime)
+        return self.image_scan_feedback_with_options(request, headers, runtime)
 
-    async def image_sync_scan_async(
+    async def image_scan_feedback_async(
         self,
-        request: green_20180509_models.ImageSyncScanRequest,
-    ) -> green_20180509_models.ImageSyncScanResponse:
+        request: green_20180509_models.ImageScanFeedbackRequest,
+    ) -> green_20180509_models.ImageScanFeedbackResponse:
+        """
+        @summary 图片检测反馈
+        
+        @param request: ImageScanFeedbackRequest
+        @return: ImageScanFeedbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.image_sync_scan_with_options_async(request, headers, runtime)
+        return await self.image_scan_feedback_with_options_async(request, headers, runtime)
 
     def image_sync_scan_with_options(
         self,
@@ -1689,6 +3101,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.ImageSyncScanResponse:
+        """
+        @summary 图片同步检测
+        
+        @param request: ImageSyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImageSyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1697,9 +3117,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ImageSyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/image/scan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.ImageSyncScanResponse(),
-            self.do_roarequest('ImageSyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/scan', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def image_sync_scan_with_options_async(
@@ -1708,6 +3139,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.ImageSyncScanResponse:
+        """
+        @summary 图片同步检测
+        
+        @param request: ImageSyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImageSyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1716,26 +3155,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ImageSyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/image/scan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.ImageSyncScanResponse(),
-            await self.do_roarequest_async('ImageSyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/image/scan', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def list_similarity_images(
+    def image_sync_scan(
         self,
-        request: green_20180509_models.ListSimilarityImagesRequest,
-    ) -> green_20180509_models.ListSimilarityImagesResponse:
+        request: green_20180509_models.ImageSyncScanRequest,
+    ) -> green_20180509_models.ImageSyncScanResponse:
+        """
+        @summary 图片同步检测
+        
+        @param request: ImageSyncScanRequest
+        @return: ImageSyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_similarity_images_with_options(request, headers, runtime)
+        return self.image_sync_scan_with_options(request, headers, runtime)
 
-    async def list_similarity_images_async(
+    async def image_sync_scan_async(
         self,
-        request: green_20180509_models.ListSimilarityImagesRequest,
-    ) -> green_20180509_models.ListSimilarityImagesResponse:
+        request: green_20180509_models.ImageSyncScanRequest,
+    ) -> green_20180509_models.ImageSyncScanResponse:
+        """
+        @summary 图片同步检测
+        
+        @param request: ImageSyncScanRequest
+        @return: ImageSyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_similarity_images_with_options_async(request, headers, runtime)
+        return await self.image_sync_scan_with_options_async(request, headers, runtime)
 
     def list_similarity_images_with_options(
         self,
@@ -1743,6 +3205,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.ListSimilarityImagesResponse:
+        """
+        @summary 获取相似图
+        
+        @param request: ListSimilarityImagesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSimilarityImagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1751,9 +3221,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListSimilarityImages',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/similarity/image/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.ListSimilarityImagesResponse(),
-            self.do_roarequest('ListSimilarityImages', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/image/list', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_similarity_images_with_options_async(
@@ -1762,6 +3243,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.ListSimilarityImagesResponse:
+        """
+        @summary 获取相似图
+        
+        @param request: ListSimilarityImagesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSimilarityImagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1770,26 +3259,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListSimilarityImages',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/similarity/image/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.ListSimilarityImagesResponse(),
-            await self.do_roarequest_async('ListSimilarityImages', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/image/list', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def list_similarity_libraries(
+    def list_similarity_images(
         self,
-        request: green_20180509_models.ListSimilarityLibrariesRequest,
-    ) -> green_20180509_models.ListSimilarityLibrariesResponse:
+        request: green_20180509_models.ListSimilarityImagesRequest,
+    ) -> green_20180509_models.ListSimilarityImagesResponse:
+        """
+        @summary 获取相似图
+        
+        @param request: ListSimilarityImagesRequest
+        @return: ListSimilarityImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_similarity_libraries_with_options(request, headers, runtime)
+        return self.list_similarity_images_with_options(request, headers, runtime)
 
-    async def list_similarity_libraries_async(
+    async def list_similarity_images_async(
         self,
-        request: green_20180509_models.ListSimilarityLibrariesRequest,
-    ) -> green_20180509_models.ListSimilarityLibrariesResponse:
+        request: green_20180509_models.ListSimilarityImagesRequest,
+    ) -> green_20180509_models.ListSimilarityImagesResponse:
+        """
+        @summary 获取相似图
+        
+        @param request: ListSimilarityImagesRequest
+        @return: ListSimilarityImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_similarity_libraries_with_options_async(request, headers, runtime)
+        return await self.list_similarity_images_with_options_async(request, headers, runtime)
 
     def list_similarity_libraries_with_options(
         self,
@@ -1797,6 +3309,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.ListSimilarityLibrariesResponse:
+        """
+        @summary 获取相似图库
+        
+        @param request: ListSimilarityLibrariesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSimilarityLibrariesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1805,9 +3325,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListSimilarityLibraries',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/similarity/library/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.ListSimilarityLibrariesResponse(),
-            self.do_roarequest('ListSimilarityLibraries', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/library/list', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_similarity_libraries_with_options_async(
@@ -1816,6 +3347,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.ListSimilarityLibrariesResponse:
+        """
+        @summary 获取相似图库
+        
+        @param request: ListSimilarityLibrariesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSimilarityLibrariesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1824,26 +3363,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='ListSimilarityLibraries',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/similarity/library/list',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.ListSimilarityLibrariesResponse(),
-            await self.do_roarequest_async('ListSimilarityLibraries', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/similarity/library/list', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def live_stream_async_scan(
+    def list_similarity_libraries(
         self,
-        request: green_20180509_models.LiveStreamAsyncScanRequest,
-    ) -> green_20180509_models.LiveStreamAsyncScanResponse:
+        request: green_20180509_models.ListSimilarityLibrariesRequest,
+    ) -> green_20180509_models.ListSimilarityLibrariesResponse:
+        """
+        @summary 获取相似图库
+        
+        @param request: ListSimilarityLibrariesRequest
+        @return: ListSimilarityLibrariesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.live_stream_async_scan_with_options(request, headers, runtime)
+        return self.list_similarity_libraries_with_options(request, headers, runtime)
 
-    async def live_stream_async_scan_async(
+    async def list_similarity_libraries_async(
         self,
-        request: green_20180509_models.LiveStreamAsyncScanRequest,
-    ) -> green_20180509_models.LiveStreamAsyncScanResponse:
+        request: green_20180509_models.ListSimilarityLibrariesRequest,
+    ) -> green_20180509_models.ListSimilarityLibrariesResponse:
+        """
+        @summary 获取相似图库
+        
+        @param request: ListSimilarityLibrariesRequest
+        @return: ListSimilarityLibrariesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.live_stream_async_scan_with_options_async(request, headers, runtime)
+        return await self.list_similarity_libraries_with_options_async(request, headers, runtime)
 
     def live_stream_async_scan_with_options(
         self,
@@ -1851,6 +3413,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.LiveStreamAsyncScanResponse:
+        """
+        @summary 直播流异步检测
+        
+        @param request: LiveStreamAsyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LiveStreamAsyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1859,9 +3429,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='LiveStreamAsyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/livestream/asyncscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.LiveStreamAsyncScanResponse(),
-            self.do_roarequest('LiveStreamAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/livestream/asyncscan', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def live_stream_async_scan_with_options_async(
@@ -1870,6 +3451,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.LiveStreamAsyncScanResponse:
+        """
+        @summary 直播流异步检测
+        
+        @param request: LiveStreamAsyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LiveStreamAsyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1878,26 +3467,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='LiveStreamAsyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/livestream/asyncscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.LiveStreamAsyncScanResponse(),
-            await self.do_roarequest_async('LiveStreamAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/livestream/asyncscan', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def live_stream_async_scan_results(
+    def live_stream_async_scan(
         self,
-        request: green_20180509_models.LiveStreamAsyncScanResultsRequest,
-    ) -> green_20180509_models.LiveStreamAsyncScanResultsResponse:
+        request: green_20180509_models.LiveStreamAsyncScanRequest,
+    ) -> green_20180509_models.LiveStreamAsyncScanResponse:
+        """
+        @summary 直播流异步检测
+        
+        @param request: LiveStreamAsyncScanRequest
+        @return: LiveStreamAsyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.live_stream_async_scan_results_with_options(request, headers, runtime)
+        return self.live_stream_async_scan_with_options(request, headers, runtime)
 
-    async def live_stream_async_scan_results_async(
+    async def live_stream_async_scan_async(
         self,
-        request: green_20180509_models.LiveStreamAsyncScanResultsRequest,
-    ) -> green_20180509_models.LiveStreamAsyncScanResultsResponse:
+        request: green_20180509_models.LiveStreamAsyncScanRequest,
+    ) -> green_20180509_models.LiveStreamAsyncScanResponse:
+        """
+        @summary 直播流异步检测
+        
+        @param request: LiveStreamAsyncScanRequest
+        @return: LiveStreamAsyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.live_stream_async_scan_results_with_options_async(request, headers, runtime)
+        return await self.live_stream_async_scan_with_options_async(request, headers, runtime)
 
     def live_stream_async_scan_results_with_options(
         self,
@@ -1905,6 +3517,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.LiveStreamAsyncScanResultsResponse:
+        """
+        @summary 直播流异步检测结果
+        
+        @param request: LiveStreamAsyncScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LiveStreamAsyncScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1913,9 +3533,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='LiveStreamAsyncScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/livestream/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.LiveStreamAsyncScanResultsResponse(),
-            self.do_roarequest('LiveStreamAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/livestream/results', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def live_stream_async_scan_results_with_options_async(
@@ -1924,6 +3555,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.LiveStreamAsyncScanResultsResponse:
+        """
+        @summary 直播流异步检测结果
+        
+        @param request: LiveStreamAsyncScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LiveStreamAsyncScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1932,26 +3571,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='LiveStreamAsyncScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/livestream/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.LiveStreamAsyncScanResultsResponse(),
-            await self.do_roarequest_async('LiveStreamAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/livestream/results', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def live_stream_cancel_scan(
+    def live_stream_async_scan_results(
         self,
-        request: green_20180509_models.LiveStreamCancelScanRequest,
-    ) -> green_20180509_models.LiveStreamCancelScanResponse:
+        request: green_20180509_models.LiveStreamAsyncScanResultsRequest,
+    ) -> green_20180509_models.LiveStreamAsyncScanResultsResponse:
+        """
+        @summary 直播流异步检测结果
+        
+        @param request: LiveStreamAsyncScanResultsRequest
+        @return: LiveStreamAsyncScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.live_stream_cancel_scan_with_options(request, headers, runtime)
+        return self.live_stream_async_scan_results_with_options(request, headers, runtime)
 
-    async def live_stream_cancel_scan_async(
+    async def live_stream_async_scan_results_async(
         self,
-        request: green_20180509_models.LiveStreamCancelScanRequest,
-    ) -> green_20180509_models.LiveStreamCancelScanResponse:
+        request: green_20180509_models.LiveStreamAsyncScanResultsRequest,
+    ) -> green_20180509_models.LiveStreamAsyncScanResultsResponse:
+        """
+        @summary 直播流异步检测结果
+        
+        @param request: LiveStreamAsyncScanResultsRequest
+        @return: LiveStreamAsyncScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.live_stream_cancel_scan_with_options_async(request, headers, runtime)
+        return await self.live_stream_async_scan_results_with_options_async(request, headers, runtime)
 
     def live_stream_cancel_scan_with_options(
         self,
@@ -1959,6 +3621,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.LiveStreamCancelScanResponse:
+        """
+        @summary 直播流取消检测
+        
+        @param request: LiveStreamCancelScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LiveStreamCancelScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1967,9 +3637,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='LiveStreamCancelScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/livestream/cancelscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.LiveStreamCancelScanResponse(),
-            self.do_roarequest('LiveStreamCancelScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/livestream/cancelscan', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def live_stream_cancel_scan_with_options_async(
@@ -1978,6 +3659,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.LiveStreamCancelScanResponse:
+        """
+        @summary 直播流取消检测
+        
+        @param request: LiveStreamCancelScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LiveStreamCancelScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -1985,193 +3674,50 @@ class Client(OpenApiClient):
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='LiveStreamCancelScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/livestream/cancelscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
         )
         return TeaCore.from_map(
             green_20180509_models.LiveStreamCancelScanResponse(),
-            await self.do_roarequest_async('LiveStreamCancelScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/livestream/cancelscan', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def post_async_scan(
+    def live_stream_cancel_scan(
         self,
-        request: green_20180509_models.PostAsyncScanRequest,
-    ) -> green_20180509_models.PostAsyncScanResponse:
+        request: green_20180509_models.LiveStreamCancelScanRequest,
+    ) -> green_20180509_models.LiveStreamCancelScanResponse:
+        """
+        @summary 直播流取消检测
+        
+        @param request: LiveStreamCancelScanRequest
+        @return: LiveStreamCancelScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.post_async_scan_with_options(request, headers, runtime)
+        return self.live_stream_cancel_scan_with_options(request, headers, runtime)
 
-    async def post_async_scan_async(
+    async def live_stream_cancel_scan_async(
         self,
-        request: green_20180509_models.PostAsyncScanRequest,
-    ) -> green_20180509_models.PostAsyncScanResponse:
+        request: green_20180509_models.LiveStreamCancelScanRequest,
+    ) -> green_20180509_models.LiveStreamCancelScanResponse:
+        """
+        @summary 直播流取消检测
+        
+        @param request: LiveStreamCancelScanRequest
+        @return: LiveStreamCancelScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.post_async_scan_with_options_async(request, headers, runtime)
-
-    def post_async_scan_with_options(
-        self,
-        request: green_20180509_models.PostAsyncScanRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20180509_models.PostAsyncScanResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_info):
-            query['ClientInfo'] = request.client_info
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            green_20180509_models.PostAsyncScanResponse(),
-            self.do_roarequest('PostAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/post/asyncscan', 'none', req, runtime)
-        )
-
-    async def post_async_scan_with_options_async(
-        self,
-        request: green_20180509_models.PostAsyncScanRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20180509_models.PostAsyncScanResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_info):
-            query['ClientInfo'] = request.client_info
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            green_20180509_models.PostAsyncScanResponse(),
-            await self.do_roarequest_async('PostAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/post/asyncscan', 'none', req, runtime)
-        )
-
-    def post_async_scan_results(
-        self,
-        request: green_20180509_models.PostAsyncScanResultsRequest,
-    ) -> green_20180509_models.PostAsyncScanResultsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.post_async_scan_results_with_options(request, headers, runtime)
-
-    async def post_async_scan_results_async(
-        self,
-        request: green_20180509_models.PostAsyncScanResultsRequest,
-    ) -> green_20180509_models.PostAsyncScanResultsResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.post_async_scan_results_with_options_async(request, headers, runtime)
-
-    def post_async_scan_results_with_options(
-        self,
-        request: green_20180509_models.PostAsyncScanResultsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20180509_models.PostAsyncScanResultsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_info):
-            query['ClientInfo'] = request.client_info
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            green_20180509_models.PostAsyncScanResultsResponse(),
-            self.do_roarequest('PostAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/post/results', 'none', req, runtime)
-        )
-
-    async def post_async_scan_results_with_options_async(
-        self,
-        request: green_20180509_models.PostAsyncScanResultsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20180509_models.PostAsyncScanResultsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_info):
-            query['ClientInfo'] = request.client_info
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            green_20180509_models.PostAsyncScanResultsResponse(),
-            await self.do_roarequest_async('PostAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/post/results', 'none', req, runtime)
-        )
-
-    def search_person(
-        self,
-        request: green_20180509_models.SearchPersonRequest,
-    ) -> green_20180509_models.SearchPersonResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.search_person_with_options(request, headers, runtime)
-
-    async def search_person_async(
-        self,
-        request: green_20180509_models.SearchPersonRequest,
-    ) -> green_20180509_models.SearchPersonResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.search_person_with_options_async(request, headers, runtime)
-
-    def search_person_with_options(
-        self,
-        request: green_20180509_models.SearchPersonRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20180509_models.SearchPersonResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.client_info):
-            query['ClientInfo'] = request.client_info
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            green_20180509_models.SearchPersonResponse(),
-            self.do_roarequest('SearchPerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/search', 'none', req, runtime)
-        )
-
-    async def search_person_with_options_async(
-        self,
-        request: green_20180509_models.SearchPersonRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20180509_models.SearchPersonResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.client_info):
-            query['ClientInfo'] = request.client_info
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        return TeaCore.from_map(
-            green_20180509_models.SearchPersonResponse(),
-            await self.do_roarequest_async('SearchPerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/search', 'none', req, runtime)
-        )
-
-    def set_person(
-        self,
-        request: green_20180509_models.SetPersonRequest,
-    ) -> green_20180509_models.SetPersonResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.set_person_with_options(request, headers, runtime)
-
-    async def set_person_async(
-        self,
-        request: green_20180509_models.SetPersonRequest,
-    ) -> green_20180509_models.SetPersonResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.set_person_with_options_async(request, headers, runtime)
+        return await self.live_stream_cancel_scan_with_options_async(request, headers, runtime)
 
     def set_person_with_options(
         self,
@@ -2179,19 +3725,38 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.SetPersonResponse:
+        """
+        @summary 设置个体
+        
+        @param request: SetPersonRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetPersonResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='SetPerson',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/person/update',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.SetPersonResponse(),
-            self.do_roarequest('SetPerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/update', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def set_person_with_options_async(
@@ -2200,36 +3765,67 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.SetPersonResponse:
+        """
+        @summary 设置个体
+        
+        @param request: SetPersonRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetPersonResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='SetPerson',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/sface/person/update',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.SetPersonResponse(),
-            await self.do_roarequest_async('SetPerson', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/sface/person/update', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def text_async_manual_scan(
+    def set_person(
         self,
-        request: green_20180509_models.TextAsyncManualScanRequest,
-    ) -> green_20180509_models.TextAsyncManualScanResponse:
+        request: green_20180509_models.SetPersonRequest,
+    ) -> green_20180509_models.SetPersonResponse:
+        """
+        @summary 设置个体
+        
+        @param request: SetPersonRequest
+        @return: SetPersonResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.text_async_manual_scan_with_options(request, headers, runtime)
+        return self.set_person_with_options(request, headers, runtime)
 
-    async def text_async_manual_scan_async(
+    async def set_person_async(
         self,
-        request: green_20180509_models.TextAsyncManualScanRequest,
-    ) -> green_20180509_models.TextAsyncManualScanResponse:
+        request: green_20180509_models.SetPersonRequest,
+    ) -> green_20180509_models.SetPersonResponse:
+        """
+        @summary 设置个体
+        
+        @param request: SetPersonRequest
+        @return: SetPersonResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.text_async_manual_scan_with_options_async(request, headers, runtime)
+        return await self.set_person_with_options_async(request, headers, runtime)
 
     def text_async_manual_scan_with_options(
         self,
@@ -2237,6 +3833,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.TextAsyncManualScanResponse:
+        """
+        @summary 文本异步人工审核
+        
+        @param request: TextAsyncManualScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TextAsyncManualScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2245,9 +3849,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='TextAsyncManualScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/text/manual/asyncScan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.TextAsyncManualScanResponse(),
-            self.do_roarequest('TextAsyncManualScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/text/manual/asyncScan', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def text_async_manual_scan_with_options_async(
@@ -2256,6 +3871,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.TextAsyncManualScanResponse:
+        """
+        @summary 文本异步人工审核
+        
+        @param request: TextAsyncManualScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TextAsyncManualScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2264,26 +3887,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='TextAsyncManualScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/text/manual/asyncScan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.TextAsyncManualScanResponse(),
-            await self.do_roarequest_async('TextAsyncManualScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/text/manual/asyncScan', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def text_async_manual_scan_results(
+    def text_async_manual_scan(
         self,
-        request: green_20180509_models.TextAsyncManualScanResultsRequest,
-    ) -> green_20180509_models.TextAsyncManualScanResultsResponse:
+        request: green_20180509_models.TextAsyncManualScanRequest,
+    ) -> green_20180509_models.TextAsyncManualScanResponse:
+        """
+        @summary 文本异步人工审核
+        
+        @param request: TextAsyncManualScanRequest
+        @return: TextAsyncManualScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.text_async_manual_scan_results_with_options(request, headers, runtime)
+        return self.text_async_manual_scan_with_options(request, headers, runtime)
 
-    async def text_async_manual_scan_results_async(
+    async def text_async_manual_scan_async(
         self,
-        request: green_20180509_models.TextAsyncManualScanResultsRequest,
-    ) -> green_20180509_models.TextAsyncManualScanResultsResponse:
+        request: green_20180509_models.TextAsyncManualScanRequest,
+    ) -> green_20180509_models.TextAsyncManualScanResponse:
+        """
+        @summary 文本异步人工审核
+        
+        @param request: TextAsyncManualScanRequest
+        @return: TextAsyncManualScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.text_async_manual_scan_results_with_options_async(request, headers, runtime)
+        return await self.text_async_manual_scan_with_options_async(request, headers, runtime)
 
     def text_async_manual_scan_results_with_options(
         self,
@@ -2291,6 +3937,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.TextAsyncManualScanResultsResponse:
+        """
+        @summary 文本异步人工审核结果
+        
+        @param request: TextAsyncManualScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TextAsyncManualScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2299,9 +3953,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='TextAsyncManualScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/text/manual/scan/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.TextAsyncManualScanResultsResponse(),
-            self.do_roarequest('TextAsyncManualScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/text/manual/scan/results', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def text_async_manual_scan_results_with_options_async(
@@ -2310,6 +3975,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.TextAsyncManualScanResultsResponse:
+        """
+        @summary 文本异步人工审核结果
+        
+        @param request: TextAsyncManualScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TextAsyncManualScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2318,26 +3991,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='TextAsyncManualScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/text/manual/scan/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.TextAsyncManualScanResultsResponse(),
-            await self.do_roarequest_async('TextAsyncManualScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/text/manual/scan/results', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def text_feedback(
+    def text_async_manual_scan_results(
         self,
-        request: green_20180509_models.TextFeedbackRequest,
-    ) -> green_20180509_models.TextFeedbackResponse:
+        request: green_20180509_models.TextAsyncManualScanResultsRequest,
+    ) -> green_20180509_models.TextAsyncManualScanResultsResponse:
+        """
+        @summary 文本异步人工审核结果
+        
+        @param request: TextAsyncManualScanResultsRequest
+        @return: TextAsyncManualScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.text_feedback_with_options(request, headers, runtime)
+        return self.text_async_manual_scan_results_with_options(request, headers, runtime)
 
-    async def text_feedback_async(
+    async def text_async_manual_scan_results_async(
         self,
-        request: green_20180509_models.TextFeedbackRequest,
-    ) -> green_20180509_models.TextFeedbackResponse:
+        request: green_20180509_models.TextAsyncManualScanResultsRequest,
+    ) -> green_20180509_models.TextAsyncManualScanResultsResponse:
+        """
+        @summary 文本异步人工审核结果
+        
+        @param request: TextAsyncManualScanResultsRequest
+        @return: TextAsyncManualScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.text_feedback_with_options_async(request, headers, runtime)
+        return await self.text_async_manual_scan_results_with_options_async(request, headers, runtime)
 
     def text_feedback_with_options(
         self,
@@ -2345,6 +4041,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.TextFeedbackResponse:
+        """
+        @summary 文本结果反馈
+        
+        @param request: TextFeedbackRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TextFeedbackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2353,9 +4057,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='TextFeedback',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/text/feedback',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.TextFeedbackResponse(),
-            self.do_roarequest('TextFeedback', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/text/feedback', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def text_feedback_with_options_async(
@@ -2364,6 +4079,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.TextFeedbackResponse:
+        """
+        @summary 文本结果反馈
+        
+        @param request: TextFeedbackRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TextFeedbackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2372,26 +4095,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='TextFeedback',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/text/feedback',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.TextFeedbackResponse(),
-            await self.do_roarequest_async('TextFeedback', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/text/feedback', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def text_scan(
+    def text_feedback(
         self,
-        request: green_20180509_models.TextScanRequest,
-    ) -> green_20180509_models.TextScanResponse:
+        request: green_20180509_models.TextFeedbackRequest,
+    ) -> green_20180509_models.TextFeedbackResponse:
+        """
+        @summary 文本结果反馈
+        
+        @param request: TextFeedbackRequest
+        @return: TextFeedbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.text_scan_with_options(request, headers, runtime)
+        return self.text_feedback_with_options(request, headers, runtime)
 
-    async def text_scan_async(
+    async def text_feedback_async(
         self,
-        request: green_20180509_models.TextScanRequest,
-    ) -> green_20180509_models.TextScanResponse:
+        request: green_20180509_models.TextFeedbackRequest,
+    ) -> green_20180509_models.TextFeedbackResponse:
+        """
+        @summary 文本结果反馈
+        
+        @param request: TextFeedbackRequest
+        @return: TextFeedbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.text_scan_with_options_async(request, headers, runtime)
+        return await self.text_feedback_with_options_async(request, headers, runtime)
 
     def text_scan_with_options(
         self,
@@ -2399,6 +4145,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.TextScanResponse:
+        """
+        @param request: TextScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TextScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2407,9 +4159,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='TextScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/text/scan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.TextScanResponse(),
-            self.do_roarequest('TextScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/text/scan', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def text_scan_with_options_async(
@@ -2418,6 +4181,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.TextScanResponse:
+        """
+        @param request: TextScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TextScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2426,26 +4195,45 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='TextScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/text/scan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.TextScanResponse(),
-            await self.do_roarequest_async('TextScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/text/scan', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def upload_credentials(
+    def text_scan(
         self,
-        request: green_20180509_models.UploadCredentialsRequest,
-    ) -> green_20180509_models.UploadCredentialsResponse:
+        request: green_20180509_models.TextScanRequest,
+    ) -> green_20180509_models.TextScanResponse:
+        """
+        @param request: TextScanRequest
+        @return: TextScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.upload_credentials_with_options(request, headers, runtime)
+        return self.text_scan_with_options(request, headers, runtime)
 
-    async def upload_credentials_async(
+    async def text_scan_async(
         self,
-        request: green_20180509_models.UploadCredentialsRequest,
-    ) -> green_20180509_models.UploadCredentialsResponse:
+        request: green_20180509_models.TextScanRequest,
+    ) -> green_20180509_models.TextScanResponse:
+        """
+        @param request: TextScanRequest
+        @return: TextScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.upload_credentials_with_options_async(request, headers, runtime)
+        return await self.text_scan_with_options_async(request, headers, runtime)
 
     def upload_credentials_with_options(
         self,
@@ -2453,19 +4241,38 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.UploadCredentialsResponse:
+        """
+        @summary 获取上传证书
+        
+        @param request: UploadCredentialsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadCredentialsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='UploadCredentials',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/credentials/uploadcredentials',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.UploadCredentialsResponse(),
-            self.do_roarequest('UploadCredentials', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/credentials/uploadcredentials', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def upload_credentials_with_options_async(
@@ -2474,36 +4281,67 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.UploadCredentialsResponse:
+        """
+        @summary 获取上传证书
+        
+        @param request: UploadCredentialsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadCredentialsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='UploadCredentials',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/credentials/uploadcredentials',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.UploadCredentialsResponse(),
-            await self.do_roarequest_async('UploadCredentials', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/credentials/uploadcredentials', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def video_async_manual_scan(
+    def upload_credentials(
         self,
-        request: green_20180509_models.VideoAsyncManualScanRequest,
-    ) -> green_20180509_models.VideoAsyncManualScanResponse:
+        request: green_20180509_models.UploadCredentialsRequest,
+    ) -> green_20180509_models.UploadCredentialsResponse:
+        """
+        @summary 获取上传证书
+        
+        @param request: UploadCredentialsRequest
+        @return: UploadCredentialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.video_async_manual_scan_with_options(request, headers, runtime)
+        return self.upload_credentials_with_options(request, headers, runtime)
 
-    async def video_async_manual_scan_async(
+    async def upload_credentials_async(
         self,
-        request: green_20180509_models.VideoAsyncManualScanRequest,
-    ) -> green_20180509_models.VideoAsyncManualScanResponse:
+        request: green_20180509_models.UploadCredentialsRequest,
+    ) -> green_20180509_models.UploadCredentialsResponse:
+        """
+        @summary 获取上传证书
+        
+        @param request: UploadCredentialsRequest
+        @return: UploadCredentialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.video_async_manual_scan_with_options_async(request, headers, runtime)
+        return await self.upload_credentials_with_options_async(request, headers, runtime)
 
     def video_async_manual_scan_with_options(
         self,
@@ -2511,6 +4349,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VideoAsyncManualScanResponse:
+        """
+        @summary 视频异步人工审核
+        
+        @param request: VideoAsyncManualScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoAsyncManualScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2519,9 +4365,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VideoAsyncManualScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/manual/asyncScan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VideoAsyncManualScanResponse(),
-            self.do_roarequest('VideoAsyncManualScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/manual/asyncScan', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def video_async_manual_scan_with_options_async(
@@ -2530,6 +4387,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VideoAsyncManualScanResponse:
+        """
+        @summary 视频异步人工审核
+        
+        @param request: VideoAsyncManualScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoAsyncManualScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2538,26 +4403,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VideoAsyncManualScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/manual/asyncScan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VideoAsyncManualScanResponse(),
-            await self.do_roarequest_async('VideoAsyncManualScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/manual/asyncScan', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def video_async_manual_scan_results(
+    def video_async_manual_scan(
         self,
-        request: green_20180509_models.VideoAsyncManualScanResultsRequest,
-    ) -> green_20180509_models.VideoAsyncManualScanResultsResponse:
+        request: green_20180509_models.VideoAsyncManualScanRequest,
+    ) -> green_20180509_models.VideoAsyncManualScanResponse:
+        """
+        @summary 视频异步人工审核
+        
+        @param request: VideoAsyncManualScanRequest
+        @return: VideoAsyncManualScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.video_async_manual_scan_results_with_options(request, headers, runtime)
+        return self.video_async_manual_scan_with_options(request, headers, runtime)
 
-    async def video_async_manual_scan_results_async(
+    async def video_async_manual_scan_async(
         self,
-        request: green_20180509_models.VideoAsyncManualScanResultsRequest,
-    ) -> green_20180509_models.VideoAsyncManualScanResultsResponse:
+        request: green_20180509_models.VideoAsyncManualScanRequest,
+    ) -> green_20180509_models.VideoAsyncManualScanResponse:
+        """
+        @summary 视频异步人工审核
+        
+        @param request: VideoAsyncManualScanRequest
+        @return: VideoAsyncManualScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.video_async_manual_scan_results_with_options_async(request, headers, runtime)
+        return await self.video_async_manual_scan_with_options_async(request, headers, runtime)
 
     def video_async_manual_scan_results_with_options(
         self,
@@ -2565,6 +4453,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VideoAsyncManualScanResultsResponse:
+        """
+        @summary 视频异步人工审核结果
+        
+        @param request: VideoAsyncManualScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoAsyncManualScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2573,9 +4469,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VideoAsyncManualScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/manual/scan/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VideoAsyncManualScanResultsResponse(),
-            self.do_roarequest('VideoAsyncManualScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/manual/scan/results', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def video_async_manual_scan_results_with_options_async(
@@ -2584,6 +4491,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VideoAsyncManualScanResultsResponse:
+        """
+        @summary 视频异步人工审核结果
+        
+        @param request: VideoAsyncManualScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoAsyncManualScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2592,26 +4507,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VideoAsyncManualScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/manual/scan/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VideoAsyncManualScanResultsResponse(),
-            await self.do_roarequest_async('VideoAsyncManualScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/manual/scan/results', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def video_async_scan(
+    def video_async_manual_scan_results(
         self,
-        request: green_20180509_models.VideoAsyncScanRequest,
-    ) -> green_20180509_models.VideoAsyncScanResponse:
+        request: green_20180509_models.VideoAsyncManualScanResultsRequest,
+    ) -> green_20180509_models.VideoAsyncManualScanResultsResponse:
+        """
+        @summary 视频异步人工审核结果
+        
+        @param request: VideoAsyncManualScanResultsRequest
+        @return: VideoAsyncManualScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.video_async_scan_with_options(request, headers, runtime)
+        return self.video_async_manual_scan_results_with_options(request, headers, runtime)
 
-    async def video_async_scan_async(
+    async def video_async_manual_scan_results_async(
         self,
-        request: green_20180509_models.VideoAsyncScanRequest,
-    ) -> green_20180509_models.VideoAsyncScanResponse:
+        request: green_20180509_models.VideoAsyncManualScanResultsRequest,
+    ) -> green_20180509_models.VideoAsyncManualScanResultsResponse:
+        """
+        @summary 视频异步人工审核结果
+        
+        @param request: VideoAsyncManualScanResultsRequest
+        @return: VideoAsyncManualScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.video_async_scan_with_options_async(request, headers, runtime)
+        return await self.video_async_manual_scan_results_with_options_async(request, headers, runtime)
 
     def video_async_scan_with_options(
         self,
@@ -2619,6 +4557,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VideoAsyncScanResponse:
+        """
+        @summary 视频异步检测
+        
+        @param request: VideoAsyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoAsyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2627,9 +4573,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VideoAsyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/asyncscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VideoAsyncScanResponse(),
-            self.do_roarequest('VideoAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/asyncscan', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def video_async_scan_with_options_async(
@@ -2638,6 +4595,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VideoAsyncScanResponse:
+        """
+        @summary 视频异步检测
+        
+        @param request: VideoAsyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoAsyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2646,26 +4611,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VideoAsyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/asyncscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VideoAsyncScanResponse(),
-            await self.do_roarequest_async('VideoAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/asyncscan', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def video_async_scan_results(
+    def video_async_scan(
         self,
-        request: green_20180509_models.VideoAsyncScanResultsRequest,
-    ) -> green_20180509_models.VideoAsyncScanResultsResponse:
+        request: green_20180509_models.VideoAsyncScanRequest,
+    ) -> green_20180509_models.VideoAsyncScanResponse:
+        """
+        @summary 视频异步检测
+        
+        @param request: VideoAsyncScanRequest
+        @return: VideoAsyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.video_async_scan_results_with_options(request, headers, runtime)
+        return self.video_async_scan_with_options(request, headers, runtime)
 
-    async def video_async_scan_results_async(
+    async def video_async_scan_async(
         self,
-        request: green_20180509_models.VideoAsyncScanResultsRequest,
-    ) -> green_20180509_models.VideoAsyncScanResultsResponse:
+        request: green_20180509_models.VideoAsyncScanRequest,
+    ) -> green_20180509_models.VideoAsyncScanResponse:
+        """
+        @summary 视频异步检测
+        
+        @param request: VideoAsyncScanRequest
+        @return: VideoAsyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.video_async_scan_results_with_options_async(request, headers, runtime)
+        return await self.video_async_scan_with_options_async(request, headers, runtime)
 
     def video_async_scan_results_with_options(
         self,
@@ -2673,6 +4661,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VideoAsyncScanResultsResponse:
+        """
+        @summary 视频异步检测结果
+        
+        @param request: VideoAsyncScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoAsyncScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2681,9 +4677,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VideoAsyncScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VideoAsyncScanResultsResponse(),
-            self.do_roarequest('VideoAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/results', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def video_async_scan_results_with_options_async(
@@ -2692,6 +4699,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VideoAsyncScanResultsResponse:
+        """
+        @summary 视频异步检测结果
+        
+        @param request: VideoAsyncScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoAsyncScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2700,26 +4715,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VideoAsyncScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VideoAsyncScanResultsResponse(),
-            await self.do_roarequest_async('VideoAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/results', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def video_cancel_scan(
+    def video_async_scan_results(
         self,
-        request: green_20180509_models.VideoCancelScanRequest,
-    ) -> green_20180509_models.VideoCancelScanResponse:
+        request: green_20180509_models.VideoAsyncScanResultsRequest,
+    ) -> green_20180509_models.VideoAsyncScanResultsResponse:
+        """
+        @summary 视频异步检测结果
+        
+        @param request: VideoAsyncScanResultsRequest
+        @return: VideoAsyncScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.video_cancel_scan_with_options(request, headers, runtime)
+        return self.video_async_scan_results_with_options(request, headers, runtime)
 
-    async def video_cancel_scan_async(
+    async def video_async_scan_results_async(
         self,
-        request: green_20180509_models.VideoCancelScanRequest,
-    ) -> green_20180509_models.VideoCancelScanResponse:
+        request: green_20180509_models.VideoAsyncScanResultsRequest,
+    ) -> green_20180509_models.VideoAsyncScanResultsResponse:
+        """
+        @summary 视频异步检测结果
+        
+        @param request: VideoAsyncScanResultsRequest
+        @return: VideoAsyncScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.video_cancel_scan_with_options_async(request, headers, runtime)
+        return await self.video_async_scan_results_with_options_async(request, headers, runtime)
 
     def video_cancel_scan_with_options(
         self,
@@ -2727,6 +4765,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VideoCancelScanResponse:
+        """
+        @summary 视频取消检测
+        
+        @param request: VideoCancelScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoCancelScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2735,9 +4781,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VideoCancelScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/cancelscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VideoCancelScanResponse(),
-            self.do_roarequest('VideoCancelScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/cancelscan', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def video_cancel_scan_with_options_async(
@@ -2746,6 +4803,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VideoCancelScanResponse:
+        """
+        @summary 视频取消检测
+        
+        @param request: VideoCancelScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoCancelScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2754,26 +4819,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VideoCancelScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/cancelscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VideoCancelScanResponse(),
-            await self.do_roarequest_async('VideoCancelScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/cancelscan', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def video_feedback(
+    def video_cancel_scan(
         self,
-        request: green_20180509_models.VideoFeedbackRequest,
-    ) -> green_20180509_models.VideoFeedbackResponse:
+        request: green_20180509_models.VideoCancelScanRequest,
+    ) -> green_20180509_models.VideoCancelScanResponse:
+        """
+        @summary 视频取消检测
+        
+        @param request: VideoCancelScanRequest
+        @return: VideoCancelScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.video_feedback_with_options(request, headers, runtime)
+        return self.video_cancel_scan_with_options(request, headers, runtime)
 
-    async def video_feedback_async(
+    async def video_cancel_scan_async(
         self,
-        request: green_20180509_models.VideoFeedbackRequest,
-    ) -> green_20180509_models.VideoFeedbackResponse:
+        request: green_20180509_models.VideoCancelScanRequest,
+    ) -> green_20180509_models.VideoCancelScanResponse:
+        """
+        @summary 视频取消检测
+        
+        @param request: VideoCancelScanRequest
+        @return: VideoCancelScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.video_feedback_with_options_async(request, headers, runtime)
+        return await self.video_cancel_scan_with_options_async(request, headers, runtime)
 
     def video_feedback_with_options(
         self,
@@ -2781,6 +4869,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VideoFeedbackResponse:
+        """
+        @summary 视频结果反馈
+        
+        @param request: VideoFeedbackRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoFeedbackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2789,9 +4885,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VideoFeedback',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/feedback',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VideoFeedbackResponse(),
-            self.do_roarequest('VideoFeedback', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/feedback', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def video_feedback_with_options_async(
@@ -2800,6 +4907,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VideoFeedbackResponse:
+        """
+        @summary 视频结果反馈
+        
+        @param request: VideoFeedbackRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoFeedbackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2808,26 +4923,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VideoFeedback',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/feedback',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VideoFeedbackResponse(),
-            await self.do_roarequest_async('VideoFeedback', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/feedback', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def video_sync_scan(
+    def video_feedback(
         self,
-        request: green_20180509_models.VideoSyncScanRequest,
-    ) -> green_20180509_models.VideoSyncScanResponse:
+        request: green_20180509_models.VideoFeedbackRequest,
+    ) -> green_20180509_models.VideoFeedbackResponse:
+        """
+        @summary 视频结果反馈
+        
+        @param request: VideoFeedbackRequest
+        @return: VideoFeedbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.video_sync_scan_with_options(request, headers, runtime)
+        return self.video_feedback_with_options(request, headers, runtime)
 
-    async def video_sync_scan_async(
+    async def video_feedback_async(
         self,
-        request: green_20180509_models.VideoSyncScanRequest,
-    ) -> green_20180509_models.VideoSyncScanResponse:
+        request: green_20180509_models.VideoFeedbackRequest,
+    ) -> green_20180509_models.VideoFeedbackResponse:
+        """
+        @summary 视频结果反馈
+        
+        @param request: VideoFeedbackRequest
+        @return: VideoFeedbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.video_sync_scan_with_options_async(request, headers, runtime)
+        return await self.video_feedback_with_options_async(request, headers, runtime)
 
     def video_sync_scan_with_options(
         self,
@@ -2835,6 +4973,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VideoSyncScanResponse:
+        """
+        @summary 视频同步检测
+        
+        @param request: VideoSyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoSyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2843,9 +4989,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VideoSyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/syncscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VideoSyncScanResponse(),
-            self.do_roarequest('VideoSyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/syncscan', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def video_sync_scan_with_options_async(
@@ -2854,6 +5011,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VideoSyncScanResponse:
+        """
+        @summary 视频同步检测
+        
+        @param request: VideoSyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VideoSyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2862,26 +5027,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VideoSyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/video/syncscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VideoSyncScanResponse(),
-            await self.do_roarequest_async('VideoSyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/video/syncscan', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def vod_async_scan(
+    def video_sync_scan(
         self,
-        request: green_20180509_models.VodAsyncScanRequest,
-    ) -> green_20180509_models.VodAsyncScanResponse:
+        request: green_20180509_models.VideoSyncScanRequest,
+    ) -> green_20180509_models.VideoSyncScanResponse:
+        """
+        @summary 视频同步检测
+        
+        @param request: VideoSyncScanRequest
+        @return: VideoSyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.vod_async_scan_with_options(request, headers, runtime)
+        return self.video_sync_scan_with_options(request, headers, runtime)
 
-    async def vod_async_scan_async(
+    async def video_sync_scan_async(
         self,
-        request: green_20180509_models.VodAsyncScanRequest,
-    ) -> green_20180509_models.VodAsyncScanResponse:
+        request: green_20180509_models.VideoSyncScanRequest,
+    ) -> green_20180509_models.VideoSyncScanResponse:
+        """
+        @summary 视频同步检测
+        
+        @param request: VideoSyncScanRequest
+        @return: VideoSyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.vod_async_scan_with_options_async(request, headers, runtime)
+        return await self.video_sync_scan_with_options_async(request, headers, runtime)
 
     def vod_async_scan_with_options(
         self,
@@ -2889,6 +5077,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VodAsyncScanResponse:
+        """
+        @summary 视频点播异步检测
+        
+        @param request: VodAsyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VodAsyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2897,9 +5093,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VodAsyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/vod/asyncscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VodAsyncScanResponse(),
-            self.do_roarequest('VodAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/vod/asyncscan', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def vod_async_scan_with_options_async(
@@ -2908,6 +5115,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VodAsyncScanResponse:
+        """
+        @summary 视频点播异步检测
+        
+        @param request: VodAsyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VodAsyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2916,26 +5131,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VodAsyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/vod/asyncscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VodAsyncScanResponse(),
-            await self.do_roarequest_async('VodAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/vod/asyncscan', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def vod_async_scan_results(
+    def vod_async_scan(
         self,
-        request: green_20180509_models.VodAsyncScanResultsRequest,
-    ) -> green_20180509_models.VodAsyncScanResultsResponse:
+        request: green_20180509_models.VodAsyncScanRequest,
+    ) -> green_20180509_models.VodAsyncScanResponse:
+        """
+        @summary 视频点播异步检测
+        
+        @param request: VodAsyncScanRequest
+        @return: VodAsyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.vod_async_scan_results_with_options(request, headers, runtime)
+        return self.vod_async_scan_with_options(request, headers, runtime)
 
-    async def vod_async_scan_results_async(
+    async def vod_async_scan_async(
         self,
-        request: green_20180509_models.VodAsyncScanResultsRequest,
-    ) -> green_20180509_models.VodAsyncScanResultsResponse:
+        request: green_20180509_models.VodAsyncScanRequest,
+    ) -> green_20180509_models.VodAsyncScanResponse:
+        """
+        @summary 视频点播异步检测
+        
+        @param request: VodAsyncScanRequest
+        @return: VodAsyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.vod_async_scan_results_with_options_async(request, headers, runtime)
+        return await self.vod_async_scan_with_options_async(request, headers, runtime)
 
     def vod_async_scan_results_with_options(
         self,
@@ -2943,6 +5181,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VodAsyncScanResultsResponse:
+        """
+        @summary 视频点播异步检测结果
+        
+        @param request: VodAsyncScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VodAsyncScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2951,9 +5197,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VodAsyncScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/vod/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VodAsyncScanResultsResponse(),
-            self.do_roarequest('VodAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/vod/results', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def vod_async_scan_results_with_options_async(
@@ -2962,6 +5219,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VodAsyncScanResultsResponse:
+        """
+        @summary 视频点播异步检测结果
+        
+        @param request: VodAsyncScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VodAsyncScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -2970,26 +5235,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VodAsyncScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/vod/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VodAsyncScanResultsResponse(),
-            await self.do_roarequest_async('VodAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/vod/results', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def voice_async_manual_scan(
+    def vod_async_scan_results(
         self,
-        request: green_20180509_models.VoiceAsyncManualScanRequest,
-    ) -> green_20180509_models.VoiceAsyncManualScanResponse:
+        request: green_20180509_models.VodAsyncScanResultsRequest,
+    ) -> green_20180509_models.VodAsyncScanResultsResponse:
+        """
+        @summary 视频点播异步检测结果
+        
+        @param request: VodAsyncScanResultsRequest
+        @return: VodAsyncScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.voice_async_manual_scan_with_options(request, headers, runtime)
+        return self.vod_async_scan_results_with_options(request, headers, runtime)
 
-    async def voice_async_manual_scan_async(
+    async def vod_async_scan_results_async(
         self,
-        request: green_20180509_models.VoiceAsyncManualScanRequest,
-    ) -> green_20180509_models.VoiceAsyncManualScanResponse:
+        request: green_20180509_models.VodAsyncScanResultsRequest,
+    ) -> green_20180509_models.VodAsyncScanResultsResponse:
+        """
+        @summary 视频点播异步检测结果
+        
+        @param request: VodAsyncScanResultsRequest
+        @return: VodAsyncScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.voice_async_manual_scan_with_options_async(request, headers, runtime)
+        return await self.vod_async_scan_results_with_options_async(request, headers, runtime)
 
     def voice_async_manual_scan_with_options(
         self,
@@ -2997,6 +5285,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceAsyncManualScanResponse:
+        """
+        @summary 语音异步人工审核
+        
+        @param request: VoiceAsyncManualScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceAsyncManualScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -3005,9 +5301,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceAsyncManualScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/manual/asyncScan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceAsyncManualScanResponse(),
-            self.do_roarequest('VoiceAsyncManualScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/manual/asyncScan', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def voice_async_manual_scan_with_options_async(
@@ -3016,6 +5323,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceAsyncManualScanResponse:
+        """
+        @summary 语音异步人工审核
+        
+        @param request: VoiceAsyncManualScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceAsyncManualScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -3024,26 +5339,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceAsyncManualScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/manual/asyncScan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceAsyncManualScanResponse(),
-            await self.do_roarequest_async('VoiceAsyncManualScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/manual/asyncScan', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def voice_async_manual_scan_results(
+    def voice_async_manual_scan(
         self,
-        request: green_20180509_models.VoiceAsyncManualScanResultsRequest,
-    ) -> green_20180509_models.VoiceAsyncManualScanResultsResponse:
+        request: green_20180509_models.VoiceAsyncManualScanRequest,
+    ) -> green_20180509_models.VoiceAsyncManualScanResponse:
+        """
+        @summary 语音异步人工审核
+        
+        @param request: VoiceAsyncManualScanRequest
+        @return: VoiceAsyncManualScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.voice_async_manual_scan_results_with_options(request, headers, runtime)
+        return self.voice_async_manual_scan_with_options(request, headers, runtime)
 
-    async def voice_async_manual_scan_results_async(
+    async def voice_async_manual_scan_async(
         self,
-        request: green_20180509_models.VoiceAsyncManualScanResultsRequest,
-    ) -> green_20180509_models.VoiceAsyncManualScanResultsResponse:
+        request: green_20180509_models.VoiceAsyncManualScanRequest,
+    ) -> green_20180509_models.VoiceAsyncManualScanResponse:
+        """
+        @summary 语音异步人工审核
+        
+        @param request: VoiceAsyncManualScanRequest
+        @return: VoiceAsyncManualScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.voice_async_manual_scan_results_with_options_async(request, headers, runtime)
+        return await self.voice_async_manual_scan_with_options_async(request, headers, runtime)
 
     def voice_async_manual_scan_results_with_options(
         self,
@@ -3051,6 +5389,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceAsyncManualScanResultsResponse:
+        """
+        @summary 语音异步人工审核结果
+        
+        @param request: VoiceAsyncManualScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceAsyncManualScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -3059,9 +5405,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceAsyncManualScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/manual/scan/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceAsyncManualScanResultsResponse(),
-            self.do_roarequest('VoiceAsyncManualScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/manual/scan/results', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def voice_async_manual_scan_results_with_options_async(
@@ -3070,6 +5427,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceAsyncManualScanResultsResponse:
+        """
+        @summary 语音异步人工审核结果
+        
+        @param request: VoiceAsyncManualScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceAsyncManualScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -3078,26 +5443,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceAsyncManualScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/manual/scan/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceAsyncManualScanResultsResponse(),
-            await self.do_roarequest_async('VoiceAsyncManualScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/manual/scan/results', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def voice_async_scan(
+    def voice_async_manual_scan_results(
         self,
-        request: green_20180509_models.VoiceAsyncScanRequest,
-    ) -> green_20180509_models.VoiceAsyncScanResponse:
+        request: green_20180509_models.VoiceAsyncManualScanResultsRequest,
+    ) -> green_20180509_models.VoiceAsyncManualScanResultsResponse:
+        """
+        @summary 语音异步人工审核结果
+        
+        @param request: VoiceAsyncManualScanResultsRequest
+        @return: VoiceAsyncManualScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.voice_async_scan_with_options(request, headers, runtime)
+        return self.voice_async_manual_scan_results_with_options(request, headers, runtime)
 
-    async def voice_async_scan_async(
+    async def voice_async_manual_scan_results_async(
         self,
-        request: green_20180509_models.VoiceAsyncScanRequest,
-    ) -> green_20180509_models.VoiceAsyncScanResponse:
+        request: green_20180509_models.VoiceAsyncManualScanResultsRequest,
+    ) -> green_20180509_models.VoiceAsyncManualScanResultsResponse:
+        """
+        @summary 语音异步人工审核结果
+        
+        @param request: VoiceAsyncManualScanResultsRequest
+        @return: VoiceAsyncManualScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.voice_async_scan_with_options_async(request, headers, runtime)
+        return await self.voice_async_manual_scan_results_with_options_async(request, headers, runtime)
 
     def voice_async_scan_with_options(
         self,
@@ -3105,6 +5493,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceAsyncScanResponse:
+        """
+        @summary 语音异步检测
+        
+        @param request: VoiceAsyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceAsyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -3113,9 +5509,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceAsyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/asyncscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceAsyncScanResponse(),
-            self.do_roarequest('VoiceAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/asyncscan', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def voice_async_scan_with_options_async(
@@ -3124,6 +5531,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceAsyncScanResponse:
+        """
+        @summary 语音异步检测
+        
+        @param request: VoiceAsyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceAsyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -3132,26 +5547,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceAsyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/asyncscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceAsyncScanResponse(),
-            await self.do_roarequest_async('VoiceAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/asyncscan', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def voice_async_scan_results(
+    def voice_async_scan(
         self,
-        request: green_20180509_models.VoiceAsyncScanResultsRequest,
-    ) -> green_20180509_models.VoiceAsyncScanResultsResponse:
+        request: green_20180509_models.VoiceAsyncScanRequest,
+    ) -> green_20180509_models.VoiceAsyncScanResponse:
+        """
+        @summary 语音异步检测
+        
+        @param request: VoiceAsyncScanRequest
+        @return: VoiceAsyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.voice_async_scan_results_with_options(request, headers, runtime)
+        return self.voice_async_scan_with_options(request, headers, runtime)
 
-    async def voice_async_scan_results_async(
+    async def voice_async_scan_async(
         self,
-        request: green_20180509_models.VoiceAsyncScanResultsRequest,
-    ) -> green_20180509_models.VoiceAsyncScanResultsResponse:
+        request: green_20180509_models.VoiceAsyncScanRequest,
+    ) -> green_20180509_models.VoiceAsyncScanResponse:
+        """
+        @summary 语音异步检测
+        
+        @param request: VoiceAsyncScanRequest
+        @return: VoiceAsyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.voice_async_scan_results_with_options_async(request, headers, runtime)
+        return await self.voice_async_scan_with_options_async(request, headers, runtime)
 
     def voice_async_scan_results_with_options(
         self,
@@ -3159,6 +5597,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceAsyncScanResultsResponse:
+        """
+        @summary 语音异步检测结果
+        
+        @param request: VoiceAsyncScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceAsyncScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -3167,9 +5613,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceAsyncScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceAsyncScanResultsResponse(),
-            self.do_roarequest('VoiceAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/results', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def voice_async_scan_results_with_options_async(
@@ -3178,6 +5635,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceAsyncScanResultsResponse:
+        """
+        @summary 语音异步检测结果
+        
+        @param request: VoiceAsyncScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceAsyncScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -3186,26 +5651,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceAsyncScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceAsyncScanResultsResponse(),
-            await self.do_roarequest_async('VoiceAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/results', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def voice_cancel_scan(
+    def voice_async_scan_results(
         self,
-        request: green_20180509_models.VoiceCancelScanRequest,
-    ) -> green_20180509_models.VoiceCancelScanResponse:
+        request: green_20180509_models.VoiceAsyncScanResultsRequest,
+    ) -> green_20180509_models.VoiceAsyncScanResultsResponse:
+        """
+        @summary 语音异步检测结果
+        
+        @param request: VoiceAsyncScanResultsRequest
+        @return: VoiceAsyncScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.voice_cancel_scan_with_options(request, headers, runtime)
+        return self.voice_async_scan_results_with_options(request, headers, runtime)
 
-    async def voice_cancel_scan_async(
+    async def voice_async_scan_results_async(
         self,
-        request: green_20180509_models.VoiceCancelScanRequest,
-    ) -> green_20180509_models.VoiceCancelScanResponse:
+        request: green_20180509_models.VoiceAsyncScanResultsRequest,
+    ) -> green_20180509_models.VoiceAsyncScanResultsResponse:
+        """
+        @summary 语音异步检测结果
+        
+        @param request: VoiceAsyncScanResultsRequest
+        @return: VoiceAsyncScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.voice_cancel_scan_with_options_async(request, headers, runtime)
+        return await self.voice_async_scan_results_with_options_async(request, headers, runtime)
 
     def voice_cancel_scan_with_options(
         self,
@@ -3213,6 +5701,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceCancelScanResponse:
+        """
+        @summary 语音取消检测
+        
+        @param request: VoiceCancelScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceCancelScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -3221,9 +5717,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceCancelScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/cancelscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceCancelScanResponse(),
-            self.do_roarequest('VoiceCancelScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/cancelscan', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def voice_cancel_scan_with_options_async(
@@ -3232,6 +5739,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceCancelScanResponse:
+        """
+        @summary 语音取消检测
+        
+        @param request: VoiceCancelScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceCancelScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -3240,26 +5755,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceCancelScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/cancelscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceCancelScanResponse(),
-            await self.do_roarequest_async('VoiceCancelScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/cancelscan', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def voice_identity_check(
+    def voice_cancel_scan(
         self,
-        request: green_20180509_models.VoiceIdentityCheckRequest,
-    ) -> green_20180509_models.VoiceIdentityCheckResponse:
+        request: green_20180509_models.VoiceCancelScanRequest,
+    ) -> green_20180509_models.VoiceCancelScanResponse:
+        """
+        @summary 语音取消检测
+        
+        @param request: VoiceCancelScanRequest
+        @return: VoiceCancelScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.voice_identity_check_with_options(request, headers, runtime)
+        return self.voice_cancel_scan_with_options(request, headers, runtime)
 
-    async def voice_identity_check_async(
+    async def voice_cancel_scan_async(
         self,
-        request: green_20180509_models.VoiceIdentityCheckRequest,
-    ) -> green_20180509_models.VoiceIdentityCheckResponse:
+        request: green_20180509_models.VoiceCancelScanRequest,
+    ) -> green_20180509_models.VoiceCancelScanResponse:
+        """
+        @summary 语音取消检测
+        
+        @param request: VoiceCancelScanRequest
+        @return: VoiceCancelScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.voice_identity_check_with_options_async(request, headers, runtime)
+        return await self.voice_cancel_scan_with_options_async(request, headers, runtime)
 
     def voice_identity_check_with_options(
         self,
@@ -3267,19 +5805,38 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceIdentityCheckResponse:
+        """
+        @summary 声纹比对
+        
+        @param request: VoiceIdentityCheckRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceIdentityCheckResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceIdentityCheck',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/auth/check',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceIdentityCheckResponse(),
-            self.do_roarequest('VoiceIdentityCheck', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/check', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def voice_identity_check_with_options_async(
@@ -3288,36 +5845,67 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceIdentityCheckResponse:
+        """
+        @summary 声纹比对
+        
+        @param request: VoiceIdentityCheckRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceIdentityCheckResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceIdentityCheck',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/auth/check',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceIdentityCheckResponse(),
-            await self.do_roarequest_async('VoiceIdentityCheck', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/check', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def voice_identity_register(
+    def voice_identity_check(
         self,
-        request: green_20180509_models.VoiceIdentityRegisterRequest,
-    ) -> green_20180509_models.VoiceIdentityRegisterResponse:
+        request: green_20180509_models.VoiceIdentityCheckRequest,
+    ) -> green_20180509_models.VoiceIdentityCheckResponse:
+        """
+        @summary 声纹比对
+        
+        @param request: VoiceIdentityCheckRequest
+        @return: VoiceIdentityCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.voice_identity_register_with_options(request, headers, runtime)
+        return self.voice_identity_check_with_options(request, headers, runtime)
 
-    async def voice_identity_register_async(
+    async def voice_identity_check_async(
         self,
-        request: green_20180509_models.VoiceIdentityRegisterRequest,
-    ) -> green_20180509_models.VoiceIdentityRegisterResponse:
+        request: green_20180509_models.VoiceIdentityCheckRequest,
+    ) -> green_20180509_models.VoiceIdentityCheckResponse:
+        """
+        @summary 声纹比对
+        
+        @param request: VoiceIdentityCheckRequest
+        @return: VoiceIdentityCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.voice_identity_register_with_options_async(request, headers, runtime)
+        return await self.voice_identity_check_with_options_async(request, headers, runtime)
 
     def voice_identity_register_with_options(
         self,
@@ -3325,19 +5913,38 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceIdentityRegisterResponse:
+        """
+        @summary 声纹注册
+        
+        @param request: VoiceIdentityRegisterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceIdentityRegisterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceIdentityRegister',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/auth/register',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceIdentityRegisterResponse(),
-            self.do_roarequest('VoiceIdentityRegister', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/register', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def voice_identity_register_with_options_async(
@@ -3346,36 +5953,67 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceIdentityRegisterResponse:
+        """
+        @summary 声纹注册
+        
+        @param request: VoiceIdentityRegisterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceIdentityRegisterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceIdentityRegister',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/auth/register',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceIdentityRegisterResponse(),
-            await self.do_roarequest_async('VoiceIdentityRegister', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/register', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def voice_identity_start_check(
+    def voice_identity_register(
         self,
-        request: green_20180509_models.VoiceIdentityStartCheckRequest,
-    ) -> green_20180509_models.VoiceIdentityStartCheckResponse:
+        request: green_20180509_models.VoiceIdentityRegisterRequest,
+    ) -> green_20180509_models.VoiceIdentityRegisterResponse:
+        """
+        @summary 声纹注册
+        
+        @param request: VoiceIdentityRegisterRequest
+        @return: VoiceIdentityRegisterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.voice_identity_start_check_with_options(request, headers, runtime)
+        return self.voice_identity_register_with_options(request, headers, runtime)
 
-    async def voice_identity_start_check_async(
+    async def voice_identity_register_async(
         self,
-        request: green_20180509_models.VoiceIdentityStartCheckRequest,
-    ) -> green_20180509_models.VoiceIdentityStartCheckResponse:
+        request: green_20180509_models.VoiceIdentityRegisterRequest,
+    ) -> green_20180509_models.VoiceIdentityRegisterResponse:
+        """
+        @summary 声纹注册
+        
+        @param request: VoiceIdentityRegisterRequest
+        @return: VoiceIdentityRegisterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.voice_identity_start_check_with_options_async(request, headers, runtime)
+        return await self.voice_identity_register_with_options_async(request, headers, runtime)
 
     def voice_identity_start_check_with_options(
         self,
@@ -3383,19 +6021,38 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceIdentityStartCheckResponse:
+        """
+        @summary 声纹开始比对
+        
+        @param request: VoiceIdentityStartCheckRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceIdentityStartCheckResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceIdentityStartCheck',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/auth/start/check',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceIdentityStartCheckResponse(),
-            self.do_roarequest('VoiceIdentityStartCheck', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/start/check', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def voice_identity_start_check_with_options_async(
@@ -3404,36 +6061,67 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceIdentityStartCheckResponse:
+        """
+        @summary 声纹开始比对
+        
+        @param request: VoiceIdentityStartCheckRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceIdentityStartCheckResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceIdentityStartCheck',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/auth/start/check',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceIdentityStartCheckResponse(),
-            await self.do_roarequest_async('VoiceIdentityStartCheck', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/start/check', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def voice_identity_start_register(
+    def voice_identity_start_check(
         self,
-        request: green_20180509_models.VoiceIdentityStartRegisterRequest,
-    ) -> green_20180509_models.VoiceIdentityStartRegisterResponse:
+        request: green_20180509_models.VoiceIdentityStartCheckRequest,
+    ) -> green_20180509_models.VoiceIdentityStartCheckResponse:
+        """
+        @summary 声纹开始比对
+        
+        @param request: VoiceIdentityStartCheckRequest
+        @return: VoiceIdentityStartCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.voice_identity_start_register_with_options(request, headers, runtime)
+        return self.voice_identity_start_check_with_options(request, headers, runtime)
 
-    async def voice_identity_start_register_async(
+    async def voice_identity_start_check_async(
         self,
-        request: green_20180509_models.VoiceIdentityStartRegisterRequest,
-    ) -> green_20180509_models.VoiceIdentityStartRegisterResponse:
+        request: green_20180509_models.VoiceIdentityStartCheckRequest,
+    ) -> green_20180509_models.VoiceIdentityStartCheckResponse:
+        """
+        @summary 声纹开始比对
+        
+        @param request: VoiceIdentityStartCheckRequest
+        @return: VoiceIdentityStartCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.voice_identity_start_register_with_options_async(request, headers, runtime)
+        return await self.voice_identity_start_check_with_options_async(request, headers, runtime)
 
     def voice_identity_start_register_with_options(
         self,
@@ -3441,19 +6129,38 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceIdentityStartRegisterResponse:
+        """
+        @summary 声纹开始注册
+        
+        @param request: VoiceIdentityStartRegisterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceIdentityStartRegisterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceIdentityStartRegister',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/auth/start/register',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceIdentityStartRegisterResponse(),
-            self.do_roarequest('VoiceIdentityStartRegister', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/start/register', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def voice_identity_start_register_with_options_async(
@@ -3462,36 +6169,67 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceIdentityStartRegisterResponse:
+        """
+        @summary 声纹开始注册
+        
+        @param request: VoiceIdentityStartRegisterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceIdentityStartRegisterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceIdentityStartRegister',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/auth/start/register',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceIdentityStartRegisterResponse(),
-            await self.do_roarequest_async('VoiceIdentityStartRegister', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/start/register', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def voice_identity_unregister(
+    def voice_identity_start_register(
         self,
-        request: green_20180509_models.VoiceIdentityUnregisterRequest,
-    ) -> green_20180509_models.VoiceIdentityUnregisterResponse:
+        request: green_20180509_models.VoiceIdentityStartRegisterRequest,
+    ) -> green_20180509_models.VoiceIdentityStartRegisterResponse:
+        """
+        @summary 声纹开始注册
+        
+        @param request: VoiceIdentityStartRegisterRequest
+        @return: VoiceIdentityStartRegisterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.voice_identity_unregister_with_options(request, headers, runtime)
+        return self.voice_identity_start_register_with_options(request, headers, runtime)
 
-    async def voice_identity_unregister_async(
+    async def voice_identity_start_register_async(
         self,
-        request: green_20180509_models.VoiceIdentityUnregisterRequest,
-    ) -> green_20180509_models.VoiceIdentityUnregisterResponse:
+        request: green_20180509_models.VoiceIdentityStartRegisterRequest,
+    ) -> green_20180509_models.VoiceIdentityStartRegisterResponse:
+        """
+        @summary 声纹开始注册
+        
+        @param request: VoiceIdentityStartRegisterRequest
+        @return: VoiceIdentityStartRegisterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.voice_identity_unregister_with_options_async(request, headers, runtime)
+        return await self.voice_identity_start_register_with_options_async(request, headers, runtime)
 
     def voice_identity_unregister_with_options(
         self,
@@ -3499,19 +6237,38 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceIdentityUnregisterResponse:
+        """
+        @summary 声纹注销
+        
+        @param request: VoiceIdentityUnregisterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceIdentityUnregisterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceIdentityUnregister',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/auth/unregister',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceIdentityUnregisterResponse(),
-            self.do_roarequest('VoiceIdentityUnregister', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/unregister', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def voice_identity_unregister_with_options_async(
@@ -3520,36 +6277,67 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceIdentityUnregisterResponse:
+        """
+        @summary 声纹注销
+        
+        @param request: VoiceIdentityUnregisterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceIdentityUnregisterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceIdentityUnregister',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/auth/unregister',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceIdentityUnregisterResponse(),
-            await self.do_roarequest_async('VoiceIdentityUnregister', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/auth/unregister', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def voice_sync_scan(
+    def voice_identity_unregister(
         self,
-        request: green_20180509_models.VoiceSyncScanRequest,
-    ) -> green_20180509_models.VoiceSyncScanResponse:
+        request: green_20180509_models.VoiceIdentityUnregisterRequest,
+    ) -> green_20180509_models.VoiceIdentityUnregisterResponse:
+        """
+        @summary 声纹注销
+        
+        @param request: VoiceIdentityUnregisterRequest
+        @return: VoiceIdentityUnregisterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.voice_sync_scan_with_options(request, headers, runtime)
+        return self.voice_identity_unregister_with_options(request, headers, runtime)
 
-    async def voice_sync_scan_async(
+    async def voice_identity_unregister_async(
         self,
-        request: green_20180509_models.VoiceSyncScanRequest,
-    ) -> green_20180509_models.VoiceSyncScanResponse:
+        request: green_20180509_models.VoiceIdentityUnregisterRequest,
+    ) -> green_20180509_models.VoiceIdentityUnregisterResponse:
+        """
+        @summary 声纹注销
+        
+        @param request: VoiceIdentityUnregisterRequest
+        @return: VoiceIdentityUnregisterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.voice_sync_scan_with_options_async(request, headers, runtime)
+        return await self.voice_identity_unregister_with_options_async(request, headers, runtime)
 
     def voice_sync_scan_with_options(
         self,
@@ -3557,19 +6345,38 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceSyncScanResponse:
+        """
+        @summary 语音同步检测
+        
+        @param request: VoiceSyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceSyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceSyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/syncscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceSyncScanResponse(),
-            self.do_roarequest('VoiceSyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/syncscan', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def voice_sync_scan_with_options_async(
@@ -3578,36 +6385,67 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.VoiceSyncScanResponse:
+        """
+        @summary 语音同步检测
+        
+        @param request: VoiceSyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VoiceSyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.client_info):
             query['ClientInfo'] = request.client_info
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='VoiceSyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/voice/syncscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.VoiceSyncScanResponse(),
-            await self.do_roarequest_async('VoiceSyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/voice/syncscan', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def webpage_async_scan(
+    def voice_sync_scan(
         self,
-        request: green_20180509_models.WebpageAsyncScanRequest,
-    ) -> green_20180509_models.WebpageAsyncScanResponse:
+        request: green_20180509_models.VoiceSyncScanRequest,
+    ) -> green_20180509_models.VoiceSyncScanResponse:
+        """
+        @summary 语音同步检测
+        
+        @param request: VoiceSyncScanRequest
+        @return: VoiceSyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.webpage_async_scan_with_options(request, headers, runtime)
+        return self.voice_sync_scan_with_options(request, headers, runtime)
 
-    async def webpage_async_scan_async(
+    async def voice_sync_scan_async(
         self,
-        request: green_20180509_models.WebpageAsyncScanRequest,
-    ) -> green_20180509_models.WebpageAsyncScanResponse:
+        request: green_20180509_models.VoiceSyncScanRequest,
+    ) -> green_20180509_models.VoiceSyncScanResponse:
+        """
+        @summary 语音同步检测
+        
+        @param request: VoiceSyncScanRequest
+        @return: VoiceSyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.webpage_async_scan_with_options_async(request, headers, runtime)
+        return await self.voice_sync_scan_with_options_async(request, headers, runtime)
 
     def webpage_async_scan_with_options(
         self,
@@ -3615,6 +6453,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.WebpageAsyncScanResponse:
+        """
+        @summary 站点异步检测
+        
+        @param request: WebpageAsyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WebpageAsyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -3623,9 +6469,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='WebpageAsyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/webpage/asyncscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.WebpageAsyncScanResponse(),
-            self.do_roarequest('WebpageAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/webpage/asyncscan', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def webpage_async_scan_with_options_async(
@@ -3634,6 +6491,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.WebpageAsyncScanResponse:
+        """
+        @summary 站点异步检测
+        
+        @param request: WebpageAsyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WebpageAsyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -3642,26 +6507,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='WebpageAsyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/webpage/asyncscan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.WebpageAsyncScanResponse(),
-            await self.do_roarequest_async('WebpageAsyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/webpage/asyncscan', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def webpage_async_scan_results(
+    def webpage_async_scan(
         self,
-        request: green_20180509_models.WebpageAsyncScanResultsRequest,
-    ) -> green_20180509_models.WebpageAsyncScanResultsResponse:
+        request: green_20180509_models.WebpageAsyncScanRequest,
+    ) -> green_20180509_models.WebpageAsyncScanResponse:
+        """
+        @summary 站点异步检测
+        
+        @param request: WebpageAsyncScanRequest
+        @return: WebpageAsyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.webpage_async_scan_results_with_options(request, headers, runtime)
+        return self.webpage_async_scan_with_options(request, headers, runtime)
 
-    async def webpage_async_scan_results_async(
+    async def webpage_async_scan_async(
         self,
-        request: green_20180509_models.WebpageAsyncScanResultsRequest,
-    ) -> green_20180509_models.WebpageAsyncScanResultsResponse:
+        request: green_20180509_models.WebpageAsyncScanRequest,
+    ) -> green_20180509_models.WebpageAsyncScanResponse:
+        """
+        @summary 站点异步检测
+        
+        @param request: WebpageAsyncScanRequest
+        @return: WebpageAsyncScanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.webpage_async_scan_results_with_options_async(request, headers, runtime)
+        return await self.webpage_async_scan_with_options_async(request, headers, runtime)
 
     def webpage_async_scan_results_with_options(
         self,
@@ -3669,6 +6557,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.WebpageAsyncScanResultsResponse:
+        """
+        @summary 站点异步检测结果
+        
+        @param request: WebpageAsyncScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WebpageAsyncScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -3677,9 +6573,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='WebpageAsyncScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/webpage/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.WebpageAsyncScanResultsResponse(),
-            self.do_roarequest('WebpageAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/webpage/results', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def webpage_async_scan_results_with_options_async(
@@ -3688,6 +6595,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.WebpageAsyncScanResultsResponse:
+        """
+        @summary 站点异步检测结果
+        
+        @param request: WebpageAsyncScanResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WebpageAsyncScanResultsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -3696,26 +6611,49 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='WebpageAsyncScanResults',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/webpage/results',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.WebpageAsyncScanResultsResponse(),
-            await self.do_roarequest_async('WebpageAsyncScanResults', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/webpage/results', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
-    def webpage_sync_scan(
+    def webpage_async_scan_results(
         self,
-        request: green_20180509_models.WebpageSyncScanRequest,
-    ) -> green_20180509_models.WebpageSyncScanResponse:
+        request: green_20180509_models.WebpageAsyncScanResultsRequest,
+    ) -> green_20180509_models.WebpageAsyncScanResultsResponse:
+        """
+        @summary 站点异步检测结果
+        
+        @param request: WebpageAsyncScanResultsRequest
+        @return: WebpageAsyncScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.webpage_sync_scan_with_options(request, headers, runtime)
+        return self.webpage_async_scan_results_with_options(request, headers, runtime)
 
-    async def webpage_sync_scan_async(
+    async def webpage_async_scan_results_async(
         self,
-        request: green_20180509_models.WebpageSyncScanRequest,
-    ) -> green_20180509_models.WebpageSyncScanResponse:
+        request: green_20180509_models.WebpageAsyncScanResultsRequest,
+    ) -> green_20180509_models.WebpageAsyncScanResultsResponse:
+        """
+        @summary 站点异步检测结果
+        
+        @param request: WebpageAsyncScanResultsRequest
+        @return: WebpageAsyncScanResultsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.webpage_sync_scan_with_options_async(request, headers, runtime)
+        return await self.webpage_async_scan_results_with_options_async(request, headers, runtime)
 
     def webpage_sync_scan_with_options(
         self,
@@ -3723,6 +6661,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.WebpageSyncScanResponse:
+        """
+        @summary 站点同步检测
+        
+        @param request: WebpageSyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WebpageSyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -3731,9 +6677,20 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='WebpageSyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/webpage/scan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.WebpageSyncScanResponse(),
-            self.do_roarequest('WebpageSyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/webpage/scan', 'none', req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def webpage_sync_scan_with_options_async(
@@ -3742,6 +6699,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> green_20180509_models.WebpageSyncScanResponse:
+        """
+        @summary 站点同步检测
+        
+        @param request: WebpageSyncScanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WebpageSyncScanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_info):
@@ -3750,7 +6715,46 @@ class Client(OpenApiClient):
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
+        params = open_api_models.Params(
+            action='WebpageSyncScan',
+            version='2018-05-09',
+            protocol='HTTPS',
+            pathname=f'/green/webpage/scan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
         return TeaCore.from_map(
             green_20180509_models.WebpageSyncScanResponse(),
-            await self.do_roarequest_async('WebpageSyncScan', '2018-05-09', 'HTTPS', 'POST', 'AK', f'/green/webpage/scan', 'none', req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
+
+    def webpage_sync_scan(
+        self,
+        request: green_20180509_models.WebpageSyncScanRequest,
+    ) -> green_20180509_models.WebpageSyncScanResponse:
+        """
+        @summary 站点同步检测
+        
+        @param request: WebpageSyncScanRequest
+        @return: WebpageSyncScanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.webpage_sync_scan_with_options(request, headers, runtime)
+
+    async def webpage_sync_scan_async(
+        self,
+        request: green_20180509_models.WebpageSyncScanRequest,
+    ) -> green_20180509_models.WebpageSyncScanResponse:
+        """
+        @summary 站点同步检测
+        
+        @param request: WebpageSyncScanRequest
+        @return: WebpageSyncScanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.webpage_sync_scan_with_options_async(request, headers, runtime)
