@@ -1,3 +1,10 @@
+2024-09-04 Version: 1.0.7
+- Update API SendByAlias: update param Alias.
+- Update API SendByAliasFileId: update param FileId.
+- Update API SendByDevice: update param DeviceTokens.
+- Update API SendByDeviceFileId: update param FileId.
+
+
 2024-03-29 Version: 1.0.6
 - Update API SendByAliasFileId: add param ThirdPartyId.
 - Update API SendByApp: add param ThirdPartyId.

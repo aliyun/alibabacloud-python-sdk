@@ -281,6 +281,7 @@ class ChannelProperties(TeaModel):
         huawei_channel_importance: str = None,
         main_activity: str = None,
         oppo_channel_id: str = None,
+        vivo_add_badge: str = None,
         vivo_category: str = None,
         xiaomi_channel_id: str = None,
     ):
@@ -290,6 +291,7 @@ class ChannelProperties(TeaModel):
         self.huawei_channel_importance = huawei_channel_importance
         self.main_activity = main_activity
         self.oppo_channel_id = oppo_channel_id
+        self.vivo_add_badge = vivo_add_badge
         self.vivo_category = vivo_category
         self.xiaomi_channel_id = xiaomi_channel_id
 
@@ -314,6 +316,8 @@ class ChannelProperties(TeaModel):
             result['mainActivity'] = self.main_activity
         if self.oppo_channel_id is not None:
             result['oppoChannelId'] = self.oppo_channel_id
+        if self.vivo_add_badge is not None:
+            result['vivoAddBadge'] = self.vivo_add_badge
         if self.vivo_category is not None:
             result['vivoCategory'] = self.vivo_category
         if self.xiaomi_channel_id is not None:
@@ -334,6 +338,8 @@ class ChannelProperties(TeaModel):
             self.main_activity = m.get('mainActivity')
         if m.get('oppoChannelId') is not None:
             self.oppo_channel_id = m.get('oppoChannelId')
+        if m.get('vivoAddBadge') is not None:
+            self.vivo_add_badge = m.get('vivoAddBadge')
         if m.get('vivoCategory') is not None:
             self.vivo_category = m.get('vivoCategory')
         if m.get('xiaomiChannelId') is not None:
@@ -786,6 +792,7 @@ class SendByAliasRequest(TeaModel):
         receipt_url: str = None,
         third_party_id: str = None,
     ):
+        # This parameter is required.
         self.alias = alias
         self.alias_type = alias_type
         self.android_payload = android_payload
@@ -884,6 +891,7 @@ class SendByAliasShrinkRequest(TeaModel):
         receipt_url: str = None,
         third_party_id: str = None,
     ):
+        # This parameter is required.
         self.alias = alias
         self.alias_type = alias_type
         self.android_payload_shrink = android_payload_shrink
@@ -1102,6 +1110,7 @@ class SendByAliasFileIdRequest(TeaModel):
         self.android_payload = android_payload
         self.channel_properties = channel_properties
         self.description = description
+        # This parameter is required.
         self.file_id = file_id
         self.ios_payload = ios_payload
         self.policy = policy
@@ -1200,6 +1209,7 @@ class SendByAliasFileIdShrinkRequest(TeaModel):
         self.android_payload_shrink = android_payload_shrink
         self.channel_properties_shrink = channel_properties_shrink
         self.description = description
+        # This parameter is required.
         self.file_id = file_id
         self.ios_payload_shrink = ios_payload_shrink
         self.policy_shrink = policy_shrink
@@ -1700,6 +1710,7 @@ class SendByDeviceRequest(TeaModel):
         self.android_payload = android_payload
         self.channel_properties = channel_properties
         self.description = description
+        # This parameter is required.
         self.device_tokens = device_tokens
         self.ios_payload = ios_payload
         self.policy = policy
@@ -1792,6 +1803,7 @@ class SendByDeviceShrinkRequest(TeaModel):
         self.android_payload_shrink = android_payload_shrink
         self.channel_properties_shrink = channel_properties_shrink
         self.description = description
+        # This parameter is required.
         self.device_tokens = device_tokens
         self.ios_payload_shrink = ios_payload_shrink
         self.policy_shrink = policy_shrink
@@ -2000,6 +2012,7 @@ class SendByDeviceFileIdRequest(TeaModel):
         self.android_payload = android_payload
         self.channel_properties = channel_properties
         self.description = description
+        # This parameter is required.
         self.file_id = file_id
         self.ios_payload = ios_payload
         self.policy = policy
@@ -2092,6 +2105,7 @@ class SendByDeviceFileIdShrinkRequest(TeaModel):
         self.android_payload_shrink = android_payload_shrink
         self.channel_properties_shrink = channel_properties_shrink
         self.description = description
+        # This parameter is required.
         self.file_id = file_id
         self.ios_payload_shrink = ios_payload_shrink
         self.policy_shrink = policy_shrink

@@ -47,6 +47,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_push_20220225_models.CancelByMsgIdResponse:
+        """
+        @summary 根据消息ID取消发送
+        
+        @param request: CancelByMsgIdRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelByMsgIdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.msg_id):
@@ -77,6 +85,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_push_20220225_models.CancelByMsgIdResponse:
+        """
+        @summary 根据消息ID取消发送
+        
+        @param request: CancelByMsgIdRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelByMsgIdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.msg_id):
@@ -105,6 +121,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_push_20220225_models.CancelByMsgIdRequest,
     ) -> umeng_push_20220225_models.CancelByMsgIdResponse:
+        """
+        @summary 根据消息ID取消发送
+        
+        @param request: CancelByMsgIdRequest
+        @return: CancelByMsgIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.cancel_by_msg_id_with_options(request, headers, runtime)
@@ -113,6 +135,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_push_20220225_models.CancelByMsgIdRequest,
     ) -> umeng_push_20220225_models.CancelByMsgIdResponse:
+        """
+        @summary 根据消息ID取消发送
+        
+        @param request: CancelByMsgIdRequest
+        @return: CancelByMsgIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.cancel_by_msg_id_with_options_async(request, headers, runtime)
@@ -123,6 +151,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_push_20220225_models.QueryMsgStatResponse:
+        """
+        @summary 消息状态查询
+        
+        @param request: QueryMsgStatRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMsgStatResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.msg_id):
@@ -153,6 +189,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_push_20220225_models.QueryMsgStatResponse:
+        """
+        @summary 消息状态查询
+        
+        @param request: QueryMsgStatRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMsgStatResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.msg_id):
@@ -181,6 +225,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_push_20220225_models.QueryMsgStatRequest,
     ) -> umeng_push_20220225_models.QueryMsgStatResponse:
+        """
+        @summary 消息状态查询
+        
+        @param request: QueryMsgStatRequest
+        @return: QueryMsgStatResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.query_msg_stat_with_options(request, headers, runtime)
@@ -189,6 +239,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_push_20220225_models.QueryMsgStatRequest,
     ) -> umeng_push_20220225_models.QueryMsgStatResponse:
+        """
+        @summary 消息状态查询
+        
+        @param request: QueryMsgStatRequest
+        @return: QueryMsgStatResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.query_msg_stat_with_options_async(request, headers, runtime)
@@ -199,6 +255,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_push_20220225_models.SendByAliasResponse:
+        """
+        @summary 指定别名发送
+        
+        @param tmp_req: SendByAliasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendByAliasResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = umeng_push_20220225_models.SendByAliasShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -259,6 +323,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_push_20220225_models.SendByAliasResponse:
+        """
+        @summary 指定别名发送
+        
+        @param tmp_req: SendByAliasRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendByAliasResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = umeng_push_20220225_models.SendByAliasShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -317,6 +389,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_push_20220225_models.SendByAliasRequest,
     ) -> umeng_push_20220225_models.SendByAliasResponse:
+        """
+        @summary 指定别名发送
+        
+        @param request: SendByAliasRequest
+        @return: SendByAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.send_by_alias_with_options(request, headers, runtime)
@@ -325,6 +403,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_push_20220225_models.SendByAliasRequest,
     ) -> umeng_push_20220225_models.SendByAliasResponse:
+        """
+        @summary 指定别名发送
+        
+        @param request: SendByAliasRequest
+        @return: SendByAliasResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.send_by_alias_with_options_async(request, headers, runtime)
@@ -335,6 +419,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_push_20220225_models.SendByAliasFileIdResponse:
+        """
+        @summary 指定别名文件发送
+        
+        @param tmp_req: SendByAliasFileIdRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendByAliasFileIdResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = umeng_push_20220225_models.SendByAliasFileIdShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -395,6 +487,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_push_20220225_models.SendByAliasFileIdResponse:
+        """
+        @summary 指定别名文件发送
+        
+        @param tmp_req: SendByAliasFileIdRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendByAliasFileIdResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = umeng_push_20220225_models.SendByAliasFileIdShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -453,6 +553,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_push_20220225_models.SendByAliasFileIdRequest,
     ) -> umeng_push_20220225_models.SendByAliasFileIdResponse:
+        """
+        @summary 指定别名文件发送
+        
+        @param request: SendByAliasFileIdRequest
+        @return: SendByAliasFileIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.send_by_alias_file_id_with_options(request, headers, runtime)
@@ -461,6 +567,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_push_20220225_models.SendByAliasFileIdRequest,
     ) -> umeng_push_20220225_models.SendByAliasFileIdResponse:
+        """
+        @summary 指定别名文件发送
+        
+        @param request: SendByAliasFileIdRequest
+        @return: SendByAliasFileIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.send_by_alias_file_id_with_options_async(request, headers, runtime)
@@ -471,6 +583,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_push_20220225_models.SendByAppResponse:
+        """
+        @summary 广播
+        
+        @param tmp_req: SendByAppRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendByAppResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = umeng_push_20220225_models.SendByAppShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -527,6 +647,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_push_20220225_models.SendByAppResponse:
+        """
+        @summary 广播
+        
+        @param tmp_req: SendByAppRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendByAppResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = umeng_push_20220225_models.SendByAppShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -581,6 +709,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_push_20220225_models.SendByAppRequest,
     ) -> umeng_push_20220225_models.SendByAppResponse:
+        """
+        @summary 广播
+        
+        @param request: SendByAppRequest
+        @return: SendByAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.send_by_app_with_options(request, headers, runtime)
@@ -589,6 +723,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_push_20220225_models.SendByAppRequest,
     ) -> umeng_push_20220225_models.SendByAppResponse:
+        """
+        @summary 广播
+        
+        @param request: SendByAppRequest
+        @return: SendByAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.send_by_app_with_options_async(request, headers, runtime)
@@ -599,6 +739,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_push_20220225_models.SendByDeviceResponse:
+        """
+        @summary 指定设备发送
+        
+        @param tmp_req: SendByDeviceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendByDeviceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = umeng_push_20220225_models.SendByDeviceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -657,6 +805,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_push_20220225_models.SendByDeviceResponse:
+        """
+        @summary 指定设备发送
+        
+        @param tmp_req: SendByDeviceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendByDeviceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = umeng_push_20220225_models.SendByDeviceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -713,6 +869,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_push_20220225_models.SendByDeviceRequest,
     ) -> umeng_push_20220225_models.SendByDeviceResponse:
+        """
+        @summary 指定设备发送
+        
+        @param request: SendByDeviceRequest
+        @return: SendByDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.send_by_device_with_options(request, headers, runtime)
@@ -721,6 +883,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_push_20220225_models.SendByDeviceRequest,
     ) -> umeng_push_20220225_models.SendByDeviceResponse:
+        """
+        @summary 指定设备发送
+        
+        @param request: SendByDeviceRequest
+        @return: SendByDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.send_by_device_with_options_async(request, headers, runtime)
@@ -731,6 +899,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_push_20220225_models.SendByDeviceFileIdResponse:
+        """
+        @summary 指定设备文件发送
+        
+        @param tmp_req: SendByDeviceFileIdRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendByDeviceFileIdResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = umeng_push_20220225_models.SendByDeviceFileIdShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -789,6 +965,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_push_20220225_models.SendByDeviceFileIdResponse:
+        """
+        @summary 指定设备文件发送
+        
+        @param tmp_req: SendByDeviceFileIdRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendByDeviceFileIdResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = umeng_push_20220225_models.SendByDeviceFileIdShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -845,6 +1029,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_push_20220225_models.SendByDeviceFileIdRequest,
     ) -> umeng_push_20220225_models.SendByDeviceFileIdResponse:
+        """
+        @summary 指定设备文件发送
+        
+        @param request: SendByDeviceFileIdRequest
+        @return: SendByDeviceFileIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.send_by_device_file_id_with_options(request, headers, runtime)
@@ -853,6 +1043,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_push_20220225_models.SendByDeviceFileIdRequest,
     ) -> umeng_push_20220225_models.SendByDeviceFileIdResponse:
+        """
+        @summary 指定设备文件发送
+        
+        @param request: SendByDeviceFileIdRequest
+        @return: SendByDeviceFileIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.send_by_device_file_id_with_options_async(request, headers, runtime)
@@ -863,6 +1059,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_push_20220225_models.SendByFilterResponse:
+        """
+        @summary 根据筛选条件发送
+        
+        @param tmp_req: SendByFilterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendByFilterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = umeng_push_20220225_models.SendByFilterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -921,6 +1125,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_push_20220225_models.SendByFilterResponse:
+        """
+        @summary 根据筛选条件发送
+        
+        @param tmp_req: SendByFilterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendByFilterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = umeng_push_20220225_models.SendByFilterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -977,6 +1189,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_push_20220225_models.SendByFilterRequest,
     ) -> umeng_push_20220225_models.SendByFilterResponse:
+        """
+        @summary 根据筛选条件发送
+        
+        @param request: SendByFilterRequest
+        @return: SendByFilterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.send_by_filter_with_options(request, headers, runtime)
@@ -985,6 +1203,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_push_20220225_models.SendByFilterRequest,
     ) -> umeng_push_20220225_models.SendByFilterResponse:
+        """
+        @summary 根据筛选条件发送
+        
+        @param request: SendByFilterRequest
+        @return: SendByFilterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.send_by_filter_with_options_async(request, headers, runtime)
@@ -995,6 +1219,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_push_20220225_models.UploadDeviceResponse:
+        """
+        @summary 上传设备列表创建设备文件
+        
+        @param request: UploadDeviceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadDeviceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.device_tokens):
@@ -1025,6 +1257,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_push_20220225_models.UploadDeviceResponse:
+        """
+        @summary 上传设备列表创建设备文件
+        
+        @param request: UploadDeviceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadDeviceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.device_tokens):
@@ -1053,6 +1293,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_push_20220225_models.UploadDeviceRequest,
     ) -> umeng_push_20220225_models.UploadDeviceResponse:
+        """
+        @summary 上传设备列表创建设备文件
+        
+        @param request: UploadDeviceRequest
+        @return: UploadDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.upload_device_with_options(request, headers, runtime)
@@ -1061,6 +1307,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_push_20220225_models.UploadDeviceRequest,
     ) -> umeng_push_20220225_models.UploadDeviceResponse:
+        """
+        @summary 上传设备列表创建设备文件
+        
+        @param request: UploadDeviceRequest
+        @return: UploadDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.upload_device_with_options_async(request, headers, runtime)
