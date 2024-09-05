@@ -887,6 +887,8 @@ class Client(OpenApiClient):
             body['quota'] = request.quota
         if not UtilClient.is_unset(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            body['tags'] = request.tags
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -933,6 +935,8 @@ class Client(OpenApiClient):
             body['quota'] = request.quota
         if not UtilClient.is_unset(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            body['tags'] = request.tags
         if not UtilClient.is_unset(request.type):
             body['type'] = request.type
         req = open_api_models.OpenApiRequest(

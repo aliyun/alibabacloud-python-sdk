@@ -1,3 +1,7 @@
+2024-09-05 Version: 3.0.1
+- Update API CreateAppGroup: update param body.
+
+
 2024-09-02 Version: 3.0.0
 - Support API CreateAppGroupCredentials.
 - Delete API RankPreviewQuery.

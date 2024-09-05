@@ -4444,6 +4444,39 @@ class CreateAppGroupRequestQuota(TeaModel):
         return self
 
 
+class CreateAppGroupRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class CreateAppGroupRequest(TeaModel):
     def __init__(
         self,
@@ -4451,17 +4484,23 @@ class CreateAppGroupRequest(TeaModel):
         name: str = None,
         quota: CreateAppGroupRequestQuota = None,
         resource_group_id: str = None,
+        tags: List[CreateAppGroupRequestTags] = None,
         type: str = None,
     ):
         self.charge_type = charge_type
         self.name = name
         self.quota = quota
         self.resource_group_id = resource_group_id
+        self.tags = tags
         self.type = type
 
     def validate(self):
         if self.quota:
             self.quota.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4477,6 +4516,10 @@ class CreateAppGroupRequest(TeaModel):
             result['quota'] = self.quota.to_map()
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
         if self.type is not None:
             result['type'] = self.type
         return result
@@ -4492,6 +4535,11 @@ class CreateAppGroupRequest(TeaModel):
             self.quota = temp_model.from_map(m['quota'])
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = CreateAppGroupRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
