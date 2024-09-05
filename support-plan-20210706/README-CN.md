@@ -29,7 +29,7 @@ pip install alibabacloud_support_plan20210706
 
 ## 发行说明
 
-每个版本的详细更改记录在[发行说明](./ChangeLog.md)中。
+每个版本的详细更改记录在[发行说明](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/support-plan-20210706/ChangeLog.md)中。
 
 ## 相关
 

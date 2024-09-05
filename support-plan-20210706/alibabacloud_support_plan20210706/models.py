@@ -11,11 +11,11 @@ class EnterpriseDingtalkGroupMember(TeaModel):
         mobile: str = None,
         name: str = None,
     ):
-        # 是否企业钉群管理员
+        # 代表资源名称的资源属性字段
         self.is_admin = is_admin
-        # 成员手机号
+        # 代表资源组的资源属性字段
         self.mobile = mobile
-        # 成员姓名
+        # 代表创建时间的资源属性字段
         self.name = name
 
     def validate(self):
@@ -52,9 +52,8 @@ class CloseTaskOrderRequest(TeaModel):
         order_id: str = None,
         user_name: str = None,
     ):
-        # 任务单id
+        # This parameter is required.
         self.order_id = order_id
-        # 操作人姓名
         self.user_name = user_name
 
     def validate(self):
@@ -141,14 +140,14 @@ class CloseTaskOrderResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CloseTaskOrderResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -160,6 +159,8 @@ class CloseTaskOrderResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -168,6 +169,8 @@ class CloseTaskOrderResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CloseTaskOrderResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -186,21 +189,21 @@ class CreateTaskOrderRequest(TeaModel):
         product_type_name: str = None,
         task_title: str = None,
     ):
-        # 建单人姓名：快手客户
         self.customer_real_name = customer_real_name
-        # 建单人：固定值
         self.customer_user_id = customer_user_id
-        # 重要性描述
         self.important_description = important_description
-        # 是否紧急
+        # This parameter is required.
         self.is_important = is_important
-        # 主群关联Id
+        # This parameter is required.
         self.open_group_id = open_group_id
         # productType
+        # 
+        # This parameter is required.
         self.product_type = product_type
-        # 问题分类名称
         self.product_type_name = product_type_name
-        # 任务单标题
+        # taskTitle
+        # 
+        # This parameter is required.
         self.task_title = task_title
 
     def validate(self):
@@ -262,7 +265,6 @@ class CreateTaskOrderResponseBody(TeaModel):
     ):
         # code
         self.code = code
-        # 返回任务单号：OrderId
         self.data = data
         # msg
         self.message = message
@@ -311,14 +313,14 @@ class CreateTaskOrderResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateTaskOrderResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -330,6 +332,8 @@ class CreateTaskOrderResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -338,6 +342,8 @@ class CreateTaskOrderResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateTaskOrderResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -349,7 +355,6 @@ class CreateTaskOrderByEventReportRequestEventBodyEventLocation(TeaModel):
         self,
         domain: str = None,
     ):
-        # domian域名
         self.domain = domain
 
     def validate(self):
@@ -381,15 +386,11 @@ class CreateTaskOrderByEventReportRequestEventBody(TeaModel):
         event_location: CreateTaskOrderByEventReportRequestEventBodyEventLocation = None,
         event_time: str = None,
     ):
-        # 当前告警描述信息
+        # This parameter is required.
         self.event_desc = event_desc
-        # 事件id
         self.event_id = event_id
-        # 事件级别
         self.event_level = event_level
-        # 事件源标识，自定义和TAM在云企配置的Location指标一致
         self.event_location = event_location
-        # 事件上报时间
         self.event_time = event_time
 
     def validate(self):
@@ -436,9 +437,7 @@ class CreateTaskOrderByEventReportRequestExtinfo(TeaModel):
         name: str = None,
         value: str = None,
     ):
-        # 扩展信息名称
         self.name = name
-        # 扩展信息value值
         self.value = value
 
     def validate(self):
@@ -479,25 +478,19 @@ class CreateTaskOrderByEventReportRequest(TeaModel):
         open_group_id: str = None,
         product_type: str = None,
     ):
-        # 告警所属业务
         self.business = business
-        # 提交人姓名
+        # This parameter is required.
         self.create_real_name = create_real_name
-        # 提交人userId
+        # This parameter is required.
         self.create_user_id = create_user_id
-        # 告警描述
         self.event_body = event_body
-        # 扩展信息
         self.extinfo = extinfo
-        # 当eventLevel为warn时，必传
         self.important_desc = important_desc
-        # 建单入群人员
         self.join_child_group_user_ids = join_child_group_user_ids
-        # 监控集如：视频业务的质量监控
         self.monitor_congregation = monitor_congregation
-        # 告警关联主群id
+        # This parameter is required.
         self.open_group_id = open_group_id
-        # 问题分类
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -581,25 +574,19 @@ class CreateTaskOrderByEventReportShrinkRequest(TeaModel):
         open_group_id: str = None,
         product_type: str = None,
     ):
-        # 告警所属业务
         self.business = business
-        # 提交人姓名
+        # This parameter is required.
         self.create_real_name = create_real_name
-        # 提交人userId
+        # This parameter is required.
         self.create_user_id = create_user_id
-        # 告警描述
         self.event_body_shrink = event_body_shrink
-        # 扩展信息
         self.extinfo_shrink = extinfo_shrink
-        # 当eventLevel为warn时，必传
         self.important_desc = important_desc
-        # 建单入群人员
         self.join_child_group_user_ids = join_child_group_user_ids
-        # 监控集如：视频业务的质量监控
         self.monitor_congregation = monitor_congregation
-        # 告警关联主群id
+        # This parameter is required.
         self.open_group_id = open_group_id
-        # 问题分类
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -669,7 +656,6 @@ class CreateTaskOrderByEventReportResponseBody(TeaModel):
     ):
         # code
         self.code = code
-        # 返回信息
         self.data = data
         # msg
         self.message = message
@@ -718,14 +704,14 @@ class CreateTaskOrderByEventReportResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: CreateTaskOrderByEventReportResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -737,6 +723,8 @@ class CreateTaskOrderByEventReportResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -745,6 +733,8 @@ class CreateTaskOrderByEventReportResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateTaskOrderByEventReportResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -757,7 +747,9 @@ class DeleteEnterpriseDingtalkGroupCustomerMemberRequest(TeaModel):
         mobiles: List[str] = None,
         open_group_id: str = None,
     ):
+        # This parameter is required.
         self.mobiles = mobiles
+        # This parameter is required.
         self.open_group_id = open_group_id
 
     def validate(self):
@@ -790,7 +782,9 @@ class DeleteEnterpriseDingtalkGroupCustomerMemberShrinkRequest(TeaModel):
         mobiles_shrink: str = None,
         open_group_id: str = None,
     ):
+        # This parameter is required.
         self.mobiles_shrink = mobiles_shrink
+        # This parameter is required.
         self.open_group_id = open_group_id
 
     def validate(self):
@@ -825,13 +819,9 @@ class DeleteEnterpriseDingtalkGroupCustomerMemberResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 接口请求结果返回码
         self.code = code
-        # 错误信息, 当success=false的时候, 可以取到message
         self.message = message
-        # 接口请求的唯一ID, 每次调用requestID唯一
         self.request_id = request_id
-        # 调用接口返回是否成功, true代表调用正常
         self.success = success
 
     def validate(self):
@@ -870,14 +860,14 @@ class DeleteEnterpriseDingtalkGroupCustomerMemberResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: DeleteEnterpriseDingtalkGroupCustomerMemberResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -889,6 +879,8 @@ class DeleteEnterpriseDingtalkGroupCustomerMemberResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -897,6 +889,8 @@ class DeleteEnterpriseDingtalkGroupCustomerMemberResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteEnterpriseDingtalkGroupCustomerMemberResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -908,6 +902,7 @@ class GetEnterpriseDingtalkGroupRequest(TeaModel):
         self,
         open_group_id: str = None,
     ):
+        # This parameter is required.
         self.open_group_id = open_group_id
 
     def validate(self):
@@ -936,9 +931,7 @@ class GetEnterpriseDingtalkGroupResponseBodyData(TeaModel):
         group_name: str = None,
         open_group_id: str = None,
     ):
-        # 企业服务群的群名
         self.group_name = group_name
-        # 企业服务群的ID
         self.open_group_id = open_group_id
 
     def validate(self):
@@ -974,14 +967,10 @@ class GetEnterpriseDingtalkGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 接口请求结果返回码
         self.code = code
         self.data = data
-        # 错误信息, 当success=false的时候, 可以取到message
         self.message = message
-        # 接口请求的唯一ID, 每次调用requestID唯一
         self.request_id = request_id
-        # 调用接口返回是否成功, true代表调用正常
         self.success = success
 
     def validate(self):
@@ -1026,14 +1015,14 @@ class GetEnterpriseDingtalkGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetEnterpriseDingtalkGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1045,6 +1034,8 @@ class GetEnterpriseDingtalkGroupResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1053,6 +1044,8 @@ class GetEnterpriseDingtalkGroupResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetEnterpriseDingtalkGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1065,7 +1058,9 @@ class GetEnterpriseDingtalkGroupCustomerMemberRequest(TeaModel):
         mobile: str = None,
         open_group_id: str = None,
     ):
+        # This parameter is required.
         self.mobile = mobile
+        # This parameter is required.
         self.open_group_id = open_group_id
 
     def validate(self):
@@ -1101,15 +1096,10 @@ class GetEnterpriseDingtalkGroupCustomerMemberResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 接口请求结果返回码
         self.code = code
-        # 成员信息列表
         self.data = data
-        # 错误信息, 当success=false的时候, 可以取到message
         self.message = message
-        # 接口请求的唯一ID, 每次调用requestID唯一
         self.request_id = request_id
-        # 调用接口返回是否成功, true代表调用正常
         self.success = success
 
     def validate(self):
@@ -1154,14 +1144,14 @@ class GetEnterpriseDingtalkGroupCustomerMemberResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetEnterpriseDingtalkGroupCustomerMemberResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1173,6 +1163,8 @@ class GetEnterpriseDingtalkGroupCustomerMemberResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1181,6 +1173,8 @@ class GetEnterpriseDingtalkGroupCustomerMemberResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetEnterpriseDingtalkGroupCustomerMemberResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1193,9 +1187,14 @@ class ListDdTaskOrderRequest(TeaModel):
         caller_parent_id: int = None,
         caller_type: str = None,
         caller_uid: int = None,
+        create_real_name: str = None,
+        end_time: str = None,
         open_group_id: str = None,
         order_id: str = None,
+        page_no: str = None,
+        page_size: str = None,
         request_id: str = None,
+        start_time: str = None,
         task_status: str = None,
     ):
         # callerParentId
@@ -1204,12 +1203,22 @@ class ListDdTaskOrderRequest(TeaModel):
         self.caller_type = caller_type
         # callerUid
         self.caller_uid = caller_uid
+        # createRealName
+        self.create_real_name = create_real_name
+        # endTime
+        self.end_time = end_time
         # openGroupId
         self.open_group_id = open_group_id
         # orderId
         self.order_id = order_id
+        # pageNo
+        self.page_no = page_no
+        # pageSize
+        self.page_size = page_size
         # requestId
         self.request_id = request_id
+        # startTime
+        self.start_time = start_time
         # taskStatus
         self.task_status = task_status
 
@@ -1228,12 +1237,22 @@ class ListDdTaskOrderRequest(TeaModel):
             result['CallerType'] = self.caller_type
         if self.caller_uid is not None:
             result['CallerUid'] = self.caller_uid
+        if self.create_real_name is not None:
+            result['CreateRealName'] = self.create_real_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
         if self.open_group_id is not None:
             result['OpenGroupId'] = self.open_group_id
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
         if self.task_status is not None:
             result['TaskStatus'] = self.task_status
         return result
@@ -1246,12 +1265,22 @@ class ListDdTaskOrderRequest(TeaModel):
             self.caller_type = m.get('CallerType')
         if m.get('CallerUid') is not None:
             self.caller_uid = m.get('CallerUid')
+        if m.get('CreateRealName') is not None:
+            self.create_real_name = m.get('CreateRealName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
         if m.get('OpenGroupId') is not None:
             self.open_group_id = m.get('OpenGroupId')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
         if m.get('TaskStatus') is not None:
             self.task_status = m.get('TaskStatus')
         return self
@@ -1317,14 +1346,14 @@ class ListDdTaskOrderResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListDdTaskOrderResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1336,6 +1365,8 @@ class ListDdTaskOrderResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1344,6 +1375,8 @@ class ListDdTaskOrderResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDdTaskOrderResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1355,7 +1388,7 @@ class ListEnterpriseDingtalkGroupCustomerMembersRequest(TeaModel):
         self,
         open_group_id: str = None,
     ):
-        # 企业服务群ID
+        # This parameter is required.
         self.open_group_id = open_group_id
 
     def validate(self):
@@ -1387,15 +1420,10 @@ class ListEnterpriseDingtalkGroupCustomerMembersResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 接口请求结果返回码
         self.code = code
-        # 企业服务群成员列表
         self.data = data
-        # 错误信息, 当success=false的时候, 可以取到message
         self.message = message
-        # 接口请求的唯一ID, 每次调用requestID唯一
         self.request_id = request_id
-        # 调用接口返回是否成功, true代表调用正常
         self.success = success
 
     def validate(self):
@@ -1446,14 +1474,14 @@ class ListEnterpriseDingtalkGroupCustomerMembersResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListEnterpriseDingtalkGroupCustomerMembersResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1465,6 +1493,8 @@ class ListEnterpriseDingtalkGroupCustomerMembersResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1473,6 +1503,8 @@ class ListEnterpriseDingtalkGroupCustomerMembersResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListEnterpriseDingtalkGroupCustomerMembersResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1485,9 +1517,7 @@ class ListEnterpriseDingtalkGroupsResponseBodyData(TeaModel):
         group_name: str = None,
         open_group_id: str = None,
     ):
-        # 钉群名
         self.group_name = group_name
-        # 钉群ID
         self.open_group_id = open_group_id
 
     def validate(self):
@@ -1523,15 +1553,10 @@ class ListEnterpriseDingtalkGroupsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 接口请求结果返回码
         self.code = code
-        # 服务钉群数组
         self.data = data
-        # 错误信息, 当success=false的时候, 可以取到message
         self.message = message
-        # 接口请求的唯一ID, 每次调用requestID唯一
         self.request_id = request_id
-        # 调用接口返回是否成功, true代表调用正常
         self.success = success
 
     def validate(self):
@@ -1582,14 +1607,14 @@ class ListEnterpriseDingtalkGroupsResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ListEnterpriseDingtalkGroupsResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1601,6 +1626,8 @@ class ListEnterpriseDingtalkGroupsResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1609,6 +1636,8 @@ class ListEnterpriseDingtalkGroupsResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListEnterpriseDingtalkGroupsResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1620,7 +1649,7 @@ class ListProductByGroupRequest(TeaModel):
         self,
         open_group_id: str = None,
     ):
-        # 主群关联Id
+        # This parameter is required.
         self.open_group_id = open_group_id
 
     def validate(self):
@@ -1644,127 +1673,6 @@ class ListProductByGroupRequest(TeaModel):
 
 
 class ListProductByGroupResponseBody(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        request_id: str = None,
-        success: bool = None,
-    ):
-        # code
-        self.code = code
-        # data
-        self.data = data
-        # msg
-        self.message = message
-        # 接口交互动态值
-        self.request_id = request_id
-        # success
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class ListProductByGroupResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        body: ListProductByGroupResponseBody = None,
-    ):
-        self.headers = headers
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('body') is not None:
-            temp_model = ListProductByGroupResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class QueryTaskInfoRequest(TeaModel):
-    def __init__(
-        self,
-        order_id: str = None,
-    ):
-        # 任务单ID
-        self.order_id = order_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.order_id is not None:
-            result['OrderId'] = self.order_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('OrderId') is not None:
-            self.order_id = m.get('OrderId')
-        return self
-
-
-class QueryTaskInfoResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
@@ -1820,18 +1728,18 @@ class QueryTaskInfoResponseBody(TeaModel):
         return self
 
 
-class QueryTaskInfoResponse(TeaModel):
+class ListProductByGroupResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
-        body: QueryTaskInfoResponseBody = None,
+        status_code: int = None,
+        body: ListProductByGroupResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1843,6 +1751,8 @@ class QueryTaskInfoResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -1851,6 +1761,170 @@ class QueryTaskInfoResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListProductByGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryTaskInfoRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: str = None,
+    ):
+        # The ID of the order.
+        # 
+        # This parameter is required.
+        self.order_id = order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        return self
+
+
+class QueryTaskInfoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        order_id: str = None,
+        task_status: str = None,
+    ):
+        self.order_id = order_id
+        self.task_status = task_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
+        return self
+
+
+class QueryTaskInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: QueryTaskInfoResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The status code or error code.
+        self.code = code
+        # The data returned.
+        self.data = data
+        # The returned message.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request is successful.
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryTaskInfoResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryTaskInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryTaskInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryTaskInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -1867,17 +1941,14 @@ class ReplyMessageApiRequest(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
-        # 消息内容
+        # This parameter is required.
         self.msg_content = msg_content
-        # 消息类型
         self.msg_type = msg_type
-        # 群Id
         self.open_group_id = open_group_id
-        # 任务单Id
+        # This parameter is required.
         self.order_id = order_id
-        # 消息发送人Id
         self.user_id = user_id
-        # 消息发送人
+        # This parameter is required.
         self.user_name = user_name
 
     def validate(self):
@@ -1980,14 +2051,14 @@ class ReplyMessageApiResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: ReplyMessageApiResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1999,6 +2070,8 @@ class ReplyMessageApiResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2007,6 +2080,8 @@ class ReplyMessageApiResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ReplyMessageApiResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -2022,15 +2097,11 @@ class RestOpenTaskOrderRequest(TeaModel):
         reset_type: str = None,
         user_name: str = None,
     ):
-        # 主群关联Id
         self.open_group_id = open_group_id
-        # 任务单ID
+        # This parameter is required.
         self.order_id = order_id
-        # 重开说明
         self.reset_content = reset_content
-        # 重开类型
         self.reset_type = reset_type
-        # 操作人姓名
         self.user_name = user_name
 
     def validate(self):
@@ -2078,15 +2149,10 @@ class RestOpenTaskOrderResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # code
         self.code = code
-        # data
         self.data = data
-        # msg
         self.message = message
-        # requestId
         self.request_id = request_id
-        # success
         self.success = success
 
     def validate(self):
@@ -2129,14 +2195,14 @@ class RestOpenTaskOrderResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: RestOpenTaskOrderResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2148,6 +2214,8 @@ class RestOpenTaskOrderResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -2156,6 +2224,8 @@ class RestOpenTaskOrderResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RestOpenTaskOrderResponseBody()
             self.body = temp_model.from_map(m['body'])

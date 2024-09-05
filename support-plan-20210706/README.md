@@ -28,7 +28,7 @@ pip install alibabacloud_support_plan20210706
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/support-plan-20210706/ChangeLog.md).
 
 ## References
 
