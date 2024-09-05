@@ -1,3 +1,10 @@
+2024-09-05 Version: 2.23.0
+- Support API GetSheetContentJobId.
+- Support API GetUserId.
+- Update API CreateEvent: add param CardInstances.
+- Update API PatchEvent: add param CardInstances.
+
+
 2024-08-08 Version: 2.22.0
 - Support API CommitFile.
 - Support API GetFileUploadInfo.

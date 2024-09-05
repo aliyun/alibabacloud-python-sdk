@@ -3236,6 +3236,8 @@ class Client(OpenApiClient):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
         if not UtilClient.is_unset(tmp_req.attendees):
             request.attendees_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attendees, 'Attendees', 'json')
+        if not UtilClient.is_unset(tmp_req.card_instances):
+            request.card_instances_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.card_instances, 'CardInstances', 'json')
         if not UtilClient.is_unset(tmp_req.end):
             request.end_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.end, 'End', 'json')
         if not UtilClient.is_unset(tmp_req.extra):
@@ -3257,6 +3259,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.attendees_shrink):
             body['Attendees'] = request.attendees_shrink
+        if not UtilClient.is_unset(request.card_instances_shrink):
+            body['CardInstances'] = request.card_instances_shrink
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.end_shrink):
@@ -3331,6 +3335,8 @@ class Client(OpenApiClient):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
         if not UtilClient.is_unset(tmp_req.attendees):
             request.attendees_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attendees, 'Attendees', 'json')
+        if not UtilClient.is_unset(tmp_req.card_instances):
+            request.card_instances_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.card_instances, 'CardInstances', 'json')
         if not UtilClient.is_unset(tmp_req.end):
             request.end_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.end, 'End', 'json')
         if not UtilClient.is_unset(tmp_req.extra):
@@ -3352,6 +3358,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.attendees_shrink):
             body['Attendees'] = request.attendees_shrink
+        if not UtilClient.is_unset(request.card_instances_shrink):
+            body['CardInstances'] = request.card_instances_shrink
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.end_shrink):
@@ -14285,6 +14293,144 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.GetSheetHeaders()
         return await self.get_sheet_with_options_async(request, headers, runtime)
 
+    def get_sheet_content_job_id_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetSheetContentJobIdRequest,
+        tmp_header: aliding_20230426_models.GetSheetContentJobIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetSheetContentJobIdResponse:
+        """
+        @summary 获取表格文档内容jobId
+        
+        @param tmp_req: GetSheetContentJobIdRequest
+        @param tmp_header: GetSheetContentJobIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSheetContentJobIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetSheetContentJobIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetSheetContentJobIdShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dentry_uuid):
+            body['DentryUuid'] = request.dentry_uuid
+        if not UtilClient.is_unset(request.export_type):
+            body['ExportType'] = request.export_type
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSheetContentJobId',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v2/documents/getSheetContentJobId',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetSheetContentJobIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sheet_content_job_id_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetSheetContentJobIdRequest,
+        tmp_header: aliding_20230426_models.GetSheetContentJobIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetSheetContentJobIdResponse:
+        """
+        @summary 获取表格文档内容jobId
+        
+        @param tmp_req: GetSheetContentJobIdRequest
+        @param tmp_header: GetSheetContentJobIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSheetContentJobIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetSheetContentJobIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetSheetContentJobIdShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dentry_uuid):
+            body['DentryUuid'] = request.dentry_uuid
+        if not UtilClient.is_unset(request.export_type):
+            body['ExportType'] = request.export_type
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSheetContentJobId',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v2/documents/getSheetContentJobId',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetSheetContentJobIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sheet_content_job_id(
+        self,
+        request: aliding_20230426_models.GetSheetContentJobIdRequest,
+    ) -> aliding_20230426_models.GetSheetContentJobIdResponse:
+        """
+        @summary 获取表格文档内容jobId
+        
+        @param request: GetSheetContentJobIdRequest
+        @return: GetSheetContentJobIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetSheetContentJobIdHeaders()
+        return self.get_sheet_content_job_id_with_options(request, headers, runtime)
+
+    async def get_sheet_content_job_id_async(
+        self,
+        request: aliding_20230426_models.GetSheetContentJobIdRequest,
+    ) -> aliding_20230426_models.GetSheetContentJobIdResponse:
+        """
+        @summary 获取表格文档内容jobId
+        
+        @param request: GetSheetContentJobIdRequest
+        @return: GetSheetContentJobIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetSheetContentJobIdHeaders()
+        return await self.get_sheet_content_job_id_with_options_async(request, headers, runtime)
+
     def get_space_directories_with_options(
         self,
         tmp_req: aliding_20230426_models.GetSpaceDirectoriesRequest,
@@ -14978,6 +15124,140 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetUserHeaders()
         return await self.get_user_with_options_async(request, headers, runtime)
+
+    def get_user_id_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetUserIdRequest,
+        tmp_header: aliding_20230426_models.GetUserIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetUserIdResponse:
+        """
+        @summary 根据unionId获取用户userId
+        
+        @param tmp_req: GetUserIdRequest
+        @param tmp_header: GetUserIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetUserIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetUserIdShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.union_id):
+            body['UnionId'] = request.union_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUserId',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/getUserId',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetUserIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_id_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetUserIdRequest,
+        tmp_header: aliding_20230426_models.GetUserIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetUserIdResponse:
+        """
+        @summary 根据unionId获取用户userId
+        
+        @param tmp_req: GetUserIdRequest
+        @param tmp_header: GetUserIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetUserIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetUserIdShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.union_id):
+            body['UnionId'] = request.union_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUserId',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/getUserId',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetUserIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_id(
+        self,
+        request: aliding_20230426_models.GetUserIdRequest,
+    ) -> aliding_20230426_models.GetUserIdResponse:
+        """
+        @summary 根据unionId获取用户userId
+        
+        @param request: GetUserIdRequest
+        @return: GetUserIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetUserIdHeaders()
+        return self.get_user_id_with_options(request, headers, runtime)
+
+    async def get_user_id_async(
+        self,
+        request: aliding_20230426_models.GetUserIdRequest,
+    ) -> aliding_20230426_models.GetUserIdResponse:
+        """
+        @summary 根据unionId获取用户userId
+        
+        @param request: GetUserIdRequest
+        @return: GetUserIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetUserIdHeaders()
+        return await self.get_user_id_with_options_async(request, headers, runtime)
 
     def get_user_latest_plan_with_options(
         self,
@@ -18060,6 +18340,8 @@ class Client(OpenApiClient):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
         if not UtilClient.is_unset(tmp_req.attendees):
             request.attendees_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attendees, 'Attendees', 'json')
+        if not UtilClient.is_unset(tmp_req.card_instances):
+            request.card_instances_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.card_instances, 'CardInstances', 'json')
         if not UtilClient.is_unset(tmp_req.end):
             request.end_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.end, 'End', 'json')
         if not UtilClient.is_unset(tmp_req.extra):
@@ -18077,6 +18359,8 @@ class Client(OpenApiClient):
             body['Attendees'] = request.attendees_shrink
         if not UtilClient.is_unset(request.calendar_id):
             body['CalendarId'] = request.calendar_id
+        if not UtilClient.is_unset(request.card_instances_shrink):
+            body['CardInstances'] = request.card_instances_shrink
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.end_shrink):
@@ -18145,6 +18429,8 @@ class Client(OpenApiClient):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
         if not UtilClient.is_unset(tmp_req.attendees):
             request.attendees_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attendees, 'Attendees', 'json')
+        if not UtilClient.is_unset(tmp_req.card_instances):
+            request.card_instances_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.card_instances, 'CardInstances', 'json')
         if not UtilClient.is_unset(tmp_req.end):
             request.end_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.end, 'End', 'json')
         if not UtilClient.is_unset(tmp_req.extra):
@@ -18162,6 +18448,8 @@ class Client(OpenApiClient):
             body['Attendees'] = request.attendees_shrink
         if not UtilClient.is_unset(request.calendar_id):
             body['CalendarId'] = request.calendar_id
+        if not UtilClient.is_unset(request.card_instances_shrink):
+            body['CardInstances'] = request.card_instances_shrink
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.end_shrink):
