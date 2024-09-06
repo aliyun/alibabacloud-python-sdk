@@ -181,6 +181,270 @@ class Client(OpenApiClient):
         headers = {}
         return await self.analyze_conversation_with_options_async(workspace_id, app_id, request, headers, runtime)
 
+    def create_conversation_analysis_task_with_options(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.CreateConversationAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.CreateConversationAnalysisTaskResponse:
+        """
+        @summary 创建语音文件调用llm任务
+        
+        @param request: CreateConversationAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConversationAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_split):
+            body['autoSplit'] = request.auto_split
+        if not UtilClient.is_unset(request.client_channel):
+            body['clientChannel'] = request.client_channel
+        if not UtilClient.is_unset(request.examples):
+            body['examples'] = request.examples
+        if not UtilClient.is_unset(request.fields):
+            body['fields'] = request.fields
+        if not UtilClient.is_unset(request.file_name):
+            body['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.model_code):
+            body['modelCode'] = request.model_code
+        if not UtilClient.is_unset(request.result_types):
+            body['resultTypes'] = request.result_types
+        if not UtilClient.is_unset(request.scene_name):
+            body['sceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.service_channel):
+            body['serviceChannel'] = request.service_channel
+        if not UtilClient.is_unset(request.service_channel_keywords):
+            body['serviceChannelKeywords'] = request.service_channel_keywords
+        if not UtilClient.is_unset(request.service_inspection):
+            body['serviceInspection'] = request.service_inspection
+        if not UtilClient.is_unset(request.template_ids):
+            body['templateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.voice_file_url):
+            body['voiceFileUrl'] = request.voice_file_url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateConversationAnalysisTask',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/ccai/app/{OpenApiUtilClient.get_encode_param(app_id)}/createConversationAnalysisTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.CreateConversationAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_conversation_analysis_task_with_options_async(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.CreateConversationAnalysisTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.CreateConversationAnalysisTaskResponse:
+        """
+        @summary 创建语音文件调用llm任务
+        
+        @param request: CreateConversationAnalysisTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConversationAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_split):
+            body['autoSplit'] = request.auto_split
+        if not UtilClient.is_unset(request.client_channel):
+            body['clientChannel'] = request.client_channel
+        if not UtilClient.is_unset(request.examples):
+            body['examples'] = request.examples
+        if not UtilClient.is_unset(request.fields):
+            body['fields'] = request.fields
+        if not UtilClient.is_unset(request.file_name):
+            body['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.model_code):
+            body['modelCode'] = request.model_code
+        if not UtilClient.is_unset(request.result_types):
+            body['resultTypes'] = request.result_types
+        if not UtilClient.is_unset(request.scene_name):
+            body['sceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.service_channel):
+            body['serviceChannel'] = request.service_channel
+        if not UtilClient.is_unset(request.service_channel_keywords):
+            body['serviceChannelKeywords'] = request.service_channel_keywords
+        if not UtilClient.is_unset(request.service_inspection):
+            body['serviceInspection'] = request.service_inspection
+        if not UtilClient.is_unset(request.template_ids):
+            body['templateIds'] = request.template_ids
+        if not UtilClient.is_unset(request.voice_file_url):
+            body['voiceFileUrl'] = request.voice_file_url
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateConversationAnalysisTask',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/ccai/app/{OpenApiUtilClient.get_encode_param(app_id)}/createConversationAnalysisTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.CreateConversationAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_conversation_analysis_task(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.CreateConversationAnalysisTaskRequest,
+    ) -> contact_center_ai20240603_models.CreateConversationAnalysisTaskResponse:
+        """
+        @summary 创建语音文件调用llm任务
+        
+        @param request: CreateConversationAnalysisTaskRequest
+        @return: CreateConversationAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_conversation_analysis_task_with_options(workspace_id, app_id, request, headers, runtime)
+
+    async def create_conversation_analysis_task_async(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.CreateConversationAnalysisTaskRequest,
+    ) -> contact_center_ai20240603_models.CreateConversationAnalysisTaskResponse:
+        """
+        @summary 创建语音文件调用llm任务
+        
+        @param request: CreateConversationAnalysisTaskRequest
+        @return: CreateConversationAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_conversation_analysis_task_with_options_async(workspace_id, app_id, request, headers, runtime)
+
+    def get_task_result_with_options(
+        self,
+        request: contact_center_ai20240603_models.GetTaskResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.GetTaskResultResponse:
+        """
+        @summary 语音文件调用大模型获取结果
+        
+        @param request: GetTaskResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTaskResult',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/ccai/app/getTaskResult',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.GetTaskResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_task_result_with_options_async(
+        self,
+        request: contact_center_ai20240603_models.GetTaskResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.GetTaskResultResponse:
+        """
+        @summary 语音文件调用大模型获取结果
+        
+        @param request: GetTaskResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTaskResult',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/ccai/app/getTaskResult',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.GetTaskResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_task_result(
+        self,
+        request: contact_center_ai20240603_models.GetTaskResultRequest,
+    ) -> contact_center_ai20240603_models.GetTaskResultResponse:
+        """
+        @summary 语音文件调用大模型获取结果
+        
+        @param request: GetTaskResultRequest
+        @return: GetTaskResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_task_result_with_options(request, headers, runtime)
+
+    async def get_task_result_async(
+        self,
+        request: contact_center_ai20240603_models.GetTaskResultRequest,
+    ) -> contact_center_ai20240603_models.GetTaskResultResponse:
+        """
+        @summary 语音文件调用大模型获取结果
+        
+        @param request: GetTaskResultRequest
+        @return: GetTaskResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_task_result_with_options_async(request, headers, runtime)
+
     def run_completion_with_options(
         self,
         workspace_id: str,

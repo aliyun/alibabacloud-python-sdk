@@ -1,3 +1,14 @@
+2024-09-06 Version: 3.1.0
+- Support API CreateConversationAnalysisTask.
+- Support API GetTaskResult.
+- Update API AnalyzeConversation: update param regionId.
+- Update API AnalyzeConversation: update param body.
+- Update API RunCompletion: update param RegionId.
+- Update API RunCompletion: update param body.
+- Update API RunCompletionMessage: update param RegionId.
+- Update API RunCompletionMessage: update param body.
+
+
 2024-08-21 Version: 3.0.1
 - Generated python 2024-06-03 for ContactCenterAI.
 

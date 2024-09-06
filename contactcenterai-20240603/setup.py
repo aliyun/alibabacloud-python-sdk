@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_contactcenterai20240603.
 
-Created on 21/08/2024
+Created on 06/09/2024
 
 @author: Alibaba Cloud SDK
 """
