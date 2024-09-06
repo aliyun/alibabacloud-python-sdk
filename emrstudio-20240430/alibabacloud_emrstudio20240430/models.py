@@ -9,6 +9,8 @@ class CreateWorkflowRequest(TeaModel):
         self,
         alert_group_id: str = None,
         alert_strategy: str = None,
+        task_definition_json_value: str = None,
+        task_relation_json_value: str = None,
         cron_expr: str = None,
         description: str = None,
         execution_type: str = None,
@@ -29,6 +31,8 @@ class CreateWorkflowRequest(TeaModel):
     ):
         self.alert_group_id = alert_group_id
         self.alert_strategy = alert_strategy
+        self.task_definition_json_value = task_definition_json_value
+        self.task_relation_json_value = task_relation_json_value
         self.cron_expr = cron_expr
         self.description = description
         self.execution_type = execution_type
@@ -64,6 +68,10 @@ class CreateWorkflowRequest(TeaModel):
             result['alertGroupId'] = self.alert_group_id
         if self.alert_strategy is not None:
             result['alertStrategy'] = self.alert_strategy
+        if self.task_definition_json_value is not None:
+            result['taskDefinitionJsonValue'] = self.task_definition_json_value
+        if self.task_relation_json_value is not None:
+            result['taskRelationJsonValue'] = self.task_relation_json_value
         if self.cron_expr is not None:
             result['cronExpr'] = self.cron_expr
         if self.description is not None:
@@ -106,6 +114,10 @@ class CreateWorkflowRequest(TeaModel):
             self.alert_group_id = m.get('alertGroupId')
         if m.get('alertStrategy') is not None:
             self.alert_strategy = m.get('alertStrategy')
+        if m.get('taskDefinitionJsonValue') is not None:
+            self.task_definition_json_value = m.get('taskDefinitionJsonValue')
+        if m.get('taskRelationJsonValue') is not None:
+            self.task_relation_json_value = m.get('taskRelationJsonValue')
         if m.get('cronExpr') is not None:
             self.cron_expr = m.get('cronExpr')
         if m.get('description') is not None:
@@ -3606,6 +3618,8 @@ class UpdateWorkflowRequest(TeaModel):
         self,
         alert_group_id: str = None,
         alert_strategy: str = None,
+        task_definition_json_value: str = None,
+        task_relation_json_value: str = None,
         cron_expr: str = None,
         description: str = None,
         execution_type: str = None,
@@ -3626,6 +3640,8 @@ class UpdateWorkflowRequest(TeaModel):
     ):
         self.alert_group_id = alert_group_id
         self.alert_strategy = alert_strategy
+        self.task_definition_json_value = task_definition_json_value
+        self.task_relation_json_value = task_relation_json_value
         self.cron_expr = cron_expr
         self.description = description
         self.execution_type = execution_type
@@ -3658,6 +3674,10 @@ class UpdateWorkflowRequest(TeaModel):
             result['alertGroupId'] = self.alert_group_id
         if self.alert_strategy is not None:
             result['alertStrategy'] = self.alert_strategy
+        if self.task_definition_json_value is not None:
+            result['taskDefinitionJsonValue'] = self.task_definition_json_value
+        if self.task_relation_json_value is not None:
+            result['taskRelationJsonValue'] = self.task_relation_json_value
         if self.cron_expr is not None:
             result['cronExpr'] = self.cron_expr
         if self.description is not None:
@@ -3700,6 +3720,10 @@ class UpdateWorkflowRequest(TeaModel):
             self.alert_group_id = m.get('alertGroupId')
         if m.get('alertStrategy') is not None:
             self.alert_strategy = m.get('alertStrategy')
+        if m.get('taskDefinitionJsonValue') is not None:
+            self.task_definition_json_value = m.get('taskDefinitionJsonValue')
+        if m.get('taskRelationJsonValue') is not None:
+            self.task_relation_json_value = m.get('taskRelationJsonValue')
         if m.get('cronExpr') is not None:
             self.cron_expr = m.get('cronExpr')
         if m.get('description') is not None:

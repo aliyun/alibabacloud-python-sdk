@@ -96,9 +96,15 @@ class Client(OpenApiClient):
             query['workflowParams'] = request.workflow_params
         if not UtilClient.is_unset(request.workspace_id):
             query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.task_definition_json_value):
+            body['taskDefinitionJsonValue'] = request.task_definition_json_value
+        if not UtilClient.is_unset(request.task_relation_json_value):
+            body['taskRelationJsonValue'] = request.task_relation_json_value
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateWorkflow',
@@ -171,9 +177,15 @@ class Client(OpenApiClient):
             query['workflowParams'] = request.workflow_params
         if not UtilClient.is_unset(request.workspace_id):
             query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.task_definition_json_value):
+            body['taskDefinitionJsonValue'] = request.task_definition_json_value
+        if not UtilClient.is_unset(request.task_relation_json_value):
+            body['taskRelationJsonValue'] = request.task_relation_json_value
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateWorkflow',
@@ -2225,9 +2237,15 @@ class Client(OpenApiClient):
             query['workflowParams'] = request.workflow_params
         if not UtilClient.is_unset(request.workspace_id):
             query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.task_definition_json_value):
+            body['taskDefinitionJsonValue'] = request.task_definition_json_value
+        if not UtilClient.is_unset(request.task_relation_json_value):
+            body['taskRelationJsonValue'] = request.task_relation_json_value
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateWorkflow',
@@ -2301,9 +2319,15 @@ class Client(OpenApiClient):
             query['workflowParams'] = request.workflow_params
         if not UtilClient.is_unset(request.workspace_id):
             query['workspaceId'] = request.workspace_id
+        body = {}
+        if not UtilClient.is_unset(request.task_definition_json_value):
+            body['taskDefinitionJsonValue'] = request.task_definition_json_value
+        if not UtilClient.is_unset(request.task_relation_json_value):
+            body['taskRelationJsonValue'] = request.task_relation_json_value
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateWorkflow',
