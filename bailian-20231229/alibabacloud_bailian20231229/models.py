@@ -2720,11 +2720,15 @@ class GetIndexJobStatusRequest(TeaModel):
         self,
         index_id: str = None,
         job_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
     ):
         # This parameter is required.
         self.index_id = index_id
         # This parameter is required.
         self.job_id = job_id
+        self.page_number = page_number
+        self.page_size = page_size
 
     def validate(self):
         pass
@@ -2739,6 +2743,10 @@ class GetIndexJobStatusRequest(TeaModel):
             result['IndexId'] = self.index_id
         if self.job_id is not None:
             result['JobId'] = self.job_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
         return result
 
     def from_map(self, m: dict = None):
@@ -2747,6 +2755,10 @@ class GetIndexJobStatusRequest(TeaModel):
             self.index_id = m.get('IndexId')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
         return self
 
 

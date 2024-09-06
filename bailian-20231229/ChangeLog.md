@@ -1,3 +1,9 @@
+2024-09-06 Version: 1.8.2
+- Update API GetIndexJobStatus: add param PageNumber.
+- Update API GetIndexJobStatus: add param pageSize.
+- Update API Retrieve: update param SearchFilters.
+
+
 2024-08-29 Version: 1.8.1
 - Generated python 2023-12-29 for bailian.
 
