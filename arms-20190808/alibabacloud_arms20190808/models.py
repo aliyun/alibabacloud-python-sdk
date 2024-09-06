@@ -29969,6 +29969,7 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         enable_auth_free_read: bool = None,
         enable_auth_free_write: bool = None,
         enable_auth_token: str = None,
+        extra_info: Dict[str, str] = None,
         grafana_instance_id: str = None,
         http_api_inter_url: str = None,
         http_api_intra_url: str = None,
@@ -30021,6 +30022,7 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self.enable_auth_free_write = enable_auth_free_write
         # Indicates whether access token authentication is enabled.
         self.enable_auth_token = enable_auth_token
+        self.extra_info = extra_info
         # The ID of the Grafana workspace.
         self.grafana_instance_id = grafana_instance_id
         # The public URL for the HTTP API.
@@ -30105,6 +30107,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             result['EnableAuthFreeWrite'] = self.enable_auth_free_write
         if self.enable_auth_token is not None:
             result['EnableAuthToken'] = self.enable_auth_token
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info
         if self.grafana_instance_id is not None:
             result['GrafanaInstanceId'] = self.grafana_instance_id
         if self.http_api_inter_url is not None:
@@ -30179,6 +30183,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             self.enable_auth_free_write = m.get('EnableAuthFreeWrite')
         if m.get('EnableAuthToken') is not None:
             self.enable_auth_token = m.get('EnableAuthToken')
+        if m.get('ExtraInfo') is not None:
+            self.extra_info = m.get('ExtraInfo')
         if m.get('GrafanaInstanceId') is not None:
             self.grafana_instance_id = m.get('GrafanaInstanceId')
         if m.get('HttpApiInterUrl') is not None:

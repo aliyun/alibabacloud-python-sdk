@@ -1,3 +1,7 @@
+2024-09-06 Version: 7.1.1
+- Update API GetPrometheusInstance: update response param.
+
+
 2024-09-06 Version: 7.1.0
 - Support API GetAgentDownloadUrlV2.
 - Update API CreateRumApp: add param RealRegionId.
