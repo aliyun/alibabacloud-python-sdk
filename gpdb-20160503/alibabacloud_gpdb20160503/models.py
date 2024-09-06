@@ -35333,6 +35333,328 @@ class ReleaseInstancePublicConnectionResponse(TeaModel):
         return self
 
 
+class RerankRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        documents: List[str] = None,
+        max_chunks_per_doc: int = None,
+        model: str = None,
+        owner_id: int = None,
+        query: str = None,
+        region_id: str = None,
+        return_documents: bool = None,
+        top_k: int = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.documents = documents
+        self.max_chunks_per_doc = max_chunks_per_doc
+        self.model = model
+        self.owner_id = owner_id
+        self.query = query
+        # This parameter is required.
+        self.region_id = region_id
+        self.return_documents = return_documents
+        self.top_k = top_k
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.documents is not None:
+            result['Documents'] = self.documents
+        if self.max_chunks_per_doc is not None:
+            result['MaxChunksPerDoc'] = self.max_chunks_per_doc
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.return_documents is not None:
+            result['ReturnDocuments'] = self.return_documents
+        if self.top_k is not None:
+            result['TopK'] = self.top_k
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Documents') is not None:
+            self.documents = m.get('Documents')
+        if m.get('MaxChunksPerDoc') is not None:
+            self.max_chunks_per_doc = m.get('MaxChunksPerDoc')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ReturnDocuments') is not None:
+            self.return_documents = m.get('ReturnDocuments')
+        if m.get('TopK') is not None:
+            self.top_k = m.get('TopK')
+        return self
+
+
+class RerankShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        documents_shrink: str = None,
+        max_chunks_per_doc: int = None,
+        model: str = None,
+        owner_id: int = None,
+        query: str = None,
+        region_id: str = None,
+        return_documents: bool = None,
+        top_k: int = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.documents_shrink = documents_shrink
+        self.max_chunks_per_doc = max_chunks_per_doc
+        self.model = model
+        self.owner_id = owner_id
+        self.query = query
+        # This parameter is required.
+        self.region_id = region_id
+        self.return_documents = return_documents
+        self.top_k = top_k
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.documents_shrink is not None:
+            result['Documents'] = self.documents_shrink
+        if self.max_chunks_per_doc is not None:
+            result['MaxChunksPerDoc'] = self.max_chunks_per_doc
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.return_documents is not None:
+            result['ReturnDocuments'] = self.return_documents
+        if self.top_k is not None:
+            result['TopK'] = self.top_k
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Documents') is not None:
+            self.documents_shrink = m.get('Documents')
+        if m.get('MaxChunksPerDoc') is not None:
+            self.max_chunks_per_doc = m.get('MaxChunksPerDoc')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ReturnDocuments') is not None:
+            self.return_documents = m.get('ReturnDocuments')
+        if m.get('TopK') is not None:
+            self.top_k = m.get('TopK')
+        return self
+
+
+class RerankResponseBodyResultsResults(TeaModel):
+    def __init__(
+        self,
+        document: str = None,
+        index: int = None,
+        relevance_score: float = None,
+    ):
+        self.document = document
+        self.index = index
+        self.relevance_score = relevance_score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.document is not None:
+            result['Document'] = self.document
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.relevance_score is not None:
+            result['RelevanceScore'] = self.relevance_score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Document') is not None:
+            self.document = m.get('Document')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('RelevanceScore') is not None:
+            self.relevance_score = m.get('RelevanceScore')
+        return self
+
+
+class RerankResponseBodyResults(TeaModel):
+    def __init__(
+        self,
+        results: List[RerankResponseBodyResultsResults] = None,
+    ):
+        self.results = results
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = RerankResponseBodyResultsResults()
+                self.results.append(temp_model.from_map(k))
+        return self
+
+
+class RerankResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+        results: RerankResponseBodyResults = None,
+        status: str = None,
+        tokens: int = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+        self.results = results
+        self.status = status
+        self.tokens = tokens
+
+    def validate(self):
+        if self.results:
+            self.results.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.results is not None:
+            result['Results'] = self.results.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tokens is not None:
+            result['Tokens'] = self.tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Results') is not None:
+            temp_model = RerankResponseBodyResults()
+            self.results = temp_model.from_map(m['Results'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Tokens') is not None:
+            self.tokens = m.get('Tokens')
+        return self
+
+
+class RerankResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RerankResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RerankResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ResetAccountPasswordRequest(TeaModel):
     def __init__(
         self,

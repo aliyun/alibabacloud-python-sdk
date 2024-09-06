@@ -19318,6 +19318,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.release_instance_public_connection_with_options_async(request, runtime)
 
+    def rerank_with_options(
+        self,
+        tmp_req: gpdb_20160503_models.RerankRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.RerankResponse:
+        """
+        @summary 通过模型对文档进行打分和重排序
+        
+        @param tmp_req: RerankRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RerankResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.RerankShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.documents):
+            request.documents_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.documents, 'Documents', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.documents_shrink):
+            body['Documents'] = request.documents_shrink
+        if not UtilClient.is_unset(request.max_chunks_per_doc):
+            body['MaxChunksPerDoc'] = request.max_chunks_per_doc
+        if not UtilClient.is_unset(request.model):
+            body['Model'] = request.model
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.return_documents):
+            body['ReturnDocuments'] = request.return_documents
+        if not UtilClient.is_unset(request.top_k):
+            body['TopK'] = request.top_k
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Rerank',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.RerankResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rerank_with_options_async(
+        self,
+        tmp_req: gpdb_20160503_models.RerankRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.RerankResponse:
+        """
+        @summary 通过模型对文档进行打分和重排序
+        
+        @param tmp_req: RerankRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RerankResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.RerankShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.documents):
+            request.documents_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.documents, 'Documents', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.documents_shrink):
+            body['Documents'] = request.documents_shrink
+        if not UtilClient.is_unset(request.max_chunks_per_doc):
+            body['MaxChunksPerDoc'] = request.max_chunks_per_doc
+        if not UtilClient.is_unset(request.model):
+            body['Model'] = request.model
+        if not UtilClient.is_unset(request.query):
+            body['Query'] = request.query
+        if not UtilClient.is_unset(request.return_documents):
+            body['ReturnDocuments'] = request.return_documents
+        if not UtilClient.is_unset(request.top_k):
+            body['TopK'] = request.top_k
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='Rerank',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.RerankResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rerank(
+        self,
+        request: gpdb_20160503_models.RerankRequest,
+    ) -> gpdb_20160503_models.RerankResponse:
+        """
+        @summary 通过模型对文档进行打分和重排序
+        
+        @param request: RerankRequest
+        @return: RerankResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.rerank_with_options(request, runtime)
+
+    async def rerank_async(
+        self,
+        request: gpdb_20160503_models.RerankRequest,
+    ) -> gpdb_20160503_models.RerankResponse:
+        """
+        @summary 通过模型对文档进行打分和重排序
+        
+        @param request: RerankRequest
+        @return: RerankResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.rerank_with_options_async(request, runtime)
+
     def reset_account_password_with_options(
         self,
         request: gpdb_20160503_models.ResetAccountPasswordRequest,

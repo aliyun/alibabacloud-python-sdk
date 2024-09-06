@@ -1,3 +1,7 @@
+2024-09-06 Version: 4.1.0
+- Support API Rerank.
+
+
 2024-08-29 Version: 4.0.2
 - Update API DescribeDataBackups: update param EndTime.
 - Update API DescribeDataBackups: update param StartTime.
