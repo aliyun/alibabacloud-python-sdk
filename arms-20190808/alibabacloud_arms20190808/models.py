@@ -5674,7 +5674,7 @@ class CreateAlertContactGroupRequest(TeaModel):
         self.contact_group_name = contact_group_name
         # The IDs of contacts in the contact group. Separate multiple contact IDs with spaces. You can call the SearchAlertContact operation to query the contact IDs. For more information, see [SearchAlertContact](https://help.aliyun.com/document_detail/130703.html).
         self.contact_ids = contact_ids
-        # The ID of the region. Default value: `cn-hangzhou`.
+        # The region ID. Default value: `cn-hangzhou`.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -5715,7 +5715,7 @@ class CreateAlertContactGroupResponseBody(TeaModel):
     ):
         # The ID of the alert contact group.
         self.contact_group_id = contact_group_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6789,6 +6789,15 @@ class CreateGrafanaWorkspaceRequest(TeaModel):
         self.description = description
         # This parameter is required.
         self.grafana_version = grafana_version
+        # The edition.
+        # 
+        # **Valid values:**\
+        # 
+        # *   standard: `Beta Edition or Standard Edition`
+        # *   personal_edition: Developer Edition
+        # *   experts_edition: Pro Edition
+        # *   advanced_edition: Advanced Edition
+        # 
         # This parameter is required.
         self.grafana_workspace_edition = grafana_workspace_edition
         # The name of the Grafana workspace.
@@ -6885,6 +6894,15 @@ class CreateGrafanaWorkspaceShrinkRequest(TeaModel):
         self.description = description
         # This parameter is required.
         self.grafana_version = grafana_version
+        # The edition.
+        # 
+        # **Valid values:**\
+        # 
+        # *   standard: `Beta Edition or Standard Edition`
+        # *   personal_edition: Developer Edition
+        # *   experts_edition: Pro Edition
+        # *   advanced_edition: Advanced Edition
+        # 
         # This parameter is required.
         self.grafana_workspace_edition = grafana_workspace_edition
         # The name of the Grafana workspace.
@@ -10669,7 +10687,9 @@ class CreatePrometheusAlertRuleRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -10712,23 +10732,47 @@ class CreatePrometheusAlertRuleRequest(TeaModel):
         tags: List[CreatePrometheusAlertRuleRequestTags] = None,
         type: str = None,
     ):
+        # The name of the alert rule.
+        # 
         # This parameter is required.
         self.alert_name = alert_name
+        # The annotations that are described in a JSON string. You must specify the name and value of each annotation.
         self.annotations = annotations
+        # The ID of the cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The ID of the notification policy. This parameter is required if the NotifyType parameter is set to `DISPATCH_RULE`.
         self.dispatch_rule_id = dispatch_rule_id
+        # The duration. The value ranges from 1 to 1440 minutes.
+        # 
         # This parameter is required.
         self.duration = duration
+        # The expression of the alert rule. The expression must follow the PromQL syntax.
+        # 
         # This parameter is required.
         self.expression = expression
+        # The tags that are described in a JSON string. You must specify the name and value of each tag.
         self.labels = labels
+        # The content of the alert notification. Tags can be referenced in the {{$labels.xxx}} format.
+        # 
         # This parameter is required.
         self.message = message
+        # The method that is used to send alert notifications. Valid values:
+        # 
+        # - `ALERT_MANAGER`: Alert notifications are sent by Operation Center. This is the default value.
+        # - `DISPATCH_RULE`: Alert notifications are sent based on the specified notification policy.
         self.notify_type = notify_type
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The tags.
         self.tags = tags
+        # The type of the alert rule. Valid values:
+        # 
+        # - 99: custom alert
+        # - 101: Prometheus Service alert
         self.type = type
 
     def validate(self):
@@ -10809,7 +10853,9 @@ class CreatePrometheusAlertRuleResponseBodyPrometheusAlertRuleAnnotations(TeaMod
         name: str = None,
         value: str = None,
     ):
+        # The name of the annotation.
         self.name = name
+        # The value of the annotation.
         self.value = value
 
     def validate(self):
@@ -10842,7 +10888,9 @@ class CreatePrometheusAlertRuleResponseBodyPrometheusAlertRuleLabels(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the tag.
         self.name = name
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -10885,17 +10933,35 @@ class CreatePrometheusAlertRuleResponseBodyPrometheusAlertRule(TeaModel):
         status: int = None,
         type: str = None,
     ):
+        # The ID of the alert rule.
         self.alert_id = alert_id
+        # The name of the alert rule.
         self.alert_name = alert_name
+        # The annotations of the alert rule.
         self.annotations = annotations
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The ID of the notification policy.
         self.dispatch_rule_id = dispatch_rule_id
+        # The duration. The value ranges from 1 to 1440 minutes.
         self.duration = duration
+        # The expression of the alert rule.
         self.expression = expression
+        # The tags of the alert rule.
         self.labels = labels
+        # The content of the alert notification. Tags can be referenced in the {{$labels.xxx}} format.
         self.message = message
+        # The method that is used to send alert notifications. Valid values:
+        # 
+        # - ALERT_MANAGER: Alert notifications are sent by Operation Center.
+        # - DISPATCH_RULE: Alert notifications are sent based on the specified notification policy.
         self.notify_type = notify_type
+        # Indicates whether the alert rule is enabled. Valid values:
+        # 
+        # - `1`: The alert rule is enabled.
+        # - `0`: The alert rule is disabled.
         self.status = status
+        # The type of the alert rule.
         self.type = type
 
     def validate(self):
@@ -10988,10 +11054,15 @@ class CreatePrometheusAlertRuleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The returned message.
         self.message = message
+        # The returned struct.
         self.prometheus_alert_rule = prometheus_alert_rule
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -11876,6 +11947,7 @@ class CreateRumAppRequest(TeaModel):
         description: str = None,
         nick_name: str = None,
         package_name: str = None,
+        real_region_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         site_type: str = None,
@@ -11894,6 +11966,7 @@ class CreateRumAppRequest(TeaModel):
         self.nick_name = nick_name
         # The name of the Android application package. This parameter is required if you create an Android application.
         self.package_name = package_name
+        self.real_region_id = real_region_id
         # The region ID.
         # 
         # This parameter is required.
@@ -11931,6 +12004,8 @@ class CreateRumAppRequest(TeaModel):
             result['NickName'] = self.nick_name
         if self.package_name is not None:
             result['PackageName'] = self.package_name
+        if self.real_region_id is not None:
+            result['RealRegionId'] = self.real_region_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -11957,6 +12032,8 @@ class CreateRumAppRequest(TeaModel):
             self.nick_name = m.get('NickName')
         if m.get('PackageName') is not None:
             self.package_name = m.get('PackageName')
+        if m.get('RealRegionId') is not None:
+            self.real_region_id = m.get('RealRegionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -11981,6 +12058,7 @@ class CreateRumAppShrinkRequest(TeaModel):
         description: str = None,
         nick_name: str = None,
         package_name: str = None,
+        real_region_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         site_type: str = None,
@@ -11999,6 +12077,7 @@ class CreateRumAppShrinkRequest(TeaModel):
         self.nick_name = nick_name
         # The name of the Android application package. This parameter is required if you create an Android application.
         self.package_name = package_name
+        self.real_region_id = real_region_id
         # The region ID.
         # 
         # This parameter is required.
@@ -12033,6 +12112,8 @@ class CreateRumAppShrinkRequest(TeaModel):
             result['NickName'] = self.nick_name
         if self.package_name is not None:
             result['PackageName'] = self.package_name
+        if self.real_region_id is not None:
+            result['RealRegionId'] = self.real_region_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -12057,6 +12138,8 @@ class CreateRumAppShrinkRequest(TeaModel):
             self.nick_name = m.get('NickName')
         if m.get('PackageName') is not None:
             self.package_name = m.get('PackageName')
+        if m.get('RealRegionId') is not None:
+            self.real_region_id = m.get('RealRegionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -14095,11 +14178,18 @@ class CreateTimingSyntheticTaskRequestAvailableAssertions(TeaModel):
         target: str = None,
         type: str = None,
     ):
+        # The expected value.
+        # 
         # This parameter is required.
         self.expect = expect
+        # The condition. gt: greater than. gte: greater than or equal to. lt: less than. lte: less than or equal to. eq: equal to. neq: not equal to. ctn: contain. nctn: does not contain. exist: exist. n_exist: does not exist. belong: belong to. n_belong: does not belong to. reg_match: regular expression.
+        # 
         # This parameter is required.
         self.operator = operator
+        # The check target. If you set the type parameter to HttpResCode, HttpResBody, or HttpResponseTime, you do not need to set the target parameter. If you set the type parameter to HttpResHead, you must specify the key in the header. If you set the type parameter to HttpResBodyJson, use jsonPath.
         self.target = target
+        # The assertion type. Valid values: HttpResCode, HttpResHead, HttpResBody, HttpResBodyJson, HttpResponseTime, IcmpPackLoss (packet loss rate), IcmpPackMaxLatency (maximum packet latency), IcmpPackAvgLatency (average packet latency), TraceRouteHops (number of hops), DnsARecord (A record), DnsCName (CNAME), websiteTTFB (time to first packet), websiteTTLB (time to last packet), websiteFST (first paint time), websiteFFST (first meaningful paint), websiteOnload (full loaded time). For more information, see the following description.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -14142,7 +14232,7 @@ class CreateTimingSyntheticTaskRequestCommonSettingCustomHostHosts(TeaModel):
         ip_type: int = None,
         ips: List[str] = None,
     ):
-        # The domain name
+        # The domain name.
         # 
         # This parameter is required.
         self.domain = domain
@@ -14244,8 +14334,11 @@ class CreateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting(TeaMo
         prometheus_cluster_region: str = None,
         prometheus_labels: Dict[str, str] = None,
     ):
+        # A reserved parameter.
         self.prometheus_cluster_id = prometheus_cluster_id
+        # A reserved parameter.
         self.prometheus_cluster_region = prometheus_cluster_region
+        # A reserved parameter.
         self.prometheus_labels = prometheus_labels
 
     def validate(self):
@@ -14339,6 +14432,7 @@ class CreateTimingSyntheticTaskRequestCommonSetting(TeaModel):
     ):
         # The custom host settings.
         self.custom_host = custom_host
+        # The reserved parameters.
         self.custom_prometheus_setting = custom_prometheus_setting
         # The information about the virtual private cloud (VPC). If the destination URL is an Alibaba Cloud internal endpoint, you need to configure a VPC.
         self.custom_vpcsetting = custom_vpcsetting
@@ -14426,8 +14520,12 @@ class CreateTimingSyntheticTaskRequestCustomPeriod(TeaModel):
         end_hour: int = None,
         start_hour: int = None,
     ):
+        # The custom host settings.
+        # 
         # This parameter is required.
         self.end_hour = end_hour
+        # The list of hosts.
+        # 
         # This parameter is required.
         self.start_hour = start_hour
 
@@ -14508,6 +14606,15 @@ class CreateTimingSyntheticTaskRequestMonitorConfApiHTTP(TeaModel):
         self.connect_timeout = connect_timeout
         # The request method. Valid values: GET and POST.
         self.method = method
+        # The ALPN protocol version. You can configure this parameter when you perform an HTTPS synthetic test on a WAP mobile client. Valid values:
+        # 
+        # 0: default
+        # 
+        # 1: http/1.1
+        # 
+        # 2: h2
+        # 
+        # 3: disables the ALPN protocol
         self.protocol_alpn_protocol = protocol_alpn_protocol
         # The HTTP request body.
         self.request_body = request_body
@@ -14745,7 +14852,7 @@ class CreateTimingSyntheticTaskRequestMonitorConfNetDNS(TeaModel):
     ):
         # The IP version of the DNS server.
         # 
-        # *   0 (default value): IPv4.
+        # *   0 (default): IPv4.
         # *   1: IPv6.
         # *   2: A version is automatically selected.
         self.dns_server_ip_type = dns_server_ip_type
@@ -14753,7 +14860,7 @@ class CreateTimingSyntheticTaskRequestMonitorConfNetDNS(TeaModel):
         self.ns_server = ns_server
         # The DNS query method. Valid values:
         # 
-        # *   0 (default value): recursive
+        # *   0 (default): recursive
         # *   1: iterative
         self.query_method = query_method
         # The destination domain name.
@@ -14978,7 +15085,7 @@ class CreateTimingSyntheticTaskRequestMonitorConfStream(TeaModel):
         # The address type of the resource. Valid values:
         # 
         # *   1: resource URL
-        # *   0 (default value): page URL
+        # *   0 (default): page URL
         self.stream_address_type = stream_address_type
         # The monitoring duration. Unit: seconds. Maximum and default value: 60.
         self.stream_monitor_timeout = stream_monitor_timeout
@@ -15058,12 +15165,12 @@ class CreateTimingSyntheticTaskRequestMonitorConfWebsite(TeaModel):
     ):
         # Specifies whether to automatically scroll up and down the screen to load a page.
         # 
-        # *   0 (default value): no
+        # *   0 (default): no
         # *   1: yes
         self.automatic_scrolling = automatic_scrolling
         # Specifies whether to create a custom header.
         # 
-        # *   0 (default value): No custom header is created.
+        # *   0 (default): No custom header is created.
         # *   1: A custom header is created for the first packet.
         # *   2: A custom header is created for all packets.
         self.custom_header = custom_header
@@ -15076,7 +15183,7 @@ class CreateTimingSyntheticTaskRequestMonitorConfWebsite(TeaModel):
         # Specifies whether to disable caching.
         # 
         # *   0: no
-        # *   1 (default value): yes
+        # *   1 (default): yes
         self.disable_cache = disable_cache
         # Specifies whether to accept compressed files based on the HTTP Accept-Encoding request header. Valid values: 0: no. 1: yes. Default value: 0.
         self.disable_compression = disable_compression
@@ -15300,10 +15407,21 @@ class CreateTimingSyntheticTaskRequestMonitors(TeaModel):
         client_type: int = None,
         operator_code: str = None,
     ):
+        # The city code.
+        # 
         # This parameter is required.
         self.city_code = city_code
+        # The client type of the detection point. Valid values:
+        # 
+        # - 1: data center
+        # - 2: Internet
+        # - 3: mobile device
+        # - 4: ECS instance
+        # 
         # This parameter is required.
         self.client_type = client_type
+        # The carrier code.
+        # 
         # This parameter is required.
         self.operator_code = operator_code
 
@@ -15341,7 +15459,9 @@ class CreateTimingSyntheticTaskRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -15384,18 +15504,29 @@ class CreateTimingSyntheticTaskRequest(TeaModel):
         tags: List[CreateTimingSyntheticTaskRequestTags] = None,
         task_type: int = None,
     ):
+        # The list of assertions.
         self.available_assertions = available_assertions
         # The general settings.
         self.common_setting = common_setting
+        # The general settings.
         self.custom_period = custom_period
+        # The detection frequency. Valid values: 1m, 5m, 10m, 15m, 20m, 30m, 1h, 2h, 3h, 4h, 6h, 8h, 12h, and 24h.
+        # 
         # This parameter is required.
         self.frequency = frequency
+        # The detection point type. Valid values:
+        # 
+        # - 1: PC
+        # - 2: mobile device
+        # 
         # This parameter is required.
         self.monitor_category = monitor_category
         # The monitoring configurations.
         # 
         # This parameter is required.
         self.monitor_conf = monitor_conf
+        # The list of detection points.
+        # 
         # This parameter is required.
         self.monitors = monitors
         # The name of the task.
@@ -15406,7 +15537,9 @@ class CreateTimingSyntheticTaskRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The parameter is optional.
         self.resource_group_id = resource_group_id
+        # The tag list.
         self.tags = tags
         # The type of the task. Valid values:
         # 
@@ -15530,18 +15663,29 @@ class CreateTimingSyntheticTaskShrinkRequest(TeaModel):
         tags_shrink: str = None,
         task_type: int = None,
     ):
+        # The list of assertions.
         self.available_assertions_shrink = available_assertions_shrink
         # The general settings.
         self.common_setting_shrink = common_setting_shrink
+        # The general settings.
         self.custom_period_shrink = custom_period_shrink
+        # The detection frequency. Valid values: 1m, 5m, 10m, 15m, 20m, 30m, 1h, 2h, 3h, 4h, 6h, 8h, 12h, and 24h.
+        # 
         # This parameter is required.
         self.frequency = frequency
+        # The detection point type. Valid values:
+        # 
+        # - 1: PC
+        # - 2: mobile device
+        # 
         # This parameter is required.
         self.monitor_category = monitor_category
         # The monitoring configurations.
         # 
         # This parameter is required.
         self.monitor_conf_shrink = monitor_conf_shrink
+        # The list of detection points.
+        # 
         # This parameter is required.
         self.monitors_shrink = monitors_shrink
         # The name of the task.
@@ -15552,7 +15696,9 @@ class CreateTimingSyntheticTaskShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The parameter is optional.
         self.resource_group_id = resource_group_id
+        # The tag list.
         self.tags_shrink = tags_shrink
         # The type of the task. Valid values:
         # 
@@ -15631,7 +15777,18 @@ class CreateTimingSyntheticTaskResponseBodyData(TeaModel):
         status: str = None,
         task_id: str = None,
     ):
+        # The task status. Valid values:
+        # 
+        # - INIT: The task is in the initial state.
+        # - RELEASE: The task is being parsed.
+        # - RUNNING: The task is running.
+        # - STOP: The task is suspended.
+        # - SYSTEM_STOP: The task is suspended by the system.
+        # - CANCEL: The task is canceled.
+        # - SYSTEM_CANCEL: The task is canceled by the system.
+        # - DONE: The task is complete.
         self.status = status
+        # The ID of the synthetic monitoring task.
         self.task_id = task_id
 
     def validate(self):
@@ -15667,11 +15824,15 @@ class CreateTimingSyntheticTaskResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code returned. The status code 200 indicates that the request was successful.
         self.code = code
+        # The struct returned.
         self.data = data
+        # The message returned.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -19520,6 +19681,7 @@ class DeleteRumAppRequest(TeaModel):
         self,
         app_group: str = None,
         app_id: str = None,
+        real_region_id: str = None,
         region_id: str = None,
     ):
         # The group where the application resides.
@@ -19528,6 +19690,7 @@ class DeleteRumAppRequest(TeaModel):
         # 
         # This parameter is required.
         self.app_id = app_id
+        self.real_region_id = real_region_id
         # The ID of the region.
         # 
         # This parameter is required.
@@ -19546,6 +19709,8 @@ class DeleteRumAppRequest(TeaModel):
             result['AppGroup'] = self.app_group
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.real_region_id is not None:
+            result['RealRegionId'] = self.real_region_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         return result
@@ -19556,6 +19721,8 @@ class DeleteRumAppRequest(TeaModel):
             self.app_group = m.get('AppGroup')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('RealRegionId') is not None:
+            self.real_region_id = m.get('RealRegionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         return self
@@ -20254,8 +20421,12 @@ class DeleteSyntheticTaskRequest(TeaModel):
         region_id: str = None,
         task_ids: List[str] = None,
     ):
+        # The region ID. Default value: cn-hangzhou.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The task IDs.
+        # 
         # This parameter is required.
         self.task_ids = task_ids
 
@@ -20289,8 +20460,12 @@ class DeleteSyntheticTaskResponseBody(TeaModel):
         request_id: str = None,
         result: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the specified tasks are deleted.
+        # 
+        # *   `true`: The tasks are deleted.
+        # *   `false`: The tasks fail to be deleted.
         self.result = result
 
     def validate(self):
@@ -24280,6 +24455,7 @@ class DescribePrometheusAlertRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.alert_id = alert_id
+        # The ID of the Prometheus instance.
         self.cluster_id = cluster_id
 
     def validate(self):
@@ -24513,12 +24689,18 @@ class DescribePrometheusAlertRuleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The returned message.
         self.message = message
         # The returned struct.
         self.prometheus_alert_rule = prometheus_alert_rule
         # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -25475,6 +25657,173 @@ class GetAgentDownloadUrlResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAgentDownloadUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAgentDownloadUrlV2Request(TeaModel):
+    def __init__(
+        self,
+        agent_type: str = None,
+        arch_type: str = None,
+        os_type: str = None,
+    ):
+        # This parameter is required.
+        self.agent_type = agent_type
+        self.arch_type = arch_type
+        self.os_type = os_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
+        if self.arch_type is not None:
+            result['ArchType'] = self.arch_type
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
+        if m.get('ArchType') is not None:
+            self.arch_type = m.get('ArchType')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
+        return self
+
+
+class GetAgentDownloadUrlV2ResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+        version: str = None,
+    ):
+        self.url = url
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class GetAgentDownloadUrlV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetAgentDownloadUrlV2ResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetAgentDownloadUrlV2ResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAgentDownloadUrlV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAgentDownloadUrlV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAgentDownloadUrlV2ResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -29610,11 +29959,15 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self,
         access_type: str = None,
         archive_duration: int = None,
+        auth_free_read_policy: str = None,
+        auth_free_write_policy: str = None,
         auth_token: str = None,
         cluster_id: str = None,
         cluster_name: str = None,
         cluster_type: str = None,
         db_instance_status: str = None,
+        enable_auth_free_read: bool = None,
+        enable_auth_free_write: bool = None,
         enable_auth_token: str = None,
         grafana_instance_id: str = None,
         http_api_inter_url: str = None,
@@ -29643,6 +29996,10 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self.access_type = access_type
         # The number of days for which data is automatically archived after the storage duration expires. Valid values: 60, 90, 180, and 365. 0 indicates that the data is not archived.
         self.archive_duration = archive_duration
+        # Read the whitelist policy for password-free addresses.
+        self.auth_free_read_policy = auth_free_read_policy
+        # Write exempt password address whitelist policy.
+        self.auth_free_write_policy = auth_free_write_policy
         # The authorization token.
         self.auth_token = auth_token
         # The ID of the Prometheus instance.
@@ -29658,6 +30015,10 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self.cluster_type = cluster_type
         # The data storage status at the backend.
         self.db_instance_status = db_instance_status
+        # Whether to enable password-free reading.
+        self.enable_auth_free_read = enable_auth_free_read
+        # Whether to enable write access without password.
+        self.enable_auth_free_write = enable_auth_free_write
         # Indicates whether access token authentication is enabled.
         self.enable_auth_token = enable_auth_token
         # The ID of the Grafana workspace.
@@ -29697,6 +30058,7 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self.storage_duration = storage_duration
         # The child instances of the Prometheus instance for GlobalView. The value is a JSON string.
         self.sub_clusters_json = sub_clusters_json
+        # Supported authentication types.
         self.support_auth_types = support_auth_types
         # The tags of the instance.
         self.tags = tags
@@ -29723,6 +30085,10 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             result['AccessType'] = self.access_type
         if self.archive_duration is not None:
             result['ArchiveDuration'] = self.archive_duration
+        if self.auth_free_read_policy is not None:
+            result['AuthFreeReadPolicy'] = self.auth_free_read_policy
+        if self.auth_free_write_policy is not None:
+            result['AuthFreeWritePolicy'] = self.auth_free_write_policy
         if self.auth_token is not None:
             result['AuthToken'] = self.auth_token
         if self.cluster_id is not None:
@@ -29733,6 +30099,10 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             result['ClusterType'] = self.cluster_type
         if self.db_instance_status is not None:
             result['DbInstanceStatus'] = self.db_instance_status
+        if self.enable_auth_free_read is not None:
+            result['EnableAuthFreeRead'] = self.enable_auth_free_read
+        if self.enable_auth_free_write is not None:
+            result['EnableAuthFreeWrite'] = self.enable_auth_free_write
         if self.enable_auth_token is not None:
             result['EnableAuthToken'] = self.enable_auth_token
         if self.grafana_instance_id is not None:
@@ -29789,6 +30159,10 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             self.access_type = m.get('AccessType')
         if m.get('ArchiveDuration') is not None:
             self.archive_duration = m.get('ArchiveDuration')
+        if m.get('AuthFreeReadPolicy') is not None:
+            self.auth_free_read_policy = m.get('AuthFreeReadPolicy')
+        if m.get('AuthFreeWritePolicy') is not None:
+            self.auth_free_write_policy = m.get('AuthFreeWritePolicy')
         if m.get('AuthToken') is not None:
             self.auth_token = m.get('AuthToken')
         if m.get('ClusterId') is not None:
@@ -29799,6 +30173,10 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             self.cluster_type = m.get('ClusterType')
         if m.get('DbInstanceStatus') is not None:
             self.db_instance_status = m.get('DbInstanceStatus')
+        if m.get('EnableAuthFreeRead') is not None:
+            self.enable_auth_free_read = m.get('EnableAuthFreeRead')
+        if m.get('EnableAuthFreeWrite') is not None:
+            self.enable_auth_free_write = m.get('EnableAuthFreeWrite')
         if m.get('EnableAuthToken') is not None:
             self.enable_auth_token = m.get('EnableAuthToken')
         if m.get('GrafanaInstanceId') is not None:
@@ -34270,9 +34648,9 @@ class GetSyntheticTaskDetailRequest(TeaModel):
         region_id: str = None,
         task_id: str = None,
     ):
-        # 地域ID。默认为cn-hangzhou。
+        # The region ID. Default value: cn-hangzhou.
         self.region_id = region_id
-        # 云拨测任务ID。
+        # The ID of the synthetic monitoring task.
         # 
         # This parameter is required.
         self.task_id = task_id
@@ -34310,10 +34688,15 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailCommonParamAlertList(TeaModel)
         serious_alert: str = None,
         symbols: str = None,
     ):
+        # The low-risk alert.
         self.general_alert = general_alert
+        # Indicates whether the condition is essential.
         self.is_critical = is_critical
+        # The alert name.
         self.name = name
+        # The Critical-level alert.
         self.serious_alert = serious_alert
+        # Greater than or less than.
         self.symbols = symbols
 
     def validate(self):
@@ -34362,11 +34745,17 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailCommonParam(TeaModel):
         monitor_samples: str = None,
         start_execution_time: str = None,
     ):
+        # The identifier of the alert.
         self.alarm_flag = alarm_flag
+        # The list of alerts.
         self.alert_list = alert_list
+        # The ID of the alert identifier.
         self.alert_notifier_id = alert_notifier_id
+        # The ID of the alert policy.
         self.alert_policy_id = alert_policy_id
+        # The monitoring samples.
         self.monitor_samples = monitor_samples
+        # The start time of the execution.
         self.start_execution_time = start_execution_time
 
     def validate(self):
@@ -34433,17 +34822,46 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailDownload(TeaModel):
         verify_way: int = None,
         white_list: str = None,
     ):
+        # The timeout period of the file download task.
         self.connection_timeout = connection_timeout
+        # The items to be ignored in a certificate error. Multiple values are concatenated with vertical bars (|).
         self.download_custom_header_content = download_custom_header_content
+        # The custom host. Valid values:
+        # 
+        # *   1: round robin
+        # *   0: random
         self.download_custom_host = download_custom_host
+        # The custom IP address of the host. Multiple IP addresses are separated with commas (,).
         self.download_custom_host_ip = download_custom_host_ip
+        # The kernel type. Valid values:
+        # 
+        # *   1: curl
+        # *   0: WinInet
         self.download_kernel = download_kernel
+        # Indicates whether redirection is supported.
         self.download_redirect = download_redirect
+        # The file size. Unit: KB.
         self.download_transmission_size = download_transmission_size
+        # The monitoring duration.
         self.monitor_timeout = monitor_timeout
+        # The QUIC protocol type. Valid values:
+        # 
+        # *   1: HTTP/1
+        # *   2: HTTP/2
+        # *   3: http3
         self.quick_protocol = quick_protocol
+        # The keyword that is used in verification.
         self.validate_keywords = validate_keywords
+        # The method that is used to verify the response content. Valid values:
+        # 
+        # *   0: no verification.
+        # *   1: exact match with the verification string.
+        # *   2: partial match with the verification string.
+        # *   3: MD5 verification.
         self.verify_way = verify_way
+        # The whitelisted objects that are used to avoid DNS hijacking. Format: `<domain name>:<objects>`.
+        # 
+        # >  WAP networks do not support hijacking.
         self.white_list = white_list
 
     def validate(self):
@@ -34521,28 +34939,28 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailExtendInterval(TeaModel):
         start_minute: int = None,
         start_time: str = None,
     ):
-        # 拨测执行周期。
+        # The day on which synthetic monitoring is performed. Valid values:
         # 
-        # - -1：每天
-        # - 0：周日
-        # - 1：周一
-        # - 2：周二
-        # - 3：周三
-        # - 4：周四
-        # - 5：周五
-        # - 6：周六
+        # *   \\-1: every day
+        # *   0: Sunday
+        # *   1: Monday
+        # *   2: Tuesday
+        # *   3: Wednesday
+        # *   4: Thursday
+        # *   5: Friday
+        # *   6: Saturday
         self.days = days
-        # 当天结束分钟数。
+        # The minute at which synthetic monitoring ends.
         self.end_minute = end_minute
-        # 周期结束时间 ，格式为yyyy-MM-dd HH。
+        # The time when synthetic monitoring ends. Format: `yyyy-MM-dd HH`.
         self.end_time = end_time
-        # 当天结束小时数。
+        # The hour at which synthetic monitoring ends.
         self.endhour = endhour
-        # 当天开始拨测时间的小时数。
+        # The hour at which synthetic monitoring starts.
         self.start_hour = start_hour
-        # 当天开始拨测时间的分钟数。
+        # The minute at which synthetic monitoring starts.
         self.start_minute = start_minute
-        # 周期开始时间，格式yyyy-MM-dd HH 。
+        # The time when synthetic monitoring starts. Format: yyyy-MM-dd HH.
         self.start_time = start_time
 
     def validate(self):
@@ -34597,16 +35015,13 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList(TeaModel):
         net_service_id: int = None,
         send_count: int = None,
     ):
-        # 城市编码。
+        # The city code.
         self.city_code = city_code
-        # 监测类型：
-        # - IDC
-        # - LastMilie
-        # - Mobile
+        # The type of the detection point.
         self.monitor_type = monitor_type
-        # 运营商ID。
+        # The ID of the network service.
         self.net_service_id = net_service_id
-        # 下发次数。
+        # The number of times that the system sends detection requests.
         self.send_count = send_count
 
     def validate(self):
@@ -34673,33 +35088,113 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailNav(TeaModel):
         verify_string_whitelist: str = None,
         wait_completion_time: int = None,
     ):
+        # The DNS whitelist.
         self.dns_hijack_whitelist = dns_hijack_whitelist
+        # The element blacklist.
         self.element_blacklist = element_blacklist
+        # Indicates whether ActiveX is executed. Valid values:
+        # 
+        # *   3: yes
+        # *   0: no
+        # 
+        # >  Only IE elements support this parameter.
         self.execute_active_x = execute_active_x
+        # Indicates whether the applet is executed. Valid values:
+        # 
+        # *   0: no
+        # *   1: yes
         self.execute_applet = execute_applet
+        # Indicates whether scripts are executed. Valid values:
+        # 
+        # *   1: yes
+        # *   0: no
+        # 
+        # >  Only IE elements support this parameter.
         self.execute_script = execute_script
+        # Indicates whether invalid IP addresses are excluded. Valid values:
+        # 
+        # *   1: no
+        # *   0: yes
         self.filter_invalid_ip = filter_invalid_ip
+        # The element that is used in DNS hijacking.
         self.flow_hijack_jump_times = flow_hijack_jump_times
+        # The tag that is used in DNS hijacking.
         self.flow_hijack_logo = flow_hijack_logo
+        # The monitoring timeout period.
         self.monitor_timeout = monitor_timeout
+        # Indicates whether the screen is automatically scrolled up and down to load a page. Valid values:
+        # 
+        # *   1: yes
+        # *   0: no
         self.nav_automatic_scrolling = nav_automatic_scrolling
+        # Indicates whether a custom header is created. Valid values:
+        # 
+        # *   0: no
+        # *   1: A custom header is created for the first packet.
+        # *   2: A custom header is created for all packets.
         self.nav_custom_header = nav_custom_header
+        # The format of the custom header. Multiple fields are separated with vertical bars (|).
         self.nav_custom_header_content = nav_custom_header_content
+        # The custom host mode. Valid values:
+        # 
+        # *   1: round robin
+        # *   0: random
         self.nav_custom_host = nav_custom_host
+        # The custom IP address of the host. Multiple IP addresses are separated with commas (,).
         self.nav_custom_host_ip = nav_custom_host_ip
+        # Indicates whether caching is disabled. Valid values:
+        # 
+        # *   1: Caching is disabled.
+        # *   0: Caching is enabled.
         self.nav_disable_cache = nav_disable_cache
+        # Indicates whether compression is disabled. Valid values:
+        # 
+        # *   0: Compression is enabled.
+        # *   1: Compression is disabled.
         self.nav_disable_compression = nav_disable_compression
+        # Indicates whether certificate errors are ignored during certificate verification in the SSL handshake. Valid values:
+        # 
+        # *   1: yes
+        # *   0: no
         self.nav_ignore_certificate_error = nav_ignore_certificate_error
+        # Indicates whether redirection is enabled. Valid values:
+        # 
+        # *   0: no
+        # *   1: yes
         self.nav_redirect = nav_redirect
+        # Indicates whether the elements on the page are returned.
+        # 
+        # *   1: no. The basic document data is returned.
+        # *   2: yes. All document data is returned.
         self.nav_return_element = nav_return_element
+        # The page tampering.
         self.page_tampering = page_tampering
+        # The process ID.
         self.process_name = process_name
+        # The domain name of the QUIC request element.
         self.quic_domain = quic_domain
+        # The QUIC version. Default value: 0. Valid values:
+        # 
+        # *   35
+        # *   39
+        # *   43
+        # *   44
+        # 
+        # >  Only Chrome elements support this parameter.
         self.quic_version = quic_version
+        # Indicates whether request headers are returned. Valid values:
+        # 
+        # *   0: no
+        # *   1: The headers of base documents are returned.
+        # *   2: All headers are returned.
         self.request_header = request_header
+        # The time threshold that is used to define a slow element. Unit: seconds.
         self.slow_element_threshold = slow_element_threshold
+        # The blacklist for string verification.
         self.verify_string_blacklist = verify_string_blacklist
+        # The whitelist for string verification.
         self.verify_string_whitelist = verify_string_whitelist
+        # The timeout period of waiting for the monitoring to complete.
         self.wait_completion_time = wait_completion_time
 
     def validate(self):
@@ -34851,22 +35346,66 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailNet(TeaModel):
         net_trace_route_timeout: int = None,
         white_list: str = None,
     ):
+        # Indicates whether the data is displayed in the DIG format. Valid values:
+        # 
+        # *   0: no
+        # *   1: yes
         self.net_dig_switch = net_dig_switch
+        # The NS server.
         self.net_dns_ns = net_dns_ns
+        # The DNS query method. Valid values:
+        # 
+        # *   1: recursive
+        # *   2: iterative
         self.net_dns_query_method = net_dns_query_method
+        # The type of the DNS server. Valid values:
+        # 
+        # *   0: ipv4
+        # *   1: ipv6
+        # *   2: A version is automatically selected.
         self.net_dns_server = net_dns_server
+        # Indicates whether DNS test is enabled. Valid values:
+        # 
+        # *   0: no
+        # *   1: yes
         self.net_dns_switch = net_dns_switch
+        # The timeout period of DNS requests.
         self.net_dns_timeout = net_dns_timeout
+        # The protocol type. Valid values:
+        # 
+        # *   0 : ICMP
+        # *   1 : TCP
         self.net_icmp_active = net_icmp_active
+        # Indicates whether packets are split. Valid values:
+        # 
+        # *   0: no
+        # *   1: yes
         self.net_icmp_data_cut = net_icmp_data_cut
+        # The interval at which the synthetic monitoring task is executed.
         self.net_icmp_interval = net_icmp_interval
+        # The number of packets.
         self.net_icmp_num = net_icmp_num
+        # The packet size.
         self.net_icmp_size = net_icmp_size
+        # Indicates whether ICMP test is enabled. Valid values:
+        # 
+        # *   0: no.
+        # *   1: yes. If you set this parameter to 1, you must also set the Icmp parameter.
         self.net_icmp_switch = net_icmp_switch
+        # The monitoring timeout period.
         self.net_icmp_timeout = net_icmp_timeout
+        # The maximum number of active detection points.
         self.net_trace_route_num = net_trace_route_num
+        # Indicates whether Tracert test is enabled. Valid values:
+        # 
+        # *   0: no
+        # *   1: yes. If you set this parameter to 1, you must also set the Tracert parameter.
         self.net_trace_route_switch = net_trace_route_switch
+        # The monitoring timeout period. Valid values: 0 to 300. Unit: seconds.
         self.net_trace_route_timeout = net_trace_route_timeout
+        # The whitelisted objects that are used to avoid DNS hijacking. Format: `<domain name>:<objects>`.
+        # 
+        # >  WAP networks do not support hijacking.
         self.white_list = white_list
 
     def validate(self):
@@ -34959,7 +35498,9 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyForm
         key: str = None,
         value: str = None,
     ):
+        # The key of the **form-data**.
         self.key = key
+        # The value of the form-data.
         self.value = value
 
     def validate(self):
@@ -34992,7 +35533,9 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyUrle
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -35028,10 +35571,25 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBody(Tea
         raw: str = None,
         urlencoded: GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentBodyUrlencoded = None,
     ):
+        # The data content. This parameter is returned when Mode is set to form-data.
         self.formdata = formdata
+        # The language used when Mode is set to raw. Valid values:
+        # 
+        # *   json
+        # *   xml
+        # *   javascript
+        # *   html
+        # *   text
         self.language = language
+        # The type of the content. Valid values:
+        # 
+        # *   form-data
+        # *   x-www-form-urlencoded
+        # *   raw
         self.mode = mode
+        # The data content. This parameter is returned when **Mode** is set to **raw**.
         self.raw = raw
+        # The URL of the body content.
         self.urlencoded = urlencoded
 
     def validate(self):
@@ -35081,7 +35639,9 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentHeader(T
         key: str = None,
         value: str = None,
     ):
+        # The key of the header in the request parameters.
         self.key = key
+        # The value of the header in the request parameters.
         self.value = value
 
     def validate(self):
@@ -35115,8 +35675,14 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContent(TeaMode
         header: List[GetSyntheticTaskDetailResponseBodyTaskDetailProtocolRequestContentHeader] = None,
         method: str = None,
     ):
+        # The content of the request body.
         self.body = body
+        # The request header.
         self.header = header
+        # The request method. Valid values:
+        # 
+        # *   POST
+        # *   GET
         self.method = method
 
     def validate(self):
@@ -35171,14 +35737,36 @@ class GetSyntheticTaskDetailResponseBodyTaskDetailProtocol(TeaModel):
         verify_content: str = None,
         verify_way: int = None,
     ):
+        # The encoding format. Valid values:
+        # 
+        # *   0: UTF-8
+        # *   1: GBK
+        # *   2: GB2312
+        # *   3: Unicode
         self.character_encoding = character_encoding
+        # The custom host. Valid values:
+        # 
+        # *   1: round robin
+        # *   0: random
         self.custom_host = custom_host
+        # The custom IP address of the host. Multiple IP addresses are separated with commas (,).
         self.custom_host_ip = custom_host_ip
+        # The timeout period.
         self.protocol_connection_timeout = protocol_connection_timeout
+        # The timeout period of API performance monitoring. Unit: seconds.
         self.protocol_monitor_timeout = protocol_monitor_timeout
+        # The size of the received data. This parameter is returned when **VerifyWay** is set to 2.
         self.received_data_size = received_data_size
+        # The request content, including the header and body.
         self.request_content = request_content
+        # The verification string.
         self.verify_content = verify_content
+        # The method that is used to verify the response content. Valid values:
+        # 
+        # *   0: no verification.
+        # *   1: exact match with the verification string.
+        # *   2: partial match with the verification string.
+        # *   3: MD5 verification.
         self.verify_way = verify_way
 
     def validate(self):
@@ -35254,58 +35842,63 @@ class GetSyntheticTaskDetailResponseBodyTaskDetail(TeaModel):
         task_type: int = None,
         url: str = None,
     ):
+        # The list of common parameters.
         self.common_param = common_param
-        # 文件下载任务。
+        # The file download task.
         self.download = download
-        # 自定义扩展频率。
+        # The frequency.
         self.extend_interval = extend_interval
-        # 拨测频率，单位为分钟。可选频率如下：
+        # The interval at which synthetic monitoring is performed. Unit: minutes. Valid values:
         # 
-        # - 1
-        # - 5
-        # - 10
-        # - 15
-        # - 20
-        # - 30
-        # - 60
-        # - 120
-        # - 180
-        # - 240
-        # - 360
-        # - 480
-        # - 720
-        # - 1440
+        # *   1
+        # *   5
+        # *   10
+        # *   15
+        # *   20
+        # *   30
+        # *   60
+        # *   120
+        # *   180
+        # *   240
+        # *   360
+        # *   480
+        # *   720
+        # *   1440
         self.interval_time = interval_time
-        # 监测周期类型：
+        # The interval type. Valid values:
         # 
-        # 0：每天
-        # 1：自定义扩展频率
+        # *   0: daily
+        # *   1: custom frequency
         self.interval_type = interval_type
-        # IP类型：
+        # The IP version. Valid values:
         # 
-        # 0：自动
-        # 1：IPv4
-        # 2：IPv6
+        # *   0: A version is automatically selected.
+        # *   1: IPv4.
+        # *   2: IPv6.
         self.ip_type = ip_type
-        # 拨测任务的检测点列表。
+        # The detection points.
         self.monitor_list = monitor_list
+        # The detection points.
         self.monitor_list_string = monitor_list_string
+        # The browser test task.
         self.nav = nav
+        # The network synthetic monitoring task.
         self.net = net
+        # The synthetic monitoring task of the API performance type.
         self.protocol = protocol
-        # 云拨测任务ID。
+        # The ID of the synthetic monitoring task.
         self.task_id = task_id
-        # 任务名称。
+        # The name of the task.
         self.task_name = task_name
-        # 任务类型：
+        # The type of the task. Valid values:
         # 
-        # 3：网页性能-IE
-        # 34：网页性能-Chrome
-        # 0：网络质量
-        # 40：文件下载
-        # 7：API性能
+        # 1.  3: web page performance - IE
+        # 2.  34: web page performance - Chrome
+        # 3.  0: network quality
+        # 4.  40: file download
+        # 5.  7: API performance
         self.task_type = task_type
-        # 拨测地址。
+        # The URL for synthetic monitoring.
         self.url = url
 
     def validate(self):
@@ -35416,9 +36009,9 @@ class GetSyntheticTaskDetailResponseBody(TeaModel):
         request_id: str = None,
         task_detail: GetSyntheticTaskDetailResponseBodyTaskDetail = None,
     ):
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 任务详情。
+        # The details of the task.
         self.task_detail = task_detail
 
     def validate(self):
@@ -35501,14 +36094,36 @@ class GetSyntheticTaskListRequest(TeaModel):
         task_type: str = None,
         url: str = None,
     ):
+        # The order by which the queried tasks are sorted. Valid values:
+        # 
+        # *   **asc**: ascending
+        # *   **desc**: descending
         self.direction = direction
+        # The condition by which the queried tasks are sorted.
         self.order = order
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The region ID. Default value: **cn-hangzhou**.
         self.region_id = region_id
+        # The task name.
         self.task_name = task_name
+        # The status of the task. Valid values:
+        # 
+        # *   **0**: The task is stopped.
+        # *   **1**: The task is started.
+        # *   **9**: The task is ended.
         self.task_status = task_status
+        # The type of the task. Valid values:
+        # 
+        # 1.  3: web page performance - IE
+        # 2.  34: web page performance - Chrome
+        # 3.  0: network quality
+        # 4.  40: file download
+        # 5.  7: API performance
         self.task_type = task_type
+        # The URL for synthetic monitoring.
         self.url = url
 
     def validate(self):
@@ -35576,14 +36191,33 @@ class GetSyntheticTaskListResponseBodyPageInfoList(TeaModel):
         url: str = None,
         usable: float = None,
     ):
+        # The time when the task was created.
         self.create_time = create_time
+        # The number of detection points.
         self.monitor_number = monitor_number
+        # The ID of the synthetic monitoring task.
         self.task_id = task_id
+        # The task name.
         self.task_name = task_name
+        # The status of the task. Valid values:
+        # 
+        # *   **0**: The task is stopped.
+        # *   **1**: The task is started.
+        # *   **9**: The task is ended.
         self.task_status = task_status
+        # The type of the task. Valid values:
+        # 
+        # 1.  3: web page performance - IE
+        # 2.  34: web page performance - Chrome
+        # 3.  0: network quality
+        # 4.  40: file download
+        # 5.  7: API performance
         self.task_type = task_type
+        # The name of the task type.
         self.task_type_name = task_type_name
+        # The URL for synthetic monitoring.
         self.url = url
+        # The availability. Only the data of the last day is counted. If no data is available for the last day, an empty value is returned.
         self.usable = usable
 
     def validate(self):
@@ -35655,18 +36289,31 @@ class GetSyntheticTaskListResponseBodyPageInfo(TeaModel):
         size: int = None,
         total: int = None,
     ):
+        # Indicates whether the current page is followed by a page.
         self.has_next_page = has_next_page
+        # Indicates whether a previous page exists.
         self.has_previous_page = has_previous_page
+        # Indicates whether the page is the first page.
         self.is_first_page = is_first_page
+        # Indicates whether the page is the last page.
         self.is_last_page = is_last_page
+        # The task information.
         self.list = list
+        # The first page on the navigation bar.
         self.navigate_first_page = navigate_first_page
+        # The last page on the navigation bar.
         self.navigate_last_page = navigate_last_page
+        # All navigation page numbers.
         self.navigate_page_nums = navigate_page_nums
+        # The next page.
         self.next_page = next_page
+        # The total number of pages returned.
         self.pages = pages
+        # The previous page.
         self.prepage = prepage
+        # The number of entries per page.
         self.size = size
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -35751,7 +36398,9 @@ class GetSyntheticTaskListResponseBody(TeaModel):
         page_info: GetSyntheticTaskListResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # The query results.
         self.page_info = page_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -38349,7 +38998,16 @@ class GetTraceAppConfigRequest(TeaModel):
     ):
         # The process ID (PID) of the application.
         # 
-        # Log on to the ARMS console. In the left-side navigation pane, choose **Application Monitoring** > **Application List**. On the Application List page, click the name of an application. The URL in the address bar contains the PID of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is xxx%4074xxx, you must replace %40 with an at sign (@) to obtain xxx@74xxx.
+        # You can use one of the following methods to obtain the PID:
+        # 
+        # *   API: Call the [ListTraceApps](https://help.aliyun.com/document_detail/2588008.html) operation
+        # *   Console: Log on to the Application Real-Time Monitoring Service (ARMS) console. In the left-side navigation pane, choose **Application Monitoring** > **Application List**. On the Application List page, click the name of your application. The URL in the address bar contains the PID of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is xxx%4074xxx, you must replace %40 with an at sign (@) to obtain xxx@74xxx.
+        # 
+        # > 
+        # 
+        # *   To obtain the PID in the console, your application must be monitored by Application Monitoring rather than Managed Service for OpenTelemetry.
+        # 
+        # *   The GetTraceAppConfig operation can query only the custom settings of applications that are monitored by Application Monitoring.
         # 
         # This parameter is required.
         self.pid = pid
@@ -40077,9 +40735,11 @@ class ListActivatedAlertsResponseBodyPage(TeaModel):
 class ListActivatedAlertsResponseBody(TeaModel):
     def __init__(
         self,
+        message: str = None,
         page: ListActivatedAlertsResponseBodyPage = None,
         request_id: str = None,
     ):
+        self.message = message
         # The struct returned.
         self.page = page
         # The ID of the request.
@@ -40095,6 +40755,8 @@ class ListActivatedAlertsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.page is not None:
             result['Page'] = self.page.to_map()
         if self.request_id is not None:
@@ -40103,6 +40765,8 @@ class ListActivatedAlertsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('Page') is not None:
             temp_model = ListActivatedAlertsResponseBodyPage()
             self.page = temp_model.from_map(m['Page'])
@@ -42189,9 +42853,11 @@ class ListAlertsResponseBodyPageBean(TeaModel):
 class ListAlertsResponseBody(TeaModel):
     def __init__(
         self,
+        message: str = None,
         page_bean: ListAlertsResponseBodyPageBean = None,
         request_id: str = None,
     ):
+        self.message = message
         # The information about the array object.
         self.page_bean = page_bean
         # The request ID.
@@ -42207,6 +42873,8 @@ class ListAlertsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
         if self.page_bean is not None:
             result['PageBean'] = self.page_bean.to_map()
         if self.request_id is not None:
@@ -42215,6 +42883,8 @@ class ListAlertsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('PageBean') is not None:
             temp_model = ListAlertsResponseBodyPageBean()
             self.page_bean = temp_model.from_map(m['PageBean'])
@@ -43484,9 +44154,16 @@ class ListDispatchRuleRequest(TeaModel):
         region_id: str = None,
         system: bool = None,
     ):
+        # The name of the notification policy. Fuzzy match is supported.
         self.name = name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # *   The type of notification policies to be queried. Valid values: `false` (default): notification policies created in Application Real-Time Monitoring Service (ARMS).
+        # *   `true`: notification policies created in an external system.
+        # 
+        # >  You cannot use the ARMS console to modify the dispatch rules of a notification policy that is created in an external system.
         self.system = system
 
     def validate(self):
@@ -43524,8 +44201,14 @@ class ListDispatchRuleResponseBodyDispatchRules(TeaModel):
         rule_id: int = None,
         state: str = None,
     ):
+        # The name of the notification policy.
         self.name = name
+        # The ID of the notification policy.
         self.rule_id = rule_id
+        # Indicates whether the notification policy is enabled. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.state = state
 
     def validate(self):
@@ -43562,7 +44245,9 @@ class ListDispatchRuleResponseBody(TeaModel):
         dispatch_rules: List[ListDispatchRuleResponseBodyDispatchRules] = None,
         request_id: str = None,
     ):
+        # The returned struct.
         self.dispatch_rules = dispatch_rules
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48053,7 +48738,9 @@ class ListPrometheusAlertRulesRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -48091,14 +48778,26 @@ class ListPrometheusAlertRulesRequest(TeaModel):
         tags: List[ListPrometheusAlertRulesRequestTags] = None,
         type: str = None,
     ):
+        # The ID of the cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The tag match conditions that are described in a JSON string. For more information about this parameter, see the **Additional description of the MatchExpressions parameter** section.
         self.match_expressions = match_expressions
+        # The name of the alert rule.
         self.name = name
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # Specifies whether the alert rule is enabled. Valid values:
+        # 
+        # - 1: enables the alert rule.
+        # - 0: disables the alert rule.
         self.status = status
+        # The tags.
         self.tags = tags
+        # The type of the alert rule.
         self.type = type
 
     def validate(self):
@@ -48159,7 +48858,9 @@ class ListPrometheusAlertRulesResponseBodyPrometheusAlertRulesAnnotations(TeaMod
         name: str = None,
         value: str = None,
     ):
+        # The name of the annotation.
         self.name = name
+        # The value of the annotation.
         self.value = value
 
     def validate(self):
@@ -48192,7 +48893,9 @@ class ListPrometheusAlertRulesResponseBodyPrometheusAlertRulesLabels(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the tag.
         self.name = name
+        # The value of the tag associated with the instance.
         self.value = value
 
     def validate(self):
@@ -48225,7 +48928,9 @@ class ListPrometheusAlertRulesResponseBodyPrometheusAlertRulesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -48269,18 +48974,37 @@ class ListPrometheusAlertRulesResponseBodyPrometheusAlertRules(TeaModel):
         tags: List[ListPrometheusAlertRulesResponseBodyPrometheusAlertRulesTags] = None,
         type: str = None,
     ):
+        # The ID of the alert rule.
         self.alert_id = alert_id
+        # The name of the alert rule.
         self.alert_name = alert_name
+        # The annotations of the alert rule.
         self.annotations = annotations
+        # The ID of the cluster.
         self.cluster_id = cluster_id
+        # The ID of the notification policy. This parameter is returned if the NotifyType parameter is set to `DISPATCH_RULE`.
         self.dispatch_rule_id = dispatch_rule_id
+        # The duration of the alert. Valid values: 1 to 1440. Unit: minutes.
         self.duration = duration
+        # The expression of the alert rule.
         self.expression = expression
+        # The tags of the alert rule.
         self.labels = labels
+        # The alert message. Tags can be referenced in the {{$labels.xxx}} format.
         self.message = message
+        # The method that is used to send alert notifications. Valid values:
+        # 
+        # - ALERT_MANAGER: Alert notifications are sent by Operation Center.
+        # - DISPATCH_RULE: Alert notifications are
         self.notify_type = notify_type
+        # Indicates whether the alert rule is enabled. Valid values:
+        # 
+        # - 1: The alert rule is enabled.
+        # - 0: The alert rule is disabled.
         self.status = status
+        # The tags.
         self.tags = tags
+        # The type of the alert rule.
         self.type = type
 
     def validate(self):
@@ -48386,10 +49110,15 @@ class ListPrometheusAlertRulesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
+        # The returned message.
         self.message = message
+        # The returned struct.
         self.prometheus_alert_rules = prometheus_alert_rules
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -59934,7 +60663,9 @@ class StartTimingSyntheticTaskRequest(TeaModel):
         region_id: str = None,
         task_ids: List[str] = None,
     ):
+        # The region ID. Default value: cn-hangzhou.
         self.region_id = region_id
+        # The task IDs.
         self.task_ids = task_ids
 
     def validate(self):
@@ -59967,7 +60698,9 @@ class StartTimingSyntheticTaskShrinkRequest(TeaModel):
         region_id: str = None,
         task_ids_shrink: str = None,
     ):
+        # The region ID. Default value: cn-hangzhou.
         self.region_id = region_id
+        # The task IDs.
         self.task_ids_shrink = task_ids_shrink
 
     def validate(self):
@@ -60002,9 +60735,13 @@ class StartTimingSyntheticTaskResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
+        # Indicates whether the request was successful. Valid values: true and false.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60368,7 +61105,12 @@ class SwitchSyntheticTaskStatusRequest(TeaModel):
         switch_status: int = None,
         task_ids: List[int] = None,
     ):
+        # Specifies whether to start or stop the task. Valid values:
+        # 
+        # *   **0**: stops the task
+        # *   **1**: starts the task
         self.switch_status = switch_status
+        # The task IDs. You can specify up to 30 task IDs at a time.
         self.task_ids = task_ids
 
     def validate(self):
@@ -60401,7 +61143,12 @@ class SwitchSyntheticTaskStatusResponseBody(TeaModel):
         request_id: str = None,
         result: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.result = result
 
     def validate(self):
@@ -63417,7 +64164,9 @@ class UpdatePrometheusAlertRuleRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -63479,6 +64228,7 @@ class UpdatePrometheusAlertRuleRequest(TeaModel):
         self.notify_type = notify_type
         # This parameter is required.
         self.region_id = region_id
+        # The tags.
         self.tags = tags
         self.type = type
 
@@ -63743,10 +64493,16 @@ class UpdatePrometheusAlertRuleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
+        # The returned message.
         self.message = message
         self.prometheus_alert_rule = prometheus_alert_rule
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
 
     def validate(self):
@@ -64097,17 +64853,27 @@ class UpdatePrometheusInstanceRequest(TeaModel):
     def __init__(
         self,
         archive_duration: int = None,
+        auth_free_read_policy: str = None,
+        auth_free_write_policy: str = None,
         cluster_id: str = None,
+        enable_auth_free_read: bool = None,
+        enable_auth_free_write: bool = None,
+        enable_auth_token: bool = None,
         region_id: str = None,
         resource_group_id: str = None,
         storage_duration: int = None,
     ):
         # The number of days for which data is automatically archived after the storage expires. Valid values: 60, 90, 180, and 365. 0 indicates that the data is not archived.
         self.archive_duration = archive_duration
+        self.auth_free_read_policy = auth_free_read_policy
+        self.auth_free_write_policy = auth_free_write_policy
         # The ID of the Prometheus instance.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        self.enable_auth_free_read = enable_auth_free_read
+        self.enable_auth_free_write = enable_auth_free_write
+        self.enable_auth_token = enable_auth_token
         # The region ID.
         # 
         # This parameter is required.
@@ -64128,8 +64894,18 @@ class UpdatePrometheusInstanceRequest(TeaModel):
         result = dict()
         if self.archive_duration is not None:
             result['ArchiveDuration'] = self.archive_duration
+        if self.auth_free_read_policy is not None:
+            result['AuthFreeReadPolicy'] = self.auth_free_read_policy
+        if self.auth_free_write_policy is not None:
+            result['AuthFreeWritePolicy'] = self.auth_free_write_policy
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
+        if self.enable_auth_free_read is not None:
+            result['EnableAuthFreeRead'] = self.enable_auth_free_read
+        if self.enable_auth_free_write is not None:
+            result['EnableAuthFreeWrite'] = self.enable_auth_free_write
+        if self.enable_auth_token is not None:
+            result['EnableAuthToken'] = self.enable_auth_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -64142,8 +64918,18 @@ class UpdatePrometheusInstanceRequest(TeaModel):
         m = m or dict()
         if m.get('ArchiveDuration') is not None:
             self.archive_duration = m.get('ArchiveDuration')
+        if m.get('AuthFreeReadPolicy') is not None:
+            self.auth_free_read_policy = m.get('AuthFreeReadPolicy')
+        if m.get('AuthFreeWritePolicy') is not None:
+            self.auth_free_write_policy = m.get('AuthFreeWritePolicy')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
+        if m.get('EnableAuthFreeRead') is not None:
+            self.enable_auth_free_read = m.get('EnableAuthFreeRead')
+        if m.get('EnableAuthFreeWrite') is not None:
+            self.enable_auth_free_write = m.get('EnableAuthFreeWrite')
+        if m.get('EnableAuthToken') is not None:
+            self.enable_auth_token = m.get('EnableAuthToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -64760,6 +65546,7 @@ class UpdateRumAppRequest(TeaModel):
         is_subscribe: bool = None,
         nickname: str = None,
         pid: str = None,
+        real_region_id: str = None,
         region_id: str = None,
         restart: bool = None,
         service_domain_operation_json: str = None,
@@ -64779,6 +65566,7 @@ class UpdateRumAppRequest(TeaModel):
         # 
         # This parameter is required.
         self.pid = pid
+        self.real_region_id = real_region_id
         # The region ID.
         # 
         # This parameter is required.
@@ -64811,6 +65599,8 @@ class UpdateRumAppRequest(TeaModel):
             result['Nickname'] = self.nickname
         if self.pid is not None:
             result['Pid'] = self.pid
+        if self.real_region_id is not None:
+            result['RealRegionId'] = self.real_region_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.restart is not None:
@@ -64835,6 +65625,8 @@ class UpdateRumAppRequest(TeaModel):
             self.nickname = m.get('Nickname')
         if m.get('Pid') is not None:
             self.pid = m.get('Pid')
+        if m.get('RealRegionId') is not None:
+            self.real_region_id = m.get('RealRegionId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Restart') is not None:
@@ -65293,8 +66085,11 @@ class UpdateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting(TeaMo
         prometheus_cluster_region: str = None,
         prometheus_labels: Dict[str, str] = None,
     ):
+        # A reserved parameter.
         self.prometheus_cluster_id = prometheus_cluster_id
+        # A reserved parameter.
         self.prometheus_cluster_region = prometheus_cluster_region
+        # The reserved parameters.
         self.prometheus_labels = prometheus_labels
 
     def validate(self):
@@ -65388,6 +66183,7 @@ class UpdateTimingSyntheticTaskRequestCommonSetting(TeaModel):
     ):
         # The custom host settings.
         self.custom_host = custom_host
+        # The reserved parameters.
         self.custom_prometheus_setting = custom_prometheus_setting
         # The information about the virtual private cloud (VPC). If the destination URL is an Alibaba Cloud internal endpoint, you need to configure a VPC.
         self.custom_vpcsetting = custom_vpcsetting
@@ -65401,8 +66197,8 @@ class UpdateTimingSyntheticTaskRequestCommonSetting(TeaModel):
         self.is_open_trace = is_open_trace
         # Specifies whether to evenly distribute monitoring samples. Valid values:
         # 
-        # *   0: no.
-        # *   1: yes.
+        # *   0: no
+        # *   1: yes
         self.monitor_samples = monitor_samples
         # The type of the client for tracing. Valid values:
         # 
@@ -65510,7 +66306,7 @@ class UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody(TeaModel):
         content: str = None,
         type: str = None,
     ):
-        # The content of the request body. Format: JSON string. The parameter is required if the type parameter is set to text/plain, application/json, application/xml, or text/html.
+        # The content of the request body. Format: JSON string. The parameter is required if the Type parameter is set to text/plain, application/json, application/xml, or text/html. Format: JSON string.
         self.content = content
         # The type of the request body. Valid values: text/plain, application/json, application/x-www-form-urlencoded, multipart/form-data, application/xml, and text/html.
         self.type = type
@@ -65551,15 +66347,24 @@ class UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP(TeaModel):
         target_url: str = None,
         timeout: int = None,
     ):
-        # Specifies whether to verify the certificate. Default value: No.
+        # Specifies whether to verify the certificate. Default value: false.
         self.check_cert = check_cert
         # The connection timeout period. Unit: milliseconds. Default value: 5000. Minimum value: 1000. Maximum value: 300000.
         self.connect_timeout = connect_timeout
-        # The request method.
+        # The request method. Valid values:
         # 
         # *   POST
         # *   GET
         self.method = method
+        # The ALPN protocol version. You can configure this parameter when you perform an HTTPS synthetic test on a WAP mobile client. Valid values:
+        # 
+        # 0: default
+        # 
+        # 1-http/1.1
+        # 
+        # 2-h2
+        # 
+        # 3: disables the ALPN protocol
         self.protocol_alpn_protocol = protocol_alpn_protocol
         # The HTTP request body.
         self.request_body = request_body
@@ -65651,19 +66456,19 @@ class UpdateTimingSyntheticTaskRequestMonitorConfFileDownload(TeaModel):
         # *   1: curl
         # *   0: WinInet
         self.download_kernel = download_kernel
-        # Specifies whether to ignore CA certificate authentication errors. Valid values: 0: No. 1: Yes. Default value: 1.
+        # Specifies whether to ignore CA certificate authentication errors. Valid values: 0: no. 1: yes. Default value: 1.
         self.ignore_certificate_auth_error = ignore_certificate_auth_error
-        # Specifies whether to ignore certificate revocation errors. Valid values: 0: No. 1: Yes. Default value: 1.
+        # Specifies whether to ignore certificate revocation errors. Valid values: 0: no. 1: yes. Default value: 1.
         self.ignore_certificate_canceled_error = ignore_certificate_canceled_error
-        # Specifies whether to ignore certificate invalidity. Valid values: 0: No. 1: Yes. Default value: 1.
+        # Specifies whether to ignore certificate invalidity. Valid values: 0: no. 1: yes. Default value: 1.
         self.ignore_certificate_out_of_date_error = ignore_certificate_out_of_date_error
-        # Specifies whether to ignore certificate status errors. 0: No. 1: Yes. Default value: 1.
+        # Specifies whether to ignore certificate status errors. 0: no. 1: yes. Default value: 1.
         self.ignore_certificate_status_error = ignore_certificate_status_error
-        # Specifies whether to ignore certificate incredibility. Valid values: 0: No. 1: Yes. Default value: 1.
+        # Specifies whether to ignore certificate incredibility. Valid values: 0: no. 1: yes. Default value: 1.
         self.ignore_certificate_untrustworthy_error = ignore_certificate_untrustworthy_error
-        # Specifies whether to ignore certificate usage errors. Valid values: 0: No. 1: Yes. Default value: 1.
+        # Specifies whether to ignore certificate usage errors. Valid values: 0: no. 1: yes. Default value: 1.
         self.ignore_certificate_using_error = ignore_certificate_using_error
-        # Specifies whether to ignore host invalidity. Valid values: 0: No. 1: Yes. Default value: 1.
+        # Specifies whether to ignore host invalidity. Valid values: 0: no. 1: yes. Default value: 1.
         self.ignore_invalid_host_error = ignore_invalid_host_error
         # The monitoring timeout period. Unit: milliseconds. Minimum value: 1000. Maximum value: 120000. Default value: 60000.
         self.monitor_timeout = monitor_timeout
@@ -65671,9 +66476,9 @@ class UpdateTimingSyntheticTaskRequestMonitorConfFileDownload(TeaModel):
         # 
         # *   1: HTTP/1
         # *   2: HTTP/2
-        # *   3: HTTP/3
+        # *   3: http3
         self.quick_protocol = quick_protocol
-        # Specifies whether to support redirection. Valid values: 0: No. 1: Yes. Default value: 1.
+        # Specifies whether to support redirection. Valid values: 0: no. 1: yes. Default value: 1.
         self.redirection = redirection
         # The URL that is used to download the file.
         self.target_url = target_url
@@ -65788,7 +66593,7 @@ class UpdateTimingSyntheticTaskRequestMonitorConfNetDNS(TeaModel):
         target_url: str = None,
         timeout: int = None,
     ):
-        # Specifies whether to use the dig command to display the data. Valid values: 0: No. 1: Yes.
+        # Specifies whether to use the dig command to display the data. Valid values: 0: no. 1: yes.
         self.dig = dig
         # The IP version of the DNS server. Valid values: 0: IPv4. 1: IPv6. 2: A version is automatically selected. Default value: 0.
         self.dns_server_ip_type = dns_server_ip_type
@@ -65798,7 +66603,7 @@ class UpdateTimingSyntheticTaskRequestMonitorConfNetDNS(TeaModel):
         self.query_method = query_method
         # The domain name.
         self.target_url = target_url
-        # The timeout period for the DNS synthetic test. Unit: milliseconds. The minimum value is 1000 and the maximum value is 45000. Default value: 5000.
+        # The timeout period for the DNS synthetic test. Unit: milliseconds. Minimum value: 1000. Maximum value: 45000. Default value: 5000.
         self.timeout = timeout
 
     def validate(self):
@@ -66015,8 +66820,8 @@ class UpdateTimingSyntheticTaskRequestMonitorConfStream(TeaModel):
         self.player_type = player_type
         # The address type of the resource. Valid values:
         # 
-        # *   1: resource URL
-        # *   0: page URL Default value: 0.
+        # *   1: resource URL.
+        # *   0: page URL. Default value: 0.
         self.stream_address_type = stream_address_type
         # The monitoring duration. Unit: seconds. Maximum and default value: 60.
         self.stream_monitor_timeout = stream_monitor_timeout
@@ -66094,9 +66899,9 @@ class UpdateTimingSyntheticTaskRequestMonitorConfWebsite(TeaModel):
         verify_string_whitelist: str = None,
         wait_completion_time: int = None,
     ):
-        # Specifies whether to automatically scroll up and down the screen to load a page. Valid values: 0: No. 1: Yes. Default value: 0.
+        # Specifies whether to automatically scroll up and down the screen to load a page. Valid values: 0: no. 1: yes. Default value: 0.
         self.automatic_scrolling = automatic_scrolling
-        # Specifies whether to create a custom header. Valid values: 0: No. 1: The first packet is modified. 2: All packets are modified. Default value: 0.
+        # Specifies whether to create a custom header. Valid values: 0: no. 1: The first packet is modified. 2: All packets are modified. Default value: 0.
         self.custom_header = custom_header
         # The custom header. Format: JSON map.
         self.custom_header_content = custom_header_content
@@ -66104,28 +66909,28 @@ class UpdateTimingSyntheticTaskRequestMonitorConfWebsite(TeaModel):
         # 
         # Format: \\<domain name>:\\<objects>. The objects can be IP addresses, wildcard mask, subnet mask, or CNAME records. Separate multiple objects with vertical bars (|). Example: www.aliyun.com:203.0.3.55|203.3.44.67. It indicates that all IP addresses that belong to the www.aliyun.com domain name except 203.0.3.55 and 203.3.44.67 are hijacked.
         self.dnshijack_whitelist = dnshijack_whitelist
-        # Specifies whether to disable the cache. Valid values: 0: No. 1: Yes. Default value: 1.
+        # Specifies whether to disable the cache. Valid values: 0: no. 1: yes. Default value: 1.
         self.disable_cache = disable_cache
-        # Specifies whether to accept compressed files based on the HTTP Accept-Encoding request header. Valid values: 0: No. 1: Yes. Default value: 0.
+        # Specifies whether to accept compressed files based on the HTTP Accept-Encoding request header. Valid values: 0: no. 1: yes. Default value: 0.
         self.disable_compression = disable_compression
         # The elements not to be loaded in the page loading process.
         self.element_blacklist = element_blacklist
         # Specifies whether to exclude invalid IP addresses. Valid values:
         # 
-        # *   1: No
-        # *   0: Yes
+        # *   1: no
+        # *   0: yes
         self.filter_invalid_ip = filter_invalid_ip
         # The total number of elements on the page.
         self.flow_hijack_jump_times = flow_hijack_jump_times
         # The keyword that is used to identify hijacking. Asterisks (\\*) are allowed.
         self.flow_hijack_logo = flow_hijack_logo
-        # Specifies whether to ignore SSL certificate errors during browsing. Valid values: 0: No. 1: Yes. Default value: 1.
+        # Specifies whether to ignore SSL certificate errors during browsing. Valid values: 0: no. 1: yes. Default value: 1.
         self.ignore_certificate_error = ignore_certificate_error
         # The monitoring timeout period. Unit: milliseconds. Minimum value: 5000. Maximum value: 300000. Default value: 40000.
         self.monitor_timeout = monitor_timeout
         # Elements that are not included in the whitelist and appear on the page are manipulated. These elements can be pop-up ads, floating ads, and page redirection.
         self.page_tamper = page_tamper
-        # Specifies whether to continue browsing after redirection. Valid values: 0: No. 1:Yes. Default value: 1.
+        # Specifies whether to continue browsing after redirection. Valid values: 0: no. 1: yes. Default value: 1.
         self.redirection = redirection
         # The time threshold that is used to define a slow element. Unit: milliseconds. Default value: 5000. Minimum value: 1. Maximum value: 300000.
         self.slow_element_threshold = slow_element_threshold
@@ -66249,7 +67054,7 @@ class UpdateTimingSyntheticTaskRequestMonitorConf(TeaModel):
         self.net_dns = net_dns
         # The parameters of the ICMP synthetic test.
         self.net_icmp = net_icmp
-        # The parameters of the TCP synthetic test. This parameter is required if the TaskType parameter is set to 2.
+        # The parameters of the TCP synthetic test.
         self.net_tcp = net_tcp
         # The parameters of the streaming-media synthetic test.
         self.stream = stream

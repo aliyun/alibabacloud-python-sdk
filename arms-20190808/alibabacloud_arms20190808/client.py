@@ -631,11 +631,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddPrometheusInstanceResponse:
         """
+        @deprecated OpenAPI AddPrometheusInstance is deprecated, please use ARMS::2019-08-08::CreatePrometheusInstance instead.
+        
         @summary Creates a Prometheus instance for Remote Write.
         
         @param request: AddPrometheusInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddPrometheusInstanceResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -670,11 +673,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.AddPrometheusInstanceResponse:
         """
+        @deprecated OpenAPI AddPrometheusInstance is deprecated, please use ARMS::2019-08-08::CreatePrometheusInstance instead.
+        
         @summary Creates a Prometheus instance for Remote Write.
         
         @param request: AddPrometheusInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddPrometheusInstanceResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -708,10 +714,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddPrometheusInstanceRequest,
     ) -> arms20190808_models.AddPrometheusInstanceResponse:
         """
+        @deprecated OpenAPI AddPrometheusInstance is deprecated, please use ARMS::2019-08-08::CreatePrometheusInstance instead.
+        
         @summary Creates a Prometheus instance for Remote Write.
         
         @param request: AddPrometheusInstanceRequest
         @return: AddPrometheusInstanceResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.add_prometheus_instance_with_options(request, runtime)
@@ -721,10 +730,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.AddPrometheusInstanceRequest,
     ) -> arms20190808_models.AddPrometheusInstanceResponse:
         """
+        @deprecated OpenAPI AddPrometheusInstance is deprecated, please use ARMS::2019-08-08::CreatePrometheusInstance instead.
+        
         @summary Creates a Prometheus instance for Remote Write.
         
         @param request: AddPrometheusInstanceRequest
         @return: AddPrometheusInstanceResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.add_prometheus_instance_with_options_async(request, runtime)
@@ -2397,7 +2409,7 @@ class Client(OpenApiClient):
         """
         @summary Creates an alert contact group.
         
-        @description ***********\
+        @description The current API operation is no longer maintained. Call the CreateOrUpdateContactGroup operation of the new Alert Management module to create or modify alert contact groups.
         
         @param request: CreateAlertContactGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2438,7 +2450,7 @@ class Client(OpenApiClient):
         """
         @summary Creates an alert contact group.
         
-        @description ***********\
+        @description The current API operation is no longer maintained. Call the CreateOrUpdateContactGroup operation of the new Alert Management module to create or modify alert contact groups.
         
         @param request: CreateAlertContactGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2478,7 +2490,7 @@ class Client(OpenApiClient):
         """
         @summary Creates an alert contact group.
         
-        @description ***********\
+        @description The current API operation is no longer maintained. Call the CreateOrUpdateContactGroup operation of the new Alert Management module to create or modify alert contact groups.
         
         @param request: CreateAlertContactGroupRequest
         @return: CreateAlertContactGroupResponse
@@ -2493,7 +2505,7 @@ class Client(OpenApiClient):
         """
         @summary Creates an alert contact group.
         
-        @description ***********\
+        @description The current API operation is no longer maintained. Call the CreateOrUpdateContactGroup operation of the new Alert Management module to create or modify alert contact groups.
         
         @param request: CreateAlertContactGroupRequest
         @return: CreateAlertContactGroupResponse
@@ -4483,7 +4495,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.CreatePrometheusAlertRuleResponse:
         """
-        @summary 创建Prometheus告警规则
+        @summary Creates an alert rule.
         
         @param request: CreatePrometheusAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4540,7 +4552,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.CreatePrometheusAlertRuleResponse:
         """
-        @summary 创建Prometheus告警规则
+        @summary Creates an alert rule.
         
         @param request: CreatePrometheusAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4596,7 +4608,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.CreatePrometheusAlertRuleRequest,
     ) -> arms20190808_models.CreatePrometheusAlertRuleResponse:
         """
-        @summary 创建Prometheus告警规则
+        @summary Creates an alert rule.
         
         @param request: CreatePrometheusAlertRuleRequest
         @return: CreatePrometheusAlertRuleResponse
@@ -4609,7 +4621,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.CreatePrometheusAlertRuleRequest,
     ) -> arms20190808_models.CreatePrometheusAlertRuleResponse:
         """
-        @summary 创建Prometheus告警规则
+        @summary Creates an alert rule.
         
         @param request: CreatePrometheusAlertRuleRequest
         @return: CreatePrometheusAlertRuleResponse
@@ -5021,6 +5033,8 @@ class Client(OpenApiClient):
             query['NickName'] = request.nick_name
         if not UtilClient.is_unset(request.package_name):
             query['PackageName'] = request.package_name
+        if not UtilClient.is_unset(request.real_region_id):
+            query['RealRegionId'] = request.real_region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -5078,6 +5092,8 @@ class Client(OpenApiClient):
             query['NickName'] = request.nick_name
         if not UtilClient.is_unset(request.package_name):
             query['PackageName'] = request.package_name
+        if not UtilClient.is_unset(request.real_region_id):
+            query['RealRegionId'] = request.real_region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -5141,7 +5157,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a file upload URL to upload SourceMap files, symbol table files, or dSYM files.
         
-        @description This operation returns a file upload URL. You can use the file upload URL to upload files. For more information, see [Use a URL to upload files](https://help.aliyun.com/zh/oss/user-guide/upload-a-file-using-a-file-url).
+        @description This operation returns a file upload URL. You can use the file upload URL to upload files. For more information, see [Use a URL to upload files](https://help.aliyun.com/document_detail/2579659.html).
         
         @param request: CreateRumUploadFileUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5192,7 +5208,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a file upload URL to upload SourceMap files, symbol table files, or dSYM files.
         
-        @description This operation returns a file upload URL. You can use the file upload URL to upload files. For more information, see [Use a URL to upload files](https://help.aliyun.com/zh/oss/user-guide/upload-a-file-using-a-file-url).
+        @description This operation returns a file upload URL. You can use the file upload URL to upload files. For more information, see [Use a URL to upload files](https://help.aliyun.com/document_detail/2579659.html).
         
         @param request: CreateRumUploadFileUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5242,7 +5258,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a file upload URL to upload SourceMap files, symbol table files, or dSYM files.
         
-        @description This operation returns a file upload URL. You can use the file upload URL to upload files. For more information, see [Use a URL to upload files](https://help.aliyun.com/zh/oss/user-guide/upload-a-file-using-a-file-url).
+        @description This operation returns a file upload URL. You can use the file upload URL to upload files. For more information, see [Use a URL to upload files](https://help.aliyun.com/document_detail/2579659.html).
         
         @param request: CreateRumUploadFileUrlRequest
         @return: CreateRumUploadFileUrlResponse
@@ -5257,7 +5273,7 @@ class Client(OpenApiClient):
         """
         @summary Creates a file upload URL to upload SourceMap files, symbol table files, or dSYM files.
         
-        @description This operation returns a file upload URL. You can use the file upload URL to upload files. For more information, see [Use a URL to upload files](https://help.aliyun.com/zh/oss/user-guide/upload-a-file-using-a-file-url).
+        @description This operation returns a file upload URL. You can use the file upload URL to upload files. For more information, see [Use a URL to upload files](https://help.aliyun.com/document_detail/2579659.html).
         
         @param request: CreateRumUploadFileUrlRequest
         @return: CreateRumUploadFileUrlResponse
@@ -8655,6 +8671,8 @@ class Client(OpenApiClient):
             query['AppGroup'] = request.app_group
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.real_region_id):
+            query['RealRegionId'] = request.real_region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -8694,6 +8712,8 @@ class Client(OpenApiClient):
             query['AppGroup'] = request.app_group
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.real_region_id):
+            query['RealRegionId'] = request.real_region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -9171,7 +9191,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteSyntheticTaskResponse:
         """
-        @summary 删除云拨测任务
+        @summary Deletes scheduled synthetic monitoring tasks.
         
         @param request: DeleteSyntheticTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9208,7 +9228,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DeleteSyntheticTaskResponse:
         """
-        @summary 删除云拨测任务
+        @summary Deletes scheduled synthetic monitoring tasks.
         
         @param request: DeleteSyntheticTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9244,7 +9264,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeleteSyntheticTaskRequest,
     ) -> arms20190808_models.DeleteSyntheticTaskResponse:
         """
-        @summary 删除云拨测任务
+        @summary Deletes scheduled synthetic monitoring tasks.
         
         @param request: DeleteSyntheticTaskRequest
         @return: DeleteSyntheticTaskResponse
@@ -9257,7 +9277,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.DeleteSyntheticTaskRequest,
     ) -> arms20190808_models.DeleteSyntheticTaskResponse:
         """
-        @summary 删除云拨测任务
+        @summary Deletes scheduled synthetic monitoring tasks.
         
         @param request: DeleteSyntheticTaskRequest
         @return: DeleteSyntheticTaskResponse
@@ -10675,7 +10695,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DescribePrometheusAlertRuleResponse:
         """
-        @summary Queries the details about an alert rule of Prometheus Service.
+        @summary Queries the details about an alert rule for a Prometheus instance.
         
         @param request: DescribePrometheusAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10712,7 +10732,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.DescribePrometheusAlertRuleResponse:
         """
-        @summary Queries the details about an alert rule of Prometheus Service.
+        @summary Queries the details about an alert rule for a Prometheus instance.
         
         @param request: DescribePrometheusAlertRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10748,7 +10768,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.DescribePrometheusAlertRuleRequest,
     ) -> arms20190808_models.DescribePrometheusAlertRuleResponse:
         """
-        @summary Queries the details about an alert rule of Prometheus Service.
+        @summary Queries the details about an alert rule for a Prometheus instance.
         
         @param request: DescribePrometheusAlertRuleRequest
         @return: DescribePrometheusAlertRuleResponse
@@ -10761,7 +10781,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.DescribePrometheusAlertRuleRequest,
     ) -> arms20190808_models.DescribePrometheusAlertRuleResponse:
         """
-        @summary Queries the details about an alert rule of Prometheus Service.
+        @summary Queries the details about an alert rule for a Prometheus instance.
         
         @param request: DescribePrometheusAlertRuleRequest
         @return: DescribePrometheusAlertRuleResponse
@@ -11252,6 +11272,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_agent_download_url_with_options_async(request, runtime)
+
+    def get_agent_download_url_v2with_options(
+        self,
+        request: arms20190808_models.GetAgentDownloadUrlV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetAgentDownloadUrlV2Response:
+        """
+        @summary 获取探针下载地址
+        
+        @param request: GetAgentDownloadUrlV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAgentDownloadUrlV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_type):
+            query['AgentType'] = request.agent_type
+        if not UtilClient.is_unset(request.arch_type):
+            query['ArchType'] = request.arch_type
+        if not UtilClient.is_unset(request.os_type):
+            query['OsType'] = request.os_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAgentDownloadUrlV2',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetAgentDownloadUrlV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_download_url_v2with_options_async(
+        self,
+        request: arms20190808_models.GetAgentDownloadUrlV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetAgentDownloadUrlV2Response:
+        """
+        @summary 获取探针下载地址
+        
+        @param request: GetAgentDownloadUrlV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAgentDownloadUrlV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_type):
+            query['AgentType'] = request.agent_type
+        if not UtilClient.is_unset(request.arch_type):
+            query['ArchType'] = request.arch_type
+        if not UtilClient.is_unset(request.os_type):
+            query['OsType'] = request.os_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAgentDownloadUrlV2',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetAgentDownloadUrlV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent_download_url_v2(
+        self,
+        request: arms20190808_models.GetAgentDownloadUrlV2Request,
+    ) -> arms20190808_models.GetAgentDownloadUrlV2Response:
+        """
+        @summary 获取探针下载地址
+        
+        @param request: GetAgentDownloadUrlV2Request
+        @return: GetAgentDownloadUrlV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_agent_download_url_v2with_options(request, runtime)
+
+    async def get_agent_download_url_v2_async(
+        self,
+        request: arms20190808_models.GetAgentDownloadUrlV2Request,
+    ) -> arms20190808_models.GetAgentDownloadUrlV2Response:
+        """
+        @summary 获取探针下载地址
+        
+        @param request: GetAgentDownloadUrlV2Request
+        @return: GetAgentDownloadUrlV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_agent_download_url_v2with_options_async(request, runtime)
 
     def get_alert_rules_with_options(
         self,
@@ -11815,11 +11939,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetClusterAllUrlResponse:
         """
+        @deprecated OpenAPI GetClusterAllUrl is deprecated, please use ARMS::2019-08-08::GetPrometheusInstance instead.
+        
         @summary Obtains all the URLs of a cluster, including remote read and write URLs, Pushgateway URLs, and Grafana URLs.
         
         @param request: GetClusterAllUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetClusterAllUrlResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -11852,11 +11979,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetClusterAllUrlResponse:
         """
+        @deprecated OpenAPI GetClusterAllUrl is deprecated, please use ARMS::2019-08-08::GetPrometheusInstance instead.
+        
         @summary Obtains all the URLs of a cluster, including remote read and write URLs, Pushgateway URLs, and Grafana URLs.
         
         @param request: GetClusterAllUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetClusterAllUrlResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -11888,10 +12018,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetClusterAllUrlRequest,
     ) -> arms20190808_models.GetClusterAllUrlResponse:
         """
+        @deprecated OpenAPI GetClusterAllUrl is deprecated, please use ARMS::2019-08-08::GetPrometheusInstance instead.
+        
         @summary Obtains all the URLs of a cluster, including remote read and write URLs, Pushgateway URLs, and Grafana URLs.
         
         @param request: GetClusterAllUrlRequest
         @return: GetClusterAllUrlResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.get_cluster_all_url_with_options(request, runtime)
@@ -11901,10 +12034,13 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetClusterAllUrlRequest,
     ) -> arms20190808_models.GetClusterAllUrlResponse:
         """
+        @deprecated OpenAPI GetClusterAllUrl is deprecated, please use ARMS::2019-08-08::GetPrometheusInstance instead.
+        
         @summary Obtains all the URLs of a cluster, including remote read and write URLs, Pushgateway URLs, and Grafana URLs.
         
         @param request: GetClusterAllUrlRequest
         @return: GetClusterAllUrlResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_cluster_all_url_with_options_async(request, runtime)
@@ -14755,7 +14891,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetSyntheticTaskDetailResponse:
         """
-        @summary 获取单个拨测任务的详情
+        @summary Queries the details of a scheduled synthetic monitoring task.
         
         @param request: GetSyntheticTaskDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14792,7 +14928,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetSyntheticTaskDetailResponse:
         """
-        @summary 获取单个拨测任务的详情
+        @summary Queries the details of a scheduled synthetic monitoring task.
         
         @param request: GetSyntheticTaskDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14828,7 +14964,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetSyntheticTaskDetailRequest,
     ) -> arms20190808_models.GetSyntheticTaskDetailResponse:
         """
-        @summary 获取单个拨测任务的详情
+        @summary Queries the details of a scheduled synthetic monitoring task.
         
         @param request: GetSyntheticTaskDetailRequest
         @return: GetSyntheticTaskDetailResponse
@@ -14841,7 +14977,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetSyntheticTaskDetailRequest,
     ) -> arms20190808_models.GetSyntheticTaskDetailResponse:
         """
-        @summary 获取单个拨测任务的详情
+        @summary Queries the details of a scheduled synthetic monitoring task.
         
         @param request: GetSyntheticTaskDetailRequest
         @return: GetSyntheticTaskDetailResponse
@@ -14855,7 +14991,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetSyntheticTaskListResponse:
         """
-        @summary 获取拨测任务列表
+        @summary Queries a list of scheduled synthetic monitoring tasks.
         
         @param request: GetSyntheticTaskListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14906,7 +15042,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetSyntheticTaskListResponse:
         """
-        @summary 获取拨测任务列表
+        @summary Queries a list of scheduled synthetic monitoring tasks.
         
         @param request: GetSyntheticTaskListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14956,7 +15092,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetSyntheticTaskListRequest,
     ) -> arms20190808_models.GetSyntheticTaskListResponse:
         """
-        @summary 获取拨测任务列表
+        @summary Queries a list of scheduled synthetic monitoring tasks.
         
         @param request: GetSyntheticTaskListRequest
         @return: GetSyntheticTaskListResponse
@@ -14969,7 +15105,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetSyntheticTaskListRequest,
     ) -> arms20190808_models.GetSyntheticTaskListResponse:
         """
-        @summary 获取拨测任务列表
+        @summary Queries a list of scheduled synthetic monitoring tasks.
         
         @param request: GetSyntheticTaskListRequest
         @return: GetSyntheticTaskListResponse
@@ -15391,7 +15527,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetTraceAppConfigResponse:
         """
-        @summary Queries all custom settings of an application monitored by Application Monitoring, such as trace sampling settings and agent switches.
+        @summary Queries all custom settings of an application monitored by Application Monitoring, such as trace sampling settings and agent switches. This operation is applicable only to applications that are monitored by Application Monitoring. It is not applicable to applications that are monitored by Managed Service for OpenTelemetry.
         
         @param request: GetTraceAppConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15426,7 +15562,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.GetTraceAppConfigResponse:
         """
-        @summary Queries all custom settings of an application monitored by Application Monitoring, such as trace sampling settings and agent switches.
+        @summary Queries all custom settings of an application monitored by Application Monitoring, such as trace sampling settings and agent switches. This operation is applicable only to applications that are monitored by Application Monitoring. It is not applicable to applications that are monitored by Managed Service for OpenTelemetry.
         
         @param request: GetTraceAppConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15460,7 +15596,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetTraceAppConfigRequest,
     ) -> arms20190808_models.GetTraceAppConfigResponse:
         """
-        @summary Queries all custom settings of an application monitored by Application Monitoring, such as trace sampling settings and agent switches.
+        @summary Queries all custom settings of an application monitored by Application Monitoring, such as trace sampling settings and agent switches. This operation is applicable only to applications that are monitored by Application Monitoring. It is not applicable to applications that are monitored by Managed Service for OpenTelemetry.
         
         @param request: GetTraceAppConfigRequest
         @return: GetTraceAppConfigResponse
@@ -15473,7 +15609,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.GetTraceAppConfigRequest,
     ) -> arms20190808_models.GetTraceAppConfigResponse:
         """
-        @summary Queries all custom settings of an application monitored by Application Monitoring, such as trace sampling settings and agent switches.
+        @summary Queries all custom settings of an application monitored by Application Monitoring, such as trace sampling settings and agent switches. This operation is applicable only to applications that are monitored by Application Monitoring. It is not applicable to applications that are monitored by Managed Service for OpenTelemetry.
         
         @param request: GetTraceAppConfigRequest
         @return: GetTraceAppConfigResponse
@@ -17311,6 +17447,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListDispatchRuleResponse:
         """
+        @summary Queries notification policies.
+        
+        @description The current API operation is no longer maintained. To query the notification policy information, call the ListNotificationPolicies operation instead.
+        
         @param request: ListDispatchRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDispatchRuleResponse
@@ -17348,6 +17488,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListDispatchRuleResponse:
         """
+        @summary Queries notification policies.
+        
+        @description The current API operation is no longer maintained. To query the notification policy information, call the ListNotificationPolicies operation instead.
+        
         @param request: ListDispatchRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDispatchRuleResponse
@@ -17384,6 +17528,10 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListDispatchRuleRequest,
     ) -> arms20190808_models.ListDispatchRuleResponse:
         """
+        @summary Queries notification policies.
+        
+        @description The current API operation is no longer maintained. To query the notification policy information, call the ListNotificationPolicies operation instead.
+        
         @param request: ListDispatchRuleRequest
         @return: ListDispatchRuleResponse
         """
@@ -17395,6 +17543,10 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListDispatchRuleRequest,
     ) -> arms20190808_models.ListDispatchRuleResponse:
         """
+        @summary Queries notification policies.
+        
+        @description The current API operation is no longer maintained. To query the notification policy information, call the ListNotificationPolicies operation instead.
+        
         @param request: ListDispatchRuleRequest
         @return: ListDispatchRuleResponse
         """
@@ -18779,7 +18931,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListPrometheusAlertRulesResponse:
         """
-        @summary The value of the annotation.
+        @summary Queries the alert rules created for a Prometheus instance.
         
         @param request: ListPrometheusAlertRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18826,7 +18978,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.ListPrometheusAlertRulesResponse:
         """
-        @summary The value of the annotation.
+        @summary Queries the alert rules created for a Prometheus instance.
         
         @param request: ListPrometheusAlertRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18872,7 +19024,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListPrometheusAlertRulesRequest,
     ) -> arms20190808_models.ListPrometheusAlertRulesResponse:
         """
-        @summary The value of the annotation.
+        @summary Queries the alert rules created for a Prometheus instance.
         
         @param request: ListPrometheusAlertRulesRequest
         @return: ListPrometheusAlertRulesResponse
@@ -18885,7 +19037,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.ListPrometheusAlertRulesRequest,
     ) -> arms20190808_models.ListPrometheusAlertRulesResponse:
         """
-        @summary The value of the annotation.
+        @summary Queries the alert rules created for a Prometheus instance.
         
         @param request: ListPrometheusAlertRulesRequest
         @return: ListPrometheusAlertRulesResponse
@@ -23867,7 +24019,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.SwitchSyntheticTaskStatusResponse:
         """
-        @summary 启动或者禁用云拨测的任务
+        @summary Starts or stops a scheduled synthetic monitoring task.
         
         @param request: SwitchSyntheticTaskStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23904,7 +24056,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.SwitchSyntheticTaskStatusResponse:
         """
-        @summary 启动或者禁用云拨测的任务
+        @summary Starts or stops a scheduled synthetic monitoring task.
         
         @param request: SwitchSyntheticTaskStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23940,7 +24092,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.SwitchSyntheticTaskStatusRequest,
     ) -> arms20190808_models.SwitchSyntheticTaskStatusResponse:
         """
-        @summary 启动或者禁用云拨测的任务
+        @summary Starts or stops a scheduled synthetic monitoring task.
         
         @param request: SwitchSyntheticTaskStatusRequest
         @return: SwitchSyntheticTaskStatusResponse
@@ -23953,7 +24105,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.SwitchSyntheticTaskStatusRequest,
     ) -> arms20190808_models.SwitchSyntheticTaskStatusResponse:
         """
-        @summary 启动或者禁用云拨测的任务
+        @summary Starts or stops a scheduled synthetic monitoring task.
         
         @param request: SwitchSyntheticTaskStatusRequest
         @return: SwitchSyntheticTaskStatusResponse
@@ -26197,8 +26349,18 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.archive_duration):
             query['ArchiveDuration'] = request.archive_duration
+        if not UtilClient.is_unset(request.auth_free_read_policy):
+            query['AuthFreeReadPolicy'] = request.auth_free_read_policy
+        if not UtilClient.is_unset(request.auth_free_write_policy):
+            query['AuthFreeWritePolicy'] = request.auth_free_write_policy
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.enable_auth_free_read):
+            query['EnableAuthFreeRead'] = request.enable_auth_free_read
+        if not UtilClient.is_unset(request.enable_auth_free_write):
+            query['EnableAuthFreeWrite'] = request.enable_auth_free_write
+        if not UtilClient.is_unset(request.enable_auth_token):
+            query['EnableAuthToken'] = request.enable_auth_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -26240,8 +26402,18 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.archive_duration):
             query['ArchiveDuration'] = request.archive_duration
+        if not UtilClient.is_unset(request.auth_free_read_policy):
+            query['AuthFreeReadPolicy'] = request.auth_free_read_policy
+        if not UtilClient.is_unset(request.auth_free_write_policy):
+            query['AuthFreeWritePolicy'] = request.auth_free_write_policy
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.enable_auth_free_read):
+            query['EnableAuthFreeRead'] = request.enable_auth_free_read
+        if not UtilClient.is_unset(request.enable_auth_free_write):
+            query['EnableAuthFreeWrite'] = request.enable_auth_free_write
+        if not UtilClient.is_unset(request.enable_auth_token):
+            query['EnableAuthToken'] = request.enable_auth_token
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -26661,6 +26833,8 @@ class Client(OpenApiClient):
             query['Nickname'] = request.nickname
         if not UtilClient.is_unset(request.pid):
             query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.real_region_id):
+            query['RealRegionId'] = request.real_region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.restart):
@@ -26716,6 +26890,8 @@ class Client(OpenApiClient):
             query['Nickname'] = request.nickname
         if not UtilClient.is_unset(request.pid):
             query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.real_region_id):
+            query['RealRegionId'] = request.real_region_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.restart):
