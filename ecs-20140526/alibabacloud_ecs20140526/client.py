@@ -6076,7 +6076,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateDeploymentSetResponse:
         """
-        @summary The name of the deployment set. The name must be 2 to 128 characters in length, It must start with a letter and cannot start with \\`http://\\` or \\`https://\\`. It can contain letters, digits, colons (:), underscores (\\_), and hyphens (-).
+        @summary Creates a deployment set in a region.
         
         @param request: CreateDeploymentSetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6135,7 +6135,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateDeploymentSetResponse:
         """
-        @summary The name of the deployment set. The name must be 2 to 128 characters in length, It must start with a letter and cannot start with \\`http://\\` or \\`https://\\`. It can contain letters, digits, colons (:), underscores (\\_), and hyphens (-).
+        @summary Creates a deployment set in a region.
         
         @param request: CreateDeploymentSetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6193,7 +6193,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateDeploymentSetRequest,
     ) -> ecs_20140526_models.CreateDeploymentSetResponse:
         """
-        @summary The name of the deployment set. The name must be 2 to 128 characters in length, It must start with a letter and cannot start with \\`http://\\` or \\`https://\\`. It can contain letters, digits, colons (:), underscores (\\_), and hyphens (-).
+        @summary Creates a deployment set in a region.
         
         @param request: CreateDeploymentSetRequest
         @return: CreateDeploymentSetResponse
@@ -6206,7 +6206,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateDeploymentSetRequest,
     ) -> ecs_20140526_models.CreateDeploymentSetResponse:
         """
-        @summary The name of the deployment set. The name must be 2 to 128 characters in length, It must start with a letter and cannot start with \\`http://\\` or \\`https://\\`. It can contain letters, digits, colons (:), underscores (\\_), and hyphens (-).
+        @summary Creates a deployment set in a region.
         
         @param request: CreateDeploymentSetRequest
         @return: CreateDeploymentSetResponse
@@ -6444,7 +6444,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateDiskResponse:
         """
-        @summary Creates a pay-as-you-go or subscription data disk.
+        @summary Creates a pay-as-you-go or subscription data disk. When you call this operation, you can specify parameters, such as ZoneId, SnapshotId, Size, and DiskCategory, in the request.
         
         @description ## [](#)Usage notes
         You can enable the multi-attach (`MultiAttach`) feature when you create a disk. Before you enable the multi-attach feature, we recommend that you familiarize yourself with the feature and its limits. For more information, see [NVMe disks](https://help.aliyun.com/document_detail/256487.html) and [Enable multi-attach](https://help.aliyun.com/document_detail/262105.html).
@@ -6540,7 +6540,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateDiskResponse:
         """
-        @summary Creates a pay-as-you-go or subscription data disk.
+        @summary Creates a pay-as-you-go or subscription data disk. When you call this operation, you can specify parameters, such as ZoneId, SnapshotId, Size, and DiskCategory, in the request.
         
         @description ## [](#)Usage notes
         You can enable the multi-attach (`MultiAttach`) feature when you create a disk. Before you enable the multi-attach feature, we recommend that you familiarize yourself with the feature and its limits. For more information, see [NVMe disks](https://help.aliyun.com/document_detail/256487.html) and [Enable multi-attach](https://help.aliyun.com/document_detail/262105.html).
@@ -6635,7 +6635,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateDiskRequest,
     ) -> ecs_20140526_models.CreateDiskResponse:
         """
-        @summary Creates a pay-as-you-go or subscription data disk.
+        @summary Creates a pay-as-you-go or subscription data disk. When you call this operation, you can specify parameters, such as ZoneId, SnapshotId, Size, and DiskCategory, in the request.
         
         @description ## [](#)Usage notes
         You can enable the multi-attach (`MultiAttach`) feature when you create a disk. Before you enable the multi-attach feature, we recommend that you familiarize yourself with the feature and its limits. For more information, see [NVMe disks](https://help.aliyun.com/document_detail/256487.html) and [Enable multi-attach](https://help.aliyun.com/document_detail/262105.html).
@@ -6657,7 +6657,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateDiskRequest,
     ) -> ecs_20140526_models.CreateDiskResponse:
         """
-        @summary Creates a pay-as-you-go or subscription data disk.
+        @summary Creates a pay-as-you-go or subscription data disk. When you call this operation, you can specify parameters, such as ZoneId, SnapshotId, Size, and DiskCategory, in the request.
         
         @description ## [](#)Usage notes
         You can enable the multi-attach (`MultiAttach`) feature when you create a disk. Before you enable the multi-attach feature, we recommend that you familiarize yourself with the feature and its limits. For more information, see [NVMe disks](https://help.aliyun.com/document_detail/256487.html) and [Enable multi-attach](https://help.aliyun.com/document_detail/262105.html).
@@ -7896,7 +7896,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateInstanceResponse:
         """
-        @summary Creates a subscription or pay-as-you-go Elastic Compute Service (ECS) instance.
+        @summary Creates a subscription or pay-as-you-go Elastic Compute Service (ECS) instance. When you call this operation, you can specify parameters, such as ImageId, InstanceType, SecurityGroupId, and InternetChargeType, in the request.
         
         @description ## [](#)Usage notes
         >  You can call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation to query available resources in a specific region or zone. If you want to batch create instances that automatically enter the Running state after they are created, we recommend that you call the [RunInstances](https://help.aliyun.com/document_detail/63440.html) operation.
@@ -8090,7 +8090,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateInstanceResponse:
         """
-        @summary Creates a subscription or pay-as-you-go Elastic Compute Service (ECS) instance.
+        @summary Creates a subscription or pay-as-you-go Elastic Compute Service (ECS) instance. When you call this operation, you can specify parameters, such as ImageId, InstanceType, SecurityGroupId, and InternetChargeType, in the request.
         
         @description ## [](#)Usage notes
         >  You can call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation to query available resources in a specific region or zone. If you want to batch create instances that automatically enter the Running state after they are created, we recommend that you call the [RunInstances](https://help.aliyun.com/document_detail/63440.html) operation.
@@ -8283,7 +8283,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateInstanceRequest,
     ) -> ecs_20140526_models.CreateInstanceResponse:
         """
-        @summary Creates a subscription or pay-as-you-go Elastic Compute Service (ECS) instance.
+        @summary Creates a subscription or pay-as-you-go Elastic Compute Service (ECS) instance. When you call this operation, you can specify parameters, such as ImageId, InstanceType, SecurityGroupId, and InternetChargeType, in the request.
         
         @description ## [](#)Usage notes
         >  You can call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation to query available resources in a specific region or zone. If you want to batch create instances that automatically enter the Running state after they are created, we recommend that you call the [RunInstances](https://help.aliyun.com/document_detail/63440.html) operation.
@@ -8335,7 +8335,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateInstanceRequest,
     ) -> ecs_20140526_models.CreateInstanceResponse:
         """
-        @summary Creates a subscription or pay-as-you-go Elastic Compute Service (ECS) instance.
+        @summary Creates a subscription or pay-as-you-go Elastic Compute Service (ECS) instance. When you call this operation, you can specify parameters, such as ImageId, InstanceType, SecurityGroupId, and InternetChargeType, in the request.
         
         @description ## [](#)Usage notes
         >  You can call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation to query available resources in a specific region or zone. If you want to batch create instances that automatically enter the Running state after they are created, we recommend that you call the [RunInstances](https://help.aliyun.com/document_detail/63440.html) operation.
@@ -12836,7 +12836,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteDeploymentSetResponse:
         """
-        @summary Deletes a deployment set in a region. Make sure that no instances exist in the deployment set that you want to delete. If instances exist in the deployment set, move the instances to a different deployment set or release the instances before you delete the deployment set.
+        @summary Deletes a deployment set in a region. When you call this operation, specify parameters such as RegionId and DeploymentSetId in the request.
+        
+        @description Before you delete a deployment set, make sure that no instances exist in the deployment set. If instances exist in the deployment set, move the instances to a different deployment set or release the instances before you delete the deployment set. For more information, see [Change the deployment set of an instance](https://help.aliyun.com/document_detail/108407.html) and [Release an ECS instance](https://help.aliyun.com/document_detail/25442.html).
         
         @param request: DeleteDeploymentSetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12881,7 +12883,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteDeploymentSetResponse:
         """
-        @summary Deletes a deployment set in a region. Make sure that no instances exist in the deployment set that you want to delete. If instances exist in the deployment set, move the instances to a different deployment set or release the instances before you delete the deployment set.
+        @summary Deletes a deployment set in a region. When you call this operation, specify parameters such as RegionId and DeploymentSetId in the request.
+        
+        @description Before you delete a deployment set, make sure that no instances exist in the deployment set. If instances exist in the deployment set, move the instances to a different deployment set or release the instances before you delete the deployment set. For more information, see [Change the deployment set of an instance](https://help.aliyun.com/document_detail/108407.html) and [Release an ECS instance](https://help.aliyun.com/document_detail/25442.html).
         
         @param request: DeleteDeploymentSetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12925,7 +12929,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteDeploymentSetRequest,
     ) -> ecs_20140526_models.DeleteDeploymentSetResponse:
         """
-        @summary Deletes a deployment set in a region. Make sure that no instances exist in the deployment set that you want to delete. If instances exist in the deployment set, move the instances to a different deployment set or release the instances before you delete the deployment set.
+        @summary Deletes a deployment set in a region. When you call this operation, specify parameters such as RegionId and DeploymentSetId in the request.
+        
+        @description Before you delete a deployment set, make sure that no instances exist in the deployment set. If instances exist in the deployment set, move the instances to a different deployment set or release the instances before you delete the deployment set. For more information, see [Change the deployment set of an instance](https://help.aliyun.com/document_detail/108407.html) and [Release an ECS instance](https://help.aliyun.com/document_detail/25442.html).
         
         @param request: DeleteDeploymentSetRequest
         @return: DeleteDeploymentSetResponse
@@ -12938,7 +12944,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteDeploymentSetRequest,
     ) -> ecs_20140526_models.DeleteDeploymentSetResponse:
         """
-        @summary Deletes a deployment set in a region. Make sure that no instances exist in the deployment set that you want to delete. If instances exist in the deployment set, move the instances to a different deployment set or release the instances before you delete the deployment set.
+        @summary Deletes a deployment set in a region. When you call this operation, specify parameters such as RegionId and DeploymentSetId in the request.
+        
+        @description Before you delete a deployment set, make sure that no instances exist in the deployment set. If instances exist in the deployment set, move the instances to a different deployment set or release the instances before you delete the deployment set. For more information, see [Change the deployment set of an instance](https://help.aliyun.com/document_detail/108407.html) and [Release an ECS instance](https://help.aliyun.com/document_detail/25442.html).
         
         @param request: DeleteDeploymentSetRequest
         @return: DeleteDeploymentSetResponse
@@ -19912,7 +19920,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDeploymentSetSupportedInstanceTypeFamilyResponse:
         """
-        @summary Queries the instance families that support deployment sets.
+        @summary Queries the instance families that support different deployment strategies. When you call this operation, specify parameters, such as RegionId and Strategy, in the request.
         
         @description ## [](#)Usage notes
         For information about instance families, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
@@ -19960,7 +19968,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDeploymentSetSupportedInstanceTypeFamilyResponse:
         """
-        @summary Queries the instance families that support deployment sets.
+        @summary Queries the instance families that support different deployment strategies. When you call this operation, specify parameters, such as RegionId and Strategy, in the request.
         
         @description ## [](#)Usage notes
         For information about instance families, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
@@ -20007,7 +20015,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDeploymentSetSupportedInstanceTypeFamilyRequest,
     ) -> ecs_20140526_models.DescribeDeploymentSetSupportedInstanceTypeFamilyResponse:
         """
-        @summary Queries the instance families that support deployment sets.
+        @summary Queries the instance families that support different deployment strategies. When you call this operation, specify parameters, such as RegionId and Strategy, in the request.
         
         @description ## [](#)Usage notes
         For information about instance families, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
@@ -20023,7 +20031,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDeploymentSetSupportedInstanceTypeFamilyRequest,
     ) -> ecs_20140526_models.DescribeDeploymentSetSupportedInstanceTypeFamilyResponse:
         """
-        @summary Queries the instance families that support deployment sets.
+        @summary Queries the instance families that support different deployment strategies. When you call this operation, specify parameters, such as RegionId and Strategy, in the request.
         
         @description ## [](#)Usage notes
         For information about instance families, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
@@ -20040,7 +20048,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDeploymentSetsResponse:
         """
-        @summary Queries the attributes of one or more deployment sets.
+        @summary Queries the details of one or more deployment sets. When you call this operation, you can specify parameters, such as DeploymentSetIds, Strategy, and DeploymentSetName, in the request.
         
         @param request: DescribeDeploymentSetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20099,7 +20107,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDeploymentSetsResponse:
         """
-        @summary Queries the attributes of one or more deployment sets.
+        @summary Queries the details of one or more deployment sets. When you call this operation, you can specify parameters, such as DeploymentSetIds, Strategy, and DeploymentSetName, in the request.
         
         @param request: DescribeDeploymentSetsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20157,7 +20165,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDeploymentSetsRequest,
     ) -> ecs_20140526_models.DescribeDeploymentSetsResponse:
         """
-        @summary Queries the attributes of one or more deployment sets.
+        @summary Queries the details of one or more deployment sets. When you call this operation, you can specify parameters, such as DeploymentSetIds, Strategy, and DeploymentSetName, in the request.
         
         @param request: DescribeDeploymentSetsRequest
         @return: DescribeDeploymentSetsResponse
@@ -20170,7 +20178,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDeploymentSetsRequest,
     ) -> ecs_20140526_models.DescribeDeploymentSetsResponse:
         """
-        @summary Queries the attributes of one or more deployment sets.
+        @summary Queries the details of one or more deployment sets. When you call this operation, you can specify parameters, such as DeploymentSetIds, Strategy, and DeploymentSetName, in the request.
         
         @param request: DescribeDeploymentSetsRequest
         @return: DescribeDeploymentSetsResponse
@@ -20626,20 +20634,220 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_diagnostic_reports_with_options_async(request, runtime)
 
+    def describe_disk_default_kmskey_id_with_options(
+        self,
+        request: ecs_20140526_models.DescribeDiskDefaultKMSKeyIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeDiskDefaultKMSKeyIdResponse:
+        """
+        @summary 查询云盘默认加密加密密钥
+        
+        @param request: DescribeDiskDefaultKMSKeyIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiskDefaultKMSKeyIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiskDefaultKMSKeyId',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiskDefaultKMSKeyIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_disk_default_kmskey_id_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribeDiskDefaultKMSKeyIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeDiskDefaultKMSKeyIdResponse:
+        """
+        @summary 查询云盘默认加密加密密钥
+        
+        @param request: DescribeDiskDefaultKMSKeyIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiskDefaultKMSKeyIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiskDefaultKMSKeyId',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiskDefaultKMSKeyIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_disk_default_kmskey_id(
+        self,
+        request: ecs_20140526_models.DescribeDiskDefaultKMSKeyIdRequest,
+    ) -> ecs_20140526_models.DescribeDiskDefaultKMSKeyIdResponse:
+        """
+        @summary 查询云盘默认加密加密密钥
+        
+        @param request: DescribeDiskDefaultKMSKeyIdRequest
+        @return: DescribeDiskDefaultKMSKeyIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_disk_default_kmskey_id_with_options(request, runtime)
+
+    async def describe_disk_default_kmskey_id_async(
+        self,
+        request: ecs_20140526_models.DescribeDiskDefaultKMSKeyIdRequest,
+    ) -> ecs_20140526_models.DescribeDiskDefaultKMSKeyIdResponse:
+        """
+        @summary 查询云盘默认加密加密密钥
+        
+        @param request: DescribeDiskDefaultKMSKeyIdRequest
+        @return: DescribeDiskDefaultKMSKeyIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_disk_default_kmskey_id_with_options_async(request, runtime)
+
+    def describe_disk_encryption_by_default_status_with_options(
+        self,
+        request: ecs_20140526_models.DescribeDiskEncryptionByDefaultStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeDiskEncryptionByDefaultStatusResponse:
+        """
+        @summary 检查云盘默认加密开启状态
+        
+        @param request: DescribeDiskEncryptionByDefaultStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiskEncryptionByDefaultStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiskEncryptionByDefaultStatus',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiskEncryptionByDefaultStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_disk_encryption_by_default_status_with_options_async(
+        self,
+        request: ecs_20140526_models.DescribeDiskEncryptionByDefaultStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DescribeDiskEncryptionByDefaultStatusResponse:
+        """
+        @summary 检查云盘默认加密开启状态
+        
+        @param request: DescribeDiskEncryptionByDefaultStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiskEncryptionByDefaultStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDiskEncryptionByDefaultStatus',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DescribeDiskEncryptionByDefaultStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_disk_encryption_by_default_status(
+        self,
+        request: ecs_20140526_models.DescribeDiskEncryptionByDefaultStatusRequest,
+    ) -> ecs_20140526_models.DescribeDiskEncryptionByDefaultStatusResponse:
+        """
+        @summary 检查云盘默认加密开启状态
+        
+        @param request: DescribeDiskEncryptionByDefaultStatusRequest
+        @return: DescribeDiskEncryptionByDefaultStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_disk_encryption_by_default_status_with_options(request, runtime)
+
+    async def describe_disk_encryption_by_default_status_async(
+        self,
+        request: ecs_20140526_models.DescribeDiskEncryptionByDefaultStatusRequest,
+    ) -> ecs_20140526_models.DescribeDiskEncryptionByDefaultStatusResponse:
+        """
+        @summary 检查云盘默认加密开启状态
+        
+        @param request: DescribeDiskEncryptionByDefaultStatusRequest
+        @return: DescribeDiskEncryptionByDefaultStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_disk_encryption_by_default_status_with_options_async(request, runtime)
+
     def describe_disk_monitor_data_with_options(
         self,
         request: ecs_20140526_models.DescribeDiskMonitorDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDiskMonitorDataResponse:
         """
-        @summary Queries the monitoring data of a disk in a specific period of time.
+        @summary Queries the monitoring data of a disk in a specific period of time. When you call this operation, you can specify parameters, such as DiskId, StartTime, and EndTime, in the request.
         
         @description ## [](#)Usage notes
         You can query the following monitoring data of a disk: the read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds).
         Take note of the following items:
-        You can query the monitoring data only of the disks that are in the In Use (`In_use`) state. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html).
+        Monitoring data of only disks that are in the In Use (`In_use`) state can be queried. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html).
         *\
-        *Note** Some information may be missing from the monitoring data of a disk because the disk is not in the In Use (`In_use`) state and the system cannot obtain the relevant information.
+        *Note** Some information may be missing from the monitoring data of a disk because the disk is not in the In Use `(In_use)` state and the system cannot obtain the relevant information.
         Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
         You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
         
@@ -20690,14 +20898,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeDiskMonitorDataResponse:
         """
-        @summary Queries the monitoring data of a disk in a specific period of time.
+        @summary Queries the monitoring data of a disk in a specific period of time. When you call this operation, you can specify parameters, such as DiskId, StartTime, and EndTime, in the request.
         
         @description ## [](#)Usage notes
         You can query the following monitoring data of a disk: the read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds).
         Take note of the following items:
-        You can query the monitoring data only of the disks that are in the In Use (`In_use`) state. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html).
+        Monitoring data of only disks that are in the In Use (`In_use`) state can be queried. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html).
         *\
-        *Note** Some information may be missing from the monitoring data of a disk because the disk is not in the In Use (`In_use`) state and the system cannot obtain the relevant information.
+        *Note** Some information may be missing from the monitoring data of a disk because the disk is not in the In Use `(In_use)` state and the system cannot obtain the relevant information.
         Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
         You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
         
@@ -20747,14 +20955,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDiskMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeDiskMonitorDataResponse:
         """
-        @summary Queries the monitoring data of a disk in a specific period of time.
+        @summary Queries the monitoring data of a disk in a specific period of time. When you call this operation, you can specify parameters, such as DiskId, StartTime, and EndTime, in the request.
         
         @description ## [](#)Usage notes
         You can query the following monitoring data of a disk: the read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds).
         Take note of the following items:
-        You can query the monitoring data only of the disks that are in the In Use (`In_use`) state. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html).
+        Monitoring data of only disks that are in the In Use (`In_use`) state can be queried. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html).
         *\
-        *Note** Some information may be missing from the monitoring data of a disk because the disk is not in the In Use (`In_use`) state and the system cannot obtain the relevant information.
+        *Note** Some information may be missing from the monitoring data of a disk because the disk is not in the In Use `(In_use)` state and the system cannot obtain the relevant information.
         Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
         You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
         
@@ -20769,14 +20977,14 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeDiskMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeDiskMonitorDataResponse:
         """
-        @summary Queries the monitoring data of a disk in a specific period of time.
+        @summary Queries the monitoring data of a disk in a specific period of time. When you call this operation, you can specify parameters, such as DiskId, StartTime, and EndTime, in the request.
         
         @description ## [](#)Usage notes
         You can query the following monitoring data of a disk: the read IOPS, write IOPS, read bandwidth (byte/s), write bandwidth (byte/s), read latency (microseconds), and write latency (microseconds).
         Take note of the following items:
-        You can query the monitoring data only of the disks that are in the In Use (`In_use`) state. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html).
+        Monitoring data of only disks that are in the In Use (`In_use`) state can be queried. For more information, see [Disk states](https://help.aliyun.com/document_detail/25689.html).
         *\
-        *Note** Some information may be missing from the monitoring data of a disk because the disk is not in the In Use (`In_use`) state and the system cannot obtain the relevant information.
+        *Note** Some information may be missing from the monitoring data of a disk because the disk is not in the In Use `(In_use)` state and the system cannot obtain the relevant information.
         Up to 400 monitoring data entries can be returned at a time. Make sure that the `TotalCount` value does not exceed 400. The value is calculated by using the following formula: `TotalCount = (EndTime - StartTime)/Period`. If the TotalCount value is greater than 400, the `InvalidParameter.TooManyDataQueried` error is returned.
         You can query the monitoring data in the last 30 days. If the value of `StartTime` is more than 30 days earlier than the current time, an error is returned.
         
@@ -23180,7 +23388,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImagesResponse:
         """
-        @summary Queries available images.
+        @summary Queries available images. When you call this operation, you can specify parameters, such as ImageId, ImageFamily, and InstanceType, in the request.
         
         @description ## [](#)Usage notes
         You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
@@ -23273,7 +23481,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeImagesResponse:
         """
-        @summary Queries available images.
+        @summary Queries available images. When you call this operation, you can specify parameters, such as ImageId, ImageFamily, and InstanceType, in the request.
         
         @description ## [](#)Usage notes
         You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
@@ -23365,7 +23573,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeImagesRequest,
     ) -> ecs_20140526_models.DescribeImagesResponse:
         """
-        @summary Queries available images.
+        @summary Queries available images. When you call this operation, you can specify parameters, such as ImageId, ImageFamily, and InstanceType, in the request.
         
         @description ## [](#)Usage notes
         You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
@@ -23384,7 +23592,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeImagesRequest,
     ) -> ecs_20140526_models.DescribeImagesResponse:
         """
-        @summary Queries available images.
+        @summary Queries available images. When you call this operation, you can specify parameters, such as ImageId, ImageFamily, and InstanceType, in the request.
         
         @description ## [](#)Usage notes
         You can query your custom images, public images provided by Alibaba Cloud, Alibaba Cloud Marketplace images, and shared images from other Alibaba Cloud accounts.
@@ -23792,7 +24000,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceHistoryEventsResponse:
         """
-        @summary Queries the system events of Elastic Compute Service (ECS) instances. By default, non-active system events are queried.
+        @summary Queries the system events of Elastic Compute Service (ECS) instances. When you call this operation, you can specify parameters, such as InstanceId and EventType, in the request. By default, non-active system events are queried.
         
         @description    You can query system events that were completed within the last 30 days. No limits apply to the time range for querying uncompleted system events.
         You can also specify InstanceEventCycleStatus to query the system events that are in the Scheduled, Executing, or Inquiring state.
@@ -23870,7 +24078,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceHistoryEventsResponse:
         """
-        @summary Queries the system events of Elastic Compute Service (ECS) instances. By default, non-active system events are queried.
+        @summary Queries the system events of Elastic Compute Service (ECS) instances. When you call this operation, you can specify parameters, such as InstanceId and EventType, in the request. By default, non-active system events are queried.
         
         @description    You can query system events that were completed within the last 30 days. No limits apply to the time range for querying uncompleted system events.
         You can also specify InstanceEventCycleStatus to query the system events that are in the Scheduled, Executing, or Inquiring state.
@@ -23947,7 +24155,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceHistoryEventsRequest,
     ) -> ecs_20140526_models.DescribeInstanceHistoryEventsResponse:
         """
-        @summary Queries the system events of Elastic Compute Service (ECS) instances. By default, non-active system events are queried.
+        @summary Queries the system events of Elastic Compute Service (ECS) instances. When you call this operation, you can specify parameters, such as InstanceId and EventType, in the request. By default, non-active system events are queried.
         
         @description    You can query system events that were completed within the last 30 days. No limits apply to the time range for querying uncompleted system events.
         You can also specify InstanceEventCycleStatus to query the system events that are in the Scheduled, Executing, or Inquiring state.
@@ -23963,7 +24171,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceHistoryEventsRequest,
     ) -> ecs_20140526_models.DescribeInstanceHistoryEventsResponse:
         """
-        @summary Queries the system events of Elastic Compute Service (ECS) instances. By default, non-active system events are queried.
+        @summary Queries the system events of Elastic Compute Service (ECS) instances. When you call this operation, you can specify parameters, such as InstanceId and EventType, in the request. By default, non-active system events are queried.
         
         @description    You can query system events that were completed within the last 30 days. No limits apply to the time range for querying uncompleted system events.
         You can also specify InstanceEventCycleStatus to query the system events that are in the Scheduled, Executing, or Inquiring state.
@@ -24552,7 +24760,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceStatusResponse:
         """
-        @summary Queries the status information of multiple Elastic Compute Service (ECS) instances.
+        @summary Queries the status information of Elastic Compute Service (ECS) instances. When you call this operation, you can specify parameters, such as RegionId, ZoneId, and InstanceId, in the request.
         
         @description    For information about the lifecycle states of an ECS instance, see [Instance states](https://help.aliyun.com/document_detail/25687.html).
         You can also call this operation to query the list of ECS instances.
@@ -24608,7 +24816,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeInstanceStatusResponse:
         """
-        @summary Queries the status information of multiple Elastic Compute Service (ECS) instances.
+        @summary Queries the status information of Elastic Compute Service (ECS) instances. When you call this operation, you can specify parameters, such as RegionId, ZoneId, and InstanceId, in the request.
         
         @description    For information about the lifecycle states of an ECS instance, see [Instance states](https://help.aliyun.com/document_detail/25687.html).
         You can also call this operation to query the list of ECS instances.
@@ -24663,7 +24871,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceStatusRequest,
     ) -> ecs_20140526_models.DescribeInstanceStatusResponse:
         """
-        @summary Queries the status information of multiple Elastic Compute Service (ECS) instances.
+        @summary Queries the status information of Elastic Compute Service (ECS) instances. When you call this operation, you can specify parameters, such as RegionId, ZoneId, and InstanceId, in the request.
         
         @description    For information about the lifecycle states of an ECS instance, see [Instance states](https://help.aliyun.com/document_detail/25687.html).
         You can also call this operation to query the list of ECS instances.
@@ -24679,7 +24887,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeInstanceStatusRequest,
     ) -> ecs_20140526_models.DescribeInstanceStatusResponse:
         """
-        @summary Queries the status information of multiple Elastic Compute Service (ECS) instances.
+        @summary Queries the status information of Elastic Compute Service (ECS) instances. When you call this operation, you can specify parameters, such as RegionId, ZoneId, and InstanceId, in the request.
         
         @description    For information about the lifecycle states of an ECS instance, see [Instance states](https://help.aliyun.com/document_detail/25687.html).
         You can also call this operation to query the list of ECS instances.
@@ -34854,6 +35062,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.disable_activation_with_options_async(request, runtime)
 
+    def disable_disk_encryption_by_default_with_options(
+        self,
+        request: ecs_20140526_models.DisableDiskEncryptionByDefaultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DisableDiskEncryptionByDefaultResponse:
+        """
+        @summary 关闭云盘默认加密
+        
+        @param request: DisableDiskEncryptionByDefaultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableDiskEncryptionByDefaultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableDiskEncryptionByDefault',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DisableDiskEncryptionByDefaultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_disk_encryption_by_default_with_options_async(
+        self,
+        request: ecs_20140526_models.DisableDiskEncryptionByDefaultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.DisableDiskEncryptionByDefaultResponse:
+        """
+        @summary 关闭云盘默认加密
+        
+        @param request: DisableDiskEncryptionByDefaultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableDiskEncryptionByDefaultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableDiskEncryptionByDefault',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.DisableDiskEncryptionByDefaultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_disk_encryption_by_default(
+        self,
+        request: ecs_20140526_models.DisableDiskEncryptionByDefaultRequest,
+    ) -> ecs_20140526_models.DisableDiskEncryptionByDefaultResponse:
+        """
+        @summary 关闭云盘默认加密
+        
+        @param request: DisableDiskEncryptionByDefaultRequest
+        @return: DisableDiskEncryptionByDefaultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disable_disk_encryption_by_default_with_options(request, runtime)
+
+    async def disable_disk_encryption_by_default_async(
+        self,
+        request: ecs_20140526_models.DisableDiskEncryptionByDefaultRequest,
+    ) -> ecs_20140526_models.DisableDiskEncryptionByDefaultResponse:
+        """
+        @summary 关闭云盘默认加密
+        
+        @param request: DisableDiskEncryptionByDefaultRequest
+        @return: DisableDiskEncryptionByDefaultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_disk_encryption_by_default_with_options_async(request, runtime)
+
     def eip_fill_params_with_options(
         self,
         request: ecs_20140526_models.EipFillParamsRequest,
@@ -35226,6 +35534,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.eip_notify_paid_with_options_async(request, runtime)
 
+    def enable_disk_encryption_by_default_with_options(
+        self,
+        request: ecs_20140526_models.EnableDiskEncryptionByDefaultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.EnableDiskEncryptionByDefaultResponse:
+        """
+        @summary 启用云盘默认加密
+        
+        @param request: EnableDiskEncryptionByDefaultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableDiskEncryptionByDefaultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableDiskEncryptionByDefault',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.EnableDiskEncryptionByDefaultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_disk_encryption_by_default_with_options_async(
+        self,
+        request: ecs_20140526_models.EnableDiskEncryptionByDefaultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.EnableDiskEncryptionByDefaultResponse:
+        """
+        @summary 启用云盘默认加密
+        
+        @param request: EnableDiskEncryptionByDefaultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableDiskEncryptionByDefaultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableDiskEncryptionByDefault',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.EnableDiskEncryptionByDefaultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_disk_encryption_by_default(
+        self,
+        request: ecs_20140526_models.EnableDiskEncryptionByDefaultRequest,
+    ) -> ecs_20140526_models.EnableDiskEncryptionByDefaultResponse:
+        """
+        @summary 启用云盘默认加密
+        
+        @param request: EnableDiskEncryptionByDefaultRequest
+        @return: EnableDiskEncryptionByDefaultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_disk_encryption_by_default_with_options(request, runtime)
+
+    async def enable_disk_encryption_by_default_async(
+        self,
+        request: ecs_20140526_models.EnableDiskEncryptionByDefaultRequest,
+    ) -> ecs_20140526_models.EnableDiskEncryptionByDefaultResponse:
+        """
+        @summary 启用云盘默认加密
+        
+        @param request: EnableDiskEncryptionByDefaultRequest
+        @return: EnableDiskEncryptionByDefaultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_disk_encryption_by_default_with_options_async(request, runtime)
+
     def enable_physical_connection_with_options(
         self,
         request: ecs_20140526_models.EnablePhysicalConnectionRequest,
@@ -35365,7 +35785,7 @@ class Client(OpenApiClient):
         @description ## [](#)Usage notes
         Before you export images, take note of the following items:
         Make sure that you are familiar with the prerequisites and considerations. For more information, see [Export a custom image](https://help.aliyun.com/document_detail/58181.html).
-        The `ImageFormat` parameter is available only for the following regions: India (Mumbai) Closing Down, Japan (Tokyo), Australia (Sydney), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). Alibaba Cloud services will be discontinued in the India (Mumbai) region. By default, custom images are exported in the RAW format in regions where the ImageFormat parameter is unsupported.
+        The `ImageFormat` parameter is available only for the following regions: Japan (Tokyo), Australia (Sydney), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). Alibaba Cloud services will be discontinued in the India (Mumbai) region. By default, custom images are exported in the RAW format in regions where the ImageFormat parameter is unsupported.
         Use Resource Access Management (RAM) to authorize Elastic Compute Service (ECS) to write data to OSS. To complete the authorization, perform the following operations:
         Create a role named `AliyunECSImageExportDefaultRole` and attach the following policy to the role:
         {
@@ -35459,7 +35879,7 @@ class Client(OpenApiClient):
         @description ## [](#)Usage notes
         Before you export images, take note of the following items:
         Make sure that you are familiar with the prerequisites and considerations. For more information, see [Export a custom image](https://help.aliyun.com/document_detail/58181.html).
-        The `ImageFormat` parameter is available only for the following regions: India (Mumbai) Closing Down, Japan (Tokyo), Australia (Sydney), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). Alibaba Cloud services will be discontinued in the India (Mumbai) region. By default, custom images are exported in the RAW format in regions where the ImageFormat parameter is unsupported.
+        The `ImageFormat` parameter is available only for the following regions: Japan (Tokyo), Australia (Sydney), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). Alibaba Cloud services will be discontinued in the India (Mumbai) region. By default, custom images are exported in the RAW format in regions where the ImageFormat parameter is unsupported.
         Use Resource Access Management (RAM) to authorize Elastic Compute Service (ECS) to write data to OSS. To complete the authorization, perform the following operations:
         Create a role named `AliyunECSImageExportDefaultRole` and attach the following policy to the role:
         {
@@ -35552,7 +35972,7 @@ class Client(OpenApiClient):
         @description ## [](#)Usage notes
         Before you export images, take note of the following items:
         Make sure that you are familiar with the prerequisites and considerations. For more information, see [Export a custom image](https://help.aliyun.com/document_detail/58181.html).
-        The `ImageFormat` parameter is available only for the following regions: India (Mumbai) Closing Down, Japan (Tokyo), Australia (Sydney), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). Alibaba Cloud services will be discontinued in the India (Mumbai) region. By default, custom images are exported in the RAW format in regions where the ImageFormat parameter is unsupported.
+        The `ImageFormat` parameter is available only for the following regions: Japan (Tokyo), Australia (Sydney), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). Alibaba Cloud services will be discontinued in the India (Mumbai) region. By default, custom images are exported in the RAW format in regions where the ImageFormat parameter is unsupported.
         Use Resource Access Management (RAM) to authorize Elastic Compute Service (ECS) to write data to OSS. To complete the authorization, perform the following operations:
         Create a role named `AliyunECSImageExportDefaultRole` and attach the following policy to the role:
         {
@@ -35608,7 +36028,7 @@ class Client(OpenApiClient):
         @description ## [](#)Usage notes
         Before you export images, take note of the following items:
         Make sure that you are familiar with the prerequisites and considerations. For more information, see [Export a custom image](https://help.aliyun.com/document_detail/58181.html).
-        The `ImageFormat` parameter is available only for the following regions: India (Mumbai) Closing Down, Japan (Tokyo), Australia (Sydney), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). Alibaba Cloud services will be discontinued in the India (Mumbai) region. By default, custom images are exported in the RAW format in regions where the ImageFormat parameter is unsupported.
+        The `ImageFormat` parameter is available only for the following regions: Japan (Tokyo), Australia (Sydney), Indonesia (Jakarta), Germany (Frankfurt), UAE (Dubai), US (Virginia), UK (London), Singapore, Malaysia (Kuala Lumpur), and US (Silicon Valley). Alibaba Cloud services will be discontinued in the India (Mumbai) region. By default, custom images are exported in the RAW format in regions where the ImageFormat parameter is unsupported.
         Use Resource Access Management (RAM) to authorize Elastic Compute Service (ECS) to write data to OSS. To complete the authorization, perform the following operations:
         Create a role named `AliyunECSImageExportDefaultRole` and attach the following policy to the role:
         {
@@ -37288,18 +37708,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.JoinSecurityGroupResponse:
         """
-        @summary Adds an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) to a security group.
+        @summary Adds an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) to a security group. When you call this operation, you can specify parameters, such as SecurityGroupId, InstanceId, and NetworkInterfaceId, in the request.
         
         @description ## [](#)Usage notes
         >  This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
         Take note of the following items:
         Before you add an instance to a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
         An instance can be added to up to five security groups by default.
-        To add an instance to more security groups, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex). An instance can be added to up to 16 security groups.
+        You can [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to change the maximum number of security groups to which an instance can be added to 4 or 10.
         A basic security group can contain up to 2,000 instances. An advanced security group can contain up to 65,536 instances.
         The security group and the instance must reside in the same region.
-        The security group and the instance must be of the same network type. If the network type is virtual private cloud (VPC), the security group and the instance must reside in the same VPC.
+        The security group and the instance must be of the same network type. If the network type is Virtual Private Cloud (VPC), the security group and the instance must reside in the same VPC.
         An instance and an ENI cannot be added to a security group at the same time. You cannot specify `InstanceId` and `NetworkInterfaceId` at the same time in a request.
+        For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
         
         @param request: JoinSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37348,18 +37769,19 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.JoinSecurityGroupResponse:
         """
-        @summary Adds an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) to a security group.
+        @summary Adds an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) to a security group. When you call this operation, you can specify parameters, such as SecurityGroupId, InstanceId, and NetworkInterfaceId, in the request.
         
         @description ## [](#)Usage notes
         >  This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
         Take note of the following items:
         Before you add an instance to a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
         An instance can be added to up to five security groups by default.
-        To add an instance to more security groups, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex). An instance can be added to up to 16 security groups.
+        You can [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to change the maximum number of security groups to which an instance can be added to 4 or 10.
         A basic security group can contain up to 2,000 instances. An advanced security group can contain up to 65,536 instances.
         The security group and the instance must reside in the same region.
-        The security group and the instance must be of the same network type. If the network type is virtual private cloud (VPC), the security group and the instance must reside in the same VPC.
+        The security group and the instance must be of the same network type. If the network type is Virtual Private Cloud (VPC), the security group and the instance must reside in the same VPC.
         An instance and an ENI cannot be added to a security group at the same time. You cannot specify `InstanceId` and `NetworkInterfaceId` at the same time in a request.
+        For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
         
         @param request: JoinSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37407,18 +37829,19 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.JoinSecurityGroupRequest,
     ) -> ecs_20140526_models.JoinSecurityGroupResponse:
         """
-        @summary Adds an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) to a security group.
+        @summary Adds an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) to a security group. When you call this operation, you can specify parameters, such as SecurityGroupId, InstanceId, and NetworkInterfaceId, in the request.
         
         @description ## [](#)Usage notes
         >  This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
         Take note of the following items:
         Before you add an instance to a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
         An instance can be added to up to five security groups by default.
-        To add an instance to more security groups, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex). An instance can be added to up to 16 security groups.
+        You can [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to change the maximum number of security groups to which an instance can be added to 4 or 10.
         A basic security group can contain up to 2,000 instances. An advanced security group can contain up to 65,536 instances.
         The security group and the instance must reside in the same region.
-        The security group and the instance must be of the same network type. If the network type is virtual private cloud (VPC), the security group and the instance must reside in the same VPC.
+        The security group and the instance must be of the same network type. If the network type is Virtual Private Cloud (VPC), the security group and the instance must reside in the same VPC.
         An instance and an ENI cannot be added to a security group at the same time. You cannot specify `InstanceId` and `NetworkInterfaceId` at the same time in a request.
+        For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
         
         @param request: JoinSecurityGroupRequest
         @return: JoinSecurityGroupResponse
@@ -37431,18 +37854,19 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.JoinSecurityGroupRequest,
     ) -> ecs_20140526_models.JoinSecurityGroupResponse:
         """
-        @summary Adds an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) to a security group.
+        @summary Adds an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) to a security group. When you call this operation, you can specify parameters, such as SecurityGroupId, InstanceId, and NetworkInterfaceId, in the request.
         
         @description ## [](#)Usage notes
         >  This operation is not recommended. We recommend that you call the [ModifyInstanceAttribute](https://help.aliyun.com/document_detail/25503.html) operation to add an instance to or remove an instance from a security group, and call the [ModifyNetworkInterfaceAttribute](https://help.aliyun.com/document_detail/58513.html) operation to add an ENI to or remove an ENI from a security group.
         Take note of the following items:
         Before you add an instance to a security group, the instance must be in the **Stopped** (Stopped) or **Running** (Running) state.
         An instance can be added to up to five security groups by default.
-        To add an instance to more security groups, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex). An instance can be added to up to 16 security groups.
+        You can [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) to change the maximum number of security groups to which an instance can be added to 4 or 10.
         A basic security group can contain up to 2,000 instances. An advanced security group can contain up to 65,536 instances.
         The security group and the instance must reside in the same region.
-        The security group and the instance must be of the same network type. If the network type is virtual private cloud (VPC), the security group and the instance must reside in the same VPC.
+        The security group and the instance must be of the same network type. If the network type is Virtual Private Cloud (VPC), the security group and the instance must reside in the same VPC.
         An instance and an ENI cannot be added to a security group at the same time. You cannot specify `InstanceId` and `NetworkInterfaceId` at the same time in a request.
+        For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
         
         @param request: JoinSecurityGroupRequest
         @return: JoinSecurityGroupResponse
@@ -37456,7 +37880,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.LeaveSecurityGroupResponse:
         """
-        @summary Removes an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) from a security group.
+        @summary Removes an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) from a security group. To remove an ECS instance from a security group, specify SecurityGroupId and InstanceId in the request. To remove an ENI from a security group, specify SecurityGroupId and NetworkInterfaceId in the request.
         
         @description ## [](#)Usage notes
         >
@@ -37514,7 +37938,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.LeaveSecurityGroupResponse:
         """
-        @summary Removes an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) from a security group.
+        @summary Removes an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) from a security group. To remove an ECS instance from a security group, specify SecurityGroupId and InstanceId in the request. To remove an ENI from a security group, specify SecurityGroupId and NetworkInterfaceId in the request.
         
         @description ## [](#)Usage notes
         >
@@ -37571,7 +37995,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.LeaveSecurityGroupRequest,
     ) -> ecs_20140526_models.LeaveSecurityGroupResponse:
         """
-        @summary Removes an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) from a security group.
+        @summary Removes an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) from a security group. To remove an ECS instance from a security group, specify SecurityGroupId and InstanceId in the request. To remove an ENI from a security group, specify SecurityGroupId and NetworkInterfaceId in the request.
         
         @description ## [](#)Usage notes
         >
@@ -37593,7 +38017,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.LeaveSecurityGroupRequest,
     ) -> ecs_20140526_models.LeaveSecurityGroupResponse:
         """
-        @summary Removes an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) from a security group.
+        @summary Removes an Elastic Compute Service (ECS) instance or an elastic network interface (ENI) from a security group. To remove an ECS instance from a security group, specify SecurityGroupId and InstanceId in the request. To remove an ENI from a security group, specify SecurityGroupId and NetworkInterfaceId in the request.
         
         @description ## [](#)Usage notes
         >
@@ -39868,6 +40292,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDeploymentSetAttributeResponse:
         """
+        @summary Modifies the name and description of a deployment set. When you call this operation, you can specify parameters, such as DeploymentSetId and DeploymentSetName, in the request.
+        
         @param request: ModifyDeploymentSetAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyDeploymentSetAttributeResponse
@@ -39915,6 +40341,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyDeploymentSetAttributeResponse:
         """
+        @summary Modifies the name and description of a deployment set. When you call this operation, you can specify parameters, such as DeploymentSetId and DeploymentSetName, in the request.
+        
         @param request: ModifyDeploymentSetAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyDeploymentSetAttributeResponse
@@ -39961,6 +40389,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDeploymentSetAttributeRequest,
     ) -> ecs_20140526_models.ModifyDeploymentSetAttributeResponse:
         """
+        @summary Modifies the name and description of a deployment set. When you call this operation, you can specify parameters, such as DeploymentSetId and DeploymentSetName, in the request.
+        
         @param request: ModifyDeploymentSetAttributeRequest
         @return: ModifyDeploymentSetAttributeResponse
         """
@@ -39972,6 +40402,8 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyDeploymentSetAttributeRequest,
     ) -> ecs_20140526_models.ModifyDeploymentSetAttributeResponse:
         """
+        @summary Modifies the name and description of a deployment set. When you call this operation, you can specify parameters, such as DeploymentSetId and DeploymentSetName, in the request.
+        
         @param request: ModifyDeploymentSetAttributeRequest
         @return: ModifyDeploymentSetAttributeResponse
         """
@@ -40417,6 +40849,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_disk_charge_type_with_options_async(request, runtime)
+
+    def modify_disk_default_kmskey_id_with_options(
+        self,
+        request: ecs_20140526_models.ModifyDiskDefaultKMSKeyIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyDiskDefaultKMSKeyIdResponse:
+        """
+        @summary 修改云盘默认加密加密密钥
+        
+        @param request: ModifyDiskDefaultKMSKeyIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDiskDefaultKMSKeyIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.kmskey_id):
+            query['KMSKeyId'] = request.kmskey_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDiskDefaultKMSKeyId',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDiskDefaultKMSKeyIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_disk_default_kmskey_id_with_options_async(
+        self,
+        request: ecs_20140526_models.ModifyDiskDefaultKMSKeyIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyDiskDefaultKMSKeyIdResponse:
+        """
+        @summary 修改云盘默认加密加密密钥
+        
+        @param request: ModifyDiskDefaultKMSKeyIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDiskDefaultKMSKeyIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.kmskey_id):
+            query['KMSKeyId'] = request.kmskey_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDiskDefaultKMSKeyId',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyDiskDefaultKMSKeyIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_disk_default_kmskey_id(
+        self,
+        request: ecs_20140526_models.ModifyDiskDefaultKMSKeyIdRequest,
+    ) -> ecs_20140526_models.ModifyDiskDefaultKMSKeyIdResponse:
+        """
+        @summary 修改云盘默认加密加密密钥
+        
+        @param request: ModifyDiskDefaultKMSKeyIdRequest
+        @return: ModifyDiskDefaultKMSKeyIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_disk_default_kmskey_id_with_options(request, runtime)
+
+    async def modify_disk_default_kmskey_id_async(
+        self,
+        request: ecs_20140526_models.ModifyDiskDefaultKMSKeyIdRequest,
+    ) -> ecs_20140526_models.ModifyDiskDefaultKMSKeyIdResponse:
+        """
+        @summary 修改云盘默认加密加密密钥
+        
+        @param request: ModifyDiskDefaultKMSKeyIdRequest
+        @return: ModifyDiskDefaultKMSKeyIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_disk_default_kmskey_id_with_options_async(request, runtime)
 
     def modify_disk_deployment_with_options(
         self,
@@ -47728,7 +48264,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.PurchaseReservedInstancesOfferingResponse:
         """
-        @summary Purchases a reserved instance. Reserved instances can be automatically matched to pay-as-you-go instances to offset the fees of the pay-as-you-go instances.
+        @summary Purchases a reserved instance. When you call this operation, you can specify parameters, such as InstanceType and Scope, in the request. Reserved instances can be applied to automatically offset fees for pay-as-you-go Elastic Compute Service (ECS) instances.
         
         @description ## [](#)Usage notes
         Before you call this operation, make sure that you fully understand the billing method of reserved instances. For more information, see [Reserved instances](https://help.aliyun.com/document_detail/100371.html).
@@ -47807,7 +48343,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.PurchaseReservedInstancesOfferingResponse:
         """
-        @summary Purchases a reserved instance. Reserved instances can be automatically matched to pay-as-you-go instances to offset the fees of the pay-as-you-go instances.
+        @summary Purchases a reserved instance. When you call this operation, you can specify parameters, such as InstanceType and Scope, in the request. Reserved instances can be applied to automatically offset fees for pay-as-you-go Elastic Compute Service (ECS) instances.
         
         @description ## [](#)Usage notes
         Before you call this operation, make sure that you fully understand the billing method of reserved instances. For more information, see [Reserved instances](https://help.aliyun.com/document_detail/100371.html).
@@ -47885,7 +48421,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.PurchaseReservedInstancesOfferingRequest,
     ) -> ecs_20140526_models.PurchaseReservedInstancesOfferingResponse:
         """
-        @summary Purchases a reserved instance. Reserved instances can be automatically matched to pay-as-you-go instances to offset the fees of the pay-as-you-go instances.
+        @summary Purchases a reserved instance. When you call this operation, you can specify parameters, such as InstanceType and Scope, in the request. Reserved instances can be applied to automatically offset fees for pay-as-you-go Elastic Compute Service (ECS) instances.
         
         @description ## [](#)Usage notes
         Before you call this operation, make sure that you fully understand the billing method of reserved instances. For more information, see [Reserved instances](https://help.aliyun.com/document_detail/100371.html).
@@ -47902,7 +48438,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.PurchaseReservedInstancesOfferingRequest,
     ) -> ecs_20140526_models.PurchaseReservedInstancesOfferingResponse:
         """
-        @summary Purchases a reserved instance. Reserved instances can be automatically matched to pay-as-you-go instances to offset the fees of the pay-as-you-go instances.
+        @summary Purchases a reserved instance. When you call this operation, you can specify parameters, such as InstanceType and Scope, in the request. Reserved instances can be applied to automatically offset fees for pay-as-you-go Elastic Compute Service (ECS) instances.
         
         @description ## [](#)Usage notes
         Before you call this operation, make sure that you fully understand the billing method of reserved instances. For more information, see [Reserved instances](https://help.aliyun.com/document_detail/100371.html).
@@ -50008,7 +50544,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RenewElasticityAssurancesResponse:
         """
-        @summary 续费
+        @summary Renews one or more elasticity assurances that you purchased. When you call this operation, you can specify parameters, such as PrivatePoolOptionsId and Period, in the request.
         
         @param request: RenewElasticityAssurancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -50061,7 +50597,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RenewElasticityAssurancesResponse:
         """
-        @summary 续费
+        @summary Renews one or more elasticity assurances that you purchased. When you call this operation, you can specify parameters, such as PrivatePoolOptionsId and Period, in the request.
         
         @param request: RenewElasticityAssurancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -50113,7 +50649,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RenewElasticityAssurancesRequest,
     ) -> ecs_20140526_models.RenewElasticityAssurancesResponse:
         """
-        @summary 续费
+        @summary Renews one or more elasticity assurances that you purchased. When you call this operation, you can specify parameters, such as PrivatePoolOptionsId and Period, in the request.
         
         @param request: RenewElasticityAssurancesRequest
         @return: RenewElasticityAssurancesResponse
@@ -50126,7 +50662,7 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RenewElasticityAssurancesRequest,
     ) -> ecs_20140526_models.RenewElasticityAssurancesResponse:
         """
-        @summary 续费
+        @summary Renews one or more elasticity assurances that you purchased. When you call this operation, you can specify parameters, such as PrivatePoolOptionsId and Period, in the request.
         
         @param request: RenewElasticityAssurancesRequest
         @return: RenewElasticityAssurancesResponse
@@ -50949,6 +51485,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.reset_disk_with_options_async(request, runtime)
+
+    def reset_disk_default_kmskey_id_with_options(
+        self,
+        request: ecs_20140526_models.ResetDiskDefaultKMSKeyIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ResetDiskDefaultKMSKeyIdResponse:
+        """
+        @summary 重置云盘默认加密加密密钥为服务密钥
+        
+        @param request: ResetDiskDefaultKMSKeyIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetDiskDefaultKMSKeyIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetDiskDefaultKMSKeyId',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.ResetDiskDefaultKMSKeyIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_disk_default_kmskey_id_with_options_async(
+        self,
+        request: ecs_20140526_models.ResetDiskDefaultKMSKeyIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ResetDiskDefaultKMSKeyIdResponse:
+        """
+        @summary 重置云盘默认加密加密密钥为服务密钥
+        
+        @param request: ResetDiskDefaultKMSKeyIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetDiskDefaultKMSKeyIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetDiskDefaultKMSKeyId',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.ResetDiskDefaultKMSKeyIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_disk_default_kmskey_id(
+        self,
+        request: ecs_20140526_models.ResetDiskDefaultKMSKeyIdRequest,
+    ) -> ecs_20140526_models.ResetDiskDefaultKMSKeyIdResponse:
+        """
+        @summary 重置云盘默认加密加密密钥为服务密钥
+        
+        @param request: ResetDiskDefaultKMSKeyIdRequest
+        @return: ResetDiskDefaultKMSKeyIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.reset_disk_default_kmskey_id_with_options(request, runtime)
+
+    async def reset_disk_default_kmskey_id_async(
+        self,
+        request: ecs_20140526_models.ResetDiskDefaultKMSKeyIdRequest,
+    ) -> ecs_20140526_models.ResetDiskDefaultKMSKeyIdResponse:
+        """
+        @summary 重置云盘默认加密加密密钥为服务密钥
+        
+        @param request: ResetDiskDefaultKMSKeyIdRequest
+        @return: ResetDiskDefaultKMSKeyIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.reset_disk_default_kmskey_id_with_options_async(request, runtime)
 
     def reset_disks_with_options(
         self,

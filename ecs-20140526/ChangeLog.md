@@ -1,3 +1,12 @@
+2024-09-07 Version: 4.3.0
+- Support API DescribeDiskDefaultKMSKeyId.
+- Support API DescribeDiskEncryptionByDefaultStatus.
+- Support API DisableDiskEncryptionByDefault.
+- Support API EnableDiskEncryptionByDefault.
+- Support API ModifyDiskDefaultKMSKeyId.
+- Support API ResetDiskDefaultKMSKeyId.
+
+
 2024-08-23 Version: 4.2.0
 - Support API RenewElasticityAssurances.
 - Update API ResizeDisk: update response param.
