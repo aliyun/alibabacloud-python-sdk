@@ -11515,6 +11515,10 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.release_initiator_list):
+            query['ReleaseInitiatorList'] = request.release_initiator_list
+        if not UtilClient.is_unset(request.release_reason_list):
+            query['ReleaseReasonList'] = request.release_reason_list
         if not UtilClient.is_unset(request.satisfaction_description_list):
             query['SatisfactionDescriptionList'] = request.satisfaction_description_list
         if not UtilClient.is_unset(request.satisfaction_rate_list):
@@ -11594,6 +11598,10 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.release_initiator_list):
+            query['ReleaseInitiatorList'] = request.release_initiator_list
+        if not UtilClient.is_unset(request.release_reason_list):
+            query['ReleaseReasonList'] = request.release_reason_list
         if not UtilClient.is_unset(request.satisfaction_description_list):
             query['SatisfactionDescriptionList'] = request.satisfaction_description_list
         if not UtilClient.is_unset(request.satisfaction_rate_list):
@@ -17443,6 +17451,8 @@ class Client(OpenApiClient):
             query['Caller'] = request.caller
         if not UtilClient.is_unset(request.device_id):
             query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.flash_sms_variables):
+            query['FlashSmsVariables'] = request.flash_sms_variables
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.masked_callee):
@@ -17492,6 +17502,8 @@ class Client(OpenApiClient):
             query['Caller'] = request.caller
         if not UtilClient.is_unset(request.device_id):
             query['DeviceId'] = request.device_id
+        if not UtilClient.is_unset(request.flash_sms_variables):
+            query['FlashSmsVariables'] = request.flash_sms_variables
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.masked_callee):

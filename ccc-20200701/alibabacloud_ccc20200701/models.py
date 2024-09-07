@@ -26735,6 +26735,8 @@ class ListCallDetailRecordsV2Request(TeaModel):
         order_by_field: str = None,
         page_number: int = None,
         page_size: int = None,
+        release_initiator_list: str = None,
+        release_reason_list: str = None,
         satisfaction_description_list: str = None,
         satisfaction_rate_list: str = None,
         satisfaction_survey_channel: str = None,
@@ -26763,6 +26765,8 @@ class ListCallDetailRecordsV2Request(TeaModel):
         self.page_number = page_number
         # This parameter is required.
         self.page_size = page_size
+        self.release_initiator_list = release_initiator_list
+        self.release_reason_list = release_reason_list
         self.satisfaction_description_list = satisfaction_description_list
         self.satisfaction_rate_list = satisfaction_rate_list
         self.satisfaction_survey_channel = satisfaction_survey_channel
@@ -26814,6 +26818,10 @@ class ListCallDetailRecordsV2Request(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.release_initiator_list is not None:
+            result['ReleaseInitiatorList'] = self.release_initiator_list
+        if self.release_reason_list is not None:
+            result['ReleaseReasonList'] = self.release_reason_list
         if self.satisfaction_description_list is not None:
             result['SatisfactionDescriptionList'] = self.satisfaction_description_list
         if self.satisfaction_rate_list is not None:
@@ -26866,6 +26874,10 @@ class ListCallDetailRecordsV2Request(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('ReleaseInitiatorList') is not None:
+            self.release_initiator_list = m.get('ReleaseInitiatorList')
+        if m.get('ReleaseReasonList') is not None:
+            self.release_reason_list = m.get('ReleaseReasonList')
         if m.get('SatisfactionDescriptionList') is not None:
             self.satisfaction_description_list = m.get('SatisfactionDescriptionList')
         if m.get('SatisfactionRateList') is not None:
@@ -26895,6 +26907,7 @@ class ListCallDetailRecordsV2ResponseBodyDataList(TeaModel):
         agent_names: str = None,
         broker: str = None,
         call_duration: str = None,
+        call_ids: str = None,
         called_number: str = None,
         callee_location: str = None,
         caller_location: str = None,
@@ -26948,6 +26961,7 @@ class ListCallDetailRecordsV2ResponseBodyDataList(TeaModel):
         self.agent_names = agent_names
         self.broker = broker
         self.call_duration = call_duration
+        self.call_ids = call_ids
         self.called_number = called_number
         self.callee_location = callee_location
         self.caller_location = caller_location
@@ -27019,6 +27033,8 @@ class ListCallDetailRecordsV2ResponseBodyDataList(TeaModel):
             result['Broker'] = self.broker
         if self.call_duration is not None:
             result['CallDuration'] = self.call_duration
+        if self.call_ids is not None:
+            result['CallIds'] = self.call_ids
         if self.called_number is not None:
             result['CalledNumber'] = self.called_number
         if self.callee_location is not None:
@@ -27127,6 +27143,8 @@ class ListCallDetailRecordsV2ResponseBodyDataList(TeaModel):
             self.broker = m.get('Broker')
         if m.get('CallDuration') is not None:
             self.call_duration = m.get('CallDuration')
+        if m.get('CallIds') is not None:
+            self.call_ids = m.get('CallIds')
         if m.get('CalledNumber') is not None:
             self.called_number = m.get('CalledNumber')
         if m.get('CalleeLocation') is not None:
@@ -49261,6 +49279,7 @@ class MakeCallRequest(TeaModel):
         callee: str = None,
         caller: str = None,
         device_id: str = None,
+        flash_sms_variables: str = None,
         instance_id: str = None,
         masked_callee: str = None,
         media_type: str = None,
@@ -49272,6 +49291,7 @@ class MakeCallRequest(TeaModel):
         self.callee = callee
         self.caller = caller
         self.device_id = device_id
+        self.flash_sms_variables = flash_sms_variables
         # This parameter is required.
         self.instance_id = instance_id
         self.masked_callee = masked_callee
@@ -49295,6 +49315,8 @@ class MakeCallRequest(TeaModel):
             result['Caller'] = self.caller
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
+        if self.flash_sms_variables is not None:
+            result['FlashSmsVariables'] = self.flash_sms_variables
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.masked_callee is not None:
@@ -49317,6 +49339,8 @@ class MakeCallRequest(TeaModel):
             self.caller = m.get('Caller')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
+        if m.get('FlashSmsVariables') is not None:
+            self.flash_sms_variables = m.get('FlashSmsVariables')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('MaskedCallee') is not None:
