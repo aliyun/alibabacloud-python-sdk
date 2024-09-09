@@ -1,3 +1,17 @@
+2024-09-09 Version: 1.7.0
+- Support API RunAbbreviationContent.
+- Support API RunContinueContent.
+- Support API RunExpandContent.
+- Support API RunKeywordsExtractionGeneration.
+- Support API RunStyleFeatureAnalysis.
+- Support API RunSummaryGenerate.
+- Support API RunTextPolishing.
+- Support API RunTitleGeneration.
+- Support API RunTranslateGeneration.
+- Support API RunWriteToneGeneration.
+- Support API RunWriting.
+
+
 2024-08-14 Version: 1.6.2
 - Update API CancelAsyncTask: add param RegionId.
 - Update API CancelAsyncTask: update response param.
