@@ -96,102 +96,6 @@ class FeatureViewConfigValue(TeaModel):
         return self
 
 
-class ChangeProjectFeatureEntityHotIdVersionRequest(TeaModel):
-    def __init__(
-        self,
-        version: str = None,
-    ):
-        # This parameter is required.
-        self.version = version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.version is not None:
-            result['Version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
-        return self
-
-
-class ChangeProjectFeatureEntityHotIdVersionResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ChangeProjectFeatureEntityHotIdVersionResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ChangeProjectFeatureEntityHotIdVersionResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ChangeProjectFeatureEntityHotIdVersionResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CheckInstanceDatasourceRequest(TeaModel):
     def __init__(
         self,
@@ -1109,6 +1013,7 @@ class CreateModelFeatureRequest(TeaModel):
     def __init__(
         self,
         features: List[CreateModelFeatureRequestFeatures] = None,
+        label_priority_level: int = None,
         label_table_id: str = None,
         name: str = None,
         project_id: str = None,
@@ -1116,6 +1021,7 @@ class CreateModelFeatureRequest(TeaModel):
     ):
         # This parameter is required.
         self.features = features
+        self.label_priority_level = label_priority_level
         # This parameter is required.
         self.label_table_id = label_table_id
         # This parameter is required.
@@ -1140,6 +1046,8 @@ class CreateModelFeatureRequest(TeaModel):
         if self.features is not None:
             for k in self.features:
                 result['Features'].append(k.to_map() if k else None)
+        if self.label_priority_level is not None:
+            result['LabelPriorityLevel'] = self.label_priority_level
         if self.label_table_id is not None:
             result['LabelTableId'] = self.label_table_id
         if self.name is not None:
@@ -1157,6 +1065,8 @@ class CreateModelFeatureRequest(TeaModel):
             for k in m.get('Features'):
                 temp_model = CreateModelFeatureRequestFeatures()
                 self.features.append(temp_model.from_map(k))
+        if m.get('LabelPriorityLevel') is not None:
+            self.label_priority_level = m.get('LabelPriorityLevel')
         if m.get('LabelTableId') is not None:
             self.label_table_id = m.get('LabelTableId')
         if m.get('Name') is not None:
@@ -2177,11 +2087,13 @@ class ExportModelFeatureTrainingSetTableRequest(TeaModel):
         feature_view_config: Dict[str, FeatureViewConfigValue] = None,
         label_input_config: ExportModelFeatureTrainingSetTableRequestLabelInputConfig = None,
         real_time_iterate_interval: int = None,
+        real_time_partition_count_value: int = None,
         training_set_config: ExportModelFeatureTrainingSetTableRequestTrainingSetConfig = None,
     ):
         self.feature_view_config = feature_view_config
         self.label_input_config = label_input_config
         self.real_time_iterate_interval = real_time_iterate_interval
+        self.real_time_partition_count_value = real_time_partition_count_value
         self.training_set_config = training_set_config
 
     def validate(self):
@@ -2208,6 +2120,8 @@ class ExportModelFeatureTrainingSetTableRequest(TeaModel):
             result['LabelInputConfig'] = self.label_input_config.to_map()
         if self.real_time_iterate_interval is not None:
             result['RealTimeIterateInterval'] = self.real_time_iterate_interval
+        if self.real_time_partition_count_value is not None:
+            result['RealTimePartitionCountValue'] = self.real_time_partition_count_value
         if self.training_set_config is not None:
             result['TrainingSetConfig'] = self.training_set_config.to_map()
         return result
@@ -2224,6 +2138,8 @@ class ExportModelFeatureTrainingSetTableRequest(TeaModel):
             self.label_input_config = temp_model.from_map(m['LabelInputConfig'])
         if m.get('RealTimeIterateInterval') is not None:
             self.real_time_iterate_interval = m.get('RealTimeIterateInterval')
+        if m.get('RealTimePartitionCountValue') is not None:
+            self.real_time_partition_count_value = m.get('RealTimePartitionCountValue')
         if m.get('TrainingSetConfig') is not None:
             temp_model = ExportModelFeatureTrainingSetTableRequestTrainingSetConfig()
             self.training_set_config = temp_model.from_map(m['TrainingSetConfig'])
@@ -3376,6 +3292,7 @@ class GetModelFeatureResponseBody(TeaModel):
         features: List[GetModelFeatureResponseBodyFeatures] = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
+        label_priority_level: int = None,
         label_table_id: str = None,
         label_table_name: str = None,
         name: str = None,
@@ -3391,6 +3308,7 @@ class GetModelFeatureResponseBody(TeaModel):
         self.features = features
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
+        self.label_priority_level = label_priority_level
         self.label_table_id = label_table_id
         self.label_table_name = label_table_name
         self.name = name
@@ -3426,6 +3344,8 @@ class GetModelFeatureResponseBody(TeaModel):
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.label_priority_level is not None:
+            result['LabelPriorityLevel'] = self.label_priority_level
         if self.label_table_id is not None:
             result['LabelTableId'] = self.label_table_id
         if self.label_table_name is not None:
@@ -3461,6 +3381,8 @@ class GetModelFeatureResponseBody(TeaModel):
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('LabelPriorityLevel') is not None:
+            self.label_priority_level = m.get('LabelPriorityLevel')
         if m.get('LabelTableId') is not None:
             self.label_table_id = m.get('LabelTableId')
         if m.get('LabelTableName') is not None:
@@ -4206,532 +4128,6 @@ class GetProjectFeatureEntityResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetProjectFeatureEntityResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetProjectFeatureEntityHotIdsResponseBody(TeaModel):
-    def __init__(
-        self,
-        count: int = None,
-        hot_ids: str = None,
-        next_seq_number: str = None,
-        request_id: str = None,
-    ):
-        self.count = count
-        self.hot_ids = hot_ids
-        self.next_seq_number = next_seq_number
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.count is not None:
-            result['Count'] = self.count
-        if self.hot_ids is not None:
-            result['HotIds'] = self.hot_ids
-        if self.next_seq_number is not None:
-            result['NextSeqNumber'] = self.next_seq_number
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Count') is not None:
-            self.count = m.get('Count')
-        if m.get('HotIds') is not None:
-            self.hot_ids = m.get('HotIds')
-        if m.get('NextSeqNumber') is not None:
-            self.next_seq_number = m.get('NextSeqNumber')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class GetProjectFeatureEntityHotIdsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetProjectFeatureEntityHotIdsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetProjectFeatureEntityHotIdsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetProjectFeatureViewResponseBodyFields(TeaModel):
-    def __init__(
-        self,
-        attributes: List[str] = None,
-        name: str = None,
-        type: str = None,
-    ):
-        self.attributes = attributes
-        self.name = name
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.attributes is not None:
-            result['Attributes'] = self.attributes
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Attributes') is not None:
-            self.attributes = m.get('Attributes')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class GetProjectFeatureViewResponseBody(TeaModel):
-    def __init__(
-        self,
-        config: str = None,
-        feature_entity_id: str = None,
-        feature_entity_name: str = None,
-        feature_view_id: str = None,
-        fields: List[GetProjectFeatureViewResponseBodyFields] = None,
-        gmt_sync_time: str = None,
-        join_id: str = None,
-        last_sync_config: str = None,
-        name: str = None,
-        owner: str = None,
-        project_id: str = None,
-        project_name: str = None,
-        register_datasource_id: str = None,
-        register_table: str = None,
-        request_id: str = None,
-        sync_online_table: bool = None,
-        ttl: int = None,
-        tags: List[str] = None,
-        type: str = None,
-        write_method: str = None,
-    ):
-        self.config = config
-        self.feature_entity_id = feature_entity_id
-        self.feature_entity_name = feature_entity_name
-        self.feature_view_id = feature_view_id
-        self.fields = fields
-        self.gmt_sync_time = gmt_sync_time
-        self.join_id = join_id
-        self.last_sync_config = last_sync_config
-        self.name = name
-        self.owner = owner
-        self.project_id = project_id
-        self.project_name = project_name
-        self.register_datasource_id = register_datasource_id
-        self.register_table = register_table
-        self.request_id = request_id
-        self.sync_online_table = sync_online_table
-        self.ttl = ttl
-        self.tags = tags
-        self.type = type
-        self.write_method = write_method
-
-    def validate(self):
-        if self.fields:
-            for k in self.fields:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.config is not None:
-            result['Config'] = self.config
-        if self.feature_entity_id is not None:
-            result['FeatureEntityId'] = self.feature_entity_id
-        if self.feature_entity_name is not None:
-            result['FeatureEntityName'] = self.feature_entity_name
-        if self.feature_view_id is not None:
-            result['FeatureViewId'] = self.feature_view_id
-        result['Fields'] = []
-        if self.fields is not None:
-            for k in self.fields:
-                result['Fields'].append(k.to_map() if k else None)
-        if self.gmt_sync_time is not None:
-            result['GmtSyncTime'] = self.gmt_sync_time
-        if self.join_id is not None:
-            result['JoinId'] = self.join_id
-        if self.last_sync_config is not None:
-            result['LastSyncConfig'] = self.last_sync_config
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.owner is not None:
-            result['Owner'] = self.owner
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.project_name is not None:
-            result['ProjectName'] = self.project_name
-        if self.register_datasource_id is not None:
-            result['RegisterDatasourceId'] = self.register_datasource_id
-        if self.register_table is not None:
-            result['RegisterTable'] = self.register_table
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.sync_online_table is not None:
-            result['SyncOnlineTable'] = self.sync_online_table
-        if self.ttl is not None:
-            result['TTL'] = self.ttl
-        if self.tags is not None:
-            result['Tags'] = self.tags
-        if self.type is not None:
-            result['Type'] = self.type
-        if self.write_method is not None:
-            result['WriteMethod'] = self.write_method
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Config') is not None:
-            self.config = m.get('Config')
-        if m.get('FeatureEntityId') is not None:
-            self.feature_entity_id = m.get('FeatureEntityId')
-        if m.get('FeatureEntityName') is not None:
-            self.feature_entity_name = m.get('FeatureEntityName')
-        if m.get('FeatureViewId') is not None:
-            self.feature_view_id = m.get('FeatureViewId')
-        self.fields = []
-        if m.get('Fields') is not None:
-            for k in m.get('Fields'):
-                temp_model = GetProjectFeatureViewResponseBodyFields()
-                self.fields.append(temp_model.from_map(k))
-        if m.get('GmtSyncTime') is not None:
-            self.gmt_sync_time = m.get('GmtSyncTime')
-        if m.get('JoinId') is not None:
-            self.join_id = m.get('JoinId')
-        if m.get('LastSyncConfig') is not None:
-            self.last_sync_config = m.get('LastSyncConfig')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Owner') is not None:
-            self.owner = m.get('Owner')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('ProjectName') is not None:
-            self.project_name = m.get('ProjectName')
-        if m.get('RegisterDatasourceId') is not None:
-            self.register_datasource_id = m.get('RegisterDatasourceId')
-        if m.get('RegisterTable') is not None:
-            self.register_table = m.get('RegisterTable')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('SyncOnlineTable') is not None:
-            self.sync_online_table = m.get('SyncOnlineTable')
-        if m.get('TTL') is not None:
-            self.ttl = m.get('TTL')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        if m.get('WriteMethod') is not None:
-            self.write_method = m.get('WriteMethod')
-        return self
-
-
-class GetProjectFeatureViewResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetProjectFeatureViewResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetProjectFeatureViewResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class GetProjectModelFeatureResponseBodyFeatures(TeaModel):
-    def __init__(
-        self,
-        alias_name: str = None,
-        feature_view_id: str = None,
-        feature_view_name: str = None,
-        name: str = None,
-        type: str = None,
-    ):
-        self.alias_name = alias_name
-        self.feature_view_id = feature_view_id
-        self.feature_view_name = feature_view_name
-        self.name = name
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.alias_name is not None:
-            result['AliasName'] = self.alias_name
-        if self.feature_view_id is not None:
-            result['FeatureViewId'] = self.feature_view_id
-        if self.feature_view_name is not None:
-            result['FeatureViewName'] = self.feature_view_name
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.type is not None:
-            result['Type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AliasName') is not None:
-            self.alias_name = m.get('AliasName')
-        if m.get('FeatureViewId') is not None:
-            self.feature_view_id = m.get('FeatureViewId')
-        if m.get('FeatureViewName') is not None:
-            self.feature_view_name = m.get('FeatureViewName')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Type') is not None:
-            self.type = m.get('Type')
-        return self
-
-
-class GetProjectModelFeatureResponseBody(TeaModel):
-    def __init__(
-        self,
-        features: List[GetProjectModelFeatureResponseBodyFeatures] = None,
-        gmt_create_time: str = None,
-        gmt_modified_time: str = None,
-        label_datasource_id: str = None,
-        label_datasource_table: str = None,
-        label_event_time: str = None,
-        label_table_id: str = None,
-        model_feature_id: str = None,
-        name: str = None,
-        owner: str = None,
-        project_id: str = None,
-        project_name: str = None,
-        request_id: str = None,
-        training_set_fgtable: str = None,
-        training_set_table: str = None,
-    ):
-        self.features = features
-        self.gmt_create_time = gmt_create_time
-        self.gmt_modified_time = gmt_modified_time
-        self.label_datasource_id = label_datasource_id
-        self.label_datasource_table = label_datasource_table
-        self.label_event_time = label_event_time
-        self.label_table_id = label_table_id
-        self.model_feature_id = model_feature_id
-        self.name = name
-        self.owner = owner
-        self.project_id = project_id
-        self.project_name = project_name
-        self.request_id = request_id
-        self.training_set_fgtable = training_set_fgtable
-        self.training_set_table = training_set_table
-
-    def validate(self):
-        if self.features:
-            for k in self.features:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Features'] = []
-        if self.features is not None:
-            for k in self.features:
-                result['Features'].append(k.to_map() if k else None)
-        if self.gmt_create_time is not None:
-            result['GmtCreateTime'] = self.gmt_create_time
-        if self.gmt_modified_time is not None:
-            result['GmtModifiedTime'] = self.gmt_modified_time
-        if self.label_datasource_id is not None:
-            result['LabelDatasourceId'] = self.label_datasource_id
-        if self.label_datasource_table is not None:
-            result['LabelDatasourceTable'] = self.label_datasource_table
-        if self.label_event_time is not None:
-            result['LabelEventTime'] = self.label_event_time
-        if self.label_table_id is not None:
-            result['LabelTableId'] = self.label_table_id
-        if self.model_feature_id is not None:
-            result['ModelFeatureId'] = self.model_feature_id
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.owner is not None:
-            result['Owner'] = self.owner
-        if self.project_id is not None:
-            result['ProjectId'] = self.project_id
-        if self.project_name is not None:
-            result['ProjectName'] = self.project_name
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.training_set_fgtable is not None:
-            result['TrainingSetFGTable'] = self.training_set_fgtable
-        if self.training_set_table is not None:
-            result['TrainingSetTable'] = self.training_set_table
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.features = []
-        if m.get('Features') is not None:
-            for k in m.get('Features'):
-                temp_model = GetProjectModelFeatureResponseBodyFeatures()
-                self.features.append(temp_model.from_map(k))
-        if m.get('GmtCreateTime') is not None:
-            self.gmt_create_time = m.get('GmtCreateTime')
-        if m.get('GmtModifiedTime') is not None:
-            self.gmt_modified_time = m.get('GmtModifiedTime')
-        if m.get('LabelDatasourceId') is not None:
-            self.label_datasource_id = m.get('LabelDatasourceId')
-        if m.get('LabelDatasourceTable') is not None:
-            self.label_datasource_table = m.get('LabelDatasourceTable')
-        if m.get('LabelEventTime') is not None:
-            self.label_event_time = m.get('LabelEventTime')
-        if m.get('LabelTableId') is not None:
-            self.label_table_id = m.get('LabelTableId')
-        if m.get('ModelFeatureId') is not None:
-            self.model_feature_id = m.get('ModelFeatureId')
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Owner') is not None:
-            self.owner = m.get('Owner')
-        if m.get('ProjectId') is not None:
-            self.project_id = m.get('ProjectId')
-        if m.get('ProjectName') is not None:
-            self.project_name = m.get('ProjectName')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('TrainingSetFGTable') is not None:
-            self.training_set_fgtable = m.get('TrainingSetFGTable')
-        if m.get('TrainingSetTable') is not None:
-            self.training_set_table = m.get('TrainingSetTable')
-        return self
-
-
-class GetProjectModelFeatureResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: GetProjectModelFeatureResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = GetProjectModelFeatureResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7359,154 +6755,6 @@ class ListModelFeaturesResponse(TeaModel):
         return self
 
 
-class ListProjectFeatureViewOwnersResponseBody(TeaModel):
-    def __init__(
-        self,
-        owners: List[str] = None,
-        request_id: str = None,
-    ):
-        self.owners = owners
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.owners is not None:
-            result['Owners'] = self.owners
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Owners') is not None:
-            self.owners = m.get('Owners')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ListProjectFeatureViewOwnersResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListProjectFeatureViewOwnersResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListProjectFeatureViewOwnersResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ListProjectFeatureViewTagsResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        tags: List[str] = None,
-    ):
-        self.request_id = request_id
-        self.tags = tags
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.tags is not None:
-            result['Tags'] = self.tags
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('Tags') is not None:
-            self.tags = m.get('Tags')
-        return self
-
-
-class ListProjectFeatureViewTagsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ListProjectFeatureViewTagsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ListProjectFeatureViewTagsResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ListProjectFeatureViewsResponseBodyFeatureViewsFeatures(TeaModel):
     def __init__(
         self,
@@ -9756,109 +9004,6 @@ class WriteFeatureViewTableResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = WriteFeatureViewTableResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class WriteProjectFeatureEntityHotIdsRequest(TeaModel):
-    def __init__(
-        self,
-        hot_ids: str = None,
-        version: str = None,
-    ):
-        # This parameter is required.
-        self.hot_ids = hot_ids
-        # This parameter is required.
-        self.version = version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.hot_ids is not None:
-            result['HotIds'] = self.hot_ids
-        if self.version is not None:
-            result['Version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('HotIds') is not None:
-            self.hot_ids = m.get('HotIds')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
-        return self
-
-
-class WriteProjectFeatureEntityHotIdsResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class WriteProjectFeatureEntityHotIdsResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: WriteProjectFeatureEntityHotIdsResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = WriteProjectFeatureEntityHotIdsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

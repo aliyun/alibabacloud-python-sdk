@@ -1,3 +1,16 @@
+2024-09-09 Version: 4.0.0
+- Delete API ChangeProjectFeatureEntityHotIdVersion.
+- Delete API GetProjectFeatureEntityHotIds.
+- Delete API GetProjectFeatureView.
+- Delete API GetProjectModelFeature.
+- Delete API ListProjectFeatureViewOwners.
+- Delete API ListProjectFeatureViewTags.
+- Delete API WriteProjectFeatureEntityHotIds.
+- Update API CreateModelFeature: update param body.
+- Update API ExportModelFeatureTrainingSetTable: update param body.
+- Update API GetModelFeature: update response param.
+
+
 2024-07-12 Version: 3.2.1
 - Update API ExportModelFeatureTrainingSetTable: update param body.
 
