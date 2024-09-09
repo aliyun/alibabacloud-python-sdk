@@ -138,9 +138,9 @@ class AddTagsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of each tag. The tag includes a TagKey and TagValue. You can add a maximum of 10 tags at a time. You must specify a TagKey. You can leave a TagValue empty.
+        # The key of each tag. A tag consists of a tag key and a tag value. You can add a maximum of 10 tags at a time. The tag key cannot be empty. The tag value can be left empty.
         self.key = key
-        # The value of each tag. The tag includes a TagKey and TagValue. You can add a maximum of 10 tags at a time. You must specify a TagKey. You can leave a TagValue empty.
+        # The value of each tag. A tag consists of a tag key and a tag value. You can add a maximum of 10 tags at a time. The tag key cannot be empty. The tag value can be left empty.
         self.value = value
 
     def validate(self):
@@ -177,6 +177,8 @@ class AddTagsRequest(TeaModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The details about the tags.
+        # 
         # This parameter is required.
         self.tag = tag
 
@@ -217,7 +219,7 @@ class AddTagsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1348,11 +1350,24 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the new resource group.
+        # 
+        # You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?) to view resource group IDs.
+        # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
+        # The region ID of the zone.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2412111.html) operation to query the latest region list.
         self.region_id = region_id
+        # The resource ID.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The resource type.
+        # 
+        # Set the value to filesystem.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 
@@ -1393,6 +1408,7 @@ class ChangeResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1621,21 +1637,53 @@ class CreateAccessPointRequest(TeaModel):
         vpc_id: str = None,
         vsw_id: str = None,
     ):
+        # The name of the permission group.
+        # 
+        # This parameter is required for a General-purpose Apsara File Storage NAS (NAS) file system.
+        # 
+        # The default permission group for virtual private clouds (VPCs) is named DEFAULT_VPC_GROUP_NAME.
+        # 
         # This parameter is required.
         self.access_group = access_group
+        # The name of the access point.
         self.access_point_name = access_point_name
+        # Specifies whether to enable the RAM policy. Valid values:
+        # 
+        # *   true: The RAM policy is enabled.
+        # *   false (default): The RAM policy is disabled.
+        # 
+        # >  After the RAM policy is enabled for access points, no RAM user is allowed to use access points to mount and access data by default. To use access points to mount and access data as a RAM user, you must grant the related access permissions to the RAM user. If the RAM policy is disabled, access points can be anonymously mounted.
         self.enabled_ram = enabled_ram
+        # The ID of the file system.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The ID of the owner group.
+        # 
+        # This parameter is required if the RootDirectory directory does not exist.
         self.owner_group_id = owner_group_id
+        # The owner ID.
+        # 
+        # This parameter is required if the RootDirectory directory does not exist.
         self.owner_user_id = owner_user_id
+        # The Portable Operating System Interface for UNIX (POSIX) permission. Default value: 0777.
+        # 
+        # This field takes effect only if you specify the OwnerUserId and OwnerGroupId parameters.
         self.permission = permission
+        # The ID of the POSIX user group.
         self.posix_group_id = posix_group_id
+        # The secondary user group. Separate multiple user group IDs with commas (,).
         self.posix_secondary_group_ids = posix_secondary_group_ids
+        # The ID of the POSIX user.
         self.posix_user_id = posix_user_id
+        # The root directory of the access point. The default value is /. If the directory does not exist, you must also specify the OwnerUserId and OwnerGroupId parameters.
         self.root_directory = root_directory
+        # The VPC ID.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
+        # The vSwitch ID.
+        # 
         # This parameter is required.
         self.vsw_id = vsw_id
 
@@ -1713,7 +1761,9 @@ class CreateAccessPointResponseBodyAccessPoint(TeaModel):
         access_point_domain: str = None,
         access_point_id: str = None,
     ):
+        # The domain name of the access point.
         self.access_point_domain = access_point_domain
+        # The ID of the access point.
         self.access_point_id = access_point_id
 
     def validate(self):
@@ -1746,7 +1796,9 @@ class CreateAccessPointResponseBody(TeaModel):
         access_point: CreateAccessPointResponseBodyAccessPoint = None,
         request_id: str = None,
     ):
+        # The access point.
         self.access_point = access_point
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2176,7 +2228,7 @@ class CreateDataFlowRequestAutoRefreshs(TeaModel):
         # *   The directory must be 2 to 1,024 characters in length.
         # *   The directory must be encoded in UTF-8.
         # *   The directory must start and end with a forward slash (/).
-        # *   The directory must be an existing directory in the CPFS file system and must be in a fileset where the dataflow is enabled.
+        # *   The directory must be an existing directory in the CPFS file system and must be in a fileset where the data flow is enabled.
         self.refresh_path = refresh_path
 
     def validate(self):
@@ -2218,14 +2270,20 @@ class CreateDataFlowRequest(TeaModel):
     ):
         # The automatic update interval. CPFS checks whether data is updated in the directory at the interval specified by this parameter. If data is updated, CPFS starts an automatic update task. Unit: minutes.
         # 
-        # Valid values: 5 to 525600. Default value: 10.
+        # Valid values: 10 to 525600. Default value: 10.
+        # 
+        # >  This parameter takes effect only for CPFS file systems.
         self.auto_refresh_interval = auto_refresh_interval
         # The automatic update policy. The updated data in the source storage is imported into the CPFS file system based on the policy.
         # 
-        # *   None (default): Updated data in the source storage is not automatically imported into the CPFS file system. You can run a dataflow task to import the updated data from the source storage.
+        # *   None (default): Updated data in the source storage is not automatically imported into the CPFS file system. You can run a data flow task to import the updated data from the source storage.
         # *   ImportChanged: Updated data in the source storage is automatically imported into the CPFS file system.
+        # 
+        # >  This parameter takes effect only for CPFS file systems.
         self.auto_refresh_policy = auto_refresh_policy
         # The automatic update configurations.
+        # 
+        # >  This parameter takes effect only for CPFS file systems.
         self.auto_refreshs = auto_refreshs
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         # 
@@ -2252,10 +2310,25 @@ class CreateDataFlowRequest(TeaModel):
         self.dry_run = dry_run
         # The ID of the file system.
         # 
+        # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
+        # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
+        # 
+        # >  CPFS file systems are available only on the China site (aliyun.com).
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The directory in the CPFS for LINGJUN file system. Limits:
+        # 
+        # *   The directory must start and end with a forward slash (/).
+        # *   The directory must be an existing directory in the CPFS for LINGJUN file system.
+        # *   The directory must be 1 to 1023 characters in length.
+        # *   The directory must be encoded in UTF-8.
+        # 
+        # >  This parameter is required for CPFS for LINGJUN file systems.
         self.file_system_path = file_system_path
         # The fileset ID.
+        # 
+        # >  This parameter is required for CPFS file systems.
         self.fset_id = fset_id
         # The type of security mechanism for the source storage. This parameter must be specified if the source storage is accessed with a security mechanism. Valid values:
         # 
@@ -2270,23 +2343,30 @@ class CreateDataFlowRequest(TeaModel):
         # 
         # *   path: the name of the OSS bucket. Limits:
         # 
-        #     *   The name can contain only lowercase letters, digits, and hyphens (-). The name must start and end with a lowercase letter or digit.
-        #     *   The name must be 8 to 128 characters in length.
-        #     *   The name must be encoded in UTF-8.
-        #     *   The name cannot start with `http://` or `https://`.
+        #     *   The path can contain only lowercase letters, digits, and hyphens (-). The path must start and end with a lowercase letter or digit.
+        #     *   The path can be up to 128 characters in length.
+        #     *   The path must be encoded in UTF-8.
         # 
         # >  The OSS bucket must be an existing bucket in the region.
         # 
         # This parameter is required.
         self.source_storage = source_storage
+        # The access path in the bucket of the source storage. Limits:
+        # 
+        # *   The path must start and end with a forward slash (/).
+        # *   The path is case-sensitive.
+        # *   The path must be 1 to 1023 characters in length.
+        # *   The path must be encoded in UTF-8.
+        # 
+        # >  This parameter is required for CPFS for LINGJUN file systems.
         self.source_storage_path = source_storage_path
-        # The maximum dataflow throughput. Unit: MB/s. Valid values:
+        # The maximum data flow throughput. Unit: MB/s. Valid values:
         # 
         # *   600
-        # *   1,200
-        # *   1,500
+        # *   1200
+        # *   1500
         # 
-        # >  The dataflow throughput must be less than the I/O throughput of the file system
+        # >  The data flow throughput must be less than the I/O throughput of the file system. This parameter is required for CPFS file systems.
         self.throughput = throughput
 
     def validate(self):
@@ -2446,10 +2526,12 @@ class CreateDataFlowTaskRequest(TeaModel):
         self,
         client_token: str = None,
         conflict_policy: str = None,
+        create_dir_if_not_exist: bool = None,
         data_flow_id: str = None,
         data_type: str = None,
         directory: str = None,
         dry_run: bool = None,
+        dst_directory: str = None,
         entry_list: str = None,
         file_system_id: str = None,
         src_task_id: str = None,
@@ -2461,7 +2543,15 @@ class CreateDataFlowTaskRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
         self.client_token = client_token
+        # The conflict policy for files with the same name. Valid values:
+        # 
+        # *   SKIP_THE_FILE: skips files with the same name.
+        # *   KEEP_LATEST: compares the update time and keeps the latest version.
+        # *   OVERWRITE_EXISTING: forcibly overwrites the existing file.
+        # 
+        # >  This parameter does not take effect for CPFS file systems.
         self.conflict_policy = conflict_policy
+        self.create_dir_if_not_exist = create_dir_if_not_exist
         # The dataflow ID.
         # 
         # This parameter is required.
@@ -2474,15 +2564,16 @@ class CreateDataFlowTaskRequest(TeaModel):
         # *   Data: the data blocks of a file.
         # *   MetaAndData: the metadata and data blocks of the file.
         self.data_type = data_type
-        # The directory in which the dataflow task is executed.
+        # The directory in which the data flow task is executed.
         # 
         # Limits:
         # 
-        # *   The directory must be 2 to 1,024 characters in length.
+        # *   The directory must be 1 to 1,023 characters in length.
         # *   The directory must be encoded in UTF-8.
         # *   The directory must start and end with a forward slash (/).
         # *   Only one directory can be listed at a time.
-        # *   The directory must be an existing directory in the CPFS file system and must be in a fileset where the dataflow is enabled.
+        # *   If the TaskAction parameter is set to Export, the directory must be a relative path within the FileSystemPath.
+        # *   If the TaskAction parameter is set to Import, the directory must be a relative path within the SourceStoragePath.
         self.directory = directory
         # Specifies whether to perform a dry run.
         # 
@@ -2493,28 +2584,39 @@ class CreateDataFlowTaskRequest(TeaModel):
         # *   true: performs a dry run. The system checks the required parameters, request syntax, limits, and available NAS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the FileSystemId parameter.
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a file system is created.
         self.dry_run = dry_run
-        # The list of files that are executed by the dataflow task.
+        self.dst_directory = dst_directory
+        # The list of files that are executed by the data flow task.
         # 
         # Limits:
         # 
         # *   The list must be encoded in UTF-8.
+        # *   The total length of the file list cannot exceed 64 KB.
         # *   The file list is in JSON format.
-        # *   If the source storage is Object Storage Service (OSS), the list name must comply with the naming conventions of OSS objects.
+        # *   The path of a single file must be 1 to 1,023 characters in length and must start with a forward slash (/).
+        # *   If the TaskAction parameter is set to Import, each element in the list represents an OSS object name.
+        # *   If the TaskAction parameter is set to Export, each element in the list represents a CPFS file path.
         self.entry_list = entry_list
         # The ID of the file system.
+        # 
+        # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
+        # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
+        # 
+        # >  CPFS file systems are available only on the China site (aliyun.com).
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
         # If you specify SrcTaskId, the configurations of the TaskAction, DataType, and EntryList parameters are copied from the desired dataflow task. You do not need to specify them.
         self.src_task_id = src_task_id
-        # The type of the dataflow task.
+        # The type of the data flow task.
         # 
         # Valid values:
         # 
         # *   Import: imports data stored in the source storage to a CPFS file system.
         # *   Export: exports specified data from a CPFS file system to the source storage.
         # *   Evict: releases the data blocks of a file in a CPFS file system. After the eviction, only the metadata of the file is retained in the CPFS file system. You can still query the file. However, the data blocks of the file are cleared and do not occupy the storage space in the CPFS file system. When you access the file data, the file is loaded from the source storage as required.
-        # *   Inventory: obtains the inventory list managed by a dataflow from the CPFS file system, providing the cache status of inventories in the dataflow.
+        # *   Inventory: obtains the inventory list managed by a data flow from the CPFS file system, providing the cache status of inventories in the data flow.
+        # 
+        # >  CPFS for LINGJUN supports only the Import and Export tasks.
         self.task_action = task_action
 
     def validate(self):
@@ -2530,6 +2632,8 @@ class CreateDataFlowTaskRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.conflict_policy is not None:
             result['ConflictPolicy'] = self.conflict_policy
+        if self.create_dir_if_not_exist is not None:
+            result['CreateDirIfNotExist'] = self.create_dir_if_not_exist
         if self.data_flow_id is not None:
             result['DataFlowId'] = self.data_flow_id
         if self.data_type is not None:
@@ -2538,6 +2642,8 @@ class CreateDataFlowTaskRequest(TeaModel):
             result['Directory'] = self.directory
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.dst_directory is not None:
+            result['DstDirectory'] = self.dst_directory
         if self.entry_list is not None:
             result['EntryList'] = self.entry_list
         if self.file_system_id is not None:
@@ -2554,6 +2660,8 @@ class CreateDataFlowTaskRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('ConflictPolicy') is not None:
             self.conflict_policy = m.get('ConflictPolicy')
+        if m.get('CreateDirIfNotExist') is not None:
+            self.create_dir_if_not_exist = m.get('CreateDirIfNotExist')
         if m.get('DataFlowId') is not None:
             self.data_flow_id = m.get('DataFlowId')
         if m.get('DataType') is not None:
@@ -2562,6 +2670,8 @@ class CreateDataFlowTaskRequest(TeaModel):
             self.directory = m.get('Directory')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('DstDirectory') is not None:
+            self.dst_directory = m.get('DstDirectory')
         if m.get('EntryList') is not None:
             self.entry_list = m.get('EntryList')
         if m.get('FileSystemId') is not None:
@@ -2659,15 +2769,37 @@ class CreateDirRequest(TeaModel):
         recursion: bool = None,
         root_directory: str = None,
     ):
+        # The ID of the file system.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The ID of the owner group for the directory. Valid values: 0 to 4294967295.
+        # 
         # This parameter is required.
         self.owner_group_id = owner_group_id
+        # The owner ID for the directory. Valid values: 0 to 4294967295.
+        # 
         # This parameter is required.
         self.owner_user_id = owner_user_id
+        # The Portable Operating System Interface (POSIX) permissions applied to the root directory. The value is a valid octal number, such as 0755.
+        # 
         # This parameter is required.
         self.permission = permission
+        # Specifies whether to create a multi-level directory. Valid values:
+        # 
+        # *   true (default): If no multi-level directory exists, directories are created level by level.
+        # *   false: Only the last level of directory is created. An error message is returned because the parent directory does not exist.
         self.recursion = recursion
+        # The directory name.
+        # 
+        # *   The directory must start with a forward slash (/).
+        # *   The directory can contain digits and letters.
+        # *   The directory can contain underscores (_), hyphens (-), and periods (.).
+        # *   The directory cannot contain symbolic links, such as the current directory (.), the upper-level directory (..), and other symbolic links.
+        # 
+        # > *   If the root directory does not exist, configure the information for directory creation. The system then automatically creates the specified root directory based on your settings.
+        # > *  If the root directory exists, you do not need to configure the information for directory creation. The configurations for directory creation are ignored even if you configure the information.
+        # 
         # This parameter is required.
         self.root_directory = root_directory
 
@@ -2716,6 +2848,7 @@ class CreateDirResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2988,17 +3121,18 @@ class CreateFileSystemRequest(TeaModel):
         # 
         # If you do not renew a subscription file system when the file system expires, the file system is automatically released.
         self.duration = duration
-        # Specifies whether to encrypt the data in the NAS file system.
+        # Specifies whether to encrypt data in the file system.
         # 
-        # You can use a key that is managed by Key Management Service (KMS) to encrypt the data that is stored in a file system. When you read and write the encrypted data, the data is automatically decrypted.
+        # You can use the keys that are managed by Key Management Service (KMS) to encrypt data in a file system. When you read and write the encrypted data, the data is automatically decrypted.
         # 
         # Valid values:
         # 
-        # *   0: The data in the file system is not encrypted.
+        # *   0 (default): The data in the file system is not encrypted.
         # *   1: A NAS-managed key is used to encrypt the data in the file system. This value is valid only if the FileSystemType parameter is set to standard or extreme.
-        # *   2: A KMS-managed key is used to encrypt the data in the file system. This value is valid only if the FileSystemType parameter is set to extreme.
+        # *   2: A KMS-managed key is used to encrypt the data in the file system. This value is valid only if the FileSystemType parameter is set to standard or extreme.
         # 
-        # > You can use KMS-managed keys only in the following regions: US (Silicon Valley), US (Virginia), UK (London), Australia (Sydney), Germany (Frankfurt), India (Mumbai), and Singapore.
+        # >  *   Extreme NAS file system: All regions support KMS-managed keys.
+        # > *   General-purpose NAS file system: KMS-managed keys are supported in the following regions: China (Chengdu), China (Qingdao), China (Hohhot), China (Ulanqab), China (Heyuan), China (Hangzhou), China (Shanghai), China (Beijing), China (Zhangjiakou), China (Shenzhen), China (Guangzhou), China (Hong Kong), Japan (Tokyo), Philippines (Manila), Thailand (Bangkok), Malaysia (Kuala Lumpur), US (Silicon Valley), Indonesia (Jakarta), UK (London), Singapore, US (Virginia), Germany (Frankfurt), Australia (Sydney), and China East 1 Finance.
         self.encrypt_type = encrypt_type
         # The type of the file system.
         # 
@@ -3021,6 +3155,9 @@ class CreateFileSystemRequest(TeaModel):
         # 
         # This parameter is required.
         self.protocol_type = protocol_type
+        # The resource group ID.
+        # 
+        # You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?) to view resource group IDs.
         self.resource_group_id = resource_group_id
         # The snapshot ID.
         # 
@@ -3028,9 +3165,9 @@ class CreateFileSystemRequest(TeaModel):
         # 
         # > You can create a file system from a snapshot. In this case, the version of the file system is the same as that of the source file system. For example, the source file system of the snapshot uses version 1. To create a file system of version 2, you can create File System A from the snapshot and create File System B of version 2. You can then copy the data and migrate your business from File System A to File System B.
         self.snapshot_id = snapshot_id
-        # The storage type.
+        # The storage class.
         # 
-        # *   If the FileSystemType parameter is set to standard, you can set the StorageType parameter to Performance or Capacity.
+        # *   If the FileSystemType parameter is set to standard, you can set the StorageType parameter to Performance, Capacity, or Premium.
         # *   If the FileSystemType parameter is set to extreme, you can set the StorageType parameter to standard or advance.
         # 
         # This parameter is required.
@@ -3231,6 +3368,12 @@ class CreateFilesetRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2402263.html) operation.
+        # 
+        # *   true: enables release protection.
+        # *   false (default): disables release protection.
+        # 
+        # >  This parameter can protect filesets only against manual releases, but not against automatic releases.
         self.deletion_protection = deletion_protection
         # The description of the fileset.
         # 
@@ -3244,7 +3387,7 @@ class CreateFilesetRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   true: performs a dry run. The system checks the required parameters, request syntax, limits, and available NAS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the FsetId parameter.
+        # *   true: performs a dry run. The system checks the required parameters, request syntax, service limits, and available Apsara File Storage NAS (NAS) resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the FsetId parameter.
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a fileset is created.
         self.dry_run = dry_run
         # The ID of the file system.
@@ -3682,6 +3825,10 @@ class CreateLifecycleRetrieveJobRequest(TeaModel):
         # 
         # This parameter is required.
         self.paths = paths
+        # The storage class.
+        # 
+        # *   InfrequentAccess (default): the Infrequent Access (IA) storage class.
+        # *   Archive: the Archive storage class.
         self.storage_type = storage_type
 
     def validate(self):
@@ -5053,8 +5200,12 @@ class DeleteAccessPointRequest(TeaModel):
         access_point_id: str = None,
         file_system_id: str = None,
     ):
+        # The ID of the access point.
+        # 
         # This parameter is required.
         self.access_point_id = access_point_id
+        # The ID of the file system.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
 
@@ -5087,6 +5238,7 @@ class DeleteAccessPointResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6657,9 +6809,19 @@ class DescribeAccessGroupsResponseBodyAccessGroupsAccessGroup(TeaModel):
         self.create_time = create_time
         # The description of the permission group.
         self.description = description
+        # The type of the file system.
+        # 
+        # Valid values:
+        # 
+        # *   standard: General-purpose Apsara File Storage NAS (NAS) file system
+        # *   extreme: Extreme NAS file system
+        # *   cpfs: Cloud Parallel File Storage (CPFS) file system
+        # 
+        # >  CPFS file systems are available only on the China site (aliyun.com).
         self.file_system_type = file_system_type
         # The number of mount targets to which the permission group is attached.
         self.mount_target_count = mount_target_count
+        # The region ID.
         self.region_id = region_id
         # The total number of rules in the permission group.
         self.rule_count = rule_count
@@ -6852,8 +7014,12 @@ class DescribeAccessPointRequest(TeaModel):
         access_point_id: str = None,
         file_system_id: str = None,
     ):
+        # The ID of the access point.
+        # 
         # This parameter is required.
         self.access_point_id = access_point_id
+        # The ID of the file system.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
 
@@ -6888,8 +7054,11 @@ class DescribeAccessPointResponseBodyAccessPointPosixUser(TeaModel):
         posix_secondary_group_ids: List[int] = None,
         posix_user_id: int = None,
     ):
+        # The ID of the POSIX user group.
         self.posix_group_id = posix_group_id
+        # The IDs of the secondary user groups.
         self.posix_secondary_group_ids = posix_secondary_group_ids
+        # The ID of the POSIX user.
         self.posix_user_id = posix_user_id
 
     def validate(self):
@@ -6927,8 +7096,11 @@ class DescribeAccessPointResponseBodyAccessPointRootPathPermission(TeaModel):
         owner_user_id: int = None,
         permission: str = None,
     ):
+        # The ID of the owner group.
         self.owner_group_id = owner_group_id
+        # The owner ID.
         self.owner_user_id = owner_user_id
+        # The POSIX permission.
         self.permission = permission
 
     def validate(self):
@@ -6980,22 +7152,54 @@ class DescribeAccessPointResponseBodyAccessPoint(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the access point.
         self.arn = arn
+        # The name of the permission group.
         self.access_group = access_group
+        # The ID of the access point.
         self.access_point_id = access_point_id
+        # The name of the access point.
         self.access_point_name = access_point_name
+        # The time when the access point was created.
         self.create_time = create_time
+        # The domain name of the access point.
         self.domain_name = domain_name
+        # Indicates whether the RAM policy is enabled.
         self.enabled_ram = enabled_ram
+        # The ID of the file system.
         self.file_system_id = file_system_id
+        # The time when the access point was modified.
         self.modify_time = modify_time
+        # The POSIX user.
         self.posix_user = posix_user
+        # The region ID.
         self.region_id = region_id
+        # The root directory.
         self.root_path = root_path
+        # The permissions to create the root directory.
         self.root_path_permission = root_path_permission
+        # The status of the root directory.
+        # 
+        # Valid values:
+        # 
+        # *   0: The rootpath status is unknown.
+        # *   1: The rootpath does not exist and may be deleted.
+        # *   2: The rootpath is normal.
         self.root_path_status = root_path_status
+        # The status of the access point.
+        # 
+        # Valid values:
+        # 
+        # *   Active: The access point is available.
+        # *   Inactive: The access point is unavailable.
+        # *   Pending: The access point is being created.
+        # *   Deleting: The access point is being deleted.
         self.status = status
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The ID of the virtual private cloud (VPC).
+        # 
+        # You must select the VPC of the Elastic Compute Service (ECS) instance on which you want to mount the file system.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -7093,7 +7297,10 @@ class DescribeAccessPointResponseBody(TeaModel):
         access_point: DescribeAccessPointResponseBodyAccessPoint = None,
         request_id: str = None,
     ):
+        # The information about the access point.
         self.access_point = access_point
+        # The request ID.
+        # 
         # This parameter is required.
         self.request_id = request_id
 
@@ -7172,9 +7379,19 @@ class DescribeAccessPointsRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The name of the permission group.
+        # 
+        # This parameter is required for a General-purpose Apsara File Storage NAS (NAS) file system.
+        # 
+        # The default permission group for virtual private clouds (VPCs) is named DEFAULT_VPC_GROUP_NAME.
         self.access_group = access_group
+        # The ID of the file system.
         self.file_system_id = file_system_id
+        # The number of results for each query.
+        # 
+        # Valid values: 10 to 100. Default value: 10.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
 
     def validate(self):
@@ -7216,8 +7433,11 @@ class DescribeAccessPointsResponseBodyAccessPointsPosixUser(TeaModel):
         posix_secondary_group_ids: List[int] = None,
         posix_user_id: int = None,
     ):
+        # The ID of the POSIX user group.
         self.posix_group_id = posix_group_id
+        # The IDs of the secondary user groups.
         self.posix_secondary_group_ids = posix_secondary_group_ids
+        # The ID of the POSIX user.
         self.posix_user_id = posix_user_id
 
     def validate(self):
@@ -7255,8 +7475,11 @@ class DescribeAccessPointsResponseBodyAccessPointsRootPathPermission(TeaModel):
         owner_user_id: int = None,
         permission: str = None,
     ):
+        # The ID of the owner group.
         self.owner_group_id = owner_group_id
+        # The owner ID.
         self.owner_user_id = owner_user_id
+        # The POSIX permission.
         self.permission = permission
 
     def validate(self):
@@ -7307,21 +7530,52 @@ class DescribeAccessPointsResponseBodyAccessPoints(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The Alibaba Cloud Resource Name (ARN) of the access point.
         self.arn = arn
+        # The name of the permission group.
         self.access_group = access_group
+        # The ID of the access point.
         self.access_point_id = access_point_id
+        # The name of the access point.
         self.access_point_name = access_point_name
+        # The time when the access point was created.
         self.create_time = create_time
+        # The domain name of the access point.
         self.domain_name = domain_name
+        # Indicates whether the Resource Access Management (RAM) policy is enabled.
         self.enabled_ram = enabled_ram
+        # The ID of the file system.
         self.file_system_id = file_system_id
+        # The time when the access point was modified.
         self.modify_time = modify_time
+        # The Portable Operating System Interface for UNIX (POSIX) user.
         self.posix_user = posix_user
+        # The root directory.
         self.root_path = root_path
+        # The permissions on the root directory.
         self.root_path_permission = root_path_permission
+        # The status of the root directory.
+        # 
+        # Valid values:
+        # 
+        # *   0: The rootpath status is unknown.
+        # *   1: The rootpath does not exist and may be deleted.
+        # *   2: The rootpath is normal.
         self.root_path_status = root_path_status
+        # The status of the access point.
+        # 
+        # Valid values:
+        # 
+        # *   Active: The access point is available.
+        # *   Inactive: The access point is unavailable.
+        # *   Pending: The access point is being created.
+        # *   Deleting: The access point is being deleted.
+        # 
+        # >  You can mount a file system only if the access point is in the Active state.
         self.status = status
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -7417,10 +7671,15 @@ class DescribeAccessPointsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The information about the access point.
         self.access_points = access_points
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The request ID.
+        # 
         # This parameter is required.
         self.request_id = request_id
+        # The total number of access points.
         self.total_count = total_count
 
     def validate(self):
@@ -8596,6 +8855,143 @@ class DescribeDataFlowTasksRequest(TeaModel):
         return self
 
 
+class DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats(TeaModel):
+    def __init__(
+        self,
+        actual_bytes: int = None,
+        actual_files: int = None,
+        average_speed: int = None,
+        bytes_done: int = None,
+        bytes_total: int = None,
+        files_done: int = None,
+        files_total: int = None,
+        remain_time: int = None,
+    ):
+        self.actual_bytes = actual_bytes
+        self.actual_files = actual_files
+        self.average_speed = average_speed
+        self.bytes_done = bytes_done
+        self.bytes_total = bytes_total
+        self.files_done = files_done
+        self.files_total = files_total
+        self.remain_time = remain_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.actual_bytes is not None:
+            result['ActualBytes'] = self.actual_bytes
+        if self.actual_files is not None:
+            result['ActualFiles'] = self.actual_files
+        if self.average_speed is not None:
+            result['AverageSpeed'] = self.average_speed
+        if self.bytes_done is not None:
+            result['BytesDone'] = self.bytes_done
+        if self.bytes_total is not None:
+            result['BytesTotal'] = self.bytes_total
+        if self.files_done is not None:
+            result['FilesDone'] = self.files_done
+        if self.files_total is not None:
+            result['FilesTotal'] = self.files_total
+        if self.remain_time is not None:
+            result['RemainTime'] = self.remain_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActualBytes') is not None:
+            self.actual_bytes = m.get('ActualBytes')
+        if m.get('ActualFiles') is not None:
+            self.actual_files = m.get('ActualFiles')
+        if m.get('AverageSpeed') is not None:
+            self.average_speed = m.get('AverageSpeed')
+        if m.get('BytesDone') is not None:
+            self.bytes_done = m.get('BytesDone')
+        if m.get('BytesTotal') is not None:
+            self.bytes_total = m.get('BytesTotal')
+        if m.get('FilesDone') is not None:
+            self.files_done = m.get('FilesDone')
+        if m.get('FilesTotal') is not None:
+            self.files_total = m.get('FilesTotal')
+        if m.get('RemainTime') is not None:
+            self.remain_time = m.get('RemainTime')
+        return self
+
+
+class DescribeDataFlowTasksResponseBodyTaskInfoTaskReportsReport(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        path: str = None,
+    ):
+        self.name = name
+        self.path = path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.path is not None:
+            result['Path'] = self.path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        return self
+
+
+class DescribeDataFlowTasksResponseBodyTaskInfoTaskReports(TeaModel):
+    def __init__(
+        self,
+        report: List[DescribeDataFlowTasksResponseBodyTaskInfoTaskReportsReport] = None,
+    ):
+        self.report = report
+
+    def validate(self):
+        if self.report:
+            for k in self.report:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Report'] = []
+        if self.report is not None:
+            for k in self.report:
+                result['Report'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.report = []
+        if m.get('Report') is not None:
+            for k in m.get('Report'):
+                temp_model = DescribeDataFlowTasksResponseBodyTaskInfoTaskReportsReport()
+                self.report.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
     def __init__(
         self,
@@ -8604,13 +9000,17 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
         data_flow_id: str = None,
         data_type: str = None,
         directory: str = None,
+        dst_directory: str = None,
         end_time: str = None,
+        error_msg: str = None,
         file_system_path: str = None,
         filesystem_id: str = None,
         fs_path: str = None,
         originator: str = None,
         progress: int = None,
+        progress_stats: DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats = None,
         report_path: str = None,
+        reports: DescribeDataFlowTasksResponseBodyTaskInfoTaskReports = None,
         source_storage: str = None,
         start_time: str = None,
         status: str = None,
@@ -8628,8 +9028,10 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
         # *   null
         self.data_type = data_type
         self.directory = directory
+        self.dst_directory = dst_directory
         # The time when the task ended.
         self.end_time = end_time
+        self.error_msg = error_msg
         # *\
         # *\
         # *\
@@ -8645,6 +9047,7 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
         self.originator = originator
         # null null
         self.progress = progress
+        self.progress_stats = progress_stats
         # null
         # 
         # null``
@@ -8654,6 +9057,7 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
         # *   null
         # *   The name must be encoded in UTF-8.
         self.report_path = report_path
+        self.reports = reports
         # ://\
         # 
         # *\
@@ -8687,7 +9091,10 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
         self.task_id = task_id
 
     def validate(self):
-        pass
+        if self.progress_stats:
+            self.progress_stats.validate()
+        if self.reports:
+            self.reports.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8705,8 +9112,12 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
             result['DataType'] = self.data_type
         if self.directory is not None:
             result['Directory'] = self.directory
+        if self.dst_directory is not None:
+            result['DstDirectory'] = self.dst_directory
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
         if self.file_system_path is not None:
             result['FileSystemPath'] = self.file_system_path
         if self.filesystem_id is not None:
@@ -8717,8 +9128,12 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
             result['Originator'] = self.originator
         if self.progress is not None:
             result['Progress'] = self.progress
+        if self.progress_stats is not None:
+            result['ProgressStats'] = self.progress_stats.to_map()
         if self.report_path is not None:
             result['ReportPath'] = self.report_path
+        if self.reports is not None:
+            result['Reports'] = self.reports.to_map()
         if self.source_storage is not None:
             result['SourceStorage'] = self.source_storage
         if self.start_time is not None:
@@ -8743,8 +9158,12 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
             self.data_type = m.get('DataType')
         if m.get('Directory') is not None:
             self.directory = m.get('Directory')
+        if m.get('DstDirectory') is not None:
+            self.dst_directory = m.get('DstDirectory')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
         if m.get('FileSystemPath') is not None:
             self.file_system_path = m.get('FileSystemPath')
         if m.get('FilesystemId') is not None:
@@ -8755,8 +9174,14 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
             self.originator = m.get('Originator')
         if m.get('Progress') is not None:
             self.progress = m.get('Progress')
+        if m.get('ProgressStats') is not None:
+            temp_model = DescribeDataFlowTasksResponseBodyTaskInfoTaskProgressStats()
+            self.progress_stats = temp_model.from_map(m['ProgressStats'])
         if m.get('ReportPath') is not None:
             self.report_path = m.get('ReportPath')
+        if m.get('Reports') is not None:
+            temp_model = DescribeDataFlowTasksResponseBodyTaskInfoTaskReports()
+            self.reports = temp_model.from_map(m['Reports'])
         if m.get('SourceStorage') is not None:
             self.source_storage = m.get('SourceStorage')
         if m.get('StartTime') is not None:
@@ -8895,23 +9320,24 @@ class DescribeDataFlowsRequestFilters(TeaModel):
     ):
         # The filter name. Valid values:
         # 
-        # *   DataFlowIds: filters dataflows by dataflow ID.
-        # *   FsetIds: filters dataflows by fileset ID.
-        # *   FileSystemPath: filters dataflows based on the path of a fileset in a CPFS file system.
-        # *   SourceStorage: filters dataflows based on the access path of the source storage.
-        # *   ThroughputList: filters dataflows based on dataflow throughput.
-        # *   Description: filters dataflows based on the fileset description.
-        # *   Status: filters dataflows based on dataflow status.
+        # *   DataFlowIds: filters data flows by data flow ID.
+        # *   FsetIds: filters data flows by fileset ID.
+        # *   FileSystemPath: filters data flows based on the path of a fileset in a CPFS file system.
+        # *   SourceStorage: filters data flows based on the access path of the source storage.
+        # *   ThroughputList: filters data flows based on data flow throughput.
+        # *   Description: filters data flows based on the fileset description.
+        # *   Status: filters data flows based on data flow status.
         self.key = key
-        # The value of the filter. This parameter does not support wildcards.
+        # The filter value. This parameter does not support wildcards.
         # 
-        # *   If Key is set to DataFlowIds, set Value to a data flow ID or a part of the data flow ID. You can specify a dataflow ID or a group of dataflow IDs. You can specify a maximum of 10 dataflow IDs. Example: `dfid-12345678` or `dfid-12345678,dfid-12345679`.
+        # *   If Key is set to DataFlowIds, set Value to a data flow ID or a part of the data flow ID. You can specify a data flow ID or a group of data flow IDs. You can specify a maximum of 10 data flow IDs. Example: `dfid-12345678` or `dfid-12345678,dfid-12345679`.
         # *   If Key is set to FsetIds, set Value to a fileset ID or a part of the fileset ID. You can specify a fileset ID or a group of fileset IDs. You can specify a maximum of 10 fileset IDs. Example: `fset-12345678` or `fset-12345678,fset-12345679`.
-        # *   If Key set to FileSystemPath, set Value to the path or a part of the path of a fileset in a CPFS file system. The value must be 2 to 1,024 characters in length. The value must be encoded in UTF-8.
-        # *   If Key is set to SourceStorage, set Value to the access path or a part of the access path of the source storage. The value must be 8 to 128 characters in length. The value must be encoded in UTF-8 and comply with the naming conventions of Object Storage Service (OSS) buckets.
-        # *   If Key is set to ThroughputList, set Value to the dataflow throughput. Combined query is supported.
-        # *   If Key is set to Description, set Value to a dataflow description or a part of the dataflow description.
-        # *   If Key is set to Status, set Value to the dataflow status.
+        # *   If Key is set to FileSystemPath, set Value to the path or a part of the path of a fileset in a CPFS file system. The value of the parameter must be 1 to 1,024 characters in length.
+        # *   If Key is set to SourceStorage, set Value to the access path or a part of the access path of the source storage. The path can be up to 1,024 characters in length.
+        # *   If Key is set to ThroughputList, set Value to the data flow throughput. Combined query is supported.
+        # *   If Key is set to Description, set Value to a data flow description or a part of the data flow description.
+        # *   If Key is set to Status, set Value to the data flow status.
+        # *   If Key is set to SourceStoragePath, set Value to the access path or a part of the access path of the source storage. The path can be up to 1,024 characters in length.
         self.value = value
 
     def validate(self):
@@ -8948,9 +9374,14 @@ class DescribeDataFlowsRequest(TeaModel):
     ):
         # The ID of the file system.
         # 
+        # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
+        # *   The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
+        # 
+        # >  CPFS file systems are available only on the China site (aliyun.com).
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The filter that is used to query dataflows.
+        # The filter that is used to query data flows.
         self.filters = filters
         # The number of results for each query.
         # 
@@ -9092,15 +9523,21 @@ class DescribeDataFlowsResponseBodyDataFlowInfoDataFlow(TeaModel):
         update_time: str = None,
     ):
         # The details about automatic update policies.
+        # 
+        # >  Only CPFS supports this parameter.
         self.auto_refresh = auto_refresh
         # The automatic update interval. CPFS checks whether data is updated in the directory at the interval specified by this parameter. If data is updated, CPFS starts an automatic update task. Unit: minutes.
         # 
         # Valid values: 5 to 526600. Default value: 10.
+        # 
+        # >  Only CPFS supports this parameter.
         self.auto_refresh_interval = auto_refresh_interval
         # The automatic update policy. The updated data in the source storage is imported into the CPFS file system based on the policy. Valid values:
         # 
-        # *   None: Updated data in the source storage is not automatically imported to the CPFS file system. You can run a dataflow task to import the updated data from the source storage.
-        # *   ImportChanged: Updated data in the source storage is automatically imported to the CPFS file system.
+        # *   None: Updated data in the source storage is not automatically imported into the CPFS file system. You can run a data flow task to import the updated data from the source storage.
+        # *   ImportChanged: Updated data in the source storage is automatically imported into the CPFS file system.
+        # 
+        # >  Only CPFS supports this parameter.
         self.auto_refresh_policy = auto_refresh_policy
         # The time when the fileset was created.
         # 
@@ -9132,8 +9569,12 @@ class DescribeDataFlowsResponseBodyDataFlowInfoDataFlow(TeaModel):
         # *   The directory must be encoded in UTF-8.
         # *   The directory must start and end with a forward slash (/).
         # *   The directory must be a fileset directory in the CPFS file system.
+        # 
+        # >  Only CPFS supports this parameter.
         self.file_system_path = file_system_path
         # The description of the automatic update.
+        # 
+        # >  Only CPFS supports this parameter.
         self.fset_description = fset_description
         # The fileset ID.
         self.fset_id = fset_id
@@ -9142,11 +9583,11 @@ class DescribeDataFlowsResponseBodyDataFlowInfoDataFlow(TeaModel):
         # *   None (default): The source storage can be accessed without a security mechanism.
         # *   SSL: The source storage must be accessed with an SSL certificate.
         self.source_security_type = source_security_type
-        # The access path of the source storage. Format:://.
+        # The access path of the source storage. Format: `<storage type>://<path>`.
         # 
         # Parameters:
         # 
-        # *   storage type: Only OSS is supported.
+        # *   storage type: Only Object Storage Service (OSS) is supported.
         # 
         # *   path: the name of the OSS bucket.
         # 
@@ -9157,7 +9598,9 @@ class DescribeDataFlowsResponseBodyDataFlowInfoDataFlow(TeaModel):
         # 
         # >  The OSS bucket must be an existing bucket in the region.
         self.source_storage = source_storage
-        # 源端存储内的访问路径。
+        # The access path in the bucket of the source storage.
+        # 
+        # >  Only CPFS for LINGJUN supports this parameter.
         self.source_storage_path = source_storage_path
         # The dataflow status. Valid values:
         # 
@@ -9310,7 +9753,7 @@ class DescribeDataFlowsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The details about dataflows.
+        # The details about data flows.
         self.data_flow_info = data_flow_info
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -9467,13 +9910,14 @@ class DescribeDirQuotasResponseBodyDirQuotaInfosUserQuotaInfos(TeaModel):
         self.size_limit = size_limit
         # The total size of files that a user has created in the directory. Unit: GiB.
         self.size_real = size_real
+        # The total size of files that a user has created in the directory. Unit: bytes.
         self.size_real_in_byte = size_real_in_byte
         # The ID of the user that you specify to create a quota for the directory. The value depends on the value of the UserType parameter. Valid values: Uid and Gid.
         self.user_id = user_id
-        # The type of the user ID. Valid values: Uid, Gid, and AllUsers.
+        # The type of user. Valid values: Uid, Gid, and AllUsers.
         # 
-        # *   If the parameter is set to Uid or Gid, the value of the UserId parameter is returned.
-        # *   If the parameter is set to AllUsers, the value of the UserID parameter is empty.
+        # *   If Uid or Gid is returned, a value is returned for UserId.
+        # *   If AllUsers is returned, UserId is empty.
         self.user_type = user_type
 
     def validate(self):
@@ -10228,20 +10672,18 @@ class DescribeFileSystemsRequestTag(TeaModel):
         # The key of tag N to add to the resource.
         # 
         # Limits:
-        # 
-        # *   Valid values of N: 1 to 20.
-        # *   The tag key must be 1 to 128 characters in length.
-        # *   The tag key cannot start with `aliyun` or `acs:`.
-        # *   The tag key cannot contain `http://` or `https://`.
+        # - Valid values of N: 1 to 20.
+        # - The tag key must be 1 to 128 characters in length.
+        # - The tag key cannot start with aliyun or acs:.
+        # - The tag key cannot contain http:// or https://.
         self.key = key
         # The value of tag N to add to the resource.
         # 
         # Limits:
-        # 
-        # *   Valid values of N: 1 to 20.
-        # *   The tag value must be 1 to 128 characters in length.
-        # *   The tag value cannot start with `aliyun` or `acs:`.
-        # *   The tag value cannot contain `http://` or `https://`.
+        # - Valid values of N: 1 to 20.
+        # - The tag value must be 1 to 128 characters in length.
+        # - The tag value cannot start with aliyun or acs:.
+        # - The tag value cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -10281,21 +10723,18 @@ class DescribeFileSystemsRequest(TeaModel):
     ):
         # The ID of the file system.
         # 
-        # *   Sample ID of a General-purpose NAS file system: 31a8e4\\*\\*\\*\\*.
-        # *   The IDs of Extreme NAS file systems must start with extreme-, for example, extreme-0015\\*\\*\\*\\*.
-        # *   The IDs of Cloud Parallel File Storage (CPFS) file systems must start with cpfs-, for example, cpfs-125487\\*\\*\\*\\*.
-        # 
+        # - Sample ID of a General-purpose NAS file system: 31a8e4****.
+        # - The IDs of Extreme NAS file systems must start with extreme-, for example, extreme-0015****.
+        # - The IDs of Cloud Parallel File Storage (CPFS) file systems must start with cpfs-, for example, cpfs-125487****.
         # > CPFS file systems are available only on the China site (aliyun.com).
         self.file_system_id = file_system_id
         # The type of the file system.
         # 
         # Valid values:
-        # 
-        # *   all (default): all types
-        # *   standard: General-purpose NAS file system
-        # *   extreme: Extreme NAS file system
-        # *   cpfs: CPFS file system
-        # 
+        # - all (default): all types
+        # - standard: General-purpose NAS file system
+        # - extreme: Extreme NAS file system
+        # - cpfs: CPFS file system
         # > CPFS file systems are available only on the China site (aliyun.com).
         self.file_system_type = file_system_type
         # The page number.
@@ -10308,6 +10747,9 @@ class DescribeFileSystemsRequest(TeaModel):
         # 
         # Default value: 10.
         self.page_size = page_size
+        # The resource group ID.
+        # 
+        # You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?) to view resource group IDs.
         self.resource_group_id = resource_group_id
         # The details about the tags.
         self.tag = tag
@@ -10577,7 +11019,6 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarge
         # This parameter is available only for CPFS file systems.
         self.client_master_nodes = client_master_nodes
         # The dual-stack (IPv4 and IPv6) domain name of the mount target.
-        # 
         # > Only Extreme NAS file systems that reside in the Chinese mainland support IPv6.
         self.dual_stack_mount_target_domain = dual_stack_mount_target_domain
         # The domain name of the mount target.
@@ -10590,7 +11031,7 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarge
         # 
         # *   Active: The mount target is available.
         # *   Inactive: The mount target is unavailable.
-        # *   Pending: The mount target is being created or modified.
+        # *   Pending: The mount target is being processed.
         # *   Deleting: The mount target is being deleted.
         # *   Hibernating: The mount target is being hibernated.
         # *   Hibernated: The mount target is hibernated.
@@ -10699,6 +11140,12 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions(TeaModel):
         self,
         enable_oplock: bool = None,
     ):
+        # Specifies whether to enable the oplock feature. Valid values:
+        # 
+        # *   true: enables the feature.
+        # *   false: disables the feature.
+        # 
+        # >  Only Server Message Block (SMB) file systems support this feature.
         self.enable_oplock = enable_oplock
 
     def validate(self):
@@ -10737,9 +11184,8 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage(TeaMod
         # The type of the storage plan.
         # 
         # Valid values:
-        # 
-        # *   ssd: the storage plan for Performance NAS file systems
-        # *   hybrid: the storage plan for Capacity NAS file systems
+        # - ssd: the storage plan for Performance NAS file systems.
+        # - hybrid: the storage plan for Capacity NAS file systems.
         self.package_type = package_type
         # The capacity of the storage plan. Unit: bytes.
         self.size = size
@@ -10945,6 +11391,7 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         version: str = None,
         zone_id: str = None,
     ):
+        # Number of access points.
         self.access_point_count = access_point_count
         # The bandwidth of the file system.
         # 
@@ -10957,10 +11404,9 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         # The billing method.
         # 
         # Valid values:
-        # 
-        # *   Subscription: The subscription billing method is used.
-        # *   PayAsYouGo: The pay-as-you-go billing method is used.
-        # *   Package: A storage plan is attached to the file system.
+        # - Subscription: The subscription billing method is used.
+        # - PayAsYouGo: The pay-as-you-go billing method is used.
+        # - Package: A storage plan is attached to the file system.
         self.charge_type = charge_type
         # The time when the file system was created.
         self.create_time = create_time
@@ -10981,11 +11427,9 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         # The type of the file system.
         # 
         # Valid values:
-        # 
-        # *   standard: General-purpose NAS file system
-        # *   extreme: Extreme NAS file system
-        # *   cpfs: CPFS file system
-        # 
+        # - standard: General-purpose NAS file system
+        # - extreme: Extreme NAS file system
+        # - cpfs: CPFS file system
         # > CPFS file systems are available only on the China site (aliyun.com).
         self.file_system_type = file_system_type
         # The ID of the key that is managed by Key Management Service (KMS).
@@ -10994,6 +11438,9 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         # 
         # This parameter is available only for CPFS file systems.
         self.ldap = ldap
+        # Archive storage usage.
+        # 
+        # Unit: Byte.
         self.metered_archive_size = metered_archive_size
         # The storage usage of the Infrequent Access (IA) storage medium.
         # 
@@ -11005,6 +11452,7 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         self.metered_size = metered_size
         # The information about mount targets.
         self.mount_targets = mount_targets
+        # The options.
         self.options = options
         # The information about storage plans.
         self.packages = packages
@@ -11020,25 +11468,25 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         self.protocol_type = protocol_type
         # The region ID.
         self.region_id = region_id
+        # The resource group ID.
+        # 
+        # You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?) to view resource group IDs.
         self.resource_group_id = resource_group_id
         # The status of the file system. Valid values:
-        # 
-        # *   Pending: The file system is being created or modified.
-        # *   Running: The file system is available. Before you create a mount target for the file system, make sure that the file system is in the Running state.
-        # *   Stopped: The file system is unavailable.
-        # *   Extending: The file system is being scaled up.
-        # *   Stopping: The file system is being stopped.
-        # *   Deleting: The file system is being deleted.
+        # - Pending: The file system is being created or modified.
+        # - Running: The file system is available. Before you create a mount target for the file system, make sure that the file system is in the Running state.
+        # - Stopped: The file system is unavailable.
+        # - Extending: The file system is being scaled up.
+        # - Stopping: The file system is being stopped.
+        # - Deleting: The file system is being deleted.
         self.status = status
         # The storage type.
         # 
         # Valid values:
-        # 
-        # *   Valid values for General-purpose NAS file systems: Capacity and Performance.
-        # *   Valid values for Extreme NAS file systems: standard and advance.
-        # *   Valid values for CPFS file systems: advance_100 (100 MB/s/TiB baseline) and advance_200 (200 MB/s/TiB baseline).
-        # 
-        # > CPFS file systems are available only on the China site (aliyun.com).
+        # - Valid values for General-purpose NAS file systems: Capacity,Premium and Performance.
+        # - Valid values for Extreme NAS file systems: standard and advance.
+        # - Valid values for CPFS file systems: advance_100 (100 MB/s/TiB baseline) and advance_200 (200 MB/s/TiB baseline).
+        #  > CPFS file systems are available only on the China site (aliyun.com).
         self.storage_type = storage_type
         # The features that are supported by the file system.
         self.supported_features = supported_features
@@ -11046,7 +11494,7 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         self.tags = tags
         # The version number of the file system.
         # 
-        # This parameter is available only for Extreme NAS file systems.
+        # This parameter is available only for Extreme NAS file systems and CPFS file systems.
         self.version = version
         # The ID of the zone where the file system resides.
         self.zone_id = zone_id
@@ -11445,6 +11893,12 @@ class DescribeFilesetsResponseBodyEntriesEntrie(TeaModel):
         # 
         # The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.create_time = create_time
+        # Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2402263.html) operation. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # >  This parameter can protect filesets only against manual releases, but not against automatic releases.
         self.deletion_protection = deletion_protection
         # The fileset description.
         self.description = description
@@ -11660,6 +12114,12 @@ class DescribeLifecyclePoliciesRequest(TeaModel):
         # 
         # Default value: 10.
         self.page_size = page_size
+        # The storage class.
+        # 
+        # *   InfrequentAccess: the Infrequent Access (IA) storage class.
+        # *   Archive: the Archive storage class.
+        # 
+        # >  If the StorageType parameter is not specified, data retrieval tasks of all types are returned.
         self.storage_type = storage_type
 
     def validate(self):
@@ -11728,6 +12188,7 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(TeaModel):
         self.lifecycle_rule_name = lifecycle_rule_name
         # The absolute path of a directory with which the lifecycle policy is associated.
         self.path = path
+        # The absolute paths to multiple directories associated with the lifecycle policy.
         self.paths = paths
         # The storage type of the data that is dumped to the IA storage medium.
         # 
@@ -12948,9 +13409,9 @@ class DescribeProtocolMountTargetRequestFilters(TeaModel):
         # The filter value. This parameter does not support wildcards.
         # 
         # *   If Key is set to ProtocolServiceIds, set Value to a protocol service ID. You can specify a maximum of 10 protocol service IDs. Example: `ptc-12345678` or `ptc-12345678,ptc-12345679`.
-        # *   If Key is set to ExportIds, set Value to an export directory ID. You can specify a maximum of 10 export directory IDs. For example, `exp-12345678` or `exp-12345678,exp-12345679`.
+        # *   If Key is set to ExportIds, set Value to an export directory ID. You can specify a maximum of 10 export directory IDs. Example: `exp-12345678` or `exp-12345678,exp-12345679`.
         # *   If Key is set to VpcIds, set Value to a VPC ID of the protocol service. You can specify a maximum of 10 VPC IDs. Example: `vpc-12345678` or `vpc-12345678,vpc-12345679`.
-        # *   If Key is set to FsetIds, set Value to a fileset ID. You can specify a maximum of 10 fileset IDs. Example, `fset-12345678` or `fset-12345678,fset-12345679`.
+        # *   If Key is set to FsetIds, set Value to a fileset ID. You can specify a maximum of 10 fileset IDs. Example: `fset-12345678` or `fset-12345678,fset-12345679`.
         # *   If Key is set to Paths, set Value to a path of the file system corresponding to the mount target. You can specify a maximum of 10 paths. Example: `/cpfs/mnt_1/` or `/cpfs/mnt_1/,/cpfs/mnt_2/`.
         # *   If Key is set to AccessGroupNames, set Value to a permission group name for the protocol service. You can specify a maximum of 10 permission group names. Example: `ag-12345678` or `ag-12345678,ag-12345679`.
         self.value = value
@@ -13281,7 +13742,7 @@ class DescribeProtocolServiceRequest(TeaModel):
         # *   Minimum value: 10.
         # *   Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. If not all dataflows are returned in a query, the return value of the NextToken parameter is not empty. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         # The ID of the protocol service.
         # 
@@ -15919,12 +16380,14 @@ class GetRecycleBinAttributeRequest(TeaModel):
 class GetRecycleBinAttributeResponseBodyRecycleBinAttribute(TeaModel):
     def __init__(
         self,
+        archive_size: int = None,
         enable_time: str = None,
         reserved_days: int = None,
         secondary_size: int = None,
         size: int = None,
         status: str = None,
     ):
+        self.archive_size = archive_size
         # The time at which the recycle bin was enabled.
         self.enable_time = enable_time
         # The retention period of the files in the recycle bin. Unit: days.
@@ -15952,6 +16415,8 @@ class GetRecycleBinAttributeResponseBodyRecycleBinAttribute(TeaModel):
             return _map
 
         result = dict()
+        if self.archive_size is not None:
+            result['ArchiveSize'] = self.archive_size
         if self.enable_time is not None:
             result['EnableTime'] = self.enable_time
         if self.reserved_days is not None:
@@ -15966,6 +16431,8 @@ class GetRecycleBinAttributeResponseBodyRecycleBinAttribute(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ArchiveSize') is not None:
+            self.archive_size = m.get('ArchiveSize')
         if m.get('EnableTime') is not None:
             self.enable_time = m.get('EnableTime')
         if m.get('ReservedDays') is not None:
@@ -16071,8 +16538,10 @@ class ListDirectoriesAndFilesRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   false (default): queries both directories and files
-        # *   true: queries only directories
+        # *   false (default): queries both directories and files.
+        # *   true: queries only directories.
+        # 
+        # >  If you set the StorageType parameter to All, you must set the DirectoryOnly parameter to true.
         self.directory_only = directory_only
         # The ID of the file system.
         # 
@@ -16092,9 +16561,13 @@ class ListDirectoriesAndFilesRequest(TeaModel):
         # 
         # This parameter is required.
         self.path = path
-        # The storage type of the files.
+        # The storage class.
         # 
-        # Default value: InfrequentAccess (IA).
+        # *   InfrequentAccess: the Infrequent Access (IA) storage class.
+        # *   Archive: the Archive storage class.
+        # *   All: all stored data.
+        # 
+        # >  If you set the StorageType parameter to All, you must set the DirectoryOnly parameter to true.
         # 
         # This parameter is required.
         self.storage_type = storage_type
@@ -16170,15 +16643,23 @@ class ListDirectoriesAndFilesResponseBodyEntries(TeaModel):
         self.ctime = ctime
         # The ID of the directory or file.
         self.file_id = file_id
-        self.has_archive_file = has_archive_file
-        # Indicates whether the directory contains files stored in the IA storage medium.
+        # Indicates whether the directory contains files stored in the Archive storage class.
         # 
         # This parameter is returned and valid only if the value of the Type parameter is Directory.
         # 
         # Valid values:
         # 
-        # *   true: The directory contains files stored in the IA storage medium.
-        # *   false: The directory does not contain files stored in the IA storage medium.
+        # *   true: The directory contains files stored in the Archive storage class.
+        # *   false: The directory does not contain files stored in the Archive storage class.
+        self.has_archive_file = has_archive_file
+        # Indicates whether the directory contains files stored in the IA storage class.
+        # 
+        # This parameter is returned and valid only if the value of the Type parameter is Directory.
+        # 
+        # Valid values:
+        # 
+        # *   true: The directory contains files stored in the IA storage class.
+        # *   false: The directory does not contain files stored in the IA storage class.
         self.has_infrequent_access_file = has_infrequent_access_file
         # The file or directory inode.
         self.inode = inode
@@ -16204,13 +16685,14 @@ class ListDirectoriesAndFilesResponseBodyEntries(TeaModel):
         # 
         # This parameter is returned and valid only if the value of the Type parameter is File.
         self.size = size
-        # The storage type of the file.
+        # The storage class.
         # 
         # This parameter is returned and valid only if the value of the Type parameter is File.
         # 
         # Valid values:
         # 
-        # *   InfrequentAccess: IA storage medium
+        # *   InfrequentAccess: the IA storage class.
+        # *   Archive: the Archive storage class.
         self.storage_type = storage_type
         # The type of the query result.
         # 
@@ -16869,7 +17351,7 @@ class ListRecycleBinJobsRequest(TeaModel):
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The status of the job. Valid values:
+        # The job status. Valid values:
         # 
         # *   Running: The job is running.
         # *   Defragmenting: The job is defragmenting data.
@@ -16877,7 +17359,7 @@ class ListRecycleBinJobsRequest(TeaModel):
         # *   Success: The job is completed.
         # *   Fail: The job failed.
         # *   Cancelled: The job is canceled.
-        # *   All: all.Default value:All.
+        # *   all (default)
         self.status = status
 
     def validate(self):
@@ -16931,7 +17413,7 @@ class ListRecycleBinJobsResponseBodyJobs(TeaModel):
     ):
         # The time when the job was created.
         self.create_time = create_time
-        # The error code.
+        # The error code returned.
         # 
         # A valid value is returned only if you set the Status parameter to Fail or PartialSuccess.
         self.error_code = error_code
@@ -17131,7 +17613,7 @@ class ListRecycledDirectoriesAndFilesRequest(TeaModel):
     ):
         # The ID of the directory that you want to query.
         # 
-        # You can call the [ListRecycleBinJobs](https://help.aliyun.com/document_detail/264192.html) operation to query the value of the FileId parameter.
+        # You can call the [ListRecentlyRecycledDirectories ](https://help.aliyun.com/document_detail/2412173.html)operation to query the file ID.
         # 
         # This parameter is required.
         self.file_id = file_id
@@ -17780,11 +18262,27 @@ class ModifyAccessPointRequest(TeaModel):
         enabled_ram: bool = None,
         file_system_id: str = None,
     ):
+        # The name of the permission group.
+        # 
+        # This parameter is required for a General-purpose Apsara File Storage NAS (NAS) file system.
+        # 
+        # The default permission group for virtual private clouds (VPCs) is named DEFAULT_VPC_GROUP_NAME.
         self.access_group = access_group
+        # The ID of the access point.
+        # 
         # This parameter is required.
         self.access_point_id = access_point_id
+        # The name of the access point.
         self.access_point_name = access_point_name
+        # Specifies whether to enable the Resource Access Management (RAM) policy. Valid values:
+        # 
+        # *   true: The RAM policy is enabled.
+        # *   false (default): The RAM policy is disabled.
+        # 
+        # >  After the RAM policy is enabled for access points, no RAM user is allowed to use access points to mount and access data by default. To use access points to mount and access data as a RAM user, you must grant the related access permissions to the RAM user. If the RAM policy is disabled, access points can be anonymously mounted.
         self.enabled_ram = enabled_ram
+        # The ID of the file system.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
 
@@ -17829,6 +18327,8 @@ class ModifyAccessPointResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
+        # 
         # This parameter is required.
         self.request_id = request_id
 
@@ -18266,13 +18766,13 @@ class ModifyDataFlowRequest(TeaModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The maximum transmission bandwidth for a dataflow. Unit: MB/s. Valid values:
+        # The maximum data flow throughput. Unit: MB/s. Valid values:
         # 
         # *   600
-        # *   1,200
-        # *   1,500
+        # *   1200
+        # *   1500
         # 
-        # >  The dataflow throughput must be less than the I/O throughput of the file system.
+        # >  The data flow throughput must be less than the I/O throughput of the file system.
         self.throughput = throughput
 
     def validate(self):
@@ -18394,12 +18894,36 @@ class ModifyDataFlowAutoRefreshRequest(TeaModel):
         dry_run: bool = None,
         file_system_id: str = None,
     ):
+        # The automatic update interval. CPFS checks whether data is updated in the directory at the interval. If data is updated, CPFS runs an AutoRefresh task. Unit: minutes.
+        # 
+        # Valid values: 5 to 526600. Default value: 10.
         self.auto_refresh_interval = auto_refresh_interval
+        # The automatic update policy. CPFS imports data updates in the Object Storage Service (OSS) bucket to the CPFS file system based on this policy. Valid values:
+        # 
+        # *   None: CPFS does not automatically import data updates in the OSS bucket to the CPFS file system. You can import the data updates by using a dataflow task.
+        # *   ImportChanged: CPFS automatically imports data updates in the OSS bucket to the CPFS file system.
         self.auto_refresh_policy = auto_refresh_policy
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # 
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
         self.client_token = client_token
+        # The dataflow ID.
+        # 
         # This parameter is required.
         self.data_flow_id = data_flow_id
+        # Specifies whether to perform a dry run.
+        # 
+        # During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no file system is created and no fee is incurred.
+        # 
+        # Valid values:
+        # 
+        # *   true: performs a dry run. The system checks the required parameters, request syntax, limits, and available NAS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the FileSystemId parameter.
+        # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a file system is created.
         self.dry_run = dry_run
+        # The ID of the file system.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
 
@@ -18448,6 +18972,7 @@ class ModifyDataFlowAutoRefreshResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18516,6 +19041,12 @@ class ModifyFileSystemRequestOptions(TeaModel):
         self,
         enable_oplock: bool = None,
     ):
+        # Specifies whether to enable the oplock feature. Valid values:
+        # 
+        # *   true: enables the feature.
+        # *   false: disables the feature.
+        # 
+        # >  Only Server Message Block (SMB) file systems support this feature.
         self.enable_oplock = enable_oplock
 
     def validate(self):
@@ -18562,6 +19093,7 @@ class ModifyFileSystemRequest(TeaModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The options.
         self.options = options
 
     def validate(self):
@@ -18618,6 +19150,7 @@ class ModifyFileSystemShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The options.
         self.options_shrink = options_shrink
 
     def validate(self):
@@ -18733,17 +19266,23 @@ class ModifyFilesetRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to enable deletion protection to allow you to release the fileset by using the console or by calling the [DeleteFileset](https://help.aliyun.com/document_detail/2402263.html) operation.
+        # 
+        # *   true: enables release protection.
+        # *   false: disables release protection.
+        # 
+        # >  This parameter can protect filesets only against manual releases, but not against automatic releases.
         self.deletion_protection = deletion_protection
         # The fileset description.
         self.description = description
-        # Specifies whether to perform only a dry run, without performing the actual request. 
+        # Specifies whether to perform only a dry run, without performing the actual request.
         # 
-        # During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no file system is created and no fee is incurred.
+        # During the dry run, the system checks whether the request parameters are valid and whether the requested resources are available. During the dry run, no fileset is modified and no fees incurred.
         # 
         # Valid values:
         # 
-        # *   true: performs only a dry run. The system checks the required parameters, request syntax, limits, and available NAS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned. No value is returned for the FileSystemId parameter.
-        # *   false (default): performs a dry run and sends the request. If the request passes the dry run, a file system is created.
+        # *   true: performs only a dry run. The system checks the required parameters, request syntax, service limits, and Apsara File Storage NAS (NAS) inventory data. If the request fails the dry run, an error message is returned. If the request passes the dry run, the HTTP status code 200 is returned.
+        # *   false (default): performs a dry run and sends the request. If the request passes the dry run, the specified fileset is modified.
         self.dry_run = dry_run
         # The ID of the file system.
         # 
@@ -18871,11 +19410,18 @@ class ModifyLDAPConfigRequest(TeaModel):
         search_base: str = None,
         uri: str = None,
     ):
+        # The LDAP entry.
         self.bind_dn = bind_dn
+        # The ID of the file system.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The LDAP search base.
+        # 
         # This parameter is required.
         self.search_base = search_base
+        # The LDAP service address.
+        # 
         # This parameter is required.
         self.uri = uri
 
@@ -18916,6 +19462,7 @@ class ModifyLDAPConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19745,9 +20292,11 @@ class ModifySmbAclResponse(TeaModel):
 class OpenNASServiceResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         order_id: str = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
         # The order ID.
         self.order_id = order_id
         # The request ID.
@@ -19762,6 +20311,8 @@ class OpenNASServiceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.order_id is not None:
             result['OrderId'] = self.order_id
         if self.request_id is not None:
@@ -19770,6 +20321,8 @@ class OpenNASServiceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
         if m.get('RequestId') is not None:
@@ -19943,9 +20496,9 @@ class RemoveTagsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key (TagKey) of Tag N. Each tag that you want to remove includes a TagKey and TagValue. You can specify 1 to 10 tags at a time. A TagKey cannot be an empty string, but a TagValue can be an empty string.
+        # The key of each tag. Each tag that you want to remove consists of a tag key and a tag value. You can specify 1 to 10 tags at a time. The tag key cannot be empty. The tag value can be left empty.
         self.key = key
-        # The value (TagValue) of Tag N. Each tag that you want to remove includes a TagKey and TagValue. You can specify a maximum of 5 tags at a time. A TagKey cannot be an empty string, but a TagValue can be an empty string.
+        # The value of each tag. Each tag that you want to remove consists of a tag key and a tag value. You can specify a maximum of five tags at a time. The tag key cannot be empty. The tag value can be left empty.
         self.value = value
 
     def validate(self):
@@ -19982,6 +20535,8 @@ class RemoveTagsRequest(TeaModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The details about the tags.
+        # 
         # This parameter is required.
         self.tag = tag
 
@@ -20022,7 +20577,7 @@ class RemoveTagsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

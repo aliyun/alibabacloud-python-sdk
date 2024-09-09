@@ -1,3 +1,29 @@
+2024-09-09 Version: 2.2.4
+- Update API ApplyDataFlowAutoRefresh: update response param.
+- Update API CancelAutoSnapshotPolicy: update response param.
+- Update API CancelDataFlowAutoRefresh: update response param.
+- Update API CancelDataFlowTask: update response param.
+- Update API CreateAccessGroup: update response param.
+- Update API CreateAutoSnapshotPolicy: update response param.
+- Update API CreateDataFlowTask: add param CreateDirIfNotExist.
+- Update API CreateDataFlowTask: add param DstDirectory.
+- Update API CreateDataFlowTask: update param TaskAction.
+- Update API DeleteAutoSnapshotPolicy: update response param.
+- Update API DeleteDataFlow: update response param.
+- Update API DeleteFileSystem: update response param.
+- Update API DeleteSnapshot: update response param.
+- Update API DescribeDataFlowTasks: update response param.
+- Update API DescribeDataFlows: update response param.
+- Update API DescribeLogAnalysis: update param FileSystemType.
+- Update API GetRecycleBinAttribute: update response param.
+- Update API ModifyAutoSnapshotPolicy: update response param.
+- Update API ModifyDataFlowAutoRefresh: update response param.
+- Update API OpenNASService: update response param.
+- Update API SetDirQuota: update response param.
+- Update API StartDataFlow: update response param.
+- Update API StopDataFlow: update response param.
+
+
 2024-07-08 Version: 2.2.3
 - Update API DescribeFileSystems: update response param.
 - Update API ModifyFileSystem: add param Options.
