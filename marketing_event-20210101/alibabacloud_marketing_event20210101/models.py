@@ -9,9 +9,13 @@ class FindGuestCredentialsRecordRequest(TeaModel):
         self,
         activity_id: str = None,
         date_time_string: str = None,
+        end_date_time: str = None,
+        start_date_time: str = None,
     ):
         self.activity_id = activity_id
         self.date_time_string = date_time_string
+        self.end_date_time = end_date_time
+        self.start_date_time = start_date_time
 
     def validate(self):
         pass
@@ -26,6 +30,10 @@ class FindGuestCredentialsRecordRequest(TeaModel):
             result['ActivityId'] = self.activity_id
         if self.date_time_string is not None:
             result['DateTimeString'] = self.date_time_string
+        if self.end_date_time is not None:
+            result['EndDateTime'] = self.end_date_time
+        if self.start_date_time is not None:
+            result['StartDateTime'] = self.start_date_time
         return result
 
     def from_map(self, m: dict = None):
@@ -34,6 +42,10 @@ class FindGuestCredentialsRecordRequest(TeaModel):
             self.activity_id = m.get('ActivityId')
         if m.get('DateTimeString') is not None:
             self.date_time_string = m.get('DateTimeString')
+        if m.get('EndDateTime') is not None:
+            self.end_date_time = m.get('EndDateTime')
+        if m.get('StartDateTime') is not None:
+            self.start_date_time = m.get('StartDateTime')
         return self
 
 
@@ -437,9 +449,13 @@ class FindGuestTicketRecordRequest(TeaModel):
         self,
         activity_id: str = None,
         date_time_string: str = None,
+        end_date_time: str = None,
+        start_date_time: str = None,
     ):
         self.activity_id = activity_id
         self.date_time_string = date_time_string
+        self.end_date_time = end_date_time
+        self.start_date_time = start_date_time
 
     def validate(self):
         pass
@@ -454,6 +470,10 @@ class FindGuestTicketRecordRequest(TeaModel):
             result['ActivityId'] = self.activity_id
         if self.date_time_string is not None:
             result['DateTimeString'] = self.date_time_string
+        if self.end_date_time is not None:
+            result['EndDateTime'] = self.end_date_time
+        if self.start_date_time is not None:
+            result['StartDateTime'] = self.start_date_time
         return result
 
     def from_map(self, m: dict = None):
@@ -462,6 +482,10 @@ class FindGuestTicketRecordRequest(TeaModel):
             self.activity_id = m.get('ActivityId')
         if m.get('DateTimeString') is not None:
             self.date_time_string = m.get('DateTimeString')
+        if m.get('EndDateTime') is not None:
+            self.end_date_time = m.get('EndDateTime')
+        if m.get('StartDateTime') is not None:
+            self.start_date_time = m.get('StartDateTime')
         return self
 
 

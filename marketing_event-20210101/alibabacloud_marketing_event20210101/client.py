@@ -59,6 +59,10 @@ class Client(OpenApiClient):
             query['ActivityId'] = request.activity_id
         if not UtilClient.is_unset(request.date_time_string):
             query['DateTimeString'] = request.date_time_string
+        if not UtilClient.is_unset(request.end_date_time):
+            query['EndDateTime'] = request.end_date_time
+        if not UtilClient.is_unset(request.start_date_time):
+            query['StartDateTime'] = request.start_date_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -96,6 +100,10 @@ class Client(OpenApiClient):
             query['ActivityId'] = request.activity_id
         if not UtilClient.is_unset(request.date_time_string):
             query['DateTimeString'] = request.date_time_string
+        if not UtilClient.is_unset(request.end_date_time):
+            query['EndDateTime'] = request.end_date_time
+        if not UtilClient.is_unset(request.start_date_time):
+            query['StartDateTime'] = request.start_date_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -159,6 +167,10 @@ class Client(OpenApiClient):
             query['ActivityId'] = request.activity_id
         if not UtilClient.is_unset(request.date_time_string):
             query['DateTimeString'] = request.date_time_string
+        if not UtilClient.is_unset(request.end_date_time):
+            query['EndDateTime'] = request.end_date_time
+        if not UtilClient.is_unset(request.start_date_time):
+            query['StartDateTime'] = request.start_date_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -196,6 +208,10 @@ class Client(OpenApiClient):
             query['ActivityId'] = request.activity_id
         if not UtilClient.is_unset(request.date_time_string):
             query['DateTimeString'] = request.date_time_string
+        if not UtilClient.is_unset(request.end_date_time):
+            query['EndDateTime'] = request.end_date_time
+        if not UtilClient.is_unset(request.start_date_time):
+            query['StartDateTime'] = request.start_date_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
