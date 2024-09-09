@@ -3499,6 +3499,7 @@ class CreateAccountRequest(TeaModel):
         account_name: str = None,
         account_password: str = None,
         account_type: str = None,
+        check_policy: bool = None,
         dbinstance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -3552,6 +3553,7 @@ class CreateAccountRequest(TeaModel):
         # 
         # Before you create a system admin account, check whether the instance meets all prerequisites. For more information, see [Create a system admin account](https://help.aliyun.com/document_detail/170736.html).
         self.account_type = account_type
+        self.check_policy = check_policy
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         # 
         # This parameter is required.
@@ -3578,6 +3580,8 @@ class CreateAccountRequest(TeaModel):
             result['AccountPassword'] = self.account_password
         if self.account_type is not None:
             result['AccountType'] = self.account_type
+        if self.check_policy is not None:
+            result['CheckPolicy'] = self.check_policy
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
         if self.owner_account is not None:
@@ -3600,6 +3604,8 @@ class CreateAccountRequest(TeaModel):
             self.account_password = m.get('AccountPassword')
         if m.get('AccountType') is not None:
             self.account_type = m.get('AccountType')
+        if m.get('CheckPolicy') is not None:
+            self.check_policy = m.get('CheckPolicy')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('OwnerAccount') is not None:
@@ -7784,6 +7790,10 @@ class CreateDdrInstanceRequest(TeaModel):
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the destination instance. Only the local SSD storage type is supported. Default value: **local_ssd**.
         self.dbinstance_storage_type = dbinstance_storage_type
+        # User-defined key ID for cloud disk encryption. Passing this parameter means turning on cloud disk encryption (it cannot be turned off after turning it on), and RoleARN needs to be passed in. You can view the key ID in the key management service console, or create a new key. For more information, see [Creating a Key](https://help.aliyun.com/document_detail/181610.html).
+        # 
+        # > - This parameter is only applicable to RDS SQL Server instances.
+        # > - You can also not pass this parameter and only need to pass in RoleARN, which means setting the cloud disk encryption type of the instance to the RDS managed service key (Default Service CMK).
         self.encryption_key = encryption_key
         # The database engine of the destination instance. Valid values:
         # 
@@ -7847,6 +7857,9 @@ class CreateDdrInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.restore_type = restore_type
+        # The global resource descriptor (ARN) of the RDS cloud service account authorized by the primary account to access the KMS permission. You can view the ARN information through the [CheckCloudResourceAuthorized](https://next.api.aliyun.com/document/Rds/2014-08-15/CheckCloudResourceAuthorized) API.
+        # 
+        # > This parameter is only available for RDS SQL Server instances.
         self.role_arn = role_arn
         # The IP address whitelist of the destination instance. If you want to add more than one entry to the IP address whitelist, separate the entries with commas (,). Each entry must be unique. You can add a maximum of 1,000 entries. For more information, see [Configure an IP address whitelist for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/43185.html). The entries in the IP address whitelist must be in one of the following formats:
         # 
@@ -16147,10 +16160,12 @@ class DescribeAccountsResponseBodyAccountsDBInstanceAccount(TeaModel):
         account_status: str = None,
         account_type: str = None,
         bypass_rls: str = None,
+        check_policy: bool = None,
         create_db: str = None,
         create_role: str = None,
         dbinstance_id: str = None,
         database_privileges: DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivileges = None,
+        password_expire_time: str = None,
         priv_exceeded: str = None,
         replication: str = None,
         valid_until: str = None,
@@ -16177,6 +16192,7 @@ class DescribeAccountsResponseBodyAccountsDBInstanceAccount(TeaModel):
         # 
         # >  This parameter is returned only for instances that run PostgreSQL.
         self.bypass_rls = bypass_rls
+        self.check_policy = check_policy
         # Indicates whether the account has the permissions to create databases. Valid values:
         # 
         # *   **t**: The account has the permissions to create databases.
@@ -16195,6 +16211,7 @@ class DescribeAccountsResponseBodyAccountsDBInstanceAccount(TeaModel):
         self.dbinstance_id = dbinstance_id
         # The details about the permissions that are granted to the account.
         self.database_privileges = database_privileges
+        self.password_expire_time = password_expire_time
         # Indicates whether the number of databases that are managed by the account exceeds the upper limit. Valid values:
         # 
         # *   **1**: The number of databases that are managed by the account exceeds the upper limit.
@@ -16236,6 +16253,8 @@ class DescribeAccountsResponseBodyAccountsDBInstanceAccount(TeaModel):
             result['AccountType'] = self.account_type
         if self.bypass_rls is not None:
             result['BypassRLS'] = self.bypass_rls
+        if self.check_policy is not None:
+            result['CheckPolicy'] = self.check_policy
         if self.create_db is not None:
             result['CreateDB'] = self.create_db
         if self.create_role is not None:
@@ -16244,6 +16263,8 @@ class DescribeAccountsResponseBodyAccountsDBInstanceAccount(TeaModel):
             result['DBInstanceId'] = self.dbinstance_id
         if self.database_privileges is not None:
             result['DatabasePrivileges'] = self.database_privileges.to_map()
+        if self.password_expire_time is not None:
+            result['PasswordExpireTime'] = self.password_expire_time
         if self.priv_exceeded is not None:
             result['PrivExceeded'] = self.priv_exceeded
         if self.replication is not None:
@@ -16264,6 +16285,8 @@ class DescribeAccountsResponseBodyAccountsDBInstanceAccount(TeaModel):
             self.account_type = m.get('AccountType')
         if m.get('BypassRLS') is not None:
             self.bypass_rls = m.get('BypassRLS')
+        if m.get('CheckPolicy') is not None:
+            self.check_policy = m.get('CheckPolicy')
         if m.get('CreateDB') is not None:
             self.create_db = m.get('CreateDB')
         if m.get('CreateRole') is not None:
@@ -16273,6 +16296,8 @@ class DescribeAccountsResponseBodyAccountsDBInstanceAccount(TeaModel):
         if m.get('DatabasePrivileges') is not None:
             temp_model = DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivileges()
             self.database_privileges = temp_model.from_map(m['DatabasePrivileges'])
+        if m.get('PasswordExpireTime') is not None:
+            self.password_expire_time = m.get('PasswordExpireTime')
         if m.get('PrivExceeded') is not None:
             self.priv_exceeded = m.get('PrivExceeded')
         if m.get('Replication') is not None:
@@ -19229,6 +19254,9 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         # 
         # >  This parameter is returned only when the instance runs SQL Server.
         self.support_volume_shadow_copy = support_volume_shadow_copy
+        # Whether to support 5-minute log backup of SQL Server.
+        # - 0 : Not Support
+        # - 1 : Support
         self.supports_high_frequency_backup = supports_high_frequency_backup
 
     def validate(self):
@@ -24199,6 +24227,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra(TeaMo
         dbinstance_ids: DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds = None,
         recovery_model: str = None,
     ):
+        # Instance account group policy.
+        # - MaximumPasswordAge: Maximum usage time
+        # - MinimumPasswordAge: Minimum usage time
         self.account_security_policy = account_security_policy
         # The instance IDs.
         self.dbinstance_ids = dbinstance_ids
@@ -24612,7 +24643,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # *   **true**\
         # *   **false**\
         self.deletion_protection = deletion_protection
+        # Disaster recovery source instance information.
         self.disaster_recovery_info = disaster_recovery_info
+        # All disaster recovery instances of the current instance.
         self.disaster_recovery_instances = disaster_recovery_instances
         # The database engine of the instance. Valid values:
         # 
@@ -39191,7 +39224,7 @@ class DescribeHistoryTasksStatRequest(TeaModel):
     ):
         # The minimum execution duration of a task. This parameter is used to filter tasks whose execution duration is longer than the minimum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
         self.from_exec_time = from_exec_time
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*t*HH:mm:ss*z format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         # 
         # This parameter is required.
         self.from_start_time = from_start_time
@@ -39225,7 +39258,7 @@ class DescribeHistoryTasksStatRequest(TeaModel):
         self.task_type = task_type
         # The maximum execution duration of a task. This parameter is used to filter tasks whose execution duration is shorter than or equal to the maximum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
         self.to_exec_time = to_exec_time
-        # The end of the time range to query. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end of the time range to query. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         # 
         # This parameter is required.
         self.to_start_time = to_start_time
@@ -45997,6 +46030,9 @@ class DescribePostgresExtensionsResponseBodyInstalledExtensions(TeaModel):
         self.priority = priority
         # The extensions on which the current extension depends when it is installed.
         self.requires = requires
+        # Alibaba Cloud account ID.
+        # 
+        # > Only exclusive plug-ins (plug-ins written by users) will return this parameter. Each Alibaba Cloud account only displays its own exclusive plug-ins.
         self.uid = uid
 
     def validate(self):
@@ -46080,6 +46116,9 @@ class DescribePostgresExtensionsResponseBodyUninstalledExtensions(TeaModel):
         self.priority = priority
         # The extensions on which the current extension depends when it is installed.
         self.requires = requires
+        # Alibaba Cloud account ID.
+        # 
+        # > Only exclusive plug-ins (plug-ins written by users) will return this parameter. Each Alibaba Cloud account only displays its own exclusive plug-ins.
         self.uid = uid
 
     def validate(self):
@@ -48572,6 +48611,7 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
         internet_max_bandwidth_in: int = None,
         internet_max_bandwidth_out: int = None,
         io_optimized: str = None,
+        key_pair_name: str = None,
         memory: int = None,
         operation_locks: DescribeRCInstanceAttributeResponseBodyOperationLocks = None,
         public_ip_address: DescribeRCInstanceAttributeResponseBodyPublicIpAddress = None,
@@ -48610,6 +48650,7 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         self.io_optimized = io_optimized
+        self.key_pair_name = key_pair_name
         self.memory = memory
         self.operation_locks = operation_locks
         self.public_ip_address = public_ip_address
@@ -48697,6 +48738,8 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
             result['InternetMaxBandwidthOut'] = self.internet_max_bandwidth_out
         if self.io_optimized is not None:
             result['IoOptimized'] = self.io_optimized
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.operation_locks is not None:
@@ -48779,6 +48822,8 @@ class DescribeRCInstanceAttributeResponseBody(TeaModel):
             self.internet_max_bandwidth_out = m.get('InternetMaxBandwidthOut')
         if m.get('IoOptimized') is not None:
             self.io_optimized = m.get('IoOptimized')
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('OperationLocks') is not None:
@@ -56490,7 +56535,7 @@ class DescribeVSwitchesResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of returned entries.
         self.total_count = total_count
-        # The information about the vSwitch.
+        # Details of the vSwitches.
         self.v_switchs = v_switchs
 
     def validate(self):
@@ -65188,6 +65233,7 @@ class ModifyDBInstanceSpecRequestServerlessConfiguration(TeaModel):
 class ModifyDBInstanceSpecRequest(TeaModel):
     def __init__(
         self,
+        allow_major_version_upgrade: bool = None,
         auto_use_coupon: bool = None,
         bursting_enabled: bool = None,
         category: str = None,
@@ -65212,8 +65258,11 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         switch_time: str = None,
         target_minor_version: str = None,
         used_time: int = None,
+        v_switch_id: str = None,
         zone_id: str = None,
+        zone_id_slave_1: str = None,
     ):
+        self.allow_major_version_upgrade = allow_major_version_upgrade
         # Specifies whether to use vouchers to offset fees. Valid values:
         # 
         # *   **true**\
@@ -65332,6 +65381,7 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         self.target_minor_version = target_minor_version
         # The ID of the order.
         self.used_time = used_time
+        self.v_switch_id = v_switch_id
         # The RDS edition of the instance. Valid values:
         # 
         # *   **Basic**: RDS Basic Edition.
@@ -65341,6 +65391,7 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         # 
         # > If you set **EngineVersion** to an SQL Server version number, you must also specify this parameter.
         self.zone_id = zone_id
+        self.zone_id_slave_1 = zone_id_slave_1
 
     def validate(self):
         if self.serverless_configuration:
@@ -65352,6 +65403,8 @@ class ModifyDBInstanceSpecRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.allow_major_version_upgrade is not None:
+            result['AllowMajorVersionUpgrade'] = self.allow_major_version_upgrade
         if self.auto_use_coupon is not None:
             result['AutoUseCoupon'] = self.auto_use_coupon
         if self.bursting_enabled is not None:
@@ -65400,12 +65453,18 @@ class ModifyDBInstanceSpecRequest(TeaModel):
             result['TargetMinorVersion'] = self.target_minor_version
         if self.used_time is not None:
             result['UsedTime'] = self.used_time
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
+        if self.zone_id_slave_1 is not None:
+            result['ZoneIdSlave1'] = self.zone_id_slave_1
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowMajorVersionUpgrade') is not None:
+            self.allow_major_version_upgrade = m.get('AllowMajorVersionUpgrade')
         if m.get('AutoUseCoupon') is not None:
             self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('BurstingEnabled') is not None:
@@ -65455,14 +65514,19 @@ class ModifyDBInstanceSpecRequest(TeaModel):
             self.target_minor_version = m.get('TargetMinorVersion')
         if m.get('UsedTime') is not None:
             self.used_time = m.get('UsedTime')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+        if m.get('ZoneIdSlave1') is not None:
+            self.zone_id_slave_1 = m.get('ZoneIdSlave1')
         return self
 
 
 class ModifyDBInstanceSpecShrinkRequest(TeaModel):
     def __init__(
         self,
+        allow_major_version_upgrade: bool = None,
         auto_use_coupon: bool = None,
         bursting_enabled: bool = None,
         category: str = None,
@@ -65487,8 +65551,11 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         switch_time: str = None,
         target_minor_version: str = None,
         used_time: int = None,
+        v_switch_id: str = None,
         zone_id: str = None,
+        zone_id_slave_1: str = None,
     ):
+        self.allow_major_version_upgrade = allow_major_version_upgrade
         # Specifies whether to use vouchers to offset fees. Valid values:
         # 
         # *   **true**\
@@ -65607,6 +65674,7 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         self.target_minor_version = target_minor_version
         # The ID of the order.
         self.used_time = used_time
+        self.v_switch_id = v_switch_id
         # The RDS edition of the instance. Valid values:
         # 
         # *   **Basic**: RDS Basic Edition.
@@ -65616,6 +65684,7 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         # 
         # > If you set **EngineVersion** to an SQL Server version number, you must also specify this parameter.
         self.zone_id = zone_id
+        self.zone_id_slave_1 = zone_id_slave_1
 
     def validate(self):
         pass
@@ -65626,6 +65695,8 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.allow_major_version_upgrade is not None:
+            result['AllowMajorVersionUpgrade'] = self.allow_major_version_upgrade
         if self.auto_use_coupon is not None:
             result['AutoUseCoupon'] = self.auto_use_coupon
         if self.bursting_enabled is not None:
@@ -65674,12 +65745,18 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
             result['TargetMinorVersion'] = self.target_minor_version
         if self.used_time is not None:
             result['UsedTime'] = self.used_time
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
+        if self.zone_id_slave_1 is not None:
+            result['ZoneIdSlave1'] = self.zone_id_slave_1
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowMajorVersionUpgrade') is not None:
+            self.allow_major_version_upgrade = m.get('AllowMajorVersionUpgrade')
         if m.get('AutoUseCoupon') is not None:
             self.auto_use_coupon = m.get('AutoUseCoupon')
         if m.get('BurstingEnabled') is not None:
@@ -65728,8 +65805,12 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
             self.target_minor_version = m.get('TargetMinorVersion')
         if m.get('UsedTime') is not None:
             self.used_time = m.get('UsedTime')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+        if m.get('ZoneIdSlave1') is not None:
+            self.zone_id_slave_1 = m.get('ZoneIdSlave1')
         return self
 
 
@@ -75515,6 +75596,7 @@ class RunRCInstancesRequest(TeaModel):
         data_disk: List[RunRCInstancesRequestDataDisk] = None,
         deployment_set_id: str = None,
         description: str = None,
+        dry_run: bool = None,
         image_id: str = None,
         instance_charge_type: str = None,
         instance_name: str = None,
@@ -75541,6 +75623,7 @@ class RunRCInstancesRequest(TeaModel):
         self.data_disk = data_disk
         self.deployment_set_id = deployment_set_id
         self.description = description
+        self.dry_run = dry_run
         self.image_id = image_id
         self.instance_charge_type = instance_charge_type
         self.instance_name = instance_name
@@ -75592,6 +75675,8 @@ class RunRCInstancesRequest(TeaModel):
             result['DeploymentSetId'] = self.deployment_set_id
         if self.description is not None:
             result['Description'] = self.description
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.instance_charge_type is not None:
@@ -75647,6 +75732,8 @@ class RunRCInstancesRequest(TeaModel):
             self.deployment_set_id = m.get('DeploymentSetId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('InstanceChargeType') is not None:
@@ -75695,6 +75782,7 @@ class RunRCInstancesShrinkRequest(TeaModel):
         data_disk_shrink: str = None,
         deployment_set_id: str = None,
         description: str = None,
+        dry_run: bool = None,
         image_id: str = None,
         instance_charge_type: str = None,
         instance_name: str = None,
@@ -75721,6 +75809,7 @@ class RunRCInstancesShrinkRequest(TeaModel):
         self.data_disk_shrink = data_disk_shrink
         self.deployment_set_id = deployment_set_id
         self.description = description
+        self.dry_run = dry_run
         self.image_id = image_id
         self.instance_charge_type = instance_charge_type
         self.instance_name = instance_name
@@ -75765,6 +75854,8 @@ class RunRCInstancesShrinkRequest(TeaModel):
             result['DeploymentSetId'] = self.deployment_set_id
         if self.description is not None:
             result['Description'] = self.description
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.instance_charge_type is not None:
@@ -75817,6 +75908,8 @@ class RunRCInstancesShrinkRequest(TeaModel):
             self.deployment_set_id = m.get('DeploymentSetId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('InstanceChargeType') is not None:

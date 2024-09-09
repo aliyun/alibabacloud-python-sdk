@@ -2806,6 +2806,8 @@ class Client(OpenApiClient):
             query['AccountPassword'] = request.account_password
         if not UtilClient.is_unset(request.account_type):
             query['AccountType'] = request.account_type
+        if not UtilClient.is_unset(request.check_policy):
+            query['CheckPolicy'] = request.check_policy
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -2869,6 +2871,8 @@ class Client(OpenApiClient):
             query['AccountPassword'] = request.account_password
         if not UtilClient.is_unset(request.account_type):
             query['AccountType'] = request.account_type
+        if not UtilClient.is_unset(request.check_policy):
+            query['CheckPolicy'] = request.check_policy
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -21186,7 +21190,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeHistoryTasksStatResponse:
         """
-        @summary 任务中心任务统计
+        @summary Collects tasks in the task center.
         
         @param request: DescribeHistoryTasksStatRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21247,7 +21251,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeHistoryTasksStatResponse:
         """
-        @summary 任务中心任务统计
+        @summary Collects tasks in the task center.
         
         @param request: DescribeHistoryTasksStatRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21307,7 +21311,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeHistoryTasksStatRequest,
     ) -> rds_20140815_models.DescribeHistoryTasksStatResponse:
         """
-        @summary 任务中心任务统计
+        @summary Collects tasks in the task center.
         
         @param request: DescribeHistoryTasksStatRequest
         @return: DescribeHistoryTasksStatResponse
@@ -21320,7 +21324,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeHistoryTasksStatRequest,
     ) -> rds_20140815_models.DescribeHistoryTasksStatResponse:
         """
-        @summary 任务中心任务统计
+        @summary Collects tasks in the task center.
         
         @param request: DescribeHistoryTasksStatRequest
         @return: DescribeHistoryTasksStatResponse
@@ -28814,7 +28818,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeVSwitchesResponse:
         """
-        @summary Queries the details of VSwitch that are available in a virtual private cloud (VPC).
+        @summary Queries the details of vSwitch that are available in a virtual private cloud (VPC).
         
         @description ### Supported database engines
         MySQL
@@ -28877,7 +28881,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeVSwitchesResponse:
         """
-        @summary Queries the details of VSwitch that are available in a virtual private cloud (VPC).
+        @summary Queries the details of vSwitch that are available in a virtual private cloud (VPC).
         
         @description ### Supported database engines
         MySQL
@@ -28939,7 +28943,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeVSwitchesRequest,
     ) -> rds_20140815_models.DescribeVSwitchesResponse:
         """
-        @summary Queries the details of VSwitch that are available in a virtual private cloud (VPC).
+        @summary Queries the details of vSwitch that are available in a virtual private cloud (VPC).
         
         @description ### Supported database engines
         MySQL
@@ -28958,7 +28962,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeVSwitchesRequest,
     ) -> rds_20140815_models.DescribeVSwitchesResponse:
         """
-        @summary Queries the details of VSwitch that are available in a virtual private cloud (VPC).
+        @summary Queries the details of vSwitch that are available in a virtual private cloud (VPC).
         
         @description ### Supported database engines
         MySQL
@@ -35746,6 +35750,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.serverless_configuration):
             request.serverless_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.serverless_configuration, 'ServerlessConfiguration', 'json')
         query = {}
+        if not UtilClient.is_unset(request.allow_major_version_upgrade):
+            query['AllowMajorVersionUpgrade'] = request.allow_major_version_upgrade
         if not UtilClient.is_unset(request.auto_use_coupon):
             query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.bursting_enabled):
@@ -35794,8 +35800,12 @@ class Client(OpenApiClient):
             query['TargetMinorVersion'] = request.target_minor_version
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.zone_id_slave_1):
+            query['ZoneIdSlave1'] = request.zone_id_slave_1
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -35845,6 +35855,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.serverless_configuration):
             request.serverless_configuration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.serverless_configuration, 'ServerlessConfiguration', 'json')
         query = {}
+        if not UtilClient.is_unset(request.allow_major_version_upgrade):
+            query['AllowMajorVersionUpgrade'] = request.allow_major_version_upgrade
         if not UtilClient.is_unset(request.auto_use_coupon):
             query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.bursting_enabled):
@@ -35893,8 +35905,12 @@ class Client(OpenApiClient):
             query['TargetMinorVersion'] = request.target_minor_version
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.zone_id_slave_1):
+            query['ZoneIdSlave1'] = request.zone_id_slave_1
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -44010,6 +44026,8 @@ class Client(OpenApiClient):
             query['DeploymentSetId'] = request.deployment_set_id
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.instance_charge_type):
@@ -44097,6 +44115,8 @@ class Client(OpenApiClient):
             query['DeploymentSetId'] = request.deployment_set_id
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.instance_charge_type):
