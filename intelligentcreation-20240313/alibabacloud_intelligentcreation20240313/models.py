@@ -836,6 +836,7 @@ class TextTaskCreateCmd(TeaModel):
         point: str = None,
         reference_tag: ReferenceTag = None,
         related_rag_ids: List[int] = None,
+        stream_api: bool = None,
         style: str = None,
         target: str = None,
         text_mode_type: str = None,
@@ -852,6 +853,7 @@ class TextTaskCreateCmd(TeaModel):
         self.point = point
         self.reference_tag = reference_tag
         self.related_rag_ids = related_rag_ids
+        self.stream_api = stream_api
         # This parameter is required.
         self.style = style
         self.target = target
@@ -888,6 +890,8 @@ class TextTaskCreateCmd(TeaModel):
             result['referenceTag'] = self.reference_tag.to_map()
         if self.related_rag_ids is not None:
             result['relatedRagIds'] = self.related_rag_ids
+        if self.stream_api is not None:
+            result['streamApi'] = self.stream_api
         if self.style is not None:
             result['style'] = self.style
         if self.target is not None:
@@ -921,6 +925,8 @@ class TextTaskCreateCmd(TeaModel):
             self.reference_tag = temp_model.from_map(m['referenceTag'])
         if m.get('relatedRagIds') is not None:
             self.related_rag_ids = m.get('relatedRagIds')
+        if m.get('streamApi') is not None:
+            self.stream_api = m.get('streamApi')
         if m.get('style') is not None:
             self.style = m.get('style')
         if m.get('target') is not None:
@@ -1042,6 +1048,7 @@ class VoiceModelResponse(TeaModel):
     def __init__(
         self,
         resource_type_desc: str = None,
+        tts_version: int = None,
         use_scene: str = None,
         voice_desc: str = None,
         voice_gender: str = None,
@@ -1053,6 +1060,7 @@ class VoiceModelResponse(TeaModel):
         voice_url: str = None,
     ):
         self.resource_type_desc = resource_type_desc
+        self.tts_version = tts_version
         self.use_scene = use_scene
         self.voice_desc = voice_desc
         self.voice_gender = voice_gender
@@ -1074,6 +1082,8 @@ class VoiceModelResponse(TeaModel):
         result = dict()
         if self.resource_type_desc is not None:
             result['resourceTypeDesc'] = self.resource_type_desc
+        if self.tts_version is not None:
+            result['ttsVersion'] = self.tts_version
         if self.use_scene is not None:
             result['useScene'] = self.use_scene
         if self.voice_desc is not None:
@@ -1098,6 +1108,8 @@ class VoiceModelResponse(TeaModel):
         m = m or dict()
         if m.get('resourceTypeDesc') is not None:
             self.resource_type_desc = m.get('resourceTypeDesc')
+        if m.get('ttsVersion') is not None:
+            self.tts_version = m.get('ttsVersion')
         if m.get('useScene') is not None:
             self.use_scene = m.get('useScene')
         if m.get('voiceDesc') is not None:
@@ -1760,6 +1772,186 @@ class CreateIllustrationTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = IllustrationTaskResult()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateRealisticPortraitRequest(TeaModel):
+    def __init__(
+        self,
+        ages: List[int] = None,
+        cloth: int = None,
+        color: int = None,
+        custom: str = None,
+        face: List[int] = None,
+        figure: int = None,
+        gender: int = None,
+        hair_color: int = None,
+        hairstyle: int = None,
+        height: int = None,
+        image_url: str = None,
+        numbers: int = None,
+        ratio: str = None,
+        width: int = None,
+    ):
+        self.ages = ages
+        self.cloth = cloth
+        self.color = color
+        self.custom = custom
+        self.face = face
+        self.figure = figure
+        self.gender = gender
+        self.hair_color = hair_color
+        self.hairstyle = hairstyle
+        self.height = height
+        self.image_url = image_url
+        self.numbers = numbers
+        self.ratio = ratio
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ages is not None:
+            result['ages'] = self.ages
+        if self.cloth is not None:
+            result['cloth'] = self.cloth
+        if self.color is not None:
+            result['color'] = self.color
+        if self.custom is not None:
+            result['custom'] = self.custom
+        if self.face is not None:
+            result['face'] = self.face
+        if self.figure is not None:
+            result['figure'] = self.figure
+        if self.gender is not None:
+            result['gender'] = self.gender
+        if self.hair_color is not None:
+            result['hairColor'] = self.hair_color
+        if self.hairstyle is not None:
+            result['hairstyle'] = self.hairstyle
+        if self.height is not None:
+            result['height'] = self.height
+        if self.image_url is not None:
+            result['imageUrl'] = self.image_url
+        if self.numbers is not None:
+            result['numbers'] = self.numbers
+        if self.ratio is not None:
+            result['ratio'] = self.ratio
+        if self.width is not None:
+            result['width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ages') is not None:
+            self.ages = m.get('ages')
+        if m.get('cloth') is not None:
+            self.cloth = m.get('cloth')
+        if m.get('color') is not None:
+            self.color = m.get('color')
+        if m.get('custom') is not None:
+            self.custom = m.get('custom')
+        if m.get('face') is not None:
+            self.face = m.get('face')
+        if m.get('figure') is not None:
+            self.figure = m.get('figure')
+        if m.get('gender') is not None:
+            self.gender = m.get('gender')
+        if m.get('hairColor') is not None:
+            self.hair_color = m.get('hairColor')
+        if m.get('hairstyle') is not None:
+            self.hairstyle = m.get('hairstyle')
+        if m.get('height') is not None:
+            self.height = m.get('height')
+        if m.get('imageUrl') is not None:
+            self.image_url = m.get('imageUrl')
+        if m.get('numbers') is not None:
+            self.numbers = m.get('numbers')
+        if m.get('ratio') is not None:
+            self.ratio = m.get('ratio')
+        if m.get('width') is not None:
+            self.width = m.get('width')
+        return self
+
+
+class CreateRealisticPortraitResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class CreateRealisticPortraitResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateRealisticPortraitResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateRealisticPortraitResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3209,6 +3401,275 @@ class QueryAvatarResourceResponse(TeaModel):
         return self
 
 
+class QueryTextStreamResponseBody(TeaModel):
+    def __init__(
+        self,
+        end: bool = None,
+        index: int = None,
+        message: str = None,
+        type: int = None,
+    ):
+        self.end = end
+        self.index = index
+        # Id of the request
+        self.message = message
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end is not None:
+            result['end'] = self.end
+        if self.index is not None:
+            result['index'] = self.index
+        if self.message is not None:
+            result['message'] = self.message
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('end') is not None:
+            self.end = m.get('end')
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class QueryTextStreamResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryTextStreamResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryTextStreamResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SelectImageTaskResponseBodyImageInfos(TeaModel):
+    def __init__(
+        self,
+        custom_image_url: str = None,
+        gmt_create: str = None,
+        image_h: str = None,
+        image_w: str = None,
+    ):
+        self.custom_image_url = custom_image_url
+        self.gmt_create = gmt_create
+        self.image_h = image_h
+        self.image_w = image_w
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_image_url is not None:
+            result['customImageUrl'] = self.custom_image_url
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.image_h is not None:
+            result['imageH'] = self.image_h
+        if self.image_w is not None:
+            result['imageW'] = self.image_w
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('customImageUrl') is not None:
+            self.custom_image_url = m.get('customImageUrl')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('imageH') is not None:
+            self.image_h = m.get('imageH')
+        if m.get('imageW') is not None:
+            self.image_w = m.get('imageW')
+        return self
+
+
+class SelectImageTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        failed: str = None,
+        generation_source: str = None,
+        gmt_create: str = None,
+        image_infos: List[SelectImageTaskResponseBodyImageInfos] = None,
+        request_id: str = None,
+        scene: str = None,
+        status: str = None,
+        subtask_processing: str = None,
+        success: str = None,
+        total: str = None,
+    ):
+        self.error_message = error_message
+        self.failed = failed
+        self.generation_source = generation_source
+        self.gmt_create = gmt_create
+        self.image_infos = image_infos
+        # Id of the request
+        self.request_id = request_id
+        self.scene = scene
+        self.status = status
+        self.subtask_processing = subtask_processing
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.image_infos:
+            for k in self.image_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.failed is not None:
+            result['failed'] = self.failed
+        if self.generation_source is not None:
+            result['generationSource'] = self.generation_source
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        result['imageInfos'] = []
+        if self.image_infos is not None:
+            for k in self.image_infos:
+                result['imageInfos'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.scene is not None:
+            result['scene'] = self.scene
+        if self.status is not None:
+            result['status'] = self.status
+        if self.subtask_processing is not None:
+            result['subtaskProcessing'] = self.subtask_processing
+        if self.success is not None:
+            result['success'] = self.success
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('failed') is not None:
+            self.failed = m.get('failed')
+        if m.get('generationSource') is not None:
+            self.generation_source = m.get('generationSource')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        self.image_infos = []
+        if m.get('imageInfos') is not None:
+            for k in m.get('imageInfos'):
+                temp_model = SelectImageTaskResponseBodyImageInfos()
+                self.image_infos.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('subtaskProcessing') is not None:
+            self.subtask_processing = m.get('subtaskProcessing')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class SelectImageTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SelectImageTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SelectImageTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SelectResourceRequest(TeaModel):
     def __init__(
         self,
@@ -3533,10 +3994,14 @@ class StartAvatarSessionResponseBody(TeaModel):
         channel_token: str = None,
         request_id: str = None,
         session_id: str = None,
+        token: str = None,
+        web_socket_url: str = None,
     ):
         self.channel_token = channel_token
         self.request_id = request_id
         self.session_id = session_id
+        self.token = token
+        self.web_socket_url = web_socket_url
 
     def validate(self):
         pass
@@ -3553,6 +4018,10 @@ class StartAvatarSessionResponseBody(TeaModel):
             result['requestId'] = self.request_id
         if self.session_id is not None:
             result['sessionId'] = self.session_id
+        if self.token is not None:
+            result['token'] = self.token
+        if self.web_socket_url is not None:
+            result['webSocketUrl'] = self.web_socket_url
         return result
 
     def from_map(self, m: dict = None):
@@ -3563,6 +4032,10 @@ class StartAvatarSessionResponseBody(TeaModel):
             self.request_id = m.get('requestId')
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')
+        if m.get('token') is not None:
+            self.token = m.get('token')
+        if m.get('webSocketUrl') is not None:
+            self.web_socket_url = m.get('webSocketUrl')
         return self
 
 
@@ -3821,10 +4294,12 @@ class SubmitProjectTaskRequestFramesLayersMaterial(TeaModel):
         format: str = None,
         id: str = None,
         url: str = None,
+        volume: int = None,
     ):
         self.format = format
         self.id = id
         self.url = url
+        self.volume = volume
 
     def validate(self):
         pass
@@ -3841,6 +4316,8 @@ class SubmitProjectTaskRequestFramesLayersMaterial(TeaModel):
             result['id'] = self.id
         if self.url is not None:
             result['url'] = self.url
+        if self.volume is not None:
+            result['volume'] = self.volume
         return result
 
     def from_map(self, m: dict = None):
@@ -3851,6 +4328,8 @@ class SubmitProjectTaskRequestFramesLayersMaterial(TeaModel):
             self.id = m.get('id')
         if m.get('url') is not None:
             self.url = m.get('url')
+        if m.get('volume') is not None:
+            self.volume = m.get('volume')
         return self
 
 
@@ -4240,6 +4719,138 @@ class SubmitProjectTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitProjectTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TransferPortraitStyleRequest(TeaModel):
+    def __init__(
+        self,
+        height: int = None,
+        image_url: str = None,
+        numbers: int = None,
+        redraw_amplitude: int = None,
+        style: int = None,
+        width: int = None,
+    ):
+        self.height = height
+        self.image_url = image_url
+        self.numbers = numbers
+        self.redraw_amplitude = redraw_amplitude
+        self.style = style
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['height'] = self.height
+        if self.image_url is not None:
+            result['imageUrl'] = self.image_url
+        if self.numbers is not None:
+            result['numbers'] = self.numbers
+        if self.redraw_amplitude is not None:
+            result['redrawAmplitude'] = self.redraw_amplitude
+        if self.style is not None:
+            result['style'] = self.style
+        if self.width is not None:
+            result['width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('height') is not None:
+            self.height = m.get('height')
+        if m.get('imageUrl') is not None:
+            self.image_url = m.get('imageUrl')
+        if m.get('numbers') is not None:
+            self.numbers = m.get('numbers')
+        if m.get('redrawAmplitude') is not None:
+            self.redraw_amplitude = m.get('redrawAmplitude')
+        if m.get('style') is not None:
+            self.style = m.get('style')
+        if m.get('width') is not None:
+            self.width = m.get('width')
+        return self
+
+
+class TransferPortraitStyleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class TransferPortraitStyleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TransferPortraitStyleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TransferPortraitStyleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

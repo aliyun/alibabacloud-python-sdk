@@ -1,3 +1,12 @@
+2024-09-09 Version: 2.4.0
+- Support API CreateRealisticPortrait.
+- Support API QueryTextStream.
+- Support API SelectImageTask.
+- Support API TransferPortraitStyle.
+- Update API StartAvatarSession: update response param.
+- Update API SubmitProjectTask: update param body.
+
+
 2024-08-20 Version: 2.3.0
 - Support API BatchGetProjectTask.
 

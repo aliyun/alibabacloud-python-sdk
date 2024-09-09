@@ -591,6 +591,162 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_illustration_task_with_options_async(text_id, request, headers, runtime)
 
+    def create_realistic_portrait_with_options(
+        self,
+        request: intelligent_creation_20240313_models.CreateRealisticPortraitRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CreateRealisticPortraitResponse:
+        """
+        @summary 写实人像创作
+        
+        @param request: CreateRealisticPortraitRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRealisticPortraitResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ages):
+            body['ages'] = request.ages
+        if not UtilClient.is_unset(request.cloth):
+            body['cloth'] = request.cloth
+        if not UtilClient.is_unset(request.color):
+            body['color'] = request.color
+        if not UtilClient.is_unset(request.custom):
+            body['custom'] = request.custom
+        if not UtilClient.is_unset(request.face):
+            body['face'] = request.face
+        if not UtilClient.is_unset(request.figure):
+            body['figure'] = request.figure
+        if not UtilClient.is_unset(request.gender):
+            body['gender'] = request.gender
+        if not UtilClient.is_unset(request.hair_color):
+            body['hairColor'] = request.hair_color
+        if not UtilClient.is_unset(request.hairstyle):
+            body['hairstyle'] = request.hairstyle
+        if not UtilClient.is_unset(request.height):
+            body['height'] = request.height
+        if not UtilClient.is_unset(request.image_url):
+            body['imageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.numbers):
+            body['numbers'] = request.numbers
+        if not UtilClient.is_unset(request.ratio):
+            body['ratio'] = request.ratio
+        if not UtilClient.is_unset(request.width):
+            body['width'] = request.width
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRealisticPortrait',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/images/portrait/realistic',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateRealisticPortraitResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_realistic_portrait_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.CreateRealisticPortraitRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.CreateRealisticPortraitResponse:
+        """
+        @summary 写实人像创作
+        
+        @param request: CreateRealisticPortraitRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRealisticPortraitResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ages):
+            body['ages'] = request.ages
+        if not UtilClient.is_unset(request.cloth):
+            body['cloth'] = request.cloth
+        if not UtilClient.is_unset(request.color):
+            body['color'] = request.color
+        if not UtilClient.is_unset(request.custom):
+            body['custom'] = request.custom
+        if not UtilClient.is_unset(request.face):
+            body['face'] = request.face
+        if not UtilClient.is_unset(request.figure):
+            body['figure'] = request.figure
+        if not UtilClient.is_unset(request.gender):
+            body['gender'] = request.gender
+        if not UtilClient.is_unset(request.hair_color):
+            body['hairColor'] = request.hair_color
+        if not UtilClient.is_unset(request.hairstyle):
+            body['hairstyle'] = request.hairstyle
+        if not UtilClient.is_unset(request.height):
+            body['height'] = request.height
+        if not UtilClient.is_unset(request.image_url):
+            body['imageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.numbers):
+            body['numbers'] = request.numbers
+        if not UtilClient.is_unset(request.ratio):
+            body['ratio'] = request.ratio
+        if not UtilClient.is_unset(request.width):
+            body['width'] = request.width
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateRealisticPortrait',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/images/portrait/realistic',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.CreateRealisticPortraitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_realistic_portrait(
+        self,
+        request: intelligent_creation_20240313_models.CreateRealisticPortraitRequest,
+    ) -> intelligent_creation_20240313_models.CreateRealisticPortraitResponse:
+        """
+        @summary 写实人像创作
+        
+        @param request: CreateRealisticPortraitRequest
+        @return: CreateRealisticPortraitResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_realistic_portrait_with_options(request, headers, runtime)
+
+    async def create_realistic_portrait_async(
+        self,
+        request: intelligent_creation_20240313_models.CreateRealisticPortraitRequest,
+    ) -> intelligent_creation_20240313_models.CreateRealisticPortraitResponse:
+        """
+        @summary 写实人像创作
+        
+        @param request: CreateRealisticPortraitRequest
+        @return: CreateRealisticPortraitResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_realistic_portrait_with_options_async(request, headers, runtime)
+
     def create_text_task_with_options(
         self,
         request: intelligent_creation_20240313_models.CreateTextTaskRequest,
@@ -2061,6 +2217,186 @@ class Client(OpenApiClient):
         headers = {}
         return await self.query_avatar_resource_with_options_async(request, headers, runtime)
 
+    def query_text_stream_with_options(
+        self,
+        text_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.QueryTextStreamResponse:
+        """
+        @summary 流式输出文案
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTextStreamResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='QueryTextStream',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/stream/queryTextStream/{OpenApiUtilClient.get_encode_param(text_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.QueryTextStreamResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_text_stream_with_options_async(
+        self,
+        text_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.QueryTextStreamResponse:
+        """
+        @summary 流式输出文案
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTextStreamResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='QueryTextStream',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/stream/queryTextStream/{OpenApiUtilClient.get_encode_param(text_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.QueryTextStreamResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_text_stream(
+        self,
+        text_id: str,
+    ) -> intelligent_creation_20240313_models.QueryTextStreamResponse:
+        """
+        @summary 流式输出文案
+        
+        @return: QueryTextStreamResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_text_stream_with_options(text_id, headers, runtime)
+
+    async def query_text_stream_async(
+        self,
+        text_id: str,
+    ) -> intelligent_creation_20240313_models.QueryTextStreamResponse:
+        """
+        @summary 流式输出文案
+        
+        @return: QueryTextStreamResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_text_stream_with_options_async(text_id, headers, runtime)
+
+    def select_image_task_with_options(
+        self,
+        task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.SelectImageTaskResponse:
+        """
+        @summary 查询图片任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SelectImageTaskResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='SelectImageTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/images/portrait/select/{OpenApiUtilClient.get_encode_param(task_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.SelectImageTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def select_image_task_with_options_async(
+        self,
+        task_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.SelectImageTaskResponse:
+        """
+        @summary 查询图片任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SelectImageTaskResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='SelectImageTask',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/images/portrait/select/{OpenApiUtilClient.get_encode_param(task_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.SelectImageTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def select_image_task(
+        self,
+        task_id: str,
+    ) -> intelligent_creation_20240313_models.SelectImageTaskResponse:
+        """
+        @summary 查询图片任务
+        
+        @return: SelectImageTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.select_image_task_with_options(task_id, headers, runtime)
+
+    async def select_image_task_async(
+        self,
+        task_id: str,
+    ) -> intelligent_creation_20240313_models.SelectImageTaskResponse:
+        """
+        @summary 查询图片任务
+        
+        @return: SelectImageTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.select_image_task_with_options_async(task_id, headers, runtime)
+
     def select_resource_with_options(
         self,
         request: intelligent_creation_20240313_models.SelectResourceRequest,
@@ -2720,3 +3056,127 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.submit_project_task_with_options_async(request, headers, runtime)
+
+    def transfer_portrait_style_with_options(
+        self,
+        request: intelligent_creation_20240313_models.TransferPortraitStyleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.TransferPortraitStyleResponse:
+        """
+        @summary 人像风格变化
+        
+        @param request: TransferPortraitStyleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferPortraitStyleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.height):
+            body['height'] = request.height
+        if not UtilClient.is_unset(request.image_url):
+            body['imageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.numbers):
+            body['numbers'] = request.numbers
+        if not UtilClient.is_unset(request.redraw_amplitude):
+            body['redrawAmplitude'] = request.redraw_amplitude
+        if not UtilClient.is_unset(request.style):
+            body['style'] = request.style
+        if not UtilClient.is_unset(request.width):
+            body['width'] = request.width
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TransferPortraitStyle',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/images/portrait/transferPortraitStyle',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.TransferPortraitStyleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def transfer_portrait_style_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.TransferPortraitStyleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.TransferPortraitStyleResponse:
+        """
+        @summary 人像风格变化
+        
+        @param request: TransferPortraitStyleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferPortraitStyleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.height):
+            body['height'] = request.height
+        if not UtilClient.is_unset(request.image_url):
+            body['imageUrl'] = request.image_url
+        if not UtilClient.is_unset(request.numbers):
+            body['numbers'] = request.numbers
+        if not UtilClient.is_unset(request.redraw_amplitude):
+            body['redrawAmplitude'] = request.redraw_amplitude
+        if not UtilClient.is_unset(request.style):
+            body['style'] = request.style
+        if not UtilClient.is_unset(request.width):
+            body['width'] = request.width
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TransferPortraitStyle',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/images/portrait/transferPortraitStyle',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.TransferPortraitStyleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def transfer_portrait_style(
+        self,
+        request: intelligent_creation_20240313_models.TransferPortraitStyleRequest,
+    ) -> intelligent_creation_20240313_models.TransferPortraitStyleResponse:
+        """
+        @summary 人像风格变化
+        
+        @param request: TransferPortraitStyleRequest
+        @return: TransferPortraitStyleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.transfer_portrait_style_with_options(request, headers, runtime)
+
+    async def transfer_portrait_style_async(
+        self,
+        request: intelligent_creation_20240313_models.TransferPortraitStyleRequest,
+    ) -> intelligent_creation_20240313_models.TransferPortraitStyleResponse:
+        """
+        @summary 人像风格变化
+        
+        @param request: TransferPortraitStyleRequest
+        @return: TransferPortraitStyleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.transfer_portrait_style_with_options_async(request, headers, runtime)
