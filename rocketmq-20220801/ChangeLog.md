@@ -1,3 +1,33 @@
+2024-09-09 Version: 1.5.0
+- Support API CreateInstanceAccount.
+- Support API CreateInstanceAcl.
+- Support API CreateInstanceIpWhitelist.
+- Support API DeleteConsumerGroupSubscription.
+- Support API DeleteInstanceAccount.
+- Support API DeleteInstanceAcl.
+- Support API DeleteInstanceIpWhitelist.
+- Support API GetConsumerGroupLag.
+- Support API GetConsumerGroupSubscription.
+- Support API GetConsumerStack.
+- Support API GetInstanceAccount.
+- Support API GetMessageDetail.
+- Support API GetTrace.
+- Support API ListInstanceAccount.
+- Support API ListInstanceAcl.
+- Support API ListInstanceIpWhitelist.
+- Support API ListMessages.
+- Support API ListTagResources.
+- Support API ListTraces.
+- Support API TagResources.
+- Support API UntagResources.
+- Support API UpdateInstanceAccount.
+- Support API UpdateInstanceAcl.
+- Support API VerifyConsumeMessage.
+- Support API VerifySendMessage.
+- Update API ListConsumerGroupSubscriptions: update param consumerGroupId.
+- Update API ListTopicSubscriptions: update param topicName.
+
+
 2024-07-25 Version: 1.4.5
 - Update API ListInstances: add param seriesCodes.
 

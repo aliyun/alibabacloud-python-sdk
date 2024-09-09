@@ -457,6 +457,354 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_instance_with_options_async(request, headers, runtime)
 
+    def create_instance_account_with_options(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.CreateInstanceAccountRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.CreateInstanceAccountResponse:
+        """
+        @summary 创建访问控制acl用户
+        
+        @param request: CreateInstanceAccountRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceAccountResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.password):
+            body['password'] = request.password
+        if not UtilClient.is_unset(request.username):
+            body['username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateInstanceAccount',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/accounts',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateInstanceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_instance_account_with_options_async(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.CreateInstanceAccountRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.CreateInstanceAccountResponse:
+        """
+        @summary 创建访问控制acl用户
+        
+        @param request: CreateInstanceAccountRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceAccountResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.password):
+            body['password'] = request.password
+        if not UtilClient.is_unset(request.username):
+            body['username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateInstanceAccount',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/accounts',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateInstanceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_instance_account(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.CreateInstanceAccountRequest,
+    ) -> rocket_mq20220801_models.CreateInstanceAccountResponse:
+        """
+        @summary 创建访问控制acl用户
+        
+        @param request: CreateInstanceAccountRequest
+        @return: CreateInstanceAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_instance_account_with_options(instance_id, request, headers, runtime)
+
+    async def create_instance_account_async(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.CreateInstanceAccountRequest,
+    ) -> rocket_mq20220801_models.CreateInstanceAccountResponse:
+        """
+        @summary 创建访问控制acl用户
+        
+        @param request: CreateInstanceAccountRequest
+        @return: CreateInstanceAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_instance_account_with_options_async(instance_id, request, headers, runtime)
+
+    def create_instance_acl_with_options(
+        self,
+        instance_id: str,
+        username: str,
+        request: rocket_mq20220801_models.CreateInstanceAclRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.CreateInstanceAclResponse:
+        """
+        @summary 创建访问控制acl数据
+        
+        @param request: CreateInstanceAclRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceAclResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.actions):
+            body['actions'] = request.actions
+        if not UtilClient.is_unset(request.decision):
+            body['decision'] = request.decision
+        if not UtilClient.is_unset(request.ip_whitelists):
+            body['ipWhitelists'] = request.ip_whitelists
+        if not UtilClient.is_unset(request.resource_name):
+            body['resourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateInstanceAcl',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/acl/account/{OpenApiUtilClient.get_encode_param(username)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateInstanceAclResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_instance_acl_with_options_async(
+        self,
+        instance_id: str,
+        username: str,
+        request: rocket_mq20220801_models.CreateInstanceAclRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.CreateInstanceAclResponse:
+        """
+        @summary 创建访问控制acl数据
+        
+        @param request: CreateInstanceAclRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceAclResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.actions):
+            body['actions'] = request.actions
+        if not UtilClient.is_unset(request.decision):
+            body['decision'] = request.decision
+        if not UtilClient.is_unset(request.ip_whitelists):
+            body['ipWhitelists'] = request.ip_whitelists
+        if not UtilClient.is_unset(request.resource_name):
+            body['resourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateInstanceAcl',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/acl/account/{OpenApiUtilClient.get_encode_param(username)}',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateInstanceAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_instance_acl(
+        self,
+        instance_id: str,
+        username: str,
+        request: rocket_mq20220801_models.CreateInstanceAclRequest,
+    ) -> rocket_mq20220801_models.CreateInstanceAclResponse:
+        """
+        @summary 创建访问控制acl数据
+        
+        @param request: CreateInstanceAclRequest
+        @return: CreateInstanceAclResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_instance_acl_with_options(instance_id, username, request, headers, runtime)
+
+    async def create_instance_acl_async(
+        self,
+        instance_id: str,
+        username: str,
+        request: rocket_mq20220801_models.CreateInstanceAclRequest,
+    ) -> rocket_mq20220801_models.CreateInstanceAclResponse:
+        """
+        @summary 创建访问控制acl数据
+        
+        @param request: CreateInstanceAclRequest
+        @return: CreateInstanceAclResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_instance_acl_with_options_async(instance_id, username, request, headers, runtime)
+
+    def create_instance_ip_whitelist_with_options(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.CreateInstanceIpWhitelistRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.CreateInstanceIpWhitelistResponse:
+        """
+        @summary 创建访问控制ip白名单
+        
+        @param request: CreateInstanceIpWhitelistRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceIpWhitelistResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ip_whitelists):
+            body['ipWhitelists'] = request.ip_whitelists
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateInstanceIpWhitelist',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/ip/whitelist',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateInstanceIpWhitelistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_instance_ip_whitelist_with_options_async(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.CreateInstanceIpWhitelistRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.CreateInstanceIpWhitelistResponse:
+        """
+        @summary 创建访问控制ip白名单
+        
+        @param request: CreateInstanceIpWhitelistRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceIpWhitelistResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ip_whitelists):
+            body['ipWhitelists'] = request.ip_whitelists
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateInstanceIpWhitelist',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/ip/whitelist',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.CreateInstanceIpWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_instance_ip_whitelist(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.CreateInstanceIpWhitelistRequest,
+    ) -> rocket_mq20220801_models.CreateInstanceIpWhitelistResponse:
+        """
+        @summary 创建访问控制ip白名单
+        
+        @param request: CreateInstanceIpWhitelistRequest
+        @return: CreateInstanceIpWhitelistResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_instance_ip_whitelist_with_options(instance_id, request, headers, runtime)
+
+    async def create_instance_ip_whitelist_async(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.CreateInstanceIpWhitelistRequest,
+    ) -> rocket_mq20220801_models.CreateInstanceIpWhitelistResponse:
+        """
+        @summary 创建访问控制ip白名单
+        
+        @param request: CreateInstanceIpWhitelistRequest
+        @return: CreateInstanceIpWhitelistResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_instance_ip_whitelist_with_options_async(instance_id, request, headers, runtime)
+
     def create_topic_with_options(
         self,
         instance_id: str,
@@ -679,6 +1027,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_consumer_group_with_options_async(instance_id, consumer_group_id, headers, runtime)
 
+    def delete_consumer_group_subscription_with_options(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        request: rocket_mq20220801_models.DeleteConsumerGroupSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.DeleteConsumerGroupSubscriptionResponse:
+        """
+        @summary 取消消费组订阅关系
+        
+        @param request: DeleteConsumerGroupSubscriptionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConsumerGroupSubscriptionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter_expression):
+            query['filterExpression'] = request.filter_expression
+        if not UtilClient.is_unset(request.filter_type):
+            query['filterType'] = request.filter_type
+        if not UtilClient.is_unset(request.topic_name):
+            query['topicName'] = request.topic_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConsumerGroupSubscription',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}/subscriptions',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteConsumerGroupSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_consumer_group_subscription_with_options_async(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        request: rocket_mq20220801_models.DeleteConsumerGroupSubscriptionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.DeleteConsumerGroupSubscriptionResponse:
+        """
+        @summary 取消消费组订阅关系
+        
+        @param request: DeleteConsumerGroupSubscriptionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConsumerGroupSubscriptionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter_expression):
+            query['filterExpression'] = request.filter_expression
+        if not UtilClient.is_unset(request.filter_type):
+            query['filterType'] = request.filter_type
+        if not UtilClient.is_unset(request.topic_name):
+            query['topicName'] = request.topic_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteConsumerGroupSubscription',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}/subscriptions',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteConsumerGroupSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_consumer_group_subscription(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        request: rocket_mq20220801_models.DeleteConsumerGroupSubscriptionRequest,
+    ) -> rocket_mq20220801_models.DeleteConsumerGroupSubscriptionResponse:
+        """
+        @summary 取消消费组订阅关系
+        
+        @param request: DeleteConsumerGroupSubscriptionRequest
+        @return: DeleteConsumerGroupSubscriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_consumer_group_subscription_with_options(instance_id, consumer_group_id, request, headers, runtime)
+
+    async def delete_consumer_group_subscription_async(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        request: rocket_mq20220801_models.DeleteConsumerGroupSubscriptionRequest,
+    ) -> rocket_mq20220801_models.DeleteConsumerGroupSubscriptionResponse:
+        """
+        @summary 取消消费组订阅关系
+        
+        @param request: DeleteConsumerGroupSubscriptionRequest
+        @return: DeleteConsumerGroupSubscriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_consumer_group_subscription_with_options_async(instance_id, consumer_group_id, request, headers, runtime)
+
     def delete_instance_with_options(
         self,
         instance_id: str,
@@ -784,6 +1252,324 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_instance_with_options_async(instance_id, headers, runtime)
+
+    def delete_instance_account_with_options(
+        self,
+        instance_id: str,
+        username: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.DeleteInstanceAccountResponse:
+        """
+        @summary 删除访问控制acl用户
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceAccountResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteInstanceAccount',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/accounts/{OpenApiUtilClient.get_encode_param(username)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteInstanceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_instance_account_with_options_async(
+        self,
+        instance_id: str,
+        username: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.DeleteInstanceAccountResponse:
+        """
+        @summary 删除访问控制acl用户
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceAccountResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteInstanceAccount',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/accounts/{OpenApiUtilClient.get_encode_param(username)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteInstanceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_instance_account(
+        self,
+        instance_id: str,
+        username: str,
+    ) -> rocket_mq20220801_models.DeleteInstanceAccountResponse:
+        """
+        @summary 删除访问控制acl用户
+        
+        @return: DeleteInstanceAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_instance_account_with_options(instance_id, username, headers, runtime)
+
+    async def delete_instance_account_async(
+        self,
+        instance_id: str,
+        username: str,
+    ) -> rocket_mq20220801_models.DeleteInstanceAccountResponse:
+        """
+        @summary 删除访问控制acl用户
+        
+        @return: DeleteInstanceAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_instance_account_with_options_async(instance_id, username, headers, runtime)
+
+    def delete_instance_acl_with_options(
+        self,
+        instance_id: str,
+        username: str,
+        request: rocket_mq20220801_models.DeleteInstanceAclRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.DeleteInstanceAclResponse:
+        """
+        @summary 删除访问控制acl数据
+        
+        @param request: DeleteInstanceAclRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceAclResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_name):
+            query['resourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstanceAcl',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/acl/account/{OpenApiUtilClient.get_encode_param(username)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteInstanceAclResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_instance_acl_with_options_async(
+        self,
+        instance_id: str,
+        username: str,
+        request: rocket_mq20220801_models.DeleteInstanceAclRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.DeleteInstanceAclResponse:
+        """
+        @summary 删除访问控制acl数据
+        
+        @param request: DeleteInstanceAclRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceAclResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_name):
+            query['resourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstanceAcl',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/acl/account/{OpenApiUtilClient.get_encode_param(username)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteInstanceAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_instance_acl(
+        self,
+        instance_id: str,
+        username: str,
+        request: rocket_mq20220801_models.DeleteInstanceAclRequest,
+    ) -> rocket_mq20220801_models.DeleteInstanceAclResponse:
+        """
+        @summary 删除访问控制acl数据
+        
+        @param request: DeleteInstanceAclRequest
+        @return: DeleteInstanceAclResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_instance_acl_with_options(instance_id, username, request, headers, runtime)
+
+    async def delete_instance_acl_async(
+        self,
+        instance_id: str,
+        username: str,
+        request: rocket_mq20220801_models.DeleteInstanceAclRequest,
+    ) -> rocket_mq20220801_models.DeleteInstanceAclResponse:
+        """
+        @summary 删除访问控制acl数据
+        
+        @param request: DeleteInstanceAclRequest
+        @return: DeleteInstanceAclResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_instance_acl_with_options_async(instance_id, username, request, headers, runtime)
+
+    def delete_instance_ip_whitelist_with_options(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.DeleteInstanceIpWhitelistRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.DeleteInstanceIpWhitelistResponse:
+        """
+        @summary 删除访问控制ip白名单
+        
+        @param request: DeleteInstanceIpWhitelistRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceIpWhitelistResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ip_whitelist):
+            query['ipWhitelist'] = request.ip_whitelist
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstanceIpWhitelist',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/ip/whitelist',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteInstanceIpWhitelistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_instance_ip_whitelist_with_options_async(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.DeleteInstanceIpWhitelistRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.DeleteInstanceIpWhitelistResponse:
+        """
+        @summary 删除访问控制ip白名单
+        
+        @param request: DeleteInstanceIpWhitelistRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceIpWhitelistResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ip_whitelist):
+            query['ipWhitelist'] = request.ip_whitelist
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteInstanceIpWhitelist',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/ip/whitelist',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.DeleteInstanceIpWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_instance_ip_whitelist(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.DeleteInstanceIpWhitelistRequest,
+    ) -> rocket_mq20220801_models.DeleteInstanceIpWhitelistResponse:
+        """
+        @summary 删除访问控制ip白名单
+        
+        @param request: DeleteInstanceIpWhitelistRequest
+        @return: DeleteInstanceIpWhitelistResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_instance_ip_whitelist_with_options(instance_id, request, headers, runtime)
+
+    async def delete_instance_ip_whitelist_async(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.DeleteInstanceIpWhitelistRequest,
+    ) -> rocket_mq20220801_models.DeleteInstanceIpWhitelistResponse:
+        """
+        @summary 删除访问控制ip白名单
+        
+        @param request: DeleteInstanceIpWhitelistRequest
+        @return: DeleteInstanceIpWhitelistResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_instance_ip_whitelist_with_options_async(instance_id, request, headers, runtime)
 
     def delete_topic_with_options(
         self,
@@ -989,6 +1775,310 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_consumer_group_with_options_async(instance_id, consumer_group_id, headers, runtime)
 
+    def get_consumer_group_lag_with_options(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.GetConsumerGroupLagResponse:
+        """
+        @summary 查询消费者组堆积信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConsumerGroupLagResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetConsumerGroupLag',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}/lag',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetConsumerGroupLagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_consumer_group_lag_with_options_async(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.GetConsumerGroupLagResponse:
+        """
+        @summary 查询消费者组堆积信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConsumerGroupLagResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetConsumerGroupLag',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}/lag',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetConsumerGroupLagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_consumer_group_lag(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+    ) -> rocket_mq20220801_models.GetConsumerGroupLagResponse:
+        """
+        @summary 查询消费者组堆积信息
+        
+        @return: GetConsumerGroupLagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_consumer_group_lag_with_options(instance_id, consumer_group_id, headers, runtime)
+
+    async def get_consumer_group_lag_async(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+    ) -> rocket_mq20220801_models.GetConsumerGroupLagResponse:
+        """
+        @summary 查询消费者组堆积信息
+        
+        @return: GetConsumerGroupLagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_consumer_group_lag_with_options_async(instance_id, consumer_group_id, headers, runtime)
+
+    def get_consumer_group_subscription_with_options(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        topic_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.GetConsumerGroupSubscriptionResponse:
+        """
+        @summary 查询消费组订阅关系列表客户端分布
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConsumerGroupSubscriptionResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetConsumerGroupSubscription',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}/subscriptions/{OpenApiUtilClient.get_encode_param(topic_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetConsumerGroupSubscriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_consumer_group_subscription_with_options_async(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        topic_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.GetConsumerGroupSubscriptionResponse:
+        """
+        @summary 查询消费组订阅关系列表客户端分布
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConsumerGroupSubscriptionResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetConsumerGroupSubscription',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}/subscriptions/{OpenApiUtilClient.get_encode_param(topic_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetConsumerGroupSubscriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_consumer_group_subscription(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        topic_name: str,
+    ) -> rocket_mq20220801_models.GetConsumerGroupSubscriptionResponse:
+        """
+        @summary 查询消费组订阅关系列表客户端分布
+        
+        @return: GetConsumerGroupSubscriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_consumer_group_subscription_with_options(instance_id, consumer_group_id, topic_name, headers, runtime)
+
+    async def get_consumer_group_subscription_async(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        topic_name: str,
+    ) -> rocket_mq20220801_models.GetConsumerGroupSubscriptionResponse:
+        """
+        @summary 查询消费组订阅关系列表客户端分布
+        
+        @return: GetConsumerGroupSubscriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_consumer_group_subscription_with_options_async(instance_id, consumer_group_id, topic_name, headers, runtime)
+
+    def get_consumer_stack_with_options(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        request: rocket_mq20220801_models.GetConsumerStackRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.GetConsumerStackResponse:
+        """
+        @summary 查询消费者堆栈信息
+        
+        @param request: GetConsumerStackRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConsumerStackResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_id):
+            query['clientId'] = request.client_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConsumerStack',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}/stack',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetConsumerStackResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_consumer_stack_with_options_async(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        request: rocket_mq20220801_models.GetConsumerStackRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.GetConsumerStackResponse:
+        """
+        @summary 查询消费者堆栈信息
+        
+        @param request: GetConsumerStackRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConsumerStackResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_id):
+            query['clientId'] = request.client_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetConsumerStack',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/consumerGroups/{OpenApiUtilClient.get_encode_param(consumer_group_id)}/stack',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetConsumerStackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_consumer_stack(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        request: rocket_mq20220801_models.GetConsumerStackRequest,
+    ) -> rocket_mq20220801_models.GetConsumerStackResponse:
+        """
+        @summary 查询消费者堆栈信息
+        
+        @param request: GetConsumerStackRequest
+        @return: GetConsumerStackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_consumer_stack_with_options(instance_id, consumer_group_id, request, headers, runtime)
+
+    async def get_consumer_stack_async(
+        self,
+        instance_id: str,
+        consumer_group_id: str,
+        request: rocket_mq20220801_models.GetConsumerStackRequest,
+    ) -> rocket_mq20220801_models.GetConsumerStackResponse:
+        """
+        @summary 查询消费者堆栈信息
+        
+        @param request: GetConsumerStackRequest
+        @return: GetConsumerStackResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_consumer_stack_with_options_async(instance_id, consumer_group_id, request, headers, runtime)
+
     def get_instance_with_options(
         self,
         instance_id: str,
@@ -1087,6 +2177,212 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_instance_with_options_async(instance_id, headers, runtime)
 
+    def get_instance_account_with_options(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.GetInstanceAccountRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.GetInstanceAccountResponse:
+        """
+        @summary 获取实例账号
+        
+        @param request: GetInstanceAccountRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceAccountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.username):
+            query['username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceAccount',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/account',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetInstanceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_account_with_options_async(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.GetInstanceAccountRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.GetInstanceAccountResponse:
+        """
+        @summary 获取实例账号
+        
+        @param request: GetInstanceAccountRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceAccountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.username):
+            query['username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetInstanceAccount',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/account',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetInstanceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_account(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.GetInstanceAccountRequest,
+    ) -> rocket_mq20220801_models.GetInstanceAccountResponse:
+        """
+        @summary 获取实例账号
+        
+        @param request: GetInstanceAccountRequest
+        @return: GetInstanceAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_instance_account_with_options(instance_id, request, headers, runtime)
+
+    async def get_instance_account_async(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.GetInstanceAccountRequest,
+    ) -> rocket_mq20220801_models.GetInstanceAccountResponse:
+        """
+        @summary 获取实例账号
+        
+        @param request: GetInstanceAccountRequest
+        @return: GetInstanceAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_instance_account_with_options_async(instance_id, request, headers, runtime)
+
+    def get_message_detail_with_options(
+        self,
+        instance_id: str,
+        topic_name: str,
+        message_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.GetMessageDetailResponse:
+        """
+        @summary 消息详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMessageDetailResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMessageDetail',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}/messages/{OpenApiUtilClient.get_encode_param(message_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetMessageDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_message_detail_with_options_async(
+        self,
+        instance_id: str,
+        topic_name: str,
+        message_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.GetMessageDetailResponse:
+        """
+        @summary 消息详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMessageDetailResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetMessageDetail',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}/messages/{OpenApiUtilClient.get_encode_param(message_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetMessageDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_message_detail(
+        self,
+        instance_id: str,
+        topic_name: str,
+        message_id: str,
+    ) -> rocket_mq20220801_models.GetMessageDetailResponse:
+        """
+        @summary 消息详情
+        
+        @return: GetMessageDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_message_detail_with_options(instance_id, topic_name, message_id, headers, runtime)
+
+    async def get_message_detail_async(
+        self,
+        instance_id: str,
+        topic_name: str,
+        message_id: str,
+    ) -> rocket_mq20220801_models.GetMessageDetailResponse:
+        """
+        @summary 消息详情
+        
+        @return: GetMessageDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_message_detail_with_options_async(instance_id, topic_name, message_id, headers, runtime)
+
     def get_topic_with_options(
         self,
         instance_id: str,
@@ -1180,6 +2476,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_topic_with_options_async(instance_id, topic_name, headers, runtime)
+
+    def get_trace_with_options(
+        self,
+        instance_id: str,
+        topic_name: str,
+        message_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.GetTraceResponse:
+        """
+        @summary 轨迹查询
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTraceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetTrace',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}/traces/{OpenApiUtilClient.get_encode_param(message_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetTraceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_trace_with_options_async(
+        self,
+        instance_id: str,
+        topic_name: str,
+        message_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.GetTraceResponse:
+        """
+        @summary 轨迹查询
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTraceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetTrace',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}/traces/{OpenApiUtilClient.get_encode_param(message_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.GetTraceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_trace(
+        self,
+        instance_id: str,
+        topic_name: str,
+        message_id: str,
+    ) -> rocket_mq20220801_models.GetTraceResponse:
+        """
+        @summary 轨迹查询
+        
+        @return: GetTraceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_trace_with_options(instance_id, topic_name, message_id, headers, runtime)
+
+    async def get_trace_async(
+        self,
+        instance_id: str,
+        topic_name: str,
+        message_id: str,
+    ) -> rocket_mq20220801_models.GetTraceResponse:
+        """
+        @summary 轨迹查询
+        
+        @return: GetTraceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_trace_with_options_async(instance_id, topic_name, message_id, headers, runtime)
 
     def list_available_zones_with_options(
         self,
@@ -1365,7 +2759,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListConsumerGroupSubscriptionsResponse:
         """
-        @summary Queries the subscriptions of a consumer group.
+        @summary Queries the subscriptions of a specific consumer group.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1398,7 +2792,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListConsumerGroupSubscriptionsResponse:
         """
-        @summary Queries the subscriptions of a consumer group.
+        @summary Queries the subscriptions of a specific consumer group.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1429,7 +2823,7 @@ class Client(OpenApiClient):
         consumer_group_id: str,
     ) -> rocket_mq20220801_models.ListConsumerGroupSubscriptionsResponse:
         """
-        @summary Queries the subscriptions of a consumer group.
+        @summary Queries the subscriptions of a specific consumer group.
         
         @return: ListConsumerGroupSubscriptionsResponse
         """
@@ -1443,7 +2837,7 @@ class Client(OpenApiClient):
         consumer_group_id: str,
     ) -> rocket_mq20220801_models.ListConsumerGroupSubscriptionsResponse:
         """
-        @summary Queries the subscriptions of a consumer group.
+        @summary Queries the subscriptions of a specific consumer group.
         
         @return: ListConsumerGroupSubscriptionsResponse
         """
@@ -1575,6 +2969,362 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_consumer_groups_with_options_async(instance_id, request, headers, runtime)
 
+    def list_instance_account_with_options(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.ListInstanceAccountRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListInstanceAccountResponse:
+        """
+        @summary 访问控制acl用户列表
+        
+        @param request: ListInstanceAccountRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceAccountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_status):
+            query['accountStatus'] = request.account_status
+        if not UtilClient.is_unset(request.account_type):
+            query['accountType'] = request.account_type
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.username):
+            query['username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceAccount',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/accounts',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListInstanceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_account_with_options_async(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.ListInstanceAccountRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListInstanceAccountResponse:
+        """
+        @summary 访问控制acl用户列表
+        
+        @param request: ListInstanceAccountRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceAccountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_status):
+            query['accountStatus'] = request.account_status
+        if not UtilClient.is_unset(request.account_type):
+            query['accountType'] = request.account_type
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.username):
+            query['username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceAccount',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/accounts',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListInstanceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_account(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.ListInstanceAccountRequest,
+    ) -> rocket_mq20220801_models.ListInstanceAccountResponse:
+        """
+        @summary 访问控制acl用户列表
+        
+        @param request: ListInstanceAccountRequest
+        @return: ListInstanceAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_instance_account_with_options(instance_id, request, headers, runtime)
+
+    async def list_instance_account_async(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.ListInstanceAccountRequest,
+    ) -> rocket_mq20220801_models.ListInstanceAccountResponse:
+        """
+        @summary 访问控制acl用户列表
+        
+        @param request: ListInstanceAccountRequest
+        @return: ListInstanceAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_instance_account_with_options_async(instance_id, request, headers, runtime)
+
+    def list_instance_acl_with_options(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.ListInstanceAclRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListInstanceAclResponse:
+        """
+        @summary 访问控制acl数据列表
+        
+        @param request: ListInstanceAclRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceAclResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['filter'] = request.filter
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceAcl',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/acl',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListInstanceAclResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_acl_with_options_async(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.ListInstanceAclRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListInstanceAclResponse:
+        """
+        @summary 访问控制acl数据列表
+        
+        @param request: ListInstanceAclRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceAclResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['filter'] = request.filter
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceAcl',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/acl',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListInstanceAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_acl(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.ListInstanceAclRequest,
+    ) -> rocket_mq20220801_models.ListInstanceAclResponse:
+        """
+        @summary 访问控制acl数据列表
+        
+        @param request: ListInstanceAclRequest
+        @return: ListInstanceAclResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_instance_acl_with_options(instance_id, request, headers, runtime)
+
+    async def list_instance_acl_async(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.ListInstanceAclRequest,
+    ) -> rocket_mq20220801_models.ListInstanceAclResponse:
+        """
+        @summary 访问控制acl数据列表
+        
+        @param request: ListInstanceAclRequest
+        @return: ListInstanceAclResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_instance_acl_with_options_async(instance_id, request, headers, runtime)
+
+    def list_instance_ip_whitelist_with_options(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.ListInstanceIpWhitelistRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListInstanceIpWhitelistResponse:
+        """
+        @summary 查询访问控制ip白名单列表
+        
+        @param request: ListInstanceIpWhitelistRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceIpWhitelistResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ip_whitelist):
+            query['ipWhitelist'] = request.ip_whitelist
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceIpWhitelist',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/ip/whitelist',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListInstanceIpWhitelistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_ip_whitelist_with_options_async(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.ListInstanceIpWhitelistRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListInstanceIpWhitelistResponse:
+        """
+        @summary 查询访问控制ip白名单列表
+        
+        @param request: ListInstanceIpWhitelistRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceIpWhitelistResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ip_whitelist):
+            query['ipWhitelist'] = request.ip_whitelist
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceIpWhitelist',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/ip/whitelist',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListInstanceIpWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_ip_whitelist(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.ListInstanceIpWhitelistRequest,
+    ) -> rocket_mq20220801_models.ListInstanceIpWhitelistResponse:
+        """
+        @summary 查询访问控制ip白名单列表
+        
+        @param request: ListInstanceIpWhitelistRequest
+        @return: ListInstanceIpWhitelistResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_instance_ip_whitelist_with_options(instance_id, request, headers, runtime)
+
+    async def list_instance_ip_whitelist_async(
+        self,
+        instance_id: str,
+        request: rocket_mq20220801_models.ListInstanceIpWhitelistRequest,
+    ) -> rocket_mq20220801_models.ListInstanceIpWhitelistResponse:
+        """
+        @summary 查询访问控制ip白名单列表
+        
+        @param request: ListInstanceIpWhitelistRequest
+        @return: ListInstanceIpWhitelistResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_instance_ip_whitelist_with_options_async(instance_id, request, headers, runtime)
+
     def list_instances_with_options(
         self,
         tmp_req: rocket_mq20220801_models.ListInstancesRequest,
@@ -1582,7 +3332,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListInstancesResponse:
         """
-        @summary Queries instances.
+        @summary Queries all ApsaraMQ for RocketMQ instances in a specific region.
         
         @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
@@ -1636,7 +3386,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListInstancesResponse:
         """
-        @summary Queries instances.
+        @summary Queries all ApsaraMQ for RocketMQ instances in a specific region.
         
         @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
@@ -1688,7 +3438,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListInstancesRequest,
     ) -> rocket_mq20220801_models.ListInstancesResponse:
         """
-        @summary Queries instances.
+        @summary Queries all ApsaraMQ for RocketMQ instances in a specific region.
         
         @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
@@ -1704,7 +3454,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListInstancesRequest,
     ) -> rocket_mq20220801_models.ListInstancesResponse:
         """
-        @summary Queries instances.
+        @summary Queries all ApsaraMQ for RocketMQ instances in a specific region.
         
         @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
@@ -1715,13 +3465,149 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_instances_with_options_async(request, headers, runtime)
 
+    def list_messages_with_options(
+        self,
+        instance_id: str,
+        topic_name: str,
+        request: rocket_mq20220801_models.ListMessagesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListMessagesResponse:
+        """
+        @summary 查询消息列表
+        
+        @param request: ListMessagesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMessagesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.message_id):
+            query['messageId'] = request.message_id
+        if not UtilClient.is_unset(request.message_key):
+            query['messageKey'] = request.message_key
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scrollId'] = request.scroll_id
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMessages',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}/messages',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListMessagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_messages_with_options_async(
+        self,
+        instance_id: str,
+        topic_name: str,
+        request: rocket_mq20220801_models.ListMessagesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListMessagesResponse:
+        """
+        @summary 查询消息列表
+        
+        @param request: ListMessagesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMessagesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.message_id):
+            query['messageId'] = request.message_id
+        if not UtilClient.is_unset(request.message_key):
+            query['messageKey'] = request.message_key
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scroll_id):
+            query['scrollId'] = request.scroll_id
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMessages',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}/messages',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListMessagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_messages(
+        self,
+        instance_id: str,
+        topic_name: str,
+        request: rocket_mq20220801_models.ListMessagesRequest,
+    ) -> rocket_mq20220801_models.ListMessagesResponse:
+        """
+        @summary 查询消息列表
+        
+        @param request: ListMessagesRequest
+        @return: ListMessagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_messages_with_options(instance_id, topic_name, request, headers, runtime)
+
+    async def list_messages_async(
+        self,
+        instance_id: str,
+        topic_name: str,
+        request: rocket_mq20220801_models.ListMessagesRequest,
+    ) -> rocket_mq20220801_models.ListMessagesResponse:
+        """
+        @summary 查询消息列表
+        
+        @param request: ListMessagesRequest
+        @return: ListMessagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_messages_with_options_async(instance_id, topic_name, request, headers, runtime)
+
     def list_regions_with_options(
         self,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListRegionsResponse:
         """
-        @summary 查询region列表
+        @summary Queries regions in which ApsaraMQ for RocketMQ is available.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1752,7 +3638,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListRegionsResponse:
         """
-        @summary 查询region列表
+        @summary Queries regions in which ApsaraMQ for RocketMQ is available.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1779,7 +3665,7 @@ class Client(OpenApiClient):
 
     def list_regions(self) -> rocket_mq20220801_models.ListRegionsResponse:
         """
-        @summary 查询region列表
+        @summary Queries regions in which ApsaraMQ for RocketMQ is available.
         
         @return: ListRegionsResponse
         """
@@ -1789,13 +3675,137 @@ class Client(OpenApiClient):
 
     async def list_regions_async(self) -> rocket_mq20220801_models.ListRegionsResponse:
         """
-        @summary 查询region列表
+        @summary Queries regions in which ApsaraMQ for RocketMQ is available.
         
         @return: ListRegionsResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_regions_with_options_async(headers, runtime)
+
+    def list_tag_resources_with_options(
+        self,
+        request: rocket_mq20220801_models.ListTagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListTagResourcesResponse:
+        """
+        @summary 查询可见的资源标签关系
+        
+        @param request: ListTagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['resourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/resourceTag/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: rocket_mq20220801_models.ListTagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListTagResourcesResponse:
+        """
+        @summary 查询可见的资源标签关系
+        
+        @param request: ListTagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['resourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/resourceTag/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: rocket_mq20220801_models.ListTagResourcesRequest,
+    ) -> rocket_mq20220801_models.ListTagResourcesResponse:
+        """
+        @summary 查询可见的资源标签关系
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_tag_resources_with_options(request, headers, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: rocket_mq20220801_models.ListTagResourcesRequest,
+    ) -> rocket_mq20220801_models.ListTagResourcesResponse:
+        """
+        @summary 查询可见的资源标签关系
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_tag_resources_with_options_async(request, headers, runtime)
 
     def list_topic_subscriptions_with_options(
         self,
@@ -1805,7 +3815,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListTopicSubscriptionsResponse:
         """
-        @summary 查询主题订阅关系列表
+        @summary Queries the subscriptions of a specific topic.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1838,7 +3848,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListTopicSubscriptionsResponse:
         """
-        @summary 查询主题订阅关系列表
+        @summary Queries the subscriptions of a specific topic.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1869,7 +3879,7 @@ class Client(OpenApiClient):
         topic_name: str,
     ) -> rocket_mq20220801_models.ListTopicSubscriptionsResponse:
         """
-        @summary 查询主题订阅关系列表
+        @summary Queries the subscriptions of a specific topic.
         
         @return: ListTopicSubscriptionsResponse
         """
@@ -1883,7 +3893,7 @@ class Client(OpenApiClient):
         topic_name: str,
     ) -> rocket_mq20220801_models.ListTopicSubscriptionsResponse:
         """
-        @summary 查询主题订阅关系列表
+        @summary Queries the subscriptions of a specific topic.
         
         @return: ListTopicSubscriptionsResponse
         """
@@ -2019,6 +4029,142 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_topics_with_options_async(instance_id, request, headers, runtime)
 
+    def list_traces_with_options(
+        self,
+        instance_id: str,
+        topic_name: str,
+        request: rocket_mq20220801_models.ListTracesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListTracesResponse:
+        """
+        @summary 轨迹消息列表
+        
+        @param request: ListTracesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTracesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.message_id):
+            query['messageId'] = request.message_id
+        if not UtilClient.is_unset(request.message_key):
+            query['messageKey'] = request.message_key
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_type):
+            query['queryType'] = request.query_type
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTraces',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}/traces',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListTracesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_traces_with_options_async(
+        self,
+        instance_id: str,
+        topic_name: str,
+        request: rocket_mq20220801_models.ListTracesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.ListTracesResponse:
+        """
+        @summary 轨迹消息列表
+        
+        @param request: ListTracesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTracesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.message_id):
+            query['messageId'] = request.message_id
+        if not UtilClient.is_unset(request.message_key):
+            query['messageKey'] = request.message_key
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_type):
+            query['queryType'] = request.query_type
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTraces',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}/traces',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.ListTracesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_traces(
+        self,
+        instance_id: str,
+        topic_name: str,
+        request: rocket_mq20220801_models.ListTracesRequest,
+    ) -> rocket_mq20220801_models.ListTracesResponse:
+        """
+        @summary 轨迹消息列表
+        
+        @param request: ListTracesRequest
+        @return: ListTracesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_traces_with_options(instance_id, topic_name, request, headers, runtime)
+
+    async def list_traces_async(
+        self,
+        instance_id: str,
+        topic_name: str,
+        request: rocket_mq20220801_models.ListTracesRequest,
+    ) -> rocket_mq20220801_models.ListTracesResponse:
+        """
+        @summary 轨迹消息列表
+        
+        @param request: ListTracesRequest
+        @return: ListTracesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_traces_with_options_async(instance_id, topic_name, request, headers, runtime)
+
     def reset_consume_offset_with_options(
         self,
         instance_id: str,
@@ -2138,6 +4284,242 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.reset_consume_offset_with_options_async(instance_id, consumer_group_id, topic_name, request, headers, runtime)
+
+    def tag_resources_with_options(
+        self,
+        request: rocket_mq20220801_models.TagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.TagResourcesResponse:
+        """
+        @summary 用户创建标签资源关系（用户标签）
+        
+        @param request: TagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['resourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/resourceTag/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: rocket_mq20220801_models.TagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.TagResourcesResponse:
+        """
+        @summary 用户创建标签资源关系（用户标签）
+        
+        @param request: TagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['resourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/resourceTag/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: rocket_mq20220801_models.TagResourcesRequest,
+    ) -> rocket_mq20220801_models.TagResourcesResponse:
+        """
+        @summary 用户创建标签资源关系（用户标签）
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.tag_resources_with_options(request, headers, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: rocket_mq20220801_models.TagResourcesRequest,
+    ) -> rocket_mq20220801_models.TagResourcesResponse:
+        """
+        @summary 用户创建标签资源关系（用户标签）
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.tag_resources_with_options_async(request, headers, runtime)
+
+    def untag_resources_with_options(
+        self,
+        request: rocket_mq20220801_models.UntagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.UntagResourcesResponse:
+        """
+        @summary 用户删除标签资源关系
+        
+        @param request: UntagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['all'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['resourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['tagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/resourceTag/delete',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        request: rocket_mq20220801_models.UntagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.UntagResourcesResponse:
+        """
+        @summary 用户删除标签资源关系
+        
+        @param request: UntagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['all'] = request.all
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['resourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['tagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/resourceTag/delete',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: rocket_mq20220801_models.UntagResourcesRequest,
+    ) -> rocket_mq20220801_models.UntagResourcesResponse:
+        """
+        @summary 用户删除标签资源关系
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.untag_resources_with_options(request, headers, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: rocket_mq20220801_models.UntagResourcesRequest,
+    ) -> rocket_mq20220801_models.UntagResourcesResponse:
+        """
+        @summary 用户删除标签资源关系
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.untag_resources_with_options_async(request, headers, runtime)
 
     def update_consumer_group_with_options(
         self,
@@ -2399,6 +4781,250 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_instance_with_options_async(instance_id, request, headers, runtime)
 
+    def update_instance_account_with_options(
+        self,
+        instance_id: str,
+        username: str,
+        request: rocket_mq20220801_models.UpdateInstanceAccountRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.UpdateInstanceAccountResponse:
+        """
+        @summary 修改访问控制acl用户
+        
+        @param request: UpdateInstanceAccountRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceAccountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_status):
+            query['accountStatus'] = request.account_status
+        if not UtilClient.is_unset(request.password):
+            query['password'] = request.password
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstanceAccount',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/accounts/{OpenApiUtilClient.get_encode_param(username)}',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UpdateInstanceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_instance_account_with_options_async(
+        self,
+        instance_id: str,
+        username: str,
+        request: rocket_mq20220801_models.UpdateInstanceAccountRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.UpdateInstanceAccountResponse:
+        """
+        @summary 修改访问控制acl用户
+        
+        @param request: UpdateInstanceAccountRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceAccountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_status):
+            query['accountStatus'] = request.account_status
+        if not UtilClient.is_unset(request.password):
+            query['password'] = request.password
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstanceAccount',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/accounts/{OpenApiUtilClient.get_encode_param(username)}',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UpdateInstanceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_instance_account(
+        self,
+        instance_id: str,
+        username: str,
+        request: rocket_mq20220801_models.UpdateInstanceAccountRequest,
+    ) -> rocket_mq20220801_models.UpdateInstanceAccountResponse:
+        """
+        @summary 修改访问控制acl用户
+        
+        @param request: UpdateInstanceAccountRequest
+        @return: UpdateInstanceAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_instance_account_with_options(instance_id, username, request, headers, runtime)
+
+    async def update_instance_account_async(
+        self,
+        instance_id: str,
+        username: str,
+        request: rocket_mq20220801_models.UpdateInstanceAccountRequest,
+    ) -> rocket_mq20220801_models.UpdateInstanceAccountResponse:
+        """
+        @summary 修改访问控制acl用户
+        
+        @param request: UpdateInstanceAccountRequest
+        @return: UpdateInstanceAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_instance_account_with_options_async(instance_id, username, request, headers, runtime)
+
+    def update_instance_acl_with_options(
+        self,
+        instance_id: str,
+        username: str,
+        request: rocket_mq20220801_models.UpdateInstanceAclRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.UpdateInstanceAclResponse:
+        """
+        @summary 删除访问控制acl数据
+        
+        @param request: UpdateInstanceAclRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceAclResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.actions):
+            body['actions'] = request.actions
+        if not UtilClient.is_unset(request.decision):
+            body['decision'] = request.decision
+        if not UtilClient.is_unset(request.ip_whitelists):
+            body['ipWhitelists'] = request.ip_whitelists
+        if not UtilClient.is_unset(request.resource_name):
+            body['resourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstanceAcl',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/acl/account/{OpenApiUtilClient.get_encode_param(username)}',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UpdateInstanceAclResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_instance_acl_with_options_async(
+        self,
+        instance_id: str,
+        username: str,
+        request: rocket_mq20220801_models.UpdateInstanceAclRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.UpdateInstanceAclResponse:
+        """
+        @summary 删除访问控制acl数据
+        
+        @param request: UpdateInstanceAclRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceAclResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.actions):
+            body['actions'] = request.actions
+        if not UtilClient.is_unset(request.decision):
+            body['decision'] = request.decision
+        if not UtilClient.is_unset(request.ip_whitelists):
+            body['ipWhitelists'] = request.ip_whitelists
+        if not UtilClient.is_unset(request.resource_name):
+            body['resourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstanceAcl',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/acl/account/{OpenApiUtilClient.get_encode_param(username)}',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.UpdateInstanceAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_instance_acl(
+        self,
+        instance_id: str,
+        username: str,
+        request: rocket_mq20220801_models.UpdateInstanceAclRequest,
+    ) -> rocket_mq20220801_models.UpdateInstanceAclResponse:
+        """
+        @summary 删除访问控制acl数据
+        
+        @param request: UpdateInstanceAclRequest
+        @return: UpdateInstanceAclResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_instance_acl_with_options(instance_id, username, request, headers, runtime)
+
+    async def update_instance_acl_async(
+        self,
+        instance_id: str,
+        username: str,
+        request: rocket_mq20220801_models.UpdateInstanceAclRequest,
+    ) -> rocket_mq20220801_models.UpdateInstanceAclResponse:
+        """
+        @summary 删除访问控制acl数据
+        
+        @param request: UpdateInstanceAclRequest
+        @return: UpdateInstanceAclResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_instance_acl_with_options_async(instance_id, username, request, headers, runtime)
+
     def update_topic_with_options(
         self,
         instance_id: str,
@@ -2510,3 +5136,243 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_topic_with_options_async(instance_id, topic_name, request, headers, runtime)
+
+    def verify_consume_message_with_options(
+        self,
+        instance_id: str,
+        topic_name: str,
+        message_id: str,
+        request: rocket_mq20220801_models.VerifyConsumeMessageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.VerifyConsumeMessageResponse:
+        """
+        @summary 消费验证
+        
+        @param request: VerifyConsumeMessageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyConsumeMessageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_id):
+            query['clientId'] = request.client_id
+        if not UtilClient.is_unset(request.consumer_group_id):
+            query['consumerGroupId'] = request.consumer_group_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyConsumeMessage',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}/messages/{OpenApiUtilClient.get_encode_param(message_id)}/action/verifyConsume',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.VerifyConsumeMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_consume_message_with_options_async(
+        self,
+        instance_id: str,
+        topic_name: str,
+        message_id: str,
+        request: rocket_mq20220801_models.VerifyConsumeMessageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.VerifyConsumeMessageResponse:
+        """
+        @summary 消费验证
+        
+        @param request: VerifyConsumeMessageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyConsumeMessageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_id):
+            query['clientId'] = request.client_id
+        if not UtilClient.is_unset(request.consumer_group_id):
+            query['consumerGroupId'] = request.consumer_group_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyConsumeMessage',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}/messages/{OpenApiUtilClient.get_encode_param(message_id)}/action/verifyConsume',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.VerifyConsumeMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_consume_message(
+        self,
+        instance_id: str,
+        topic_name: str,
+        message_id: str,
+        request: rocket_mq20220801_models.VerifyConsumeMessageRequest,
+    ) -> rocket_mq20220801_models.VerifyConsumeMessageResponse:
+        """
+        @summary 消费验证
+        
+        @param request: VerifyConsumeMessageRequest
+        @return: VerifyConsumeMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.verify_consume_message_with_options(instance_id, topic_name, message_id, request, headers, runtime)
+
+    async def verify_consume_message_async(
+        self,
+        instance_id: str,
+        topic_name: str,
+        message_id: str,
+        request: rocket_mq20220801_models.VerifyConsumeMessageRequest,
+    ) -> rocket_mq20220801_models.VerifyConsumeMessageResponse:
+        """
+        @summary 消费验证
+        
+        @param request: VerifyConsumeMessageRequest
+        @return: VerifyConsumeMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.verify_consume_message_with_options_async(instance_id, topic_name, message_id, request, headers, runtime)
+
+    def verify_send_message_with_options(
+        self,
+        instance_id: str,
+        topic_name: str,
+        request: rocket_mq20220801_models.VerifySendMessageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.VerifySendMessageResponse:
+        """
+        @summary 发送消息
+        
+        @param request: VerifySendMessageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifySendMessageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.message):
+            body['message'] = request.message
+        if not UtilClient.is_unset(request.message_key):
+            body['messageKey'] = request.message_key
+        if not UtilClient.is_unset(request.message_tag):
+            body['messageTag'] = request.message_tag
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='VerifySendMessage',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}/messages',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.VerifySendMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_send_message_with_options_async(
+        self,
+        instance_id: str,
+        topic_name: str,
+        request: rocket_mq20220801_models.VerifySendMessageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> rocket_mq20220801_models.VerifySendMessageResponse:
+        """
+        @summary 发送消息
+        
+        @param request: VerifySendMessageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifySendMessageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.message):
+            body['message'] = request.message
+        if not UtilClient.is_unset(request.message_key):
+            body['messageKey'] = request.message_key
+        if not UtilClient.is_unset(request.message_tag):
+            body['messageTag'] = request.message_tag
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='VerifySendMessage',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/topics/{OpenApiUtilClient.get_encode_param(topic_name)}/messages',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rocket_mq20220801_models.VerifySendMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_send_message(
+        self,
+        instance_id: str,
+        topic_name: str,
+        request: rocket_mq20220801_models.VerifySendMessageRequest,
+    ) -> rocket_mq20220801_models.VerifySendMessageResponse:
+        """
+        @summary 发送消息
+        
+        @param request: VerifySendMessageRequest
+        @return: VerifySendMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.verify_send_message_with_options(instance_id, topic_name, request, headers, runtime)
+
+    async def verify_send_message_async(
+        self,
+        instance_id: str,
+        topic_name: str,
+        request: rocket_mq20220801_models.VerifySendMessageRequest,
+    ) -> rocket_mq20220801_models.VerifySendMessageResponse:
+        """
+        @summary 发送消息
+        
+        @param request: VerifySendMessageRequest
+        @return: VerifySendMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.verify_send_message_with_options_async(instance_id, topic_name, request, headers, runtime)
