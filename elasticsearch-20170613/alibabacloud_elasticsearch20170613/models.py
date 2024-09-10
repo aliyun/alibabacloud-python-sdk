@@ -9156,7 +9156,9 @@ class DescribeInstanceResponseBodyResult(TeaModel):
         kibana_domain: str = None,
         kibana_ipwhitelist: List[str] = None,
         kibana_port: int = None,
+        kibana_private_domain: str = None,
         kibana_private_ipwhitelist: List[str] = None,
+        kibana_private_port: str = None,
         master_configuration: DescribeInstanceResponseBodyResultMasterConfiguration = None,
         network_config: DescribeInstanceResponseBodyResultNetworkConfig = None,
         node_amount: int = None,
@@ -9211,7 +9213,9 @@ class DescribeInstanceResponseBodyResult(TeaModel):
         self.kibana_domain = kibana_domain
         self.kibana_ipwhitelist = kibana_ipwhitelist
         self.kibana_port = kibana_port
+        self.kibana_private_domain = kibana_private_domain
         self.kibana_private_ipwhitelist = kibana_private_ipwhitelist
+        self.kibana_private_port = kibana_private_port
         self.master_configuration = master_configuration
         self.network_config = network_config
         self.node_amount = node_amount
@@ -9350,8 +9354,12 @@ class DescribeInstanceResponseBodyResult(TeaModel):
             result['kibanaIPWhitelist'] = self.kibana_ipwhitelist
         if self.kibana_port is not None:
             result['kibanaPort'] = self.kibana_port
+        if self.kibana_private_domain is not None:
+            result['kibanaPrivateDomain'] = self.kibana_private_domain
         if self.kibana_private_ipwhitelist is not None:
             result['kibanaPrivateIPWhitelist'] = self.kibana_private_ipwhitelist
+        if self.kibana_private_port is not None:
+            result['kibanaPrivatePort'] = self.kibana_private_port
         if self.master_configuration is not None:
             result['masterConfiguration'] = self.master_configuration.to_map()
         if self.network_config is not None:
@@ -9481,8 +9489,12 @@ class DescribeInstanceResponseBodyResult(TeaModel):
             self.kibana_ipwhitelist = m.get('kibanaIPWhitelist')
         if m.get('kibanaPort') is not None:
             self.kibana_port = m.get('kibanaPort')
+        if m.get('kibanaPrivateDomain') is not None:
+            self.kibana_private_domain = m.get('kibanaPrivateDomain')
         if m.get('kibanaPrivateIPWhitelist') is not None:
             self.kibana_private_ipwhitelist = m.get('kibanaPrivateIPWhitelist')
+        if m.get('kibanaPrivatePort') is not None:
+            self.kibana_private_port = m.get('kibanaPrivatePort')
         if m.get('masterConfiguration') is not None:
             temp_model = DescribeInstanceResponseBodyResultMasterConfiguration()
             self.master_configuration = temp_model.from_map(m['masterConfiguration'])

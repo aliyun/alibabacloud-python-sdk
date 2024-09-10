@@ -1,3 +1,7 @@
+2024-09-10 Version: 2.0.7
+- Update API DescribeInstance: update response param.
+
+
 2024-08-07 Version: 2.0.6
 - Update API UpdatePipelineManagementConfig: update param body.
 
