@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.AbortRunRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.AbortRunResponse:
+        """
+        @summary 暂停任务
+        
+        @param request: AbortRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AbortRunResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.run_id):
@@ -76,6 +83,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.AbortRunRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.AbortRunResponse:
+        """
+        @summary 暂停任务
+        
+        @param request: AbortRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AbortRunResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.run_id):
@@ -105,6 +119,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.AbortRunRequest,
     ) -> easy_gene_20210315_models.AbortRunResponse:
+        """
+        @summary 暂停任务
+        
+        @param request: AbortRunRequest
+        @return: AbortRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.abort_run_with_options(request, runtime)
 
@@ -112,6 +132,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.AbortRunRequest,
     ) -> easy_gene_20210315_models.AbortRunResponse:
+        """
+        @summary 暂停任务
+        
+        @param request: AbortRunRequest
+        @return: AbortRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.abort_run_with_options_async(request, runtime)
 
@@ -120,6 +146,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.AbortSubmissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.AbortSubmissionResponse:
+        """
+        @summary 取消投递
+        
+        @param request: AbortSubmissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AbortSubmissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.submission_id):
@@ -150,6 +183,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.AbortSubmissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.AbortSubmissionResponse:
+        """
+        @summary 取消投递
+        
+        @param request: AbortSubmissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AbortSubmissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.submission_id):
@@ -179,6 +219,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.AbortSubmissionRequest,
     ) -> easy_gene_20210315_models.AbortSubmissionResponse:
+        """
+        @summary 取消投递
+        
+        @param request: AbortSubmissionRequest
+        @return: AbortSubmissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.abort_submission_with_options(request, runtime)
 
@@ -186,6 +232,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.AbortSubmissionRequest,
     ) -> easy_gene_20210315_models.AbortSubmissionResponse:
+        """
+        @summary 取消投递
+        
+        @param request: AbortSubmissionRequest
+        @return: AbortSubmissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.abort_submission_with_options_async(request, runtime)
 
@@ -194,6 +246,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.CopyPublicEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.CopyPublicEntityResponse:
+        """
+        @summary 拷贝公共数据集的数据表格
+        
+        @param request: CopyPublicEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyPublicEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset):
@@ -226,6 +285,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.CopyPublicEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.CopyPublicEntityResponse:
+        """
+        @summary 拷贝公共数据集的数据表格
+        
+        @param request: CopyPublicEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyPublicEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset):
@@ -257,6 +323,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.CopyPublicEntityRequest,
     ) -> easy_gene_20210315_models.CopyPublicEntityResponse:
+        """
+        @summary 拷贝公共数据集的数据表格
+        
+        @param request: CopyPublicEntityRequest
+        @return: CopyPublicEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.copy_public_entity_with_options(request, runtime)
 
@@ -264,6 +336,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.CopyPublicEntityRequest,
     ) -> easy_gene_20210315_models.CopyPublicEntityResponse:
+        """
+        @summary 拷贝公共数据集的数据表格
+        
+        @param request: CopyPublicEntityRequest
+        @return: CopyPublicEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.copy_public_entity_with_options_async(request, runtime)
 
@@ -272,6 +350,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.CreateAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.CreateAppResponse:
+        """
+        @summary 创建应用
+        
+        @param tmp_req: CreateAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.CreateAppShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -336,6 +421,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.CreateAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.CreateAppResponse:
+        """
+        @summary 创建应用
+        
+        @param tmp_req: CreateAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.CreateAppShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -399,6 +491,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.CreateAppRequest,
     ) -> easy_gene_20210315_models.CreateAppResponse:
+        """
+        @summary 创建应用
+        
+        @param request: CreateAppRequest
+        @return: CreateAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_app_with_options(request, runtime)
 
@@ -406,6 +504,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.CreateAppRequest,
     ) -> easy_gene_20210315_models.CreateAppResponse:
+        """
+        @summary 创建应用
+        
+        @param request: CreateAppRequest
+        @return: CreateAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_app_with_options_async(request, runtime)
 
@@ -414,6 +518,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.CreateEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.CreateEntityResponse:
+        """
+        @summary 创建数据表格
+        
+        @param tmp_req: CreateEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEntityResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.CreateEntityShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -454,6 +565,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.CreateEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.CreateEntityResponse:
+        """
+        @summary 创建数据表格
+        
+        @param tmp_req: CreateEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEntityResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.CreateEntityShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -493,6 +611,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.CreateEntityRequest,
     ) -> easy_gene_20210315_models.CreateEntityResponse:
+        """
+        @summary 创建数据表格
+        
+        @param request: CreateEntityRequest
+        @return: CreateEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_entity_with_options(request, runtime)
 
@@ -500,6 +624,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.CreateEntityRequest,
     ) -> easy_gene_20210315_models.CreateEntityResponse:
+        """
+        @summary 创建数据表格
+        
+        @param request: CreateEntityRequest
+        @return: CreateEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_entity_with_options_async(request, runtime)
 
@@ -508,6 +638,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.CreateRunRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.CreateRunResponse:
+        """
+        @summary 创建任务
+        
+        @param tmp_req: CreateRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRunResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.CreateRunShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -566,6 +703,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.CreateRunRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.CreateRunResponse:
+        """
+        @summary 创建任务
+        
+        @param tmp_req: CreateRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRunResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.CreateRunShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -623,6 +767,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.CreateRunRequest,
     ) -> easy_gene_20210315_models.CreateRunResponse:
+        """
+        @summary 创建任务
+        
+        @param request: CreateRunRequest
+        @return: CreateRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_run_with_options(request, runtime)
 
@@ -630,6 +780,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.CreateRunRequest,
     ) -> easy_gene_20210315_models.CreateRunResponse:
+        """
+        @summary 创建任务
+        
+        @param request: CreateRunRequest
+        @return: CreateRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_run_with_options_async(request, runtime)
 
@@ -638,6 +794,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.CreateSubmissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.CreateSubmissionResponse:
+        """
+        @summary 创建提交
+        
+        @param tmp_req: CreateSubmissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSubmissionResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.CreateSubmissionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -694,6 +857,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.CreateSubmissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.CreateSubmissionResponse:
+        """
+        @summary 创建提交
+        
+        @param tmp_req: CreateSubmissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSubmissionResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.CreateSubmissionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -749,6 +919,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.CreateSubmissionRequest,
     ) -> easy_gene_20210315_models.CreateSubmissionResponse:
+        """
+        @summary 创建提交
+        
+        @param request: CreateSubmissionRequest
+        @return: CreateSubmissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_submission_with_options(request, runtime)
 
@@ -756,6 +932,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.CreateSubmissionRequest,
     ) -> easy_gene_20210315_models.CreateSubmissionResponse:
+        """
+        @summary 创建提交
+        
+        @param request: CreateSubmissionRequest
+        @return: CreateSubmissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_submission_with_options_async(request, runtime)
 
@@ -764,6 +946,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.CreateTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.CreateTemplateResponse:
+        """
+        @summary 创建应用模板
+        
+        @param tmp_req: CreateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.CreateTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -820,6 +1009,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.CreateTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.CreateTemplateResponse:
+        """
+        @summary 创建应用模板
+        
+        @param tmp_req: CreateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.CreateTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -875,6 +1071,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.CreateTemplateRequest,
     ) -> easy_gene_20210315_models.CreateTemplateResponse:
+        """
+        @summary 创建应用模板
+        
+        @param request: CreateTemplateRequest
+        @return: CreateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_template_with_options(request, runtime)
 
@@ -882,6 +1084,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.CreateTemplateRequest,
     ) -> easy_gene_20210315_models.CreateTemplateResponse:
+        """
+        @summary 创建应用模板
+        
+        @param request: CreateTemplateRequest
+        @return: CreateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_template_with_options_async(request, runtime)
 
@@ -890,6 +1098,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.CreateWorkspaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.CreateWorkspaceResponse:
+        """
+        @summary 创建工作空间
+        
+        @param request: CreateWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkspaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -930,6 +1145,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.CreateWorkspaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.CreateWorkspaceResponse:
+        """
+        @summary 创建工作空间
+        
+        @param request: CreateWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkspaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -969,6 +1191,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.CreateWorkspaceRequest,
     ) -> easy_gene_20210315_models.CreateWorkspaceResponse:
+        """
+        @summary 创建工作空间
+        
+        @param request: CreateWorkspaceRequest
+        @return: CreateWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_workspace_with_options(request, runtime)
 
@@ -976,6 +1204,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.CreateWorkspaceRequest,
     ) -> easy_gene_20210315_models.CreateWorkspaceResponse:
+        """
+        @summary 创建工作空间
+        
+        @param request: CreateWorkspaceRequest
+        @return: CreateWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_workspace_with_options_async(request, runtime)
 
@@ -984,6 +1218,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.DeleteAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteAppResponse:
+        """
+        @summary 删除应用
+        
+        @param request: DeleteAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -1016,6 +1257,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.DeleteAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteAppResponse:
+        """
+        @summary 删除应用
+        
+        @param request: DeleteAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -1047,6 +1295,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.DeleteAppRequest,
     ) -> easy_gene_20210315_models.DeleteAppResponse:
+        """
+        @summary 删除应用
+        
+        @param request: DeleteAppRequest
+        @return: DeleteAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_app_with_options(request, runtime)
 
@@ -1054,6 +1308,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.DeleteAppRequest,
     ) -> easy_gene_20210315_models.DeleteAppResponse:
+        """
+        @summary 删除应用
+        
+        @param request: DeleteAppRequest
+        @return: DeleteAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_app_with_options_async(request, runtime)
 
@@ -1062,6 +1322,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.DeleteEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteEntityResponse:
+        """
+        @summary 删除实体表格
+        
+        @param request: DeleteEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.entity_type):
@@ -1092,6 +1359,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.DeleteEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteEntityResponse:
+        """
+        @summary 删除实体表格
+        
+        @param request: DeleteEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.entity_type):
@@ -1121,6 +1395,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.DeleteEntityRequest,
     ) -> easy_gene_20210315_models.DeleteEntityResponse:
+        """
+        @summary 删除实体表格
+        
+        @param request: DeleteEntityRequest
+        @return: DeleteEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_entity_with_options(request, runtime)
 
@@ -1128,6 +1408,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.DeleteEntityRequest,
     ) -> easy_gene_20210315_models.DeleteEntityResponse:
+        """
+        @summary 删除实体表格
+        
+        @param request: DeleteEntityRequest
+        @return: DeleteEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_entity_with_options_async(request, runtime)
 
@@ -1136,6 +1422,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.DeleteEntityItemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteEntityItemsResponse:
+        """
+        @summary 删除数据表格的条目
+        
+        @param tmp_req: DeleteEntityItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEntityItemsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.DeleteEntityItemsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1172,6 +1465,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.DeleteEntityItemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteEntityItemsResponse:
+        """
+        @summary 删除数据表格的条目
+        
+        @param tmp_req: DeleteEntityItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEntityItemsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.DeleteEntityItemsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1207,6 +1507,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.DeleteEntityItemsRequest,
     ) -> easy_gene_20210315_models.DeleteEntityItemsResponse:
+        """
+        @summary 删除数据表格的条目
+        
+        @param request: DeleteEntityItemsRequest
+        @return: DeleteEntityItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_entity_items_with_options(request, runtime)
 
@@ -1214,6 +1520,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.DeleteEntityItemsRequest,
     ) -> easy_gene_20210315_models.DeleteEntityItemsResponse:
+        """
+        @summary 删除数据表格的条目
+        
+        @param request: DeleteEntityItemsRequest
+        @return: DeleteEntityItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_entity_items_with_options_async(request, runtime)
 
@@ -1222,6 +1534,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.DeleteRunRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteRunResponse:
+        """
+        @summary 删除任务
+        
+        @param request: DeleteRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRunResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.run_id):
@@ -1252,6 +1571,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.DeleteRunRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteRunResponse:
+        """
+        @summary 删除任务
+        
+        @param request: DeleteRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRunResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.run_id):
@@ -1281,6 +1607,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.DeleteRunRequest,
     ) -> easy_gene_20210315_models.DeleteRunResponse:
+        """
+        @summary 删除任务
+        
+        @param request: DeleteRunRequest
+        @return: DeleteRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_run_with_options(request, runtime)
 
@@ -1288,6 +1620,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.DeleteRunRequest,
     ) -> easy_gene_20210315_models.DeleteRunResponse:
+        """
+        @summary 删除任务
+        
+        @param request: DeleteRunRequest
+        @return: DeleteRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_run_with_options_async(request, runtime)
 
@@ -1296,6 +1634,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.DeleteSubmissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteSubmissionResponse:
+        """
+        @summary 删除投递
+        
+        @param request: DeleteSubmissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSubmissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.submission_id):
@@ -1326,6 +1671,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.DeleteSubmissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteSubmissionResponse:
+        """
+        @summary 删除投递
+        
+        @param request: DeleteSubmissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSubmissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.submission_id):
@@ -1355,6 +1707,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.DeleteSubmissionRequest,
     ) -> easy_gene_20210315_models.DeleteSubmissionResponse:
+        """
+        @summary 删除投递
+        
+        @param request: DeleteSubmissionRequest
+        @return: DeleteSubmissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_submission_with_options(request, runtime)
 
@@ -1362,6 +1720,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.DeleteSubmissionRequest,
     ) -> easy_gene_20210315_models.DeleteSubmissionResponse:
+        """
+        @summary 删除投递
+        
+        @param request: DeleteSubmissionRequest
+        @return: DeleteSubmissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_submission_with_options_async(request, runtime)
 
@@ -1370,6 +1734,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.DeleteTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteTemplateResponse:
+        """
+        @summary 删除应用模板
+        
+        @param request: DeleteTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_name):
@@ -1400,6 +1771,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.DeleteTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteTemplateResponse:
+        """
+        @summary 删除应用模板
+        
+        @param request: DeleteTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_name):
@@ -1429,6 +1807,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.DeleteTemplateRequest,
     ) -> easy_gene_20210315_models.DeleteTemplateResponse:
+        """
+        @summary 删除应用模板
+        
+        @param request: DeleteTemplateRequest
+        @return: DeleteTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_template_with_options(request, runtime)
 
@@ -1436,6 +1820,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.DeleteTemplateRequest,
     ) -> easy_gene_20210315_models.DeleteTemplateResponse:
+        """
+        @summary 删除应用模板
+        
+        @param request: DeleteTemplateRequest
+        @return: DeleteTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_template_with_options_async(request, runtime)
 
@@ -1444,6 +1834,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.DeleteWorkspaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteWorkspaceResponse:
+        """
+        @summary 删除工作空间
+        
+        @param request: DeleteWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWorkspaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.workspace):
@@ -1472,6 +1869,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.DeleteWorkspaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DeleteWorkspaceResponse:
+        """
+        @summary 删除工作空间
+        
+        @param request: DeleteWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWorkspaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.workspace):
@@ -1499,6 +1903,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.DeleteWorkspaceRequest,
     ) -> easy_gene_20210315_models.DeleteWorkspaceResponse:
+        """
+        @summary 删除工作空间
+        
+        @param request: DeleteWorkspaceRequest
+        @return: DeleteWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_workspace_with_options(request, runtime)
 
@@ -1506,6 +1916,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.DeleteWorkspaceRequest,
     ) -> easy_gene_20210315_models.DeleteWorkspaceResponse:
+        """
+        @summary 删除工作空间
+        
+        @param request: DeleteWorkspaceRequest
+        @return: DeleteWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_workspace_with_options_async(request, runtime)
 
@@ -1514,6 +1930,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.DownloadEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DownloadEntityResponse:
+        """
+        @summary 下载数据表格
+        
+        @param tmp_req: DownloadEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadEntityResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.DownloadEntityShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1550,6 +1973,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.DownloadEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.DownloadEntityResponse:
+        """
+        @summary 下载数据表格
+        
+        @param tmp_req: DownloadEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadEntityResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.DownloadEntityShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1585,6 +2015,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.DownloadEntityRequest,
     ) -> easy_gene_20210315_models.DownloadEntityResponse:
+        """
+        @summary 下载数据表格
+        
+        @param request: DownloadEntityRequest
+        @return: DownloadEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.download_entity_with_options(request, runtime)
 
@@ -1592,6 +2028,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.DownloadEntityRequest,
     ) -> easy_gene_20210315_models.DownloadEntityResponse:
+        """
+        @summary 下载数据表格
+        
+        @param request: DownloadEntityRequest
+        @return: DownloadEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.download_entity_with_options_async(request, runtime)
 
@@ -1600,6 +2042,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.GetAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetAppResponse:
+        """
+        @summary 查询应用详情
+        
+        @param request: GetAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -1634,6 +2083,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.GetAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetAppResponse:
+        """
+        @summary 查询应用详情
+        
+        @param request: GetAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -1667,6 +2123,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.GetAppRequest,
     ) -> easy_gene_20210315_models.GetAppResponse:
+        """
+        @summary 查询应用详情
+        
+        @param request: GetAppRequest
+        @return: GetAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_app_with_options(request, runtime)
 
@@ -1674,6 +2136,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.GetAppRequest,
     ) -> easy_gene_20210315_models.GetAppResponse:
+        """
+        @summary 查询应用详情
+        
+        @param request: GetAppRequest
+        @return: GetAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_app_with_options_async(request, runtime)
 
@@ -1682,6 +2150,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.GetEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetEntityResponse:
+        """
+        @summary 查询数据表格信息
+        
+        @param request: GetEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.entity_type):
@@ -1712,6 +2187,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.GetEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetEntityResponse:
+        """
+        @summary 查询数据表格信息
+        
+        @param request: GetEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.entity_type):
@@ -1741,6 +2223,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.GetEntityRequest,
     ) -> easy_gene_20210315_models.GetEntityResponse:
+        """
+        @summary 查询数据表格信息
+        
+        @param request: GetEntityRequest
+        @return: GetEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_entity_with_options(request, runtime)
 
@@ -1748,6 +2236,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.GetEntityRequest,
     ) -> easy_gene_20210315_models.GetEntityResponse:
+        """
+        @summary 查询数据表格信息
+        
+        @param request: GetEntityRequest
+        @return: GetEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_entity_with_options_async(request, runtime)
 
@@ -1756,6 +2250,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.GetGlobalAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetGlobalAppResponse:
+        """
+        @summary 查询平台公共应用详情
+        
+        @param tmp_req: GetGlobalAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGlobalAppResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.GetGlobalAppShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1786,6 +2287,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.GetGlobalAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetGlobalAppResponse:
+        """
+        @summary 查询平台公共应用详情
+        
+        @param tmp_req: GetGlobalAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGlobalAppResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.GetGlobalAppShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1815,6 +2323,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.GetGlobalAppRequest,
     ) -> easy_gene_20210315_models.GetGlobalAppResponse:
+        """
+        @summary 查询平台公共应用详情
+        
+        @param request: GetGlobalAppRequest
+        @return: GetGlobalAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_global_app_with_options(request, runtime)
 
@@ -1822,6 +2336,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.GetGlobalAppRequest,
     ) -> easy_gene_20210315_models.GetGlobalAppResponse:
+        """
+        @summary 查询平台公共应用详情
+        
+        @param request: GetGlobalAppRequest
+        @return: GetGlobalAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_global_app_with_options_async(request, runtime)
 
@@ -1830,6 +2350,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.GetPublicDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetPublicDatasetResponse:
+        """
+        @summary 查询平台公共数据集详情
+        
+        @param tmp_req: GetPublicDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPublicDatasetResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.GetPublicDatasetShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1860,6 +2387,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.GetPublicDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetPublicDatasetResponse:
+        """
+        @summary 查询平台公共数据集详情
+        
+        @param tmp_req: GetPublicDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPublicDatasetResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.GetPublicDatasetShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1889,6 +2423,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.GetPublicDatasetRequest,
     ) -> easy_gene_20210315_models.GetPublicDatasetResponse:
+        """
+        @summary 查询平台公共数据集详情
+        
+        @param request: GetPublicDatasetRequest
+        @return: GetPublicDatasetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_public_dataset_with_options(request, runtime)
 
@@ -1896,6 +2436,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.GetPublicDatasetRequest,
     ) -> easy_gene_20210315_models.GetPublicDatasetResponse:
+        """
+        @summary 查询平台公共数据集详情
+        
+        @param request: GetPublicDatasetRequest
+        @return: GetPublicDatasetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_public_dataset_with_options_async(request, runtime)
 
@@ -1904,6 +2450,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.GetPublicDatasetEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetPublicDatasetEntityResponse:
+        """
+        @summary 查询平台公共数据集特定的实体定义
+        
+        @param request: GetPublicDatasetEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPublicDatasetEntityResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1930,6 +2483,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.GetPublicDatasetEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetPublicDatasetEntityResponse:
+        """
+        @summary 查询平台公共数据集特定的实体定义
+        
+        @param request: GetPublicDatasetEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPublicDatasetEntityResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1955,6 +2515,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.GetPublicDatasetEntityRequest,
     ) -> easy_gene_20210315_models.GetPublicDatasetEntityResponse:
+        """
+        @summary 查询平台公共数据集特定的实体定义
+        
+        @param request: GetPublicDatasetEntityRequest
+        @return: GetPublicDatasetEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_public_dataset_entity_with_options(request, runtime)
 
@@ -1962,6 +2528,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.GetPublicDatasetEntityRequest,
     ) -> easy_gene_20210315_models.GetPublicDatasetEntityResponse:
+        """
+        @summary 查询平台公共数据集特定的实体定义
+        
+        @param request: GetPublicDatasetEntityRequest
+        @return: GetPublicDatasetEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_public_dataset_entity_with_options_async(request, runtime)
 
@@ -1970,6 +2542,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.GetRunRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetRunResponse:
+        """
+        @summary 获取任务详情
+        
+        @param request: GetRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRunResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1996,6 +2575,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.GetRunRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetRunResponse:
+        """
+        @summary 获取任务详情
+        
+        @param request: GetRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRunResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2021,6 +2607,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.GetRunRequest,
     ) -> easy_gene_20210315_models.GetRunResponse:
+        """
+        @summary 获取任务详情
+        
+        @param request: GetRunRequest
+        @return: GetRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_run_with_options(request, runtime)
 
@@ -2028,6 +2620,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.GetRunRequest,
     ) -> easy_gene_20210315_models.GetRunResponse:
+        """
+        @summary 获取任务详情
+        
+        @param request: GetRunRequest
+        @return: GetRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_run_with_options_async(request, runtime)
 
@@ -2036,6 +2634,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.GetSubmissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetSubmissionResponse:
+        """
+        @summary 获取投递详情
+        
+        @param request: GetSubmissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSubmissionResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2062,6 +2667,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.GetSubmissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetSubmissionResponse:
+        """
+        @summary 获取投递详情
+        
+        @param request: GetSubmissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSubmissionResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2087,6 +2699,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.GetSubmissionRequest,
     ) -> easy_gene_20210315_models.GetSubmissionResponse:
+        """
+        @summary 获取投递详情
+        
+        @param request: GetSubmissionRequest
+        @return: GetSubmissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_submission_with_options(request, runtime)
 
@@ -2094,6 +2712,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.GetSubmissionRequest,
     ) -> easy_gene_20210315_models.GetSubmissionResponse:
+        """
+        @summary 获取投递详情
+        
+        @param request: GetSubmissionRequest
+        @return: GetSubmissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_submission_with_options_async(request, runtime)
 
@@ -2102,6 +2726,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.GetTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetTemplateResponse:
+        """
+        @summary 查询应用模板的详情
+        
+        @param request: GetTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_name):
@@ -2132,6 +2763,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.GetTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetTemplateResponse:
+        """
+        @summary 查询应用模板的详情
+        
+        @param request: GetTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_name):
@@ -2161,6 +2799,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.GetTemplateRequest,
     ) -> easy_gene_20210315_models.GetTemplateResponse:
+        """
+        @summary 查询应用模板的详情
+        
+        @param request: GetTemplateRequest
+        @return: GetTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_template_with_options(request, runtime)
 
@@ -2168,6 +2812,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.GetTemplateRequest,
     ) -> easy_gene_20210315_models.GetTemplateResponse:
+        """
+        @summary 查询应用模板的详情
+        
+        @param request: GetTemplateRequest
+        @return: GetTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_template_with_options_async(request, runtime)
 
@@ -2176,6 +2826,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.GetWorkspaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetWorkspaceResponse:
+        """
+        @summary 查询工作空间详情
+        
+        @param request: GetWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkspaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.workspace):
@@ -2204,6 +2861,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.GetWorkspaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.GetWorkspaceResponse:
+        """
+        @summary 查询工作空间详情
+        
+        @param request: GetWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkspaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.workspace):
@@ -2231,6 +2895,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.GetWorkspaceRequest,
     ) -> easy_gene_20210315_models.GetWorkspaceResponse:
+        """
+        @summary 查询工作空间详情
+        
+        @param request: GetWorkspaceRequest
+        @return: GetWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_workspace_with_options(request, runtime)
 
@@ -2238,6 +2908,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.GetWorkspaceRequest,
     ) -> easy_gene_20210315_models.GetWorkspaceResponse:
+        """
+        @summary 查询工作空间详情
+        
+        @param request: GetWorkspaceRequest
+        @return: GetWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_workspace_with_options_async(request, runtime)
 
@@ -2246,6 +2922,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ImportAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ImportAppResponse:
+        """
+        @summary 导入应用。
+        
+        @param request: ImportAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -2278,6 +2961,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ImportAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ImportAppResponse:
+        """
+        @summary 导入应用。
+        
+        @param request: ImportAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -2309,6 +2999,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ImportAppRequest,
     ) -> easy_gene_20210315_models.ImportAppResponse:
+        """
+        @summary 导入应用。
+        
+        @param request: ImportAppRequest
+        @return: ImportAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.import_app_with_options(request, runtime)
 
@@ -2316,6 +3012,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ImportAppRequest,
     ) -> easy_gene_20210315_models.ImportAppResponse:
+        """
+        @summary 导入应用。
+        
+        @param request: ImportAppRequest
+        @return: ImportAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.import_app_with_options_async(request, runtime)
 
@@ -2324,6 +3026,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.InstallGlobalAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.InstallGlobalAppResponse:
+        """
+        @summary 安装平台公共应用到工作空间中。
+        
+        @param request: InstallGlobalAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallGlobalAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -2360,6 +3069,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.InstallGlobalAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.InstallGlobalAppResponse:
+        """
+        @summary 安装平台公共应用到工作空间中。
+        
+        @param request: InstallGlobalAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallGlobalAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -2395,6 +3111,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.InstallGlobalAppRequest,
     ) -> easy_gene_20210315_models.InstallGlobalAppResponse:
+        """
+        @summary 安装平台公共应用到工作空间中。
+        
+        @param request: InstallGlobalAppRequest
+        @return: InstallGlobalAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.install_global_app_with_options(request, runtime)
 
@@ -2402,6 +3124,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.InstallGlobalAppRequest,
     ) -> easy_gene_20210315_models.InstallGlobalAppResponse:
+        """
+        @summary 安装平台公共应用到工作空间中。
+        
+        @param request: InstallGlobalAppRequest
+        @return: InstallGlobalAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.install_global_app_with_options_async(request, runtime)
 
@@ -2410,6 +3138,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListAppsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListAppsResponse:
+        """
+        @summary 列出应用
+        
+        @param request: ListAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_type):
@@ -2456,6 +3191,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListAppsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListAppsResponse:
+        """
+        @summary 列出应用
+        
+        @param request: ListAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_type):
@@ -2501,6 +3243,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListAppsRequest,
     ) -> easy_gene_20210315_models.ListAppsResponse:
+        """
+        @summary 列出应用
+        
+        @param request: ListAppsRequest
+        @return: ListAppsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_apps_with_options(request, runtime)
 
@@ -2508,6 +3256,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListAppsRequest,
     ) -> easy_gene_20210315_models.ListAppsResponse:
+        """
+        @summary 列出应用
+        
+        @param request: ListAppsRequest
+        @return: ListAppsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_apps_with_options_async(request, runtime)
 
@@ -2516,6 +3270,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListAuthorizedSoftwareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListAuthorizedSoftwareResponse:
+        """
+        @summary 获取平台第三方软件列表
+        
+        @param request: ListAuthorizedSoftwareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthorizedSoftwareResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2542,6 +3303,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListAuthorizedSoftwareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListAuthorizedSoftwareResponse:
+        """
+        @summary 获取平台第三方软件列表
+        
+        @param request: ListAuthorizedSoftwareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthorizedSoftwareResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2567,6 +3335,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListAuthorizedSoftwareRequest,
     ) -> easy_gene_20210315_models.ListAuthorizedSoftwareResponse:
+        """
+        @summary 获取平台第三方软件列表
+        
+        @param request: ListAuthorizedSoftwareRequest
+        @return: ListAuthorizedSoftwareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_authorized_software_with_options(request, runtime)
 
@@ -2574,6 +3348,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListAuthorizedSoftwareRequest,
     ) -> easy_gene_20210315_models.ListAuthorizedSoftwareResponse:
+        """
+        @summary 获取平台第三方软件列表
+        
+        @param request: ListAuthorizedSoftwareRequest
+        @return: ListAuthorizedSoftwareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_authorized_software_with_options_async(request, runtime)
 
@@ -2582,6 +3362,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListContainerImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListContainerImagesResponse:
+        """
+        @summary 获取平台公共容器镜像列表
+        
+        @param request: ListContainerImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListContainerImagesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2608,6 +3395,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListContainerImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListContainerImagesResponse:
+        """
+        @summary 获取平台公共容器镜像列表
+        
+        @param request: ListContainerImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListContainerImagesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2633,6 +3427,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListContainerImagesRequest,
     ) -> easy_gene_20210315_models.ListContainerImagesResponse:
+        """
+        @summary 获取平台公共容器镜像列表
+        
+        @param request: ListContainerImagesRequest
+        @return: ListContainerImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_container_images_with_options(request, runtime)
 
@@ -2640,6 +3440,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListContainerImagesRequest,
     ) -> easy_gene_20210315_models.ListContainerImagesResponse:
+        """
+        @summary 获取平台公共容器镜像列表
+        
+        @param request: ListContainerImagesRequest
+        @return: ListContainerImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_container_images_with_options_async(request, runtime)
 
@@ -2648,6 +3454,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListEntitiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListEntitiesResponse:
+        """
+        @summary 列出数据实体列表
+        
+        @param request: ListEntitiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEntitiesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2674,6 +3487,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListEntitiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListEntitiesResponse:
+        """
+        @summary 列出数据实体列表
+        
+        @param request: ListEntitiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEntitiesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2699,6 +3519,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListEntitiesRequest,
     ) -> easy_gene_20210315_models.ListEntitiesResponse:
+        """
+        @summary 列出数据实体列表
+        
+        @param request: ListEntitiesRequest
+        @return: ListEntitiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_entities_with_options(request, runtime)
 
@@ -2706,6 +3532,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListEntitiesRequest,
     ) -> easy_gene_20210315_models.ListEntitiesResponse:
+        """
+        @summary 列出数据实体列表
+        
+        @param request: ListEntitiesRequest
+        @return: ListEntitiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_entities_with_options_async(request, runtime)
 
@@ -2714,6 +3546,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListEntityItemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListEntityItemsResponse:
+        """
+        @summary 列出数据表格的条目
+        
+        @param request: ListEntityItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEntityItemsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.entity_type):
@@ -2754,6 +3593,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListEntityItemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListEntityItemsResponse:
+        """
+        @summary 列出数据表格的条目
+        
+        @param request: ListEntityItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEntityItemsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.entity_type):
@@ -2793,6 +3639,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListEntityItemsRequest,
     ) -> easy_gene_20210315_models.ListEntityItemsResponse:
+        """
+        @summary 列出数据表格的条目
+        
+        @param request: ListEntityItemsRequest
+        @return: ListEntityItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_entity_items_with_options(request, runtime)
 
@@ -2800,6 +3652,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListEntityItemsRequest,
     ) -> easy_gene_20210315_models.ListEntityItemsResponse:
+        """
+        @summary 列出数据表格的条目
+        
+        @param request: ListEntityItemsRequest
+        @return: ListEntityItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_entity_items_with_options_async(request, runtime)
 
@@ -2808,6 +3666,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListGlobalAppsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListGlobalAppsResponse:
+        """
+        @summary 获取平台公共应用列表
+        
+        @param request: ListGlobalAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGlobalAppsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2834,6 +3699,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListGlobalAppsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListGlobalAppsResponse:
+        """
+        @summary 获取平台公共应用列表
+        
+        @param request: ListGlobalAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGlobalAppsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2859,6 +3731,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListGlobalAppsRequest,
     ) -> easy_gene_20210315_models.ListGlobalAppsResponse:
+        """
+        @summary 获取平台公共应用列表
+        
+        @param request: ListGlobalAppsRequest
+        @return: ListGlobalAppsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_global_apps_with_options(request, runtime)
 
@@ -2866,6 +3744,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListGlobalAppsRequest,
     ) -> easy_gene_20210315_models.ListGlobalAppsResponse:
+        """
+        @summary 获取平台公共应用列表
+        
+        @param request: ListGlobalAppsRequest
+        @return: ListGlobalAppsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_global_apps_with_options_async(request, runtime)
 
@@ -2874,6 +3758,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListPublicDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListPublicDatasetResponse:
+        """
+        @summary 获取平台公共数据集列表
+        
+        @param request: ListPublicDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPublicDatasetResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2900,6 +3791,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListPublicDatasetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListPublicDatasetResponse:
+        """
+        @summary 获取平台公共数据集列表
+        
+        @param request: ListPublicDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPublicDatasetResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2925,6 +3823,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListPublicDatasetRequest,
     ) -> easy_gene_20210315_models.ListPublicDatasetResponse:
+        """
+        @summary 获取平台公共数据集列表
+        
+        @param request: ListPublicDatasetRequest
+        @return: ListPublicDatasetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_public_dataset_with_options(request, runtime)
 
@@ -2932,6 +3836,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListPublicDatasetRequest,
     ) -> easy_gene_20210315_models.ListPublicDatasetResponse:
+        """
+        @summary 获取平台公共数据集列表
+        
+        @param request: ListPublicDatasetRequest
+        @return: ListPublicDatasetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_public_dataset_with_options_async(request, runtime)
 
@@ -2940,6 +3850,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListPublicDatasetEntitiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListPublicDatasetEntitiesResponse:
+        """
+        @summary 查询平台公共数据集包含的实体列表
+        
+        @param request: ListPublicDatasetEntitiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPublicDatasetEntitiesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2966,6 +3883,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListPublicDatasetEntitiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListPublicDatasetEntitiesResponse:
+        """
+        @summary 查询平台公共数据集包含的实体列表
+        
+        @param request: ListPublicDatasetEntitiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPublicDatasetEntitiesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2991,6 +3915,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListPublicDatasetEntitiesRequest,
     ) -> easy_gene_20210315_models.ListPublicDatasetEntitiesResponse:
+        """
+        @summary 查询平台公共数据集包含的实体列表
+        
+        @param request: ListPublicDatasetEntitiesRequest
+        @return: ListPublicDatasetEntitiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_public_dataset_entities_with_options(request, runtime)
 
@@ -2998,6 +3928,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListPublicDatasetEntitiesRequest,
     ) -> easy_gene_20210315_models.ListPublicDatasetEntitiesResponse:
+        """
+        @summary 查询平台公共数据集包含的实体列表
+        
+        @param request: ListPublicDatasetEntitiesRequest
+        @return: ListPublicDatasetEntitiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_public_dataset_entities_with_options_async(request, runtime)
 
@@ -3006,6 +3942,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListPublicDatasetEntityItemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListPublicDatasetEntityItemsResponse:
+        """
+        @summary 查询平台公共数据集特定的实体表格数据
+        
+        @param request: ListPublicDatasetEntityItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPublicDatasetEntityItemsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3032,6 +3975,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListPublicDatasetEntityItemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListPublicDatasetEntityItemsResponse:
+        """
+        @summary 查询平台公共数据集特定的实体表格数据
+        
+        @param request: ListPublicDatasetEntityItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPublicDatasetEntityItemsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3057,6 +4007,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListPublicDatasetEntityItemsRequest,
     ) -> easy_gene_20210315_models.ListPublicDatasetEntityItemsResponse:
+        """
+        @summary 查询平台公共数据集特定的实体表格数据
+        
+        @param request: ListPublicDatasetEntityItemsRequest
+        @return: ListPublicDatasetEntityItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_public_dataset_entity_items_with_options(request, runtime)
 
@@ -3064,6 +4020,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListPublicDatasetEntityItemsRequest,
     ) -> easy_gene_20210315_models.ListPublicDatasetEntityItemsResponse:
+        """
+        @summary 查询平台公共数据集特定的实体表格数据
+        
+        @param request: ListPublicDatasetEntityItemsRequest
+        @return: ListPublicDatasetEntityItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_public_dataset_entity_items_with_options_async(request, runtime)
 
@@ -3072,6 +4034,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListPublicDatasetTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListPublicDatasetTagsResponse:
+        """
+        @summary 列出所有公共数据集标签
+        
+        @param request: ListPublicDatasetTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPublicDatasetTagsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3098,6 +4067,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListPublicDatasetTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListPublicDatasetTagsResponse:
+        """
+        @summary 列出所有公共数据集标签
+        
+        @param request: ListPublicDatasetTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPublicDatasetTagsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3123,6 +4099,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListPublicDatasetTagsRequest,
     ) -> easy_gene_20210315_models.ListPublicDatasetTagsResponse:
+        """
+        @summary 列出所有公共数据集标签
+        
+        @param request: ListPublicDatasetTagsRequest
+        @return: ListPublicDatasetTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_public_dataset_tags_with_options(request, runtime)
 
@@ -3130,6 +4112,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListPublicDatasetTagsRequest,
     ) -> easy_gene_20210315_models.ListPublicDatasetTagsResponse:
+        """
+        @summary 列出所有公共数据集标签
+        
+        @param request: ListPublicDatasetTagsRequest
+        @return: ListPublicDatasetTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_public_dataset_tags_with_options_async(request, runtime)
 
@@ -3137,6 +4125,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListRegionsResponse:
+        """
+        @summary 查询基因分析平台产品的可用地域。
+        
+        @param request: ListRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegionsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListRegions',
@@ -3158,6 +4153,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListRegionsResponse:
+        """
+        @summary 查询基因分析平台产品的可用地域。
+        
+        @param request: ListRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegionsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListRegions',
@@ -3176,10 +4178,20 @@ class Client(OpenApiClient):
         )
 
     def list_regions(self) -> easy_gene_20210315_models.ListRegionsResponse:
+        """
+        @summary 查询基因分析平台产品的可用地域。
+        
+        @return: ListRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_regions_with_options(runtime)
 
     async def list_regions_async(self) -> easy_gene_20210315_models.ListRegionsResponse:
+        """
+        @summary 查询基因分析平台产品的可用地域。
+        
+        @return: ListRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_regions_with_options_async(runtime)
 
@@ -3188,6 +4200,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListRunsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListRunsResponse:
+        """
+        @summary 列出任务
+        
+        @param request: ListRunsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRunsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3214,6 +4233,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListRunsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListRunsResponse:
+        """
+        @summary 列出任务
+        
+        @param request: ListRunsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRunsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3239,6 +4265,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListRunsRequest,
     ) -> easy_gene_20210315_models.ListRunsResponse:
+        """
+        @summary 列出任务
+        
+        @param request: ListRunsRequest
+        @return: ListRunsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_runs_with_options(request, runtime)
 
@@ -3246,6 +4278,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListRunsRequest,
     ) -> easy_gene_20210315_models.ListRunsResponse:
+        """
+        @summary 列出任务
+        
+        @param request: ListRunsRequest
+        @return: ListRunsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_runs_with_options_async(request, runtime)
 
@@ -3254,6 +4292,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListSubmissionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListSubmissionsResponse:
+        """
+        @summary 列出投递
+        
+        @param request: ListSubmissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSubmissionsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3280,6 +4325,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListSubmissionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListSubmissionsResponse:
+        """
+        @summary 列出投递
+        
+        @param request: ListSubmissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSubmissionsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3305,6 +4357,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListSubmissionsRequest,
     ) -> easy_gene_20210315_models.ListSubmissionsResponse:
+        """
+        @summary 列出投递
+        
+        @param request: ListSubmissionsRequest
+        @return: ListSubmissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_submissions_with_options(request, runtime)
 
@@ -3312,6 +4370,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListSubmissionsRequest,
     ) -> easy_gene_20210315_models.ListSubmissionsResponse:
+        """
+        @summary 列出投递
+        
+        @param request: ListSubmissionsRequest
+        @return: ListSubmissionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_submissions_with_options_async(request, runtime)
 
@@ -3320,6 +4384,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListTemplatesResponse:
+        """
+        @summary 列出应用模板
+        
+        @param request: ListTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.is_reversed):
@@ -3360,6 +4431,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListTemplatesResponse:
+        """
+        @summary 列出应用模板
+        
+        @param request: ListTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.is_reversed):
@@ -3399,6 +4477,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListTemplatesRequest,
     ) -> easy_gene_20210315_models.ListTemplatesResponse:
+        """
+        @summary 列出应用模板
+        
+        @param request: ListTemplatesRequest
+        @return: ListTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_templates_with_options(request, runtime)
 
@@ -3406,6 +4490,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListTemplatesRequest,
     ) -> easy_gene_20210315_models.ListTemplatesResponse:
+        """
+        @summary 列出应用模板
+        
+        @param request: ListTemplatesRequest
+        @return: ListTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_templates_with_options_async(request, runtime)
 
@@ -3414,6 +4504,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListUserActiveRunsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListUserActiveRunsResponse:
+        """
+        @summary 最近任务列表
+        
+        @param request: ListUserActiveRunsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserActiveRunsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3440,6 +4537,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListUserActiveRunsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListUserActiveRunsResponse:
+        """
+        @summary 最近任务列表
+        
+        @param request: ListUserActiveRunsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserActiveRunsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3465,6 +4569,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListUserActiveRunsRequest,
     ) -> easy_gene_20210315_models.ListUserActiveRunsResponse:
+        """
+        @summary 最近任务列表
+        
+        @param request: ListUserActiveRunsRequest
+        @return: ListUserActiveRunsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_user_active_runs_with_options(request, runtime)
 
@@ -3472,6 +4582,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListUserActiveRunsRequest,
     ) -> easy_gene_20210315_models.ListUserActiveRunsResponse:
+        """
+        @summary 最近任务列表
+        
+        @param request: ListUserActiveRunsRequest
+        @return: ListUserActiveRunsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_active_runs_with_options_async(request, runtime)
 
@@ -3480,6 +4596,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListWorkspacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListWorkspacesResponse:
+        """
+        @summary 列出工作空间
+        
+        @param request: ListWorkspacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkspacesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3506,6 +4629,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ListWorkspacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ListWorkspacesResponse:
+        """
+        @summary 列出工作空间
+        
+        @param request: ListWorkspacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkspacesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3531,6 +4661,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListWorkspacesRequest,
     ) -> easy_gene_20210315_models.ListWorkspacesResponse:
+        """
+        @summary 列出工作空间
+        
+        @param request: ListWorkspacesRequest
+        @return: ListWorkspacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_workspaces_with_options(request, runtime)
 
@@ -3538,6 +4674,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ListWorkspacesRequest,
     ) -> easy_gene_20210315_models.ListWorkspacesResponse:
+        """
+        @summary 列出工作空间
+        
+        @param request: ListWorkspacesRequest
+        @return: ListWorkspacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_workspaces_with_options_async(request, runtime)
 
@@ -3546,6 +4688,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ResumeSubmissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ResumeSubmissionResponse:
+        """
+        @summary 恢复投递
+        
+        @param request: ResumeSubmissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeSubmissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.submission_id):
@@ -3576,6 +4725,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.ResumeSubmissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.ResumeSubmissionResponse:
+        """
+        @summary 恢复投递
+        
+        @param request: ResumeSubmissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeSubmissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.submission_id):
@@ -3605,6 +4761,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ResumeSubmissionRequest,
     ) -> easy_gene_20210315_models.ResumeSubmissionResponse:
+        """
+        @summary 恢复投递
+        
+        @param request: ResumeSubmissionRequest
+        @return: ResumeSubmissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.resume_submission_with_options(request, runtime)
 
@@ -3612,6 +4774,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.ResumeSubmissionRequest,
     ) -> easy_gene_20210315_models.ResumeSubmissionResponse:
+        """
+        @summary 恢复投递
+        
+        @param request: ResumeSubmissionRequest
+        @return: ResumeSubmissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.resume_submission_with_options_async(request, runtime)
 
@@ -3620,6 +4788,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.TagAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.TagAppResponse:
+        """
+        @summary 应用版本打标
+        
+        @param request: TagAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -3654,6 +4829,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.TagAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.TagAppResponse:
+        """
+        @summary 应用版本打标
+        
+        @param request: TagAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -3687,6 +4869,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.TagAppRequest,
     ) -> easy_gene_20210315_models.TagAppResponse:
+        """
+        @summary 应用版本打标
+        
+        @param request: TagAppRequest
+        @return: TagAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_app_with_options(request, runtime)
 
@@ -3694,6 +4882,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.TagAppRequest,
     ) -> easy_gene_20210315_models.TagAppResponse:
+        """
+        @summary 应用版本打标
+        
+        @param request: TagAppRequest
+        @return: TagAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_app_with_options_async(request, runtime)
 
@@ -3703,7 +4897,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.UpdateEntityResponse:
         """
-        @deprecated : UpdateEntity is deprecated, please use EasyGene::2021-03-15::UpdateEntityItems instead.
+        @deprecated OpenAPI UpdateEntity is deprecated, please use EasyGene::2021-03-15::UpdateEntityItems instead.
+        
+        @summary 修改数据表格
         
         @param tmp_req: UpdateEntityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3749,7 +4945,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.UpdateEntityResponse:
         """
-        @deprecated : UpdateEntity is deprecated, please use EasyGene::2021-03-15::UpdateEntityItems instead.
+        @deprecated OpenAPI UpdateEntity is deprecated, please use EasyGene::2021-03-15::UpdateEntityItems instead.
+        
+        @summary 修改数据表格
         
         @param tmp_req: UpdateEntityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3794,7 +4992,9 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.UpdateEntityRequest,
     ) -> easy_gene_20210315_models.UpdateEntityResponse:
         """
-        @deprecated : UpdateEntity is deprecated, please use EasyGene::2021-03-15::UpdateEntityItems instead.
+        @deprecated OpenAPI UpdateEntity is deprecated, please use EasyGene::2021-03-15::UpdateEntityItems instead.
+        
+        @summary 修改数据表格
         
         @param request: UpdateEntityRequest
         @return: UpdateEntityResponse
@@ -3808,7 +5008,9 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.UpdateEntityRequest,
     ) -> easy_gene_20210315_models.UpdateEntityResponse:
         """
-        @deprecated : UpdateEntity is deprecated, please use EasyGene::2021-03-15::UpdateEntityItems instead.
+        @deprecated OpenAPI UpdateEntity is deprecated, please use EasyGene::2021-03-15::UpdateEntityItems instead.
+        
+        @summary 修改数据表格
         
         @param request: UpdateEntityRequest
         @return: UpdateEntityResponse
@@ -3822,6 +5024,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.UpdateEntityItemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.UpdateEntityItemsResponse:
+        """
+        @summary 修改表格数据
+        
+        @param tmp_req: UpdateEntityItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEntityItemsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.UpdateEntityItemsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3860,6 +5069,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.UpdateEntityItemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.UpdateEntityItemsResponse:
+        """
+        @summary 修改表格数据
+        
+        @param tmp_req: UpdateEntityItemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEntityItemsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.UpdateEntityItemsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3897,6 +5113,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.UpdateEntityItemsRequest,
     ) -> easy_gene_20210315_models.UpdateEntityItemsResponse:
+        """
+        @summary 修改表格数据
+        
+        @param request: UpdateEntityItemsRequest
+        @return: UpdateEntityItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_entity_items_with_options(request, runtime)
 
@@ -3904,6 +5126,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.UpdateEntityItemsRequest,
     ) -> easy_gene_20210315_models.UpdateEntityItemsResponse:
+        """
+        @summary 修改表格数据
+        
+        @param request: UpdateEntityItemsRequest
+        @return: UpdateEntityItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_entity_items_with_options_async(request, runtime)
 
@@ -3912,6 +5140,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.UpdateTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.UpdateTemplateResponse:
+        """
+        @summary 修改应用模板
+        
+        @param tmp_req: UpdateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.UpdateTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3960,6 +5195,13 @@ class Client(OpenApiClient):
         tmp_req: easy_gene_20210315_models.UpdateTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.UpdateTemplateResponse:
+        """
+        @summary 修改应用模板
+        
+        @param tmp_req: UpdateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = easy_gene_20210315_models.UpdateTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4007,6 +5249,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.UpdateTemplateRequest,
     ) -> easy_gene_20210315_models.UpdateTemplateResponse:
+        """
+        @summary 修改应用模板
+        
+        @param request: UpdateTemplateRequest
+        @return: UpdateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_template_with_options(request, runtime)
 
@@ -4014,6 +5262,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.UpdateTemplateRequest,
     ) -> easy_gene_20210315_models.UpdateTemplateResponse:
+        """
+        @summary 修改应用模板
+        
+        @param request: UpdateTemplateRequest
+        @return: UpdateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_template_with_options_async(request, runtime)
 
@@ -4022,6 +5276,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.UpdateWorkspaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.UpdateWorkspaceResponse:
+        """
+        @summary 修改工作空间
+        
+        @param request: UpdateWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkspaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -4058,6 +5319,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.UpdateWorkspaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.UpdateWorkspaceResponse:
+        """
+        @summary 修改工作空间
+        
+        @param request: UpdateWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkspaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -4093,6 +5361,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.UpdateWorkspaceRequest,
     ) -> easy_gene_20210315_models.UpdateWorkspaceResponse:
+        """
+        @summary 修改工作空间
+        
+        @param request: UpdateWorkspaceRequest
+        @return: UpdateWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_workspace_with_options(request, runtime)
 
@@ -4100,6 +5374,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.UpdateWorkspaceRequest,
     ) -> easy_gene_20210315_models.UpdateWorkspaceResponse:
+        """
+        @summary 修改工作空间
+        
+        @param request: UpdateWorkspaceRequest
+        @return: UpdateWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_workspace_with_options_async(request, runtime)
 
@@ -4108,6 +5388,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.UploadEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.UploadEntityResponse:
+        """
+        @summary 上传数据表格
+        
+        @param request: UploadEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.entity_csvfile):
@@ -4138,6 +5425,13 @@ class Client(OpenApiClient):
         request: easy_gene_20210315_models.UploadEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> easy_gene_20210315_models.UploadEntityResponse:
+        """
+        @summary 上传数据表格
+        
+        @param request: UploadEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.entity_csvfile):
@@ -4167,6 +5461,12 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.UploadEntityRequest,
     ) -> easy_gene_20210315_models.UploadEntityResponse:
+        """
+        @summary 上传数据表格
+        
+        @param request: UploadEntityRequest
+        @return: UploadEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upload_entity_with_options(request, runtime)
 
@@ -4174,5 +5474,11 @@ class Client(OpenApiClient):
         self,
         request: easy_gene_20210315_models.UploadEntityRequest,
     ) -> easy_gene_20210315_models.UploadEntityResponse:
+        """
+        @summary 上传数据表格
+        
+        @param request: UploadEntityRequest
+        @return: UploadEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upload_entity_with_options_async(request, runtime)

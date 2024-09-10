@@ -10,7 +10,9 @@ class AbortRunRequest(TeaModel):
         run_id: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.run_id = run_id
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -117,7 +119,9 @@ class AbortSubmissionRequest(TeaModel):
         submission_id: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.submission_id = submission_id
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -225,8 +229,11 @@ class CopyPublicEntityRequest(TeaModel):
         entity_type: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.dataset = dataset
+        # This parameter is required.
         self.entity_type = entity_type
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -428,10 +435,12 @@ class CreateAppRequest(TeaModel):
         revision_tag: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.app_name = app_name
         self.app_type = app_type
         self.client_token = client_token
         self.configs = configs
+        # This parameter is required.
         self.definition = definition
         self.dependencies = dependencies
         self.description = description
@@ -439,9 +448,11 @@ class CreateAppRequest(TeaModel):
         self.labels = labels
         self.language = language
         self.language_version = language_version
+        # This parameter is required.
         self.path = path
         self.revision_comment = revision_comment
         self.revision_tag = revision_tag
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -556,10 +567,12 @@ class CreateAppShrinkRequest(TeaModel):
         revision_tag: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.app_name = app_name
         self.app_type = app_type
         self.client_token = client_token
         self.configs_shrink = configs_shrink
+        # This parameter is required.
         self.definition = definition
         self.dependencies_shrink = dependencies_shrink
         self.description = description
@@ -567,9 +580,11 @@ class CreateAppShrinkRequest(TeaModel):
         self.labels = labels
         self.language = language
         self.language_version = language_version
+        # This parameter is required.
         self.path = path
         self.revision_comment = revision_comment
         self.revision_tag = revision_tag
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -788,8 +803,11 @@ class CreateEntityRequest(TeaModel):
         workspace: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.entity_items = entity_items
+        # This parameter is required.
         self.entity_type = entity_type
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -841,8 +859,11 @@ class CreateEntityShrinkRequest(TeaModel):
         workspace: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.entity_items_shrink = entity_items_shrink
+        # This parameter is required.
         self.entity_type = entity_type
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -967,11 +988,13 @@ class CreateRunRequestExecuteOptions(TeaModel):
     def __init__(
         self,
         call_caching: bool = None,
+        data_loader: str = None,
         delete_intermediate_results: bool = None,
         failure_mode: str = None,
         use_relative_output_paths: bool = None,
     ):
         self.call_caching = call_caching
+        self.data_loader = data_loader
         self.delete_intermediate_results = delete_intermediate_results
         self.failure_mode = failure_mode
         self.use_relative_output_paths = use_relative_output_paths
@@ -987,6 +1010,8 @@ class CreateRunRequestExecuteOptions(TeaModel):
         result = dict()
         if self.call_caching is not None:
             result['CallCaching'] = self.call_caching
+        if self.data_loader is not None:
+            result['DataLoader'] = self.data_loader
         if self.delete_intermediate_results is not None:
             result['DeleteIntermediateResults'] = self.delete_intermediate_results
         if self.failure_mode is not None:
@@ -999,6 +1024,8 @@ class CreateRunRequestExecuteOptions(TeaModel):
         m = m or dict()
         if m.get('CallCaching') is not None:
             self.call_caching = m.get('CallCaching')
+        if m.get('DataLoader') is not None:
+            self.data_loader = m.get('DataLoader')
         if m.get('DeleteIntermediateResults') is not None:
             self.delete_intermediate_results = m.get('DeleteIntermediateResults')
         if m.get('FailureMode') is not None:
@@ -1026,6 +1053,7 @@ class CreateRunRequest(TeaModel):
         run_name: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.app_name = app_name
         self.app_revision = app_revision
         self.client_token = client_token
@@ -1033,12 +1061,14 @@ class CreateRunRequest(TeaModel):
         self.description = description
         self.execute_directory = execute_directory
         self.execute_options = execute_options
+        # This parameter is required.
         self.inputs = inputs
         self.labels = labels
         self.output_folder = output_folder
         self.revision_tag = revision_tag
         self.role = role
         self.run_name = run_name
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -1133,6 +1163,7 @@ class CreateRunShrinkRequest(TeaModel):
         run_name: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.app_name = app_name
         self.app_revision = app_revision
         self.client_token = client_token
@@ -1140,12 +1171,14 @@ class CreateRunShrinkRequest(TeaModel):
         self.description = description
         self.execute_directory = execute_directory
         self.execute_options_shrink = execute_options_shrink
+        # This parameter is required.
         self.inputs = inputs
         self.labels = labels
         self.output_folder = output_folder
         self.revision_tag = revision_tag
         self.role = role
         self.run_name = run_name
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -1323,10 +1356,12 @@ class CreateSubmissionRequest(TeaModel):
         revision_tag: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.app_name = app_name
         self.client_token = client_token
         self.default_runtime = default_runtime
         self.entity_names = entity_names
+        # This parameter is required.
         self.entity_type = entity_type
         self.execute_directory = execute_directory
         self.execute_options = execute_options
@@ -1335,6 +1370,7 @@ class CreateSubmissionRequest(TeaModel):
         self.outputs = outputs
         self.revision = revision
         self.revision_tag = revision_tag
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -1422,10 +1458,12 @@ class CreateSubmissionShrinkRequest(TeaModel):
         revision_tag: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.app_name = app_name
         self.client_token = client_token
         self.default_runtime = default_runtime
         self.entity_names_shrink = entity_names_shrink
+        # This parameter is required.
         self.entity_type = entity_type
         self.execute_directory = execute_directory
         self.execute_options = execute_options
@@ -1434,6 +1472,7 @@ class CreateSubmissionShrinkRequest(TeaModel):
         self.outputs = outputs
         self.revision = revision
         self.revision_tag = revision_tag
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -1602,11 +1641,16 @@ class CreateTemplateRequestInputsExpression(TeaModel):
         variable_value: str = None,
     ):
         self.help = help
+        # This parameter is required.
         self.required = required
         self.step_order = step_order
+        # This parameter is required.
         self.task_name = task_name
+        # This parameter is required.
         self.variable_name = variable_name
+        # This parameter is required.
         self.variable_type = variable_type
+        # This parameter is required.
         self.variable_value = variable_value
 
     def validate(self):
@@ -1665,11 +1709,16 @@ class CreateTemplateRequestOutputsExpression(TeaModel):
         variable_value: str = None,
     ):
         self.help = help
+        # This parameter is required.
         self.required = required
         self.step_order = step_order
+        # This parameter is required.
         self.task_name = task_name
+        # This parameter is required.
         self.variable_name = variable_name
+        # This parameter is required.
         self.variable_type = variable_type
+        # This parameter is required.
         self.variable_value = variable_value
 
     def validate(self):
@@ -1731,16 +1780,21 @@ class CreateTemplateRequest(TeaModel):
         template_name: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.app_name = app_name
         self.app_revision = app_revision
         self.client_token = client_token
         self.description = description
+        # This parameter is required.
         self.inputs_expression = inputs_expression
         self.labels = labels
+        # This parameter is required.
         self.outputs_expression = outputs_expression
         self.revision_tag = revision_tag
         self.root_entity = root_entity
+        # This parameter is required.
         self.template_name = template_name
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -1835,16 +1889,21 @@ class CreateTemplateShrinkRequest(TeaModel):
         template_name: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.app_name = app_name
         self.app_revision = app_revision
         self.client_token = client_token
         self.description = description
+        # This parameter is required.
         self.inputs_expression_shrink = inputs_expression_shrink
         self.labels = labels
+        # This parameter is required.
         self.outputs_expression_shrink = outputs_expression_shrink
         self.revision_tag = revision_tag
         self.root_entity = root_entity
+        # This parameter is required.
         self.template_name = template_name
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -2009,7 +2068,9 @@ class CreateWorkspaceRequest(TeaModel):
         self.job_lifecycle = job_lifecycle
         self.labels = labels
         self.role = role
+        # This parameter is required.
         self.storage = storage
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -2143,8 +2204,10 @@ class DeleteAppRequest(TeaModel):
         revision: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.app_name = app_name
         self.revision = revision
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -2255,7 +2318,9 @@ class DeleteEntityRequest(TeaModel):
         entity_type: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.entity_type = entity_type
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -2363,8 +2428,11 @@ class DeleteEntityItemsRequest(TeaModel):
         entity_type: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.entity_names = entity_names
+        # This parameter is required.
         self.entity_type = entity_type
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -2402,8 +2470,11 @@ class DeleteEntityItemsShrinkRequest(TeaModel):
         entity_type: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.entity_names_shrink = entity_names_shrink
+        # This parameter is required.
         self.entity_type = entity_type
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -2514,7 +2585,9 @@ class DeleteRunRequest(TeaModel):
         run_id: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.run_id = run_id
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -2621,7 +2694,9 @@ class DeleteSubmissionRequest(TeaModel):
         submission_id: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.submission_id = submission_id
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -2728,7 +2803,9 @@ class DeleteTemplateRequest(TeaModel):
         template_name: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.template_name = template_name
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -2834,6 +2911,7 @@ class DeleteWorkspaceRequest(TeaModel):
         self,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -2938,7 +3016,9 @@ class DownloadEntityRequest(TeaModel):
         workspace: str = None,
     ):
         self.entity_names = entity_names
+        # This parameter is required.
         self.entity_type = entity_type
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -2977,7 +3057,9 @@ class DownloadEntityShrinkRequest(TeaModel):
         workspace: str = None,
     ):
         self.entity_names_shrink = entity_names_shrink
+        # This parameter is required.
         self.entity_type = entity_type
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -3096,9 +3178,11 @@ class GetAppRequest(TeaModel):
         revision_tag: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.app_name = app_name
         self.revision = revision
         self.revision_tag = revision_tag
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -3638,7 +3722,9 @@ class GetEntityRequest(TeaModel):
         entity_type: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.entity_type = entity_type
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -3772,10 +3858,12 @@ class GetGlobalAppRequest(TeaModel):
         location: str = None,
         namespace_name: str = None,
     ):
+        # This parameter is required.
         self.app_name = app_name
         self.app_version = app_version
         self.attributes = attributes
         self.location = location
+        # This parameter is required.
         self.namespace_name = namespace_name
 
     def validate(self):
@@ -3823,10 +3911,12 @@ class GetGlobalAppShrinkRequest(TeaModel):
         location: str = None,
         namespace_name: str = None,
     ):
+        # This parameter is required.
         self.app_name = app_name
         self.app_version = app_version
         self.attributes_shrink = attributes_shrink
         self.location = location
+        # This parameter is required.
         self.namespace_name = namespace_name
 
     def validate(self):
@@ -4179,6 +4269,7 @@ class GetPublicDatasetRequest(TeaModel):
         dataset_name: str = None,
     ):
         self.attributes = attributes
+        # This parameter is required.
         self.dataset_name = dataset_name
 
     def validate(self):
@@ -4212,6 +4303,7 @@ class GetPublicDatasetShrinkRequest(TeaModel):
         dataset_name: str = None,
     ):
         self.attributes_shrink = attributes_shrink
+        # This parameter is required.
         self.dataset_name = dataset_name
 
     def validate(self):
@@ -4373,7 +4465,9 @@ class GetPublicDatasetEntityRequest(TeaModel):
         entity_type: str = None,
         location: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.entity_type = entity_type
         self.location = location
 
@@ -4509,7 +4603,9 @@ class GetRunRequest(TeaModel):
         run_id: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.run_id = run_id
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -4540,11 +4636,13 @@ class GetRunResponseBodyExecuteOptions(TeaModel):
     def __init__(
         self,
         call_caching: bool = None,
+        data_loader: str = None,
         delete_intermediate_results: bool = None,
         failure_mode: str = None,
         use_relative_output_paths: bool = None,
     ):
         self.call_caching = call_caching
+        self.data_loader = data_loader
         self.delete_intermediate_results = delete_intermediate_results
         self.failure_mode = failure_mode
         self.use_relative_output_paths = use_relative_output_paths
@@ -4560,6 +4658,8 @@ class GetRunResponseBodyExecuteOptions(TeaModel):
         result = dict()
         if self.call_caching is not None:
             result['CallCaching'] = self.call_caching
+        if self.data_loader is not None:
+            result['DataLoader'] = self.data_loader
         if self.delete_intermediate_results is not None:
             result['DeleteIntermediateResults'] = self.delete_intermediate_results
         if self.failure_mode is not None:
@@ -4572,6 +4672,8 @@ class GetRunResponseBodyExecuteOptions(TeaModel):
         m = m or dict()
         if m.get('CallCaching') is not None:
             self.call_caching = m.get('CallCaching')
+        if m.get('DataLoader') is not None:
+            self.data_loader = m.get('DataLoader')
         if m.get('DeleteIntermediateResults') is not None:
             self.delete_intermediate_results = m.get('DeleteIntermediateResults')
         if m.get('FailureMode') is not None:
@@ -4819,7 +4921,9 @@ class GetSubmissionRequest(TeaModel):
         submission_id: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.submission_id = submission_id
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -5068,7 +5172,9 @@ class GetTemplateRequest(TeaModel):
         template_name: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.template_name = template_name
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -5395,6 +5501,7 @@ class GetWorkspaceRequest(TeaModel):
         self,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -5564,8 +5671,11 @@ class ImportAppRequest(TeaModel):
         source: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.app_name = app_name
+        # This parameter is required.
         self.source = source
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -5697,10 +5807,15 @@ class InstallGlobalAppRequest(TeaModel):
         source: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.app_name = app_name
+        # This parameter is required.
         self.installed_app_name = installed_app_name
+        # This parameter is required.
         self.namespace_name = namespace_name
+        # This parameter is required.
         self.source = source
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -5855,6 +5970,7 @@ class ListAppsRequest(TeaModel):
         self.order_by = order_by
         self.scope = scope
         self.search = search
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -6112,6 +6228,7 @@ class ListAuthorizedSoftwareRequest(TeaModel):
         search: str = None,
     ):
         self.is_reversed = is_reversed
+        # This parameter is required.
         self.location = location
         self.max_results = max_results
         self.next_token = next_token
@@ -6358,6 +6475,7 @@ class ListContainerImagesRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # This parameter is required.
         self.location = location
         self.max_results = max_results
         self.next_token = next_token
@@ -6572,6 +6690,7 @@ class ListEntitiesRequest(TeaModel):
         self.max_results = max_results
         self.next_token = next_token
         self.order_by = order_by
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -6754,12 +6873,14 @@ class ListEntityItemsRequest(TeaModel):
         search: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.entity_type = entity_type
         self.is_reversed = is_reversed
         self.max_results = max_results
         self.next_token = next_token
         self.order_by = order_by
         self.search = search
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -7467,6 +7588,7 @@ class ListPublicDatasetEntitiesRequest(TeaModel):
         next_token: str = None,
         order_by: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
         self.is_reversed = is_reversed
         self.location = location
@@ -7665,7 +7787,9 @@ class ListPublicDatasetEntityItemsRequest(TeaModel):
         order_by: str = None,
         search: str = None,
     ):
+        # This parameter is required.
         self.dataset_name = dataset_name
+        # This parameter is required.
         self.entity_type = entity_type
         self.is_reversed = is_reversed
         self.location = location
@@ -8554,6 +8678,7 @@ class ListSubmissionsRequest(TeaModel):
         self.order_by = order_by
         self.search = search
         self.status = status
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -8857,6 +8982,7 @@ class ListTemplatesRequest(TeaModel):
         self.next_token = next_token
         self.order_by = order_by
         self.search = search
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -9818,7 +9944,9 @@ class ResumeSubmissionRequest(TeaModel):
         submission_id: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.submission_id = submission_id
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -9927,9 +10055,13 @@ class TagAppRequest(TeaModel):
         revision_tag: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.app_name = app_name
+        # This parameter is required.
         self.app_revision = app_revision
+        # This parameter is required.
         self.revision_tag = revision_tag
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -10108,8 +10240,11 @@ class UpdateEntityRequest(TeaModel):
         entity_type: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.entity_items = entity_items
+        # This parameter is required.
         self.entity_type = entity_type
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -10155,8 +10290,11 @@ class UpdateEntityShrinkRequest(TeaModel):
         entity_type: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.entity_items_shrink = entity_items_shrink
+        # This parameter is required.
         self.entity_type = entity_type
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -10313,8 +10451,11 @@ class UpdateEntityItemsRequest(TeaModel):
         entity_type: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.entity_items = entity_items
+        # This parameter is required.
         self.entity_type = entity_type
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -10360,8 +10501,11 @@ class UpdateEntityItemsShrinkRequest(TeaModel):
         entity_type: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.entity_items_shrink = entity_items_shrink
+        # This parameter is required.
         self.entity_type = entity_type
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -10490,11 +10634,16 @@ class UpdateTemplateRequestInputsExpression(TeaModel):
         variable_value: str = None,
     ):
         self.help = help
+        # This parameter is required.
         self.required = required
         self.step_order = step_order
+        # This parameter is required.
         self.task_name = task_name
+        # This parameter is required.
         self.variable_name = variable_name
+        # This parameter is required.
         self.variable_type = variable_type
+        # This parameter is required.
         self.variable_value = variable_value
 
     def validate(self):
@@ -10553,11 +10702,16 @@ class UpdateTemplateRequestOutputsExpression(TeaModel):
         variable_value: str = None,
     ):
         self.help = help
+        # This parameter is required.
         self.required = required
         self.step_order = step_order
+        # This parameter is required.
         self.task_name = task_name
+        # This parameter is required.
         self.variable_name = variable_name
+        # This parameter is required.
         self.variable_type = variable_type
+        # This parameter is required.
         self.variable_value = variable_value
 
     def validate(self):
@@ -10616,11 +10770,15 @@ class UpdateTemplateRequest(TeaModel):
         workspace: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.inputs_expression = inputs_expression
         self.labels = labels
+        # This parameter is required.
         self.outputs_expression = outputs_expression
         self.root_entity = root_entity
+        # This parameter is required.
         self.template_name = template_name
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -10696,11 +10854,15 @@ class UpdateTemplateShrinkRequest(TeaModel):
         workspace: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.inputs_expression_shrink = inputs_expression_shrink
         self.labels = labels
+        # This parameter is required.
         self.outputs_expression_shrink = outputs_expression_shrink
         self.root_entity = root_entity
+        # This parameter is required.
         self.template_name = template_name
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -10834,6 +10996,7 @@ class UpdateWorkspaceRequest(TeaModel):
         self.job_lifecycle = job_lifecycle
         self.labels = labels
         self.role = role
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -10952,7 +11115,9 @@ class UploadEntityRequest(TeaModel):
         entity_csvfile: str = None,
         workspace: str = None,
     ):
+        # This parameter is required.
         self.entity_csvfile = entity_csvfile
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
