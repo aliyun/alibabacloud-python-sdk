@@ -1090,6 +1090,57 @@ class LeavePictureList(TeaModel):
         return self
 
 
+class LimitRule(TeaModel):
+    def __init__(
+        self,
+        begin_time: int = None,
+        condcase: str = None,
+        end_time: int = None,
+        limit_num: int = None,
+        rule_type: str = None,
+    ):
+        self.begin_time = begin_time
+        self.condcase = condcase
+        self.end_time = end_time
+        self.limit_num = limit_num
+        self.rule_type = rule_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_time is not None:
+            result['beginTime'] = self.begin_time
+        if self.condcase is not None:
+            result['condcase'] = self.condcase
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.limit_num is not None:
+            result['limitNum'] = self.limit_num
+        if self.rule_type is not None:
+            result['ruleType'] = self.rule_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('beginTime') is not None:
+            self.begin_time = m.get('beginTime')
+        if m.get('condcase') is not None:
+            self.condcase = m.get('condcase')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('limitNum') is not None:
+            self.limit_num = m.get('limitNum')
+        if m.get('ruleType') is not None:
+            self.rule_type = m.get('ruleType')
+        return self
+
+
 class LogisticsDetail(TeaModel):
     def __init__(
         self,
@@ -1120,6 +1171,81 @@ class LogisticsDetail(TeaModel):
             self.ocurr_time_str = m.get('ocurrTimeStr')
         if m.get('standerdDesc') is not None:
             self.standerd_desc = m.get('standerdDesc')
+        return self
+
+
+class LogisticsInformationData(TeaModel):
+    def __init__(
+        self,
+        logistics_status: str = None,
+        modified_time: str = None,
+        order_id: str = None,
+        order_line_id: str = None,
+        outer_purchase_order_id: str = None,
+        purchaser_id: str = None,
+        tracking_company_code: str = None,
+        tracking_company_name: str = None,
+        tracking_number: str = None,
+    ):
+        self.logistics_status = logistics_status
+        self.modified_time = modified_time
+        self.order_id = order_id
+        self.order_line_id = order_line_id
+        self.outer_purchase_order_id = outer_purchase_order_id
+        self.purchaser_id = purchaser_id
+        self.tracking_company_code = tracking_company_code
+        self.tracking_company_name = tracking_company_name
+        self.tracking_number = tracking_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logistics_status is not None:
+            result['logisticsStatus'] = self.logistics_status
+        if self.modified_time is not None:
+            result['modifiedTime'] = self.modified_time
+        if self.order_id is not None:
+            result['orderId'] = self.order_id
+        if self.order_line_id is not None:
+            result['orderLineId'] = self.order_line_id
+        if self.outer_purchase_order_id is not None:
+            result['outerPurchaseOrderId'] = self.outer_purchase_order_id
+        if self.purchaser_id is not None:
+            result['purchaserId'] = self.purchaser_id
+        if self.tracking_company_code is not None:
+            result['trackingCompanyCode'] = self.tracking_company_code
+        if self.tracking_company_name is not None:
+            result['trackingCompanyName'] = self.tracking_company_name
+        if self.tracking_number is not None:
+            result['trackingNumber'] = self.tracking_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('logisticsStatus') is not None:
+            self.logistics_status = m.get('logisticsStatus')
+        if m.get('modifiedTime') is not None:
+            self.modified_time = m.get('modifiedTime')
+        if m.get('orderId') is not None:
+            self.order_id = m.get('orderId')
+        if m.get('orderLineId') is not None:
+            self.order_line_id = m.get('orderLineId')
+        if m.get('outerPurchaseOrderId') is not None:
+            self.outer_purchase_order_id = m.get('outerPurchaseOrderId')
+        if m.get('purchaserId') is not None:
+            self.purchaser_id = m.get('purchaserId')
+        if m.get('trackingCompanyCode') is not None:
+            self.tracking_company_code = m.get('trackingCompanyCode')
+        if m.get('trackingCompanyName') is not None:
+            self.tracking_company_name = m.get('trackingCompanyName')
+        if m.get('trackingNumber') is not None:
+            self.tracking_number = m.get('trackingNumber')
         return self
 
 
@@ -1989,6 +2115,7 @@ class Sku(TeaModel):
         sku_specs: List[SkuSpec] = None,
         sku_specs_code: str = None,
         sku_status: str = None,
+        suggested_retail_price: int = None,
         title: str = None,
     ):
         self.barcode = barcode
@@ -2007,6 +2134,7 @@ class Sku(TeaModel):
         self.sku_specs = sku_specs
         self.sku_specs_code = sku_specs_code
         self.sku_status = sku_status
+        self.suggested_retail_price = suggested_retail_price
         self.title = title
 
     def validate(self):
@@ -2055,6 +2183,8 @@ class Sku(TeaModel):
             result['skuSpecsCode'] = self.sku_specs_code
         if self.sku_status is not None:
             result['skuStatus'] = self.sku_status
+        if self.suggested_retail_price is not None:
+            result['suggestedRetailPrice'] = self.suggested_retail_price
         if self.title is not None:
             result['title'] = self.title
         return result
@@ -2096,6 +2226,8 @@ class Sku(TeaModel):
             self.sku_specs_code = m.get('skuSpecsCode')
         if m.get('skuStatus') is not None:
             self.sku_status = m.get('skuStatus')
+        if m.get('suggestedRetailPrice') is not None:
+            self.suggested_retail_price = m.get('suggestedRetailPrice')
         if m.get('title') is not None:
             self.title = m.get('title')
         return self
@@ -2113,6 +2245,7 @@ class Product(TeaModel):
         extend_properties: List[ProductExtendProperty] = None,
         fuzzy_quantity: str = None,
         images: List[str] = None,
+        limit_rules: List[LimitRule] = None,
         lm_item_id: str = None,
         pic_url: str = None,
         product_id: str = None,
@@ -2138,6 +2271,7 @@ class Product(TeaModel):
         self.extend_properties = extend_properties
         self.fuzzy_quantity = fuzzy_quantity
         self.images = images
+        self.limit_rules = limit_rules
         self.lm_item_id = lm_item_id
         self.pic_url = pic_url
         self.product_id = product_id
@@ -2161,6 +2295,10 @@ class Product(TeaModel):
                     k.validate()
         if self.extend_properties:
             for k in self.extend_properties:
+                if k:
+                    k.validate()
+        if self.limit_rules:
+            for k in self.limit_rules:
                 if k:
                     k.validate()
         if self.product_specs:
@@ -2204,6 +2342,10 @@ class Product(TeaModel):
             result['fuzzyQuantity'] = self.fuzzy_quantity
         if self.images is not None:
             result['images'] = self.images
+        result['limitRules'] = []
+        if self.limit_rules is not None:
+            for k in self.limit_rules:
+                result['limitRules'].append(k.to_map() if k else None)
         if self.lm_item_id is not None:
             result['lmItemId'] = self.lm_item_id
         if self.pic_url is not None:
@@ -2268,6 +2410,11 @@ class Product(TeaModel):
             self.fuzzy_quantity = m.get('fuzzyQuantity')
         if m.get('images') is not None:
             self.images = m.get('images')
+        self.limit_rules = []
+        if m.get('limitRules') is not None:
+            for k in m.get('limitRules'):
+                temp_model = LimitRule()
+                self.limit_rules.append(temp_model.from_map(k))
         if m.get('lmItemId') is not None:
             self.lm_item_id = m.get('lmItemId')
         if m.get('picUrl') is not None:
@@ -2581,6 +2728,7 @@ class ProductSaleInfo(TeaModel):
         can_sell: bool = None,
         division_code: str = None,
         fuzzy_quantity: str = None,
+        limit_rules: List[LimitRule] = None,
         lm_item_id: str = None,
         product_id: str = None,
         product_status: str = None,
@@ -2593,6 +2741,7 @@ class ProductSaleInfo(TeaModel):
         self.can_sell = can_sell
         self.division_code = division_code
         self.fuzzy_quantity = fuzzy_quantity
+        self.limit_rules = limit_rules
         self.lm_item_id = lm_item_id
         self.product_id = product_id
         self.product_status = product_status
@@ -2603,6 +2752,10 @@ class ProductSaleInfo(TeaModel):
         self.title = title
 
     def validate(self):
+        if self.limit_rules:
+            for k in self.limit_rules:
+                if k:
+                    k.validate()
         if self.skus:
             for k in self.skus:
                 if k:
@@ -2620,6 +2773,10 @@ class ProductSaleInfo(TeaModel):
             result['divisionCode'] = self.division_code
         if self.fuzzy_quantity is not None:
             result['fuzzyQuantity'] = self.fuzzy_quantity
+        result['limitRules'] = []
+        if self.limit_rules is not None:
+            for k in self.limit_rules:
+                result['limitRules'].append(k.to_map() if k else None)
         if self.lm_item_id is not None:
             result['lmItemId'] = self.lm_item_id
         if self.product_id is not None:
@@ -2648,6 +2805,11 @@ class ProductSaleInfo(TeaModel):
             self.division_code = m.get('divisionCode')
         if m.get('fuzzyQuantity') is not None:
             self.fuzzy_quantity = m.get('fuzzyQuantity')
+        self.limit_rules = []
+        if m.get('limitRules') is not None:
+            for k in m.get('limitRules'):
+                temp_model = LimitRule()
+                self.limit_rules.append(temp_model.from_map(k))
         if m.get('lmItemId') is not None:
             self.lm_item_id = m.get('lmItemId')
         if m.get('productId') is not None:
