@@ -1,3 +1,19 @@
+2024-09-10 Version: 3.0.0
+- Delete API BatchCreateIntantSiteMonitor.
+- Delete API CreateCmsCallNumOrder.
+- Delete API CreateCmsOrder.
+- Delete API CreateCmsSmspackageOrder.
+- Update API AddTags: update param Tag.
+- Update API ApplyMetricRuleTemplate: add param AppendMode.
+- Update API CreateSiteMonitor: add param VpcConfig.
+- Update API DeleteCustomMetric: update response param.
+- Update API DescribeDynamicTagRuleList: update response param.
+- Update API DescribeMetricData: update response param.
+- Update API DescribeProjectMeta: delete param Action.
+- Update API DescribeSiteMonitorAttribute: update response param.
+- Update API PutResourceMetricRule: update param CompositeExpression.
+
+
 2024-02-22 Version: 2.0.17
 - Update API DescribeMetricData: update response param.
 
