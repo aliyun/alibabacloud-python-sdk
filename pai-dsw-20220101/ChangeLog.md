@@ -1,3 +1,8 @@
+2024-09-10 Version: 1.5.4
+- Update API GetInstance: update response param.
+- Update API ListInstances: update response param.
+
+
 2024-08-22 Version: 1.5.3
 - Update API GetMetrics: update response param.
 

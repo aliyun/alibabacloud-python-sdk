@@ -2798,6 +2798,7 @@ class GetInstanceResponseBody(TeaModel):
         affinity: GetInstanceResponseBodyAffinity = None,
         cloud_disks: List[GetInstanceResponseBodyCloudDisks] = None,
         code: str = None,
+        credential_config: CredentialConfig = None,
         datasets: List[GetInstanceResponseBodyDatasets] = None,
         driver: str = None,
         ecs_spec: str = None,
@@ -2845,6 +2846,7 @@ class GetInstanceResponseBody(TeaModel):
         self.affinity = affinity
         self.cloud_disks = cloud_disks
         self.code = code
+        self.credential_config = credential_config
         self.datasets = datasets
         self.driver = driver
         self.ecs_spec = ecs_spec
@@ -2895,6 +2897,8 @@ class GetInstanceResponseBody(TeaModel):
             for k in self.cloud_disks:
                 if k:
                     k.validate()
+        if self.credential_config:
+            self.credential_config.validate()
         if self.datasets:
             for k in self.datasets:
                 if k:
@@ -2940,6 +2944,8 @@ class GetInstanceResponseBody(TeaModel):
                 result['CloudDisks'].append(k.to_map() if k else None)
         if self.code is not None:
             result['Code'] = self.code
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
         result['Datasets'] = []
         if self.datasets is not None:
             for k in self.datasets:
@@ -3046,6 +3052,9 @@ class GetInstanceResponseBody(TeaModel):
                 self.cloud_disks.append(temp_model.from_map(k))
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
         self.datasets = []
         if m.get('Datasets') is not None:
             for k in m.get('Datasets'):
@@ -6359,6 +6368,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         accumulated_running_time_in_ms: int = None,
         affinity: ListInstancesResponseBodyInstancesAffinity = None,
         cloud_disks: List[ListInstancesResponseBodyInstancesCloudDisks] = None,
+        credential_config: CredentialConfig = None,
         datasets: List[ListInstancesResponseBodyInstancesDatasets] = None,
         driver: str = None,
         ecs_spec: str = None,
@@ -6400,6 +6410,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.accumulated_running_time_in_ms = accumulated_running_time_in_ms
         self.affinity = affinity
         self.cloud_disks = cloud_disks
+        self.credential_config = credential_config
         self.datasets = datasets
         self.driver = driver
         self.ecs_spec = ecs_spec
@@ -6445,6 +6456,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             for k in self.cloud_disks:
                 if k:
                     k.validate()
+        if self.credential_config:
+            self.credential_config.validate()
         if self.datasets:
             for k in self.datasets:
                 if k:
@@ -6486,6 +6499,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
         if self.cloud_disks is not None:
             for k in self.cloud_disks:
                 result['CloudDisks'].append(k.to_map() if k else None)
+        if self.credential_config is not None:
+            result['CredentialConfig'] = self.credential_config.to_map()
         result['Datasets'] = []
         if self.datasets is not None:
             for k in self.datasets:
@@ -6580,6 +6595,9 @@ class ListInstancesResponseBodyInstances(TeaModel):
             for k in m.get('CloudDisks'):
                 temp_model = ListInstancesResponseBodyInstancesCloudDisks()
                 self.cloud_disks.append(temp_model.from_map(k))
+        if m.get('CredentialConfig') is not None:
+            temp_model = CredentialConfig()
+            self.credential_config = temp_model.from_map(m['CredentialConfig'])
         self.datasets = []
         if m.get('Datasets') is not None:
             for k in m.get('Datasets'):
