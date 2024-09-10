@@ -4844,6 +4844,8 @@ class Client(OpenApiClient):
             query['RouteIds'] = request.route_ids_shrink
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.swim_version):
+            query['SwimVersion'] = request.swim_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4913,6 +4915,8 @@ class Client(OpenApiClient):
             query['RouteIds'] = request.route_ids_shrink
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.swim_version):
+            query['SwimVersion'] = request.swim_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4964,7 +4968,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreatePluginConfigResponse:
         """
-        @summary 创建插件配置
+        @summary Creates a plug-in configuration.
         
         @param tmp_req: CreatePluginConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5015,7 +5019,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreatePluginConfigResponse:
         """
-        @summary 创建插件配置
+        @summary Creates a plug-in configuration.
         
         @param tmp_req: CreatePluginConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5065,7 +5069,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreatePluginConfigRequest,
     ) -> mse_20190531_models.CreatePluginConfigResponse:
         """
-        @summary 创建插件配置
+        @summary Creates a plug-in configuration.
         
         @param request: CreatePluginConfigRequest
         @return: CreatePluginConfigResponse
@@ -5078,7 +5082,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreatePluginConfigRequest,
     ) -> mse_20190531_models.CreatePluginConfigResponse:
         """
-        @summary 创建插件配置
+        @summary Creates a plug-in configuration.
         
         @param request: CreatePluginConfigRequest
         @return: CreatePluginConfigResponse
@@ -7732,7 +7736,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeletePluginConfigResponse:
         """
-        @summary 删除插件配置
+        @summary Deletes a plug-in configuration.
         
         @param request: DeletePluginConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7771,7 +7775,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeletePluginConfigResponse:
         """
-        @summary 删除插件配置
+        @summary Deletes a plug-in configuration.
         
         @param request: DeletePluginConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7809,7 +7813,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeletePluginConfigRequest,
     ) -> mse_20190531_models.DeletePluginConfigResponse:
         """
-        @summary 删除插件配置
+        @summary Deletes a plug-in configuration.
         
         @param request: DeletePluginConfigRequest
         @return: DeletePluginConfigResponse
@@ -7822,7 +7826,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeletePluginConfigRequest,
     ) -> mse_20190531_models.DeletePluginConfigResponse:
         """
-        @summary 删除插件配置
+        @summary Deletes a plug-in configuration.
         
         @param request: DeletePluginConfigRequest
         @return: DeletePluginConfigResponse
@@ -8956,7 +8960,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GatewayBlackWhiteListResponse:
         """
-        @summary 黑白名单列表
+        @summary Queries a list of blacklists and whitelists of a gateway.
         
         @param tmp_req: GatewayBlackWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9005,7 +9009,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GatewayBlackWhiteListResponse:
         """
-        @summary 黑白名单列表
+        @summary Queries a list of blacklists and whitelists of a gateway.
         
         @param tmp_req: GatewayBlackWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9053,7 +9057,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GatewayBlackWhiteListRequest,
     ) -> mse_20190531_models.GatewayBlackWhiteListResponse:
         """
-        @summary 黑白名单列表
+        @summary Queries a list of blacklists and whitelists of a gateway.
         
         @param request: GatewayBlackWhiteListRequest
         @return: GatewayBlackWhiteListResponse
@@ -9066,7 +9070,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GatewayBlackWhiteListRequest,
     ) -> mse_20190531_models.GatewayBlackWhiteListResponse:
         """
-        @summary 黑白名单列表
+        @summary Queries a list of blacklists and whitelists of a gateway.
         
         @param request: GatewayBlackWhiteListRequest
         @return: GatewayBlackWhiteListResponse

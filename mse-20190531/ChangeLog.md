@@ -1,3 +1,14 @@
+2024-09-10 Version: 6.12.1
+- Update API CreateOrUpdateSwimmingLane: update param GatewaySwimmingLaneRouteJson.
+- Update API CreateOrUpdateSwimmingLaneGroup: add param SwimVersion.
+- Update API GetGatewayServiceDetail: update response param.
+- Update API ListEngineNamespaces: update response param.
+- Update API ListGateway: update response param.
+- Update API ListGatewayRoute: update response param.
+- Update API QueryAllSwimmingLane: update response param.
+- Update API QueryAllSwimmingLaneGroup: update response param.
+
+
 2024-08-15 Version: 6.12.0
 - Support API UpdateNacosGrayConfig.
 

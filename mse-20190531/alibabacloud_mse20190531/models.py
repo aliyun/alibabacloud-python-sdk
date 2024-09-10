@@ -7419,8 +7419,9 @@ class CloneNacosConfigRequest(TeaModel):
         # *   zh: Chinese
         # *   en: English
         self.accept_language = accept_language
+        # The configuration items that you want to clone. The value of this parameter is the combination of the values of the dataId and group parameters. Separate multiple configuration items with commas (,).
         self.data_ids = data_ids
-        # The data structure.
+        # The list of configuration IDs.
         self.ids = ids
         # The ID of the destination namespace.
         # 
@@ -7570,7 +7571,7 @@ class CloneNacosConfigResponseBodyData(TeaModel):
         skip_data: List[CloneNacosConfigResponseBodyDataSkipData] = None,
         succ_count: int = None,
     ):
-        # The ID of the data.
+        # The details of the failed configurations.
         self.fail_data = fail_data
         # The data structure.
         self.skip_count = skip_count
@@ -7644,7 +7645,7 @@ class CloneNacosConfigResponseBody(TeaModel):
         # 
         # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.code = code
-        # The number of skipped operations.
+        # The data returned.
         self.data = data
         # The number of successful operations.
         self.dynamic_message = dynamic_message
@@ -11718,6 +11719,7 @@ class CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson(TeaModel):
     def __init__(
         self,
         canary_model: int = None,
+        condition: str = None,
         conditions: List[CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions] = None,
         gateway_id: int = None,
         gateway_unique_id: str = None,
@@ -11727,6 +11729,7 @@ class CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson(TeaModel):
         route_independent_percentage_list: List[CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonRouteIndependentPercentageList] = None,
     ):
         self.canary_model = canary_model
+        self.condition = condition
         # The matching conditions.
         self.conditions = conditions
         # The ID of the gateway.
@@ -11757,6 +11760,8 @@ class CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson(TeaModel):
         result = dict()
         if self.canary_model is not None:
             result['CanaryModel'] = self.canary_model
+        if self.condition is not None:
+            result['Condition'] = self.condition
         result['Conditions'] = []
         if self.conditions is not None:
             for k in self.conditions:
@@ -11781,6 +11786,8 @@ class CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson(TeaModel):
         m = m or dict()
         if m.get('CanaryModel') is not None:
             self.canary_model = m.get('CanaryModel')
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
         self.conditions = []
         if m.get('Conditions') is not None:
             for k in m.get('Conditions'):
@@ -12570,6 +12577,7 @@ class CreateOrUpdateSwimmingLaneGroupRequest(TeaModel):
         region: str = None,
         route_ids: List[int] = None,
         status: int = None,
+        swim_version: int = None,
     ):
         # The language of the response. Valid values:
         # 
@@ -12603,6 +12611,7 @@ class CreateOrUpdateSwimmingLaneGroupRequest(TeaModel):
         self.route_ids = route_ids
         # The status of the lane group. The value 0 specifies that the lane group is disabled. The value 1 specifies that the lane group is enabled.
         self.status = status
+        self.swim_version = swim_version
 
     def validate(self):
         pass
@@ -12643,6 +12652,8 @@ class CreateOrUpdateSwimmingLaneGroupRequest(TeaModel):
             result['RouteIds'] = self.route_ids
         if self.status is not None:
             result['Status'] = self.status
+        if self.swim_version is not None:
+            result['SwimVersion'] = self.swim_version
         return result
 
     def from_map(self, m: dict = None):
@@ -12677,6 +12688,8 @@ class CreateOrUpdateSwimmingLaneGroupRequest(TeaModel):
             self.route_ids = m.get('RouteIds')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SwimVersion') is not None:
+            self.swim_version = m.get('SwimVersion')
         return self
 
 
@@ -12698,6 +12711,7 @@ class CreateOrUpdateSwimmingLaneGroupShrinkRequest(TeaModel):
         region: str = None,
         route_ids_shrink: str = None,
         status: int = None,
+        swim_version: int = None,
     ):
         # The language of the response. Valid values:
         # 
@@ -12731,6 +12745,7 @@ class CreateOrUpdateSwimmingLaneGroupShrinkRequest(TeaModel):
         self.route_ids_shrink = route_ids_shrink
         # The status of the lane group. The value 0 specifies that the lane group is disabled. The value 1 specifies that the lane group is enabled.
         self.status = status
+        self.swim_version = swim_version
 
     def validate(self):
         pass
@@ -12771,6 +12786,8 @@ class CreateOrUpdateSwimmingLaneGroupShrinkRequest(TeaModel):
             result['RouteIds'] = self.route_ids_shrink
         if self.status is not None:
             result['Status'] = self.status
+        if self.swim_version is not None:
+            result['SwimVersion'] = self.swim_version
         return result
 
     def from_map(self, m: dict = None):
@@ -12805,6 +12822,8 @@ class CreateOrUpdateSwimmingLaneGroupShrinkRequest(TeaModel):
             self.route_ids_shrink = m.get('RouteIds')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SwimVersion') is not None:
+            self.swim_version = m.get('SwimVersion')
         return self
 
 
@@ -13019,16 +13038,31 @@ class CreatePluginConfigRequest(TeaModel):
         plugin_id: int = None,
         resource_id_list: List[int] = None,
     ):
+        # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
         self.accept_language = accept_language
+        # The plug-in configuration. The configuration content of the WebAssembly (Wasm) plug-in is in the YAML format. The configuration content of the Lua plug-in is Lua code.
         self.config = config
+        # The application scope of the plug-in. Valid values:
+        # 
+        # *   0: global
+        # *   1: route
+        # *   2: domain name
+        # 
         # This parameter is required.
         self.config_level = config_level
+        # Indicates whether the plug-in is enabled.
+        # 
         # This parameter is required.
         self.enable = enable
+        # The unique ID of the gateway.
+        # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
+        # The gateway plug-in ID.
+        # 
         # This parameter is required.
         self.plugin_id = plugin_id
+        # The domain IDs or route IDs. They are distinguished based on ConfigLevel.
         self.resource_id_list = resource_id_list
 
     def validate(self):
@@ -13086,16 +13120,31 @@ class CreatePluginConfigShrinkRequest(TeaModel):
         plugin_id: int = None,
         resource_id_list_shrink: str = None,
     ):
+        # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
         self.accept_language = accept_language
+        # The plug-in configuration. The configuration content of the WebAssembly (Wasm) plug-in is in the YAML format. The configuration content of the Lua plug-in is Lua code.
         self.config = config
+        # The application scope of the plug-in. Valid values:
+        # 
+        # *   0: global
+        # *   1: route
+        # *   2: domain name
+        # 
         # This parameter is required.
         self.config_level = config_level
+        # Indicates whether the plug-in is enabled.
+        # 
         # This parameter is required.
         self.enable = enable
+        # The unique ID of the gateway.
+        # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
+        # The gateway plug-in ID.
+        # 
         # This parameter is required.
         self.plugin_id = plugin_id
+        # The domain IDs or route IDs. They are distinguished based on ConfigLevel.
         self.resource_id_list_shrink = resource_id_list_shrink
 
     def validate(self):
@@ -13148,7 +13197,9 @@ class CreatePluginConfigResponseBody(TeaModel):
         plugin_config_id: int = None,
         request_id: str = None,
     ):
+        # The plug-in configuration ID.
         self.plugin_config_id = plugin_config_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17714,9 +17765,14 @@ class DeletePluginConfigRequest(TeaModel):
         gateway_unique_id: str = None,
         plugin_config_id: int = None,
     ):
+        # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
         self.accept_language = accept_language
+        # The unique ID of the gateway.
+        # 
         # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
+        # The plug-in configuration ID.
+        # 
         # This parameter is required.
         self.plugin_config_id = plugin_config_id
 
@@ -17753,6 +17809,7 @@ class DeletePluginConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19964,12 +20021,23 @@ class GatewayBlackWhiteListRequestFilterParams(TeaModel):
         search_type: str = None,
         type: str = None,
     ):
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway. If this parameter is used together with the GatewayId parameter, the value of the GatewayId parameter is used.
         self.gateway_unique_id = gateway_unique_id
+        # This parameter is unavailable for public use.
         self.is_white = is_white
+        # This parameter is unavailable for public use.
         self.resource_type = resource_type
+        # The content that you want to query.
         self.search_content = search_content
+        # The query type. Valid values:
+        # 
+        # *   ROUTE: The list is queried by route. If the value of this parameter is ROUTE, set the SearchContent parameter to the route name.
+        # *   DOMAIN: The list is queried by domain name. If the value of this parameter is DOMAIN, set the SearchContent parameter to the domain name.
+        # *   IP: The list is queried by specified IP address. If the value of this parameter is IP, set the SearchContent parameter to the IP address.
         self.search_type = search_type
+        # This parameter is unavailable for public use.
         self.type = type
 
     def validate(self):
@@ -20026,12 +20094,17 @@ class GatewayBlackWhiteListRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
         self.accept_language = accept_language
+        # This parameter is unavailable for public use.
         self.desc_sort = desc_sort
-        # parse from filterParams
+        # The filter parameters.
         self.filter_params = filter_params
+        # This parameter is unavailable for public use.
         self.order_item = order_item
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 1.
         self.page_size = page_size
 
     def validate(self):
@@ -20086,12 +20159,17 @@ class GatewayBlackWhiteListShrinkRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
         self.accept_language = accept_language
+        # This parameter is unavailable for public use.
         self.desc_sort = desc_sort
-        # parse from filterParams
+        # The filter parameters.
         self.filter_params_shrink = filter_params_shrink
+        # This parameter is unavailable for public use.
         self.order_item = order_item
+        # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 1.
         self.page_size = page_size
 
     def validate(self):
@@ -20153,20 +20231,45 @@ class GatewayBlackWhiteListResponseBodyDataResult(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The content of the blacklist.
         self.content = content
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
+        # The time when the blacklist or whitelist was created.
         self.gmt_create = gmt_create
+        # The time when the rule was modified.
         self.gmt_modified = gmt_modified
+        # The ID of the blacklist and whitelist.
         self.id = id
+        # Specifies whether to enable the whitelist feature.
         self.is_white = is_white
+        # The name of the blacklist.
         self.name = name
+        # The comment.
         self.note = note
+        # The resource ID.
         self.resource_id = resource_id
+        # The list of resource IDs in the JSON format.
+        # 
+        # *   If the value of the ResourceType parameter is ROUTE, the value of this parameter is the list of route IDs.
+        # *   If the value of the ResourceType parameter is DOMAIN, the value of this parameter is the list of domain names.
         self.resource_id_json_list = resource_id_json_list
+        # The description of the resource name.
         self.resource_id_name_json = resource_id_name_json
+        # The effective scope of the blacklist or whitelist. Valid values:
+        # 
+        # *   GATEWAY
+        # *   DOMAIN
+        # *   ROUTE
         self.resource_type = resource_type
+        # The status of the blacklist or whitelist.
+        # 
+        # *   on
+        # *   off
         self.status = status
+        # The type of the blacklist and whitelist. The value is fixed to IP address blacklist and whitelist.
         self.type = type
 
     def validate(self):
@@ -20253,9 +20356,13 @@ class GatewayBlackWhiteListResponseBodyData(TeaModel):
         result: List[GatewayBlackWhiteListResponseBodyDataResult] = None,
         total_size: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The returned information.
         self.result = result
+        # The total number of instances returned.
         self.total_size = total_size
 
     def validate(self):
@@ -20311,14 +20418,26 @@ class GatewayBlackWhiteListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. A value of 200 is returned if the request is successful.
         self.code = code
+        # The data returned.
         self.data = data
+        # The placeholder in the dynamic error message. This parameter is not returned.
         self.dynamic_code = dynamic_code
+        # The dynamic message. This parameter is not returned.
         self.dynamic_message = dynamic_message
+        # The error code.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
 
     def validate(self):
@@ -26128,6 +26247,7 @@ class GetGatewayServiceDetailResponseBodyData(TeaModel):
         ports: List[int] = None,
         service_fqdn: str = None,
         service_name_in_registry: str = None,
+        service_port: int = None,
         service_protocol: str = None,
         source_id: int = None,
         source_type: str = None,
@@ -26169,6 +26289,7 @@ class GetGatewayServiceDetailResponseBodyData(TeaModel):
         self.service_fqdn = service_fqdn
         # The name of the service registered with the service registry.
         self.service_name_in_registry = service_name_in_registry
+        self.service_port = service_port
         # The protocol of the service.
         self.service_protocol = service_protocol
         # The ID of the service source.
@@ -26246,6 +26367,8 @@ class GetGatewayServiceDetailResponseBodyData(TeaModel):
             result['ServiceFQDN'] = self.service_fqdn
         if self.service_name_in_registry is not None:
             result['ServiceNameInRegistry'] = self.service_name_in_registry
+        if self.service_port is not None:
+            result['ServicePort'] = self.service_port
         if self.service_protocol is not None:
             result['ServiceProtocol'] = self.service_protocol
         if self.source_id is not None:
@@ -26307,6 +26430,8 @@ class GetGatewayServiceDetailResponseBodyData(TeaModel):
             self.service_fqdn = m.get('ServiceFQDN')
         if m.get('ServiceNameInRegistry') is not None:
             self.service_name_in_registry = m.get('ServiceNameInRegistry')
+        if m.get('ServicePort') is not None:
+            self.service_port = m.get('ServicePort')
         if m.get('ServiceProtocol') is not None:
             self.service_protocol = m.get('ServiceProtocol')
         if m.get('SourceId') is not None:
@@ -27202,7 +27327,7 @@ class GetKubernetesSourceResponseBody(TeaModel):
     ):
         # The status code returned.
         self.code = code
-        # The data structure.
+        # The data returned.
         self.data = data
         # The HTTP status code returned.
         self.http_status_code = http_status_code
@@ -39153,6 +39278,39 @@ class ListGatewayShrinkRequest(TeaModel):
         return self
 
 
+class ListGatewayResponseBodyDataResultElasticPolicyEnableScaleTimePolicyList(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
 class ListGatewayResponseBodyDataResultElasticPolicyTimePolicyList(TeaModel):
     def __init__(
         self,
@@ -39200,6 +39358,8 @@ class ListGatewayResponseBodyDataResultElasticPolicy(TeaModel):
         self,
         elastic: bool = None,
         elastic_type: str = None,
+        enable_scale_time_policy_list: List[ListGatewayResponseBodyDataResultElasticPolicyEnableScaleTimePolicyList] = None,
+        load_warning_threshold: bool = None,
         max_replica: int = None,
         time_policy_list: List[ListGatewayResponseBodyDataResultElasticPolicyTimePolicyList] = None,
     ):
@@ -39209,12 +39369,18 @@ class ListGatewayResponseBodyDataResultElasticPolicy(TeaModel):
         # 
         # *   CronHPA: scale-out by time
         self.elastic_type = elastic_type
+        self.enable_scale_time_policy_list = enable_scale_time_policy_list
+        self.load_warning_threshold = load_warning_threshold
         # The maximum number of instances that are automatically scaled out. This parameter is used for horizontal scale-out.
         self.max_replica = max_replica
         # The time policy list for auto scale-out.
         self.time_policy_list = time_policy_list
 
     def validate(self):
+        if self.enable_scale_time_policy_list:
+            for k in self.enable_scale_time_policy_list:
+                if k:
+                    k.validate()
         if self.time_policy_list:
             for k in self.time_policy_list:
                 if k:
@@ -39230,6 +39396,12 @@ class ListGatewayResponseBodyDataResultElasticPolicy(TeaModel):
             result['Elastic'] = self.elastic
         if self.elastic_type is not None:
             result['ElasticType'] = self.elastic_type
+        result['EnableScaleTimePolicyList'] = []
+        if self.enable_scale_time_policy_list is not None:
+            for k in self.enable_scale_time_policy_list:
+                result['EnableScaleTimePolicyList'].append(k.to_map() if k else None)
+        if self.load_warning_threshold is not None:
+            result['LoadWarningThreshold'] = self.load_warning_threshold
         if self.max_replica is not None:
             result['MaxReplica'] = self.max_replica
         result['TimePolicyList'] = []
@@ -39244,6 +39416,13 @@ class ListGatewayResponseBodyDataResultElasticPolicy(TeaModel):
             self.elastic = m.get('Elastic')
         if m.get('ElasticType') is not None:
             self.elastic_type = m.get('ElasticType')
+        self.enable_scale_time_policy_list = []
+        if m.get('EnableScaleTimePolicyList') is not None:
+            for k in m.get('EnableScaleTimePolicyList'):
+                temp_model = ListGatewayResponseBodyDataResultElasticPolicyEnableScaleTimePolicyList()
+                self.enable_scale_time_policy_list.append(temp_model.from_map(k))
+        if m.get('LoadWarningThreshold') is not None:
+            self.load_warning_threshold = m.get('LoadWarningThreshold')
         if m.get('MaxReplica') is not None:
             self.max_replica = m.get('MaxReplica')
         self.time_policy_list = []
@@ -43244,6 +43423,7 @@ class ListGatewayRouteResponseBodyDataResult(TeaModel):
         domain_id_list: List[int] = None,
         domain_name: str = None,
         domain_name_list: List[str] = None,
+        dynamic_route: bool = None,
         enable_waf: str = None,
         fallback: bool = None,
         fallback_services: List[ListGatewayRouteResponseBodyDataResultFallbackServices] = None,
@@ -43280,6 +43460,7 @@ class ListGatewayRouteResponseBodyDataResult(TeaModel):
         self.domain_name = domain_name
         # The domain names.
         self.domain_name_list = domain_name_list
+        self.dynamic_route = dynamic_route
         # Indicates whether Web Application Firewall (WAF) is activated.
         self.enable_waf = enable_waf
         # Indicates whether the Fallback service is enabled.
@@ -43357,6 +43538,8 @@ class ListGatewayRouteResponseBodyDataResult(TeaModel):
             result['DomainName'] = self.domain_name
         if self.domain_name_list is not None:
             result['DomainNameList'] = self.domain_name_list
+        if self.dynamic_route is not None:
+            result['DynamicRoute'] = self.dynamic_route
         if self.enable_waf is not None:
             result['EnableWaf'] = self.enable_waf
         if self.fallback is not None:
@@ -43419,6 +43602,8 @@ class ListGatewayRouteResponseBodyDataResult(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('DomainNameList') is not None:
             self.domain_name_list = m.get('DomainNameList')
+        if m.get('DynamicRoute') is not None:
+            self.dynamic_route = m.get('DynamicRoute')
         if m.get('EnableWaf') is not None:
             self.enable_waf = m.get('EnableWaf')
         if m.get('Fallback') is not None:
@@ -51588,11 +51773,13 @@ class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions(Tea
         self,
         cond: str = None,
         name: str = None,
+        name_list: List[str] = None,
         type: str = None,
         value: str = None,
     ):
         self.cond = cond
         self.name = name
+        self.name_list = name_list
         self.type = type
         self.value = value
 
@@ -51609,6 +51796,8 @@ class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions(Tea
             result['Cond'] = self.cond
         if self.name is not None:
             result['Name'] = self.name
+        if self.name_list is not None:
+            result['NameList'] = self.name_list
         if self.type is not None:
             result['Type'] = self.type
         if self.value is not None:
@@ -51621,6 +51810,8 @@ class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions(Tea
             self.cond = m.get('Cond')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('NameList') is not None:
+            self.name_list = m.get('NameList')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('Value') is not None:
@@ -52035,6 +52226,7 @@ class QueryAllSwimmingLaneGroupResponseBodyData(TeaModel):
         paths: str = None,
         record_canary_detail: bool = None,
         region: str = None,
+        swim_version: int = None,
         user_id: str = None,
     ):
         self.app_ids = app_ids
@@ -52048,6 +52240,7 @@ class QueryAllSwimmingLaneGroupResponseBodyData(TeaModel):
         self.paths = paths
         self.record_canary_detail = record_canary_detail
         self.region = region
+        self.swim_version = swim_version
         self.user_id = user_id
 
     def validate(self):
@@ -52081,6 +52274,8 @@ class QueryAllSwimmingLaneGroupResponseBodyData(TeaModel):
             result['RecordCanaryDetail'] = self.record_canary_detail
         if self.region is not None:
             result['Region'] = self.region
+        if self.swim_version is not None:
+            result['SwimVersion'] = self.swim_version
         if self.user_id is not None:
             result['UserId'] = self.user_id
         return result
@@ -52109,6 +52304,8 @@ class QueryAllSwimmingLaneGroupResponseBodyData(TeaModel):
             self.record_canary_detail = m.get('RecordCanaryDetail')
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('SwimVersion') is not None:
+            self.swim_version = m.get('SwimVersion')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         return self
