@@ -1,3 +1,7 @@
+2024-09-10 Version: 2.0.17
+- Update API CreateTask: update param body.
+
+
 2024-08-15 Version: 2.0.16
 - Update API GetTaskInfo: update response param.
 

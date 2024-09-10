@@ -9,6 +9,7 @@ class CreateTaskRequestInput(TeaModel):
         self,
         file_url: str = None,
         format: str = None,
+        language_hints: List[str] = None,
         multiple_streams_enabled: bool = None,
         output_path: str = None,
         progressive_callbacks_enabled: bool = None,
@@ -19,6 +20,7 @@ class CreateTaskRequestInput(TeaModel):
     ):
         self.file_url = file_url
         self.format = format
+        self.language_hints = language_hints
         self.multiple_streams_enabled = multiple_streams_enabled
         self.output_path = output_path
         self.progressive_callbacks_enabled = progressive_callbacks_enabled
@@ -41,6 +43,8 @@ class CreateTaskRequestInput(TeaModel):
             result['FileUrl'] = self.file_url
         if self.format is not None:
             result['Format'] = self.format
+        if self.language_hints is not None:
+            result['LanguageHints'] = self.language_hints
         if self.multiple_streams_enabled is not None:
             result['MultipleStreamsEnabled'] = self.multiple_streams_enabled
         if self.output_path is not None:
@@ -63,6 +67,8 @@ class CreateTaskRequestInput(TeaModel):
             self.file_url = m.get('FileUrl')
         if m.get('Format') is not None:
             self.format = m.get('Format')
+        if m.get('LanguageHints') is not None:
+            self.language_hints = m.get('LanguageHints')
         if m.get('MultipleStreamsEnabled') is not None:
             self.multiple_streams_enabled = m.get('MultipleStreamsEnabled')
         if m.get('OutputPath') is not None:
