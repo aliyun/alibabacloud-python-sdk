@@ -2528,14 +2528,22 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.dst_dbname):
+            query['DstDBName'] = request.dst_dbname
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.reserve_account):
+            query['ReserveAccount'] = request.reserve_account
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.src_dbname):
+            query['SrcDBName'] = request.src_dbname
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2571,14 +2579,22 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not UtilClient.is_unset(request.dst_dbname):
+            query['DstDBName'] = request.dst_dbname
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.reserve_account):
+            query['ReserveAccount'] = request.reserve_account
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.src_dbname):
+            query['SrcDBName'] = request.src_dbname
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -20722,7 +20738,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeHistoryEventsResponse:
         """
-        @summary 事件中心事件列表
+        @summary Queries historical events in the event center.
         
         @param request: DescribeHistoryEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20787,7 +20803,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeHistoryEventsResponse:
         """
-        @summary 事件中心事件列表
+        @summary Queries historical events in the event center.
         
         @param request: DescribeHistoryEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20851,7 +20867,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeHistoryEventsRequest,
     ) -> rds_20140815_models.DescribeHistoryEventsResponse:
         """
-        @summary 事件中心事件列表
+        @summary Queries historical events in the event center.
         
         @param request: DescribeHistoryEventsRequest
         @return: DescribeHistoryEventsResponse
@@ -20864,7 +20880,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeHistoryEventsRequest,
     ) -> rds_20140815_models.DescribeHistoryEventsResponse:
         """
-        @summary 事件中心事件列表
+        @summary Queries historical events in the event center.
         
         @param request: DescribeHistoryEventsRequest
         @return: DescribeHistoryEventsResponse
@@ -20878,7 +20894,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeHistoryEventsStatResponse:
         """
-        @summary Queries event statistics in the event center.
+        @summary Queries the statistics of historical events in the event center.
         
         @param request: DescribeHistoryEventsStatRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20921,7 +20937,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeHistoryEventsStatResponse:
         """
-        @summary Queries event statistics in the event center.
+        @summary Queries the statistics of historical events in the event center.
         
         @param request: DescribeHistoryEventsStatRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20963,7 +20979,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeHistoryEventsStatRequest,
     ) -> rds_20140815_models.DescribeHistoryEventsStatResponse:
         """
-        @summary Queries event statistics in the event center.
+        @summary Queries the statistics of historical events in the event center.
         
         @param request: DescribeHistoryEventsStatRequest
         @return: DescribeHistoryEventsStatResponse
@@ -20976,7 +20992,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeHistoryEventsStatRequest,
     ) -> rds_20140815_models.DescribeHistoryEventsStatResponse:
         """
-        @summary Queries event statistics in the event center.
+        @summary Queries the statistics of historical events in the event center.
         
         @param request: DescribeHistoryEventsStatRequest
         @return: DescribeHistoryEventsStatResponse
@@ -27914,14 +27930,16 @@ class Client(OpenApiClient):
         
         @description ### [](#)Supported database engines
         MySQL
-        > This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
+        *\
+        *Note** This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
         SQL Server
-        > This operation is supported only for RDS instances that run SQL Server 2008 R2.
+        *\
+        *Note** This operation is supported only for RDS instances that run SQL Server 2008 R2.
         MariaDB
-        ### [](#)Precautions
+        ### [](#)Prerequisites
         Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
         If the return result is empty, check whether the StartTime and EndTime parameters are in UTC. If yes, no slow logs are generated within the specified time range.
-        Starting from December 13, 2023, the optimized template algorithm is used for slow queries. As a result, different **SQLHash** values are generated for the same SQLText before and after optimization. For more information, see [[Notice\\] Optimization of the template algorithm for slow queries](~~2637024~~).
+        Starting from September 01, 2024, the template algorithm for slow queries is optimized. When you call the operation, you must change the value of the **SQLHASH** parameter. For more information, see [[Notice\\] Optimization of the template algorithm for slow queries](~~2845725~~).
         
         @param request: DescribeSlowLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27980,14 +27998,16 @@ class Client(OpenApiClient):
         
         @description ### [](#)Supported database engines
         MySQL
-        > This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
+        *\
+        *Note** This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
         SQL Server
-        > This operation is supported only for RDS instances that run SQL Server 2008 R2.
+        *\
+        *Note** This operation is supported only for RDS instances that run SQL Server 2008 R2.
         MariaDB
-        ### [](#)Precautions
+        ### [](#)Prerequisites
         Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
         If the return result is empty, check whether the StartTime and EndTime parameters are in UTC. If yes, no slow logs are generated within the specified time range.
-        Starting from December 13, 2023, the optimized template algorithm is used for slow queries. As a result, different **SQLHash** values are generated for the same SQLText before and after optimization. For more information, see [[Notice\\] Optimization of the template algorithm for slow queries](~~2637024~~).
+        Starting from September 01, 2024, the template algorithm for slow queries is optimized. When you call the operation, you must change the value of the **SQLHASH** parameter. For more information, see [[Notice\\] Optimization of the template algorithm for slow queries](~~2845725~~).
         
         @param request: DescribeSlowLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28045,14 +28065,16 @@ class Client(OpenApiClient):
         
         @description ### [](#)Supported database engines
         MySQL
-        > This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
+        *\
+        *Note** This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
         SQL Server
-        > This operation is supported only for RDS instances that run SQL Server 2008 R2.
+        *\
+        *Note** This operation is supported only for RDS instances that run SQL Server 2008 R2.
         MariaDB
-        ### [](#)Precautions
+        ### [](#)Prerequisites
         Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
         If the return result is empty, check whether the StartTime and EndTime parameters are in UTC. If yes, no slow logs are generated within the specified time range.
-        Starting from December 13, 2023, the optimized template algorithm is used for slow queries. As a result, different **SQLHash** values are generated for the same SQLText before and after optimization. For more information, see [[Notice\\] Optimization of the template algorithm for slow queries](~~2637024~~).
+        Starting from September 01, 2024, the template algorithm for slow queries is optimized. When you call the operation, you must change the value of the **SQLHASH** parameter. For more information, see [[Notice\\] Optimization of the template algorithm for slow queries](~~2845725~~).
         
         @param request: DescribeSlowLogsRequest
         @return: DescribeSlowLogsResponse
@@ -28069,14 +28091,16 @@ class Client(OpenApiClient):
         
         @description ### [](#)Supported database engines
         MySQL
-        > This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
+        *\
+        *Note** This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
         SQL Server
-        > This operation is supported only for RDS instances that run SQL Server 2008 R2.
+        *\
+        *Note** This operation is supported only for RDS instances that run SQL Server 2008 R2.
         MariaDB
-        ### [](#)Precautions
+        ### [](#)Prerequisites
         Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
         If the return result is empty, check whether the StartTime and EndTime parameters are in UTC. If yes, no slow logs are generated within the specified time range.
-        Starting from December 13, 2023, the optimized template algorithm is used for slow queries. As a result, different **SQLHash** values are generated for the same SQLText before and after optimization. For more information, see [[Notice\\] Optimization of the template algorithm for slow queries](~~2637024~~).
+        Starting from September 01, 2024, the template algorithm for slow queries is optimized. When you call the operation, you must change the value of the **SQLHASH** parameter. For more information, see [[Notice\\] Optimization of the template algorithm for slow queries](~~2845725~~).
         
         @param request: DescribeSlowLogsRequest
         @return: DescribeSlowLogsResponse
@@ -31844,6 +31868,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_adinfo_with_options_async(request, runtime)
 
+    def modify_account_check_policy_with_options(
+        self,
+        request: rds_20140815_models.ModifyAccountCheckPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyAccountCheckPolicyResponse:
+        """
+        @summary 修改账号检查策略
+        
+        @param request: ModifyAccountCheckPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccountCheckPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.check_policy):
+            query['CheckPolicy'] = request.check_policy
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAccountCheckPolicy',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyAccountCheckPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_account_check_policy_with_options_async(
+        self,
+        request: rds_20140815_models.ModifyAccountCheckPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyAccountCheckPolicyResponse:
+        """
+        @summary 修改账号检查策略
+        
+        @param request: ModifyAccountCheckPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccountCheckPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.check_policy):
+            query['CheckPolicy'] = request.check_policy
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAccountCheckPolicy',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyAccountCheckPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_account_check_policy(
+        self,
+        request: rds_20140815_models.ModifyAccountCheckPolicyRequest,
+    ) -> rds_20140815_models.ModifyAccountCheckPolicyResponse:
+        """
+        @summary 修改账号检查策略
+        
+        @param request: ModifyAccountCheckPolicyRequest
+        @return: ModifyAccountCheckPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_account_check_policy_with_options(request, runtime)
+
+    async def modify_account_check_policy_async(
+        self,
+        request: rds_20140815_models.ModifyAccountCheckPolicyRequest,
+    ) -> rds_20140815_models.ModifyAccountCheckPolicyResponse:
+        """
+        @summary 修改账号检查策略
+        
+        @param request: ModifyAccountCheckPolicyRequest
+        @return: ModifyAccountCheckPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_account_check_policy_with_options_async(request, runtime)
+
     def modify_account_description_with_options(
         self,
         request: rds_20140815_models.ModifyAccountDescriptionRequest,
@@ -32107,6 +32259,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_account_masking_privilege_with_options_async(request, runtime)
+
+    def modify_account_security_policy_with_options(
+        self,
+        request: rds_20140815_models.ModifyAccountSecurityPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyAccountSecurityPolicyResponse:
+        """
+        @summary 修改密码策略
+        
+        @param request: ModifyAccountSecurityPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccountSecurityPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.group_policy):
+            query['GroupPolicy'] = request.group_policy
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAccountSecurityPolicy',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyAccountSecurityPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_account_security_policy_with_options_async(
+        self,
+        request: rds_20140815_models.ModifyAccountSecurityPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyAccountSecurityPolicyResponse:
+        """
+        @summary 修改密码策略
+        
+        @param request: ModifyAccountSecurityPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAccountSecurityPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.group_policy):
+            query['GroupPolicy'] = request.group_policy
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAccountSecurityPolicy',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyAccountSecurityPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_account_security_policy(
+        self,
+        request: rds_20140815_models.ModifyAccountSecurityPolicyRequest,
+    ) -> rds_20140815_models.ModifyAccountSecurityPolicyResponse:
+        """
+        @summary 修改密码策略
+        
+        @param request: ModifyAccountSecurityPolicyRequest
+        @return: ModifyAccountSecurityPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_account_security_policy_with_options(request, runtime)
+
+    async def modify_account_security_policy_async(
+        self,
+        request: rds_20140815_models.ModifyAccountSecurityPolicyRequest,
+    ) -> rds_20140815_models.ModifyAccountSecurityPolicyResponse:
+        """
+        @summary 修改密码策略
+        
+        @param request: ModifyAccountSecurityPolicyRequest
+        @return: ModifyAccountSecurityPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_account_security_policy_with_options_async(request, runtime)
 
     def modify_action_event_policy_with_options(
         self,
@@ -37646,7 +37922,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyEventInfoResponse:
         """
-        @summary 事件中心修改事件信息
+        @summary Modifies information about the events in the event center.
         
         @param request: ModifyEventInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37689,7 +37965,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyEventInfoResponse:
         """
-        @summary 事件中心修改事件信息
+        @summary Modifies information about the events in the event center.
         
         @param request: ModifyEventInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37731,7 +38007,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyEventInfoRequest,
     ) -> rds_20140815_models.ModifyEventInfoResponse:
         """
-        @summary 事件中心修改事件信息
+        @summary Modifies information about the events in the event center.
         
         @param request: ModifyEventInfoRequest
         @return: ModifyEventInfoResponse
@@ -37744,7 +38020,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyEventInfoRequest,
     ) -> rds_20140815_models.ModifyEventInfoResponse:
         """
-        @summary 事件中心修改事件信息
+        @summary Modifies information about the events in the event center.
         
         @param request: ModifyEventInfoRequest
         @return: ModifyEventInfoResponse
@@ -40422,7 +40698,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyTaskInfoResponse:
         """
-        @summary Modifies the task information in the task center.
+        @summary Modifies information about the historical tasks in the task center.
         
         @param request: ModifyTaskInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -40471,7 +40747,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyTaskInfoResponse:
         """
-        @summary Modifies the task information in the task center.
+        @summary Modifies information about the historical tasks in the task center.
         
         @param request: ModifyTaskInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -40519,7 +40795,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyTaskInfoRequest,
     ) -> rds_20140815_models.ModifyTaskInfoResponse:
         """
-        @summary Modifies the task information in the task center.
+        @summary Modifies information about the historical tasks in the task center.
         
         @param request: ModifyTaskInfoRequest
         @return: ModifyTaskInfoResponse
@@ -40532,7 +40808,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyTaskInfoRequest,
     ) -> rds_20140815_models.ModifyTaskInfoResponse:
         """
-        @summary Modifies the task information in the task center.
+        @summary Modifies information about the historical tasks in the task center.
         
         @param request: ModifyTaskInfoRequest
         @return: ModifyTaskInfoResponse
@@ -43352,12 +43628,12 @@ class Client(OpenApiClient):
         """
         @summary Restores data to an existing instance across regions.
         
-        @description >  Before restoration, you can call the [CheckCreateDdrDBInstance](https://help.aliyun.com/document_detail/121721.html) operation to check whether a cross-region backup set can be used for cross-region restoration.
-        ### [](#)Supported database engine
+        @description >  Before restoration, you can call the CheckCreateDdrDBInstance operation to check whether a cross-region backup set can be used for cross-region restoration.
+        ### [](#)Supported database engines
         MySQL
         ### [](#)References
-        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        [Back up an ApsaraDB RDS for MySQL instance across regions](https://help.aliyun.com/document_detail/120824.html)
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/120824.html)
         [Restore the data of an ApsaraDB RDS for MySQL instance across regions](https://help.aliyun.com/document_detail/120875.html)
         
         @param request: RestoreDdrTableRequest
@@ -43419,12 +43695,12 @@ class Client(OpenApiClient):
         """
         @summary Restores data to an existing instance across regions.
         
-        @description >  Before restoration, you can call the [CheckCreateDdrDBInstance](https://help.aliyun.com/document_detail/121721.html) operation to check whether a cross-region backup set can be used for cross-region restoration.
-        ### [](#)Supported database engine
+        @description >  Before restoration, you can call the CheckCreateDdrDBInstance operation to check whether a cross-region backup set can be used for cross-region restoration.
+        ### [](#)Supported database engines
         MySQL
         ### [](#)References
-        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        [Back up an ApsaraDB RDS for MySQL instance across regions](https://help.aliyun.com/document_detail/120824.html)
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/120824.html)
         [Restore the data of an ApsaraDB RDS for MySQL instance across regions](https://help.aliyun.com/document_detail/120875.html)
         
         @param request: RestoreDdrTableRequest
@@ -43485,12 +43761,12 @@ class Client(OpenApiClient):
         """
         @summary Restores data to an existing instance across regions.
         
-        @description >  Before restoration, you can call the [CheckCreateDdrDBInstance](https://help.aliyun.com/document_detail/121721.html) operation to check whether a cross-region backup set can be used for cross-region restoration.
-        ### [](#)Supported database engine
+        @description >  Before restoration, you can call the CheckCreateDdrDBInstance operation to check whether a cross-region backup set can be used for cross-region restoration.
+        ### [](#)Supported database engines
         MySQL
         ### [](#)References
-        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        [Back up an ApsaraDB RDS for MySQL instance across regions](https://help.aliyun.com/document_detail/120824.html)
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/120824.html)
         [Restore the data of an ApsaraDB RDS for MySQL instance across regions](https://help.aliyun.com/document_detail/120875.html)
         
         @param request: RestoreDdrTableRequest
@@ -43506,12 +43782,12 @@ class Client(OpenApiClient):
         """
         @summary Restores data to an existing instance across regions.
         
-        @description >  Before restoration, you can call the [CheckCreateDdrDBInstance](https://help.aliyun.com/document_detail/121721.html) operation to check whether a cross-region backup set can be used for cross-region restoration.
-        ### [](#)Supported database engine
+        @description >  Before restoration, you can call the CheckCreateDdrDBInstance operation to check whether a cross-region backup set can be used for cross-region restoration.
+        ### [](#)Supported database engines
         MySQL
         ### [](#)References
-        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        [Back up an ApsaraDB RDS for MySQL instance across regions](https://help.aliyun.com/document_detail/120824.html)
+        >  Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/120824.html)
         [Restore the data of an ApsaraDB RDS for MySQL instance across regions](https://help.aliyun.com/document_detail/120875.html)
         
         @param request: RestoreDdrTableRequest

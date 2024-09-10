@@ -1,3 +1,12 @@
+2024-09-10 Version: 7.2.0
+- Support API ModifyAccountCheckPolicy.
+- Support API ModifyAccountSecurityPolicy.
+- Update API CopyDatabase: add param DBInstanceName.
+- Update API CopyDatabase: add param DstDBName.
+- Update API CopyDatabase: add param ReserveAccount.
+- Update API CopyDatabase: add param SrcDBName.
+
+
 2024-09-09 Version: 7.1.4
 - Update API CreateAccount: add param CheckPolicy.
 - Update API DescribeAccounts: update response param.

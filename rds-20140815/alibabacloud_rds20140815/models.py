@@ -3202,16 +3202,28 @@ class ConfirmNotifyResponse(TeaModel):
 class CopyDatabaseRequest(TeaModel):
     def __init__(
         self,
+        dbinstance_name: str = None,
+        dst_dbname: str = None,
         owner_id: int = None,
+        reserve_account: int = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        src_dbname: str = None,
     ):
+        # The instance name.
+        self.dbinstance_name = dbinstance_name
+        # Destination database name.
+        self.dst_dbname = dst_dbname
         self.owner_id = owner_id
+        # Reserve account.
+        self.reserve_account = reserve_account
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Source database name.
+        self.src_dbname = src_dbname
 
     def validate(self):
         pass
@@ -3222,26 +3234,42 @@ class CopyDatabaseRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dbinstance_name is not None:
+            result['DBInstanceName'] = self.dbinstance_name
+        if self.dst_dbname is not None:
+            result['DstDBName'] = self.dst_dbname
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+        if self.reserve_account is not None:
+            result['ReserveAccount'] = self.reserve_account
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.src_dbname is not None:
+            result['SrcDBName'] = self.src_dbname
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DBInstanceName') is not None:
+            self.dbinstance_name = m.get('DBInstanceName')
+        if m.get('DstDBName') is not None:
+            self.dst_dbname = m.get('DstDBName')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        if m.get('ReserveAccount') is not None:
+            self.reserve_account = m.get('ReserveAccount')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SrcDBName') is not None:
+            self.src_dbname = m.get('SrcDBName')
         return self
 
 
@@ -7790,10 +7818,15 @@ class CreateDdrInstanceRequest(TeaModel):
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the destination instance. Only the local SSD storage type is supported. Default value: **local_ssd**.
         self.dbinstance_storage_type = dbinstance_storage_type
-        # User-defined key ID for cloud disk encryption. Passing this parameter means turning on cloud disk encryption (it cannot be turned off after turning it on), and RoleARN needs to be passed in. You can view the key ID in the key management service console, or create a new key. For more information, see [Creating a Key](https://help.aliyun.com/document_detail/181610.html).
+        # The ID of the customer master key (CMK) for cloud disk encryption. If this parameter is specified, cloud disk encryption is enabled and you must also specify the **RoleARN** parameter. Cloud disk encryption cannot be disabled after it is enabled. You can obtain the ID of the key in the KMS console or create a key. For more information, see [Create a key](https://help.aliyun.com/document_detail/181610.html).
         # 
-        # > - This parameter is only applicable to RDS SQL Server instances.
-        # > - You can also not pass this parameter and only need to pass in RoleARN, which means setting the cloud disk encryption type of the instance to the RDS managed service key (Default Service CMK).
+        # **\
+        # 
+        # **Notes**\
+        # 
+        # *   This parameter is applicable only to ApsaraDB RDS for SQL Server instances.
+        # 
+        # *   You can leave this parameter empty. If you do not specify this parameter, you only need to specify the **RoleARN** to use the service key that is managed by ApsaraDB RDS to encrypt cloud disks.
         self.encryption_key = encryption_key
         # The database engine of the destination instance. Valid values:
         # 
@@ -7857,9 +7890,9 @@ class CreateDdrInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.restore_type = restore_type
-        # The global resource descriptor (ARN) of the RDS cloud service account authorized by the primary account to access the KMS permission. You can view the ARN information through the [CheckCloudResourceAuthorized](https://next.api.aliyun.com/document/Rds/2014-08-15/CheckCloudResourceAuthorized) API.
+        # The Alibaba Cloud Resource Name (ARN) that is provided by your Alibaba Cloud account for Resource Access Management (RAM) users. RAM users can use the ARN to connect to ApsaraDB RDS to Key Management Service (KMS). You can call the [CheckCloudResourceAuthorized](https://help.aliyun.com/document_detail/2628797.html) operation to query the ARN.
         # 
-        # > This parameter is only available for RDS SQL Server instances.
+        # >  This parameter is applicable only to ApsaraDB RDS for SQL Server instances.
         self.role_arn = role_arn
         # The IP address whitelist of the destination instance. If you want to add more than one entry to the IP address whitelist, separate the entries with commas (,). Each entry must be unique. You can add a maximum of 1,000 entries. For more information, see [Configure an IP address whitelist for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/43185.html). The entries in the IP address whitelist must be in one of the following formats:
         # 
@@ -11183,13 +11216,13 @@ class CreateReplicationLinkRequest(TeaModel):
         self.source_category = source_category
         # The name of the source instance.
         # 
-        # >  You must specify this parameter if **SourceCategory** is set to **aliyunRDS**.
+        # >  This parameter is required when you set the **SourceCategory** parameter to **aliyunRDS**.
         self.source_instance_name = source_instance_name
-        # The ID of the region where the source instance is located.
+        # The region ID of the source instance.
         # 
-        # >  You must specify this parameter if **SourceCategory** is set to **aliyunRDS**.
+        # >  This parameter is required when you set the **SourceCategory** parameter to **aliyunRDS**.
         self.source_instance_region_id = source_instance_region_id
-        # The port number of the source instance.
+        # The port of the source instance.
         self.source_port = source_port
         # The task ID of the successful dry run.
         self.task_id = task_id
@@ -16352,7 +16385,7 @@ class DescribeAccountsResponseBody(TeaModel):
         system_admin_account_status: str = None,
         total_record_count: int = None,
     ):
-        # The details about the account.
+        # The details of the account.
         self.accounts = accounts
         # The page number.
         self.page_number = page_number
@@ -19254,9 +19287,10 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         # 
         # >  This parameter is returned only when the instance runs SQL Server.
         self.support_volume_shadow_copy = support_volume_shadow_copy
-        # Whether to support 5-minute log backup of SQL Server.
-        # - 0 : Not Support
-        # - 1 : Support
+        # Indicates whether log backups for SQL Server are performed verery five minutes.
+        # 
+        # *   0: No
+        # *   1: Yes
         self.supports_high_frequency_backup = supports_high_frequency_backup
 
     def validate(self):
@@ -60700,6 +60734,153 @@ class ModifyADInfoResponse(TeaModel):
         return self
 
 
+class ModifyAccountCheckPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        account_name: str = None,
+        check_policy: bool = None,
+        client_token: str = None,
+        dbinstance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.account_name = account_name
+        # This parameter is required.
+        self.check_policy = check_policy
+        self.client_token = client_token
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+        if self.check_policy is not None:
+            result['CheckPolicy'] = self.check_policy
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+        if m.get('CheckPolicy') is not None:
+            self.check_policy = m.get('CheckPolicy')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ModifyAccountCheckPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyAccountCheckPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAccountCheckPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAccountCheckPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyAccountDescriptionRequest(TeaModel):
     def __init__(
         self,
@@ -60991,6 +61172,145 @@ class ModifyAccountMaskingPrivilegeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyAccountMaskingPrivilegeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyAccountSecurityPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        dbinstance_id: str = None,
+        group_policy: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.client_token = client_token
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # This parameter is required.
+        self.group_policy = group_policy
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.group_policy is not None:
+            result['GroupPolicy'] = self.group_policy
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('GroupPolicy') is not None:
+            self.group_policy = m.get('GroupPolicy')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ModifyAccountSecurityPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyAccountSecurityPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyAccountSecurityPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyAccountSecurityPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -67974,15 +68294,20 @@ class ModifyEventInfoRequest(TeaModel):
         region_id: str = None,
         security_token: str = None,
     ):
-        # The action parameter. Set this value in the JSON string format.
+        # The action-related parameters. You can add action-related parameters based on your business requirements. The parameter value varies with the value of the TaskAction parameter.
         self.action_params = action_params
-        # The event handling action. Set this value to archive or undo.
+        # The event handling action. Valid values:
+        # 
+        # *   **archive**\
+        # *   **undo**\
+        # 
+        # >  This parameter is required.
         self.event_action = event_action
-        # The event ID. Separate multiple event IDs with commas (,). You can configure up to 20 event IDs.
+        # The event ID. You can call the DescribeEvents operation to obtain the IDs of the events. Separate multiple event IDs with commas (,). You can specify up to 20 event IDs.
         # 
         # This parameter is required.
         self.event_id = event_id
-        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -71266,7 +71591,15 @@ class ModifyTaskInfoRequest(TeaModel):
         task_action: str = None,
         task_id: str = None,
     ):
-        # The action parameter.
+        # The action-related parameters. You can add action-related parameters based on your business requirements. If you set the TaskAction parameter to modifySwitchTime, you must set this parameter to `{"recoverMode": "xxx", "recoverTime": "xxx"}`.
+        # 
+        # The recoverMode field specifies the task restoration mode. valid values:
+        # 
+        # *   **timePoint**: The task is executed at a specified point in time.
+        # *   **Immediate**: The task is executed immediately.
+        # *   **maintainTime**: The task is executed based on the O\\&M time.
+        # 
+        # The recoverTime field specifies restoration time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. If you set the recoverMode field to timePoint, you must also specify the recoverTime field.
         self.action_params = action_params
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         # 
@@ -71277,14 +71610,9 @@ class ModifyTaskInfoRequest(TeaModel):
         self.security_token = security_token
         # The name of the execution step.
         self.step_name = step_name
-        # The name of the operation that you can call to execute the task. Valid values:
-        # 
-        # *   ImportImage
-        # *   ExportImage
-        # *   RedeployInstance
-        # *   ModifyDiskSpec
+        # The task action. Set the value to modifySwitchTime. The value specifies that you want to change the switching time or restoration time.
         self.task_action = task_action
-        # The task ID.
+        # The task ID. You can call the DescribeTasks operation to query task IDs.
         # 
         # This parameter is required.
         self.task_id = task_id
