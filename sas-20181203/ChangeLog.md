@@ -1,3 +1,236 @@
+2024-09-10 Version: 3.0.0
+- Support API AddBaselineCheckWhiteRecord.
+- Support API AddCloudVendorAccountAK.
+- Support API AddIdcProbe.
+- Support API CheckStsTokenAuth.
+- Support API CheckTrialFixCount.
+- Support API CopyCustomizeReportConfig.
+- Support API CreateAttestor.
+- Support API CreateBinarySecurityPolicy.
+- Support API CreateCustomizedDict.
+- Support API CreateDynamicDict.
+- Support API CreateJenkinsImageScanTask.
+- Support API CreateMonitorAccount.
+- Support API CreateOrUpdateAutoTagRule.
+- Support API CreateRdDefaultSyncList.
+- Support API CreateSasTrial.
+- Support API CreateSoarStrategyTask.
+- Support API CreateUserSetting.
+- Support API DeleteAttestor.
+- Support API DeleteAutoTagRules.
+- Support API DeleteBackupSnapshot.
+- Support API DeleteBaselineCheckWhiteRecord.
+- Support API DeleteCloudVendorAccountAK.
+- Support API DeleteCustomizeReport.
+- Support API DeleteCustomizedDict.
+- Support API DeleteDingTalk.
+- Support API DeleteHybridProxy.
+- Support API DeleteHybridProxyCluster.
+- Support API DeleteIdcProbe.
+- Support API DeleteMonitorAccount.
+- Support API DeleteSearchCondition.
+- Support API DeleteSoarStrategyTask.
+- Support API DescribeAgentlessSensitiveFileByKey.
+- Support API DescribeAllRegionsStatistics.
+- Support API DescribeAssetsScaProcessNum.
+- Support API DescribeAttestors.
+- Support API DescribeBinarySecurityPolicies.
+- Support API DescribeCanTrySas.
+- Support API DescribeChartData.
+- Support API DescribeChartList.
+- Support API DescribeCheckResult.
+- Support API DescribeCheckWarningCount.
+- Support API DescribeClientProblemType.
+- Support API DescribeCloudVendorAccountAKList.
+- Support API DescribeClusterHostSecuritySummary.
+- Support API DescribeClusterImageSecuritySummary.
+- Support API DescribeContainerFieldStatistics.
+- Support API DescribeContainerGroupedFieldDetail.
+- Support API DescribeContainerServiceK8sClusterKritisStatus.
+- Support API DescribeContainerServiceK8sClusterNamespaces.
+- Support API DescribeContainerServiceK8sClusters.
+- Support API DescribeCustomizeReportConfigDetail.
+- Support API DescribeCustomizeReportList.
+- Support API DescribeCustomizedDictUploadInfo.
+- Support API DescribeCustomizedStrategyTargets.
+- Support API DescribeDataSource.
+- Support API DescribeDefaultKeyInfo.
+- Support API DescribeDomainSecureAlarmList.
+- Support API DescribeDomainSecureRiskList.
+- Support API DescribeDomainSecureScore.
+- Support API DescribeDomainSecureStatistics.
+- Support API DescribeDomainSecureVulList.
+- Support API DescribeDynamicDict.
+- Support API DescribeDynamicDictUploadInfo.
+- Support API DescribeIdcAssetCriteria.
+- Support API DescribeIdcProbeScanResultList.
+- Support API DescribeImageBuildRiskByKey.
+- Support API DescribeImageBuildRiskList.
+- Support API DescribeImageListByBuildRisk.
+- Support API DescribeInstanceVulStatistics.
+- Support API DescribeNeedAsyncQuery.
+- Support API DescribePropertyScaProcessDetail.
+- Support API DescribePropertyUsageTop.
+- Support API DescribeReportExport.
+- Support API DescribeReportRecipientStatus.
+- Support API DescribeScreenScoreThread.
+- Support API DescribeSoarStrategies.
+- Support API DescribeSoarStrategyParam.
+- Support API DescribeSoarStrategyTaskDetail.
+- Support API DescribeSoarStrategyTasks.
+- Support API DescribeSoarSubscribedStrategy.
+- Support API DescribeSupervisonInfo.
+- Support API DescribeSyncAssetTaskList.
+- Support API DescribeSyncAssetTaskLogDetail.
+- Support API DescribeUniBackupStatistics.
+- Support API DescribeUserSetting.
+- Support API DescribeVolDingdingMessage.
+- Support API DescribeWhiteListAsset.
+- Support API DescribeWhiteListAuthorize.
+- Support API DescribeWhiteListEffectiveAssets.
+- Support API DescribeWhiteListProcess.
+- Support API DescribeWhiteListStrategyList.
+- Support API DescribeWhiteListStrategyStatistics.
+- Support API DescribeWhiteListStrategyUuidCount.
+- Support API DingTalkOnlineTest.
+- Support API EnableServiceAccessResourceDirectory.
+- Support API ExportCustomizeReport.
+- Support API FinishGuidTask.
+- Support API GenerateDynamicDict.
+- Support API GetAccountLabel.
+- Support API GetAegisContainerPluginRule.
+- Support API GetAttackTypeList.
+- Support API GetAuthSummary.
+- Support API GetBackupAutoConfigStatus.
+- Support API GetCanTrySas.
+- Support API GetCheckStructure.
+- Support API GetDataTrend.
+- Support API GetDefenceCount.
+- Support API GetLocalDefaultRegion.
+- Support API GetModuleConfigStatus.
+- Support API GetRdTree.
+- Support API GetSupportedModules.
+- Support API IgnoreIdcProbeScanResult.
+- Support API ListAccountsInResourceDirectory.
+- Support API ListAutoTagRules.
+- Support API ListBaselineCheckWhiteRecord.
+- Support API ListLogShipperRegions.
+- Support API ListRdDefaultSyncList.
+- Support API ModifyCloudVendorAccountAK.
+- Support API ModifyDingTalkStatus.
+- Support API ModifyIdcProbe.
+- Support API ModifyPostPayModuleSwitch.
+- Support API ModifyProcessWhiteList.
+- Support API ModifySearchCondition.
+- Support API ModifySoarStrategySubscribe.
+- Support API ModifyWebLockRefresh.
+- Support API OpenBackupAutoConfig.
+- Support API OperationCustomizeReportChart.
+- Support API QueryAssetDetailByUUID.
+- Support API QueryGuidTaskList.
+- Support API ReceiveFunctionTrialRewardByAliUid.
+- Support API RefreshRegistryToken.
+- Support API ResetLogShipper.
+- Support API SaveCustomizeReportConfig.
+- Support API SaveWhiteListStrategy.
+- Support API SaveWhiteListStrategyAssets.
+- Support API SendCustomizeReport.
+- Support API SetSyncRefreshRegion.
+- Support API StartIdcProbeScan.
+- Support API SubmitOperationTask.
+- Support API TriggerCheck.
+- Support API UpdateBaselineCheckWhiteRecord.
+- Support API UpdateCustomizeReportStatus.
+- Support API UpdatePublishAutoUpgrade.
+- Support API UpdatePublishBatch.
+- Support API UpdatePublishCron.
+- Support API UpdatePublishGraySwitch.
+- Support API UpdateTargetListByBatch.
+- Support API UpdateWhiteListStrategyStatus.
+- Support API UpgradeHoneypotNode.
+- Support API UpgradeVersionByUuids.
+- Delete API DescribeIpTags.
+- Delete API ModifyRiskCheckStatus.
+- Delete API ModifyRiskSingleResultStatus.
+- Update API AddCheckInstanceResultWhiteList: add param InstanceList.
+- Update API AddCheckInstanceResultWhiteList: add param Remark.
+- Update API AddCheckInstanceResultWhiteList: add param RuleType.
+- Update API AddCheckInstanceResultWhiteList: update response param.
+- Update API AddCheckResultWhiteList: add param Remark.
+- Update API AddCheckResultWhiteList: add param RuleType.
+- Update API AddCheckResultWhiteList: update param CheckIds.
+- Update API AddCheckResultWhiteList: update response param.
+- Update API ChangeCheckConfig: add param SystemConfig.
+- Update API CreateAgentlessScanTask: add param AssetSelectionType.
+- Update API CreateAgentlessScanTask: update param TargetType.
+- Update API CreateAgentlessScanTask: update param UuidList.
+- Update API CreateFileProtectRule: add param Platform.
+- Update API CreateHybridProxyCluster: update param Ip.
+- Update API CreateHybridProxyCluster: update response param.
+- Update API CreateOssBucketScanTask: add param DecryptionList.
+- Update API CreateOssBucketScanTask: add param LastModifiedStartTime.
+- Update API CreateOssScanConfig: add param DecryptionList.
+- Update API CreateOssScanConfig: add param LastModifiedStartTime.
+- Update API DescribeCheckWarningMachines: add param CurrentPage.
+- Update API DescribeCheckWarningMachines: add param FilterUuid.
+- Update API DescribeCheckWarningMachines: add param InstanceId.
+- Update API DescribeCheckWarningMachines: add param PageSize.
+- Update API DescribeCheckWarningMachines: add param Remark.
+- Update API DescribeCheckWarningMachines: update response param.
+- Update API DescribeCloudCenterInstances: add param Flags.
+- Update API DescribeCloudCenterInstances: update response param.
+- Update API DescribeEventLevelCount: add param MultiAccountActionType.
+- Update API DescribeEventLevelCount: update response param.
+- Update API DescribeFieldStatistics: update response param.
+- Update API DescribeImageInstances: update response param.
+- Update API DescribeLogShipperStatus: update response param.
+- Update API DescribeNsasSuspEventType: add param MultiAccountActionType.
+- Update API DescribeNsasSuspEventType: update response param.
+- Update API DescribeSuspEvents: add param MultiAccountActionType.
+- Update API DescribeSuspEvents: add param SourceAliUids.
+- Update API DescribeSuspEvents: update response param.
+- Update API DescribeVulList: update response param.
+- Update API FixCheckWarnings: update param Uuids.
+- Update API FixCheckWarnings: update response param.
+- Update API GetAgentlessTaskCount: add param Target.
+- Update API GetAgentlessTaskCount: add param TargetType.
+- Update API GetAgentlessTaskCount: update response param.
+- Update API GetCheckProcess: update response param.
+- Update API GetFileProtectEvent: update response param.
+- Update API GetFileProtectRule: update response param.
+- Update API GetOssScanConfig: update response param.
+- Update API GetSwitchRegionDetail: add param Type.
+- Update API ListAegisContainerPluginRule: update response param.
+- Update API ListAgentlessMaliciousFiles: add param ScanRange.
+- Update API ListAgentlessRiskUuid: add param InstanceId.
+- Update API ListAgentlessRiskUuid: add param InstanceName.
+- Update API ListAgentlessRiskUuid: add param TargetType.
+- Update API ListAgentlessRiskUuid: update response param.
+- Update API ListAgentlessTask: update response param.
+- Update API ListCheckResult: add param CheckIds.
+- Update API ListCheckResult: update response param.
+- Update API ListCheckStandard: update response param.
+- Update API ListFileProtectEvent: update response param.
+- Update API ListFileProtectPluginStatus: update response param.
+- Update API ListFileProtectRule: add param Platform.
+- Update API ListFileProtectRule: update response param.
+- Update API ListHoneypotAlarmEvents: update param CurrentPage.
+- Update API ListHoneypotAlarmEvents: update param Dealed.
+- Update API ListHoneypotAlarmEvents: update param DstIp.
+- Update API ListHoneypotAlarmEvents: update param PageSize.
+- Update API ListHoneypotAlarmEvents: update param RiskLevelList.
+- Update API ListHoneypotAlarmEvents: update param SrcIp.
+- Update API ListOssScanConfig: update response param.
+- Update API RemoveCheckResultWhiteList: add param RuleId.
+- Update API RemoveCheckResultWhiteList: update param CheckIds.
+- Update API RemoveCheckResultWhiteList: update response param.
+- Update API UpdateOssScanConfig: add param DecryptionList.
+- Update API UpdateOssScanConfig: add param LastModifiedStartTime.
+- Update API ValidateHcWarnings: add param Status.
+- Update API ValidateHcWarnings: update param Uuids.
+- Update API VerifyCheckResult: update param CheckIds.
+
+
 2024-07-02 Version: 2.31.0
 - Support API CreateHybridProxyCluster.
 - Update API DescribeAffectedMaliciousFileImages: update response param.

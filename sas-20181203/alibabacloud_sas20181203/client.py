@@ -190,6 +190,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_asset_selection_criteria_with_options_async(request, runtime)
 
+    def add_baseline_check_white_record_with_options(
+        self,
+        request: sas_20181203_models.AddBaselineCheckWhiteRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.AddBaselineCheckWhiteRecordResponse:
+        """
+        @summary Creates a whitelist rule for a baseline check item.
+        
+        @param request: AddBaselineCheckWhiteRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddBaselineCheckWhiteRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_id):
+            query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddBaselineCheckWhiteRecord',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.AddBaselineCheckWhiteRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_baseline_check_white_record_with_options_async(
+        self,
+        request: sas_20181203_models.AddBaselineCheckWhiteRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.AddBaselineCheckWhiteRecordResponse:
+        """
+        @summary Creates a whitelist rule for a baseline check item.
+        
+        @param request: AddBaselineCheckWhiteRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddBaselineCheckWhiteRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_id):
+            query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddBaselineCheckWhiteRecord',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.AddBaselineCheckWhiteRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_baseline_check_white_record(
+        self,
+        request: sas_20181203_models.AddBaselineCheckWhiteRecordRequest,
+    ) -> sas_20181203_models.AddBaselineCheckWhiteRecordResponse:
+        """
+        @summary Creates a whitelist rule for a baseline check item.
+        
+        @param request: AddBaselineCheckWhiteRecordRequest
+        @return: AddBaselineCheckWhiteRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_baseline_check_white_record_with_options(request, runtime)
+
+    async def add_baseline_check_white_record_async(
+        self,
+        request: sas_20181203_models.AddBaselineCheckWhiteRecordRequest,
+    ) -> sas_20181203_models.AddBaselineCheckWhiteRecordResponse:
+        """
+        @summary Creates a whitelist rule for a baseline check item.
+        
+        @param request: AddBaselineCheckWhiteRecordRequest
+        @return: AddBaselineCheckWhiteRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_baseline_check_white_record_with_options_async(request, runtime)
+
     def add_check_instance_result_white_list_with_options(
         self,
         request: sas_20181203_models.AddCheckInstanceResultWhiteListRequest,
@@ -210,6 +322,12 @@ class Client(OpenApiClient):
             query['CheckId'] = request.check_id
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.instance_list):
+            query['InstanceList'] = request.instance_list
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -249,6 +367,12 @@ class Client(OpenApiClient):
             query['CheckId'] = request.check_id
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
+        if not UtilClient.is_unset(request.instance_list):
+            query['InstanceList'] = request.instance_list
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -310,6 +434,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.check_ids):
             query['CheckIds'] = request.check_ids
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -345,6 +473,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.check_ids):
             query['CheckIds'] = request.check_ids
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -549,6 +681,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.add_client_user_define_rule_with_options_async(request, runtime)
+
+    def add_cloud_vendor_account_akwith_options(
+        self,
+        request: sas_20181203_models.AddCloudVendorAccountAKRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.AddCloudVendorAccountAKResponse:
+        """
+        @summary Adds the configuration information of multi-cloud assets.
+        
+        @param request: AddCloudVendorAccountAKRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCloudVendorAccountAKResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ak_type):
+            query['AkType'] = request.ak_type
+        if not UtilClient.is_unset(request.auth_modules):
+            query['AuthModules'] = request.auth_modules
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.regions):
+            query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.secret_id):
+            query['SecretId'] = request.secret_id
+        if not UtilClient.is_unset(request.secret_key):
+            query['SecretKey'] = request.secret_key
+        if not UtilClient.is_unset(request.subscription_ids):
+            query['SubscriptionIds'] = request.subscription_ids
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.vendor):
+            query['Vendor'] = request.vendor
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddCloudVendorAccountAK',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.AddCloudVendorAccountAKResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_cloud_vendor_account_akwith_options_async(
+        self,
+        request: sas_20181203_models.AddCloudVendorAccountAKRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.AddCloudVendorAccountAKResponse:
+        """
+        @summary Adds the configuration information of multi-cloud assets.
+        
+        @param request: AddCloudVendorAccountAKRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCloudVendorAccountAKResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ak_type):
+            query['AkType'] = request.ak_type
+        if not UtilClient.is_unset(request.auth_modules):
+            query['AuthModules'] = request.auth_modules
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.regions):
+            query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.secret_id):
+            query['SecretId'] = request.secret_id
+        if not UtilClient.is_unset(request.secret_key):
+            query['SecretKey'] = request.secret_key
+        if not UtilClient.is_unset(request.subscription_ids):
+            query['SubscriptionIds'] = request.subscription_ids
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.vendor):
+            query['Vendor'] = request.vendor
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddCloudVendorAccountAK',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.AddCloudVendorAccountAKResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_cloud_vendor_account_ak(
+        self,
+        request: sas_20181203_models.AddCloudVendorAccountAKRequest,
+    ) -> sas_20181203_models.AddCloudVendorAccountAKResponse:
+        """
+        @summary Adds the configuration information of multi-cloud assets.
+        
+        @param request: AddCloudVendorAccountAKRequest
+        @return: AddCloudVendorAccountAKResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_cloud_vendor_account_akwith_options(request, runtime)
+
+    async def add_cloud_vendor_account_ak_async(
+        self,
+        request: sas_20181203_models.AddCloudVendorAccountAKRequest,
+    ) -> sas_20181203_models.AddCloudVendorAccountAKResponse:
+        """
+        @summary Adds the configuration information of multi-cloud assets.
+        
+        @param request: AddCloudVendorAccountAKRequest
+        @return: AddCloudVendorAccountAKResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_cloud_vendor_account_akwith_options_async(request, runtime)
 
     def add_container_defense_rule_with_options(
         self,
@@ -801,6 +1061,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.add_container_plugin_rule_with_options_async(request, runtime)
+
+    def add_idc_probe_with_options(
+        self,
+        request: sas_20181203_models.AddIdcProbeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.AddIdcProbeResponse:
+        """
+        @summary Creates an IDC probe to add assets in a data center to Security Center and manage the assets by using the Security Center console.
+        
+        @description Security Center allows you to create an IDC probe only on servers on which the Security Center agent is installed.
+        
+        @param request: AddIdcProbeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddIdcProbeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.idc_name):
+            query['IdcName'] = request.idc_name
+        if not UtilClient.is_unset(request.idc_region):
+            query['IdcRegion'] = request.idc_region
+        if not UtilClient.is_unset(request.interval_period):
+            query['IntervalPeriod'] = request.interval_period
+        if not UtilClient.is_unset(request.ip_segments):
+            query['IpSegments'] = request.ip_segments
+        if not UtilClient.is_unset(request.linux_port):
+            query['LinuxPort'] = request.linux_port
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.uuids):
+            query['Uuids'] = request.uuids
+        if not UtilClient.is_unset(request.win_port):
+            query['WinPort'] = request.win_port
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddIdcProbe',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.AddIdcProbeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_idc_probe_with_options_async(
+        self,
+        request: sas_20181203_models.AddIdcProbeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.AddIdcProbeResponse:
+        """
+        @summary Creates an IDC probe to add assets in a data center to Security Center and manage the assets by using the Security Center console.
+        
+        @description Security Center allows you to create an IDC probe only on servers on which the Security Center agent is installed.
+        
+        @param request: AddIdcProbeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddIdcProbeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.idc_name):
+            query['IdcName'] = request.idc_name
+        if not UtilClient.is_unset(request.idc_region):
+            query['IdcRegion'] = request.idc_region
+        if not UtilClient.is_unset(request.interval_period):
+            query['IntervalPeriod'] = request.interval_period
+        if not UtilClient.is_unset(request.ip_segments):
+            query['IpSegments'] = request.ip_segments
+        if not UtilClient.is_unset(request.linux_port):
+            query['LinuxPort'] = request.linux_port
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.uuids):
+            query['Uuids'] = request.uuids
+        if not UtilClient.is_unset(request.win_port):
+            query['WinPort'] = request.win_port
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddIdcProbe',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.AddIdcProbeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_idc_probe(
+        self,
+        request: sas_20181203_models.AddIdcProbeRequest,
+    ) -> sas_20181203_models.AddIdcProbeResponse:
+        """
+        @summary Creates an IDC probe to add assets in a data center to Security Center and manage the assets by using the Security Center console.
+        
+        @description Security Center allows you to create an IDC probe only on servers on which the Security Center agent is installed.
+        
+        @param request: AddIdcProbeRequest
+        @return: AddIdcProbeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_idc_probe_with_options(request, runtime)
+
+    async def add_idc_probe_async(
+        self,
+        request: sas_20181203_models.AddIdcProbeRequest,
+    ) -> sas_20181203_models.AddIdcProbeResponse:
+        """
+        @summary Creates an IDC probe to add assets in a data center to Security Center and manage the assets by using the Security Center console.
+        
+        @description Security Center allows you to create an IDC probe only on servers on which the Security Center agent is installed.
+        
+        @param request: AddIdcProbeRequest
+        @return: AddIdcProbeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_idc_probe_with_options_async(request, runtime)
 
     def add_image_event_operation_with_options(
         self,
@@ -2682,6 +3074,8 @@ class Client(OpenApiClient):
             query['StandardIds'] = request.standard_ids
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.system_config):
+            query['SystemConfig'] = request.system_config
         if not UtilClient.is_unset(request.vendors):
             query['Vendors'] = request.vendors
         req = open_api_models.OpenApiRequest(
@@ -2747,6 +3141,8 @@ class Client(OpenApiClient):
             query['StandardIds'] = request.standard_ids
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.system_config):
+            query['SystemConfig'] = request.system_config
         if not UtilClient.is_unset(request.vendors):
             query['Vendors'] = request.vendors
         req = open_api_models.OpenApiRequest(
@@ -3104,11 +3500,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.CheckQuaraFileIdResponse:
         """
+        @deprecated OpenAPI CheckQuaraFileId is deprecated
+        
         @summary Checks whether the IDs of quarantined files are valid.
         
         @param request: CheckQuaraFileIdRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CheckQuaraFileIdResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -3141,11 +3540,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.CheckQuaraFileIdResponse:
         """
+        @deprecated OpenAPI CheckQuaraFileId is deprecated
+        
         @summary Checks whether the IDs of quarantined files are valid.
         
         @param request: CheckQuaraFileIdRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CheckQuaraFileIdResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -3177,10 +3579,13 @@ class Client(OpenApiClient):
         request: sas_20181203_models.CheckQuaraFileIdRequest,
     ) -> sas_20181203_models.CheckQuaraFileIdResponse:
         """
+        @deprecated OpenAPI CheckQuaraFileId is deprecated
+        
         @summary Checks whether the IDs of quarantined files are valid.
         
         @param request: CheckQuaraFileIdRequest
         @return: CheckQuaraFileIdResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.check_quara_file_id_with_options(request, runtime)
@@ -3190,10 +3595,13 @@ class Client(OpenApiClient):
         request: sas_20181203_models.CheckQuaraFileIdRequest,
     ) -> sas_20181203_models.CheckQuaraFileIdResponse:
         """
+        @deprecated OpenAPI CheckQuaraFileId is deprecated
+        
         @summary Checks whether the IDs of quarantined files are valid.
         
         @param request: CheckQuaraFileIdRequest
         @return: CheckQuaraFileIdResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.check_quara_file_id_with_options_async(request, runtime)
@@ -3297,6 +3705,188 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.check_security_event_id_with_options_async(request, runtime)
+
+    def check_sts_token_auth_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CheckStsTokenAuthResponse:
+        """
+        @summary Checks a Security Token Service (STS) token and returns the ID of the Alibaba Cloud account.
+        
+        @param request: CheckStsTokenAuthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckStsTokenAuthResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='CheckStsTokenAuth',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CheckStsTokenAuthResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_sts_token_auth_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CheckStsTokenAuthResponse:
+        """
+        @summary Checks a Security Token Service (STS) token and returns the ID of the Alibaba Cloud account.
+        
+        @param request: CheckStsTokenAuthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckStsTokenAuthResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='CheckStsTokenAuth',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CheckStsTokenAuthResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_sts_token_auth(self) -> sas_20181203_models.CheckStsTokenAuthResponse:
+        """
+        @summary Checks a Security Token Service (STS) token and returns the ID of the Alibaba Cloud account.
+        
+        @return: CheckStsTokenAuthResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_sts_token_auth_with_options(runtime)
+
+    async def check_sts_token_auth_async(self) -> sas_20181203_models.CheckStsTokenAuthResponse:
+        """
+        @summary Checks a Security Token Service (STS) token and returns the ID of the Alibaba Cloud account.
+        
+        @return: CheckStsTokenAuthResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_sts_token_auth_with_options_async(runtime)
+
+    def check_trial_fix_count_with_options(
+        self,
+        request: sas_20181203_models.CheckTrialFixCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CheckTrialFixCountResponse:
+        """
+        @summary 检查试用修复数量
+        
+        @param request: CheckTrialFixCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckTrialFixCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.info):
+            query['Info'] = request.info
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.uuids):
+            query['Uuids'] = request.uuids
+        if not UtilClient.is_unset(request.vul_names):
+            query['VulNames'] = request.vul_names
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckTrialFixCount',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CheckTrialFixCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_trial_fix_count_with_options_async(
+        self,
+        request: sas_20181203_models.CheckTrialFixCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CheckTrialFixCountResponse:
+        """
+        @summary 检查试用修复数量
+        
+        @param request: CheckTrialFixCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckTrialFixCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.info):
+            query['Info'] = request.info
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.uuids):
+            query['Uuids'] = request.uuids
+        if not UtilClient.is_unset(request.vul_names):
+            query['VulNames'] = request.vul_names
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckTrialFixCount',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CheckTrialFixCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_trial_fix_count(
+        self,
+        request: sas_20181203_models.CheckTrialFixCountRequest,
+    ) -> sas_20181203_models.CheckTrialFixCountResponse:
+        """
+        @summary 检查试用修复数量
+        
+        @param request: CheckTrialFixCountRequest
+        @return: CheckTrialFixCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_trial_fix_count_with_options(request, runtime)
+
+    async def check_trial_fix_count_async(
+        self,
+        request: sas_20181203_models.CheckTrialFixCountRequest,
+    ) -> sas_20181203_models.CheckTrialFixCountResponse:
+        """
+        @summary 检查试用修复数量
+        
+        @param request: CheckTrialFixCountRequest
+        @return: CheckTrialFixCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_trial_fix_count_with_options_async(request, runtime)
 
     def check_user_has_ecs_with_options(
         self,
@@ -3498,6 +4088,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.confirm_virus_events_with_options_async(request, runtime)
 
+    def copy_customize_report_config_with_options(
+        self,
+        request: sas_20181203_models.CopyCustomizeReportConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CopyCustomizeReportConfigResponse:
+        """
+        @summary Clones an existing security report. The new security report has the same configuration as the existing security report.
+        
+        @param request: CopyCustomizeReportConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyCustomizeReportConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CopyCustomizeReportConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CopyCustomizeReportConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def copy_customize_report_config_with_options_async(
+        self,
+        request: sas_20181203_models.CopyCustomizeReportConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CopyCustomizeReportConfigResponse:
+        """
+        @summary Clones an existing security report. The new security report has the same configuration as the existing security report.
+        
+        @param request: CopyCustomizeReportConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyCustomizeReportConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CopyCustomizeReportConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CopyCustomizeReportConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def copy_customize_report_config(
+        self,
+        request: sas_20181203_models.CopyCustomizeReportConfigRequest,
+    ) -> sas_20181203_models.CopyCustomizeReportConfigResponse:
+        """
+        @summary Clones an existing security report. The new security report has the same configuration as the existing security report.
+        
+        @param request: CopyCustomizeReportConfigRequest
+        @return: CopyCustomizeReportConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.copy_customize_report_config_with_options(request, runtime)
+
+    async def copy_customize_report_config_async(
+        self,
+        request: sas_20181203_models.CopyCustomizeReportConfigRequest,
+    ) -> sas_20181203_models.CopyCustomizeReportConfigResponse:
+        """
+        @summary Clones an existing security report. The new security report has the same configuration as the existing security report.
+        
+        @param request: CopyCustomizeReportConfigRequest
+        @return: CopyCustomizeReportConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.copy_customize_report_config_with_options_async(request, runtime)
+
     def create_agentless_scan_task_with_options(
         self,
         request: sas_20181203_models.CreateAgentlessScanTaskRequest,
@@ -3512,6 +4206,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.asset_selection_type):
+            query['AssetSelectionType'] = request.asset_selection_type
         if not UtilClient.is_unset(request.auto_delete_days):
             query['AutoDeleteDays'] = request.auto_delete_days
         if not UtilClient.is_unset(request.release_after_scan):
@@ -3555,6 +4251,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.asset_selection_type):
+            query['AssetSelectionType'] = request.asset_selection_type
         if not UtilClient.is_unset(request.auto_delete_days):
             query['AutoDeleteDays'] = request.auto_delete_days
         if not UtilClient.is_unset(request.release_after_scan):
@@ -3834,6 +4532,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_asset_selection_config_with_options_async(request, runtime)
 
+    def create_attestor_with_options(
+        self,
+        request: sas_20181203_models.CreateAttestorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateAttestorResponse:
+        """
+        @summary Creates a witness.
+        
+        @param request: CreateAttestorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAttestorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_region_id):
+            query['KeyRegionId'] = request.key_region_id
+        if not UtilClient.is_unset(request.key_version_id):
+            query['KeyVersionId'] = request.key_version_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAttestor',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateAttestorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_attestor_with_options_async(
+        self,
+        request: sas_20181203_models.CreateAttestorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateAttestorResponse:
+        """
+        @summary Creates a witness.
+        
+        @param request: CreateAttestorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAttestorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key_id):
+            query['KeyId'] = request.key_id
+        if not UtilClient.is_unset(request.key_region_id):
+            query['KeyRegionId'] = request.key_region_id
+        if not UtilClient.is_unset(request.key_version_id):
+            query['KeyVersionId'] = request.key_version_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAttestor',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateAttestorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_attestor(
+        self,
+        request: sas_20181203_models.CreateAttestorRequest,
+    ) -> sas_20181203_models.CreateAttestorResponse:
+        """
+        @summary Creates a witness.
+        
+        @param request: CreateAttestorRequest
+        @return: CreateAttestorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_attestor_with_options(request, runtime)
+
+    async def create_attestor_async(
+        self,
+        request: sas_20181203_models.CreateAttestorRequest,
+    ) -> sas_20181203_models.CreateAttestorResponse:
+        """
+        @summary Creates a witness.
+        
+        @param request: CreateAttestorRequest
+        @return: CreateAttestorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_attestor_with_options_async(request, runtime)
+
     def create_backup_policy_with_options(
         self,
         tmp_req: sas_20181203_models.CreateBackupPolicyRequest,
@@ -3953,6 +4771,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_backup_policy_with_options_async(request, runtime)
+
+    def create_binary_security_policy_with_options(
+        self,
+        request: sas_20181203_models.CreateBinarySecurityPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateBinarySecurityPolicyResponse:
+        """
+        @summary Creates a binary security policy.
+        
+        @param request: CreateBinarySecurityPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBinarySecurityPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.clusters):
+            query['Clusters'] = request.clusters
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBinarySecurityPolicy',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateBinarySecurityPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_binary_security_policy_with_options_async(
+        self,
+        request: sas_20181203_models.CreateBinarySecurityPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateBinarySecurityPolicyResponse:
+        """
+        @summary Creates a binary security policy.
+        
+        @param request: CreateBinarySecurityPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBinarySecurityPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.clusters):
+            query['Clusters'] = request.clusters
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.policy):
+            query['Policy'] = request.policy
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBinarySecurityPolicy',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateBinarySecurityPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_binary_security_policy(
+        self,
+        request: sas_20181203_models.CreateBinarySecurityPolicyRequest,
+    ) -> sas_20181203_models.CreateBinarySecurityPolicyResponse:
+        """
+        @summary Creates a binary security policy.
+        
+        @param request: CreateBinarySecurityPolicyRequest
+        @return: CreateBinarySecurityPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_binary_security_policy_with_options(request, runtime)
+
+    async def create_binary_security_policy_async(
+        self,
+        request: sas_20181203_models.CreateBinarySecurityPolicyRequest,
+    ) -> sas_20181203_models.CreateBinarySecurityPolicyResponse:
+        """
+        @summary Creates a binary security policy.
+        
+        @param request: CreateBinarySecurityPolicyRequest
+        @return: CreateBinarySecurityPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_binary_security_policy_with_options_async(request, runtime)
 
     def create_container_scan_task_with_options(
         self,
@@ -4274,6 +5212,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_custom_block_record_with_options_async(request, runtime)
 
+    def create_customized_dict_with_options(
+        self,
+        request: sas_20181203_models.CreateCustomizedDictRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateCustomizedDictResponse:
+        """
+        @summary Creates custom weak password rules.
+        
+        @param request: CreateCustomizedDictRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomizedDictResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCustomizedDict',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateCustomizedDictResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_customized_dict_with_options_async(
+        self,
+        request: sas_20181203_models.CreateCustomizedDictRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateCustomizedDictResponse:
+        """
+        @summary Creates custom weak password rules.
+        
+        @param request: CreateCustomizedDictRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomizedDictResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCustomizedDict',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateCustomizedDictResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_customized_dict(
+        self,
+        request: sas_20181203_models.CreateCustomizedDictRequest,
+    ) -> sas_20181203_models.CreateCustomizedDictResponse:
+        """
+        @summary Creates custom weak password rules.
+        
+        @param request: CreateCustomizedDictRequest
+        @return: CreateCustomizedDictResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_customized_dict_with_options(request, runtime)
+
+    async def create_customized_dict_async(
+        self,
+        request: sas_20181203_models.CreateCustomizedDictRequest,
+    ) -> sas_20181203_models.CreateCustomizedDictResponse:
+        """
+        @summary Creates custom weak password rules.
+        
+        @param request: CreateCustomizedDictRequest
+        @return: CreateCustomizedDictResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_customized_dict_with_options_async(request, runtime)
+
     def create_cycle_task_with_options(
         self,
         request: sas_20181203_models.CreateCycleTaskRequest,
@@ -4405,6 +5443,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_cycle_task_with_options_async(request, runtime)
+
+    def create_dynamic_dict_with_options(
+        self,
+        request: sas_20181203_models.CreateDynamicDictRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateDynamicDictResponse:
+        """
+        @summary Creates a dynamic dictionary of weak passwords.
+        
+        @param request: CreateDynamicDictRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDynamicDictResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.override):
+            query['Override'] = request.override
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDynamicDict',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateDynamicDictResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dynamic_dict_with_options_async(
+        self,
+        request: sas_20181203_models.CreateDynamicDictRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateDynamicDictResponse:
+        """
+        @summary Creates a dynamic dictionary of weak passwords.
+        
+        @param request: CreateDynamicDictRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDynamicDictResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.override):
+            query['Override'] = request.override
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDynamicDict',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateDynamicDictResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dynamic_dict(
+        self,
+        request: sas_20181203_models.CreateDynamicDictRequest,
+    ) -> sas_20181203_models.CreateDynamicDictResponse:
+        """
+        @summary Creates a dynamic dictionary of weak passwords.
+        
+        @param request: CreateDynamicDictRequest
+        @return: CreateDynamicDictResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_dynamic_dict_with_options(request, runtime)
+
+    async def create_dynamic_dict_async(
+        self,
+        request: sas_20181203_models.CreateDynamicDictRequest,
+    ) -> sas_20181203_models.CreateDynamicDictResponse:
+        """
+        @summary Creates a dynamic dictionary of weak passwords.
+        
+        @param request: CreateDynamicDictRequest
+        @return: CreateDynamicDictResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dynamic_dict_with_options_async(request, runtime)
 
     def create_file_detect_with_options(
         self,
@@ -4682,6 +5820,8 @@ class Client(OpenApiClient):
             query['FileOps'] = request.file_ops
         if not UtilClient.is_unset(request.file_paths):
             query['FilePaths'] = request.file_paths
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
         if not UtilClient.is_unset(request.proc_paths):
             query['ProcPaths'] = request.proc_paths
         if not UtilClient.is_unset(request.rule_action):
@@ -4731,6 +5871,8 @@ class Client(OpenApiClient):
             query['FileOps'] = request.file_ops
         if not UtilClient.is_unset(request.file_paths):
             query['FilePaths'] = request.file_paths
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
         if not UtilClient.is_unset(request.proc_paths):
             query['ProcPaths'] = request.proc_paths
         if not UtilClient.is_unset(request.rule_action):
@@ -5468,7 +6610,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.CreateHybridProxyClusterResponse:
         """
-        @summary 创建代理集群
+        @summary Creates a hybrid-cloud proxy cluster.
         
         @param request: CreateHybridProxyClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5507,7 +6649,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.CreateHybridProxyClusterResponse:
         """
-        @summary 创建代理集群
+        @summary Creates a hybrid-cloud proxy cluster.
         
         @param request: CreateHybridProxyClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5545,7 +6687,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.CreateHybridProxyClusterRequest,
     ) -> sas_20181203_models.CreateHybridProxyClusterResponse:
         """
-        @summary 创建代理集群
+        @summary Creates a hybrid-cloud proxy cluster.
         
         @param request: CreateHybridProxyClusterRequest
         @return: CreateHybridProxyClusterResponse
@@ -5558,7 +6700,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.CreateHybridProxyClusterRequest,
     ) -> sas_20181203_models.CreateHybridProxyClusterResponse:
         """
-        @summary 创建代理集群
+        @summary Creates a hybrid-cloud proxy cluster.
         
         @param request: CreateHybridProxyClusterRequest
         @return: CreateHybridProxyClusterResponse
@@ -5990,6 +7132,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_jenkins_image_registry_with_options_async(request, runtime)
 
+    def create_jenkins_image_scan_task_with_options(
+        self,
+        request: sas_20181203_models.CreateJenkinsImageScanTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateJenkinsImageScanTaskResponse:
+        """
+        @summary Creates a Jenkins scan task.
+        
+        @param request: CreateJenkinsImageScanTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJenkinsImageScanTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jenkins_env):
+            query['JenkinsEnv'] = request.jenkins_env
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.digest):
+            body['Digest'] = request.digest
+        if not UtilClient.is_unset(request.image_create):
+            body['ImageCreate'] = request.image_create
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_size):
+            body['ImageSize'] = request.image_size
+        if not UtilClient.is_unset(request.image_update):
+            body['ImageUpdate'] = request.image_update
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.repo_name):
+            body['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateJenkinsImageScanTask',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateJenkinsImageScanTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_jenkins_image_scan_task_with_options_async(
+        self,
+        request: sas_20181203_models.CreateJenkinsImageScanTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateJenkinsImageScanTaskResponse:
+        """
+        @summary Creates a Jenkins scan task.
+        
+        @param request: CreateJenkinsImageScanTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJenkinsImageScanTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jenkins_env):
+            query['JenkinsEnv'] = request.jenkins_env
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        body = {}
+        if not UtilClient.is_unset(request.digest):
+            body['Digest'] = request.digest
+        if not UtilClient.is_unset(request.image_create):
+            body['ImageCreate'] = request.image_create
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.image_size):
+            body['ImageSize'] = request.image_size
+        if not UtilClient.is_unset(request.image_update):
+            body['ImageUpdate'] = request.image_update
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.repo_name):
+            body['RepoName'] = request.repo_name
+        if not UtilClient.is_unset(request.tag):
+            body['Tag'] = request.tag
+        if not UtilClient.is_unset(request.token):
+            body['Token'] = request.token
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateJenkinsImageScanTask',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateJenkinsImageScanTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_jenkins_image_scan_task(
+        self,
+        request: sas_20181203_models.CreateJenkinsImageScanTaskRequest,
+    ) -> sas_20181203_models.CreateJenkinsImageScanTaskResponse:
+        """
+        @summary Creates a Jenkins scan task.
+        
+        @param request: CreateJenkinsImageScanTaskRequest
+        @return: CreateJenkinsImageScanTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_jenkins_image_scan_task_with_options(request, runtime)
+
+    async def create_jenkins_image_scan_task_async(
+        self,
+        request: sas_20181203_models.CreateJenkinsImageScanTaskRequest,
+    ) -> sas_20181203_models.CreateJenkinsImageScanTaskResponse:
+        """
+        @summary Creates a Jenkins scan task.
+        
+        @param request: CreateJenkinsImageScanTaskRequest
+        @return: CreateJenkinsImageScanTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_jenkins_image_scan_task_with_options_async(request, runtime)
+
     def create_malicious_file_whitelist_config_with_options(
         self,
         request: sas_20181203_models.CreateMaliciousFileWhitelistConfigRequest,
@@ -6209,6 +7495,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_malicious_note_with_options_async(request, runtime)
+
+    def create_monitor_account_with_options(
+        self,
+        request: sas_20181203_models.CreateMonitorAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateMonitorAccountResponse:
+        """
+        @summary 创建监视器帐户
+        
+        @param request: CreateMonitorAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMonitorAccountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_ids):
+            query['AccountIds'] = request.account_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMonitorAccount',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateMonitorAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_monitor_account_with_options_async(
+        self,
+        request: sas_20181203_models.CreateMonitorAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateMonitorAccountResponse:
+        """
+        @summary 创建监视器帐户
+        
+        @param request: CreateMonitorAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMonitorAccountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_ids):
+            query['AccountIds'] = request.account_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateMonitorAccount',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateMonitorAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_monitor_account(
+        self,
+        request: sas_20181203_models.CreateMonitorAccountRequest,
+    ) -> sas_20181203_models.CreateMonitorAccountResponse:
+        """
+        @summary 创建监视器帐户
+        
+        @param request: CreateMonitorAccountRequest
+        @return: CreateMonitorAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_monitor_account_with_options(request, runtime)
+
+    async def create_monitor_account_async(
+        self,
+        request: sas_20181203_models.CreateMonitorAccountRequest,
+    ) -> sas_20181203_models.CreateMonitorAccountResponse:
+        """
+        @summary 创建监视器帐户
+        
+        @param request: CreateMonitorAccountRequest
+        @return: CreateMonitorAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_monitor_account_with_options_async(request, runtime)
 
     def create_opa_cluster_plugin_with_options(
         self,
@@ -6574,6 +7956,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_or_update_asset_group_with_options_async(request, runtime)
 
+    def create_or_update_auto_tag_rule_with_options(
+        self,
+        request: sas_20181203_models.CreateOrUpdateAutoTagRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateOrUpdateAutoTagRuleResponse:
+        """
+        @summary Creates an asset auto-tagging rule or modifies an asset auto-tagging rule that is created on the Asset Management Rule tab.
+        
+        @param request: CreateOrUpdateAutoTagRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrUpdateAutoTagRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_all):
+            query['CheckAll'] = request.check_all
+        if not UtilClient.is_unset(request.expression):
+            query['Expression'] = request.expression
+        if not UtilClient.is_unset(request.rule_desc):
+            query['RuleDesc'] = request.rule_desc
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.tag_context):
+            query['TagContext'] = request.tag_context
+        if not UtilClient.is_unset(request.tag_type):
+            query['TagType'] = request.tag_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrUpdateAutoTagRule',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateOrUpdateAutoTagRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_or_update_auto_tag_rule_with_options_async(
+        self,
+        request: sas_20181203_models.CreateOrUpdateAutoTagRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateOrUpdateAutoTagRuleResponse:
+        """
+        @summary Creates an asset auto-tagging rule or modifies an asset auto-tagging rule that is created on the Asset Management Rule tab.
+        
+        @param request: CreateOrUpdateAutoTagRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrUpdateAutoTagRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_all):
+            query['CheckAll'] = request.check_all
+        if not UtilClient.is_unset(request.expression):
+            query['Expression'] = request.expression
+        if not UtilClient.is_unset(request.rule_desc):
+            query['RuleDesc'] = request.rule_desc
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.tag_context):
+            query['TagContext'] = request.tag_context
+        if not UtilClient.is_unset(request.tag_type):
+            query['TagType'] = request.tag_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrUpdateAutoTagRule',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateOrUpdateAutoTagRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_or_update_auto_tag_rule(
+        self,
+        request: sas_20181203_models.CreateOrUpdateAutoTagRuleRequest,
+    ) -> sas_20181203_models.CreateOrUpdateAutoTagRuleResponse:
+        """
+        @summary Creates an asset auto-tagging rule or modifies an asset auto-tagging rule that is created on the Asset Management Rule tab.
+        
+        @param request: CreateOrUpdateAutoTagRuleRequest
+        @return: CreateOrUpdateAutoTagRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_or_update_auto_tag_rule_with_options(request, runtime)
+
+    async def create_or_update_auto_tag_rule_async(
+        self,
+        request: sas_20181203_models.CreateOrUpdateAutoTagRuleRequest,
+    ) -> sas_20181203_models.CreateOrUpdateAutoTagRuleResponse:
+        """
+        @summary Creates an asset auto-tagging rule or modifies an asset auto-tagging rule that is created on the Asset Management Rule tab.
+        
+        @param request: CreateOrUpdateAutoTagRuleRequest
+        @return: CreateOrUpdateAutoTagRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_or_update_auto_tag_rule_with_options_async(request, runtime)
+
     def create_or_update_ding_talk_with_options(
         self,
         request: sas_20181203_models.CreateOrUpdateDingTalkRequest,
@@ -6716,12 +8218,16 @@ class Client(OpenApiClient):
             query['DecompressMaxFileCount'] = request.decompress_max_file_count
         if not UtilClient.is_unset(request.decompress_max_layer):
             query['DecompressMaxLayer'] = request.decompress_max_layer
+        if not UtilClient.is_unset(request.decryption_list):
+            query['DecryptionList'] = request.decryption_list
         if not UtilClient.is_unset(request.exclude_key_suffix_list):
             query['ExcludeKeySuffixList'] = request.exclude_key_suffix_list
         if not UtilClient.is_unset(request.key_prefix_list):
             query['KeyPrefixList'] = request.key_prefix_list
         if not UtilClient.is_unset(request.key_suffix_list):
             query['KeySuffixList'] = request.key_suffix_list
+        if not UtilClient.is_unset(request.last_modified_start_time):
+            query['LastModifiedStartTime'] = request.last_modified_start_time
         if not UtilClient.is_unset(request.scan_mode):
             query['ScanMode'] = request.scan_mode
         req = open_api_models.OpenApiRequest(
@@ -6765,12 +8271,16 @@ class Client(OpenApiClient):
             query['DecompressMaxFileCount'] = request.decompress_max_file_count
         if not UtilClient.is_unset(request.decompress_max_layer):
             query['DecompressMaxLayer'] = request.decompress_max_layer
+        if not UtilClient.is_unset(request.decryption_list):
+            query['DecryptionList'] = request.decryption_list
         if not UtilClient.is_unset(request.exclude_key_suffix_list):
             query['ExcludeKeySuffixList'] = request.exclude_key_suffix_list
         if not UtilClient.is_unset(request.key_prefix_list):
             query['KeyPrefixList'] = request.key_prefix_list
         if not UtilClient.is_unset(request.key_suffix_list):
             query['KeySuffixList'] = request.key_suffix_list
+        if not UtilClient.is_unset(request.last_modified_start_time):
+            query['LastModifiedStartTime'] = request.last_modified_start_time
         if not UtilClient.is_unset(request.scan_mode):
             query['ScanMode'] = request.scan_mode
         req = open_api_models.OpenApiRequest(
@@ -6840,6 +8350,8 @@ class Client(OpenApiClient):
             query['DecompressMaxFileCount'] = request.decompress_max_file_count
         if not UtilClient.is_unset(request.decompress_max_layer):
             query['DecompressMaxLayer'] = request.decompress_max_layer
+        if not UtilClient.is_unset(request.decryption_list):
+            query['DecryptionList'] = request.decryption_list
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
         if not UtilClient.is_unset(request.end_time):
@@ -6848,6 +8360,8 @@ class Client(OpenApiClient):
             query['KeyPrefixList'] = request.key_prefix_list
         if not UtilClient.is_unset(request.key_suffix_list):
             query['KeySuffixList'] = request.key_suffix_list
+        if not UtilClient.is_unset(request.last_modified_start_time):
+            query['LastModifiedStartTime'] = request.last_modified_start_time
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.scan_day_list):
@@ -6895,6 +8409,8 @@ class Client(OpenApiClient):
             query['DecompressMaxFileCount'] = request.decompress_max_file_count
         if not UtilClient.is_unset(request.decompress_max_layer):
             query['DecompressMaxLayer'] = request.decompress_max_layer
+        if not UtilClient.is_unset(request.decryption_list):
+            query['DecryptionList'] = request.decryption_list
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
         if not UtilClient.is_unset(request.end_time):
@@ -6903,6 +8419,8 @@ class Client(OpenApiClient):
             query['KeyPrefixList'] = request.key_prefix_list
         if not UtilClient.is_unset(request.key_suffix_list):
             query['KeySuffixList'] = request.key_suffix_list
+        if not UtilClient.is_unset(request.last_modified_start_time):
+            query['LastModifiedStartTime'] = request.last_modified_start_time
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.scan_day_list):
@@ -6953,6 +8471,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_oss_scan_config_with_options_async(request, runtime)
+
+    def create_rd_default_sync_list_with_options(
+        self,
+        request: sas_20181203_models.CreateRdDefaultSyncListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateRdDefaultSyncListResponse:
+        """
+        @summary 新增修改目录节点同步开关
+        
+        @param request: CreateRdDefaultSyncListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRdDefaultSyncListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.folder_ids):
+            query['FolderIds'] = request.folder_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRdDefaultSyncList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateRdDefaultSyncListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_rd_default_sync_list_with_options_async(
+        self,
+        request: sas_20181203_models.CreateRdDefaultSyncListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateRdDefaultSyncListResponse:
+        """
+        @summary 新增修改目录节点同步开关
+        
+        @param request: CreateRdDefaultSyncListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRdDefaultSyncListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.folder_ids):
+            query['FolderIds'] = request.folder_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRdDefaultSyncList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateRdDefaultSyncListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_rd_default_sync_list(
+        self,
+        request: sas_20181203_models.CreateRdDefaultSyncListRequest,
+    ) -> sas_20181203_models.CreateRdDefaultSyncListResponse:
+        """
+        @summary 新增修改目录节点同步开关
+        
+        @param request: CreateRdDefaultSyncListRequest
+        @return: CreateRdDefaultSyncListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_rd_default_sync_list_with_options(request, runtime)
+
+    async def create_rd_default_sync_list_async(
+        self,
+        request: sas_20181203_models.CreateRdDefaultSyncListRequest,
+    ) -> sas_20181203_models.CreateRdDefaultSyncListResponse:
+        """
+        @summary 新增修改目录节点同步开关
+        
+        @param request: CreateRdDefaultSyncListRequest
+        @return: CreateRdDefaultSyncListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_rd_default_sync_list_with_options_async(request, runtime)
 
     def create_restore_job_with_options(
         self,
@@ -7077,6 +8691,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_restore_job_with_options_async(request, runtime)
+
+    def create_sas_trial_with_options(
+        self,
+        tmp_req: sas_20181203_models.CreateSasTrialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateSasTrialResponse:
+        """
+        @summary Applies for a trial of Security Center.
+        
+        @param tmp_req: CreateSasTrialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSasTrialResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.CreateSasTrialShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_form):
+            request.request_form_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.request_form, 'RequestForm', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.from_ecs):
+            body['FromEcs'] = request.from_ecs
+        if not UtilClient.is_unset(request.lang):
+            body['Lang'] = request.lang
+        if not UtilClient.is_unset(request.request_form_shrink):
+            body['RequestForm'] = request.request_form_shrink
+        if not UtilClient.is_unset(request.try_type):
+            body['TryType'] = request.try_type
+        if not UtilClient.is_unset(request.try_version):
+            body['TryVersion'] = request.try_version
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSasTrial',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateSasTrialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sas_trial_with_options_async(
+        self,
+        tmp_req: sas_20181203_models.CreateSasTrialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateSasTrialResponse:
+        """
+        @summary Applies for a trial of Security Center.
+        
+        @param tmp_req: CreateSasTrialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSasTrialResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.CreateSasTrialShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.request_form):
+            request.request_form_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.request_form, 'RequestForm', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.from_ecs):
+            body['FromEcs'] = request.from_ecs
+        if not UtilClient.is_unset(request.lang):
+            body['Lang'] = request.lang
+        if not UtilClient.is_unset(request.request_form_shrink):
+            body['RequestForm'] = request.request_form_shrink
+        if not UtilClient.is_unset(request.try_type):
+            body['TryType'] = request.try_type
+        if not UtilClient.is_unset(request.try_version):
+            body['TryVersion'] = request.try_version
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSasTrial',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateSasTrialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sas_trial(
+        self,
+        request: sas_20181203_models.CreateSasTrialRequest,
+    ) -> sas_20181203_models.CreateSasTrialResponse:
+        """
+        @summary Applies for a trial of Security Center.
+        
+        @param request: CreateSasTrialRequest
+        @return: CreateSasTrialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_sas_trial_with_options(request, runtime)
+
+    async def create_sas_trial_async(
+        self,
+        request: sas_20181203_models.CreateSasTrialRequest,
+    ) -> sas_20181203_models.CreateSasTrialResponse:
+        """
+        @summary Applies for a trial of Security Center.
+        
+        @param request: CreateSasTrialRequest
+        @return: CreateSasTrialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_sas_trial_with_options_async(request, runtime)
 
     def create_service_linked_role_with_options(
         self,
@@ -7385,6 +9119,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_similar_security_events_query_task_with_options_async(request, runtime)
+
+    def create_soar_strategy_task_with_options(
+        self,
+        request: sas_20181203_models.CreateSoarStrategyTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateSoarStrategyTaskResponse:
+        """
+        @summary Creates a task on the My Policies tab of the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: CreateSoarStrategyTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSoarStrategyTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.strategy_name):
+            query['StrategyName'] = request.strategy_name
+        if not UtilClient.is_unset(request.strategy_task_name):
+            query['StrategyTaskName'] = request.strategy_task_name
+        if not UtilClient.is_unset(request.strategy_task_params):
+            query['StrategyTaskParams'] = request.strategy_task_params
+        if not UtilClient.is_unset(request.strategy_task_plan_exe_time):
+            query['StrategyTaskPlanExeTime'] = request.strategy_task_plan_exe_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSoarStrategyTask',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateSoarStrategyTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_soar_strategy_task_with_options_async(
+        self,
+        request: sas_20181203_models.CreateSoarStrategyTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateSoarStrategyTaskResponse:
+        """
+        @summary Creates a task on the My Policies tab of the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: CreateSoarStrategyTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSoarStrategyTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.strategy_name):
+            query['StrategyName'] = request.strategy_name
+        if not UtilClient.is_unset(request.strategy_task_name):
+            query['StrategyTaskName'] = request.strategy_task_name
+        if not UtilClient.is_unset(request.strategy_task_params):
+            query['StrategyTaskParams'] = request.strategy_task_params
+        if not UtilClient.is_unset(request.strategy_task_plan_exe_time):
+            query['StrategyTaskPlanExeTime'] = request.strategy_task_plan_exe_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSoarStrategyTask',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateSoarStrategyTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_soar_strategy_task(
+        self,
+        request: sas_20181203_models.CreateSoarStrategyTaskRequest,
+    ) -> sas_20181203_models.CreateSoarStrategyTaskResponse:
+        """
+        @summary Creates a task on the My Policies tab of the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: CreateSoarStrategyTaskRequest
+        @return: CreateSoarStrategyTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_soar_strategy_task_with_options(request, runtime)
+
+    async def create_soar_strategy_task_async(
+        self,
+        request: sas_20181203_models.CreateSoarStrategyTaskRequest,
+    ) -> sas_20181203_models.CreateSoarStrategyTaskResponse:
+        """
+        @summary Creates a task on the My Policies tab of the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: CreateSoarStrategyTaskRequest
+        @return: CreateSoarStrategyTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_soar_strategy_task_with_options_async(request, runtime)
 
     def create_susp_event_note_with_options(
         self,
@@ -7758,6 +9612,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_uni_restore_plan_with_options_async(request, runtime)
 
+    def create_user_setting_with_options(
+        self,
+        request: sas_20181203_models.CreateUserSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateUserSettingResponse:
+        """
+        @summary Creates the risk level settings for baseline check items.
+        
+        @param request: CreateUserSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alert_levels):
+            query['AlertLevels'] = request.alert_levels
+        if not UtilClient.is_unset(request.invalid_warning_keep_days):
+            query['InvalidWarningKeepDays'] = request.invalid_warning_keep_days
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateUserSetting',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateUserSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_user_setting_with_options_async(
+        self,
+        request: sas_20181203_models.CreateUserSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateUserSettingResponse:
+        """
+        @summary Creates the risk level settings for baseline check items.
+        
+        @param request: CreateUserSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alert_levels):
+            query['AlertLevels'] = request.alert_levels
+        if not UtilClient.is_unset(request.invalid_warning_keep_days):
+            query['InvalidWarningKeepDays'] = request.invalid_warning_keep_days
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateUserSetting',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateUserSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_user_setting(
+        self,
+        request: sas_20181203_models.CreateUserSettingRequest,
+    ) -> sas_20181203_models.CreateUserSettingResponse:
+        """
+        @summary Creates the risk level settings for baseline check items.
+        
+        @param request: CreateUserSettingRequest
+        @return: CreateUserSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_user_setting_with_options(request, runtime)
+
+    async def create_user_setting_async(
+        self,
+        request: sas_20181203_models.CreateUserSettingRequest,
+    ) -> sas_20181203_models.CreateUserSettingResponse:
+        """
+        @summary Creates the risk level settings for baseline check items.
+        
+        @param request: CreateUserSettingRequest
+        @return: CreateUserSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_user_setting_with_options_async(request, runtime)
+
     def create_virus_scan_once_task_with_options(
         self,
         request: sas_20181203_models.CreateVirusScanOnceTaskRequest,
@@ -8062,6 +10020,206 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_anti_brute_force_rule_with_options_async(request, runtime)
 
+    def delete_attestor_with_options(
+        self,
+        request: sas_20181203_models.DeleteAttestorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteAttestorResponse:
+        """
+        @summary Deletes a witness.
+        
+        @param request: DeleteAttestorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAttestorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAttestor',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteAttestorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_attestor_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteAttestorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteAttestorResponse:
+        """
+        @summary Deletes a witness.
+        
+        @param request: DeleteAttestorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAttestorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAttestor',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteAttestorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_attestor(
+        self,
+        request: sas_20181203_models.DeleteAttestorRequest,
+    ) -> sas_20181203_models.DeleteAttestorResponse:
+        """
+        @summary Deletes a witness.
+        
+        @param request: DeleteAttestorRequest
+        @return: DeleteAttestorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_attestor_with_options(request, runtime)
+
+    async def delete_attestor_async(
+        self,
+        request: sas_20181203_models.DeleteAttestorRequest,
+    ) -> sas_20181203_models.DeleteAttestorResponse:
+        """
+        @summary Deletes a witness.
+        
+        @param request: DeleteAttestorRequest
+        @return: DeleteAttestorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_attestor_with_options_async(request, runtime)
+
+    def delete_auto_tag_rules_with_options(
+        self,
+        request: sas_20181203_models.DeleteAutoTagRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteAutoTagRulesResponse:
+        """
+        @summary Deletes asset auto-tagging rules that are created by using the feature of asset management rules. You can create rules on the System Configuration > Feature Settings > Multi-cloud Configuration Management > Asset Management Rule page in the Security Center console.
+        
+        @param request: DeleteAutoTagRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAutoTagRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rule_id_list):
+            query['RuleIdList'] = request.rule_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAutoTagRules',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteAutoTagRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_auto_tag_rules_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteAutoTagRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteAutoTagRulesResponse:
+        """
+        @summary Deletes asset auto-tagging rules that are created by using the feature of asset management rules. You can create rules on the System Configuration > Feature Settings > Multi-cloud Configuration Management > Asset Management Rule page in the Security Center console.
+        
+        @param request: DeleteAutoTagRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAutoTagRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rule_id_list):
+            query['RuleIdList'] = request.rule_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAutoTagRules',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteAutoTagRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_auto_tag_rules(
+        self,
+        request: sas_20181203_models.DeleteAutoTagRulesRequest,
+    ) -> sas_20181203_models.DeleteAutoTagRulesResponse:
+        """
+        @summary Deletes asset auto-tagging rules that are created by using the feature of asset management rules. You can create rules on the System Configuration > Feature Settings > Multi-cloud Configuration Management > Asset Management Rule page in the Security Center console.
+        
+        @param request: DeleteAutoTagRulesRequest
+        @return: DeleteAutoTagRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_auto_tag_rules_with_options(request, runtime)
+
+    async def delete_auto_tag_rules_async(
+        self,
+        request: sas_20181203_models.DeleteAutoTagRulesRequest,
+    ) -> sas_20181203_models.DeleteAutoTagRulesResponse:
+        """
+        @summary Deletes asset auto-tagging rules that are created by using the feature of asset management rules. You can create rules on the System Configuration > Feature Settings > Multi-cloud Configuration Management > Asset Management Rule page in the Security Center console.
+        
+        @param request: DeleteAutoTagRulesRequest
+        @return: DeleteAutoTagRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_auto_tag_rules_with_options_async(request, runtime)
+
     def delete_backup_policy_with_options(
         self,
         request: sas_20181203_models.DeleteBackupPolicyRequest,
@@ -8270,6 +10428,218 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_backup_policy_machine_with_options_async(request, runtime)
 
+    def delete_backup_snapshot_with_options(
+        self,
+        request: sas_20181203_models.DeleteBackupSnapshotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteBackupSnapshotResponse:
+        """
+        @summary Deletes a backup snapshot that is created for anti-ransomware.
+        
+        @param request: DeleteBackupSnapshotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupSnapshotResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_region_id_list):
+            query['BackupRegionIdList'] = request.backup_region_id_list
+        if not UtilClient.is_unset(request.backup_snapshot_list):
+            query['BackupSnapshotList'] = request.backup_snapshot_list
+        if not UtilClient.is_unset(request.retain_latest_snapshot):
+            query['RetainLatestSnapshot'] = request.retain_latest_snapshot
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackupSnapshot',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteBackupSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_backup_snapshot_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteBackupSnapshotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteBackupSnapshotResponse:
+        """
+        @summary Deletes a backup snapshot that is created for anti-ransomware.
+        
+        @param request: DeleteBackupSnapshotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupSnapshotResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_region_id_list):
+            query['BackupRegionIdList'] = request.backup_region_id_list
+        if not UtilClient.is_unset(request.backup_snapshot_list):
+            query['BackupSnapshotList'] = request.backup_snapshot_list
+        if not UtilClient.is_unset(request.retain_latest_snapshot):
+            query['RetainLatestSnapshot'] = request.retain_latest_snapshot
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackupSnapshot',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteBackupSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_backup_snapshot(
+        self,
+        request: sas_20181203_models.DeleteBackupSnapshotRequest,
+    ) -> sas_20181203_models.DeleteBackupSnapshotResponse:
+        """
+        @summary Deletes a backup snapshot that is created for anti-ransomware.
+        
+        @param request: DeleteBackupSnapshotRequest
+        @return: DeleteBackupSnapshotResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_backup_snapshot_with_options(request, runtime)
+
+    async def delete_backup_snapshot_async(
+        self,
+        request: sas_20181203_models.DeleteBackupSnapshotRequest,
+    ) -> sas_20181203_models.DeleteBackupSnapshotResponse:
+        """
+        @summary Deletes a backup snapshot that is created for anti-ransomware.
+        
+        @param request: DeleteBackupSnapshotRequest
+        @return: DeleteBackupSnapshotResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_backup_snapshot_with_options_async(request, runtime)
+
+    def delete_baseline_check_white_record_with_options(
+        self,
+        request: sas_20181203_models.DeleteBaselineCheckWhiteRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteBaselineCheckWhiteRecordResponse:
+        """
+        @summary Deletes the whitelist record for a baseline check item.
+        
+        @param request: DeleteBaselineCheckWhiteRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBaselineCheckWhiteRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_ids):
+            query['CheckIds'] = request.check_ids
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.record_ids):
+            query['RecordIds'] = request.record_ids
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBaselineCheckWhiteRecord',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteBaselineCheckWhiteRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_baseline_check_white_record_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteBaselineCheckWhiteRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteBaselineCheckWhiteRecordResponse:
+        """
+        @summary Deletes the whitelist record for a baseline check item.
+        
+        @param request: DeleteBaselineCheckWhiteRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBaselineCheckWhiteRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_ids):
+            query['CheckIds'] = request.check_ids
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.record_ids):
+            query['RecordIds'] = request.record_ids
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBaselineCheckWhiteRecord',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteBaselineCheckWhiteRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_baseline_check_white_record(
+        self,
+        request: sas_20181203_models.DeleteBaselineCheckWhiteRecordRequest,
+    ) -> sas_20181203_models.DeleteBaselineCheckWhiteRecordResponse:
+        """
+        @summary Deletes the whitelist record for a baseline check item.
+        
+        @param request: DeleteBaselineCheckWhiteRecordRequest
+        @return: DeleteBaselineCheckWhiteRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_baseline_check_white_record_with_options(request, runtime)
+
+    async def delete_baseline_check_white_record_async(
+        self,
+        request: sas_20181203_models.DeleteBaselineCheckWhiteRecordRequest,
+    ) -> sas_20181203_models.DeleteBaselineCheckWhiteRecordResponse:
+        """
+        @summary Deletes the whitelist record for a baseline check item.
+        
+        @param request: DeleteBaselineCheckWhiteRecordRequest
+        @return: DeleteBaselineCheckWhiteRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_baseline_check_white_record_with_options_async(request, runtime)
+
     def delete_binary_security_policy_with_options(
         self,
         request: sas_20181203_models.DeleteBinarySecurityPolicyRequest,
@@ -8469,6 +10839,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_client_user_define_rule_with_options_async(request, runtime)
+
+    def delete_cloud_vendor_account_akwith_options(
+        self,
+        request: sas_20181203_models.DeleteCloudVendorAccountAKRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteCloudVendorAccountAKResponse:
+        """
+        @summary 删除多云资产同步配置
+        
+        @param request: DeleteCloudVendorAccountAKRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudVendorAccountAKResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_id):
+            query['AuthId'] = request.auth_id
+        if not UtilClient.is_unset(request.auth_modules):
+            query['AuthModules'] = request.auth_modules
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCloudVendorAccountAK',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteCloudVendorAccountAKResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cloud_vendor_account_akwith_options_async(
+        self,
+        request: sas_20181203_models.DeleteCloudVendorAccountAKRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteCloudVendorAccountAKResponse:
+        """
+        @summary 删除多云资产同步配置
+        
+        @param request: DeleteCloudVendorAccountAKRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudVendorAccountAKResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_id):
+            query['AuthId'] = request.auth_id
+        if not UtilClient.is_unset(request.auth_modules):
+            query['AuthModules'] = request.auth_modules
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCloudVendorAccountAK',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteCloudVendorAccountAKResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cloud_vendor_account_ak(
+        self,
+        request: sas_20181203_models.DeleteCloudVendorAccountAKRequest,
+    ) -> sas_20181203_models.DeleteCloudVendorAccountAKResponse:
+        """
+        @summary 删除多云资产同步配置
+        
+        @param request: DeleteCloudVendorAccountAKRequest
+        @return: DeleteCloudVendorAccountAKResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_cloud_vendor_account_akwith_options(request, runtime)
+
+    async def delete_cloud_vendor_account_ak_async(
+        self,
+        request: sas_20181203_models.DeleteCloudVendorAccountAKRequest,
+    ) -> sas_20181203_models.DeleteCloudVendorAccountAKResponse:
+        """
+        @summary 删除多云资产同步配置
+        
+        @param request: DeleteCloudVendorAccountAKRequest
+        @return: DeleteCloudVendorAccountAKResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_cloud_vendor_account_akwith_options_async(request, runtime)
 
     def delete_container_defense_rule_with_options(
         self,
@@ -8766,6 +11236,198 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_custom_block_record_with_options_async(request, runtime)
 
+    def delete_customize_report_with_options(
+        self,
+        request: sas_20181203_models.DeleteCustomizeReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteCustomizeReportResponse:
+        """
+        @summary Deletes a custom security report.
+        
+        @param request: DeleteCustomizeReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomizeReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomizeReport',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteCustomizeReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_customize_report_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteCustomizeReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteCustomizeReportResponse:
+        """
+        @summary Deletes a custom security report.
+        
+        @param request: DeleteCustomizeReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomizeReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomizeReport',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteCustomizeReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_customize_report(
+        self,
+        request: sas_20181203_models.DeleteCustomizeReportRequest,
+    ) -> sas_20181203_models.DeleteCustomizeReportResponse:
+        """
+        @summary Deletes a custom security report.
+        
+        @param request: DeleteCustomizeReportRequest
+        @return: DeleteCustomizeReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_customize_report_with_options(request, runtime)
+
+    async def delete_customize_report_async(
+        self,
+        request: sas_20181203_models.DeleteCustomizeReportRequest,
+    ) -> sas_20181203_models.DeleteCustomizeReportResponse:
+        """
+        @summary Deletes a custom security report.
+        
+        @param request: DeleteCustomizeReportRequest
+        @return: DeleteCustomizeReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_customize_report_with_options_async(request, runtime)
+
+    def delete_customized_dict_with_options(
+        self,
+        request: sas_20181203_models.DeleteCustomizedDictRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteCustomizedDictResponse:
+        """
+        @summary Deletes the file that is uploaded to create custom weak password rules.
+        
+        @param request: DeleteCustomizedDictRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomizedDictResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomizedDict',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteCustomizedDictResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_customized_dict_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteCustomizedDictRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteCustomizedDictResponse:
+        """
+        @summary Deletes the file that is uploaded to create custom weak password rules.
+        
+        @param request: DeleteCustomizedDictRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomizedDictResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomizedDict',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteCustomizedDictResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_customized_dict(
+        self,
+        request: sas_20181203_models.DeleteCustomizedDictRequest,
+    ) -> sas_20181203_models.DeleteCustomizedDictResponse:
+        """
+        @summary Deletes the file that is uploaded to create custom weak password rules.
+        
+        @param request: DeleteCustomizedDictRequest
+        @return: DeleteCustomizedDictResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_customized_dict_with_options(request, runtime)
+
+    async def delete_customized_dict_async(
+        self,
+        request: sas_20181203_models.DeleteCustomizedDictRequest,
+    ) -> sas_20181203_models.DeleteCustomizedDictResponse:
+        """
+        @summary Deletes the file that is uploaded to create custom weak password rules.
+        
+        @param request: DeleteCustomizedDictRequest
+        @return: DeleteCustomizedDictResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_customized_dict_with_options_async(request, runtime)
+
     def delete_cycle_task_with_options(
         self,
         request: sas_20181203_models.DeleteCycleTaskRequest,
@@ -8861,6 +11523,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_cycle_task_with_options_async(request, runtime)
+
+    def delete_ding_talk_with_options(
+        self,
+        request: sas_20181203_models.DeleteDingTalkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteDingTalkResponse:
+        """
+        @summary Deletes a DingTalk chatbot on the DingTalk Chatbot tab of the Notification Settings page.
+        
+        @param request: DeleteDingTalkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDingTalkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDingTalk',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteDingTalkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ding_talk_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteDingTalkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteDingTalkResponse:
+        """
+        @summary Deletes a DingTalk chatbot on the DingTalk Chatbot tab of the Notification Settings page.
+        
+        @param request: DeleteDingTalkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDingTalkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDingTalk',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteDingTalkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ding_talk(
+        self,
+        request: sas_20181203_models.DeleteDingTalkRequest,
+    ) -> sas_20181203_models.DeleteDingTalkResponse:
+        """
+        @summary Deletes a DingTalk chatbot on the DingTalk Chatbot tab of the Notification Settings page.
+        
+        @param request: DeleteDingTalkRequest
+        @return: DeleteDingTalkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_ding_talk_with_options(request, runtime)
+
+    async def delete_ding_talk_async(
+        self,
+        request: sas_20181203_models.DeleteDingTalkRequest,
+    ) -> sas_20181203_models.DeleteDingTalkResponse:
+        """
+        @summary Deletes a DingTalk chatbot on the DingTalk Chatbot tab of the Notification Settings page.
+        
+        @param request: DeleteDingTalkRequest
+        @return: DeleteDingTalkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_ding_talk_with_options_async(request, runtime)
 
     def delete_file_protect_rule_with_options(
         self,
@@ -9569,6 +12327,298 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_honeypot_probe_bind_with_options_async(request, runtime)
+
+    def delete_hybrid_proxy_with_options(
+        self,
+        request: sas_20181203_models.DeleteHybridProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteHybridProxyResponse:
+        """
+        @summary 删除代理
+        
+        @param request: DeleteHybridProxyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHybridProxyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHybridProxy',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteHybridProxyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_hybrid_proxy_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteHybridProxyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteHybridProxyResponse:
+        """
+        @summary 删除代理
+        
+        @param request: DeleteHybridProxyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHybridProxyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHybridProxy',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteHybridProxyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_hybrid_proxy(
+        self,
+        request: sas_20181203_models.DeleteHybridProxyRequest,
+    ) -> sas_20181203_models.DeleteHybridProxyResponse:
+        """
+        @summary 删除代理
+        
+        @param request: DeleteHybridProxyRequest
+        @return: DeleteHybridProxyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_hybrid_proxy_with_options(request, runtime)
+
+    async def delete_hybrid_proxy_async(
+        self,
+        request: sas_20181203_models.DeleteHybridProxyRequest,
+    ) -> sas_20181203_models.DeleteHybridProxyResponse:
+        """
+        @summary 删除代理
+        
+        @param request: DeleteHybridProxyRequest
+        @return: DeleteHybridProxyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_hybrid_proxy_with_options_async(request, runtime)
+
+    def delete_hybrid_proxy_cluster_with_options(
+        self,
+        request: sas_20181203_models.DeleteHybridProxyClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteHybridProxyClusterResponse:
+        """
+        @summary 删除代理集群
+        
+        @param request: DeleteHybridProxyClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHybridProxyClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHybridProxyCluster',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteHybridProxyClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_hybrid_proxy_cluster_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteHybridProxyClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteHybridProxyClusterResponse:
+        """
+        @summary 删除代理集群
+        
+        @param request: DeleteHybridProxyClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHybridProxyClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHybridProxyCluster',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteHybridProxyClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_hybrid_proxy_cluster(
+        self,
+        request: sas_20181203_models.DeleteHybridProxyClusterRequest,
+    ) -> sas_20181203_models.DeleteHybridProxyClusterResponse:
+        """
+        @summary 删除代理集群
+        
+        @param request: DeleteHybridProxyClusterRequest
+        @return: DeleteHybridProxyClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_hybrid_proxy_cluster_with_options(request, runtime)
+
+    async def delete_hybrid_proxy_cluster_async(
+        self,
+        request: sas_20181203_models.DeleteHybridProxyClusterRequest,
+    ) -> sas_20181203_models.DeleteHybridProxyClusterResponse:
+        """
+        @summary 删除代理集群
+        
+        @param request: DeleteHybridProxyClusterRequest
+        @return: DeleteHybridProxyClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_hybrid_proxy_cluster_with_options_async(request, runtime)
+
+    def delete_idc_probe_with_options(
+        self,
+        request: sas_20181203_models.DeleteIdcProbeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteIdcProbeResponse:
+        """
+        @summary Deletes an IDC probe that is created in Security Center.
+        
+        @param request: DeleteIdcProbeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIdcProbeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIdcProbe',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteIdcProbeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_idc_probe_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteIdcProbeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteIdcProbeResponse:
+        """
+        @summary Deletes an IDC probe that is created in Security Center.
+        
+        @param request: DeleteIdcProbeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIdcProbeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteIdcProbe',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteIdcProbeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_idc_probe(
+        self,
+        request: sas_20181203_models.DeleteIdcProbeRequest,
+    ) -> sas_20181203_models.DeleteIdcProbeResponse:
+        """
+        @summary Deletes an IDC probe that is created in Security Center.
+        
+        @param request: DeleteIdcProbeRequest
+        @return: DeleteIdcProbeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_idc_probe_with_options(request, runtime)
+
+    async def delete_idc_probe_async(
+        self,
+        request: sas_20181203_models.DeleteIdcProbeRequest,
+    ) -> sas_20181203_models.DeleteIdcProbeResponse:
+        """
+        @summary Deletes an IDC probe that is created in Security Center.
+        
+        @param request: DeleteIdcProbeRequest
+        @return: DeleteIdcProbeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_idc_probe_with_options_async(request, runtime)
 
     def delete_image_event_operation_with_options(
         self,
@@ -10462,6 +13512,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_malicious_note_with_options_async(request, runtime)
 
+    def delete_monitor_account_with_options(
+        self,
+        request: sas_20181203_models.DeleteMonitorAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteMonitorAccountResponse:
+        """
+        @summary Deletes a member of the account managed by Security Center type of the multi-account management feature.
+        
+        @description You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
+        
+        @param request: DeleteMonitorAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMonitorAccountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMonitorAccount',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteMonitorAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_monitor_account_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteMonitorAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteMonitorAccountResponse:
+        """
+        @summary Deletes a member of the account managed by Security Center type of the multi-account management feature.
+        
+        @description You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
+        
+        @param request: DeleteMonitorAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMonitorAccountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMonitorAccount',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteMonitorAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_monitor_account(
+        self,
+        request: sas_20181203_models.DeleteMonitorAccountRequest,
+    ) -> sas_20181203_models.DeleteMonitorAccountResponse:
+        """
+        @summary Deletes a member of the account managed by Security Center type of the multi-account management feature.
+        
+        @description You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
+        
+        @param request: DeleteMonitorAccountRequest
+        @return: DeleteMonitorAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_monitor_account_with_options(request, runtime)
+
+    async def delete_monitor_account_async(
+        self,
+        request: sas_20181203_models.DeleteMonitorAccountRequest,
+    ) -> sas_20181203_models.DeleteMonitorAccountResponse:
+        """
+        @summary Deletes a member of the account managed by Security Center type of the multi-account management feature.
+        
+        @description You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
+        
+        @param request: DeleteMonitorAccountRequest
+        @return: DeleteMonitorAccountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_monitor_account_with_options_async(request, runtime)
+
     def delete_opa_strategy_new_with_options(
         self,
         request: sas_20181203_models.DeleteOpaStrategyNewRequest,
@@ -10846,17 +14000,124 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_sas_container_web_defense_rule_with_options_async(request, runtime)
 
+    def delete_search_condition_with_options(
+        self,
+        request: sas_20181203_models.DeleteSearchConditionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteSearchConditionResponse:
+        """
+        @summary Deletes a frequently used search condition by using the asset management feature of the Assets module in the Security Center console.
+        
+        @param request: DeleteSearchConditionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSearchConditionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSearchCondition',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteSearchConditionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_search_condition_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteSearchConditionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteSearchConditionResponse:
+        """
+        @summary Deletes a frequently used search condition by using the asset management feature of the Assets module in the Security Center console.
+        
+        @param request: DeleteSearchConditionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSearchConditionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSearchCondition',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteSearchConditionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_search_condition(
+        self,
+        request: sas_20181203_models.DeleteSearchConditionRequest,
+    ) -> sas_20181203_models.DeleteSearchConditionResponse:
+        """
+        @summary Deletes a frequently used search condition by using the asset management feature of the Assets module in the Security Center console.
+        
+        @param request: DeleteSearchConditionRequest
+        @return: DeleteSearchConditionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_search_condition_with_options(request, runtime)
+
+    async def delete_search_condition_async(
+        self,
+        request: sas_20181203_models.DeleteSearchConditionRequest,
+    ) -> sas_20181203_models.DeleteSearchConditionResponse:
+        """
+        @summary Deletes a frequently used search condition by using the asset management feature of the Assets module in the Security Center console.
+        
+        @param request: DeleteSearchConditionRequest
+        @return: DeleteSearchConditionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_search_condition_with_options_async(request, runtime)
+
     def delete_security_event_mark_miss_list_with_options(
         self,
         request: sas_20181203_models.DeleteSecurityEventMarkMissListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DeleteSecurityEventMarkMissListResponse:
         """
+        @deprecated OpenAPI DeleteSecurityEventMarkMissList is deprecated, please use Sas::2018-12-03::ModifySecurityEventMarkMissIndividually instead.
+        
         @summary Deletes multiple custom defense rules at a time. The custom defense rules are used to add false positive alerts to the whitelist.
         
         @param request: DeleteSecurityEventMarkMissListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteSecurityEventMarkMissListResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -10889,11 +14150,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DeleteSecurityEventMarkMissListResponse:
         """
+        @deprecated OpenAPI DeleteSecurityEventMarkMissList is deprecated, please use Sas::2018-12-03::ModifySecurityEventMarkMissIndividually instead.
+        
         @summary Deletes multiple custom defense rules at a time. The custom defense rules are used to add false positive alerts to the whitelist.
         
         @param request: DeleteSecurityEventMarkMissListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteSecurityEventMarkMissListResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -10925,10 +14189,13 @@ class Client(OpenApiClient):
         request: sas_20181203_models.DeleteSecurityEventMarkMissListRequest,
     ) -> sas_20181203_models.DeleteSecurityEventMarkMissListResponse:
         """
+        @deprecated OpenAPI DeleteSecurityEventMarkMissList is deprecated, please use Sas::2018-12-03::ModifySecurityEventMarkMissIndividually instead.
+        
         @summary Deletes multiple custom defense rules at a time. The custom defense rules are used to add false positive alerts to the whitelist.
         
         @param request: DeleteSecurityEventMarkMissListRequest
         @return: DeleteSecurityEventMarkMissListResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.delete_security_event_mark_miss_list_with_options(request, runtime)
@@ -10938,10 +14205,13 @@ class Client(OpenApiClient):
         request: sas_20181203_models.DeleteSecurityEventMarkMissListRequest,
     ) -> sas_20181203_models.DeleteSecurityEventMarkMissListResponse:
         """
+        @deprecated OpenAPI DeleteSecurityEventMarkMissList is deprecated, please use Sas::2018-12-03::ModifySecurityEventMarkMissIndividually instead.
+        
         @summary Deletes multiple custom defense rules at a time. The custom defense rules are used to add false positive alerts to the whitelist.
         
         @param request: DeleteSecurityEventMarkMissListRequest
         @return: DeleteSecurityEventMarkMissListResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_security_event_mark_miss_list_with_options_async(request, runtime)
@@ -11041,6 +14311,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_service_trail_with_options_async(request, runtime)
+
+    def delete_soar_strategy_task_with_options(
+        self,
+        request: sas_20181203_models.DeleteSoarStrategyTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteSoarStrategyTaskResponse:
+        """
+        @summary Deletes a policy task that is in the waiting state on the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DeleteSoarStrategyTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSoarStrategyTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.strategy_task_id):
+            query['StrategyTaskId'] = request.strategy_task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSoarStrategyTask',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteSoarStrategyTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_soar_strategy_task_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteSoarStrategyTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteSoarStrategyTaskResponse:
+        """
+        @summary Deletes a policy task that is in the waiting state on the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DeleteSoarStrategyTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSoarStrategyTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.strategy_task_id):
+            query['StrategyTaskId'] = request.strategy_task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSoarStrategyTask',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteSoarStrategyTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_soar_strategy_task(
+        self,
+        request: sas_20181203_models.DeleteSoarStrategyTaskRequest,
+    ) -> sas_20181203_models.DeleteSoarStrategyTaskResponse:
+        """
+        @summary Deletes a policy task that is in the waiting state on the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DeleteSoarStrategyTaskRequest
+        @return: DeleteSoarStrategyTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_soar_strategy_task_with_options(request, runtime)
+
+    async def delete_soar_strategy_task_async(
+        self,
+        request: sas_20181203_models.DeleteSoarStrategyTaskRequest,
+    ) -> sas_20181203_models.DeleteSoarStrategyTaskResponse:
+        """
+        @summary Deletes a policy task that is in the waiting state on the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DeleteSoarStrategyTaskRequest
+        @return: DeleteSoarStrategyTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_soar_strategy_task_with_options_async(request, runtime)
 
     def delete_strategy_with_options(
         self,
@@ -12350,6 +15724,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_agent_install_status_with_options_async(request, runtime)
 
+    def describe_agentless_sensitive_file_by_key_with_options(
+        self,
+        tmp_req: sas_20181203_models.DescribeAgentlessSensitiveFileByKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeAgentlessSensitiveFileByKeyResponse:
+        """
+        @summary Queries the list of assets on which a specific type of sensitive files are detected by using the agentless detection feature.
+        
+        @description You can call this operation only when the agentless detection feature is purchased by using the pay-as-you-go billing method within your Alibaba Cloud account.
+        
+        @param tmp_req: DescribeAgentlessSensitiveFileByKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAgentlessSensitiveFileByKeyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.DescribeAgentlessSensitiveFileByKeyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scan_range):
+            request.scan_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scan_range, 'ScanRange', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAgentlessSensitiveFileByKey',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAgentlessSensitiveFileByKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_agentless_sensitive_file_by_key_with_options_async(
+        self,
+        tmp_req: sas_20181203_models.DescribeAgentlessSensitiveFileByKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeAgentlessSensitiveFileByKeyResponse:
+        """
+        @summary Queries the list of assets on which a specific type of sensitive files are detected by using the agentless detection feature.
+        
+        @description You can call this operation only when the agentless detection feature is purchased by using the pay-as-you-go billing method within your Alibaba Cloud account.
+        
+        @param tmp_req: DescribeAgentlessSensitiveFileByKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAgentlessSensitiveFileByKeyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.DescribeAgentlessSensitiveFileByKeyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.scan_range):
+            request.scan_range_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.scan_range, 'ScanRange', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAgentlessSensitiveFileByKey',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAgentlessSensitiveFileByKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_agentless_sensitive_file_by_key(
+        self,
+        request: sas_20181203_models.DescribeAgentlessSensitiveFileByKeyRequest,
+    ) -> sas_20181203_models.DescribeAgentlessSensitiveFileByKeyResponse:
+        """
+        @summary Queries the list of assets on which a specific type of sensitive files are detected by using the agentless detection feature.
+        
+        @description You can call this operation only when the agentless detection feature is purchased by using the pay-as-you-go billing method within your Alibaba Cloud account.
+        
+        @param request: DescribeAgentlessSensitiveFileByKeyRequest
+        @return: DescribeAgentlessSensitiveFileByKeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_agentless_sensitive_file_by_key_with_options(request, runtime)
+
+    async def describe_agentless_sensitive_file_by_key_async(
+        self,
+        request: sas_20181203_models.DescribeAgentlessSensitiveFileByKeyRequest,
+    ) -> sas_20181203_models.DescribeAgentlessSensitiveFileByKeyResponse:
+        """
+        @summary Queries the list of assets on which a specific type of sensitive files are detected by using the agentless detection feature.
+        
+        @description You can call this operation only when the agentless detection feature is purchased by using the pay-as-you-go billing method within your Alibaba Cloud account.
+        
+        @param request: DescribeAgentlessSensitiveFileByKeyRequest
+        @return: DescribeAgentlessSensitiveFileByKeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_agentless_sensitive_file_by_key_with_options_async(request, runtime)
+
     def describe_alarm_event_detail_with_options(
         self,
         request: sas_20181203_models.DescribeAlarmEventDetailRequest,
@@ -12840,6 +16322,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_all_image_baseline_with_options_async(request, runtime)
 
+    def describe_all_regions_statistics_with_options(
+        self,
+        request: sas_20181203_models.DescribeAllRegionsStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeAllRegionsStatisticsResponse:
+        """
+        @summary Queries the statistics on global security events, including the numbers of unfixed vulnerabilities, baseline risks, and alerts.
+        
+        @param request: DescribeAllRegionsStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAllRegionsStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAllRegionsStatistics',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAllRegionsStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_all_regions_statistics_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeAllRegionsStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeAllRegionsStatisticsResponse:
+        """
+        @summary Queries the statistics on global security events, including the numbers of unfixed vulnerabilities, baseline risks, and alerts.
+        
+        @param request: DescribeAllRegionsStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAllRegionsStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAllRegionsStatistics',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAllRegionsStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_all_regions_statistics(
+        self,
+        request: sas_20181203_models.DescribeAllRegionsStatisticsRequest,
+    ) -> sas_20181203_models.DescribeAllRegionsStatisticsResponse:
+        """
+        @summary Queries the statistics on global security events, including the numbers of unfixed vulnerabilities, baseline risks, and alerts.
+        
+        @param request: DescribeAllRegionsStatisticsRequest
+        @return: DescribeAllRegionsStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_all_regions_statistics_with_options(request, runtime)
+
+    async def describe_all_regions_statistics_async(
+        self,
+        request: sas_20181203_models.DescribeAllRegionsStatisticsRequest,
+    ) -> sas_20181203_models.DescribeAllRegionsStatisticsResponse:
+        """
+        @summary Queries the statistics on global security events, including the numbers of unfixed vulnerabilities, baseline risks, and alerts.
+        
+        @param request: DescribeAllRegionsStatisticsRequest
+        @return: DescribeAllRegionsStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_all_regions_statistics_with_options_async(request, runtime)
+
     def describe_anti_brute_force_rules_with_options(
         self,
         request: sas_20181203_models.DescribeAntiBruteForceRulesRequest,
@@ -13036,11 +16626,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeAssetDetailByUuidResponse:
         """
+        @deprecated OpenAPI DescribeAssetDetailByUuid is deprecated, please use Sas::2018-12-03::GetAssetDetailByUuid instead.
+        
         @summary Queries the details of a server and the extended information about the server by using the UUID of the server.
         
         @param request: DescribeAssetDetailByUuidRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeAssetDetailByUuidResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -13075,11 +16668,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeAssetDetailByUuidResponse:
         """
+        @deprecated OpenAPI DescribeAssetDetailByUuid is deprecated, please use Sas::2018-12-03::GetAssetDetailByUuid instead.
+        
         @summary Queries the details of a server and the extended information about the server by using the UUID of the server.
         
         @param request: DescribeAssetDetailByUuidRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeAssetDetailByUuidResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -13113,10 +16709,13 @@ class Client(OpenApiClient):
         request: sas_20181203_models.DescribeAssetDetailByUuidRequest,
     ) -> sas_20181203_models.DescribeAssetDetailByUuidResponse:
         """
+        @deprecated OpenAPI DescribeAssetDetailByUuid is deprecated, please use Sas::2018-12-03::GetAssetDetailByUuid instead.
+        
         @summary Queries the details of a server and the extended information about the server by using the UUID of the server.
         
         @param request: DescribeAssetDetailByUuidRequest
         @return: DescribeAssetDetailByUuidResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.describe_asset_detail_by_uuid_with_options(request, runtime)
@@ -13126,10 +16725,13 @@ class Client(OpenApiClient):
         request: sas_20181203_models.DescribeAssetDetailByUuidRequest,
     ) -> sas_20181203_models.DescribeAssetDetailByUuidResponse:
         """
+        @deprecated OpenAPI DescribeAssetDetailByUuid is deprecated, please use Sas::2018-12-03::GetAssetDetailByUuid instead.
+        
         @summary Queries the details of a server and the extended information about the server by using the UUID of the server.
         
         @param request: DescribeAssetDetailByUuidRequest
         @return: DescribeAssetDetailByUuidResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_asset_detail_by_uuid_with_options_async(request, runtime)
@@ -13311,6 +16913,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_asset_summary_with_options_async(runtime)
+
+    def describe_assets_sca_process_num_with_options(
+        self,
+        request: sas_20181203_models.DescribeAssetsScaProcessNumRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeAssetsScaProcessNumResponse:
+        """
+        @summary Queries the number of Java processes in an asset by using the asset fingerprints feature of Security Center.
+        
+        @param request: DescribeAssetsScaProcessNumRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAssetsScaProcessNumResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.uuid_list):
+            query['UuidList'] = request.uuid_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAssetsScaProcessNum',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAssetsScaProcessNumResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_assets_sca_process_num_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeAssetsScaProcessNumRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeAssetsScaProcessNumResponse:
+        """
+        @summary Queries the number of Java processes in an asset by using the asset fingerprints feature of Security Center.
+        
+        @param request: DescribeAssetsScaProcessNumRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAssetsScaProcessNumResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.uuid_list):
+            query['UuidList'] = request.uuid_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAssetsScaProcessNum',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAssetsScaProcessNumResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_assets_sca_process_num(
+        self,
+        request: sas_20181203_models.DescribeAssetsScaProcessNumRequest,
+    ) -> sas_20181203_models.DescribeAssetsScaProcessNumResponse:
+        """
+        @summary Queries the number of Java processes in an asset by using the asset fingerprints feature of Security Center.
+        
+        @param request: DescribeAssetsScaProcessNumRequest
+        @return: DescribeAssetsScaProcessNumResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_assets_sca_process_num_with_options(request, runtime)
+
+    async def describe_assets_sca_process_num_async(
+        self,
+        request: sas_20181203_models.DescribeAssetsScaProcessNumRequest,
+    ) -> sas_20181203_models.DescribeAssetsScaProcessNumResponse:
+        """
+        @summary Queries the number of Java processes in an asset by using the asset fingerprints feature of Security Center.
+        
+        @param request: DescribeAssetsScaProcessNumRequest
+        @return: DescribeAssetsScaProcessNumResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_assets_sca_process_num_with_options_async(request, runtime)
 
     def describe_assets_security_event_summary_with_options(
         self,
@@ -13647,6 +17345,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_attack_analysis_data_with_options_async(request, runtime)
+
+    def describe_attestors_with_options(
+        self,
+        request: sas_20181203_models.DescribeAttestorsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeAttestorsResponse:
+        """
+        @summary Queries a list of witnesses.
+        
+        @param request: DescribeAttestorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAttestorsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAttestors',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAttestorsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_attestors_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeAttestorsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeAttestorsResponse:
+        """
+        @summary Queries a list of witnesses.
+        
+        @param request: DescribeAttestorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAttestorsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAttestors',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeAttestorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_attestors(
+        self,
+        request: sas_20181203_models.DescribeAttestorsRequest,
+    ) -> sas_20181203_models.DescribeAttestorsResponse:
+        """
+        @summary Queries a list of witnesses.
+        
+        @param request: DescribeAttestorsRequest
+        @return: DescribeAttestorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_attestors_with_options(request, runtime)
+
+    async def describe_attestors_async(
+        self,
+        request: sas_20181203_models.DescribeAttestorsRequest,
+    ) -> sas_20181203_models.DescribeAttestorsResponse:
+        """
+        @summary Queries a list of witnesses.
+        
+        @param request: DescribeAttestorsRequest
+        @return: DescribeAttestorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_attestors_with_options_async(request, runtime)
 
     def describe_auto_del_config_with_options(
         self,
@@ -14440,6 +18250,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_restore_count_with_options_async(runtime)
 
+    def describe_binary_security_policies_with_options(
+        self,
+        request: sas_20181203_models.DescribeBinarySecurityPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeBinarySecurityPoliciesResponse:
+        """
+        @summary Queries binary security policies.
+        
+        @param request: DescribeBinarySecurityPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBinarySecurityPoliciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBinarySecurityPolicies',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBinarySecurityPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_binary_security_policies_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeBinarySecurityPoliciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeBinarySecurityPoliciesResponse:
+        """
+        @summary Queries binary security policies.
+        
+        @param request: DescribeBinarySecurityPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBinarySecurityPoliciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBinarySecurityPolicies',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeBinarySecurityPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_binary_security_policies(
+        self,
+        request: sas_20181203_models.DescribeBinarySecurityPoliciesRequest,
+    ) -> sas_20181203_models.DescribeBinarySecurityPoliciesResponse:
+        """
+        @summary Queries binary security policies.
+        
+        @param request: DescribeBinarySecurityPoliciesRequest
+        @return: DescribeBinarySecurityPoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_binary_security_policies_with_options(request, runtime)
+
+    async def describe_binary_security_policies_async(
+        self,
+        request: sas_20181203_models.DescribeBinarySecurityPoliciesRequest,
+    ) -> sas_20181203_models.DescribeBinarySecurityPoliciesResponse:
+        """
+        @summary Queries binary security policies.
+        
+        @param request: DescribeBinarySecurityPoliciesRequest
+        @return: DescribeBinarySecurityPoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_binary_security_policies_with_options_async(request, runtime)
+
     def describe_brute_force_records_with_options(
         self,
         request: sas_20181203_models.DescribeBruteForceRecordsRequest,
@@ -14860,6 +18786,300 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_can_fix_vul_list_with_options_async(request, runtime)
 
+    def describe_can_try_sas_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCanTrySasResponse:
+        """
+        @summary 查询是否允许试用云安全中心
+        
+        @param request: DescribeCanTrySasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCanTrySasResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeCanTrySas',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCanTrySasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_can_try_sas_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCanTrySasResponse:
+        """
+        @summary 查询是否允许试用云安全中心
+        
+        @param request: DescribeCanTrySasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCanTrySasResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeCanTrySas',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCanTrySasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_can_try_sas(self) -> sas_20181203_models.DescribeCanTrySasResponse:
+        """
+        @summary 查询是否允许试用云安全中心
+        
+        @return: DescribeCanTrySasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_can_try_sas_with_options(runtime)
+
+    async def describe_can_try_sas_async(self) -> sas_20181203_models.DescribeCanTrySasResponse:
+        """
+        @summary 查询是否允许试用云安全中心
+        
+        @return: DescribeCanTrySasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_can_try_sas_with_options_async(runtime)
+
+    def describe_chart_data_with_options(
+        self,
+        request: sas_20181203_models.DescribeChartDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeChartDataResponse:
+        """
+        @summary Queries the chart data of a security report.
+        
+        @param request: DescribeChartDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChartDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.char_id):
+            query['CharId'] = request.char_id
+        if not UtilClient.is_unset(request.chart_id):
+            query['ChartId'] = request.chart_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.time_end):
+            query['TimeEnd'] = request.time_end
+        if not UtilClient.is_unset(request.time_start):
+            query['TimeStart'] = request.time_start
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeChartData',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeChartDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_chart_data_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeChartDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeChartDataResponse:
+        """
+        @summary Queries the chart data of a security report.
+        
+        @param request: DescribeChartDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChartDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.char_id):
+            query['CharId'] = request.char_id
+        if not UtilClient.is_unset(request.chart_id):
+            query['ChartId'] = request.chart_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.time_end):
+            query['TimeEnd'] = request.time_end
+        if not UtilClient.is_unset(request.time_start):
+            query['TimeStart'] = request.time_start
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeChartData',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeChartDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_chart_data(
+        self,
+        request: sas_20181203_models.DescribeChartDataRequest,
+    ) -> sas_20181203_models.DescribeChartDataResponse:
+        """
+        @summary Queries the chart data of a security report.
+        
+        @param request: DescribeChartDataRequest
+        @return: DescribeChartDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_chart_data_with_options(request, runtime)
+
+    async def describe_chart_data_async(
+        self,
+        request: sas_20181203_models.DescribeChartDataRequest,
+    ) -> sas_20181203_models.DescribeChartDataResponse:
+        """
+        @summary Queries the chart data of a security report.
+        
+        @param request: DescribeChartDataRequest
+        @return: DescribeChartDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_chart_data_with_options_async(request, runtime)
+
+    def describe_chart_list_with_options(
+        self,
+        request: sas_20181203_models.DescribeChartListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeChartListResponse:
+        """
+        @summary Queries the charts that are supported by using the security report feature of Security Center.
+        
+        @param request: DescribeChartListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChartListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.project_code):
+            query['ProjectCode'] = request.project_code
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeChartList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeChartListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_chart_list_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeChartListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeChartListResponse:
+        """
+        @summary Queries the charts that are supported by using the security report feature of Security Center.
+        
+        @param request: DescribeChartListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChartListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.project_code):
+            query['ProjectCode'] = request.project_code
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeChartList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeChartListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_chart_list(
+        self,
+        request: sas_20181203_models.DescribeChartListRequest,
+    ) -> sas_20181203_models.DescribeChartListResponse:
+        """
+        @summary Queries the charts that are supported by using the security report feature of Security Center.
+        
+        @param request: DescribeChartListRequest
+        @return: DescribeChartListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_chart_list_with_options(request, runtime)
+
+    async def describe_chart_list_async(
+        self,
+        request: sas_20181203_models.DescribeChartListRequest,
+    ) -> sas_20181203_models.DescribeChartListResponse:
+        """
+        @summary Queries the charts that are supported by using the security report feature of Security Center.
+        
+        @param request: DescribeChartListRequest
+        @return: DescribeChartListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_chart_list_with_options_async(request, runtime)
+
     def describe_check_ecs_warnings_with_options(
         self,
         request: sas_20181203_models.DescribeCheckEcsWarningsRequest,
@@ -15060,6 +19280,188 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_check_fix_details_with_options_async(request, runtime)
 
+    def describe_check_result_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCheckResultResponse:
+        """
+        @summary Queries the result of the ISO 27001 compliance check.
+        
+        @param request: DescribeCheckResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCheckResultResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeCheckResult',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCheckResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_check_result_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCheckResultResponse:
+        """
+        @summary Queries the result of the ISO 27001 compliance check.
+        
+        @param request: DescribeCheckResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCheckResultResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeCheckResult',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCheckResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_check_result(self) -> sas_20181203_models.DescribeCheckResultResponse:
+        """
+        @summary Queries the result of the ISO 27001 compliance check.
+        
+        @return: DescribeCheckResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_check_result_with_options(runtime)
+
+    async def describe_check_result_async(self) -> sas_20181203_models.DescribeCheckResultResponse:
+        """
+        @summary Queries the result of the ISO 27001 compliance check.
+        
+        @return: DescribeCheckResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_check_result_with_options_async(runtime)
+
+    def describe_check_warning_count_with_options(
+        self,
+        request: sas_20181203_models.DescribeCheckWarningCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCheckWarningCountResponse:
+        """
+        @summary 获取基线问题条数
+        
+        @param request: DescribeCheckWarningCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCheckWarningCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.check_id):
+            query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.risk_id):
+            query['RiskId'] = request.risk_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCheckWarningCount',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCheckWarningCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_check_warning_count_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeCheckWarningCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCheckWarningCountResponse:
+        """
+        @summary 获取基线问题条数
+        
+        @param request: DescribeCheckWarningCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCheckWarningCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ali_uid):
+            query['AliUid'] = request.ali_uid
+        if not UtilClient.is_unset(request.check_id):
+            query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.risk_id):
+            query['RiskId'] = request.risk_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCheckWarningCount',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCheckWarningCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_check_warning_count(
+        self,
+        request: sas_20181203_models.DescribeCheckWarningCountRequest,
+    ) -> sas_20181203_models.DescribeCheckWarningCountResponse:
+        """
+        @summary 获取基线问题条数
+        
+        @param request: DescribeCheckWarningCountRequest
+        @return: DescribeCheckWarningCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_check_warning_count_with_options(request, runtime)
+
+    async def describe_check_warning_count_async(
+        self,
+        request: sas_20181203_models.DescribeCheckWarningCountRequest,
+    ) -> sas_20181203_models.DescribeCheckWarningCountResponse:
+        """
+        @summary 获取基线问题条数
+        
+        @param request: DescribeCheckWarningCountRequest
+        @return: DescribeCheckWarningCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_check_warning_count_with_options_async(request, runtime)
+
     def describe_check_warning_detail_with_options(
         self,
         request: sas_20181203_models.DescribeCheckWarningDetailRequest,
@@ -15192,8 +19594,18 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.check_id):
             query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.filter_uuid):
+            query['FilterUuid'] = request.filter_uuid
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         if not UtilClient.is_unset(request.resource_directory_account_id):
             query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.risk_id):
@@ -15235,8 +19647,18 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.check_id):
             query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.filter_uuid):
+            query['FilterUuid'] = request.filter_uuid
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         if not UtilClient.is_unset(request.resource_directory_account_id):
             query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not UtilClient.is_unset(request.risk_id):
@@ -15776,6 +20198,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_client_conf_strategy_with_options_async(request, runtime)
 
+    def describe_client_problem_type_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeClientProblemTypeResponse:
+        """
+        @summary 查询客户端问题列表
+        
+        @param request: DescribeClientProblemTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClientProblemTypeResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeClientProblemType',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeClientProblemTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_client_problem_type_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeClientProblemTypeResponse:
+        """
+        @summary 查询客户端问题列表
+        
+        @param request: DescribeClientProblemTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClientProblemTypeResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeClientProblemType',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeClientProblemTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_client_problem_type(self) -> sas_20181203_models.DescribeClientProblemTypeResponse:
+        """
+        @summary 查询客户端问题列表
+        
+        @return: DescribeClientProblemTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_client_problem_type_with_options(runtime)
+
+    async def describe_client_problem_type_async(self) -> sas_20181203_models.DescribeClientProblemTypeResponse:
+        """
+        @summary 查询客户端问题列表
+        
+        @return: DescribeClientProblemTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_client_problem_type_with_options_async(runtime)
+
     def describe_cloud_center_instances_with_options(
         self,
         request: sas_20181203_models.DescribeCloudCenterInstancesRequest,
@@ -15796,6 +20292,8 @@ class Client(OpenApiClient):
             query['Criteria'] = request.criteria
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.flags):
+            query['Flags'] = request.flags
         if not UtilClient.is_unset(request.importance):
             query['Importance'] = request.importance
         if not UtilClient.is_unset(request.lang):
@@ -15855,6 +20353,8 @@ class Client(OpenApiClient):
             query['Criteria'] = request.criteria
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.flags):
+            query['Flags'] = request.flags
         if not UtilClient.is_unset(request.importance):
             query['Importance'] = request.importance
         if not UtilClient.is_unset(request.lang):
@@ -16010,6 +20510,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloud_product_field_statistics_with_options_async(runtime)
 
+    def describe_cloud_vendor_account_aklist_with_options(
+        self,
+        request: sas_20181203_models.DescribeCloudVendorAccountAKListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCloudVendorAccountAKListResponse:
+        """
+        @summary 查询多云资产配置列表
+        
+        @param request: DescribeCloudVendorAccountAKListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudVendorAccountAKListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_ids):
+            query['AuthIds'] = request.auth_ids
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.sub_account_name):
+            query['SubAccountName'] = request.sub_account_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudVendorAccountAKList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCloudVendorAccountAKListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_vendor_account_aklist_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeCloudVendorAccountAKListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCloudVendorAccountAKListResponse:
+        """
+        @summary 查询多云资产配置列表
+        
+        @param request: DescribeCloudVendorAccountAKListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudVendorAccountAKListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_ids):
+            query['AuthIds'] = request.auth_ids
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.sub_account_name):
+            query['SubAccountName'] = request.sub_account_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudVendorAccountAKList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCloudVendorAccountAKListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_vendor_account_aklist(
+        self,
+        request: sas_20181203_models.DescribeCloudVendorAccountAKListRequest,
+    ) -> sas_20181203_models.DescribeCloudVendorAccountAKListResponse:
+        """
+        @summary 查询多云资产配置列表
+        
+        @param request: DescribeCloudVendorAccountAKListRequest
+        @return: DescribeCloudVendorAccountAKListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_vendor_account_aklist_with_options(request, runtime)
+
+    async def describe_cloud_vendor_account_aklist_async(
+        self,
+        request: sas_20181203_models.DescribeCloudVendorAccountAKListRequest,
+    ) -> sas_20181203_models.DescribeCloudVendorAccountAKListResponse:
+        """
+        @summary 查询多云资产配置列表
+        
+        @param request: DescribeCloudVendorAccountAKListRequest
+        @return: DescribeCloudVendorAccountAKListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_vendor_account_aklist_with_options_async(request, runtime)
+
     def describe_cluster_basic_info_with_options(
         self,
         request: sas_20181203_models.DescribeClusterBasicInfoRequest,
@@ -16113,6 +20729,250 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cluster_basic_info_with_options_async(request, runtime)
+
+    def describe_cluster_host_security_summary_with_options(
+        self,
+        request: sas_20181203_models.DescribeClusterHostSecuritySummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeClusterHostSecuritySummaryResponse:
+        """
+        @summary Queries the statistical information about host security.
+        
+        @param request: DescribeClusterHostSecuritySummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterHostSecuritySummaryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.container_field_name):
+            query['ContainerFieldName'] = request.container_field_name
+        if not UtilClient.is_unset(request.container_field_value):
+            query['ContainerFieldValue'] = request.container_field_value
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterHostSecuritySummary',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeClusterHostSecuritySummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cluster_host_security_summary_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeClusterHostSecuritySummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeClusterHostSecuritySummaryResponse:
+        """
+        @summary Queries the statistical information about host security.
+        
+        @param request: DescribeClusterHostSecuritySummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterHostSecuritySummaryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.container_field_name):
+            query['ContainerFieldName'] = request.container_field_name
+        if not UtilClient.is_unset(request.container_field_value):
+            query['ContainerFieldValue'] = request.container_field_value
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterHostSecuritySummary',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeClusterHostSecuritySummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cluster_host_security_summary(
+        self,
+        request: sas_20181203_models.DescribeClusterHostSecuritySummaryRequest,
+    ) -> sas_20181203_models.DescribeClusterHostSecuritySummaryResponse:
+        """
+        @summary Queries the statistical information about host security.
+        
+        @param request: DescribeClusterHostSecuritySummaryRequest
+        @return: DescribeClusterHostSecuritySummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cluster_host_security_summary_with_options(request, runtime)
+
+    async def describe_cluster_host_security_summary_async(
+        self,
+        request: sas_20181203_models.DescribeClusterHostSecuritySummaryRequest,
+    ) -> sas_20181203_models.DescribeClusterHostSecuritySummaryResponse:
+        """
+        @summary Queries the statistical information about host security.
+        
+        @param request: DescribeClusterHostSecuritySummaryRequest
+        @return: DescribeClusterHostSecuritySummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cluster_host_security_summary_with_options_async(request, runtime)
+
+    def describe_cluster_image_security_summary_with_options(
+        self,
+        request: sas_20181203_models.DescribeClusterImageSecuritySummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeClusterImageSecuritySummaryResponse:
+        """
+        @summary Queries the statistical information about image security.
+        
+        @param request: DescribeClusterImageSecuritySummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterImageSecuritySummaryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.container_field_name):
+            query['ContainerFieldName'] = request.container_field_name
+        if not UtilClient.is_unset(request.container_field_value):
+            query['ContainerFieldValue'] = request.container_field_value
+        if not UtilClient.is_unset(request.image_digest):
+            query['ImageDigest'] = request.image_digest
+        if not UtilClient.is_unset(request.image_repo_name):
+            query['ImageRepoName'] = request.image_repo_name
+        if not UtilClient.is_unset(request.image_repo_namespace):
+            query['ImageRepoNamespace'] = request.image_repo_namespace
+        if not UtilClient.is_unset(request.image_tag):
+            query['ImageTag'] = request.image_tag
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterImageSecuritySummary',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeClusterImageSecuritySummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cluster_image_security_summary_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeClusterImageSecuritySummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeClusterImageSecuritySummaryResponse:
+        """
+        @summary Queries the statistical information about image security.
+        
+        @param request: DescribeClusterImageSecuritySummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClusterImageSecuritySummaryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.container_field_name):
+            query['ContainerFieldName'] = request.container_field_name
+        if not UtilClient.is_unset(request.container_field_value):
+            query['ContainerFieldValue'] = request.container_field_value
+        if not UtilClient.is_unset(request.image_digest):
+            query['ImageDigest'] = request.image_digest
+        if not UtilClient.is_unset(request.image_repo_name):
+            query['ImageRepoName'] = request.image_repo_name
+        if not UtilClient.is_unset(request.image_repo_namespace):
+            query['ImageRepoNamespace'] = request.image_repo_namespace
+        if not UtilClient.is_unset(request.image_tag):
+            query['ImageTag'] = request.image_tag
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterImageSecuritySummary',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeClusterImageSecuritySummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cluster_image_security_summary(
+        self,
+        request: sas_20181203_models.DescribeClusterImageSecuritySummaryRequest,
+    ) -> sas_20181203_models.DescribeClusterImageSecuritySummaryResponse:
+        """
+        @summary Queries the statistical information about image security.
+        
+        @param request: DescribeClusterImageSecuritySummaryRequest
+        @return: DescribeClusterImageSecuritySummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cluster_image_security_summary_with_options(request, runtime)
+
+    async def describe_cluster_image_security_summary_async(
+        self,
+        request: sas_20181203_models.DescribeClusterImageSecuritySummaryRequest,
+    ) -> sas_20181203_models.DescribeClusterImageSecuritySummaryResponse:
+        """
+        @summary Queries the statistical information about image security.
+        
+        @param request: DescribeClusterImageSecuritySummaryRequest
+        @return: DescribeClusterImageSecuritySummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cluster_image_security_summary_with_options_async(request, runtime)
 
     def describe_cluster_info_list_with_options(
         self,
@@ -17118,6 +21978,180 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_container_criteria_with_options_async(request, runtime)
 
+    def describe_container_field_statistics_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeContainerFieldStatisticsResponse:
+        """
+        @summary Queries the statistical information about containers.
+        
+        @param request: DescribeContainerFieldStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeContainerFieldStatisticsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeContainerFieldStatistics',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeContainerFieldStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_container_field_statistics_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeContainerFieldStatisticsResponse:
+        """
+        @summary Queries the statistical information about containers.
+        
+        @param request: DescribeContainerFieldStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeContainerFieldStatisticsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeContainerFieldStatistics',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeContainerFieldStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_container_field_statistics(self) -> sas_20181203_models.DescribeContainerFieldStatisticsResponse:
+        """
+        @summary Queries the statistical information about containers.
+        
+        @return: DescribeContainerFieldStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_container_field_statistics_with_options(runtime)
+
+    async def describe_container_field_statistics_async(self) -> sas_20181203_models.DescribeContainerFieldStatisticsResponse:
+        """
+        @summary Queries the statistical information about containers.
+        
+        @return: DescribeContainerFieldStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_container_field_statistics_with_options_async(runtime)
+
+    def describe_container_grouped_field_detail_with_options(
+        self,
+        request: sas_20181203_models.DescribeContainerGroupedFieldDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeContainerGroupedFieldDetailResponse:
+        """
+        @summary Queries the attribute details of containers.
+        
+        @param request: DescribeContainerGroupedFieldDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeContainerGroupedFieldDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.criteria):
+            query['Criteria'] = request.criteria
+        if not UtilClient.is_unset(request.group_field):
+            query['GroupField'] = request.group_field
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeContainerGroupedFieldDetail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeContainerGroupedFieldDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_container_grouped_field_detail_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeContainerGroupedFieldDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeContainerGroupedFieldDetailResponse:
+        """
+        @summary Queries the attribute details of containers.
+        
+        @param request: DescribeContainerGroupedFieldDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeContainerGroupedFieldDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.criteria):
+            query['Criteria'] = request.criteria
+        if not UtilClient.is_unset(request.group_field):
+            query['GroupField'] = request.group_field
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeContainerGroupedFieldDetail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeContainerGroupedFieldDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_container_grouped_field_detail(
+        self,
+        request: sas_20181203_models.DescribeContainerGroupedFieldDetailRequest,
+    ) -> sas_20181203_models.DescribeContainerGroupedFieldDetailResponse:
+        """
+        @summary Queries the attribute details of containers.
+        
+        @param request: DescribeContainerGroupedFieldDetailRequest
+        @return: DescribeContainerGroupedFieldDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_container_grouped_field_detail_with_options(request, runtime)
+
+    async def describe_container_grouped_field_detail_async(
+        self,
+        request: sas_20181203_models.DescribeContainerGroupedFieldDetailRequest,
+    ) -> sas_20181203_models.DescribeContainerGroupedFieldDetailResponse:
+        """
+        @summary Queries the attribute details of containers.
+        
+        @param request: DescribeContainerGroupedFieldDetailRequest
+        @return: DescribeContainerGroupedFieldDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_container_grouped_field_detail_with_options_async(request, runtime)
+
     def describe_container_instances_with_options(
         self,
         request: sas_20181203_models.DescribeContainerInstancesRequest,
@@ -17321,6 +22355,314 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_container_scan_config_with_options_async(request, runtime)
+
+    def describe_container_service_k8s_cluster_kritis_status_with_options(
+        self,
+        request: sas_20181203_models.DescribeContainerServiceK8sClusterKritisStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeContainerServiceK8sClusterKritisStatusResponse:
+        """
+        @summary Queries the Kritis status of a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DescribeContainerServiceK8sClusterKritisStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeContainerServiceK8sClusterKritisStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeContainerServiceK8sClusterKritisStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeContainerServiceK8sClusterKritisStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_container_service_k8s_cluster_kritis_status_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeContainerServiceK8sClusterKritisStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeContainerServiceK8sClusterKritisStatusResponse:
+        """
+        @summary Queries the Kritis status of a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DescribeContainerServiceK8sClusterKritisStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeContainerServiceK8sClusterKritisStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeContainerServiceK8sClusterKritisStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeContainerServiceK8sClusterKritisStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_container_service_k8s_cluster_kritis_status(
+        self,
+        request: sas_20181203_models.DescribeContainerServiceK8sClusterKritisStatusRequest,
+    ) -> sas_20181203_models.DescribeContainerServiceK8sClusterKritisStatusResponse:
+        """
+        @summary Queries the Kritis status of a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DescribeContainerServiceK8sClusterKritisStatusRequest
+        @return: DescribeContainerServiceK8sClusterKritisStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_container_service_k8s_cluster_kritis_status_with_options(request, runtime)
+
+    async def describe_container_service_k8s_cluster_kritis_status_async(
+        self,
+        request: sas_20181203_models.DescribeContainerServiceK8sClusterKritisStatusRequest,
+    ) -> sas_20181203_models.DescribeContainerServiceK8sClusterKritisStatusResponse:
+        """
+        @summary Queries the Kritis status of a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DescribeContainerServiceK8sClusterKritisStatusRequest
+        @return: DescribeContainerServiceK8sClusterKritisStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_container_service_k8s_cluster_kritis_status_with_options_async(request, runtime)
+
+    def describe_container_service_k8s_cluster_namespaces_with_options(
+        self,
+        request: sas_20181203_models.DescribeContainerServiceK8sClusterNamespacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeContainerServiceK8sClusterNamespacesResponse:
+        """
+        @summary Queries the namespace of a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DescribeContainerServiceK8sClusterNamespacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeContainerServiceK8sClusterNamespacesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeContainerServiceK8sClusterNamespaces',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeContainerServiceK8sClusterNamespacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_container_service_k8s_cluster_namespaces_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeContainerServiceK8sClusterNamespacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeContainerServiceK8sClusterNamespacesResponse:
+        """
+        @summary Queries the namespace of a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DescribeContainerServiceK8sClusterNamespacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeContainerServiceK8sClusterNamespacesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeContainerServiceK8sClusterNamespaces',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeContainerServiceK8sClusterNamespacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_container_service_k8s_cluster_namespaces(
+        self,
+        request: sas_20181203_models.DescribeContainerServiceK8sClusterNamespacesRequest,
+    ) -> sas_20181203_models.DescribeContainerServiceK8sClusterNamespacesResponse:
+        """
+        @summary Queries the namespace of a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DescribeContainerServiceK8sClusterNamespacesRequest
+        @return: DescribeContainerServiceK8sClusterNamespacesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_container_service_k8s_cluster_namespaces_with_options(request, runtime)
+
+    async def describe_container_service_k8s_cluster_namespaces_async(
+        self,
+        request: sas_20181203_models.DescribeContainerServiceK8sClusterNamespacesRequest,
+    ) -> sas_20181203_models.DescribeContainerServiceK8sClusterNamespacesResponse:
+        """
+        @summary Queries the namespace of a Container Service for Kubernetes (ACK) cluster.
+        
+        @param request: DescribeContainerServiceK8sClusterNamespacesRequest
+        @return: DescribeContainerServiceK8sClusterNamespacesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_container_service_k8s_cluster_namespaces_with_options_async(request, runtime)
+
+    def describe_container_service_k8s_clusters_with_options(
+        self,
+        request: sas_20181203_models.DescribeContainerServiceK8sClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeContainerServiceK8sClustersResponse:
+        """
+        @summary Queries a list of Container Service for Kubernetes (ACK) clusters.
+        
+        @param request: DescribeContainerServiceK8sClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeContainerServiceK8sClustersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeContainerServiceK8sClusters',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeContainerServiceK8sClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_container_service_k8s_clusters_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeContainerServiceK8sClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeContainerServiceK8sClustersResponse:
+        """
+        @summary Queries a list of Container Service for Kubernetes (ACK) clusters.
+        
+        @param request: DescribeContainerServiceK8sClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeContainerServiceK8sClustersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeContainerServiceK8sClusters',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeContainerServiceK8sClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_container_service_k8s_clusters(
+        self,
+        request: sas_20181203_models.DescribeContainerServiceK8sClustersRequest,
+    ) -> sas_20181203_models.DescribeContainerServiceK8sClustersResponse:
+        """
+        @summary Queries a list of Container Service for Kubernetes (ACK) clusters.
+        
+        @param request: DescribeContainerServiceK8sClustersRequest
+        @return: DescribeContainerServiceK8sClustersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_container_service_k8s_clusters_with_options(request, runtime)
+
+    async def describe_container_service_k8s_clusters_async(
+        self,
+        request: sas_20181203_models.DescribeContainerServiceK8sClustersRequest,
+    ) -> sas_20181203_models.DescribeContainerServiceK8sClustersResponse:
+        """
+        @summary Queries a list of Container Service for Kubernetes (ACK) clusters.
+        
+        @param request: DescribeContainerServiceK8sClustersRequest
+        @return: DescribeContainerServiceK8sClustersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_container_service_k8s_clusters_with_options_async(request, runtime)
 
     def describe_container_statistics_with_options(
         self,
@@ -18026,6 +23368,422 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_custom_block_records_with_options_async(request, runtime)
 
+    def describe_customize_report_config_detail_with_options(
+        self,
+        request: sas_20181203_models.DescribeCustomizeReportConfigDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCustomizeReportConfigDetailResponse:
+        """
+        @summary Obtains the configurations of a security report.
+        
+        @param request: DescribeCustomizeReportConfigDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomizeReportConfigDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomizeReportConfigDetail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCustomizeReportConfigDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_customize_report_config_detail_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeCustomizeReportConfigDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCustomizeReportConfigDetailResponse:
+        """
+        @summary Obtains the configurations of a security report.
+        
+        @param request: DescribeCustomizeReportConfigDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomizeReportConfigDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomizeReportConfigDetail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCustomizeReportConfigDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_customize_report_config_detail(
+        self,
+        request: sas_20181203_models.DescribeCustomizeReportConfigDetailRequest,
+    ) -> sas_20181203_models.DescribeCustomizeReportConfigDetailResponse:
+        """
+        @summary Obtains the configurations of a security report.
+        
+        @param request: DescribeCustomizeReportConfigDetailRequest
+        @return: DescribeCustomizeReportConfigDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_customize_report_config_detail_with_options(request, runtime)
+
+    async def describe_customize_report_config_detail_async(
+        self,
+        request: sas_20181203_models.DescribeCustomizeReportConfigDetailRequest,
+    ) -> sas_20181203_models.DescribeCustomizeReportConfigDetailResponse:
+        """
+        @summary Obtains the configurations of a security report.
+        
+        @param request: DescribeCustomizeReportConfigDetailRequest
+        @return: DescribeCustomizeReportConfigDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_customize_report_config_detail_with_options_async(request, runtime)
+
+    def describe_customize_report_list_with_options(
+        self,
+        request: sas_20181203_models.DescribeCustomizeReportListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCustomizeReportListResponse:
+        """
+        @summary Queries security reports.
+        
+        @param request: DescribeCustomizeReportListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomizeReportListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.pinned):
+            query['Pinned'] = request.pinned
+        if not UtilClient.is_unset(request.report_status):
+            query['ReportStatus'] = request.report_status
+        if not UtilClient.is_unset(request.report_type):
+            query['ReportType'] = request.report_type
+        if not UtilClient.is_unset(request.report_version):
+            query['ReportVersion'] = request.report_version
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomizeReportList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCustomizeReportListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_customize_report_list_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeCustomizeReportListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCustomizeReportListResponse:
+        """
+        @summary Queries security reports.
+        
+        @param request: DescribeCustomizeReportListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomizeReportListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.pinned):
+            query['Pinned'] = request.pinned
+        if not UtilClient.is_unset(request.report_status):
+            query['ReportStatus'] = request.report_status
+        if not UtilClient.is_unset(request.report_type):
+            query['ReportType'] = request.report_type
+        if not UtilClient.is_unset(request.report_version):
+            query['ReportVersion'] = request.report_version
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomizeReportList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCustomizeReportListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_customize_report_list(
+        self,
+        request: sas_20181203_models.DescribeCustomizeReportListRequest,
+    ) -> sas_20181203_models.DescribeCustomizeReportListResponse:
+        """
+        @summary Queries security reports.
+        
+        @param request: DescribeCustomizeReportListRequest
+        @return: DescribeCustomizeReportListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_customize_report_list_with_options(request, runtime)
+
+    async def describe_customize_report_list_async(
+        self,
+        request: sas_20181203_models.DescribeCustomizeReportListRequest,
+    ) -> sas_20181203_models.DescribeCustomizeReportListResponse:
+        """
+        @summary Queries security reports.
+        
+        @param request: DescribeCustomizeReportListRequest
+        @return: DescribeCustomizeReportListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_customize_report_list_with_options_async(request, runtime)
+
+    def describe_customized_dict_upload_info_with_options(
+        self,
+        request: sas_20181203_models.DescribeCustomizedDictUploadInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCustomizedDictUploadInfoResponse:
+        """
+        @summary Queries the Object Storage Service (OSS) information of the file that is uploaded to create custom weak password rules.
+        
+        @param request: DescribeCustomizedDictUploadInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomizedDictUploadInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomizedDictUploadInfo',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCustomizedDictUploadInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_customized_dict_upload_info_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeCustomizedDictUploadInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCustomizedDictUploadInfoResponse:
+        """
+        @summary Queries the Object Storage Service (OSS) information of the file that is uploaded to create custom weak password rules.
+        
+        @param request: DescribeCustomizedDictUploadInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomizedDictUploadInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomizedDictUploadInfo',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCustomizedDictUploadInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_customized_dict_upload_info(
+        self,
+        request: sas_20181203_models.DescribeCustomizedDictUploadInfoRequest,
+    ) -> sas_20181203_models.DescribeCustomizedDictUploadInfoResponse:
+        """
+        @summary Queries the Object Storage Service (OSS) information of the file that is uploaded to create custom weak password rules.
+        
+        @param request: DescribeCustomizedDictUploadInfoRequest
+        @return: DescribeCustomizedDictUploadInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_customized_dict_upload_info_with_options(request, runtime)
+
+    async def describe_customized_dict_upload_info_async(
+        self,
+        request: sas_20181203_models.DescribeCustomizedDictUploadInfoRequest,
+    ) -> sas_20181203_models.DescribeCustomizedDictUploadInfoResponse:
+        """
+        @summary Queries the Object Storage Service (OSS) information of the file that is uploaded to create custom weak password rules.
+        
+        @param request: DescribeCustomizedDictUploadInfoRequest
+        @return: DescribeCustomizedDictUploadInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_customized_dict_upload_info_with_options_async(request, runtime)
+
+    def describe_customized_strategy_targets_with_options(
+        self,
+        request: sas_20181203_models.DescribeCustomizedStrategyTargetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCustomizedStrategyTargetsResponse:
+        """
+        @summary Queries the servers to which custom policies are applied.
+        
+        @param request: DescribeCustomizedStrategyTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomizedStrategyTargetsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomizedStrategyTargets',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCustomizedStrategyTargetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_customized_strategy_targets_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeCustomizedStrategyTargetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeCustomizedStrategyTargetsResponse:
+        """
+        @summary Queries the servers to which custom policies are applied.
+        
+        @param request: DescribeCustomizedStrategyTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomizedStrategyTargetsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomizedStrategyTargets',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeCustomizedStrategyTargetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_customized_strategy_targets(
+        self,
+        request: sas_20181203_models.DescribeCustomizedStrategyTargetsRequest,
+    ) -> sas_20181203_models.DescribeCustomizedStrategyTargetsResponse:
+        """
+        @summary Queries the servers to which custom policies are applied.
+        
+        @param request: DescribeCustomizedStrategyTargetsRequest
+        @return: DescribeCustomizedStrategyTargetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_customized_strategy_targets_with_options(request, runtime)
+
+    async def describe_customized_strategy_targets_async(
+        self,
+        request: sas_20181203_models.DescribeCustomizedStrategyTargetsRequest,
+    ) -> sas_20181203_models.DescribeCustomizedStrategyTargetsResponse:
+        """
+        @summary Queries the servers to which custom policies are applied.
+        
+        @param request: DescribeCustomizedStrategyTargetsRequest
+        @return: DescribeCustomizedStrategyTargetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_customized_strategy_targets_with_options_async(request, runtime)
+
     def describe_cycle_task_list_with_options(
         self,
         request: sas_20181203_models.DescribeCycleTaskListRequest,
@@ -18133,6 +23891,206 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cycle_task_list_with_options_async(request, runtime)
+
+    def describe_data_source_with_options(
+        self,
+        request: sas_20181203_models.DescribeDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeDataSourceResponse:
+        """
+        @summary 查询操作审计数据源
+        
+        @param request: DescribeDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_type):
+            query['ConfigType'] = request.config_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDataSource',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_data_source_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeDataSourceResponse:
+        """
+        @summary 查询操作审计数据源
+        
+        @param request: DescribeDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_type):
+            query['ConfigType'] = request.config_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDataSource',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_data_source(
+        self,
+        request: sas_20181203_models.DescribeDataSourceRequest,
+    ) -> sas_20181203_models.DescribeDataSourceResponse:
+        """
+        @summary 查询操作审计数据源
+        
+        @param request: DescribeDataSourceRequest
+        @return: DescribeDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_data_source_with_options(request, runtime)
+
+    async def describe_data_source_async(
+        self,
+        request: sas_20181203_models.DescribeDataSourceRequest,
+    ) -> sas_20181203_models.DescribeDataSourceResponse:
+        """
+        @summary 查询操作审计数据源
+        
+        @param request: DescribeDataSourceRequest
+        @return: DescribeDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_data_source_with_options_async(request, runtime)
+
+    def describe_default_key_info_with_options(
+        self,
+        request: sas_20181203_models.DescribeDefaultKeyInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeDefaultKeyInfoResponse:
+        """
+        @summary Queries the keywords of a custom dictionary that is generated by using weak passwords.
+        
+        @param request: DescribeDefaultKeyInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDefaultKeyInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDefaultKeyInfo',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDefaultKeyInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_default_key_info_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeDefaultKeyInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeDefaultKeyInfoResponse:
+        """
+        @summary Queries the keywords of a custom dictionary that is generated by using weak passwords.
+        
+        @param request: DescribeDefaultKeyInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDefaultKeyInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDefaultKeyInfo',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDefaultKeyInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_default_key_info(
+        self,
+        request: sas_20181203_models.DescribeDefaultKeyInfoRequest,
+    ) -> sas_20181203_models.DescribeDefaultKeyInfoResponse:
+        """
+        @summary Queries the keywords of a custom dictionary that is generated by using weak passwords.
+        
+        @param request: DescribeDefaultKeyInfoRequest
+        @return: DescribeDefaultKeyInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_default_key_info_with_options(request, runtime)
+
+    async def describe_default_key_info_async(
+        self,
+        request: sas_20181203_models.DescribeDefaultKeyInfoRequest,
+    ) -> sas_20181203_models.DescribeDefaultKeyInfoResponse:
+        """
+        @summary Queries the keywords of a custom dictionary that is generated by using weak passwords.
+        
+        @param request: DescribeDefaultKeyInfoRequest
+        @return: DescribeDefaultKeyInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_default_key_info_with_options_async(request, runtime)
 
     def describe_default_proxy_install_version_with_options(
         self,
@@ -18620,6 +24578,714 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_list_with_options_async(request, runtime)
 
+    def describe_domain_secure_alarm_list_with_options(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureAlarmListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeDomainSecureAlarmListResponse:
+        """
+        @summary 查询网络安全报告-安全告警
+        
+        @param request: DescribeDomainSecureAlarmListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainSecureAlarmListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSecureAlarmList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDomainSecureAlarmListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_domain_secure_alarm_list_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureAlarmListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeDomainSecureAlarmListResponse:
+        """
+        @summary 查询网络安全报告-安全告警
+        
+        @param request: DescribeDomainSecureAlarmListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainSecureAlarmListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSecureAlarmList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDomainSecureAlarmListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_domain_secure_alarm_list(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureAlarmListRequest,
+    ) -> sas_20181203_models.DescribeDomainSecureAlarmListResponse:
+        """
+        @summary 查询网络安全报告-安全告警
+        
+        @param request: DescribeDomainSecureAlarmListRequest
+        @return: DescribeDomainSecureAlarmListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domain_secure_alarm_list_with_options(request, runtime)
+
+    async def describe_domain_secure_alarm_list_async(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureAlarmListRequest,
+    ) -> sas_20181203_models.DescribeDomainSecureAlarmListResponse:
+        """
+        @summary 查询网络安全报告-安全告警
+        
+        @param request: DescribeDomainSecureAlarmListRequest
+        @return: DescribeDomainSecureAlarmListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domain_secure_alarm_list_with_options_async(request, runtime)
+
+    def describe_domain_secure_risk_list_with_options(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureRiskListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeDomainSecureRiskListResponse:
+        """
+        @summary 查询网络安全报告-存在风险的网站
+        
+        @param request: DescribeDomainSecureRiskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainSecureRiskListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSecureRiskList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDomainSecureRiskListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_domain_secure_risk_list_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureRiskListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeDomainSecureRiskListResponse:
+        """
+        @summary 查询网络安全报告-存在风险的网站
+        
+        @param request: DescribeDomainSecureRiskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainSecureRiskListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSecureRiskList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDomainSecureRiskListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_domain_secure_risk_list(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureRiskListRequest,
+    ) -> sas_20181203_models.DescribeDomainSecureRiskListResponse:
+        """
+        @summary 查询网络安全报告-存在风险的网站
+        
+        @param request: DescribeDomainSecureRiskListRequest
+        @return: DescribeDomainSecureRiskListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domain_secure_risk_list_with_options(request, runtime)
+
+    async def describe_domain_secure_risk_list_async(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureRiskListRequest,
+    ) -> sas_20181203_models.DescribeDomainSecureRiskListResponse:
+        """
+        @summary 查询网络安全报告-存在风险的网站
+        
+        @param request: DescribeDomainSecureRiskListRequest
+        @return: DescribeDomainSecureRiskListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domain_secure_risk_list_with_options_async(request, runtime)
+
+    def describe_domain_secure_score_with_options(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureScoreRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeDomainSecureScoreResponse:
+        """
+        @summary 查询网络安全报告的安全分
+        
+        @param request: DescribeDomainSecureScoreRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainSecureScoreResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSecureScore',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDomainSecureScoreResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_domain_secure_score_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureScoreRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeDomainSecureScoreResponse:
+        """
+        @summary 查询网络安全报告的安全分
+        
+        @param request: DescribeDomainSecureScoreRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainSecureScoreResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSecureScore',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDomainSecureScoreResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_domain_secure_score(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureScoreRequest,
+    ) -> sas_20181203_models.DescribeDomainSecureScoreResponse:
+        """
+        @summary 查询网络安全报告的安全分
+        
+        @param request: DescribeDomainSecureScoreRequest
+        @return: DescribeDomainSecureScoreResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domain_secure_score_with_options(request, runtime)
+
+    async def describe_domain_secure_score_async(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureScoreRequest,
+    ) -> sas_20181203_models.DescribeDomainSecureScoreResponse:
+        """
+        @summary 查询网络安全报告的安全分
+        
+        @param request: DescribeDomainSecureScoreRequest
+        @return: DescribeDomainSecureScoreResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domain_secure_score_with_options_async(request, runtime)
+
+    def describe_domain_secure_statistics_with_options(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeDomainSecureStatisticsResponse:
+        """
+        @summary 查询网络安全报告- 统计值
+        
+        @param request: DescribeDomainSecureStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainSecureStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSecureStatistics',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDomainSecureStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_domain_secure_statistics_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeDomainSecureStatisticsResponse:
+        """
+        @summary 查询网络安全报告- 统计值
+        
+        @param request: DescribeDomainSecureStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainSecureStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSecureStatistics',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDomainSecureStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_domain_secure_statistics(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureStatisticsRequest,
+    ) -> sas_20181203_models.DescribeDomainSecureStatisticsResponse:
+        """
+        @summary 查询网络安全报告- 统计值
+        
+        @param request: DescribeDomainSecureStatisticsRequest
+        @return: DescribeDomainSecureStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domain_secure_statistics_with_options(request, runtime)
+
+    async def describe_domain_secure_statistics_async(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureStatisticsRequest,
+    ) -> sas_20181203_models.DescribeDomainSecureStatisticsResponse:
+        """
+        @summary 查询网络安全报告- 统计值
+        
+        @param request: DescribeDomainSecureStatisticsRequest
+        @return: DescribeDomainSecureStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domain_secure_statistics_with_options_async(request, runtime)
+
+    def describe_domain_secure_vul_list_with_options(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureVulListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeDomainSecureVulListResponse:
+        """
+        @summary 查询网络安全报告-漏洞
+        
+        @param request: DescribeDomainSecureVulListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainSecureVulListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSecureVulList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDomainSecureVulListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_domain_secure_vul_list_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureVulListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeDomainSecureVulListResponse:
+        """
+        @summary 查询网络安全报告-漏洞
+        
+        @param request: DescribeDomainSecureVulListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainSecureVulListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDomainSecureVulList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDomainSecureVulListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_domain_secure_vul_list(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureVulListRequest,
+    ) -> sas_20181203_models.DescribeDomainSecureVulListResponse:
+        """
+        @summary 查询网络安全报告-漏洞
+        
+        @param request: DescribeDomainSecureVulListRequest
+        @return: DescribeDomainSecureVulListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_domain_secure_vul_list_with_options(request, runtime)
+
+    async def describe_domain_secure_vul_list_async(
+        self,
+        request: sas_20181203_models.DescribeDomainSecureVulListRequest,
+    ) -> sas_20181203_models.DescribeDomainSecureVulListResponse:
+        """
+        @summary 查询网络安全报告-漏洞
+        
+        @param request: DescribeDomainSecureVulListRequest
+        @return: DescribeDomainSecureVulListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_domain_secure_vul_list_with_options_async(request, runtime)
+
+    def describe_dynamic_dict_with_options(
+        self,
+        request: sas_20181203_models.DescribeDynamicDictRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeDynamicDictResponse:
+        """
+        @summary Queries custom weak password rules for the baseline check feature.
+        
+        @param request: DescribeDynamicDictRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDynamicDictResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDynamicDict',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDynamicDictResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dynamic_dict_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeDynamicDictRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeDynamicDictResponse:
+        """
+        @summary Queries custom weak password rules for the baseline check feature.
+        
+        @param request: DescribeDynamicDictRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDynamicDictResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDynamicDict',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDynamicDictResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dynamic_dict(
+        self,
+        request: sas_20181203_models.DescribeDynamicDictRequest,
+    ) -> sas_20181203_models.DescribeDynamicDictResponse:
+        """
+        @summary Queries custom weak password rules for the baseline check feature.
+        
+        @param request: DescribeDynamicDictRequest
+        @return: DescribeDynamicDictResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dynamic_dict_with_options(request, runtime)
+
+    async def describe_dynamic_dict_async(
+        self,
+        request: sas_20181203_models.DescribeDynamicDictRequest,
+    ) -> sas_20181203_models.DescribeDynamicDictResponse:
+        """
+        @summary Queries custom weak password rules for the baseline check feature.
+        
+        @param request: DescribeDynamicDictRequest
+        @return: DescribeDynamicDictResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dynamic_dict_with_options_async(request, runtime)
+
+    def describe_dynamic_dict_upload_info_with_options(
+        self,
+        request: sas_20181203_models.DescribeDynamicDictUploadInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeDynamicDictUploadInfoResponse:
+        """
+        @summary Queries the information about an uploaded Object Storage Service (OSS) object that contains custom weak passwords and is used for baseline checks.
+        
+        @param request: DescribeDynamicDictUploadInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDynamicDictUploadInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDynamicDictUploadInfo',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDynamicDictUploadInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dynamic_dict_upload_info_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeDynamicDictUploadInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeDynamicDictUploadInfoResponse:
+        """
+        @summary Queries the information about an uploaded Object Storage Service (OSS) object that contains custom weak passwords and is used for baseline checks.
+        
+        @param request: DescribeDynamicDictUploadInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDynamicDictUploadInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDynamicDictUploadInfo',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeDynamicDictUploadInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dynamic_dict_upload_info(
+        self,
+        request: sas_20181203_models.DescribeDynamicDictUploadInfoRequest,
+    ) -> sas_20181203_models.DescribeDynamicDictUploadInfoResponse:
+        """
+        @summary Queries the information about an uploaded Object Storage Service (OSS) object that contains custom weak passwords and is used for baseline checks.
+        
+        @param request: DescribeDynamicDictUploadInfoRequest
+        @return: DescribeDynamicDictUploadInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dynamic_dict_upload_info_with_options(request, runtime)
+
+    async def describe_dynamic_dict_upload_info_async(
+        self,
+        request: sas_20181203_models.DescribeDynamicDictUploadInfoRequest,
+    ) -> sas_20181203_models.DescribeDynamicDictUploadInfoResponse:
+        """
+        @summary Queries the information about an uploaded Object Storage Service (OSS) object that contains custom weak passwords and is used for baseline checks.
+        
+        @param request: DescribeDynamicDictUploadInfoRequest
+        @return: DescribeDynamicDictUploadInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dynamic_dict_upload_info_with_options_async(request, runtime)
+
     def describe_emg_user_agreement_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -18838,6 +25504,8 @@ class Client(OpenApiClient):
             query['ContainerIds'] = request.container_ids
         if not UtilClient.is_unset(request.from_):
             query['From'] = request.from_
+        if not UtilClient.is_unset(request.multi_account_action_type):
+            query['MultiAccountActionType'] = request.multi_account_action_type
         if not UtilClient.is_unset(request.target_type):
             query['TargetType'] = request.target_type
         req = open_api_models.OpenApiRequest(
@@ -18883,6 +25551,8 @@ class Client(OpenApiClient):
             query['ContainerIds'] = request.container_ids
         if not UtilClient.is_unset(request.from_):
             query['From'] = request.from_
+        if not UtilClient.is_unset(request.multi_account_action_type):
+            query['MultiAccountActionType'] = request.multi_account_action_type
         if not UtilClient.is_unset(request.target_type):
             query['TargetType'] = request.target_type
         req = open_api_models.OpenApiRequest(
@@ -21186,6 +27856,226 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_honey_pot_susp_statistics_with_options_async(request, runtime)
 
+    def describe_idc_asset_criteria_with_options(
+        self,
+        request: sas_20181203_models.DescribeIdcAssetCriteriaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeIdcAssetCriteriaResponse:
+        """
+        @summary Queries the search conditions that can be used to query data center assets found after scanning in fuzzy match mode.
+        
+        @param request: DescribeIdcAssetCriteriaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIdcAssetCriteriaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIdcAssetCriteria',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeIdcAssetCriteriaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_idc_asset_criteria_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeIdcAssetCriteriaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeIdcAssetCriteriaResponse:
+        """
+        @summary Queries the search conditions that can be used to query data center assets found after scanning in fuzzy match mode.
+        
+        @param request: DescribeIdcAssetCriteriaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIdcAssetCriteriaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIdcAssetCriteria',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeIdcAssetCriteriaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_idc_asset_criteria(
+        self,
+        request: sas_20181203_models.DescribeIdcAssetCriteriaRequest,
+    ) -> sas_20181203_models.DescribeIdcAssetCriteriaResponse:
+        """
+        @summary Queries the search conditions that can be used to query data center assets found after scanning in fuzzy match mode.
+        
+        @param request: DescribeIdcAssetCriteriaRequest
+        @return: DescribeIdcAssetCriteriaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_idc_asset_criteria_with_options(request, runtime)
+
+    async def describe_idc_asset_criteria_async(
+        self,
+        request: sas_20181203_models.DescribeIdcAssetCriteriaRequest,
+    ) -> sas_20181203_models.DescribeIdcAssetCriteriaResponse:
+        """
+        @summary Queries the search conditions that can be used to query data center assets found after scanning in fuzzy match mode.
+        
+        @param request: DescribeIdcAssetCriteriaRequest
+        @return: DescribeIdcAssetCriteriaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_idc_asset_criteria_with_options_async(request, runtime)
+
+    def describe_idc_probe_scan_result_list_with_options(
+        self,
+        request: sas_20181203_models.DescribeIdcProbeScanResultListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeIdcProbeScanResultListResponse:
+        """
+        @summary Queries assets that are identified by Internet Data Center (IDC) probes.
+        
+        @param request: DescribeIdcProbeScanResultListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIdcProbeScanResultListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.criteria):
+            query['Criteria'] = request.criteria
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.found_end_time):
+            query['FoundEndTime'] = request.found_end_time
+        if not UtilClient.is_unset(request.found_start_time):
+            query['FoundStartTime'] = request.found_start_time
+        if not UtilClient.is_unset(request.logical_exp):
+            query['LogicalExp'] = request.logical_exp
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIdcProbeScanResultList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeIdcProbeScanResultListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_idc_probe_scan_result_list_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeIdcProbeScanResultListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeIdcProbeScanResultListResponse:
+        """
+        @summary Queries assets that are identified by Internet Data Center (IDC) probes.
+        
+        @param request: DescribeIdcProbeScanResultListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIdcProbeScanResultListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.criteria):
+            query['Criteria'] = request.criteria
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.found_end_time):
+            query['FoundEndTime'] = request.found_end_time
+        if not UtilClient.is_unset(request.found_start_time):
+            query['FoundStartTime'] = request.found_start_time
+        if not UtilClient.is_unset(request.logical_exp):
+            query['LogicalExp'] = request.logical_exp
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeIdcProbeScanResultList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeIdcProbeScanResultListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_idc_probe_scan_result_list(
+        self,
+        request: sas_20181203_models.DescribeIdcProbeScanResultListRequest,
+    ) -> sas_20181203_models.DescribeIdcProbeScanResultListResponse:
+        """
+        @summary Queries assets that are identified by Internet Data Center (IDC) probes.
+        
+        @param request: DescribeIdcProbeScanResultListRequest
+        @return: DescribeIdcProbeScanResultListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_idc_probe_scan_result_list_with_options(request, runtime)
+
+    async def describe_idc_probe_scan_result_list_async(
+        self,
+        request: sas_20181203_models.DescribeIdcProbeScanResultListRequest,
+    ) -> sas_20181203_models.DescribeIdcProbeScanResultListResponse:
+        """
+        @summary Queries assets that are identified by Internet Data Center (IDC) probes.
+        
+        @param request: DescribeIdcProbeScanResultListRequest
+        @return: DescribeIdcProbeScanResultListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_idc_probe_scan_result_list_with_options_async(request, runtime)
+
     def describe_image_with_options(
         self,
         request: sas_20181203_models.DescribeImageRequest,
@@ -21877,6 +28767,238 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_image_baseline_strategy_with_options_async(request, runtime)
+
+    def describe_image_build_risk_by_key_with_options(
+        self,
+        request: sas_20181203_models.DescribeImageBuildRiskByKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageBuildRiskByKeyResponse:
+        """
+        @summary 通过风险项关键字查询镜像的构建风险。
+        
+        @param request: DescribeImageBuildRiskByKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageBuildRiskByKeyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.image_uuid):
+            query['ImageUuid'] = request.image_uuid
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.risk_key):
+            query['RiskKey'] = request.risk_key
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageBuildRiskByKey',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageBuildRiskByKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_image_build_risk_by_key_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeImageBuildRiskByKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageBuildRiskByKeyResponse:
+        """
+        @summary 通过风险项关键字查询镜像的构建风险。
+        
+        @param request: DescribeImageBuildRiskByKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageBuildRiskByKeyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.image_uuid):
+            query['ImageUuid'] = request.image_uuid
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.risk_key):
+            query['RiskKey'] = request.risk_key
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageBuildRiskByKey',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageBuildRiskByKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_image_build_risk_by_key(
+        self,
+        request: sas_20181203_models.DescribeImageBuildRiskByKeyRequest,
+    ) -> sas_20181203_models.DescribeImageBuildRiskByKeyResponse:
+        """
+        @summary 通过风险项关键字查询镜像的构建风险。
+        
+        @param request: DescribeImageBuildRiskByKeyRequest
+        @return: DescribeImageBuildRiskByKeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_image_build_risk_by_key_with_options(request, runtime)
+
+    async def describe_image_build_risk_by_key_async(
+        self,
+        request: sas_20181203_models.DescribeImageBuildRiskByKeyRequest,
+    ) -> sas_20181203_models.DescribeImageBuildRiskByKeyResponse:
+        """
+        @summary 通过风险项关键字查询镜像的构建风险。
+        
+        @param request: DescribeImageBuildRiskByKeyRequest
+        @return: DescribeImageBuildRiskByKeyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_image_build_risk_by_key_with_options_async(request, runtime)
+
+    def describe_image_build_risk_list_with_options(
+        self,
+        request: sas_20181203_models.DescribeImageBuildRiskListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageBuildRiskListResponse:
+        """
+        @summary Queries a list of image build command risks by page.
+        
+        @param request: DescribeImageBuildRiskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageBuildRiskListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.criteria):
+            query['Criteria'] = request.criteria
+        if not UtilClient.is_unset(request.criteria_type):
+            query['CriteriaType'] = request.criteria_type
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageBuildRiskList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageBuildRiskListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_image_build_risk_list_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeImageBuildRiskListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageBuildRiskListResponse:
+        """
+        @summary Queries a list of image build command risks by page.
+        
+        @param request: DescribeImageBuildRiskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageBuildRiskListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.criteria):
+            query['Criteria'] = request.criteria
+        if not UtilClient.is_unset(request.criteria_type):
+            query['CriteriaType'] = request.criteria_type
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageBuildRiskList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageBuildRiskListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_image_build_risk_list(
+        self,
+        request: sas_20181203_models.DescribeImageBuildRiskListRequest,
+    ) -> sas_20181203_models.DescribeImageBuildRiskListResponse:
+        """
+        @summary Queries a list of image build command risks by page.
+        
+        @param request: DescribeImageBuildRiskListRequest
+        @return: DescribeImageBuildRiskListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_image_build_risk_list_with_options(request, runtime)
+
+    async def describe_image_build_risk_list_async(
+        self,
+        request: sas_20181203_models.DescribeImageBuildRiskListRequest,
+    ) -> sas_20181203_models.DescribeImageBuildRiskListResponse:
+        """
+        @summary Queries a list of image build command risks by page.
+        
+        @param request: DescribeImageBuildRiskListRequest
+        @return: DescribeImageBuildRiskListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_image_build_risk_list_with_options_async(request, runtime)
 
     def describe_image_criteria_with_options(
         self,
@@ -22863,6 +29985,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_image_latest_scan_task_with_options_async(request, runtime)
+
+    def describe_image_list_by_build_risk_with_options(
+        self,
+        request: sas_20181203_models.DescribeImageListByBuildRiskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageListByBuildRiskResponse:
+        """
+        @summary Queries a list of images that are affected by image build command risks by page.
+        
+        @param request: DescribeImageListByBuildRiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageListByBuildRiskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.risk_key):
+            query['RiskKey'] = request.risk_key
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageListByBuildRisk',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageListByBuildRiskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_image_list_by_build_risk_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeImageListByBuildRiskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageListByBuildRiskResponse:
+        """
+        @summary Queries a list of images that are affected by image build command risks by page.
+        
+        @param request: DescribeImageListByBuildRiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageListByBuildRiskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.risk_key):
+            query['RiskKey'] = request.risk_key
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageListByBuildRisk',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageListByBuildRiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_image_list_by_build_risk(
+        self,
+        request: sas_20181203_models.DescribeImageListByBuildRiskRequest,
+    ) -> sas_20181203_models.DescribeImageListByBuildRiskResponse:
+        """
+        @summary Queries a list of images that are affected by image build command risks by page.
+        
+        @param request: DescribeImageListByBuildRiskRequest
+        @return: DescribeImageListByBuildRiskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_image_list_by_build_risk_with_options(request, runtime)
+
+    async def describe_image_list_by_build_risk_async(
+        self,
+        request: sas_20181203_models.DescribeImageListByBuildRiskRequest,
+    ) -> sas_20181203_models.DescribeImageListByBuildRiskResponse:
+        """
+        @summary Queries a list of images that are affected by image build command risks by page.
+        
+        @param request: DescribeImageListByBuildRiskRequest
+        @return: DescribeImageListByBuildRiskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_image_list_by_build_risk_with_options_async(request, runtime)
 
     def describe_image_list_by_sensitive_file_with_options(
         self,
@@ -24898,29 +32136,29 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_statistics_with_options_async(request, runtime)
 
-    def describe_ip_tags_with_options(
+    def describe_instance_vul_statistics_with_options(
         self,
-        request: sas_20181203_models.DescribeIpTagsRequest,
+        request: sas_20181203_models.DescribeInstanceVulStatisticsRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeIpTagsResponse:
+    ) -> sas_20181203_models.DescribeInstanceVulStatisticsResponse:
         """
-        @summary Checks whether an IP address is related to an alert event.
+        @summary 查询集群漏洞统计
         
-        @param request: DescribeIpTagsRequest
+        @param request: DescribeInstanceVulStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeIpTagsResponse
+        @return: DescribeInstanceVulStatisticsResponse
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.ip):
-            query['Ip'] = request.ip
-        if not UtilClient.is_unset(request.security_event_id):
-            query['SecurityEventId'] = request.security_event_id
+        if not UtilClient.is_unset(request.types):
+            query['Types'] = request.types
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DescribeIpTags',
+            action='DescribeInstanceVulStatistics',
             version='2018-12-03',
             protocol='HTTPS',
             pathname='/',
@@ -24931,33 +32169,33 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            sas_20181203_models.DescribeIpTagsResponse(),
+            sas_20181203_models.DescribeInstanceVulStatisticsResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def describe_ip_tags_with_options_async(
+    async def describe_instance_vul_statistics_with_options_async(
         self,
-        request: sas_20181203_models.DescribeIpTagsRequest,
+        request: sas_20181203_models.DescribeInstanceVulStatisticsRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.DescribeIpTagsResponse:
+    ) -> sas_20181203_models.DescribeInstanceVulStatisticsResponse:
         """
-        @summary Checks whether an IP address is related to an alert event.
+        @summary 查询集群漏洞统计
         
-        @param request: DescribeIpTagsRequest
+        @param request: DescribeInstanceVulStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeIpTagsResponse
+        @return: DescribeInstanceVulStatisticsResponse
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.ip):
-            query['Ip'] = request.ip
-        if not UtilClient.is_unset(request.security_event_id):
-            query['SecurityEventId'] = request.security_event_id
+        if not UtilClient.is_unset(request.types):
+            query['Types'] = request.types
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DescribeIpTags',
+            action='DescribeInstanceVulStatistics',
             version='2018-12-03',
             protocol='HTTPS',
             pathname='/',
@@ -24968,35 +32206,35 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            sas_20181203_models.DescribeIpTagsResponse(),
+            sas_20181203_models.DescribeInstanceVulStatisticsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_ip_tags(
+    def describe_instance_vul_statistics(
         self,
-        request: sas_20181203_models.DescribeIpTagsRequest,
-    ) -> sas_20181203_models.DescribeIpTagsResponse:
+        request: sas_20181203_models.DescribeInstanceVulStatisticsRequest,
+    ) -> sas_20181203_models.DescribeInstanceVulStatisticsResponse:
         """
-        @summary Checks whether an IP address is related to an alert event.
+        @summary 查询集群漏洞统计
         
-        @param request: DescribeIpTagsRequest
-        @return: DescribeIpTagsResponse
+        @param request: DescribeInstanceVulStatisticsRequest
+        @return: DescribeInstanceVulStatisticsResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.describe_ip_tags_with_options(request, runtime)
+        return self.describe_instance_vul_statistics_with_options(request, runtime)
 
-    async def describe_ip_tags_async(
+    async def describe_instance_vul_statistics_async(
         self,
-        request: sas_20181203_models.DescribeIpTagsRequest,
-    ) -> sas_20181203_models.DescribeIpTagsResponse:
+        request: sas_20181203_models.DescribeInstanceVulStatisticsRequest,
+    ) -> sas_20181203_models.DescribeInstanceVulStatisticsResponse:
         """
-        @summary Checks whether an IP address is related to an alert event.
+        @summary 查询集群漏洞统计
         
-        @param request: DescribeIpTagsRequest
-        @return: DescribeIpTagsResponse
+        @param request: DescribeInstanceVulStatisticsRequest
+        @return: DescribeInstanceVulStatisticsResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.describe_ip_tags_with_options_async(request, runtime)
+        return await self.describe_instance_vul_statistics_with_options_async(request, runtime)
 
     def describe_latest_scan_task_with_options(
         self,
@@ -25906,6 +33144,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_monitor_accounts_with_options_async(runtime)
 
+    def describe_need_async_query_with_options(
+        self,
+        request: sas_20181203_models.DescribeNeedAsyncQueryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeNeedAsyncQueryResponse:
+        """
+        @summary 查询是否需要慢查询优化
+        
+        @param request: DescribeNeedAsyncQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNeedAsyncQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNeedAsyncQuery',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeNeedAsyncQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_need_async_query_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeNeedAsyncQueryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeNeedAsyncQueryResponse:
+        """
+        @summary 查询是否需要慢查询优化
+        
+        @param request: DescribeNeedAsyncQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNeedAsyncQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeNeedAsyncQuery',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeNeedAsyncQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_need_async_query(
+        self,
+        request: sas_20181203_models.DescribeNeedAsyncQueryRequest,
+    ) -> sas_20181203_models.DescribeNeedAsyncQueryResponse:
+        """
+        @summary 查询是否需要慢查询优化
+        
+        @param request: DescribeNeedAsyncQueryRequest
+        @return: DescribeNeedAsyncQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_need_async_query_with_options(request, runtime)
+
+    async def describe_need_async_query_async(
+        self,
+        request: sas_20181203_models.DescribeNeedAsyncQueryRequest,
+    ) -> sas_20181203_models.DescribeNeedAsyncQueryResponse:
+        """
+        @summary 查询是否需要慢查询优化
+        
+        @param request: DescribeNeedAsyncQueryRequest
+        @return: DescribeNeedAsyncQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_need_async_query_with_options_async(request, runtime)
+
     def describe_notice_config_with_options(
         self,
         request: sas_20181203_models.DescribeNoticeConfigRequest,
@@ -26024,6 +33358,8 @@ class Client(OpenApiClient):
             query['From'] = request.from_
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.multi_account_action_type):
+            query['MultiAccountActionType'] = request.multi_account_action_type
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.remark):
@@ -26073,6 +33409,8 @@ class Client(OpenApiClient):
             query['From'] = request.from_
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.multi_account_action_type):
+            query['MultiAccountActionType'] = request.multi_account_action_type
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.remark):
@@ -27598,6 +34936,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_property_sca_item_with_options_async(request, runtime)
 
+    def describe_property_sca_process_detail_with_options(
+        self,
+        request: sas_20181203_models.DescribePropertyScaProcessDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribePropertyScaProcessDetailResponse:
+        """
+        @summary Queries the Java processes that are collected by the asset fingerprints feature of Security Center in your assets.
+        
+        @param request: DescribePropertyScaProcessDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePropertyScaProcessDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePropertyScaProcessDetail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyScaProcessDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_property_sca_process_detail_with_options_async(
+        self,
+        request: sas_20181203_models.DescribePropertyScaProcessDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribePropertyScaProcessDetailResponse:
+        """
+        @summary Queries the Java processes that are collected by the asset fingerprints feature of Security Center in your assets.
+        
+        @param request: DescribePropertyScaProcessDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePropertyScaProcessDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pid):
+            query['Pid'] = request.pid
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePropertyScaProcessDetail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyScaProcessDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_property_sca_process_detail(
+        self,
+        request: sas_20181203_models.DescribePropertyScaProcessDetailRequest,
+    ) -> sas_20181203_models.DescribePropertyScaProcessDetailResponse:
+        """
+        @summary Queries the Java processes that are collected by the asset fingerprints feature of Security Center in your assets.
+        
+        @param request: DescribePropertyScaProcessDetailRequest
+        @return: DescribePropertyScaProcessDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_property_sca_process_detail_with_options(request, runtime)
+
+    async def describe_property_sca_process_detail_async(
+        self,
+        request: sas_20181203_models.DescribePropertyScaProcessDetailRequest,
+    ) -> sas_20181203_models.DescribePropertyScaProcessDetailResponse:
+        """
+        @summary Queries the Java processes that are collected by the asset fingerprints feature of Security Center in your assets.
+        
+        @param request: DescribePropertyScaProcessDetailRequest
+        @return: DescribePropertyScaProcessDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_property_sca_process_detail_with_options_async(request, runtime)
+
     def describe_property_schedule_config_with_options(
         self,
         request: sas_20181203_models.DescribePropertyScheduleConfigRequest,
@@ -28044,11 +35494,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribePropertyUsageNewestResponse:
         """
+        @deprecated OpenAPI DescribePropertyUsageNewest is deprecated, please use Sas::2018-12-03::DescribeOnceTask instead.
+        
         @summary 查询资产指纹用户创建时间统计
         
         @param request: DescribePropertyUsageNewestRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribePropertyUsageNewestResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -28079,11 +35532,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribePropertyUsageNewestResponse:
         """
+        @deprecated OpenAPI DescribePropertyUsageNewest is deprecated, please use Sas::2018-12-03::DescribeOnceTask instead.
+        
         @summary 查询资产指纹用户创建时间统计
         
         @param request: DescribePropertyUsageNewestRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribePropertyUsageNewestResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -28113,10 +35569,13 @@ class Client(OpenApiClient):
         request: sas_20181203_models.DescribePropertyUsageNewestRequest,
     ) -> sas_20181203_models.DescribePropertyUsageNewestResponse:
         """
+        @deprecated OpenAPI DescribePropertyUsageNewest is deprecated, please use Sas::2018-12-03::DescribeOnceTask instead.
+        
         @summary 查询资产指纹用户创建时间统计
         
         @param request: DescribePropertyUsageNewestRequest
         @return: DescribePropertyUsageNewestResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.describe_property_usage_newest_with_options(request, runtime)
@@ -28126,13 +35585,120 @@ class Client(OpenApiClient):
         request: sas_20181203_models.DescribePropertyUsageNewestRequest,
     ) -> sas_20181203_models.DescribePropertyUsageNewestResponse:
         """
+        @deprecated OpenAPI DescribePropertyUsageNewest is deprecated, please use Sas::2018-12-03::DescribeOnceTask instead.
+        
         @summary 查询资产指纹用户创建时间统计
         
         @param request: DescribePropertyUsageNewestRequest
         @return: DescribePropertyUsageNewestResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_property_usage_newest_with_options_async(request, runtime)
+
+    def describe_property_usage_top_with_options(
+        self,
+        request: sas_20181203_models.DescribePropertyUsageTopRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribePropertyUsageTopResponse:
+        """
+        @summary Uses the asset fingerprints feature to obtain the statistics on top five most frequently detected ports, processes, software, accounts, or middleware.
+        
+        @description Only users who purchase the Enterprise or Ultimate edition of Security Center can call this operation.
+        
+        @param request: DescribePropertyUsageTopRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePropertyUsageTopResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePropertyUsageTop',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyUsageTopResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_property_usage_top_with_options_async(
+        self,
+        request: sas_20181203_models.DescribePropertyUsageTopRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribePropertyUsageTopResponse:
+        """
+        @summary Uses the asset fingerprints feature to obtain the statistics on top five most frequently detected ports, processes, software, accounts, or middleware.
+        
+        @description Only users who purchase the Enterprise or Ultimate edition of Security Center can call this operation.
+        
+        @param request: DescribePropertyUsageTopRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePropertyUsageTopResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePropertyUsageTop',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribePropertyUsageTopResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_property_usage_top(
+        self,
+        request: sas_20181203_models.DescribePropertyUsageTopRequest,
+    ) -> sas_20181203_models.DescribePropertyUsageTopResponse:
+        """
+        @summary Uses the asset fingerprints feature to obtain the statistics on top five most frequently detected ports, processes, software, accounts, or middleware.
+        
+        @description Only users who purchase the Enterprise or Ultimate edition of Security Center can call this operation.
+        
+        @param request: DescribePropertyUsageTopRequest
+        @return: DescribePropertyUsageTopResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_property_usage_top_with_options(request, runtime)
+
+    async def describe_property_usage_top_async(
+        self,
+        request: sas_20181203_models.DescribePropertyUsageTopRequest,
+    ) -> sas_20181203_models.DescribePropertyUsageTopResponse:
+        """
+        @summary Uses the asset fingerprints feature to obtain the statistics on top five most frequently detected ports, processes, software, accounts, or middleware.
+        
+        @description Only users who purchase the Enterprise or Ultimate edition of Security Center can call this operation.
+        
+        @param request: DescribePropertyUsageTopRequest
+        @return: DescribePropertyUsageTopResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_property_usage_top_with_options_async(request, runtime)
 
     def describe_property_user_detail_with_options(
         self,
@@ -28469,6 +36035,210 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_quara_file_download_info_with_options_async(request, runtime)
+
+    def describe_report_export_with_options(
+        self,
+        request: sas_20181203_models.DescribeReportExportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeReportExportResponse:
+        """
+        @summary Queries the information about a report export task.
+        
+        @param request: DescribeReportExportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeReportExportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.export_id):
+            query['ExportId'] = request.export_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeReportExport',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeReportExportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_report_export_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeReportExportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeReportExportResponse:
+        """
+        @summary Queries the information about a report export task.
+        
+        @param request: DescribeReportExportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeReportExportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.export_id):
+            query['ExportId'] = request.export_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeReportExport',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeReportExportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_report_export(
+        self,
+        request: sas_20181203_models.DescribeReportExportRequest,
+    ) -> sas_20181203_models.DescribeReportExportResponse:
+        """
+        @summary Queries the information about a report export task.
+        
+        @param request: DescribeReportExportRequest
+        @return: DescribeReportExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_report_export_with_options(request, runtime)
+
+    async def describe_report_export_async(
+        self,
+        request: sas_20181203_models.DescribeReportExportRequest,
+    ) -> sas_20181203_models.DescribeReportExportResponse:
+        """
+        @summary Queries the information about a report export task.
+        
+        @param request: DescribeReportExportRequest
+        @return: DescribeReportExportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_report_export_with_options_async(request, runtime)
+
+    def describe_report_recipient_status_with_options(
+        self,
+        request: sas_20181203_models.DescribeReportRecipientStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeReportRecipientStatusResponse:
+        """
+        @summary Queries the status of a report recipient by using the security report feature of the System Configuration module in the Security Center console.
+        
+        @param request: DescribeReportRecipientStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeReportRecipientStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.recipients):
+            query['Recipients'] = request.recipients
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeReportRecipientStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeReportRecipientStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_report_recipient_status_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeReportRecipientStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeReportRecipientStatusResponse:
+        """
+        @summary Queries the status of a report recipient by using the security report feature of the System Configuration module in the Security Center console.
+        
+        @param request: DescribeReportRecipientStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeReportRecipientStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.recipients):
+            query['Recipients'] = request.recipients
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeReportRecipientStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeReportRecipientStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_report_recipient_status(
+        self,
+        request: sas_20181203_models.DescribeReportRecipientStatusRequest,
+    ) -> sas_20181203_models.DescribeReportRecipientStatusResponse:
+        """
+        @summary Queries the status of a report recipient by using the security report feature of the System Configuration module in the Security Center console.
+        
+        @param request: DescribeReportRecipientStatusRequest
+        @return: DescribeReportRecipientStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_report_recipient_status_with_options(request, runtime)
+
+    async def describe_report_recipient_status_async(
+        self,
+        request: sas_20181203_models.DescribeReportRecipientStatusRequest,
+    ) -> sas_20181203_models.DescribeReportRecipientStatusResponse:
+        """
+        @summary Queries the status of a report recipient by using the security report feature of the System Configuration module in the Security Center console.
+        
+        @param request: DescribeReportRecipientStatusRequest
+        @return: DescribeReportRecipientStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_report_recipient_status_with_options_async(request, runtime)
 
     def describe_restore_jobs_with_options(
         self,
@@ -29890,6 +37660,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_scan_task_statistics_with_options_async(request, runtime)
 
+    def describe_screen_score_thread_with_options(
+        self,
+        request: sas_20181203_models.DescribeScreenScoreThreadRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeScreenScoreThreadResponse:
+        """
+        @summary Queries the trends of the scores on the security dashboard.
+        
+        @param request: DescribeScreenScoreThreadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeScreenScoreThreadResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeScreenScoreThread',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeScreenScoreThreadResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_screen_score_thread_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeScreenScoreThreadRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeScreenScoreThreadResponse:
+        """
+        @summary Queries the trends of the scores on the security dashboard.
+        
+        @param request: DescribeScreenScoreThreadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeScreenScoreThreadResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeScreenScoreThread',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeScreenScoreThreadResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_screen_score_thread(
+        self,
+        request: sas_20181203_models.DescribeScreenScoreThreadRequest,
+    ) -> sas_20181203_models.DescribeScreenScoreThreadResponse:
+        """
+        @summary Queries the trends of the scores on the security dashboard.
+        
+        @param request: DescribeScreenScoreThreadRequest
+        @return: DescribeScreenScoreThreadResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_screen_score_thread_with_options(request, runtime)
+
+    async def describe_screen_score_thread_async(
+        self,
+        request: sas_20181203_models.DescribeScreenScoreThreadRequest,
+    ) -> sas_20181203_models.DescribeScreenScoreThreadResponse:
+        """
+        @summary Queries the trends of the scores on the security dashboard.
+        
+        @param request: DescribeScreenScoreThreadRequest
+        @return: DescribeScreenScoreThreadResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_screen_score_thread_with_options_async(request, runtime)
+
     def describe_search_condition_with_options(
         self,
         request: sas_20181203_models.DescribeSearchConditionRequest,
@@ -31098,6 +38968,542 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_snapshots_with_options_async(request, runtime)
 
+    def describe_soar_strategies_with_options(
+        self,
+        request: sas_20181203_models.DescribeSoarStrategiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSoarStrategiesResponse:
+        """
+        @summary Queries the policy templates on the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarStrategiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSoarStrategiesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSoarStrategies',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSoarStrategiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_soar_strategies_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeSoarStrategiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSoarStrategiesResponse:
+        """
+        @summary Queries the policy templates on the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarStrategiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSoarStrategiesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSoarStrategies',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSoarStrategiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_soar_strategies(
+        self,
+        request: sas_20181203_models.DescribeSoarStrategiesRequest,
+    ) -> sas_20181203_models.DescribeSoarStrategiesResponse:
+        """
+        @summary Queries the policy templates on the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarStrategiesRequest
+        @return: DescribeSoarStrategiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_soar_strategies_with_options(request, runtime)
+
+    async def describe_soar_strategies_async(
+        self,
+        request: sas_20181203_models.DescribeSoarStrategiesRequest,
+    ) -> sas_20181203_models.DescribeSoarStrategiesResponse:
+        """
+        @summary Queries the policy templates on the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarStrategiesRequest
+        @return: DescribeSoarStrategiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_soar_strategies_with_options_async(request, runtime)
+
+    def describe_soar_strategy_param_with_options(
+        self,
+        request: sas_20181203_models.DescribeSoarStrategyParamRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSoarStrategyParamResponse:
+        """
+        @summary Queries the parameters of a policy on the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarStrategyParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSoarStrategyParamResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSoarStrategyParam',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSoarStrategyParamResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_soar_strategy_param_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeSoarStrategyParamRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSoarStrategyParamResponse:
+        """
+        @summary Queries the parameters of a policy on the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarStrategyParamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSoarStrategyParamResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSoarStrategyParam',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSoarStrategyParamResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_soar_strategy_param(
+        self,
+        request: sas_20181203_models.DescribeSoarStrategyParamRequest,
+    ) -> sas_20181203_models.DescribeSoarStrategyParamResponse:
+        """
+        @summary Queries the parameters of a policy on the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarStrategyParamRequest
+        @return: DescribeSoarStrategyParamResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_soar_strategy_param_with_options(request, runtime)
+
+    async def describe_soar_strategy_param_async(
+        self,
+        request: sas_20181203_models.DescribeSoarStrategyParamRequest,
+    ) -> sas_20181203_models.DescribeSoarStrategyParamResponse:
+        """
+        @summary Queries the parameters of a policy on the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarStrategyParamRequest
+        @return: DescribeSoarStrategyParamResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_soar_strategy_param_with_options_async(request, runtime)
+
+    def describe_soar_strategy_task_detail_with_options(
+        self,
+        request: sas_20181203_models.DescribeSoarStrategyTaskDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSoarStrategyTaskDetailResponse:
+        """
+        @summary Queries the details of a policy task on the Playbook page, including the execution status of the task and the process information of the task.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarStrategyTaskDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSoarStrategyTaskDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_task_id):
+            query['StrategyTaskId'] = request.strategy_task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSoarStrategyTaskDetail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSoarStrategyTaskDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_soar_strategy_task_detail_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeSoarStrategyTaskDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSoarStrategyTaskDetailResponse:
+        """
+        @summary Queries the details of a policy task on the Playbook page, including the execution status of the task and the process information of the task.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarStrategyTaskDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSoarStrategyTaskDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.strategy_task_id):
+            query['StrategyTaskId'] = request.strategy_task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSoarStrategyTaskDetail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSoarStrategyTaskDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_soar_strategy_task_detail(
+        self,
+        request: sas_20181203_models.DescribeSoarStrategyTaskDetailRequest,
+    ) -> sas_20181203_models.DescribeSoarStrategyTaskDetailResponse:
+        """
+        @summary Queries the details of a policy task on the Playbook page, including the execution status of the task and the process information of the task.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarStrategyTaskDetailRequest
+        @return: DescribeSoarStrategyTaskDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_soar_strategy_task_detail_with_options(request, runtime)
+
+    async def describe_soar_strategy_task_detail_async(
+        self,
+        request: sas_20181203_models.DescribeSoarStrategyTaskDetailRequest,
+    ) -> sas_20181203_models.DescribeSoarStrategyTaskDetailResponse:
+        """
+        @summary Queries the details of a policy task on the Playbook page, including the execution status of the task and the process information of the task.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarStrategyTaskDetailRequest
+        @return: DescribeSoarStrategyTaskDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_soar_strategy_task_detail_with_options_async(request, runtime)
+
+    def describe_soar_strategy_tasks_with_options(
+        self,
+        request: sas_20181203_models.DescribeSoarStrategyTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSoarStrategyTasksResponse:
+        """
+        @summary Queries a list of policy tasks on the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarStrategyTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSoarStrategyTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSoarStrategyTasks',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSoarStrategyTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_soar_strategy_tasks_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeSoarStrategyTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSoarStrategyTasksResponse:
+        """
+        @summary Queries a list of policy tasks on the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarStrategyTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSoarStrategyTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSoarStrategyTasks',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSoarStrategyTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_soar_strategy_tasks(
+        self,
+        request: sas_20181203_models.DescribeSoarStrategyTasksRequest,
+    ) -> sas_20181203_models.DescribeSoarStrategyTasksResponse:
+        """
+        @summary Queries a list of policy tasks on the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarStrategyTasksRequest
+        @return: DescribeSoarStrategyTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_soar_strategy_tasks_with_options(request, runtime)
+
+    async def describe_soar_strategy_tasks_async(
+        self,
+        request: sas_20181203_models.DescribeSoarStrategyTasksRequest,
+    ) -> sas_20181203_models.DescribeSoarStrategyTasksResponse:
+        """
+        @summary Queries a list of policy tasks on the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarStrategyTasksRequest
+        @return: DescribeSoarStrategyTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_soar_strategy_tasks_with_options_async(request, runtime)
+
+    def describe_soar_subscribed_strategy_with_options(
+        self,
+        request: sas_20181203_models.DescribeSoarSubscribedStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSoarSubscribedStrategyResponse:
+        """
+        @summary Queries a list of policies created on the Playbook page of Security Center.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarSubscribedStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSoarSubscribedStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSoarSubscribedStrategy',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSoarSubscribedStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_soar_subscribed_strategy_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeSoarSubscribedStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSoarSubscribedStrategyResponse:
+        """
+        @summary Queries a list of policies created on the Playbook page of Security Center.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarSubscribedStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSoarSubscribedStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSoarSubscribedStrategy',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSoarSubscribedStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_soar_subscribed_strategy(
+        self,
+        request: sas_20181203_models.DescribeSoarSubscribedStrategyRequest,
+    ) -> sas_20181203_models.DescribeSoarSubscribedStrategyResponse:
+        """
+        @summary Queries a list of policies created on the Playbook page of Security Center.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarSubscribedStrategyRequest
+        @return: DescribeSoarSubscribedStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_soar_subscribed_strategy_with_options(request, runtime)
+
+    async def describe_soar_subscribed_strategy_async(
+        self,
+        request: sas_20181203_models.DescribeSoarSubscribedStrategyRequest,
+    ) -> sas_20181203_models.DescribeSoarSubscribedStrategyResponse:
+        """
+        @summary Queries a list of policies created on the Playbook page of Security Center.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: DescribeSoarSubscribedStrategyRequest
+        @return: DescribeSoarSubscribedStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_soar_subscribed_strategy_with_options_async(request, runtime)
+
     def describe_strategy_with_options(
         self,
         request: sas_20181203_models.DescribeStrategyRequest,
@@ -31622,12 +40028,86 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_summary_info_with_options_async(request, runtime)
 
+    def describe_supervison_info_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSupervisonInfoResponse:
+        """
+        @summary Queries the time when a system vulnerability was last detected.
+        
+        @param request: DescribeSupervisonInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSupervisonInfoResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeSupervisonInfo',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSupervisonInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_supervison_info_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSupervisonInfoResponse:
+        """
+        @summary Queries the time when a system vulnerability was last detected.
+        
+        @param request: DescribeSupervisonInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSupervisonInfoResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeSupervisonInfo',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSupervisonInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_supervison_info(self) -> sas_20181203_models.DescribeSupervisonInfoResponse:
+        """
+        @summary Queries the time when a system vulnerability was last detected.
+        
+        @return: DescribeSupervisonInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_supervison_info_with_options(runtime)
+
+    async def describe_supervison_info_async(self) -> sas_20181203_models.DescribeSupervisonInfoResponse:
+        """
+        @summary Queries the time when a system vulnerability was last detected.
+        
+        @return: DescribeSupervisonInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_supervison_info_with_options_async(runtime)
+
     def describe_support_region_with_options(
         self,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeSupportRegionResponse:
         """
-        @summary 查询防勒索支持地域
+        @summary Queries the regions in which the anti-ransomware feature is supported.
         
         @param request: DescribeSupportRegionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31655,7 +40135,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeSupportRegionResponse:
         """
-        @summary 查询防勒索支持地域
+        @summary Queries the regions in which the anti-ransomware feature is supported.
         
         @param request: DescribeSupportRegionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31680,7 +40160,7 @@ class Client(OpenApiClient):
 
     def describe_support_region(self) -> sas_20181203_models.DescribeSupportRegionResponse:
         """
-        @summary 查询防勒索支持地域
+        @summary Queries the regions in which the anti-ransomware feature is supported.
         
         @return: DescribeSupportRegionResponse
         """
@@ -31689,7 +40169,7 @@ class Client(OpenApiClient):
 
     async def describe_support_region_async(self) -> sas_20181203_models.DescribeSupportRegionResponse:
         """
-        @summary 查询防勒索支持地域
+        @summary Queries the regions in which the anti-ransomware feature is supported.
         
         @return: DescribeSupportRegionResponse
         """
@@ -32134,17 +40614,21 @@ class Client(OpenApiClient):
 
     def describe_susp_events_with_options(
         self,
-        request: sas_20181203_models.DescribeSuspEventsRequest,
+        tmp_req: sas_20181203_models.DescribeSuspEventsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeSuspEventsResponse:
         """
         @summary Queries a list of alert events that are generated without aggregation.
         
-        @param request: DescribeSuspEventsRequest
+        @param tmp_req: DescribeSuspEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSuspEventsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.DescribeSuspEventsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.source_ali_uids):
+            request.source_ali_uids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_ali_uids, 'SourceAliUids', 'simple')
         query = {}
         if not UtilClient.is_unset(request.alarm_unique_info):
             query['AlarmUniqueInfo'] = request.alarm_unique_info
@@ -32172,6 +40656,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.levels):
             query['Levels'] = request.levels
+        if not UtilClient.is_unset(request.multi_account_action_type):
+            query['MultiAccountActionType'] = request.multi_account_action_type
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.operate_error_code_list):
@@ -32194,6 +40680,8 @@ class Client(OpenApiClient):
             query['SortType'] = request.sort_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_ali_uids_shrink):
+            query['SourceAliUids'] = request.source_ali_uids_shrink
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.status):
@@ -32235,17 +40723,21 @@ class Client(OpenApiClient):
 
     async def describe_susp_events_with_options_async(
         self,
-        request: sas_20181203_models.DescribeSuspEventsRequest,
+        tmp_req: sas_20181203_models.DescribeSuspEventsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.DescribeSuspEventsResponse:
         """
         @summary Queries a list of alert events that are generated without aggregation.
         
-        @param request: DescribeSuspEventsRequest
+        @param tmp_req: DescribeSuspEventsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSuspEventsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.DescribeSuspEventsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.source_ali_uids):
+            request.source_ali_uids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_ali_uids, 'SourceAliUids', 'simple')
         query = {}
         if not UtilClient.is_unset(request.alarm_unique_info):
             query['AlarmUniqueInfo'] = request.alarm_unique_info
@@ -32273,6 +40765,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.levels):
             query['Levels'] = request.levels
+        if not UtilClient.is_unset(request.multi_account_action_type):
+            query['MultiAccountActionType'] = request.multi_account_action_type
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.operate_error_code_list):
@@ -32295,6 +40789,8 @@ class Client(OpenApiClient):
             query['SortType'] = request.sort_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
+        if not UtilClient.is_unset(request.source_ali_uids_shrink):
+            query['SourceAliUids'] = request.source_ali_uids_shrink
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.status):
@@ -32555,6 +41051,234 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_suspicious_uuidconfig_with_options_async(request, runtime)
+
+    def describe_sync_asset_task_list_with_options(
+        self,
+        request: sas_20181203_models.DescribeSyncAssetTaskListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSyncAssetTaskListResponse:
+        """
+        @summary Queries a list of IDC scan tasks.
+        
+        @param request: DescribeSyncAssetTaskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSyncAssetTaskListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSyncAssetTaskList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSyncAssetTaskListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sync_asset_task_list_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeSyncAssetTaskListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSyncAssetTaskListResponse:
+        """
+        @summary Queries a list of IDC scan tasks.
+        
+        @param request: DescribeSyncAssetTaskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSyncAssetTaskListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSyncAssetTaskList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSyncAssetTaskListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sync_asset_task_list(
+        self,
+        request: sas_20181203_models.DescribeSyncAssetTaskListRequest,
+    ) -> sas_20181203_models.DescribeSyncAssetTaskListResponse:
+        """
+        @summary Queries a list of IDC scan tasks.
+        
+        @param request: DescribeSyncAssetTaskListRequest
+        @return: DescribeSyncAssetTaskListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sync_asset_task_list_with_options(request, runtime)
+
+    async def describe_sync_asset_task_list_async(
+        self,
+        request: sas_20181203_models.DescribeSyncAssetTaskListRequest,
+    ) -> sas_20181203_models.DescribeSyncAssetTaskListResponse:
+        """
+        @summary Queries a list of IDC scan tasks.
+        
+        @param request: DescribeSyncAssetTaskListRequest
+        @return: DescribeSyncAssetTaskListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sync_asset_task_list_with_options_async(request, runtime)
+
+    def describe_sync_asset_task_log_detail_with_options(
+        self,
+        request: sas_20181203_models.DescribeSyncAssetTaskLogDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSyncAssetTaskLogDetailResponse:
+        """
+        @summary Queries the details of an IDC scan task.
+        
+        @param request: DescribeSyncAssetTaskLogDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSyncAssetTaskLogDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.root_task_id):
+            query['RootTaskId'] = request.root_task_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSyncAssetTaskLogDetail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSyncAssetTaskLogDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sync_asset_task_log_detail_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeSyncAssetTaskLogDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeSyncAssetTaskLogDetailResponse:
+        """
+        @summary Queries the details of an IDC scan task.
+        
+        @param request: DescribeSyncAssetTaskLogDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSyncAssetTaskLogDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.root_task_id):
+            query['RootTaskId'] = request.root_task_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSyncAssetTaskLogDetail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeSyncAssetTaskLogDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sync_asset_task_log_detail(
+        self,
+        request: sas_20181203_models.DescribeSyncAssetTaskLogDetailRequest,
+    ) -> sas_20181203_models.DescribeSyncAssetTaskLogDetailResponse:
+        """
+        @summary Queries the details of an IDC scan task.
+        
+        @param request: DescribeSyncAssetTaskLogDetailRequest
+        @return: DescribeSyncAssetTaskLogDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sync_asset_task_log_detail_with_options(request, runtime)
+
+    async def describe_sync_asset_task_log_detail_async(
+        self,
+        request: sas_20181203_models.DescribeSyncAssetTaskLogDetailRequest,
+    ) -> sas_20181203_models.DescribeSyncAssetTaskLogDetailResponse:
+        """
+        @summary Queries the details of an IDC scan task.
+        
+        @param request: DescribeSyncAssetTaskLogDetailRequest
+        @return: DescribeSyncAssetTaskLogDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sync_asset_task_log_detail_with_options_async(request, runtime)
 
     def describe_target_with_options(
         self,
@@ -33416,6 +42140,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_uni_backup_policy_detail_with_options_async(request, runtime)
 
+    def describe_uni_backup_statistics_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeUniBackupStatisticsResponse:
+        """
+        @summary Queries the statistics on backups based on anti-ransomware policies.
+        
+        @param request: DescribeUniBackupStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUniBackupStatisticsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeUniBackupStatistics',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeUniBackupStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_uni_backup_statistics_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeUniBackupStatisticsResponse:
+        """
+        @summary Queries the statistics on backups based on anti-ransomware policies.
+        
+        @param request: DescribeUniBackupStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUniBackupStatisticsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeUniBackupStatistics',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeUniBackupStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_uni_backup_statistics(self) -> sas_20181203_models.DescribeUniBackupStatisticsResponse:
+        """
+        @summary Queries the statistics on backups based on anti-ransomware policies.
+        
+        @return: DescribeUniBackupStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_uni_backup_statistics_with_options(runtime)
+
+    async def describe_uni_backup_statistics_async(self) -> sas_20181203_models.DescribeUniBackupStatisticsResponse:
+        """
+        @summary Queries the statistics on backups based on anti-ransomware policies.
+        
+        @return: DescribeUniBackupStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_uni_backup_statistics_with_options_async(runtime)
+
     def describe_uni_recoverable_list_with_options(
         self,
         request: sas_20181203_models.DescribeUniRecoverableListRequest,
@@ -33880,6 +42678,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_layout_authorization_with_options_async(request, runtime)
 
+    def describe_user_setting_with_options(
+        self,
+        request: sas_20181203_models.DescribeUserSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeUserSettingResponse:
+        """
+        @summary Queries the settings of a custom baseline check policy.
+        
+        @param request: DescribeUserSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserSetting',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeUserSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_setting_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeUserSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeUserSettingResponse:
+        """
+        @summary Queries the settings of a custom baseline check policy.
+        
+        @param request: DescribeUserSettingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserSettingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserSetting',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeUserSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_setting(
+        self,
+        request: sas_20181203_models.DescribeUserSettingRequest,
+    ) -> sas_20181203_models.DescribeUserSettingResponse:
+        """
+        @summary Queries the settings of a custom baseline check policy.
+        
+        @param request: DescribeUserSettingRequest
+        @return: DescribeUserSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_setting_with_options(request, runtime)
+
+    async def describe_user_setting_async(
+        self,
+        request: sas_20181203_models.DescribeUserSettingRequest,
+    ) -> sas_20181203_models.DescribeUserSettingResponse:
+        """
+        @summary Queries the settings of a custom baseline check policy.
+        
+        @param request: DescribeUserSettingRequest
+        @return: DescribeUserSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_setting_with_options_async(request, runtime)
+
     def describe_uuids_by_vul_names_with_options(
         self,
         request: sas_20181203_models.DescribeUuidsByVulNamesRequest,
@@ -34205,6 +43099,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_version_config_with_options_async(request, runtime)
+
+    def describe_vol_dingding_message_with_options(
+        self,
+        request: sas_20181203_models.DescribeVolDingdingMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeVolDingdingMessageResponse:
+        """
+        @summary 查询钉钉群二维码地址
+        
+        @param request: DescribeVolDingdingMessageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVolDingdingMessageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVolDingdingMessage',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVolDingdingMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vol_dingding_message_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeVolDingdingMessageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeVolDingdingMessageResponse:
+        """
+        @summary 查询钉钉群二维码地址
+        
+        @param request: DescribeVolDingdingMessageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVolDingdingMessageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVolDingdingMessage',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeVolDingdingMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vol_dingding_message(
+        self,
+        request: sas_20181203_models.DescribeVolDingdingMessageRequest,
+    ) -> sas_20181203_models.DescribeVolDingdingMessageResponse:
+        """
+        @summary 查询钉钉群二维码地址
+        
+        @param request: DescribeVolDingdingMessageRequest
+        @return: DescribeVolDingdingMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vol_dingding_message_with_options(request, runtime)
+
+    async def describe_vol_dingding_message_async(
+        self,
+        request: sas_20181203_models.DescribeVolDingdingMessageRequest,
+    ) -> sas_20181203_models.DescribeVolDingdingMessageResponse:
+        """
+        @summary 查询钉钉群二维码地址
+        
+        @param request: DescribeVolDingdingMessageRequest
+        @return: DescribeVolDingdingMessageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vol_dingding_message_with_options_async(request, runtime)
 
     def describe_vpc_honey_pot_criteria_with_options(
         self,
@@ -37232,6 +46226,946 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_web_path_with_options_async(request, runtime)
 
+    def describe_white_list_asset_with_options(
+        self,
+        request: sas_20181203_models.DescribeWhiteListAssetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeWhiteListAssetResponse:
+        """
+        @summary Queries the information about servers that can be added or are added to application whitelist policies.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListAssetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWhiteListAssetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.last_max_id):
+            query['LastMaxId'] = request.last_max_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhiteListAsset',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWhiteListAssetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_white_list_asset_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeWhiteListAssetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeWhiteListAssetResponse:
+        """
+        @summary Queries the information about servers that can be added or are added to application whitelist policies.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListAssetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWhiteListAssetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.last_max_id):
+            query['LastMaxId'] = request.last_max_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhiteListAsset',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWhiteListAssetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_white_list_asset(
+        self,
+        request: sas_20181203_models.DescribeWhiteListAssetRequest,
+    ) -> sas_20181203_models.DescribeWhiteListAssetResponse:
+        """
+        @summary Queries the information about servers that can be added or are added to application whitelist policies.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListAssetRequest
+        @return: DescribeWhiteListAssetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_white_list_asset_with_options(request, runtime)
+
+    async def describe_white_list_asset_async(
+        self,
+        request: sas_20181203_models.DescribeWhiteListAssetRequest,
+    ) -> sas_20181203_models.DescribeWhiteListAssetResponse:
+        """
+        @summary Queries the information about servers that can be added or are added to application whitelist policies.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListAssetRequest
+        @return: DescribeWhiteListAssetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_white_list_asset_with_options_async(request, runtime)
+
+    def describe_white_list_authorize_with_options(
+        self,
+        request: sas_20181203_models.DescribeWhiteListAuthorizeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeWhiteListAuthorizeResponse:
+        """
+        @summary Queries the available quota for the application whitelist feature.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListAuthorizeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWhiteListAuthorizeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhiteListAuthorize',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWhiteListAuthorizeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_white_list_authorize_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeWhiteListAuthorizeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeWhiteListAuthorizeResponse:
+        """
+        @summary Queries the available quota for the application whitelist feature.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListAuthorizeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWhiteListAuthorizeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhiteListAuthorize',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWhiteListAuthorizeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_white_list_authorize(
+        self,
+        request: sas_20181203_models.DescribeWhiteListAuthorizeRequest,
+    ) -> sas_20181203_models.DescribeWhiteListAuthorizeResponse:
+        """
+        @summary Queries the available quota for the application whitelist feature.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListAuthorizeRequest
+        @return: DescribeWhiteListAuthorizeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_white_list_authorize_with_options(request, runtime)
+
+    async def describe_white_list_authorize_async(
+        self,
+        request: sas_20181203_models.DescribeWhiteListAuthorizeRequest,
+    ) -> sas_20181203_models.DescribeWhiteListAuthorizeResponse:
+        """
+        @summary Queries the available quota for the application whitelist feature.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListAuthorizeRequest
+        @return: DescribeWhiteListAuthorizeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_white_list_authorize_with_options_async(request, runtime)
+
+    def describe_white_list_effective_assets_with_options(
+        self,
+        request: sas_20181203_models.DescribeWhiteListEffectiveAssetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeWhiteListEffectiveAssetsResponse:
+        """
+        @summary Queries the servers on which an application whitelist policy takes effect.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in-use, you can call this operation.
+        
+        @param request: DescribeWhiteListEffectiveAssetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWhiteListEffectiveAssetsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.need_statistics):
+            query['NeedStatistics'] = request.need_statistics
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhiteListEffectiveAssets',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWhiteListEffectiveAssetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_white_list_effective_assets_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeWhiteListEffectiveAssetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeWhiteListEffectiveAssetsResponse:
+        """
+        @summary Queries the servers on which an application whitelist policy takes effect.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in-use, you can call this operation.
+        
+        @param request: DescribeWhiteListEffectiveAssetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWhiteListEffectiveAssetsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.need_statistics):
+            query['NeedStatistics'] = request.need_statistics
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhiteListEffectiveAssets',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWhiteListEffectiveAssetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_white_list_effective_assets(
+        self,
+        request: sas_20181203_models.DescribeWhiteListEffectiveAssetsRequest,
+    ) -> sas_20181203_models.DescribeWhiteListEffectiveAssetsResponse:
+        """
+        @summary Queries the servers on which an application whitelist policy takes effect.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in-use, you can call this operation.
+        
+        @param request: DescribeWhiteListEffectiveAssetsRequest
+        @return: DescribeWhiteListEffectiveAssetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_white_list_effective_assets_with_options(request, runtime)
+
+    async def describe_white_list_effective_assets_async(
+        self,
+        request: sas_20181203_models.DescribeWhiteListEffectiveAssetsRequest,
+    ) -> sas_20181203_models.DescribeWhiteListEffectiveAssetsResponse:
+        """
+        @summary Queries the servers on which an application whitelist policy takes effect.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in-use, you can call this operation.
+        
+        @param request: DescribeWhiteListEffectiveAssetsRequest
+        @return: DescribeWhiteListEffectiveAssetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_white_list_effective_assets_with_options_async(request, runtime)
+
+    def describe_white_list_process_with_options(
+        self,
+        request: sas_20181203_models.DescribeWhiteListProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeWhiteListProcessResponse:
+        """
+        @summary Queries the information about the processes that are detected in an application whitelist policy.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWhiteListProcessResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.desc):
+            query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.process_name):
+            query['ProcessName'] = request.process_name
+        if not UtilClient.is_unset(request.process_type):
+            query['ProcessType'] = request.process_type
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhiteListProcess',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWhiteListProcessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_white_list_process_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeWhiteListProcessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeWhiteListProcessResponse:
+        """
+        @summary Queries the information about the processes that are detected in an application whitelist policy.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWhiteListProcessResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.desc):
+            query['Desc'] = request.desc
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.process_name):
+            query['ProcessName'] = request.process_name
+        if not UtilClient.is_unset(request.process_type):
+            query['ProcessType'] = request.process_type
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhiteListProcess',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWhiteListProcessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_white_list_process(
+        self,
+        request: sas_20181203_models.DescribeWhiteListProcessRequest,
+    ) -> sas_20181203_models.DescribeWhiteListProcessResponse:
+        """
+        @summary Queries the information about the processes that are detected in an application whitelist policy.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListProcessRequest
+        @return: DescribeWhiteListProcessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_white_list_process_with_options(request, runtime)
+
+    async def describe_white_list_process_async(
+        self,
+        request: sas_20181203_models.DescribeWhiteListProcessRequest,
+    ) -> sas_20181203_models.DescribeWhiteListProcessResponse:
+        """
+        @summary Queries the information about the processes that are detected in an application whitelist policy.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListProcessRequest
+        @return: DescribeWhiteListProcessResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_white_list_process_with_options_async(request, runtime)
+
+    def describe_white_list_strategy_list_with_options(
+        self,
+        request: sas_20181203_models.DescribeWhiteListStrategyListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeWhiteListStrategyListResponse:
+        """
+        @summary Queries a list of application whitelist policies.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListStrategyListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWhiteListStrategyListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.strategy_ids):
+            query['StrategyIds'] = request.strategy_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhiteListStrategyList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWhiteListStrategyListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_white_list_strategy_list_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeWhiteListStrategyListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeWhiteListStrategyListResponse:
+        """
+        @summary Queries a list of application whitelist policies.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListStrategyListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWhiteListStrategyListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.strategy_ids):
+            query['StrategyIds'] = request.strategy_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhiteListStrategyList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWhiteListStrategyListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_white_list_strategy_list(
+        self,
+        request: sas_20181203_models.DescribeWhiteListStrategyListRequest,
+    ) -> sas_20181203_models.DescribeWhiteListStrategyListResponse:
+        """
+        @summary Queries a list of application whitelist policies.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListStrategyListRequest
+        @return: DescribeWhiteListStrategyListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_white_list_strategy_list_with_options(request, runtime)
+
+    async def describe_white_list_strategy_list_async(
+        self,
+        request: sas_20181203_models.DescribeWhiteListStrategyListRequest,
+    ) -> sas_20181203_models.DescribeWhiteListStrategyListResponse:
+        """
+        @summary Queries a list of application whitelist policies.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListStrategyListRequest
+        @return: DescribeWhiteListStrategyListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_white_list_strategy_list_with_options_async(request, runtime)
+
+    def describe_white_list_strategy_statistics_with_options(
+        self,
+        request: sas_20181203_models.DescribeWhiteListStrategyStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeWhiteListStrategyStatisticsResponse:
+        """
+        @summary Queries the statistics of application whitelist policies.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListStrategyStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWhiteListStrategyStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.strategy_ids):
+            query['StrategyIds'] = request.strategy_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhiteListStrategyStatistics',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWhiteListStrategyStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_white_list_strategy_statistics_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeWhiteListStrategyStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeWhiteListStrategyStatisticsResponse:
+        """
+        @summary Queries the statistics of application whitelist policies.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListStrategyStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWhiteListStrategyStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.strategy_ids):
+            query['StrategyIds'] = request.strategy_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhiteListStrategyStatistics',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWhiteListStrategyStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_white_list_strategy_statistics(
+        self,
+        request: sas_20181203_models.DescribeWhiteListStrategyStatisticsRequest,
+    ) -> sas_20181203_models.DescribeWhiteListStrategyStatisticsResponse:
+        """
+        @summary Queries the statistics of application whitelist policies.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListStrategyStatisticsRequest
+        @return: DescribeWhiteListStrategyStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_white_list_strategy_statistics_with_options(request, runtime)
+
+    async def describe_white_list_strategy_statistics_async(
+        self,
+        request: sas_20181203_models.DescribeWhiteListStrategyStatisticsRequest,
+    ) -> sas_20181203_models.DescribeWhiteListStrategyStatisticsResponse:
+        """
+        @summary Queries the statistics of application whitelist policies.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: DescribeWhiteListStrategyStatisticsRequest
+        @return: DescribeWhiteListStrategyStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_white_list_strategy_statistics_with_options_async(request, runtime)
+
+    def describe_white_list_strategy_uuid_count_with_options(
+        self,
+        request: sas_20181203_models.DescribeWhiteListStrategyUuidCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeWhiteListStrategyUuidCountResponse:
+        """
+        @summary Queries the number of the servers on which an application whitelist policy takes effect.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in-use, you can call this operation.
+        
+        @param request: DescribeWhiteListStrategyUuidCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWhiteListStrategyUuidCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhiteListStrategyUuidCount',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWhiteListStrategyUuidCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_white_list_strategy_uuid_count_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeWhiteListStrategyUuidCountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeWhiteListStrategyUuidCountResponse:
+        """
+        @summary Queries the number of the servers on which an application whitelist policy takes effect.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in-use, you can call this operation.
+        
+        @param request: DescribeWhiteListStrategyUuidCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWhiteListStrategyUuidCountResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhiteListStrategyUuidCount',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeWhiteListStrategyUuidCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_white_list_strategy_uuid_count(
+        self,
+        request: sas_20181203_models.DescribeWhiteListStrategyUuidCountRequest,
+    ) -> sas_20181203_models.DescribeWhiteListStrategyUuidCountResponse:
+        """
+        @summary Queries the number of the servers on which an application whitelist policy takes effect.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in-use, you can call this operation.
+        
+        @param request: DescribeWhiteListStrategyUuidCountRequest
+        @return: DescribeWhiteListStrategyUuidCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_white_list_strategy_uuid_count_with_options(request, runtime)
+
+    async def describe_white_list_strategy_uuid_count_async(
+        self,
+        request: sas_20181203_models.DescribeWhiteListStrategyUuidCountRequest,
+    ) -> sas_20181203_models.DescribeWhiteListStrategyUuidCountResponse:
+        """
+        @summary Queries the number of the servers on which an application whitelist policy takes effect.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in-use, you can call this operation.
+        
+        @param request: DescribeWhiteListStrategyUuidCountRequest
+        @return: DescribeWhiteListStrategyUuidCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_white_list_strategy_uuid_count_with_options_async(request, runtime)
+
+    def ding_talk_online_test_with_options(
+        self,
+        request: sas_20181203_models.DingTalkOnlineTestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DingTalkOnlineTestResponse:
+        """
+        @summary 钉钉通知测试
+        
+        @param request: DingTalkOnlineTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DingTalkOnlineTestResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DingTalkOnlineTest',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DingTalkOnlineTestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ding_talk_online_test_with_options_async(
+        self,
+        request: sas_20181203_models.DingTalkOnlineTestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DingTalkOnlineTestResponse:
+        """
+        @summary 钉钉通知测试
+        
+        @param request: DingTalkOnlineTestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DingTalkOnlineTestResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DingTalkOnlineTest',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DingTalkOnlineTestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ding_talk_online_test(
+        self,
+        request: sas_20181203_models.DingTalkOnlineTestRequest,
+    ) -> sas_20181203_models.DingTalkOnlineTestResponse:
+        """
+        @summary 钉钉通知测试
+        
+        @param request: DingTalkOnlineTestRequest
+        @return: DingTalkOnlineTestResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.ding_talk_online_test_with_options(request, runtime)
+
+    async def ding_talk_online_test_async(
+        self,
+        request: sas_20181203_models.DingTalkOnlineTestRequest,
+    ) -> sas_20181203_models.DingTalkOnlineTestResponse:
+        """
+        @summary 钉钉通知测试
+        
+        @param request: DingTalkOnlineTestRequest
+        @return: DingTalkOnlineTestResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.ding_talk_online_test_with_options_async(request, runtime)
+
     def disable_brute_force_record_with_options(
         self,
         request: sas_20181203_models.DisableBruteForceRecordRequest,
@@ -37780,6 +47714,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.enable_custom_instance_block_record_with_options_async(request, runtime)
 
+    def enable_service_access_resource_directory_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.EnableServiceAccessResourceDirectoryResponse:
+        """
+        @summary Enable the multi-account management feature of Security Center.
+        
+        @description You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
+        
+        @param request: EnableServiceAccessResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableServiceAccessResourceDirectoryResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='EnableServiceAccessResourceDirectory',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.EnableServiceAccessResourceDirectoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_service_access_resource_directory_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.EnableServiceAccessResourceDirectoryResponse:
+        """
+        @summary Enable the multi-account management feature of Security Center.
+        
+        @description You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
+        
+        @param request: EnableServiceAccessResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableServiceAccessResourceDirectoryResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='EnableServiceAccessResourceDirectory',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.EnableServiceAccessResourceDirectoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_service_access_resource_directory(self) -> sas_20181203_models.EnableServiceAccessResourceDirectoryResponse:
+        """
+        @summary Enable the multi-account management feature of Security Center.
+        
+        @description You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
+        
+        @return: EnableServiceAccessResourceDirectoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_service_access_resource_directory_with_options(runtime)
+
+    async def enable_service_access_resource_directory_async(self) -> sas_20181203_models.EnableServiceAccessResourceDirectoryResponse:
+        """
+        @summary Enable the multi-account management feature of Security Center.
+        
+        @description You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
+        
+        @return: EnableServiceAccessResourceDirectoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_service_access_resource_directory_with_options_async(runtime)
+
     def exec_strategy_with_options(
         self,
         request: sas_20181203_models.ExecStrategyRequest,
@@ -37879,6 +47895,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.exec_strategy_with_options_async(request, runtime)
+
+    def export_customize_report_with_options(
+        self,
+        request: sas_20181203_models.ExportCustomizeReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ExportCustomizeReportResponse:
+        """
+        @summary Exports a security report.
+        
+        @param request: ExportCustomizeReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportCustomizeReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.export_type):
+            query['ExportType'] = request.export_type
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExportCustomizeReport',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ExportCustomizeReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_customize_report_with_options_async(
+        self,
+        request: sas_20181203_models.ExportCustomizeReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ExportCustomizeReportResponse:
+        """
+        @summary Exports a security report.
+        
+        @param request: ExportCustomizeReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportCustomizeReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.export_type):
+            query['ExportType'] = request.export_type
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExportCustomizeReport',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ExportCustomizeReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_customize_report(
+        self,
+        request: sas_20181203_models.ExportCustomizeReportRequest,
+    ) -> sas_20181203_models.ExportCustomizeReportResponse:
+        """
+        @summary Exports a security report.
+        
+        @param request: ExportCustomizeReportRequest
+        @return: ExportCustomizeReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.export_customize_report_with_options(request, runtime)
+
+    async def export_customize_report_async(
+        self,
+        request: sas_20181203_models.ExportCustomizeReportRequest,
+    ) -> sas_20181203_models.ExportCustomizeReportResponse:
+        """
+        @summary Exports a security report.
+        
+        @param request: ExportCustomizeReportRequest
+        @return: ExportCustomizeReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.export_customize_report_with_options_async(request, runtime)
 
     def export_record_with_options(
         self,
@@ -38660,6 +48776,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.find_container_network_connect_with_options_async(request, runtime)
 
+    def finish_guid_task_with_options(
+        self,
+        request: sas_20181203_models.FinishGuidTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.FinishGuidTaskResponse:
+        """
+        @summary 完成任务自动领取奖励
+        
+        @param request: FinishGuidTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FinishGuidTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_type_name):
+            query['TaskTypeName'] = request.task_type_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FinishGuidTask',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.FinishGuidTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def finish_guid_task_with_options_async(
+        self,
+        request: sas_20181203_models.FinishGuidTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.FinishGuidTaskResponse:
+        """
+        @summary 完成任务自动领取奖励
+        
+        @param request: FinishGuidTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FinishGuidTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_type_name):
+            query['TaskTypeName'] = request.task_type_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FinishGuidTask',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.FinishGuidTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def finish_guid_task(
+        self,
+        request: sas_20181203_models.FinishGuidTaskRequest,
+    ) -> sas_20181203_models.FinishGuidTaskResponse:
+        """
+        @summary 完成任务自动领取奖励
+        
+        @param request: FinishGuidTaskRequest
+        @return: FinishGuidTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.finish_guid_task_with_options(request, runtime)
+
+    async def finish_guid_task_async(
+        self,
+        request: sas_20181203_models.FinishGuidTaskRequest,
+    ) -> sas_20181203_models.FinishGuidTaskResponse:
+        """
+        @summary 完成任务自动领取奖励
+        
+        @param request: FinishGuidTaskRequest
+        @return: FinishGuidTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.finish_guid_task_with_options_async(request, runtime)
+
     def fix_check_warnings_with_options(
         self,
         request: sas_20181203_models.FixCheckWarningsRequest,
@@ -38771,6 +48983,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.fix_check_warnings_with_options_async(request, runtime)
+
+    def generate_dynamic_dict_with_options(
+        self,
+        request: sas_20181203_models.GenerateDynamicDictRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GenerateDynamicDictResponse:
+        """
+        @summary Generates a custom dictionary of weak passwords for the baseline check feature.
+        
+        @param request: GenerateDynamicDictRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateDynamicDictResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.arg_keywords):
+            query['ArgKeywords'] = request.arg_keywords
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.names):
+            query['Names'] = request.names
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateDynamicDict',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GenerateDynamicDictResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_dynamic_dict_with_options_async(
+        self,
+        request: sas_20181203_models.GenerateDynamicDictRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GenerateDynamicDictResponse:
+        """
+        @summary Generates a custom dictionary of weak passwords for the baseline check feature.
+        
+        @param request: GenerateDynamicDictRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateDynamicDictResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.arg_keywords):
+            query['ArgKeywords'] = request.arg_keywords
+        if not UtilClient.is_unset(request.domains):
+            query['Domains'] = request.domains
+        if not UtilClient.is_unset(request.names):
+            query['Names'] = request.names
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateDynamicDict',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GenerateDynamicDictResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_dynamic_dict(
+        self,
+        request: sas_20181203_models.GenerateDynamicDictRequest,
+    ) -> sas_20181203_models.GenerateDynamicDictResponse:
+        """
+        @summary Generates a custom dictionary of weak passwords for the baseline check feature.
+        
+        @param request: GenerateDynamicDictRequest
+        @return: GenerateDynamicDictResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.generate_dynamic_dict_with_options(request, runtime)
+
+    async def generate_dynamic_dict_async(
+        self,
+        request: sas_20181203_models.GenerateDynamicDictRequest,
+    ) -> sas_20181203_models.GenerateDynamicDictResponse:
+        """
+        @summary Generates a custom dictionary of weak passwords for the baseline check feature.
+        
+        @param request: GenerateDynamicDictRequest
+        @return: GenerateDynamicDictResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.generate_dynamic_dict_with_options_async(request, runtime)
 
     def generate_k8s_access_info_with_options(
         self,
@@ -39012,6 +49332,218 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.generate_once_task_with_options_async(request, runtime)
 
+    def get_account_label_with_options(
+        self,
+        request: sas_20181203_models.GetAccountLabelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetAccountLabelResponse:
+        """
+        @summary 获取账户标签
+        
+        @param request: GetAccountLabelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountLabelResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.label_list):
+            query['LabelList'] = request.label_list
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAccountLabel',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetAccountLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_account_label_with_options_async(
+        self,
+        request: sas_20181203_models.GetAccountLabelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetAccountLabelResponse:
+        """
+        @summary 获取账户标签
+        
+        @param request: GetAccountLabelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAccountLabelResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.label_list):
+            query['LabelList'] = request.label_list
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAccountLabel',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetAccountLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_account_label(
+        self,
+        request: sas_20181203_models.GetAccountLabelRequest,
+    ) -> sas_20181203_models.GetAccountLabelResponse:
+        """
+        @summary 获取账户标签
+        
+        @param request: GetAccountLabelRequest
+        @return: GetAccountLabelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_account_label_with_options(request, runtime)
+
+    async def get_account_label_async(
+        self,
+        request: sas_20181203_models.GetAccountLabelRequest,
+    ) -> sas_20181203_models.GetAccountLabelResponse:
+        """
+        @summary 获取账户标签
+        
+        @param request: GetAccountLabelRequest
+        @return: GetAccountLabelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_account_label_with_options_async(request, runtime)
+
+    def get_aegis_container_plugin_rule_with_options(
+        self,
+        request: sas_20181203_models.GetAegisContainerPluginRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetAegisContainerPluginRuleResponse:
+        """
+        @summary Queries the details of a defense rule against container escapes.
+        
+        @description Only the Ultimate edition of Security Center supports this operation.
+        
+        @param request: GetAegisContainerPluginRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAegisContainerPluginRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAegisContainerPluginRule',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetAegisContainerPluginRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aegis_container_plugin_rule_with_options_async(
+        self,
+        request: sas_20181203_models.GetAegisContainerPluginRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetAegisContainerPluginRuleResponse:
+        """
+        @summary Queries the details of a defense rule against container escapes.
+        
+        @description Only the Ultimate edition of Security Center supports this operation.
+        
+        @param request: GetAegisContainerPluginRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAegisContainerPluginRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAegisContainerPluginRule',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetAegisContainerPluginRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aegis_container_plugin_rule(
+        self,
+        request: sas_20181203_models.GetAegisContainerPluginRuleRequest,
+    ) -> sas_20181203_models.GetAegisContainerPluginRuleResponse:
+        """
+        @summary Queries the details of a defense rule against container escapes.
+        
+        @description Only the Ultimate edition of Security Center supports this operation.
+        
+        @param request: GetAegisContainerPluginRuleRequest
+        @return: GetAegisContainerPluginRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_aegis_container_plugin_rule_with_options(request, runtime)
+
+    async def get_aegis_container_plugin_rule_async(
+        self,
+        request: sas_20181203_models.GetAegisContainerPluginRuleRequest,
+    ) -> sas_20181203_models.GetAegisContainerPluginRuleResponse:
+        """
+        @summary Queries the details of a defense rule against container escapes.
+        
+        @description Only the Ultimate edition of Security Center supports this operation.
+        
+        @param request: GetAegisContainerPluginRuleRequest
+        @return: GetAegisContainerPluginRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_aegis_container_plugin_rule_with_options_async(request, runtime)
+
     def get_aegis_container_plugin_rule_criteria_with_options(
         self,
         request: sas_20181203_models.GetAegisContainerPluginRuleCriteriaRequest,
@@ -39114,6 +49646,7 @@ class Client(OpenApiClient):
 
     def get_agentless_task_count_with_options(
         self,
+        request: sas_20181203_models.GetAgentlessTaskCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.GetAgentlessTaskCountResponse:
         """
@@ -39123,7 +49656,15 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetAgentlessTaskCountResponse
         """
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.target):
+            query['Target'] = request.target
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='GetAgentlessTaskCount',
             version='2018-12-03',
@@ -39142,6 +49683,7 @@ class Client(OpenApiClient):
 
     async def get_agentless_task_count_with_options_async(
         self,
+        request: sas_20181203_models.GetAgentlessTaskCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.GetAgentlessTaskCountResponse:
         """
@@ -39151,7 +49693,15 @@ class Client(OpenApiClient):
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetAgentlessTaskCountResponse
         """
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.target):
+            query['Target'] = request.target
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='GetAgentlessTaskCount',
             version='2018-12-03',
@@ -39168,23 +49718,31 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_agentless_task_count(self) -> sas_20181203_models.GetAgentlessTaskCountResponse:
+    def get_agentless_task_count(
+        self,
+        request: sas_20181203_models.GetAgentlessTaskCountRequest,
+    ) -> sas_20181203_models.GetAgentlessTaskCountResponse:
         """
         @summary Queries the number of agentless detection tasks.
         
+        @param request: GetAgentlessTaskCountRequest
         @return: GetAgentlessTaskCountResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.get_agentless_task_count_with_options(runtime)
+        return self.get_agentless_task_count_with_options(request, runtime)
 
-    async def get_agentless_task_count_async(self) -> sas_20181203_models.GetAgentlessTaskCountResponse:
+    async def get_agentless_task_count_async(
+        self,
+        request: sas_20181203_models.GetAgentlessTaskCountRequest,
+    ) -> sas_20181203_models.GetAgentlessTaskCountResponse:
         """
         @summary Queries the number of agentless detection tasks.
         
+        @param request: GetAgentlessTaskCountRequest
         @return: GetAgentlessTaskCountResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.get_agentless_task_count_with_options_async(runtime)
+        return await self.get_agentless_task_count_with_options_async(request, runtime)
 
     def get_alarm_machine_count_with_options(
         self,
@@ -39818,6 +50376,154 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_assets_property_item_with_options_async(request, runtime)
 
+    def get_attack_type_list_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetAttackTypeListResponse:
+        """
+        @summary 查询攻击类型
+        
+        @param request: GetAttackTypeListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAttackTypeListResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetAttackTypeList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetAttackTypeListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_attack_type_list_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetAttackTypeListResponse:
+        """
+        @summary 查询攻击类型
+        
+        @param request: GetAttackTypeListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAttackTypeListResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetAttackTypeList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetAttackTypeListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_attack_type_list(self) -> sas_20181203_models.GetAttackTypeListResponse:
+        """
+        @summary 查询攻击类型
+        
+        @return: GetAttackTypeListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_attack_type_list_with_options(runtime)
+
+    async def get_attack_type_list_async(self) -> sas_20181203_models.GetAttackTypeListResponse:
+        """
+        @summary 查询攻击类型
+        
+        @return: GetAttackTypeListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_attack_type_list_with_options_async(runtime)
+
+    def get_auth_summary_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetAuthSummaryResponse:
+        """
+        @summary Queries the statistics of asset protection quota.
+        
+        @param request: GetAuthSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuthSummaryResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetAuthSummary',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetAuthSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_auth_summary_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetAuthSummaryResponse:
+        """
+        @summary Queries the statistics of asset protection quota.
+        
+        @param request: GetAuthSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuthSummaryResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetAuthSummary',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetAuthSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_auth_summary(self) -> sas_20181203_models.GetAuthSummaryResponse:
+        """
+        @summary Queries the statistics of asset protection quota.
+        
+        @return: GetAuthSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_auth_summary_with_options(runtime)
+
+    async def get_auth_summary_async(self) -> sas_20181203_models.GetAuthSummaryResponse:
+        """
+        @summary Queries the statistics of asset protection quota.
+        
+        @return: GetAuthSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_auth_summary_with_options_async(runtime)
+
     def get_auth_version_statistic_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -39892,6 +50598,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_auth_version_statistic_with_options_async(runtime)
 
+    def get_backup_auto_config_status_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetBackupAutoConfigStatusResponse:
+        """
+        @summary Checks whether the managed anti-ransomware feature can automatically configure an anti-ransomware policy for servers.
+        
+        @param request: GetBackupAutoConfigStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBackupAutoConfigStatusResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetBackupAutoConfigStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetBackupAutoConfigStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_backup_auto_config_status_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetBackupAutoConfigStatusResponse:
+        """
+        @summary Checks whether the managed anti-ransomware feature can automatically configure an anti-ransomware policy for servers.
+        
+        @param request: GetBackupAutoConfigStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBackupAutoConfigStatusResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetBackupAutoConfigStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetBackupAutoConfigStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_backup_auto_config_status(self) -> sas_20181203_models.GetBackupAutoConfigStatusResponse:
+        """
+        @summary Checks whether the managed anti-ransomware feature can automatically configure an anti-ransomware policy for servers.
+        
+        @return: GetBackupAutoConfigStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_backup_auto_config_status_with_options(runtime)
+
+    async def get_backup_auto_config_status_async(self) -> sas_20181203_models.GetBackupAutoConfigStatusResponse:
+        """
+        @summary Checks whether the managed anti-ransomware feature can automatically configure an anti-ransomware policy for servers.
+        
+        @return: GetBackupAutoConfigStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_backup_auto_config_status_with_options_async(runtime)
+
     def get_backup_storage_count_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -39965,6 +50745,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_backup_storage_count_with_options_async(runtime)
+
+    def get_can_try_sas_with_options(
+        self,
+        request: sas_20181203_models.GetCanTrySasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetCanTrySasResponse:
+        """
+        @summary Checks whether the current user is qualified for the trial use of Security Center.
+        
+        @param request: GetCanTrySasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCanTrySasResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.from_ecs):
+            body['FromEcs'] = request.from_ecs
+        if not UtilClient.is_unset(request.lang):
+            body['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCanTrySas',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetCanTrySasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_can_try_sas_with_options_async(
+        self,
+        request: sas_20181203_models.GetCanTrySasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetCanTrySasResponse:
+        """
+        @summary Checks whether the current user is qualified for the trial use of Security Center.
+        
+        @param request: GetCanTrySasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCanTrySasResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.from_ecs):
+            body['FromEcs'] = request.from_ecs
+        if not UtilClient.is_unset(request.lang):
+            body['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCanTrySas',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetCanTrySasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_can_try_sas(
+        self,
+        request: sas_20181203_models.GetCanTrySasRequest,
+    ) -> sas_20181203_models.GetCanTrySasResponse:
+        """
+        @summary Checks whether the current user is qualified for the trial use of Security Center.
+        
+        @param request: GetCanTrySasRequest
+        @return: GetCanTrySasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_can_try_sas_with_options(request, runtime)
+
+    async def get_can_try_sas_async(
+        self,
+        request: sas_20181203_models.GetCanTrySasRequest,
+    ) -> sas_20181203_models.GetCanTrySasResponse:
+        """
+        @summary Checks whether the current user is qualified for the trial use of Security Center.
+        
+        @param request: GetCanTrySasRequest
+        @return: GetCanTrySasResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_can_try_sas_with_options_async(request, runtime)
 
     def get_check_config_with_options(
         self,
@@ -40439,6 +51319,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_check_sale_with_options_async(request, runtime)
+
+    def get_check_structure_with_options(
+        self,
+        request: sas_20181203_models.GetCheckStructureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetCheckStructureResponse:
+        """
+        @summary Obtains the structure information about check items provided by the configuration assessment feature.
+        
+        @description You must purchase the configuration assessment feature before you can use the feature.
+        
+        @param request: GetCheckStructureRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCheckStructureResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCheckStructure',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetCheckStructureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_check_structure_with_options_async(
+        self,
+        request: sas_20181203_models.GetCheckStructureRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetCheckStructureResponse:
+        """
+        @summary Obtains the structure information about check items provided by the configuration assessment feature.
+        
+        @description You must purchase the configuration assessment feature before you can use the feature.
+        
+        @param request: GetCheckStructureRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCheckStructureResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCheckStructure',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetCheckStructureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_check_structure(
+        self,
+        request: sas_20181203_models.GetCheckStructureRequest,
+    ) -> sas_20181203_models.GetCheckStructureResponse:
+        """
+        @summary Obtains the structure information about check items provided by the configuration assessment feature.
+        
+        @description You must purchase the configuration assessment feature before you can use the feature.
+        
+        @param request: GetCheckStructureRequest
+        @return: GetCheckStructureResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_check_structure_with_options(request, runtime)
+
+    async def get_check_structure_async(
+        self,
+        request: sas_20181203_models.GetCheckStructureRequest,
+    ) -> sas_20181203_models.GetCheckStructureResponse:
+        """
+        @summary Obtains the structure information about check items provided by the configuration assessment feature.
+        
+        @description You must purchase the configuration assessment feature before you can use the feature.
+        
+        @param request: GetCheckStructureRequest
+        @return: GetCheckStructureResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_check_structure_with_options_async(request, runtime)
 
     def get_check_summary_with_options(
         self,
@@ -41729,6 +52725,188 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_container_defense_rule_detail_with_options_async(request, runtime)
+
+    def get_data_trend_with_options(
+        self,
+        request: sas_20181203_models.GetDataTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetDataTrendResponse:
+        """
+        @summary Queries the security operations trends of the vulnerabilities, alerts, and baseline risks.
+        
+        @param request: GetDataTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_types):
+            query['BizTypes'] = request.biz_types
+        if not UtilClient.is_unset(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataTrend',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetDataTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_trend_with_options_async(
+        self,
+        request: sas_20181203_models.GetDataTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetDataTrendResponse:
+        """
+        @summary Queries the security operations trends of the vulnerabilities, alerts, and baseline risks.
+        
+        @param request: GetDataTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_types):
+            query['BizTypes'] = request.biz_types
+        if not UtilClient.is_unset(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataTrend',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetDataTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_trend(
+        self,
+        request: sas_20181203_models.GetDataTrendRequest,
+    ) -> sas_20181203_models.GetDataTrendResponse:
+        """
+        @summary Queries the security operations trends of the vulnerabilities, alerts, and baseline risks.
+        
+        @param request: GetDataTrendRequest
+        @return: GetDataTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_trend_with_options(request, runtime)
+
+    async def get_data_trend_async(
+        self,
+        request: sas_20181203_models.GetDataTrendRequest,
+    ) -> sas_20181203_models.GetDataTrendResponse:
+        """
+        @summary Queries the security operations trends of the vulnerabilities, alerts, and baseline risks.
+        
+        @param request: GetDataTrendRequest
+        @return: GetDataTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_trend_with_options_async(request, runtime)
+
+    def get_defence_count_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetDefenceCountResponse:
+        """
+        @summary Queries the numbers of handled alerts of the precision defense type and the web tamper proofing type.
+        
+        @param request: GetDefenceCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDefenceCountResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetDefenceCount',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetDefenceCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_defence_count_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetDefenceCountResponse:
+        """
+        @summary Queries the numbers of handled alerts of the precision defense type and the web tamper proofing type.
+        
+        @param request: GetDefenceCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDefenceCountResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetDefenceCount',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetDefenceCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_defence_count(self) -> sas_20181203_models.GetDefenceCountResponse:
+        """
+        @summary Queries the numbers of handled alerts of the precision defense type and the web tamper proofing type.
+        
+        @return: GetDefenceCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_defence_count_with_options(runtime)
+
+    async def get_defence_count_async(self) -> sas_20181203_models.GetDefenceCountResponse:
+        """
+        @summary Queries the numbers of handled alerts of the precision defense type and the web tamper proofing type.
+        
+        @return: GetDefenceCountResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_defence_count_with_options_async(runtime)
 
     def get_file_detect_api_invoke_info_with_options(
         self,
@@ -43900,6 +55078,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_last_once_task_info_with_options_async(request, runtime)
 
+    def get_local_default_region_with_options(
+        self,
+        request: sas_20181203_models.GetLocalDefaultRegionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetLocalDefaultRegionResponse:
+        """
+        @summary Obtains the default region for synchronizing assets outside Alibaba Cloud.
+        
+        @param request: GetLocalDefaultRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLocalDefaultRegionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.vendor):
+            query['Vendor'] = request.vendor
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLocalDefaultRegion',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetLocalDefaultRegionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_local_default_region_with_options_async(
+        self,
+        request: sas_20181203_models.GetLocalDefaultRegionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetLocalDefaultRegionResponse:
+        """
+        @summary Obtains the default region for synchronizing assets outside Alibaba Cloud.
+        
+        @param request: GetLocalDefaultRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLocalDefaultRegionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.vendor):
+            query['Vendor'] = request.vendor
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLocalDefaultRegion',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetLocalDefaultRegionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_local_default_region(
+        self,
+        request: sas_20181203_models.GetLocalDefaultRegionRequest,
+    ) -> sas_20181203_models.GetLocalDefaultRegionResponse:
+        """
+        @summary Obtains the default region for synchronizing assets outside Alibaba Cloud.
+        
+        @param request: GetLocalDefaultRegionRequest
+        @return: GetLocalDefaultRegionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_local_default_region_with_options(request, runtime)
+
+    async def get_local_default_region_async(
+        self,
+        request: sas_20181203_models.GetLocalDefaultRegionRequest,
+    ) -> sas_20181203_models.GetLocalDefaultRegionResponse:
+        """
+        @summary Obtains the default region for synchronizing assets outside Alibaba Cloud.
+        
+        @param request: GetLocalDefaultRegionRequest
+        @return: GetLocalDefaultRegionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_local_default_region_with_options_async(request, runtime)
+
     def get_log_meta_with_options(
         self,
         request: sas_20181203_models.GetLogMetaRequest,
@@ -44195,6 +55469,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_module_config_with_options_async(request, runtime)
+
+    def get_module_config_status_with_options(
+        self,
+        tmp_req: sas_20181203_models.GetModuleConfigStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetModuleConfigStatusResponse:
+        """
+        @summary 获取配置合规信息接口
+        
+        @param tmp_req: GetModuleConfigStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetModuleConfigStatusResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.GetModuleConfigStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.module_names):
+            request.module_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.module_names, 'ModuleNames', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.module_names_shrink):
+            query['ModuleNames'] = request.module_names_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetModuleConfigStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetModuleConfigStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_module_config_status_with_options_async(
+        self,
+        tmp_req: sas_20181203_models.GetModuleConfigStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetModuleConfigStatusResponse:
+        """
+        @summary 获取配置合规信息接口
+        
+        @param tmp_req: GetModuleConfigStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetModuleConfigStatusResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.GetModuleConfigStatusShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.module_names):
+            request.module_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.module_names, 'ModuleNames', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.module_names_shrink):
+            query['ModuleNames'] = request.module_names_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetModuleConfigStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetModuleConfigStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_module_config_status(
+        self,
+        request: sas_20181203_models.GetModuleConfigStatusRequest,
+    ) -> sas_20181203_models.GetModuleConfigStatusResponse:
+        """
+        @summary 获取配置合规信息接口
+        
+        @param request: GetModuleConfigStatusRequest
+        @return: GetModuleConfigStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_module_config_status_with_options(request, runtime)
+
+    async def get_module_config_status_async(
+        self,
+        request: sas_20181203_models.GetModuleConfigStatusRequest,
+    ) -> sas_20181203_models.GetModuleConfigStatusResponse:
+        """
+        @summary 获取配置合规信息接口
+        
+        @param request: GetModuleConfigStatusRequest
+        @return: GetModuleConfigStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_module_config_status_with_options_async(request, runtime)
 
     def get_module_trial_auth_info_with_options(
         self,
@@ -45460,6 +56838,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_property_schedule_config_with_options_async(request, runtime)
 
+    def get_rd_tree_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetRdTreeResponse:
+        """
+        @summary 列举RD树
+        
+        @param request: GetRdTreeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRdTreeResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetRdTree',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetRdTreeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_rd_tree_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetRdTreeResponse:
+        """
+        @summary 列举RD树
+        
+        @param request: GetRdTreeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRdTreeResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetRdTree',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetRdTreeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_rd_tree(self) -> sas_20181203_models.GetRdTreeResponse:
+        """
+        @summary 列举RD树
+        
+        @return: GetRdTreeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_rd_tree_with_options(runtime)
+
+    async def get_rd_tree_async(self) -> sas_20181203_models.GetRdTreeResponse:
+        """
+        @summary 列举RD树
+        
+        @return: GetRdTreeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_rd_tree_with_options_async(runtime)
+
     def get_rules_count_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -46110,6 +57562,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_strategy_template_detail_with_options_async(request, runtime)
 
+    def get_supported_modules_with_options(
+        self,
+        request: sas_20181203_models.GetSupportedModulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetSupportedModulesResponse:
+        """
+        @summary 获取授权支持的模块列表
+        
+        @param request: GetSupportedModulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSupportedModulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSupportedModules',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetSupportedModulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_supported_modules_with_options_async(
+        self,
+        request: sas_20181203_models.GetSupportedModulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetSupportedModulesResponse:
+        """
+        @summary 获取授权支持的模块列表
+        
+        @param request: GetSupportedModulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSupportedModulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSupportedModules',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetSupportedModulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_supported_modules(
+        self,
+        request: sas_20181203_models.GetSupportedModulesRequest,
+    ) -> sas_20181203_models.GetSupportedModulesResponse:
+        """
+        @summary 获取授权支持的模块列表
+        
+        @param request: GetSupportedModulesRequest
+        @return: GetSupportedModulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_supported_modules_with_options(request, runtime)
+
+    async def get_supported_modules_async(
+        self,
+        request: sas_20181203_models.GetSupportedModulesRequest,
+    ) -> sas_20181203_models.GetSupportedModulesResponse:
+        """
+        @summary 获取授权支持的模块列表
+        
+        @param request: GetSupportedModulesRequest
+        @return: GetSupportedModulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_supported_modules_with_options_async(request, runtime)
+
     def get_suspicious_statistics_with_options(
         self,
         request: sas_20181203_models.GetSuspiciousStatisticsRequest,
@@ -46216,7 +57764,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.GetSwitchRegionDetailResponse:
         """
-        @summary Queries the status and progress of the task that is run to migrate a server from a region inside the Chinese mainland to the Singapore region.
+        @summary Queries the details of a migration operation. For example, you can query the progress and status of a migration operation after you migrate a server from a region in the Chinese mainland to the Singapore region.
         
         @param request: GetSwitchRegionDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -46226,6 +57774,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -46251,7 +57801,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.GetSwitchRegionDetailResponse:
         """
-        @summary Queries the status and progress of the task that is run to migrate a server from a region inside the Chinese mainland to the Singapore region.
+        @summary Queries the details of a migration operation. For example, you can query the progress and status of a migration operation after you migrate a server from a region in the Chinese mainland to the Singapore region.
         
         @param request: GetSwitchRegionDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -46261,6 +57811,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -46285,7 +57837,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.GetSwitchRegionDetailRequest,
     ) -> sas_20181203_models.GetSwitchRegionDetailResponse:
         """
-        @summary Queries the status and progress of the task that is run to migrate a server from a region inside the Chinese mainland to the Singapore region.
+        @summary Queries the details of a migration operation. For example, you can query the progress and status of a migration operation after you migrate a server from a region in the Chinese mainland to the Singapore region.
         
         @param request: GetSwitchRegionDetailRequest
         @return: GetSwitchRegionDetailResponse
@@ -46298,7 +57850,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.GetSwitchRegionDetailRequest,
     ) -> sas_20181203_models.GetSwitchRegionDetailResponse:
         """
-        @summary Queries the status and progress of the task that is run to migrate a server from a region inside the Chinese mainland to the Singapore region.
+        @summary Queries the details of a migration operation. For example, you can query the progress and status of a migration operation after you migrate a server from a region in the Chinese mainland to the Singapore region.
         
         @param request: GetSwitchRegionDetailRequest
         @return: GetSwitchRegionDetailResponse
@@ -47234,6 +58786,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.ignore_hc_check_warnings_with_options_async(request, runtime)
 
+    def ignore_idc_probe_scan_result_with_options(
+        self,
+        request: sas_20181203_models.IgnoreIdcProbeScanResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.IgnoreIdcProbeScanResultResponse:
+        """
+        @summary Adds the result scanned by an IDC probe to the whitelist or ignores the scan result.
+        
+        @param request: IgnoreIdcProbeScanResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IgnoreIdcProbeScanResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ignore_action):
+            query['IgnoreAction'] = request.ignore_action
+        if not UtilClient.is_unset(request.scan_result_ids):
+            query['ScanResultIds'] = request.scan_result_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IgnoreIdcProbeScanResult',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.IgnoreIdcProbeScanResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ignore_idc_probe_scan_result_with_options_async(
+        self,
+        request: sas_20181203_models.IgnoreIdcProbeScanResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.IgnoreIdcProbeScanResultResponse:
+        """
+        @summary Adds the result scanned by an IDC probe to the whitelist or ignores the scan result.
+        
+        @param request: IgnoreIdcProbeScanResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IgnoreIdcProbeScanResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ignore_action):
+            query['IgnoreAction'] = request.ignore_action
+        if not UtilClient.is_unset(request.scan_result_ids):
+            query['ScanResultIds'] = request.scan_result_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IgnoreIdcProbeScanResult',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.IgnoreIdcProbeScanResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ignore_idc_probe_scan_result(
+        self,
+        request: sas_20181203_models.IgnoreIdcProbeScanResultRequest,
+    ) -> sas_20181203_models.IgnoreIdcProbeScanResultResponse:
+        """
+        @summary Adds the result scanned by an IDC probe to the whitelist or ignores the scan result.
+        
+        @param request: IgnoreIdcProbeScanResultRequest
+        @return: IgnoreIdcProbeScanResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.ignore_idc_probe_scan_result_with_options(request, runtime)
+
+    async def ignore_idc_probe_scan_result_async(
+        self,
+        request: sas_20181203_models.IgnoreIdcProbeScanResultRequest,
+    ) -> sas_20181203_models.IgnoreIdcProbeScanResultResponse:
+        """
+        @summary Adds the result scanned by an IDC probe to the whitelist or ignores the scan result.
+        
+        @param request: IgnoreIdcProbeScanResultRequest
+        @return: IgnoreIdcProbeScanResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.ignore_idc_probe_scan_result_with_options_async(request, runtime)
+
     def install_backup_client_with_options(
         self,
         request: sas_20181203_models.InstallBackupClientRequest,
@@ -47970,6 +59622,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.join_web_lock_process_white_list_with_options_async(request, runtime)
 
+    def list_accounts_in_resource_directory_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListAccountsInResourceDirectoryResponse:
+        """
+        @summary Queries members in the resource directory that is involved when the multi-account management feature is enabled.
+        
+        @description You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
+        
+        @param request: ListAccountsInResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccountsInResourceDirectoryResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListAccountsInResourceDirectory',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListAccountsInResourceDirectoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_accounts_in_resource_directory_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListAccountsInResourceDirectoryResponse:
+        """
+        @summary Queries members in the resource directory that is involved when the multi-account management feature is enabled.
+        
+        @description You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
+        
+        @param request: ListAccountsInResourceDirectoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAccountsInResourceDirectoryResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListAccountsInResourceDirectory',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListAccountsInResourceDirectoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_accounts_in_resource_directory(self) -> sas_20181203_models.ListAccountsInResourceDirectoryResponse:
+        """
+        @summary Queries members in the resource directory that is involved when the multi-account management feature is enabled.
+        
+        @description You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
+        
+        @return: ListAccountsInResourceDirectoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_accounts_in_resource_directory_with_options(runtime)
+
+    async def list_accounts_in_resource_directory_async(self) -> sas_20181203_models.ListAccountsInResourceDirectoryResponse:
+        """
+        @summary Queries members in the resource directory that is involved when the multi-account management feature is enabled.
+        
+        @description You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
+        
+        @return: ListAccountsInResourceDirectoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_accounts_in_resource_directory_with_options_async(runtime)
+
     def list_aegis_container_plugin_rule_with_options(
         self,
         request: sas_20181203_models.ListAegisContainerPluginRuleRequest,
@@ -48116,6 +59850,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.scan_range):
+            query['ScanRange'] = request.scan_range
         if not UtilClient.is_unset(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
@@ -48171,6 +59907,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.remark):
             query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.scan_range):
+            query['ScanRange'] = request.scan_range
         if not UtilClient.is_unset(request.uuid):
             query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
@@ -48412,6 +60150,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.internet_ip):
             query['InternetIp'] = request.internet_ip
         if not UtilClient.is_unset(request.intranet_ip):
@@ -48424,6 +60166,8 @@ class Client(OpenApiClient):
             query['Risk'] = request.risk
         if not UtilClient.is_unset(request.target_name):
             query['TargetName'] = request.target_name
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -48459,6 +60203,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.internet_ip):
             query['InternetIp'] = request.internet_ip
         if not UtilClient.is_unset(request.intranet_ip):
@@ -48471,6 +60219,8 @@ class Client(OpenApiClient):
             query['Risk'] = request.risk
         if not UtilClient.is_unset(request.target_name):
             query['TargetName'] = request.target_name
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -49050,6 +60800,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_asset_selection_target_with_options_async(request, runtime)
 
+    def list_auto_tag_rules_with_options(
+        self,
+        request: sas_20181203_models.ListAutoTagRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListAutoTagRulesResponse:
+        """
+        @summary Queries asset auto-tagging rules that are created by using the feature of asset management rules. You can create rules on the System Configuration > Feature Settings > Multi-cloud Configuration Management > Asset Management Rule page in the Security Center console.
+        
+        @param request: ListAutoTagRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAutoTagRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAutoTagRules',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListAutoTagRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_auto_tag_rules_with_options_async(
+        self,
+        request: sas_20181203_models.ListAutoTagRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListAutoTagRulesResponse:
+        """
+        @summary Queries asset auto-tagging rules that are created by using the feature of asset management rules. You can create rules on the System Configuration > Feature Settings > Multi-cloud Configuration Management > Asset Management Rule page in the Security Center console.
+        
+        @param request: ListAutoTagRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAutoTagRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAutoTagRules',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListAutoTagRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_auto_tag_rules(
+        self,
+        request: sas_20181203_models.ListAutoTagRulesRequest,
+    ) -> sas_20181203_models.ListAutoTagRulesResponse:
+        """
+        @summary Queries asset auto-tagging rules that are created by using the feature of asset management rules. You can create rules on the System Configuration > Feature Settings > Multi-cloud Configuration Management > Asset Management Rule page in the Security Center console.
+        
+        @param request: ListAutoTagRulesRequest
+        @return: ListAutoTagRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_auto_tag_rules_with_options(request, runtime)
+
+    async def list_auto_tag_rules_async(
+        self,
+        request: sas_20181203_models.ListAutoTagRulesRequest,
+    ) -> sas_20181203_models.ListAutoTagRulesResponse:
+        """
+        @summary Queries asset auto-tagging rules that are created by using the feature of asset management rules. You can create rules on the System Configuration > Feature Settings > Multi-cloud Configuration Management > Asset Management Rule page in the Security Center console.
+        
+        @param request: ListAutoTagRulesRequest
+        @return: ListAutoTagRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_auto_tag_rules_with_options_async(request, runtime)
+
     def list_available_honeypot_with_options(
         self,
         request: sas_20181203_models.ListAvailableHoneypotRequest,
@@ -49261,6 +61115,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_backup_record_with_options_async(request, runtime)
+
+    def list_baseline_check_white_record_with_options(
+        self,
+        tmp_req: sas_20181203_models.ListBaselineCheckWhiteRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListBaselineCheckWhiteRecordResponse:
+        """
+        @summary Queries the whitelist rules for a baseline check item.
+        
+        @param tmp_req: ListBaselineCheckWhiteRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBaselineCheckWhiteRecordResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.ListBaselineCheckWhiteRecordShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.check_ids):
+            request.check_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.check_ids, 'CheckIds', 'json')
+        if not UtilClient.is_unset(tmp_req.record_ids):
+            request.record_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.record_ids, 'RecordIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.check_ids_shrink):
+            query['CheckIds'] = request.check_ids_shrink
+        if not UtilClient.is_unset(request.check_item_fuzzy):
+            query['CheckItemFuzzy'] = request.check_item_fuzzy
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.record_ids_shrink):
+            query['RecordIds'] = request.record_ids_shrink
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBaselineCheckWhiteRecord',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListBaselineCheckWhiteRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_baseline_check_white_record_with_options_async(
+        self,
+        tmp_req: sas_20181203_models.ListBaselineCheckWhiteRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListBaselineCheckWhiteRecordResponse:
+        """
+        @summary Queries the whitelist rules for a baseline check item.
+        
+        @param tmp_req: ListBaselineCheckWhiteRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBaselineCheckWhiteRecordResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.ListBaselineCheckWhiteRecordShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.check_ids):
+            request.check_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.check_ids, 'CheckIds', 'json')
+        if not UtilClient.is_unset(tmp_req.record_ids):
+            request.record_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.record_ids, 'RecordIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.check_ids_shrink):
+            query['CheckIds'] = request.check_ids_shrink
+        if not UtilClient.is_unset(request.check_item_fuzzy):
+            query['CheckItemFuzzy'] = request.check_item_fuzzy
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.record_ids_shrink):
+            query['RecordIds'] = request.record_ids_shrink
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBaselineCheckWhiteRecord',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListBaselineCheckWhiteRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_baseline_check_white_record(
+        self,
+        request: sas_20181203_models.ListBaselineCheckWhiteRecordRequest,
+    ) -> sas_20181203_models.ListBaselineCheckWhiteRecordResponse:
+        """
+        @summary Queries the whitelist rules for a baseline check item.
+        
+        @param request: ListBaselineCheckWhiteRecordRequest
+        @return: ListBaselineCheckWhiteRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_baseline_check_white_record_with_options(request, runtime)
+
+    async def list_baseline_check_white_record_async(
+        self,
+        request: sas_20181203_models.ListBaselineCheckWhiteRecordRequest,
+    ) -> sas_20181203_models.ListBaselineCheckWhiteRecordResponse:
+        """
+        @summary Queries the whitelist rules for a baseline check item.
+        
+        @param request: ListBaselineCheckWhiteRecordRequest
+        @return: ListBaselineCheckWhiteRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_baseline_check_white_record_with_options_async(request, runtime)
 
     def list_check_instance_result_with_options(
         self,
@@ -49796,6 +61782,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.check_ids):
+            query['CheckIds'] = request.check_ids
         if not UtilClient.is_unset(request.check_key):
             query['CheckKey'] = request.check_key
         if not UtilClient.is_unset(request.current_page):
@@ -49859,6 +61847,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.check_ids):
+            query['CheckIds'] = request.check_ids
         if not UtilClient.is_unset(request.check_key):
             query['CheckKey'] = request.check_key
         if not UtilClient.is_unset(request.current_page):
@@ -51646,6 +63636,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
         if not UtilClient.is_unset(request.rule_action):
             query['RuleAction'] = request.rule_action
         if not UtilClient.is_unset(request.rule_name):
@@ -51689,6 +63681,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.platform):
+            query['Platform'] = request.platform
         if not UtilClient.is_unset(request.rule_action):
             query['RuleAction'] = request.rule_action
         if not UtilClient.is_unset(request.rule_name):
@@ -54016,6 +66010,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_k8s_access_info_with_options_async(request, runtime)
 
+    def list_log_shipper_regions_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListLogShipperRegionsResponse:
+        """
+        @summary Queries the regions supported by the log delivery feature that uses the pay-as-you-go billing method.
+        
+        @param request: ListLogShipperRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogShipperRegionsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListLogShipperRegions',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListLogShipperRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_log_shipper_regions_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListLogShipperRegionsResponse:
+        """
+        @summary Queries the regions supported by the log delivery feature that uses the pay-as-you-go billing method.
+        
+        @param request: ListLogShipperRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogShipperRegionsResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListLogShipperRegions',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListLogShipperRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_log_shipper_regions(self) -> sas_20181203_models.ListLogShipperRegionsResponse:
+        """
+        @summary Queries the regions supported by the log delivery feature that uses the pay-as-you-go billing method.
+        
+        @return: ListLogShipperRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_log_shipper_regions_with_options(runtime)
+
+    async def list_log_shipper_regions_async(self) -> sas_20181203_models.ListLogShipperRegionsResponse:
+        """
+        @summary Queries the regions supported by the log delivery feature that uses the pay-as-you-go billing method.
+        
+        @return: ListLogShipperRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_log_shipper_regions_with_options_async(runtime)
+
     def list_malicious_file_whitelist_configs_with_options(
         self,
         request: sas_20181203_models.ListMaliciousFileWhitelistConfigsRequest,
@@ -55207,6 +67275,88 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_query_rasp_app_info_with_options_async(request, runtime)
+
+    def list_rd_default_sync_list_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListRdDefaultSyncListResponse:
+        """
+        @summary Queries the automatic management policies of members that are added to Security Center for multi-account management. The members in the automatic control management directory are automatically added to the member list of Security Center.
+        
+        @description You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
+        
+        @param request: ListRdDefaultSyncListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRdDefaultSyncListResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListRdDefaultSyncList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListRdDefaultSyncListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_rd_default_sync_list_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListRdDefaultSyncListResponse:
+        """
+        @summary Queries the automatic management policies of members that are added to Security Center for multi-account management. The members in the automatic control management directory are automatically added to the member list of Security Center.
+        
+        @description You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
+        
+        @param request: ListRdDefaultSyncListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRdDefaultSyncListResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListRdDefaultSyncList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListRdDefaultSyncListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_rd_default_sync_list(self) -> sas_20181203_models.ListRdDefaultSyncListResponse:
+        """
+        @summary Queries the automatic management policies of members that are added to Security Center for multi-account management. The members in the automatic control management directory are automatically added to the member list of Security Center.
+        
+        @description You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
+        
+        @return: ListRdDefaultSyncListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_rd_default_sync_list_with_options(runtime)
+
+    async def list_rd_default_sync_list_async(self) -> sas_20181203_models.ListRdDefaultSyncListResponse:
+        """
+        @summary Queries the automatic management policies of members that are added to Security Center for multi-account management. The members in the automatic control management directory are automatically added to the member list of Security Center.
+        
+        @description You must use the management account of your resource directory or a delegated administrator account of Security Center to call this operation.
+        
+        @return: ListRdDefaultSyncListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_rd_default_sync_list_with_options_async(runtime)
 
     def list_rule_target_all_with_options(
         self,
@@ -58328,6 +70478,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_client_user_define_rule_with_options_async(request, runtime)
 
+    def modify_cloud_vendor_account_akwith_options(
+        self,
+        request: sas_20181203_models.ModifyCloudVendorAccountAKRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyCloudVendorAccountAKResponse:
+        """
+        @summary 多云资产配置修改ak信息
+        
+        @param request: ModifyCloudVendorAccountAKRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCloudVendorAccountAKResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_ids):
+            query['AuthIds'] = request.auth_ids
+        if not UtilClient.is_unset(request.auth_modules):
+            query['AuthModules'] = request.auth_modules
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.regions):
+            query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.secret_id):
+            query['SecretId'] = request.secret_id
+        if not UtilClient.is_unset(request.secret_key):
+            query['SecretKey'] = request.secret_key
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.subscription_ids):
+            query['SubscriptionIds'] = request.subscription_ids
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCloudVendorAccountAK',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyCloudVendorAccountAKResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_cloud_vendor_account_akwith_options_async(
+        self,
+        request: sas_20181203_models.ModifyCloudVendorAccountAKRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyCloudVendorAccountAKResponse:
+        """
+        @summary 多云资产配置修改ak信息
+        
+        @param request: ModifyCloudVendorAccountAKRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCloudVendorAccountAKResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_ids):
+            query['AuthIds'] = request.auth_ids
+        if not UtilClient.is_unset(request.auth_modules):
+            query['AuthModules'] = request.auth_modules
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.regions):
+            query['Regions'] = request.regions
+        if not UtilClient.is_unset(request.secret_id):
+            query['SecretId'] = request.secret_id
+        if not UtilClient.is_unset(request.secret_key):
+            query['SecretKey'] = request.secret_key
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.subscription_ids):
+            query['SubscriptionIds'] = request.subscription_ids
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyCloudVendorAccountAK',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyCloudVendorAccountAKResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_cloud_vendor_account_ak(
+        self,
+        request: sas_20181203_models.ModifyCloudVendorAccountAKRequest,
+    ) -> sas_20181203_models.ModifyCloudVendorAccountAKResponse:
+        """
+        @summary 多云资产配置修改ak信息
+        
+        @param request: ModifyCloudVendorAccountAKRequest
+        @return: ModifyCloudVendorAccountAKResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_cloud_vendor_account_akwith_options(request, runtime)
+
+    async def modify_cloud_vendor_account_ak_async(
+        self,
+        request: sas_20181203_models.ModifyCloudVendorAccountAKRequest,
+    ) -> sas_20181203_models.ModifyCloudVendorAccountAKResponse:
+        """
+        @summary 多云资产配置修改ak信息
+        
+        @param request: ModifyCloudVendorAccountAKRequest
+        @return: ModifyCloudVendorAccountAKResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_cloud_vendor_account_akwith_options_async(request, runtime)
+
     def modify_cluster_cnnf_status_user_confirm_with_options(
         self,
         request: sas_20181203_models.ModifyClusterCnnfStatusUserConfirmRequest,
@@ -59328,6 +71606,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_cycle_task_with_options_async(request, runtime)
 
+    def modify_ding_talk_status_with_options(
+        self,
+        request: sas_20181203_models.ModifyDingTalkStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyDingTalkStatusResponse:
+        """
+        @summary Changes the notification status of a DingTalk chatbot.
+        
+        @description You can call this operation only if you use Security Center Enterprise.
+        
+        @param request: ModifyDingTalkStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDingTalkStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDingTalkStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyDingTalkStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_ding_talk_status_with_options_async(
+        self,
+        request: sas_20181203_models.ModifyDingTalkStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyDingTalkStatusResponse:
+        """
+        @summary Changes the notification status of a DingTalk chatbot.
+        
+        @description You can call this operation only if you use Security Center Enterprise.
+        
+        @param request: ModifyDingTalkStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDingTalkStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ids):
+            query['Ids'] = request.ids
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDingTalkStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyDingTalkStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_ding_talk_status(
+        self,
+        request: sas_20181203_models.ModifyDingTalkStatusRequest,
+    ) -> sas_20181203_models.ModifyDingTalkStatusResponse:
+        """
+        @summary Changes the notification status of a DingTalk chatbot.
+        
+        @description You can call this operation only if you use Security Center Enterprise.
+        
+        @param request: ModifyDingTalkStatusRequest
+        @return: ModifyDingTalkStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_ding_talk_status_with_options(request, runtime)
+
+    async def modify_ding_talk_status_async(
+        self,
+        request: sas_20181203_models.ModifyDingTalkStatusRequest,
+    ) -> sas_20181203_models.ModifyDingTalkStatusResponse:
+        """
+        @summary Changes the notification status of a DingTalk chatbot.
+        
+        @description You can call this operation only if you use Security Center Enterprise.
+        
+        @param request: ModifyDingTalkStatusRequest
+        @return: ModifyDingTalkStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_ding_talk_status_with_options_async(request, runtime)
+
     def modify_emg_vul_submit_with_options(
         self,
         request: sas_20181203_models.ModifyEmgVulSubmitRequest,
@@ -59527,6 +71913,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_group_property_with_options_async(request, runtime)
+
+    def modify_idc_probe_with_options(
+        self,
+        request: sas_20181203_models.ModifyIdcProbeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyIdcProbeResponse:
+        """
+        @summary Modifies the configurations of an IDC probe.
+        
+        @param request: ModifyIdcProbeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyIdcProbeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.idc_name):
+            query['IdcName'] = request.idc_name
+        if not UtilClient.is_unset(request.idc_region):
+            query['IdcRegion'] = request.idc_region
+        if not UtilClient.is_unset(request.interval_period):
+            query['IntervalPeriod'] = request.interval_period
+        if not UtilClient.is_unset(request.ip_segments):
+            query['IpSegments'] = request.ip_segments
+        if not UtilClient.is_unset(request.linux_port):
+            query['LinuxPort'] = request.linux_port
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.uuids):
+            query['Uuids'] = request.uuids
+        if not UtilClient.is_unset(request.win_port):
+            query['WinPort'] = request.win_port
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyIdcProbe',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyIdcProbeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_idc_probe_with_options_async(
+        self,
+        request: sas_20181203_models.ModifyIdcProbeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyIdcProbeResponse:
+        """
+        @summary Modifies the configurations of an IDC probe.
+        
+        @param request: ModifyIdcProbeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyIdcProbeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.idc_name):
+            query['IdcName'] = request.idc_name
+        if not UtilClient.is_unset(request.idc_region):
+            query['IdcRegion'] = request.idc_region
+        if not UtilClient.is_unset(request.interval_period):
+            query['IntervalPeriod'] = request.interval_period
+        if not UtilClient.is_unset(request.ip_segments):
+            query['IpSegments'] = request.ip_segments
+        if not UtilClient.is_unset(request.linux_port):
+            query['LinuxPort'] = request.linux_port
+        if not UtilClient.is_unset(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.uuids):
+            query['Uuids'] = request.uuids
+        if not UtilClient.is_unset(request.win_port):
+            query['WinPort'] = request.win_port
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyIdcProbe',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyIdcProbeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_idc_probe(
+        self,
+        request: sas_20181203_models.ModifyIdcProbeRequest,
+    ) -> sas_20181203_models.ModifyIdcProbeResponse:
+        """
+        @summary Modifies the configurations of an IDC probe.
+        
+        @param request: ModifyIdcProbeRequest
+        @return: ModifyIdcProbeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_idc_probe_with_options(request, runtime)
+
+    async def modify_idc_probe_async(
+        self,
+        request: sas_20181203_models.ModifyIdcProbeRequest,
+    ) -> sas_20181203_models.ModifyIdcProbeResponse:
+        """
+        @summary Modifies the configurations of an IDC probe.
+        
+        @param request: ModifyIdcProbeRequest
+        @return: ModifyIdcProbeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_idc_probe_with_options_async(request, runtime)
 
     def modify_image_fix_cycle_config_with_options(
         self,
@@ -60856,6 +73370,226 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_operate_vul_with_options_async(request, runtime)
 
+    def modify_post_pay_module_switch_with_options(
+        self,
+        request: sas_20181203_models.ModifyPostPayModuleSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyPostPayModuleSwitchResponse:
+        """
+        @summary Modifies the switch settings of pay-as-you-go modules.
+        
+        @param request: ModifyPostPayModuleSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPostPayModuleSwitchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.post_pay_instance_id):
+            query['PostPayInstanceId'] = request.post_pay_instance_id
+        if not UtilClient.is_unset(request.post_pay_module_switch):
+            query['PostPayModuleSwitch'] = request.post_pay_module_switch
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPostPayModuleSwitch',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyPostPayModuleSwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_post_pay_module_switch_with_options_async(
+        self,
+        request: sas_20181203_models.ModifyPostPayModuleSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyPostPayModuleSwitchResponse:
+        """
+        @summary Modifies the switch settings of pay-as-you-go modules.
+        
+        @param request: ModifyPostPayModuleSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPostPayModuleSwitchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.post_pay_instance_id):
+            query['PostPayInstanceId'] = request.post_pay_instance_id
+        if not UtilClient.is_unset(request.post_pay_module_switch):
+            query['PostPayModuleSwitch'] = request.post_pay_module_switch
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyPostPayModuleSwitch',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyPostPayModuleSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_post_pay_module_switch(
+        self,
+        request: sas_20181203_models.ModifyPostPayModuleSwitchRequest,
+    ) -> sas_20181203_models.ModifyPostPayModuleSwitchResponse:
+        """
+        @summary Modifies the switch settings of pay-as-you-go modules.
+        
+        @param request: ModifyPostPayModuleSwitchRequest
+        @return: ModifyPostPayModuleSwitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_post_pay_module_switch_with_options(request, runtime)
+
+    async def modify_post_pay_module_switch_async(
+        self,
+        request: sas_20181203_models.ModifyPostPayModuleSwitchRequest,
+    ) -> sas_20181203_models.ModifyPostPayModuleSwitchResponse:
+        """
+        @summary Modifies the switch settings of pay-as-you-go modules.
+        
+        @param request: ModifyPostPayModuleSwitchRequest
+        @return: ModifyPostPayModuleSwitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_post_pay_module_switch_with_options_async(request, runtime)
+
+    def modify_process_white_list_with_options(
+        self,
+        request: sas_20181203_models.ModifyProcessWhiteListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyProcessWhiteListResponse:
+        """
+        @summary Adds a process to or removes a process from the whitelist by using the application whitelist feature.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: ModifyProcessWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyProcessWhiteListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.md_5s):
+            query['Md5s'] = request.md_5s
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyProcessWhiteList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyProcessWhiteListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_process_white_list_with_options_async(
+        self,
+        request: sas_20181203_models.ModifyProcessWhiteListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyProcessWhiteListResponse:
+        """
+        @summary Adds a process to or removes a process from the whitelist by using the application whitelist feature.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: ModifyProcessWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyProcessWhiteListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.md_5s):
+            query['Md5s'] = request.md_5s
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyProcessWhiteList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyProcessWhiteListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_process_white_list(
+        self,
+        request: sas_20181203_models.ModifyProcessWhiteListRequest,
+    ) -> sas_20181203_models.ModifyProcessWhiteListResponse:
+        """
+        @summary Adds a process to or removes a process from the whitelist by using the application whitelist feature.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: ModifyProcessWhiteListRequest
+        @return: ModifyProcessWhiteListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_process_white_list_with_options(request, runtime)
+
+    async def modify_process_white_list_async(
+        self,
+        request: sas_20181203_models.ModifyProcessWhiteListRequest,
+    ) -> sas_20181203_models.ModifyProcessWhiteListResponse:
+        """
+        @summary Adds a process to or removes a process from the whitelist by using the application whitelist feature.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: ModifyProcessWhiteListRequest
+        @return: ModifyProcessWhiteListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_process_white_list_with_options_async(request, runtime)
+
     def modify_property_schedule_config_with_options(
         self,
         request: sas_20181203_models.ModifyPropertyScheduleConfigRequest,
@@ -61180,294 +73914,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_refresh_process_info_with_options_async(request, runtime)
 
-    def modify_risk_check_status_with_options(
-        self,
-        request: sas_20181203_models.ModifyRiskCheckStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.ModifyRiskCheckStatusResponse:
-        """
-        @deprecated OpenAPI ModifyRiskCheckStatus is deprecated
-        
-        @summary Changes the status of a check item in the results of a check task. You can ignore or cancel ignoring a check item.
-        
-        @description This operation is phased out. You can use the following operations:
-        \\-To *ignore a check item**, use the AddCheckResultWhiteList operation.
-        \\-To *cancel ignoring a check item**, use the RemoveCheckResultWhiteList operation.
-        
-        @param request: ModifyRiskCheckStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyRiskCheckStatusResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.item_id):
-            query['ItemId'] = request.item_id
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        if not UtilClient.is_unset(request.task_id):
-            query['TaskId'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyRiskCheckStatus',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.ModifyRiskCheckStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_risk_check_status_with_options_async(
-        self,
-        request: sas_20181203_models.ModifyRiskCheckStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.ModifyRiskCheckStatusResponse:
-        """
-        @deprecated OpenAPI ModifyRiskCheckStatus is deprecated
-        
-        @summary Changes the status of a check item in the results of a check task. You can ignore or cancel ignoring a check item.
-        
-        @description This operation is phased out. You can use the following operations:
-        \\-To *ignore a check item**, use the AddCheckResultWhiteList operation.
-        \\-To *cancel ignoring a check item**, use the RemoveCheckResultWhiteList operation.
-        
-        @param request: ModifyRiskCheckStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyRiskCheckStatusResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.item_id):
-            query['ItemId'] = request.item_id
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        if not UtilClient.is_unset(request.task_id):
-            query['TaskId'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyRiskCheckStatus',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.ModifyRiskCheckStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_risk_check_status(
-        self,
-        request: sas_20181203_models.ModifyRiskCheckStatusRequest,
-    ) -> sas_20181203_models.ModifyRiskCheckStatusResponse:
-        """
-        @deprecated OpenAPI ModifyRiskCheckStatus is deprecated
-        
-        @summary Changes the status of a check item in the results of a check task. You can ignore or cancel ignoring a check item.
-        
-        @description This operation is phased out. You can use the following operations:
-        \\-To *ignore a check item**, use the AddCheckResultWhiteList operation.
-        \\-To *cancel ignoring a check item**, use the RemoveCheckResultWhiteList operation.
-        
-        @param request: ModifyRiskCheckStatusRequest
-        @return: ModifyRiskCheckStatusResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.modify_risk_check_status_with_options(request, runtime)
-
-    async def modify_risk_check_status_async(
-        self,
-        request: sas_20181203_models.ModifyRiskCheckStatusRequest,
-    ) -> sas_20181203_models.ModifyRiskCheckStatusResponse:
-        """
-        @deprecated OpenAPI ModifyRiskCheckStatus is deprecated
-        
-        @summary Changes the status of a check item in the results of a check task. You can ignore or cancel ignoring a check item.
-        
-        @description This operation is phased out. You can use the following operations:
-        \\-To *ignore a check item**, use the AddCheckResultWhiteList operation.
-        \\-To *cancel ignoring a check item**, use the RemoveCheckResultWhiteList operation.
-        
-        @param request: ModifyRiskCheckStatusRequest
-        @return: ModifyRiskCheckStatusResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_risk_check_status_with_options_async(request, runtime)
-
-    def modify_risk_single_result_status_with_options(
-        self,
-        request: sas_20181203_models.ModifyRiskSingleResultStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.ModifyRiskSingleResultStatusResponse:
-        """
-        @deprecated OpenAPI ModifyRiskSingleResultStatus is deprecated
-        
-        @summary Modifies the status of a risk item that affects your assets. You can ignore the risk item or cancel ignoring the risk item.
-        
-        @description This operation is phased out. You can use the following operations:
-        \\-To *ignore a risk item**, use the AddCheckInstanceResultWhiteList operation.
-        \\-To *cancel ignoring a risk item**, use the RemoveCheckInstanceResultWhiteList operation.
-        
-        @param request: ModifyRiskSingleResultStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyRiskSingleResultStatusResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ids):
-            query['Ids'] = request.ids
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        if not UtilClient.is_unset(request.task_id):
-            query['TaskId'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyRiskSingleResultStatus',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.ModifyRiskSingleResultStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_risk_single_result_status_with_options_async(
-        self,
-        request: sas_20181203_models.ModifyRiskSingleResultStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> sas_20181203_models.ModifyRiskSingleResultStatusResponse:
-        """
-        @deprecated OpenAPI ModifyRiskSingleResultStatus is deprecated
-        
-        @summary Modifies the status of a risk item that affects your assets. You can ignore the risk item or cancel ignoring the risk item.
-        
-        @description This operation is phased out. You can use the following operations:
-        \\-To *ignore a risk item**, use the AddCheckInstanceResultWhiteList operation.
-        \\-To *cancel ignoring a risk item**, use the RemoveCheckInstanceResultWhiteList operation.
-        
-        @param request: ModifyRiskSingleResultStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyRiskSingleResultStatusResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ids):
-            query['Ids'] = request.ids
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.source_ip):
-            query['SourceIp'] = request.source_ip
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        if not UtilClient.is_unset(request.task_id):
-            query['TaskId'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyRiskSingleResultStatus',
-            version='2018-12-03',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sas_20181203_models.ModifyRiskSingleResultStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_risk_single_result_status(
-        self,
-        request: sas_20181203_models.ModifyRiskSingleResultStatusRequest,
-    ) -> sas_20181203_models.ModifyRiskSingleResultStatusResponse:
-        """
-        @deprecated OpenAPI ModifyRiskSingleResultStatus is deprecated
-        
-        @summary Modifies the status of a risk item that affects your assets. You can ignore the risk item or cancel ignoring the risk item.
-        
-        @description This operation is phased out. You can use the following operations:
-        \\-To *ignore a risk item**, use the AddCheckInstanceResultWhiteList operation.
-        \\-To *cancel ignoring a risk item**, use the RemoveCheckInstanceResultWhiteList operation.
-        
-        @param request: ModifyRiskSingleResultStatusRequest
-        @return: ModifyRiskSingleResultStatusResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.modify_risk_single_result_status_with_options(request, runtime)
-
-    async def modify_risk_single_result_status_async(
-        self,
-        request: sas_20181203_models.ModifyRiskSingleResultStatusRequest,
-    ) -> sas_20181203_models.ModifyRiskSingleResultStatusResponse:
-        """
-        @deprecated OpenAPI ModifyRiskSingleResultStatus is deprecated
-        
-        @summary Modifies the status of a risk item that affects your assets. You can ignore the risk item or cancel ignoring the risk item.
-        
-        @description This operation is phased out. You can use the following operations:
-        \\-To *ignore a risk item**, use the AddCheckInstanceResultWhiteList operation.
-        \\-To *cancel ignoring a risk item**, use the RemoveCheckInstanceResultWhiteList operation.
-        
-        @param request: ModifyRiskSingleResultStatusRequest
-        @return: ModifyRiskSingleResultStatusResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_risk_single_result_status_with_options_async(request, runtime)
-
     def modify_sas_container_web_defense_rule_with_options(
         self,
         request: sas_20181203_models.ModifySasContainerWebDefenseRuleRequest,
@@ -61571,6 +74017,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_sas_container_web_defense_rule_with_options_async(request, runtime)
+
+    def modify_search_condition_with_options(
+        self,
+        request: sas_20181203_models.ModifySearchConditionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifySearchConditionResponse:
+        """
+        @summary Modifies common filter conditions to search for assets.
+        
+        @param request: ModifySearchConditionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySearchConditionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter_conditions):
+            query['FilterConditions'] = request.filter_conditions
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySearchCondition',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifySearchConditionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_search_condition_with_options_async(
+        self,
+        request: sas_20181203_models.ModifySearchConditionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifySearchConditionResponse:
+        """
+        @summary Modifies common filter conditions to search for assets.
+        
+        @param request: ModifySearchConditionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySearchConditionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter_conditions):
+            query['FilterConditions'] = request.filter_conditions
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySearchCondition',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifySearchConditionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_search_condition(
+        self,
+        request: sas_20181203_models.ModifySearchConditionRequest,
+    ) -> sas_20181203_models.ModifySearchConditionResponse:
+        """
+        @summary Modifies common filter conditions to search for assets.
+        
+        @param request: ModifySearchConditionRequest
+        @return: ModifySearchConditionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_search_condition_with_options(request, runtime)
+
+    async def modify_search_condition_async(
+        self,
+        request: sas_20181203_models.ModifySearchConditionRequest,
+    ) -> sas_20181203_models.ModifySearchConditionResponse:
+        """
+        @summary Modifies common filter conditions to search for assets.
+        
+        @param request: ModifySearchConditionRequest
+        @return: ModifySearchConditionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_search_condition_with_options_async(request, runtime)
 
     def modify_security_check_schedule_config_with_options(
         self,
@@ -61823,6 +74377,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_security_event_mark_miss_individually_with_options_async(request, runtime)
+
+    def modify_soar_strategy_subscribe_with_options(
+        self,
+        request: sas_20181203_models.ModifySoarStrategySubscribeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifySoarStrategySubscribeResponse:
+        """
+        @summary Creates or deletes a policy template on the My Policies tab of the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: ModifySoarStrategySubscribeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySoarStrategySubscribeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.subscribe_status):
+            query['SubscribeStatus'] = request.subscribe_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySoarStrategySubscribe',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifySoarStrategySubscribeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_soar_strategy_subscribe_with_options_async(
+        self,
+        request: sas_20181203_models.ModifySoarStrategySubscribeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifySoarStrategySubscribeResponse:
+        """
+        @summary Creates or deletes a policy template on the My Policies tab of the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: ModifySoarStrategySubscribeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySoarStrategySubscribeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.subscribe_status):
+            query['SubscribeStatus'] = request.subscribe_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySoarStrategySubscribe',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifySoarStrategySubscribeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_soar_strategy_subscribe(
+        self,
+        request: sas_20181203_models.ModifySoarStrategySubscribeRequest,
+    ) -> sas_20181203_models.ModifySoarStrategySubscribeResponse:
+        """
+        @summary Creates or deletes a policy template on the My Policies tab of the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: ModifySoarStrategySubscribeRequest
+        @return: ModifySoarStrategySubscribeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_soar_strategy_subscribe_with_options(request, runtime)
+
+    async def modify_soar_strategy_subscribe_async(
+        self,
+        request: sas_20181203_models.ModifySoarStrategySubscribeRequest,
+    ) -> sas_20181203_models.ModifySoarStrategySubscribeResponse:
+        """
+        @summary Creates or deletes a policy template on the My Policies tab of the Playbook page.
+        
+        @description Only the Enterprise and Ultimate editions of Security Center support this API operation.
+        
+        @param request: ModifySoarStrategySubscribeRequest
+        @return: ModifySoarStrategySubscribeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_soar_strategy_subscribe_with_options_async(request, runtime)
 
     def modify_start_vul_scan_with_options(
         self,
@@ -62426,11 +75088,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ModifyVpcHoneyPotResponse:
         """
+        @deprecated OpenAPI ModifyVpcHoneyPot is deprecated
+        
         @summary Enables or disables a honeypot.
         
         @param request: ModifyVpcHoneyPotRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyVpcHoneyPotResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -62463,11 +75128,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ModifyVpcHoneyPotResponse:
         """
+        @deprecated OpenAPI ModifyVpcHoneyPot is deprecated
+        
         @summary Enables or disables a honeypot.
         
         @param request: ModifyVpcHoneyPotRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyVpcHoneyPotResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -62499,10 +75167,13 @@ class Client(OpenApiClient):
         request: sas_20181203_models.ModifyVpcHoneyPotRequest,
     ) -> sas_20181203_models.ModifyVpcHoneyPotResponse:
         """
+        @deprecated OpenAPI ModifyVpcHoneyPot is deprecated
+        
         @summary Enables or disables a honeypot.
         
         @param request: ModifyVpcHoneyPotRequest
         @return: ModifyVpcHoneyPotResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.modify_vpc_honey_pot_with_options(request, runtime)
@@ -62512,10 +75183,13 @@ class Client(OpenApiClient):
         request: sas_20181203_models.ModifyVpcHoneyPotRequest,
     ) -> sas_20181203_models.ModifyVpcHoneyPotResponse:
         """
+        @deprecated OpenAPI ModifyVpcHoneyPot is deprecated
+        
         @summary Enables or disables a honeypot.
         
         @param request: ModifyVpcHoneyPotRequest
         @return: ModifyVpcHoneyPotResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_vpc_honey_pot_with_options_async(request, runtime)
@@ -63304,6 +75978,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_web_lock_process_status_with_options_async(request, runtime)
 
+    def modify_web_lock_refresh_with_options(
+        self,
+        request: sas_20181203_models.ModifyWebLockRefreshRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyWebLockRefreshResponse:
+        """
+        @summary Refreshes the status of the web tamper proofing feature for a server.
+        
+        @description If an exception occurs when you enable or disable the web tamper proofing feature for a server, you can call this operation to refresh the status of the web tamper proofing feature.
+        
+        @param request: ModifyWebLockRefreshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyWebLockRefreshResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyWebLockRefresh',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyWebLockRefreshResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_web_lock_refresh_with_options_async(
+        self,
+        request: sas_20181203_models.ModifyWebLockRefreshRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyWebLockRefreshResponse:
+        """
+        @summary Refreshes the status of the web tamper proofing feature for a server.
+        
+        @description If an exception occurs when you enable or disable the web tamper proofing feature for a server, you can call this operation to refresh the status of the web tamper proofing feature.
+        
+        @param request: ModifyWebLockRefreshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyWebLockRefreshResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyWebLockRefresh',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyWebLockRefreshResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_web_lock_refresh(
+        self,
+        request: sas_20181203_models.ModifyWebLockRefreshRequest,
+    ) -> sas_20181203_models.ModifyWebLockRefreshResponse:
+        """
+        @summary Refreshes the status of the web tamper proofing feature for a server.
+        
+        @description If an exception occurs when you enable or disable the web tamper proofing feature for a server, you can call this operation to refresh the status of the web tamper proofing feature.
+        
+        @param request: ModifyWebLockRefreshRequest
+        @return: ModifyWebLockRefreshResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_web_lock_refresh_with_options(request, runtime)
+
+    async def modify_web_lock_refresh_async(
+        self,
+        request: sas_20181203_models.ModifyWebLockRefreshRequest,
+    ) -> sas_20181203_models.ModifyWebLockRefreshResponse:
+        """
+        @summary Refreshes the status of the web tamper proofing feature for a server.
+        
+        @description If an exception occurs when you enable or disable the web tamper proofing feature for a server, you can call this operation to refresh the status of the web tamper proofing feature.
+        
+        @param request: ModifyWebLockRefreshRequest
+        @return: ModifyWebLockRefreshResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_web_lock_refresh_with_options_async(request, runtime)
+
     def modify_web_lock_start_with_options(
         self,
         request: sas_20181203_models.ModifyWebLockStartRequest,
@@ -63884,13 +76662,109 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_web_path_with_options_async(request, runtime)
 
+    def open_backup_auto_config_with_options(
+        self,
+        request: sas_20181203_models.OpenBackupAutoConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.OpenBackupAutoConfigResponse:
+        """
+        @summary Enables the automatic configuration of anti-ransomware policies for servers in the managed anti-ransomware feature. You can call this operation only after you purchase the managed anti-ransomware feature.
+        
+        @param request: OpenBackupAutoConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenBackupAutoConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_batch_size):
+            query['MaxBatchSize'] = request.max_batch_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenBackupAutoConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.OpenBackupAutoConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_backup_auto_config_with_options_async(
+        self,
+        request: sas_20181203_models.OpenBackupAutoConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.OpenBackupAutoConfigResponse:
+        """
+        @summary Enables the automatic configuration of anti-ransomware policies for servers in the managed anti-ransomware feature. You can call this operation only after you purchase the managed anti-ransomware feature.
+        
+        @param request: OpenBackupAutoConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenBackupAutoConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_batch_size):
+            query['MaxBatchSize'] = request.max_batch_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenBackupAutoConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.OpenBackupAutoConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_backup_auto_config(
+        self,
+        request: sas_20181203_models.OpenBackupAutoConfigRequest,
+    ) -> sas_20181203_models.OpenBackupAutoConfigResponse:
+        """
+        @summary Enables the automatic configuration of anti-ransomware policies for servers in the managed anti-ransomware feature. You can call this operation only after you purchase the managed anti-ransomware feature.
+        
+        @param request: OpenBackupAutoConfigRequest
+        @return: OpenBackupAutoConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.open_backup_auto_config_with_options(request, runtime)
+
+    async def open_backup_auto_config_async(
+        self,
+        request: sas_20181203_models.OpenBackupAutoConfigRequest,
+    ) -> sas_20181203_models.OpenBackupAutoConfigResponse:
+        """
+        @summary Enables the automatic configuration of anti-ransomware policies for servers in the managed anti-ransomware feature. You can call this operation only after you purchase the managed anti-ransomware feature.
+        
+        @param request: OpenBackupAutoConfigRequest
+        @return: OpenBackupAutoConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.open_backup_auto_config_with_options_async(request, runtime)
+
     def open_partial_buy_with_options(
         self,
         request: sas_20181203_models.OpenPartialBuyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.OpenPartialBuyResponse:
         """
-        @summary 开启按量购买。
+        @summary 开启按量购买
         
         @param request: OpenPartialBuyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -63925,7 +76799,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.OpenPartialBuyResponse:
         """
-        @summary 开启按量购买。
+        @summary 开启按量购买
         
         @param request: OpenPartialBuyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -63959,7 +76833,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.OpenPartialBuyRequest,
     ) -> sas_20181203_models.OpenPartialBuyResponse:
         """
-        @summary 开启按量购买。
+        @summary 开启按量购买
         
         @param request: OpenPartialBuyRequest
         @return: OpenPartialBuyResponse
@@ -63972,7 +76846,7 @@ class Client(OpenApiClient):
         request: sas_20181203_models.OpenPartialBuyRequest,
     ) -> sas_20181203_models.OpenPartialBuyResponse:
         """
-        @summary 开启按量购买。
+        @summary 开启按量购买
         
         @param request: OpenPartialBuyRequest
         @return: OpenPartialBuyResponse
@@ -65568,6 +78442,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.operation_cancel_ignore_susp_event_with_options_async(request, runtime)
 
+    def operation_customize_report_chart_with_options(
+        self,
+        request: sas_20181203_models.OperationCustomizeReportChartRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.OperationCustomizeReportChartResponse:
+        """
+        @summary Modifies the chart of a security report.
+        
+        @param request: OperationCustomizeReportChartRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OperationCustomizeReportChartResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.chart_ids):
+            query['ChartIds'] = request.chart_ids
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OperationCustomizeReportChart',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.OperationCustomizeReportChartResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operation_customize_report_chart_with_options_async(
+        self,
+        request: sas_20181203_models.OperationCustomizeReportChartRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.OperationCustomizeReportChartResponse:
+        """
+        @summary Modifies the chart of a security report.
+        
+        @param request: OperationCustomizeReportChartRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OperationCustomizeReportChartResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.chart_ids):
+            query['ChartIds'] = request.chart_ids
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OperationCustomizeReportChart',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.OperationCustomizeReportChartResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operation_customize_report_chart(
+        self,
+        request: sas_20181203_models.OperationCustomizeReportChartRequest,
+    ) -> sas_20181203_models.OperationCustomizeReportChartResponse:
+        """
+        @summary Modifies the chart of a security report.
+        
+        @param request: OperationCustomizeReportChartRequest
+        @return: OperationCustomizeReportChartResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.operation_customize_report_chart_with_options(request, runtime)
+
+    async def operation_customize_report_chart_async(
+        self,
+        request: sas_20181203_models.OperationCustomizeReportChartRequest,
+    ) -> sas_20181203_models.OperationCustomizeReportChartResponse:
+        """
+        @summary Modifies the chart of a security report.
+        
+        @param request: OperationCustomizeReportChartRequest
+        @return: OperationCustomizeReportChartResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.operation_customize_report_chart_with_options_async(request, runtime)
+
     def operation_susp_events_with_options(
         self,
         request: sas_20181203_models.OperationSuspEventsRequest,
@@ -66268,6 +79242,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.public_sync_and_create_image_scan_task_with_options_async(request, runtime)
 
+    def query_asset_detail_by_uuidwith_options(
+        self,
+        request: sas_20181203_models.QueryAssetDetailByUUIDRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.QueryAssetDetailByUUIDResponse:
+        """
+        @summary 通过UUID获取资产详情，可跨账号
+        
+        @param request: QueryAssetDetailByUUIDRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAssetDetailByUUIDResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.requests):
+            body['Requests'] = request.requests
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryAssetDetailByUUID',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.QueryAssetDetailByUUIDResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_asset_detail_by_uuidwith_options_async(
+        self,
+        request: sas_20181203_models.QueryAssetDetailByUUIDRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.QueryAssetDetailByUUIDResponse:
+        """
+        @summary 通过UUID获取资产详情，可跨账号
+        
+        @param request: QueryAssetDetailByUUIDRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAssetDetailByUUIDResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.requests):
+            body['Requests'] = request.requests
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryAssetDetailByUUID',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.QueryAssetDetailByUUIDResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_asset_detail_by_uuid(
+        self,
+        request: sas_20181203_models.QueryAssetDetailByUUIDRequest,
+    ) -> sas_20181203_models.QueryAssetDetailByUUIDResponse:
+        """
+        @summary 通过UUID获取资产详情，可跨账号
+        
+        @param request: QueryAssetDetailByUUIDRequest
+        @return: QueryAssetDetailByUUIDResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_asset_detail_by_uuidwith_options(request, runtime)
+
+    async def query_asset_detail_by_uuid_async(
+        self,
+        request: sas_20181203_models.QueryAssetDetailByUUIDRequest,
+    ) -> sas_20181203_models.QueryAssetDetailByUUIDResponse:
+        """
+        @summary 通过UUID获取资产详情，可跨账号
+        
+        @param request: QueryAssetDetailByUUIDRequest
+        @return: QueryAssetDetailByUUIDResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_asset_detail_by_uuidwith_options_async(request, runtime)
+
     def query_attack_count_with_options(
         self,
         request: sas_20181203_models.QueryAttackCountRequest,
@@ -66719,6 +79789,80 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_grouped_security_event_mark_miss_list_with_options_async(request, runtime)
+
+    def query_guid_task_list_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.QueryGuidTaskListResponse:
+        """
+        @summary Queries the list of beginner tasks. Security Center provides rewards for users who complete tasks. The rewards include the quota for a value-added feature and log storage capacity.
+        
+        @param request: QueryGuidTaskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryGuidTaskListResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='QueryGuidTaskList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.QueryGuidTaskListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_guid_task_list_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.QueryGuidTaskListResponse:
+        """
+        @summary Queries the list of beginner tasks. Security Center provides rewards for users who complete tasks. The rewards include the quota for a value-added feature and log storage capacity.
+        
+        @param request: QueryGuidTaskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryGuidTaskListResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='QueryGuidTaskList',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.QueryGuidTaskListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_guid_task_list(self) -> sas_20181203_models.QueryGuidTaskListResponse:
+        """
+        @summary Queries the list of beginner tasks. Security Center provides rewards for users who complete tasks. The rewards include the quota for a value-added feature and log storage capacity.
+        
+        @return: QueryGuidTaskListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_guid_task_list_with_options(runtime)
+
+    async def query_guid_task_list_async(self) -> sas_20181203_models.QueryGuidTaskListResponse:
+        """
+        @summary Queries the list of beginner tasks. Security Center provides rewards for users who complete tasks. The rewards include the quota for a value-added feature and log storage capacity.
+        
+        @return: QueryGuidTaskListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_guid_task_list_with_options_async(runtime)
 
     def query_incident_icon_list_with_options(
         self,
@@ -67610,6 +80754,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.reboot_machine_with_options_async(request, runtime)
 
+    def receive_function_trial_reward_by_ali_uid_with_options(
+        self,
+        request: sas_20181203_models.ReceiveFunctionTrialRewardByAliUidRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ReceiveFunctionTrialRewardByAliUidResponse:
+        """
+        @summary Receives a reward that allows you to enable a free trial of the cloud honeypot feature or the feature of SDK for malicious file detection. You can receive a reward after you complete the required task.
+        
+        @param request: ReceiveFunctionTrialRewardByAliUidRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReceiveFunctionTrialRewardByAliUidResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReceiveFunctionTrialRewardByAliUid',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ReceiveFunctionTrialRewardByAliUidResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def receive_function_trial_reward_by_ali_uid_with_options_async(
+        self,
+        request: sas_20181203_models.ReceiveFunctionTrialRewardByAliUidRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ReceiveFunctionTrialRewardByAliUidResponse:
+        """
+        @summary Receives a reward that allows you to enable a free trial of the cloud honeypot feature or the feature of SDK for malicious file detection. You can receive a reward after you complete the required task.
+        
+        @param request: ReceiveFunctionTrialRewardByAliUidRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReceiveFunctionTrialRewardByAliUidResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_name):
+            query['FunctionName'] = request.function_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReceiveFunctionTrialRewardByAliUid',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ReceiveFunctionTrialRewardByAliUidResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def receive_function_trial_reward_by_ali_uid(
+        self,
+        request: sas_20181203_models.ReceiveFunctionTrialRewardByAliUidRequest,
+    ) -> sas_20181203_models.ReceiveFunctionTrialRewardByAliUidResponse:
+        """
+        @summary Receives a reward that allows you to enable a free trial of the cloud honeypot feature or the feature of SDK for malicious file detection. You can receive a reward after you complete the required task.
+        
+        @param request: ReceiveFunctionTrialRewardByAliUidRequest
+        @return: ReceiveFunctionTrialRewardByAliUidResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.receive_function_trial_reward_by_ali_uid_with_options(request, runtime)
+
+    async def receive_function_trial_reward_by_ali_uid_async(
+        self,
+        request: sas_20181203_models.ReceiveFunctionTrialRewardByAliUidRequest,
+    ) -> sas_20181203_models.ReceiveFunctionTrialRewardByAliUidResponse:
+        """
+        @summary Receives a reward that allows you to enable a free trial of the cloud honeypot feature or the feature of SDK for malicious file detection. You can receive a reward after you complete the required task.
+        
+        @param request: ReceiveFunctionTrialRewardByAliUidRequest
+        @return: ReceiveFunctionTrialRewardByAliUidResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.receive_function_trial_reward_by_ali_uid_with_options_async(request, runtime)
+
     def refresh_assets_with_options(
         self,
         request: sas_20181203_models.RefreshAssetsRequest,
@@ -67888,6 +81132,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.refresh_oss_bucket_scan_info_with_options_async(runtime)
 
+    def refresh_registry_token_with_options(
+        self,
+        request: sas_20181203_models.RefreshRegistryTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.RefreshRegistryTokenResponse:
+        """
+        @summary 刷新仓库token
+        
+        @param request: RefreshRegistryTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshRegistryTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.registry_id):
+            query['RegistryId'] = request.registry_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefreshRegistryToken',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.RefreshRegistryTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def refresh_registry_token_with_options_async(
+        self,
+        request: sas_20181203_models.RefreshRegistryTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.RefreshRegistryTokenResponse:
+        """
+        @summary 刷新仓库token
+        
+        @param request: RefreshRegistryTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshRegistryTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.registry_id):
+            query['RegistryId'] = request.registry_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RefreshRegistryToken',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.RefreshRegistryTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def refresh_registry_token(
+        self,
+        request: sas_20181203_models.RefreshRegistryTokenRequest,
+    ) -> sas_20181203_models.RefreshRegistryTokenResponse:
+        """
+        @summary 刷新仓库token
+        
+        @param request: RefreshRegistryTokenRequest
+        @return: RefreshRegistryTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.refresh_registry_token_with_options(request, runtime)
+
+    async def refresh_registry_token_async(
+        self,
+        request: sas_20181203_models.RefreshRegistryTokenRequest,
+    ) -> sas_20181203_models.RefreshRegistryTokenResponse:
+        """
+        @summary 刷新仓库token
+        
+        @param request: RefreshRegistryTokenRequest
+        @return: RefreshRegistryTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.refresh_registry_token_with_options_async(request, runtime)
+
     def release_sas_instance_with_options(
         self,
         request: sas_20181203_models.ReleaseSasInstanceRequest,
@@ -68106,6 +81446,8 @@ class Client(OpenApiClient):
             query['CheckGroupId'] = request.check_group_id
         if not UtilClient.is_unset(request.check_ids):
             query['CheckIds'] = request.check_ids
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -68145,6 +81487,8 @@ class Client(OpenApiClient):
             query['CheckGroupId'] = request.check_group_id
         if not UtilClient.is_unset(request.check_ids):
             query['CheckIds'] = request.check_ids
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -68291,6 +81635,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.reset_honeypot_with_options_async(request, runtime)
+
+    def reset_log_shipper_with_options(
+        self,
+        request: sas_20181203_models.ResetLogShipperRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ResetLogShipperResponse:
+        """
+        @summary Resets and upgrades the log analysis feature. You can call this operation only when the log analysis feature uses the pay-as-you-go billing method.
+        
+        @param request: ResetLogShipperRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetLogShipperResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.hot_ttl):
+            query['HotTtl'] = request.hot_ttl
+        if not UtilClient.is_unset(request.log_meta_list):
+            query['LogMetaList'] = request.log_meta_list
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetLogShipper',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ResetLogShipperResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_log_shipper_with_options_async(
+        self,
+        request: sas_20181203_models.ResetLogShipperRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ResetLogShipperResponse:
+        """
+        @summary Resets and upgrades the log analysis feature. You can call this operation only when the log analysis feature uses the pay-as-you-go billing method.
+        
+        @param request: ResetLogShipperRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetLogShipperResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.hot_ttl):
+            query['HotTtl'] = request.hot_ttl
+        if not UtilClient.is_unset(request.log_meta_list):
+            query['LogMetaList'] = request.log_meta_list
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetLogShipper',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ResetLogShipperResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_log_shipper(
+        self,
+        request: sas_20181203_models.ResetLogShipperRequest,
+    ) -> sas_20181203_models.ResetLogShipperResponse:
+        """
+        @summary Resets and upgrades the log analysis feature. You can call this operation only when the log analysis feature uses the pay-as-you-go billing method.
+        
+        @param request: ResetLogShipperRequest
+        @return: ResetLogShipperResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.reset_log_shipper_with_options(request, runtime)
+
+    async def reset_log_shipper_async(
+        self,
+        request: sas_20181203_models.ResetLogShipperRequest,
+    ) -> sas_20181203_models.ResetLogShipperResponse:
+        """
+        @summary Resets and upgrades the log analysis feature. You can call this operation only when the log analysis feature uses the pay-as-you-go billing method.
+        
+        @param request: ResetLogShipperRequest
+        @return: ResetLogShipperResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.reset_log_shipper_with_options_async(request, runtime)
 
     def retry_agentless_task_with_options(
         self,
@@ -68684,6 +82132,174 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.sas_install_code_with_options_async(request, runtime)
 
+    def save_customize_report_config_with_options(
+        self,
+        request: sas_20181203_models.SaveCustomizeReportConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SaveCustomizeReportConfigResponse:
+        """
+        @summary Saves the configurations of a custom security report.
+        
+        @param request: SaveCustomizeReportConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveCustomizeReportConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_type):
+            query['GroupType'] = request.group_type
+        if not UtilClient.is_unset(request.pinned_time):
+            query['PinnedTime'] = request.pinned_time
+        if not UtilClient.is_unset(request.recipients):
+            query['Recipients'] = request.recipients
+        if not UtilClient.is_unset(request.report_days):
+            query['ReportDays'] = request.report_days
+        if not UtilClient.is_unset(request.report_end_date):
+            query['ReportEndDate'] = request.report_end_date
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.report_lang):
+            query['ReportLang'] = request.report_lang
+        if not UtilClient.is_unset(request.report_send_type):
+            query['ReportSendType'] = request.report_send_type
+        if not UtilClient.is_unset(request.report_start_date):
+            query['ReportStartDate'] = request.report_start_date
+        if not UtilClient.is_unset(request.report_status):
+            query['ReportStatus'] = request.report_status
+        if not UtilClient.is_unset(request.report_type):
+            query['ReportType'] = request.report_type
+        if not UtilClient.is_unset(request.report_version):
+            query['ReportVersion'] = request.report_version
+        if not UtilClient.is_unset(request.send_end_time):
+            query['SendEndTime'] = request.send_end_time
+        if not UtilClient.is_unset(request.send_period_days):
+            query['SendPeriodDays'] = request.send_period_days
+        if not UtilClient.is_unset(request.send_period_type):
+            query['SendPeriodType'] = request.send_period_type
+        if not UtilClient.is_unset(request.send_start_time):
+            query['SendStartTime'] = request.send_start_time
+        if not UtilClient.is_unset(request.target_groups):
+            query['TargetGroups'] = request.target_groups
+        if not UtilClient.is_unset(request.target_uids):
+            query['TargetUids'] = request.target_uids
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveCustomizeReportConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SaveCustomizeReportConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_customize_report_config_with_options_async(
+        self,
+        request: sas_20181203_models.SaveCustomizeReportConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SaveCustomizeReportConfigResponse:
+        """
+        @summary Saves the configurations of a custom security report.
+        
+        @param request: SaveCustomizeReportConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveCustomizeReportConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_type):
+            query['GroupType'] = request.group_type
+        if not UtilClient.is_unset(request.pinned_time):
+            query['PinnedTime'] = request.pinned_time
+        if not UtilClient.is_unset(request.recipients):
+            query['Recipients'] = request.recipients
+        if not UtilClient.is_unset(request.report_days):
+            query['ReportDays'] = request.report_days
+        if not UtilClient.is_unset(request.report_end_date):
+            query['ReportEndDate'] = request.report_end_date
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.report_lang):
+            query['ReportLang'] = request.report_lang
+        if not UtilClient.is_unset(request.report_send_type):
+            query['ReportSendType'] = request.report_send_type
+        if not UtilClient.is_unset(request.report_start_date):
+            query['ReportStartDate'] = request.report_start_date
+        if not UtilClient.is_unset(request.report_status):
+            query['ReportStatus'] = request.report_status
+        if not UtilClient.is_unset(request.report_type):
+            query['ReportType'] = request.report_type
+        if not UtilClient.is_unset(request.report_version):
+            query['ReportVersion'] = request.report_version
+        if not UtilClient.is_unset(request.send_end_time):
+            query['SendEndTime'] = request.send_end_time
+        if not UtilClient.is_unset(request.send_period_days):
+            query['SendPeriodDays'] = request.send_period_days
+        if not UtilClient.is_unset(request.send_period_type):
+            query['SendPeriodType'] = request.send_period_type
+        if not UtilClient.is_unset(request.send_start_time):
+            query['SendStartTime'] = request.send_start_time
+        if not UtilClient.is_unset(request.target_groups):
+            query['TargetGroups'] = request.target_groups
+        if not UtilClient.is_unset(request.target_uids):
+            query['TargetUids'] = request.target_uids
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveCustomizeReportConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SaveCustomizeReportConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_customize_report_config(
+        self,
+        request: sas_20181203_models.SaveCustomizeReportConfigRequest,
+    ) -> sas_20181203_models.SaveCustomizeReportConfigResponse:
+        """
+        @summary Saves the configurations of a custom security report.
+        
+        @param request: SaveCustomizeReportConfigRequest
+        @return: SaveCustomizeReportConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.save_customize_report_config_with_options(request, runtime)
+
+    async def save_customize_report_config_async(
+        self,
+        request: sas_20181203_models.SaveCustomizeReportConfigRequest,
+    ) -> sas_20181203_models.SaveCustomizeReportConfigResponse:
+        """
+        @summary Saves the configurations of a custom security report.
+        
+        @param request: SaveCustomizeReportConfigRequest
+        @return: SaveCustomizeReportConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.save_customize_report_config_with_options_async(request, runtime)
+
     def save_image_baseline_strategy_with_options(
         self,
         request: sas_20181203_models.SaveImageBaselineStrategyRequest,
@@ -68895,6 +82511,334 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.save_susp_event_user_setting_with_options_async(request, runtime)
+
+    def save_white_list_strategy_with_options(
+        self,
+        request: sas_20181203_models.SaveWhiteListStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SaveWhiteListStrategyResponse:
+        """
+        @summary Creates an application whitelist policy.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or enabled the feature, you can call this operation.
+        
+        @param request: SaveWhiteListStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveWhiteListStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.strategy_name):
+            query['StrategyName'] = request.strategy_name
+        if not UtilClient.is_unset(request.study_time):
+            query['StudyTime'] = request.study_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveWhiteListStrategy',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SaveWhiteListStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_white_list_strategy_with_options_async(
+        self,
+        request: sas_20181203_models.SaveWhiteListStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SaveWhiteListStrategyResponse:
+        """
+        @summary Creates an application whitelist policy.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or enabled the feature, you can call this operation.
+        
+        @param request: SaveWhiteListStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveWhiteListStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.strategy_name):
+            query['StrategyName'] = request.strategy_name
+        if not UtilClient.is_unset(request.study_time):
+            query['StudyTime'] = request.study_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveWhiteListStrategy',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SaveWhiteListStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_white_list_strategy(
+        self,
+        request: sas_20181203_models.SaveWhiteListStrategyRequest,
+    ) -> sas_20181203_models.SaveWhiteListStrategyResponse:
+        """
+        @summary Creates an application whitelist policy.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or enabled the feature, you can call this operation.
+        
+        @param request: SaveWhiteListStrategyRequest
+        @return: SaveWhiteListStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.save_white_list_strategy_with_options(request, runtime)
+
+    async def save_white_list_strategy_async(
+        self,
+        request: sas_20181203_models.SaveWhiteListStrategyRequest,
+    ) -> sas_20181203_models.SaveWhiteListStrategyResponse:
+        """
+        @summary Creates an application whitelist policy.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or enabled the feature, you can call this operation.
+        
+        @param request: SaveWhiteListStrategyRequest
+        @return: SaveWhiteListStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.save_white_list_strategy_with_options_async(request, runtime)
+
+    def save_white_list_strategy_assets_with_options(
+        self,
+        request: sas_20181203_models.SaveWhiteListStrategyAssetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SaveWhiteListStrategyAssetsResponse:
+        """
+        @summary 编辑应用白名单策略配置的服务器
+        
+        @param request: SaveWhiteListStrategyAssetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveWhiteListStrategyAssetsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.operations):
+            query['Operations'] = request.operations
+        if not UtilClient.is_unset(request.relation_type):
+            query['RelationType'] = request.relation_type
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveWhiteListStrategyAssets',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SaveWhiteListStrategyAssetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_white_list_strategy_assets_with_options_async(
+        self,
+        request: sas_20181203_models.SaveWhiteListStrategyAssetsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SaveWhiteListStrategyAssetsResponse:
+        """
+        @summary 编辑应用白名单策略配置的服务器
+        
+        @param request: SaveWhiteListStrategyAssetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveWhiteListStrategyAssetsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.operations):
+            query['Operations'] = request.operations
+        if not UtilClient.is_unset(request.relation_type):
+            query['RelationType'] = request.relation_type
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveWhiteListStrategyAssets',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SaveWhiteListStrategyAssetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_white_list_strategy_assets(
+        self,
+        request: sas_20181203_models.SaveWhiteListStrategyAssetsRequest,
+    ) -> sas_20181203_models.SaveWhiteListStrategyAssetsResponse:
+        """
+        @summary 编辑应用白名单策略配置的服务器
+        
+        @param request: SaveWhiteListStrategyAssetsRequest
+        @return: SaveWhiteListStrategyAssetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.save_white_list_strategy_assets_with_options(request, runtime)
+
+    async def save_white_list_strategy_assets_async(
+        self,
+        request: sas_20181203_models.SaveWhiteListStrategyAssetsRequest,
+    ) -> sas_20181203_models.SaveWhiteListStrategyAssetsResponse:
+        """
+        @summary 编辑应用白名单策略配置的服务器
+        
+        @param request: SaveWhiteListStrategyAssetsRequest
+        @return: SaveWhiteListStrategyAssetsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.save_white_list_strategy_assets_with_options_async(request, runtime)
+
+    def send_customize_report_with_options(
+        self,
+        request: sas_20181203_models.SendCustomizeReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SendCustomizeReportResponse:
+        """
+        @summary Sends a security report to an email address that you specify. You can send only a security report whose statistics are collected in a custom time range.
+        
+        @param request: SendCustomizeReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendCustomizeReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendCustomizeReport',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SendCustomizeReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_customize_report_with_options_async(
+        self,
+        request: sas_20181203_models.SendCustomizeReportRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SendCustomizeReportResponse:
+        """
+        @summary Sends a security report to an email address that you specify. You can send only a security report whose statistics are collected in a custom time range.
+        
+        @param request: SendCustomizeReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendCustomizeReportResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendCustomizeReport',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SendCustomizeReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_customize_report(
+        self,
+        request: sas_20181203_models.SendCustomizeReportRequest,
+    ) -> sas_20181203_models.SendCustomizeReportResponse:
+        """
+        @summary Sends a security report to an email address that you specify. You can send only a security report whose statistics are collected in a custom time range.
+        
+        @param request: SendCustomizeReportRequest
+        @return: SendCustomizeReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.send_customize_report_with_options(request, runtime)
+
+    async def send_customize_report_async(
+        self,
+        request: sas_20181203_models.SendCustomizeReportRequest,
+    ) -> sas_20181203_models.SendCustomizeReportResponse:
+        """
+        @summary Sends a security report to an email address that you specify. You can send only a security report whose statistics are collected in a custom time range.
+        
+        @param request: SendCustomizeReportRequest
+        @return: SendCustomizeReportResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.send_customize_report_with_options_async(request, runtime)
 
     def set_cluster_interception_config_with_options(
         self,
@@ -69296,6 +83240,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_sensitive_define_rule_config_with_options_async(request, runtime)
 
+    def set_sync_refresh_region_with_options(
+        self,
+        request: sas_20181203_models.SetSyncRefreshRegionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SetSyncRefreshRegionResponse:
+        """
+        @summary Configures the regions from which you want to synchronize assets.
+        
+        @param request: SetSyncRefreshRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetSyncRefreshRegionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.default_region):
+            query['DefaultRegion'] = request.default_region
+        if not UtilClient.is_unset(request.region_ids):
+            query['RegionIds'] = request.region_ids
+        if not UtilClient.is_unset(request.vendor):
+            query['Vendor'] = request.vendor
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetSyncRefreshRegion',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SetSyncRefreshRegionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_sync_refresh_region_with_options_async(
+        self,
+        request: sas_20181203_models.SetSyncRefreshRegionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SetSyncRefreshRegionResponse:
+        """
+        @summary Configures the regions from which you want to synchronize assets.
+        
+        @param request: SetSyncRefreshRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetSyncRefreshRegionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.default_region):
+            query['DefaultRegion'] = request.default_region
+        if not UtilClient.is_unset(request.region_ids):
+            query['RegionIds'] = request.region_ids
+        if not UtilClient.is_unset(request.vendor):
+            query['Vendor'] = request.vendor
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetSyncRefreshRegion',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SetSyncRefreshRegionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_sync_refresh_region(
+        self,
+        request: sas_20181203_models.SetSyncRefreshRegionRequest,
+    ) -> sas_20181203_models.SetSyncRefreshRegionResponse:
+        """
+        @summary Configures the regions from which you want to synchronize assets.
+        
+        @param request: SetSyncRefreshRegionRequest
+        @return: SetSyncRefreshRegionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_sync_refresh_region_with_options(request, runtime)
+
+    async def set_sync_refresh_region_async(
+        self,
+        request: sas_20181203_models.SetSyncRefreshRegionRequest,
+    ) -> sas_20181203_models.SetSyncRefreshRegionResponse:
+        """
+        @summary Configures the regions from which you want to synchronize assets.
+        
+        @param request: SetSyncRefreshRegionRequest
+        @return: SetSyncRefreshRegionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_sync_refresh_region_with_options_async(request, runtime)
+
     def start_baseline_security_check_with_options(
         self,
         request: sas_20181203_models.StartBaselineSecurityCheckRequest,
@@ -69593,6 +83641,80 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.start_honeypot_with_options_async(request, runtime)
+
+    def start_idc_probe_scan_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.StartIdcProbeScanResponse:
+        """
+        @summary Starts an IDC scan task.
+        
+        @param request: StartIdcProbeScanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartIdcProbeScanResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='StartIdcProbeScan',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.StartIdcProbeScanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_idc_probe_scan_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.StartIdcProbeScanResponse:
+        """
+        @summary Starts an IDC scan task.
+        
+        @param request: StartIdcProbeScanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartIdcProbeScanResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='StartIdcProbeScan',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.StartIdcProbeScanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_idc_probe_scan(self) -> sas_20181203_models.StartIdcProbeScanResponse:
+        """
+        @summary Starts an IDC scan task.
+        
+        @return: StartIdcProbeScanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_idc_probe_scan_with_options(runtime)
+
+    async def start_idc_probe_scan_async(self) -> sas_20181203_models.StartIdcProbeScanResponse:
+        """
+        @summary Starts an IDC scan task.
+        
+        @return: StartIdcProbeScanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_idc_probe_scan_with_options_async(runtime)
 
     def start_pre_check_database_with_options(
         self,
@@ -69989,6 +84111,192 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_check_with_options_async(request, runtime)
+
+    def submit_operation_task_with_options(
+        self,
+        request: sas_20181203_models.SubmitOperationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SubmitOperationTaskResponse:
+        """
+        @summary 修复回滚任务下发
+        
+        @param request: SubmitOperationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitOperationTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_id):
+            query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.dimension_type):
+            query['DimensionType'] = request.dimension_type
+        if not UtilClient.is_unset(request.operation_task_instances):
+            query['OperationTaskInstances'] = request.operation_task_instances
+        if not UtilClient.is_unset(request.repair_temp_param):
+            query['RepairTempParam'] = request.repair_temp_param
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitOperationTask',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SubmitOperationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_operation_task_with_options_async(
+        self,
+        request: sas_20181203_models.SubmitOperationTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SubmitOperationTaskResponse:
+        """
+        @summary 修复回滚任务下发
+        
+        @param request: SubmitOperationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitOperationTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_id):
+            query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.dimension_type):
+            query['DimensionType'] = request.dimension_type
+        if not UtilClient.is_unset(request.operation_task_instances):
+            query['OperationTaskInstances'] = request.operation_task_instances
+        if not UtilClient.is_unset(request.repair_temp_param):
+            query['RepairTempParam'] = request.repair_temp_param
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitOperationTask',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SubmitOperationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_operation_task(
+        self,
+        request: sas_20181203_models.SubmitOperationTaskRequest,
+    ) -> sas_20181203_models.SubmitOperationTaskResponse:
+        """
+        @summary 修复回滚任务下发
+        
+        @param request: SubmitOperationTaskRequest
+        @return: SubmitOperationTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_operation_task_with_options(request, runtime)
+
+    async def submit_operation_task_async(
+        self,
+        request: sas_20181203_models.SubmitOperationTaskRequest,
+    ) -> sas_20181203_models.SubmitOperationTaskResponse:
+        """
+        @summary 修复回滚任务下发
+        
+        @param request: SubmitOperationTaskRequest
+        @return: SubmitOperationTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_operation_task_with_options_async(request, runtime)
+
+    def trigger_check_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.TriggerCheckResponse:
+        """
+        @summary Triggers ISO 27001 compliance checks of Security Center.
+        
+        @param request: TriggerCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TriggerCheckResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='TriggerCheck',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.TriggerCheckResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def trigger_check_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.TriggerCheckResponse:
+        """
+        @summary Triggers ISO 27001 compliance checks of Security Center.
+        
+        @param request: TriggerCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TriggerCheckResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='TriggerCheck',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.TriggerCheckResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def trigger_check(self) -> sas_20181203_models.TriggerCheckResponse:
+        """
+        @summary Triggers ISO 27001 compliance checks of Security Center.
+        
+        @return: TriggerCheckResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.trigger_check_with_options(runtime)
+
+    async def trigger_check_async(self) -> sas_20181203_models.TriggerCheckResponse:
+        """
+        @summary Triggers ISO 27001 compliance checks of Security Center.
+        
+        @return: TriggerCheckResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.trigger_check_with_options_async(runtime)
 
     def un_mark_monitor_accounts_with_options(
         self,
@@ -70610,6 +84918,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_alarm_event_with_options_async(request, runtime)
 
+    def update_baseline_check_white_record_with_options(
+        self,
+        request: sas_20181203_models.UpdateBaselineCheckWhiteRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdateBaselineCheckWhiteRecordResponse:
+        """
+        @summary Updates the whitelist rule for a baseline check item.
+        
+        @param request: UpdateBaselineCheckWhiteRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBaselineCheckWhiteRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_id):
+            query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateBaselineCheckWhiteRecord',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdateBaselineCheckWhiteRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_baseline_check_white_record_with_options_async(
+        self,
+        request: sas_20181203_models.UpdateBaselineCheckWhiteRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdateBaselineCheckWhiteRecordResponse:
+        """
+        @summary Updates the whitelist rule for a baseline check item.
+        
+        @param request: UpdateBaselineCheckWhiteRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBaselineCheckWhiteRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_id):
+            query['CheckId'] = request.check_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reason):
+            query['Reason'] = request.reason
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        if not UtilClient.is_unset(request.target_type):
+            query['TargetType'] = request.target_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateBaselineCheckWhiteRecord',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdateBaselineCheckWhiteRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_baseline_check_white_record(
+        self,
+        request: sas_20181203_models.UpdateBaselineCheckWhiteRecordRequest,
+    ) -> sas_20181203_models.UpdateBaselineCheckWhiteRecordResponse:
+        """
+        @summary Updates the whitelist rule for a baseline check item.
+        
+        @param request: UpdateBaselineCheckWhiteRecordRequest
+        @return: UpdateBaselineCheckWhiteRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_baseline_check_white_record_with_options(request, runtime)
+
+    async def update_baseline_check_white_record_async(
+        self,
+        request: sas_20181203_models.UpdateBaselineCheckWhiteRecordRequest,
+    ) -> sas_20181203_models.UpdateBaselineCheckWhiteRecordResponse:
+        """
+        @summary Updates the whitelist rule for a baseline check item.
+        
+        @param request: UpdateBaselineCheckWhiteRecordRequest
+        @return: UpdateBaselineCheckWhiteRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_baseline_check_white_record_with_options_async(request, runtime)
+
     def update_client_alert_mode_with_options(
         self,
         request: sas_20181203_models.UpdateClientAlertModeRequest,
@@ -70809,6 +85233,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_common_switch_config_with_options_async(request, runtime)
+
+    def update_customize_report_status_with_options(
+        self,
+        request: sas_20181203_models.UpdateCustomizeReportStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdateCustomizeReportStatusResponse:
+        """
+        @summary Changes the status of a security report.
+        
+        @param request: UpdateCustomizeReportStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomizeReportStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pinned_time):
+            query['PinnedTime'] = request.pinned_time
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.report_status):
+            query['ReportStatus'] = request.report_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCustomizeReportStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdateCustomizeReportStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_customize_report_status_with_options_async(
+        self,
+        request: sas_20181203_models.UpdateCustomizeReportStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdateCustomizeReportStatusResponse:
+        """
+        @summary Changes the status of a security report.
+        
+        @param request: UpdateCustomizeReportStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomizeReportStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.pinned_time):
+            query['PinnedTime'] = request.pinned_time
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        if not UtilClient.is_unset(request.report_status):
+            query['ReportStatus'] = request.report_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCustomizeReportStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdateCustomizeReportStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_customize_report_status(
+        self,
+        request: sas_20181203_models.UpdateCustomizeReportStatusRequest,
+    ) -> sas_20181203_models.UpdateCustomizeReportStatusResponse:
+        """
+        @summary Changes the status of a security report.
+        
+        @param request: UpdateCustomizeReportStatusRequest
+        @return: UpdateCustomizeReportStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_customize_report_status_with_options(request, runtime)
+
+    async def update_customize_report_status_async(
+        self,
+        request: sas_20181203_models.UpdateCustomizeReportStatusRequest,
+    ) -> sas_20181203_models.UpdateCustomizeReportStatusResponse:
+        """
+        @summary Changes the status of a security report.
+        
+        @param request: UpdateCustomizeReportStatusRequest
+        @return: UpdateCustomizeReportStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_customize_report_status_with_options_async(request, runtime)
 
     def update_file_protect_event_status_with_options(
         self,
@@ -72544,6 +87072,8 @@ class Client(OpenApiClient):
             query['DecompressMaxFileCount'] = request.decompress_max_file_count
         if not UtilClient.is_unset(request.decompress_max_layer):
             query['DecompressMaxLayer'] = request.decompress_max_layer
+        if not UtilClient.is_unset(request.decryption_list):
+            query['DecryptionList'] = request.decryption_list
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
         if not UtilClient.is_unset(request.end_time):
@@ -72554,6 +87084,8 @@ class Client(OpenApiClient):
             query['KeyPrefixList'] = request.key_prefix_list
         if not UtilClient.is_unset(request.key_suffix_list):
             query['KeySuffixList'] = request.key_suffix_list
+        if not UtilClient.is_unset(request.last_modified_start_time):
+            query['LastModifiedStartTime'] = request.last_modified_start_time
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.scan_day_list):
@@ -72601,6 +87133,8 @@ class Client(OpenApiClient):
             query['DecompressMaxFileCount'] = request.decompress_max_file_count
         if not UtilClient.is_unset(request.decompress_max_layer):
             query['DecompressMaxLayer'] = request.decompress_max_layer
+        if not UtilClient.is_unset(request.decryption_list):
+            query['DecryptionList'] = request.decryption_list
         if not UtilClient.is_unset(request.enable):
             query['Enable'] = request.enable
         if not UtilClient.is_unset(request.end_time):
@@ -72611,6 +87145,8 @@ class Client(OpenApiClient):
             query['KeyPrefixList'] = request.key_prefix_list
         if not UtilClient.is_unset(request.key_suffix_list):
             query['KeySuffixList'] = request.key_suffix_list
+        if not UtilClient.is_unset(request.last_modified_start_time):
+            query['LastModifiedStartTime'] = request.last_modified_start_time
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.scan_day_list):
@@ -72661,6 +87197,418 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_oss_scan_config_with_options_async(request, runtime)
+
+    def update_publish_auto_upgrade_with_options(
+        self,
+        request: sas_20181203_models.UpdatePublishAutoUpgradeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdatePublishAutoUpgradeResponse:
+        """
+        @summary 修改自动升级开关
+        
+        @param request: UpdatePublishAutoUpgradeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePublishAutoUpgradeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_upgrade):
+            query['AutoUpgrade'] = request.auto_upgrade
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePublishAutoUpgrade',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdatePublishAutoUpgradeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_publish_auto_upgrade_with_options_async(
+        self,
+        request: sas_20181203_models.UpdatePublishAutoUpgradeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdatePublishAutoUpgradeResponse:
+        """
+        @summary 修改自动升级开关
+        
+        @param request: UpdatePublishAutoUpgradeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePublishAutoUpgradeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_upgrade):
+            query['AutoUpgrade'] = request.auto_upgrade
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePublishAutoUpgrade',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdatePublishAutoUpgradeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_publish_auto_upgrade(
+        self,
+        request: sas_20181203_models.UpdatePublishAutoUpgradeRequest,
+    ) -> sas_20181203_models.UpdatePublishAutoUpgradeResponse:
+        """
+        @summary 修改自动升级开关
+        
+        @param request: UpdatePublishAutoUpgradeRequest
+        @return: UpdatePublishAutoUpgradeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_publish_auto_upgrade_with_options(request, runtime)
+
+    async def update_publish_auto_upgrade_async(
+        self,
+        request: sas_20181203_models.UpdatePublishAutoUpgradeRequest,
+    ) -> sas_20181203_models.UpdatePublishAutoUpgradeResponse:
+        """
+        @summary 修改自动升级开关
+        
+        @param request: UpdatePublishAutoUpgradeRequest
+        @return: UpdatePublishAutoUpgradeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_publish_auto_upgrade_with_options_async(request, runtime)
+
+    def update_publish_batch_with_options(
+        self,
+        request: sas_20181203_models.UpdatePublishBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdatePublishBatchResponse:
+        """
+        @summary 更新发布批次
+        
+        @param request: UpdatePublishBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePublishBatchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.batch_id):
+            query['BatchId'] = request.batch_id
+        if not UtilClient.is_unset(request.batch_name):
+            query['BatchName'] = request.batch_name
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.operation_base):
+            query['OperationBase'] = request.operation_base
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePublishBatch',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdatePublishBatchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_publish_batch_with_options_async(
+        self,
+        request: sas_20181203_models.UpdatePublishBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdatePublishBatchResponse:
+        """
+        @summary 更新发布批次
+        
+        @param request: UpdatePublishBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePublishBatchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.batch_id):
+            query['BatchId'] = request.batch_id
+        if not UtilClient.is_unset(request.batch_name):
+            query['BatchName'] = request.batch_name
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.operation_base):
+            query['OperationBase'] = request.operation_base
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePublishBatch',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdatePublishBatchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_publish_batch(
+        self,
+        request: sas_20181203_models.UpdatePublishBatchRequest,
+    ) -> sas_20181203_models.UpdatePublishBatchResponse:
+        """
+        @summary 更新发布批次
+        
+        @param request: UpdatePublishBatchRequest
+        @return: UpdatePublishBatchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_publish_batch_with_options(request, runtime)
+
+    async def update_publish_batch_async(
+        self,
+        request: sas_20181203_models.UpdatePublishBatchRequest,
+    ) -> sas_20181203_models.UpdatePublishBatchResponse:
+        """
+        @summary 更新发布批次
+        
+        @param request: UpdatePublishBatchRequest
+        @return: UpdatePublishBatchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_publish_batch_with_options_async(request, runtime)
+
+    def update_publish_cron_with_options(
+        self,
+        request: sas_20181203_models.UpdatePublishCronRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdatePublishCronResponse:
+        """
+        @summary  修改升级时间
+        
+        @param request: UpdatePublishCronRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePublishCronResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cron):
+            query['Cron'] = request.cron
+        if not UtilClient.is_unset(request.cron_day):
+            query['CronDay'] = request.cron_day
+        if not UtilClient.is_unset(request.cron_time):
+            query['CronTime'] = request.cron_time
+        if not UtilClient.is_unset(request.cron_type):
+            query['CronType'] = request.cron_type
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePublishCron',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdatePublishCronResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_publish_cron_with_options_async(
+        self,
+        request: sas_20181203_models.UpdatePublishCronRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdatePublishCronResponse:
+        """
+        @summary  修改升级时间
+        
+        @param request: UpdatePublishCronRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePublishCronResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cron):
+            query['Cron'] = request.cron
+        if not UtilClient.is_unset(request.cron_day):
+            query['CronDay'] = request.cron_day
+        if not UtilClient.is_unset(request.cron_time):
+            query['CronTime'] = request.cron_time
+        if not UtilClient.is_unset(request.cron_type):
+            query['CronType'] = request.cron_type
+        if not UtilClient.is_unset(request.duration):
+            query['Duration'] = request.duration
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePublishCron',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdatePublishCronResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_publish_cron(
+        self,
+        request: sas_20181203_models.UpdatePublishCronRequest,
+    ) -> sas_20181203_models.UpdatePublishCronResponse:
+        """
+        @summary  修改升级时间
+        
+        @param request: UpdatePublishCronRequest
+        @return: UpdatePublishCronResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_publish_cron_with_options(request, runtime)
+
+    async def update_publish_cron_async(
+        self,
+        request: sas_20181203_models.UpdatePublishCronRequest,
+    ) -> sas_20181203_models.UpdatePublishCronResponse:
+        """
+        @summary  修改升级时间
+        
+        @param request: UpdatePublishCronRequest
+        @return: UpdatePublishCronResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_publish_cron_with_options_async(request, runtime)
+
+    def update_publish_gray_switch_with_options(
+        self,
+        request: sas_20181203_models.UpdatePublishGraySwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdatePublishGraySwitchResponse:
+        """
+        @summary  修改灰度开关
+        
+        @param request: UpdatePublishGraySwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePublishGraySwitchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gray_switch_status):
+            query['GraySwitchStatus'] = request.gray_switch_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePublishGraySwitch',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdatePublishGraySwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_publish_gray_switch_with_options_async(
+        self,
+        request: sas_20181203_models.UpdatePublishGraySwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdatePublishGraySwitchResponse:
+        """
+        @summary  修改灰度开关
+        
+        @param request: UpdatePublishGraySwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePublishGraySwitchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gray_switch_status):
+            query['GraySwitchStatus'] = request.gray_switch_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdatePublishGraySwitch',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdatePublishGraySwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_publish_gray_switch(
+        self,
+        request: sas_20181203_models.UpdatePublishGraySwitchRequest,
+    ) -> sas_20181203_models.UpdatePublishGraySwitchResponse:
+        """
+        @summary  修改灰度开关
+        
+        @param request: UpdatePublishGraySwitchRequest
+        @return: UpdatePublishGraySwitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_publish_gray_switch_with_options(request, runtime)
+
+    async def update_publish_gray_switch_async(
+        self,
+        request: sas_20181203_models.UpdatePublishGraySwitchRequest,
+    ) -> sas_20181203_models.UpdatePublishGraySwitchResponse:
+        """
+        @summary  修改灰度开关
+        
+        @param request: UpdatePublishGraySwitchRequest
+        @return: UpdatePublishGraySwitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_publish_gray_switch_with_options_async(request, runtime)
 
     def update_selection_key_by_type_with_options(
         self,
@@ -72762,6 +87710,222 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_selection_key_by_type_with_options_async(request, runtime)
 
+    def update_target_list_by_batch_with_options(
+        self,
+        request: sas_20181203_models.UpdateTargetListByBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdateTargetListByBatchResponse:
+        """
+        @summary 修改目标批次
+        
+        @param request: UpdateTargetListByBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTargetListByBatchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.batch_id):
+            query['BatchId'] = request.batch_id
+        if not UtilClient.is_unset(request.operation_list):
+            query['OperationList'] = request.operation_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTargetListByBatch',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdateTargetListByBatchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_target_list_by_batch_with_options_async(
+        self,
+        request: sas_20181203_models.UpdateTargetListByBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdateTargetListByBatchResponse:
+        """
+        @summary 修改目标批次
+        
+        @param request: UpdateTargetListByBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTargetListByBatchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.batch_id):
+            query['BatchId'] = request.batch_id
+        if not UtilClient.is_unset(request.operation_list):
+            query['OperationList'] = request.operation_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateTargetListByBatch',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdateTargetListByBatchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_target_list_by_batch(
+        self,
+        request: sas_20181203_models.UpdateTargetListByBatchRequest,
+    ) -> sas_20181203_models.UpdateTargetListByBatchResponse:
+        """
+        @summary 修改目标批次
+        
+        @param request: UpdateTargetListByBatchRequest
+        @return: UpdateTargetListByBatchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_target_list_by_batch_with_options(request, runtime)
+
+    async def update_target_list_by_batch_async(
+        self,
+        request: sas_20181203_models.UpdateTargetListByBatchRequest,
+    ) -> sas_20181203_models.UpdateTargetListByBatchResponse:
+        """
+        @summary 修改目标批次
+        
+        @param request: UpdateTargetListByBatchRequest
+        @return: UpdateTargetListByBatchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_target_list_by_batch_with_options_async(request, runtime)
+
+    def update_white_list_strategy_status_with_options(
+        self,
+        request: sas_20181203_models.UpdateWhiteListStrategyStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdateWhiteListStrategyStatusResponse:
+        """
+        @summary Updates the status of an application whitelist policy.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: UpdateWhiteListStrategyStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWhiteListStrategyStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.strategy_ids):
+            query['StrategyIds'] = request.strategy_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateWhiteListStrategyStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdateWhiteListStrategyStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_white_list_strategy_status_with_options_async(
+        self,
+        request: sas_20181203_models.UpdateWhiteListStrategyStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdateWhiteListStrategyStatusResponse:
+        """
+        @summary Updates the status of an application whitelist policy.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: UpdateWhiteListStrategyStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWhiteListStrategyStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.strategy_ids):
+            query['StrategyIds'] = request.strategy_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateWhiteListStrategyStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdateWhiteListStrategyStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_white_list_strategy_status(
+        self,
+        request: sas_20181203_models.UpdateWhiteListStrategyStatusRequest,
+    ) -> sas_20181203_models.UpdateWhiteListStrategyStatusResponse:
+        """
+        @summary Updates the status of an application whitelist policy.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: UpdateWhiteListStrategyStatusRequest
+        @return: UpdateWhiteListStrategyStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_white_list_strategy_status_with_options(request, runtime)
+
+    async def update_white_list_strategy_status_async(
+        self,
+        request: sas_20181203_models.UpdateWhiteListStrategyStatusRequest,
+    ) -> sas_20181203_models.UpdateWhiteListStrategyStatusResponse:
+        """
+        @summary Updates the status of an application whitelist policy.
+        
+        @description The application whitelist feature is in public preview. You cannot apply for a trial of the feature. If you applied for a trial of the feature or the feature is in use, you can call this operation.
+        
+        @param request: UpdateWhiteListStrategyStatusRequest
+        @return: UpdateWhiteListStrategyStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_white_list_strategy_status_with_options_async(request, runtime)
+
     def upgrade_backup_policy_version_with_options(
         self,
         request: sas_20181203_models.UpgradeBackupPolicyVersionRequest,
@@ -72857,6 +88021,210 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_backup_policy_version_with_options_async(request, runtime)
+
+    def upgrade_honeypot_node_with_options(
+        self,
+        request: sas_20181203_models.UpgradeHoneypotNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpgradeHoneypotNodeResponse:
+        """
+        @summary Upgrades the version of the management node to which a honeypot belongs.
+        
+        @param request: UpgradeHoneypotNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeHoneypotNodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_honeypot_access_internet):
+            query['AllowHoneypotAccessInternet'] = request.allow_honeypot_access_internet
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeHoneypotNode',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpgradeHoneypotNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upgrade_honeypot_node_with_options_async(
+        self,
+        request: sas_20181203_models.UpgradeHoneypotNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpgradeHoneypotNodeResponse:
+        """
+        @summary Upgrades the version of the management node to which a honeypot belongs.
+        
+        @param request: UpgradeHoneypotNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeHoneypotNodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_honeypot_access_internet):
+            query['AllowHoneypotAccessInternet'] = request.allow_honeypot_access_internet
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeHoneypotNode',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpgradeHoneypotNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upgrade_honeypot_node(
+        self,
+        request: sas_20181203_models.UpgradeHoneypotNodeRequest,
+    ) -> sas_20181203_models.UpgradeHoneypotNodeResponse:
+        """
+        @summary Upgrades the version of the management node to which a honeypot belongs.
+        
+        @param request: UpgradeHoneypotNodeRequest
+        @return: UpgradeHoneypotNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.upgrade_honeypot_node_with_options(request, runtime)
+
+    async def upgrade_honeypot_node_async(
+        self,
+        request: sas_20181203_models.UpgradeHoneypotNodeRequest,
+    ) -> sas_20181203_models.UpgradeHoneypotNodeResponse:
+        """
+        @summary Upgrades the version of the management node to which a honeypot belongs.
+        
+        @param request: UpgradeHoneypotNodeRequest
+        @return: UpgradeHoneypotNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.upgrade_honeypot_node_with_options_async(request, runtime)
+
+    def upgrade_version_by_uuids_with_options(
+        self,
+        request: sas_20181203_models.UpgradeVersionByUuidsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpgradeVersionByUuidsResponse:
+        """
+        @summary 升级客户端
+        
+        @param request: UpgradeVersionByUuidsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeVersionByUuidsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.upgrade_version):
+            query['UpgradeVersion'] = request.upgrade_version
+        if not UtilClient.is_unset(request.uuid_list):
+            query['UuidList'] = request.uuid_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeVersionByUuids',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpgradeVersionByUuidsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upgrade_version_by_uuids_with_options_async(
+        self,
+        request: sas_20181203_models.UpgradeVersionByUuidsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpgradeVersionByUuidsResponse:
+        """
+        @summary 升级客户端
+        
+        @param request: UpgradeVersionByUuidsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeVersionByUuidsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.upgrade_version):
+            query['UpgradeVersion'] = request.upgrade_version
+        if not UtilClient.is_unset(request.uuid_list):
+            query['UuidList'] = request.uuid_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeVersionByUuids',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpgradeVersionByUuidsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upgrade_version_by_uuids(
+        self,
+        request: sas_20181203_models.UpgradeVersionByUuidsRequest,
+    ) -> sas_20181203_models.UpgradeVersionByUuidsResponse:
+        """
+        @summary 升级客户端
+        
+        @param request: UpgradeVersionByUuidsRequest
+        @return: UpgradeVersionByUuidsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.upgrade_version_by_uuids_with_options(request, runtime)
+
+    async def upgrade_version_by_uuids_async(
+        self,
+        request: sas_20181203_models.UpgradeVersionByUuidsRequest,
+    ) -> sas_20181203_models.UpgradeVersionByUuidsResponse:
+        """
+        @summary 升级客户端
+        
+        @param request: UpgradeVersionByUuidsRequest
+        @return: UpgradeVersionByUuidsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.upgrade_version_by_uuids_with_options_async(request, runtime)
 
     def uploaded_honey_pot_file_with_options(
         self,
@@ -72996,6 +88364,8 @@ class Client(OpenApiClient):
             query['CheckIds'] = request.check_ids
         if not UtilClient.is_unset(request.risk_ids):
             query['RiskIds'] = request.risk_ids
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.uuids):
             query['Uuids'] = request.uuids
         req = open_api_models.OpenApiRequest(
@@ -73035,6 +88405,8 @@ class Client(OpenApiClient):
             query['CheckIds'] = request.check_ids
         if not UtilClient.is_unset(request.risk_ids):
             query['RiskIds'] = request.risk_ids
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.uuids):
             query['Uuids'] = request.uuids
         req = open_api_models.OpenApiRequest(
