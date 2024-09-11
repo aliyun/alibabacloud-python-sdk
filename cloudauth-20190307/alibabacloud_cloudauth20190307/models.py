@@ -5777,6 +5777,843 @@ class ModifyDeviceInfoResponse(TeaModel):
         return self
 
 
+class Vehicle5ItemQueryRequest(TeaModel):
+    def __init__(
+        self,
+        param_type: str = None,
+        vehicle_num: str = None,
+        vehicle_type: str = None,
+    ):
+        self.param_type = param_type
+        self.vehicle_num = vehicle_num
+        self.vehicle_type = vehicle_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.param_type is not None:
+            result['ParamType'] = self.param_type
+        if self.vehicle_num is not None:
+            result['VehicleNum'] = self.vehicle_num
+        if self.vehicle_type is not None:
+            result['VehicleType'] = self.vehicle_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParamType') is not None:
+            self.param_type = m.get('ParamType')
+        if m.get('VehicleNum') is not None:
+            self.vehicle_num = m.get('VehicleNum')
+        if m.get('VehicleType') is not None:
+            self.vehicle_type = m.get('VehicleType')
+        return self
+
+
+class Vehicle5ItemQueryResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        vehicle_info: str = None,
+    ):
+        self.biz_code = biz_code
+        self.vehicle_info = vehicle_info
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.vehicle_info is not None:
+            result['VehicleInfo'] = self.vehicle_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('VehicleInfo') is not None:
+            self.vehicle_info = m.get('VehicleInfo')
+        return self
+
+
+class Vehicle5ItemQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: Vehicle5ItemQueryResponseBodyResultObject = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = Vehicle5ItemQueryResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class Vehicle5ItemQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: Vehicle5ItemQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = Vehicle5ItemQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class VehicleInsureQueryRequest(TeaModel):
+    def __init__(
+        self,
+        param_type: str = None,
+        vehicle_num: str = None,
+        vehicle_type: str = None,
+        vin: str = None,
+    ):
+        self.param_type = param_type
+        self.vehicle_num = vehicle_num
+        self.vehicle_type = vehicle_type
+        self.vin = vin
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.param_type is not None:
+            result['ParamType'] = self.param_type
+        if self.vehicle_num is not None:
+            result['VehicleNum'] = self.vehicle_num
+        if self.vehicle_type is not None:
+            result['VehicleType'] = self.vehicle_type
+        if self.vin is not None:
+            result['Vin'] = self.vin
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParamType') is not None:
+            self.param_type = m.get('ParamType')
+        if m.get('VehicleNum') is not None:
+            self.vehicle_num = m.get('VehicleNum')
+        if m.get('VehicleType') is not None:
+            self.vehicle_type = m.get('VehicleType')
+        if m.get('Vin') is not None:
+            self.vin = m.get('Vin')
+        return self
+
+
+class VehicleInsureQueryResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        vehicle_info: str = None,
+    ):
+        self.biz_code = biz_code
+        self.vehicle_info = vehicle_info
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.vehicle_info is not None:
+            result['VehicleInfo'] = self.vehicle_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('VehicleInfo') is not None:
+            self.vehicle_info = m.get('VehicleInfo')
+        return self
+
+
+class VehicleInsureQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: VehicleInsureQueryResponseBodyResultObject = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = VehicleInsureQueryResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class VehicleInsureQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: VehicleInsureQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = VehicleInsureQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class VehicleMetaVerifyRequest(TeaModel):
+    def __init__(
+        self,
+        identify_num: str = None,
+        param_type: str = None,
+        user_name: str = None,
+        vehicle_num: str = None,
+        vehicle_type: str = None,
+        verify_meta_type: str = None,
+    ):
+        self.identify_num = identify_num
+        self.param_type = param_type
+        self.user_name = user_name
+        self.vehicle_num = vehicle_num
+        self.vehicle_type = vehicle_type
+        self.verify_meta_type = verify_meta_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identify_num is not None:
+            result['IdentifyNum'] = self.identify_num
+        if self.param_type is not None:
+            result['ParamType'] = self.param_type
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.vehicle_num is not None:
+            result['VehicleNum'] = self.vehicle_num
+        if self.vehicle_type is not None:
+            result['VehicleType'] = self.vehicle_type
+        if self.verify_meta_type is not None:
+            result['VerifyMetaType'] = self.verify_meta_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentifyNum') is not None:
+            self.identify_num = m.get('IdentifyNum')
+        if m.get('ParamType') is not None:
+            self.param_type = m.get('ParamType')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('VehicleNum') is not None:
+            self.vehicle_num = m.get('VehicleNum')
+        if m.get('VehicleType') is not None:
+            self.vehicle_type = m.get('VehicleType')
+        if m.get('VerifyMetaType') is not None:
+            self.verify_meta_type = m.get('VerifyMetaType')
+        return self
+
+
+class VehicleMetaVerifyResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+    ):
+        self.biz_code = biz_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        return self
+
+
+class VehicleMetaVerifyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: VehicleMetaVerifyResponseBodyResultObject = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = VehicleMetaVerifyResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class VehicleMetaVerifyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: VehicleMetaVerifyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = VehicleMetaVerifyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class VehicleMetaVerifyV2Request(TeaModel):
+    def __init__(
+        self,
+        identify_num: str = None,
+        param_type: str = None,
+        user_name: str = None,
+        vehicle_num: str = None,
+        vehicle_type: str = None,
+        verify_meta_type: str = None,
+    ):
+        self.identify_num = identify_num
+        self.param_type = param_type
+        self.user_name = user_name
+        self.vehicle_num = vehicle_num
+        self.vehicle_type = vehicle_type
+        self.verify_meta_type = verify_meta_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identify_num is not None:
+            result['IdentifyNum'] = self.identify_num
+        if self.param_type is not None:
+            result['ParamType'] = self.param_type
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.vehicle_num is not None:
+            result['VehicleNum'] = self.vehicle_num
+        if self.vehicle_type is not None:
+            result['VehicleType'] = self.vehicle_type
+        if self.verify_meta_type is not None:
+            result['VerifyMetaType'] = self.verify_meta_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IdentifyNum') is not None:
+            self.identify_num = m.get('IdentifyNum')
+        if m.get('ParamType') is not None:
+            self.param_type = m.get('ParamType')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('VehicleNum') is not None:
+            self.vehicle_num = m.get('VehicleNum')
+        if m.get('VehicleType') is not None:
+            self.vehicle_type = m.get('VehicleType')
+        if m.get('VerifyMetaType') is not None:
+            self.verify_meta_type = m.get('VerifyMetaType')
+        return self
+
+
+class VehicleMetaVerifyV2ResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        vehicle_info: str = None,
+    ):
+        self.biz_code = biz_code
+        self.vehicle_info = vehicle_info
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.vehicle_info is not None:
+            result['VehicleInfo'] = self.vehicle_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('VehicleInfo') is not None:
+            self.vehicle_info = m.get('VehicleInfo')
+        return self
+
+
+class VehicleMetaVerifyV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: VehicleMetaVerifyV2ResponseBodyResultObject = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = VehicleMetaVerifyV2ResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class VehicleMetaVerifyV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: VehicleMetaVerifyV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = VehicleMetaVerifyV2ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class VehicleQueryRequest(TeaModel):
+    def __init__(
+        self,
+        param_type: str = None,
+        vehicle_num: str = None,
+        vehicle_type: str = None,
+    ):
+        self.param_type = param_type
+        self.vehicle_num = vehicle_num
+        self.vehicle_type = vehicle_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.param_type is not None:
+            result['ParamType'] = self.param_type
+        if self.vehicle_num is not None:
+            result['VehicleNum'] = self.vehicle_num
+        if self.vehicle_type is not None:
+            result['VehicleType'] = self.vehicle_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ParamType') is not None:
+            self.param_type = m.get('ParamType')
+        if m.get('VehicleNum') is not None:
+            self.vehicle_num = m.get('VehicleNum')
+        if m.get('VehicleType') is not None:
+            self.vehicle_type = m.get('VehicleType')
+        return self
+
+
+class VehicleQueryResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        vehicle_info: str = None,
+    ):
+        self.biz_code = biz_code
+        self.vehicle_info = vehicle_info
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.vehicle_info is not None:
+            result['VehicleInfo'] = self.vehicle_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('VehicleInfo') is not None:
+            self.vehicle_info = m.get('VehicleInfo')
+        return self
+
+
+class VehicleQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: VehicleQueryResponseBodyResultObject = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = VehicleQueryResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class VehicleQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: VehicleQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = VehicleQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class VerifyMaterialRequest(TeaModel):
     def __init__(
         self,

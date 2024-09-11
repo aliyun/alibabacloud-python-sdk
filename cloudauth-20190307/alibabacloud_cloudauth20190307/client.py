@@ -3313,6 +3313,554 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_device_info_with_options_async(request, runtime)
 
+    def vehicle_5item_query_with_options(
+        self,
+        request: cloudauth_20190307_models.Vehicle5ItemQueryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Vehicle5ItemQueryResponse:
+        """
+        @summary 车五项信息识别
+        
+        @param request: Vehicle5ItemQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Vehicle5ItemQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.vehicle_num):
+            query['VehicleNum'] = request.vehicle_num
+        if not UtilClient.is_unset(request.vehicle_type):
+            query['VehicleType'] = request.vehicle_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Vehicle5ItemQuery',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Vehicle5ItemQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def vehicle_5item_query_with_options_async(
+        self,
+        request: cloudauth_20190307_models.Vehicle5ItemQueryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.Vehicle5ItemQueryResponse:
+        """
+        @summary 车五项信息识别
+        
+        @param request: Vehicle5ItemQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: Vehicle5ItemQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.vehicle_num):
+            query['VehicleNum'] = request.vehicle_num
+        if not UtilClient.is_unset(request.vehicle_type):
+            query['VehicleType'] = request.vehicle_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Vehicle5ItemQuery',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.Vehicle5ItemQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def vehicle_5item_query(
+        self,
+        request: cloudauth_20190307_models.Vehicle5ItemQueryRequest,
+    ) -> cloudauth_20190307_models.Vehicle5ItemQueryResponse:
+        """
+        @summary 车五项信息识别
+        
+        @param request: Vehicle5ItemQueryRequest
+        @return: Vehicle5ItemQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.vehicle_5item_query_with_options(request, runtime)
+
+    async def vehicle_5item_query_async(
+        self,
+        request: cloudauth_20190307_models.Vehicle5ItemQueryRequest,
+    ) -> cloudauth_20190307_models.Vehicle5ItemQueryResponse:
+        """
+        @summary 车五项信息识别
+        
+        @param request: Vehicle5ItemQueryRequest
+        @return: Vehicle5ItemQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.vehicle_5item_query_with_options_async(request, runtime)
+
+    def vehicle_insure_query_with_options(
+        self,
+        request: cloudauth_20190307_models.VehicleInsureQueryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.VehicleInsureQueryResponse:
+        """
+        @summary 车辆投保日期查询
+        
+        @param request: VehicleInsureQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VehicleInsureQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.vehicle_num):
+            query['VehicleNum'] = request.vehicle_num
+        if not UtilClient.is_unset(request.vehicle_type):
+            query['VehicleType'] = request.vehicle_type
+        if not UtilClient.is_unset(request.vin):
+            query['Vin'] = request.vin
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VehicleInsureQuery',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.VehicleInsureQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def vehicle_insure_query_with_options_async(
+        self,
+        request: cloudauth_20190307_models.VehicleInsureQueryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.VehicleInsureQueryResponse:
+        """
+        @summary 车辆投保日期查询
+        
+        @param request: VehicleInsureQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VehicleInsureQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.vehicle_num):
+            query['VehicleNum'] = request.vehicle_num
+        if not UtilClient.is_unset(request.vehicle_type):
+            query['VehicleType'] = request.vehicle_type
+        if not UtilClient.is_unset(request.vin):
+            query['Vin'] = request.vin
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VehicleInsureQuery',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.VehicleInsureQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def vehicle_insure_query(
+        self,
+        request: cloudauth_20190307_models.VehicleInsureQueryRequest,
+    ) -> cloudauth_20190307_models.VehicleInsureQueryResponse:
+        """
+        @summary 车辆投保日期查询
+        
+        @param request: VehicleInsureQueryRequest
+        @return: VehicleInsureQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.vehicle_insure_query_with_options(request, runtime)
+
+    async def vehicle_insure_query_async(
+        self,
+        request: cloudauth_20190307_models.VehicleInsureQueryRequest,
+    ) -> cloudauth_20190307_models.VehicleInsureQueryResponse:
+        """
+        @summary 车辆投保日期查询
+        
+        @param request: VehicleInsureQueryRequest
+        @return: VehicleInsureQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.vehicle_insure_query_with_options_async(request, runtime)
+
+    def vehicle_meta_verify_with_options(
+        self,
+        request: cloudauth_20190307_models.VehicleMetaVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.VehicleMetaVerifyResponse:
+        """
+        @summary 车辆要素核验
+        
+        @param request: VehicleMetaVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VehicleMetaVerifyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.vehicle_num):
+            query['VehicleNum'] = request.vehicle_num
+        if not UtilClient.is_unset(request.vehicle_type):
+            query['VehicleType'] = request.vehicle_type
+        if not UtilClient.is_unset(request.verify_meta_type):
+            query['VerifyMetaType'] = request.verify_meta_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VehicleMetaVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.VehicleMetaVerifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def vehicle_meta_verify_with_options_async(
+        self,
+        request: cloudauth_20190307_models.VehicleMetaVerifyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.VehicleMetaVerifyResponse:
+        """
+        @summary 车辆要素核验
+        
+        @param request: VehicleMetaVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VehicleMetaVerifyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.vehicle_num):
+            query['VehicleNum'] = request.vehicle_num
+        if not UtilClient.is_unset(request.vehicle_type):
+            query['VehicleType'] = request.vehicle_type
+        if not UtilClient.is_unset(request.verify_meta_type):
+            query['VerifyMetaType'] = request.verify_meta_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VehicleMetaVerify',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.VehicleMetaVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def vehicle_meta_verify(
+        self,
+        request: cloudauth_20190307_models.VehicleMetaVerifyRequest,
+    ) -> cloudauth_20190307_models.VehicleMetaVerifyResponse:
+        """
+        @summary 车辆要素核验
+        
+        @param request: VehicleMetaVerifyRequest
+        @return: VehicleMetaVerifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.vehicle_meta_verify_with_options(request, runtime)
+
+    async def vehicle_meta_verify_async(
+        self,
+        request: cloudauth_20190307_models.VehicleMetaVerifyRequest,
+    ) -> cloudauth_20190307_models.VehicleMetaVerifyResponse:
+        """
+        @summary 车辆要素核验
+        
+        @param request: VehicleMetaVerifyRequest
+        @return: VehicleMetaVerifyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.vehicle_meta_verify_with_options_async(request, runtime)
+
+    def vehicle_meta_verify_v2with_options(
+        self,
+        request: cloudauth_20190307_models.VehicleMetaVerifyV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.VehicleMetaVerifyV2Response:
+        """
+        @summary 车辆要素核验增强版
+        
+        @param request: VehicleMetaVerifyV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VehicleMetaVerifyV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.vehicle_num):
+            query['VehicleNum'] = request.vehicle_num
+        if not UtilClient.is_unset(request.vehicle_type):
+            query['VehicleType'] = request.vehicle_type
+        if not UtilClient.is_unset(request.verify_meta_type):
+            query['VerifyMetaType'] = request.verify_meta_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VehicleMetaVerifyV2',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.VehicleMetaVerifyV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def vehicle_meta_verify_v2with_options_async(
+        self,
+        request: cloudauth_20190307_models.VehicleMetaVerifyV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.VehicleMetaVerifyV2Response:
+        """
+        @summary 车辆要素核验增强版
+        
+        @param request: VehicleMetaVerifyV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VehicleMetaVerifyV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.vehicle_num):
+            query['VehicleNum'] = request.vehicle_num
+        if not UtilClient.is_unset(request.vehicle_type):
+            query['VehicleType'] = request.vehicle_type
+        if not UtilClient.is_unset(request.verify_meta_type):
+            query['VerifyMetaType'] = request.verify_meta_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VehicleMetaVerifyV2',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.VehicleMetaVerifyV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def vehicle_meta_verify_v2(
+        self,
+        request: cloudauth_20190307_models.VehicleMetaVerifyV2Request,
+    ) -> cloudauth_20190307_models.VehicleMetaVerifyV2Response:
+        """
+        @summary 车辆要素核验增强版
+        
+        @param request: VehicleMetaVerifyV2Request
+        @return: VehicleMetaVerifyV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.vehicle_meta_verify_v2with_options(request, runtime)
+
+    async def vehicle_meta_verify_v2_async(
+        self,
+        request: cloudauth_20190307_models.VehicleMetaVerifyV2Request,
+    ) -> cloudauth_20190307_models.VehicleMetaVerifyV2Response:
+        """
+        @summary 车辆要素核验增强版
+        
+        @param request: VehicleMetaVerifyV2Request
+        @return: VehicleMetaVerifyV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.vehicle_meta_verify_v2with_options_async(request, runtime)
+
+    def vehicle_query_with_options(
+        self,
+        request: cloudauth_20190307_models.VehicleQueryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.VehicleQueryResponse:
+        """
+        @summary 车辆信息识别
+        
+        @param request: VehicleQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VehicleQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.vehicle_num):
+            query['VehicleNum'] = request.vehicle_num
+        if not UtilClient.is_unset(request.vehicle_type):
+            query['VehicleType'] = request.vehicle_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VehicleQuery',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.VehicleQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def vehicle_query_with_options_async(
+        self,
+        request: cloudauth_20190307_models.VehicleQueryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.VehicleQueryResponse:
+        """
+        @summary 车辆信息识别
+        
+        @param request: VehicleQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VehicleQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.vehicle_num):
+            query['VehicleNum'] = request.vehicle_num
+        if not UtilClient.is_unset(request.vehicle_type):
+            query['VehicleType'] = request.vehicle_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VehicleQuery',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.VehicleQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def vehicle_query(
+        self,
+        request: cloudauth_20190307_models.VehicleQueryRequest,
+    ) -> cloudauth_20190307_models.VehicleQueryResponse:
+        """
+        @summary 车辆信息识别
+        
+        @param request: VehicleQueryRequest
+        @return: VehicleQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.vehicle_query_with_options(request, runtime)
+
+    async def vehicle_query_async(
+        self,
+        request: cloudauth_20190307_models.VehicleQueryRequest,
+    ) -> cloudauth_20190307_models.VehicleQueryResponse:
+        """
+        @summary 车辆信息识别
+        
+        @param request: VehicleQueryRequest
+        @return: VehicleQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.vehicle_query_with_options_async(request, runtime)
+
     def verify_material_with_options(
         self,
         request: cloudauth_20190307_models.VerifyMaterialRequest,

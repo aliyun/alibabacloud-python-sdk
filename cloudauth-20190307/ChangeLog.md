@@ -1,3 +1,11 @@
+2024-09-11 Version: 2.8.0
+- Support API Vehicle5ItemQuery.
+- Support API VehicleInsureQuery.
+- Support API VehicleMetaVerify.
+- Support API VehicleMetaVerifyV2.
+- Support API VehicleQuery.
+
+
 2024-09-04 Version: 2.7.3
 - Update API BankMetaVerify: add param IdentityType.
 
