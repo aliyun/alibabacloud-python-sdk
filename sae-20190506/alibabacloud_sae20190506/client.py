@@ -1053,6 +1053,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.enable_idle):
+            query['EnableIdle'] = request.enable_idle
         if not UtilClient.is_unset(request.min_ready_instance_ratio):
             query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
         if not UtilClient.is_unset(request.min_ready_instances):
@@ -1111,6 +1113,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.enable_idle):
+            query['EnableIdle'] = request.enable_idle
         if not UtilClient.is_unset(request.min_ready_instance_ratio):
             query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
         if not UtilClient.is_unset(request.min_ready_instances):
@@ -1461,6 +1465,8 @@ class Client(OpenApiClient):
             query['DefaultRule'] = request.default_rule
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.idle_timeout):
+            query['IdleTimeout'] = request.idle_timeout
         if not UtilClient.is_unset(request.listener_port):
             query['ListenerPort'] = request.listener_port
         if not UtilClient.is_unset(request.listener_protocol):
@@ -1523,6 +1529,8 @@ class Client(OpenApiClient):
             query['DefaultRule'] = request.default_rule
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.idle_timeout):
+            query['IdleTimeout'] = request.idle_timeout
         if not UtilClient.is_unset(request.listener_port):
             query['ListenerPort'] = request.listener_port
         if not UtilClient.is_unset(request.listener_protocol):
@@ -12900,6 +12908,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.enable_idle):
+            query['EnableIdle'] = request.enable_idle
         if not UtilClient.is_unset(request.min_ready_instance_ratio):
             query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
         if not UtilClient.is_unset(request.min_ready_instances):
@@ -12951,6 +12961,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.enable_idle):
+            query['EnableIdle'] = request.enable_idle
         if not UtilClient.is_unset(request.min_ready_instance_ratio):
             query['MinReadyInstanceRatio'] = request.min_ready_instance_ratio
         if not UtilClient.is_unset(request.min_ready_instances):
@@ -13373,6 +13385,8 @@ class Client(OpenApiClient):
             query['DefaultRule'] = request.default_rule
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.idle_timeout):
+            query['IdleTimeout'] = request.idle_timeout
         if not UtilClient.is_unset(request.ingress_id):
             query['IngressId'] = request.ingress_id
         if not UtilClient.is_unset(request.listener_port):
@@ -13431,6 +13445,8 @@ class Client(OpenApiClient):
             query['DefaultRule'] = request.default_rule
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.idle_timeout):
+            query['IdleTimeout'] = request.idle_timeout
         if not UtilClient.is_unset(request.ingress_id):
             query['IngressId'] = request.ingress_id
         if not UtilClient.is_unset(request.listener_port):

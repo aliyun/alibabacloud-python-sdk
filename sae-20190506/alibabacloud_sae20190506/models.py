@@ -1609,6 +1609,7 @@ class Application(TeaModel):
         namespace_name: str = None,
         nas_config: NASConfig = None,
         oss_mount_config: OSSMountConfig = None,
+        programming_language: str = None,
         runtime: str = None,
         scale_config: ScaleConfig = None,
         sls_config: SLSConfig = None,
@@ -1662,6 +1663,7 @@ class Application(TeaModel):
         self.namespace_name = namespace_name
         self.nas_config = nas_config
         self.oss_mount_config = oss_mount_config
+        self.programming_language = programming_language
         self.runtime = runtime
         self.scale_config = scale_config
         self.sls_config = sls_config
@@ -1799,6 +1801,8 @@ class Application(TeaModel):
             result['nasConfig'] = self.nas_config.to_map()
         if self.oss_mount_config is not None:
             result['ossMountConfig'] = self.oss_mount_config.to_map()
+        if self.programming_language is not None:
+            result['programmingLanguage'] = self.programming_language
         if self.runtime is not None:
             result['runtime'] = self.runtime
         if self.scale_config is not None:
@@ -1918,6 +1922,8 @@ class Application(TeaModel):
         if m.get('ossMountConfig') is not None:
             temp_model = OSSMountConfig()
             self.oss_mount_config = temp_model.from_map(m['ossMountConfig'])
+        if m.get('programmingLanguage') is not None:
+            self.programming_language = m.get('programmingLanguage')
         if m.get('runtime') is not None:
             self.runtime = m.get('runtime')
         if m.get('scaleConfig') is not None:
@@ -3902,6 +3908,7 @@ class CreateApplicationInput(TeaModel):
         custom_runtime_config: CustomRuntimeConfig = None,
         description: str = None,
         disk_size: int = None,
+        enable_app_metric: bool = None,
         environment_variables: Dict[str, str] = None,
         gpu_memory_size: int = None,
         handler: str = None,
@@ -3921,6 +3928,7 @@ class CreateApplicationInput(TeaModel):
         namespace_id: str = None,
         nas_config: NASConfig = None,
         oss_mount_config: OSSMountConfig = None,
+        programming_language: str = None,
         runtime: str = None,
         scale_config: ScaleConfig = None,
         sls_config: SLSConfig = None,
@@ -3941,6 +3949,7 @@ class CreateApplicationInput(TeaModel):
         self.custom_runtime_config = custom_runtime_config
         self.description = description
         self.disk_size = disk_size
+        self.enable_app_metric = enable_app_metric
         self.environment_variables = environment_variables
         self.gpu_memory_size = gpu_memory_size
         self.handler = handler
@@ -3960,6 +3969,7 @@ class CreateApplicationInput(TeaModel):
         self.namespace_id = namespace_id
         self.nas_config = nas_config
         self.oss_mount_config = oss_mount_config
+        self.programming_language = programming_language
         self.runtime = runtime
         self.scale_config = scale_config
         self.sls_config = sls_config
@@ -4034,6 +4044,8 @@ class CreateApplicationInput(TeaModel):
             result['description'] = self.description
         if self.disk_size is not None:
             result['diskSize'] = self.disk_size
+        if self.enable_app_metric is not None:
+            result['enableAppMetric'] = self.enable_app_metric
         if self.environment_variables is not None:
             result['environmentVariables'] = self.environment_variables
         if self.gpu_memory_size is not None:
@@ -4072,6 +4084,8 @@ class CreateApplicationInput(TeaModel):
             result['nasConfig'] = self.nas_config.to_map()
         if self.oss_mount_config is not None:
             result['ossMountConfig'] = self.oss_mount_config.to_map()
+        if self.programming_language is not None:
+            result['programmingLanguage'] = self.programming_language
         if self.runtime is not None:
             result['runtime'] = self.runtime
         if self.scale_config is not None:
@@ -4119,6 +4133,8 @@ class CreateApplicationInput(TeaModel):
             self.description = m.get('description')
         if m.get('diskSize') is not None:
             self.disk_size = m.get('diskSize')
+        if m.get('enableAppMetric') is not None:
+            self.enable_app_metric = m.get('enableAppMetric')
         if m.get('environmentVariables') is not None:
             self.environment_variables = m.get('environmentVariables')
         if m.get('gpuMemorySize') is not None:
@@ -4164,6 +4180,8 @@ class CreateApplicationInput(TeaModel):
         if m.get('ossMountConfig') is not None:
             temp_model = OSSMountConfig()
             self.oss_mount_config = temp_model.from_map(m['ossMountConfig'])
+        if m.get('programmingLanguage') is not None:
+            self.programming_language = m.get('programmingLanguage')
         if m.get('runtime') is not None:
             self.runtime = m.get('runtime')
         if m.get('scaleConfig') is not None:
@@ -8493,8 +8511,10 @@ class UpdateApplicationInput(TeaModel):
         liveness_probe: Probe = None,
         log_config: LogConfig = None,
         memory_size: int = None,
+        namespace_id: str = None,
         nas_config: NASConfig = None,
         oss_mount_config: OSSMountConfig = None,
+        programming_language: str = None,
         runtime: str = None,
         scale_config: ScaleConfig = None,
         sls_config: SLSConfig = None,
@@ -8532,8 +8552,10 @@ class UpdateApplicationInput(TeaModel):
         self.liveness_probe = liveness_probe
         self.log_config = log_config
         self.memory_size = memory_size
+        self.namespace_id = namespace_id
         self.nas_config = nas_config
         self.oss_mount_config = oss_mount_config
+        self.programming_language = programming_language
         self.runtime = runtime
         self.scale_config = scale_config
         self.sls_config = sls_config
@@ -8642,10 +8664,14 @@ class UpdateApplicationInput(TeaModel):
             result['logConfig'] = self.log_config.to_map()
         if self.memory_size is not None:
             result['memorySize'] = self.memory_size
+        if self.namespace_id is not None:
+            result['namespaceID'] = self.namespace_id
         if self.nas_config is not None:
             result['nasConfig'] = self.nas_config.to_map()
         if self.oss_mount_config is not None:
             result['ossMountConfig'] = self.oss_mount_config.to_map()
+        if self.programming_language is not None:
+            result['programmingLanguage'] = self.programming_language
         if self.runtime is not None:
             result['runtime'] = self.runtime
         if self.scale_config is not None:
@@ -8732,12 +8758,16 @@ class UpdateApplicationInput(TeaModel):
             self.log_config = temp_model.from_map(m['logConfig'])
         if m.get('memorySize') is not None:
             self.memory_size = m.get('memorySize')
+        if m.get('namespaceID') is not None:
+            self.namespace_id = m.get('namespaceID')
         if m.get('nasConfig') is not None:
             temp_model = NASConfig()
             self.nas_config = temp_model.from_map(m['nasConfig'])
         if m.get('ossMountConfig') is not None:
             temp_model = OSSMountConfig()
             self.oss_mount_config = temp_model.from_map(m['ossMountConfig'])
+        if m.get('programmingLanguage') is not None:
+            self.programming_language = m.get('programmingLanguage')
         if m.get('runtime') is not None:
             self.runtime = m.get('runtime')
         if m.get('scaleConfig') is not None:
@@ -11385,6 +11415,7 @@ class CreateApplicationScalingRuleRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        enable_idle: bool = None,
         min_ready_instance_ratio: int = None,
         min_ready_instances: int = None,
         scaling_rule_enable: bool = None,
@@ -11395,6 +11426,7 @@ class CreateApplicationScalingRuleRequest(TeaModel):
     ):
         # This parameter is required.
         self.app_id = app_id
+        self.enable_idle = enable_idle
         self.min_ready_instance_ratio = min_ready_instance_ratio
         self.min_ready_instances = min_ready_instances
         self.scaling_rule_enable = scaling_rule_enable
@@ -11416,6 +11448,8 @@ class CreateApplicationScalingRuleRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.enable_idle is not None:
+            result['EnableIdle'] = self.enable_idle
         if self.min_ready_instance_ratio is not None:
             result['MinReadyInstanceRatio'] = self.min_ready_instance_ratio
         if self.min_ready_instances is not None:
@@ -11436,6 +11470,8 @@ class CreateApplicationScalingRuleRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('EnableIdle') is not None:
+            self.enable_idle = m.get('EnableIdle')
         if m.get('MinReadyInstanceRatio') is not None:
             self.min_ready_instance_ratio = m.get('MinReadyInstanceRatio')
         if m.get('MinReadyInstances') is not None:
@@ -11660,6 +11696,7 @@ class CreateApplicationScalingRuleResponseBodyData(TeaModel):
         self,
         app_id: str = None,
         create_time: int = None,
+        enable_idle: bool = None,
         last_disable_time: int = None,
         metric: CreateApplicationScalingRuleResponseBodyDataMetric = None,
         scale_rule_enabled: bool = None,
@@ -11670,6 +11707,7 @@ class CreateApplicationScalingRuleResponseBodyData(TeaModel):
     ):
         self.app_id = app_id
         self.create_time = create_time
+        self.enable_idle = enable_idle
         self.last_disable_time = last_disable_time
         self.metric = metric
         self.scale_rule_enabled = scale_rule_enabled
@@ -11694,6 +11732,8 @@ class CreateApplicationScalingRuleResponseBodyData(TeaModel):
             result['AppId'] = self.app_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.enable_idle is not None:
+            result['EnableIdle'] = self.enable_idle
         if self.last_disable_time is not None:
             result['LastDisableTime'] = self.last_disable_time
         if self.metric is not None:
@@ -11716,6 +11756,8 @@ class CreateApplicationScalingRuleResponseBodyData(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('EnableIdle') is not None:
+            self.enable_idle = m.get('EnableIdle')
         if m.get('LastDisableTime') is not None:
             self.last_disable_time = m.get('LastDisableTime')
         if m.get('Metric') is not None:
@@ -11849,15 +11891,15 @@ class CreateConfigMapRequest(TeaModel):
         name: str = None,
         namespace_id: str = None,
     ):
+        # The ConfigMap data.
+        # 
+        # This parameter is required.
+        self.data = data
         # The key-value pairs of the ConfigMap in the JSON format. Format:
         # 
         # {"Data":"{"k1":"v1", "k2":"v2"}"}
         # 
         # k specifies a key and v specifies a value. For more information, see [Manage a Kubernetes ConfigMap](https://help.aliyun.com/document_detail/171326.html).
-        # 
-        # This parameter is required.
-        self.data = data
-        # The description. The description must be 1 to 255 characters in length, and cannot contain spaces.
         self.description = description
         # The name of the ConfigMap. The name can contain digits, letters, and underscores (_). The name must start with a letter.
         # 
@@ -11905,7 +11947,7 @@ class CreateConfigMapResponseBodyData(TeaModel):
         self,
         config_map_id: int = None,
     ):
-        # The ID of the ConfigMap that was created.
+        # The returned result.
         self.config_map_id = config_map_id
 
     def validate(self):
@@ -11939,30 +11981,24 @@ class CreateConfigMapResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # Empty
+        self.code = code
+        # The trace ID that is used to query the details of the request.
+        self.data = data
+        # The ID of the ConfigMap that was created.
+        self.error_code = error_code
+        # The request ID.
+        self.message = message
+        # The returned data.
+        self.request_id = request_id
         # The HTTP status code. Valid values:
         # 
         # *   **2xx**: The call was successful.
         # *   **3xx**: The call was redirected.
         # *   **4xx**: The call failed.
         # *   **5xx**: A server error occurred.
-        self.code = code
-        # The returned result.
-        self.data = data
-        # The error code. Valid values:
-        # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
-        self.error_code = error_code
-        # The returned message.
-        self.message = message
-        # The request ID.
-        self.request_id = request_id
-        # Indicates whether the ConfigMap was created. Valid values:
-        # 
-        # *   **true**: The ConfigMap was created.
-        # *   **false**: The ConfigMap failed to be created.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The returned message.
         self.trace_id = trace_id
 
     def validate(self):
@@ -12276,6 +12312,7 @@ class CreateIngressRequest(TeaModel):
         cert_ids: str = None,
         default_rule: str = None,
         description: str = None,
+        idle_timeout: int = None,
         listener_port: int = None,
         listener_protocol: str = None,
         load_balance_type: str = None,
@@ -12290,6 +12327,7 @@ class CreateIngressRequest(TeaModel):
         # This parameter is required.
         self.default_rule = default_rule
         self.description = description
+        self.idle_timeout = idle_timeout
         # This parameter is required.
         self.listener_port = listener_port
         self.listener_protocol = listener_protocol
@@ -12320,6 +12358,8 @@ class CreateIngressRequest(TeaModel):
             result['DefaultRule'] = self.default_rule
         if self.description is not None:
             result['Description'] = self.description
+        if self.idle_timeout is not None:
+            result['IdleTimeout'] = self.idle_timeout
         if self.listener_port is not None:
             result['ListenerPort'] = self.listener_port
         if self.listener_protocol is not None:
@@ -12348,6 +12388,8 @@ class CreateIngressRequest(TeaModel):
             self.default_rule = m.get('DefaultRule')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('IdleTimeout') is not None:
+            self.idle_timeout = m.get('IdleTimeout')
         if m.get('ListenerPort') is not None:
             self.listener_port = m.get('ListenerPort')
         if m.get('ListenerProtocol') is not None:
@@ -19348,6 +19390,7 @@ class DescribeApplicationScalingRuleResponseBodyData(TeaModel):
         self,
         app_id: str = None,
         create_time: int = None,
+        enable_idle: bool = None,
         last_disable_time: int = None,
         metric: DescribeApplicationScalingRuleResponseBodyDataMetric = None,
         min_ready_instance_ratio: int = None,
@@ -19362,6 +19405,7 @@ class DescribeApplicationScalingRuleResponseBodyData(TeaModel):
         self.app_id = app_id
         # The time when the auto scaling policy was created. Unit: milliseconds.
         self.create_time = create_time
+        self.enable_idle = enable_idle
         # The time when the auto scaling policy was last disabled.
         self.last_disable_time = last_disable_time
         # The details of the metric-based auto scaling policy.
@@ -19402,6 +19446,8 @@ class DescribeApplicationScalingRuleResponseBodyData(TeaModel):
             result['AppId'] = self.app_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.enable_idle is not None:
+            result['EnableIdle'] = self.enable_idle
         if self.last_disable_time is not None:
             result['LastDisableTime'] = self.last_disable_time
         if self.metric is not None:
@@ -19428,6 +19474,8 @@ class DescribeApplicationScalingRuleResponseBodyData(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('EnableIdle') is not None:
+            self.enable_idle = m.get('EnableIdle')
         if m.get('LastDisableTime') is not None:
             self.last_disable_time = m.get('LastDisableTime')
         if m.get('Metric') is not None:
@@ -20160,6 +20208,7 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules(Tea
         self,
         app_id: str = None,
         create_time: int = None,
+        enable_idle: bool = None,
         last_disable_time: int = None,
         metric: DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric = None,
         min_ready_instance_ratio: int = None,
@@ -20174,6 +20223,7 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules(Tea
         self.app_id = app_id
         # The time when the auto scaling policy was created. Unit: milliseconds.
         self.create_time = create_time
+        self.enable_idle = enable_idle
         # The time when the auto scaling policy was last disabled.
         self.last_disable_time = last_disable_time
         # The details of the metric-based auto scaling policy.
@@ -20214,6 +20264,8 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules(Tea
             result['AppId'] = self.app_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.enable_idle is not None:
+            result['EnableIdle'] = self.enable_idle
         if self.last_disable_time is not None:
             result['LastDisableTime'] = self.last_disable_time
         if self.metric is not None:
@@ -20240,6 +20292,8 @@ class DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules(Tea
             self.app_id = m.get('AppId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('EnableIdle') is not None:
+            self.enable_idle = m.get('EnableIdle')
         if m.get('LastDisableTime') is not None:
             self.last_disable_time = m.get('LastDisableTime')
         if m.get('Metric') is not None:
@@ -23784,6 +23838,7 @@ class DescribeIngressResponseBodyData(TeaModel):
         default_rule: DescribeIngressResponseBodyDataDefaultRule = None,
         description: str = None,
         id: int = None,
+        idle_timeout: int = None,
         listener_port: int = None,
         listener_protocol: str = None,
         load_balance_type: str = None,
@@ -23809,6 +23864,7 @@ class DescribeIngressResponseBodyData(TeaModel):
         # *   **4xx**: indicates that the request was invalid.
         # *   **5xx**: indicates that a server error occurred.
         self.id = id
+        self.idle_timeout = idle_timeout
         # The default rule.
         self.listener_port = listener_port
         self.listener_protocol = listener_protocol
@@ -23857,6 +23913,8 @@ class DescribeIngressResponseBodyData(TeaModel):
             result['Description'] = self.description
         if self.id is not None:
             result['Id'] = self.id
+        if self.idle_timeout is not None:
+            result['IdleTimeout'] = self.idle_timeout
         if self.listener_port is not None:
             result['ListenerPort'] = self.listener_port
         if self.listener_protocol is not None:
@@ -23894,6 +23952,8 @@ class DescribeIngressResponseBodyData(TeaModel):
             self.description = m.get('Description')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('IdleTimeout') is not None:
+            self.idle_timeout = m.get('IdleTimeout')
         if m.get('ListenerPort') is not None:
             self.listener_port = m.get('ListenerPort')
         if m.get('ListenerProtocol') is not None:
@@ -39368,6 +39428,7 @@ class UpdateApplicationScalingRuleRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        enable_idle: bool = None,
         min_ready_instance_ratio: int = None,
         min_ready_instances: int = None,
         scaling_rule_metric: str = None,
@@ -39378,6 +39439,7 @@ class UpdateApplicationScalingRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.app_id = app_id
+        self.enable_idle = enable_idle
         # The percentage of the minimum number of available instances. Take note of the following rules:
         # 
         # *   If you set the value to **-1**, the minimum number of available instances is not determined based on this parameter. This is the default value.
@@ -39490,6 +39552,8 @@ class UpdateApplicationScalingRuleRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.enable_idle is not None:
+            result['EnableIdle'] = self.enable_idle
         if self.min_ready_instance_ratio is not None:
             result['MinReadyInstanceRatio'] = self.min_ready_instance_ratio
         if self.min_ready_instances is not None:
@@ -39506,6 +39570,8 @@ class UpdateApplicationScalingRuleRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('EnableIdle') is not None:
+            self.enable_idle = m.get('EnableIdle')
         if m.get('MinReadyInstanceRatio') is not None:
             self.min_ready_instance_ratio = m.get('MinReadyInstanceRatio')
         if m.get('MinReadyInstances') is not None:
@@ -39769,6 +39835,7 @@ class UpdateApplicationScalingRuleResponseBodyData(TeaModel):
         self,
         app_id: str = None,
         create_time: int = None,
+        enable_idle: bool = None,
         last_disable_time: int = None,
         metric: UpdateApplicationScalingRuleResponseBodyDataMetric = None,
         scale_rule_enabled: bool = None,
@@ -39781,6 +39848,7 @@ class UpdateApplicationScalingRuleResponseBodyData(TeaModel):
         self.app_id = app_id
         # The time when the auto scaling policy was created. Unit: milliseconds.
         self.create_time = create_time
+        self.enable_idle = enable_idle
         # The time when the auto scaling policy was last disabled.
         self.last_disable_time = last_disable_time
         # The details of the metric-based auto scaling policy.
@@ -39819,6 +39887,8 @@ class UpdateApplicationScalingRuleResponseBodyData(TeaModel):
             result['AppId'] = self.app_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.enable_idle is not None:
+            result['EnableIdle'] = self.enable_idle
         if self.last_disable_time is not None:
             result['LastDisableTime'] = self.last_disable_time
         if self.metric is not None:
@@ -39841,6 +39911,8 @@ class UpdateApplicationScalingRuleResponseBodyData(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('EnableIdle') is not None:
+            self.enable_idle = m.get('EnableIdle')
         if m.get('LastDisableTime') is not None:
             self.last_disable_time = m.get('LastDisableTime')
         if m.get('Metric') is not None:
@@ -40530,6 +40602,7 @@ class UpdateIngressRequest(TeaModel):
         cert_ids: str = None,
         default_rule: str = None,
         description: str = None,
+        idle_timeout: int = None,
         ingress_id: int = None,
         listener_port: str = None,
         listener_protocol: str = None,
@@ -40542,6 +40615,7 @@ class UpdateIngressRequest(TeaModel):
         self.cert_ids = cert_ids
         self.default_rule = default_rule
         self.description = description
+        self.idle_timeout = idle_timeout
         # This parameter is required.
         self.ingress_id = ingress_id
         self.listener_port = listener_port
@@ -40568,6 +40642,8 @@ class UpdateIngressRequest(TeaModel):
             result['DefaultRule'] = self.default_rule
         if self.description is not None:
             result['Description'] = self.description
+        if self.idle_timeout is not None:
+            result['IdleTimeout'] = self.idle_timeout
         if self.ingress_id is not None:
             result['IngressId'] = self.ingress_id
         if self.listener_port is not None:
@@ -40594,6 +40670,8 @@ class UpdateIngressRequest(TeaModel):
             self.default_rule = m.get('DefaultRule')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('IdleTimeout') is not None:
+            self.idle_timeout = m.get('IdleTimeout')
         if m.get('IngressId') is not None:
             self.ingress_id = m.get('IngressId')
         if m.get('ListenerPort') is not None:

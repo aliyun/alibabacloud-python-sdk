@@ -1,3 +1,15 @@
+2024-09-11 Version: 1.23.5
+- Update API CreateApplicationScalingRule: add param EnableIdle.
+- Update API CreateApplicationScalingRule: update response param.
+- Update API CreateIngress: add param IdleTimeout.
+- Update API DescribeApplicationScalingRule: update response param.
+- Update API DescribeApplicationScalingRules: update response param.
+- Update API DescribeIngress: update response param.
+- Update API UpdateApplicationScalingRule: add param EnableIdle.
+- Update API UpdateApplicationScalingRule: update response param.
+- Update API UpdateIngress: add param IdleTimeout.
+
+
 2024-08-28 Version: 1.23.4
 - Update API CreateApplication: add param EnableNewArms.
 - Update API DeployApplication: add param EnableNewArms.
