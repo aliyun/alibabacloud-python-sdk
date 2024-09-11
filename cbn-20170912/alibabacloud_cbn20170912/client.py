@@ -4503,7 +4503,7 @@ class Client(OpenApiClient):
 
     def create_transit_router_vpc_attachment_with_options(
         self,
-        request: cbn_20170912_models.CreateTransitRouterVpcAttachmentRequest,
+        tmp_req: cbn_20170912_models.CreateTransitRouterVpcAttachmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateTransitRouterVpcAttachmentResponse:
         """
@@ -4522,11 +4522,15 @@ class Client(OpenApiClient):
         To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the required permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
         VPC connections incur fees. Take note of the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](https://help.aliyun.com/document_detail/189836.html).
         
-        @param request: CreateTransitRouterVpcAttachmentRequest
+        @param tmp_req: CreateTransitRouterVpcAttachmentRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateTransitRouterVpcAttachmentResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cbn_20170912_models.CreateTransitRouterVpcAttachmentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.transit_router_vpcattachment_options):
+            request.transit_router_vpcattachment_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transit_router_vpcattachment_options, 'TransitRouterVPCAttachmentOptions', 'json')
         query = {}
         if not UtilClient.is_unset(request.auto_publish_route_enabled):
             query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
@@ -4556,6 +4560,8 @@ class Client(OpenApiClient):
             query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
         if not UtilClient.is_unset(request.transit_router_id):
             query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.transit_router_vpcattachment_options_shrink):
+            query['TransitRouterVPCAttachmentOptions'] = request.transit_router_vpcattachment_options_shrink
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.vpc_owner_id):
@@ -4583,7 +4589,7 @@ class Client(OpenApiClient):
 
     async def create_transit_router_vpc_attachment_with_options_async(
         self,
-        request: cbn_20170912_models.CreateTransitRouterVpcAttachmentRequest,
+        tmp_req: cbn_20170912_models.CreateTransitRouterVpcAttachmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateTransitRouterVpcAttachmentResponse:
         """
@@ -4602,11 +4608,15 @@ class Client(OpenApiClient):
         To connect to a network instance that belongs to another Alibaba Cloud account, you must first acquire the required permissions from the account. For more information, see [Acquire permissions to connect to a network instance that belongs to another account](https://help.aliyun.com/document_detail/181553.html).
         VPC connections incur fees. Take note of the billing rules of VPC connections before you create a VPC connection. For more information, see [Billing](https://help.aliyun.com/document_detail/189836.html).
         
-        @param request: CreateTransitRouterVpcAttachmentRequest
+        @param tmp_req: CreateTransitRouterVpcAttachmentRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateTransitRouterVpcAttachmentResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cbn_20170912_models.CreateTransitRouterVpcAttachmentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.transit_router_vpcattachment_options):
+            request.transit_router_vpcattachment_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transit_router_vpcattachment_options, 'TransitRouterVPCAttachmentOptions', 'json')
         query = {}
         if not UtilClient.is_unset(request.auto_publish_route_enabled):
             query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
@@ -4636,6 +4646,8 @@ class Client(OpenApiClient):
             query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
         if not UtilClient.is_unset(request.transit_router_id):
             query['TransitRouterId'] = request.transit_router_id
+        if not UtilClient.is_unset(request.transit_router_vpcattachment_options_shrink):
+            query['TransitRouterVPCAttachmentOptions'] = request.transit_router_vpcattachment_options_shrink
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.vpc_owner_id):
@@ -10563,6 +10575,8 @@ class Client(OpenApiClient):
             query['ChildInstanceId'] = request.child_instance_id
         if not UtilClient.is_unset(request.child_instance_owner_id):
             query['ChildInstanceOwnerId'] = request.child_instance_owner_id
+        if not UtilClient.is_unset(request.enabled_ipv_6):
+            query['EnabledIpv6'] = request.enabled_ipv_6
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -10620,6 +10634,8 @@ class Client(OpenApiClient):
             query['ChildInstanceId'] = request.child_instance_id
         if not UtilClient.is_unset(request.child_instance_owner_id):
             query['ChildInstanceOwnerId'] = request.child_instance_owner_id
+        if not UtilClient.is_unset(request.enabled_ipv_6):
+            query['EnabledIpv6'] = request.enabled_ipv_6
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -13291,6 +13307,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cen_id):
             query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.enabled_ipv_6):
+            query['EnabledIpv6'] = request.enabled_ipv_6
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -13350,6 +13368,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cen_id):
             query['CenId'] = request.cen_id
+        if not UtilClient.is_unset(request.enabled_ipv_6):
+            query['EnabledIpv6'] = request.enabled_ipv_6
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -21439,7 +21459,7 @@ class Client(OpenApiClient):
 
     def update_transit_router_vpc_attachment_attribute_with_options(
         self,
-        request: cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeRequest,
+        tmp_req: cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeResponse:
         """
@@ -21449,11 +21469,15 @@ class Client(OpenApiClient):
         If a VPC connection is in the **Modifying** state, the VPC connection is being modified. You can query the VPC connection but cannot perform other operations.
         If a VPC connection is in the **Attached** state, the VPC connection is modified.
         
-        @param request: UpdateTransitRouterVpcAttachmentAttributeRequest
+        @param tmp_req: UpdateTransitRouterVpcAttachmentAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateTransitRouterVpcAttachmentAttributeResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.transit_router_vpcattachment_options):
+            request.transit_router_vpcattachment_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transit_router_vpcattachment_options, 'TransitRouterVPCAttachmentOptions', 'json')
         query = {}
         if not UtilClient.is_unset(request.auto_publish_route_enabled):
             query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
@@ -21475,6 +21499,8 @@ class Client(OpenApiClient):
             query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
         if not UtilClient.is_unset(request.transit_router_attachment_name):
             query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        if not UtilClient.is_unset(request.transit_router_vpcattachment_options_shrink):
+            query['TransitRouterVPCAttachmentOptions'] = request.transit_router_vpcattachment_options_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -21496,7 +21522,7 @@ class Client(OpenApiClient):
 
     async def update_transit_router_vpc_attachment_attribute_with_options_async(
         self,
-        request: cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeRequest,
+        tmp_req: cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeResponse:
         """
@@ -21506,11 +21532,15 @@ class Client(OpenApiClient):
         If a VPC connection is in the **Modifying** state, the VPC connection is being modified. You can query the VPC connection but cannot perform other operations.
         If a VPC connection is in the **Attached** state, the VPC connection is modified.
         
-        @param request: UpdateTransitRouterVpcAttachmentAttributeRequest
+        @param tmp_req: UpdateTransitRouterVpcAttachmentAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateTransitRouterVpcAttachmentAttributeResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cbn_20170912_models.UpdateTransitRouterVpcAttachmentAttributeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.transit_router_vpcattachment_options):
+            request.transit_router_vpcattachment_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transit_router_vpcattachment_options, 'TransitRouterVPCAttachmentOptions', 'json')
         query = {}
         if not UtilClient.is_unset(request.auto_publish_route_enabled):
             query['AutoPublishRouteEnabled'] = request.auto_publish_route_enabled
@@ -21532,6 +21562,8 @@ class Client(OpenApiClient):
             query['TransitRouterAttachmentId'] = request.transit_router_attachment_id
         if not UtilClient.is_unset(request.transit_router_attachment_name):
             query['TransitRouterAttachmentName'] = request.transit_router_attachment_name
+        if not UtilClient.is_unset(request.transit_router_vpcattachment_options_shrink):
+            query['TransitRouterVPCAttachmentOptions'] = request.transit_router_vpcattachment_options_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

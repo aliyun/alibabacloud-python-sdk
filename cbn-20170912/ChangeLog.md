@@ -1,3 +1,16 @@
+2024-09-11 Version: 1.1.7
+- Update API AddTrafficMatchRuleToTrafficMarkingPolicy: update param TrafficMatchRules.
+- Update API CreateTrafficMarkingPolicy: update param TrafficMatchRules.
+- Update API CreateTransitRouterVpcAttachment: add param TransitRouterVPCAttachmentOptions.
+- Update API DescribeGrantRulesToCen: add param EnabledIpv6.
+- Update API ListGrantVSwitchesToCen: add param EnabledIpv6.
+- Update API ListTrafficMarkingPolicies: update response param.
+- Update API ListTransitRouterVpcAttachments: update response param.
+- Update API UpdateTrafficMarkingPolicyAttribute: update param AddTrafficMatchRules.
+- Update API UpdateTrafficMarkingPolicyAttribute: update param DeleteTrafficMatchRules.
+- Update API UpdateTransitRouterVpcAttachmentAttribute: add param TransitRouterVPCAttachmentOptions.
+
+
 2024-08-28 Version: 1.1.6
 - Update API AssociateTransitRouterMulticastDomain: update param VSwitchIds.
 - Update API CreateCenInterRegionTrafficQosPolicy: add param BandwidthGuaranteeMode.

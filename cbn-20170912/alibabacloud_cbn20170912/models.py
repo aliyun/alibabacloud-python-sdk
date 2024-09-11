@@ -171,6 +171,7 @@ class ActiveFlowLogResponse(TeaModel):
 class AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules(TeaModel):
     def __init__(
         self,
+        address_family: str = None,
         dst_cidr: str = None,
         dst_port_range: List[int] = None,
         match_dscp: int = None,
@@ -180,6 +181,7 @@ class AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules(TeaModel
         traffic_match_rule_description: str = None,
         traffic_match_rule_name: str = None,
     ):
+        self.address_family = address_family
         # The destination CIDR block that is used to match packets.
         # 
         # Packets whose destination IP addresses fall into the specified destination CIDR block are considered a match. If you do not specify a destination CIDR block, packets are considered a match regardless of the destination IP address.
@@ -251,6 +253,8 @@ class AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules(TeaModel
             return _map
 
         result = dict()
+        if self.address_family is not None:
+            result['AddressFamily'] = self.address_family
         if self.dst_cidr is not None:
             result['DstCidr'] = self.dst_cidr
         if self.dst_port_range is not None:
@@ -271,6 +275,8 @@ class AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules(TeaModel
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressFamily') is not None:
+            self.address_family = m.get('AddressFamily')
         if m.get('DstCidr') is not None:
             self.dst_cidr = m.get('DstCidr')
         if m.get('DstPortRange') is not None:
@@ -3573,6 +3579,7 @@ class CreateFlowlogResponse(TeaModel):
 class CreateTrafficMarkingPolicyRequestTrafficMatchRules(TeaModel):
     def __init__(
         self,
+        address_family: str = None,
         dst_cidr: str = None,
         dst_port_range: List[int] = None,
         match_dscp: int = None,
@@ -3582,6 +3589,7 @@ class CreateTrafficMarkingPolicyRequestTrafficMatchRules(TeaModel):
         traffic_match_rule_description: str = None,
         traffic_match_rule_name: str = None,
     ):
+        self.address_family = address_family
         # The destination CIDR block that is used to match packets.
         # 
         # Packets whose destination IP addresses fall into the specified destination CIDR block meet the traffic classification rule. If you do not specify a destination CIDR block, all packets meet the traffic classification rule.
@@ -3669,6 +3677,8 @@ class CreateTrafficMarkingPolicyRequestTrafficMatchRules(TeaModel):
             return _map
 
         result = dict()
+        if self.address_family is not None:
+            result['AddressFamily'] = self.address_family
         if self.dst_cidr is not None:
             result['DstCidr'] = self.dst_cidr
         if self.dst_port_range is not None:
@@ -3689,6 +3699,8 @@ class CreateTrafficMarkingPolicyRequestTrafficMatchRules(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressFamily') is not None:
+            self.address_family = m.get('AddressFamily')
         if m.get('DstCidr') is not None:
             self.dst_cidr = m.get('DstCidr')
         if m.get('DstPortRange') is not None:
@@ -6673,6 +6685,7 @@ class CreateTransitRouterVpcAttachmentRequest(TeaModel):
         transit_router_attachment_description: str = None,
         transit_router_attachment_name: str = None,
         transit_router_id: str = None,
+        transit_router_vpcattachment_options: Dict[str, str] = None,
         vpc_id: str = None,
         vpc_owner_id: int = None,
         zone_mappings: List[CreateTransitRouterVpcAttachmentRequestZoneMappings] = None,
@@ -6719,6 +6732,7 @@ class CreateTransitRouterVpcAttachmentRequest(TeaModel):
         self.transit_router_attachment_name = transit_router_attachment_name
         # The ID of the Enterprise Edition transit router.
         self.transit_router_id = transit_router_id
+        self.transit_router_vpcattachment_options = transit_router_vpcattachment_options
         # The VPC ID.
         # 
         # This parameter is required.
@@ -6780,6 +6794,8 @@ class CreateTransitRouterVpcAttachmentRequest(TeaModel):
             result['TransitRouterAttachmentName'] = self.transit_router_attachment_name
         if self.transit_router_id is not None:
             result['TransitRouterId'] = self.transit_router_id
+        if self.transit_router_vpcattachment_options is not None:
+            result['TransitRouterVPCAttachmentOptions'] = self.transit_router_vpcattachment_options
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.vpc_owner_id is not None:
@@ -6823,6 +6839,8 @@ class CreateTransitRouterVpcAttachmentRequest(TeaModel):
             self.transit_router_attachment_name = m.get('TransitRouterAttachmentName')
         if m.get('TransitRouterId') is not None:
             self.transit_router_id = m.get('TransitRouterId')
+        if m.get('TransitRouterVPCAttachmentOptions') is not None:
+            self.transit_router_vpcattachment_options = m.get('TransitRouterVPCAttachmentOptions')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('VpcOwnerId') is not None:
@@ -6831,6 +6849,279 @@ class CreateTransitRouterVpcAttachmentRequest(TeaModel):
         if m.get('ZoneMappings') is not None:
             for k in m.get('ZoneMappings'):
                 temp_model = CreateTransitRouterVpcAttachmentRequestZoneMappings()
+                self.zone_mappings.append(temp_model.from_map(k))
+        return self
+
+
+class CreateTransitRouterVpcAttachmentShrinkRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        # 
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # 
+        # You can specify at most 20 tag keys.
+        self.key = key
+        # The tag value.
+        # 
+        # The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # 
+        # Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateTransitRouterVpcAttachmentShrinkRequestZoneMappings(TeaModel):
+    def __init__(
+        self,
+        v_switch_id: str = None,
+        zone_id: str = None,
+    ):
+        # A vSwitch that is deployed in the zone that supports Enterprise Edition transit routers.
+        # 
+        # You can specify vSwitches for at most 10 zones in each call.
+        # 
+        # This parameter is required.
+        self.v_switch_id = v_switch_id
+        # The ID of the zone that supports Enterprise Edition transit routers.
+        # 
+        # You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query the most recent zone list.
+        # 
+        # You can specify at most 10 zones in each call.
+        # 
+        # This parameter is required.
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class CreateTransitRouterVpcAttachmentShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        auto_publish_route_enabled: bool = None,
+        cen_id: str = None,
+        charge_type: str = None,
+        client_token: str = None,
+        dry_run: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        tag: List[CreateTransitRouterVpcAttachmentShrinkRequestTag] = None,
+        transit_router_attachment_description: str = None,
+        transit_router_attachment_name: str = None,
+        transit_router_id: str = None,
+        transit_router_vpcattachment_options_shrink: str = None,
+        vpc_id: str = None,
+        vpc_owner_id: int = None,
+        zone_mappings: List[CreateTransitRouterVpcAttachmentShrinkRequestZoneMappings] = None,
+    ):
+        # Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
+        # 
+        # *   **false:** (default)
+        # *   **true**\
+        self.auto_publish_route_enabled = auto_publish_route_enabled
+        # The ID of the Cloud Enterprise Network (CEN) instance.
+        self.cen_id = cen_id
+        # The billing method. The default value is **POSTPAY**, which specifies the pay-as-you-go billing method.
+        self.charge_type = charge_type
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+        self.client_token = client_token
+        # Specifies whether to perform a dry run. Valid values:
+        # 
+        # *   **false** (default): performs a dry run and sends the request.
+        # *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        self.dry_run = dry_run
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The ID of the region where the VPC is deployed.
+        # 
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The information about the tags.
+        # 
+        # You can specify at most 20 tags in each call.
+        self.tag = tag
+        # The description of the VPC connection.
+        # 
+        # The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        self.transit_router_attachment_description = transit_router_attachment_description
+        # The name of the VPC connection.
+        # 
+        # The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        self.transit_router_attachment_name = transit_router_attachment_name
+        # The ID of the Enterprise Edition transit router.
+        self.transit_router_id = transit_router_id
+        self.transit_router_vpcattachment_options_shrink = transit_router_vpcattachment_options_shrink
+        # The VPC ID.
+        # 
+        # This parameter is required.
+        self.vpc_id = vpc_id
+        # The ID of the Alibaba Cloud account to which the VPC belongs. The default value is the ID of the current Alibaba Cloud account.
+        # 
+        # > If the network instance and CEN instance belong to different Alibaba Cloud accounts, this parameter is required.
+        self.vpc_owner_id = vpc_owner_id
+        # A zone that supports Enterprise Edition transit routers.
+        # 
+        # You can specify at most 10 zones.
+        # 
+        # This parameter is required.
+        self.zone_mappings = zone_mappings
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+        if self.zone_mappings:
+            for k in self.zone_mappings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_publish_route_enabled is not None:
+            result['AutoPublishRouteEnabled'] = self.auto_publish_route_enabled
+        if self.cen_id is not None:
+            result['CenId'] = self.cen_id
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.transit_router_attachment_description is not None:
+            result['TransitRouterAttachmentDescription'] = self.transit_router_attachment_description
+        if self.transit_router_attachment_name is not None:
+            result['TransitRouterAttachmentName'] = self.transit_router_attachment_name
+        if self.transit_router_id is not None:
+            result['TransitRouterId'] = self.transit_router_id
+        if self.transit_router_vpcattachment_options_shrink is not None:
+            result['TransitRouterVPCAttachmentOptions'] = self.transit_router_vpcattachment_options_shrink
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vpc_owner_id is not None:
+            result['VpcOwnerId'] = self.vpc_owner_id
+        result['ZoneMappings'] = []
+        if self.zone_mappings is not None:
+            for k in self.zone_mappings:
+                result['ZoneMappings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPublishRouteEnabled') is not None:
+            self.auto_publish_route_enabled = m.get('AutoPublishRouteEnabled')
+        if m.get('CenId') is not None:
+            self.cen_id = m.get('CenId')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateTransitRouterVpcAttachmentShrinkRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('TransitRouterAttachmentDescription') is not None:
+            self.transit_router_attachment_description = m.get('TransitRouterAttachmentDescription')
+        if m.get('TransitRouterAttachmentName') is not None:
+            self.transit_router_attachment_name = m.get('TransitRouterAttachmentName')
+        if m.get('TransitRouterId') is not None:
+            self.transit_router_id = m.get('TransitRouterId')
+        if m.get('TransitRouterVPCAttachmentOptions') is not None:
+            self.transit_router_vpcattachment_options_shrink = m.get('TransitRouterVPCAttachmentOptions')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VpcOwnerId') is not None:
+            self.vpc_owner_id = m.get('VpcOwnerId')
+        self.zone_mappings = []
+        if m.get('ZoneMappings') is not None:
+            for k in m.get('ZoneMappings'):
+                temp_model = CreateTransitRouterVpcAttachmentShrinkRequestZoneMappings()
                 self.zone_mappings.append(temp_model.from_map(k))
         return self
 
@@ -17485,6 +17776,7 @@ class DescribeGrantRulesToCenRequest(TeaModel):
         cen_id: str = None,
         child_instance_id: str = None,
         child_instance_owner_id: int = None,
+        enabled_ipv_6: bool = None,
         max_results: int = None,
         next_token: str = None,
         owner_account: str = None,
@@ -17502,6 +17794,7 @@ class DescribeGrantRulesToCenRequest(TeaModel):
         self.child_instance_id = child_instance_id
         # The ID of the Alibaba Cloud account to which the network instance belongs.
         self.child_instance_owner_id = child_instance_owner_id
+        self.enabled_ipv_6 = enabled_ipv_6
         # *   If you do not set **MaxResults**, it indicates that you do not need to query results in batches. The value of **MaxResults** in the response indicates the total number of entries returned.
         # *   If you specify a value for **MaxResults**, it indicates that you need to query results in batches. The value of **MaxResults** indicates the number of entries to return in each batch. Valid values: **1** to **100**. The value of **MaxResults** in the response indicates the number of entries in the current batch. We recommend that you set **MaxResults** to **20**.
         self.max_results = max_results
@@ -17543,6 +17836,8 @@ class DescribeGrantRulesToCenRequest(TeaModel):
             result['ChildInstanceId'] = self.child_instance_id
         if self.child_instance_owner_id is not None:
             result['ChildInstanceOwnerId'] = self.child_instance_owner_id
+        if self.enabled_ipv_6 is not None:
+            result['EnabledIpv6'] = self.enabled_ipv_6
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -17569,6 +17864,8 @@ class DescribeGrantRulesToCenRequest(TeaModel):
             self.child_instance_id = m.get('ChildInstanceId')
         if m.get('ChildInstanceOwnerId') is not None:
             self.child_instance_owner_id = m.get('ChildInstanceOwnerId')
+        if m.get('EnabledIpv6') is not None:
+            self.enabled_ipv_6 = m.get('EnabledIpv6')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -22305,6 +22602,7 @@ class ListGrantVSwitchesToCenRequest(TeaModel):
     def __init__(
         self,
         cen_id: str = None,
+        enabled_ipv_6: bool = None,
         owner_account: str = None,
         owner_id: int = None,
         page_number: int = None,
@@ -22319,6 +22617,7 @@ class ListGrantVSwitchesToCenRequest(TeaModel):
         # 
         # This parameter is required.
         self.cen_id = cen_id
+        self.enabled_ipv_6 = enabled_ipv_6
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number of the page to return. Default value: **1**.
@@ -22356,6 +22655,8 @@ class ListGrantVSwitchesToCenRequest(TeaModel):
         result = dict()
         if self.cen_id is not None:
             result['CenId'] = self.cen_id
+        if self.enabled_ipv_6 is not None:
+            result['EnabledIpv6'] = self.enabled_ipv_6
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -22380,6 +22681,8 @@ class ListGrantVSwitchesToCenRequest(TeaModel):
         m = m or dict()
         if m.get('CenId') is not None:
             self.cen_id = m.get('CenId')
+        if m.get('EnabledIpv6') is not None:
+            self.enabled_ipv_6 = m.get('EnabledIpv6')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -23013,6 +23316,7 @@ class ListTrafficMarkingPoliciesRequest(TeaModel):
 class ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules(TeaModel):
     def __init__(
         self,
+        address_family: str = None,
         dst_cidr: str = None,
         dst_port_range: List[int] = None,
         match_dscp: int = None,
@@ -23024,6 +23328,7 @@ class ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRu
         traffic_match_rule_name: str = None,
         traffic_match_rule_status: str = None,
     ):
+        self.address_family = address_family
         # The destination CIDR block that is used to match packets.
         self.dst_cidr = dst_cidr
         # The destination port range used to match data packets.
@@ -23062,6 +23367,8 @@ class ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRu
             return _map
 
         result = dict()
+        if self.address_family is not None:
+            result['AddressFamily'] = self.address_family
         if self.dst_cidr is not None:
             result['DstCidr'] = self.dst_cidr
         if self.dst_port_range is not None:
@@ -23086,6 +23393,8 @@ class ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRu
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressFamily') is not None:
+            self.address_family = m.get('AddressFamily')
         if m.get('DstCidr') is not None:
             self.dst_cidr = m.get('DstCidr')
         if m.get('DstPortRange') is not None:
@@ -28925,6 +29234,7 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(TeaMod
         transit_router_attachment_id: str = None,
         transit_router_attachment_name: str = None,
         transit_router_id: str = None,
+        transit_router_vpcattachment_options: Dict[str, str] = None,
         vpc_id: str = None,
         vpc_owner_id: int = None,
         vpc_region_id: str = None,
@@ -28970,6 +29280,7 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(TeaMod
         self.transit_router_attachment_name = transit_router_attachment_name
         # The description of the Enterprise Edition transit router.
         self.transit_router_id = transit_router_id
+        self.transit_router_vpcattachment_options = transit_router_vpcattachment_options
         # The VPC ID.
         self.vpc_id = vpc_id
         # The ID of the Alibaba Cloud account to which the VPC belongs.
@@ -29021,6 +29332,8 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(TeaMod
             result['TransitRouterAttachmentName'] = self.transit_router_attachment_name
         if self.transit_router_id is not None:
             result['TransitRouterId'] = self.transit_router_id
+        if self.transit_router_vpcattachment_options is not None:
+            result['TransitRouterVPCAttachmentOptions'] = self.transit_router_vpcattachment_options
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.vpc_owner_id is not None:
@@ -29062,6 +29375,8 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(TeaMod
             self.transit_router_attachment_name = m.get('TransitRouterAttachmentName')
         if m.get('TransitRouterId') is not None:
             self.transit_router_id = m.get('TransitRouterId')
+        if m.get('TransitRouterVPCAttachmentOptions') is not None:
+            self.transit_router_vpcattachment_options = m.get('TransitRouterVPCAttachmentOptions')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('VpcOwnerId') is not None:
@@ -34791,6 +35106,7 @@ class UpdateCenInterRegionTrafficQosQueueAttributeResponse(TeaModel):
 class UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules(TeaModel):
     def __init__(
         self,
+        address_family: str = None,
         dst_cidr: str = None,
         dst_port_range: List[int] = None,
         match_dscp: int = None,
@@ -34800,6 +35116,7 @@ class UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules(TeaModel):
         traffic_match_rule_description: str = None,
         traffic_match_rule_name: str = None,
     ):
+        self.address_family = address_family
         # The destination CIDR block that is used to match packets.
         # 
         # Packets whose destination IP addresses fall into the specified destination CIDR block meet the traffic classification rule. If you do not specify a destination CIDR block, all packets meet the traffic classification rule.
@@ -34887,6 +35204,8 @@ class UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules(TeaModel):
             return _map
 
         result = dict()
+        if self.address_family is not None:
+            result['AddressFamily'] = self.address_family
         if self.dst_cidr is not None:
             result['DstCidr'] = self.dst_cidr
         if self.dst_port_range is not None:
@@ -34907,6 +35226,8 @@ class UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressFamily') is not None:
+            self.address_family = m.get('AddressFamily')
         if m.get('DstCidr') is not None:
             self.dst_cidr = m.get('DstCidr')
         if m.get('DstPortRange') is not None:
@@ -34929,6 +35250,7 @@ class UpdateTrafficMarkingPolicyAttributeRequestAddTrafficMatchRules(TeaModel):
 class UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules(TeaModel):
     def __init__(
         self,
+        address_family: str = None,
         dst_cidr: str = None,
         dst_port_range: List[int] = None,
         match_dscp: int = None,
@@ -34938,6 +35260,7 @@ class UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules(TeaModel
         traffic_match_rule_description: str = None,
         traffic_match_rule_name: str = None,
     ):
+        self.address_family = address_family
         # The destination CIDR block that is used to match packets.
         self.dst_cidr = dst_cidr
         # The destination port range that is used to match packets.
@@ -34970,6 +35293,8 @@ class UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules(TeaModel
             return _map
 
         result = dict()
+        if self.address_family is not None:
+            result['AddressFamily'] = self.address_family
         if self.dst_cidr is not None:
             result['DstCidr'] = self.dst_cidr
         if self.dst_port_range is not None:
@@ -34990,6 +35315,8 @@ class UpdateTrafficMarkingPolicyAttributeRequestDeleteTrafficMatchRules(TeaModel
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddressFamily') is not None:
+            self.address_family = m.get('AddressFamily')
         if m.get('DstCidr') is not None:
             self.dst_cidr = m.get('DstCidr')
         if m.get('DstPortRange') is not None:
@@ -36300,6 +36627,7 @@ class UpdateTransitRouterVpcAttachmentAttributeRequest(TeaModel):
         transit_router_attachment_description: str = None,
         transit_router_attachment_id: str = None,
         transit_router_attachment_name: str = None,
+        transit_router_vpcattachment_options: Dict[str, str] = None,
     ):
         # Specifies whether to allow the Enterprise Edition transit router to advertise routes to the VPC. Valid values:
         # 
@@ -36333,6 +36661,7 @@ class UpdateTransitRouterVpcAttachmentAttributeRequest(TeaModel):
         # 
         # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
         self.transit_router_attachment_name = transit_router_attachment_name
+        self.transit_router_vpcattachment_options = transit_router_vpcattachment_options
 
     def validate(self):
         pass
@@ -36363,6 +36692,8 @@ class UpdateTransitRouterVpcAttachmentAttributeRequest(TeaModel):
             result['TransitRouterAttachmentId'] = self.transit_router_attachment_id
         if self.transit_router_attachment_name is not None:
             result['TransitRouterAttachmentName'] = self.transit_router_attachment_name
+        if self.transit_router_vpcattachment_options is not None:
+            result['TransitRouterVPCAttachmentOptions'] = self.transit_router_vpcattachment_options
         return result
 
     def from_map(self, m: dict = None):
@@ -36387,6 +36718,117 @@ class UpdateTransitRouterVpcAttachmentAttributeRequest(TeaModel):
             self.transit_router_attachment_id = m.get('TransitRouterAttachmentId')
         if m.get('TransitRouterAttachmentName') is not None:
             self.transit_router_attachment_name = m.get('TransitRouterAttachmentName')
+        if m.get('TransitRouterVPCAttachmentOptions') is not None:
+            self.transit_router_vpcattachment_options = m.get('TransitRouterVPCAttachmentOptions')
+        return self
+
+
+class UpdateTransitRouterVpcAttachmentAttributeShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        auto_publish_route_enabled: bool = None,
+        client_token: str = None,
+        dry_run: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        transit_router_attachment_description: str = None,
+        transit_router_attachment_id: str = None,
+        transit_router_attachment_name: str = None,
+        transit_router_vpcattachment_options_shrink: str = None,
+    ):
+        # Specifies whether to allow the Enterprise Edition transit router to advertise routes to the VPC. Valid values:
+        # 
+        # *   **false:** (default)
+        # *   **true**\
+        self.auto_publish_route_enabled = auto_publish_route_enabled
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        self.client_token = client_token
+        # Specifies whether to perform a dry run. Default values:
+        # 
+        # *   **false** (default): performs a dry run and sends the request.
+        # *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
+        self.dry_run = dry_run
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The description of the VPC connection.
+        # 
+        # The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+        self.transit_router_attachment_description = transit_router_attachment_description
+        # The ID of the VPC connection.
+        # 
+        # This parameter is required.
+        self.transit_router_attachment_id = transit_router_attachment_id
+        # The name of the VPC connection.
+        # 
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+        self.transit_router_attachment_name = transit_router_attachment_name
+        self.transit_router_vpcattachment_options_shrink = transit_router_vpcattachment_options_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_publish_route_enabled is not None:
+            result['AutoPublishRouteEnabled'] = self.auto_publish_route_enabled
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.transit_router_attachment_description is not None:
+            result['TransitRouterAttachmentDescription'] = self.transit_router_attachment_description
+        if self.transit_router_attachment_id is not None:
+            result['TransitRouterAttachmentId'] = self.transit_router_attachment_id
+        if self.transit_router_attachment_name is not None:
+            result['TransitRouterAttachmentName'] = self.transit_router_attachment_name
+        if self.transit_router_vpcattachment_options_shrink is not None:
+            result['TransitRouterVPCAttachmentOptions'] = self.transit_router_vpcattachment_options_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPublishRouteEnabled') is not None:
+            self.auto_publish_route_enabled = m.get('AutoPublishRouteEnabled')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TransitRouterAttachmentDescription') is not None:
+            self.transit_router_attachment_description = m.get('TransitRouterAttachmentDescription')
+        if m.get('TransitRouterAttachmentId') is not None:
+            self.transit_router_attachment_id = m.get('TransitRouterAttachmentId')
+        if m.get('TransitRouterAttachmentName') is not None:
+            self.transit_router_attachment_name = m.get('TransitRouterAttachmentName')
+        if m.get('TransitRouterVPCAttachmentOptions') is not None:
+            self.transit_router_vpcattachment_options_shrink = m.get('TransitRouterVPCAttachmentOptions')
         return self
 
 
