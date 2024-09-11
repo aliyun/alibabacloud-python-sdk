@@ -5,7 +5,6 @@ from Tea.core import TeaCore
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_util.client import Client as UtilClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_wyota20210420 import models as wyota_20210420_models
@@ -22,9 +21,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._product_id = 'wyota'
-        gateway_client = GatewayClientClient()
-        self._spi = gateway_client
+        self._signature_algorithm = 'v2'
         self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('wyota', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -77,7 +74,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ActivateDeviceResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def activate_device_with_options_async(
@@ -112,7 +109,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ActivateDeviceResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def activate_device(
@@ -181,16 +178,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.AddDeviceFromSNResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.AddDeviceFromSNResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.AddDeviceFromSNResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_device_from_snwith_options_async(
         self,
@@ -232,16 +223,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.AddDeviceFromSNResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.AddDeviceFromSNResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.AddDeviceFromSNResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_device_from_sn(
         self,
@@ -313,7 +298,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.AddDeviceSeatsAndLabelsResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def add_device_seats_and_labels_with_options_async(
@@ -360,7 +345,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.AddDeviceSeatsAndLabelsResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def add_device_seats_and_labels(
@@ -427,16 +412,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.AddDevicesFromCSVResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.AddDevicesFromCSVResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.AddDevicesFromCSVResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_devices_from_csvwith_options_async(
         self,
@@ -476,16 +455,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.AddDevicesFromCSVResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.AddDevicesFromCSVResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.AddDevicesFromCSVResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_devices_from_csv(
         self,
@@ -543,16 +516,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.AddLabelsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.AddLabelsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.AddLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_labels_with_options_async(
         self,
@@ -584,16 +551,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.AddLabelsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.AddLabelsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.AddLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_labels(
         self,
@@ -655,16 +616,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.AddOrUpdateDeviceSeatsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.AddOrUpdateDeviceSeatsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.AddOrUpdateDeviceSeatsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_or_update_device_seats_with_options_async(
         self,
@@ -700,16 +655,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.AddOrUpdateDeviceSeatsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.AddOrUpdateDeviceSeatsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.AddOrUpdateDeviceSeatsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_or_update_device_seats(
         self,
@@ -771,16 +720,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.AddTerminalResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.AddTerminalResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.AddTerminalResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_terminal_with_options_async(
         self,
@@ -816,16 +759,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.AddTerminalResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.AddTerminalResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.AddTerminalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_terminal(
         self,
@@ -885,16 +822,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.AttachEndUsersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.AttachEndUsersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.AttachEndUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_end_users_with_options_async(
         self,
@@ -928,16 +859,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.AttachEndUsersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.AttachEndUsersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.AttachEndUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_end_users(
         self,
@@ -999,16 +924,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.AttachLabelResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.AttachLabelResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.AttachLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_label_with_options_async(
         self,
@@ -1044,16 +963,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.AttachLabelResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.AttachLabelResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.AttachLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_label(
         self,
@@ -1115,16 +1028,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.AttachLabelsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.AttachLabelsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.AttachLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_labels_with_options_async(
         self,
@@ -1160,16 +1067,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.AttachLabelsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.AttachLabelsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.AttachLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_labels(
         self,
@@ -1231,16 +1132,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.BindAccountLessLoginUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.BindAccountLessLoginUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.BindAccountLessLoginUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def bind_account_less_login_user_with_options_async(
         self,
@@ -1276,16 +1171,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.BindAccountLessLoginUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.BindAccountLessLoginUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.BindAccountLessLoginUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def bind_account_less_login_user(
         self,
@@ -1312,6 +1201,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.bind_account_less_login_user_with_options_async(request, runtime)
+
+    def bind_password_free_login_user_with_options(
+        self,
+        request: wyota_20210420_models.BindPasswordFreeLoginUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> wyota_20210420_models.BindPasswordFreeLoginUserResponse:
+        """
+        @summary 绑定免账号登录用户
+        
+        @param request: BindPasswordFreeLoginUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindPasswordFreeLoginUserResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.serial_number):
+            body['SerialNumber'] = request.serial_number
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BindPasswordFreeLoginUser',
+            version='2021-04-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            wyota_20210420_models.BindPasswordFreeLoginUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_password_free_login_user_with_options_async(
+        self,
+        request: wyota_20210420_models.BindPasswordFreeLoginUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> wyota_20210420_models.BindPasswordFreeLoginUserResponse:
+        """
+        @summary 绑定免账号登录用户
+        
+        @param request: BindPasswordFreeLoginUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindPasswordFreeLoginUserResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_user_id):
+            body['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.serial_number):
+            body['SerialNumber'] = request.serial_number
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BindPasswordFreeLoginUser',
+            version='2021-04-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            wyota_20210420_models.BindPasswordFreeLoginUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_password_free_login_user(
+        self,
+        request: wyota_20210420_models.BindPasswordFreeLoginUserRequest,
+    ) -> wyota_20210420_models.BindPasswordFreeLoginUserResponse:
+        """
+        @summary 绑定免账号登录用户
+        
+        @param request: BindPasswordFreeLoginUserRequest
+        @return: BindPasswordFreeLoginUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.bind_password_free_login_user_with_options(request, runtime)
+
+    async def bind_password_free_login_user_async(
+        self,
+        request: wyota_20210420_models.BindPasswordFreeLoginUserRequest,
+    ) -> wyota_20210420_models.BindPasswordFreeLoginUserResponse:
+        """
+        @summary 绑定免账号登录用户
+        
+        @param request: BindPasswordFreeLoginUserRequest
+        @return: BindPasswordFreeLoginUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_password_free_login_user_with_options_async(request, runtime)
 
     def check_uuid_valid_with_options(
         self,
@@ -1361,7 +1354,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.CheckUuidValidResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def check_uuid_valid_with_options_async(
@@ -1412,7 +1405,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.CheckUuidValidResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def check_uuid_valid(
@@ -1497,16 +1490,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.CreateAppOtaTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.CreateAppOtaTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.CreateAppOtaTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_app_ota_task_with_options_async(
         self,
@@ -1564,16 +1551,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.CreateAppOtaTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.CreateAppOtaTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.CreateAppOtaTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_app_ota_task(
         self,
@@ -1667,16 +1648,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.CreateAppOtaVersionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.CreateAppOtaVersionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.CreateAppOtaVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_app_ota_version_with_options_async(
         self,
@@ -1744,16 +1719,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.CreateAppOtaVersionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.CreateAppOtaVersionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.CreateAppOtaVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_app_ota_version(
         self,
@@ -1811,16 +1780,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.DeleteAppOtaVersionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.DeleteAppOtaVersionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.DeleteAppOtaVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_app_ota_versions_with_options_async(
         self,
@@ -1852,16 +1815,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.DeleteAppOtaVersionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.DeleteAppOtaVersionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.DeleteAppOtaVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_app_ota_versions(
         self,
@@ -1925,16 +1882,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.DeleteDevicesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.DeleteDevicesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.DeleteDevicesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_devices_with_options_async(
         self,
@@ -1972,16 +1923,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.DeleteDevicesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.DeleteDevicesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.DeleteDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_devices(
         self,
@@ -2043,16 +1988,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.DeleteLabelResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.DeleteLabelResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.DeleteLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_label_with_options_async(
         self,
@@ -2088,16 +2027,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.DeleteLabelResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.DeleteLabelResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.DeleteLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_label(
         self,
@@ -2167,16 +2100,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.DescribeAppOtaVersionResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.DescribeAppOtaVersionResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.DescribeAppOtaVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_app_ota_version_with_options_async(
         self,
@@ -2220,16 +2147,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.DescribeAppOtaVersionResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.DescribeAppOtaVersionResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.DescribeAppOtaVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_app_ota_version(
         self,
@@ -2299,7 +2220,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.DescribeDeviceSeatsResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_device_seats_with_options_async(
@@ -2344,7 +2265,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.DescribeDeviceSeatsResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_device_seats(
@@ -2411,7 +2332,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.DescribeDeviceVersionDetailResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_device_version_detail_with_options_async(
@@ -2452,7 +2373,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.DescribeDeviceVersionDetailResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_device_version_detail(
@@ -2517,16 +2438,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.DescribeSnLabelCountsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.DescribeSnLabelCountsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.DescribeSnLabelCountsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_sn_label_counts_with_options_async(
         self,
@@ -2564,16 +2479,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.DescribeSnLabelCountsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.DescribeSnLabelCountsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.DescribeSnLabelCountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_sn_label_counts(
         self,
@@ -2641,7 +2550,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.DescribeWorkZonesResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def describe_work_zones_with_options_async(
@@ -2684,7 +2593,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.DescribeWorkZonesResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def describe_work_zones(
@@ -2745,16 +2654,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.DetachEndUsersResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.DetachEndUsersResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.DetachEndUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_end_users_with_options_async(
         self,
@@ -2788,16 +2691,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.DetachEndUsersResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.DetachEndUsersResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.DetachEndUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_end_users(
         self,
@@ -2859,16 +2756,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.DetachLabelResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.DetachLabelResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.DetachLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_label_with_options_async(
         self,
@@ -2904,16 +2795,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.DetachLabelResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.DetachLabelResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.DetachLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_label(
         self,
@@ -2975,16 +2860,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.DetachLabelsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.DetachLabelsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.DetachLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_labels_with_options_async(
         self,
@@ -3020,16 +2899,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.DetachLabelsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.DetachLabelsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.DetachLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_labels(
         self,
@@ -3091,7 +2964,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.GenerateOssUrlResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def generate_oss_url_with_options_async(
@@ -3128,7 +3001,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.GenerateOssUrlResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def generate_oss_url(
@@ -3197,7 +3070,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.GetAppOtaLatestVersionResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_app_ota_latest_version_with_options_async(
@@ -3240,7 +3113,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.GetAppOtaLatestVersionResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_app_ota_latest_version(
@@ -3311,7 +3184,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.GetDeviceConfigsResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_device_configs_with_options_async(
@@ -3356,7 +3229,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.GetDeviceConfigsResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_device_configs(
@@ -3415,16 +3288,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.GetDeviceOtaAutoStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.GetDeviceOtaAutoStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.GetDeviceOtaAutoStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_device_ota_auto_status_with_options_async(
         self,
@@ -3456,16 +3323,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.GetDeviceOtaAutoStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.GetDeviceOtaAutoStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.GetDeviceOtaAutoStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_device_ota_auto_status(
         self,
@@ -3543,7 +3404,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.GetDeviceOtaInfoResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_device_ota_info_with_options_async(
@@ -3596,7 +3457,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.GetDeviceOtaInfoResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_device_ota_info(
@@ -3661,16 +3522,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.GetDeviceOtaInfoTestResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.GetDeviceOtaInfoTestResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.GetDeviceOtaInfoTestResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_device_ota_info_test_with_options_async(
         self,
@@ -3708,16 +3563,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.GetDeviceOtaInfoTestResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.GetDeviceOtaInfoTestResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.GetDeviceOtaInfoTestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_device_ota_info_test(
         self,
@@ -3775,16 +3624,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.GetDeviceOtaTaskVersionInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.GetDeviceOtaTaskVersionInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.GetDeviceOtaTaskVersionInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_device_ota_task_version_info_with_options_async(
         self,
@@ -3816,16 +3659,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.GetDeviceOtaTaskVersionInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.GetDeviceOtaTaskVersionInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.GetDeviceOtaTaskVersionInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_device_ota_task_version_info(
         self,
@@ -3889,16 +3726,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.GetDeviceUpgradeStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.GetDeviceUpgradeStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.GetDeviceUpgradeStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_device_upgrade_status_with_options_async(
         self,
@@ -3936,16 +3767,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.GetDeviceUpgradeStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.GetDeviceUpgradeStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.GetDeviceUpgradeStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_device_upgrade_status(
         self,
@@ -4007,16 +3832,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.GetExportDeviceInfoOssUrlResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.GetExportDeviceInfoOssUrlResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.GetExportDeviceInfoOssUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_export_device_info_oss_url_with_options_async(
         self,
@@ -4052,16 +3871,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.GetExportDeviceInfoOssUrlResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.GetExportDeviceInfoOssUrlResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.GetExportDeviceInfoOssUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_export_device_info_oss_url(
         self,
@@ -4125,7 +3938,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.GetFbOssConfigResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def get_fb_oss_config_with_options_async(
@@ -4164,7 +3977,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.GetFbOssConfigResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def get_fb_oss_config(
@@ -4223,16 +4036,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.GetOssConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.GetOssConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.GetOssConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_oss_config_with_options_async(
         self,
@@ -4264,16 +4071,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.GetOssConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.GetOssConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.GetOssConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_oss_config(
         self,
@@ -4331,16 +4132,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.GetVersionDownloadUrlResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.GetVersionDownloadUrlResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.GetVersionDownloadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_version_download_url_with_options_async(
         self,
@@ -4372,16 +4167,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.GetVersionDownloadUrlResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.GetVersionDownloadUrlResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.GetVersionDownloadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_version_download_url(
         self,
@@ -4441,16 +4230,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.ListDeviceOtaTaskByTenantResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.ListDeviceOtaTaskByTenantResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.ListDeviceOtaTaskByTenantResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_device_ota_task_by_tenant_with_options_async(
         self,
@@ -4484,16 +4267,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.ListDeviceOtaTaskByTenantResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.ListDeviceOtaTaskByTenantResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.ListDeviceOtaTaskByTenantResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_device_ota_task_by_tenant(
         self,
@@ -4559,16 +4336,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.ListDeviceSeatsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.ListDeviceSeatsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.ListDeviceSeatsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_device_seats_with_options_async(
         self,
@@ -4608,16 +4379,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.ListDeviceSeatsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.ListDeviceSeatsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.ListDeviceSeatsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_device_seats(
         self,
@@ -4711,16 +4476,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.ListDevicesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.ListDevicesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.ListDevicesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_devices_with_options_async(
         self,
@@ -4788,16 +4547,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.ListDevicesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.ListDevicesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.ListDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_devices(
         self,
@@ -4850,7 +4603,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ListFbIssueLabelsResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_fb_issue_labels_with_options_async(
@@ -4878,7 +4631,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ListFbIssueLabelsResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_fb_issue_labels(self) -> wyota_20210420_models.ListFbIssueLabelsResponse:
@@ -4933,7 +4686,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ListFbIssueLabelsByLCResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_fb_issue_labels_by_lcwith_options_async(
@@ -4970,7 +4723,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ListFbIssueLabelsByLCResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_fb_issue_labels_by_lc(
@@ -5035,16 +4788,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.ListLabelsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.ListLabelsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.ListLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_labels_with_options_async(
         self,
@@ -5082,16 +4829,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.ListLabelsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.ListLabelsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.ListLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_labels(
         self,
@@ -5153,16 +4894,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.ListTenantDeviceOtaInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.ListTenantDeviceOtaInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.ListTenantDeviceOtaInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tenant_device_ota_info_with_options_async(
         self,
@@ -5198,16 +4933,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.ListTenantDeviceOtaInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.ListTenantDeviceOtaInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.ListTenantDeviceOtaInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tenant_device_ota_info(
         self,
@@ -5289,16 +5018,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.ListTerminalResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.ListTerminalResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.ListTerminalResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_terminal_with_options_async(
         self,
@@ -5354,16 +5077,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.ListTerminalResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.ListTerminalResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.ListTerminalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_terminal(
         self,
@@ -5433,16 +5150,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.ListTerminalsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.ListTerminalsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.ListTerminalsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_terminals_with_options_async(
         self,
@@ -5486,16 +5197,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.ListTerminalsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.ListTerminalsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.ListTerminalsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_terminals(
         self,
@@ -5561,7 +5266,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ListTrustDevicesResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_trust_devices_with_options_async(
@@ -5602,7 +5307,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ListTrustDevicesResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_trust_devices(
@@ -5679,7 +5384,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ListUserFbAcIssuesResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_user_fb_ac_issues_with_options_async(
@@ -5730,7 +5435,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ListUserFbAcIssuesResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_user_fb_ac_issues(
@@ -5827,7 +5532,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ListUserFbIssuesResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def list_user_fb_issues_with_options_async(
@@ -5898,7 +5603,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ListUserFbIssuesResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def list_user_fb_issues(
@@ -5961,16 +5666,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.ModifyDevicesSecureNetworkTypeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.ModifyDevicesSecureNetworkTypeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.ModifyDevicesSecureNetworkTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_devices_secure_network_type_with_options_async(
         self,
@@ -6006,16 +5705,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.ModifyDevicesSecureNetworkTypeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.ModifyDevicesSecureNetworkTypeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.ModifyDevicesSecureNetworkTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_devices_secure_network_type(
         self,
@@ -6075,16 +5768,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.ModifySecureNetworkTypeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.ModifySecureNetworkTypeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.ModifySecureNetworkTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_secure_network_type_with_options_async(
         self,
@@ -6118,16 +5805,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.ModifySecureNetworkTypeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.ModifySecureNetworkTypeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.ModifySecureNetworkTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_secure_network_type(
         self,
@@ -6213,7 +5894,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.RegisterDeviceResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def register_device_with_options_async(
@@ -6274,7 +5955,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.RegisterDeviceResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def register_device(
@@ -6351,7 +6032,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ReportAppOtaInfoResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def report_app_ota_info_with_options_async(
@@ -6402,7 +6083,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ReportAppOtaInfoResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def report_app_ota_info(
@@ -6473,7 +6154,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ReportDeviceOtaInfoResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def report_device_ota_info_with_options_async(
@@ -6518,7 +6199,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ReportDeviceOtaInfoResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def report_device_ota_info(
@@ -6599,7 +6280,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ReportUserFbAcIssueResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def report_user_fb_ac_issue_with_options_async(
@@ -6654,7 +6335,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ReportUserFbAcIssueResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def report_user_fb_ac_issue(
@@ -6767,7 +6448,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ReportUserFbIssueResponse(),
-            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            self.call_api(params, req, runtime)
         )
 
     async def report_user_fb_issue_with_options_async(
@@ -6854,7 +6535,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             wyota_20210420_models.ReportUserFbIssueResponse(),
-            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
+            await self.call_api_async(params, req, runtime)
         )
 
     def report_user_fb_issue(
@@ -6926,16 +6607,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.SendOpsMessageToTerminalsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.SendOpsMessageToTerminalsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.SendOpsMessageToTerminalsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def send_ops_message_to_terminals_with_options_async(
         self,
@@ -6980,16 +6655,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.SendOpsMessageToTerminalsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.SendOpsMessageToTerminalsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.SendOpsMessageToTerminalsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def send_ops_message_to_terminals(
         self,
@@ -7055,16 +6724,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.SetDeviceOtaAutoStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.SetDeviceOtaAutoStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.SetDeviceOtaAutoStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_device_ota_auto_status_with_options_async(
         self,
@@ -7104,16 +6767,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.SetDeviceOtaAutoStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.SetDeviceOtaAutoStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.SetDeviceOtaAutoStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_device_ota_auto_status(
         self,
@@ -7173,16 +6830,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.SetDeviceOtaTaskStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.SetDeviceOtaTaskStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.SetDeviceOtaTaskStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def set_device_ota_task_status_with_options_async(
         self,
@@ -7216,16 +6867,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.SetDeviceOtaTaskStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.SetDeviceOtaTaskStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.SetDeviceOtaTaskStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def set_device_ota_task_status(
         self,
@@ -7285,16 +6930,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.UnbindAccountLessLoginUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.UnbindAccountLessLoginUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.UnbindAccountLessLoginUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def unbind_account_less_login_user_with_options_async(
         self,
@@ -7328,16 +6967,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.UnbindAccountLessLoginUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.UnbindAccountLessLoginUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.UnbindAccountLessLoginUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def unbind_account_less_login_user(
         self,
@@ -7399,16 +7032,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.UnbindDeviceSeatsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.UnbindDeviceSeatsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.UnbindDeviceSeatsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def unbind_device_seats_with_options_async(
         self,
@@ -7444,16 +7071,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.UnbindDeviceSeatsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.UnbindDeviceSeatsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.UnbindDeviceSeatsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def unbind_device_seats(
         self,
@@ -7515,16 +7136,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.UpdateAliasResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.UpdateAliasResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.UpdateAliasResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_alias_with_options_async(
         self,
@@ -7560,16 +7175,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.UpdateAliasResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.UpdateAliasResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.UpdateAliasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_alias(
         self,
@@ -7637,16 +7246,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.UpdateDeviceBindedEndUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.UpdateDeviceBindedEndUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.UpdateDeviceBindedEndUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_device_binded_end_user_with_options_async(
         self,
@@ -7688,16 +7291,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.UpdateDeviceBindedEndUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.UpdateDeviceBindedEndUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.UpdateDeviceBindedEndUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_device_binded_end_user(
         self,
@@ -7757,16 +7354,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.UpdateLabelResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.UpdateLabelResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.UpdateLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_label_with_options_async(
         self,
@@ -7800,16 +7391,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.UpdateLabelResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.UpdateLabelResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.UpdateLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_label(
         self,
@@ -7913,16 +7498,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.UpdateTerminalPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.UpdateTerminalPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.UpdateTerminalPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_terminal_policy_with_options_async(
         self,
@@ -8000,16 +7579,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                wyota_20210420_models.UpdateTerminalPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                wyota_20210420_models.UpdateTerminalPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            wyota_20210420_models.UpdateTerminalPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_terminal_policy(
         self,

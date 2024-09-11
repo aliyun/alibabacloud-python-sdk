@@ -1,3 +1,7 @@
+2024-09-11 Version: 1.1.0
+- Support API BindPasswordFreeLoginUser.
+
+
 2024-08-30 Version: 1.0.4
 - Update API DescribeAppOtaVersion: update response param.
 - Update API UpdateTerminalPolicy: add param BackgroundModeTitle.
