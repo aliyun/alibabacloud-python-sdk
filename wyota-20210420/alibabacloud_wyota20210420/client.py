@@ -7102,6 +7102,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.unbind_device_seats_with_options_async(request, runtime)
 
+    def unbind_password_free_login_user_with_options(
+        self,
+        request: wyota_20210420_models.UnbindPasswordFreeLoginUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> wyota_20210420_models.UnbindPasswordFreeLoginUserResponse:
+        """
+        @summary 解绑免密登录用户
+        
+        @param request: UnbindPasswordFreeLoginUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindPasswordFreeLoginUserResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.serial_number):
+            body['SerialNumber'] = request.serial_number
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UnbindPasswordFreeLoginUser',
+            version='2021-04-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            wyota_20210420_models.UnbindPasswordFreeLoginUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_password_free_login_user_with_options_async(
+        self,
+        request: wyota_20210420_models.UnbindPasswordFreeLoginUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> wyota_20210420_models.UnbindPasswordFreeLoginUserResponse:
+        """
+        @summary 解绑免密登录用户
+        
+        @param request: UnbindPasswordFreeLoginUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindPasswordFreeLoginUserResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.serial_number):
+            body['SerialNumber'] = request.serial_number
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UnbindPasswordFreeLoginUser',
+            version='2021-04-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            wyota_20210420_models.UnbindPasswordFreeLoginUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind_password_free_login_user(
+        self,
+        request: wyota_20210420_models.UnbindPasswordFreeLoginUserRequest,
+    ) -> wyota_20210420_models.UnbindPasswordFreeLoginUserResponse:
+        """
+        @summary 解绑免密登录用户
+        
+        @param request: UnbindPasswordFreeLoginUserRequest
+        @return: UnbindPasswordFreeLoginUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.unbind_password_free_login_user_with_options(request, runtime)
+
+    async def unbind_password_free_login_user_async(
+        self,
+        request: wyota_20210420_models.UnbindPasswordFreeLoginUserRequest,
+    ) -> wyota_20210420_models.UnbindPasswordFreeLoginUserResponse:
+        """
+        @summary 解绑免密登录用户
+        
+        @param request: UnbindPasswordFreeLoginUserRequest
+        @return: UnbindPasswordFreeLoginUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.unbind_password_free_login_user_with_options_async(request, runtime)
+
     def update_alias_with_options(
         self,
         request: wyota_20210420_models.UpdateAliasRequest,

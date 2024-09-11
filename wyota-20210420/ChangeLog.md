@@ -1,3 +1,7 @@
+2024-09-11 Version: 1.2.0
+- Support API UnbindPasswordFreeLoginUser.
+
+
 2024-09-11 Version: 1.1.0
 - Support API BindPasswordFreeLoginUser.
 
