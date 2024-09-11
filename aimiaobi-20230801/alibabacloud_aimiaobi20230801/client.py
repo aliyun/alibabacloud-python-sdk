@@ -585,6 +585,214 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_custom_text_with_options_async(request, runtime)
 
+    def delete_custom_topic_by_topic_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteCustomTopicByTopicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteCustomTopicByTopicResponse:
+        """
+        @summary 根据主题删除自定义主题事件
+        
+        @param request: DeleteCustomTopicByTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomTopicByTopicResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomTopicByTopic',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteCustomTopicByTopicResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_custom_topic_by_topic_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteCustomTopicByTopicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteCustomTopicByTopicResponse:
+        """
+        @summary 根据主题删除自定义主题事件
+        
+        @param request: DeleteCustomTopicByTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomTopicByTopicResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomTopicByTopic',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteCustomTopicByTopicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_custom_topic_by_topic(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteCustomTopicByTopicRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteCustomTopicByTopicResponse:
+        """
+        @summary 根据主题删除自定义主题事件
+        
+        @param request: DeleteCustomTopicByTopicRequest
+        @return: DeleteCustomTopicByTopicResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_custom_topic_by_topic_with_options(request, runtime)
+
+    async def delete_custom_topic_by_topic_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteCustomTopicByTopicRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteCustomTopicByTopicResponse:
+        """
+        @summary 根据主题删除自定义主题事件
+        
+        @param request: DeleteCustomTopicByTopicRequest
+        @return: DeleteCustomTopicByTopicResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_custom_topic_by_topic_with_options_async(request, runtime)
+
+    def delete_custom_topic_view_point_by_id_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteCustomTopicViewPointByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteCustomTopicViewPointByIdResponse:
+        """
+        @summary 根据自定义观点ID删除自定义观点
+        
+        @param request: DeleteCustomTopicViewPointByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomTopicViewPointByIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.custom_view_point_id):
+            body['CustomViewPointId'] = request.custom_view_point_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomTopicViewPointById',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteCustomTopicViewPointByIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_custom_topic_view_point_by_id_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteCustomTopicViewPointByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteCustomTopicViewPointByIdResponse:
+        """
+        @summary 根据自定义观点ID删除自定义观点
+        
+        @param request: DeleteCustomTopicViewPointByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomTopicViewPointByIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.custom_view_point_id):
+            body['CustomViewPointId'] = request.custom_view_point_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomTopicViewPointById',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteCustomTopicViewPointByIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_custom_topic_view_point_by_id(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteCustomTopicViewPointByIdRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteCustomTopicViewPointByIdResponse:
+        """
+        @summary 根据自定义观点ID删除自定义观点
+        
+        @param request: DeleteCustomTopicViewPointByIdRequest
+        @return: DeleteCustomTopicViewPointByIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_custom_topic_view_point_by_id_with_options(request, runtime)
+
+    async def delete_custom_topic_view_point_by_id_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteCustomTopicViewPointByIdRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteCustomTopicViewPointByIdResponse:
+        """
+        @summary 根据自定义观点ID删除自定义观点
+        
+        @param request: DeleteCustomTopicViewPointByIdRequest
+        @return: DeleteCustomTopicViewPointByIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_custom_topic_view_point_by_id_with_options_async(request, runtime)
+
     def delete_generated_content_with_options(
         self,
         request: ai_miao_bi_20230801_models.DeleteGeneratedContentRequest,
@@ -1116,6 +1324,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.export_generated_content_with_options_async(request, runtime)
+
+    def export_hot_topic_planning_proposals_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.ExportHotTopicPlanningProposalsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ExportHotTopicPlanningProposalsResponse:
+        """
+        @summary 导出选题策划文档，响应为一个可公开访问的URL。一小时后失效
+        
+        @param tmp_req: ExportHotTopicPlanningProposalsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportHotTopicPlanningProposalsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.ExportHotTopicPlanningProposalsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_view_point_ids):
+            request.custom_view_point_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_view_point_ids, 'CustomViewPointIds', 'json')
+        if not UtilClient.is_unset(tmp_req.titles):
+            request.titles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.titles, 'Titles', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.custom_view_point_ids_shrink):
+            body['CustomViewPointIds'] = request.custom_view_point_ids_shrink
+        if not UtilClient.is_unset(request.export_type):
+            body['ExportType'] = request.export_type
+        if not UtilClient.is_unset(request.titles_shrink):
+            body['Titles'] = request.titles_shrink
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_source):
+            body['TopicSource'] = request.topic_source
+        if not UtilClient.is_unset(request.view_point_type):
+            body['ViewPointType'] = request.view_point_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportHotTopicPlanningProposals',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ExportHotTopicPlanningProposalsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_hot_topic_planning_proposals_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.ExportHotTopicPlanningProposalsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ExportHotTopicPlanningProposalsResponse:
+        """
+        @summary 导出选题策划文档，响应为一个可公开访问的URL。一小时后失效
+        
+        @param tmp_req: ExportHotTopicPlanningProposalsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportHotTopicPlanningProposalsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.ExportHotTopicPlanningProposalsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_view_point_ids):
+            request.custom_view_point_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_view_point_ids, 'CustomViewPointIds', 'json')
+        if not UtilClient.is_unset(tmp_req.titles):
+            request.titles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.titles, 'Titles', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.custom_view_point_ids_shrink):
+            body['CustomViewPointIds'] = request.custom_view_point_ids_shrink
+        if not UtilClient.is_unset(request.export_type):
+            body['ExportType'] = request.export_type
+        if not UtilClient.is_unset(request.titles_shrink):
+            body['Titles'] = request.titles_shrink
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_source):
+            body['TopicSource'] = request.topic_source
+        if not UtilClient.is_unset(request.view_point_type):
+            body['ViewPointType'] = request.view_point_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportHotTopicPlanningProposals',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ExportHotTopicPlanningProposalsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_hot_topic_planning_proposals(
+        self,
+        request: ai_miao_bi_20230801_models.ExportHotTopicPlanningProposalsRequest,
+    ) -> ai_miao_bi_20230801_models.ExportHotTopicPlanningProposalsResponse:
+        """
+        @summary 导出选题策划文档，响应为一个可公开访问的URL。一小时后失效
+        
+        @param request: ExportHotTopicPlanningProposalsRequest
+        @return: ExportHotTopicPlanningProposalsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.export_hot_topic_planning_proposals_with_options(request, runtime)
+
+    async def export_hot_topic_planning_proposals_async(
+        self,
+        request: ai_miao_bi_20230801_models.ExportHotTopicPlanningProposalsRequest,
+    ) -> ai_miao_bi_20230801_models.ExportHotTopicPlanningProposalsResponse:
+        """
+        @summary 导出选题策划文档，响应为一个可公开访问的URL。一小时后失效
+        
+        @param request: ExportHotTopicPlanningProposalsRequest
+        @return: ExportHotTopicPlanningProposalsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.export_hot_topic_planning_proposals_with_options_async(request, runtime)
 
     def export_intervenes_with_options(
         self,
@@ -2025,6 +2369,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_custom_text_with_options_async(request, runtime)
 
+    def get_custom_topic_selection_perspective_analysis_task_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetCustomTopicSelectionPerspectiveAnalysisTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetCustomTopicSelectionPerspectiveAnalysisTaskResponse:
+        """
+        @summary 获取自定义选题视角分析任务结果
+        
+        @param request: GetCustomTopicSelectionPerspectiveAnalysisTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomTopicSelectionPerspectiveAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCustomTopicSelectionPerspectiveAnalysisTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetCustomTopicSelectionPerspectiveAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_custom_topic_selection_perspective_analysis_task_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetCustomTopicSelectionPerspectiveAnalysisTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetCustomTopicSelectionPerspectiveAnalysisTaskResponse:
+        """
+        @summary 获取自定义选题视角分析任务结果
+        
+        @param request: GetCustomTopicSelectionPerspectiveAnalysisTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomTopicSelectionPerspectiveAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCustomTopicSelectionPerspectiveAnalysisTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetCustomTopicSelectionPerspectiveAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_custom_topic_selection_perspective_analysis_task(
+        self,
+        request: ai_miao_bi_20230801_models.GetCustomTopicSelectionPerspectiveAnalysisTaskRequest,
+    ) -> ai_miao_bi_20230801_models.GetCustomTopicSelectionPerspectiveAnalysisTaskResponse:
+        """
+        @summary 获取自定义选题视角分析任务结果
+        
+        @param request: GetCustomTopicSelectionPerspectiveAnalysisTaskRequest
+        @return: GetCustomTopicSelectionPerspectiveAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_custom_topic_selection_perspective_analysis_task_with_options(request, runtime)
+
+    async def get_custom_topic_selection_perspective_analysis_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetCustomTopicSelectionPerspectiveAnalysisTaskRequest,
+    ) -> ai_miao_bi_20230801_models.GetCustomTopicSelectionPerspectiveAnalysisTaskResponse:
+        """
+        @summary 获取自定义选题视角分析任务结果
+        
+        @param request: GetCustomTopicSelectionPerspectiveAnalysisTaskRequest
+        @return: GetCustomTopicSelectionPerspectiveAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_custom_topic_selection_perspective_analysis_task_with_options_async(request, runtime)
+
     def get_data_source_order_config_with_options(
         self,
         request: ai_miao_bi_20230801_models.GetDataSourceOrderConfigRequest,
@@ -2128,6 +2576,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_source_order_config_with_options_async(request, runtime)
+
+    def get_doc_cluster_task_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetDocClusterTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetDocClusterTaskResponse:
+        """
+        @summary 获取文档聚合任务结果
+        
+        @param request: GetDocClusterTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocClusterTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDocClusterTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetDocClusterTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_doc_cluster_task_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetDocClusterTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetDocClusterTaskResponse:
+        """
+        @summary 获取文档聚合任务结果
+        
+        @param request: GetDocClusterTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDocClusterTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDocClusterTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetDocClusterTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_doc_cluster_task(
+        self,
+        request: ai_miao_bi_20230801_models.GetDocClusterTaskRequest,
+    ) -> ai_miao_bi_20230801_models.GetDocClusterTaskResponse:
+        """
+        @summary 获取文档聚合任务结果
+        
+        @param request: GetDocClusterTaskRequest
+        @return: GetDocClusterTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_doc_cluster_task_with_options(request, runtime)
+
+    async def get_doc_cluster_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetDocClusterTaskRequest,
+    ) -> ai_miao_bi_20230801_models.GetDocClusterTaskResponse:
+        """
+        @summary 获取文档聚合任务结果
+        
+        @param request: GetDocClusterTaskRequest
+        @return: GetDocClusterTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_doc_cluster_task_with_options_async(request, runtime)
 
     def get_generated_content_with_options(
         self,
@@ -2832,6 +3384,214 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_properties_with_options_async(request, runtime)
+
+    def get_topic_by_id_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetTopicByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetTopicByIdResponse:
+        """
+        @summary 根据ID获取热点事件信息
+        
+        @param request: GetTopicByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTopicByIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTopicById',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetTopicByIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_topic_by_id_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetTopicByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetTopicByIdResponse:
+        """
+        @summary 根据ID获取热点事件信息
+        
+        @param request: GetTopicByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTopicByIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTopicById',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetTopicByIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_topic_by_id(
+        self,
+        request: ai_miao_bi_20230801_models.GetTopicByIdRequest,
+    ) -> ai_miao_bi_20230801_models.GetTopicByIdResponse:
+        """
+        @summary 根据ID获取热点事件信息
+        
+        @param request: GetTopicByIdRequest
+        @return: GetTopicByIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_topic_by_id_with_options(request, runtime)
+
+    async def get_topic_by_id_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetTopicByIdRequest,
+    ) -> ai_miao_bi_20230801_models.GetTopicByIdResponse:
+        """
+        @summary 根据ID获取热点事件信息
+        
+        @param request: GetTopicByIdRequest
+        @return: GetTopicByIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_topic_by_id_with_options_async(request, runtime)
+
+    def get_topic_selection_perspective_analysis_task_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetTopicSelectionPerspectiveAnalysisTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetTopicSelectionPerspectiveAnalysisTaskResponse:
+        """
+        @summary 获取选题视角分析任务结果
+        
+        @param request: GetTopicSelectionPerspectiveAnalysisTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTopicSelectionPerspectiveAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTopicSelectionPerspectiveAnalysisTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetTopicSelectionPerspectiveAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_topic_selection_perspective_analysis_task_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetTopicSelectionPerspectiveAnalysisTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetTopicSelectionPerspectiveAnalysisTaskResponse:
+        """
+        @summary 获取选题视角分析任务结果
+        
+        @param request: GetTopicSelectionPerspectiveAnalysisTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTopicSelectionPerspectiveAnalysisTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTopicSelectionPerspectiveAnalysisTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetTopicSelectionPerspectiveAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_topic_selection_perspective_analysis_task(
+        self,
+        request: ai_miao_bi_20230801_models.GetTopicSelectionPerspectiveAnalysisTaskRequest,
+    ) -> ai_miao_bi_20230801_models.GetTopicSelectionPerspectiveAnalysisTaskResponse:
+        """
+        @summary 获取选题视角分析任务结果
+        
+        @param request: GetTopicSelectionPerspectiveAnalysisTaskRequest
+        @return: GetTopicSelectionPerspectiveAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_topic_selection_perspective_analysis_task_with_options(request, runtime)
+
+    async def get_topic_selection_perspective_analysis_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetTopicSelectionPerspectiveAnalysisTaskRequest,
+    ) -> ai_miao_bi_20230801_models.GetTopicSelectionPerspectiveAnalysisTaskResponse:
+        """
+        @summary 获取选题视角分析任务结果
+        
+        @param request: GetTopicSelectionPerspectiveAnalysisTaskRequest
+        @return: GetTopicSelectionPerspectiveAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_topic_selection_perspective_analysis_task_with_options_async(request, runtime)
 
     def import_intervene_file_with_options(
         self,
@@ -3645,6 +4405,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_custom_text_with_options_async(request, runtime)
 
+    def list_custom_view_points_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.ListCustomViewPointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListCustomViewPointsResponse:
+        """
+        @summary 自定义视角列表
+        
+        @param tmp_req: ListCustomViewPointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomViewPointsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.ListCustomViewPointsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.attitudes):
+            request.attitudes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attitudes, 'Attitudes', 'json')
+        if not UtilClient.is_unset(tmp_req.custom_view_point_ids):
+            request.custom_view_point_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_view_point_ids, 'CustomViewPointIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.attitude):
+            body['Attitude'] = request.attitude
+        if not UtilClient.is_unset(request.attitudes_shrink):
+            body['Attitudes'] = request.attitudes_shrink
+        if not UtilClient.is_unset(request.custom_view_point_id):
+            body['CustomViewPointId'] = request.custom_view_point_id
+        if not UtilClient.is_unset(request.custom_view_point_ids_shrink):
+            body['CustomViewPointIds'] = request.custom_view_point_ids_shrink
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_id):
+            body['TopicId'] = request.topic_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListCustomViewPoints',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListCustomViewPointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_custom_view_points_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.ListCustomViewPointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListCustomViewPointsResponse:
+        """
+        @summary 自定义视角列表
+        
+        @param tmp_req: ListCustomViewPointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomViewPointsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.ListCustomViewPointsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.attitudes):
+            request.attitudes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attitudes, 'Attitudes', 'json')
+        if not UtilClient.is_unset(tmp_req.custom_view_point_ids):
+            request.custom_view_point_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_view_point_ids, 'CustomViewPointIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.attitude):
+            body['Attitude'] = request.attitude
+        if not UtilClient.is_unset(request.attitudes_shrink):
+            body['Attitudes'] = request.attitudes_shrink
+        if not UtilClient.is_unset(request.custom_view_point_id):
+            body['CustomViewPointId'] = request.custom_view_point_id
+        if not UtilClient.is_unset(request.custom_view_point_ids_shrink):
+            body['CustomViewPointIds'] = request.custom_view_point_ids_shrink
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_id):
+            body['TopicId'] = request.topic_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListCustomViewPoints',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListCustomViewPointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_custom_view_points(
+        self,
+        request: ai_miao_bi_20230801_models.ListCustomViewPointsRequest,
+    ) -> ai_miao_bi_20230801_models.ListCustomViewPointsResponse:
+        """
+        @summary 自定义视角列表
+        
+        @param request: ListCustomViewPointsRequest
+        @return: ListCustomViewPointsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_custom_view_points_with_options(request, runtime)
+
+    async def list_custom_view_points_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListCustomViewPointsRequest,
+    ) -> ai_miao_bi_20230801_models.ListCustomViewPointsResponse:
+        """
+        @summary 自定义视角列表
+        
+        @param request: ListCustomViewPointsRequest
+        @return: ListCustomViewPointsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_custom_view_points_with_options_async(request, runtime)
+
     def list_dialogues_with_options(
         self,
         request: ai_miao_bi_20230801_models.ListDialoguesRequest,
@@ -3768,6 +4672,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_dialogues_with_options_async(request, runtime)
+
+    def list_fresh_view_points_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListFreshViewPointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListFreshViewPointsResponse:
+        """
+        @summary 新颖视角列表
+        
+        @param request: ListFreshViewPointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFreshViewPointsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_source):
+            body['TopicSource'] = request.topic_source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListFreshViewPoints',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListFreshViewPointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_fresh_view_points_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListFreshViewPointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListFreshViewPointsResponse:
+        """
+        @summary 新颖视角列表
+        
+        @param request: ListFreshViewPointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFreshViewPointsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_source):
+            body['TopicSource'] = request.topic_source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListFreshViewPoints',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListFreshViewPointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_fresh_view_points(
+        self,
+        request: ai_miao_bi_20230801_models.ListFreshViewPointsRequest,
+    ) -> ai_miao_bi_20230801_models.ListFreshViewPointsResponse:
+        """
+        @summary 新颖视角列表
+        
+        @param request: ListFreshViewPointsRequest
+        @return: ListFreshViewPointsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_fresh_view_points_with_options(request, runtime)
+
+    async def list_fresh_view_points_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListFreshViewPointsRequest,
+    ) -> ai_miao_bi_20230801_models.ListFreshViewPointsResponse:
+        """
+        @summary 新颖视角列表
+        
+        @param request: ListFreshViewPointsRequest
+        @return: ListFreshViewPointsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_fresh_view_points_with_options_async(request, runtime)
 
     def list_generated_contents_with_options(
         self,
@@ -4024,6 +5044,374 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_hot_news_with_type_with_options_async(request, runtime)
+
+    def list_hot_sources_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListHotSourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListHotSourcesResponse:
+        """
+        @summary 获取所有平台热榜源列表
+        
+        @param request: ListHotSourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotSourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListHotSources',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListHotSourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_hot_sources_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListHotSourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListHotSourcesResponse:
+        """
+        @summary 获取所有平台热榜源列表
+        
+        @param request: ListHotSourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotSourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListHotSources',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListHotSourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_hot_sources(
+        self,
+        request: ai_miao_bi_20230801_models.ListHotSourcesRequest,
+    ) -> ai_miao_bi_20230801_models.ListHotSourcesResponse:
+        """
+        @summary 获取所有平台热榜源列表
+        
+        @param request: ListHotSourcesRequest
+        @return: ListHotSourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_hot_sources_with_options(request, runtime)
+
+    async def list_hot_sources_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListHotSourcesRequest,
+    ) -> ai_miao_bi_20230801_models.ListHotSourcesResponse:
+        """
+        @summary 获取所有平台热榜源列表
+        
+        @param request: ListHotSourcesRequest
+        @return: ListHotSourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_hot_sources_with_options_async(request, runtime)
+
+    def list_hot_topics_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.ListHotTopicsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListHotTopicsResponse:
+        """
+        @summary 获取热点事件列表
+        
+        @param tmp_req: ListHotTopicsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotTopicsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.ListHotTopicsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.topic_ids):
+            request.topic_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.topic_ids, 'TopicIds', 'json')
+        if not UtilClient.is_unset(tmp_req.topics):
+            request.topics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.topics, 'Topics', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.topic_ids_shrink):
+            body['TopicIds'] = request.topic_ids_shrink
+        if not UtilClient.is_unset(request.topic_query):
+            body['TopicQuery'] = request.topic_query
+        if not UtilClient.is_unset(request.topic_source):
+            body['TopicSource'] = request.topic_source
+        if not UtilClient.is_unset(request.topic_version):
+            body['TopicVersion'] = request.topic_version
+        if not UtilClient.is_unset(request.topics_shrink):
+            body['Topics'] = request.topics_shrink
+        if not UtilClient.is_unset(request.with_news):
+            body['WithNews'] = request.with_news
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListHotTopics',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListHotTopicsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_hot_topics_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.ListHotTopicsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListHotTopicsResponse:
+        """
+        @summary 获取热点事件列表
+        
+        @param tmp_req: ListHotTopicsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotTopicsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.ListHotTopicsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.topic_ids):
+            request.topic_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.topic_ids, 'TopicIds', 'json')
+        if not UtilClient.is_unset(tmp_req.topics):
+            request.topics_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.topics, 'Topics', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.topic_ids_shrink):
+            body['TopicIds'] = request.topic_ids_shrink
+        if not UtilClient.is_unset(request.topic_query):
+            body['TopicQuery'] = request.topic_query
+        if not UtilClient.is_unset(request.topic_source):
+            body['TopicSource'] = request.topic_source
+        if not UtilClient.is_unset(request.topic_version):
+            body['TopicVersion'] = request.topic_version
+        if not UtilClient.is_unset(request.topics_shrink):
+            body['Topics'] = request.topics_shrink
+        if not UtilClient.is_unset(request.with_news):
+            body['WithNews'] = request.with_news
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListHotTopics',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListHotTopicsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_hot_topics(
+        self,
+        request: ai_miao_bi_20230801_models.ListHotTopicsRequest,
+    ) -> ai_miao_bi_20230801_models.ListHotTopicsResponse:
+        """
+        @summary 获取热点事件列表
+        
+        @param request: ListHotTopicsRequest
+        @return: ListHotTopicsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_hot_topics_with_options(request, runtime)
+
+    async def list_hot_topics_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListHotTopicsRequest,
+    ) -> ai_miao_bi_20230801_models.ListHotTopicsResponse:
+        """
+        @summary 获取热点事件列表
+        
+        @param request: ListHotTopicsRequest
+        @return: ListHotTopicsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_hot_topics_with_options_async(request, runtime)
+
+    def list_hot_view_points_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListHotViewPointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListHotViewPointsResponse:
+        """
+        @summary 热门视角列表
+        
+        @param request: ListHotViewPointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotViewPointsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_source):
+            body['TopicSource'] = request.topic_source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListHotViewPoints',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListHotViewPointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_hot_view_points_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListHotViewPointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListHotViewPointsResponse:
+        """
+        @summary 热门视角列表
+        
+        @param request: ListHotViewPointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotViewPointsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_source):
+            body['TopicSource'] = request.topic_source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListHotViewPoints',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListHotViewPointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_hot_view_points(
+        self,
+        request: ai_miao_bi_20230801_models.ListHotViewPointsRequest,
+    ) -> ai_miao_bi_20230801_models.ListHotViewPointsResponse:
+        """
+        @summary 热门视角列表
+        
+        @param request: ListHotViewPointsRequest
+        @return: ListHotViewPointsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_hot_view_points_with_options(request, runtime)
+
+    async def list_hot_view_points_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListHotViewPointsRequest,
+    ) -> ai_miao_bi_20230801_models.ListHotViewPointsResponse:
+        """
+        @summary 热门视角列表
+        
+        @param request: ListHotViewPointsRequest
+        @return: ListHotViewPointsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_hot_view_points_with_options_async(request, runtime)
 
     def list_intervene_cnt_with_options(
         self,
@@ -4641,6 +6029,490 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_material_documents_with_options_async(request, runtime)
 
+    def list_planning_proposal_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.ListPlanningProposalRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListPlanningProposalResponse:
+        """
+        @summary 获取选题策划列表
+        
+        @param tmp_req: ListPlanningProposalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPlanningProposalResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.ListPlanningProposalShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_view_point_ids):
+            request.custom_view_point_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_view_point_ids, 'CustomViewPointIds', 'json')
+        if not UtilClient.is_unset(tmp_req.titles):
+            request.titles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.titles, 'Titles', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.custom_view_point_id):
+            body['CustomViewPointId'] = request.custom_view_point_id
+        if not UtilClient.is_unset(request.custom_view_point_ids_shrink):
+            body['CustomViewPointIds'] = request.custom_view_point_ids_shrink
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.titles_shrink):
+            body['Titles'] = request.titles_shrink
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_source):
+            body['TopicSource'] = request.topic_source
+        if not UtilClient.is_unset(request.topic_version):
+            body['TopicVersion'] = request.topic_version
+        if not UtilClient.is_unset(request.view_point_type):
+            body['ViewPointType'] = request.view_point_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListPlanningProposal',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListPlanningProposalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_planning_proposal_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.ListPlanningProposalRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListPlanningProposalResponse:
+        """
+        @summary 获取选题策划列表
+        
+        @param tmp_req: ListPlanningProposalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPlanningProposalResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.ListPlanningProposalShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_view_point_ids):
+            request.custom_view_point_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_view_point_ids, 'CustomViewPointIds', 'json')
+        if not UtilClient.is_unset(tmp_req.titles):
+            request.titles_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.titles, 'Titles', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.custom_view_point_id):
+            body['CustomViewPointId'] = request.custom_view_point_id
+        if not UtilClient.is_unset(request.custom_view_point_ids_shrink):
+            body['CustomViewPointIds'] = request.custom_view_point_ids_shrink
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.titles_shrink):
+            body['Titles'] = request.titles_shrink
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_source):
+            body['TopicSource'] = request.topic_source
+        if not UtilClient.is_unset(request.topic_version):
+            body['TopicVersion'] = request.topic_version
+        if not UtilClient.is_unset(request.view_point_type):
+            body['ViewPointType'] = request.view_point_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListPlanningProposal',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListPlanningProposalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_planning_proposal(
+        self,
+        request: ai_miao_bi_20230801_models.ListPlanningProposalRequest,
+    ) -> ai_miao_bi_20230801_models.ListPlanningProposalResponse:
+        """
+        @summary 获取选题策划列表
+        
+        @param request: ListPlanningProposalRequest
+        @return: ListPlanningProposalResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_planning_proposal_with_options(request, runtime)
+
+    async def list_planning_proposal_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListPlanningProposalRequest,
+    ) -> ai_miao_bi_20230801_models.ListPlanningProposalResponse:
+        """
+        @summary 获取选题策划列表
+        
+        @param request: ListPlanningProposalRequest
+        @return: ListPlanningProposalResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_planning_proposal_with_options_async(request, runtime)
+
+    def list_timed_view_attitude_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListTimedViewAttitudeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListTimedViewAttitudeResponse:
+        """
+        @summary 时效性视角列表
+        
+        @param request: ListTimedViewAttitudeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTimedViewAttitudeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_source):
+            body['TopicSource'] = request.topic_source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTimedViewAttitude',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListTimedViewAttitudeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_timed_view_attitude_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListTimedViewAttitudeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListTimedViewAttitudeResponse:
+        """
+        @summary 时效性视角列表
+        
+        @param request: ListTimedViewAttitudeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTimedViewAttitudeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_source):
+            body['TopicSource'] = request.topic_source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTimedViewAttitude',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListTimedViewAttitudeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_timed_view_attitude(
+        self,
+        request: ai_miao_bi_20230801_models.ListTimedViewAttitudeRequest,
+    ) -> ai_miao_bi_20230801_models.ListTimedViewAttitudeResponse:
+        """
+        @summary 时效性视角列表
+        
+        @param request: ListTimedViewAttitudeRequest
+        @return: ListTimedViewAttitudeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_timed_view_attitude_with_options(request, runtime)
+
+    async def list_timed_view_attitude_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListTimedViewAttitudeRequest,
+    ) -> ai_miao_bi_20230801_models.ListTimedViewAttitudeResponse:
+        """
+        @summary 时效性视角列表
+        
+        @param request: ListTimedViewAttitudeRequest
+        @return: ListTimedViewAttitudeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_timed_view_attitude_with_options_async(request, runtime)
+
+    def list_topic_recommend_event_list_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListTopicRecommendEventListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListTopicRecommendEventListResponse:
+        """
+        @summary 获取热点推荐事件
+        
+        @param request: ListTopicRecommendEventListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTopicRecommendEventListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTopicRecommendEventList',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListTopicRecommendEventListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_topic_recommend_event_list_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListTopicRecommendEventListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListTopicRecommendEventListResponse:
+        """
+        @summary 获取热点推荐事件
+        
+        @param request: ListTopicRecommendEventListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTopicRecommendEventListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTopicRecommendEventList',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListTopicRecommendEventListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_topic_recommend_event_list(
+        self,
+        request: ai_miao_bi_20230801_models.ListTopicRecommendEventListRequest,
+    ) -> ai_miao_bi_20230801_models.ListTopicRecommendEventListResponse:
+        """
+        @summary 获取热点推荐事件
+        
+        @param request: ListTopicRecommendEventListRequest
+        @return: ListTopicRecommendEventListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_topic_recommend_event_list_with_options(request, runtime)
+
+    async def list_topic_recommend_event_list_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListTopicRecommendEventListRequest,
+    ) -> ai_miao_bi_20230801_models.ListTopicRecommendEventListResponse:
+        """
+        @summary 获取热点推荐事件
+        
+        @param request: ListTopicRecommendEventListRequest
+        @return: ListTopicRecommendEventListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_topic_recommend_event_list_with_options_async(request, runtime)
+
+    def list_topic_view_point_recommend_event_list_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListTopicViewPointRecommendEventListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListTopicViewPointRecommendEventListResponse:
+        """
+        @summary 获取主题事件推荐观点列表
+        
+        @param request: ListTopicViewPointRecommendEventListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTopicViewPointRecommendEventListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTopicViewPointRecommendEventList',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListTopicViewPointRecommendEventListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_topic_view_point_recommend_event_list_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListTopicViewPointRecommendEventListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListTopicViewPointRecommendEventListResponse:
+        """
+        @summary 获取主题事件推荐观点列表
+        
+        @param request: ListTopicViewPointRecommendEventListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTopicViewPointRecommendEventListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTopicViewPointRecommendEventList',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListTopicViewPointRecommendEventListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_topic_view_point_recommend_event_list(
+        self,
+        request: ai_miao_bi_20230801_models.ListTopicViewPointRecommendEventListRequest,
+    ) -> ai_miao_bi_20230801_models.ListTopicViewPointRecommendEventListResponse:
+        """
+        @summary 获取主题事件推荐观点列表
+        
+        @param request: ListTopicViewPointRecommendEventListRequest
+        @return: ListTopicViewPointRecommendEventListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_topic_view_point_recommend_event_list_with_options(request, runtime)
+
+    async def list_topic_view_point_recommend_event_list_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListTopicViewPointRecommendEventListRequest,
+    ) -> ai_miao_bi_20230801_models.ListTopicViewPointRecommendEventListResponse:
+        """
+        @summary 获取主题事件推荐观点列表
+        
+        @param request: ListTopicViewPointRecommendEventListRequest
+        @return: ListTopicViewPointRecommendEventListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_topic_view_point_recommend_event_list_with_options_async(request, runtime)
+
     def list_versions_with_options(
         self,
         request: ai_miao_bi_20230801_models.ListVersionsRequest,
@@ -4736,6 +6608,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_versions_with_options_async(request, runtime)
+
+    def list_web_review_points_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ListWebReviewPointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListWebReviewPointsResponse:
+        """
+        @summary 网友视角列表
+        
+        @param request: ListWebReviewPointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWebReviewPointsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_source):
+            body['TopicSource'] = request.topic_source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListWebReviewPoints',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListWebReviewPointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_web_review_points_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListWebReviewPointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ListWebReviewPointsResponse:
+        """
+        @summary 网友视角列表
+        
+        @param request: ListWebReviewPointsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWebReviewPointsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_source):
+            body['TopicSource'] = request.topic_source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListWebReviewPoints',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ListWebReviewPointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_web_review_points(
+        self,
+        request: ai_miao_bi_20230801_models.ListWebReviewPointsRequest,
+    ) -> ai_miao_bi_20230801_models.ListWebReviewPointsResponse:
+        """
+        @summary 网友视角列表
+        
+        @param request: ListWebReviewPointsRequest
+        @return: ListWebReviewPointsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_web_review_points_with_options(request, runtime)
+
+    async def list_web_review_points_async(
+        self,
+        request: ai_miao_bi_20230801_models.ListWebReviewPointsRequest,
+    ) -> ai_miao_bi_20230801_models.ListWebReviewPointsResponse:
+        """
+        @summary 网友视角列表
+        
+        @param request: ListWebReviewPointsRequest
+        @return: ListWebReviewPointsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_web_review_points_with_options_async(request, runtime)
 
     def query_async_task_with_options(
         self,
@@ -5041,6 +7029,258 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.run_continue_content_with_options_async(request, runtime)
 
+    def run_custom_hot_topic_analysis_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.RunCustomHotTopicAnalysisRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunCustomHotTopicAnalysisResponse:
+        """
+        @summary 自定义热点话题分析
+        
+        @param request: RunCustomHotTopicAnalysisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunCustomHotTopicAnalysisResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ask_user):
+            body['AskUser'] = request.ask_user
+        if not UtilClient.is_unset(request.force_analysis_exists_topic):
+            body['ForceAnalysisExistsTopic'] = request.force_analysis_exists_topic
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.user_back):
+            body['UserBack'] = request.user_back
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunCustomHotTopicAnalysis',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunCustomHotTopicAnalysisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_custom_hot_topic_analysis_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunCustomHotTopicAnalysisRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunCustomHotTopicAnalysisResponse:
+        """
+        @summary 自定义热点话题分析
+        
+        @param request: RunCustomHotTopicAnalysisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunCustomHotTopicAnalysisResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ask_user):
+            body['AskUser'] = request.ask_user
+        if not UtilClient.is_unset(request.force_analysis_exists_topic):
+            body['ForceAnalysisExistsTopic'] = request.force_analysis_exists_topic
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.user_back):
+            body['UserBack'] = request.user_back
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunCustomHotTopicAnalysis',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunCustomHotTopicAnalysisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_custom_hot_topic_analysis(
+        self,
+        request: ai_miao_bi_20230801_models.RunCustomHotTopicAnalysisRequest,
+    ) -> ai_miao_bi_20230801_models.RunCustomHotTopicAnalysisResponse:
+        """
+        @summary 自定义热点话题分析
+        
+        @param request: RunCustomHotTopicAnalysisRequest
+        @return: RunCustomHotTopicAnalysisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_custom_hot_topic_analysis_with_options(request, runtime)
+
+    async def run_custom_hot_topic_analysis_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunCustomHotTopicAnalysisRequest,
+    ) -> ai_miao_bi_20230801_models.RunCustomHotTopicAnalysisResponse:
+        """
+        @summary 自定义热点话题分析
+        
+        @param request: RunCustomHotTopicAnalysisRequest
+        @return: RunCustomHotTopicAnalysisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_custom_hot_topic_analysis_with_options_async(request, runtime)
+
+    def run_custom_hot_topic_view_point_analysis_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.RunCustomHotTopicViewPointAnalysisRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunCustomHotTopicViewPointAnalysisResponse:
+        """
+        @summary 自定义选题视角分析
+        
+        @param request: RunCustomHotTopicViewPointAnalysisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunCustomHotTopicViewPointAnalysisResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ask_user):
+            body['AskUser'] = request.ask_user
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.search_query):
+            body['SearchQuery'] = request.search_query
+        if not UtilClient.is_unset(request.skip_ask_user):
+            body['SkipAskUser'] = request.skip_ask_user
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_id):
+            body['TopicId'] = request.topic_id
+        if not UtilClient.is_unset(request.topic_source):
+            body['TopicSource'] = request.topic_source
+        if not UtilClient.is_unset(request.topic_version):
+            body['TopicVersion'] = request.topic_version
+        if not UtilClient.is_unset(request.user_back):
+            body['UserBack'] = request.user_back
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunCustomHotTopicViewPointAnalysis',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunCustomHotTopicViewPointAnalysisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_custom_hot_topic_view_point_analysis_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunCustomHotTopicViewPointAnalysisRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunCustomHotTopicViewPointAnalysisResponse:
+        """
+        @summary 自定义选题视角分析
+        
+        @param request: RunCustomHotTopicViewPointAnalysisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunCustomHotTopicViewPointAnalysisResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.ask_user):
+            body['AskUser'] = request.ask_user
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.search_query):
+            body['SearchQuery'] = request.search_query
+        if not UtilClient.is_unset(request.skip_ask_user):
+            body['SkipAskUser'] = request.skip_ask_user
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        if not UtilClient.is_unset(request.topic_id):
+            body['TopicId'] = request.topic_id
+        if not UtilClient.is_unset(request.topic_source):
+            body['TopicSource'] = request.topic_source
+        if not UtilClient.is_unset(request.topic_version):
+            body['TopicVersion'] = request.topic_version
+        if not UtilClient.is_unset(request.user_back):
+            body['UserBack'] = request.user_back
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunCustomHotTopicViewPointAnalysis',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunCustomHotTopicViewPointAnalysisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_custom_hot_topic_view_point_analysis(
+        self,
+        request: ai_miao_bi_20230801_models.RunCustomHotTopicViewPointAnalysisRequest,
+    ) -> ai_miao_bi_20230801_models.RunCustomHotTopicViewPointAnalysisResponse:
+        """
+        @summary 自定义选题视角分析
+        
+        @param request: RunCustomHotTopicViewPointAnalysisRequest
+        @return: RunCustomHotTopicViewPointAnalysisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_custom_hot_topic_view_point_analysis_with_options(request, runtime)
+
+    async def run_custom_hot_topic_view_point_analysis_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunCustomHotTopicViewPointAnalysisRequest,
+    ) -> ai_miao_bi_20230801_models.RunCustomHotTopicViewPointAnalysisResponse:
+        """
+        @summary 自定义选题视角分析
+        
+        @param request: RunCustomHotTopicViewPointAnalysisRequest
+        @return: RunCustomHotTopicViewPointAnalysisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_custom_hot_topic_view_point_analysis_with_options_async(request, runtime)
+
     def run_expand_content_with_options(
         self,
         request: ai_miao_bi_20230801_models.RunExpandContentRequest,
@@ -5252,6 +7492,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.run_keywords_extraction_generation_with_options_async(request, runtime)
+
+    def run_step_by_step_writing_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.RunStepByStepWritingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunStepByStepWritingResponse:
+        """
+        @summary 创作-分步骤写作
+        
+        @param tmp_req: RunStepByStepWritingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunStepByStepWritingResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.RunStepByStepWritingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.reference_data):
+            request.reference_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reference_data, 'ReferenceData', 'json')
+        if not UtilClient.is_unset(tmp_req.writing_config):
+            request.writing_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.writing_config, 'WritingConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.origin_session_id):
+            body['OriginSessionId'] = request.origin_session_id
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.reference_data_shrink):
+            body['ReferenceData'] = request.reference_data_shrink
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.writing_config_shrink):
+            body['WritingConfig'] = request.writing_config_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunStepByStepWriting',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunStepByStepWritingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_step_by_step_writing_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.RunStepByStepWritingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunStepByStepWritingResponse:
+        """
+        @summary 创作-分步骤写作
+        
+        @param tmp_req: RunStepByStepWritingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunStepByStepWritingResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.RunStepByStepWritingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.reference_data):
+            request.reference_data_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reference_data, 'ReferenceData', 'json')
+        if not UtilClient.is_unset(tmp_req.writing_config):
+            request.writing_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.writing_config, 'WritingConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.origin_session_id):
+            body['OriginSessionId'] = request.origin_session_id
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.reference_data_shrink):
+            body['ReferenceData'] = request.reference_data_shrink
+        if not UtilClient.is_unset(request.session_id):
+            body['SessionId'] = request.session_id
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.writing_config_shrink):
+            body['WritingConfig'] = request.writing_config_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunStepByStepWriting',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunStepByStepWritingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_step_by_step_writing(
+        self,
+        request: ai_miao_bi_20230801_models.RunStepByStepWritingRequest,
+    ) -> ai_miao_bi_20230801_models.RunStepByStepWritingResponse:
+        """
+        @summary 创作-分步骤写作
+        
+        @param request: RunStepByStepWritingRequest
+        @return: RunStepByStepWritingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_step_by_step_writing_with_options(request, runtime)
+
+    async def run_step_by_step_writing_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunStepByStepWritingRequest,
+    ) -> ai_miao_bi_20230801_models.RunStepByStepWritingResponse:
+        """
+        @summary 创作-分步骤写作
+        
+        @param request: RunStepByStepWritingRequest
+        @return: RunStepByStepWritingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_step_by_step_writing_with_options_async(request, runtime)
 
     def run_style_feature_analysis_with_options(
         self,
@@ -6684,6 +9056,374 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_async_task_with_options_async(request, runtime)
+
+    def submit_custom_topic_selection_perspective_analysis_task_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse:
+        """
+        @summary 提交自定义热点选题视角分析任务
+        
+        @param tmp_req: SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SubmitCustomTopicSelectionPerspectiveAnalysisTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.documents):
+            request.documents_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.documents, 'Documents', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.documents_shrink):
+            body['Documents'] = request.documents_shrink
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitCustomTopicSelectionPerspectiveAnalysisTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_custom_topic_selection_perspective_analysis_task_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse:
+        """
+        @summary 提交自定义热点选题视角分析任务
+        
+        @param tmp_req: SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SubmitCustomTopicSelectionPerspectiveAnalysisTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.documents):
+            request.documents_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.documents, 'Documents', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.documents_shrink):
+            body['Documents'] = request.documents_shrink
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitCustomTopicSelectionPerspectiveAnalysisTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_custom_topic_selection_perspective_analysis_task(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse:
+        """
+        @summary 提交自定义热点选题视角分析任务
+        
+        @param request: SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest
+        @return: SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_custom_topic_selection_perspective_analysis_task_with_options(request, runtime)
+
+    async def submit_custom_topic_selection_perspective_analysis_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse:
+        """
+        @summary 提交自定义热点选题视角分析任务
+        
+        @param request: SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest
+        @return: SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_custom_topic_selection_perspective_analysis_task_with_options_async(request, runtime)
+
+    def submit_doc_cluster_task_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SubmitDocClusterTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitDocClusterTaskResponse:
+        """
+        @summary 提交文档聚合任务
+        
+        @param tmp_req: SubmitDocClusterTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDocClusterTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SubmitDocClusterTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.documents):
+            request.documents_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.documents, 'Documents', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.documents_shrink):
+            body['Documents'] = request.documents_shrink
+        if not UtilClient.is_unset(request.summary_length):
+            body['SummaryLength'] = request.summary_length
+        if not UtilClient.is_unset(request.title_length):
+            body['TitleLength'] = request.title_length
+        if not UtilClient.is_unset(request.topic_count):
+            body['TopicCount'] = request.topic_count
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitDocClusterTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitDocClusterTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_doc_cluster_task_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SubmitDocClusterTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitDocClusterTaskResponse:
+        """
+        @summary 提交文档聚合任务
+        
+        @param tmp_req: SubmitDocClusterTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDocClusterTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SubmitDocClusterTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.documents):
+            request.documents_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.documents, 'Documents', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.documents_shrink):
+            body['Documents'] = request.documents_shrink
+        if not UtilClient.is_unset(request.summary_length):
+            body['SummaryLength'] = request.summary_length
+        if not UtilClient.is_unset(request.title_length):
+            body['TitleLength'] = request.title_length
+        if not UtilClient.is_unset(request.topic_count):
+            body['TopicCount'] = request.topic_count
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitDocClusterTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitDocClusterTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_doc_cluster_task(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitDocClusterTaskRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitDocClusterTaskResponse:
+        """
+        @summary 提交文档聚合任务
+        
+        @param request: SubmitDocClusterTaskRequest
+        @return: SubmitDocClusterTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_doc_cluster_task_with_options(request, runtime)
+
+    async def submit_doc_cluster_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitDocClusterTaskRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitDocClusterTaskResponse:
+        """
+        @summary 提交文档聚合任务
+        
+        @param request: SubmitDocClusterTaskRequest
+        @return: SubmitDocClusterTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_doc_cluster_task_with_options_async(request, runtime)
+
+    def submit_topic_selection_perspective_analysis_task_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SubmitTopicSelectionPerspectiveAnalysisTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitTopicSelectionPerspectiveAnalysisTaskResponse:
+        """
+        @summary 提交选题热点分析任务
+        
+        @param tmp_req: SubmitTopicSelectionPerspectiveAnalysisTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTopicSelectionPerspectiveAnalysisTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SubmitTopicSelectionPerspectiveAnalysisTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.documents):
+            request.documents_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.documents, 'Documents', 'json')
+        if not UtilClient.is_unset(tmp_req.perspective_types):
+            request.perspective_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.perspective_types, 'PerspectiveTypes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.documents_shrink):
+            body['Documents'] = request.documents_shrink
+        if not UtilClient.is_unset(request.perspective_types_shrink):
+            body['PerspectiveTypes'] = request.perspective_types_shrink
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitTopicSelectionPerspectiveAnalysisTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitTopicSelectionPerspectiveAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_topic_selection_perspective_analysis_task_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SubmitTopicSelectionPerspectiveAnalysisTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitTopicSelectionPerspectiveAnalysisTaskResponse:
+        """
+        @summary 提交选题热点分析任务
+        
+        @param tmp_req: SubmitTopicSelectionPerspectiveAnalysisTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTopicSelectionPerspectiveAnalysisTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SubmitTopicSelectionPerspectiveAnalysisTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.documents):
+            request.documents_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.documents, 'Documents', 'json')
+        if not UtilClient.is_unset(tmp_req.perspective_types):
+            request.perspective_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.perspective_types, 'PerspectiveTypes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        body = {}
+        if not UtilClient.is_unset(request.documents_shrink):
+            body['Documents'] = request.documents_shrink
+        if not UtilClient.is_unset(request.perspective_types_shrink):
+            body['PerspectiveTypes'] = request.perspective_types_shrink
+        if not UtilClient.is_unset(request.topic):
+            body['Topic'] = request.topic
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitTopicSelectionPerspectiveAnalysisTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitTopicSelectionPerspectiveAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_topic_selection_perspective_analysis_task(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitTopicSelectionPerspectiveAnalysisTaskRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitTopicSelectionPerspectiveAnalysisTaskResponse:
+        """
+        @summary 提交选题热点分析任务
+        
+        @param request: SubmitTopicSelectionPerspectiveAnalysisTaskRequest
+        @return: SubmitTopicSelectionPerspectiveAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_topic_selection_perspective_analysis_task_with_options(request, runtime)
+
+    async def submit_topic_selection_perspective_analysis_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitTopicSelectionPerspectiveAnalysisTaskRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitTopicSelectionPerspectiveAnalysisTaskResponse:
+        """
+        @summary 提交选题热点分析任务
+        
+        @param request: SubmitTopicSelectionPerspectiveAnalysisTaskRequest
+        @return: SubmitTopicSelectionPerspectiveAnalysisTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_topic_selection_perspective_analysis_task_with_options_async(request, runtime)
 
     def update_custom_text_with_options(
         self,

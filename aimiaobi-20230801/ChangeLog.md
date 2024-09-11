@@ -1,3 +1,29 @@
+2024-09-11 Version: 1.8.0
+- Support API DeleteCustomTopicByTopic.
+- Support API DeleteCustomTopicViewPointById.
+- Support API ExportHotTopicPlanningProposals.
+- Support API GetCustomTopicSelectionPerspectiveAnalysisTask.
+- Support API GetDocClusterTask.
+- Support API GetTopicById.
+- Support API GetTopicSelectionPerspectiveAnalysisTask.
+- Support API ListCustomViewPoints.
+- Support API ListFreshViewPoints.
+- Support API ListHotSources.
+- Support API ListHotTopics.
+- Support API ListHotViewPoints.
+- Support API ListPlanningProposal.
+- Support API ListTimedViewAttitude.
+- Support API ListTopicRecommendEventList.
+- Support API ListTopicViewPointRecommendEventList.
+- Support API ListWebReviewPoints.
+- Support API RunCustomHotTopicAnalysis.
+- Support API RunCustomHotTopicViewPointAnalysis.
+- Support API RunStepByStepWriting.
+- Support API SubmitCustomTopicSelectionPerspectiveAnalysisTask.
+- Support API SubmitDocClusterTask.
+- Support API SubmitTopicSelectionPerspectiveAnalysisTask.
+
+
 2024-09-09 Version: 1.7.0
 - Support API RunAbbreviationContent.
 - Support API RunContinueContent.

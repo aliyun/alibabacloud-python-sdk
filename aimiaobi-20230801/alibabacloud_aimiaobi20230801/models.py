@@ -853,6 +853,272 @@ class DeleteCustomTextResponse(TeaModel):
         return self
 
 
+class DeleteCustomTopicByTopicRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        topic: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        # This parameter is required.
+        self.topic = topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
+class DeleteCustomTopicByTopicResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteCustomTopicByTopicResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCustomTopicByTopicResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCustomTopicByTopicResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCustomTopicViewPointByIdRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        custom_view_point_id: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        # This parameter is required.
+        self.custom_view_point_id = custom_view_point_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.custom_view_point_id is not None:
+            result['CustomViewPointId'] = self.custom_view_point_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('CustomViewPointId') is not None:
+            self.custom_view_point_id = m.get('CustomViewPointId')
+        return self
+
+
+class DeleteCustomTopicViewPointByIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteCustomTopicViewPointByIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCustomTopicViewPointByIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCustomTopicViewPointByIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteGeneratedContentRequest(TeaModel):
     def __init__(
         self,
@@ -1678,6 +1944,236 @@ class ExportGeneratedContentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ExportGeneratedContentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExportHotTopicPlanningProposalsRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        custom_view_point_ids: List[str] = None,
+        export_type: str = None,
+        titles: List[str] = None,
+        topic: str = None,
+        topic_source: str = None,
+        view_point_type: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.custom_view_point_ids = custom_view_point_ids
+        self.export_type = export_type
+        self.titles = titles
+        # This parameter is required.
+        self.topic = topic
+        # This parameter is required.
+        self.topic_source = topic_source
+        self.view_point_type = view_point_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.custom_view_point_ids is not None:
+            result['CustomViewPointIds'] = self.custom_view_point_ids
+        if self.export_type is not None:
+            result['ExportType'] = self.export_type
+        if self.titles is not None:
+            result['Titles'] = self.titles
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.topic_source is not None:
+            result['TopicSource'] = self.topic_source
+        if self.view_point_type is not None:
+            result['ViewPointType'] = self.view_point_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('CustomViewPointIds') is not None:
+            self.custom_view_point_ids = m.get('CustomViewPointIds')
+        if m.get('ExportType') is not None:
+            self.export_type = m.get('ExportType')
+        if m.get('Titles') is not None:
+            self.titles = m.get('Titles')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('TopicSource') is not None:
+            self.topic_source = m.get('TopicSource')
+        if m.get('ViewPointType') is not None:
+            self.view_point_type = m.get('ViewPointType')
+        return self
+
+
+class ExportHotTopicPlanningProposalsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        custom_view_point_ids_shrink: str = None,
+        export_type: str = None,
+        titles_shrink: str = None,
+        topic: str = None,
+        topic_source: str = None,
+        view_point_type: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.custom_view_point_ids_shrink = custom_view_point_ids_shrink
+        self.export_type = export_type
+        self.titles_shrink = titles_shrink
+        # This parameter is required.
+        self.topic = topic
+        # This parameter is required.
+        self.topic_source = topic_source
+        self.view_point_type = view_point_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.custom_view_point_ids_shrink is not None:
+            result['CustomViewPointIds'] = self.custom_view_point_ids_shrink
+        if self.export_type is not None:
+            result['ExportType'] = self.export_type
+        if self.titles_shrink is not None:
+            result['Titles'] = self.titles_shrink
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.topic_source is not None:
+            result['TopicSource'] = self.topic_source
+        if self.view_point_type is not None:
+            result['ViewPointType'] = self.view_point_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('CustomViewPointIds') is not None:
+            self.custom_view_point_ids_shrink = m.get('CustomViewPointIds')
+        if m.get('ExportType') is not None:
+            self.export_type = m.get('ExportType')
+        if m.get('Titles') is not None:
+            self.titles_shrink = m.get('Titles')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('TopicSource') is not None:
+            self.topic_source = m.get('TopicSource')
+        if m.get('ViewPointType') is not None:
+            self.view_point_type = m.get('ViewPointType')
+        return self
+
+
+class ExportHotTopicPlanningProposalsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ExportHotTopicPlanningProposalsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportHotTopicPlanningProposalsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportHotTopicPlanningProposalsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3481,6 +3977,356 @@ class GetCustomTextResponse(TeaModel):
         return self
 
 
+class GetCustomTopicSelectionPerspectiveAnalysisTaskRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPointsOutlines(TeaModel):
+    def __init__(
+        self,
+        outline: str = None,
+        summary: str = None,
+    ):
+        self.outline = outline
+        self.summary = summary
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.outline is not None:
+            result['Outline'] = self.outline
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Outline') is not None:
+            self.outline = m.get('Outline')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPoints(TeaModel):
+    def __init__(
+        self,
+        outlines: List[GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPointsOutlines] = None,
+        point: str = None,
+        summary: str = None,
+    ):
+        self.outlines = outlines
+        self.point = point
+        self.summary = summary
+
+    def validate(self):
+        if self.outlines:
+            for k in self.outlines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Outlines'] = []
+        if self.outlines is not None:
+            for k in self.outlines:
+                result['Outlines'].append(k.to_map() if k else None)
+        if self.point is not None:
+            result['Point'] = self.point
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.outlines = []
+        if m.get('Outlines') is not None:
+            for k in m.get('Outlines'):
+                temp_model = GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPointsOutlines()
+                self.outlines.append(temp_model.from_map(k))
+        if m.get('Point') is not None:
+            self.point = m.get('Point')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes(TeaModel):
+    def __init__(
+        self,
+        attitude: str = None,
+        attitude_type: str = None,
+        ratio: str = None,
+        view_points: List[GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPoints] = None,
+    ):
+        self.attitude = attitude
+        self.attitude_type = attitude_type
+        self.ratio = ratio
+        self.view_points = view_points
+
+    def validate(self):
+        if self.view_points:
+            for k in self.view_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attitude is not None:
+            result['Attitude'] = self.attitude
+        if self.attitude_type is not None:
+            result['AttitudeType'] = self.attitude_type
+        if self.ratio is not None:
+            result['Ratio'] = self.ratio
+        result['ViewPoints'] = []
+        if self.view_points is not None:
+            for k in self.view_points:
+                result['ViewPoints'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attitude') is not None:
+            self.attitude = m.get('Attitude')
+        if m.get('AttitudeType') is not None:
+            self.attitude_type = m.get('AttitudeType')
+        if m.get('Ratio') is not None:
+            self.ratio = m.get('Ratio')
+        self.view_points = []
+        if m.get('ViewPoints') is not None:
+            for k in m.get('ViewPoints'):
+                temp_model = GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPoints()
+                self.view_points.append(temp_model.from_map(k))
+        return self
+
+
+class GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResult(TeaModel):
+    def __init__(
+        self,
+        attitudes: List[GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes] = None,
+        topic: str = None,
+    ):
+        self.attitudes = attitudes
+        self.topic = topic
+
+    def validate(self):
+        if self.attitudes:
+            for k in self.attitudes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Attitudes'] = []
+        if self.attitudes is not None:
+            for k in self.attitudes:
+                result['Attitudes'].append(k.to_map() if k else None)
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attitudes = []
+        if m.get('Attitudes') is not None:
+            for k in m.get('Attitudes'):
+                temp_model = GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes()
+                self.attitudes.append(temp_model.from_map(k))
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
+class GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        custom_view_points_result: GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResult = None,
+        error_message: str = None,
+        status: str = None,
+    ):
+        self.custom_view_points_result = custom_view_points_result
+        self.error_message = error_message
+        self.status = status
+
+    def validate(self):
+        if self.custom_view_points_result:
+            self.custom_view_points_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_view_points_result is not None:
+            result['CustomViewPointsResult'] = self.custom_view_points_result.to_map()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomViewPointsResult') is not None:
+            temp_model = GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResult()
+            self.custom_view_points_result = temp_model.from_map(m['CustomViewPointsResult'])
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetCustomTopicSelectionPerspectiveAnalysisTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDataSourceOrderConfigRequest(TeaModel):
     def __init__(
         self,
@@ -3692,6 +4538,227 @@ class GetDataSourceOrderConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDataSourceOrderConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDocClusterTaskRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetDocClusterTaskResponseBodyDataTopics(TeaModel):
+    def __init__(
+        self,
+        doc_ids: List[str] = None,
+        summary: str = None,
+        title: str = None,
+    ):
+        self.doc_ids = doc_ids
+        self.summary = summary
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_ids is not None:
+            result['DocIds'] = self.doc_ids
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DocIds') is not None:
+            self.doc_ids = m.get('DocIds')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class GetDocClusterTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        status: str = None,
+        topics: List[GetDocClusterTaskResponseBodyDataTopics] = None,
+    ):
+        self.error_message = error_message
+        self.status = status
+        self.topics = topics
+
+    def validate(self):
+        if self.topics:
+            for k in self.topics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Topics'] = []
+        if self.topics is not None:
+            for k in self.topics:
+                result['Topics'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.topics = []
+        if m.get('Topics') is not None:
+            for k in m.get('Topics'):
+                temp_model = GetDocClusterTaskResponseBodyDataTopics()
+                self.topics.append(temp_model.from_map(k))
+        return self
+
+
+class GetDocClusterTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetDocClusterTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetDocClusterTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetDocClusterTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDocClusterTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDocClusterTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5694,6 +6761,1494 @@ class GetPropertiesResponse(TeaModel):
         return self
 
 
+class GetTopicByIdRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        id: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class GetTopicByIdResponseBodyDataStructureSummaryDocList(TeaModel):
+    def __init__(
+        self,
+        source: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.source = source
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class GetTopicByIdResponseBodyDataStructureSummary(TeaModel):
+    def __init__(
+        self,
+        doc_list: List[GetTopicByIdResponseBodyDataStructureSummaryDocList] = None,
+        summary: str = None,
+        title: str = None,
+    ):
+        self.doc_list = doc_list
+        self.summary = summary
+        self.title = title
+
+    def validate(self):
+        if self.doc_list:
+            for k in self.doc_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DocList'] = []
+        if self.doc_list is not None:
+            for k in self.doc_list:
+                result['DocList'].append(k.to_map() if k else None)
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.doc_list = []
+        if m.get('DocList') is not None:
+            for k in m.get('DocList'):
+                temp_model = GetTopicByIdResponseBodyDataStructureSummaryDocList()
+                self.doc_list.append(temp_model.from_map(k))
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class GetTopicByIdResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        async_task_id: str = None,
+        create_user: str = None,
+        hot_value: int = None,
+        id: str = None,
+        status: str = None,
+        structure_summary: List[GetTopicByIdResponseBodyDataStructureSummary] = None,
+        summary: str = None,
+        task_error_message: str = None,
+        task_status: int = None,
+        topic: str = None,
+        topic_source: str = None,
+        version: str = None,
+    ):
+        self.async_task_id = async_task_id
+        self.create_user = create_user
+        self.hot_value = hot_value
+        self.id = id
+        self.status = status
+        self.structure_summary = structure_summary
+        self.summary = summary
+        self.task_error_message = task_error_message
+        self.task_status = task_status
+        self.topic = topic
+        self.topic_source = topic_source
+        self.version = version
+
+    def validate(self):
+        if self.structure_summary:
+            for k in self.structure_summary:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.async_task_id is not None:
+            result['AsyncTaskId'] = self.async_task_id
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.hot_value is not None:
+            result['HotValue'] = self.hot_value
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.status is not None:
+            result['Status'] = self.status
+        result['StructureSummary'] = []
+        if self.structure_summary is not None:
+            for k in self.structure_summary:
+                result['StructureSummary'].append(k.to_map() if k else None)
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.task_error_message is not None:
+            result['TaskErrorMessage'] = self.task_error_message
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.topic_source is not None:
+            result['TopicSource'] = self.topic_source
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsyncTaskId') is not None:
+            self.async_task_id = m.get('AsyncTaskId')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('HotValue') is not None:
+            self.hot_value = m.get('HotValue')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.structure_summary = []
+        if m.get('StructureSummary') is not None:
+            for k in m.get('StructureSummary'):
+                temp_model = GetTopicByIdResponseBodyDataStructureSummary()
+                self.structure_summary.append(temp_model.from_map(k))
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('TaskErrorMessage') is not None:
+            self.task_error_message = m.get('TaskErrorMessage')
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('TopicSource') is not None:
+            self.topic_source = m.get('TopicSource')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class GetTopicByIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetTopicByIdResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetTopicByIdResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetTopicByIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTopicByIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTopicByIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPointsOutlines(TeaModel):
+    def __init__(
+        self,
+        outline: str = None,
+        summary: str = None,
+    ):
+        self.outline = outline
+        self.summary = summary
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.outline is not None:
+            result['Outline'] = self.outline
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Outline') is not None:
+            self.outline = m.get('Outline')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPoints(TeaModel):
+    def __init__(
+        self,
+        outlines: List[GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPointsOutlines] = None,
+        point: str = None,
+        summary: str = None,
+    ):
+        self.outlines = outlines
+        self.point = point
+        self.summary = summary
+
+    def validate(self):
+        if self.outlines:
+            for k in self.outlines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Outlines'] = []
+        if self.outlines is not None:
+            for k in self.outlines:
+                result['Outlines'].append(k.to_map() if k else None)
+        if self.point is not None:
+            result['Point'] = self.point
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.outlines = []
+        if m.get('Outlines') is not None:
+            for k in m.get('Outlines'):
+                temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPointsOutlines()
+                self.outlines.append(temp_model.from_map(k))
+        if m.get('Point') is not None:
+            self.point = m.get('Point')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes(TeaModel):
+    def __init__(
+        self,
+        attitude: str = None,
+        attitude_type: str = None,
+        ratio: str = None,
+        view_points: List[GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPoints] = None,
+    ):
+        self.attitude = attitude
+        self.attitude_type = attitude_type
+        self.ratio = ratio
+        self.view_points = view_points
+
+    def validate(self):
+        if self.view_points:
+            for k in self.view_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attitude is not None:
+            result['Attitude'] = self.attitude
+        if self.attitude_type is not None:
+            result['AttitudeType'] = self.attitude_type
+        if self.ratio is not None:
+            result['Ratio'] = self.ratio
+        result['ViewPoints'] = []
+        if self.view_points is not None:
+            for k in self.view_points:
+                result['ViewPoints'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attitude') is not None:
+            self.attitude = m.get('Attitude')
+        if m.get('AttitudeType') is not None:
+            self.attitude_type = m.get('AttitudeType')
+        if m.get('Ratio') is not None:
+            self.ratio = m.get('Ratio')
+        self.view_points = []
+        if m.get('ViewPoints') is not None:
+            for k in m.get('ViewPoints'):
+                temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPoints()
+                self.view_points.append(temp_model.from_map(k))
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResult(TeaModel):
+    def __init__(
+        self,
+        attitudes: List[GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes] = None,
+    ):
+        self.attitudes = attitudes
+
+    def validate(self):
+        if self.attitudes:
+            for k in self.attitudes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Attitudes'] = []
+        if self.attitudes is not None:
+            for k in self.attitudes:
+                result['Attitudes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attitudes = []
+        if m.get('Attitudes') is not None:
+            for k in m.get('Attitudes'):
+                temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes()
+                self.attitudes.append(temp_model.from_map(k))
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews(TeaModel):
+    def __init__(
+        self,
+        doc_id: str = None,
+        doc_uuid: str = None,
+        image_urls: List[str] = None,
+        tags: List[str] = None,
+        topic: str = None,
+    ):
+        self.doc_id = doc_id
+        self.doc_uuid = doc_uuid
+        self.image_urls = image_urls
+        self.tags = tags
+        self.topic = topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_id is not None:
+            result['DocId'] = self.doc_id
+        if self.doc_uuid is not None:
+            result['DocUuid'] = self.doc_uuid
+        if self.image_urls is not None:
+            result['ImageUrls'] = self.image_urls
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DocId') is not None:
+            self.doc_id = m.get('DocId')
+        if m.get('DocUuid') is not None:
+            self.doc_uuid = m.get('DocUuid')
+        if m.get('ImageUrls') is not None:
+            self.image_urls = m.get('ImageUrls')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPointsOutlines(TeaModel):
+    def __init__(
+        self,
+        outline: str = None,
+        summary: str = None,
+    ):
+        self.outline = outline
+        self.summary = summary
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.outline is not None:
+            result['Outline'] = self.outline
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Outline') is not None:
+            self.outline = m.get('Outline')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPoints(TeaModel):
+    def __init__(
+        self,
+        outlines: List[GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPointsOutlines] = None,
+        point: str = None,
+        summary: str = None,
+    ):
+        self.outlines = outlines
+        self.point = point
+        self.summary = summary
+
+    def validate(self):
+        if self.outlines:
+            for k in self.outlines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Outlines'] = []
+        if self.outlines is not None:
+            for k in self.outlines:
+                result['Outlines'].append(k.to_map() if k else None)
+        if self.point is not None:
+            result['Point'] = self.point
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.outlines = []
+        if m.get('Outlines') is not None:
+            for k in m.get('Outlines'):
+                temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPointsOutlines()
+                self.outlines.append(temp_model.from_map(k))
+        if m.get('Point') is not None:
+            self.point = m.get('Point')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes(TeaModel):
+    def __init__(
+        self,
+        attitude: str = None,
+        attitude_type: str = None,
+        news: List[GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews] = None,
+        ratio: str = None,
+        view_points: List[GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPoints] = None,
+    ):
+        self.attitude = attitude
+        self.attitude_type = attitude_type
+        self.news = news
+        self.ratio = ratio
+        self.view_points = view_points
+
+    def validate(self):
+        if self.news:
+            for k in self.news:
+                if k:
+                    k.validate()
+        if self.view_points:
+            for k in self.view_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attitude is not None:
+            result['Attitude'] = self.attitude
+        if self.attitude_type is not None:
+            result['AttitudeType'] = self.attitude_type
+        result['News'] = []
+        if self.news is not None:
+            for k in self.news:
+                result['News'].append(k.to_map() if k else None)
+        if self.ratio is not None:
+            result['Ratio'] = self.ratio
+        result['ViewPoints'] = []
+        if self.view_points is not None:
+            for k in self.view_points:
+                result['ViewPoints'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attitude') is not None:
+            self.attitude = m.get('Attitude')
+        if m.get('AttitudeType') is not None:
+            self.attitude_type = m.get('AttitudeType')
+        self.news = []
+        if m.get('News') is not None:
+            for k in m.get('News'):
+                temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews()
+                self.news.append(temp_model.from_map(k))
+        if m.get('Ratio') is not None:
+            self.ratio = m.get('Ratio')
+        self.view_points = []
+        if m.get('ViewPoints') is not None:
+            for k in m.get('ViewPoints'):
+                temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPoints()
+                self.view_points.append(temp_model.from_map(k))
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResult(TeaModel):
+    def __init__(
+        self,
+        attitudes: List[GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes] = None,
+    ):
+        self.attitudes = attitudes
+
+    def validate(self):
+        if self.attitudes:
+            for k in self.attitudes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Attitudes'] = []
+        if self.attitudes is not None:
+            for k in self.attitudes:
+                result['Attitudes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attitudes = []
+        if m.get('Attitudes') is not None:
+            for k in m.get('Attitudes'):
+                temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes()
+                self.attitudes.append(temp_model.from_map(k))
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPointsOutlines(TeaModel):
+    def __init__(
+        self,
+        outline: str = None,
+        summary: str = None,
+    ):
+        self.outline = outline
+        self.summary = summary
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.outline is not None:
+            result['Outline'] = self.outline
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Outline') is not None:
+            self.outline = m.get('Outline')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPoints(TeaModel):
+    def __init__(
+        self,
+        outlines: List[GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPointsOutlines] = None,
+        point: str = None,
+        summary: str = None,
+    ):
+        self.outlines = outlines
+        self.point = point
+        self.summary = summary
+
+    def validate(self):
+        if self.outlines:
+            for k in self.outlines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Outlines'] = []
+        if self.outlines is not None:
+            for k in self.outlines:
+                result['Outlines'].append(k.to_map() if k else None)
+        if self.point is not None:
+            result['Point'] = self.point
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.outlines = []
+        if m.get('Outlines') is not None:
+            for k in m.get('Outlines'):
+                temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPointsOutlines()
+                self.outlines.append(temp_model.from_map(k))
+        if m.get('Point') is not None:
+            self.point = m.get('Point')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes(TeaModel):
+    def __init__(
+        self,
+        attitude: str = None,
+        attitude_type: str = None,
+        pub_time: str = None,
+        ratio: str = None,
+        source: str = None,
+        title: str = None,
+        url: str = None,
+        view_points: List[GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPoints] = None,
+    ):
+        self.attitude = attitude
+        self.attitude_type = attitude_type
+        self.pub_time = pub_time
+        self.ratio = ratio
+        self.source = source
+        self.title = title
+        self.url = url
+        self.view_points = view_points
+
+    def validate(self):
+        if self.view_points:
+            for k in self.view_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attitude is not None:
+            result['Attitude'] = self.attitude
+        if self.attitude_type is not None:
+            result['AttitudeType'] = self.attitude_type
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
+        if self.ratio is not None:
+            result['Ratio'] = self.ratio
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        result['ViewPoints'] = []
+        if self.view_points is not None:
+            for k in self.view_points:
+                result['ViewPoints'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attitude') is not None:
+            self.attitude = m.get('Attitude')
+        if m.get('AttitudeType') is not None:
+            self.attitude_type = m.get('AttitudeType')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
+        if m.get('Ratio') is not None:
+            self.ratio = m.get('Ratio')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        self.view_points = []
+        if m.get('ViewPoints') is not None:
+            for k in m.get('ViewPoints'):
+                temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPoints()
+                self.view_points.append(temp_model.from_map(k))
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResult(TeaModel):
+    def __init__(
+        self,
+        attitudes: List[GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes] = None,
+    ):
+        self.attitudes = attitudes
+
+    def validate(self):
+        if self.attitudes:
+            for k in self.attitudes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Attitudes'] = []
+        if self.attitudes is not None:
+            for k in self.attitudes:
+                result['Attitudes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attitudes = []
+        if m.get('Attitudes') is not None:
+            for k in m.get('Attitudes'):
+                temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes()
+                self.attitudes.append(temp_model.from_map(k))
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummariesDocList(TeaModel):
+    def __init__(
+        self,
+        source: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.source = source
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummaries(TeaModel):
+    def __init__(
+        self,
+        doc_list: List[GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummariesDocList] = None,
+        summary: str = None,
+        title: str = None,
+    ):
+        self.doc_list = doc_list
+        self.summary = summary
+        self.title = title
+
+    def validate(self):
+        if self.doc_list:
+            for k in self.doc_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DocList'] = []
+        if self.doc_list is not None:
+            for k in self.doc_list:
+                result['DocList'].append(k.to_map() if k else None)
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.doc_list = []
+        if m.get('DocList') is not None:
+            for k in m.get('DocList'):
+                temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummariesDocList()
+                self.doc_list.append(temp_model.from_map(k))
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResult(TeaModel):
+    def __init__(
+        self,
+        summaries: List[GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummaries] = None,
+    ):
+        self.summaries = summaries
+
+    def validate(self):
+        if self.summaries:
+            for k in self.summaries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Summaries'] = []
+        if self.summaries is not None:
+            for k in self.summaries:
+                result['Summaries'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.summaries = []
+        if m.get('Summaries') is not None:
+            for k in m.get('Summaries'):
+                temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummaries()
+                self.summaries.append(temp_model.from_map(k))
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments(TeaModel):
+    def __init__(
+        self,
+        source: str = None,
+        text: str = None,
+        title: str = None,
+        url: str = None,
+        username: str = None,
+    ):
+        self.source = source
+        self.text = text
+        self.title = title
+        self.url = url
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPointsOutlines(TeaModel):
+    def __init__(
+        self,
+        outline: str = None,
+        summary: str = None,
+    ):
+        self.outline = outline
+        self.summary = summary
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.outline is not None:
+            result['Outline'] = self.outline
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Outline') is not None:
+            self.outline = m.get('Outline')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPoints(TeaModel):
+    def __init__(
+        self,
+        outlines: List[GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPointsOutlines] = None,
+        point: str = None,
+        summary: str = None,
+    ):
+        self.outlines = outlines
+        self.point = point
+        self.summary = summary
+
+    def validate(self):
+        if self.outlines:
+            for k in self.outlines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Outlines'] = []
+        if self.outlines is not None:
+            for k in self.outlines:
+                result['Outlines'].append(k.to_map() if k else None)
+        if self.point is not None:
+            result['Point'] = self.point
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.outlines = []
+        if m.get('Outlines') is not None:
+            for k in m.get('Outlines'):
+                temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPointsOutlines()
+                self.outlines.append(temp_model.from_map(k))
+        if m.get('Point') is not None:
+            self.point = m.get('Point')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes(TeaModel):
+    def __init__(
+        self,
+        attitude: str = None,
+        attitude_type: str = None,
+        comments: List[GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments] = None,
+        ratio: str = None,
+        view_points: List[GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPoints] = None,
+    ):
+        self.attitude = attitude
+        self.attitude_type = attitude_type
+        self.comments = comments
+        self.ratio = ratio
+        self.view_points = view_points
+
+    def validate(self):
+        if self.comments:
+            for k in self.comments:
+                if k:
+                    k.validate()
+        if self.view_points:
+            for k in self.view_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attitude is not None:
+            result['Attitude'] = self.attitude
+        if self.attitude_type is not None:
+            result['AttitudeType'] = self.attitude_type
+        result['Comments'] = []
+        if self.comments is not None:
+            for k in self.comments:
+                result['Comments'].append(k.to_map() if k else None)
+        if self.ratio is not None:
+            result['Ratio'] = self.ratio
+        result['ViewPoints'] = []
+        if self.view_points is not None:
+            for k in self.view_points:
+                result['ViewPoints'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attitude') is not None:
+            self.attitude = m.get('Attitude')
+        if m.get('AttitudeType') is not None:
+            self.attitude_type = m.get('AttitudeType')
+        self.comments = []
+        if m.get('Comments') is not None:
+            for k in m.get('Comments'):
+                temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesComments()
+                self.comments.append(temp_model.from_map(k))
+        if m.get('Ratio') is not None:
+            self.ratio = m.get('Ratio')
+        self.view_points = []
+        if m.get('ViewPoints') is not None:
+            for k in m.get('ViewPoints'):
+                temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPoints()
+                self.view_points.append(temp_model.from_map(k))
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResult(TeaModel):
+    def __init__(
+        self,
+        attitudes: List[GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes] = None,
+    ):
+        self.attitudes = attitudes
+
+    def validate(self):
+        if self.attitudes:
+            for k in self.attitudes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Attitudes'] = []
+        if self.attitudes is not None:
+            for k in self.attitudes:
+                result['Attitudes'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attitudes = []
+        if m.get('Attitudes') is not None:
+            for k in m.get('Attitudes'):
+                temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes()
+                self.attitudes.append(temp_model.from_map(k))
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        fresh_view_points_result: GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResult = None,
+        hot_view_points_result: GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResult = None,
+        status: str = None,
+        timed_view_points_result: GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResult = None,
+        topic: str = None,
+        topic_summary_result: GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResult = None,
+        web_review_points_result: GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResult = None,
+    ):
+        self.error_message = error_message
+        self.fresh_view_points_result = fresh_view_points_result
+        self.hot_view_points_result = hot_view_points_result
+        self.status = status
+        self.timed_view_points_result = timed_view_points_result
+        self.topic = topic
+        self.topic_summary_result = topic_summary_result
+        self.web_review_points_result = web_review_points_result
+
+    def validate(self):
+        if self.fresh_view_points_result:
+            self.fresh_view_points_result.validate()
+        if self.hot_view_points_result:
+            self.hot_view_points_result.validate()
+        if self.timed_view_points_result:
+            self.timed_view_points_result.validate()
+        if self.topic_summary_result:
+            self.topic_summary_result.validate()
+        if self.web_review_points_result:
+            self.web_review_points_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.fresh_view_points_result is not None:
+            result['FreshViewPointsResult'] = self.fresh_view_points_result.to_map()
+        if self.hot_view_points_result is not None:
+            result['HotViewPointsResult'] = self.hot_view_points_result.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.timed_view_points_result is not None:
+            result['TimedViewPointsResult'] = self.timed_view_points_result.to_map()
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.topic_summary_result is not None:
+            result['TopicSummaryResult'] = self.topic_summary_result.to_map()
+        if self.web_review_points_result is not None:
+            result['WebReviewPointsResult'] = self.web_review_points_result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('FreshViewPointsResult') is not None:
+            temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResult()
+            self.fresh_view_points_result = temp_model.from_map(m['FreshViewPointsResult'])
+        if m.get('HotViewPointsResult') is not None:
+            temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResult()
+            self.hot_view_points_result = temp_model.from_map(m['HotViewPointsResult'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TimedViewPointsResult') is not None:
+            temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResult()
+            self.timed_view_points_result = temp_model.from_map(m['TimedViewPointsResult'])
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('TopicSummaryResult') is not None:
+            temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResult()
+            self.topic_summary_result = temp_model.from_map(m['TopicSummaryResult'])
+        if m.get('WebReviewPointsResult') is not None:
+            temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResult()
+            self.web_review_points_result = temp_model.from_map(m['WebReviewPointsResult'])
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetTopicSelectionPerspectiveAnalysisTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTopicSelectionPerspectiveAnalysisTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTopicSelectionPerspectiveAnalysisTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ImportInterveneFileRequest(TeaModel):
     def __init__(
         self,
@@ -7610,6 +10165,445 @@ class ListCustomTextResponse(TeaModel):
         return self
 
 
+class ListCustomViewPointsRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        attitude: str = None,
+        attitudes: List[str] = None,
+        custom_view_point_id: str = None,
+        custom_view_point_ids: List[str] = None,
+        max_results: int = None,
+        next_token: str = None,
+        topic: str = None,
+        topic_id: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.attitude = attitude
+        self.attitudes = attitudes
+        self.custom_view_point_id = custom_view_point_id
+        self.custom_view_point_ids = custom_view_point_ids
+        self.max_results = max_results
+        self.next_token = next_token
+        self.topic = topic
+        self.topic_id = topic_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.attitude is not None:
+            result['Attitude'] = self.attitude
+        if self.attitudes is not None:
+            result['Attitudes'] = self.attitudes
+        if self.custom_view_point_id is not None:
+            result['CustomViewPointId'] = self.custom_view_point_id
+        if self.custom_view_point_ids is not None:
+            result['CustomViewPointIds'] = self.custom_view_point_ids
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.topic_id is not None:
+            result['TopicId'] = self.topic_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('Attitude') is not None:
+            self.attitude = m.get('Attitude')
+        if m.get('Attitudes') is not None:
+            self.attitudes = m.get('Attitudes')
+        if m.get('CustomViewPointId') is not None:
+            self.custom_view_point_id = m.get('CustomViewPointId')
+        if m.get('CustomViewPointIds') is not None:
+            self.custom_view_point_ids = m.get('CustomViewPointIds')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('TopicId') is not None:
+            self.topic_id = m.get('TopicId')
+        return self
+
+
+class ListCustomViewPointsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        attitude: str = None,
+        attitudes_shrink: str = None,
+        custom_view_point_id: str = None,
+        custom_view_point_ids_shrink: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        topic: str = None,
+        topic_id: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.attitude = attitude
+        self.attitudes_shrink = attitudes_shrink
+        self.custom_view_point_id = custom_view_point_id
+        self.custom_view_point_ids_shrink = custom_view_point_ids_shrink
+        self.max_results = max_results
+        self.next_token = next_token
+        self.topic = topic
+        self.topic_id = topic_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.attitude is not None:
+            result['Attitude'] = self.attitude
+        if self.attitudes_shrink is not None:
+            result['Attitudes'] = self.attitudes_shrink
+        if self.custom_view_point_id is not None:
+            result['CustomViewPointId'] = self.custom_view_point_id
+        if self.custom_view_point_ids_shrink is not None:
+            result['CustomViewPointIds'] = self.custom_view_point_ids_shrink
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.topic_id is not None:
+            result['TopicId'] = self.topic_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('Attitude') is not None:
+            self.attitude = m.get('Attitude')
+        if m.get('Attitudes') is not None:
+            self.attitudes_shrink = m.get('Attitudes')
+        if m.get('CustomViewPointId') is not None:
+            self.custom_view_point_id = m.get('CustomViewPointId')
+        if m.get('CustomViewPointIds') is not None:
+            self.custom_view_point_ids_shrink = m.get('CustomViewPointIds')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('TopicId') is not None:
+            self.topic_id = m.get('TopicId')
+        return self
+
+
+class ListCustomViewPointsResponseBodyDataViewPointsOutlines(TeaModel):
+    def __init__(
+        self,
+        outline: str = None,
+        summary: str = None,
+    ):
+        self.outline = outline
+        self.summary = summary
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.outline is not None:
+            result['Outline'] = self.outline
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Outline') is not None:
+            self.outline = m.get('Outline')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class ListCustomViewPointsResponseBodyDataViewPoints(TeaModel):
+    def __init__(
+        self,
+        outlines: List[ListCustomViewPointsResponseBodyDataViewPointsOutlines] = None,
+        point: str = None,
+        summary: str = None,
+    ):
+        self.outlines = outlines
+        self.point = point
+        self.summary = summary
+
+    def validate(self):
+        if self.outlines:
+            for k in self.outlines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Outlines'] = []
+        if self.outlines is not None:
+            for k in self.outlines:
+                result['Outlines'].append(k.to_map() if k else None)
+        if self.point is not None:
+            result['Point'] = self.point
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.outlines = []
+        if m.get('Outlines') is not None:
+            for k in m.get('Outlines'):
+                temp_model = ListCustomViewPointsResponseBodyDataViewPointsOutlines()
+                self.outlines.append(temp_model.from_map(k))
+        if m.get('Point') is not None:
+            self.point = m.get('Point')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class ListCustomViewPointsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        async_task_id: str = None,
+        attitude: str = None,
+        create_time: str = None,
+        create_user: str = None,
+        id: str = None,
+        status: str = None,
+        task_error_message: str = None,
+        task_status: int = None,
+        view_points: List[ListCustomViewPointsResponseBodyDataViewPoints] = None,
+    ):
+        self.async_task_id = async_task_id
+        self.attitude = attitude
+        self.create_time = create_time
+        self.create_user = create_user
+        self.id = id
+        self.status = status
+        self.task_error_message = task_error_message
+        self.task_status = task_status
+        self.view_points = view_points
+
+    def validate(self):
+        if self.view_points:
+            for k in self.view_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.async_task_id is not None:
+            result['AsyncTaskId'] = self.async_task_id
+        if self.attitude is not None:
+            result['Attitude'] = self.attitude
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_error_message is not None:
+            result['TaskErrorMessage'] = self.task_error_message
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
+        result['ViewPoints'] = []
+        if self.view_points is not None:
+            for k in self.view_points:
+                result['ViewPoints'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsyncTaskId') is not None:
+            self.async_task_id = m.get('AsyncTaskId')
+        if m.get('Attitude') is not None:
+            self.attitude = m.get('Attitude')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskErrorMessage') is not None:
+            self.task_error_message = m.get('TaskErrorMessage')
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
+        self.view_points = []
+        if m.get('ViewPoints') is not None:
+            for k in m.get('ViewPoints'):
+                temp_model = ListCustomViewPointsResponseBodyDataViewPoints()
+                self.view_points.append(temp_model.from_map(k))
+        return self
+
+
+class ListCustomViewPointsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListCustomViewPointsResponseBodyData] = None,
+        http_status_code: int = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListCustomViewPointsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListCustomViewPointsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCustomViewPointsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCustomViewPointsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDialoguesRequest(TeaModel):
     def __init__(
         self,
@@ -7851,6 +10845,264 @@ class ListDialoguesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDialoguesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListFreshViewPointsRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        topic: str = None,
+        topic_source: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.topic = topic
+        # This parameter is required.
+        self.topic_source = topic_source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.topic_source is not None:
+            result['TopicSource'] = self.topic_source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('TopicSource') is not None:
+            self.topic_source = m.get('TopicSource')
+        return self
+
+
+class ListFreshViewPointsResponseBodyDataOutlines(TeaModel):
+    def __init__(
+        self,
+        outline: str = None,
+        summary: str = None,
+    ):
+        self.outline = outline
+        self.summary = summary
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.outline is not None:
+            result['Outline'] = self.outline
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Outline') is not None:
+            self.outline = m.get('Outline')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class ListFreshViewPointsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        outlines: List[ListFreshViewPointsResponseBodyDataOutlines] = None,
+        point: str = None,
+        summary: str = None,
+    ):
+        self.outlines = outlines
+        self.point = point
+        self.summary = summary
+
+    def validate(self):
+        if self.outlines:
+            for k in self.outlines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Outlines'] = []
+        if self.outlines is not None:
+            for k in self.outlines:
+                result['Outlines'].append(k.to_map() if k else None)
+        if self.point is not None:
+            result['Point'] = self.point
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.outlines = []
+        if m.get('Outlines') is not None:
+            for k in m.get('Outlines'):
+                temp_model = ListFreshViewPointsResponseBodyDataOutlines()
+                self.outlines.append(temp_model.from_map(k))
+        if m.get('Point') is not None:
+            self.point = m.get('Point')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class ListFreshViewPointsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListFreshViewPointsResponseBodyData] = None,
+        http_status_code: int = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListFreshViewPointsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListFreshViewPointsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListFreshViewPointsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListFreshViewPointsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8524,6 +11776,1097 @@ class ListHotNewsWithTypeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListHotNewsWithTypeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListHotSourcesRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListHotSourcesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        show: bool = None,
+        sort: int = None,
+        source: str = None,
+    ):
+        self.description = description
+        self.show = show
+        self.sort = sort
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.show is not None:
+            result['Show'] = self.show
+        if self.sort is not None:
+            result['Sort'] = self.sort
+        if self.source is not None:
+            result['Source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Show') is not None:
+            self.show = m.get('Show')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        return self
+
+
+class ListHotSourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListHotSourcesResponseBodyData] = None,
+        http_status_code: int = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListHotSourcesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListHotSourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListHotSourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListHotSourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListHotTopicsRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        topic_ids: List[str] = None,
+        topic_query: str = None,
+        topic_source: str = None,
+        topic_version: str = None,
+        topics: List[str] = None,
+        with_news: bool = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.max_results = max_results
+        self.next_token = next_token
+        self.topic_ids = topic_ids
+        self.topic_query = topic_query
+        self.topic_source = topic_source
+        self.topic_version = topic_version
+        self.topics = topics
+        self.with_news = with_news
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.topic_ids is not None:
+            result['TopicIds'] = self.topic_ids
+        if self.topic_query is not None:
+            result['TopicQuery'] = self.topic_query
+        if self.topic_source is not None:
+            result['TopicSource'] = self.topic_source
+        if self.topic_version is not None:
+            result['TopicVersion'] = self.topic_version
+        if self.topics is not None:
+            result['Topics'] = self.topics
+        if self.with_news is not None:
+            result['WithNews'] = self.with_news
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('TopicIds') is not None:
+            self.topic_ids = m.get('TopicIds')
+        if m.get('TopicQuery') is not None:
+            self.topic_query = m.get('TopicQuery')
+        if m.get('TopicSource') is not None:
+            self.topic_source = m.get('TopicSource')
+        if m.get('TopicVersion') is not None:
+            self.topic_version = m.get('TopicVersion')
+        if m.get('Topics') is not None:
+            self.topics = m.get('Topics')
+        if m.get('WithNews') is not None:
+            self.with_news = m.get('WithNews')
+        return self
+
+
+class ListHotTopicsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        topic_ids_shrink: str = None,
+        topic_query: str = None,
+        topic_source: str = None,
+        topic_version: str = None,
+        topics_shrink: str = None,
+        with_news: bool = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.max_results = max_results
+        self.next_token = next_token
+        self.topic_ids_shrink = topic_ids_shrink
+        self.topic_query = topic_query
+        self.topic_source = topic_source
+        self.topic_version = topic_version
+        self.topics_shrink = topics_shrink
+        self.with_news = with_news
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.topic_ids_shrink is not None:
+            result['TopicIds'] = self.topic_ids_shrink
+        if self.topic_query is not None:
+            result['TopicQuery'] = self.topic_query
+        if self.topic_source is not None:
+            result['TopicSource'] = self.topic_source
+        if self.topic_version is not None:
+            result['TopicVersion'] = self.topic_version
+        if self.topics_shrink is not None:
+            result['Topics'] = self.topics_shrink
+        if self.with_news is not None:
+            result['WithNews'] = self.with_news
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('TopicIds') is not None:
+            self.topic_ids_shrink = m.get('TopicIds')
+        if m.get('TopicQuery') is not None:
+            self.topic_query = m.get('TopicQuery')
+        if m.get('TopicSource') is not None:
+            self.topic_source = m.get('TopicSource')
+        if m.get('TopicVersion') is not None:
+            self.topic_version = m.get('TopicVersion')
+        if m.get('Topics') is not None:
+            self.topics_shrink = m.get('Topics')
+        if m.get('WithNews') is not None:
+            self.with_news = m.get('WithNews')
+        return self
+
+
+class ListHotTopicsResponseBodyDataStructureSummaryDocList(TeaModel):
+    def __init__(
+        self,
+        source: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.source = source
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class ListHotTopicsResponseBodyDataStructureSummary(TeaModel):
+    def __init__(
+        self,
+        doc_list: List[ListHotTopicsResponseBodyDataStructureSummaryDocList] = None,
+        summary: str = None,
+        title: str = None,
+    ):
+        self.doc_list = doc_list
+        self.summary = summary
+        self.title = title
+
+    def validate(self):
+        if self.doc_list:
+            for k in self.doc_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DocList'] = []
+        if self.doc_list is not None:
+            for k in self.doc_list:
+                result['DocList'].append(k.to_map() if k else None)
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.doc_list = []
+        if m.get('DocList') is not None:
+            for k in m.get('DocList'):
+                temp_model = ListHotTopicsResponseBodyDataStructureSummaryDocList()
+                self.doc_list.append(temp_model.from_map(k))
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class ListHotTopicsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        async_task_id: str = None,
+        create_user: str = None,
+        hot_value: int = None,
+        id: str = None,
+        status: str = None,
+        structure_summary: List[ListHotTopicsResponseBodyDataStructureSummary] = None,
+        summary: str = None,
+        task_error_message: str = None,
+        task_status: int = None,
+        topic: str = None,
+        topic_source: str = None,
+        version: str = None,
+    ):
+        self.async_task_id = async_task_id
+        self.create_user = create_user
+        self.hot_value = hot_value
+        self.id = id
+        self.status = status
+        self.structure_summary = structure_summary
+        self.summary = summary
+        self.task_error_message = task_error_message
+        self.task_status = task_status
+        self.topic = topic
+        self.topic_source = topic_source
+        self.version = version
+
+    def validate(self):
+        if self.structure_summary:
+            for k in self.structure_summary:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.async_task_id is not None:
+            result['AsyncTaskId'] = self.async_task_id
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.hot_value is not None:
+            result['HotValue'] = self.hot_value
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.status is not None:
+            result['Status'] = self.status
+        result['StructureSummary'] = []
+        if self.structure_summary is not None:
+            for k in self.structure_summary:
+                result['StructureSummary'].append(k.to_map() if k else None)
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.task_error_message is not None:
+            result['TaskErrorMessage'] = self.task_error_message
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.topic_source is not None:
+            result['TopicSource'] = self.topic_source
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsyncTaskId') is not None:
+            self.async_task_id = m.get('AsyncTaskId')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('HotValue') is not None:
+            self.hot_value = m.get('HotValue')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.structure_summary = []
+        if m.get('StructureSummary') is not None:
+            for k in m.get('StructureSummary'):
+                temp_model = ListHotTopicsResponseBodyDataStructureSummary()
+                self.structure_summary.append(temp_model.from_map(k))
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('TaskErrorMessage') is not None:
+            self.task_error_message = m.get('TaskErrorMessage')
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('TopicSource') is not None:
+            self.topic_source = m.get('TopicSource')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class ListHotTopicsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListHotTopicsResponseBodyData] = None,
+        http_status_code: int = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListHotTopicsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListHotTopicsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListHotTopicsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListHotTopicsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListHotViewPointsRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        topic: str = None,
+        topic_source: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.topic = topic
+        # This parameter is required.
+        self.topic_source = topic_source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.topic_source is not None:
+            result['TopicSource'] = self.topic_source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('TopicSource') is not None:
+            self.topic_source = m.get('TopicSource')
+        return self
+
+
+class ListHotViewPointsResponseBodyDataNews(TeaModel):
+    def __init__(
+        self,
+        author: str = None,
+        content: str = None,
+        doc_id: str = None,
+        doc_uuid: str = None,
+        image_urls: List[str] = None,
+        pub_time: str = None,
+        source: str = None,
+        summary: str = None,
+        tags: List[str] = None,
+        title: str = None,
+        topic: str = None,
+        url: str = None,
+    ):
+        self.author = author
+        self.content = content
+        self.doc_id = doc_id
+        self.doc_uuid = doc_uuid
+        self.image_urls = image_urls
+        self.pub_time = pub_time
+        self.source = source
+        self.summary = summary
+        self.tags = tags
+        self.title = title
+        self.topic = topic
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.author is not None:
+            result['Author'] = self.author
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.doc_id is not None:
+            result['DocId'] = self.doc_id
+        if self.doc_uuid is not None:
+            result['DocUuid'] = self.doc_uuid
+        if self.image_urls is not None:
+            result['ImageUrls'] = self.image_urls
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Author') is not None:
+            self.author = m.get('Author')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('DocId') is not None:
+            self.doc_id = m.get('DocId')
+        if m.get('DocUuid') is not None:
+            self.doc_uuid = m.get('DocUuid')
+        if m.get('ImageUrls') is not None:
+            self.image_urls = m.get('ImageUrls')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class ListHotViewPointsResponseBodyDataViewPointsOutlines(TeaModel):
+    def __init__(
+        self,
+        outline: str = None,
+        summary: str = None,
+    ):
+        self.outline = outline
+        self.summary = summary
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.outline is not None:
+            result['Outline'] = self.outline
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Outline') is not None:
+            self.outline = m.get('Outline')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class ListHotViewPointsResponseBodyDataViewPoints(TeaModel):
+    def __init__(
+        self,
+        outlines: List[ListHotViewPointsResponseBodyDataViewPointsOutlines] = None,
+        point: str = None,
+        summary: str = None,
+    ):
+        self.outlines = outlines
+        self.point = point
+        self.summary = summary
+
+    def validate(self):
+        if self.outlines:
+            for k in self.outlines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Outlines'] = []
+        if self.outlines is not None:
+            for k in self.outlines:
+                result['Outlines'].append(k.to_map() if k else None)
+        if self.point is not None:
+            result['Point'] = self.point
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.outlines = []
+        if m.get('Outlines') is not None:
+            for k in m.get('Outlines'):
+                temp_model = ListHotViewPointsResponseBodyDataViewPointsOutlines()
+                self.outlines.append(temp_model.from_map(k))
+        if m.get('Point') is not None:
+            self.point = m.get('Point')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class ListHotViewPointsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        attitude: str = None,
+        attitude_type: str = None,
+        news: List[ListHotViewPointsResponseBodyDataNews] = None,
+        ratio: str = None,
+        view_points: List[ListHotViewPointsResponseBodyDataViewPoints] = None,
+    ):
+        self.attitude = attitude
+        self.attitude_type = attitude_type
+        self.news = news
+        self.ratio = ratio
+        self.view_points = view_points
+
+    def validate(self):
+        if self.news:
+            for k in self.news:
+                if k:
+                    k.validate()
+        if self.view_points:
+            for k in self.view_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attitude is not None:
+            result['Attitude'] = self.attitude
+        if self.attitude_type is not None:
+            result['AttitudeType'] = self.attitude_type
+        result['News'] = []
+        if self.news is not None:
+            for k in self.news:
+                result['News'].append(k.to_map() if k else None)
+        if self.ratio is not None:
+            result['Ratio'] = self.ratio
+        result['ViewPoints'] = []
+        if self.view_points is not None:
+            for k in self.view_points:
+                result['ViewPoints'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attitude') is not None:
+            self.attitude = m.get('Attitude')
+        if m.get('AttitudeType') is not None:
+            self.attitude_type = m.get('AttitudeType')
+        self.news = []
+        if m.get('News') is not None:
+            for k in m.get('News'):
+                temp_model = ListHotViewPointsResponseBodyDataNews()
+                self.news.append(temp_model.from_map(k))
+        if m.get('Ratio') is not None:
+            self.ratio = m.get('Ratio')
+        self.view_points = []
+        if m.get('ViewPoints') is not None:
+            for k in m.get('ViewPoints'):
+                temp_model = ListHotViewPointsResponseBodyDataViewPoints()
+                self.view_points.append(temp_model.from_map(k))
+        return self
+
+
+class ListHotViewPointsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListHotViewPointsResponseBodyData] = None,
+        http_status_code: int = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListHotViewPointsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListHotViewPointsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListHotViewPointsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListHotViewPointsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10012,6 +14355,1033 @@ class ListMaterialDocumentsResponse(TeaModel):
         return self
 
 
+class ListPlanningProposalRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        custom_view_point_id: str = None,
+        custom_view_point_ids: List[str] = None,
+        max_results: int = None,
+        next_token: str = None,
+        titles: List[str] = None,
+        topic: str = None,
+        topic_source: str = None,
+        topic_version: str = None,
+        view_point_type: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.custom_view_point_id = custom_view_point_id
+        self.custom_view_point_ids = custom_view_point_ids
+        self.max_results = max_results
+        self.next_token = next_token
+        self.titles = titles
+        # This parameter is required.
+        self.topic = topic
+        # This parameter is required.
+        self.topic_source = topic_source
+        self.topic_version = topic_version
+        # This parameter is required.
+        self.view_point_type = view_point_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.custom_view_point_id is not None:
+            result['CustomViewPointId'] = self.custom_view_point_id
+        if self.custom_view_point_ids is not None:
+            result['CustomViewPointIds'] = self.custom_view_point_ids
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.titles is not None:
+            result['Titles'] = self.titles
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.topic_source is not None:
+            result['TopicSource'] = self.topic_source
+        if self.topic_version is not None:
+            result['TopicVersion'] = self.topic_version
+        if self.view_point_type is not None:
+            result['ViewPointType'] = self.view_point_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('CustomViewPointId') is not None:
+            self.custom_view_point_id = m.get('CustomViewPointId')
+        if m.get('CustomViewPointIds') is not None:
+            self.custom_view_point_ids = m.get('CustomViewPointIds')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Titles') is not None:
+            self.titles = m.get('Titles')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('TopicSource') is not None:
+            self.topic_source = m.get('TopicSource')
+        if m.get('TopicVersion') is not None:
+            self.topic_version = m.get('TopicVersion')
+        if m.get('ViewPointType') is not None:
+            self.view_point_type = m.get('ViewPointType')
+        return self
+
+
+class ListPlanningProposalShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        custom_view_point_id: str = None,
+        custom_view_point_ids_shrink: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        titles_shrink: str = None,
+        topic: str = None,
+        topic_source: str = None,
+        topic_version: str = None,
+        view_point_type: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.custom_view_point_id = custom_view_point_id
+        self.custom_view_point_ids_shrink = custom_view_point_ids_shrink
+        self.max_results = max_results
+        self.next_token = next_token
+        self.titles_shrink = titles_shrink
+        # This parameter is required.
+        self.topic = topic
+        # This parameter is required.
+        self.topic_source = topic_source
+        self.topic_version = topic_version
+        # This parameter is required.
+        self.view_point_type = view_point_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.custom_view_point_id is not None:
+            result['CustomViewPointId'] = self.custom_view_point_id
+        if self.custom_view_point_ids_shrink is not None:
+            result['CustomViewPointIds'] = self.custom_view_point_ids_shrink
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.titles_shrink is not None:
+            result['Titles'] = self.titles_shrink
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.topic_source is not None:
+            result['TopicSource'] = self.topic_source
+        if self.topic_version is not None:
+            result['TopicVersion'] = self.topic_version
+        if self.view_point_type is not None:
+            result['ViewPointType'] = self.view_point_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('CustomViewPointId') is not None:
+            self.custom_view_point_id = m.get('CustomViewPointId')
+        if m.get('CustomViewPointIds') is not None:
+            self.custom_view_point_ids_shrink = m.get('CustomViewPointIds')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Titles') is not None:
+            self.titles_shrink = m.get('Titles')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('TopicSource') is not None:
+            self.topic_source = m.get('TopicSource')
+        if m.get('TopicVersion') is not None:
+            self.topic_version = m.get('TopicVersion')
+        if m.get('ViewPointType') is not None:
+            self.view_point_type = m.get('ViewPointType')
+        return self
+
+
+class ListPlanningProposalResponseBodyDataOutlines(TeaModel):
+    def __init__(
+        self,
+        outline: str = None,
+        summary: str = None,
+    ):
+        self.outline = outline
+        self.summary = summary
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.outline is not None:
+            result['Outline'] = self.outline
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Outline') is not None:
+            self.outline = m.get('Outline')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class ListPlanningProposalResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        outlines: List[ListPlanningProposalResponseBodyDataOutlines] = None,
+        summary: str = None,
+        title: str = None,
+    ):
+        self.outlines = outlines
+        self.summary = summary
+        self.title = title
+
+    def validate(self):
+        if self.outlines:
+            for k in self.outlines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Outlines'] = []
+        if self.outlines is not None:
+            for k in self.outlines:
+                result['Outlines'].append(k.to_map() if k else None)
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.outlines = []
+        if m.get('Outlines') is not None:
+            for k in m.get('Outlines'):
+                temp_model = ListPlanningProposalResponseBodyDataOutlines()
+                self.outlines.append(temp_model.from_map(k))
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class ListPlanningProposalResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListPlanningProposalResponseBodyData] = None,
+        http_status_code: int = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListPlanningProposalResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListPlanningProposalResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPlanningProposalResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPlanningProposalResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTimedViewAttitudeRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        topic: str = None,
+        topic_source: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.topic = topic
+        # This parameter is required.
+        self.topic_source = topic_source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.topic_source is not None:
+            result['TopicSource'] = self.topic_source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('TopicSource') is not None:
+            self.topic_source = m.get('TopicSource')
+        return self
+
+
+class ListTimedViewAttitudeResponseBodyDataViewPointsOutlines(TeaModel):
+    def __init__(
+        self,
+        outline: str = None,
+        summary: str = None,
+    ):
+        self.outline = outline
+        self.summary = summary
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.outline is not None:
+            result['Outline'] = self.outline
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Outline') is not None:
+            self.outline = m.get('Outline')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class ListTimedViewAttitudeResponseBodyDataViewPoints(TeaModel):
+    def __init__(
+        self,
+        outlines: List[ListTimedViewAttitudeResponseBodyDataViewPointsOutlines] = None,
+        point: str = None,
+        summary: str = None,
+    ):
+        self.outlines = outlines
+        self.point = point
+        self.summary = summary
+
+    def validate(self):
+        if self.outlines:
+            for k in self.outlines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Outlines'] = []
+        if self.outlines is not None:
+            for k in self.outlines:
+                result['Outlines'].append(k.to_map() if k else None)
+        if self.point is not None:
+            result['Point'] = self.point
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.outlines = []
+        if m.get('Outlines') is not None:
+            for k in m.get('Outlines'):
+                temp_model = ListTimedViewAttitudeResponseBodyDataViewPointsOutlines()
+                self.outlines.append(temp_model.from_map(k))
+        if m.get('Point') is not None:
+            self.point = m.get('Point')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class ListTimedViewAttitudeResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        attitude: str = None,
+        attitude_type: str = None,
+        pub_time: str = None,
+        ratio: str = None,
+        source: str = None,
+        title: str = None,
+        url: str = None,
+        view_points: List[ListTimedViewAttitudeResponseBodyDataViewPoints] = None,
+    ):
+        self.attitude = attitude
+        self.attitude_type = attitude_type
+        self.pub_time = pub_time
+        self.ratio = ratio
+        self.source = source
+        self.title = title
+        self.url = url
+        self.view_points = view_points
+
+    def validate(self):
+        if self.view_points:
+            for k in self.view_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attitude is not None:
+            result['Attitude'] = self.attitude
+        if self.attitude_type is not None:
+            result['AttitudeType'] = self.attitude_type
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
+        if self.ratio is not None:
+            result['Ratio'] = self.ratio
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        result['ViewPoints'] = []
+        if self.view_points is not None:
+            for k in self.view_points:
+                result['ViewPoints'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attitude') is not None:
+            self.attitude = m.get('Attitude')
+        if m.get('AttitudeType') is not None:
+            self.attitude_type = m.get('AttitudeType')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
+        if m.get('Ratio') is not None:
+            self.ratio = m.get('Ratio')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        self.view_points = []
+        if m.get('ViewPoints') is not None:
+            for k in m.get('ViewPoints'):
+                temp_model = ListTimedViewAttitudeResponseBodyDataViewPoints()
+                self.view_points.append(temp_model.from_map(k))
+        return self
+
+
+class ListTimedViewAttitudeResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListTimedViewAttitudeResponseBodyData] = None,
+        http_status_code: int = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListTimedViewAttitudeResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListTimedViewAttitudeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTimedViewAttitudeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTimedViewAttitudeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTopicRecommendEventListRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListTopicRecommendEventListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[str] = None,
+        http_status_code: int = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListTopicRecommendEventListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTopicRecommendEventListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTopicRecommendEventListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTopicViewPointRecommendEventListRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.id = id
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListTopicViewPointRecommendEventListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[str] = None,
+        http_status_code: int = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListTopicViewPointRecommendEventListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTopicViewPointRecommendEventListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTopicViewPointRecommendEventListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListVersionsRequest(TeaModel):
     def __init__(
         self,
@@ -10235,6 +15605,383 @@ class ListVersionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListVersionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListWebReviewPointsRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        topic: str = None,
+        topic_source: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.topic = topic
+        # This parameter is required.
+        self.topic_source = topic_source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.topic_source is not None:
+            result['TopicSource'] = self.topic_source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('TopicSource') is not None:
+            self.topic_source = m.get('TopicSource')
+        return self
+
+
+class ListWebReviewPointsResponseBodyDataComments(TeaModel):
+    def __init__(
+        self,
+        source: str = None,
+        text: str = None,
+        title: str = None,
+        url: str = None,
+        username: str = None,
+    ):
+        self.source = source
+        self.text = text
+        self.title = title
+        self.url = url
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class ListWebReviewPointsResponseBodyDataViewPointsOutlines(TeaModel):
+    def __init__(
+        self,
+        outline: str = None,
+        summary: str = None,
+    ):
+        self.outline = outline
+        self.summary = summary
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.outline is not None:
+            result['Outline'] = self.outline
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Outline') is not None:
+            self.outline = m.get('Outline')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class ListWebReviewPointsResponseBodyDataViewPoints(TeaModel):
+    def __init__(
+        self,
+        outlines: List[ListWebReviewPointsResponseBodyDataViewPointsOutlines] = None,
+        point: str = None,
+        summary: str = None,
+    ):
+        self.outlines = outlines
+        self.point = point
+        self.summary = summary
+
+    def validate(self):
+        if self.outlines:
+            for k in self.outlines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Outlines'] = []
+        if self.outlines is not None:
+            for k in self.outlines:
+                result['Outlines'].append(k.to_map() if k else None)
+        if self.point is not None:
+            result['Point'] = self.point
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.outlines = []
+        if m.get('Outlines') is not None:
+            for k in m.get('Outlines'):
+                temp_model = ListWebReviewPointsResponseBodyDataViewPointsOutlines()
+                self.outlines.append(temp_model.from_map(k))
+        if m.get('Point') is not None:
+            self.point = m.get('Point')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class ListWebReviewPointsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        attitude: str = None,
+        attitude_type: str = None,
+        comments: List[ListWebReviewPointsResponseBodyDataComments] = None,
+        ratio: str = None,
+        view_points: List[ListWebReviewPointsResponseBodyDataViewPoints] = None,
+    ):
+        self.attitude = attitude
+        self.attitude_type = attitude_type
+        self.comments = comments
+        self.ratio = ratio
+        self.view_points = view_points
+
+    def validate(self):
+        if self.comments:
+            for k in self.comments:
+                if k:
+                    k.validate()
+        if self.view_points:
+            for k in self.view_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attitude is not None:
+            result['Attitude'] = self.attitude
+        if self.attitude_type is not None:
+            result['AttitudeType'] = self.attitude_type
+        result['Comments'] = []
+        if self.comments is not None:
+            for k in self.comments:
+                result['Comments'].append(k.to_map() if k else None)
+        if self.ratio is not None:
+            result['Ratio'] = self.ratio
+        result['ViewPoints'] = []
+        if self.view_points is not None:
+            for k in self.view_points:
+                result['ViewPoints'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attitude') is not None:
+            self.attitude = m.get('Attitude')
+        if m.get('AttitudeType') is not None:
+            self.attitude_type = m.get('AttitudeType')
+        self.comments = []
+        if m.get('Comments') is not None:
+            for k in m.get('Comments'):
+                temp_model = ListWebReviewPointsResponseBodyDataComments()
+                self.comments.append(temp_model.from_map(k))
+        if m.get('Ratio') is not None:
+            self.ratio = m.get('Ratio')
+        self.view_points = []
+        if m.get('ViewPoints') is not None:
+            for k in m.get('ViewPoints'):
+                temp_model = ListWebReviewPointsResponseBodyDataViewPoints()
+                self.view_points.append(temp_model.from_map(k))
+        return self
+
+
+class ListWebReviewPointsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListWebReviewPointsResponseBodyData] = None,
+        http_status_code: int = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListWebReviewPointsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListWebReviewPointsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListWebReviewPointsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListWebReviewPointsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11064,6 +16811,813 @@ class RunContinueContentResponse(TeaModel):
         return self
 
 
+class RunCustomHotTopicAnalysisRequest(TeaModel):
+    def __init__(
+        self,
+        ask_user: str = None,
+        force_analysis_exists_topic: bool = None,
+        prompt: str = None,
+        session_id: str = None,
+        task_id: str = None,
+        user_back: str = None,
+        workspace_id: str = None,
+    ):
+        self.ask_user = ask_user
+        self.force_analysis_exists_topic = force_analysis_exists_topic
+        # This parameter is required.
+        self.prompt = prompt
+        self.session_id = session_id
+        self.task_id = task_id
+        self.user_back = user_back
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ask_user is not None:
+            result['AskUser'] = self.ask_user
+        if self.force_analysis_exists_topic is not None:
+            result['ForceAnalysisExistsTopic'] = self.force_analysis_exists_topic
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.user_back is not None:
+            result['UserBack'] = self.user_back
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AskUser') is not None:
+            self.ask_user = m.get('AskUser')
+        if m.get('ForceAnalysisExistsTopic') is not None:
+            self.force_analysis_exists_topic = m.get('ForceAnalysisExistsTopic')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('UserBack') is not None:
+            self.user_back = m.get('UserBack')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class RunCustomHotTopicAnalysisResponseBodyHeader(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        event: str = None,
+        origin_session_id: str = None,
+        session_id: str = None,
+        task_id: str = None,
+        trace_id: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.event = event
+        self.origin_session_id = origin_session_id
+        self.session_id = session_id
+        self.task_id = task_id
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.origin_session_id is not None:
+            result['OriginSessionId'] = self.origin_session_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('OriginSessionId') is not None:
+            self.origin_session_id = m.get('OriginSessionId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles(TeaModel):
+    def __init__(
+        self,
+        author: str = None,
+        content: str = None,
+        doc_id: str = None,
+        doc_uuid: str = None,
+        pub_time: str = None,
+        source: str = None,
+        summary: str = None,
+        tag: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.author = author
+        self.content = content
+        self.doc_id = doc_id
+        self.doc_uuid = doc_uuid
+        self.pub_time = pub_time
+        self.source = source
+        self.summary = summary
+        self.tag = tag
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.author is not None:
+            result['Author'] = self.author
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.doc_id is not None:
+            result['DocId'] = self.doc_id
+        if self.doc_uuid is not None:
+            result['DocUuid'] = self.doc_uuid
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Author') is not None:
+            self.author = m.get('Author')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('DocId') is not None:
+            self.doc_id = m.get('DocId')
+        if m.get('DocUuid') is not None:
+            self.doc_uuid = m.get('DocUuid')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class RunCustomHotTopicAnalysisResponseBodyPayloadOutput(TeaModel):
+    def __init__(
+        self,
+        articles: List[RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles] = None,
+        ask_user: List[str] = None,
+        async_task_id: str = None,
+        attitude: str = None,
+        search_query: str = None,
+        text: str = None,
+        topic_id: str = None,
+    ):
+        self.articles = articles
+        self.ask_user = ask_user
+        self.async_task_id = async_task_id
+        self.attitude = attitude
+        self.search_query = search_query
+        self.text = text
+        self.topic_id = topic_id
+
+    def validate(self):
+        if self.articles:
+            for k in self.articles:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Articles'] = []
+        if self.articles is not None:
+            for k in self.articles:
+                result['Articles'].append(k.to_map() if k else None)
+        if self.ask_user is not None:
+            result['AskUser'] = self.ask_user
+        if self.async_task_id is not None:
+            result['AsyncTaskId'] = self.async_task_id
+        if self.attitude is not None:
+            result['Attitude'] = self.attitude
+        if self.search_query is not None:
+            result['SearchQuery'] = self.search_query
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.topic_id is not None:
+            result['TopicId'] = self.topic_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.articles = []
+        if m.get('Articles') is not None:
+            for k in m.get('Articles'):
+                temp_model = RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles()
+                self.articles.append(temp_model.from_map(k))
+        if m.get('AskUser') is not None:
+            self.ask_user = m.get('AskUser')
+        if m.get('AsyncTaskId') is not None:
+            self.async_task_id = m.get('AsyncTaskId')
+        if m.get('Attitude') is not None:
+            self.attitude = m.get('Attitude')
+        if m.get('SearchQuery') is not None:
+            self.search_query = m.get('SearchQuery')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('TopicId') is not None:
+            self.topic_id = m.get('TopicId')
+        return self
+
+
+class RunCustomHotTopicAnalysisResponseBodyPayloadUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['InputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['OutputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['TotalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputTokens') is not None:
+            self.input_tokens = m.get('InputTokens')
+        if m.get('OutputTokens') is not None:
+            self.output_tokens = m.get('OutputTokens')
+        if m.get('TotalTokens') is not None:
+            self.total_tokens = m.get('TotalTokens')
+        return self
+
+
+class RunCustomHotTopicAnalysisResponseBodyPayload(TeaModel):
+    def __init__(
+        self,
+        output: RunCustomHotTopicAnalysisResponseBodyPayloadOutput = None,
+        usage: RunCustomHotTopicAnalysisResponseBodyPayloadUsage = None,
+    ):
+        self.output = output
+        self.usage = usage
+
+    def validate(self):
+        if self.output:
+            self.output.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['Output'] = self.output.to_map()
+        if self.usage is not None:
+            result['Usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Output') is not None:
+            temp_model = RunCustomHotTopicAnalysisResponseBodyPayloadOutput()
+            self.output = temp_model.from_map(m['Output'])
+        if m.get('Usage') is not None:
+            temp_model = RunCustomHotTopicAnalysisResponseBodyPayloadUsage()
+            self.usage = temp_model.from_map(m['Usage'])
+        return self
+
+
+class RunCustomHotTopicAnalysisResponseBody(TeaModel):
+    def __init__(
+        self,
+        header: RunCustomHotTopicAnalysisResponseBodyHeader = None,
+        payload: RunCustomHotTopicAnalysisResponseBodyPayload = None,
+        request_id: str = None,
+    ):
+        self.header = header
+        self.payload = payload
+        self.request_id = request_id
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.payload:
+            self.payload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.header is not None:
+            result['Header'] = self.header.to_map()
+        if self.payload is not None:
+            result['Payload'] = self.payload.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Header') is not None:
+            temp_model = RunCustomHotTopicAnalysisResponseBodyHeader()
+            self.header = temp_model.from_map(m['Header'])
+        if m.get('Payload') is not None:
+            temp_model = RunCustomHotTopicAnalysisResponseBodyPayload()
+            self.payload = temp_model.from_map(m['Payload'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RunCustomHotTopicAnalysisResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunCustomHotTopicAnalysisResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunCustomHotTopicAnalysisResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RunCustomHotTopicViewPointAnalysisRequest(TeaModel):
+    def __init__(
+        self,
+        ask_user: str = None,
+        prompt: str = None,
+        search_query: str = None,
+        skip_ask_user: bool = None,
+        topic: str = None,
+        topic_id: str = None,
+        topic_source: str = None,
+        topic_version: str = None,
+        user_back: str = None,
+        workspace_id: str = None,
+    ):
+        self.ask_user = ask_user
+        # This parameter is required.
+        self.prompt = prompt
+        self.search_query = search_query
+        self.skip_ask_user = skip_ask_user
+        self.topic = topic
+        self.topic_id = topic_id
+        self.topic_source = topic_source
+        self.topic_version = topic_version
+        self.user_back = user_back
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ask_user is not None:
+            result['AskUser'] = self.ask_user
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.search_query is not None:
+            result['SearchQuery'] = self.search_query
+        if self.skip_ask_user is not None:
+            result['SkipAskUser'] = self.skip_ask_user
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.topic_id is not None:
+            result['TopicId'] = self.topic_id
+        if self.topic_source is not None:
+            result['TopicSource'] = self.topic_source
+        if self.topic_version is not None:
+            result['TopicVersion'] = self.topic_version
+        if self.user_back is not None:
+            result['UserBack'] = self.user_back
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AskUser') is not None:
+            self.ask_user = m.get('AskUser')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('SearchQuery') is not None:
+            self.search_query = m.get('SearchQuery')
+        if m.get('SkipAskUser') is not None:
+            self.skip_ask_user = m.get('SkipAskUser')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('TopicId') is not None:
+            self.topic_id = m.get('TopicId')
+        if m.get('TopicSource') is not None:
+            self.topic_source = m.get('TopicSource')
+        if m.get('TopicVersion') is not None:
+            self.topic_version = m.get('TopicVersion')
+        if m.get('UserBack') is not None:
+            self.user_back = m.get('UserBack')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class RunCustomHotTopicViewPointAnalysisResponseBodyHeader(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        event: str = None,
+        origin_session_id: str = None,
+        session_id: str = None,
+        task_id: str = None,
+        trace_id: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.event = event
+        self.origin_session_id = origin_session_id
+        self.session_id = session_id
+        self.task_id = task_id
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.origin_session_id is not None:
+            result['OriginSessionId'] = self.origin_session_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('OriginSessionId') is not None:
+            self.origin_session_id = m.get('OriginSessionId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput(TeaModel):
+    def __init__(
+        self,
+        ask_user: List[str] = None,
+        async_task_id: str = None,
+        attitude: str = None,
+        custom_view_point_id: str = None,
+        text: str = None,
+        topic_id: str = None,
+    ):
+        self.ask_user = ask_user
+        self.async_task_id = async_task_id
+        self.attitude = attitude
+        self.custom_view_point_id = custom_view_point_id
+        self.text = text
+        self.topic_id = topic_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ask_user is not None:
+            result['AskUser'] = self.ask_user
+        if self.async_task_id is not None:
+            result['AsyncTaskId'] = self.async_task_id
+        if self.attitude is not None:
+            result['Attitude'] = self.attitude
+        if self.custom_view_point_id is not None:
+            result['CustomViewPointId'] = self.custom_view_point_id
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.topic_id is not None:
+            result['TopicId'] = self.topic_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AskUser') is not None:
+            self.ask_user = m.get('AskUser')
+        if m.get('AsyncTaskId') is not None:
+            self.async_task_id = m.get('AsyncTaskId')
+        if m.get('Attitude') is not None:
+            self.attitude = m.get('Attitude')
+        if m.get('CustomViewPointId') is not None:
+            self.custom_view_point_id = m.get('CustomViewPointId')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('TopicId') is not None:
+            self.topic_id = m.get('TopicId')
+        return self
+
+
+class RunCustomHotTopicViewPointAnalysisResponseBodyPayloadUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['InputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['OutputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['TotalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputTokens') is not None:
+            self.input_tokens = m.get('InputTokens')
+        if m.get('OutputTokens') is not None:
+            self.output_tokens = m.get('OutputTokens')
+        if m.get('TotalTokens') is not None:
+            self.total_tokens = m.get('TotalTokens')
+        return self
+
+
+class RunCustomHotTopicViewPointAnalysisResponseBodyPayload(TeaModel):
+    def __init__(
+        self,
+        output: RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput = None,
+        usage: RunCustomHotTopicViewPointAnalysisResponseBodyPayloadUsage = None,
+    ):
+        self.output = output
+        self.usage = usage
+
+    def validate(self):
+        if self.output:
+            self.output.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['Output'] = self.output.to_map()
+        if self.usage is not None:
+            result['Usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Output') is not None:
+            temp_model = RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput()
+            self.output = temp_model.from_map(m['Output'])
+        if m.get('Usage') is not None:
+            temp_model = RunCustomHotTopicViewPointAnalysisResponseBodyPayloadUsage()
+            self.usage = temp_model.from_map(m['Usage'])
+        return self
+
+
+class RunCustomHotTopicViewPointAnalysisResponseBody(TeaModel):
+    def __init__(
+        self,
+        header: RunCustomHotTopicViewPointAnalysisResponseBodyHeader = None,
+        payload: RunCustomHotTopicViewPointAnalysisResponseBodyPayload = None,
+        request_id: str = None,
+    ):
+        self.header = header
+        self.payload = payload
+        self.request_id = request_id
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.payload:
+            self.payload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.header is not None:
+            result['Header'] = self.header.to_map()
+        if self.payload is not None:
+            result['Payload'] = self.payload.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Header') is not None:
+            temp_model = RunCustomHotTopicViewPointAnalysisResponseBodyHeader()
+            self.header = temp_model.from_map(m['Header'])
+        if m.get('Payload') is not None:
+            temp_model = RunCustomHotTopicViewPointAnalysisResponseBodyPayload()
+            self.payload = temp_model.from_map(m['Payload'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RunCustomHotTopicViewPointAnalysisResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunCustomHotTopicViewPointAnalysisResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunCustomHotTopicViewPointAnalysisResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RunExpandContentRequest(TeaModel):
     def __init__(
         self,
@@ -11711,6 +18265,923 @@ class RunKeywordsExtractionGenerationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RunKeywordsExtractionGenerationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RunStepByStepWritingRequestReferenceDataArticles(TeaModel):
+    def __init__(
+        self,
+        author: str = None,
+        content: str = None,
+        doc_id: str = None,
+        doc_uuid: str = None,
+        media_url: str = None,
+        pub_time: str = None,
+        source: str = None,
+        summary: str = None,
+        tag: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.author = author
+        self.content = content
+        self.doc_id = doc_id
+        self.doc_uuid = doc_uuid
+        self.media_url = media_url
+        self.pub_time = pub_time
+        self.source = source
+        self.summary = summary
+        self.tag = tag
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.author is not None:
+            result['Author'] = self.author
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.doc_id is not None:
+            result['DocId'] = self.doc_id
+        if self.doc_uuid is not None:
+            result['DocUuid'] = self.doc_uuid
+        if self.media_url is not None:
+            result['MediaUrl'] = self.media_url
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Author') is not None:
+            self.author = m.get('Author')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('DocId') is not None:
+            self.doc_id = m.get('DocId')
+        if m.get('DocUuid') is not None:
+            self.doc_uuid = m.get('DocUuid')
+        if m.get('MediaUrl') is not None:
+            self.media_url = m.get('MediaUrl')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class RunStepByStepWritingRequestReferenceDataOutlinesArticles(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.content = content
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class RunStepByStepWritingRequestReferenceDataOutlines(TeaModel):
+    def __init__(
+        self,
+        articles: List[RunStepByStepWritingRequestReferenceDataOutlinesArticles] = None,
+        outline: str = None,
+    ):
+        self.articles = articles
+        self.outline = outline
+
+    def validate(self):
+        if self.articles:
+            for k in self.articles:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Articles'] = []
+        if self.articles is not None:
+            for k in self.articles:
+                result['Articles'].append(k.to_map() if k else None)
+        if self.outline is not None:
+            result['Outline'] = self.outline
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.articles = []
+        if m.get('Articles') is not None:
+            for k in m.get('Articles'):
+                temp_model = RunStepByStepWritingRequestReferenceDataOutlinesArticles()
+                self.articles.append(temp_model.from_map(k))
+        if m.get('Outline') is not None:
+            self.outline = m.get('Outline')
+        return self
+
+
+class RunStepByStepWritingRequestReferenceData(TeaModel):
+    def __init__(
+        self,
+        articles: List[RunStepByStepWritingRequestReferenceDataArticles] = None,
+        mini_doc: List[str] = None,
+        outlines: List[RunStepByStepWritingRequestReferenceDataOutlines] = None,
+        summarization: List[str] = None,
+    ):
+        self.articles = articles
+        self.mini_doc = mini_doc
+        self.outlines = outlines
+        self.summarization = summarization
+
+    def validate(self):
+        if self.articles:
+            for k in self.articles:
+                if k:
+                    k.validate()
+        if self.outlines:
+            for k in self.outlines:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Articles'] = []
+        if self.articles is not None:
+            for k in self.articles:
+                result['Articles'].append(k.to_map() if k else None)
+        if self.mini_doc is not None:
+            result['MiniDoc'] = self.mini_doc
+        result['Outlines'] = []
+        if self.outlines is not None:
+            for k in self.outlines:
+                result['Outlines'].append(k.to_map() if k else None)
+        if self.summarization is not None:
+            result['Summarization'] = self.summarization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.articles = []
+        if m.get('Articles') is not None:
+            for k in m.get('Articles'):
+                temp_model = RunStepByStepWritingRequestReferenceDataArticles()
+                self.articles.append(temp_model.from_map(k))
+        if m.get('MiniDoc') is not None:
+            self.mini_doc = m.get('MiniDoc')
+        self.outlines = []
+        if m.get('Outlines') is not None:
+            for k in m.get('Outlines'):
+                temp_model = RunStepByStepWritingRequestReferenceDataOutlines()
+                self.outlines.append(temp_model.from_map(k))
+        if m.get('Summarization') is not None:
+            self.summarization = m.get('Summarization')
+        return self
+
+
+class RunStepByStepWritingRequestWritingConfigPromptTag(TeaModel):
+    def __init__(
+        self,
+        necessary_tips: str = None,
+        position: str = None,
+        reverse_words: str = None,
+        theme: str = None,
+    ):
+        self.necessary_tips = necessary_tips
+        self.position = position
+        self.reverse_words = reverse_words
+        self.theme = theme
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.necessary_tips is not None:
+            result['NecessaryTips'] = self.necessary_tips
+        if self.position is not None:
+            result['Position'] = self.position
+        if self.reverse_words is not None:
+            result['ReverseWords'] = self.reverse_words
+        if self.theme is not None:
+            result['Theme'] = self.theme
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NecessaryTips') is not None:
+            self.necessary_tips = m.get('NecessaryTips')
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
+        if m.get('ReverseWords') is not None:
+            self.reverse_words = m.get('ReverseWords')
+        if m.get('Theme') is not None:
+            self.theme = m.get('Theme')
+        return self
+
+
+class RunStepByStepWritingRequestWritingConfigTags(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        tag: str = None,
+    ):
+        self.keyword = keyword
+        self.tag = tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        return self
+
+
+class RunStepByStepWritingRequestWritingConfig(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        keywords: List[str] = None,
+        prompt_tag: RunStepByStepWritingRequestWritingConfigPromptTag = None,
+        scene: str = None,
+        step: str = None,
+        tags: List[RunStepByStepWritingRequestWritingConfigTags] = None,
+        use_search: bool = None,
+    ):
+        self.domain = domain
+        self.keywords = keywords
+        self.prompt_tag = prompt_tag
+        self.scene = scene
+        self.step = step
+        self.tags = tags
+        self.use_search = use_search
+
+    def validate(self):
+        if self.prompt_tag:
+            self.prompt_tag.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.keywords is not None:
+            result['Keywords'] = self.keywords
+        if self.prompt_tag is not None:
+            result['PromptTag'] = self.prompt_tag.to_map()
+        if self.scene is not None:
+            result['Scene'] = self.scene
+        if self.step is not None:
+            result['Step'] = self.step
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.use_search is not None:
+            result['UseSearch'] = self.use_search
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Keywords') is not None:
+            self.keywords = m.get('Keywords')
+        if m.get('PromptTag') is not None:
+            temp_model = RunStepByStepWritingRequestWritingConfigPromptTag()
+            self.prompt_tag = temp_model.from_map(m['PromptTag'])
+        if m.get('Scene') is not None:
+            self.scene = m.get('Scene')
+        if m.get('Step') is not None:
+            self.step = m.get('Step')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = RunStepByStepWritingRequestWritingConfigTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('UseSearch') is not None:
+            self.use_search = m.get('UseSearch')
+        return self
+
+
+class RunStepByStepWritingRequest(TeaModel):
+    def __init__(
+        self,
+        origin_session_id: str = None,
+        prompt: str = None,
+        reference_data: RunStepByStepWritingRequestReferenceData = None,
+        session_id: str = None,
+        task_id: str = None,
+        workspace_id: str = None,
+        writing_config: RunStepByStepWritingRequestWritingConfig = None,
+    ):
+        self.origin_session_id = origin_session_id
+        # This parameter is required.
+        self.prompt = prompt
+        self.reference_data = reference_data
+        self.session_id = session_id
+        self.task_id = task_id
+        # This parameter is required.
+        self.workspace_id = workspace_id
+        self.writing_config = writing_config
+
+    def validate(self):
+        if self.reference_data:
+            self.reference_data.validate()
+        if self.writing_config:
+            self.writing_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.origin_session_id is not None:
+            result['OriginSessionId'] = self.origin_session_id
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.reference_data is not None:
+            result['ReferenceData'] = self.reference_data.to_map()
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        if self.writing_config is not None:
+            result['WritingConfig'] = self.writing_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OriginSessionId') is not None:
+            self.origin_session_id = m.get('OriginSessionId')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('ReferenceData') is not None:
+            temp_model = RunStepByStepWritingRequestReferenceData()
+            self.reference_data = temp_model.from_map(m['ReferenceData'])
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        if m.get('WritingConfig') is not None:
+            temp_model = RunStepByStepWritingRequestWritingConfig()
+            self.writing_config = temp_model.from_map(m['WritingConfig'])
+        return self
+
+
+class RunStepByStepWritingShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        origin_session_id: str = None,
+        prompt: str = None,
+        reference_data_shrink: str = None,
+        session_id: str = None,
+        task_id: str = None,
+        workspace_id: str = None,
+        writing_config_shrink: str = None,
+    ):
+        self.origin_session_id = origin_session_id
+        # This parameter is required.
+        self.prompt = prompt
+        self.reference_data_shrink = reference_data_shrink
+        self.session_id = session_id
+        self.task_id = task_id
+        # This parameter is required.
+        self.workspace_id = workspace_id
+        self.writing_config_shrink = writing_config_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.origin_session_id is not None:
+            result['OriginSessionId'] = self.origin_session_id
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.reference_data_shrink is not None:
+            result['ReferenceData'] = self.reference_data_shrink
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        if self.writing_config_shrink is not None:
+            result['WritingConfig'] = self.writing_config_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OriginSessionId') is not None:
+            self.origin_session_id = m.get('OriginSessionId')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('ReferenceData') is not None:
+            self.reference_data_shrink = m.get('ReferenceData')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        if m.get('WritingConfig') is not None:
+            self.writing_config_shrink = m.get('WritingConfig')
+        return self
+
+
+class RunStepByStepWritingResponseBodyHeader(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        event: str = None,
+        origin_session_id: str = None,
+        session_id: str = None,
+        task_id: str = None,
+        trace_id: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.event = event
+        self.origin_session_id = origin_session_id
+        self.session_id = session_id
+        self.task_id = task_id
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.origin_session_id is not None:
+            result['OriginSessionId'] = self.origin_session_id
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('OriginSessionId') is not None:
+            self.origin_session_id = m.get('OriginSessionId')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class RunStepByStepWritingResponseBodyPayloadOutputArticles(TeaModel):
+    def __init__(
+        self,
+        author: str = None,
+        content: str = None,
+        doc_id: str = None,
+        doc_uuid: str = None,
+        media_url: str = None,
+        pub_time: str = None,
+        source: str = None,
+        summary: str = None,
+        tag: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.author = author
+        self.content = content
+        self.doc_id = doc_id
+        self.doc_uuid = doc_uuid
+        self.media_url = media_url
+        self.pub_time = pub_time
+        self.source = source
+        self.summary = summary
+        self.tag = tag
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.author is not None:
+            result['Author'] = self.author
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.doc_id is not None:
+            result['DocId'] = self.doc_id
+        if self.doc_uuid is not None:
+            result['DocUuid'] = self.doc_uuid
+        if self.media_url is not None:
+            result['MediaUrl'] = self.media_url
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.tag is not None:
+            result['Tag'] = self.tag
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Author') is not None:
+            self.author = m.get('Author')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('DocId') is not None:
+            self.doc_id = m.get('DocId')
+        if m.get('DocUuid') is not None:
+            self.doc_uuid = m.get('DocUuid')
+        if m.get('MediaUrl') is not None:
+            self.media_url = m.get('MediaUrl')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class RunStepByStepWritingResponseBodyPayloadOutputExtraOutput(TeaModel):
+    def __init__(
+        self,
+        summarization: List[str] = None,
+    ):
+        self.summarization = summarization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.summarization is not None:
+            result['summarization'] = self.summarization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('summarization') is not None:
+            self.summarization = m.get('summarization')
+        return self
+
+
+class RunStepByStepWritingResponseBodyPayloadOutput(TeaModel):
+    def __init__(
+        self,
+        articles: List[RunStepByStepWritingResponseBodyPayloadOutputArticles] = None,
+        extra_output: RunStepByStepWritingResponseBodyPayloadOutputExtraOutput = None,
+        mini_doc: List[str] = None,
+        search_query: str = None,
+        text: str = None,
+    ):
+        self.articles = articles
+        self.extra_output = extra_output
+        self.mini_doc = mini_doc
+        self.search_query = search_query
+        self.text = text
+
+    def validate(self):
+        if self.articles:
+            for k in self.articles:
+                if k:
+                    k.validate()
+        if self.extra_output:
+            self.extra_output.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Articles'] = []
+        if self.articles is not None:
+            for k in self.articles:
+                result['Articles'].append(k.to_map() if k else None)
+        if self.extra_output is not None:
+            result['ExtraOutput'] = self.extra_output.to_map()
+        if self.mini_doc is not None:
+            result['MiniDoc'] = self.mini_doc
+        if self.search_query is not None:
+            result['SearchQuery'] = self.search_query
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.articles = []
+        if m.get('Articles') is not None:
+            for k in m.get('Articles'):
+                temp_model = RunStepByStepWritingResponseBodyPayloadOutputArticles()
+                self.articles.append(temp_model.from_map(k))
+        if m.get('ExtraOutput') is not None:
+            temp_model = RunStepByStepWritingResponseBodyPayloadOutputExtraOutput()
+            self.extra_output = temp_model.from_map(m['ExtraOutput'])
+        if m.get('MiniDoc') is not None:
+            self.mini_doc = m.get('MiniDoc')
+        if m.get('SearchQuery') is not None:
+            self.search_query = m.get('SearchQuery')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class RunStepByStepWritingResponseBodyPayloadUsage(TeaModel):
+    def __init__(
+        self,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input_tokens is not None:
+            result['InputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['OutputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['TotalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InputTokens') is not None:
+            self.input_tokens = m.get('InputTokens')
+        if m.get('OutputTokens') is not None:
+            self.output_tokens = m.get('OutputTokens')
+        if m.get('TotalTokens') is not None:
+            self.total_tokens = m.get('TotalTokens')
+        return self
+
+
+class RunStepByStepWritingResponseBodyPayload(TeaModel):
+    def __init__(
+        self,
+        output: RunStepByStepWritingResponseBodyPayloadOutput = None,
+        usage: RunStepByStepWritingResponseBodyPayloadUsage = None,
+    ):
+        self.output = output
+        self.usage = usage
+
+    def validate(self):
+        if self.output:
+            self.output.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['Output'] = self.output.to_map()
+        if self.usage is not None:
+            result['Usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Output') is not None:
+            temp_model = RunStepByStepWritingResponseBodyPayloadOutput()
+            self.output = temp_model.from_map(m['Output'])
+        if m.get('Usage') is not None:
+            temp_model = RunStepByStepWritingResponseBodyPayloadUsage()
+            self.usage = temp_model.from_map(m['Usage'])
+        return self
+
+
+class RunStepByStepWritingResponseBody(TeaModel):
+    def __init__(
+        self,
+        header: RunStepByStepWritingResponseBodyHeader = None,
+        payload: RunStepByStepWritingResponseBodyPayload = None,
+        request_id: str = None,
+    ):
+        self.header = header
+        self.payload = payload
+        self.request_id = request_id
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.payload:
+            self.payload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.header is not None:
+            result['Header'] = self.header.to_map()
+        if self.payload is not None:
+            result['Payload'] = self.payload.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Header') is not None:
+            temp_model = RunStepByStepWritingResponseBodyHeader()
+            self.header = temp_model.from_map(m['Header'])
+        if m.get('Payload') is not None:
+            temp_model = RunStepByStepWritingResponseBodyPayload()
+            self.payload = temp_model.from_map(m['Payload'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RunStepByStepWritingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunStepByStepWritingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunStepByStepWritingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15760,6 +23231,877 @@ class SubmitAsyncTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitAsyncTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments(TeaModel):
+    def __init__(
+        self,
+        author: str = None,
+        content: str = None,
+        pub_time: str = None,
+        source: str = None,
+        summary: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.author = author
+        # This parameter is required.
+        self.content = content
+        self.pub_time = pub_time
+        self.source = source
+        self.summary = summary
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.author is not None:
+            result['Author'] = self.author
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Author') is not None:
+            self.author = m.get('Author')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        documents: List[SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments] = None,
+        prompt: str = None,
+        topic: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.documents = documents
+        # This parameter is required.
+        self.prompt = prompt
+        self.topic = topic
+
+    def validate(self):
+        if self.documents:
+            for k in self.documents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        result['Documents'] = []
+        if self.documents is not None:
+            for k in self.documents:
+                result['Documents'].append(k.to_map() if k else None)
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        self.documents = []
+        if m.get('Documents') is not None:
+            for k in m.get('Documents'):
+                temp_model = SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments()
+                self.documents.append(temp_model.from_map(k))
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
+class SubmitCustomTopicSelectionPerspectiveAnalysisTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        documents_shrink: str = None,
+        prompt: str = None,
+        topic: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.documents_shrink = documents_shrink
+        # This parameter is required.
+        self.prompt = prompt
+        self.topic = topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.documents_shrink is not None:
+            result['Documents'] = self.documents_shrink
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('Documents') is not None:
+            self.documents_shrink = m.get('Documents')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
+class SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitDocClusterTaskRequestDocuments(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        doc_id: str = None,
+        title: str = None,
+    ):
+        # This parameter is required.
+        self.content = content
+        self.doc_id = doc_id
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.doc_id is not None:
+            result['DocId'] = self.doc_id
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('DocId') is not None:
+            self.doc_id = m.get('DocId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class SubmitDocClusterTaskRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        documents: List[SubmitDocClusterTaskRequestDocuments] = None,
+        summary_length: int = None,
+        title_length: int = None,
+        topic_count: int = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        # This parameter is required.
+        self.documents = documents
+        self.summary_length = summary_length
+        self.title_length = title_length
+        self.topic_count = topic_count
+
+    def validate(self):
+        if self.documents:
+            for k in self.documents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        result['Documents'] = []
+        if self.documents is not None:
+            for k in self.documents:
+                result['Documents'].append(k.to_map() if k else None)
+        if self.summary_length is not None:
+            result['SummaryLength'] = self.summary_length
+        if self.title_length is not None:
+            result['TitleLength'] = self.title_length
+        if self.topic_count is not None:
+            result['TopicCount'] = self.topic_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        self.documents = []
+        if m.get('Documents') is not None:
+            for k in m.get('Documents'):
+                temp_model = SubmitDocClusterTaskRequestDocuments()
+                self.documents.append(temp_model.from_map(k))
+        if m.get('SummaryLength') is not None:
+            self.summary_length = m.get('SummaryLength')
+        if m.get('TitleLength') is not None:
+            self.title_length = m.get('TitleLength')
+        if m.get('TopicCount') is not None:
+            self.topic_count = m.get('TopicCount')
+        return self
+
+
+class SubmitDocClusterTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        documents_shrink: str = None,
+        summary_length: int = None,
+        title_length: int = None,
+        topic_count: int = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        # This parameter is required.
+        self.documents_shrink = documents_shrink
+        self.summary_length = summary_length
+        self.title_length = title_length
+        self.topic_count = topic_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.documents_shrink is not None:
+            result['Documents'] = self.documents_shrink
+        if self.summary_length is not None:
+            result['SummaryLength'] = self.summary_length
+        if self.title_length is not None:
+            result['TitleLength'] = self.title_length
+        if self.topic_count is not None:
+            result['TopicCount'] = self.topic_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('Documents') is not None:
+            self.documents_shrink = m.get('Documents')
+        if m.get('SummaryLength') is not None:
+            self.summary_length = m.get('SummaryLength')
+        if m.get('TitleLength') is not None:
+            self.title_length = m.get('TitleLength')
+        if m.get('TopicCount') is not None:
+            self.topic_count = m.get('TopicCount')
+        return self
+
+
+class SubmitDocClusterTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class SubmitDocClusterTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SubmitDocClusterTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SubmitDocClusterTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitDocClusterTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitDocClusterTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitDocClusterTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments(TeaModel):
+    def __init__(
+        self,
+        author: str = None,
+        content: str = None,
+        pub_time: str = None,
+        source: str = None,
+        summary: str = None,
+        title: str = None,
+        url: str = None,
+    ):
+        self.author = author
+        # This parameter is required.
+        self.content = content
+        self.pub_time = pub_time
+        self.source = source
+        self.summary = summary
+        self.title = title
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.author is not None:
+            result['Author'] = self.author
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.pub_time is not None:
+            result['PubTime'] = self.pub_time
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Author') is not None:
+            self.author = m.get('Author')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('PubTime') is not None:
+            self.pub_time = m.get('PubTime')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class SubmitTopicSelectionPerspectiveAnalysisTaskRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        documents: List[SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments] = None,
+        perspective_types: List[str] = None,
+        topic: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.documents = documents
+        self.perspective_types = perspective_types
+        self.topic = topic
+
+    def validate(self):
+        if self.documents:
+            for k in self.documents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        result['Documents'] = []
+        if self.documents is not None:
+            for k in self.documents:
+                result['Documents'].append(k.to_map() if k else None)
+        if self.perspective_types is not None:
+            result['PerspectiveTypes'] = self.perspective_types
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        self.documents = []
+        if m.get('Documents') is not None:
+            for k in m.get('Documents'):
+                temp_model = SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments()
+                self.documents.append(temp_model.from_map(k))
+        if m.get('PerspectiveTypes') is not None:
+            self.perspective_types = m.get('PerspectiveTypes')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
+class SubmitTopicSelectionPerspectiveAnalysisTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        documents_shrink: str = None,
+        perspective_types_shrink: str = None,
+        topic: str = None,
+    ):
+        # This parameter is required.
+        self.agent_key = agent_key
+        self.documents_shrink = documents_shrink
+        self.perspective_types_shrink = perspective_types_shrink
+        self.topic = topic
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.documents_shrink is not None:
+            result['Documents'] = self.documents_shrink
+        if self.perspective_types_shrink is not None:
+            result['PerspectiveTypes'] = self.perspective_types_shrink
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('Documents') is not None:
+            self.documents_shrink = m.get('Documents')
+        if m.get('PerspectiveTypes') is not None:
+            self.perspective_types_shrink = m.get('PerspectiveTypes')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        return self
+
+
+class SubmitTopicSelectionPerspectiveAnalysisTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+        task_name: str = None,
+    ):
+        self.task_id = task_id
+        self.task_name = task_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        return self
+
+
+class SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SubmitTopicSelectionPerspectiveAnalysisTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SubmitTopicSelectionPerspectiveAnalysisTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitTopicSelectionPerspectiveAnalysisTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
