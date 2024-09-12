@@ -1667,6 +1667,7 @@ class CreateAppInstanceGroupRequestNodePoolRecurrenceSchedules(TeaModel):
 class CreateAppInstanceGroupRequestNodePool(TeaModel):
     def __init__(
         self,
+        max_idle_app_instance_amount: int = None,
         max_scaling_amount: int = None,
         node_amount: int = None,
         node_capacity: int = None,
@@ -1680,6 +1681,7 @@ class CreateAppInstanceGroupRequestNodePool(TeaModel):
         strategy_type: str = None,
         warm_up: bool = None,
     ):
+        self.max_idle_app_instance_amount = max_idle_app_instance_amount
         self.max_scaling_amount = max_scaling_amount
         self.node_amount = node_amount
         self.node_capacity = node_capacity
@@ -1705,6 +1707,8 @@ class CreateAppInstanceGroupRequestNodePool(TeaModel):
             return _map
 
         result = dict()
+        if self.max_idle_app_instance_amount is not None:
+            result['MaxIdleAppInstanceAmount'] = self.max_idle_app_instance_amount
         if self.max_scaling_amount is not None:
             result['MaxScalingAmount'] = self.max_scaling_amount
         if self.node_amount is not None:
@@ -1735,6 +1739,8 @@ class CreateAppInstanceGroupRequestNodePool(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MaxIdleAppInstanceAmount') is not None:
+            self.max_idle_app_instance_amount = m.get('MaxIdleAppInstanceAmount')
         if m.get('MaxScalingAmount') is not None:
             self.max_scaling_amount = m.get('MaxScalingAmount')
         if m.get('NodeAmount') is not None:
@@ -3602,6 +3608,7 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool(TeaModel):
     def __init__(
         self,
         amount: int = None,
+        max_idle_app_instance_amount: int = None,
         max_scaling_amount: int = None,
         node_amount: int = None,
         node_capacity: int = None,
@@ -3621,6 +3628,7 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool(TeaModel):
         warm_up: bool = None,
     ):
         self.amount = amount
+        self.max_idle_app_instance_amount = max_idle_app_instance_amount
         self.max_scaling_amount = max_scaling_amount
         self.node_amount = node_amount
         self.node_capacity = node_capacity
@@ -3653,6 +3661,8 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool(TeaModel):
         result = dict()
         if self.amount is not None:
             result['Amount'] = self.amount
+        if self.max_idle_app_instance_amount is not None:
+            result['MaxIdleAppInstanceAmount'] = self.max_idle_app_instance_amount
         if self.max_scaling_amount is not None:
             result['MaxScalingAmount'] = self.max_scaling_amount
         if self.node_amount is not None:
@@ -3695,6 +3705,8 @@ class GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool(TeaModel):
         m = m or dict()
         if m.get('Amount') is not None:
             self.amount = m.get('Amount')
+        if m.get('MaxIdleAppInstanceAmount') is not None:
+            self.max_idle_app_instance_amount = m.get('MaxIdleAppInstanceAmount')
         if m.get('MaxScalingAmount') is not None:
             self.max_scaling_amount = m.get('MaxScalingAmount')
         if m.get('NodeAmount') is not None:
@@ -6133,6 +6145,7 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool(TeaModel):
     def __init__(
         self,
         amount: int = None,
+        max_idle_app_instance_amount: int = None,
         max_scaling_amount: int = None,
         node_amount: int = None,
         node_capacity: int = None,
@@ -6152,6 +6165,7 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool(TeaModel):
         warm_up: bool = None,
     ):
         self.amount = amount
+        self.max_idle_app_instance_amount = max_idle_app_instance_amount
         self.max_scaling_amount = max_scaling_amount
         self.node_amount = node_amount
         self.node_capacity = node_capacity
@@ -6184,6 +6198,8 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool(TeaModel):
         result = dict()
         if self.amount is not None:
             result['Amount'] = self.amount
+        if self.max_idle_app_instance_amount is not None:
+            result['MaxIdleAppInstanceAmount'] = self.max_idle_app_instance_amount
         if self.max_scaling_amount is not None:
             result['MaxScalingAmount'] = self.max_scaling_amount
         if self.node_amount is not None:
@@ -6226,6 +6242,8 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool(TeaModel):
         m = m or dict()
         if m.get('Amount') is not None:
             self.amount = m.get('Amount')
+        if m.get('MaxIdleAppInstanceAmount') is not None:
+            self.max_idle_app_instance_amount = m.get('MaxIdleAppInstanceAmount')
         if m.get('MaxScalingAmount') is not None:
             self.max_scaling_amount = m.get('MaxScalingAmount')
         if m.get('NodeAmount') is not None:
@@ -9189,6 +9207,7 @@ class ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules(TeaModel
 class ModifyNodePoolAttributeRequestNodePoolStrategy(TeaModel):
     def __init__(
         self,
+        max_idle_app_instance_amount: int = None,
         max_scaling_amount: int = None,
         node_amount: int = None,
         recurrence_schedules: List[ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules] = None,
@@ -9200,6 +9219,7 @@ class ModifyNodePoolAttributeRequestNodePoolStrategy(TeaModel):
         strategy_type: str = None,
         warm_up: bool = None,
     ):
+        self.max_idle_app_instance_amount = max_idle_app_instance_amount
         self.max_scaling_amount = max_scaling_amount
         # 购买资源的数量。取值范围：1~100。
         # 
@@ -9232,6 +9252,8 @@ class ModifyNodePoolAttributeRequestNodePoolStrategy(TeaModel):
             return _map
 
         result = dict()
+        if self.max_idle_app_instance_amount is not None:
+            result['MaxIdleAppInstanceAmount'] = self.max_idle_app_instance_amount
         if self.max_scaling_amount is not None:
             result['MaxScalingAmount'] = self.max_scaling_amount
         if self.node_amount is not None:
@@ -9258,6 +9280,8 @@ class ModifyNodePoolAttributeRequestNodePoolStrategy(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MaxIdleAppInstanceAmount') is not None:
+            self.max_idle_app_instance_amount = m.get('MaxIdleAppInstanceAmount')
         if m.get('MaxScalingAmount') is not None:
             self.max_scaling_amount = m.get('MaxScalingAmount')
         if m.get('NodeAmount') is not None:
