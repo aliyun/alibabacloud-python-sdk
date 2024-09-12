@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import Dict, List, Any
 
 
 class CreateDocumentAnalyzeTaskRequestDocument(TeaModel):
@@ -1514,6 +1514,39 @@ class GetImageAnalyzeTaskStatusResponse(TeaModel):
         return self
 
 
+class GetQueryAnalysisRequestFunctions(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        parameters: Dict[str, Any] = None,
+    ):
+        self.name = name
+        self.parameters = parameters
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.parameters is not None:
+            result['parameters'] = self.parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('parameters') is not None:
+            self.parameters = m.get('parameters')
+        return self
+
+
 class GetQueryAnalysisRequestHistory(TeaModel):
     def __init__(
         self,
@@ -1550,14 +1583,20 @@ class GetQueryAnalysisRequestHistory(TeaModel):
 class GetQueryAnalysisRequest(TeaModel):
     def __init__(
         self,
+        functions: List[GetQueryAnalysisRequestFunctions] = None,
         history: List[GetQueryAnalysisRequestHistory] = None,
         query: str = None,
     ):
+        self.functions = functions
         self.history = history
         # This parameter is required.
         self.query = query
 
     def validate(self):
+        if self.functions:
+            for k in self.functions:
+                if k:
+                    k.validate()
         if self.history:
             for k in self.history:
                 if k:
@@ -1569,6 +1608,10 @@ class GetQueryAnalysisRequest(TeaModel):
             return _map
 
         result = dict()
+        result['functions'] = []
+        if self.functions is not None:
+            for k in self.functions:
+                result['functions'].append(k.to_map() if k else None)
         result['history'] = []
         if self.history is not None:
             for k in self.history:
@@ -1579,6 +1622,11 @@ class GetQueryAnalysisRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.functions = []
+        if m.get('functions') is not None:
+            for k in m.get('functions'):
+                temp_model = GetQueryAnalysisRequestFunctions()
+                self.functions.append(temp_model.from_map(k))
         self.history = []
         if m.get('history') is not None:
             for k in m.get('history'):
@@ -1595,10 +1643,12 @@ class GetQueryAnalysisResponseBodyResult(TeaModel):
         intent: str = None,
         queries: List[str] = None,
         query: str = None,
+        sql: Dict[str, Any] = None,
     ):
         self.intent = intent
         self.queries = queries
         self.query = query
+        self.sql = sql
 
     def validate(self):
         pass
@@ -1615,6 +1665,8 @@ class GetQueryAnalysisResponseBodyResult(TeaModel):
             result['queries'] = self.queries
         if self.query is not None:
             result['query'] = self.query
+        if self.sql is not None:
+            result['sql'] = self.sql
         return result
 
     def from_map(self, m: dict = None):
@@ -1625,6 +1677,8 @@ class GetQueryAnalysisResponseBodyResult(TeaModel):
             self.queries = m.get('queries')
         if m.get('query') is not None:
             self.query = m.get('query')
+        if m.get('sql') is not None:
+            self.sql = m.get('sql')
         return self
 
 

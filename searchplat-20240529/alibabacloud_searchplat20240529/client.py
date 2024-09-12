@@ -727,6 +727,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.functions):
+            body['functions'] = request.functions
         if not UtilClient.is_unset(request.history):
             body['history'] = request.history
         if not UtilClient.is_unset(request.query):
@@ -769,6 +771,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.functions):
+            body['functions'] = request.functions
         if not UtilClient.is_unset(request.history):
             body['history'] = request.history
         if not UtilClient.is_unset(request.query):
