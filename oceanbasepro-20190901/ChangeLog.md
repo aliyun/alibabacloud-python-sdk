@@ -1,3 +1,7 @@
+2024-09-13 Version: 8.1.0
+- Support API RemoveStandbyInstance.
+
+
 2024-09-02 Version: 8.0.0
 - Update API DescribeRestorableTenants: update response param.
 

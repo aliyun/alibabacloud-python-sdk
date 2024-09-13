@@ -14137,6 +14137,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.release_worker_instance_with_options_async(request, runtime)
 
+    def remove_standby_instance_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.RemoveStandbyInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.RemoveStandbyInstanceResponse:
+        """
+        @summary 备实例解耦
+        
+        @param request: RemoveStandbyInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveStandbyInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.forced):
+            body['Forced'] = request.forced
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.target_instance_id):
+            body['TargetInstanceId'] = request.target_instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RemoveStandbyInstance',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.RemoveStandbyInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_standby_instance_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.RemoveStandbyInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.RemoveStandbyInstanceResponse:
+        """
+        @summary 备实例解耦
+        
+        @param request: RemoveStandbyInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveStandbyInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.forced):
+            body['Forced'] = request.forced
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.target_instance_id):
+            body['TargetInstanceId'] = request.target_instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RemoveStandbyInstance',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.RemoveStandbyInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_standby_instance(
+        self,
+        request: ocean_base_pro_20190901_models.RemoveStandbyInstanceRequest,
+    ) -> ocean_base_pro_20190901_models.RemoveStandbyInstanceResponse:
+        """
+        @summary 备实例解耦
+        
+        @param request: RemoveStandbyInstanceRequest
+        @return: RemoveStandbyInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.remove_standby_instance_with_options(request, runtime)
+
+    async def remove_standby_instance_async(
+        self,
+        request: ocean_base_pro_20190901_models.RemoveStandbyInstanceRequest,
+    ) -> ocean_base_pro_20190901_models.RemoveStandbyInstanceResponse:
+        """
+        @summary 备实例解耦
+        
+        @param request: RemoveStandbyInstanceRequest
+        @return: RemoveStandbyInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_standby_instance_with_options_async(request, runtime)
+
     def resume_project_with_options(
         self,
         request: ocean_base_pro_20190901_models.ResumeProjectRequest,
