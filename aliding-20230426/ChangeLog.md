@@ -1,3 +1,10 @@
+2024-09-13 Version: 2.24.0
+- Support API AddRecordPermission.
+- Support API GetUserIdByOrgIdAndStaffId.
+- Support API ListTemplate.
+- Support API QueryRecordMinutesUrl.
+
+
 2024-09-05 Version: 2.23.0
 - Support API GetSheetContentJobId.
 - Support API GetUserId.

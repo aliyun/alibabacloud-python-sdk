@@ -459,6 +459,148 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.AddMeetingRoomsHeaders()
         return await self.add_meeting_rooms_with_options_async(request, headers, runtime)
 
+    def add_record_permission_with_options(
+        self,
+        tmp_req: aliding_20230426_models.AddRecordPermissionRequest,
+        tmp_header: aliding_20230426_models.AddRecordPermissionHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.AddRecordPermissionResponse:
+        """
+        @summary 添加闪记权限
+        
+        @param tmp_req: AddRecordPermissionRequest
+        @param tmp_header: AddRecordPermissionHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddRecordPermissionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.AddRecordPermissionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.AddRecordPermissionShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddRecordPermission',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/addRecordPermission',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.AddRecordPermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_record_permission_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.AddRecordPermissionRequest,
+        tmp_header: aliding_20230426_models.AddRecordPermissionHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.AddRecordPermissionResponse:
+        """
+        @summary 添加闪记权限
+        
+        @param tmp_req: AddRecordPermissionRequest
+        @param tmp_header: AddRecordPermissionHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddRecordPermissionResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.AddRecordPermissionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.AddRecordPermissionShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.user_id):
+            body['UserId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddRecordPermission',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/addRecordPermission',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.AddRecordPermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_record_permission(
+        self,
+        request: aliding_20230426_models.AddRecordPermissionRequest,
+    ) -> aliding_20230426_models.AddRecordPermissionResponse:
+        """
+        @summary 添加闪记权限
+        
+        @param request: AddRecordPermissionRequest
+        @return: AddRecordPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.AddRecordPermissionHeaders()
+        return self.add_record_permission_with_options(request, headers, runtime)
+
+    async def add_record_permission_async(
+        self,
+        request: aliding_20230426_models.AddRecordPermissionRequest,
+    ) -> aliding_20230426_models.AddRecordPermissionResponse:
+        """
+        @summary 添加闪记权限
+        
+        @param request: AddRecordPermissionRequest
+        @return: AddRecordPermissionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.AddRecordPermissionHeaders()
+        return await self.add_record_permission_with_options_async(request, headers, runtime)
+
     def add_scenegroup_member_with_options(
         self,
         request: aliding_20230426_models.AddScenegroupMemberRequest,
@@ -15259,6 +15401,140 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.GetUserIdHeaders()
         return await self.get_user_id_with_options_async(request, headers, runtime)
 
+    def get_user_id_by_org_id_and_staff_id_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetUserIdByOrgIdAndStaffIdRequest,
+        tmp_header: aliding_20230426_models.GetUserIdByOrgIdAndStaffIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetUserIdByOrgIdAndStaffIdResponse:
+        """
+        @summary 根据orgId和staffId获取用户userId
+        
+        @param tmp_req: GetUserIdByOrgIdAndStaffIdRequest
+        @param tmp_header: GetUserIdByOrgIdAndStaffIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserIdByOrgIdAndStaffIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetUserIdByOrgIdAndStaffIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetUserIdByOrgIdAndStaffIdShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUserIdByOrgIdAndStaffId',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/getUserIdByOrgIdAndStaffId',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetUserIdByOrgIdAndStaffIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_id_by_org_id_and_staff_id_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetUserIdByOrgIdAndStaffIdRequest,
+        tmp_header: aliding_20230426_models.GetUserIdByOrgIdAndStaffIdHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetUserIdByOrgIdAndStaffIdResponse:
+        """
+        @summary 根据orgId和staffId获取用户userId
+        
+        @param tmp_req: GetUserIdByOrgIdAndStaffIdRequest
+        @param tmp_header: GetUserIdByOrgIdAndStaffIdHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserIdByOrgIdAndStaffIdResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetUserIdByOrgIdAndStaffIdShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetUserIdByOrgIdAndStaffIdShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.org_id):
+            body['OrgId'] = request.org_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUserIdByOrgIdAndStaffId',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/getUserIdByOrgIdAndStaffId',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetUserIdByOrgIdAndStaffIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_id_by_org_id_and_staff_id(
+        self,
+        request: aliding_20230426_models.GetUserIdByOrgIdAndStaffIdRequest,
+    ) -> aliding_20230426_models.GetUserIdByOrgIdAndStaffIdResponse:
+        """
+        @summary 根据orgId和staffId获取用户userId
+        
+        @param request: GetUserIdByOrgIdAndStaffIdRequest
+        @return: GetUserIdByOrgIdAndStaffIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetUserIdByOrgIdAndStaffIdHeaders()
+        return self.get_user_id_by_org_id_and_staff_id_with_options(request, headers, runtime)
+
+    async def get_user_id_by_org_id_and_staff_id_async(
+        self,
+        request: aliding_20230426_models.GetUserIdByOrgIdAndStaffIdRequest,
+    ) -> aliding_20230426_models.GetUserIdByOrgIdAndStaffIdResponse:
+        """
+        @summary 根据orgId和staffId获取用户userId
+        
+        @param request: GetUserIdByOrgIdAndStaffIdRequest
+        @return: GetUserIdByOrgIdAndStaffIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetUserIdByOrgIdAndStaffIdHeaders()
+        return await self.get_user_id_by_org_id_and_staff_id_with_options_async(request, headers, runtime)
+
     def get_user_latest_plan_with_options(
         self,
         tmp_req: aliding_20230426_models.GetUserLatestPlanRequest,
@@ -18167,6 +18443,152 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.ListTeamsHeaders()
         return await self.list_teams_with_options_async(request, headers, runtime)
 
+    def list_template_with_options(
+        self,
+        tmp_req: aliding_20230426_models.ListTemplateRequest,
+        tmp_header: aliding_20230426_models.ListTemplateHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ListTemplateResponse:
+        """
+        @summary 查询文档模板
+        
+        @param tmp_req: ListTemplateRequest
+        @param tmp_header: ListTemplateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.ListTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.ListTemplateShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.template_type):
+            body['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTemplate',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/listTemplate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.ListTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_template_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.ListTemplateRequest,
+        tmp_header: aliding_20230426_models.ListTemplateHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ListTemplateResponse:
+        """
+        @summary 查询文档模板
+        
+        @param tmp_req: ListTemplateRequest
+        @param tmp_header: ListTemplateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.ListTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.ListTemplateShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.template_type):
+            body['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListTemplate',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/documents/listTemplate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.ListTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_template(
+        self,
+        request: aliding_20230426_models.ListTemplateRequest,
+    ) -> aliding_20230426_models.ListTemplateResponse:
+        """
+        @summary 查询文档模板
+        
+        @param request: ListTemplateRequest
+        @return: ListTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ListTemplateHeaders()
+        return self.list_template_with_options(request, headers, runtime)
+
+    async def list_template_async(
+        self,
+        request: aliding_20230426_models.ListTemplateRequest,
+    ) -> aliding_20230426_models.ListTemplateResponse:
+        """
+        @summary 查询文档模板
+        
+        @param request: ListTemplateRequest
+        @return: ListTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ListTemplateHeaders()
+        return await self.list_template_with_options_async(request, headers, runtime)
+
     def list_workspaces_with_options(
         self,
         tmp_req: aliding_20230426_models.ListWorkspacesRequest,
@@ -21010,6 +21432,144 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryOrgTodoTasksHeaders()
         return await self.query_org_todo_tasks_with_options_async(request, headers, runtime)
+
+    def query_record_minutes_url_with_options(
+        self,
+        tmp_req: aliding_20230426_models.QueryRecordMinutesUrlRequest,
+        tmp_header: aliding_20230426_models.QueryRecordMinutesUrlHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.QueryRecordMinutesUrlResponse:
+        """
+        @summary 查询闪记的链接，可通过链接查看闪记内容
+        
+        @param tmp_req: QueryRecordMinutesUrlRequest
+        @param tmp_header: QueryRecordMinutesUrlHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRecordMinutesUrlResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.QueryRecordMinutesUrlShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.QueryRecordMinutesUrlShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryRecordMinutesUrl',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/queryRecordMinutesUrl',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.QueryRecordMinutesUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_record_minutes_url_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.QueryRecordMinutesUrlRequest,
+        tmp_header: aliding_20230426_models.QueryRecordMinutesUrlHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.QueryRecordMinutesUrlResponse:
+        """
+        @summary 查询闪记的链接，可通过链接查看闪记内容
+        
+        @param tmp_req: QueryRecordMinutesUrlRequest
+        @param tmp_header: QueryRecordMinutesUrlHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryRecordMinutesUrlResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.QueryRecordMinutesUrlShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.QueryRecordMinutesUrlShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.conference_id):
+            body['ConferenceId'] = request.conference_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryRecordMinutesUrl',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/ysp/queryRecordMinutesUrl',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.QueryRecordMinutesUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_record_minutes_url(
+        self,
+        request: aliding_20230426_models.QueryRecordMinutesUrlRequest,
+    ) -> aliding_20230426_models.QueryRecordMinutesUrlResponse:
+        """
+        @summary 查询闪记的链接，可通过链接查看闪记内容
+        
+        @param request: QueryRecordMinutesUrlRequest
+        @return: QueryRecordMinutesUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.QueryRecordMinutesUrlHeaders()
+        return self.query_record_minutes_url_with_options(request, headers, runtime)
+
+    async def query_record_minutes_url_async(
+        self,
+        request: aliding_20230426_models.QueryRecordMinutesUrlRequest,
+    ) -> aliding_20230426_models.QueryRecordMinutesUrlResponse:
+        """
+        @summary 查询闪记的链接，可通过链接查看闪记内容
+        
+        @param request: QueryRecordMinutesUrlRequest
+        @return: QueryRecordMinutesUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.QueryRecordMinutesUrlHeaders()
+        return await self.query_record_minutes_url_with_options_async(request, headers, runtime)
 
     def query_report_detail_with_options(
         self,
