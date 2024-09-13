@@ -43,10 +43,12 @@ class DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResu
     def __init__(
         self,
         confidence: float = None,
+        description: str = None,
         label: str = None,
     ):
         # Confidence score, 0 to 100, reserved to 2 decimal places.
         self.confidence = confidence
+        self.description = description
         # The details of the labels.
         self.label = label
 
@@ -61,6 +63,8 @@ class DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResu
         result = dict()
         if self.confidence is not None:
             result['Confidence'] = self.confidence
+        if self.description is not None:
+            result['Description'] = self.description
         if self.label is not None:
             result['Label'] = self.label
         return result
@@ -69,6 +73,8 @@ class DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResu
         m = m or dict()
         if m.get('Confidence') is not None:
             self.confidence = m.get('Confidence')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('Label') is not None:
             self.label = m.get('Label')
         return self
@@ -129,6 +135,7 @@ class DescribeFileModerationResultResponseBodyDataPageResultImageResult(TeaModel
         description: str = None,
         label_result: List[DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult] = None,
         location: DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation = None,
+        risk_level: str = None,
         service: str = None,
     ):
         # Description.
@@ -137,6 +144,7 @@ class DescribeFileModerationResultResponseBodyDataPageResultImageResult(TeaModel
         self.label_result = label_result
         # Location information.
         self.location = location
+        self.risk_level = risk_level
         # The moderation service.
         self.service = service
 
@@ -162,6 +170,8 @@ class DescribeFileModerationResultResponseBodyDataPageResultImageResult(TeaModel
                 result['LabelResult'].append(k.to_map() if k else None)
         if self.location is not None:
             result['Location'] = self.location.to_map()
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         if self.service is not None:
             result['Service'] = self.service
         return result
@@ -178,6 +188,8 @@ class DescribeFileModerationResultResponseBodyDataPageResultImageResult(TeaModel
         if m.get('Location') is not None:
             temp_model = DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation()
             self.location = temp_model.from_map(m['Location'])
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         if m.get('Service') is not None:
             self.service = m.get('Service')
         return self
@@ -188,6 +200,7 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(TeaModel)
         self,
         description: str = None,
         labels: str = None,
+        risk_level: str = None,
         risk_tips: str = None,
         risk_words: str = None,
         service: str = None,
@@ -198,6 +211,7 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(TeaModel)
         self.description = description
         # The details of the labels.
         self.labels = labels
+        self.risk_level = risk_level
         # The risk details that are hit.
         self.risk_tips = risk_tips
         # The risk words that are hit.
@@ -222,6 +236,8 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(TeaModel)
             result['Description'] = self.description
         if self.labels is not None:
             result['Labels'] = self.labels
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         if self.risk_tips is not None:
             result['RiskTips'] = self.risk_tips
         if self.risk_words is not None:
@@ -240,6 +256,8 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(TeaModel)
             self.description = m.get('Description')
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         if m.get('RiskTips') is not None:
             self.risk_tips = m.get('RiskTips')
         if m.get('RiskWords') is not None:
@@ -326,12 +344,212 @@ class DescribeFileModerationResultResponseBodyDataPageResult(TeaModel):
         return self
 
 
+class DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        label: str = None,
+        label_sum: int = None,
+    ):
+        self.description = description
+        self.label = label
+        self.label_sum = label_sum
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.label is not None:
+            result['Label'] = self.label
+        if self.label_sum is not None:
+            result['LabelSum'] = self.label_sum
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('LabelSum') is not None:
+            self.label_sum = m.get('LabelSum')
+        return self
+
+
+class DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary(TeaModel):
+    def __init__(
+        self,
+        image_labels: List[DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels] = None,
+        risk_level: str = None,
+    ):
+        self.image_labels = image_labels
+        self.risk_level = risk_level
+
+    def validate(self):
+        if self.image_labels:
+            for k in self.image_labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ImageLabels'] = []
+        if self.image_labels is not None:
+            for k in self.image_labels:
+                result['ImageLabels'].append(k.to_map() if k else None)
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.image_labels = []
+        if m.get('ImageLabels') is not None:
+            for k in m.get('ImageLabels'):
+                temp_model = DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels()
+                self.image_labels.append(temp_model.from_map(k))
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        return self
+
+
+class DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels(TeaModel):
+    def __init__(
+        self,
+        label: str = None,
+        label_sum: int = None,
+    ):
+        self.label = label
+        self.label_sum = label_sum
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.label is not None:
+            result['Label'] = self.label
+        if self.label_sum is not None:
+            result['LabelSum'] = self.label_sum
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('LabelSum') is not None:
+            self.label_sum = m.get('LabelSum')
+        return self
+
+
+class DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary(TeaModel):
+    def __init__(
+        self,
+        risk_level: str = None,
+        text_labels: List[DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels] = None,
+    ):
+        self.risk_level = risk_level
+        self.text_labels = text_labels
+
+    def validate(self):
+        if self.text_labels:
+            for k in self.text_labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        result['TextLabels'] = []
+        if self.text_labels is not None:
+            for k in self.text_labels:
+                result['TextLabels'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        self.text_labels = []
+        if m.get('TextLabels') is not None:
+            for k in m.get('TextLabels'):
+                temp_model = DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels()
+                self.text_labels.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeFileModerationResultResponseBodyDataPageSummary(TeaModel):
+    def __init__(
+        self,
+        image_summary: DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary = None,
+        page_sum: int = None,
+        text_summary: DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary = None,
+    ):
+        self.image_summary = image_summary
+        self.page_sum = page_sum
+        self.text_summary = text_summary
+
+    def validate(self):
+        if self.image_summary:
+            self.image_summary.validate()
+        if self.text_summary:
+            self.text_summary.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_summary is not None:
+            result['ImageSummary'] = self.image_summary.to_map()
+        if self.page_sum is not None:
+            result['PageSum'] = self.page_sum
+        if self.text_summary is not None:
+            result['TextSummary'] = self.text_summary.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageSummary') is not None:
+            temp_model = DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary()
+            self.image_summary = temp_model.from_map(m['ImageSummary'])
+        if m.get('PageSum') is not None:
+            self.page_sum = m.get('PageSum')
+        if m.get('TextSummary') is not None:
+            temp_model = DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary()
+            self.text_summary = temp_model.from_map(m['TextSummary'])
+        return self
+
+
 class DescribeFileModerationResultResponseBodyData(TeaModel):
     def __init__(
         self,
         data_id: str = None,
         doc_type: str = None,
         page_result: List[DescribeFileModerationResultResponseBodyDataPageResult] = None,
+        page_summary: DescribeFileModerationResultResponseBodyDataPageSummary = None,
+        risk_level: str = None,
         url: str = None,
     ):
         # The ID of the moderated object.
@@ -340,6 +558,8 @@ class DescribeFileModerationResultResponseBodyData(TeaModel):
         self.doc_type = doc_type
         # The pagination information.
         self.page_result = page_result
+        self.page_summary = page_summary
+        self.risk_level = risk_level
         # The URL of the moderation object.
         self.url = url
 
@@ -348,6 +568,8 @@ class DescribeFileModerationResultResponseBodyData(TeaModel):
             for k in self.page_result:
                 if k:
                     k.validate()
+        if self.page_summary:
+            self.page_summary.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -363,6 +585,10 @@ class DescribeFileModerationResultResponseBodyData(TeaModel):
         if self.page_result is not None:
             for k in self.page_result:
                 result['PageResult'].append(k.to_map() if k else None)
+        if self.page_summary is not None:
+            result['PageSummary'] = self.page_summary.to_map()
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         if self.url is not None:
             result['Url'] = self.url
         return result
@@ -378,6 +604,11 @@ class DescribeFileModerationResultResponseBodyData(TeaModel):
             for k in m.get('PageResult'):
                 temp_model = DescribeFileModerationResultResponseBodyDataPageResult()
                 self.page_result.append(temp_model.from_map(k))
+        if m.get('PageSummary') is not None:
+            temp_model = DescribeFileModerationResultResponseBodyDataPageSummary()
+            self.page_summary = temp_model.from_map(m['PageSummary'])
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         if m.get('Url') is not None:
             self.url = m.get('Url')
         return self
@@ -480,7 +711,7 @@ class DescribeImageModerationResultRequest(TeaModel):
         self,
         req_id: str = None,
     ):
-        # The reqId field returned by the Image Async Moderation API.
+        # The ReqId field returned by the asynchronous Image Moderation 2.0 API.
         self.req_id = req_id
 
     def validate(self):
@@ -510,8 +741,9 @@ class DescribeImageModerationResultResponseBodyDataResult(TeaModel):
         description: str = None,
         label: str = None,
     ):
-        # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
+        # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places.
         self.confidence = confidence
+        # The description of the result.
         self.description = description
         # The labels returned after the image moderation.
         self.label = label
@@ -554,11 +786,11 @@ class DescribeImageModerationResultResponseBodyData(TeaModel):
         result: List[DescribeImageModerationResultResponseBodyDataResult] = None,
         risk_level: str = None,
     ):
-        # The ID of the moderated object.
+        # The value of dataId that is specified in the API request. If this parameter is not specified in the API request, this field is not available in the response.
         self.data_id = data_id
-        # Image frame information.
+        # The information about the captured frames.
         self.frame = frame
-        # Number of result frames
+        # The number of frames.
         self.frame_num = frame_num
         # The reqId field returned by the Image Async Moderation API.
         self.req_id = req_id
@@ -625,11 +857,11 @@ class DescribeImageModerationResultResponseBody(TeaModel):
     ):
         # The returned HTTP status code.
         self.code = code
-        # The data returned.
+        # The image moderation results.
         self.data = data
         # The message that is returned in response to the request.
         self.msg = msg
-        # The request ID.
+        # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -1901,6 +2133,410 @@ class ImageModerationResponseBodyDataExtCustomImage(TeaModel):
         return self
 
 
+class ImageModerationResponseBodyDataExtFaceDataBang(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        value: str = None,
+    ):
+        self.confidence = confidence
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ImageModerationResponseBodyDataExtFaceDataGender(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        value: str = None,
+    ):
+        self.confidence = confidence
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ImageModerationResponseBodyDataExtFaceDataHairstyle(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        value: str = None,
+    ):
+        self.confidence = confidence
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ImageModerationResponseBodyDataExtFaceDataHat(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        value: str = None,
+    ):
+        self.confidence = confidence
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ImageModerationResponseBodyDataExtFaceDataLocation(TeaModel):
+    def __init__(
+        self,
+        h: int = None,
+        w: int = None,
+        x: int = None,
+        y: int = None,
+    ):
+        self.h = h
+        self.w = w
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.h is not None:
+            result['H'] = self.h
+        if self.w is not None:
+            result['W'] = self.w
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('H') is not None:
+            self.h = m.get('H')
+        if m.get('W') is not None:
+            self.w = m.get('W')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class ImageModerationResponseBodyDataExtFaceDataMask(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        value: str = None,
+    ):
+        self.confidence = confidence
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ImageModerationResponseBodyDataExtFaceDataMustache(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        value: str = None,
+    ):
+        self.confidence = confidence
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ImageModerationResponseBodyDataExtFaceDataQuality(TeaModel):
+    def __init__(
+        self,
+        blur: float = None,
+        integrity: float = None,
+        pitch: float = None,
+        roll: float = None,
+        yaw: float = None,
+    ):
+        self.blur = blur
+        self.integrity = integrity
+        self.pitch = pitch
+        self.roll = roll
+        self.yaw = yaw
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.blur is not None:
+            result['Blur'] = self.blur
+        if self.integrity is not None:
+            result['Integrity'] = self.integrity
+        if self.pitch is not None:
+            result['Pitch'] = self.pitch
+        if self.roll is not None:
+            result['Roll'] = self.roll
+        if self.yaw is not None:
+            result['Yaw'] = self.yaw
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Blur') is not None:
+            self.blur = m.get('Blur')
+        if m.get('Integrity') is not None:
+            self.integrity = m.get('Integrity')
+        if m.get('Pitch') is not None:
+            self.pitch = m.get('Pitch')
+        if m.get('Roll') is not None:
+            self.roll = m.get('Roll')
+        if m.get('Yaw') is not None:
+            self.yaw = m.get('Yaw')
+        return self
+
+
+class ImageModerationResponseBodyDataExtFaceData(TeaModel):
+    def __init__(
+        self,
+        age: int = None,
+        bang: ImageModerationResponseBodyDataExtFaceDataBang = None,
+        gender: ImageModerationResponseBodyDataExtFaceDataGender = None,
+        glasses: str = None,
+        hairstyle: ImageModerationResponseBodyDataExtFaceDataHairstyle = None,
+        hat: ImageModerationResponseBodyDataExtFaceDataHat = None,
+        location: ImageModerationResponseBodyDataExtFaceDataLocation = None,
+        mask: ImageModerationResponseBodyDataExtFaceDataMask = None,
+        mustache: ImageModerationResponseBodyDataExtFaceDataMustache = None,
+        quality: ImageModerationResponseBodyDataExtFaceDataQuality = None,
+        smile: float = None,
+    ):
+        self.age = age
+        self.bang = bang
+        self.gender = gender
+        self.glasses = glasses
+        self.hairstyle = hairstyle
+        self.hat = hat
+        self.location = location
+        self.mask = mask
+        self.mustache = mustache
+        self.quality = quality
+        self.smile = smile
+
+    def validate(self):
+        if self.bang:
+            self.bang.validate()
+        if self.gender:
+            self.gender.validate()
+        if self.hairstyle:
+            self.hairstyle.validate()
+        if self.hat:
+            self.hat.validate()
+        if self.location:
+            self.location.validate()
+        if self.mask:
+            self.mask.validate()
+        if self.mustache:
+            self.mustache.validate()
+        if self.quality:
+            self.quality.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.age is not None:
+            result['Age'] = self.age
+        if self.bang is not None:
+            result['Bang'] = self.bang.to_map()
+        if self.gender is not None:
+            result['Gender'] = self.gender.to_map()
+        if self.glasses is not None:
+            result['Glasses'] = self.glasses
+        if self.hairstyle is not None:
+            result['Hairstyle'] = self.hairstyle.to_map()
+        if self.hat is not None:
+            result['Hat'] = self.hat.to_map()
+        if self.location is not None:
+            result['Location'] = self.location.to_map()
+        if self.mask is not None:
+            result['Mask'] = self.mask.to_map()
+        if self.mustache is not None:
+            result['Mustache'] = self.mustache.to_map()
+        if self.quality is not None:
+            result['Quality'] = self.quality.to_map()
+        if self.smile is not None:
+            result['Smile'] = self.smile
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Age') is not None:
+            self.age = m.get('Age')
+        if m.get('Bang') is not None:
+            temp_model = ImageModerationResponseBodyDataExtFaceDataBang()
+            self.bang = temp_model.from_map(m['Bang'])
+        if m.get('Gender') is not None:
+            temp_model = ImageModerationResponseBodyDataExtFaceDataGender()
+            self.gender = temp_model.from_map(m['Gender'])
+        if m.get('Glasses') is not None:
+            self.glasses = m.get('Glasses')
+        if m.get('Hairstyle') is not None:
+            temp_model = ImageModerationResponseBodyDataExtFaceDataHairstyle()
+            self.hairstyle = temp_model.from_map(m['Hairstyle'])
+        if m.get('Hat') is not None:
+            temp_model = ImageModerationResponseBodyDataExtFaceDataHat()
+            self.hat = temp_model.from_map(m['Hat'])
+        if m.get('Location') is not None:
+            temp_model = ImageModerationResponseBodyDataExtFaceDataLocation()
+            self.location = temp_model.from_map(m['Location'])
+        if m.get('Mask') is not None:
+            temp_model = ImageModerationResponseBodyDataExtFaceDataMask()
+            self.mask = temp_model.from_map(m['Mask'])
+        if m.get('Mustache') is not None:
+            temp_model = ImageModerationResponseBodyDataExtFaceDataMustache()
+            self.mustache = temp_model.from_map(m['Mustache'])
+        if m.get('Quality') is not None:
+            temp_model = ImageModerationResponseBodyDataExtFaceDataQuality()
+            self.quality = temp_model.from_map(m['Quality'])
+        if m.get('Smile') is not None:
+            self.smile = m.get('Smile')
+        return self
+
+
 class ImageModerationResponseBodyDataExtLogoDataLocation(TeaModel):
     def __init__(
         self,
@@ -2449,6 +3085,7 @@ class ImageModerationResponseBodyDataExt(TeaModel):
     def __init__(
         self,
         custom_image: List[ImageModerationResponseBodyDataExtCustomImage] = None,
+        face_data: List[ImageModerationResponseBodyDataExtFaceData] = None,
         logo_data: List[ImageModerationResponseBodyDataExtLogoData] = None,
         ocr_result: List[ImageModerationResponseBodyDataExtOcrResult] = None,
         public_figure: List[ImageModerationResponseBodyDataExtPublicFigure] = None,
@@ -2457,6 +3094,7 @@ class ImageModerationResponseBodyDataExt(TeaModel):
     ):
         # If a custom image library is hit, information about the hit custom image library is returned.
         self.custom_image = custom_image
+        self.face_data = face_data
         # Logo information.
         self.logo_data = logo_data
         # Returns the text information in the recognized image.
@@ -2471,6 +3109,10 @@ class ImageModerationResponseBodyDataExt(TeaModel):
     def validate(self):
         if self.custom_image:
             for k in self.custom_image:
+                if k:
+                    k.validate()
+        if self.face_data:
+            for k in self.face_data:
                 if k:
                     k.validate()
         if self.logo_data:
@@ -2502,6 +3144,10 @@ class ImageModerationResponseBodyDataExt(TeaModel):
         if self.custom_image is not None:
             for k in self.custom_image:
                 result['CustomImage'].append(k.to_map() if k else None)
+        result['FaceData'] = []
+        if self.face_data is not None:
+            for k in self.face_data:
+                result['FaceData'].append(k.to_map() if k else None)
         result['LogoData'] = []
         if self.logo_data is not None:
             for k in self.logo_data:
@@ -2529,6 +3175,11 @@ class ImageModerationResponseBodyDataExt(TeaModel):
             for k in m.get('CustomImage'):
                 temp_model = ImageModerationResponseBodyDataExtCustomImage()
                 self.custom_image.append(temp_model.from_map(k))
+        self.face_data = []
+        if m.get('FaceData') is not None:
+            for k in m.get('FaceData'):
+                temp_model = ImageModerationResponseBodyDataExtFaceData()
+                self.face_data.append(temp_model.from_map(k))
         self.logo_data = []
         if m.get('LogoData') is not None:
             for k in m.get('LogoData'):
@@ -2564,6 +3215,7 @@ class ImageModerationResponseBodyDataResult(TeaModel):
     ):
         # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
         self.confidence = confidence
+        # The description of the result.
         self.description = description
         # The labels returned after the image moderation. Multiple risk labels and the corresponding scores of confidence levels may be returned for an image.
         self.label = label
@@ -2932,7 +3584,15 @@ class TextModerationPlusRequest(TeaModel):
         service: str = None,
         service_parameters: str = None,
     ):
-        # The type of the moderation service.
+        # The moderation service.
+        # 
+        # Valid values:
+        # 
+        # *   chat_detection_pro: moderation of interactive content of private chats_Professional
+        # *   llm_response_moderation: moderation of text generated by LLMs
+        # *   llm_query_moderation: moderation of input text of LLMs
+        # *   nickname_detection_pro: moderation of user nicknames_Professional
+        # *   comment_detection_pro: moderation of comment content of public chats_Professional
         self.service = service
         # The parameters required by the moderation service. The value is a JSON string.
         self.service_parameters = service_parameters
@@ -2968,7 +3628,7 @@ class TextModerationPlusResponseBodyDataAdvice(TeaModel):
         hit_label: str = None,
         hit_lib_name: str = None,
     ):
-        # Answer
+        # The answer.
         self.answer = answer
         # Hit Label
         self.hit_label = hit_label
@@ -3009,9 +3669,9 @@ class TextModerationPlusResponseBodyDataResultCustomizedHit(TeaModel):
         key_words: str = None,
         lib_name: str = None,
     ):
-        # Hit keywords, comma separated.
+        # The terms that are hit. Multiple terms are separated by commas (,).
         self.key_words = key_words
-        # Library Name
+        # The library name.
         self.lib_name = lib_name
 
     def validate(self):
@@ -3043,16 +3703,19 @@ class TextModerationPlusResponseBodyDataResult(TeaModel):
         self,
         confidence: float = None,
         customized_hit: List[TextModerationPlusResponseBodyDataResultCustomizedHit] = None,
+        description: str = None,
         label: str = None,
         risk_words: str = None,
     ):
-        # Confidence score, 0 to 100, reserved to 2 decimal places.
+        # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places.
         self.confidence = confidence
-        # Custom keyword hits
+        # The custom term hit by the moderated content.
         self.customized_hit = customized_hit
-        # Labels.
+        # The description of the label.
+        self.description = description
+        # The label.
         self.label = label
-        # Risk words
+        # The term hit by the moderated content.
         self.risk_words = risk_words
 
     def validate(self):
@@ -3073,6 +3736,8 @@ class TextModerationPlusResponseBodyDataResult(TeaModel):
         if self.customized_hit is not None:
             for k in self.customized_hit:
                 result['CustomizedHit'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['Description'] = self.description
         if self.label is not None:
             result['Label'] = self.label
         if self.risk_words is not None:
@@ -3088,6 +3753,8 @@ class TextModerationPlusResponseBodyDataResult(TeaModel):
             for k in m.get('CustomizedHit'):
                 temp_model = TextModerationPlusResponseBodyDataResultCustomizedHit()
                 self.customized_hit.append(temp_model.from_map(k))
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('Label') is not None:
             self.label = m.get('Label')
         if m.get('RiskWords') is not None:
@@ -3103,13 +3770,13 @@ class TextModerationPlusResponseBodyData(TeaModel):
         risk_level: str = None,
         score: float = None,
     ):
-        # Advice
+        # The suggestion.
         self.advice = advice
-        # The moderation results.
+        # The results.
         self.result = result
         # Risk Level
         self.risk_level = risk_level
-        # Score.
+        # The score.
         self.score = score
 
     def validate(self):
@@ -3169,13 +3836,13 @@ class TextModerationPlusResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The returned HTTP status code.
+        # The returned HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The data returned.
+        # The moderation results.
         self.data = data
         # The message that is returned in response to the request.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
