@@ -1,3 +1,39 @@
+2024-09-13 Version: 7.0.0
+- Support API AssociateHaVip.
+- Support API CreateStorageVolume.
+- Support API DeleteStorageVolume.
+- Support API DescribeHaVips.
+- Support API DescribeStorageGateway.
+- Support API DescribeStorageVolume.
+- Support API ModifyHaVipAttribute.
+- Support API PrepareUpload.
+- Support API UnassociateHaVip.
+- Delete API DescribeApplicationResourceSummary.
+- Delete API DescribeEipAddresses.
+- Update API CreateLoadBalancerHTTPListener: add param BackendServerPort.
+- Update API CreateLoadBalancerHTTPSListener: add param BackendServerPort.
+- Update API CreateLoadBalancerHTTPSListener: update param ServerCertificateId.
+- Update API CreateLoadBalancerUDPListener: add param EstablishedTimeout.
+- Update API CreateNetwork: update param EnsRegionId.
+- Update API DescribeInstances: update response param.
+- Update API DescribeLoadBalancerHTTPListenerAttribute: update response param.
+- Update API DescribeLoadBalancerHTTPSListenerAttribute: update response param.
+- Update API DescribeLoadBalancerUDPListenerAttribute: update response param.
+- Update API DescribeNetworkInterfaces: add param Ipv6Address.
+- Update API DescribeNetworkInterfaces: update response param.
+- Update API DescribeSDGDeploymentStatus: add param DeploymentType.
+- Update API DescribeSDGDeploymentStatus: add param InstanceIds.
+- Update API DescribeSDGDeploymentStatus: add param RegionIds.
+- Update API DescribeSDGDeploymentStatus: add param Status.
+- Update API DescribeSDGDeploymentStatus: update param PageNumber.
+- Update API DescribeSDGDeploymentStatus: update param PageSize.
+- Update API DescribeSelfImages: update response param.
+- Update API PutBucketLifecycle: update response param.
+- Update API RunInstances: add param SpotDuration.
+- Update API RunInstances: update param IpType.
+- Update API SetLoadBalancerUDPListenerAttribute: add param EstablishedTimeout.
+
+
 2024-07-04 Version: 6.2.1
 - Generated python 2017-11-10 for Ens.
 

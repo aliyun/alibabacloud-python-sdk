@@ -461,6 +461,75 @@ class SecurityGroupRule(TeaModel):
         return self
 
 
+class TagsInParamsTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # This parameter is required.
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class TagsInParams(TeaModel):
+    def __init__(
+        self,
+        tag: List[TagsInParamsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = TagsInParamsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
 class TcpConfig(TeaModel):
     def __init__(
         self,
@@ -1350,7 +1419,7 @@ class AddSnatIpForSnatEntryRequest(TeaModel):
         # 
         # This parameter is required.
         self.snat_entry_id = snat_entry_id
-        # The EIP that you want to add to the SNAT entry.
+        # The EIP specified in the SNAT entry.
         # 
         # This parameter is required.
         self.snat_ip = snat_ip
@@ -1727,6 +1796,115 @@ class AssociateEnsEipAddressResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AssociateEnsEipAddressResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AssociateHaVipRequest(TeaModel):
+    def __init__(
+        self,
+        ha_vip_id: str = None,
+        instance_id: str = None,
+        instance_type: str = None,
+    ):
+        # This parameter is required.
+        self.ha_vip_id = ha_vip_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.instance_type = instance_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ha_vip_id is not None:
+            result['HaVipId'] = self.ha_vip_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HaVipId') is not None:
+            self.ha_vip_id = m.get('HaVipId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        return self
+
+
+class AssociateHaVipResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AssociateHaVipResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AssociateHaVipResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AssociateHaVipResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2714,7 +2892,7 @@ class CopySnapshotRequest(TeaModel):
         destination_snapshot_name: str = None,
         snapshot_id: str = None,
     ):
-        # The destination nodes.
+        # The IDs of destination nodes.
         # 
         # This parameter is required.
         self.destination_region_ids = destination_region_ids
@@ -2767,7 +2945,7 @@ class CopySnapshotShrinkRequest(TeaModel):
         destination_snapshot_name: str = None,
         snapshot_id: str = None,
     ):
-        # The destination nodes.
+        # The IDs of destination nodes.
         # 
         # This parameter is required.
         self.destination_region_ids_shrink = destination_region_ids_shrink
@@ -2820,7 +2998,7 @@ class CopySnapshotResponseBodyAllocationId(TeaModel):
     ):
         # The ID of the node.
         self.ens_region_id = ens_region_id
-        # An array of instance IDs.
+        # The IDs of the instances.
         self.instance_id = instance_id
 
     def validate(self):
@@ -2885,7 +3063,7 @@ class CopySnapshotResponseBody(TeaModel):
     ):
         # The list of created snapshots.
         self.allocation_id = allocation_id
-        # Success status code.
+        # The success status code.
         # 
         # *   **PartSuccess**: partially succeeded.
         # *   **AllSuccess**: all succeeded.
@@ -3712,7 +3890,7 @@ class CreateEipInstanceRequest(TeaModel):
         isp: str = None,
         name: str = None,
     ):
-        # The peak bandwidth of the EIP. Default value: 5. Valid values: 5 to 10000. Unit: Mbit/s.
+        # The maximum bandwidth of the EIP. Default value: 5. Valid values: 5 to 10000. Unit: Mbit/s.
         self.bandwidth = bandwidth
         # The description of the EIP.
         self.description = description
@@ -3730,9 +3908,9 @@ class CreateEipInstanceRequest(TeaModel):
         self.internet_charge_type = internet_charge_type
         # The Internet service provider. Valid values:
         # 
-        # *   **cmcc**: China Mobile
-        # *   **unicom**: China Unicom
-        # *   **telecom**: China Telecom
+        # *   **cmcc**: China Mobile.
+        # *   **unicom**: China Unicom.
+        # *   **telecom**: China Telecom.
         self.isp = isp
         # The name of the EIP.
         self.name = name
@@ -4610,15 +4788,15 @@ class CreateFileSystemRequestOrderDetails(TeaModel):
         # 
         # This parameter is required.
         self.charge_type = charge_type
-        # The ID of the node.
+        # The ID of the edge node.
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
-        # The name of the file system.
+        # The name of the file system. The name must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         # 
         # This parameter is required.
         self.file_system_name = file_system_name
-        # The name of the mount target.
+        # The name of the mount target. The name must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         # 
         # This parameter is required.
         self.mount_target_domain = mount_target_domain
@@ -4626,7 +4804,7 @@ class CreateFileSystemRequestOrderDetails(TeaModel):
         # 
         # This parameter is required.
         self.network_id = network_id
-        # The type of the order.
+        # The type of the order. Set the value to BUY.
         # 
         # This parameter is required.
         self.order_type = order_type
@@ -4634,7 +4812,10 @@ class CreateFileSystemRequestOrderDetails(TeaModel):
         # 
         # This parameter is required.
         self.protocol_type = protocol_type
-        # The type of the storage. Set the value to capacity.
+        # The storage type. Valid values:
+        # 
+        # *   Capacity.
+        # *   Performance.
         # 
         # This parameter is required.
         self.storge_type = storge_type
@@ -4869,7 +5050,7 @@ class CreateForwardEntryRequest(TeaModel):
         # 
         # *   Valid values: 1 to 65535.
         # *   To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20.
-        # *   If you set ExternalPort to a port range, you must also set InternalPort to a port range, and the number of ports specified must be the same for both parameters. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
+        # *   If you set ExternalPort to a port range, you must also set InternalPort to a port range. The number of ports in the port ranges must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
         # 
         # This parameter is required.
         self.external_port = external_port
@@ -6007,6 +6188,7 @@ class CreateLoadBalancerResponse(TeaModel):
 class CreateLoadBalancerHTTPListenerRequest(TeaModel):
     def __init__(
         self,
+        backend_server_port: int = None,
         description: str = None,
         forward_port: int = None,
         health_check: str = None,
@@ -6027,7 +6209,9 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         unhealthy_threshold: int = None,
         xforwarded_for: str = None,
     ):
-        # The description of the listener. The description must be **1** to **80** characters in length.
+        # 负载均衡实例后端服务器使用的端口，取值：**1**~**65535**。
+        self.backend_server_port = backend_server_port
+        # The name of the listener. The value must be **1** to **80** characters in length.
         # 
         # >  The value cannot start with `http://` or `https://`.
         self.description = description
@@ -6068,7 +6252,7 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         # 
         # >  This parameter takes effect only if you set HealthCheck to on.
         self.health_check_method = health_check_method
-        # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+        # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails the health check.
         # 
         # *   Default value: 5.
         # *   Valid values: **1** to **300**.
@@ -6076,17 +6260,17 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         # 
         # > 
         # 
-        # *   This parameter takes effect only if you set HealthCheck to on.
+        # *   This parameter takes effect only if the HealthCheck parameter is set to on.
         # 
-        # *   If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+        # *   If the value of HealthCheckTimeout is smaller than the value of HealthCheckInterval, the timeout period specified by HealthCheckTimeout becomes invalid, and the value of HealthCheckInterval is used as the timeout period.
         self.health_check_timeout = health_check_timeout
-        # The Uniform Resource Identifier (URI) that you want to use for health checks. The URI must be **1** to **80** characters in length.
+        # The URI used for health checks. The URI must be **1** to **80** characters in length.
         # 
         # > 
         # 
-        # *   The URL must start with `/` and contain characters other than `/`.
+        # *   A URL must start with a forward slash (`/`) but cannot contain only forward slashes (`/`).
         # 
-        # *   This parameter takes effect only if you set HealthCheck to on.
+        # *   This parameter takes effect only if the HealthCheck parameter is set to on.
         self.health_check_uri = health_check_uri
         # The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**. Default value: **3**.
         # 
@@ -6101,7 +6285,9 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         # *   **on**\
         # *   **off** (default)
         self.listener_forward = listener_forward
-        # The frontend port that is used by the ELB instance. Valid values: **1** to **65535**.
+        # The listener port that is used by Edge Load Balancer (ELB) to receive requests and forward the requests to backend servers. Valid values: **1** to **65535**.
+        # 
+        # >  We recommend that you use port 80 for HTTP.
         # 
         # This parameter is required.
         self.listener_port = listener_port
@@ -6141,6 +6327,8 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.backend_server_port is not None:
+            result['BackendServerPort'] = self.backend_server_port
         if self.description is not None:
             result['Description'] = self.description
         if self.forward_port is not None:
@@ -6183,6 +6371,8 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackendServerPort') is not None:
+            self.backend_server_port = m.get('BackendServerPort')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('ForwardPort') is not None:
@@ -6296,6 +6486,7 @@ class CreateLoadBalancerHTTPListenerResponse(TeaModel):
 class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
     def __init__(
         self,
+        backend_server_port: int = None,
         cookie: str = None,
         cookie_timeout: int = None,
         description: str = None,
@@ -6319,6 +6510,8 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         sticky_session_type: str = None,
         unhealthy_threshold: int = None,
     ):
+        # The listening port that is used by the backend instances. Valid values: 1 to 65535.
+        self.backend_server_port = backend_server_port
         # The cookie that is configured on the server. The cookie must be **1** to **200** characters in length and contain only ASCII characters and digits.
         # 
         # >  This parameter is required if you set StickySession to on and StickySessionType to server.
@@ -6376,15 +6569,13 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         # 
         # > 
         # 
-        # *   This parameter takes effect only if you set HealthCheck to on.
+        # *   This parameter takes effect only if the HealthCheck parameter is set to on.
         # 
-        # *   If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+        # *   If the value of HealthCheckTimeout is smaller than the value of HealthCheckInterval, the timeout period specified by HealthCheckTimeout becomes invalid, and the value of HealthCheckInterval is used as the timeout period.
         self.health_check_timeout = health_check_timeout
-        # The Uniform Resource Identifier (URI) that you want to use for health checks. The URI must be **1** to **80** characters in length.
+        # The URI used for health checks. The URI must be **1** to **80** characters in length.
         # 
-        # > 
-        # 
-        # *   The URL must start with a forward slash (`/`) and contain characters other than forward slashes (`/`).
+        # >  A URL must start with a forward slash (`/`) but cannot contain only forward slashes (`/`).
         self.health_check_uri = health_check_uri
         # The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**. Default value: **3**.
         # 
@@ -6399,7 +6590,9 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         # *   **on**\
         # *   **off** (default)
         self.listener_forward = listener_forward
-        # The frontend port that is used by the ELB instance. Valid values: **1** to **65535**.
+        # The listening port that is used by Edge Load Balancer (ELB) to receive requests and forward the requests to backend servers. Valid values: **1** to **65535**.
+        # 
+        # >  We recommend that you use port 443 for HTTPS.
         # 
         # This parameter is required.
         self.listener_port = listener_port
@@ -6445,6 +6638,8 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.backend_server_port is not None:
+            result['BackendServerPort'] = self.backend_server_port
         if self.cookie is not None:
             result['Cookie'] = self.cookie
         if self.cookie_timeout is not None:
@@ -6493,6 +6688,8 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackendServerPort') is not None:
+            self.backend_server_port = m.get('BackendServerPort')
         if m.get('Cookie') is not None:
             self.cookie = m.get('Cookie')
         if m.get('CookieTimeout') is not None:
@@ -6630,9 +6827,9 @@ class CreateLoadBalancerTCPListenerRequest(TeaModel):
         scheduler: str = None,
         unhealthy_threshold: int = None,
     ):
-        # The backend port that is used by the ELB instance. Valid values: **1** to **65535**.
+        # The port used by the backend ELB server of the ELB instance. Valid values: **1** to **65535**.
         self.backend_server_port = backend_server_port
-        # The description of the listener. The description must be **1** to **80** characters in length.
+        # The name of the listener. The value must be **1** to **80** characters in length.
         # 
         # >  The value cannot start with `http://` or `https://`.
         self.description = description
@@ -6645,13 +6842,13 @@ class CreateLoadBalancerTCPListenerRequest(TeaModel):
         self.established_timeout = established_timeout
         # The port that is used for health checks. Valid values: **1** to **65535**. If you leave this parameter empty, the port specified for BackendServerPort is used for health checks.
         self.health_check_connect_port = health_check_connect_port
-        # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+        # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails the health check.
         # 
         # *   Default value: 5.
         # *   Valid values: **1** to **300**.
         # *   Unit: seconds.
         # 
-        # >  If the value that you specified for HealthCheckConnectTimeout is smaller than the value of HealthCheckInterval, HealthCheckConnectTimeout becomes invalid and the timeout period that you specified for HealthCheckInterval is used.
+        # >  If the value of the HealthCheckConnectTimeout parameter is smaller than that of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckConnectTimeout parameter is ignored and the period of time specified by the HealthCheckInterval parameter is used as the timeout period.
         self.health_check_connect_timeout = health_check_connect_timeout
         # The domain name that you want to use for health checks.
         self.health_check_domain = health_check_domain
@@ -6675,7 +6872,7 @@ class CreateLoadBalancerTCPListenerRequest(TeaModel):
         self.health_check_uri = health_check_uri
         # The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**. Default value: **3**.
         self.healthy_threshold = healthy_threshold
-        # The frontend port that is used by the ELB instance. Valid values: **1** to **65535**.
+        # The listener port that is used by Edge Load Balancer (ELB) to receive requests and forward the requests to backend servers. Valid values: **1** to **65535**.
         # 
         # This parameter is required.
         self.listener_port = listener_port
@@ -6860,6 +7057,7 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
         backend_server_port: int = None,
         description: str = None,
         eip_transmit: str = None,
+        established_timeout: int = None,
         health_check_connect_port: int = None,
         health_check_connect_timeout: int = None,
         health_check_exp: str = None,
@@ -6871,26 +7069,27 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
         scheduler: str = None,
         unhealthy_threshold: int = None,
     ):
-        # The backend port that is used by the ELB instance. Valid values: **1** to **65535**.
+        # The port used by the backend ELB server of the ELB instance. Valid values: **1** to **65535**.
         self.backend_server_port = backend_server_port
-        # The description of the listener. The description must be **1** to **80** characters in length.
+        # The name of the listener. The value must be **1** to **80** characters in length.
         # 
         # >  The value cannot start with `http://` or `https://`.
         self.description = description
-        # Specifies whether to enable elastic IP address (EIP) pass-through. Valid values:
+        # Specifies whether to enable Elastic IP address (EIP) pass-through. Valid values:
         # 
         # *   **on**\
         # *   **off** (default)
         self.eip_transmit = eip_transmit
+        self.established_timeout = established_timeout
         # The port that is used for health checks. Valid values: **1** to **65535**. If you leave this parameter empty, the port specified by BackendServerPort is used for health checks.
         self.health_check_connect_port = health_check_connect_port
-        # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+        # The timeout period for a health check response. If a backend server does not respond within the specified timeout period, the server fails the health check.
         # 
         # *   Default value: 5.
         # *   Valid values: **1** to **300**.
         # *   Unit: seconds.
         # 
-        # >  If the value that you specified for HealthCheckConnectTimeout is smaller than the value of HealthCheckInterval, HealthCheckConnectTimeout becomes invalid and the timeout period that you specified for HealthCheckInterval is used.
+        # >  If the value of the HealthCheckConnectTimeout parameter is smaller than that of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckConnectTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
         self.health_check_connect_timeout = health_check_connect_timeout
         # The response string for UDP listener health checks. The string can be up to 64 characters in length and can contain only letters and digits.
         self.health_check_exp = health_check_exp
@@ -6900,7 +7099,9 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
         self.health_check_req = health_check_req
         # The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**. Default value: **3**.
         self.healthy_threshold = healthy_threshold
-        # The frontend port that is used by the ELB instance. Valid values: **1** to **65535**.
+        # The listener port that is used by Edge Load Balancer (ELB) to receive requests and forward the requests to backend servers. Valid values: **1** to **65535**.
+        # 
+        # >  You cannot specify ports 250, 4789, or 4790 for UDP listeners. They are system reserved ports.
         # 
         # This parameter is required.
         self.listener_port = listener_port
@@ -6908,14 +7109,14 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
-        # The routing algorithm. Valid values:
+        # The scheduling algorithm. Valid values:
         # 
-        # *   **wrr** (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
+        # *   **wrr**: Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
         # *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
         # *   **rr**: Requests are distributed to backend servers in sequence.
-        # *   **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
-        # *   **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
-        # *   **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+        # *   **sch**: Consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+        # *   **qch**: Consistent hashing based on Quick UDP Internet Connection (QUIC) IDs. Requests that contain the same QUIC ID are scheduled to the same backend server.
+        # *   **iqch**: Consistent hashing based on three specific bytes of iQUIC CID. Requests with the same second, third, and forth bytes are scheduled to the same backend server.
         self.scheduler = scheduler
         # The number of consecutive failed health checks that must occur before a healthy and accessible backend server is declared unhealthy and inaccessible. Valid values: **2** to **10**. Default value: **3**.
         self.unhealthy_threshold = unhealthy_threshold
@@ -6935,6 +7136,8 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
             result['Description'] = self.description
         if self.eip_transmit is not None:
             result['EipTransmit'] = self.eip_transmit
+        if self.established_timeout is not None:
+            result['EstablishedTimeout'] = self.established_timeout
         if self.health_check_connect_port is not None:
             result['HealthCheckConnectPort'] = self.health_check_connect_port
         if self.health_check_connect_timeout is not None:
@@ -6965,6 +7168,8 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('EipTransmit') is not None:
             self.eip_transmit = m.get('EipTransmit')
+        if m.get('EstablishedTimeout') is not None:
+            self.established_timeout = m.get('EstablishedTimeout')
         if m.get('HealthCheckConnectPort') is not None:
             self.health_check_connect_port = m.get('HealthCheckConnectPort')
         if m.get('HealthCheckConnectTimeout') is not None:
@@ -7798,9 +8003,10 @@ class CreateSDGRequest(TeaModel):
         # *   The first time you create an SDG, the **FromSDGId** parameter is empty.
         # 
         # *   If the value of the **FromSDGId** parameter is invalid or does not correspond to an original disk, an error is reported.
+        # 
         # *   If the value of the **FromSDGId** parameter is not empty, you have created an SDG, and the operation is performed on the existing SDG.
         self.from_sdgid = from_sdgid
-        # The ID of the device.
+        # The ID of the AIC instance. You can call the [DescribeARMServerInstances](~~DescribeARMServerInstances~~) operation to query the ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -7812,10 +8018,7 @@ class CreateSDGRequest(TeaModel):
         # 
         # *   The first time that you create an SDG, the **Size** parameter is required.
         # 
-        # *   When the amount of data increases, you can pass a new **Size** parameter for resizing.
-        # 
-        #     *   If the value of the **Size** parameter is not empty and is greater than the value of the **Size** parameter of the original SDG, the original disk corresponding to the SDG is scaled out to the size that is specified by the current **Size** parameter.
-        #     *   If the value of the **Size** parameter is not empty, or the value of the **Size** parameter is smaller than the value of the **Size** parameter of the original SDG, no operation is performed.
+        # *   When the amount of data increases, you can pass a new **Size** parameter for resizing. If the value of the new **Size** parameter is greater than the value of the old **Size** parameter, the disk size of the SDG is increased to the size that is specified by the new **Size** parameter. If the value of the new **Size** parameter is empty or smaller than that of the old **Size** parameter, no operation is performed.
         self.size = size
 
     def validate(self):
@@ -8053,7 +8256,7 @@ class CreateSnapshotRequest(TeaModel):
         # 
         # This parameter is required.
         self.disk_id = disk_id
-        # The ID of the edge node.
+        # The ID of the ENS node.
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
@@ -8103,7 +8306,7 @@ class CreateSnapshotResponseBody(TeaModel):
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
-        # The ID of the snapshot.
+        # The IDs of the snapshots.
         self.snap_shot_id = snap_shot_id
 
     def validate(self):
@@ -8637,6 +8840,185 @@ class CreateStorageGatewayResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateStorageGatewayResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateStorageVolumeRequest(TeaModel):
+    def __init__(
+        self,
+        auth_password: str = None,
+        auth_protocol: str = None,
+        auth_user: str = None,
+        description: str = None,
+        ens_region_id: str = None,
+        gateway_id: str = None,
+        is_auth: str = None,
+        is_enable: str = None,
+        storage_id: str = None,
+        volume_name: str = None,
+    ):
+        # The password of the CHAP protocol.
+        self.auth_password = auth_password
+        # The authentication protocol. Set the value to **CHAP**.
+        self.auth_protocol = auth_protocol
+        # The username of the CHAP protocol.
+        self.auth_user = auth_user
+        # The description of the volume. The description must be 2 to 128 characters in length. The description cannot start with `http://` or `https://`.
+        self.description = description
+        # The ID of the node.
+        # 
+        # This parameter is required.
+        self.ens_region_id = ens_region_id
+        # The ID of the gateway.
+        # 
+        # This parameter is required.
+        self.gateway_id = gateway_id
+        # Specifies whether to enable authentication. Valid values:
+        # 
+        # *   **1**: enable authentication.
+        # *   **0** (default): disable authentication.
+        self.is_auth = is_auth
+        # Specifies whether to enable the volume. Valid values:
+        # 
+        # *   **1** (default): enable the volume.
+        # *   **0**: disable the volume.
+        self.is_enable = is_enable
+        # The ID of the storage medium.
+        # 
+        # This parameter is required.
+        self.storage_id = storage_id
+        # The name of the volume. The name must be 2 to 128 characters in length. The name cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        self.volume_name = volume_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_password is not None:
+            result['AuthPassword'] = self.auth_password
+        if self.auth_protocol is not None:
+            result['AuthProtocol'] = self.auth_protocol
+        if self.auth_user is not None:
+            result['AuthUser'] = self.auth_user
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.gateway_id is not None:
+            result['GatewayId'] = self.gateway_id
+        if self.is_auth is not None:
+            result['IsAuth'] = self.is_auth
+        if self.is_enable is not None:
+            result['IsEnable'] = self.is_enable
+        if self.storage_id is not None:
+            result['StorageId'] = self.storage_id
+        if self.volume_name is not None:
+            result['VolumeName'] = self.volume_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthPassword') is not None:
+            self.auth_password = m.get('AuthPassword')
+        if m.get('AuthProtocol') is not None:
+            self.auth_protocol = m.get('AuthProtocol')
+        if m.get('AuthUser') is not None:
+            self.auth_user = m.get('AuthUser')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('GatewayId') is not None:
+            self.gateway_id = m.get('GatewayId')
+        if m.get('IsAuth') is not None:
+            self.is_auth = m.get('IsAuth')
+        if m.get('IsEnable') is not None:
+            self.is_enable = m.get('IsEnable')
+        if m.get('StorageId') is not None:
+            self.storage_id = m.get('StorageId')
+        if m.get('VolumeName') is not None:
+            self.volume_name = m.get('VolumeName')
+        return self
+
+
+class CreateStorageVolumeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        volume_id: List[str] = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # An array of volume IDs.
+        self.volume_id = volume_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.volume_id is not None:
+            result['VolumeId'] = self.volume_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('VolumeId') is not None:
+            self.volume_id = m.get('VolumeId')
+        return self
+
+
+class CreateStorageVolumeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateStorageVolumeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateStorageVolumeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9996,7 +10378,7 @@ class DeleteFileSystemRequest(TeaModel):
         ens_region_id: str = None,
         file_system_id: str = None,
     ):
-        # The ID of the node.
+        # The ID of the edge node.
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
@@ -10546,7 +10928,7 @@ class DeleteMountTargetRequest(TeaModel):
         file_system_id: str = None,
         mount_target_name: str = None,
     ):
-        # The ID of the region.
+        # The ID of the edge node.
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
@@ -11163,7 +11545,7 @@ class DeleteSDGRequest(TeaModel):
         self,
         sdgid: List[str] = None,
     ):
-        # IDs of SDGs that you want to delete. You can delete a maximum of 10 SDGs at a time.
+        # The IDs of the SDGs that you want to delete.
         # 
         # This parameter is required.
         self.sdgid = sdgid
@@ -11193,7 +11575,7 @@ class DeleteSDGShrinkRequest(TeaModel):
         self,
         sdgid_shrink: str = None,
     ):
-        # IDs of SDGs that you want to delete. You can delete a maximum of 10 SDGs at a time.
+        # The IDs of the SDGs that you want to delete.
         # 
         # This parameter is required.
         self.sdgid_shrink = sdgid_shrink
@@ -11223,6 +11605,7 @@ class DeleteSDGResponseBodyDataResultFailedItemsItem(TeaModel):
         self,
         sdg_id: str = None,
     ):
+        # The ID of the shared data group (SDG).
         self.sdg_id = sdg_id
 
     def validate(self):
@@ -11251,7 +11634,9 @@ class DeleteSDGResponseBodyDataResultFailedItems(TeaModel):
         err_message: str = None,
         item: DeleteSDGResponseBodyDataResultFailedItemsItem = None,
     ):
+        # The error message.
         self.err_message = err_message
+        # Description
         self.item = item
 
     def validate(self):
@@ -11287,8 +11672,11 @@ class DeleteSDGResponseBodyDataResult(TeaModel):
         failed_items: List[DeleteSDGResponseBodyDataResultFailedItems] = None,
         success_count: int = None,
     ):
+        # The number of failed tasks.
         self.failed_count = failed_count
+        # Details about the failed tasks.
         self.failed_items = failed_items
+        # The number of successful tasks.
         self.success_count = success_count
 
     def validate(self):
@@ -11334,8 +11722,14 @@ class DeleteSDGResponseBodyData(TeaModel):
         result: DeleteSDGResponseBodyDataResult = None,
         success: bool = None,
     ):
+        # The response message. Success is returned for a successful request.
         self.message = message
+        # The execution result of the synchronization request.
         self.result = result
+        # Indicates whether all tasks are successful. Valid values:
+        # 
+        # *   true: All tasks are successful.
+        # *   false: Failed tasks exist.
         self.success = success
 
     def validate(self):
@@ -11374,6 +11768,7 @@ class DeleteSDGResponseBody(TeaModel):
         data: DeleteSDGResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data object.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -11949,6 +12344,105 @@ class DeleteStorageGatewayResponse(TeaModel):
         return self
 
 
+class DeleteStorageVolumeRequest(TeaModel):
+    def __init__(
+        self,
+        volume_id: str = None,
+    ):
+        # The ID of the volume.
+        # 
+        # This parameter is required.
+        self.volume_id = volume_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.volume_id is not None:
+            result['VolumeId'] = self.volume_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VolumeId') is not None:
+            self.volume_id = m.get('VolumeId')
+        return self
+
+
+class DeleteStorageVolumeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteStorageVolumeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteStorageVolumeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteStorageVolumeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteVSwitchRequest(TeaModel):
     def __init__(
         self,
@@ -12055,9 +12549,16 @@ class DeployInstanceSDGRequest(TeaModel):
         instance_ids: List[str] = None,
         sdgid: str = None,
     ):
+        # The deployment type of the SDG. Valid values:
+        # 
+        # *   shared: shared read/write splitting deployment. The content of the SDG is read-only, and data updates are written to the local storage of the instance.
         self.deployment_type = deployment_type
+        # The IDs of the instances. The value is a JSON array that consists of up to 100 IDs.
+        # 
         # This parameter is required.
         self.instance_ids = instance_ids
+        # The ID of the SDG.
+        # 
         # This parameter is required.
         self.sdgid = sdgid
 
@@ -12096,9 +12597,16 @@ class DeployInstanceSDGShrinkRequest(TeaModel):
         instance_ids_shrink: str = None,
         sdgid: str = None,
     ):
+        # The deployment type of the SDG. Valid values:
+        # 
+        # *   shared: shared read/write splitting deployment. The content of the SDG is read-only, and data updates are written to the local storage of the instance.
         self.deployment_type = deployment_type
+        # The IDs of the instances. The value is a JSON array that consists of up to 100 IDs.
+        # 
         # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink
+        # The ID of the SDG.
+        # 
         # This parameter is required.
         self.sdgid = sdgid
 
@@ -12136,7 +12644,9 @@ class DeployInstanceSDGResponseBodyDataResultFailedItems(TeaModel):
         err_message: str = None,
         instance_id: str = None,
     ):
+        # The error message that is returned.
         self.err_message = err_message
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -12170,8 +12680,11 @@ class DeployInstanceSDGResponseBodyDataResult(TeaModel):
         failed_items: List[DeployInstanceSDGResponseBodyDataResultFailedItems] = None,
         success_count: int = None,
     ):
+        # The number of failed tasks.
         self.failed_count = failed_count
+        # Details about the failed tasks.
         self.failed_items = failed_items
+        # The number of successful tasks.
         self.success_count = success_count
 
     def validate(self):
@@ -12217,8 +12730,14 @@ class DeployInstanceSDGResponseBodyData(TeaModel):
         result: DeployInstanceSDGResponseBodyDataResult = None,
         success: bool = None,
     ):
+        # The response message. Success is returned for a successful request.
         self.message = message
+        # The execution result of the synchronization request.
         self.result = result
+        # Indicates whether all tasks are successful. Valid values:
+        # 
+        # *   true: All tasks are successful.
+        # *   false: Failed tasks exist.
         self.success = success
 
     def validate(self):
@@ -12257,7 +12776,9 @@ class DeployInstanceSDGResponseBody(TeaModel):
         data: DeployInstanceSDGResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data object.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13705,127 +14226,6 @@ class DescribeApplicationResponse(TeaModel):
         return self
 
 
-class DescribeApplicationResourceSummaryRequest(TeaModel):
-    def __init__(
-        self,
-        level: str = None,
-        resource_type: str = None,
-    ):
-        # The region level. The value must be of the enumerated data type. Valid values:
-        # 
-        # *   **National** (default): Chinese mainland
-        # *   **Big**: area
-        # *   **Middle**: province
-        # *   **Small**: city
-        # *   **RegionId**: edge node
-        self.level = level
-        # The resource type.
-        # 
-        # Valid value:
-        # 
-        # *   Ens
-        self.resource_type = resource_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.level is not None:
-            result['Level'] = self.level
-        if self.resource_type is not None:
-            result['ResourceType'] = self.resource_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Level') is not None:
-            self.level = m.get('Level')
-        if m.get('ResourceType') is not None:
-            self.resource_type = m.get('ResourceType')
-        return self
-
-
-class DescribeApplicationResourceSummaryResponseBody(TeaModel):
-    def __init__(
-        self,
-        application_resource: str = None,
-        request_id: str = None,
-    ):
-        # The statistical information about the resource quota and usage in different regions.
-        self.application_resource = application_resource
-        # The ID of the request.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.application_resource is not None:
-            result['ApplicationResource'] = self.application_resource
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ApplicationResource') is not None:
-            self.application_resource = m.get('ApplicationResource')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeApplicationResourceSummaryResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeApplicationResourceSummaryResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeApplicationResourceSummaryResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeAvailableResourceResponseBodyImagesImage(TeaModel):
     def __init__(
         self,
@@ -14378,15 +14778,18 @@ class DescribeAvailableResourceInfoResponseBodySupportResourcesSupportResource(T
         system_disk_max_size: int = None,
         system_disk_min_size: int = None,
     ):
+        # Bandwidth billing method.
         self.bandwidth_types = bandwidth_types
         # The maximum capacity of a data disk. Unit: GB.
         self.data_disk_max_size = data_disk_max_size
         # The minimum data disk size. Unit: GiB.
         self.data_disk_min_size = data_disk_min_size
+        # node ID
         self.ens_region_ids = ens_region_ids
         # The supplementary information about the edge nodes.
         self.ens_region_ids_extends = ens_region_ids_extends
         self.instance_speces = instance_speces
+        # Operator
         self.isp = isp
         # The maximum size of the system disk. Unit: GiB.
         self.system_disk_max_size = system_disk_max_size
@@ -17684,191 +18087,6 @@ class DescribeDisksResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDisksResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeEipAddressesRequest(TeaModel):
-    def __init__(
-        self,
-        eips: str = None,
-        ens_region_id: str = None,
-    ):
-        # The information about the EIPs.
-        self.eips = eips
-        # The ID of the Edge Node Service (ENS) node.
-        # 
-        # This parameter is required.
-        self.ens_region_id = ens_region_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.eips is not None:
-            result['Eips'] = self.eips
-        if self.ens_region_id is not None:
-            result['EnsRegionId'] = self.ens_region_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Eips') is not None:
-            self.eips = m.get('Eips')
-        if m.get('EnsRegionId') is not None:
-            self.ens_region_id = m.get('EnsRegionId')
-        return self
-
-
-class DescribeEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
-    def __init__(
-        self,
-        eip: str = None,
-        instance_id_internet_ip: str = None,
-    ):
-        # The information about an EIP.
-        self.eip = eip
-        # The public IP address of the ENS instance.
-        self.instance_id_internet_ip = instance_id_internet_ip
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.eip is not None:
-            result['Eip'] = self.eip
-        if self.instance_id_internet_ip is not None:
-            result['InstanceIdInternetIp'] = self.instance_id_internet_ip
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Eip') is not None:
-            self.eip = m.get('Eip')
-        if m.get('InstanceIdInternetIp') is not None:
-            self.instance_id_internet_ip = m.get('InstanceIdInternetIp')
-        return self
-
-
-class DescribeEipAddressesResponseBodyEipAddresses(TeaModel):
-    def __init__(
-        self,
-        eip_address: List[DescribeEipAddressesResponseBodyEipAddressesEipAddress] = None,
-    ):
-        self.eip_address = eip_address
-
-    def validate(self):
-        if self.eip_address:
-            for k in self.eip_address:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['EipAddress'] = []
-        if self.eip_address is not None:
-            for k in self.eip_address:
-                result['EipAddress'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.eip_address = []
-        if m.get('EipAddress') is not None:
-            for k in m.get('EipAddress'):
-                temp_model = DescribeEipAddressesResponseBodyEipAddressesEipAddress()
-                self.eip_address.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeEipAddressesResponseBody(TeaModel):
-    def __init__(
-        self,
-        eip_addresses: DescribeEipAddressesResponseBodyEipAddresses = None,
-        request_id: str = None,
-    ):
-        # Details of the EIPs.
-        self.eip_addresses = eip_addresses
-        # The ID of the request.
-        self.request_id = request_id
-
-    def validate(self):
-        if self.eip_addresses:
-            self.eip_addresses.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.eip_addresses is not None:
-            result['EipAddresses'] = self.eip_addresses.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('EipAddresses') is not None:
-            temp_model = DescribeEipAddressesResponseBodyEipAddresses()
-            self.eip_addresses = temp_model.from_map(m['EipAddresses'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class DescribeEipAddressesResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeEipAddressesResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeEipAddressesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -23691,7 +23909,7 @@ class DescribeFileSystemsRequest(TeaModel):
         self.file_system_name = file_system_name
         # The page number. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. The maximum value is **100**. Default value: **10**.
+        # The number of entries per page. Maximum value: **100**. Default value: **10**.
         self.page_size = page_size
 
     def validate(self):
@@ -24314,6 +24532,369 @@ class DescribeForwardTableEntriesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeForwardTableEntriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeHaVipsRequest(TeaModel):
+    def __init__(
+        self,
+        ens_region_id: str = None,
+        ha_vip_address: str = None,
+        ha_vip_id: str = None,
+        name: str = None,
+        network_id: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        status: str = None,
+        v_switch_id: str = None,
+    ):
+        self.ens_region_id = ens_region_id
+        self.ha_vip_address = ha_vip_address
+        self.ha_vip_id = ha_vip_id
+        self.name = name
+        self.network_id = network_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.status = status
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.ha_vip_address is not None:
+            result['HaVipAddress'] = self.ha_vip_address
+        if self.ha_vip_id is not None:
+            result['HaVipId'] = self.ha_vip_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('HaVipAddress') is not None:
+            self.ha_vip_address = m.get('HaVipAddress')
+        if m.get('HaVipId') is not None:
+            self.ha_vip_id = m.get('HaVipId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class DescribeHaVipsResponseBodyHaVipsAssociatedEipAddresses(TeaModel):
+    def __init__(
+        self,
+        eip: str = None,
+        eip_id: str = None,
+    ):
+        self.eip = eip
+        self.eip_id = eip_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eip is not None:
+            result['Eip'] = self.eip
+        if self.eip_id is not None:
+            result['EipId'] = self.eip_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Eip') is not None:
+            self.eip = m.get('Eip')
+        if m.get('EipId') is not None:
+            self.eip_id = m.get('EipId')
+        return self
+
+
+class DescribeHaVipsResponseBodyHaVipsAssociatedInstances(TeaModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        instance_id: str = None,
+        instance_type: str = None,
+        ip_address: str = None,
+        status: str = None,
+    ):
+        self.creation_time = creation_time
+        self.instance_id = instance_id
+        self.instance_type = instance_type
+        self.ip_address = ip_address
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.ip_address is not None:
+            result['IpAddress'] = self.ip_address
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('IpAddress') is not None:
+            self.ip_address = m.get('IpAddress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeHaVipsResponseBodyHaVips(TeaModel):
+    def __init__(
+        self,
+        associated_eip_addresses: List[DescribeHaVipsResponseBodyHaVipsAssociatedEipAddresses] = None,
+        associated_instances: List[DescribeHaVipsResponseBodyHaVipsAssociatedInstances] = None,
+        creation_time: str = None,
+        description: str = None,
+        ens_region_id: str = None,
+        ha_vip_id: str = None,
+        ip_address: str = None,
+        name: str = None,
+        network_id: str = None,
+        status: str = None,
+        v_switch_id: str = None,
+    ):
+        self.associated_eip_addresses = associated_eip_addresses
+        self.associated_instances = associated_instances
+        self.creation_time = creation_time
+        self.description = description
+        self.ens_region_id = ens_region_id
+        self.ha_vip_id = ha_vip_id
+        self.ip_address = ip_address
+        self.name = name
+        self.network_id = network_id
+        self.status = status
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        if self.associated_eip_addresses:
+            for k in self.associated_eip_addresses:
+                if k:
+                    k.validate()
+        if self.associated_instances:
+            for k in self.associated_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AssociatedEipAddresses'] = []
+        if self.associated_eip_addresses is not None:
+            for k in self.associated_eip_addresses:
+                result['AssociatedEipAddresses'].append(k.to_map() if k else None)
+        result['AssociatedInstances'] = []
+        if self.associated_instances is not None:
+            for k in self.associated_instances:
+                result['AssociatedInstances'].append(k.to_map() if k else None)
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.ha_vip_id is not None:
+            result['HaVipId'] = self.ha_vip_id
+        if self.ip_address is not None:
+            result['IpAddress'] = self.ip_address
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.associated_eip_addresses = []
+        if m.get('AssociatedEipAddresses') is not None:
+            for k in m.get('AssociatedEipAddresses'):
+                temp_model = DescribeHaVipsResponseBodyHaVipsAssociatedEipAddresses()
+                self.associated_eip_addresses.append(temp_model.from_map(k))
+        self.associated_instances = []
+        if m.get('AssociatedInstances') is not None:
+            for k in m.get('AssociatedInstances'):
+                temp_model = DescribeHaVipsResponseBodyHaVipsAssociatedInstances()
+                self.associated_instances.append(temp_model.from_map(k))
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('HaVipId') is not None:
+            self.ha_vip_id = m.get('HaVipId')
+        if m.get('IpAddress') is not None:
+            self.ip_address = m.get('IpAddress')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class DescribeHaVipsResponseBody(TeaModel):
+    def __init__(
+        self,
+        ha_vips: List[DescribeHaVipsResponseBodyHaVips] = None,
+        page_number: str = None,
+        page_size: str = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        self.ha_vips = ha_vips
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.ha_vips:
+            for k in self.ha_vips:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['HaVips'] = []
+        if self.ha_vips is not None:
+            for k in self.ha_vips:
+                result['HaVips'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ha_vips = []
+        if m.get('HaVips') is not None:
+            for k in m.get('HaVips'):
+                temp_model = DescribeHaVipsResponseBodyHaVips()
+                self.ha_vips.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeHaVipsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHaVipsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHaVipsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -25929,9 +26510,9 @@ class DescribeInstancesRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. Valid values: 1 to 20.
+        # The key of the tag that are to add to the instance. Valid values: 1 to 20.
         self.key = key
-        # The tag value. Valid values: 1 to 20.
+        # The tag value of the instance. Valid values: 1 to 20.
         self.value = value
 
     def validate(self):
@@ -26030,7 +26611,7 @@ class DescribeInstancesRequest(TeaModel):
         # *   Stopped
         # *   Expired
         self.status = status
-        # The tags that are added to the resource.
+        # The tags that are added to the resource. This operation does not return tag information. You can call this operation in combination with the tag-related operations.
         self.tags = tags
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
@@ -26207,7 +26788,7 @@ class DescribeInstancesShrinkRequest(TeaModel):
         # *   Stopped
         # *   Expired
         self.status = status
-        # The tags that are added to the resource.
+        # The tags that are added to the resource. This operation does not return tag information. You can call this operation in combination with the tag-related operations.
         self.tags_shrink = tags_shrink
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
@@ -26311,6 +26892,8 @@ class DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk(TeaModel):
         disk_id: str = None,
         disk_name: str = None,
         disk_size: int = None,
+        encrypt_key_id: str = None,
+        encrypted: bool = None,
         size: int = None,
         device_type: str = None,
         disk_type: str = None,
@@ -26330,6 +26913,8 @@ class DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk(TeaModel):
         self.disk_name = disk_name
         # The size of the disk. Unit: GiB.
         self.disk_size = disk_size
+        self.encrypt_key_id = encrypt_key_id
+        self.encrypted = encrypted
         # The size of the disk. Unit: MiB.
         self.size = size
         # The extended field of the disk category. Valid values:
@@ -26366,6 +26951,10 @@ class DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk(TeaModel):
             result['DiskName'] = self.disk_name
         if self.disk_size is not None:
             result['DiskSize'] = self.disk_size
+        if self.encrypt_key_id is not None:
+            result['EncryptKeyId'] = self.encrypt_key_id
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
         if self.size is not None:
             result['Size'] = self.size
         if self.device_type is not None:
@@ -26390,6 +26979,10 @@ class DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk(TeaModel):
             self.disk_name = m.get('DiskName')
         if m.get('DiskSize') is not None:
             self.disk_size = m.get('DiskSize')
+        if m.get('EncryptKeyId') is not None:
+            self.encrypt_key_id = m.get('EncryptKeyId')
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         if m.get('device_type') is not None:
@@ -26930,6 +27523,7 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         instance_type_family: str = None,
         internet_max_bandwidth_in: int = None,
         internet_max_bandwidth_out: int = None,
+        key_pair_name: str = None,
         memory: int = None,
         network_attributes: DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes = None,
         osname: str = None,
@@ -26992,6 +27586,7 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
         # The minimum inbound bandwidth. Unit: Mbit/s.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
+        self.key_pair_name = key_pair_name
         # The memory size. Unit: MB.
         self.memory = memory
         # Details of the network.
@@ -27006,7 +27601,7 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         self.public_ip_addresses = public_ip_addresses
         # The IDs of the security groups.
         self.security_group_ids = security_group_ids
-        # The code of the instance type.
+        # The instance type.
         self.spec_name = spec_name
         # The bidding policy of the preemptible instance.
         self.spot_strategy = spot_strategy
@@ -27079,6 +27674,8 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
             result['InternetMaxBandwidthIn'] = self.internet_max_bandwidth_in
         if self.internet_max_bandwidth_out is not None:
             result['InternetMaxBandwidthOut'] = self.internet_max_bandwidth_out
+        if self.key_pair_name is not None:
+            result['KeyPairName'] = self.key_pair_name
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.network_attributes is not None:
@@ -27141,6 +27738,8 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
             self.internet_max_bandwidth_in = m.get('InternetMaxBandwidthIn')
         if m.get('InternetMaxBandwidthOut') is not None:
             self.internet_max_bandwidth_out = m.get('InternetMaxBandwidthOut')
+        if m.get('KeyPairName') is not None:
+            self.key_pair_name = m.get('KeyPairName')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('NetworkAttributes') is not None:
@@ -27600,7 +28199,7 @@ class DescribeLoadBalancerAttributeResponseBodyBackendServers(TeaModel):
         self.port = port
         # The ID of the backend server.
         self.server_id = server_id
-        # The type of the backend server.
+        # The type of backend server.
         self.type = type
         # The weight of the backend server.
         self.weight = weight
@@ -27658,7 +28257,7 @@ class DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols(TeaMode
         self.listener_forward = listener_forward
         # The listener port of the instance.
         self.listener_port = listener_port
-        # The listener protocol.
+        # The listener protocol of the instance.
         self.listener_protocol = listener_protocol
 
     def validate(self):
@@ -27718,13 +28317,13 @@ class DescribeLoadBalancerAttributeResponseBody(TeaModel):
         request_id: str = None,
         v_switch_id: str = None,
     ):
-        # The IP address that the ELB instance uses to provide services.
+        # The IP address that the Edge Load Balancer (ELB) instance uses to provide services.
         self.address = address
         # The IP version of the ELB instance. Valid values: ipv4 and ipv6.
         self.address_ipversion = address_ipversion
-        # The backend servers.
+        # The list of backend servers.
         self.backend_servers = backend_servers
-        # The maximum bandwidth of the elastic IP address (EIP). Default value: 5. Valid values: **5** to **10000**. Unit: Mbit/s.
+        # The peak bandwidth of the ELB. The default value is -1, which indicates that the bandwidth is unlimited.
         self.bandwidth = bandwidth
         # The time when the ELB instance was created. The time is displayed in UTC.
         self.create_time = create_time
@@ -27907,7 +28506,7 @@ class DescribeLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         listener_port: int = None,
         load_balancer_id: str = None,
     ):
-        # The frontend port that is used by the Edge Load Balance (ELB) instance. Valid values: **1 to 65535**.
+        # The listener port that you want to query. Valid values: **1 to 65535**.
         # 
         # This parameter is required.
         self.listener_port = listener_port
@@ -27943,6 +28542,7 @@ class DescribeLoadBalancerHTTPListenerAttributeRequest(TeaModel):
 class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
     def __init__(
         self,
+        backend_server_port: int = None,
         bandwidth: int = None,
         description: str = None,
         forward_port: int = None,
@@ -27966,11 +28566,9 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
         unhealthy_threshold: int = None,
         xforwarded_for: str = None,
     ):
-        # The maximum bandwidth of the EIP.
-        # 
-        # *   Default value: 5.
-        # *   Valid values: **5** to **10000**.
-        # *   Unit: Mbit/s.
+        # The backend port that is used by the ELB instance. Valid values: **1** to **65535**.
+        self.backend_server_port = backend_server_port
+        # The peak bandwidth of the Edge Load Balancer (ELB) instance. The default value is -1, which indicates that the bandwidth is not limited.
         self.bandwidth = bandwidth
         # The description of the listener. The description must be **1** to **80** characters in length.
         # 
@@ -28011,19 +28609,25 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
         # 
         # >  This parameter is returned only if you set HealthCheck to on.
         self.health_check_method = health_check_method
-        # The timeout period of a health check. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+        # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails the health check.
         # 
         # *   Default value: 5.
         # *   Valid values: **1** to **300**.
         # *   Unit: seconds.
         # 
-        # >*   This parameter is returned only if you set HealthCheck to on.
-        # >*   If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
-        self.health_check_timeout = health_check_timeout
-        # The Uniform Resource Identifier (URI) that is used for health checks. The URI must be **1** to **80** characters in length.
+        # > 
         # 
-        # >*   The URL must start with a forward slash (`/`) and contain characters other than forward slashes (`/`).
-        # >*   This parameter is returned only if you set HealthCheck to on.
+        # *   This parameter takes effect only if the HealthCheck parameter is set to on.
+        # 
+        # *   If the value of HealthCheckTimeout is smaller than the value of HealthCheckInterval, the timeout period specified by HealthCheckTimeout becomes invalid, and the value of HealthCheckInterval is used as the timeout period.
+        self.health_check_timeout = health_check_timeout
+        # The URI used for health checks. The URI must be **1** to **80** characters in length.
+        # 
+        # > 
+        # 
+        # *   A URL must start with a forward slash (`/`) but cannot contain only forward slashes (`/`).
+        # 
+        # *   This parameter takes effect only if the HealthCheck parameter is set to on.
         self.health_check_uri = health_check_uri
         # The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**.
         # 
@@ -28038,7 +28642,7 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
         # *   **on**: HTTP-to-HTTPS redirection is enabled.
         # *   **off** (default)
         self.listener_forward = listener_forward
-        # The frontend port that is used by the ELB instance. Valid values: **1** to **65535**.
+        # The listener port.
         self.listener_port = listener_port
         # The ID of the request.
         self.request_id = request_id
@@ -28069,10 +28673,10 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
         # 
         # >  This parameter is returned only if you set HealthCheck to on.
         self.unhealthy_threshold = unhealthy_threshold
-        # Specifies whether to use the X-Forwarded-For header to obtain the real IP address of the client. Valid values:
+        # Indicates whether the X-Forwarded-For header is used to obtain the real IP address of the client. Valid values:
         # 
-        # *   **on**\
-        # *   **off** (default)
+        # *   **on** (default)
+        # *   **off**\
         self.xforwarded_for = xforwarded_for
 
     def validate(self):
@@ -28084,6 +28688,8 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.backend_server_port is not None:
+            result['BackendServerPort'] = self.backend_server_port
         if self.bandwidth is not None:
             result['Bandwidth'] = self.bandwidth
         if self.description is not None:
@@ -28132,6 +28738,8 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackendServerPort') is not None:
+            self.backend_server_port = m.get('BackendServerPort')
         if m.get('Bandwidth') is not None:
             self.bandwidth = m.get('Bandwidth')
         if m.get('Description') is not None:
@@ -28226,7 +28834,7 @@ class DescribeLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         listener_port: int = None,
         load_balancer_id: str = None,
     ):
-        # The frontend port that is used by the Edge Load Balance (ELB) instance. Valid values: **1** to **65535**.
+        # The listening port that you want to query. Valid values: **1** to **65535**.
         # 
         # This parameter is required.
         self.listener_port = listener_port
@@ -28262,6 +28870,7 @@ class DescribeLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
 class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
     def __init__(
         self,
+        backend_server_port: int = None,
         bandwidth: int = None,
         description: str = None,
         forward_port: int = None,
@@ -28284,11 +28893,9 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
         status: str = None,
         unhealthy_threshold: int = None,
     ):
-        # The maximum bandwidth of the EIP.
-        # 
-        # *   Default value: 5.
-        # *   Valid values: **5** to **10000**.
-        # *   Unit: Mbit/s.
+        # The backend port that is used by the ELB instance. Valid values: **1** to **65535**.
+        self.backend_server_port = backend_server_port
+        # The peak bandwidth of the Edge Load Balancer (ELB). The default value is -1, which indicates that the bandwidth is not limited.
         self.bandwidth = bandwidth
         # The description of the listener. The description must be **1** to **80** characters in length.
         self.description = description
@@ -28327,7 +28934,7 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
         # 
         # >  This parameter is returned only if the HealthCheck parameter is set to on.
         self.health_check_method = health_check_method
-        # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+        # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails the health check.
         # 
         # *   Default value: 5.
         # *   Valid values: **1** to **300**.
@@ -28335,9 +28942,9 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
         # 
         # > 
         # 
-        # *   This parameter is returned only if the HealthCheck parameter is set to on.
+        # *   This parameter takes effect only if the HealthCheck parameter is set to on.
         # 
-        # *   If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+        # *   If the value of HealthCheckTimeout is smaller than the value of HealthCheckInterval, the timeout period specified by HealthCheckTimeout becomes invalid, and the value of HealthCheckInterval is used as the timeout period.
         self.health_check_timeout = health_check_timeout
         # The URI that is used for health checks. The URI must be **1** to **80** characters in length.
         # 
@@ -28398,6 +29005,8 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.backend_server_port is not None:
+            result['BackendServerPort'] = self.backend_server_port
         if self.bandwidth is not None:
             result['Bandwidth'] = self.bandwidth
         if self.description is not None:
@@ -28444,6 +29053,8 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackendServerPort') is not None:
+            self.backend_server_port = m.get('BackendServerPort')
         if m.get('Bandwidth') is not None:
             self.bandwidth = m.get('Bandwidth')
         if m.get('Description') is not None:
@@ -29002,7 +29613,7 @@ class DescribeLoadBalancerUDPListenerAttributeRequest(TeaModel):
         listener_port: int = None,
         load_balancer_id: str = None,
     ):
-        # The frontend port that is used by the Edge Load Balance (ELB) instance. Valid values: **1** to **65535**.
+        # The listening port that you want to query. Valid values: **1** to **65535**.
         # 
         # This parameter is required.
         self.listener_port = listener_port
@@ -29042,6 +29653,7 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
         bandwidth: int = None,
         description: str = None,
         eip_transmit: str = None,
+        established_timeout: int = None,
         health_check: str = None,
         health_check_connect_port: int = None,
         health_check_connect_timeout: int = None,
@@ -29055,21 +29667,19 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
         status: str = None,
         unhealthy_threshold: int = None,
     ):
-        # The backend port that is used by the ELB instance. Valid values: **1** to **65535**.
+        # The port used by the backend ELB server of the ELB instance. Valid values: **1** to **65535**.
         self.backend_server_port = backend_server_port
-        # The maximum bandwidth of the elastic IP address (EIP).
-        # 
-        # *   Default value: 5.
-        # *   Valid values: **5** to **10000**.
-        # *   Unit: Mbit/s.
+        # The peak bandwidth of the Edge Load Balancer (ELB) instance. The default value is -1, which indicates that the bandwidth is not limited.
         self.bandwidth = bandwidth
-        # The description of the listener.
+        # The name of the listener.
         self.description = description
         # Indicates whether EIP pass-through is enabled. Valid values:
         # 
         # *   **on**\
         # *   **off** (default)
         self.eip_transmit = eip_transmit
+        # The timeout period of a connection. Valid values: **10** to **900**. Unit: seconds.
+        self.established_timeout = established_timeout
         # Specifies whether to enable the health check feature. Valid values:
         # 
         # *   **on**\
@@ -29077,7 +29687,7 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
         self.health_check = health_check
         # The port that is used for health checks. Valid values: **1** to **65535**. If you leave this parameter empty, the port specified by BackendServerPort is used for health checks.
         self.health_check_connect_port = health_check_connect_port
-        # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+        # The timeout period for a health check response. If a backend server does not respond within the specified timeout period, the server fails the health check.
         # 
         # *   Default value: 5.
         # *   Valid values: **1** to **300**.
@@ -29085,9 +29695,9 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
         # 
         # > 
         # 
-        # *   This parameter takes effect only if you set HealthCheck to on.
+        # *   This parameter takes effect only if the HealthCheck parameter is set to on.
         # 
-        # *   If the value of the HealthCheckConnectTimeout parameter is smaller than that of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckConnectTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+        # *   If the value of the HealthCheckTimeout property is smaller than the value of the HealthCheckInterval property, the timeout period specified by the HealthCheckTimeout property becomes invalid and the value of the HealthCheckInterval property is used as the timeout period.
         self.health_check_connect_timeout = health_check_connect_timeout
         # The response string for UDP listener health checks. The string can be up to 64 characters in length and can contain only letters and digits.
         self.health_check_exp = health_check_exp
@@ -29101,7 +29711,7 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
         # 
         # >  This parameter takes effect only if you set HealthCheck to on.
         self.healthy_threshold = healthy_threshold
-        # The frontend port that is used by the ELB instance.
+        # The listener port.
         self.listener_port = listener_port
         # The ID of the request.
         self.request_id = request_id
@@ -29144,6 +29754,8 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
             result['Description'] = self.description
         if self.eip_transmit is not None:
             result['EipTransmit'] = self.eip_transmit
+        if self.established_timeout is not None:
+            result['EstablishedTimeout'] = self.established_timeout
         if self.health_check is not None:
             result['HealthCheck'] = self.health_check
         if self.health_check_connect_port is not None:
@@ -29180,6 +29792,8 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
             self.description = m.get('Description')
         if m.get('EipTransmit') is not None:
             self.eip_transmit = m.get('EipTransmit')
+        if m.get('EstablishedTimeout') is not None:
+            self.established_timeout = m.get('EstablishedTimeout')
         if m.get('HealthCheck') is not None:
             self.health_check = m.get('HealthCheck')
         if m.get('HealthCheckConnectPort') is not None:
@@ -29270,9 +29884,9 @@ class DescribeLoadBalancersRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         # The name of the ELB instance.
         self.load_balancer_name = load_balancer_name
-        # The status of the ELB instance. Valid values:
+        # The status of the listener for the ELB instance. Valid values:
         # 
-        # *   **Active** (default): The listener for the instance can forward the received traffic based on the rule.
+        # *   **Active**: The listener for the instance can forward the received traffic based on forwarding rules.
         # *   **InActive**: The listener for the instance does not forward the received traffic.
         self.load_balancer_status = load_balancer_status
         # The ID of the network.
@@ -29358,7 +29972,7 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
     ):
         # The IP address that the ELB instance uses to provide services.
         self.address = address
-        # The version of the IP address. Valid values: ipv4 and ipv6.
+        # The IP version. Valid values: ipv4 and ipv6.
         self.address_ipversion = address_ipversion
         # The time when the ELB instance was created. The time is displayed in UTC.
         self.create_time = create_time
@@ -29368,9 +29982,9 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
         self.load_balancer_id = load_balancer_id
         # The name of the ELB instance.
         self.load_balancer_name = load_balancer_name
-        # The status of the ELB instance. Valid values:
+        # The status of the listener for the ELB instance. Valid values:
         # 
-        # *   **Active** (default): The listener for the instance can forward the received traffic based on the rule.
+        # *   **Active**: The listener for the instance can forward the received traffic based on forwarding rules.
         # *   **InActive**: The listener for the instance does not forward the received traffic.
         self.load_balancer_status = load_balancer_status
         # The ID of the network.
@@ -29483,7 +30097,7 @@ class DescribeLoadBalancersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned ELB instances.
+        # An array of ELB instances.
         self.load_balancers = load_balancers
         # The page number.
         self.page_number = page_number
@@ -29491,7 +30105,7 @@ class DescribeLoadBalancersResponseBody(TeaModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -32188,6 +32802,7 @@ class DescribeNetworkInterfacesRequest(TeaModel):
         self,
         ens_region_id: str = None,
         instance_id: str = None,
+        ipv_6address: List[str] = None,
         network_id: str = None,
         network_interface_id: str = None,
         network_interface_name: str = None,
@@ -32203,6 +32818,7 @@ class DescribeNetworkInterfacesRequest(TeaModel):
         self.ens_region_id = ens_region_id
         # The ID of the instance.
         self.instance_id = instance_id
+        self.ipv_6address = ipv_6address
         # The ID of the network.
         self.network_id = network_id
         # The ID of the ENI.
@@ -32250,6 +32866,8 @@ class DescribeNetworkInterfacesRequest(TeaModel):
             result['EnsRegionId'] = self.ens_region_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.ipv_6address is not None:
+            result['Ipv6Address'] = self.ipv_6address
         if self.network_id is not None:
             result['NetworkId'] = self.network_id
         if self.network_interface_id is not None:
@@ -32278,6 +32896,8 @@ class DescribeNetworkInterfacesRequest(TeaModel):
             self.ens_region_id = m.get('EnsRegionId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Ipv6Address') is not None:
+            self.ipv_6address = m.get('Ipv6Address')
         if m.get('NetworkId') is not None:
             self.network_id = m.get('NetworkId')
         if m.get('NetworkInterfaceId') is not None:
@@ -32298,6 +32918,192 @@ class DescribeNetworkInterfacesRequest(TeaModel):
             self.type = m.get('Type')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class DescribeNetworkInterfacesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ens_region_id: str = None,
+        instance_id: str = None,
+        ipv_6address_shrink: str = None,
+        network_id: str = None,
+        network_interface_id: str = None,
+        network_interface_name: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        primary_ip_address: str = None,
+        security_group_id: str = None,
+        status: str = None,
+        type: str = None,
+        v_switch_id: str = None,
+    ):
+        # The region ID of the instance.
+        self.ens_region_id = ens_region_id
+        # The ID of the instance.
+        self.instance_id = instance_id
+        self.ipv_6address_shrink = ipv_6address_shrink
+        # The ID of the network.
+        self.network_id = network_id
+        # The ID of the ENI.
+        self.network_interface_id = network_interface_id
+        # The name of the ENI.
+        self.network_interface_name = network_interface_name
+        # The number of the page to return. Pages start from page 1. Default value: 1.
+        self.page_number = page_number
+        # The number of entries to return on each page. Maximum value: 100. Default value: 10.
+        self.page_size = page_size
+        # The primary IP address of the ENI.
+        self.primary_ip_address = primary_ip_address
+        # The ID of the security group to which the secondary ENI belongs. To query the details of secondary ENIs based on the ID of a security group, specify this parameter.
+        self.security_group_id = security_group_id
+        # The status of the ENI. Valid values:
+        # 
+        # *   Available: The ENI is available.
+        # *   Attaching: The ENI is being attached to an instance.
+        # *   InUse: The ENI is attached to an instance.
+        # *   Detaching: The ENI is being detached from an instance.
+        # *   Deleting: The ENI is being deleted.
+        # 
+        # This parameter is empty by default, which indicates that ENIs in all states are queried.
+        self.status = status
+        # The type of the ENI. Valid values:
+        # 
+        # *   Primary
+        # *   Secondary
+        # 
+        # This parameter is empty by default, which indicates that both primary and secondary ENIs are queried.
+        self.type = type
+        # The ID of the vSwitch.
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ipv_6address_shrink is not None:
+            result['Ipv6Address'] = self.ipv_6address_shrink
+        if self.network_id is not None:
+            result['NetworkId'] = self.network_id
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
+        if self.network_interface_name is not None:
+            result['NetworkInterfaceName'] = self.network_interface_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.primary_ip_address is not None:
+            result['PrimaryIpAddress'] = self.primary_ip_address
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Ipv6Address') is not None:
+            self.ipv_6address_shrink = m.get('Ipv6Address')
+        if m.get('NetworkId') is not None:
+            self.network_id = m.get('NetworkId')
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
+        if m.get('NetworkInterfaceName') is not None:
+            self.network_interface_name = m.get('NetworkInterfaceName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PrimaryIpAddress') is not None:
+            self.primary_ip_address = m.get('PrimaryIpAddress')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetIpv6SetsIpv6Set(TeaModel):
+    def __init__(
+        self,
+        ipv_6address: str = None,
+    ):
+        self.ipv_6address = ipv_6address
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipv_6address is not None:
+            result['Ipv6Address'] = self.ipv_6address
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ipv6Address') is not None:
+            self.ipv_6address = m.get('Ipv6Address')
+        return self
+
+
+class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetIpv6Sets(TeaModel):
+    def __init__(
+        self,
+        ipv_6set: List[DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetIpv6SetsIpv6Set] = None,
+    ):
+        self.ipv_6set = ipv_6set
+
+    def validate(self):
+        if self.ipv_6set:
+            for k in self.ipv_6set:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Ipv6Set'] = []
+        if self.ipv_6set is not None:
+            for k in self.ipv_6set:
+                result['Ipv6Set'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ipv_6set = []
+        if m.get('Ipv6Set') is not None:
+            for k in m.get('Ipv6Set'):
+                temp_model = DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetIpv6SetsIpv6Set()
+                self.ipv_6set.append(temp_model.from_map(k))
         return self
 
 
@@ -32408,6 +33214,7 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
         description: str = None,
         ens_region_id: str = None,
         instance_id: str = None,
+        ipv_6sets: DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetIpv6Sets = None,
         mac_address: str = None,
         network_id: str = None,
         network_interface_id: str = None,
@@ -32428,6 +33235,7 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
         self.ens_region_id = ens_region_id
         # The ID of the instance to which the ENI is bound.
         self.instance_id = instance_id
+        self.ipv_6sets = ipv_6sets
         # The MAC address of the ENI.
         self.mac_address = mac_address
         # The ID of the network.
@@ -32464,6 +33272,8 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
         self.v_switch_id = v_switch_id
 
     def validate(self):
+        if self.ipv_6sets:
+            self.ipv_6sets.validate()
         if self.private_ip_sets:
             self.private_ip_sets.validate()
         if self.security_group_ids:
@@ -32483,6 +33293,8 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
             result['EnsRegionId'] = self.ens_region_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.ipv_6sets is not None:
+            result['Ipv6Sets'] = self.ipv_6sets.to_map()
         if self.mac_address is not None:
             result['MacAddress'] = self.mac_address
         if self.network_id is not None:
@@ -32517,6 +33329,9 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
             self.ens_region_id = m.get('EnsRegionId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Ipv6Sets') is not None:
+            temp_model = DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetIpv6Sets()
+            self.ipv_6sets = temp_model.from_map(m['Ipv6Sets'])
         if m.get('MacAddress') is not None:
             self.mac_address = m.get('MacAddress')
         if m.get('NetworkId') is not None:
@@ -32999,7 +33814,7 @@ class DescribePrePaidInstanceStockRequest(TeaModel):
         instance_spec: str = None,
         system_disk_size: int = None,
     ):
-        # The ID of the datadisk.
+        # The size of the data disk. Unit: GB.
         # 
         # This parameter is required.
         self.data_disk_size = data_disk_size
@@ -33007,11 +33822,11 @@ class DescribePrePaidInstanceStockRequest(TeaModel):
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
-        # The size of the system disk. Unit: GB.
+        # The specification of the instance.
         # 
         # This parameter is required.
         self.instance_spec = instance_spec
-        # The ID of the systemdisk
+        # The size of the system disk. Unit: GB.
         # 
         # This parameter is required.
         self.system_disk_size = system_disk_size
@@ -33063,21 +33878,21 @@ class DescribePrePaidInstanceStockResponseBody(TeaModel):
     ):
         # The number of resources that you can purchase.
         self.avaliable_count = avaliable_count
-        # The number of vCPUs.
+        # The number of CPU cores.
         self.cores = cores
         # The size of the data disk.
         self.data_disk_size = data_disk_size
         # The ID of the node.
         self.ens_region_id = ens_region_id
-        # The instance type.
+        # The specification of the instance.
         self.instance_spec = instance_spec
         # The memory size. Unit: GB.
         self.memory = memory
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The reasons for resource scarcity
+        # The reason why resources are insufficient.
         self.resource_gap = resource_gap
-        # The size of the system disk. Unit: GB.
+        # The size of the system disk.
         self.system_disk_size = system_disk_size
 
     def validate(self):
@@ -36305,8 +37120,13 @@ class DescribeSDGRequest(TeaModel):
         page_size: int = None,
         sdgids: List[str] = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
+        # Default value: 10
         self.page_size = page_size
+        # The IDs of SDGs that you want to query. By default, all SDGs are queried.
         self.sdgids = sdgids
 
     def validate(self):
@@ -36344,8 +37164,13 @@ class DescribeSDGShrinkRequest(TeaModel):
         page_size: int = None,
         sdgids_shrink: str = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
+        # Default value: 10
         self.page_size = page_size
+        # The IDs of SDGs that you want to query. By default, all SDGs are queried.
         self.sdgids_shrink = sdgids_shrink
 
     def validate(self):
@@ -36384,9 +37209,19 @@ class DescribeSDGResponseBodySDGsAvaliableRegionIds(TeaModel):
         snapshot_id: str = None,
         status: str = None,
     ):
+        # The time when the SDG was created on the node.
         self.creation_time = creation_time
+        # The ID of the node.
         self.region_id = region_id
+        # The ID of the snapshot.
         self.snapshot_id = snapshot_id
+        # The status of the SDG on the node. Valid values:
+        # 
+        # *   **sdg_making**\
+        # *   **sdg_saving**\
+        # *   **sdg_copying**\
+        # *   **failed**\
+        # *   **success**\
         self.status = status
 
     def validate(self):
@@ -36430,10 +37265,15 @@ class DescribeSDGResponseBodySDGsPreloadInfos(TeaModel):
         region_id: str = None,
         update_time: str = None,
     ):
+        # The time when the SDG was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        # The namespace.
         self.namespace = namespace
+        # The number of redundant replicas to quickly respond to shared mounts.
         self.redundant_num = redundant_num
+        # The ID of the node.
         self.region_id = region_id
+        # The time when the status was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -36487,16 +37327,32 @@ class DescribeSDGResponseBodySDGs(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
+        # SDGs that have snapshots.
         self.avaliable_region_ids = avaliable_region_ids
+        # The ID of the instance on which the SDG is created.
         self.creation_instance_id = creation_instance_id
+        # The ID of the node on which the SDG is created.
         self.creation_region_id = creation_region_id
+        # The time when the first SDG in the node was created.
         self.creation_time = creation_time
+        # The description of the SDG.
         self.description = description
+        # The ID of the source SDG from which you want to create an SDG. The value of this parameter is the value of the **FromSDGId** parameter that you need to specify when you call the [CreateSDG](https://help.aliyun.com/document_detail/608128.html) operation.
         self.parent_sdgid = parent_sdgid
+        # The preload information.
         self.preload_infos = preload_infos
+        # The ID of the SDG.
         self.sdgid = sdgid
+        # The size of the SDG. Unit: GB.
         self.size = size
+        # The status of the SDG creation. Valid values:
+        # 
+        # *   **sdg_making**\
+        # *   **sdg_saving**\
+        # *   **failed**\
+        # *   **success**\
         self.status = status
+        # The time when the SDG was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -36585,10 +37441,15 @@ class DescribeSDGResponseBody(TeaModel):
         sdgs: List[DescribeSDGResponseBodySDGs] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The information about the SDGs.
         self.sdgs = sdgs
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -36679,18 +37540,26 @@ class DescribeSDGResponse(TeaModel):
 class DescribeSDGDeploymentStatusRequest(TeaModel):
     def __init__(
         self,
-        page_number: str = None,
-        page_size: str = None,
+        deployment_type: str = None,
+        instance_ids: List[str] = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_ids: List[str] = None,
         sdgid: str = None,
+        status: str = None,
     ):
+        self.deployment_type = deployment_type
+        self.instance_ids = instance_ids
         # The number of the page to return. Pages start from page **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
+        self.region_ids = region_ids
         # The ID of the SDG.
         # 
         # This parameter is required.
         self.sdgid = sdgid
+        self.status = status
 
     def validate(self):
         pass
@@ -36701,22 +37570,106 @@ class DescribeSDGDeploymentStatusRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.deployment_type is not None:
+            result['DeploymentType'] = self.deployment_type
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_ids is not None:
+            result['RegionIds'] = self.region_ids
         if self.sdgid is not None:
             result['SDGId'] = self.sdgid
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DeploymentType') is not None:
+            self.deployment_type = m.get('DeploymentType')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionIds') is not None:
+            self.region_ids = m.get('RegionIds')
         if m.get('SDGId') is not None:
             self.sdgid = m.get('SDGId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeSDGDeploymentStatusShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        deployment_type: str = None,
+        instance_ids_shrink: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_ids_shrink: str = None,
+        sdgid: str = None,
+        status: str = None,
+    ):
+        self.deployment_type = deployment_type
+        self.instance_ids_shrink = instance_ids_shrink
+        # The number of the page to return. Pages start from page **1**. Default value: **1**.
+        self.page_number = page_number
+        # The number of entries per page.
+        self.page_size = page_size
+        self.region_ids_shrink = region_ids_shrink
+        # The ID of the SDG.
+        # 
+        # This parameter is required.
+        self.sdgid = sdgid
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deployment_type is not None:
+            result['DeploymentType'] = self.deployment_type
+        if self.instance_ids_shrink is not None:
+            result['InstanceIds'] = self.instance_ids_shrink
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_ids_shrink is not None:
+            result['RegionIds'] = self.region_ids_shrink
+        if self.sdgid is not None:
+            result['SDGId'] = self.sdgid
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeploymentType') is not None:
+            self.deployment_type = m.get('DeploymentType')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids_shrink = m.get('InstanceIds')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionIds') is not None:
+            self.region_ids_shrink = m.get('RegionIds')
+        if m.get('SDGId') is not None:
+            self.sdgid = m.get('SDGId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -36729,69 +37682,24 @@ class DescribeSDGDeploymentStatusResponseBodyDeploymentStatus(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
-        # The ID of the instance
+        # The ID of the AIC instance.
         self.instance_id = instance_id
         # The deployment type.
         # 
         # Valid values:
         # 
-        # *   overlay
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     read/write splitting
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   common
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     common deployment
-        # 
-        #     <!-- -->
-        # 
-        #     .
+        # *   overlay: read/write splitting.
+        # *   common: common deployment.
         self.mount_type = mount_type
-        # The ID of the node.
+        # The ID of the edge node.
         self.region_id = region_id
-        # The deployment status of the SDG.
+        # the deployment status of the shared data group SDG.
         # 
         # Valid values:
         # 
         # *   sdg_deploying
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   success
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
         # *   failed
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.status = status
         # The time when the status was last updated.
         self.update_time = update_time
@@ -36943,9 +37851,7 @@ class DescribeSDGsRequest(TeaModel):
         instance_ids: List[str] = None,
         sdgids: List[str] = None,
     ):
-        # The IDs of instances that you want to query. By default, all instances are queried.
-        # 
-        # >  If you specify the **SDGIds** and **InstanceIds** parameters at the same time, the query result is the intersection of the two conditions.
+        # The AIC instance ID to be queried.
         self.instance_ids = instance_ids
         # The IDs of SDGs that you want to query. By default, all SDGs are queried.
         self.sdgids = sdgids
@@ -36980,9 +37886,7 @@ class DescribeSDGsShrinkRequest(TeaModel):
         instance_ids_shrink: str = None,
         sdgids_shrink: str = None,
     ):
-        # The IDs of instances that you want to query. By default, all instances are queried.
-        # 
-        # >  If you specify the **SDGIds** and **InstanceIds** parameters at the same time, the query result is the intersection of the two conditions.
+        # The AIC instance ID to be queried.
         self.instance_ids_shrink = instance_ids_shrink
         # The IDs of SDGs that you want to query. By default, all SDGs are queried.
         self.sdgids_shrink = sdgids_shrink
@@ -37021,7 +37925,7 @@ class DescribeSDGsResponseBodySDGsAvaliableRegionIds(TeaModel):
     ):
         # The time when the SDG was created on the node.
         self.creation_time = creation_time
-        # The ID of the node.
+        # The ID of the edge node.
         self.region_id = region_id
         # The ID of the snapshot.
         self.snapshot_id = snapshot_id
@@ -37894,6 +38798,7 @@ class DescribeSelfImagesResponseBodyImagesImage(TeaModel):
         image_name: str = None,
         image_owner_alias: str = None,
         image_size: str = None,
+        image_storage_size: str = None,
         instance_id: str = None,
         os_version: str = None,
         platform: str = None,
@@ -37915,12 +38820,13 @@ class DescribeSelfImagesResponseBodyImagesImage(TeaModel):
         self.image_name = image_name
         # The source of the image. Valid values:
         # 
-        # *   **system**: public images
-        # *   **self**: your custom images
+        # *   **others**: a custom image that is shared by other Alibaba Cloud accounts.
+        # *   **self**: your own custom image.
         self.image_owner_alias = image_owner_alias
         # The size of the image. Unit: GiB.
         self.image_size = image_size
-        # The instance ID.
+        self.image_storage_size = image_storage_size
+        # The ID of the instance.
         self.instance_id = instance_id
         # The operating system version.
         self.os_version = os_version
@@ -37933,7 +38839,7 @@ class DescribeSelfImagesResponseBodyImagesImage(TeaModel):
         # *   rhel
         # *   windows
         self.platform = platform
-        # The ID of the snapshot.
+        # The snapshot ID.
         self.snapshot_id = snapshot_id
         # The state of the image.
         # 
@@ -37970,6 +38876,8 @@ class DescribeSelfImagesResponseBodyImagesImage(TeaModel):
             result['ImageOwnerAlias'] = self.image_owner_alias
         if self.image_size is not None:
             result['ImageSize'] = self.image_size
+        if self.image_storage_size is not None:
+            result['ImageStorageSize'] = self.image_storage_size
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.os_version is not None:
@@ -37998,6 +38906,8 @@ class DescribeSelfImagesResponseBodyImagesImage(TeaModel):
             self.image_owner_alias = m.get('ImageOwnerAlias')
         if m.get('ImageSize') is not None:
             self.image_size = m.get('ImageSize')
+        if m.get('ImageStorageSize') is not None:
+            self.image_storage_size = m.get('ImageStorageSize')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('OsVersion') is not None:
@@ -38144,7 +39054,7 @@ class DescribeServcieScheduleRequest(TeaModel):
         self.app_id = app_id
         # This parameter does not take effect.
         self.pod_config_name = pod_config_name
-        # The UUID of the device.
+        # The unique ID of the device.
         # 
         # This parameter is required.
         self.uuid = uuid
@@ -38328,7 +39238,7 @@ class DescribeServcieScheduleResponseBody(TeaModel):
         self.index = index
         # The ID of the scheduled instance.
         self.instance_id = instance_id
-        # The IP address of the scheduled instance.
+        # The ID of the scheduled instance.
         self.instance_ip = instance_ip
         # The start port of the scheduled instance.
         self.instance_port = instance_port
@@ -39240,6 +40150,501 @@ class DescribeSnatTableEntriesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSnatTableEntriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeStorageGatewayRequest(TeaModel):
+    def __init__(
+        self,
+        ens_region_id: str = None,
+        gateway_id: str = None,
+        gateway_type: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        vpc_id: str = None,
+    ):
+        self.ens_region_id = ens_region_id
+        self.gateway_id = gateway_id
+        self.gateway_type = gateway_type
+        self.page_number = page_number
+        self.page_size = page_size
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.gateway_id is not None:
+            result['GatewayId'] = self.gateway_id
+        if self.gateway_type is not None:
+            result['GatewayType'] = self.gateway_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('GatewayId') is not None:
+            self.gateway_id = m.get('GatewayId')
+        if m.get('GatewayType') is not None:
+            self.gateway_type = m.get('GatewayType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DescribeStorageGatewayResponseBodyStorageGateways(TeaModel):
+    def __init__(
+        self,
+        cidr_block: str = None,
+        creation_time: str = None,
+        description: str = None,
+        ens_region_id: str = None,
+        service_ip: str = None,
+        status: str = None,
+        storage_gateway_id: str = None,
+        storage_gateway_name: str = None,
+        storage_gateway_type: int = None,
+        vpc_id: str = None,
+    ):
+        self.cidr_block = cidr_block
+        self.creation_time = creation_time
+        self.description = description
+        self.ens_region_id = ens_region_id
+        self.service_ip = service_ip
+        self.status = status
+        self.storage_gateway_id = storage_gateway_id
+        self.storage_gateway_name = storage_gateway_name
+        self.storage_gateway_type = storage_gateway_type
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.service_ip is not None:
+            result['ServiceIp'] = self.service_ip
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.storage_gateway_id is not None:
+            result['StorageGatewayId'] = self.storage_gateway_id
+        if self.storage_gateway_name is not None:
+            result['StorageGatewayName'] = self.storage_gateway_name
+        if self.storage_gateway_type is not None:
+            result['StorageGatewayType'] = self.storage_gateway_type
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('ServiceIp') is not None:
+            self.service_ip = m.get('ServiceIp')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StorageGatewayId') is not None:
+            self.storage_gateway_id = m.get('StorageGatewayId')
+        if m.get('StorageGatewayName') is not None:
+            self.storage_gateway_name = m.get('StorageGatewayName')
+        if m.get('StorageGatewayType') is not None:
+            self.storage_gateway_type = m.get('StorageGatewayType')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DescribeStorageGatewayResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        storage_gateways: List[DescribeStorageGatewayResponseBodyStorageGateways] = None,
+        total_count: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        # Id of the request
+        self.request_id = request_id
+        self.storage_gateways = storage_gateways
+        self.total_count = total_count
+
+    def validate(self):
+        if self.storage_gateways:
+            for k in self.storage_gateways:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['StorageGateways'] = []
+        if self.storage_gateways is not None:
+            for k in self.storage_gateways:
+                result['StorageGateways'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.storage_gateways = []
+        if m.get('StorageGateways') is not None:
+            for k in m.get('StorageGateways'):
+                temp_model = DescribeStorageGatewayResponseBodyStorageGateways()
+                self.storage_gateways.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeStorageGatewayResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeStorageGatewayResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeStorageGatewayResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeStorageVolumeRequest(TeaModel):
+    def __init__(
+        self,
+        ens_region_id: str = None,
+        gateway_id: str = None,
+        is_enable: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        storage_id: str = None,
+        volume_id: str = None,
+    ):
+        self.ens_region_id = ens_region_id
+        self.gateway_id = gateway_id
+        self.is_enable = is_enable
+        self.page_number = page_number
+        self.page_size = page_size
+        self.storage_id = storage_id
+        self.volume_id = volume_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.gateway_id is not None:
+            result['GatewayId'] = self.gateway_id
+        if self.is_enable is not None:
+            result['IsEnable'] = self.is_enable
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.storage_id is not None:
+            result['StorageId'] = self.storage_id
+        if self.volume_id is not None:
+            result['VolumeId'] = self.volume_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('GatewayId') is not None:
+            self.gateway_id = m.get('GatewayId')
+        if m.get('IsEnable') is not None:
+            self.is_enable = m.get('IsEnable')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StorageId') is not None:
+            self.storage_id = m.get('StorageId')
+        if m.get('VolumeId') is not None:
+            self.volume_id = m.get('VolumeId')
+        return self
+
+
+class DescribeStorageVolumeResponseBodyStorageVolumes(TeaModel):
+    def __init__(
+        self,
+        auth_protocol: str = None,
+        creation_time: str = None,
+        description: str = None,
+        ens_region_id: str = None,
+        is_auth: int = None,
+        is_enable: int = None,
+        status: str = None,
+        storage_gateway_id: str = None,
+        storage_id: str = None,
+        storage_volume_id: str = None,
+        storage_volume_name: str = None,
+        target_name: str = None,
+    ):
+        self.auth_protocol = auth_protocol
+        self.creation_time = creation_time
+        self.description = description
+        self.ens_region_id = ens_region_id
+        self.is_auth = is_auth
+        self.is_enable = is_enable
+        self.status = status
+        self.storage_gateway_id = storage_gateway_id
+        self.storage_id = storage_id
+        self.storage_volume_id = storage_volume_id
+        self.storage_volume_name = storage_volume_name
+        self.target_name = target_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_protocol is not None:
+            result['AuthProtocol'] = self.auth_protocol
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.is_auth is not None:
+            result['IsAuth'] = self.is_auth
+        if self.is_enable is not None:
+            result['IsEnable'] = self.is_enable
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.storage_gateway_id is not None:
+            result['StorageGatewayId'] = self.storage_gateway_id
+        if self.storage_id is not None:
+            result['StorageId'] = self.storage_id
+        if self.storage_volume_id is not None:
+            result['StorageVolumeId'] = self.storage_volume_id
+        if self.storage_volume_name is not None:
+            result['StorageVolumeName'] = self.storage_volume_name
+        if self.target_name is not None:
+            result['TargetName'] = self.target_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthProtocol') is not None:
+            self.auth_protocol = m.get('AuthProtocol')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('IsAuth') is not None:
+            self.is_auth = m.get('IsAuth')
+        if m.get('IsEnable') is not None:
+            self.is_enable = m.get('IsEnable')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StorageGatewayId') is not None:
+            self.storage_gateway_id = m.get('StorageGatewayId')
+        if m.get('StorageId') is not None:
+            self.storage_id = m.get('StorageId')
+        if m.get('StorageVolumeId') is not None:
+            self.storage_volume_id = m.get('StorageVolumeId')
+        if m.get('StorageVolumeName') is not None:
+            self.storage_volume_name = m.get('StorageVolumeName')
+        if m.get('TargetName') is not None:
+            self.target_name = m.get('TargetName')
+        return self
+
+
+class DescribeStorageVolumeResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: str = None,
+        page_size: str = None,
+        request_id: str = None,
+        storage_volumes: List[DescribeStorageVolumeResponseBodyStorageVolumes] = None,
+        total_count: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.storage_volumes = storage_volumes
+        self.total_count = total_count
+
+    def validate(self):
+        if self.storage_volumes:
+            for k in self.storage_volumes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['StorageVolumes'] = []
+        if self.storage_volumes is not None:
+            for k in self.storage_volumes:
+                result['StorageVolumes'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.storage_volumes = []
+        if m.get('StorageVolumes') is not None:
+            for k in m.get('StorageVolumes'):
+                temp_model = DescribeStorageVolumeResponseBodyStorageVolumes()
+                self.storage_volumes.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeStorageVolumeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeStorageVolumeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeStorageVolumeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -43011,7 +44416,17 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N of the instance. Valid values of N: **1** to **20**.
+        # 
+        # *   The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        # *   The key must be up to 64 characters in length.
+        # *   The tag key cannot be an empty string.
         self.key = key
+        # The value of a tag that is attached to the topics you want to query. This parameter is not required. If you configure this parameter, you must also configure the **Key** parameter.**** If you include the Key and Value parameters in a request, this operation queries only the topics that use the specified tags. If you do not include these parameters in a request, this operation queries all topics that you can access.
+        # 
+        # *   Valid values of N: 1 to 20.
+        # *   The value of this parameter can be an empty string.
+        # *   The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
         self.value = value
 
     def validate(self):
@@ -43046,10 +44461,17 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # The token of the first page to query.
         self.next_token = next_token
+        # The IDs of resources. Valid values of N: 1 to 50.
         self.resource_id = resource_id
+        # The type of the resource. Valid values:
+        # 
+        # *   instance
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -43100,9 +44522,13 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The ID of the associated resources.
         self.resource_id = resource_id
+        # The type of the resource.
         self.resource_type = resource_type
+        # The tag key of the instance.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -43144,8 +44570,11 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
     ):
+        # The token of the first page to query.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The tags that are added to specified one or more resources.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -43482,7 +44911,7 @@ class ModifyFileSystemRequest(TeaModel):
         # 
         # This parameter is required.
         self.description = description
-        # The ID of the region.
+        # The ID of the edge node.
         # 
         # This parameter is required.
         self.ens_region_id = ens_region_id
@@ -43697,6 +45126,108 @@ class ModifyForwardEntryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyForwardEntryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyHaVipAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        ha_vip_id: str = None,
+        name: str = None,
+    ):
+        # This parameter is required.
+        self.ha_vip_id = ha_vip_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ha_vip_id is not None:
+            result['HaVipId'] = self.ha_vip_id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HaVipId') is not None:
+            self.ha_vip_id = m.get('HaVipId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ModifyHaVipAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyHaVipAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyHaVipAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyHaVipAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -44227,7 +45758,7 @@ class ModifyInstanceChargeTypeRequest(TeaModel):
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal when you change the billing method from pay-as-you-go to subscription. Valid values:
         # 
-        # true
+        # true: enables auto-renewal for the instance.
         # 
         # false
         self.auto_renew = auto_renew
@@ -44255,17 +45786,11 @@ class ModifyInstanceChargeTypeRequest(TeaModel):
         # 
         # If PeriodUnit is Month, Period can be set to 1 to 9 or 12.
         self.period = period
-        # The unit of the subscription duration. This parameter is required if you set the InstanceChargeType parameter to PrePaid. Examples:
+        # The unit of the subscription duration. This parameter is required if you set the InstanceChargeType parameter to PrePaid. Valid values:
         # 
         # Month
         # 
         # Day
-        # 
-        # Valid values:
-        # 
-        # *   Year
-        # *   Month
-        # *   Day
         self.period_unit = period_unit
 
     def validate(self):
@@ -44331,7 +45856,7 @@ class ModifyInstanceChargeTypeShrinkRequest(TeaModel):
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal when you change the billing method from pay-as-you-go to subscription. Valid values:
         # 
-        # true
+        # true: enables auto-renewal for the instance.
         # 
         # false
         self.auto_renew = auto_renew
@@ -44359,17 +45884,11 @@ class ModifyInstanceChargeTypeShrinkRequest(TeaModel):
         # 
         # If PeriodUnit is Month, Period can be set to 1 to 9 or 12.
         self.period = period
-        # The unit of the subscription duration. This parameter is required if you set the InstanceChargeType parameter to PrePaid. Examples:
+        # The unit of the subscription duration. This parameter is required if you set the InstanceChargeType parameter to PrePaid. Valid values:
         # 
         # Month
         # 
         # Day
-        # 
-        # Valid values:
-        # 
-        # *   Year
-        # *   Month
-        # *   Day
         self.period_unit = period_unit
 
     def validate(self):
@@ -45191,11 +46710,18 @@ class PreloadRegionSDGRequest(TeaModel):
         redundant_num: int = None,
         sdgid: str = None,
     ):
+        # The IDs of the destination nodes.
+        # 
         # This parameter is required.
         self.destination_region_ids = destination_region_ids
+        # The namespaces.
         self.namespaces = namespaces
+        # The number of redundant replicas to support rapid deployment.
+        # 
         # This parameter is required.
         self.redundant_num = redundant_num
+        # The ID of the SDG for which data is preloaded.
+        # 
         # This parameter is required.
         self.sdgid = sdgid
 
@@ -45239,11 +46765,18 @@ class PreloadRegionSDGShrinkRequest(TeaModel):
         redundant_num: int = None,
         sdgid: str = None,
     ):
+        # The IDs of the destination nodes.
+        # 
         # This parameter is required.
         self.destination_region_ids_shrink = destination_region_ids_shrink
+        # The namespaces.
         self.namespaces_shrink = namespaces_shrink
+        # The number of redundant replicas to support rapid deployment.
+        # 
         # This parameter is required.
         self.redundant_num = redundant_num
+        # The ID of the SDG for which data is preloaded.
+        # 
         # This parameter is required.
         self.sdgid = sdgid
 
@@ -45285,7 +46818,9 @@ class PreloadRegionSDGResponseBodyDataResultFailedItems(TeaModel):
         destination_region_id: str = None,
         error_message: str = None,
     ):
+        # The ID of the destination node.
         self.destination_region_id = destination_region_id
+        # The error message that is returned.
         self.error_message = error_message
 
     def validate(self):
@@ -45319,8 +46854,11 @@ class PreloadRegionSDGResponseBodyDataResult(TeaModel):
         failed_items: List[PreloadRegionSDGResponseBodyDataResultFailedItems] = None,
         success_count: int = None,
     ):
+        # The number of failed tasks.
         self.failed_count = failed_count
+        # Details about failed tasks.
         self.failed_items = failed_items
+        # The number of successful tasks.
         self.success_count = success_count
 
     def validate(self):
@@ -45366,8 +46904,14 @@ class PreloadRegionSDGResponseBodyData(TeaModel):
         result: PreloadRegionSDGResponseBodyDataResult = None,
         success: bool = None,
     ):
+        # The message returned.
         self.message = message
+        # The execution result of the synchronization request.
         self.result = result
+        # Indicates whether all tasks are successful. Valid values:
+        # 
+        # *   true: All tasks are successful.
+        # *   false: Failed tasks exist.
         self.success = success
 
     def validate(self):
@@ -45406,7 +46950,9 @@ class PreloadRegionSDGResponseBody(TeaModel):
         data: PreloadRegionSDGResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data object.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -45472,6 +47018,126 @@ class PreloadRegionSDGResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PreloadRegionSDGResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PrepareUploadRequest(TeaModel):
+    def __init__(
+        self,
+        bucket_name: str = None,
+        client_ip: str = None,
+    ):
+        # The name of the bucket.
+        # 
+        # This parameter is required.
+        self.bucket_name = bucket_name
+        # The specified IP address. This parameter is applicable to scenarios where the user IP address is inconsistent with the operation calling IP address, such as the scenario where the server obtains authorization and sends the authorization to the client.
+        self.client_ip = client_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket_name is not None:
+            result['BucketName'] = self.bucket_name
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BucketName') is not None:
+            self.bucket_name = m.get('BucketName')
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        return self
+
+
+class PrepareUploadResponseBody(TeaModel):
+    def __init__(
+        self,
+        bucket_name: str = None,
+        endpoint: str = None,
+        request_id: str = None,
+    ):
+        # The name of the bucket. This parameter is available only when the OSS SDK is used.
+        self.bucket_name = bucket_name
+        # The endpoint. This parameter is available only when the OSS SDK is used.
+        self.endpoint = endpoint
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bucket_name is not None:
+            result['BucketName'] = self.bucket_name
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BucketName') is not None:
+            self.bucket_name = m.get('BucketName')
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PrepareUploadResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PrepareUploadResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PrepareUploadResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -45706,7 +47372,7 @@ class PutBucketRequest(TeaModel):
         ens_region_id: str = None,
         logical_bucket_type: str = None,
     ):
-        # The access control list (ACL) of the bucket.
+        # The access control list (ACL) of the bucket. Valid values:
         # 
         # *   **private** (default)
         # *   **public-read-write**\
@@ -45718,15 +47384,17 @@ class PutBucketRequest(TeaModel):
         self.bucket_name = bucket_name
         # The remarks. The remarks are 0 to 128 characters in length.
         self.comment = comment
-        # Scheduling Scope, this parameter is only effective for globally scheduled Buckets.
+        # The scheduling scope. This parameter takes effect only when the value of the LogicalBucketType parameter is standard. Valid values:
         # 
-        # - domestic
-        # 
-        # - oversea
+        # *   **domestic**: Chinese mainland.
+        # *   **oversea**: outside the Chinese mainland.
         self.dispatch_scope = dispatch_scope
-        # The ID of the region where the node is located. If this parameter is not specified, the node is the global default node.
+        # The region ID of the node. This parameter is required if the value of the LogicalBucketType parameter is sink.
         self.ens_region_id = ens_region_id
-        # Single-node storage. Set the value to sink.
+        # The type of the bucket. Valid values:
+        # 
+        # *   **sink**: single-node bucket.
+        # *   **standard**: bucket for global scheduling.
         self.logical_bucket_type = logical_bucket_type
 
     def validate(self):
@@ -46046,9 +47714,11 @@ class PutBucketLifecycleResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
+        rule_id: str = None,
     ):
         # The ID of the request.
         self.request_id = request_id
+        self.rule_id = rule_id
 
     def validate(self):
         pass
@@ -46061,12 +47731,16 @@ class PutBucketLifecycleResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
         return self
 
 
@@ -47925,6 +49599,8 @@ class RemoveInstanceSDGRequest(TeaModel):
         self,
         instance_ids: List[str] = None,
     ):
+        # The IDs of the instances. The value is a JSON array that consists of up to 100 IDs.
+        # 
         # This parameter is required.
         self.instance_ids = instance_ids
 
@@ -47953,6 +49629,8 @@ class RemoveInstanceSDGShrinkRequest(TeaModel):
         self,
         instance_ids_shrink: str = None,
     ):
+        # The IDs of the instances. The value is a JSON array that consists of up to 100 IDs.
+        # 
         # This parameter is required.
         self.instance_ids_shrink = instance_ids_shrink
 
@@ -47982,7 +49660,9 @@ class RemoveInstanceSDGResponseBodyDataResultFailedItems(TeaModel):
         err_message: str = None,
         instance_id: str = None,
     ):
+        # The error message that is returned.
         self.err_message = err_message
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -48016,8 +49696,11 @@ class RemoveInstanceSDGResponseBodyDataResult(TeaModel):
         failed_items: List[RemoveInstanceSDGResponseBodyDataResultFailedItems] = None,
         success_count: int = None,
     ):
+        # The number of failed tasks.
         self.failed_count = failed_count
+        # Details about the failed tasks.
         self.failed_items = failed_items
+        # The number of successful tasks.
         self.success_count = success_count
 
     def validate(self):
@@ -48063,8 +49746,14 @@ class RemoveInstanceSDGResponseBodyData(TeaModel):
         result: RemoveInstanceSDGResponseBodyDataResult = None,
         success: bool = None,
     ):
+        # The response message. Success is returned for a successful request.
         self.message = message
+        # The execution result of the synchronization request.
         self.result = result
+        # Indicates whether all tasks are successful. Valid values:
+        # 
+        # *   **true**: All tasks are successful.
+        # *   **false**: Failed tasks exist.
         self.success = success
 
     def validate(self):
@@ -48104,8 +49793,11 @@ class RemoveInstanceSDGResponseBody(TeaModel):
         data: RemoveInstanceSDGResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned service code. 0 indicates that the request was successful.
         self.code = code
+        # The returned data object.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48532,6 +50224,10 @@ class RenewARMServerInstanceRequest(TeaModel):
         period: int = None,
         period_unit: str = None,
     ):
+        # Specifies whether to enable auto-renewal for the subscription. Valid values:
+        # 
+        # *   true
+        # *   false (default)
         self.auto_renew = auto_renew
         # The ID of the instance that you want to renew.
         # 
@@ -48661,19 +50357,6 @@ class RenewInstanceRequest(TeaModel):
         # This parameter is required.
         self.instance_id = instance_id
         # The renewal duration of the subscription instance.
-        # 
-        # Valid values:
-        # 
-        # *   1
-        # *   2
-        # *   3
-        # *   4
-        # *   5
-        # *   6
-        # *   7
-        # *   8
-        # *   9
-        # *   12
         # 
         # This parameter is required.
         self.period = period
@@ -50218,15 +51901,15 @@ class RunInstancesRequestDataDisk(TeaModel):
         # *   **local_hdd**: local HDD.
         # *   **local_ssd**: local SSD.
         self.category = category
-        # Specifies whether to encrypt the disk. Valid values:
+        # Indicates whether the cloud disk is encrypted. Valid values:
         # 
-        # *   true
-        # *   false (default)
+        # *   true.
+        # *   false (default).
         self.encrypted = encrypted
         # The ID of the Key Management Service (KMS) key that is used for the disk. Valid values:
         # 
-        # *   true
-        # *   false (default)
+        # *   true.
+        # *   false (default).
         # 
         # >  If you set the Encrypted parameter to true, the default service key is used when the KMSKeyId parameter is empty.
         self.kmskey_id = kmskey_id
@@ -50368,6 +52051,7 @@ class RunInstancesRequest(TeaModel):
         scheduling_price_strategy: str = None,
         scheduling_strategy: str = None,
         security_id: str = None,
+        spot_duration: int = None,
         spot_strategy: str = None,
         system_disk: RunInstancesRequestSystemDisk = None,
         tag: List[RunInstancesRequestTag] = None,
@@ -50388,8 +52072,8 @@ class RunInstancesRequest(TeaModel):
         self.auto_release_time = auto_release_time
         # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # *   **true**\
-        # *   **false** (default)
+        # *   **true**.
+        # *   **false** (default).
         # 
         # >  This parameter is not available when InstanceChargeType is set to PostPaid.
         self.auto_renew = auto_renew
@@ -50397,14 +52081,14 @@ class RunInstancesRequest(TeaModel):
         self.auto_use_coupon = auto_use_coupon
         # The billing cycle of computing resources of the instance. Only pay-as-you-go instances are supported. Valid values:
         # 
-        # *   **Day**\
-        # *   **Month**\
+        # *   **Day**.
+        # *   **Month**.
         self.billing_cycle = billing_cycle
         # The Internet service provider (ISP).
         # 
         # >  This parameter is not available if ScheduleAreaLevel is set to Region and is required if ScheduleAreaLevel is set to other values.
         self.carrier = carrier
-        # The specifications of the data disk.
+        # The specifications of data disks.
         self.data_disk = data_disk
         # The ID of the node.
         # 
@@ -50447,9 +52131,9 @@ class RunInstancesRequest(TeaModel):
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # The type of the IP address. Valid values:
         # 
-        # *   **ipv4** (default)
-        # *   **ipv6**\
-        # *   **ipv4Andipv6**\
+        # *   **ipv4** (default).
+        # *   **ipv6**.
+        # *   **ipv4Andipv6**.
         self.ip_type = ip_type
         # The name of the key pair.
         # 
@@ -50479,10 +52163,10 @@ class RunInstancesRequest(TeaModel):
         # *   If **PeriodUnit** is set to **Day**, **Period** can only be set to **3**.
         # *   If **PeriodUnit** is **Month**, **Period** can be set to **1 to 9** or **12**.
         self.period = period
-        # The unit of the subscription duration. Valid values:
+        # The unit of the subscription period. Valid values:
         # 
-        # *   **Month** (default)
-        # *   **Day**\
+        # *   **Month** (default).
+        # *   **Day**.
         self.period_unit = period_unit
         # The private IP address.
         # 
@@ -50513,6 +52197,7 @@ class RunInstancesRequest(TeaModel):
         self.scheduling_strategy = scheduling_strategy
         # The ID of security group.
         self.security_id = security_id
+        self.spot_duration = spot_duration
         # The bidding policy for the pay-as-you-go instance. This parameter is valid only when the `InstanceChargeType` parameter is set to `PostPaid`. Valid values:
         # 
         # *   NoSpot: The instance is created as a regular pay-as-you-go instance.
@@ -50613,6 +52298,8 @@ class RunInstancesRequest(TeaModel):
             result['SchedulingStrategy'] = self.scheduling_strategy
         if self.security_id is not None:
             result['SecurityId'] = self.security_id
+        if self.spot_duration is not None:
+            result['SpotDuration'] = self.spot_duration
         if self.spot_strategy is not None:
             result['SpotStrategy'] = self.spot_strategy
         if self.system_disk is not None:
@@ -50694,6 +52381,8 @@ class RunInstancesRequest(TeaModel):
             self.scheduling_strategy = m.get('SchedulingStrategy')
         if m.get('SecurityId') is not None:
             self.security_id = m.get('SecurityId')
+        if m.get('SpotDuration') is not None:
+            self.spot_duration = m.get('SpotDuration')
         if m.get('SpotStrategy') is not None:
             self.spot_strategy = m.get('SpotStrategy')
         if m.get('SystemDisk') is not None:
@@ -50781,6 +52470,7 @@ class RunInstancesShrinkRequest(TeaModel):
         scheduling_price_strategy: str = None,
         scheduling_strategy: str = None,
         security_id: str = None,
+        spot_duration: int = None,
         spot_strategy: str = None,
         system_disk_shrink: str = None,
         tag: List[RunInstancesShrinkRequestTag] = None,
@@ -50801,8 +52491,8 @@ class RunInstancesShrinkRequest(TeaModel):
         self.auto_release_time = auto_release_time
         # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # *   **true**\
-        # *   **false** (default)
+        # *   **true**.
+        # *   **false** (default).
         # 
         # >  This parameter is not available when InstanceChargeType is set to PostPaid.
         self.auto_renew = auto_renew
@@ -50810,14 +52500,14 @@ class RunInstancesShrinkRequest(TeaModel):
         self.auto_use_coupon = auto_use_coupon
         # The billing cycle of computing resources of the instance. Only pay-as-you-go instances are supported. Valid values:
         # 
-        # *   **Day**\
-        # *   **Month**\
+        # *   **Day**.
+        # *   **Month**.
         self.billing_cycle = billing_cycle
         # The Internet service provider (ISP).
         # 
         # >  This parameter is not available if ScheduleAreaLevel is set to Region and is required if ScheduleAreaLevel is set to other values.
         self.carrier = carrier
-        # The specifications of the data disk.
+        # The specifications of data disks.
         self.data_disk_shrink = data_disk_shrink
         # The ID of the node.
         # 
@@ -50860,9 +52550,9 @@ class RunInstancesShrinkRequest(TeaModel):
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # The type of the IP address. Valid values:
         # 
-        # *   **ipv4** (default)
-        # *   **ipv6**\
-        # *   **ipv4Andipv6**\
+        # *   **ipv4** (default).
+        # *   **ipv6**.
+        # *   **ipv4Andipv6**.
         self.ip_type = ip_type
         # The name of the key pair.
         # 
@@ -50892,10 +52582,10 @@ class RunInstancesShrinkRequest(TeaModel):
         # *   If **PeriodUnit** is set to **Day**, **Period** can only be set to **3**.
         # *   If **PeriodUnit** is **Month**, **Period** can be set to **1 to 9** or **12**.
         self.period = period
-        # The unit of the subscription duration. Valid values:
+        # The unit of the subscription period. Valid values:
         # 
-        # *   **Month** (default)
-        # *   **Day**\
+        # *   **Month** (default).
+        # *   **Day**.
         self.period_unit = period_unit
         # The private IP address.
         # 
@@ -50926,6 +52616,7 @@ class RunInstancesShrinkRequest(TeaModel):
         self.scheduling_strategy = scheduling_strategy
         # The ID of security group.
         self.security_id = security_id
+        self.spot_duration = spot_duration
         # The bidding policy for the pay-as-you-go instance. This parameter is valid only when the `InstanceChargeType` parameter is set to `PostPaid`. Valid values:
         # 
         # *   NoSpot: The instance is created as a regular pay-as-you-go instance.
@@ -51018,6 +52709,8 @@ class RunInstancesShrinkRequest(TeaModel):
             result['SchedulingStrategy'] = self.scheduling_strategy
         if self.security_id is not None:
             result['SecurityId'] = self.security_id
+        if self.spot_duration is not None:
+            result['SpotDuration'] = self.spot_duration
         if self.spot_strategy is not None:
             result['SpotStrategy'] = self.spot_strategy
         if self.system_disk_shrink is not None:
@@ -51096,6 +52789,8 @@ class RunInstancesShrinkRequest(TeaModel):
             self.scheduling_strategy = m.get('SchedulingStrategy')
         if m.get('SecurityId') is not None:
             self.security_id = m.get('SecurityId')
+        if m.get('SpotDuration') is not None:
+            self.spot_duration = m.get('SpotDuration')
         if m.get('SpotStrategy') is not None:
             self.spot_strategy = m.get('SpotStrategy')
         if m.get('SystemDisk') is not None:
@@ -51928,7 +53623,7 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         unhealthy_threshold: int = None,
         xforwarded_for: str = None,
     ):
-        # The description of the listener. The description must be **1** to **80** characters in length.
+        # The name of the listener. The value must be **1** to **80** characters in length.
         # 
         # >  The value cannot start with `http://` or `https://`.
         self.description = description
@@ -51958,7 +53653,7 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         # 
         # >  This parameter takes effect only if you set HealthCheck to on.
         self.health_check_interval = health_check_interval
-        # The HTTP request method for health checks. Examples:
+        # The HTTP request method for health checks. Valid values:
         # 
         # *   **head**\
         # *   **get**\
@@ -51971,13 +53666,19 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         # *   Valid values: **1** to **300**.
         # *   Unit: seconds.
         # 
-        # > *   This parameter takes effect only if you set HealthCheck to on.
-        # >*   If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
-        self.health_check_timeout = health_check_timeout
-        # The Uniform Resource Identifier (URI) that is used for health checks. The URI must be **1** to **80** characters in length.
+        # > 
         # 
-        # > *   The URL must start with a forward slash (`/`) and contain characters other than forward slashes (`/`).
-        # >*   This parameter takes effect only if you set HealthCheck to on.
+        # *   This parameter takes effect only if the HealthCheck parameter is set to on.
+        # 
+        # *   If the value of HealthCheckTimeout is smaller than the value of HealthCheckInterval, the timeout period specified by HealthCheckTimeout becomes invalid, and the value of HealthCheckInterval is used as the timeout period.
+        self.health_check_timeout = health_check_timeout
+        # The URI used for health checks. The URI must be **1** to **80** characters in length.
+        # 
+        # > 
+        # 
+        # *   A URL must start with a forward slash (`/`) but cannot contain only forward slashes (`/`).
+        # 
+        # *   This parameter takes effect only if the HealthCheck parameter is set to on.
         self.health_check_uri = health_check_uri
         # The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**.
         # 
@@ -51987,7 +53688,7 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         # 
         # >  If no request is received within the specified timeout period, ELB closes the connection. When another request is received, CLB establishes a new connection.
         self.idle_timeout = idle_timeout
-        # The frontend port that is used by the ELB instance. Valid values: **1** to **65535**.
+        # The listener port whose attributes are to be modified. Valid values: **1** to **65535**.
         # 
         # This parameter is required.
         self.listener_port = listener_port
@@ -51999,7 +53700,7 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         # 
         # >  If no response is received from the backend server within the specified timeout period, ELB returns an HTTP 504 error code to the client.
         self.request_timeout = request_timeout
-        # The scheduling algorithm. Examples:
+        # The scheduling algorithm. Valid values:
         # 
         # *   **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
         # *   **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
@@ -52014,8 +53715,8 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         self.unhealthy_threshold = unhealthy_threshold
         # Specifies whether to use the X-Forwarded-For header to obtain the real IP address of the client. Valid values:
         # 
-        # *   **on**\
-        # *   **off** (default)
+        # *   **on** (default)
+        # *   **off**\
         self.xforwarded_for = xforwarded_for
 
     def validate(self):
@@ -52192,7 +53893,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         server_certificate_id: str = None,
         unhealthy_threshold: int = None,
     ):
-        # The description of the listener. The description must be **1** to **80** characters in length.
+        # The name of the listener. The value must be **1** to **80** characters in length.
         # 
         # >  The value cannot start with `http://` or `https://`.
         self.description = description
@@ -52229,7 +53930,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         # 
         # >  This parameter takes effect only if you set HealthCheck to on.
         self.health_check_method = health_check_method
-        # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+        # The timeout period of a health check response. If the backend ENS does not respond within the specified time, the health check fails.
         # 
         # *   Default value: 5.
         # *   Valid values: **1** to **300**.
@@ -52237,17 +53938,17 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         # 
         # > 
         # 
-        # *   This parameter takes effect only if you set HealthCheck to on.
+        # *   This parameter takes effect only if the HealthCheck parameter is set to on.
         # 
-        # *   If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+        # *   If the value of the HealthCheckTimeout property is smaller than the value of the HealthCheckInterval property, the timeout period specified by the HealthCheckTimeout property becomes invalid and the value of the HealthCheckInterval property is used as the timeout period.
         self.health_check_timeout = health_check_timeout
-        # The Uniform Resource Identifier (URI) that you want to use for health checks. The URI must be **1** to **80** characters in length.
+        # The URI used for health checks. The URI must be **1** to **80** characters in length.
         # 
         # > 
         # 
-        # *   The URL must start with a forward slash (`/`) and contain characters other than forward slashes (`/`).
+        # *   A URL must start with a forward slash (`/`) but cannot contain only forward slashes (`/`).
         # 
-        # *   This parameter takes effect only if you set HealthCheck to on.
+        # *   This parameter takes effect only if the HealthCheck parameter is set to on.
         self.health_check_uri = health_check_uri
         # The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**.
         # 
@@ -52257,7 +53958,7 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         # 
         # >  If no request is received within the specified timeout period, ELB closes the connection. When another request is received, ELB establishes a new connection.
         self.idle_timeout = idle_timeout
-        # The frontend port that is used by the ELB instance. Valid values: **1** to **65535**.
+        # The listener port whose attributes are to be modified. Valid values: **1** to **65535**.
         # 
         # This parameter is required.
         self.listener_port = listener_port
@@ -52448,9 +54149,9 @@ class SetLoadBalancerStatusRequest(TeaModel):
         # 
         # This parameter is required.
         self.load_balancer_id = load_balancer_id
-        # The status of the ELB instance. Valid values:
+        # The status of the listener after the modification. Valid values:
         # 
-        # *   **Active** (default): The listener for the instance can forward the received traffic based on the rule.
+        # *   **Active**: The listener for the instance can forward the received traffic based on forwarding rules.
         # *   **InActive**: The listener for the instance does not forward the received traffic.
         # 
         # This parameter is required.
@@ -52582,13 +54283,13 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
         self.established_timeout = established_timeout
         # The port that is used for health checks. Valid values: **1** to **65535**. If you leave this parameter empty, the port specified by BackendServerPort is used for health checks.
         self.health_check_connect_port = health_check_connect_port
-        # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+        # The timeout period for a health check response. If the value of HealthCheckTimeout is smaller than the value of HealthCheckInterval, the timeout period specified by HealthCheckTimeout becomes invalid, and the value of HealthCheckInterval is used as the timeout period.
         # 
         # *   Default value: 5.
         # *   Valid values: **1** to **300**.
         # *   Unit: seconds.
         # 
-        # >  If the value that you specified for HealthCheckConnectTimeout is smaller than the value of HealthCheckInterval, HealthCheckConnectTimeout becomes invalid and the timeout period that you specified for HealthCheckInterval is used.
+        # >  If the value of the HealthCheckConnectTimeout parameter is smaller than that of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckConnectTimeout parameter is ignored and the period of time specified by the HealthCheckInterval parameter is used as the timeout period.
         self.health_check_connect_timeout = health_check_connect_timeout
         # The domain name that you want to use for health checks.
         self.health_check_domain = health_check_domain
@@ -52612,7 +54313,7 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
         self.health_check_uri = health_check_uri
         # The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**.
         self.healthy_threshold = healthy_threshold
-        # The frontend port that is used by the ELB instance. Valid values: **1** to **65535**.
+        # The listener port whose attributes are to be modified. Valid values: **1** to **65535**.
         # 
         # This parameter is required.
         self.listener_port = listener_port
@@ -52792,6 +54493,7 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
         self,
         description: str = None,
         eip_transmit: str = None,
+        established_timeout: int = None,
         health_check_connect_port: int = None,
         health_check_connect_timeout: int = None,
         health_check_exp: str = None,
@@ -52803,7 +54505,7 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
         scheduler: str = None,
         unhealthy_threshold: int = None,
     ):
-        # The description of the listener. The description must be **1** to **80** characters in length.
+        # The name of the listener. The valuemust be **1** to **80** characters in length.
         # 
         # >  The value cannot start with `http://` or `https://`.
         self.description = description
@@ -52812,15 +54514,17 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
         # *   **on**\
         # *   **off** (default)
         self.eip_transmit = eip_transmit
+        # The timeout period of a connection. Valid values: **10** to **900**. Default value: **900**. Unit: seconds.
+        self.established_timeout = established_timeout
         # The port that is used for health checks. Valid values: **1** to **65535**. If you leave this parameter empty, the port specified for BackendServerPort is used for health checks.
         self.health_check_connect_port = health_check_connect_port
-        # The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+        # The timeout period of a health check response. If the backend ENS does not respond within the specified time, the health check fails.
         # 
         # *   Default value: 5.
         # *   Valid values: **1** to **300**.
         # *   Unit: seconds.
         # 
-        # >  If the value that you specified for HealthCheckConnectTimeout is smaller than the value of HealthCheckInterval, HealthCheckConnectTimeout becomes invalid and the timeout period that you specified for HealthCheckInterval is used.
+        # >  If the value of the HealthCheckTimeout property is smaller than the value of the HealthCheckInterval property, the timeout period specified by the HealthCheckTimeout property becomes invalid and the value of the HealthCheckInterval property is used as the timeout period.
         self.health_check_connect_timeout = health_check_connect_timeout
         # The response string for UDP listener health checks. The string can be up to 64 characters in length and can contain only letters and digits.
         self.health_check_exp = health_check_exp
@@ -52830,7 +54534,7 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
         self.health_check_req = health_check_req
         # The number of consecutive successful health checks that must occur before an unhealthy and inaccessible backend server is declared healthy and accessible. Valid values: **2** to **10**.
         self.healthy_threshold = healthy_threshold
-        # The frontend port that is used by the ELB instance. Valid values: **1** to **65535**.
+        # The listener port whose attributes are to be modified. Valid values: **1** to **65535**.
         # 
         # This parameter is required.
         self.listener_port = listener_port
@@ -52863,6 +54567,8 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
             result['Description'] = self.description
         if self.eip_transmit is not None:
             result['EipTransmit'] = self.eip_transmit
+        if self.established_timeout is not None:
+            result['EstablishedTimeout'] = self.established_timeout
         if self.health_check_connect_port is not None:
             result['HealthCheckConnectPort'] = self.health_check_connect_port
         if self.health_check_connect_timeout is not None:
@@ -52891,6 +54597,8 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('EipTransmit') is not None:
             self.eip_transmit = m.get('EipTransmit')
+        if m.get('EstablishedTimeout') is not None:
+            self.established_timeout = m.get('EstablishedTimeout')
         if m.get('HealthCheckConnectPort') is not None:
             self.health_check_connect_port = m.get('HealthCheckConnectPort')
         if m.get('HealthCheckConnectTimeout') is not None:
@@ -53331,15 +55039,7 @@ class StartLoadBalancerListenerRequest(TeaModel):
         listener_protocol: str = None,
         load_balancer_id: str = None,
     ):
-        # The frontend port that is used by the Edge Load Balance (ELB) instance. Valid values: **1** to **65535**.
-        # 
-        # > 
-        # 
-        # *   You cannot specify port 250, 4789, or 4790 for UDP listeners. The preceding ports are system reserved ports.
-        # 
-        # *   We recommend that you use port 80 for HTTP.
-        # 
-        # *   We recommend that you use port 443 for HTTPS.
+        # The listener port to be enabled. Valid values: **1** to **65535**.
         # 
         # This parameter is required.
         self.listener_port = listener_port
@@ -53920,7 +55620,7 @@ class StopLoadBalancerListenerRequest(TeaModel):
         listener_protocol: str = None,
         load_balancer_id: str = None,
     ):
-        # The frontend port that is used by the Edge Load Balance (ELB) instance. Valid values: **1** to **65535**.
+        # The listener port that you want to disable. Valid values: **1** to **65535**.
         # 
         # This parameter is required.
         self.listener_port = listener_port
@@ -54144,8 +55844,12 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N that is added to the resource. Valid values of N: 1 to 20. The tag value cannot be an empty string. The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+        # 
         # This parameter is required.
         self.key = key
+        # The value of tag N that is added to the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with acs: or contain http:// or https://.
+        # 
         # This parameter is required.
         self.value = value
 
@@ -54180,10 +55884,20 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
+        # The IDs of the resources. You can add up to 50 resource IDs in a call.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The type of resource to query.
+        # 
+        # Valid values:
+        # 
+        # *   instance
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tag that is bound to the instance.
+        # 
         # This parameter is required.
         self.tag = tag
 
@@ -54228,6 +55942,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -54400,7 +56115,7 @@ class UnassignPrivateIpAddressesRequest(TeaModel):
         # 
         # This parameter is required.
         self.network_interface_id = network_interface_id
-        # The secondary private IP addresses that you want to unassign.
+        # The secondary private IP addresses to unassign.
         # 
         # This parameter is required.
         self.private_ip_address = private_ip_address
@@ -54434,7 +56149,7 @@ class UnassignPrivateIpAddressesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54494,6 +56209,109 @@ class UnassignPrivateIpAddressesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UnassignPrivateIpAddressesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UnassociateHaVipRequest(TeaModel):
+    def __init__(
+        self,
+        ha_vip_id: str = None,
+        instance_id: str = None,
+    ):
+        # This parameter is required.
+        self.ha_vip_id = ha_vip_id
+        # This parameter is required.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ha_vip_id is not None:
+            result['HaVipId'] = self.ha_vip_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HaVipId') is not None:
+            self.ha_vip_id = m.get('HaVipId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class UnassociateHaVipResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UnassociateHaVipResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UnassociateHaVipResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UnassociateHaVipResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -54662,9 +56480,14 @@ class UnloadRegionSDGRequest(TeaModel):
         namespaces: List[str] = None,
         sdgid: str = None,
     ):
+        # The destination nodes.
+        # 
         # This parameter is required.
         self.destination_region_ids = destination_region_ids
+        # The namespaces.
         self.namespaces = namespaces
+        # Deletes the shared data group (SDG) ID of the preloaded data.
+        # 
         # This parameter is required.
         self.sdgid = sdgid
 
@@ -54703,9 +56526,14 @@ class UnloadRegionSDGShrinkRequest(TeaModel):
         namespaces_shrink: str = None,
         sdgid: str = None,
     ):
+        # The destination nodes.
+        # 
         # This parameter is required.
         self.destination_region_ids_shrink = destination_region_ids_shrink
+        # The namespaces.
         self.namespaces_shrink = namespaces_shrink
+        # Deletes the shared data group (SDG) ID of the preloaded data.
+        # 
         # This parameter is required.
         self.sdgid = sdgid
 
@@ -54743,7 +56571,9 @@ class UnloadRegionSDGResponseBodyDataResultFailedItems(TeaModel):
         destination_region_id: str = None,
         error_message: str = None,
     ):
+        # The ID of the destination node.
         self.destination_region_id = destination_region_id
+        # The error message that is returned.
         self.error_message = error_message
 
     def validate(self):
@@ -54777,8 +56607,11 @@ class UnloadRegionSDGResponseBodyDataResult(TeaModel):
         failed_items: List[UnloadRegionSDGResponseBodyDataResultFailedItems] = None,
         success_count: int = None,
     ):
+        # The number of failed tasks.
         self.failed_count = failed_count
+        # Details about failed tasks.
         self.failed_items = failed_items
+        # The number of successful tasks.
         self.success_count = success_count
 
     def validate(self):
@@ -54824,8 +56657,14 @@ class UnloadRegionSDGResponseBodyData(TeaModel):
         result: UnloadRegionSDGResponseBodyDataResult = None,
         success: bool = None,
     ):
+        # The response message. Success is returned for a successful request.
         self.message = message
+        # The execution result of the synchronization request.
         self.result = result
+        # Indicates whether all tasks are successful. Valid values:
+        # 
+        # *   true: All tasks are successful.
+        # *   false: Failed tasks exist.
         self.success = success
 
     def validate(self):
@@ -54864,7 +56703,9 @@ class UnloadRegionSDGResponseBody(TeaModel):
         data: UnloadRegionSDGResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data object.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54942,11 +56783,26 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to remove all tags from the resource. This parameter takes effect only if you do not specify TagKey.N. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.all = all
+        # The resource IDs. You can specify up to 50 resource IDs.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The resource type.
+        # 
+        # Valid values:
+        # 
+        # *   instance
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The keys of the tags. Valid values of N: 1 to 20.
         self.tag_key = tag_key
 
     def validate(self):
@@ -54986,6 +56842,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
