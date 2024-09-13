@@ -155,22 +155,18 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.customer_real_name):
-            query['CustomerRealName'] = request.customer_real_name
-        if not UtilClient.is_unset(request.customer_user_id):
-            query['CustomerUserId'] = request.customer_user_id
-        if not UtilClient.is_unset(request.important_description):
-            query['ImportantDescription'] = request.important_description
-        if not UtilClient.is_unset(request.is_important):
-            query['IsImportant'] = request.is_important
+        if not UtilClient.is_unset(request.create_user_id):
+            query['CreateUserId'] = request.create_user_id
+        if not UtilClient.is_unset(request.is_urgent):
+            query['IsUrgent'] = request.is_urgent
         if not UtilClient.is_unset(request.open_group_id):
             query['OpenGroupId'] = request.open_group_id
-        if not UtilClient.is_unset(request.product_type):
-            query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.product_type_name):
-            query['ProductTypeName'] = request.product_type_name
-        if not UtilClient.is_unset(request.task_title):
-            query['TaskTitle'] = request.task_title
+        if not UtilClient.is_unset(request.overview):
+            query['Overview'] = request.overview
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.urgent_description):
+            query['UrgentDescription'] = request.urgent_description
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -204,22 +200,18 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.customer_real_name):
-            query['CustomerRealName'] = request.customer_real_name
-        if not UtilClient.is_unset(request.customer_user_id):
-            query['CustomerUserId'] = request.customer_user_id
-        if not UtilClient.is_unset(request.important_description):
-            query['ImportantDescription'] = request.important_description
-        if not UtilClient.is_unset(request.is_important):
-            query['IsImportant'] = request.is_important
+        if not UtilClient.is_unset(request.create_user_id):
+            query['CreateUserId'] = request.create_user_id
+        if not UtilClient.is_unset(request.is_urgent):
+            query['IsUrgent'] = request.is_urgent
         if not UtilClient.is_unset(request.open_group_id):
             query['OpenGroupId'] = request.open_group_id
-        if not UtilClient.is_unset(request.product_type):
-            query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.product_type_name):
-            query['ProductTypeName'] = request.product_type_name
-        if not UtilClient.is_unset(request.task_title):
-            query['TaskTitle'] = request.task_title
+        if not UtilClient.is_unset(request.overview):
+            query['Overview'] = request.overview
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.urgent_description):
+            query['UrgentDescription'] = request.urgent_description
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -727,26 +719,18 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.caller_parent_id):
-            query['CallerParentId'] = request.caller_parent_id
-        if not UtilClient.is_unset(request.caller_type):
-            query['CallerType'] = request.caller_type
-        if not UtilClient.is_unset(request.caller_uid):
-            query['CallerUid'] = request.caller_uid
         if not UtilClient.is_unset(request.create_real_name):
             query['CreateRealName'] = request.create_real_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.is_urgent):
+            query['IsUrgent'] = request.is_urgent
         if not UtilClient.is_unset(request.open_group_id):
             query['OpenGroupId'] = request.open_group_id
-        if not UtilClient.is_unset(request.order_id):
-            query['OrderId'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.request_id):
-            query['RequestId'] = request.request_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.task_status):
@@ -784,26 +768,18 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.caller_parent_id):
-            query['CallerParentId'] = request.caller_parent_id
-        if not UtilClient.is_unset(request.caller_type):
-            query['CallerType'] = request.caller_type
-        if not UtilClient.is_unset(request.caller_uid):
-            query['CallerUid'] = request.caller_uid
         if not UtilClient.is_unset(request.create_real_name):
             query['CreateRealName'] = request.create_real_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.is_urgent):
+            query['IsUrgent'] = request.is_urgent
         if not UtilClient.is_unset(request.open_group_id):
             query['OpenGroupId'] = request.open_group_id
-        if not UtilClient.is_unset(request.order_id):
-            query['OrderId'] = request.order_id
         if not UtilClient.is_unset(request.page_no):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.request_id):
-            query['RequestId'] = request.request_id
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.task_status):
@@ -866,11 +842,11 @@ class Client(OpenApiClient):
         @return: ListEnterpriseDingtalkGroupCustomerMembersResponse
         """
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.open_group_id):
-            body['OpenGroupId'] = request.open_group_id
+            query['OpenGroupId'] = request.open_group_id
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListEnterpriseDingtalkGroupCustomerMembers',
@@ -901,11 +877,11 @@ class Client(OpenApiClient):
         @return: ListEnterpriseDingtalkGroupCustomerMembersResponse
         """
         UtilClient.validate_model(request)
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.open_group_id):
-            body['OpenGroupId'] = request.open_group_id
+            query['OpenGroupId'] = request.open_group_id
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListEnterpriseDingtalkGroupCustomerMembers',

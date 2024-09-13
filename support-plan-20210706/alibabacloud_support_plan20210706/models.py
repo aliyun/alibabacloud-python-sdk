@@ -180,31 +180,23 @@ class CloseTaskOrderResponse(TeaModel):
 class CreateTaskOrderRequest(TeaModel):
     def __init__(
         self,
-        customer_real_name: str = None,
-        customer_user_id: str = None,
-        important_description: str = None,
-        is_important: str = None,
+        create_user_id: str = None,
+        is_urgent: bool = None,
         open_group_id: str = None,
-        product_type: str = None,
-        product_type_name: str = None,
-        task_title: str = None,
+        overview: str = None,
+        product_code: str = None,
+        urgent_description: str = None,
     ):
-        self.customer_real_name = customer_real_name
-        self.customer_user_id = customer_user_id
-        self.important_description = important_description
         # This parameter is required.
-        self.is_important = is_important
+        self.create_user_id = create_user_id
+        self.is_urgent = is_urgent
         # This parameter is required.
         self.open_group_id = open_group_id
-        # productType
-        # 
         # This parameter is required.
-        self.product_type = product_type
-        self.product_type_name = product_type_name
-        # taskTitle
-        # 
+        self.overview = overview
         # This parameter is required.
-        self.task_title = task_title
+        self.product_code = product_code
+        self.urgent_description = urgent_description
 
     def validate(self):
         pass
@@ -215,42 +207,34 @@ class CreateTaskOrderRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.customer_real_name is not None:
-            result['CustomerRealName'] = self.customer_real_name
-        if self.customer_user_id is not None:
-            result['CustomerUserId'] = self.customer_user_id
-        if self.important_description is not None:
-            result['ImportantDescription'] = self.important_description
-        if self.is_important is not None:
-            result['IsImportant'] = self.is_important
+        if self.create_user_id is not None:
+            result['CreateUserId'] = self.create_user_id
+        if self.is_urgent is not None:
+            result['IsUrgent'] = self.is_urgent
         if self.open_group_id is not None:
             result['OpenGroupId'] = self.open_group_id
-        if self.product_type is not None:
-            result['ProductType'] = self.product_type
-        if self.product_type_name is not None:
-            result['ProductTypeName'] = self.product_type_name
-        if self.task_title is not None:
-            result['TaskTitle'] = self.task_title
+        if self.overview is not None:
+            result['Overview'] = self.overview
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.urgent_description is not None:
+            result['UrgentDescription'] = self.urgent_description
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CustomerRealName') is not None:
-            self.customer_real_name = m.get('CustomerRealName')
-        if m.get('CustomerUserId') is not None:
-            self.customer_user_id = m.get('CustomerUserId')
-        if m.get('ImportantDescription') is not None:
-            self.important_description = m.get('ImportantDescription')
-        if m.get('IsImportant') is not None:
-            self.is_important = m.get('IsImportant')
+        if m.get('CreateUserId') is not None:
+            self.create_user_id = m.get('CreateUserId')
+        if m.get('IsUrgent') is not None:
+            self.is_urgent = m.get('IsUrgent')
         if m.get('OpenGroupId') is not None:
             self.open_group_id = m.get('OpenGroupId')
-        if m.get('ProductType') is not None:
-            self.product_type = m.get('ProductType')
-        if m.get('ProductTypeName') is not None:
-            self.product_type_name = m.get('ProductTypeName')
-        if m.get('TaskTitle') is not None:
-            self.task_title = m.get('TaskTitle')
+        if m.get('Overview') is not None:
+            self.overview = m.get('Overview')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('UrgentDescription') is not None:
+            self.urgent_description = m.get('UrgentDescription')
         return self
 
 
@@ -1184,39 +1168,28 @@ class GetEnterpriseDingtalkGroupCustomerMemberResponse(TeaModel):
 class ListDdTaskOrderRequest(TeaModel):
     def __init__(
         self,
-        caller_parent_id: int = None,
-        caller_type: str = None,
-        caller_uid: int = None,
         create_real_name: str = None,
         end_time: str = None,
+        is_urgent: bool = None,
         open_group_id: str = None,
-        order_id: str = None,
-        page_no: str = None,
-        page_size: str = None,
-        request_id: str = None,
+        page_no: int = None,
+        page_size: int = None,
         start_time: str = None,
         task_status: str = None,
     ):
-        # callerParentId
-        self.caller_parent_id = caller_parent_id
-        # callerType
-        self.caller_type = caller_type
-        # callerUid
-        self.caller_uid = caller_uid
         # createRealName
         self.create_real_name = create_real_name
         # endTime
         self.end_time = end_time
+        self.is_urgent = is_urgent
         # openGroupId
+        # 
+        # This parameter is required.
         self.open_group_id = open_group_id
-        # orderId
-        self.order_id = order_id
         # pageNo
         self.page_no = page_no
         # pageSize
         self.page_size = page_size
-        # requestId
-        self.request_id = request_id
         # startTime
         self.start_time = start_time
         # taskStatus
@@ -1231,26 +1204,18 @@ class ListDdTaskOrderRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.caller_parent_id is not None:
-            result['CallerParentId'] = self.caller_parent_id
-        if self.caller_type is not None:
-            result['CallerType'] = self.caller_type
-        if self.caller_uid is not None:
-            result['CallerUid'] = self.caller_uid
         if self.create_real_name is not None:
             result['CreateRealName'] = self.create_real_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.is_urgent is not None:
+            result['IsUrgent'] = self.is_urgent
         if self.open_group_id is not None:
             result['OpenGroupId'] = self.open_group_id
-        if self.order_id is not None:
-            result['OrderId'] = self.order_id
         if self.page_no is not None:
             result['PageNo'] = self.page_no
         if self.page_size is not None:
             result['PageSize'] = self.page_size
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.task_status is not None:
@@ -1259,26 +1224,18 @@ class ListDdTaskOrderRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CallerParentId') is not None:
-            self.caller_parent_id = m.get('CallerParentId')
-        if m.get('CallerType') is not None:
-            self.caller_type = m.get('CallerType')
-        if m.get('CallerUid') is not None:
-            self.caller_uid = m.get('CallerUid')
         if m.get('CreateRealName') is not None:
             self.create_real_name = m.get('CreateRealName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('IsUrgent') is not None:
+            self.is_urgent = m.get('IsUrgent')
         if m.get('OpenGroupId') is not None:
             self.open_group_id = m.get('OpenGroupId')
-        if m.get('OrderId') is not None:
-            self.order_id = m.get('OrderId')
         if m.get('PageNo') is not None:
             self.page_no = m.get('PageNo')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('TaskStatus') is not None:
@@ -1411,11 +1368,50 @@ class ListEnterpriseDingtalkGroupCustomerMembersRequest(TeaModel):
         return self
 
 
+class ListEnterpriseDingtalkGroupCustomerMembersResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        is_admin: bool = None,
+        name: str = None,
+        user_id: str = None,
+    ):
+        self.is_admin = is_admin
+        self.name = name
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_admin is not None:
+            result['IsAdmin'] = self.is_admin
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsAdmin') is not None:
+            self.is_admin = m.get('IsAdmin')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
 class ListEnterpriseDingtalkGroupCustomerMembersResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
-        data: List[EnterpriseDingtalkGroupMember] = None,
+        data: List[ListEnterpriseDingtalkGroupCustomerMembersResponseBodyData] = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
@@ -1459,7 +1455,7 @@ class ListEnterpriseDingtalkGroupCustomerMembersResponseBody(TeaModel):
         self.data = []
         if m.get('Data') is not None:
             for k in m.get('Data'):
-                temp_model = EnterpriseDingtalkGroupMember()
+                temp_model = ListEnterpriseDingtalkGroupCustomerMembersResponseBodyData()
                 self.data.append(temp_model.from_map(k))
         if m.get('Message') is not None:
             self.message = m.get('Message')
