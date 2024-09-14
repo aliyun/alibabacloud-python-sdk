@@ -41,6 +41,530 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def config_audit_log_with_options(
+        self,
+        request: hsm_20231113_models.ConfigAuditLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigAuditLogResponse:
+        """
+        @summary 查询用户地域下审计日志功能开通
+        
+        @param request: ConfigAuditLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigAuditLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.audit_action):
+            query['AuditAction'] = request.audit_action
+        if not UtilClient.is_unset(request.audit_oss_bucket):
+            query['AuditOssBucket'] = request.audit_oss_bucket
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigAuditLog',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigAuditLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_audit_log_with_options_async(
+        self,
+        request: hsm_20231113_models.ConfigAuditLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigAuditLogResponse:
+        """
+        @summary 查询用户地域下审计日志功能开通
+        
+        @param request: ConfigAuditLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigAuditLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.audit_action):
+            query['AuditAction'] = request.audit_action
+        if not UtilClient.is_unset(request.audit_oss_bucket):
+            query['AuditOssBucket'] = request.audit_oss_bucket
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigAuditLog',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigAuditLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_audit_log(
+        self,
+        request: hsm_20231113_models.ConfigAuditLogRequest,
+    ) -> hsm_20231113_models.ConfigAuditLogResponse:
+        """
+        @summary 查询用户地域下审计日志功能开通
+        
+        @param request: ConfigAuditLogRequest
+        @return: ConfigAuditLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_audit_log_with_options(request, runtime)
+
+    async def config_audit_log_async(
+        self,
+        request: hsm_20231113_models.ConfigAuditLogRequest,
+    ) -> hsm_20231113_models.ConfigAuditLogResponse:
+        """
+        @summary 查询用户地域下审计日志功能开通
+        
+        @param request: ConfigAuditLogRequest
+        @return: ConfigAuditLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_audit_log_with_options_async(request, runtime)
+
+    def config_backup_remark_with_options(
+        self,
+        request: hsm_20231113_models.ConfigBackupRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigBackupRemarkResponse:
+        """
+        @summary 设置备份名与备注
+        
+        @param request: ConfigBackupRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigBackupRemarkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigBackupRemark',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigBackupRemarkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_backup_remark_with_options_async(
+        self,
+        request: hsm_20231113_models.ConfigBackupRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigBackupRemarkResponse:
+        """
+        @summary 设置备份名与备注
+        
+        @param request: ConfigBackupRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigBackupRemarkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigBackupRemark',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigBackupRemarkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_backup_remark(
+        self,
+        request: hsm_20231113_models.ConfigBackupRemarkRequest,
+    ) -> hsm_20231113_models.ConfigBackupRemarkResponse:
+        """
+        @summary 设置备份名与备注
+        
+        @param request: ConfigBackupRemarkRequest
+        @return: ConfigBackupRemarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_backup_remark_with_options(request, runtime)
+
+    async def config_backup_remark_async(
+        self,
+        request: hsm_20231113_models.ConfigBackupRemarkRequest,
+    ) -> hsm_20231113_models.ConfigBackupRemarkResponse:
+        """
+        @summary 设置备份名与备注
+        
+        @param request: ConfigBackupRemarkRequest
+        @return: ConfigBackupRemarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_backup_remark_with_options_async(request, runtime)
+
+    def config_backup_task_with_options(
+        self,
+        request: hsm_20231113_models.ConfigBackupTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigBackupTaskResponse:
+        """
+        @summary 配置备份自动轮转任务
+        
+        @param request: ConfigBackupTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigBackupTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_hour_in_day):
+            query['BackupHourInDay'] = request.backup_hour_in_day
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.backup_period):
+            query['BackupPeriod'] = request.backup_period
+        if not UtilClient.is_unset(request.manual_2periodic_list):
+            query['Manual2PeriodicList'] = request.manual_2periodic_list
+        if not UtilClient.is_unset(request.periodic_2manual_list):
+            query['Periodic2ManualList'] = request.periodic_2manual_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigBackupTask',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigBackupTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_backup_task_with_options_async(
+        self,
+        request: hsm_20231113_models.ConfigBackupTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigBackupTaskResponse:
+        """
+        @summary 配置备份自动轮转任务
+        
+        @param request: ConfigBackupTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigBackupTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_hour_in_day):
+            query['BackupHourInDay'] = request.backup_hour_in_day
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.backup_period):
+            query['BackupPeriod'] = request.backup_period
+        if not UtilClient.is_unset(request.manual_2periodic_list):
+            query['Manual2PeriodicList'] = request.manual_2periodic_list
+        if not UtilClient.is_unset(request.periodic_2manual_list):
+            query['Periodic2ManualList'] = request.periodic_2manual_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigBackupTask',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigBackupTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_backup_task(
+        self,
+        request: hsm_20231113_models.ConfigBackupTaskRequest,
+    ) -> hsm_20231113_models.ConfigBackupTaskResponse:
+        """
+        @summary 配置备份自动轮转任务
+        
+        @param request: ConfigBackupTaskRequest
+        @return: ConfigBackupTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_backup_task_with_options(request, runtime)
+
+    async def config_backup_task_async(
+        self,
+        request: hsm_20231113_models.ConfigBackupTaskRequest,
+    ) -> hsm_20231113_models.ConfigBackupTaskResponse:
+        """
+        @summary 配置备份自动轮转任务
+        
+        @param request: ConfigBackupTaskRequest
+        @return: ConfigBackupTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_backup_task_with_options_async(request, runtime)
+
+    def config_cluster_certificate_with_options(
+        self,
+        request: hsm_20231113_models.ConfigClusterCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigClusterCertificateResponse:
+        """
+        @summary 国际站配置HSM集群证书
+        
+        @param request: ConfigClusterCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigClusterCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_certificate):
+            body['ClusterCertificate'] = request.cluster_certificate
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.issuer_certificate):
+            body['IssuerCertificate'] = request.issuer_certificate
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigClusterCertificate',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigClusterCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_cluster_certificate_with_options_async(
+        self,
+        request: hsm_20231113_models.ConfigClusterCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigClusterCertificateResponse:
+        """
+        @summary 国际站配置HSM集群证书
+        
+        @param request: ConfigClusterCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigClusterCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_certificate):
+            body['ClusterCertificate'] = request.cluster_certificate
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.issuer_certificate):
+            body['IssuerCertificate'] = request.issuer_certificate
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigClusterCertificate',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigClusterCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_cluster_certificate(
+        self,
+        request: hsm_20231113_models.ConfigClusterCertificateRequest,
+    ) -> hsm_20231113_models.ConfigClusterCertificateResponse:
+        """
+        @summary 国际站配置HSM集群证书
+        
+        @param request: ConfigClusterCertificateRequest
+        @return: ConfigClusterCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_cluster_certificate_with_options(request, runtime)
+
+    async def config_cluster_certificate_async(
+        self,
+        request: hsm_20231113_models.ConfigClusterCertificateRequest,
+    ) -> hsm_20231113_models.ConfigClusterCertificateResponse:
+        """
+        @summary 国际站配置HSM集群证书
+        
+        @param request: ConfigClusterCertificateRequest
+        @return: ConfigClusterCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_cluster_certificate_with_options_async(request, runtime)
+
+    def config_cluster_name_with_options(
+        self,
+        request: hsm_20231113_models.ConfigClusterNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigClusterNameResponse:
+        """
+        @summary 配置集群名称
+        
+        @param request: ConfigClusterNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigClusterNameResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_name):
+            body['ClusterName'] = request.cluster_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigClusterName',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigClusterNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_cluster_name_with_options_async(
+        self,
+        request: hsm_20231113_models.ConfigClusterNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigClusterNameResponse:
+        """
+        @summary 配置集群名称
+        
+        @param request: ConfigClusterNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigClusterNameResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_name):
+            body['ClusterName'] = request.cluster_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigClusterName',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigClusterNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_cluster_name(
+        self,
+        request: hsm_20231113_models.ConfigClusterNameRequest,
+    ) -> hsm_20231113_models.ConfigClusterNameResponse:
+        """
+        @summary 配置集群名称
+        
+        @param request: ConfigClusterNameRequest
+        @return: ConfigClusterNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_cluster_name_with_options(request, runtime)
+
+    async def config_cluster_name_async(
+        self,
+        request: hsm_20231113_models.ConfigClusterNameRequest,
+    ) -> hsm_20231113_models.ConfigClusterNameResponse:
+        """
+        @summary 配置集群名称
+        
+        @param request: ConfigClusterNameRequest
+        @return: ConfigClusterNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_cluster_name_with_options_async(request, runtime)
+
     def config_cluster_subnet_with_options(
         self,
         tmp_req: hsm_20231113_models.ConfigClusterSubnetRequest,
@@ -156,3 +680,3237 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.config_cluster_subnet_with_options_async(request, runtime)
+
+    def config_cluster_whitelist_with_options(
+        self,
+        request: hsm_20231113_models.ConfigClusterWhitelistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigClusterWhitelistResponse:
+        """
+        @summary 配置集群名称
+        
+        @param request: ConfigClusterWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigClusterWhitelistResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.whitelist):
+            body['Whitelist'] = request.whitelist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigClusterWhitelist',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigClusterWhitelistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_cluster_whitelist_with_options_async(
+        self,
+        request: hsm_20231113_models.ConfigClusterWhitelistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigClusterWhitelistResponse:
+        """
+        @summary 配置集群名称
+        
+        @param request: ConfigClusterWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigClusterWhitelistResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.whitelist):
+            body['Whitelist'] = request.whitelist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigClusterWhitelist',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigClusterWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_cluster_whitelist(
+        self,
+        request: hsm_20231113_models.ConfigClusterWhitelistRequest,
+    ) -> hsm_20231113_models.ConfigClusterWhitelistResponse:
+        """
+        @summary 配置集群名称
+        
+        @param request: ConfigClusterWhitelistRequest
+        @return: ConfigClusterWhitelistResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_cluster_whitelist_with_options(request, runtime)
+
+    async def config_cluster_whitelist_async(
+        self,
+        request: hsm_20231113_models.ConfigClusterWhitelistRequest,
+    ) -> hsm_20231113_models.ConfigClusterWhitelistResponse:
+        """
+        @summary 配置集群名称
+        
+        @param request: ConfigClusterWhitelistRequest
+        @return: ConfigClusterWhitelistResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_cluster_whitelist_with_options_async(request, runtime)
+
+    def config_image_remark_with_options(
+        self,
+        request: hsm_20231113_models.ConfigImageRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigImageRemarkResponse:
+        """
+        @summary 设置镜像备注
+        
+        @param request: ConfigImageRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigImageRemarkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigImageRemark',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigImageRemarkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_image_remark_with_options_async(
+        self,
+        request: hsm_20231113_models.ConfigImageRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigImageRemarkResponse:
+        """
+        @summary 设置镜像备注
+        
+        @param request: ConfigImageRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigImageRemarkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigImageRemark',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigImageRemarkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_image_remark(
+        self,
+        request: hsm_20231113_models.ConfigImageRemarkRequest,
+    ) -> hsm_20231113_models.ConfigImageRemarkResponse:
+        """
+        @summary 设置镜像备注
+        
+        @param request: ConfigImageRemarkRequest
+        @return: ConfigImageRemarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_image_remark_with_options(request, runtime)
+
+    async def config_image_remark_async(
+        self,
+        request: hsm_20231113_models.ConfigImageRemarkRequest,
+    ) -> hsm_20231113_models.ConfigImageRemarkResponse:
+        """
+        @summary 设置镜像备注
+        
+        @param request: ConfigImageRemarkRequest
+        @return: ConfigImageRemarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_image_remark_with_options_async(request, runtime)
+
+    def config_instance_ip_address_with_options(
+        self,
+        request: hsm_20231113_models.ConfigInstanceIpAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigInstanceIpAddressResponse:
+        """
+        @param request: ConfigInstanceIpAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigInstanceIpAddressResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ip):
+            body['Ip'] = request.ip
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            body['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigInstanceIpAddress',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigInstanceIpAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_instance_ip_address_with_options_async(
+        self,
+        request: hsm_20231113_models.ConfigInstanceIpAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigInstanceIpAddressResponse:
+        """
+        @param request: ConfigInstanceIpAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigInstanceIpAddressResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ip):
+            body['Ip'] = request.ip
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            body['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigInstanceIpAddress',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigInstanceIpAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_instance_ip_address(
+        self,
+        request: hsm_20231113_models.ConfigInstanceIpAddressRequest,
+    ) -> hsm_20231113_models.ConfigInstanceIpAddressResponse:
+        """
+        @param request: ConfigInstanceIpAddressRequest
+        @return: ConfigInstanceIpAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_instance_ip_address_with_options(request, runtime)
+
+    async def config_instance_ip_address_async(
+        self,
+        request: hsm_20231113_models.ConfigInstanceIpAddressRequest,
+    ) -> hsm_20231113_models.ConfigInstanceIpAddressResponse:
+        """
+        @param request: ConfigInstanceIpAddressRequest
+        @return: ConfigInstanceIpAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_instance_ip_address_with_options_async(request, runtime)
+
+    def config_instance_remark_with_options(
+        self,
+        request: hsm_20231113_models.ConfigInstanceRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigInstanceRemarkResponse:
+        """
+        @param request: ConfigInstanceRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigInstanceRemarkResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.remark):
+            body['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigInstanceRemark',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigInstanceRemarkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_instance_remark_with_options_async(
+        self,
+        request: hsm_20231113_models.ConfigInstanceRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigInstanceRemarkResponse:
+        """
+        @param request: ConfigInstanceRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigInstanceRemarkResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.remark):
+            body['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigInstanceRemark',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigInstanceRemarkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_instance_remark(
+        self,
+        request: hsm_20231113_models.ConfigInstanceRemarkRequest,
+    ) -> hsm_20231113_models.ConfigInstanceRemarkResponse:
+        """
+        @param request: ConfigInstanceRemarkRequest
+        @return: ConfigInstanceRemarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_instance_remark_with_options(request, runtime)
+
+    async def config_instance_remark_async(
+        self,
+        request: hsm_20231113_models.ConfigInstanceRemarkRequest,
+    ) -> hsm_20231113_models.ConfigInstanceRemarkResponse:
+        """
+        @param request: ConfigInstanceRemarkRequest
+        @return: ConfigInstanceRemarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_instance_remark_with_options_async(request, runtime)
+
+    def config_instance_whitelist_with_options(
+        self,
+        request: hsm_20231113_models.ConfigInstanceWhitelistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigInstanceWhitelistResponse:
+        """
+        @summary TODO 不允许控制台直接修改集群内实例的白名单实现重构
+        
+        @param request: ConfigInstanceWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigInstanceWhitelistResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.whitelist):
+            body['Whitelist'] = request.whitelist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigInstanceWhitelist',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigInstanceWhitelistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_instance_whitelist_with_options_async(
+        self,
+        request: hsm_20231113_models.ConfigInstanceWhitelistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ConfigInstanceWhitelistResponse:
+        """
+        @summary TODO 不允许控制台直接修改集群内实例的白名单实现重构
+        
+        @param request: ConfigInstanceWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigInstanceWhitelistResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.whitelist):
+            body['Whitelist'] = request.whitelist
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfigInstanceWhitelist',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ConfigInstanceWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_instance_whitelist(
+        self,
+        request: hsm_20231113_models.ConfigInstanceWhitelistRequest,
+    ) -> hsm_20231113_models.ConfigInstanceWhitelistResponse:
+        """
+        @summary TODO 不允许控制台直接修改集群内实例的白名单实现重构
+        
+        @param request: ConfigInstanceWhitelistRequest
+        @return: ConfigInstanceWhitelistResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_instance_whitelist_with_options(request, runtime)
+
+    async def config_instance_whitelist_async(
+        self,
+        request: hsm_20231113_models.ConfigInstanceWhitelistRequest,
+    ) -> hsm_20231113_models.ConfigInstanceWhitelistResponse:
+        """
+        @summary TODO 不允许控制台直接修改集群内实例的白名单实现重构
+        
+        @param request: ConfigInstanceWhitelistRequest
+        @return: ConfigInstanceWhitelistResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_instance_whitelist_with_options_async(request, runtime)
+
+    def copy_image_with_options(
+        self,
+        request: hsm_20231113_models.CopyImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.CopyImageResponse:
+        """
+        @summary 跨地域复制镜像
+        
+        @param request: CopyImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyImageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_uid):
+            body['ImageUid'] = request.image_uid
+        if not UtilClient.is_unset(request.target_region_id):
+            body['TargetRegionId'] = request.target_region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CopyImage',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.CopyImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def copy_image_with_options_async(
+        self,
+        request: hsm_20231113_models.CopyImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.CopyImageResponse:
+        """
+        @summary 跨地域复制镜像
+        
+        @param request: CopyImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyImageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_uid):
+            body['ImageUid'] = request.image_uid
+        if not UtilClient.is_unset(request.target_region_id):
+            body['TargetRegionId'] = request.target_region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CopyImage',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.CopyImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def copy_image(
+        self,
+        request: hsm_20231113_models.CopyImageRequest,
+    ) -> hsm_20231113_models.CopyImageResponse:
+        """
+        @summary 跨地域复制镜像
+        
+        @param request: CopyImageRequest
+        @return: CopyImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.copy_image_with_options(request, runtime)
+
+    async def copy_image_async(
+        self,
+        request: hsm_20231113_models.CopyImageRequest,
+    ) -> hsm_20231113_models.CopyImageResponse:
+        """
+        @summary 跨地域复制镜像
+        
+        @param request: CopyImageRequest
+        @return: CopyImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.copy_image_with_options_async(request, runtime)
+
+    def create_cluster_with_options(
+        self,
+        request: hsm_20231113_models.CreateClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.CreateClusterResponse:
+        """
+        @param request: CreateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_name):
+            body['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.master_instance_id):
+            body['MasterInstanceId'] = request.master_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateCluster',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.CreateClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cluster_with_options_async(
+        self,
+        request: hsm_20231113_models.CreateClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.CreateClusterResponse:
+        """
+        @param request: CreateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_name):
+            body['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.master_instance_id):
+            body['MasterInstanceId'] = request.master_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateCluster',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.CreateClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cluster(
+        self,
+        request: hsm_20231113_models.CreateClusterRequest,
+    ) -> hsm_20231113_models.CreateClusterResponse:
+        """
+        @param request: CreateClusterRequest
+        @return: CreateClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_cluster_with_options(request, runtime)
+
+    async def create_cluster_async(
+        self,
+        request: hsm_20231113_models.CreateClusterRequest,
+    ) -> hsm_20231113_models.CreateClusterResponse:
+        """
+        @param request: CreateClusterRequest
+        @return: CreateClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_cluster_with_options_async(request, runtime)
+
+    def delete_cluster_with_options(
+        self,
+        request: hsm_20231113_models.DeleteClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.DeleteClusterResponse:
+        """
+        @param request: DeleteClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteCluster',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.DeleteClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cluster_with_options_async(
+        self,
+        request: hsm_20231113_models.DeleteClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.DeleteClusterResponse:
+        """
+        @param request: DeleteClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteCluster',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.DeleteClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cluster(
+        self,
+        request: hsm_20231113_models.DeleteClusterRequest,
+    ) -> hsm_20231113_models.DeleteClusterResponse:
+        """
+        @param request: DeleteClusterRequest
+        @return: DeleteClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_cluster_with_options(request, runtime)
+
+    async def delete_cluster_async(
+        self,
+        request: hsm_20231113_models.DeleteClusterRequest,
+    ) -> hsm_20231113_models.DeleteClusterResponse:
+        """
+        @param request: DeleteClusterRequest
+        @return: DeleteClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_cluster_with_options_async(request, runtime)
+
+    def describe_regions_with_options(
+        self,
+        request: hsm_20231113_models.DescribeRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_regions_with_options_async(
+        self,
+        request: hsm_20231113_models.DescribeRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRegions',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_regions(
+        self,
+        request: hsm_20231113_models.DescribeRegionsRequest,
+    ) -> hsm_20231113_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_regions_with_options(request, runtime)
+
+    async def describe_regions_async(
+        self,
+        request: hsm_20231113_models.DescribeRegionsRequest,
+    ) -> hsm_20231113_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_regions_with_options_async(request, runtime)
+
+    def enable_backup_with_options(
+        self,
+        request: hsm_20231113_models.EnableBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.EnableBackupResponse:
+        """
+        @summary 启用备份
+        
+        @param request: EnableBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableBackup',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.EnableBackupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_backup_with_options_async(
+        self,
+        request: hsm_20231113_models.EnableBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.EnableBackupResponse:
+        """
+        @summary 启用备份
+        
+        @param request: EnableBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableBackup',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.EnableBackupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_backup(
+        self,
+        request: hsm_20231113_models.EnableBackupRequest,
+    ) -> hsm_20231113_models.EnableBackupResponse:
+        """
+        @summary 启用备份
+        
+        @param request: EnableBackupRequest
+        @return: EnableBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_backup_with_options(request, runtime)
+
+    async def enable_backup_async(
+        self,
+        request: hsm_20231113_models.EnableBackupRequest,
+    ) -> hsm_20231113_models.EnableBackupResponse:
+        """
+        @summary 启用备份
+        
+        @param request: EnableBackupRequest
+        @return: EnableBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_backup_with_options_async(request, runtime)
+
+    def export_image_with_options(
+        self,
+        request: hsm_20231113_models.ExportImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ExportImageResponse:
+        """
+        @summary 手动导出镜像
+        
+        @param request: ExportImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportImageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExportImage',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ExportImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_image_with_options_async(
+        self,
+        request: hsm_20231113_models.ExportImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ExportImageResponse:
+        """
+        @summary 手动导出镜像
+        
+        @param request: ExportImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportImageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExportImage',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ExportImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_image(
+        self,
+        request: hsm_20231113_models.ExportImageRequest,
+    ) -> hsm_20231113_models.ExportImageResponse:
+        """
+        @summary 手动导出镜像
+        
+        @param request: ExportImageRequest
+        @return: ExportImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.export_image_with_options(request, runtime)
+
+    async def export_image_async(
+        self,
+        request: hsm_20231113_models.ExportImageRequest,
+    ) -> hsm_20231113_models.ExportImageResponse:
+        """
+        @summary 手动导出镜像
+        
+        @param request: ExportImageRequest
+        @return: ExportImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.export_image_with_options_async(request, runtime)
+
+    def get_audit_log_status_with_options(
+        self,
+        request: hsm_20231113_models.GetAuditLogStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.GetAuditLogStatusResponse:
+        """
+        @summary 查询审计日志功能开通状态
+        
+        @param request: GetAuditLogStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuditLogStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.get_oss_bucket):
+            query['GetOssBucket'] = request.get_oss_bucket
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAuditLogStatus',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.GetAuditLogStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_audit_log_status_with_options_async(
+        self,
+        request: hsm_20231113_models.GetAuditLogStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.GetAuditLogStatusResponse:
+        """
+        @summary 查询审计日志功能开通状态
+        
+        @param request: GetAuditLogStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuditLogStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.get_oss_bucket):
+            query['GetOssBucket'] = request.get_oss_bucket
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAuditLogStatus',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.GetAuditLogStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_audit_log_status(
+        self,
+        request: hsm_20231113_models.GetAuditLogStatusRequest,
+    ) -> hsm_20231113_models.GetAuditLogStatusResponse:
+        """
+        @summary 查询审计日志功能开通状态
+        
+        @param request: GetAuditLogStatusRequest
+        @return: GetAuditLogStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_audit_log_status_with_options(request, runtime)
+
+    async def get_audit_log_status_async(
+        self,
+        request: hsm_20231113_models.GetAuditLogStatusRequest,
+    ) -> hsm_20231113_models.GetAuditLogStatusResponse:
+        """
+        @summary 查询审计日志功能开通状态
+        
+        @param request: GetAuditLogStatusRequest
+        @return: GetAuditLogStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_audit_log_status_with_options_async(request, runtime)
+
+    def get_backup_with_options(
+        self,
+        request: hsm_20231113_models.GetBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.GetBackupResponse:
+        """
+        @summary 展示用户备份
+        
+        @param request: GetBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBackup',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.GetBackupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_backup_with_options_async(
+        self,
+        request: hsm_20231113_models.GetBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.GetBackupResponse:
+        """
+        @summary 展示用户备份
+        
+        @param request: GetBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBackup',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.GetBackupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_backup(
+        self,
+        request: hsm_20231113_models.GetBackupRequest,
+    ) -> hsm_20231113_models.GetBackupResponse:
+        """
+        @summary 展示用户备份
+        
+        @param request: GetBackupRequest
+        @return: GetBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_backup_with_options(request, runtime)
+
+    async def get_backup_async(
+        self,
+        request: hsm_20231113_models.GetBackupRequest,
+    ) -> hsm_20231113_models.GetBackupResponse:
+        """
+        @summary 展示用户备份
+        
+        @param request: GetBackupRequest
+        @return: GetBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_backup_with_options_async(request, runtime)
+
+    def get_cluster_with_options(
+        self,
+        request: hsm_20231113_models.GetClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.GetClusterResponse:
+        """
+        @param request: GetClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCluster',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.GetClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cluster_with_options_async(
+        self,
+        request: hsm_20231113_models.GetClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.GetClusterResponse:
+        """
+        @param request: GetClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCluster',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.GetClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cluster(
+        self,
+        request: hsm_20231113_models.GetClusterRequest,
+    ) -> hsm_20231113_models.GetClusterResponse:
+        """
+        @param request: GetClusterRequest
+        @return: GetClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_cluster_with_options(request, runtime)
+
+    async def get_cluster_async(
+        self,
+        request: hsm_20231113_models.GetClusterRequest,
+    ) -> hsm_20231113_models.GetClusterResponse:
+        """
+        @param request: GetClusterRequest
+        @return: GetClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_cluster_with_options_async(request, runtime)
+
+    def get_image_with_options(
+        self,
+        request: hsm_20231113_models.GetImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.GetImageResponse:
+        """
+        @summary 展示备份下的用户镜像
+        
+        @param request: GetImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetImage',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.GetImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_image_with_options_async(
+        self,
+        request: hsm_20231113_models.GetImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.GetImageResponse:
+        """
+        @summary 展示备份下的用户镜像
+        
+        @param request: GetImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.image_id):
+            query['ImageId'] = request.image_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetImage',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.GetImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_image(
+        self,
+        request: hsm_20231113_models.GetImageRequest,
+    ) -> hsm_20231113_models.GetImageResponse:
+        """
+        @summary 展示备份下的用户镜像
+        
+        @param request: GetImageRequest
+        @return: GetImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_image_with_options(request, runtime)
+
+    async def get_image_async(
+        self,
+        request: hsm_20231113_models.GetImageRequest,
+    ) -> hsm_20231113_models.GetImageResponse:
+        """
+        @summary 展示备份下的用户镜像
+        
+        @param request: GetImageRequest
+        @return: GetImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_image_with_options_async(request, runtime)
+
+    def get_instance_with_options(
+        self,
+        request: hsm_20231113_models.GetInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.GetInstanceResponse:
+        """
+        @param request: GetInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetInstance',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.GetInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_with_options_async(
+        self,
+        request: hsm_20231113_models.GetInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.GetInstanceResponse:
+        """
+        @param request: GetInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetInstance',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.GetInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance(
+        self,
+        request: hsm_20231113_models.GetInstanceRequest,
+    ) -> hsm_20231113_models.GetInstanceResponse:
+        """
+        @param request: GetInstanceRequest
+        @return: GetInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_instance_with_options(request, runtime)
+
+    async def get_instance_async(
+        self,
+        request: hsm_20231113_models.GetInstanceRequest,
+    ) -> hsm_20231113_models.GetInstanceResponse:
+        """
+        @param request: GetInstanceRequest
+        @return: GetInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_instance_with_options_async(request, runtime)
+
+    def get_job_with_options(
+        self,
+        request: hsm_20231113_models.GetJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.GetJobResponse:
+        """
+        @summary 获取异步任务执行信息
+        
+        @param request: GetJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJob',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.GetJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_job_with_options_async(
+        self,
+        request: hsm_20231113_models.GetJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.GetJobResponse:
+        """
+        @summary 获取异步任务执行信息
+        
+        @param request: GetJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJob',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.GetJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_job(
+        self,
+        request: hsm_20231113_models.GetJobRequest,
+    ) -> hsm_20231113_models.GetJobResponse:
+        """
+        @summary 获取异步任务执行信息
+        
+        @param request: GetJobRequest
+        @return: GetJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_job_with_options(request, runtime)
+
+    async def get_job_async(
+        self,
+        request: hsm_20231113_models.GetJobRequest,
+    ) -> hsm_20231113_models.GetJobResponse:
+        """
+        @summary 获取异步任务执行信息
+        
+        @param request: GetJobRequest
+        @return: GetJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_job_with_options_async(request, runtime)
+
+    def initialize_audit_log_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.InitializeAuditLogResponse:
+        """
+        @summary 为用户创建审计日志的服务关联角色
+        
+        @param request: InitializeAuditLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitializeAuditLogResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='InitializeAuditLog',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.InitializeAuditLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def initialize_audit_log_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.InitializeAuditLogResponse:
+        """
+        @summary 为用户创建审计日志的服务关联角色
+        
+        @param request: InitializeAuditLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitializeAuditLogResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='InitializeAuditLog',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.InitializeAuditLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def initialize_audit_log(self) -> hsm_20231113_models.InitializeAuditLogResponse:
+        """
+        @summary 为用户创建审计日志的服务关联角色
+        
+        @return: InitializeAuditLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.initialize_audit_log_with_options(runtime)
+
+    async def initialize_audit_log_async(self) -> hsm_20231113_models.InitializeAuditLogResponse:
+        """
+        @summary 为用户创建审计日志的服务关联角色
+        
+        @return: InitializeAuditLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.initialize_audit_log_with_options_async(runtime)
+
+    def initialize_cluster_with_options(
+        self,
+        request: hsm_20231113_models.InitializeClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.InitializeClusterResponse:
+        """
+        @summary 初始化集群（原activeCluster）
+        
+        @param request: InitializeClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitializeClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InitializeCluster',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.InitializeClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def initialize_cluster_with_options_async(
+        self,
+        request: hsm_20231113_models.InitializeClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.InitializeClusterResponse:
+        """
+        @summary 初始化集群（原activeCluster）
+        
+        @param request: InitializeClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitializeClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InitializeCluster',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.InitializeClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def initialize_cluster(
+        self,
+        request: hsm_20231113_models.InitializeClusterRequest,
+    ) -> hsm_20231113_models.InitializeClusterResponse:
+        """
+        @summary 初始化集群（原activeCluster）
+        
+        @param request: InitializeClusterRequest
+        @return: InitializeClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.initialize_cluster_with_options(request, runtime)
+
+    async def initialize_cluster_async(
+        self,
+        request: hsm_20231113_models.InitializeClusterRequest,
+    ) -> hsm_20231113_models.InitializeClusterResponse:
+        """
+        @summary 初始化集群（原activeCluster）
+        
+        @param request: InitializeClusterRequest
+        @return: InitializeClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.initialize_cluster_with_options_async(request, runtime)
+
+    def join_cluster_with_options(
+        self,
+        request: hsm_20231113_models.JoinClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.JoinClusterResponse:
+        """
+        @param request: JoinClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: JoinClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='JoinCluster',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.JoinClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def join_cluster_with_options_async(
+        self,
+        request: hsm_20231113_models.JoinClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.JoinClusterResponse:
+        """
+        @param request: JoinClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: JoinClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='JoinCluster',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.JoinClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def join_cluster(
+        self,
+        request: hsm_20231113_models.JoinClusterRequest,
+    ) -> hsm_20231113_models.JoinClusterResponse:
+        """
+        @param request: JoinClusterRequest
+        @return: JoinClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.join_cluster_with_options(request, runtime)
+
+    async def join_cluster_async(
+        self,
+        request: hsm_20231113_models.JoinClusterRequest,
+    ) -> hsm_20231113_models.JoinClusterResponse:
+        """
+        @param request: JoinClusterRequest
+        @return: JoinClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.join_cluster_with_options_async(request, runtime)
+
+    def leave_cluster_with_options(
+        self,
+        request: hsm_20231113_models.LeaveClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.LeaveClusterResponse:
+        """
+        @param request: LeaveClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LeaveClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='LeaveCluster',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.LeaveClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def leave_cluster_with_options_async(
+        self,
+        request: hsm_20231113_models.LeaveClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.LeaveClusterResponse:
+        """
+        @param request: LeaveClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LeaveClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='LeaveCluster',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.LeaveClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def leave_cluster(
+        self,
+        request: hsm_20231113_models.LeaveClusterRequest,
+    ) -> hsm_20231113_models.LeaveClusterResponse:
+        """
+        @param request: LeaveClusterRequest
+        @return: LeaveClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.leave_cluster_with_options(request, runtime)
+
+    async def leave_cluster_async(
+        self,
+        request: hsm_20231113_models.LeaveClusterRequest,
+    ) -> hsm_20231113_models.LeaveClusterResponse:
+        """
+        @param request: LeaveClusterRequest
+        @return: LeaveClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.leave_cluster_with_options_async(request, runtime)
+
+    def list_backups_with_options(
+        self,
+        request: hsm_20231113_models.ListBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ListBackupsResponse:
+        """
+        @summary 查询备份列表
+        
+        @param request: ListBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBackupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBackups',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ListBackupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_backups_with_options_async(
+        self,
+        request: hsm_20231113_models.ListBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ListBackupsResponse:
+        """
+        @summary 查询备份列表
+        
+        @param request: ListBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBackupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBackups',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ListBackupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_backups(
+        self,
+        request: hsm_20231113_models.ListBackupsRequest,
+    ) -> hsm_20231113_models.ListBackupsResponse:
+        """
+        @summary 查询备份列表
+        
+        @param request: ListBackupsRequest
+        @return: ListBackupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_backups_with_options(request, runtime)
+
+    async def list_backups_async(
+        self,
+        request: hsm_20231113_models.ListBackupsRequest,
+    ) -> hsm_20231113_models.ListBackupsResponse:
+        """
+        @summary 查询备份列表
+        
+        @param request: ListBackupsRequest
+        @return: ListBackupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_backups_with_options_async(request, runtime)
+
+    def list_clusters_with_options(
+        self,
+        request: hsm_20231113_models.ListClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ListClustersResponse:
+        """
+        @param request: ListClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClustersResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListClusters',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ListClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_clusters_with_options_async(
+        self,
+        request: hsm_20231113_models.ListClustersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ListClustersResponse:
+        """
+        @param request: ListClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClustersResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListClusters',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ListClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_clusters(
+        self,
+        request: hsm_20231113_models.ListClustersRequest,
+    ) -> hsm_20231113_models.ListClustersResponse:
+        """
+        @param request: ListClustersRequest
+        @return: ListClustersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_clusters_with_options(request, runtime)
+
+    async def list_clusters_async(
+        self,
+        request: hsm_20231113_models.ListClustersRequest,
+    ) -> hsm_20231113_models.ListClustersResponse:
+        """
+        @param request: ListClustersRequest
+        @return: ListClustersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_clusters_with_options_async(request, runtime)
+
+    def list_images_with_options(
+        self,
+        request: hsm_20231113_models.ListImagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ListImagesResponse:
+        """
+        @summary 查询用户镜像列表
+        
+        @param request: ListImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListImagesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListImages',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ListImagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_images_with_options_async(
+        self,
+        request: hsm_20231113_models.ListImagesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ListImagesResponse:
+        """
+        @summary 查询用户镜像列表
+        
+        @param request: ListImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListImagesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListImages',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ListImagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_images(
+        self,
+        request: hsm_20231113_models.ListImagesRequest,
+    ) -> hsm_20231113_models.ListImagesResponse:
+        """
+        @summary 查询用户镜像列表
+        
+        @param request: ListImagesRequest
+        @return: ListImagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_images_with_options(request, runtime)
+
+    async def list_images_async(
+        self,
+        request: hsm_20231113_models.ListImagesRequest,
+    ) -> hsm_20231113_models.ListImagesResponse:
+        """
+        @summary 查询用户镜像列表
+        
+        @param request: ListImagesRequest
+        @return: ListImagesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_images_with_options_async(request, runtime)
+
+    def list_instances_with_options(
+        self,
+        request: hsm_20231113_models.ListInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ListInstancesResponse:
+        """
+        @param request: ListInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListInstances',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ListInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instances_with_options_async(
+        self,
+        request: hsm_20231113_models.ListInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ListInstancesResponse:
+        """
+        @param request: ListInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListInstances',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ListInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instances(
+        self,
+        request: hsm_20231113_models.ListInstancesRequest,
+    ) -> hsm_20231113_models.ListInstancesResponse:
+        """
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_instances_with_options(request, runtime)
+
+    async def list_instances_async(
+        self,
+        request: hsm_20231113_models.ListInstancesRequest,
+    ) -> hsm_20231113_models.ListInstancesResponse:
+        """
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_instances_with_options_async(request, runtime)
+
+    def move_resource_group_with_options(
+        self,
+        request: hsm_20231113_models.MoveResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.MoveResourceGroupResponse:
+        """
+        @summary 资源组移动资源
+        
+        @param request: MoveResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MoveResourceGroup',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.MoveResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def move_resource_group_with_options_async(
+        self,
+        request: hsm_20231113_models.MoveResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.MoveResourceGroupResponse:
+        """
+        @summary 资源组移动资源
+        
+        @param request: MoveResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='MoveResourceGroup',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.MoveResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def move_resource_group(
+        self,
+        request: hsm_20231113_models.MoveResourceGroupRequest,
+    ) -> hsm_20231113_models.MoveResourceGroupResponse:
+        """
+        @summary 资源组移动资源
+        
+        @param request: MoveResourceGroupRequest
+        @return: MoveResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.move_resource_group_with_options(request, runtime)
+
+    async def move_resource_group_async(
+        self,
+        request: hsm_20231113_models.MoveResourceGroupRequest,
+    ) -> hsm_20231113_models.MoveResourceGroupResponse:
+        """
+        @summary 资源组移动资源
+        
+        @param request: MoveResourceGroupRequest
+        @return: MoveResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.move_resource_group_with_options_async(request, runtime)
+
+    def pause_instance_with_options(
+        self,
+        request: hsm_20231113_models.PauseInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.PauseInstanceResponse:
+        """
+        @param request: PauseInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PauseInstance',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.PauseInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pause_instance_with_options_async(
+        self,
+        request: hsm_20231113_models.PauseInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.PauseInstanceResponse:
+        """
+        @param request: PauseInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PauseInstance',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.PauseInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pause_instance(
+        self,
+        request: hsm_20231113_models.PauseInstanceRequest,
+    ) -> hsm_20231113_models.PauseInstanceResponse:
+        """
+        @param request: PauseInstanceRequest
+        @return: PauseInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.pause_instance_with_options(request, runtime)
+
+    async def pause_instance_async(
+        self,
+        request: hsm_20231113_models.PauseInstanceRequest,
+    ) -> hsm_20231113_models.PauseInstanceResponse:
+        """
+        @param request: PauseInstanceRequest
+        @return: PauseInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.pause_instance_with_options_async(request, runtime)
+
+    def quick_init_instance_with_options(
+        self,
+        request: hsm_20231113_models.QuickInitInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.QuickInitInstanceResponse:
+        """
+        @param request: QuickInitInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuickInitInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuickInitInstance',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.QuickInitInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def quick_init_instance_with_options_async(
+        self,
+        request: hsm_20231113_models.QuickInitInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.QuickInitInstanceResponse:
+        """
+        @param request: QuickInitInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuickInitInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QuickInitInstance',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.QuickInitInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def quick_init_instance(
+        self,
+        request: hsm_20231113_models.QuickInitInstanceRequest,
+    ) -> hsm_20231113_models.QuickInitInstanceResponse:
+        """
+        @param request: QuickInitInstanceRequest
+        @return: QuickInitInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.quick_init_instance_with_options(request, runtime)
+
+    async def quick_init_instance_async(
+        self,
+        request: hsm_20231113_models.QuickInitInstanceRequest,
+    ) -> hsm_20231113_models.QuickInitInstanceResponse:
+        """
+        @param request: QuickInitInstanceRequest
+        @return: QuickInitInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.quick_init_instance_with_options_async(request, runtime)
+
+    def reset_backup_with_options(
+        self,
+        request: hsm_20231113_models.ResetBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ResetBackupResponse:
+        """
+        @summary 重置备份
+        
+        @param request: ResetBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetBackup',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ResetBackupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_backup_with_options_async(
+        self,
+        request: hsm_20231113_models.ResetBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ResetBackupResponse:
+        """
+        @summary 重置备份
+        
+        @param request: ResetBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetBackup',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ResetBackupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_backup(
+        self,
+        request: hsm_20231113_models.ResetBackupRequest,
+    ) -> hsm_20231113_models.ResetBackupResponse:
+        """
+        @summary 重置备份
+        
+        @param request: ResetBackupRequest
+        @return: ResetBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.reset_backup_with_options(request, runtime)
+
+    async def reset_backup_async(
+        self,
+        request: hsm_20231113_models.ResetBackupRequest,
+    ) -> hsm_20231113_models.ResetBackupResponse:
+        """
+        @summary 重置备份
+        
+        @param request: ResetBackupRequest
+        @return: ResetBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.reset_backup_with_options_async(request, runtime)
+
+    def reset_instance_with_options(
+        self,
+        request: hsm_20231113_models.ResetInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ResetInstanceResponse:
+        """
+        @param request: ResetInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ResetInstance',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ResetInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_instance_with_options_async(
+        self,
+        request: hsm_20231113_models.ResetInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ResetInstanceResponse:
+        """
+        @param request: ResetInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ResetInstance',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ResetInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_instance(
+        self,
+        request: hsm_20231113_models.ResetInstanceRequest,
+    ) -> hsm_20231113_models.ResetInstanceResponse:
+        """
+        @param request: ResetInstanceRequest
+        @return: ResetInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.reset_instance_with_options(request, runtime)
+
+    async def reset_instance_async(
+        self,
+        request: hsm_20231113_models.ResetInstanceRequest,
+    ) -> hsm_20231113_models.ResetInstanceResponse:
+        """
+        @param request: ResetInstanceRequest
+        @return: ResetInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.reset_instance_with_options_async(request, runtime)
+
+    def restore_instance_with_options(
+        self,
+        request: hsm_20231113_models.RestoreInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.RestoreInstanceResponse:
+        """
+        @param request: RestoreInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RestoreInstance',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.RestoreInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restore_instance_with_options_async(
+        self,
+        request: hsm_20231113_models.RestoreInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.RestoreInstanceResponse:
+        """
+        @param request: RestoreInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RestoreInstance',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.RestoreInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restore_instance(
+        self,
+        request: hsm_20231113_models.RestoreInstanceRequest,
+    ) -> hsm_20231113_models.RestoreInstanceResponse:
+        """
+        @param request: RestoreInstanceRequest
+        @return: RestoreInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.restore_instance_with_options(request, runtime)
+
+    async def restore_instance_async(
+        self,
+        request: hsm_20231113_models.RestoreInstanceRequest,
+    ) -> hsm_20231113_models.RestoreInstanceResponse:
+        """
+        @param request: RestoreInstanceRequest
+        @return: RestoreInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.restore_instance_with_options_async(request, runtime)
+
+    def resume_instance_with_options(
+        self,
+        request: hsm_20231113_models.ResumeInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ResumeInstanceResponse:
+        """
+        @param request: ResumeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ResumeInstance',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ResumeInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_instance_with_options_async(
+        self,
+        request: hsm_20231113_models.ResumeInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.ResumeInstanceResponse:
+        """
+        @param request: ResumeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ResumeInstance',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.ResumeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_instance(
+        self,
+        request: hsm_20231113_models.ResumeInstanceRequest,
+    ) -> hsm_20231113_models.ResumeInstanceResponse:
+        """
+        @param request: ResumeInstanceRequest
+        @return: ResumeInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.resume_instance_with_options(request, runtime)
+
+    async def resume_instance_async(
+        self,
+        request: hsm_20231113_models.ResumeInstanceRequest,
+    ) -> hsm_20231113_models.ResumeInstanceResponse:
+        """
+        @param request: ResumeInstanceRequest
+        @return: ResumeInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.resume_instance_with_options_async(request, runtime)
+
+    def switch_cluster_master_with_options(
+        self,
+        request: hsm_20231113_models.SwitchClusterMasterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.SwitchClusterMasterResponse:
+        """
+        @param request: SwitchClusterMasterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchClusterMasterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SwitchClusterMaster',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.SwitchClusterMasterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def switch_cluster_master_with_options_async(
+        self,
+        request: hsm_20231113_models.SwitchClusterMasterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.SwitchClusterMasterResponse:
+        """
+        @param request: SwitchClusterMasterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchClusterMasterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SwitchClusterMaster',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.SwitchClusterMasterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def switch_cluster_master(
+        self,
+        request: hsm_20231113_models.SwitchClusterMasterRequest,
+    ) -> hsm_20231113_models.SwitchClusterMasterResponse:
+        """
+        @param request: SwitchClusterMasterRequest
+        @return: SwitchClusterMasterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.switch_cluster_master_with_options(request, runtime)
+
+    async def switch_cluster_master_async(
+        self,
+        request: hsm_20231113_models.SwitchClusterMasterRequest,
+    ) -> hsm_20231113_models.SwitchClusterMasterResponse:
+        """
+        @param request: SwitchClusterMasterRequest
+        @return: SwitchClusterMasterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.switch_cluster_master_with_options_async(request, runtime)
+
+    def sync_cluster_with_options(
+        self,
+        request: hsm_20231113_models.SyncClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.SyncClusterResponse:
+        """
+        @param request: SyncClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SyncCluster',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.SyncClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sync_cluster_with_options_async(
+        self,
+        request: hsm_20231113_models.SyncClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hsm_20231113_models.SyncClusterResponse:
+        """
+        @param request: SyncClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SyncClusterResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SyncCluster',
+            version='2023-11-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hsm_20231113_models.SyncClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sync_cluster(
+        self,
+        request: hsm_20231113_models.SyncClusterRequest,
+    ) -> hsm_20231113_models.SyncClusterResponse:
+        """
+        @param request: SyncClusterRequest
+        @return: SyncClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.sync_cluster_with_options(request, runtime)
+
+    async def sync_cluster_async(
+        self,
+        request: hsm_20231113_models.SyncClusterRequest,
+    ) -> hsm_20231113_models.SyncClusterResponse:
+        """
+        @param request: SyncClusterRequest
+        @return: SyncClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.sync_cluster_with_options_async(request, runtime)
