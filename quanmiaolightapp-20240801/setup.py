@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_quanmiaolightapp20240801.
 
-Created on 05/09/2024
+Created on 14/09/2024
 
 @author: Alibaba Cloud SDK
 """

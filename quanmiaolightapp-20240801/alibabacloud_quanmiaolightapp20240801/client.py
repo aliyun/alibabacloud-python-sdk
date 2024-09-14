@@ -41,6 +41,130 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def list_hot_topic_summaries_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.ListHotTopicSummariesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.ListHotTopicSummariesResponse:
+        """
+        @summary 轻应用-新闻播报-获取热点话题摘要列表
+        
+        @param request: ListHotTopicSummariesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotTopicSummariesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category):
+            body['category'] = request.category
+        if not UtilClient.is_unset(request.hot_topic):
+            body['hotTopic'] = request.hot_topic
+        if not UtilClient.is_unset(request.hot_topic_version):
+            body['hotTopicVersion'] = request.hot_topic_version
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListHotTopicSummaries',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/listHotTopicSummaries',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.ListHotTopicSummariesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_hot_topic_summaries_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.ListHotTopicSummariesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.ListHotTopicSummariesResponse:
+        """
+        @summary 轻应用-新闻播报-获取热点话题摘要列表
+        
+        @param request: ListHotTopicSummariesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHotTopicSummariesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category):
+            body['category'] = request.category
+        if not UtilClient.is_unset(request.hot_topic):
+            body['hotTopic'] = request.hot_topic
+        if not UtilClient.is_unset(request.hot_topic_version):
+            body['hotTopicVersion'] = request.hot_topic_version
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListHotTopicSummaries',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/listHotTopicSummaries',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.ListHotTopicSummariesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_hot_topic_summaries(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.ListHotTopicSummariesRequest,
+    ) -> quan_miao_light_app_20240801_models.ListHotTopicSummariesResponse:
+        """
+        @summary 轻应用-新闻播报-获取热点话题摘要列表
+        
+        @param request: ListHotTopicSummariesRequest
+        @return: ListHotTopicSummariesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_hot_topic_summaries_with_options(workspace_id, request, headers, runtime)
+
+    async def list_hot_topic_summaries_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.ListHotTopicSummariesRequest,
+    ) -> quan_miao_light_app_20240801_models.ListHotTopicSummariesResponse:
+        """
+        @summary 轻应用-新闻播报-获取热点话题摘要列表
+        
+        @param request: ListHotTopicSummariesRequest
+        @return: ListHotTopicSummariesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_hot_topic_summaries_with_options_async(workspace_id, request, headers, runtime)
+
     def run_marketing_information_extract_with_options(
         self,
         workspace_id: str,
