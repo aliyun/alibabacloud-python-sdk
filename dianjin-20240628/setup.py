@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_dianjin20240628.
 
-Created on 26/08/2024
+Created on 14/09/2024
 
 @author: Alibaba Cloud SDK
 """
