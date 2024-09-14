@@ -1,3 +1,25 @@
+2024-09-14 Version: 1.6.0
+- Support API ApplyScheduledPlan.
+- Support API CreateDeploymentTarget.
+- Support API CreateScheduledPlan.
+- Support API CreateSessionCluster.
+- Support API DeleteDeploymentTarget.
+- Support API DeleteScheduledPlan.
+- Support API DeleteSessionCluster.
+- Support API GetAppliedScheduledPlan.
+- Support API GetEvents.
+- Support API GetSessionCluster.
+- Support API ListScheduledPlan.
+- Support API ListScheduledPlanExecutedHistory.
+- Support API ListSessionClusters.
+- Support API StartSessionCluster.
+- Support API StopApplyScheduledPlan.
+- Support API StopSessionCluster.
+- Support API UpdateDeploymentTarget.
+- Support API UpdateScheduledPlan.
+- Support API UpdateSessionCluster.
+
+
 2024-08-12 Version: 1.5.0
 - Support API CreateDeploymentDraft.
 - Support API CreateFolder.

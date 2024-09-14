@@ -1741,17 +1741,91 @@ class DeploymentRestoreStrategy(TeaModel):
         return self
 
 
+class ResourceSpec(TeaModel):
+    def __init__(
+        self,
+        cpu: float = None,
+        memory: str = None,
+    ):
+        self.cpu = cpu
+        self.memory = memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['cpu'] = self.cpu
+        if self.memory is not None:
+            result['memory'] = self.memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cpu') is not None:
+            self.cpu = m.get('cpu')
+        if m.get('memory') is not None:
+            self.memory = m.get('memory')
+        return self
+
+
+class ResourceQuota(TeaModel):
+    def __init__(
+        self,
+        limit: ResourceSpec = None,
+        used: ResourceSpec = None,
+    ):
+        self.limit = limit
+        self.used = used
+
+    def validate(self):
+        if self.limit:
+            self.limit.validate()
+        if self.used:
+            self.used.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.limit is not None:
+            result['limit'] = self.limit.to_map()
+        if self.used is not None:
+            result['used'] = self.used.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('limit') is not None:
+            temp_model = ResourceSpec()
+            self.limit = temp_model.from_map(m['limit'])
+        if m.get('used') is not None:
+            temp_model = ResourceSpec()
+            self.used = temp_model.from_map(m['used'])
+        return self
+
+
 class DeploymentTarget(TeaModel):
     def __init__(
         self,
         name: str = None,
         namespace: str = None,
+        quota: ResourceQuota = None,
     ):
         self.name = name
         self.namespace = namespace
+        self.quota = quota
 
     def validate(self):
-        pass
+        if self.quota:
+            self.quota.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1763,6 +1837,8 @@ class DeploymentTarget(TeaModel):
             result['name'] = self.name
         if self.namespace is not None:
             result['namespace'] = self.namespace
+        if self.quota is not None:
+            result['quota'] = self.quota.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -1771,6 +1847,9 @@ class DeploymentTarget(TeaModel):
             self.name = m.get('name')
         if m.get('namespace') is not None:
             self.namespace = m.get('namespace')
+        if m.get('quota') is not None:
+            temp_model = ResourceQuota()
+            self.quota = temp_model.from_map(m['quota'])
         return self
 
 
@@ -2164,6 +2243,75 @@ class ErrorDetails(TeaModel):
         return self
 
 
+class Event(TeaModel):
+    def __init__(
+        self,
+        created_at: int = None,
+        deployment_id: str = None,
+        event_id: str = None,
+        event_name: str = None,
+        job_id: str = None,
+        message: str = None,
+        namespace: str = None,
+        workspace: str = None,
+    ):
+        self.created_at = created_at
+        self.deployment_id = deployment_id
+        self.event_id = event_id
+        self.event_name = event_name
+        self.job_id = job_id
+        self.message = message
+        self.namespace = namespace
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.deployment_id is not None:
+            result['deploymentId'] = self.deployment_id
+        if self.event_id is not None:
+            result['eventId'] = self.event_id
+        if self.event_name is not None:
+            result['eventName'] = self.event_name
+        if self.job_id is not None:
+            result['jobId'] = self.job_id
+        if self.message is not None:
+            result['message'] = self.message
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('deploymentId') is not None:
+            self.deployment_id = m.get('deploymentId')
+        if m.get('eventId') is not None:
+            self.event_id = m.get('eventId')
+        if m.get('eventName') is not None:
+            self.event_name = m.get('eventName')
+        if m.get('jobId') is not None:
+            self.job_id = m.get('jobId')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
 class SubFolder(TeaModel):
     def __init__(
         self,
@@ -2392,10 +2540,8 @@ class RescaleJobParam(TeaModel):
     def __init__(
         self,
         job_parallelism: int = None,
-        vertex_parallelism: Dict[str, Any] = None,
     ):
         self.job_parallelism = job_parallelism
-        self.vertex_parallelism = vertex_parallelism
 
     def validate(self):
         pass
@@ -2408,16 +2554,12 @@ class RescaleJobParam(TeaModel):
         result = dict()
         if self.job_parallelism is not None:
             result['jobParallelism'] = self.job_parallelism
-        if self.vertex_parallelism is not None:
-            result['vertexParallelism'] = self.vertex_parallelism
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('jobParallelism') is not None:
             self.job_parallelism = m.get('jobParallelism')
-        if m.get('vertexParallelism') is not None:
-            self.vertex_parallelism = m.get('vertexParallelism')
         return self
 
 
@@ -2978,11 +3120,13 @@ class JobStartParameters(TeaModel):
     def __init__(
         self,
         deployment_id: str = None,
+        job_id: str = None,
         local_variables: List[LocalVariable] = None,
         resource_queue_name: str = None,
         restore_strategy: DeploymentRestoreStrategy = None,
     ):
         self.deployment_id = deployment_id
+        self.job_id = job_id
         self.local_variables = local_variables
         self.resource_queue_name = resource_queue_name
         self.restore_strategy = restore_strategy
@@ -3003,6 +3147,8 @@ class JobStartParameters(TeaModel):
         result = dict()
         if self.deployment_id is not None:
             result['deploymentId'] = self.deployment_id
+        if self.job_id is not None:
+            result['jobId'] = self.job_id
         result['localVariables'] = []
         if self.local_variables is not None:
             for k in self.local_variables:
@@ -3017,6 +3163,8 @@ class JobStartParameters(TeaModel):
         m = m or dict()
         if m.get('deploymentId') is not None:
             self.deployment_id = m.get('deploymentId')
+        if m.get('jobId') is not None:
+            self.job_id = m.get('jobId')
         self.local_variables = []
         if m.get('localVariables') is not None:
             for k in m.get('localVariables'):
@@ -3361,6 +3509,71 @@ class MetadataInfo(TeaModel):
         return self
 
 
+class PeriodicSchedulingPolicy(TeaModel):
+    def __init__(
+        self,
+        is_finished: bool = None,
+        only_once_trigger_time: int = None,
+        only_once_trigger_time_is_expired: bool = None,
+        periodic_scheduling_level: str = None,
+        periodic_scheduling_values: List[int] = None,
+        periodic_trigger_time: int = None,
+        resource_setting: BriefResourceSetting = None,
+    ):
+        self.is_finished = is_finished
+        self.only_once_trigger_time = only_once_trigger_time
+        self.only_once_trigger_time_is_expired = only_once_trigger_time_is_expired
+        self.periodic_scheduling_level = periodic_scheduling_level
+        self.periodic_scheduling_values = periodic_scheduling_values
+        self.periodic_trigger_time = periodic_trigger_time
+        self.resource_setting = resource_setting
+
+    def validate(self):
+        if self.resource_setting:
+            self.resource_setting.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_finished is not None:
+            result['isFinished'] = self.is_finished
+        if self.only_once_trigger_time is not None:
+            result['onlyOnceTriggerTime'] = self.only_once_trigger_time
+        if self.only_once_trigger_time_is_expired is not None:
+            result['onlyOnceTriggerTimeIsExpired'] = self.only_once_trigger_time_is_expired
+        if self.periodic_scheduling_level is not None:
+            result['periodicSchedulingLevel'] = self.periodic_scheduling_level
+        if self.periodic_scheduling_values is not None:
+            result['periodicSchedulingValues'] = self.periodic_scheduling_values
+        if self.periodic_trigger_time is not None:
+            result['periodicTriggerTime'] = self.periodic_trigger_time
+        if self.resource_setting is not None:
+            result['resourceSetting'] = self.resource_setting.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('isFinished') is not None:
+            self.is_finished = m.get('isFinished')
+        if m.get('onlyOnceTriggerTime') is not None:
+            self.only_once_trigger_time = m.get('onlyOnceTriggerTime')
+        if m.get('onlyOnceTriggerTimeIsExpired') is not None:
+            self.only_once_trigger_time_is_expired = m.get('onlyOnceTriggerTimeIsExpired')
+        if m.get('periodicSchedulingLevel') is not None:
+            self.periodic_scheduling_level = m.get('periodicSchedulingLevel')
+        if m.get('periodicSchedulingValues') is not None:
+            self.periodic_scheduling_values = m.get('periodicSchedulingValues')
+        if m.get('periodicTriggerTime') is not None:
+            self.periodic_trigger_time = m.get('periodicTriggerTime')
+        if m.get('resourceSetting') is not None:
+            temp_model = BriefResourceSetting()
+            self.resource_setting = temp_model.from_map(m['resourceSetting'])
+        return self
+
+
 class PrimaryKey(TeaModel):
     def __init__(
         self,
@@ -3563,6 +3776,346 @@ class Savepoint(TeaModel):
         return self
 
 
+class ScheduledPlan(TeaModel):
+    def __init__(
+        self,
+        created_at: str = None,
+        creator: str = None,
+        creator_name: str = None,
+        deployment_id: str = None,
+        modified_at: str = None,
+        modifier: str = None,
+        modifier_name: str = None,
+        name: str = None,
+        namespace: str = None,
+        origin: str = None,
+        periodic_scheduling_policies: List[PeriodicSchedulingPolicy] = None,
+        scheduled_plan_id: str = None,
+        status: str = None,
+        updated_by_user: bool = None,
+        workspace: str = None,
+    ):
+        self.created_at = created_at
+        self.creator = creator
+        self.creator_name = creator_name
+        self.deployment_id = deployment_id
+        self.modified_at = modified_at
+        self.modifier = modifier
+        self.modifier_name = modifier_name
+        self.name = name
+        self.namespace = namespace
+        self.origin = origin
+        self.periodic_scheduling_policies = periodic_scheduling_policies
+        self.scheduled_plan_id = scheduled_plan_id
+        self.status = status
+        self.updated_by_user = updated_by_user
+        self.workspace = workspace
+
+    def validate(self):
+        if self.periodic_scheduling_policies:
+            for k in self.periodic_scheduling_policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.creator_name is not None:
+            result['creatorName'] = self.creator_name
+        if self.deployment_id is not None:
+            result['deploymentId'] = self.deployment_id
+        if self.modified_at is not None:
+            result['modifiedAt'] = self.modified_at
+        if self.modifier is not None:
+            result['modifier'] = self.modifier
+        if self.modifier_name is not None:
+            result['modifierName'] = self.modifier_name
+        if self.name is not None:
+            result['name'] = self.name
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.origin is not None:
+            result['origin'] = self.origin
+        result['periodicSchedulingPolicies'] = []
+        if self.periodic_scheduling_policies is not None:
+            for k in self.periodic_scheduling_policies:
+                result['periodicSchedulingPolicies'].append(k.to_map() if k else None)
+        if self.scheduled_plan_id is not None:
+            result['scheduledPlanId'] = self.scheduled_plan_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.updated_by_user is not None:
+            result['updatedByUser'] = self.updated_by_user
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('creatorName') is not None:
+            self.creator_name = m.get('creatorName')
+        if m.get('deploymentId') is not None:
+            self.deployment_id = m.get('deploymentId')
+        if m.get('modifiedAt') is not None:
+            self.modified_at = m.get('modifiedAt')
+        if m.get('modifier') is not None:
+            self.modifier = m.get('modifier')
+        if m.get('modifierName') is not None:
+            self.modifier_name = m.get('modifierName')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('origin') is not None:
+            self.origin = m.get('origin')
+        self.periodic_scheduling_policies = []
+        if m.get('periodicSchedulingPolicies') is not None:
+            for k in m.get('periodicSchedulingPolicies'):
+                temp_model = PeriodicSchedulingPolicy()
+                self.periodic_scheduling_policies.append(temp_model.from_map(k))
+        if m.get('scheduledPlanId') is not None:
+            self.scheduled_plan_id = m.get('scheduledPlanId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('updatedByUser') is not None:
+            self.updated_by_user = m.get('updatedByUser')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class ScheduledPlanAppliedInfo(TeaModel):
+    def __init__(
+        self,
+        deployment_id: str = None,
+        expected_state: str = None,
+        modified_at: str = None,
+        modifier: str = None,
+        modifier_name: str = None,
+        namespace: str = None,
+        scheduled_plan_id: str = None,
+        scheduled_plan_name: str = None,
+        status_state: str = None,
+        workspace: str = None,
+    ):
+        self.deployment_id = deployment_id
+        self.expected_state = expected_state
+        self.modified_at = modified_at
+        self.modifier = modifier
+        self.modifier_name = modifier_name
+        self.namespace = namespace
+        self.scheduled_plan_id = scheduled_plan_id
+        self.scheduled_plan_name = scheduled_plan_name
+        self.status_state = status_state
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deployment_id is not None:
+            result['deploymentId'] = self.deployment_id
+        if self.expected_state is not None:
+            result['expectedState'] = self.expected_state
+        if self.modified_at is not None:
+            result['modifiedAt'] = self.modified_at
+        if self.modifier is not None:
+            result['modifier'] = self.modifier
+        if self.modifier_name is not None:
+            result['modifierName'] = self.modifier_name
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.scheduled_plan_id is not None:
+            result['scheduledPlanId'] = self.scheduled_plan_id
+        if self.scheduled_plan_name is not None:
+            result['scheduledPlanName'] = self.scheduled_plan_name
+        if self.status_state is not None:
+            result['statusState'] = self.status_state
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('deploymentId') is not None:
+            self.deployment_id = m.get('deploymentId')
+        if m.get('expectedState') is not None:
+            self.expected_state = m.get('expectedState')
+        if m.get('modifiedAt') is not None:
+            self.modified_at = m.get('modifiedAt')
+        if m.get('modifier') is not None:
+            self.modifier = m.get('modifier')
+        if m.get('modifierName') is not None:
+            self.modifier_name = m.get('modifierName')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('scheduledPlanId') is not None:
+            self.scheduled_plan_id = m.get('scheduledPlanId')
+        if m.get('scheduledPlanName') is not None:
+            self.scheduled_plan_name = m.get('scheduledPlanName')
+        if m.get('statusState') is not None:
+            self.status_state = m.get('statusState')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class ScheduledPlanExecutedStatus(TeaModel):
+    def __init__(
+        self,
+        restart_type: str = None,
+        status_state: str = None,
+    ):
+        self.restart_type = restart_type
+        self.status_state = status_state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.restart_type is not None:
+            result['restartType'] = self.restart_type
+        if self.status_state is not None:
+            result['statusState'] = self.status_state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('restartType') is not None:
+            self.restart_type = m.get('restartType')
+        if m.get('statusState') is not None:
+            self.status_state = m.get('statusState')
+        return self
+
+
+class ScheduledPlanExecutedInfo(TeaModel):
+    def __init__(
+        self,
+        created_at: str = None,
+        creator: str = None,
+        creator_name: str = None,
+        deployment_id: str = None,
+        job_resource_upgrading_id: str = None,
+        modified_at: str = None,
+        modifier: str = None,
+        modifier_name: str = None,
+        name: str = None,
+        namespace: str = None,
+        origin: str = None,
+        origin_job_id: str = None,
+        status: ScheduledPlanExecutedStatus = None,
+        workspace: str = None,
+    ):
+        self.created_at = created_at
+        self.creator = creator
+        self.creator_name = creator_name
+        self.deployment_id = deployment_id
+        self.job_resource_upgrading_id = job_resource_upgrading_id
+        self.modified_at = modified_at
+        self.modifier = modifier
+        self.modifier_name = modifier_name
+        self.name = name
+        self.namespace = namespace
+        self.origin = origin
+        self.origin_job_id = origin_job_id
+        self.status = status
+        self.workspace = workspace
+
+    def validate(self):
+        if self.status:
+            self.status.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.creator_name is not None:
+            result['creatorName'] = self.creator_name
+        if self.deployment_id is not None:
+            result['deploymentId'] = self.deployment_id
+        if self.job_resource_upgrading_id is not None:
+            result['jobResourceUpgradingId'] = self.job_resource_upgrading_id
+        if self.modified_at is not None:
+            result['modifiedAt'] = self.modified_at
+        if self.modifier is not None:
+            result['modifier'] = self.modifier
+        if self.modifier_name is not None:
+            result['modifierName'] = self.modifier_name
+        if self.name is not None:
+            result['name'] = self.name
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.origin is not None:
+            result['origin'] = self.origin
+        if self.origin_job_id is not None:
+            result['originJobId'] = self.origin_job_id
+        if self.status is not None:
+            result['status'] = self.status.to_map()
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('creatorName') is not None:
+            self.creator_name = m.get('creatorName')
+        if m.get('deploymentId') is not None:
+            self.deployment_id = m.get('deploymentId')
+        if m.get('jobResourceUpgradingId') is not None:
+            self.job_resource_upgrading_id = m.get('jobResourceUpgradingId')
+        if m.get('modifiedAt') is not None:
+            self.modified_at = m.get('modifiedAt')
+        if m.get('modifier') is not None:
+            self.modifier = m.get('modifier')
+        if m.get('modifierName') is not None:
+            self.modifier_name = m.get('modifierName')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('origin') is not None:
+            self.origin = m.get('origin')
+        if m.get('originJobId') is not None:
+            self.origin_job_id = m.get('originJobId')
+        if m.get('status') is not None:
+            temp_model = ScheduledPlanExecutedStatus()
+            self.status = temp_model.from_map(m['status'])
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
 class TableColumn(TeaModel):
     def __init__(
         self,
@@ -3653,7 +4206,7 @@ class Schema(TeaModel):
     def __init__(
         self,
         columns: List[TableColumn] = None,
-        primary_key: List[PrimaryKey] = None,
+        primary_key: PrimaryKey = None,
         watermark_specs: List[WatermarkSpec] = None,
     ):
         self.columns = columns
@@ -3666,9 +4219,7 @@ class Schema(TeaModel):
                 if k:
                     k.validate()
         if self.primary_key:
-            for k in self.primary_key:
-                if k:
-                    k.validate()
+            self.primary_key.validate()
         if self.watermark_specs:
             for k in self.watermark_specs:
                 if k:
@@ -3684,10 +4235,8 @@ class Schema(TeaModel):
         if self.columns is not None:
             for k in self.columns:
                 result['columns'].append(k.to_map() if k else None)
-        result['primaryKey'] = []
         if self.primary_key is not None:
-            for k in self.primary_key:
-                result['primaryKey'].append(k.to_map() if k else None)
+            result['primaryKey'] = self.primary_key.to_map()
         result['watermarkSpecs'] = []
         if self.watermark_specs is not None:
             for k in self.watermark_specs:
@@ -3701,16 +4250,267 @@ class Schema(TeaModel):
             for k in m.get('columns'):
                 temp_model = TableColumn()
                 self.columns.append(temp_model.from_map(k))
-        self.primary_key = []
         if m.get('primaryKey') is not None:
-            for k in m.get('primaryKey'):
-                temp_model = PrimaryKey()
-                self.primary_key.append(temp_model.from_map(k))
+            temp_model = PrimaryKey()
+            self.primary_key = temp_model.from_map(m['primaryKey'])
         self.watermark_specs = []
         if m.get('watermarkSpecs') is not None:
             for k in m.get('watermarkSpecs'):
                 temp_model = WatermarkSpec()
                 self.watermark_specs.append(temp_model.from_map(k))
+        return self
+
+
+class SessionClusterFailureInfo(TeaModel):
+    def __init__(
+        self,
+        failed_at: int = None,
+        message: str = None,
+        reason: str = None,
+    ):
+        self.failed_at = failed_at
+        self.message = message
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed_at is not None:
+            result['failedAt'] = self.failed_at
+        if self.message is not None:
+            result['message'] = self.message
+        if self.reason is not None:
+            result['reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('failedAt') is not None:
+            self.failed_at = m.get('failedAt')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        return self
+
+
+class SessionClusterRunningInfo(TeaModel):
+    def __init__(
+        self,
+        last_update_time: int = None,
+        reference_deployment_ids: List[str] = None,
+        started_at: int = None,
+    ):
+        self.last_update_time = last_update_time
+        self.reference_deployment_ids = reference_deployment_ids
+        self.started_at = started_at
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.last_update_time is not None:
+            result['lastUpdateTime'] = self.last_update_time
+        if self.reference_deployment_ids is not None:
+            result['referenceDeploymentIds'] = self.reference_deployment_ids
+        if self.started_at is not None:
+            result['startedAt'] = self.started_at
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('lastUpdateTime') is not None:
+            self.last_update_time = m.get('lastUpdateTime')
+        if m.get('referenceDeploymentIds') is not None:
+            self.reference_deployment_ids = m.get('referenceDeploymentIds')
+        if m.get('startedAt') is not None:
+            self.started_at = m.get('startedAt')
+        return self
+
+
+class SessionClusterStatus(TeaModel):
+    def __init__(
+        self,
+        current_session_cluster_status: str = None,
+        failure: SessionClusterFailureInfo = None,
+        running: SessionClusterRunningInfo = None,
+    ):
+        self.current_session_cluster_status = current_session_cluster_status
+        self.failure = failure
+        self.running = running
+
+    def validate(self):
+        if self.failure:
+            self.failure.validate()
+        if self.running:
+            self.running.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_session_cluster_status is not None:
+            result['currentSessionClusterStatus'] = self.current_session_cluster_status
+        if self.failure is not None:
+            result['failure'] = self.failure.to_map()
+        if self.running is not None:
+            result['running'] = self.running.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('currentSessionClusterStatus') is not None:
+            self.current_session_cluster_status = m.get('currentSessionClusterStatus')
+        if m.get('failure') is not None:
+            temp_model = SessionClusterFailureInfo()
+            self.failure = temp_model.from_map(m['failure'])
+        if m.get('running') is not None:
+            temp_model = SessionClusterRunningInfo()
+            self.running = temp_model.from_map(m['running'])
+        return self
+
+
+class SessionCluster(TeaModel):
+    def __init__(
+        self,
+        basic_resource_setting: BasicResourceSetting = None,
+        created_at: int = None,
+        creator: str = None,
+        creator_name: str = None,
+        deployment_target_name: str = None,
+        engine_version: str = None,
+        flink_conf: Dict[str, Any] = None,
+        labels: Dict[str, Any] = None,
+        logging: Logging = None,
+        modified_at: int = None,
+        modifier: str = None,
+        modifier_name: str = None,
+        name: str = None,
+        namespace: str = None,
+        session_cluster_id: str = None,
+        status: SessionClusterStatus = None,
+        workspace: str = None,
+    ):
+        self.basic_resource_setting = basic_resource_setting
+        self.created_at = created_at
+        self.creator = creator
+        self.creator_name = creator_name
+        self.deployment_target_name = deployment_target_name
+        self.engine_version = engine_version
+        self.flink_conf = flink_conf
+        self.labels = labels
+        self.logging = logging
+        self.modified_at = modified_at
+        self.modifier = modifier
+        self.modifier_name = modifier_name
+        self.name = name
+        self.namespace = namespace
+        self.session_cluster_id = session_cluster_id
+        self.status = status
+        self.workspace = workspace
+
+    def validate(self):
+        if self.basic_resource_setting:
+            self.basic_resource_setting.validate()
+        if self.logging:
+            self.logging.validate()
+        if self.status:
+            self.status.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.basic_resource_setting is not None:
+            result['basicResourceSetting'] = self.basic_resource_setting.to_map()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.creator_name is not None:
+            result['creatorName'] = self.creator_name
+        if self.deployment_target_name is not None:
+            result['deploymentTargetName'] = self.deployment_target_name
+        if self.engine_version is not None:
+            result['engineVersion'] = self.engine_version
+        if self.flink_conf is not None:
+            result['flinkConf'] = self.flink_conf
+        if self.labels is not None:
+            result['labels'] = self.labels
+        if self.logging is not None:
+            result['logging'] = self.logging.to_map()
+        if self.modified_at is not None:
+            result['modifiedAt'] = self.modified_at
+        if self.modifier is not None:
+            result['modifier'] = self.modifier
+        if self.modifier_name is not None:
+            result['modifierName'] = self.modifier_name
+        if self.name is not None:
+            result['name'] = self.name
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.session_cluster_id is not None:
+            result['sessionClusterId'] = self.session_cluster_id
+        if self.status is not None:
+            result['status'] = self.status.to_map()
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('basicResourceSetting') is not None:
+            temp_model = BasicResourceSetting()
+            self.basic_resource_setting = temp_model.from_map(m['basicResourceSetting'])
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('creatorName') is not None:
+            self.creator_name = m.get('creatorName')
+        if m.get('deploymentTargetName') is not None:
+            self.deployment_target_name = m.get('deploymentTargetName')
+        if m.get('engineVersion') is not None:
+            self.engine_version = m.get('engineVersion')
+        if m.get('flinkConf') is not None:
+            self.flink_conf = m.get('flinkConf')
+        if m.get('labels') is not None:
+            self.labels = m.get('labels')
+        if m.get('logging') is not None:
+            temp_model = Logging()
+            self.logging = temp_model.from_map(m['logging'])
+        if m.get('modifiedAt') is not None:
+            self.modified_at = m.get('modifiedAt')
+        if m.get('modifier') is not None:
+            self.modifier = m.get('modifier')
+        if m.get('modifierName') is not None:
+            self.modifier_name = m.get('modifierName')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('sessionClusterId') is not None:
+            self.session_cluster_id = m.get('sessionClusterId')
+        if m.get('status') is not None:
+            temp_model = SessionClusterStatus()
+            self.status = temp_model.from_map(m['status'])
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
         return self
 
 
@@ -4177,6 +4977,140 @@ class Variable(TeaModel):
         return self
 
 
+class ApplyScheduledPlanHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class ApplyScheduledPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ScheduledPlanAppliedInfo = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ScheduledPlanAppliedInfo()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ApplyScheduledPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ApplyScheduledPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ApplyScheduledPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDeploymentHeaders(TeaModel):
     def __init__(
         self,
@@ -4514,6 +5448,176 @@ class CreateDeploymentDraftResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDeploymentDraftResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDeploymentTargetHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class CreateDeploymentTargetRequest(TeaModel):
+    def __init__(
+        self,
+        body: ResourceSpec = None,
+        deployment_target_name: str = None,
+    ):
+        self.body = body
+        # This parameter is required.
+        self.deployment_target_name = deployment_target_name
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        if self.deployment_target_name is not None:
+            result['deploymentTargetName'] = self.deployment_target_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = ResourceSpec()
+            self.body = temp_model.from_map(m['body'])
+        if m.get('deploymentTargetName') is not None:
+            self.deployment_target_name = m.get('deploymentTargetName')
+        return self
+
+
+class CreateDeploymentTargetResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DeploymentTarget = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = DeploymentTarget()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateDeploymentTargetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDeploymentTargetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDeploymentTargetResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5044,6 +6148,332 @@ class CreateSavepointResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateSavepointResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateScheduledPlanHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class CreateScheduledPlanRequest(TeaModel):
+    def __init__(
+        self,
+        body: ScheduledPlan = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = ScheduledPlan()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateScheduledPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ScheduledPlan = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ScheduledPlan()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateScheduledPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateScheduledPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateScheduledPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSessionClusterHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class CreateSessionClusterRequest(TeaModel):
+    def __init__(
+        self,
+        body: SessionCluster = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = SessionCluster()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSessionClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: SessionCluster = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = SessionCluster()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateSessionClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSessionClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSessionClusterResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5812,6 +7242,140 @@ class DeleteDeploymentDraftResponse(TeaModel):
         return self
 
 
+class DeleteDeploymentTargetHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class DeleteDeploymentTargetResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DeploymentTarget = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = DeploymentTarget()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class DeleteDeploymentTargetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDeploymentTargetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDeploymentTargetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteFolderHeaders(TeaModel):
     def __init__(
         self,
@@ -6339,6 +7903,274 @@ class DeleteSavepointResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSavepointResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteScheduledPlanHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class DeleteScheduledPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ScheduledPlan = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ScheduledPlan()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class DeleteScheduledPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteScheduledPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteScheduledPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSessionClusterHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class DeleteSessionClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: SessionCluster = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = SessionCluster()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class DeleteSessionClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSessionClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSessionClusterResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7544,6 +9376,168 @@ class GenerateResourcePlanWithFlinkConfAsyncResponse(TeaModel):
         return self
 
 
+class GetAppliedScheduledPlanHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class GetAppliedScheduledPlanRequest(TeaModel):
+    def __init__(
+        self,
+        deployment_id: str = None,
+    ):
+        # This parameter is required.
+        self.deployment_id = deployment_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deployment_id is not None:
+            result['deploymentId'] = self.deployment_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('deploymentId') is not None:
+            self.deployment_id = m.get('deploymentId')
+        return self
+
+
+class GetAppliedScheduledPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ScheduledPlanAppliedInfo = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ScheduledPlanAppliedInfo()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetAppliedScheduledPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAppliedScheduledPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAppliedScheduledPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetCatalogsHeaders(TeaModel):
     def __init__(
         self,
@@ -8453,6 +10447,203 @@ class GetDeploymentDraftLockResponse(TeaModel):
         return self
 
 
+class GetEventsHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class GetEventsRequest(TeaModel):
+    def __init__(
+        self,
+        deployment_id: str = None,
+        page_index: int = None,
+        page_size: int = None,
+    ):
+        self.deployment_id = deployment_id
+        self.page_index = page_index
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deployment_id is not None:
+            result['deploymentId'] = self.deployment_id
+        if self.page_index is not None:
+            result['pageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('deploymentId') is not None:
+            self.deployment_id = m.get('deploymentId')
+        if m.get('pageIndex') is not None:
+            self.page_index = m.get('pageIndex')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        return self
+
+
+class GetEventsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[Event] = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        page_index: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_size: int = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.page_index = page_index
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_size = total_size
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.page_index is not None:
+            result['pageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.total_size is not None:
+            result['totalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = Event()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('pageIndex') is not None:
+            self.page_index = m.get('pageIndex')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('totalSize') is not None:
+            self.total_size = m.get('totalSize')
+        return self
+
+
+class GetEventsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetEventsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetEventsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetFolderHeaders(TeaModel):
     def __init__(
         self,
@@ -8524,6 +10715,7 @@ class GetFolderResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data structure of the folder.
         self.data = data
         self.error_code = error_code
         self.error_message = error_message
@@ -9642,6 +11834,140 @@ class GetSavepointResponse(TeaModel):
         return self
 
 
+class GetSessionClusterHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class GetSessionClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: SessionCluster = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = SessionCluster()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetSessionClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSessionClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSessionClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTablesHeaders(TeaModel):
     def __init__(
         self,
@@ -9713,6 +12039,7 @@ class GetTablesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # If the value of success was true, the list and details of tables that meet the condition were returned. If the value of success was false, a null value was returned.
         self.data = data
         self.error_code = error_code
         self.error_message = error_message
@@ -11955,6 +14282,535 @@ class ListSavepointsResponse(TeaModel):
         return self
 
 
+class ListScheduledPlanHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class ListScheduledPlanRequest(TeaModel):
+    def __init__(
+        self,
+        deployment_id: str = None,
+        page_index: int = None,
+        page_size: int = None,
+    ):
+        self.deployment_id = deployment_id
+        self.page_index = page_index
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deployment_id is not None:
+            result['deploymentId'] = self.deployment_id
+        if self.page_index is not None:
+            result['pageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('deploymentId') is not None:
+            self.deployment_id = m.get('deploymentId')
+        if m.get('pageIndex') is not None:
+            self.page_index = m.get('pageIndex')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        return self
+
+
+class ListScheduledPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[ScheduledPlan] = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        page_index: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_size: int = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.page_index = page_index
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_size = total_size
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.page_index is not None:
+            result['pageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.total_size is not None:
+            result['totalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ScheduledPlan()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('pageIndex') is not None:
+            self.page_index = m.get('pageIndex')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('totalSize') is not None:
+            self.total_size = m.get('totalSize')
+        return self
+
+
+class ListScheduledPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListScheduledPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListScheduledPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListScheduledPlanExecutedHistoryHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class ListScheduledPlanExecutedHistoryRequest(TeaModel):
+    def __init__(
+        self,
+        deployment_id: str = None,
+        origin: str = None,
+    ):
+        # This parameter is required.
+        self.deployment_id = deployment_id
+        self.origin = origin
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deployment_id is not None:
+            result['deploymentId'] = self.deployment_id
+        if self.origin is not None:
+            result['origin'] = self.origin
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('deploymentId') is not None:
+            self.deployment_id = m.get('deploymentId')
+        if m.get('origin') is not None:
+            self.origin = m.get('origin')
+        return self
+
+
+class ListScheduledPlanExecutedHistoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[ScheduledPlanExecutedInfo] = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        page_index: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_size: int = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.page_index = page_index
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_size = total_size
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.page_index is not None:
+            result['pageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.total_size is not None:
+            result['totalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ScheduledPlanExecutedInfo()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('pageIndex') is not None:
+            self.page_index = m.get('pageIndex')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('totalSize') is not None:
+            self.total_size = m.get('totalSize')
+        return self
+
+
+class ListScheduledPlanExecutedHistoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListScheduledPlanExecutedHistoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListScheduledPlanExecutedHistoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListSessionClustersHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class ListSessionClustersResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[SessionCluster] = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = SessionCluster()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListSessionClustersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSessionClustersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSessionClustersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListVariablesHeaders(TeaModel):
     def __init__(
         self,
@@ -12203,7 +15059,7 @@ class RegisterCustomConnectorRequest(TeaModel):
         self,
         jar_url: str = None,
     ):
-        # The URL in which the JAR package of the custom connector is stored. The URL must be connected to the platform.
+        # The URL in which the JAR package of the custom connector is stored. The platform must be able to access this address.
         # 
         # This parameter is required.
         self.jar_url = jar_url
@@ -12238,7 +15094,7 @@ class RegisterCustomConnectorResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # If the value of success was true, a list of deployments in which custom connectors were registered was returned. If the value of success was false, a null value was returned.
+        # If the value of success was true, a list of deployments in which custom connectors were deleted was returned. If the value of success was false, a null value was returned.
         self.data = data
         # *   If the value of success was false, an error code was returned.
         # *   If the value of success was true, a null value was returned.
@@ -12883,6 +15739,266 @@ class StartJobWithParamsResponse(TeaModel):
         return self
 
 
+class StartSessionClusterHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class StartSessionClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class StartSessionClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartSessionClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartSessionClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopApplyScheduledPlanHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class StopApplyScheduledPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ScheduledPlanAppliedInfo = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ScheduledPlanAppliedInfo()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class StopApplyScheduledPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopApplyScheduledPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopApplyScheduledPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopJobHeaders(TeaModel):
     def __init__(
         self,
@@ -13056,6 +16172,132 @@ class StopJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopSessionClusterHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class StopSessionClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class StopSessionClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopSessionClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopSessionClusterResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13401,6 +16643,169 @@ class UpdateDeploymentDraftResponse(TeaModel):
         return self
 
 
+class UpdateDeploymentTargetHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class UpdateDeploymentTargetRequest(TeaModel):
+    def __init__(
+        self,
+        body: ResourceSpec = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = ResourceSpec()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDeploymentTargetResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DeploymentTarget = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = DeploymentTarget()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdateDeploymentTargetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDeploymentTargetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDeploymentTargetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateFolderHeaders(TeaModel):
     def __init__(
         self,
@@ -13735,6 +17140,332 @@ class UpdateMemberResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateMemberResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateScheduledPlanHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class UpdateScheduledPlanRequest(TeaModel):
+    def __init__(
+        self,
+        body: ScheduledPlan = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = ScheduledPlan()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateScheduledPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ScheduledPlan = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ScheduledPlan()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdateScheduledPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateScheduledPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateScheduledPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSessionClusterHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        workspace: str = None,
+    ):
+        self.common_headers = common_headers
+        # This parameter is required.
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class UpdateSessionClusterRequest(TeaModel):
+    def __init__(
+        self,
+        body: SessionCluster = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = SessionCluster()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSessionClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: SessionCluster = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_code = http_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = SessionCluster()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class UpdateSessionClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSessionClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSessionClusterResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -41,6 +41,110 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def apply_scheduled_plan_with_options(
+        self,
+        namespace: str,
+        scheduled_plan_id: str,
+        headers: ververica_20220718_models.ApplyScheduledPlanHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.ApplyScheduledPlanResponse:
+        """
+        @summary 执行定时计划
+        
+        @param headers: ApplyScheduledPlanHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyScheduledPlanResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='ApplyScheduledPlan',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/scheduled-plans/{OpenApiUtilClient.get_encode_param(scheduled_plan_id)}%3Aapply',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.ApplyScheduledPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_scheduled_plan_with_options_async(
+        self,
+        namespace: str,
+        scheduled_plan_id: str,
+        headers: ververica_20220718_models.ApplyScheduledPlanHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.ApplyScheduledPlanResponse:
+        """
+        @summary 执行定时计划
+        
+        @param headers: ApplyScheduledPlanHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyScheduledPlanResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='ApplyScheduledPlan',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/scheduled-plans/{OpenApiUtilClient.get_encode_param(scheduled_plan_id)}%3Aapply',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.ApplyScheduledPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_scheduled_plan(
+        self,
+        namespace: str,
+        scheduled_plan_id: str,
+    ) -> ververica_20220718_models.ApplyScheduledPlanResponse:
+        """
+        @summary 执行定时计划
+        
+        @return: ApplyScheduledPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.ApplyScheduledPlanHeaders()
+        return self.apply_scheduled_plan_with_options(namespace, scheduled_plan_id, headers, runtime)
+
+    async def apply_scheduled_plan_async(
+        self,
+        namespace: str,
+        scheduled_plan_id: str,
+    ) -> ververica_20220718_models.ApplyScheduledPlanResponse:
+        """
+        @summary 执行定时计划
+        
+        @return: ApplyScheduledPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.ApplyScheduledPlanHeaders()
+        return await self.apply_scheduled_plan_with_options_async(namespace, scheduled_plan_id, headers, runtime)
+
     def create_deployment_with_options(
         self,
         namespace: str,
@@ -264,6 +368,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ververica_20220718_models.CreateDeploymentDraftHeaders()
         return await self.create_deployment_draft_with_options_async(namespace, request, headers, runtime)
+
+    def create_deployment_target_with_options(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.CreateDeploymentTargetRequest,
+        headers: ververica_20220718_models.CreateDeploymentTargetHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.CreateDeploymentTargetResponse:
+        """
+        @summary 创建deploymentTarget
+        
+        @param request: CreateDeploymentTargetRequest
+        @param headers: CreateDeploymentTargetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDeploymentTargetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.deployment_target_name):
+            query['deploymentTargetName'] = request.deployment_target_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateDeploymentTarget',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployment-targets',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.CreateDeploymentTargetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_deployment_target_with_options_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.CreateDeploymentTargetRequest,
+        headers: ververica_20220718_models.CreateDeploymentTargetHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.CreateDeploymentTargetResponse:
+        """
+        @summary 创建deploymentTarget
+        
+        @param request: CreateDeploymentTargetRequest
+        @param headers: CreateDeploymentTargetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDeploymentTargetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.deployment_target_name):
+            query['deploymentTargetName'] = request.deployment_target_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateDeploymentTarget',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployment-targets',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.CreateDeploymentTargetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_deployment_target(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.CreateDeploymentTargetRequest,
+    ) -> ververica_20220718_models.CreateDeploymentTargetResponse:
+        """
+        @summary 创建deploymentTarget
+        
+        @param request: CreateDeploymentTargetRequest
+        @return: CreateDeploymentTargetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.CreateDeploymentTargetHeaders()
+        return self.create_deployment_target_with_options(namespace, request, headers, runtime)
+
+    async def create_deployment_target_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.CreateDeploymentTargetRequest,
+    ) -> ververica_20220718_models.CreateDeploymentTargetResponse:
+        """
+        @summary 创建deploymentTarget
+        
+        @param request: CreateDeploymentTargetRequest
+        @return: CreateDeploymentTargetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.CreateDeploymentTargetHeaders()
+        return await self.create_deployment_target_with_options_async(namespace, request, headers, runtime)
 
     def create_folder_with_options(
         self,
@@ -614,6 +838,230 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ververica_20220718_models.CreateSavepointHeaders()
         return await self.create_savepoint_with_options_async(namespace, request, headers, runtime)
+
+    def create_scheduled_plan_with_options(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.CreateScheduledPlanRequest,
+        headers: ververica_20220718_models.CreateScheduledPlanHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.CreateScheduledPlanResponse:
+        """
+        @summary 创建定时执行计划
+        
+        @param request: CreateScheduledPlanRequest
+        @param headers: CreateScheduledPlanHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateScheduledPlanResponse
+        """
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateScheduledPlan',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/scheduled-plans',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.CreateScheduledPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_scheduled_plan_with_options_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.CreateScheduledPlanRequest,
+        headers: ververica_20220718_models.CreateScheduledPlanHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.CreateScheduledPlanResponse:
+        """
+        @summary 创建定时执行计划
+        
+        @param request: CreateScheduledPlanRequest
+        @param headers: CreateScheduledPlanHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateScheduledPlanResponse
+        """
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateScheduledPlan',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/scheduled-plans',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.CreateScheduledPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_scheduled_plan(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.CreateScheduledPlanRequest,
+    ) -> ververica_20220718_models.CreateScheduledPlanResponse:
+        """
+        @summary 创建定时执行计划
+        
+        @param request: CreateScheduledPlanRequest
+        @return: CreateScheduledPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.CreateScheduledPlanHeaders()
+        return self.create_scheduled_plan_with_options(namespace, request, headers, runtime)
+
+    async def create_scheduled_plan_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.CreateScheduledPlanRequest,
+    ) -> ververica_20220718_models.CreateScheduledPlanResponse:
+        """
+        @summary 创建定时执行计划
+        
+        @param request: CreateScheduledPlanRequest
+        @return: CreateScheduledPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.CreateScheduledPlanHeaders()
+        return await self.create_scheduled_plan_with_options_async(namespace, request, headers, runtime)
+
+    def create_session_cluster_with_options(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.CreateSessionClusterRequest,
+        headers: ververica_20220718_models.CreateSessionClusterHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.CreateSessionClusterResponse:
+        """
+        @summary 创建session集群
+        
+        @param request: CreateSessionClusterRequest
+        @param headers: CreateSessionClusterHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSessionClusterResponse
+        """
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateSessionCluster',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/sessionclusters',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.CreateSessionClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_session_cluster_with_options_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.CreateSessionClusterRequest,
+        headers: ververica_20220718_models.CreateSessionClusterHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.CreateSessionClusterResponse:
+        """
+        @summary 创建session集群
+        
+        @param request: CreateSessionClusterRequest
+        @param headers: CreateSessionClusterHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSessionClusterResponse
+        """
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateSessionCluster',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/sessionclusters',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.CreateSessionClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_session_cluster(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.CreateSessionClusterRequest,
+    ) -> ververica_20220718_models.CreateSessionClusterResponse:
+        """
+        @summary 创建session集群
+        
+        @param request: CreateSessionClusterRequest
+        @return: CreateSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.CreateSessionClusterHeaders()
+        return self.create_session_cluster_with_options(namespace, request, headers, runtime)
+
+    async def create_session_cluster_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.CreateSessionClusterRequest,
+    ) -> ververica_20220718_models.CreateSessionClusterResponse:
+        """
+        @summary 创建session集群
+        
+        @param request: CreateSessionClusterRequest
+        @return: CreateSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.CreateSessionClusterHeaders()
+        return await self.create_session_cluster_with_options_async(namespace, request, headers, runtime)
 
     def create_udf_artifact_with_options(
         self,
@@ -1151,6 +1599,110 @@ class Client(OpenApiClient):
         headers = ververica_20220718_models.DeleteDeploymentDraftHeaders()
         return await self.delete_deployment_draft_with_options_async(namespace, deployment_draft_id, headers, runtime)
 
+    def delete_deployment_target_with_options(
+        self,
+        namespace: str,
+        deployment_target_name: str,
+        headers: ververica_20220718_models.DeleteDeploymentTargetHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.DeleteDeploymentTargetResponse:
+        """
+        @summary 删除deploymentTarget
+        
+        @param headers: DeleteDeploymentTargetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDeploymentTargetResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='DeleteDeploymentTarget',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployment-targets/{OpenApiUtilClient.get_encode_param(deployment_target_name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.DeleteDeploymentTargetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_deployment_target_with_options_async(
+        self,
+        namespace: str,
+        deployment_target_name: str,
+        headers: ververica_20220718_models.DeleteDeploymentTargetHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.DeleteDeploymentTargetResponse:
+        """
+        @summary 删除deploymentTarget
+        
+        @param headers: DeleteDeploymentTargetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDeploymentTargetResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='DeleteDeploymentTarget',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployment-targets/{OpenApiUtilClient.get_encode_param(deployment_target_name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.DeleteDeploymentTargetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_deployment_target(
+        self,
+        namespace: str,
+        deployment_target_name: str,
+    ) -> ververica_20220718_models.DeleteDeploymentTargetResponse:
+        """
+        @summary 删除deploymentTarget
+        
+        @return: DeleteDeploymentTargetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.DeleteDeploymentTargetHeaders()
+        return self.delete_deployment_target_with_options(namespace, deployment_target_name, headers, runtime)
+
+    async def delete_deployment_target_async(
+        self,
+        namespace: str,
+        deployment_target_name: str,
+    ) -> ververica_20220718_models.DeleteDeploymentTargetResponse:
+        """
+        @summary 删除deploymentTarget
+        
+        @return: DeleteDeploymentTargetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.DeleteDeploymentTargetHeaders()
+        return await self.delete_deployment_target_with_options_async(namespace, deployment_target_name, headers, runtime)
+
     def delete_folder_with_options(
         self,
         namespace: str,
@@ -1566,6 +2118,214 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ververica_20220718_models.DeleteSavepointHeaders()
         return await self.delete_savepoint_with_options_async(namespace, savepoint_id, headers, runtime)
+
+    def delete_scheduled_plan_with_options(
+        self,
+        namespace: str,
+        scheduled_plan_id: str,
+        headers: ververica_20220718_models.DeleteScheduledPlanHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.DeleteScheduledPlanResponse:
+        """
+        @summary 删除定时执行计划
+        
+        @param headers: DeleteScheduledPlanHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteScheduledPlanResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='DeleteScheduledPlan',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/scheduled-plans/{OpenApiUtilClient.get_encode_param(scheduled_plan_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.DeleteScheduledPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_scheduled_plan_with_options_async(
+        self,
+        namespace: str,
+        scheduled_plan_id: str,
+        headers: ververica_20220718_models.DeleteScheduledPlanHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.DeleteScheduledPlanResponse:
+        """
+        @summary 删除定时执行计划
+        
+        @param headers: DeleteScheduledPlanHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteScheduledPlanResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='DeleteScheduledPlan',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/scheduled-plans/{OpenApiUtilClient.get_encode_param(scheduled_plan_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.DeleteScheduledPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_scheduled_plan(
+        self,
+        namespace: str,
+        scheduled_plan_id: str,
+    ) -> ververica_20220718_models.DeleteScheduledPlanResponse:
+        """
+        @summary 删除定时执行计划
+        
+        @return: DeleteScheduledPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.DeleteScheduledPlanHeaders()
+        return self.delete_scheduled_plan_with_options(namespace, scheduled_plan_id, headers, runtime)
+
+    async def delete_scheduled_plan_async(
+        self,
+        namespace: str,
+        scheduled_plan_id: str,
+    ) -> ververica_20220718_models.DeleteScheduledPlanResponse:
+        """
+        @summary 删除定时执行计划
+        
+        @return: DeleteScheduledPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.DeleteScheduledPlanHeaders()
+        return await self.delete_scheduled_plan_with_options_async(namespace, scheduled_plan_id, headers, runtime)
+
+    def delete_session_cluster_with_options(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+        headers: ververica_20220718_models.DeleteSessionClusterHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.DeleteSessionClusterResponse:
+        """
+        @summary 删除session集群
+        
+        @param headers: DeleteSessionClusterHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSessionClusterResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='DeleteSessionCluster',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/sessionclusters/{OpenApiUtilClient.get_encode_param(session_cluster_name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.DeleteSessionClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_session_cluster_with_options_async(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+        headers: ververica_20220718_models.DeleteSessionClusterHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.DeleteSessionClusterResponse:
+        """
+        @summary 删除session集群
+        
+        @param headers: DeleteSessionClusterHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSessionClusterResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='DeleteSessionCluster',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/sessionclusters/{OpenApiUtilClient.get_encode_param(session_cluster_name)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.DeleteSessionClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_session_cluster(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+    ) -> ververica_20220718_models.DeleteSessionClusterResponse:
+        """
+        @summary 删除session集群
+        
+        @return: DeleteSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.DeleteSessionClusterHeaders()
+        return self.delete_session_cluster_with_options(namespace, session_cluster_name, headers, runtime)
+
+    async def delete_session_cluster_async(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+    ) -> ververica_20220718_models.DeleteSessionClusterResponse:
+        """
+        @summary 删除session集群
+        
+        @return: DeleteSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.DeleteSessionClusterHeaders()
+        return await self.delete_session_cluster_with_options_async(namespace, session_cluster_name, headers, runtime)
 
     def delete_udf_artifact_with_options(
         self,
@@ -2367,6 +3127,124 @@ class Client(OpenApiClient):
         headers = ververica_20220718_models.GenerateResourcePlanWithFlinkConfAsyncHeaders()
         return await self.generate_resource_plan_with_flink_conf_async_with_options_async(namespace, deployment_id, request, headers, runtime)
 
+    def get_applied_scheduled_plan_with_options(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetAppliedScheduledPlanRequest,
+        headers: ververica_20220718_models.GetAppliedScheduledPlanHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetAppliedScheduledPlanResponse:
+        """
+        @summary 获取应用中的执行定时计划
+        
+        @param request: GetAppliedScheduledPlanRequest
+        @param headers: GetAppliedScheduledPlanHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppliedScheduledPlanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.deployment_id):
+            query['deploymentId'] = request.deployment_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAppliedScheduledPlan',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/scheduled-plans%3AgetExecutedScheduledPlan',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetAppliedScheduledPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_applied_scheduled_plan_with_options_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetAppliedScheduledPlanRequest,
+        headers: ververica_20220718_models.GetAppliedScheduledPlanHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetAppliedScheduledPlanResponse:
+        """
+        @summary 获取应用中的执行定时计划
+        
+        @param request: GetAppliedScheduledPlanRequest
+        @param headers: GetAppliedScheduledPlanHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppliedScheduledPlanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.deployment_id):
+            query['deploymentId'] = request.deployment_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAppliedScheduledPlan',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/scheduled-plans%3AgetExecutedScheduledPlan',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetAppliedScheduledPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_applied_scheduled_plan(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetAppliedScheduledPlanRequest,
+    ) -> ververica_20220718_models.GetAppliedScheduledPlanResponse:
+        """
+        @summary 获取应用中的执行定时计划
+        
+        @param request: GetAppliedScheduledPlanRequest
+        @return: GetAppliedScheduledPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetAppliedScheduledPlanHeaders()
+        return self.get_applied_scheduled_plan_with_options(namespace, request, headers, runtime)
+
+    async def get_applied_scheduled_plan_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetAppliedScheduledPlanRequest,
+    ) -> ververica_20220718_models.GetAppliedScheduledPlanResponse:
+        """
+        @summary 获取应用中的执行定时计划
+        
+        @param request: GetAppliedScheduledPlanRequest
+        @return: GetAppliedScheduledPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetAppliedScheduledPlanHeaders()
+        return await self.get_applied_scheduled_plan_with_options_async(namespace, request, headers, runtime)
+
     def get_catalogs_with_options(
         self,
         namespace: str,
@@ -3036,6 +3914,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ververica_20220718_models.GetDeploymentDraftLockHeaders()
         return await self.get_deployment_draft_lock_with_options_async(namespace, request, headers, runtime)
+
+    def get_events_with_options(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetEventsRequest,
+        headers: ververica_20220718_models.GetEventsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetEventsResponse:
+        """
+        @summary 获取运行事件
+        
+        @param request: GetEventsRequest
+        @param headers: GetEventsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.deployment_id):
+            query['deploymentId'] = request.deployment_id
+        if not UtilClient.is_unset(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEvents',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/events',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_events_with_options_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetEventsRequest,
+        headers: ververica_20220718_models.GetEventsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetEventsResponse:
+        """
+        @summary 获取运行事件
+        
+        @param request: GetEventsRequest
+        @param headers: GetEventsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEventsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.deployment_id):
+            query['deploymentId'] = request.deployment_id
+        if not UtilClient.is_unset(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEvents',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/events',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_events(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetEventsRequest,
+    ) -> ververica_20220718_models.GetEventsResponse:
+        """
+        @summary 获取运行事件
+        
+        @param request: GetEventsRequest
+        @return: GetEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetEventsHeaders()
+        return self.get_events_with_options(namespace, request, headers, runtime)
+
+    async def get_events_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.GetEventsRequest,
+    ) -> ververica_20220718_models.GetEventsResponse:
+        """
+        @summary 获取运行事件
+        
+        @param request: GetEventsRequest
+        @return: GetEventsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetEventsHeaders()
+        return await self.get_events_with_options_async(namespace, request, headers, runtime)
 
     def get_folder_with_options(
         self,
@@ -3886,6 +4890,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ververica_20220718_models.GetSavepointHeaders()
         return await self.get_savepoint_with_options_async(namespace, savepoint_id, headers, runtime)
+
+    def get_session_cluster_with_options(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+        headers: ververica_20220718_models.GetSessionClusterHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetSessionClusterResponse:
+        """
+        @summary 获取session集群
+        
+        @param headers: GetSessionClusterHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSessionClusterResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='GetSessionCluster',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/sessionclusters/{OpenApiUtilClient.get_encode_param(session_cluster_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetSessionClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_session_cluster_with_options_async(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+        headers: ververica_20220718_models.GetSessionClusterHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetSessionClusterResponse:
+        """
+        @summary 获取session集群
+        
+        @param headers: GetSessionClusterHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSessionClusterResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='GetSessionCluster',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/sessionclusters/{OpenApiUtilClient.get_encode_param(session_cluster_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetSessionClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_session_cluster(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+    ) -> ververica_20220718_models.GetSessionClusterResponse:
+        """
+        @summary 获取session集群
+        
+        @return: GetSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetSessionClusterHeaders()
+        return self.get_session_cluster_with_options(namespace, session_cluster_name, headers, runtime)
+
+    async def get_session_cluster_async(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+    ) -> ververica_20220718_models.GetSessionClusterResponse:
+        """
+        @summary 获取session集群
+        
+        @return: GetSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetSessionClusterHeaders()
+        return await self.get_session_cluster_with_options_async(namespace, session_cluster_name, headers, runtime)
 
     def get_tables_with_options(
         self,
@@ -5323,6 +6431,354 @@ class Client(OpenApiClient):
         headers = ververica_20220718_models.ListSavepointsHeaders()
         return await self.list_savepoints_with_options_async(namespace, request, headers, runtime)
 
+    def list_scheduled_plan_with_options(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ListScheduledPlanRequest,
+        headers: ververica_20220718_models.ListScheduledPlanHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.ListScheduledPlanResponse:
+        """
+        @summary 列表定时执行计划
+        
+        @param request: ListScheduledPlanRequest
+        @param headers: ListScheduledPlanHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListScheduledPlanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.deployment_id):
+            query['deploymentId'] = request.deployment_id
+        if not UtilClient.is_unset(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListScheduledPlan',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/scheduled-plans',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.ListScheduledPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_scheduled_plan_with_options_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ListScheduledPlanRequest,
+        headers: ververica_20220718_models.ListScheduledPlanHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.ListScheduledPlanResponse:
+        """
+        @summary 列表定时执行计划
+        
+        @param request: ListScheduledPlanRequest
+        @param headers: ListScheduledPlanHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListScheduledPlanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.deployment_id):
+            query['deploymentId'] = request.deployment_id
+        if not UtilClient.is_unset(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListScheduledPlan',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/scheduled-plans',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.ListScheduledPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_scheduled_plan(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ListScheduledPlanRequest,
+    ) -> ververica_20220718_models.ListScheduledPlanResponse:
+        """
+        @summary 列表定时执行计划
+        
+        @param request: ListScheduledPlanRequest
+        @return: ListScheduledPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.ListScheduledPlanHeaders()
+        return self.list_scheduled_plan_with_options(namespace, request, headers, runtime)
+
+    async def list_scheduled_plan_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ListScheduledPlanRequest,
+    ) -> ververica_20220718_models.ListScheduledPlanResponse:
+        """
+        @summary 列表定时执行计划
+        
+        @param request: ListScheduledPlanRequest
+        @return: ListScheduledPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.ListScheduledPlanHeaders()
+        return await self.list_scheduled_plan_with_options_async(namespace, request, headers, runtime)
+
+    def list_scheduled_plan_executed_history_with_options(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ListScheduledPlanExecutedHistoryRequest,
+        headers: ververica_20220718_models.ListScheduledPlanExecutedHistoryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.ListScheduledPlanExecutedHistoryResponse:
+        """
+        @summary 获取作业资源变更历史
+        
+        @param request: ListScheduledPlanExecutedHistoryRequest
+        @param headers: ListScheduledPlanExecutedHistoryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListScheduledPlanExecutedHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.deployment_id):
+            query['deploymentId'] = request.deployment_id
+        if not UtilClient.is_unset(request.origin):
+            query['origin'] = request.origin
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListScheduledPlanExecutedHistory',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/job-resource-upgradings',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.ListScheduledPlanExecutedHistoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_scheduled_plan_executed_history_with_options_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ListScheduledPlanExecutedHistoryRequest,
+        headers: ververica_20220718_models.ListScheduledPlanExecutedHistoryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.ListScheduledPlanExecutedHistoryResponse:
+        """
+        @summary 获取作业资源变更历史
+        
+        @param request: ListScheduledPlanExecutedHistoryRequest
+        @param headers: ListScheduledPlanExecutedHistoryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListScheduledPlanExecutedHistoryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.deployment_id):
+            query['deploymentId'] = request.deployment_id
+        if not UtilClient.is_unset(request.origin):
+            query['origin'] = request.origin
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListScheduledPlanExecutedHistory',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/job-resource-upgradings',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.ListScheduledPlanExecutedHistoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_scheduled_plan_executed_history(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ListScheduledPlanExecutedHistoryRequest,
+    ) -> ververica_20220718_models.ListScheduledPlanExecutedHistoryResponse:
+        """
+        @summary 获取作业资源变更历史
+        
+        @param request: ListScheduledPlanExecutedHistoryRequest
+        @return: ListScheduledPlanExecutedHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.ListScheduledPlanExecutedHistoryHeaders()
+        return self.list_scheduled_plan_executed_history_with_options(namespace, request, headers, runtime)
+
+    async def list_scheduled_plan_executed_history_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ListScheduledPlanExecutedHistoryRequest,
+    ) -> ververica_20220718_models.ListScheduledPlanExecutedHistoryResponse:
+        """
+        @summary 获取作业资源变更历史
+        
+        @param request: ListScheduledPlanExecutedHistoryRequest
+        @return: ListScheduledPlanExecutedHistoryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.ListScheduledPlanExecutedHistoryHeaders()
+        return await self.list_scheduled_plan_executed_history_with_options_async(namespace, request, headers, runtime)
+
+    def list_session_clusters_with_options(
+        self,
+        namespace: str,
+        headers: ververica_20220718_models.ListSessionClustersHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.ListSessionClustersResponse:
+        """
+        @summary 列举session集群
+        
+        @param headers: ListSessionClustersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSessionClustersResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='ListSessionClusters',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/sessionclusters',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.ListSessionClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_session_clusters_with_options_async(
+        self,
+        namespace: str,
+        headers: ververica_20220718_models.ListSessionClustersHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.ListSessionClustersResponse:
+        """
+        @summary 列举session集群
+        
+        @param headers: ListSessionClustersHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSessionClustersResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='ListSessionClusters',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/sessionclusters',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.ListSessionClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_session_clusters(
+        self,
+        namespace: str,
+    ) -> ververica_20220718_models.ListSessionClustersResponse:
+        """
+        @summary 列举session集群
+        
+        @return: ListSessionClustersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.ListSessionClustersHeaders()
+        return self.list_session_clusters_with_options(namespace, headers, runtime)
+
+    async def list_session_clusters_async(
+        self,
+        namespace: str,
+    ) -> ververica_20220718_models.ListSessionClustersResponse:
+        """
+        @summary 列举session集群
+        
+        @return: ListSessionClustersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.ListSessionClustersHeaders()
+        return await self.list_session_clusters_with_options_async(namespace, headers, runtime)
+
     def list_variables_with_options(
         self,
         namespace: str,
@@ -5925,6 +7381,214 @@ class Client(OpenApiClient):
         headers = ververica_20220718_models.StartJobWithParamsHeaders()
         return await self.start_job_with_params_with_options_async(namespace, request, headers, runtime)
 
+    def start_session_cluster_with_options(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+        headers: ververica_20220718_models.StartSessionClusterHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.StartSessionClusterResponse:
+        """
+        @summary 启动session集群
+        
+        @param headers: StartSessionClusterHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartSessionClusterResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='StartSessionCluster',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/sessionclusters/{OpenApiUtilClient.get_encode_param(session_cluster_name)}%3Astart',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.StartSessionClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_session_cluster_with_options_async(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+        headers: ververica_20220718_models.StartSessionClusterHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.StartSessionClusterResponse:
+        """
+        @summary 启动session集群
+        
+        @param headers: StartSessionClusterHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartSessionClusterResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='StartSessionCluster',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/sessionclusters/{OpenApiUtilClient.get_encode_param(session_cluster_name)}%3Astart',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.StartSessionClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_session_cluster(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+    ) -> ververica_20220718_models.StartSessionClusterResponse:
+        """
+        @summary 启动session集群
+        
+        @return: StartSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.StartSessionClusterHeaders()
+        return self.start_session_cluster_with_options(namespace, session_cluster_name, headers, runtime)
+
+    async def start_session_cluster_async(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+    ) -> ververica_20220718_models.StartSessionClusterResponse:
+        """
+        @summary 启动session集群
+        
+        @return: StartSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.StartSessionClusterHeaders()
+        return await self.start_session_cluster_with_options_async(namespace, session_cluster_name, headers, runtime)
+
+    def stop_apply_scheduled_plan_with_options(
+        self,
+        namespace: str,
+        scheduled_plan_id: str,
+        headers: ververica_20220718_models.StopApplyScheduledPlanHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.StopApplyScheduledPlanResponse:
+        """
+        @summary 停止应用执行定时计划
+        
+        @param headers: StopApplyScheduledPlanHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopApplyScheduledPlanResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='StopApplyScheduledPlan',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/scheduled-plans/{OpenApiUtilClient.get_encode_param(scheduled_plan_id)}%3Astop',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.StopApplyScheduledPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_apply_scheduled_plan_with_options_async(
+        self,
+        namespace: str,
+        scheduled_plan_id: str,
+        headers: ververica_20220718_models.StopApplyScheduledPlanHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.StopApplyScheduledPlanResponse:
+        """
+        @summary 停止应用执行定时计划
+        
+        @param headers: StopApplyScheduledPlanHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopApplyScheduledPlanResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='StopApplyScheduledPlan',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/scheduled-plans/{OpenApiUtilClient.get_encode_param(scheduled_plan_id)}%3Astop',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.StopApplyScheduledPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_apply_scheduled_plan(
+        self,
+        namespace: str,
+        scheduled_plan_id: str,
+    ) -> ververica_20220718_models.StopApplyScheduledPlanResponse:
+        """
+        @summary 停止应用执行定时计划
+        
+        @return: StopApplyScheduledPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.StopApplyScheduledPlanHeaders()
+        return self.stop_apply_scheduled_plan_with_options(namespace, scheduled_plan_id, headers, runtime)
+
+    async def stop_apply_scheduled_plan_async(
+        self,
+        namespace: str,
+        scheduled_plan_id: str,
+    ) -> ververica_20220718_models.StopApplyScheduledPlanResponse:
+        """
+        @summary 停止应用执行定时计划
+        
+        @return: StopApplyScheduledPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.StopApplyScheduledPlanHeaders()
+        return await self.stop_apply_scheduled_plan_with_options_async(namespace, scheduled_plan_id, headers, runtime)
+
     def stop_job_with_options(
         self,
         namespace: str,
@@ -6040,6 +7704,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ververica_20220718_models.StopJobHeaders()
         return await self.stop_job_with_options_async(namespace, job_id, request, headers, runtime)
+
+    def stop_session_cluster_with_options(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+        headers: ververica_20220718_models.StopSessionClusterHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.StopSessionClusterResponse:
+        """
+        @summary 停止session集群
+        
+        @param headers: StopSessionClusterHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopSessionClusterResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='StopSessionCluster',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/sessionclusters/{OpenApiUtilClient.get_encode_param(session_cluster_name)}%3Astop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.StopSessionClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_session_cluster_with_options_async(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+        headers: ververica_20220718_models.StopSessionClusterHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.StopSessionClusterResponse:
+        """
+        @summary 停止session集群
+        
+        @param headers: StopSessionClusterHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopSessionClusterResponse
+        """
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='StopSessionCluster',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/sessionclusters/{OpenApiUtilClient.get_encode_param(session_cluster_name)}%3Astop',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.StopSessionClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_session_cluster(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+    ) -> ververica_20220718_models.StopSessionClusterResponse:
+        """
+        @summary 停止session集群
+        
+        @return: StopSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.StopSessionClusterHeaders()
+        return self.stop_session_cluster_with_options(namespace, session_cluster_name, headers, runtime)
+
+    async def stop_session_cluster_async(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+    ) -> ververica_20220718_models.StopSessionClusterResponse:
+        """
+        @summary 停止session集群
+        
+        @return: StopSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.StopSessionClusterHeaders()
+        return await self.stop_session_cluster_with_options_async(namespace, session_cluster_name, headers, runtime)
 
     def update_deployment_with_options(
         self,
@@ -6273,6 +8041,122 @@ class Client(OpenApiClient):
         headers = ververica_20220718_models.UpdateDeploymentDraftHeaders()
         return await self.update_deployment_draft_with_options_async(namespace, deployment_draft_id, request, headers, runtime)
 
+    def update_deployment_target_with_options(
+        self,
+        namespace: str,
+        deployment_target_name: str,
+        request: ververica_20220718_models.UpdateDeploymentTargetRequest,
+        headers: ververica_20220718_models.UpdateDeploymentTargetHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.UpdateDeploymentTargetResponse:
+        """
+        @summary 修改deploymentTarget
+        
+        @param request: UpdateDeploymentTargetRequest
+        @param headers: UpdateDeploymentTargetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDeploymentTargetResponse
+        """
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDeploymentTarget',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployment-targets/{OpenApiUtilClient.get_encode_param(deployment_target_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.UpdateDeploymentTargetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_deployment_target_with_options_async(
+        self,
+        namespace: str,
+        deployment_target_name: str,
+        request: ververica_20220718_models.UpdateDeploymentTargetRequest,
+        headers: ververica_20220718_models.UpdateDeploymentTargetHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.UpdateDeploymentTargetResponse:
+        """
+        @summary 修改deploymentTarget
+        
+        @param request: UpdateDeploymentTargetRequest
+        @param headers: UpdateDeploymentTargetHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDeploymentTargetResponse
+        """
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDeploymentTarget',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/deployment-targets/{OpenApiUtilClient.get_encode_param(deployment_target_name)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.UpdateDeploymentTargetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_deployment_target(
+        self,
+        namespace: str,
+        deployment_target_name: str,
+        request: ververica_20220718_models.UpdateDeploymentTargetRequest,
+    ) -> ververica_20220718_models.UpdateDeploymentTargetResponse:
+        """
+        @summary 修改deploymentTarget
+        
+        @param request: UpdateDeploymentTargetRequest
+        @return: UpdateDeploymentTargetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.UpdateDeploymentTargetHeaders()
+        return self.update_deployment_target_with_options(namespace, deployment_target_name, request, headers, runtime)
+
+    async def update_deployment_target_async(
+        self,
+        namespace: str,
+        deployment_target_name: str,
+        request: ververica_20220718_models.UpdateDeploymentTargetRequest,
+    ) -> ververica_20220718_models.UpdateDeploymentTargetResponse:
+        """
+        @summary 修改deploymentTarget
+        
+        @param request: UpdateDeploymentTargetRequest
+        @return: UpdateDeploymentTargetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.UpdateDeploymentTargetHeaders()
+        return await self.update_deployment_target_with_options_async(namespace, deployment_target_name, request, headers, runtime)
+
     def update_folder_with_options(
         self,
         namespace: str,
@@ -6500,6 +8384,238 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ververica_20220718_models.UpdateMemberHeaders()
         return await self.update_member_with_options_async(namespace, request, headers, runtime)
+
+    def update_scheduled_plan_with_options(
+        self,
+        namespace: str,
+        scheduled_plan_id: str,
+        request: ververica_20220718_models.UpdateScheduledPlanRequest,
+        headers: ververica_20220718_models.UpdateScheduledPlanHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.UpdateScheduledPlanResponse:
+        """
+        @summary 更新定时执行计划
+        
+        @param request: UpdateScheduledPlanRequest
+        @param headers: UpdateScheduledPlanHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateScheduledPlanResponse
+        """
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateScheduledPlan',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/scheduled-plans/{OpenApiUtilClient.get_encode_param(scheduled_plan_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.UpdateScheduledPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_scheduled_plan_with_options_async(
+        self,
+        namespace: str,
+        scheduled_plan_id: str,
+        request: ververica_20220718_models.UpdateScheduledPlanRequest,
+        headers: ververica_20220718_models.UpdateScheduledPlanHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.UpdateScheduledPlanResponse:
+        """
+        @summary 更新定时执行计划
+        
+        @param request: UpdateScheduledPlanRequest
+        @param headers: UpdateScheduledPlanHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateScheduledPlanResponse
+        """
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateScheduledPlan',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/scheduled-plans/{OpenApiUtilClient.get_encode_param(scheduled_plan_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.UpdateScheduledPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_scheduled_plan(
+        self,
+        namespace: str,
+        scheduled_plan_id: str,
+        request: ververica_20220718_models.UpdateScheduledPlanRequest,
+    ) -> ververica_20220718_models.UpdateScheduledPlanResponse:
+        """
+        @summary 更新定时执行计划
+        
+        @param request: UpdateScheduledPlanRequest
+        @return: UpdateScheduledPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.UpdateScheduledPlanHeaders()
+        return self.update_scheduled_plan_with_options(namespace, scheduled_plan_id, request, headers, runtime)
+
+    async def update_scheduled_plan_async(
+        self,
+        namespace: str,
+        scheduled_plan_id: str,
+        request: ververica_20220718_models.UpdateScheduledPlanRequest,
+    ) -> ververica_20220718_models.UpdateScheduledPlanResponse:
+        """
+        @summary 更新定时执行计划
+        
+        @param request: UpdateScheduledPlanRequest
+        @return: UpdateScheduledPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.UpdateScheduledPlanHeaders()
+        return await self.update_scheduled_plan_with_options_async(namespace, scheduled_plan_id, request, headers, runtime)
+
+    def update_session_cluster_with_options(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+        request: ververica_20220718_models.UpdateSessionClusterRequest,
+        headers: ververica_20220718_models.UpdateSessionClusterHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.UpdateSessionClusterResponse:
+        """
+        @summary 更新session集群
+        
+        @param request: UpdateSessionClusterRequest
+        @param headers: UpdateSessionClusterHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSessionClusterResponse
+        """
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSessionCluster',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/sessionclusters/{OpenApiUtilClient.get_encode_param(session_cluster_name)}',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.UpdateSessionClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_session_cluster_with_options_async(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+        request: ververica_20220718_models.UpdateSessionClusterRequest,
+        headers: ververica_20220718_models.UpdateSessionClusterHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.UpdateSessionClusterResponse:
+        """
+        @summary 更新session集群
+        
+        @param request: UpdateSessionClusterRequest
+        @param headers: UpdateSessionClusterHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSessionClusterResponse
+        """
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSessionCluster',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/api/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/sessionclusters/{OpenApiUtilClient.get_encode_param(session_cluster_name)}',
+            method='PATCH',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.UpdateSessionClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_session_cluster(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+        request: ververica_20220718_models.UpdateSessionClusterRequest,
+    ) -> ververica_20220718_models.UpdateSessionClusterResponse:
+        """
+        @summary 更新session集群
+        
+        @param request: UpdateSessionClusterRequest
+        @return: UpdateSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.UpdateSessionClusterHeaders()
+        return self.update_session_cluster_with_options(namespace, session_cluster_name, request, headers, runtime)
+
+    async def update_session_cluster_async(
+        self,
+        namespace: str,
+        session_cluster_name: str,
+        request: ververica_20220718_models.UpdateSessionClusterRequest,
+    ) -> ververica_20220718_models.UpdateSessionClusterResponse:
+        """
+        @summary 更新session集群
+        
+        @param request: UpdateSessionClusterRequest
+        @return: UpdateSessionClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.UpdateSessionClusterHeaders()
+        return await self.update_session_cluster_with_options_async(namespace, session_cluster_name, request, headers, runtime)
 
     def update_udf_artifact_with_options(
         self,
