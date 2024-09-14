@@ -80637,9 +80637,11 @@ class ListVpcPublishedRouteEntriesResponseBodyRouteEntriesRoutePublishTargets(Te
     def __init__(
         self,
         publish_status: str = None,
+        publish_target_instance_id: str = None,
         publish_target_type: str = None,
     ):
         self.publish_status = publish_status
+        self.publish_target_instance_id = publish_target_instance_id
         self.publish_target_type = publish_target_type
 
     def validate(self):
@@ -80653,6 +80655,8 @@ class ListVpcPublishedRouteEntriesResponseBodyRouteEntriesRoutePublishTargets(Te
         result = dict()
         if self.publish_status is not None:
             result['PublishStatus'] = self.publish_status
+        if self.publish_target_instance_id is not None:
+            result['PublishTargetInstanceId'] = self.publish_target_instance_id
         if self.publish_target_type is not None:
             result['PublishTargetType'] = self.publish_target_type
         return result
@@ -80661,6 +80665,8 @@ class ListVpcPublishedRouteEntriesResponseBodyRouteEntriesRoutePublishTargets(Te
         m = m or dict()
         if m.get('PublishStatus') is not None:
             self.publish_status = m.get('PublishStatus')
+        if m.get('PublishTargetInstanceId') is not None:
+            self.publish_target_instance_id = m.get('PublishTargetInstanceId')
         if m.get('PublishTargetType') is not None:
             self.publish_target_type = m.get('PublishTargetType')
         return self

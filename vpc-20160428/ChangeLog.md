@@ -1,3 +1,7 @@
+2024-09-14 Version: 6.9.3
+- Update API ListVpcPublishedRouteEntries: update response param.
+
+
 2024-08-29 Version: 6.9.2
 - Update API ModifyRouteEntry: add param DestinationCidrBlock.
 - Update API ModifyRouteEntry: add param RouteTableId.
