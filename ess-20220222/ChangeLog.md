@@ -1,3 +1,23 @@
+2024-09-14 Version: 1.8.0
+- Support API CancelInstanceRefresh.
+- Support API DescribeInstanceRefreshes.
+- Support API ResumeInstanceRefresh.
+- Support API RollbackInstanceRefresh.
+- Support API StartInstanceRefresh.
+- Support API SuspendInstanceRefresh.
+- Update API CreateScalingRule: add param HybridMetrics.
+- Update API CreateScalingRule: add param HybridMonitorNamespace.
+- Update API CreateScalingRule: add param MetricType.
+- Update API DescribeAlarms: update response param.
+- Update API DescribeScalingActivities: add param InstanceRefreshTaskId.
+- Update API DescribeScalingActivities: update response param.
+- Update API DescribeScalingGroups: update response param.
+- Update API DescribeScalingRules: update response param.
+- Update API ModifyScalingRule: add param HybridMetrics.
+- Update API ModifyScalingRule: add param HybridMonitorNamespace.
+- Update API ModifyScalingRule: add param MetricType.
+
+
 2024-08-06 Version: 1.7.4
 - Generated python 2022-02-22 for Ess.
 

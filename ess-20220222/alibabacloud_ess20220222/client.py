@@ -228,7 +228,6 @@ class Client(OpenApiClient):
         You can use a Kubernetes Deployment YAML file to manage a scaling group based on the following logic:
         If an existing scaling group has a mapping relationship with your Kubernetes Deployment YAML file, you can update the scaling group by using the YAML file.
         If no scaling group that has a mapping relationship with your Kubernetes Deployment YAML file exists, you can create a scaling group with ease by using the YAML file.
-        ### Precautions
         1. If you do not specify a virtual private cloud (VPC), vSwitch, security group, or annotation in your Kubernetes Deployment YAML file, the system creates a default VPC that has default vSwitches and uses the default security group ess-default-sg of Auto Scaling. By default, the security group rule allows traffic on Transmission Control Protocol (TCP)-based port 22 and port 3389 and enables Internet Control Message Protocol (ICMP) for IPv4 addresses. If you want to enable other ports or protocols, you can create custom security group rules.
         2. If you want to use a public image, you must enable the Internet access feature and configure the k8s.aliyun.com/eci-with-eip pod annotation to enable the elastic IP address (EIP) feature.
         3. After you call the ApplyScalingGroup operation to apply a Kubernetes Deployment YAML file, the scaling group immediately enters the Enabled state and the scaling configuration immediately enters the Active state. If the number of replicas that you specified in the YAML file is grater than 0, elastic container instances are automatically created.
@@ -239,22 +238,22 @@ class Client(OpenApiClient):
         |k8s.aliyun.com/ess-scaling-group-min-size|1|The minimum size of the scaling group that you want to create. Default value: 0.|
         |k8s.aliyun.com/ess-scaling-group-max-size|20|The maximum size of the scaling group that you want to create. Default value: maximum number of replicas or 30, whichever is greater.|
         |k8s.aliyun.com/eci-ntp-server|100.100..*|The IP address of the Network Time Protocol (NTP) server.|
-        |k8s.aliyun.com/eci-use-specs|2-4Gi|The specifications of 2 vCPUs and 4 GB memory. For more information, see [Create pods by specifying multiple specifications](https://help.aliyun.com/document_detail/451267.html).|
+        |k8s.aliyun.com/eci-use-specs|2-4Gi|The specifications of 2 vCPUs and 4 GiB of memory. For more information, see [Create pods by specifying multiple specifications](https://help.aliyun.com/document_detail/451267.html).|
         |k8s.aliyun.com/eci-vswitch|vsw-bp1xpiowfm5vo8o3c\\\\*\\*\\*|The ID of the vSwitch. You can specify multiple vSwitches to specify multiple zones.|
         |k8s.aliyun.com/eci-security-group|sg-bp1dktddjsg5nktv\\\\*\\*\\*|The ID of the security group. Before you configure this annotation, take note of the following requirements:<ul data-sourcepos="26:74-26:168"><li data-sourcepos="26:78-26:114">You can specify one or more security groups. You can specify up to five security groups for each scaling group.</li><li data-sourcepos="26:114-26:140">If you specify multiple security groups, the security groups must belong to the same VPC.</li><li data-sourcepos="26:140-26:163">If you specify multiple security groups, the security groups must be of the same type.</li></ul>|
         |k8s.aliyun.com/eci-sls-enable|"false"|If you set the value to false, the log collection feature is disabled.
         If you do not want to use Custom Resource Definition (CRD) for Simple Log Service to collect logs of specific pods, you can configure this annotation for the pods and set the value to false. This prevents resource wastes caused by Logtails created by the system.|
-        |k8s.aliyun.com/eci-spot-strategy|SpotAsPriceGo|The bidding policy for the preemptible instance. Valid values:<ul data-sourcepos="28:69-28:204"><li data-sourcepos="28:73-28:158">SpotWithPriceLimit: The instance is created as a preemptible instance for which you specify the maximum hourly price If you set the value to SpotWithPriceLimit, you must configure the k8s.aliyun.com/eci-spot-price-limit annotation.</li><li data-sourcepos="28:158-28:199">SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is used as the bid price.</li></ul>|
-        |k8s.aliyun.com/eci-spot-price-limit|"0.5"|The maximum hourly price of the preemptible instance. This value can be accurate to up to three decimal places.
+        |k8s.aliyun.com/eci-spot-strategy|SpotAsPriceGo|The bidding policy for preemptible instances. Valid values:<ul data-sourcepos="28:69-28:204"><li data-sourcepos="28:73-28:158">SpotWithPriceLimit: The instances are created as preemptible instances with a maximum hourly price. If you set the value to SpotWithPriceLimit, you must configure the k8s.aliyun.com/eci-spot-price-limit annotation.</li><li data-sourcepos="28:158-28:199">SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.</li></ul>|
+        |k8s.aliyun.com/eci-spot-price-limit|"0.5"|The maximum hourly price of preemptible instances. This value can be accurate to up to three decimal places.
         This annotation takes effect only when you set the k8s.aliyun.com/eci-spot-strategy annotation to SpotWithPriceLimit.|
-        |k8s.aliyun.com/eci-with-eip|"true"|If you set the value to true, an EIP is automatically created and bound to each elastic container instance.|
-        |k8s.aliyun.com/eci-data-cache-bucket|default|The bucket of the specified DataCache. If you want to use a DataCache to create a pod, you must configure this annotation.|
-        |k8s.aliyun.com/eci-data-cache-pl|PL1|The performance level (PL) of the cloud disk that you want to create by using the specified DataCache.
-        By default, enhanced SSDs (ESSDs) are created. Default value: PL1.|
-        |k8s.aliyun.com/eci-data-cache-provisionedIops|"40000"|The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50000, 1000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. For more information, see [ESSD AutoPL](https://help.aliyun.com/document_detail/368372.html).
-        If you configure this annotation, the cloud disk that is created by using the specified DataCache is of the ESSD AutoPL type.|
-        |k8s.aliyun.com/eci-data-cache-burstingEnabled|"true"|Specifies whether the Burst feature is enabled for the ESSD AutoPL disk. For more information, see [ESSD AutoPL](https://help.aliyun.com/document_detail/368372.html).
-        If you configure this annotation, the cloud disk that is created by using the specified DataCache is of the ESSD AutoPL type.|
+        |k8s.aliyun.com/eci-with-eip|"true"|If you set the value to true, an elastic IP address (EIP) is automatically created and bound to each elastic container instance.|
+        |k8s.aliyun.com/eci-data-cache-bucket|default|The bucket of data caches. If you want to create a pod based on data caches, you must configure this annotation.|
+        |k8s.aliyun.com/eci-data-cache-pl|PL1|The performance level (PL) of the cloud disk that you want to create based on data caches.
+        By default, enterprise SSDs (ESSDs) are created. Default value: PL1.|
+        |k8s.aliyun.com/eci-data-cache-provisionedIops|"40000"|The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50000, 1000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        If you configure this annotation, the cloud disk that is created based on data caches is of the ESSD AutoPL type.|
+        |k8s.aliyun.com/eci-data-cache-burstingEnabled|"true"|Specifies whether the Burst feature is enabled for the ESSD AutoPL disk. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        If you configure this annotation, the cloud disk that is created based on data caches is of the ESSD AutoPL type.|
         |k8s.aliyun.com/eci-custom-tags|"env:test,name:alice"|The tags that you want to add to each elastic container instance. You can add up to three tags for each elastic container instance. Separate a tag key and a tag value with a colon (:). Separate multiple tags with commas (,).|
         
         @param request: ApplyScalingGroupRequest
@@ -301,7 +300,6 @@ class Client(OpenApiClient):
         You can use a Kubernetes Deployment YAML file to manage a scaling group based on the following logic:
         If an existing scaling group has a mapping relationship with your Kubernetes Deployment YAML file, you can update the scaling group by using the YAML file.
         If no scaling group that has a mapping relationship with your Kubernetes Deployment YAML file exists, you can create a scaling group with ease by using the YAML file.
-        ### Precautions
         1. If you do not specify a virtual private cloud (VPC), vSwitch, security group, or annotation in your Kubernetes Deployment YAML file, the system creates a default VPC that has default vSwitches and uses the default security group ess-default-sg of Auto Scaling. By default, the security group rule allows traffic on Transmission Control Protocol (TCP)-based port 22 and port 3389 and enables Internet Control Message Protocol (ICMP) for IPv4 addresses. If you want to enable other ports or protocols, you can create custom security group rules.
         2. If you want to use a public image, you must enable the Internet access feature and configure the k8s.aliyun.com/eci-with-eip pod annotation to enable the elastic IP address (EIP) feature.
         3. After you call the ApplyScalingGroup operation to apply a Kubernetes Deployment YAML file, the scaling group immediately enters the Enabled state and the scaling configuration immediately enters the Active state. If the number of replicas that you specified in the YAML file is grater than 0, elastic container instances are automatically created.
@@ -312,22 +310,22 @@ class Client(OpenApiClient):
         |k8s.aliyun.com/ess-scaling-group-min-size|1|The minimum size of the scaling group that you want to create. Default value: 0.|
         |k8s.aliyun.com/ess-scaling-group-max-size|20|The maximum size of the scaling group that you want to create. Default value: maximum number of replicas or 30, whichever is greater.|
         |k8s.aliyun.com/eci-ntp-server|100.100..*|The IP address of the Network Time Protocol (NTP) server.|
-        |k8s.aliyun.com/eci-use-specs|2-4Gi|The specifications of 2 vCPUs and 4 GB memory. For more information, see [Create pods by specifying multiple specifications](https://help.aliyun.com/document_detail/451267.html).|
+        |k8s.aliyun.com/eci-use-specs|2-4Gi|The specifications of 2 vCPUs and 4 GiB of memory. For more information, see [Create pods by specifying multiple specifications](https://help.aliyun.com/document_detail/451267.html).|
         |k8s.aliyun.com/eci-vswitch|vsw-bp1xpiowfm5vo8o3c\\\\*\\*\\*|The ID of the vSwitch. You can specify multiple vSwitches to specify multiple zones.|
         |k8s.aliyun.com/eci-security-group|sg-bp1dktddjsg5nktv\\\\*\\*\\*|The ID of the security group. Before you configure this annotation, take note of the following requirements:<ul data-sourcepos="26:74-26:168"><li data-sourcepos="26:78-26:114">You can specify one or more security groups. You can specify up to five security groups for each scaling group.</li><li data-sourcepos="26:114-26:140">If you specify multiple security groups, the security groups must belong to the same VPC.</li><li data-sourcepos="26:140-26:163">If you specify multiple security groups, the security groups must be of the same type.</li></ul>|
         |k8s.aliyun.com/eci-sls-enable|"false"|If you set the value to false, the log collection feature is disabled.
         If you do not want to use Custom Resource Definition (CRD) for Simple Log Service to collect logs of specific pods, you can configure this annotation for the pods and set the value to false. This prevents resource wastes caused by Logtails created by the system.|
-        |k8s.aliyun.com/eci-spot-strategy|SpotAsPriceGo|The bidding policy for the preemptible instance. Valid values:<ul data-sourcepos="28:69-28:204"><li data-sourcepos="28:73-28:158">SpotWithPriceLimit: The instance is created as a preemptible instance for which you specify the maximum hourly price If you set the value to SpotWithPriceLimit, you must configure the k8s.aliyun.com/eci-spot-price-limit annotation.</li><li data-sourcepos="28:158-28:199">SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is used as the bid price.</li></ul>|
-        |k8s.aliyun.com/eci-spot-price-limit|"0.5"|The maximum hourly price of the preemptible instance. This value can be accurate to up to three decimal places.
+        |k8s.aliyun.com/eci-spot-strategy|SpotAsPriceGo|The bidding policy for preemptible instances. Valid values:<ul data-sourcepos="28:69-28:204"><li data-sourcepos="28:73-28:158">SpotWithPriceLimit: The instances are created as preemptible instances with a maximum hourly price. If you set the value to SpotWithPriceLimit, you must configure the k8s.aliyun.com/eci-spot-price-limit annotation.</li><li data-sourcepos="28:158-28:199">SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.</li></ul>|
+        |k8s.aliyun.com/eci-spot-price-limit|"0.5"|The maximum hourly price of preemptible instances. This value can be accurate to up to three decimal places.
         This annotation takes effect only when you set the k8s.aliyun.com/eci-spot-strategy annotation to SpotWithPriceLimit.|
-        |k8s.aliyun.com/eci-with-eip|"true"|If you set the value to true, an EIP is automatically created and bound to each elastic container instance.|
-        |k8s.aliyun.com/eci-data-cache-bucket|default|The bucket of the specified DataCache. If you want to use a DataCache to create a pod, you must configure this annotation.|
-        |k8s.aliyun.com/eci-data-cache-pl|PL1|The performance level (PL) of the cloud disk that you want to create by using the specified DataCache.
-        By default, enhanced SSDs (ESSDs) are created. Default value: PL1.|
-        |k8s.aliyun.com/eci-data-cache-provisionedIops|"40000"|The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50000, 1000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. For more information, see [ESSD AutoPL](https://help.aliyun.com/document_detail/368372.html).
-        If you configure this annotation, the cloud disk that is created by using the specified DataCache is of the ESSD AutoPL type.|
-        |k8s.aliyun.com/eci-data-cache-burstingEnabled|"true"|Specifies whether the Burst feature is enabled for the ESSD AutoPL disk. For more information, see [ESSD AutoPL](https://help.aliyun.com/document_detail/368372.html).
-        If you configure this annotation, the cloud disk that is created by using the specified DataCache is of the ESSD AutoPL type.|
+        |k8s.aliyun.com/eci-with-eip|"true"|If you set the value to true, an elastic IP address (EIP) is automatically created and bound to each elastic container instance.|
+        |k8s.aliyun.com/eci-data-cache-bucket|default|The bucket of data caches. If you want to create a pod based on data caches, you must configure this annotation.|
+        |k8s.aliyun.com/eci-data-cache-pl|PL1|The performance level (PL) of the cloud disk that you want to create based on data caches.
+        By default, enterprise SSDs (ESSDs) are created. Default value: PL1.|
+        |k8s.aliyun.com/eci-data-cache-provisionedIops|"40000"|The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50000, 1000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        If you configure this annotation, the cloud disk that is created based on data caches is of the ESSD AutoPL type.|
+        |k8s.aliyun.com/eci-data-cache-burstingEnabled|"true"|Specifies whether the Burst feature is enabled for the ESSD AutoPL disk. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        If you configure this annotation, the cloud disk that is created based on data caches is of the ESSD AutoPL type.|
         |k8s.aliyun.com/eci-custom-tags|"env:test,name:alice"|The tags that you want to add to each elastic container instance. You can add up to three tags for each elastic container instance. Separate a tag key and a tag value with a colon (:). Separate multiple tags with commas (,).|
         
         @param request: ApplyScalingGroupRequest
@@ -373,7 +371,6 @@ class Client(OpenApiClient):
         You can use a Kubernetes Deployment YAML file to manage a scaling group based on the following logic:
         If an existing scaling group has a mapping relationship with your Kubernetes Deployment YAML file, you can update the scaling group by using the YAML file.
         If no scaling group that has a mapping relationship with your Kubernetes Deployment YAML file exists, you can create a scaling group with ease by using the YAML file.
-        ### Precautions
         1. If you do not specify a virtual private cloud (VPC), vSwitch, security group, or annotation in your Kubernetes Deployment YAML file, the system creates a default VPC that has default vSwitches and uses the default security group ess-default-sg of Auto Scaling. By default, the security group rule allows traffic on Transmission Control Protocol (TCP)-based port 22 and port 3389 and enables Internet Control Message Protocol (ICMP) for IPv4 addresses. If you want to enable other ports or protocols, you can create custom security group rules.
         2. If you want to use a public image, you must enable the Internet access feature and configure the k8s.aliyun.com/eci-with-eip pod annotation to enable the elastic IP address (EIP) feature.
         3. After you call the ApplyScalingGroup operation to apply a Kubernetes Deployment YAML file, the scaling group immediately enters the Enabled state and the scaling configuration immediately enters the Active state. If the number of replicas that you specified in the YAML file is grater than 0, elastic container instances are automatically created.
@@ -384,22 +381,22 @@ class Client(OpenApiClient):
         |k8s.aliyun.com/ess-scaling-group-min-size|1|The minimum size of the scaling group that you want to create. Default value: 0.|
         |k8s.aliyun.com/ess-scaling-group-max-size|20|The maximum size of the scaling group that you want to create. Default value: maximum number of replicas or 30, whichever is greater.|
         |k8s.aliyun.com/eci-ntp-server|100.100..*|The IP address of the Network Time Protocol (NTP) server.|
-        |k8s.aliyun.com/eci-use-specs|2-4Gi|The specifications of 2 vCPUs and 4 GB memory. For more information, see [Create pods by specifying multiple specifications](https://help.aliyun.com/document_detail/451267.html).|
+        |k8s.aliyun.com/eci-use-specs|2-4Gi|The specifications of 2 vCPUs and 4 GiB of memory. For more information, see [Create pods by specifying multiple specifications](https://help.aliyun.com/document_detail/451267.html).|
         |k8s.aliyun.com/eci-vswitch|vsw-bp1xpiowfm5vo8o3c\\\\*\\*\\*|The ID of the vSwitch. You can specify multiple vSwitches to specify multiple zones.|
         |k8s.aliyun.com/eci-security-group|sg-bp1dktddjsg5nktv\\\\*\\*\\*|The ID of the security group. Before you configure this annotation, take note of the following requirements:<ul data-sourcepos="26:74-26:168"><li data-sourcepos="26:78-26:114">You can specify one or more security groups. You can specify up to five security groups for each scaling group.</li><li data-sourcepos="26:114-26:140">If you specify multiple security groups, the security groups must belong to the same VPC.</li><li data-sourcepos="26:140-26:163">If you specify multiple security groups, the security groups must be of the same type.</li></ul>|
         |k8s.aliyun.com/eci-sls-enable|"false"|If you set the value to false, the log collection feature is disabled.
         If you do not want to use Custom Resource Definition (CRD) for Simple Log Service to collect logs of specific pods, you can configure this annotation for the pods and set the value to false. This prevents resource wastes caused by Logtails created by the system.|
-        |k8s.aliyun.com/eci-spot-strategy|SpotAsPriceGo|The bidding policy for the preemptible instance. Valid values:<ul data-sourcepos="28:69-28:204"><li data-sourcepos="28:73-28:158">SpotWithPriceLimit: The instance is created as a preemptible instance for which you specify the maximum hourly price If you set the value to SpotWithPriceLimit, you must configure the k8s.aliyun.com/eci-spot-price-limit annotation.</li><li data-sourcepos="28:158-28:199">SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is used as the bid price.</li></ul>|
-        |k8s.aliyun.com/eci-spot-price-limit|"0.5"|The maximum hourly price of the preemptible instance. This value can be accurate to up to three decimal places.
+        |k8s.aliyun.com/eci-spot-strategy|SpotAsPriceGo|The bidding policy for preemptible instances. Valid values:<ul data-sourcepos="28:69-28:204"><li data-sourcepos="28:73-28:158">SpotWithPriceLimit: The instances are created as preemptible instances with a maximum hourly price. If you set the value to SpotWithPriceLimit, you must configure the k8s.aliyun.com/eci-spot-price-limit annotation.</li><li data-sourcepos="28:158-28:199">SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.</li></ul>|
+        |k8s.aliyun.com/eci-spot-price-limit|"0.5"|The maximum hourly price of preemptible instances. This value can be accurate to up to three decimal places.
         This annotation takes effect only when you set the k8s.aliyun.com/eci-spot-strategy annotation to SpotWithPriceLimit.|
-        |k8s.aliyun.com/eci-with-eip|"true"|If you set the value to true, an EIP is automatically created and bound to each elastic container instance.|
-        |k8s.aliyun.com/eci-data-cache-bucket|default|The bucket of the specified DataCache. If you want to use a DataCache to create a pod, you must configure this annotation.|
-        |k8s.aliyun.com/eci-data-cache-pl|PL1|The performance level (PL) of the cloud disk that you want to create by using the specified DataCache.
-        By default, enhanced SSDs (ESSDs) are created. Default value: PL1.|
-        |k8s.aliyun.com/eci-data-cache-provisionedIops|"40000"|The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50000, 1000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. For more information, see [ESSD AutoPL](https://help.aliyun.com/document_detail/368372.html).
-        If you configure this annotation, the cloud disk that is created by using the specified DataCache is of the ESSD AutoPL type.|
-        |k8s.aliyun.com/eci-data-cache-burstingEnabled|"true"|Specifies whether the Burst feature is enabled for the ESSD AutoPL disk. For more information, see [ESSD AutoPL](https://help.aliyun.com/document_detail/368372.html).
-        If you configure this annotation, the cloud disk that is created by using the specified DataCache is of the ESSD AutoPL type.|
+        |k8s.aliyun.com/eci-with-eip|"true"|If you set the value to true, an elastic IP address (EIP) is automatically created and bound to each elastic container instance.|
+        |k8s.aliyun.com/eci-data-cache-bucket|default|The bucket of data caches. If you want to create a pod based on data caches, you must configure this annotation.|
+        |k8s.aliyun.com/eci-data-cache-pl|PL1|The performance level (PL) of the cloud disk that you want to create based on data caches.
+        By default, enterprise SSDs (ESSDs) are created. Default value: PL1.|
+        |k8s.aliyun.com/eci-data-cache-provisionedIops|"40000"|The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50000, 1000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        If you configure this annotation, the cloud disk that is created based on data caches is of the ESSD AutoPL type.|
+        |k8s.aliyun.com/eci-data-cache-burstingEnabled|"true"|Specifies whether the Burst feature is enabled for the ESSD AutoPL disk. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        If you configure this annotation, the cloud disk that is created based on data caches is of the ESSD AutoPL type.|
         |k8s.aliyun.com/eci-custom-tags|"env:test,name:alice"|The tags that you want to add to each elastic container instance. You can add up to three tags for each elastic container instance. Separate a tag key and a tag value with a colon (:). Separate multiple tags with commas (,).|
         
         @param request: ApplyScalingGroupRequest
@@ -420,7 +417,6 @@ class Client(OpenApiClient):
         You can use a Kubernetes Deployment YAML file to manage a scaling group based on the following logic:
         If an existing scaling group has a mapping relationship with your Kubernetes Deployment YAML file, you can update the scaling group by using the YAML file.
         If no scaling group that has a mapping relationship with your Kubernetes Deployment YAML file exists, you can create a scaling group with ease by using the YAML file.
-        ### Precautions
         1. If you do not specify a virtual private cloud (VPC), vSwitch, security group, or annotation in your Kubernetes Deployment YAML file, the system creates a default VPC that has default vSwitches and uses the default security group ess-default-sg of Auto Scaling. By default, the security group rule allows traffic on Transmission Control Protocol (TCP)-based port 22 and port 3389 and enables Internet Control Message Protocol (ICMP) for IPv4 addresses. If you want to enable other ports or protocols, you can create custom security group rules.
         2. If you want to use a public image, you must enable the Internet access feature and configure the k8s.aliyun.com/eci-with-eip pod annotation to enable the elastic IP address (EIP) feature.
         3. After you call the ApplyScalingGroup operation to apply a Kubernetes Deployment YAML file, the scaling group immediately enters the Enabled state and the scaling configuration immediately enters the Active state. If the number of replicas that you specified in the YAML file is grater than 0, elastic container instances are automatically created.
@@ -431,22 +427,22 @@ class Client(OpenApiClient):
         |k8s.aliyun.com/ess-scaling-group-min-size|1|The minimum size of the scaling group that you want to create. Default value: 0.|
         |k8s.aliyun.com/ess-scaling-group-max-size|20|The maximum size of the scaling group that you want to create. Default value: maximum number of replicas or 30, whichever is greater.|
         |k8s.aliyun.com/eci-ntp-server|100.100..*|The IP address of the Network Time Protocol (NTP) server.|
-        |k8s.aliyun.com/eci-use-specs|2-4Gi|The specifications of 2 vCPUs and 4 GB memory. For more information, see [Create pods by specifying multiple specifications](https://help.aliyun.com/document_detail/451267.html).|
+        |k8s.aliyun.com/eci-use-specs|2-4Gi|The specifications of 2 vCPUs and 4 GiB of memory. For more information, see [Create pods by specifying multiple specifications](https://help.aliyun.com/document_detail/451267.html).|
         |k8s.aliyun.com/eci-vswitch|vsw-bp1xpiowfm5vo8o3c\\\\*\\*\\*|The ID of the vSwitch. You can specify multiple vSwitches to specify multiple zones.|
         |k8s.aliyun.com/eci-security-group|sg-bp1dktddjsg5nktv\\\\*\\*\\*|The ID of the security group. Before you configure this annotation, take note of the following requirements:<ul data-sourcepos="26:74-26:168"><li data-sourcepos="26:78-26:114">You can specify one or more security groups. You can specify up to five security groups for each scaling group.</li><li data-sourcepos="26:114-26:140">If you specify multiple security groups, the security groups must belong to the same VPC.</li><li data-sourcepos="26:140-26:163">If you specify multiple security groups, the security groups must be of the same type.</li></ul>|
         |k8s.aliyun.com/eci-sls-enable|"false"|If you set the value to false, the log collection feature is disabled.
         If you do not want to use Custom Resource Definition (CRD) for Simple Log Service to collect logs of specific pods, you can configure this annotation for the pods and set the value to false. This prevents resource wastes caused by Logtails created by the system.|
-        |k8s.aliyun.com/eci-spot-strategy|SpotAsPriceGo|The bidding policy for the preemptible instance. Valid values:<ul data-sourcepos="28:69-28:204"><li data-sourcepos="28:73-28:158">SpotWithPriceLimit: The instance is created as a preemptible instance for which you specify the maximum hourly price If you set the value to SpotWithPriceLimit, you must configure the k8s.aliyun.com/eci-spot-price-limit annotation.</li><li data-sourcepos="28:158-28:199">SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is used as the bid price.</li></ul>|
-        |k8s.aliyun.com/eci-spot-price-limit|"0.5"|The maximum hourly price of the preemptible instance. This value can be accurate to up to three decimal places.
+        |k8s.aliyun.com/eci-spot-strategy|SpotAsPriceGo|The bidding policy for preemptible instances. Valid values:<ul data-sourcepos="28:69-28:204"><li data-sourcepos="28:73-28:158">SpotWithPriceLimit: The instances are created as preemptible instances with a maximum hourly price. If you set the value to SpotWithPriceLimit, you must configure the k8s.aliyun.com/eci-spot-price-limit annotation.</li><li data-sourcepos="28:158-28:199">SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.</li></ul>|
+        |k8s.aliyun.com/eci-spot-price-limit|"0.5"|The maximum hourly price of preemptible instances. This value can be accurate to up to three decimal places.
         This annotation takes effect only when you set the k8s.aliyun.com/eci-spot-strategy annotation to SpotWithPriceLimit.|
-        |k8s.aliyun.com/eci-with-eip|"true"|If you set the value to true, an EIP is automatically created and bound to each elastic container instance.|
-        |k8s.aliyun.com/eci-data-cache-bucket|default|The bucket of the specified DataCache. If you want to use a DataCache to create a pod, you must configure this annotation.|
-        |k8s.aliyun.com/eci-data-cache-pl|PL1|The performance level (PL) of the cloud disk that you want to create by using the specified DataCache.
-        By default, enhanced SSDs (ESSDs) are created. Default value: PL1.|
-        |k8s.aliyun.com/eci-data-cache-provisionedIops|"40000"|The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50000, 1000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. For more information, see [ESSD AutoPL](https://help.aliyun.com/document_detail/368372.html).
-        If you configure this annotation, the cloud disk that is created by using the specified DataCache is of the ESSD AutoPL type.|
-        |k8s.aliyun.com/eci-data-cache-burstingEnabled|"true"|Specifies whether the Burst feature is enabled for the ESSD AutoPL disk. For more information, see [ESSD AutoPL](https://help.aliyun.com/document_detail/368372.html).
-        If you configure this annotation, the cloud disk that is created by using the specified DataCache is of the ESSD AutoPL type.|
+        |k8s.aliyun.com/eci-with-eip|"true"|If you set the value to true, an elastic IP address (EIP) is automatically created and bound to each elastic container instance.|
+        |k8s.aliyun.com/eci-data-cache-bucket|default|The bucket of data caches. If you want to create a pod based on data caches, you must configure this annotation.|
+        |k8s.aliyun.com/eci-data-cache-pl|PL1|The performance level (PL) of the cloud disk that you want to create based on data caches.
+        By default, enterprise SSDs (ESSDs) are created. Default value: PL1.|
+        |k8s.aliyun.com/eci-data-cache-provisionedIops|"40000"|The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50000, 1000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        If you configure this annotation, the cloud disk that is created based on data caches is of the ESSD AutoPL type.|
+        |k8s.aliyun.com/eci-data-cache-burstingEnabled|"true"|Specifies whether the Burst feature is enabled for the ESSD AutoPL disk. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        If you configure this annotation, the cloud disk that is created based on data caches is of the ESSD AutoPL type.|
         |k8s.aliyun.com/eci-custom-tags|"env:test,name:alice"|The tags that you want to add to each elastic container instance. You can add up to three tags for each elastic container instance. Separate a tag key and a tag value with a colon (:). Separate multiple tags with commas (,).|
         
         @param request: ApplyScalingGroupRequest
@@ -1399,6 +1395,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.attach_vserver_groups_with_options_async(request, runtime)
 
+    def cancel_instance_refresh_with_options(
+        self,
+        request: ess_20220222_models.CancelInstanceRefreshRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.CancelInstanceRefreshResponse:
+        """
+        @param request: CancelInstanceRefreshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelInstanceRefreshResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_refresh_task_id):
+            query['InstanceRefreshTaskId'] = request.instance_refresh_task_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelInstanceRefresh',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.CancelInstanceRefreshResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_instance_refresh_with_options_async(
+        self,
+        request: ess_20220222_models.CancelInstanceRefreshRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.CancelInstanceRefreshResponse:
+        """
+        @param request: CancelInstanceRefreshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelInstanceRefreshResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_refresh_task_id):
+            query['InstanceRefreshTaskId'] = request.instance_refresh_task_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelInstanceRefresh',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.CancelInstanceRefreshResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_instance_refresh(
+        self,
+        request: ess_20220222_models.CancelInstanceRefreshRequest,
+    ) -> ess_20220222_models.CancelInstanceRefreshResponse:
+        """
+        @param request: CancelInstanceRefreshRequest
+        @return: CancelInstanceRefreshResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_instance_refresh_with_options(request, runtime)
+
+    async def cancel_instance_refresh_async(
+        self,
+        request: ess_20220222_models.CancelInstanceRefreshRequest,
+    ) -> ess_20220222_models.CancelInstanceRefreshResponse:
+        """
+        @param request: CancelInstanceRefreshRequest
+        @return: CancelInstanceRefreshResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_instance_refresh_with_options_async(request, runtime)
+
     def change_resource_group_with_options(
         self,
         request: ess_20220222_models.ChangeResourceGroupRequest,
@@ -1857,10 +1957,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CreateEciScalingConfigurationResponse:
         """
-        @summary Creates a scaling configuration of the Elastic Container Instance type. Auto Scaling uses the scaling configuration as a template to create elastic container instances to meet your business requirements during scale-outs.
+        @summary Creates a scaling configuration of the Elastic Container Instance type. Auto Scaling uses the scaling configuration as a template to create elastic container instances to meet your business requirements during scale-out events.
         
-        @description A scaling configuration is a template that is used to create elastic container instances during scale-out activities.
-        You can specify the Cpu and Memory parameters to determine the range of instance types. If you specify the parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Auto Scaling preferentially creates elastic container instances of the instance type that is provided at the lowest price. This scaling mode is available only if Scaling Policy is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+        @description A scaling configuration is a template that is used to create elastic container instances during scale-out events.
+        You can specify CPU and Memory to determine the range of instance types. Then, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Auto Scaling preferentially creates elastic container instances by using the lowest-priced instance type. This method applies only if you set Scaling Policy to Cost Optimization Policy and no instance type is specified in the scaling configuration.
         
         @param request: CreateEciScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1991,10 +2091,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CreateEciScalingConfigurationResponse:
         """
-        @summary Creates a scaling configuration of the Elastic Container Instance type. Auto Scaling uses the scaling configuration as a template to create elastic container instances to meet your business requirements during scale-outs.
+        @summary Creates a scaling configuration of the Elastic Container Instance type. Auto Scaling uses the scaling configuration as a template to create elastic container instances to meet your business requirements during scale-out events.
         
-        @description A scaling configuration is a template that is used to create elastic container instances during scale-out activities.
-        You can specify the Cpu and Memory parameters to determine the range of instance types. If you specify the parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Auto Scaling preferentially creates elastic container instances of the instance type that is provided at the lowest price. This scaling mode is available only if Scaling Policy is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+        @description A scaling configuration is a template that is used to create elastic container instances during scale-out events.
+        You can specify CPU and Memory to determine the range of instance types. Then, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Auto Scaling preferentially creates elastic container instances by using the lowest-priced instance type. This method applies only if you set Scaling Policy to Cost Optimization Policy and no instance type is specified in the scaling configuration.
         
         @param request: CreateEciScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2124,10 +2224,10 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CreateEciScalingConfigurationRequest,
     ) -> ess_20220222_models.CreateEciScalingConfigurationResponse:
         """
-        @summary Creates a scaling configuration of the Elastic Container Instance type. Auto Scaling uses the scaling configuration as a template to create elastic container instances to meet your business requirements during scale-outs.
+        @summary Creates a scaling configuration of the Elastic Container Instance type. Auto Scaling uses the scaling configuration as a template to create elastic container instances to meet your business requirements during scale-out events.
         
-        @description A scaling configuration is a template that is used to create elastic container instances during scale-out activities.
-        You can specify the Cpu and Memory parameters to determine the range of instance types. If you specify the parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Auto Scaling preferentially creates elastic container instances of the instance type that is provided at the lowest price. This scaling mode is available only if Scaling Policy is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+        @description A scaling configuration is a template that is used to create elastic container instances during scale-out events.
+        You can specify CPU and Memory to determine the range of instance types. Then, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Auto Scaling preferentially creates elastic container instances by using the lowest-priced instance type. This method applies only if you set Scaling Policy to Cost Optimization Policy and no instance type is specified in the scaling configuration.
         
         @param request: CreateEciScalingConfigurationRequest
         @return: CreateEciScalingConfigurationResponse
@@ -2140,10 +2240,10 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CreateEciScalingConfigurationRequest,
     ) -> ess_20220222_models.CreateEciScalingConfigurationResponse:
         """
-        @summary Creates a scaling configuration of the Elastic Container Instance type. Auto Scaling uses the scaling configuration as a template to create elastic container instances to meet your business requirements during scale-outs.
+        @summary Creates a scaling configuration of the Elastic Container Instance type. Auto Scaling uses the scaling configuration as a template to create elastic container instances to meet your business requirements during scale-out events.
         
-        @description A scaling configuration is a template that is used to create elastic container instances during scale-out activities.
-        You can specify the Cpu and Memory parameters to determine the range of instance types. If you specify the parameters, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Auto Scaling preferentially creates elastic container instances of the instance type that is provided at the lowest price. This scaling mode is available only if Scaling Policy is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+        @description A scaling configuration is a template that is used to create elastic container instances during scale-out events.
+        You can specify CPU and Memory to determine the range of instance types. Then, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones. Auto Scaling preferentially creates elastic container instances by using the lowest-priced instance type. This method applies only if you set Scaling Policy to Cost Optimization Policy and no instance type is specified in the scaling configuration.
         
         @param request: CreateEciScalingConfigurationRequest
         @return: CreateEciScalingConfigurationResponse
@@ -2311,8 +2411,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a notification rule. You can call the CreateNotificationConfiguration operation to create a notification rule to stay informed about scaling events or resource changes. This helps you learn about the dynamic status of your scaling group in real time and further automates the management of scaling events.
         
-        @description ## Description
-        You can configure CloudMonitor system events, Message Service (MNS) queues, or MNS topics to receive notifications. When a specified type of scaling activity or resource change occurs in a scaling group, Auto Scaling sends notifications by using CloudMonitor or MNS.
+        @description    You can enable a CloudMonitor system event, Message Service (MNS) queue, or MNS topic to receive notifications. When a scaling event of the specified type or resource change occurs in your scaling group, Auto Scaling automatically sends notifications to CloudMonitor or MNS.
+        You cannot specify the same recipient for notifications of different event types in a scaling group.
+        For example, you cannot enable the same CloudMonitor system event, MNS topic, or MNS queue to receive notifications of different event types in a scaling group.
         
         @param request: CreateNotificationConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2361,8 +2462,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a notification rule. You can call the CreateNotificationConfiguration operation to create a notification rule to stay informed about scaling events or resource changes. This helps you learn about the dynamic status of your scaling group in real time and further automates the management of scaling events.
         
-        @description ## Description
-        You can configure CloudMonitor system events, Message Service (MNS) queues, or MNS topics to receive notifications. When a specified type of scaling activity or resource change occurs in a scaling group, Auto Scaling sends notifications by using CloudMonitor or MNS.
+        @description    You can enable a CloudMonitor system event, Message Service (MNS) queue, or MNS topic to receive notifications. When a scaling event of the specified type or resource change occurs in your scaling group, Auto Scaling automatically sends notifications to CloudMonitor or MNS.
+        You cannot specify the same recipient for notifications of different event types in a scaling group.
+        For example, you cannot enable the same CloudMonitor system event, MNS topic, or MNS queue to receive notifications of different event types in a scaling group.
         
         @param request: CreateNotificationConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2410,8 +2512,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a notification rule. You can call the CreateNotificationConfiguration operation to create a notification rule to stay informed about scaling events or resource changes. This helps you learn about the dynamic status of your scaling group in real time and further automates the management of scaling events.
         
-        @description ## Description
-        You can configure CloudMonitor system events, Message Service (MNS) queues, or MNS topics to receive notifications. When a specified type of scaling activity or resource change occurs in a scaling group, Auto Scaling sends notifications by using CloudMonitor or MNS.
+        @description    You can enable a CloudMonitor system event, Message Service (MNS) queue, or MNS topic to receive notifications. When a scaling event of the specified type or resource change occurs in your scaling group, Auto Scaling automatically sends notifications to CloudMonitor or MNS.
+        You cannot specify the same recipient for notifications of different event types in a scaling group.
+        For example, you cannot enable the same CloudMonitor system event, MNS topic, or MNS queue to receive notifications of different event types in a scaling group.
         
         @param request: CreateNotificationConfigurationRequest
         @return: CreateNotificationConfigurationResponse
@@ -2426,8 +2529,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a notification rule. You can call the CreateNotificationConfiguration operation to create a notification rule to stay informed about scaling events or resource changes. This helps you learn about the dynamic status of your scaling group in real time and further automates the management of scaling events.
         
-        @description ## Description
-        You can configure CloudMonitor system events, Message Service (MNS) queues, or MNS topics to receive notifications. When a specified type of scaling activity or resource change occurs in a scaling group, Auto Scaling sends notifications by using CloudMonitor or MNS.
+        @description    You can enable a CloudMonitor system event, Message Service (MNS) queue, or MNS topic to receive notifications. When a scaling event of the specified type or resource change occurs in your scaling group, Auto Scaling automatically sends notifications to CloudMonitor or MNS.
+        You cannot specify the same recipient for notifications of different event types in a scaling group.
+        For example, you cannot enable the same CloudMonitor system event, MNS topic, or MNS queue to receive notifications of different event types in a scaling group.
         
         @param request: CreateNotificationConfigurationRequest
         @return: CreateNotificationConfigurationResponse
@@ -2441,7 +2545,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CreateScalingConfigurationResponse:
         """
-        @summary Creates a scaling configuration.
+        @summary Creates scaling configurations. When you call the CreateScalingConfiguration operation, you can specify the scaling group ID, instance type, and image to create a scaling configuration of the Elastic Compute Service (ECS) type.
         
         @description Auto Scaling automatically creates Elastic Compute Service (ECS) instances based on the specified scaling configuration. ECS instances can be created in the following modes:
         InstancePatternInfos: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and maximum price. Auto Scaling selects the instance type that has the lowest price based on the configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode reduces scale-out failures caused by insufficient inventory of instance types.
@@ -2600,7 +2704,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.CreateScalingConfigurationResponse:
         """
-        @summary Creates a scaling configuration.
+        @summary Creates scaling configurations. When you call the CreateScalingConfiguration operation, you can specify the scaling group ID, instance type, and image to create a scaling configuration of the Elastic Compute Service (ECS) type.
         
         @description Auto Scaling automatically creates Elastic Compute Service (ECS) instances based on the specified scaling configuration. ECS instances can be created in the following modes:
         InstancePatternInfos: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and maximum price. Auto Scaling selects the instance type that has the lowest price based on the configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode reduces scale-out failures caused by insufficient inventory of instance types.
@@ -2758,7 +2862,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CreateScalingConfigurationRequest,
     ) -> ess_20220222_models.CreateScalingConfigurationResponse:
         """
-        @summary Creates a scaling configuration.
+        @summary Creates scaling configurations. When you call the CreateScalingConfiguration operation, you can specify the scaling group ID, instance type, and image to create a scaling configuration of the Elastic Compute Service (ECS) type.
         
         @description Auto Scaling automatically creates Elastic Compute Service (ECS) instances based on the specified scaling configuration. ECS instances can be created in the following modes:
         InstancePatternInfos: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and maximum price. Auto Scaling selects the instance type that has the lowest price based on the configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode reduces scale-out failures caused by insufficient inventory of instance types.
@@ -2779,7 +2883,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.CreateScalingConfigurationRequest,
     ) -> ess_20220222_models.CreateScalingConfigurationResponse:
         """
-        @summary Creates a scaling configuration.
+        @summary Creates scaling configurations. When you call the CreateScalingConfiguration operation, you can specify the scaling group ID, instance type, and image to create a scaling configuration of the Elastic Compute Service (ECS) type.
         
         @description Auto Scaling automatically creates Elastic Compute Service (ECS) instances based on the specified scaling configuration. ECS instances can be created in the following modes:
         InstancePatternInfos: intelligent configuration mode. In this mode, you need to only specify the number of vCPUs, memory size, instance family, and maximum price. Auto Scaling selects the instance type that has the lowest price based on the configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode reduces scale-out failures caused by insufficient inventory of instance types.
@@ -3198,10 +3302,16 @@ class Client(OpenApiClient):
             query['DisableScaleIn'] = request.disable_scale_in
         if not UtilClient.is_unset(request.estimated_instance_warmup):
             query['EstimatedInstanceWarmup'] = request.estimated_instance_warmup
+        if not UtilClient.is_unset(request.hybrid_metrics):
+            query['HybridMetrics'] = request.hybrid_metrics
+        if not UtilClient.is_unset(request.hybrid_monitor_namespace):
+            query['HybridMonitorNamespace'] = request.hybrid_monitor_namespace
         if not UtilClient.is_unset(request.initial_max_size):
             query['InitialMaxSize'] = request.initial_max_size
         if not UtilClient.is_unset(request.metric_name):
             query['MetricName'] = request.metric_name
+        if not UtilClient.is_unset(request.metric_type):
+            query['MetricType'] = request.metric_type
         if not UtilClient.is_unset(request.min_adjustment_magnitude):
             query['MinAdjustmentMagnitude'] = request.min_adjustment_magnitude
         if not UtilClient.is_unset(request.owner_account):
@@ -3292,10 +3402,16 @@ class Client(OpenApiClient):
             query['DisableScaleIn'] = request.disable_scale_in
         if not UtilClient.is_unset(request.estimated_instance_warmup):
             query['EstimatedInstanceWarmup'] = request.estimated_instance_warmup
+        if not UtilClient.is_unset(request.hybrid_metrics):
+            query['HybridMetrics'] = request.hybrid_metrics
+        if not UtilClient.is_unset(request.hybrid_monitor_namespace):
+            query['HybridMonitorNamespace'] = request.hybrid_monitor_namespace
         if not UtilClient.is_unset(request.initial_max_size):
             query['InitialMaxSize'] = request.initial_max_size
         if not UtilClient.is_unset(request.metric_name):
             query['MetricName'] = request.metric_name
+        if not UtilClient.is_unset(request.metric_type):
+            query['MetricType'] = request.metric_type
         if not UtilClient.is_unset(request.min_adjustment_magnitude):
             query['MinAdjustmentMagnitude'] = request.min_adjustment_magnitude
         if not UtilClient.is_unset(request.owner_account):
@@ -5191,6 +5307,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_eci_scaling_configurations_with_options_async(request, runtime)
 
+    def describe_instance_refreshes_with_options(
+        self,
+        request: ess_20220222_models.DescribeInstanceRefreshesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.DescribeInstanceRefreshesResponse:
+        """
+        @param request: DescribeInstanceRefreshesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceRefreshesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_refresh_task_ids):
+            query['InstanceRefreshTaskIds'] = request.instance_refresh_task_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceRefreshes',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.DescribeInstanceRefreshesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_refreshes_with_options_async(
+        self,
+        request: ess_20220222_models.DescribeInstanceRefreshesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.DescribeInstanceRefreshesResponse:
+        """
+        @param request: DescribeInstanceRefreshesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceRefreshesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_refresh_task_ids):
+            query['InstanceRefreshTaskIds'] = request.instance_refresh_task_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceRefreshes',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.DescribeInstanceRefreshesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_refreshes(
+        self,
+        request: ess_20220222_models.DescribeInstanceRefreshesRequest,
+    ) -> ess_20220222_models.DescribeInstanceRefreshesResponse:
+        """
+        @param request: DescribeInstanceRefreshesRequest
+        @return: DescribeInstanceRefreshesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_refreshes_with_options(request, runtime)
+
+    async def describe_instance_refreshes_async(
+        self,
+        request: ess_20220222_models.DescribeInstanceRefreshesRequest,
+    ) -> ess_20220222_models.DescribeInstanceRefreshesResponse:
+        """
+        @param request: DescribeInstanceRefreshesRequest
+        @return: DescribeInstanceRefreshesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_refreshes_with_options_async(request, runtime)
+
     def describe_lifecycle_actions_with_options(
         self,
         request: ess_20220222_models.DescribeLifecycleActionsRequest,
@@ -5589,7 +5825,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeNotificationConfigurationsResponse:
         """
-        @summary Queries notifications. If you want to learn about a notification regarding the status of a scaling event or resource changes, you can call the DescribeNotificationConfigurations operation. This operation enables you to retrieve notification details, analyze resource change data, and refine scaling policies to efficiently utilize resources and fulfill business needs.
+        @summary Queries notification settings. You can call the DescribeNotificationConfiguration operation to query notification settings of scaling events or resource changes, including the notification types and methods.
         
         @param request: DescribeNotificationConfigurationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5630,7 +5866,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeNotificationConfigurationsResponse:
         """
-        @summary Queries notifications. If you want to learn about a notification regarding the status of a scaling event or resource changes, you can call the DescribeNotificationConfigurations operation. This operation enables you to retrieve notification details, analyze resource change data, and refine scaling policies to efficiently utilize resources and fulfill business needs.
+        @summary Queries notification settings. You can call the DescribeNotificationConfiguration operation to query notification settings of scaling events or resource changes, including the notification types and methods.
         
         @param request: DescribeNotificationConfigurationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5670,7 +5906,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeNotificationConfigurationsRequest,
     ) -> ess_20220222_models.DescribeNotificationConfigurationsResponse:
         """
-        @summary Queries notifications. If you want to learn about a notification regarding the status of a scaling event or resource changes, you can call the DescribeNotificationConfigurations operation. This operation enables you to retrieve notification details, analyze resource change data, and refine scaling policies to efficiently utilize resources and fulfill business needs.
+        @summary Queries notification settings. You can call the DescribeNotificationConfiguration operation to query notification settings of scaling events or resource changes, including the notification types and methods.
         
         @param request: DescribeNotificationConfigurationsRequest
         @return: DescribeNotificationConfigurationsResponse
@@ -5683,7 +5919,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeNotificationConfigurationsRequest,
     ) -> ess_20220222_models.DescribeNotificationConfigurationsResponse:
         """
-        @summary Queries notifications. If you want to learn about a notification regarding the status of a scaling event or resource changes, you can call the DescribeNotificationConfigurations operation. This operation enables you to retrieve notification details, analyze resource change data, and refine scaling policies to efficiently utilize resources and fulfill business needs.
+        @summary Queries notification settings. You can call the DescribeNotificationConfiguration operation to query notification settings of scaling events or resource changes, including the notification types and methods.
         
         @param request: DescribeNotificationConfigurationsRequest
         @return: DescribeNotificationConfigurationsResponse
@@ -6009,6 +6245,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.instance_refresh_task_id):
+            query['InstanceRefreshTaskId'] = request.instance_refresh_task_id
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -6066,6 +6304,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.instance_refresh_task_id):
+            query['InstanceRefreshTaskId'] = request.instance_refresh_task_id
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -6493,7 +6733,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScalingGroupsResponse:
         """
-        @summary Queries scaling groups. If you want to query the basic information, instances, and scaling configurations of a scaling group, you can call the DescribeScalingGroups operation.
+        @summary Queries information about scaling groups, such as the basic information, instances, and scaling configurations.
         
         @param request: DescribeScalingGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6552,7 +6792,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScalingGroupsResponse:
         """
-        @summary Queries scaling groups. If you want to query the basic information, instances, and scaling configurations of a scaling group, you can call the DescribeScalingGroups operation.
+        @summary Queries information about scaling groups, such as the basic information, instances, and scaling configurations.
         
         @param request: DescribeScalingGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6610,7 +6850,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScalingGroupsRequest,
     ) -> ess_20220222_models.DescribeScalingGroupsResponse:
         """
-        @summary Queries scaling groups. If you want to query the basic information, instances, and scaling configurations of a scaling group, you can call the DescribeScalingGroups operation.
+        @summary Queries information about scaling groups, such as the basic information, instances, and scaling configurations.
         
         @param request: DescribeScalingGroupsRequest
         @return: DescribeScalingGroupsResponse
@@ -6623,7 +6863,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScalingGroupsRequest,
     ) -> ess_20220222_models.DescribeScalingGroupsResponse:
         """
-        @summary Queries scaling groups. If you want to query the basic information, instances, and scaling configurations of a scaling group, you can call the DescribeScalingGroups operation.
+        @summary Queries information about scaling groups, such as the basic information, instances, and scaling configurations.
         
         @param request: DescribeScalingGroupsRequest
         @return: DescribeScalingGroupsResponse
@@ -6637,7 +6877,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScalingInstancesResponse:
         """
-        @summary Queries instances in a scaling group. You can call the DescribeScalingInstances operation to query instance details such as the number of preemptible instances in the Running state, the number of Elastic Compute Service (ECS) instances, the warm-up status of ECS instances, and the lifecycle status of ECS instances in a scaling group. You can specify the desired scaling group whose instances you want to query by scaling group ID. In addition, if you want to filter instances based on conditions such as the instance health status, lifecycle status, or creation method, you can also call this operation.
+        @summary Queries instances in a scaling group. You can call the DescribeScalingInstances operation to query instance details, such as the number of preemptible instances in the Running state, the number of Elastic Compute Service (ECS) instances, the warm-up status of ECS instances, and the lifecycle status of ECS instances in a scaling group. You can specify the scaling group whose instances you want to query by scaling group ID. If you want to filter instances based on conditions, such as the instance health status, lifecycle status, or creation method, you can also call this operation.
         
         @param request: DescribeScalingInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6702,7 +6942,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeScalingInstancesResponse:
         """
-        @summary Queries instances in a scaling group. You can call the DescribeScalingInstances operation to query instance details such as the number of preemptible instances in the Running state, the number of Elastic Compute Service (ECS) instances, the warm-up status of ECS instances, and the lifecycle status of ECS instances in a scaling group. You can specify the desired scaling group whose instances you want to query by scaling group ID. In addition, if you want to filter instances based on conditions such as the instance health status, lifecycle status, or creation method, you can also call this operation.
+        @summary Queries instances in a scaling group. You can call the DescribeScalingInstances operation to query instance details, such as the number of preemptible instances in the Running state, the number of Elastic Compute Service (ECS) instances, the warm-up status of ECS instances, and the lifecycle status of ECS instances in a scaling group. You can specify the scaling group whose instances you want to query by scaling group ID. If you want to filter instances based on conditions, such as the instance health status, lifecycle status, or creation method, you can also call this operation.
         
         @param request: DescribeScalingInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6766,7 +7006,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScalingInstancesRequest,
     ) -> ess_20220222_models.DescribeScalingInstancesResponse:
         """
-        @summary Queries instances in a scaling group. You can call the DescribeScalingInstances operation to query instance details such as the number of preemptible instances in the Running state, the number of Elastic Compute Service (ECS) instances, the warm-up status of ECS instances, and the lifecycle status of ECS instances in a scaling group. You can specify the desired scaling group whose instances you want to query by scaling group ID. In addition, if you want to filter instances based on conditions such as the instance health status, lifecycle status, or creation method, you can also call this operation.
+        @summary Queries instances in a scaling group. You can call the DescribeScalingInstances operation to query instance details, such as the number of preemptible instances in the Running state, the number of Elastic Compute Service (ECS) instances, the warm-up status of ECS instances, and the lifecycle status of ECS instances in a scaling group. You can specify the scaling group whose instances you want to query by scaling group ID. If you want to filter instances based on conditions, such as the instance health status, lifecycle status, or creation method, you can also call this operation.
         
         @param request: DescribeScalingInstancesRequest
         @return: DescribeScalingInstancesResponse
@@ -6779,7 +7019,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeScalingInstancesRequest,
     ) -> ess_20220222_models.DescribeScalingInstancesResponse:
         """
-        @summary Queries instances in a scaling group. You can call the DescribeScalingInstances operation to query instance details such as the number of preemptible instances in the Running state, the number of Elastic Compute Service (ECS) instances, the warm-up status of ECS instances, and the lifecycle status of ECS instances in a scaling group. You can specify the desired scaling group whose instances you want to query by scaling group ID. In addition, if you want to filter instances based on conditions such as the instance health status, lifecycle status, or creation method, you can also call this operation.
+        @summary Queries instances in a scaling group. You can call the DescribeScalingInstances operation to query instance details, such as the number of preemptible instances in the Running state, the number of Elastic Compute Service (ECS) instances, the warm-up status of ECS instances, and the lifecycle status of ECS instances in a scaling group. You can specify the scaling group whose instances you want to query by scaling group ID. If you want to filter instances based on conditions, such as the instance health status, lifecycle status, or creation method, you can also call this operation.
         
         @param request: DescribeScalingInstancesRequest
         @return: DescribeScalingInstancesResponse
@@ -9561,10 +9801,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyEciScalingConfigurationResponse:
         """
-        @summary Modifies scaling configurations of the Elastic Container Instance type. When you call the ModifyEciScalingConfiguration operation, you can specify the ID, name, and instance properties of the desired scaling configuration to modify information such as the instance restart policy, instance bidding policy, and elastic IP address (EIP) bandwidth.
+        @summary Modifies a scaling configuration of the Elastic Container Instance type. When you call the ModifyEciScalingConfiguration operation, you can specify the ID, name, and instance properties of the scaling configuration whose information you want to modify. You can modify the instance restart policy, instance bidding policy, and elastic IP address (EIP) bandwidth.
         
         @description    If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
-        You can call the [ModifyEciScalingConfiguration](https://help.aliyun.com/document_detail/459378.html) operation to verify the modification result.
+        You can call the [ModifyEciScalingConfiguration](https://help.aliyun.com/document_detail/459378.html) operation to check the modification result.
         
         @param request: ModifyEciScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9697,10 +9937,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ModifyEciScalingConfigurationResponse:
         """
-        @summary Modifies scaling configurations of the Elastic Container Instance type. When you call the ModifyEciScalingConfiguration operation, you can specify the ID, name, and instance properties of the desired scaling configuration to modify information such as the instance restart policy, instance bidding policy, and elastic IP address (EIP) bandwidth.
+        @summary Modifies a scaling configuration of the Elastic Container Instance type. When you call the ModifyEciScalingConfiguration operation, you can specify the ID, name, and instance properties of the scaling configuration whose information you want to modify. You can modify the instance restart policy, instance bidding policy, and elastic IP address (EIP) bandwidth.
         
         @description    If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
-        You can call the [ModifyEciScalingConfiguration](https://help.aliyun.com/document_detail/459378.html) operation to verify the modification result.
+        You can call the [ModifyEciScalingConfiguration](https://help.aliyun.com/document_detail/459378.html) operation to check the modification result.
         
         @param request: ModifyEciScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9832,10 +10072,10 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyEciScalingConfigurationRequest,
     ) -> ess_20220222_models.ModifyEciScalingConfigurationResponse:
         """
-        @summary Modifies scaling configurations of the Elastic Container Instance type. When you call the ModifyEciScalingConfiguration operation, you can specify the ID, name, and instance properties of the desired scaling configuration to modify information such as the instance restart policy, instance bidding policy, and elastic IP address (EIP) bandwidth.
+        @summary Modifies a scaling configuration of the Elastic Container Instance type. When you call the ModifyEciScalingConfiguration operation, you can specify the ID, name, and instance properties of the scaling configuration whose information you want to modify. You can modify the instance restart policy, instance bidding policy, and elastic IP address (EIP) bandwidth.
         
         @description    If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
-        You can call the [ModifyEciScalingConfiguration](https://help.aliyun.com/document_detail/459378.html) operation to verify the modification result.
+        You can call the [ModifyEciScalingConfiguration](https://help.aliyun.com/document_detail/459378.html) operation to check the modification result.
         
         @param request: ModifyEciScalingConfigurationRequest
         @return: ModifyEciScalingConfigurationResponse
@@ -9848,10 +10088,10 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ModifyEciScalingConfigurationRequest,
     ) -> ess_20220222_models.ModifyEciScalingConfigurationResponse:
         """
-        @summary Modifies scaling configurations of the Elastic Container Instance type. When you call the ModifyEciScalingConfiguration operation, you can specify the ID, name, and instance properties of the desired scaling configuration to modify information such as the instance restart policy, instance bidding policy, and elastic IP address (EIP) bandwidth.
+        @summary Modifies a scaling configuration of the Elastic Container Instance type. When you call the ModifyEciScalingConfiguration operation, you can specify the ID, name, and instance properties of the scaling configuration whose information you want to modify. You can modify the instance restart policy, instance bidding policy, and elastic IP address (EIP) bandwidth.
         
         @description    If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
-        You can call the [ModifyEciScalingConfiguration](https://help.aliyun.com/document_detail/459378.html) operation to verify the modification result.
+        You can call the [ModifyEciScalingConfiguration](https://help.aliyun.com/document_detail/459378.html) operation to check the modification result.
         
         @param request: ModifyEciScalingConfigurationRequest
         @return: ModifyEciScalingConfigurationResponse
@@ -10263,7 +10503,10 @@ class Client(OpenApiClient):
         """
         @summary Modifies a scaling configuration.
         
-        @description You can change the name of a scaling configuration in a scaling group. The name must be unique within the scaling group.
+        @description    If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
+        If you want to bind a primary elastic network interface (ENI) when you call this operation, you must use one of the following methods. If you use the following methods at the same time, the call fails and an error is reported. In addition, if you use one of the following methods to modify the ENI information when you call this operation, the ENI information configured by using the other method is cleared.
+        You can specify SecurityGroupId, SecurityGroupIds, and Ipv6AddressCount to configure ENI-related information.
+        You can specify NetworkInterfaces to configure primary and secondary ENIs. You must use NetworkInterface to specify at least one primary ENI. If you set NetworkInterface.InstanceType to Primary, it specifies that a primary ENI is configured. If you set NetworkInterface.InstanceType to Secondary or leave it empty, it specifies that a secondary ENI is configured.
         
         @param tmp_req: ModifyScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10410,7 +10653,10 @@ class Client(OpenApiClient):
         """
         @summary Modifies a scaling configuration.
         
-        @description You can change the name of a scaling configuration in a scaling group. The name must be unique within the scaling group.
+        @description    If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
+        If you want to bind a primary elastic network interface (ENI) when you call this operation, you must use one of the following methods. If you use the following methods at the same time, the call fails and an error is reported. In addition, if you use one of the following methods to modify the ENI information when you call this operation, the ENI information configured by using the other method is cleared.
+        You can specify SecurityGroupId, SecurityGroupIds, and Ipv6AddressCount to configure ENI-related information.
+        You can specify NetworkInterfaces to configure primary and secondary ENIs. You must use NetworkInterface to specify at least one primary ENI. If you set NetworkInterface.InstanceType to Primary, it specifies that a primary ENI is configured. If you set NetworkInterface.InstanceType to Secondary or leave it empty, it specifies that a secondary ENI is configured.
         
         @param tmp_req: ModifyScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10556,7 +10802,10 @@ class Client(OpenApiClient):
         """
         @summary Modifies a scaling configuration.
         
-        @description You can change the name of a scaling configuration in a scaling group. The name must be unique within the scaling group.
+        @description    If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
+        If you want to bind a primary elastic network interface (ENI) when you call this operation, you must use one of the following methods. If you use the following methods at the same time, the call fails and an error is reported. In addition, if you use one of the following methods to modify the ENI information when you call this operation, the ENI information configured by using the other method is cleared.
+        You can specify SecurityGroupId, SecurityGroupIds, and Ipv6AddressCount to configure ENI-related information.
+        You can specify NetworkInterfaces to configure primary and secondary ENIs. You must use NetworkInterface to specify at least one primary ENI. If you set NetworkInterface.InstanceType to Primary, it specifies that a primary ENI is configured. If you set NetworkInterface.InstanceType to Secondary or leave it empty, it specifies that a secondary ENI is configured.
         
         @param request: ModifyScalingConfigurationRequest
         @return: ModifyScalingConfigurationResponse
@@ -10571,7 +10820,10 @@ class Client(OpenApiClient):
         """
         @summary Modifies a scaling configuration.
         
-        @description You can change the name of a scaling configuration in a scaling group. The name must be unique within the scaling group.
+        @description    If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
+        If you want to bind a primary elastic network interface (ENI) when you call this operation, you must use one of the following methods. If you use the following methods at the same time, the call fails and an error is reported. In addition, if you use one of the following methods to modify the ENI information when you call this operation, the ENI information configured by using the other method is cleared.
+        You can specify SecurityGroupId, SecurityGroupIds, and Ipv6AddressCount to configure ENI-related information.
+        You can specify NetworkInterfaces to configure primary and secondary ENIs. You must use NetworkInterface to specify at least one primary ENI. If you set NetworkInterface.InstanceType to Primary, it specifies that a primary ENI is configured. If you set NetworkInterface.InstanceType to Secondary or leave it empty, it specifies that a secondary ENI is configured.
         
         @param request: ModifyScalingConfigurationRequest
         @return: ModifyScalingConfigurationResponse
@@ -10881,10 +11133,16 @@ class Client(OpenApiClient):
             query['DisableScaleIn'] = request.disable_scale_in
         if not UtilClient.is_unset(request.estimated_instance_warmup):
             query['EstimatedInstanceWarmup'] = request.estimated_instance_warmup
+        if not UtilClient.is_unset(request.hybrid_metrics):
+            query['HybridMetrics'] = request.hybrid_metrics
+        if not UtilClient.is_unset(request.hybrid_monitor_namespace):
+            query['HybridMonitorNamespace'] = request.hybrid_monitor_namespace
         if not UtilClient.is_unset(request.initial_max_size):
             query['InitialMaxSize'] = request.initial_max_size
         if not UtilClient.is_unset(request.metric_name):
             query['MetricName'] = request.metric_name
+        if not UtilClient.is_unset(request.metric_type):
+            query['MetricType'] = request.metric_type
         if not UtilClient.is_unset(request.min_adjustment_magnitude):
             query['MinAdjustmentMagnitude'] = request.min_adjustment_magnitude
         if not UtilClient.is_unset(request.owner_account):
@@ -10960,10 +11218,16 @@ class Client(OpenApiClient):
             query['DisableScaleIn'] = request.disable_scale_in
         if not UtilClient.is_unset(request.estimated_instance_warmup):
             query['EstimatedInstanceWarmup'] = request.estimated_instance_warmup
+        if not UtilClient.is_unset(request.hybrid_metrics):
+            query['HybridMetrics'] = request.hybrid_metrics
+        if not UtilClient.is_unset(request.hybrid_monitor_namespace):
+            query['HybridMonitorNamespace'] = request.hybrid_monitor_namespace
         if not UtilClient.is_unset(request.initial_max_size):
             query['InitialMaxSize'] = request.initial_max_size
         if not UtilClient.is_unset(request.metric_name):
             query['MetricName'] = request.metric_name
+        if not UtilClient.is_unset(request.metric_type):
+            query['MetricType'] = request.metric_type
         if not UtilClient.is_unset(request.min_adjustment_magnitude):
             query['MinAdjustmentMagnitude'] = request.min_adjustment_magnitude
         if not UtilClient.is_unset(request.owner_account):
@@ -11675,6 +11939,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.remove_instances_with_options_async(request, runtime)
 
+    def resume_instance_refresh_with_options(
+        self,
+        request: ess_20220222_models.ResumeInstanceRefreshRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.ResumeInstanceRefreshResponse:
+        """
+        @param request: ResumeInstanceRefreshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeInstanceRefreshResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_refresh_task_id):
+            query['InstanceRefreshTaskId'] = request.instance_refresh_task_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResumeInstanceRefresh',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.ResumeInstanceRefreshResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_instance_refresh_with_options_async(
+        self,
+        request: ess_20220222_models.ResumeInstanceRefreshRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.ResumeInstanceRefreshResponse:
+        """
+        @param request: ResumeInstanceRefreshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeInstanceRefreshResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_refresh_task_id):
+            query['InstanceRefreshTaskId'] = request.instance_refresh_task_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResumeInstanceRefresh',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.ResumeInstanceRefreshResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_instance_refresh(
+        self,
+        request: ess_20220222_models.ResumeInstanceRefreshRequest,
+    ) -> ess_20220222_models.ResumeInstanceRefreshResponse:
+        """
+        @param request: ResumeInstanceRefreshRequest
+        @return: ResumeInstanceRefreshResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.resume_instance_refresh_with_options(request, runtime)
+
+    async def resume_instance_refresh_async(
+        self,
+        request: ess_20220222_models.ResumeInstanceRefreshRequest,
+    ) -> ess_20220222_models.ResumeInstanceRefreshResponse:
+        """
+        @param request: ResumeInstanceRefreshRequest
+        @return: ResumeInstanceRefreshResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.resume_instance_refresh_with_options_async(request, runtime)
+
     def resume_processes_with_options(
         self,
         request: ess_20220222_models.ResumeProcessesRequest,
@@ -11790,6 +12158,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.resume_processes_with_options_async(request, runtime)
+
+    def rollback_instance_refresh_with_options(
+        self,
+        request: ess_20220222_models.RollbackInstanceRefreshRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.RollbackInstanceRefreshResponse:
+        """
+        @param request: RollbackInstanceRefreshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RollbackInstanceRefreshResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_refresh_task_id):
+            query['InstanceRefreshTaskId'] = request.instance_refresh_task_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RollbackInstanceRefresh',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.RollbackInstanceRefreshResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rollback_instance_refresh_with_options_async(
+        self,
+        request: ess_20220222_models.RollbackInstanceRefreshRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.RollbackInstanceRefreshResponse:
+        """
+        @param request: RollbackInstanceRefreshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RollbackInstanceRefreshResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_refresh_task_id):
+            query['InstanceRefreshTaskId'] = request.instance_refresh_task_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RollbackInstanceRefresh',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.RollbackInstanceRefreshResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rollback_instance_refresh(
+        self,
+        request: ess_20220222_models.RollbackInstanceRefreshRequest,
+    ) -> ess_20220222_models.RollbackInstanceRefreshResponse:
+        """
+        @param request: RollbackInstanceRefreshRequest
+        @return: RollbackInstanceRefreshResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.rollback_instance_refresh_with_options(request, runtime)
+
+    async def rollback_instance_refresh_async(
+        self,
+        request: ess_20220222_models.RollbackInstanceRefreshRequest,
+    ) -> ess_20220222_models.RollbackInstanceRefreshResponse:
+        """
+        @param request: RollbackInstanceRefreshRequest
+        @return: RollbackInstanceRefreshResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.rollback_instance_refresh_with_options_async(request, runtime)
 
     def scale_with_adjustment_with_options(
         self,
@@ -12330,6 +12802,226 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.set_instances_protection_with_options_async(request, runtime)
+
+    def start_instance_refresh_with_options(
+        self,
+        request: ess_20220222_models.StartInstanceRefreshRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.StartInstanceRefreshResponse:
+        """
+        @param request: StartInstanceRefreshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartInstanceRefreshResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.desired_configuration):
+            query['DesiredConfiguration'] = request.desired_configuration
+        if not UtilClient.is_unset(request.max_healthy_percentage):
+            query['MaxHealthyPercentage'] = request.max_healthy_percentage
+        if not UtilClient.is_unset(request.min_healthy_percentage):
+            query['MinHealthyPercentage'] = request.min_healthy_percentage
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartInstanceRefresh',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.StartInstanceRefreshResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_instance_refresh_with_options_async(
+        self,
+        request: ess_20220222_models.StartInstanceRefreshRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.StartInstanceRefreshResponse:
+        """
+        @param request: StartInstanceRefreshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartInstanceRefreshResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.desired_configuration):
+            query['DesiredConfiguration'] = request.desired_configuration
+        if not UtilClient.is_unset(request.max_healthy_percentage):
+            query['MaxHealthyPercentage'] = request.max_healthy_percentage
+        if not UtilClient.is_unset(request.min_healthy_percentage):
+            query['MinHealthyPercentage'] = request.min_healthy_percentage
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartInstanceRefresh',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.StartInstanceRefreshResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_instance_refresh(
+        self,
+        request: ess_20220222_models.StartInstanceRefreshRequest,
+    ) -> ess_20220222_models.StartInstanceRefreshResponse:
+        """
+        @param request: StartInstanceRefreshRequest
+        @return: StartInstanceRefreshResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_instance_refresh_with_options(request, runtime)
+
+    async def start_instance_refresh_async(
+        self,
+        request: ess_20220222_models.StartInstanceRefreshRequest,
+    ) -> ess_20220222_models.StartInstanceRefreshResponse:
+        """
+        @param request: StartInstanceRefreshRequest
+        @return: StartInstanceRefreshResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_instance_refresh_with_options_async(request, runtime)
+
+    def suspend_instance_refresh_with_options(
+        self,
+        request: ess_20220222_models.SuspendInstanceRefreshRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.SuspendInstanceRefreshResponse:
+        """
+        @param request: SuspendInstanceRefreshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendInstanceRefreshResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_refresh_task_id):
+            query['InstanceRefreshTaskId'] = request.instance_refresh_task_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SuspendInstanceRefresh',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.SuspendInstanceRefreshResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def suspend_instance_refresh_with_options_async(
+        self,
+        request: ess_20220222_models.SuspendInstanceRefreshRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ess_20220222_models.SuspendInstanceRefreshResponse:
+        """
+        @param request: SuspendInstanceRefreshRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuspendInstanceRefreshResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_refresh_task_id):
+            query['InstanceRefreshTaskId'] = request.instance_refresh_task_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SuspendInstanceRefresh',
+            version='2022-02-22',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ess_20220222_models.SuspendInstanceRefreshResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def suspend_instance_refresh(
+        self,
+        request: ess_20220222_models.SuspendInstanceRefreshRequest,
+    ) -> ess_20220222_models.SuspendInstanceRefreshResponse:
+        """
+        @param request: SuspendInstanceRefreshRequest
+        @return: SuspendInstanceRefreshResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.suspend_instance_refresh_with_options(request, runtime)
+
+    async def suspend_instance_refresh_async(
+        self,
+        request: ess_20220222_models.SuspendInstanceRefreshRequest,
+    ) -> ess_20220222_models.SuspendInstanceRefreshResponse:
+        """
+        @param request: SuspendInstanceRefreshRequest
+        @return: SuspendInstanceRefreshResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.suspend_instance_refresh_with_options_async(request, runtime)
 
     def suspend_processes_with_options(
         self,
