@@ -1155,12 +1155,94 @@ class CreateIndexRequestColumns(TeaModel):
         return self
 
 
+class CreateIndexRequestDataSource(TeaModel):
+    def __init__(
+        self,
+        credential_id: str = None,
+        credential_key: str = None,
+        database: str = None,
+        endpoint: str = None,
+        is_private_link: bool = None,
+        region: str = None,
+        sub_path: str = None,
+        sub_type: str = None,
+        table: str = None,
+        type: str = None,
+    ):
+        self.credential_id = credential_id
+        self.credential_key = credential_key
+        self.database = database
+        self.endpoint = endpoint
+        self.is_private_link = is_private_link
+        self.region = region
+        self.sub_path = sub_path
+        self.sub_type = sub_type
+        self.table = table
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.credential_id is not None:
+            result['CredentialId'] = self.credential_id
+        if self.credential_key is not None:
+            result['CredentialKey'] = self.credential_key
+        if self.database is not None:
+            result['Database'] = self.database
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        if self.is_private_link is not None:
+            result['IsPrivateLink'] = self.is_private_link
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.sub_path is not None:
+            result['SubPath'] = self.sub_path
+        if self.sub_type is not None:
+            result['SubType'] = self.sub_type
+        if self.table is not None:
+            result['Table'] = self.table
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CredentialId') is not None:
+            self.credential_id = m.get('CredentialId')
+        if m.get('CredentialKey') is not None:
+            self.credential_key = m.get('CredentialKey')
+        if m.get('Database') is not None:
+            self.database = m.get('Database')
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+        if m.get('IsPrivateLink') is not None:
+            self.is_private_link = m.get('IsPrivateLink')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('SubPath') is not None:
+            self.sub_path = m.get('SubPath')
+        if m.get('SubType') is not None:
+            self.sub_type = m.get('SubType')
+        if m.get('Table') is not None:
+            self.table = m.get('Table')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
 class CreateIndexRequest(TeaModel):
     def __init__(
         self,
         category_ids: List[str] = None,
         chunk_size: int = None,
         columns: List[CreateIndexRequestColumns] = None,
+        data_source: CreateIndexRequestDataSource = None,
         description: str = None,
         document_ids: List[str] = None,
         embedding_model_name: str = None,
@@ -1178,6 +1260,7 @@ class CreateIndexRequest(TeaModel):
         self.category_ids = category_ids
         self.chunk_size = chunk_size
         self.columns = columns
+        self.data_source = data_source
         self.description = description
         self.document_ids = document_ids
         self.embedding_model_name = embedding_model_name
@@ -1201,6 +1284,8 @@ class CreateIndexRequest(TeaModel):
             for k in self.columns:
                 if k:
                     k.validate()
+        if self.data_source:
+            self.data_source.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1216,6 +1301,8 @@ class CreateIndexRequest(TeaModel):
         if self.columns is not None:
             for k in self.columns:
                 result['Columns'].append(k.to_map() if k else None)
+        if self.data_source is not None:
+            result['DataSource'] = self.data_source.to_map()
         if self.description is not None:
             result['Description'] = self.description
         if self.document_ids is not None:
@@ -1255,6 +1342,9 @@ class CreateIndexRequest(TeaModel):
             for k in m.get('Columns'):
                 temp_model = CreateIndexRequestColumns()
                 self.columns.append(temp_model.from_map(k))
+        if m.get('DataSource') is not None:
+            temp_model = CreateIndexRequestDataSource()
+            self.data_source = temp_model.from_map(m['DataSource'])
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DocumentIds') is not None:
@@ -1290,6 +1380,7 @@ class CreateIndexShrinkRequest(TeaModel):
         category_ids_shrink: str = None,
         chunk_size: int = None,
         columns_shrink: str = None,
+        data_source_shrink: str = None,
         description: str = None,
         document_ids_shrink: str = None,
         embedding_model_name: str = None,
@@ -1307,6 +1398,7 @@ class CreateIndexShrinkRequest(TeaModel):
         self.category_ids_shrink = category_ids_shrink
         self.chunk_size = chunk_size
         self.columns_shrink = columns_shrink
+        self.data_source_shrink = data_source_shrink
         self.description = description
         self.document_ids_shrink = document_ids_shrink
         self.embedding_model_name = embedding_model_name
@@ -1340,6 +1432,8 @@ class CreateIndexShrinkRequest(TeaModel):
             result['ChunkSize'] = self.chunk_size
         if self.columns_shrink is not None:
             result['Columns'] = self.columns_shrink
+        if self.data_source_shrink is not None:
+            result['DataSource'] = self.data_source_shrink
         if self.description is not None:
             result['Description'] = self.description
         if self.document_ids_shrink is not None:
@@ -1376,6 +1470,8 @@ class CreateIndexShrinkRequest(TeaModel):
             self.chunk_size = m.get('ChunkSize')
         if m.get('Columns') is not None:
             self.columns_shrink = m.get('Columns')
+        if m.get('DataSource') is not None:
+            self.data_source_shrink = m.get('DataSource')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DocumentIds') is not None:
@@ -5948,6 +6044,7 @@ class RetrieveRequest(TeaModel):
         dense_similarity_top_k: int = None,
         enable_reranking: bool = None,
         enable_rewrite: bool = None,
+        images: List[str] = None,
         index_id: str = None,
         query: str = None,
         rerank: List[RetrieveRequestRerank] = None,
@@ -5961,6 +6058,7 @@ class RetrieveRequest(TeaModel):
         self.dense_similarity_top_k = dense_similarity_top_k
         self.enable_reranking = enable_reranking
         self.enable_rewrite = enable_rewrite
+        self.images = images
         # This parameter is required.
         self.index_id = index_id
         self.query = query
@@ -5994,6 +6092,8 @@ class RetrieveRequest(TeaModel):
             result['EnableReranking'] = self.enable_reranking
         if self.enable_rewrite is not None:
             result['EnableRewrite'] = self.enable_rewrite
+        if self.images is not None:
+            result['Images'] = self.images
         if self.index_id is not None:
             result['IndexId'] = self.index_id
         if self.query is not None:
@@ -6026,6 +6126,8 @@ class RetrieveRequest(TeaModel):
             self.enable_reranking = m.get('EnableReranking')
         if m.get('EnableRewrite') is not None:
             self.enable_rewrite = m.get('EnableRewrite')
+        if m.get('Images') is not None:
+            self.images = m.get('Images')
         if m.get('IndexId') is not None:
             self.index_id = m.get('IndexId')
         if m.get('Query') is not None:
@@ -6059,6 +6161,7 @@ class RetrieveShrinkRequest(TeaModel):
         dense_similarity_top_k: int = None,
         enable_reranking: bool = None,
         enable_rewrite: bool = None,
+        images_shrink: str = None,
         index_id: str = None,
         query: str = None,
         rerank_shrink: str = None,
@@ -6072,6 +6175,7 @@ class RetrieveShrinkRequest(TeaModel):
         self.dense_similarity_top_k = dense_similarity_top_k
         self.enable_reranking = enable_reranking
         self.enable_rewrite = enable_rewrite
+        self.images_shrink = images_shrink
         # This parameter is required.
         self.index_id = index_id
         self.query = query
@@ -6098,6 +6202,8 @@ class RetrieveShrinkRequest(TeaModel):
             result['EnableReranking'] = self.enable_reranking
         if self.enable_rewrite is not None:
             result['EnableRewrite'] = self.enable_rewrite
+        if self.images_shrink is not None:
+            result['Images'] = self.images_shrink
         if self.index_id is not None:
             result['IndexId'] = self.index_id
         if self.query is not None:
@@ -6126,6 +6232,8 @@ class RetrieveShrinkRequest(TeaModel):
             self.enable_reranking = m.get('EnableReranking')
         if m.get('EnableRewrite') is not None:
             self.enable_rewrite = m.get('EnableRewrite')
+        if m.get('Images') is not None:
+            self.images_shrink = m.get('Images')
         if m.get('IndexId') is not None:
             self.index_id = m.get('IndexId')
         if m.get('Query') is not None:

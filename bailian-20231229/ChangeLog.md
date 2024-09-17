@@ -1,3 +1,8 @@
+2024-09-17 Version: 1.8.3
+- Update API CreateIndex: add param DataSource.
+- Update API Retrieve: add param Images.
+
+
 2024-09-06 Version: 1.8.2
 - Update API GetIndexJobStatus: add param PageNumber.
 - Update API GetIndexJobStatus: add param pageSize.

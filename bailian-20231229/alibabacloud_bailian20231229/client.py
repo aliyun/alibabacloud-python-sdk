@@ -535,6 +535,8 @@ class Client(OpenApiClient):
             request.category_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.category_ids, 'CategoryIds', 'json')
         if not UtilClient.is_unset(tmp_req.columns):
             request.columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.columns, 'Columns', 'json')
+        if not UtilClient.is_unset(tmp_req.data_source):
+            request.data_source_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_source, 'DataSource', 'json')
         if not UtilClient.is_unset(tmp_req.document_ids):
             request.document_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_ids, 'DocumentIds', 'json')
         query = {}
@@ -544,6 +546,8 @@ class Client(OpenApiClient):
             query['ChunkSize'] = request.chunk_size
         if not UtilClient.is_unset(request.columns_shrink):
             query['Columns'] = request.columns_shrink
+        if not UtilClient.is_unset(request.data_source_shrink):
+            query['DataSource'] = request.data_source_shrink
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.document_ids_shrink):
@@ -612,6 +616,8 @@ class Client(OpenApiClient):
             request.category_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.category_ids, 'CategoryIds', 'json')
         if not UtilClient.is_unset(tmp_req.columns):
             request.columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.columns, 'Columns', 'json')
+        if not UtilClient.is_unset(tmp_req.data_source):
+            request.data_source_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_source, 'DataSource', 'json')
         if not UtilClient.is_unset(tmp_req.document_ids):
             request.document_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_ids, 'DocumentIds', 'json')
         query = {}
@@ -621,6 +627,8 @@ class Client(OpenApiClient):
             query['ChunkSize'] = request.chunk_size
         if not UtilClient.is_unset(request.columns_shrink):
             query['Columns'] = request.columns_shrink
+        if not UtilClient.is_unset(request.data_source_shrink):
+            query['DataSource'] = request.data_source_shrink
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.document_ids_shrink):
@@ -3069,6 +3077,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = bailian_20231229_models.RetrieveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.images):
+            request.images_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.images, 'Images', 'simple')
         if not UtilClient.is_unset(tmp_req.rerank):
             request.rerank_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rerank, 'Rerank', 'json')
         if not UtilClient.is_unset(tmp_req.rewrite):
@@ -3082,6 +3092,8 @@ class Client(OpenApiClient):
             query['EnableReranking'] = request.enable_reranking
         if not UtilClient.is_unset(request.enable_rewrite):
             query['EnableRewrite'] = request.enable_rewrite
+        if not UtilClient.is_unset(request.images_shrink):
+            query['Images'] = request.images_shrink
         if not UtilClient.is_unset(request.index_id):
             query['IndexId'] = request.index_id
         if not UtilClient.is_unset(request.query):
@@ -3138,6 +3150,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = bailian_20231229_models.RetrieveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.images):
+            request.images_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.images, 'Images', 'simple')
         if not UtilClient.is_unset(tmp_req.rerank):
             request.rerank_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rerank, 'Rerank', 'json')
         if not UtilClient.is_unset(tmp_req.rewrite):
@@ -3151,6 +3165,8 @@ class Client(OpenApiClient):
             query['EnableReranking'] = request.enable_reranking
         if not UtilClient.is_unset(request.enable_rewrite):
             query['EnableRewrite'] = request.enable_rewrite
+        if not UtilClient.is_unset(request.images_shrink):
+            query['Images'] = request.images_shrink
         if not UtilClient.is_unset(request.index_id):
             query['IndexId'] = request.index_id
         if not UtilClient.is_unset(request.query):
