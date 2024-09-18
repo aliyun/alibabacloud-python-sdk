@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: ddos_diversion_20230701_models.ConfigNetStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ddos_diversion_20230701_models.ConfigNetStatusResponse:
+        """
+        @summary Configures the advertising of a CIDR block.
+        
+        @param request: ConfigNetStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigNetStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.net):
@@ -82,6 +89,13 @@ class Client(OpenApiClient):
         request: ddos_diversion_20230701_models.ConfigNetStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ddos_diversion_20230701_models.ConfigNetStatusResponse:
+        """
+        @summary Configures the advertising of a CIDR block.
+        
+        @param request: ConfigNetStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigNetStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.net):
@@ -117,6 +131,12 @@ class Client(OpenApiClient):
         self,
         request: ddos_diversion_20230701_models.ConfigNetStatusRequest,
     ) -> ddos_diversion_20230701_models.ConfigNetStatusResponse:
+        """
+        @summary Configures the advertising of a CIDR block.
+        
+        @param request: ConfigNetStatusRequest
+        @return: ConfigNetStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.config_net_status_with_options(request, runtime)
 
@@ -124,6 +144,12 @@ class Client(OpenApiClient):
         self,
         request: ddos_diversion_20230701_models.ConfigNetStatusRequest,
     ) -> ddos_diversion_20230701_models.ConfigNetStatusResponse:
+        """
+        @summary Configures the advertising of a CIDR block.
+        
+        @param request: ConfigNetStatusRequest
+        @return: ConfigNetStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.config_net_status_with_options_async(request, runtime)
 
@@ -132,6 +158,13 @@ class Client(OpenApiClient):
         request: ddos_diversion_20230701_models.ListInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ddos_diversion_20230701_models.ListInstanceResponse:
+        """
+        @summary Queries anti-DDoS diversion instances.
+        
+        @param request: ListInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -168,6 +201,13 @@ class Client(OpenApiClient):
         request: ddos_diversion_20230701_models.ListInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ddos_diversion_20230701_models.ListInstanceResponse:
+        """
+        @summary Queries anti-DDoS diversion instances.
+        
+        @param request: ListInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -203,6 +243,12 @@ class Client(OpenApiClient):
         self,
         request: ddos_diversion_20230701_models.ListInstanceRequest,
     ) -> ddos_diversion_20230701_models.ListInstanceResponse:
+        """
+        @summary Queries anti-DDoS diversion instances.
+        
+        @param request: ListInstanceRequest
+        @return: ListInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instance_with_options(request, runtime)
 
@@ -210,6 +256,12 @@ class Client(OpenApiClient):
         self,
         request: ddos_diversion_20230701_models.ListInstanceRequest,
     ) -> ddos_diversion_20230701_models.ListInstanceResponse:
+        """
+        @summary Queries anti-DDoS diversion instances.
+        
+        @param request: ListInstanceRequest
+        @return: ListInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instance_with_options_async(request, runtime)
 
@@ -218,6 +270,13 @@ class Client(OpenApiClient):
         request: ddos_diversion_20230701_models.QueryNetListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ddos_diversion_20230701_models.QueryNetListResponse:
+        """
+        @summary Queries the CIDR blocks of an anti-DDoS diversion instance.
+        
+        @param request: QueryNetListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryNetListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.main_net):
@@ -256,6 +315,13 @@ class Client(OpenApiClient):
         request: ddos_diversion_20230701_models.QueryNetListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ddos_diversion_20230701_models.QueryNetListResponse:
+        """
+        @summary Queries the CIDR blocks of an anti-DDoS diversion instance.
+        
+        @param request: QueryNetListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryNetListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.main_net):
@@ -293,6 +359,12 @@ class Client(OpenApiClient):
         self,
         request: ddos_diversion_20230701_models.QueryNetListRequest,
     ) -> ddos_diversion_20230701_models.QueryNetListResponse:
+        """
+        @summary Queries the CIDR blocks of an anti-DDoS diversion instance.
+        
+        @param request: QueryNetListRequest
+        @return: QueryNetListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_net_list_with_options(request, runtime)
 
@@ -300,5 +372,11 @@ class Client(OpenApiClient):
         self,
         request: ddos_diversion_20230701_models.QueryNetListRequest,
     ) -> ddos_diversion_20230701_models.QueryNetListResponse:
+        """
+        @summary Queries the CIDR blocks of an anti-DDoS diversion instance.
+        
+        @param request: QueryNetListRequest
+        @return: QueryNetListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_net_list_with_options_async(request, runtime)

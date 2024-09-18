@@ -14,17 +14,23 @@ class ConfigNetStatusRequest(TeaModel):
         sub_nets: List[str] = None,
     ):
         # The CIDR block of the anti-DDoS diversion instance.
+        # 
+        # This parameter is required.
         self.net = net
         # The regions in which the CIDR block needs to be advertised or withdrawn from advertising. If you leave this parameter empty, the CIDR blocks in all regions are configured.
         # 
-        # >  You can call the [QueryNetList](~~2639086~~) operation to obtain the regions of the CIDR blocks.
+        # >  You can call the [QueryNetList](https://help.aliyun.com/document_detail/2639086.html) operation to obtain the regions of the CIDR blocks.
         self.regions = regions
         # The ID of the anti-DDoS diversion instance.
+        # 
+        # This parameter is required.
         self.sale_id = sale_id
         # The status of the CIDR block. Valid values:
         # 
         # *   enable: advertises the CIDR block.
         # *   disable: withdraws the advertising of the CIDR block.
+        # 
+        # This parameter is required.
         self.status = status
         # The subnet CIDR blocks of the CIDR block.
         self.sub_nets = sub_nets
@@ -170,10 +176,10 @@ class ListInstanceRequest(TeaModel):
         self.sale_id = sale_id
         # The status of the instance. Valid values:
         # 
-        # *   normal
-        # *   expired
-        # *   deleting
-        # *   stopped
+        # - normal
+        # - expired
+        # - deleting
+        # - stopped
         self.status = status
 
     def validate(self):
@@ -228,17 +234,29 @@ class ListInstanceResponseBodyDataInstancesSpec(TeaModel):
         mitigation_nums: str = None,
         normal_bandwidth: str = None,
     ):
+        # The region of the asset.
         self.coverage = coverage
+        # The diversion mode. Valid values: on-demand always-on
         self.diversion_type = diversion_type
+        # The mitigation plan.
         self.edition = edition
+        # The number of data centers. Valid values: 1 to 10.
         self.idc_numbers = idc_numbers
+        # The initial installation mode.
         self.initial_installation = initial_installation
+        # The initial installation quantity.
         self.initial_qty = initial_qty
+        # The number of CIDR blocks. Value range: 1 to 10000.
         self.ip_subnet_nums = ip_subnet_nums
+        # The mitigation analysis feature.
         self.mitigation_analysis = mitigation_analysis
+        # The log storage capacity.
         self.mitigation_analysis_capacity = mitigation_analysis_capacity
+        # The maximum mitigation capability.
         self.mitigation_capacity = mitigation_capacity
+        # The number of mitigation sessions.
         self.mitigation_nums = mitigation_nums
+        # The service traffic. Unit: Mbit/s.
         self.normal_bandwidth = normal_bandwidth
 
     def validate(self):
@@ -320,16 +338,32 @@ class ListInstanceResponseBodyDataInstances(TeaModel):
         status: str = None,
         user_id: str = None,
     ):
+        # The description.
         self.comment = comment
+        # The purchase time.
         self.gmt_create = gmt_create
+        # The expiration time.
         self.gmt_expire = gmt_expire
+        # The update time.
         self.gmt_modify = gmt_modify
+        # The alias of the instance.
         self.instance_id = instance_id
+        # The configurations of the instance.
         self.message = message
+        # The name of the instance.
         self.name = name
+        # The ID of the instance.
         self.sale_id = sale_id
+        # The specifications of the instance.
         self.spec = spec
+        # The status of the instance. Valid values:
+        # 
+        # - normal
+        # - expired
+        # - deleting
+        # - stopped
         self.status = status
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -402,9 +436,13 @@ class ListInstanceResponseBodyData(TeaModel):
         page: int = None,
         total: int = None,
     ):
+        # The details of the anti-DDoS diversion instance.
         self.instances = instances
+        # The number of entries per page.
         self.num = num
+        # The page number.
         self.page = page
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -457,8 +495,8 @@ class ListInstanceResponseBody(TeaModel):
     ):
         # The status code.
         # 
-        # *   **200**: The request was successful.
-        # *   Other codes: The request failed.
+        # - 200: The request was successful.
+        # - Other codes: The request failed.
         self.code = code
         # The returned result.
         self.data = data
@@ -556,12 +594,13 @@ class QueryNetListRequest(TeaModel):
         self.main_net = main_net
         # The scheduling mode. Valid values:
         # 
-        # *   manual: manual scheduling
-        # *   netflow-auto: automatic scheduling
+        # - manual: manual scheduling
+        # - netflow-auto: automatic scheduling
         self.mode = mode
         # The CIDR block of the anti-DDoS diversion instance.
         # 
-        # >  If no extended CIDR blocks are configured for the anti-DDoS diversion instance, this parameter specifies the CIDR block of the instance. If an extended CIDR block is configured for the anti-DDoS diversion instance, this parameter specifies the extended CIDR block that is configured for the instance. If this parameter is specified, the MainNet parameter is required.
+        # 
+        # > If no extended CIDR blocks are configured for the anti-DDoS diversion instance, this parameter specifies the CIDR block of the instance. If an extended CIDR block is configured for the anti-DDoS diversion instance, this parameter specifies the extended CIDR block that is configured for the instance. If this parameter is specified, the MainNet parameter is required.
         self.net = net
         # The number of entries per page. Default value: 100.
         self.num = num
@@ -616,7 +655,9 @@ class QueryNetListResponseBodyDataNetsDDoSDefenseCleanTh(TeaModel):
         mbps: int = None,
         pps: int = None,
     ):
+        # The traffic scrubbing threshold in Mbit/s.
         self.mbps = mbps
+        # The traffic scrubbing threshold in packets per second (pps)
         self.pps = pps
 
     def validate(self):
@@ -648,6 +689,7 @@ class QueryNetListResponseBodyDataNetsDDoSDefenseDjPolicy(TeaModel):
         self,
         policy_name: str = None,
     ):
+        # The name of the mitigation policy.
         self.policy_name = policy_name
 
     def validate(self):
@@ -675,6 +717,7 @@ class QueryNetListResponseBodyDataNetsDDoSDefenseHoleTh(TeaModel):
         self,
         thresh_mbps: int = None,
     ):
+        # The blackhole filtering threshold.
         self.thresh_mbps = thresh_mbps
 
     def validate(self):
@@ -704,8 +747,11 @@ class QueryNetListResponseBodyDataNetsDDoSDefense(TeaModel):
         dj_policy: QueryNetListResponseBodyDataNetsDDoSDefenseDjPolicy = None,
         hole_th: QueryNetListResponseBodyDataNetsDDoSDefenseHoleTh = None,
     ):
+        # The configuration of traffic scrubbing.
         self.clean_th = clean_th
+        # The configuration of the mitigation policy.
         self.dj_policy = dj_policy
+        # The configuration of blackhole filtering.
         self.hole_th = hole_th
 
     def validate(self):
@@ -750,7 +796,12 @@ class QueryNetListResponseBodyDataNetsDeclared(TeaModel):
         declared: str = None,
         region: str = None,
     ):
+        # Indicates whether the CIDR block is advertised. Valid values:
+        # 
+        # - 0: The CIDR block is not advertised.
+        # - 1: The CIDR block is advertised.
         self.declared = declared
+        # The region in which the CIDR block is advertised.
         self.region = region
 
     def validate(self):
@@ -789,25 +840,50 @@ class QueryNetListResponseBodyDataNets(TeaModel):
         mode: str = None,
         net: str = None,
         net_extend: str = None,
-        net_main: int = None,
+        net_main: str = None,
         net_type: str = None,
+        permit: int = None,
         sale_id: str = None,
         upstream_type: str = None,
         user_id: str = None,
     ):
+        # The DDoS mitigation configuration of the CIDR block.
         self.ddo_sdefense = ddo_sdefense
+        # The advertising details.
         self.declared = declared
+        # The advertising status of the CIDR block. Valid values:
+        # - 0: The CIDR block is not advertised.
+        # - 1: The CIDR block is advertised.
         self.declared_state = declared_state
+        # Indicates whether the forwarding configuration takes effect. Valid values:
+        # 
+        # - 0: The forwarding configuration takes effect.
+        # - 1: The forwarding configuration does not take effect.
+        # - -1: The forwarding configuration is being deleted.
         self.fwd_effect = fwd_effect
+        # The creation time.
         self.gmt_create = gmt_create
+        # The modification time.
         self.gmt_modify = gmt_modify
+        # The scheduling mode.
         self.mode = mode
+        # The CIDR block of the anti-DDoS diversion instance.
         self.net = net
+        # Indicates whether the CIDR block needs to be extended. Valid values:
+        # 
+        # - 0: The CIDR block needs to be extended.
+        # - 1: The CIDR block does not need to be extended.
         self.net_extend = net_extend
+        # The primary CIDR block.
         self.net_main = net_main
+        # The type of the CIDR block.
         self.net_type = net_type
+        self.permit = permit
+        # The ID of the anti-DDoS diversion instance.
         self.sale_id = sale_id
+        # The reinjection type.
         self.upstream_type = upstream_type
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -848,6 +924,8 @@ class QueryNetListResponseBodyDataNets(TeaModel):
             result['NetMain'] = self.net_main
         if self.net_type is not None:
             result['NetType'] = self.net_type
+        if self.permit is not None:
+            result['Permit'] = self.permit
         if self.sale_id is not None:
             result['SaleId'] = self.sale_id
         if self.upstream_type is not None:
@@ -884,6 +962,8 @@ class QueryNetListResponseBodyDataNets(TeaModel):
             self.net_main = m.get('NetMain')
         if m.get('NetType') is not None:
             self.net_type = m.get('NetType')
+        if m.get('Permit') is not None:
+            self.permit = m.get('Permit')
         if m.get('SaleId') is not None:
             self.sale_id = m.get('SaleId')
         if m.get('UpstreamType') is not None:
@@ -901,9 +981,13 @@ class QueryNetListResponseBodyData(TeaModel):
         page: int = None,
         total: int = None,
     ):
+        # The configuration of the CIDR block.
         self.nets = nets
+        # The number of entries per page.
         self.num = num
+        # The page number.
         self.page = page
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -956,8 +1040,8 @@ class QueryNetListResponseBody(TeaModel):
     ):
         # The status code.
         # 
-        # *   **200**: The request was successful.
-        # *   Other codes: The request failed.
+        # - 200: The request was successful.
+        # - Other codes: The request failed.
         self.code = code
         # The CIDR blocks.
         self.data = data
