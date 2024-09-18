@@ -15133,6 +15133,140 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.GetTemplateListByUserIdHeaders()
         return await self.get_template_list_by_user_id_with_options_async(request, headers, runtime)
 
+    def get_todo_task_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetTodoTaskRequest,
+        tmp_header: aliding_20230426_models.GetTodoTaskHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetTodoTaskResponse:
+        """
+        @summary 获取钉钉待办任务详情
+        
+        @param tmp_req: GetTodoTaskRequest
+        @param tmp_header: GetTodoTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTodoTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetTodoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetTodoTaskShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTodoTask',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/task/getTodoTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetTodoTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_todo_task_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetTodoTaskRequest,
+        tmp_header: aliding_20230426_models.GetTodoTaskHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetTodoTaskResponse:
+        """
+        @summary 获取钉钉待办任务详情
+        
+        @param tmp_req: GetTodoTaskRequest
+        @param tmp_header: GetTodoTaskHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTodoTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetTodoTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetTodoTaskShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTodoTask',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/task/getTodoTask',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetTodoTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_todo_task(
+        self,
+        request: aliding_20230426_models.GetTodoTaskRequest,
+    ) -> aliding_20230426_models.GetTodoTaskResponse:
+        """
+        @summary 获取钉钉待办任务详情
+        
+        @param request: GetTodoTaskRequest
+        @return: GetTodoTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetTodoTaskHeaders()
+        return self.get_todo_task_with_options(request, headers, runtime)
+
+    async def get_todo_task_async(
+        self,
+        request: aliding_20230426_models.GetTodoTaskRequest,
+    ) -> aliding_20230426_models.GetTodoTaskResponse:
+        """
+        @summary 获取钉钉待办任务详情
+        
+        @param request: GetTodoTaskRequest
+        @return: GetTodoTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetTodoTaskHeaders()
+        return await self.get_todo_task_with_options_async(request, headers, runtime)
+
     def get_user_with_options(
         self,
         tmp_req: aliding_20230426_models.GetUserRequest,

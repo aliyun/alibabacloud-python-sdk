@@ -1,3 +1,11 @@
+2024-09-18 Version: 2.25.0
+- Support API AddRecordPermission.
+- Support API GetTodoTask.
+- Support API GetUserIdByOrgIdAndStaffId.
+- Support API ListTemplate.
+- Support API QueryRecordMinutesUrl.
+
+
 2024-09-13 Version: 2.24.0
 - Support API AddRecordPermission.
 - Support API GetUserIdByOrgIdAndStaffId.
