@@ -1,3 +1,27 @@
+2024-09-18 Version: 4.2.4
+- Update API BuildIndex: update param body.
+- Update API BuildIndex: update response param.
+- Update API CreateDataSource: update param body.
+- Update API CreateIndex: update param body.
+- Update API CreateInstance: update param body.
+- Update API CreateTable: update param body.
+- Update API GetDataSourceDeploy: update response param.
+- Update API GetIndex: update response param.
+- Update API ListIndexes: add param catalog.
+- Update API ListIndexes: add param database.
+- Update API ListIndexes: add param table.
+- Update API ListIndexes: update response param.
+- Update API ListInstances: add param catalog.
+- Update API ListInstances: add param dataSourceType.
+- Update API ListInstances: add param database.
+- Update API ListInstances: add param table.
+- Update API ListInstances: update response param.
+- Update API ModifyDataSourceDeploy: update param body.
+- Update API ModifyDataSourceDeploy: update response param.
+- Update API ModifyIndex: update param body.
+- Update API ModifyTable: update param body.
+
+
 2024-07-31 Version: 4.2.3
 - Update API GetFile: update response param.
 - Update API GetIndex: update response param.

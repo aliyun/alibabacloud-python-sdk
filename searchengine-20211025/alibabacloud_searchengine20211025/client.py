@@ -77,6 +77,8 @@ class Client(OpenApiClient):
             body['generation'] = request.generation
         if not UtilClient.is_unset(request.partition):
             body['partition'] = request.partition
+        if not UtilClient.is_unset(request.tag):
+            body['tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -133,6 +135,8 @@ class Client(OpenApiClient):
             body['generation'] = request.generation
         if not UtilClient.is_unset(request.partition):
             body['partition'] = request.partition
+        if not UtilClient.is_unset(request.tag):
+            body['tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1352,6 +1356,10 @@ class Client(OpenApiClient):
             body['components'] = request.components
         if not UtilClient.is_unset(request.order):
             body['order'] = request.order
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            body['tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -1399,6 +1407,10 @@ class Client(OpenApiClient):
             body['components'] = request.components
         if not UtilClient.is_unset(request.order):
             body['order'] = request.order
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tags):
+            body['tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -6683,8 +6695,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.catalog):
+            query['catalog'] = request.catalog
+        if not UtilClient.is_unset(request.database):
+            query['database'] = request.database
         if not UtilClient.is_unset(request.new_mode):
             query['newMode'] = request.new_mode
+        if not UtilClient.is_unset(request.table):
+            query['table'] = request.table
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -6727,8 +6745,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.catalog):
+            query['catalog'] = request.catalog
+        if not UtilClient.is_unset(request.database):
+            query['database'] = request.database
         if not UtilClient.is_unset(request.new_mode):
             query['newMode'] = request.new_mode
+        if not UtilClient.is_unset(request.table):
+            query['table'] = request.table
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -6942,6 +6966,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.catalog):
+            query['catalog'] = request.catalog
+        if not UtilClient.is_unset(request.data_source_type):
+            query['dataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.database):
+            query['database'] = request.database
         if not UtilClient.is_unset(request.description):
             query['description'] = request.description
         if not UtilClient.is_unset(request.edition):
@@ -6954,6 +6984,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.resource_group_id):
             query['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.table):
+            query['table'] = request.table
         if not UtilClient.is_unset(request.tags_shrink):
             query['tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
@@ -7001,6 +7033,12 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.catalog):
+            query['catalog'] = request.catalog
+        if not UtilClient.is_unset(request.data_source_type):
+            query['dataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.database):
+            query['database'] = request.database
         if not UtilClient.is_unset(request.description):
             query['description'] = request.description
         if not UtilClient.is_unset(request.edition):
@@ -7013,6 +7051,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.resource_group_id):
             query['resourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.table):
+            query['table'] = request.table
         if not UtilClient.is_unset(request.tags_shrink):
             query['tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
@@ -9598,6 +9638,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.domain):
             body['domain'] = request.domain
+        if not UtilClient.is_unset(request.extend):
+            body['extend'] = request.extend
         if not UtilClient.is_unset(request.merge_parallel_num):
             body['mergeParallelNum'] = request.merge_parallel_num
         if not UtilClient.is_unset(request.partition):
@@ -9662,6 +9704,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.domain):
             body['domain'] = request.domain
+        if not UtilClient.is_unset(request.extend):
+            body['extend'] = request.extend
         if not UtilClient.is_unset(request.merge_parallel_num):
             body['mergeParallelNum'] = request.merge_parallel_num
         if not UtilClient.is_unset(request.partition):

@@ -599,6 +599,7 @@ class BuildIndexRequest(TeaModel):
         domain: str = None,
         generation: int = None,
         partition: str = None,
+        tag: str = None,
     ):
         # The reindexing method. Valid values: api: API data source. indexRecover: data recovery by using indexing.
         self.build_mode = build_mode
@@ -614,6 +615,7 @@ class BuildIndexRequest(TeaModel):
         self.generation = generation
         # The partition in the MaxCompute table. This parameter is required if type is set to odps.
         self.partition = partition
+        self.tag = tag
 
     def validate(self):
         pass
@@ -638,6 +640,8 @@ class BuildIndexRequest(TeaModel):
             result['generation'] = self.generation
         if self.partition is not None:
             result['partition'] = self.partition
+        if self.tag is not None:
+            result['tag'] = self.tag
         return result
 
     def from_map(self, m: dict = None):
@@ -656,6 +660,8 @@ class BuildIndexRequest(TeaModel):
             self.generation = m.get('generation')
         if m.get('partition') is not None:
             self.partition = m.get('partition')
+        if m.get('tag') is not None:
+            self.tag = m.get('tag')
         return self
 
 
@@ -1581,6 +1587,8 @@ class CreateDataSourceRequestConfig(TeaModel):
         access_key: str = None,
         access_secret: str = None,
         bucket: str = None,
+        catalog: str = None,
+        database: str = None,
         endpoint: str = None,
         namespace: str = None,
         oss_path: str = None,
@@ -1588,6 +1596,7 @@ class CreateDataSourceRequestConfig(TeaModel):
         path: str = None,
         project: str = None,
         table: str = None,
+        tag: str = None,
     ):
         # The AccessKey ID of the MaxCompute data source.
         self.access_key = access_key
@@ -1595,6 +1604,8 @@ class CreateDataSourceRequestConfig(TeaModel):
         self.access_secret = access_secret
         # The name of the OSS bucket.
         self.bucket = bucket
+        self.catalog = catalog
+        self.database = database
         # The endpoint of the MaxCompute or Object Storage Service (OSS) data source.
         self.endpoint = endpoint
         # The namespace.
@@ -1609,6 +1620,7 @@ class CreateDataSourceRequestConfig(TeaModel):
         self.project = project
         # The name of the MaxCompute table that is used as the data source.
         self.table = table
+        self.tag = tag
 
     def validate(self):
         pass
@@ -1625,6 +1637,10 @@ class CreateDataSourceRequestConfig(TeaModel):
             result['accessSecret'] = self.access_secret
         if self.bucket is not None:
             result['bucket'] = self.bucket
+        if self.catalog is not None:
+            result['catalog'] = self.catalog
+        if self.database is not None:
+            result['database'] = self.database
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
         if self.namespace is not None:
@@ -1639,6 +1655,8 @@ class CreateDataSourceRequestConfig(TeaModel):
             result['project'] = self.project
         if self.table is not None:
             result['table'] = self.table
+        if self.tag is not None:
+            result['tag'] = self.tag
         return result
 
     def from_map(self, m: dict = None):
@@ -1649,6 +1667,10 @@ class CreateDataSourceRequestConfig(TeaModel):
             self.access_secret = m.get('accessSecret')
         if m.get('bucket') is not None:
             self.bucket = m.get('bucket')
+        if m.get('catalog') is not None:
+            self.catalog = m.get('catalog')
+        if m.get('database') is not None:
+            self.database = m.get('database')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
         if m.get('namespace') is not None:
@@ -1663,6 +1685,8 @@ class CreateDataSourceRequestConfig(TeaModel):
             self.project = m.get('project')
         if m.get('table') is not None:
             self.table = m.get('table')
+        if m.get('tag') is not None:
+            self.tag = m.get('tag')
         return self
 
 
@@ -2056,6 +2080,8 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
         access_key: str = None,
         access_secret: str = None,
         bucket: str = None,
+        catalog: str = None,
+        database: str = None,
         endpoint: str = None,
         namespace: str = None,
         oss_path: str = None,
@@ -2063,6 +2089,7 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
         path: str = None,
         project: str = None,
         table: str = None,
+        tag: str = None,
     ):
         # The AccessKey ID of the MaxCompute data source.
         self.access_key = access_key
@@ -2070,6 +2097,8 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
         self.access_secret = access_secret
         # The name of the OSS bucket.
         self.bucket = bucket
+        self.catalog = catalog
+        self.database = database
         # The endpoint of the MaxCompute or Object Storage Service (OSS) data source.
         self.endpoint = endpoint
         # The namespace name.
@@ -2084,6 +2113,7 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
         self.project = project
         # The table name.
         self.table = table
+        self.tag = tag
 
     def validate(self):
         pass
@@ -2100,6 +2130,10 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
             result['accessSecret'] = self.access_secret
         if self.bucket is not None:
             result['bucket'] = self.bucket
+        if self.catalog is not None:
+            result['catalog'] = self.catalog
+        if self.database is not None:
+            result['database'] = self.database
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
         if self.namespace is not None:
@@ -2114,6 +2148,8 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
             result['project'] = self.project
         if self.table is not None:
             result['table'] = self.table
+        if self.tag is not None:
+            result['tag'] = self.tag
         return result
 
     def from_map(self, m: dict = None):
@@ -2124,6 +2160,10 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
             self.access_secret = m.get('accessSecret')
         if m.get('bucket') is not None:
             self.bucket = m.get('bucket')
+        if m.get('catalog') is not None:
+            self.catalog = m.get('catalog')
+        if m.get('database') is not None:
+            self.database = m.get('database')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
         if m.get('namespace') is not None:
@@ -2138,6 +2178,8 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
             self.project = m.get('project')
         if m.get('table') is not None:
             self.table = m.get('table')
+        if m.get('tag') is not None:
+            self.tag = m.get('tag')
         return self
 
 
@@ -2519,12 +2561,47 @@ class CreateInstanceRequestOrder(TeaModel):
         return self
 
 
+class CreateInstanceRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class CreateInstanceRequest(TeaModel):
     def __init__(
         self,
         charge_type: str = None,
         components: List[CreateInstanceRequestComponents] = None,
         order: CreateInstanceRequestOrder = None,
+        resource_group_id: str = None,
+        tags: List[CreateInstanceRequestTags] = None,
     ):
         # The billing method of the instance. Valid values: PREPAY: subscription. If you set this parameter to PREPAY, make sure that your Alibaba Cloud account supports balance payment or credit card payment. Otherwise, the system returns the InvalidPayMethod error message. If you set this parameter to PREPAY, you must also specify paymentInfo. POSTPAY: pay-as-you-go. This billing method is not supported.
         self.charge_type = charge_type
@@ -2532,6 +2609,8 @@ class CreateInstanceRequest(TeaModel):
         self.components = components
         # The billing information.
         self.order = order
+        self.resource_group_id = resource_group_id
+        self.tags = tags
 
     def validate(self):
         if self.components:
@@ -2540,6 +2619,10 @@ class CreateInstanceRequest(TeaModel):
                     k.validate()
         if self.order:
             self.order.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2555,6 +2638,12 @@ class CreateInstanceRequest(TeaModel):
                 result['components'].append(k.to_map() if k else None)
         if self.order is not None:
             result['order'] = self.order.to_map()
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2569,6 +2658,13 @@ class CreateInstanceRequest(TeaModel):
         if m.get('order') is not None:
             temp_model = CreateInstanceRequestOrder()
             self.order = temp_model.from_map(m['order'])
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = CreateInstanceRequestTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -3086,11 +3182,14 @@ class CreateTableRequestDataSourceConfig(TeaModel):
         access_key: str = None,
         access_secret: str = None,
         bucket: str = None,
+        catalog: str = None,
+        database: str = None,
         endpoint: str = None,
         oss_path: str = None,
         partition: str = None,
         project: str = None,
         table: str = None,
+        tag: str = None,
     ):
         # The AccessKey ID of the MaxCompute data source.
         self.access_key = access_key
@@ -3098,6 +3197,8 @@ class CreateTableRequestDataSourceConfig(TeaModel):
         self.access_secret = access_secret
         # The OSS bucket.
         self.bucket = bucket
+        self.catalog = catalog
+        self.database = database
         # The endpoint of the MaxCompute data source.
         self.endpoint = endpoint
         # The Object Storage Service (OSS) path.
@@ -3108,6 +3209,7 @@ class CreateTableRequestDataSourceConfig(TeaModel):
         self.project = project
         # The name of the MaxCompute table that is used as the data source.
         self.table = table
+        self.tag = tag
 
     def validate(self):
         pass
@@ -3124,6 +3226,10 @@ class CreateTableRequestDataSourceConfig(TeaModel):
             result['accessSecret'] = self.access_secret
         if self.bucket is not None:
             result['bucket'] = self.bucket
+        if self.catalog is not None:
+            result['catalog'] = self.catalog
+        if self.database is not None:
+            result['database'] = self.database
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
         if self.oss_path is not None:
@@ -3134,6 +3240,8 @@ class CreateTableRequestDataSourceConfig(TeaModel):
             result['project'] = self.project
         if self.table is not None:
             result['table'] = self.table
+        if self.tag is not None:
+            result['tag'] = self.tag
         return result
 
     def from_map(self, m: dict = None):
@@ -3144,6 +3252,10 @@ class CreateTableRequestDataSourceConfig(TeaModel):
             self.access_secret = m.get('accessSecret')
         if m.get('bucket') is not None:
             self.bucket = m.get('bucket')
+        if m.get('catalog') is not None:
+            self.catalog = m.get('catalog')
+        if m.get('database') is not None:
+            self.database = m.get('database')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
         if m.get('ossPath') is not None:
@@ -3154,6 +3266,8 @@ class CreateTableRequestDataSourceConfig(TeaModel):
             self.project = m.get('project')
         if m.get('table') is not None:
             self.table = m.get('table')
+        if m.get('tag') is not None:
+            self.tag = m.get('tag')
         return self
 
 
@@ -6774,6 +6888,8 @@ class GetDataSourceDeployResponseBodyResultStorage(TeaModel):
         access_key: str = None,
         access_secret: str = None,
         bucket: str = None,
+        catalog: str = None,
+        database: str = None,
         endpoint: str = None,
         namespace: str = None,
         oss_path: str = None,
@@ -6781,6 +6897,7 @@ class GetDataSourceDeployResponseBodyResultStorage(TeaModel):
         path: str = None,
         project: str = None,
         table: str = None,
+        tag: str = None,
     ):
         # The AccessKey ID of the MaxCompute data source.
         self.access_key = access_key
@@ -6788,6 +6905,8 @@ class GetDataSourceDeployResponseBodyResultStorage(TeaModel):
         self.access_secret = access_secret
         # The name of the OSS bucket.
         self.bucket = bucket
+        self.catalog = catalog
+        self.database = database
         # The endpoint of the MaxCompute data source.
         self.endpoint = endpoint
         self.namespace = namespace
@@ -6798,6 +6917,7 @@ class GetDataSourceDeployResponseBodyResultStorage(TeaModel):
         self.path = path
         self.project = project
         self.table = table
+        self.tag = tag
 
     def validate(self):
         pass
@@ -6814,6 +6934,10 @@ class GetDataSourceDeployResponseBodyResultStorage(TeaModel):
             result['accessSecret'] = self.access_secret
         if self.bucket is not None:
             result['bucket'] = self.bucket
+        if self.catalog is not None:
+            result['catalog'] = self.catalog
+        if self.database is not None:
+            result['database'] = self.database
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
         if self.namespace is not None:
@@ -6828,6 +6952,8 @@ class GetDataSourceDeployResponseBodyResultStorage(TeaModel):
             result['project'] = self.project
         if self.table is not None:
             result['table'] = self.table
+        if self.tag is not None:
+            result['tag'] = self.tag
         return result
 
     def from_map(self, m: dict = None):
@@ -6838,6 +6964,10 @@ class GetDataSourceDeployResponseBodyResultStorage(TeaModel):
             self.access_secret = m.get('accessSecret')
         if m.get('bucket') is not None:
             self.bucket = m.get('bucket')
+        if m.get('catalog') is not None:
+            self.catalog = m.get('catalog')
+        if m.get('database') is not None:
+            self.database = m.get('database')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
         if m.get('namespace') is not None:
@@ -6852,6 +6982,8 @@ class GetDataSourceDeployResponseBodyResultStorage(TeaModel):
             self.project = m.get('project')
         if m.get('table') is not None:
             self.table = m.get('table')
+        if m.get('tag') is not None:
+            self.tag = m.get('tag')
         return self
 
 
@@ -7788,6 +7920,8 @@ class GetIndexResponseBodyResultDataSourceInfoConfig(TeaModel):
         access_key: str = None,
         access_secret: str = None,
         bucket: str = None,
+        catalog: str = None,
+        database: str = None,
         endpoint: str = None,
         namespace: str = None,
         oss_path: str = None,
@@ -7795,6 +7929,7 @@ class GetIndexResponseBodyResultDataSourceInfoConfig(TeaModel):
         path: str = None,
         project: str = None,
         table: str = None,
+        tag: str = None,
     ):
         # The AccessKey ID of the MaxCompute data source.
         self.access_key = access_key
@@ -7802,6 +7937,8 @@ class GetIndexResponseBodyResultDataSourceInfoConfig(TeaModel):
         self.access_secret = access_secret
         # The name of the OSS bucket.
         self.bucket = bucket
+        self.catalog = catalog
+        self.database = database
         # The endpoint of the MaxCompute data source.
         self.endpoint = endpoint
         # The namespace. This parameter is applicable to the SARO data source used in the intranet of Alibaba Group.
@@ -7816,6 +7953,7 @@ class GetIndexResponseBodyResultDataSourceInfoConfig(TeaModel):
         self.project = project
         # The name of the MaxCompute table that is used as the data source.
         self.table = table
+        self.tag = tag
 
     def validate(self):
         pass
@@ -7832,6 +7970,10 @@ class GetIndexResponseBodyResultDataSourceInfoConfig(TeaModel):
             result['accessSecret'] = self.access_secret
         if self.bucket is not None:
             result['bucket'] = self.bucket
+        if self.catalog is not None:
+            result['catalog'] = self.catalog
+        if self.database is not None:
+            result['database'] = self.database
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
         if self.namespace is not None:
@@ -7846,6 +7988,8 @@ class GetIndexResponseBodyResultDataSourceInfoConfig(TeaModel):
             result['project'] = self.project
         if self.table is not None:
             result['table'] = self.table
+        if self.tag is not None:
+            result['tag'] = self.tag
         return result
 
     def from_map(self, m: dict = None):
@@ -7856,6 +8000,10 @@ class GetIndexResponseBodyResultDataSourceInfoConfig(TeaModel):
             self.access_secret = m.get('accessSecret')
         if m.get('bucket') is not None:
             self.bucket = m.get('bucket')
+        if m.get('catalog') is not None:
+            self.catalog = m.get('catalog')
+        if m.get('database') is not None:
+            self.database = m.get('database')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
         if m.get('namespace') is not None:
@@ -7870,6 +8018,8 @@ class GetIndexResponseBodyResultDataSourceInfoConfig(TeaModel):
             self.project = m.get('project')
         if m.get('table') is not None:
             self.table = m.get('table')
+        if m.get('tag') is not None:
+            self.tag = m.get('tag')
         return self
 
 
@@ -12790,10 +12940,16 @@ class ListIndexRecoverRecordsResponse(TeaModel):
 class ListIndexesRequest(TeaModel):
     def __init__(
         self,
+        catalog: str = None,
+        database: str = None,
         new_mode: bool = None,
+        table: str = None,
     ):
+        self.catalog = catalog
+        self.database = database
         # Specifies whether the OpenSearch Vector Search Edition instance is of the new version.
         self.new_mode = new_mode
+        self.table = table
 
     def validate(self):
         pass
@@ -12804,14 +12960,26 @@ class ListIndexesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.catalog is not None:
+            result['catalog'] = self.catalog
+        if self.database is not None:
+            result['database'] = self.database
         if self.new_mode is not None:
             result['newMode'] = self.new_mode
+        if self.table is not None:
+            result['table'] = self.table
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('catalog') is not None:
+            self.catalog = m.get('catalog')
+        if m.get('database') is not None:
+            self.database = m.get('database')
         if m.get('newMode') is not None:
             self.new_mode = m.get('newMode')
+        if m.get('table') is not None:
+            self.table = m.get('table')
         return self
 
 
@@ -12821,6 +12989,8 @@ class ListIndexesResponseBodyResultDataSourceInfoConfig(TeaModel):
         access_key: str = None,
         access_secret: str = None,
         bucket: str = None,
+        catalog: str = None,
+        database: str = None,
         endpoint: str = None,
         namespace: str = None,
         oss_path: str = None,
@@ -12828,6 +12998,7 @@ class ListIndexesResponseBodyResultDataSourceInfoConfig(TeaModel):
         path: str = None,
         project: str = None,
         table: str = None,
+        tag: str = None,
     ):
         # The AccessKey ID of the MaxCompute data source.
         self.access_key = access_key
@@ -12835,6 +13006,8 @@ class ListIndexesResponseBodyResultDataSourceInfoConfig(TeaModel):
         self.access_secret = access_secret
         # The OSS bucket.
         self.bucket = bucket
+        self.catalog = catalog
+        self.database = database
         # The endpoint of the MaxCompute data source.
         self.endpoint = endpoint
         # The namespace. This parameter is applicable to the SARO data source used in the intranet of Alibaba Group.
@@ -12849,6 +13022,7 @@ class ListIndexesResponseBodyResultDataSourceInfoConfig(TeaModel):
         self.project = project
         # The name of the MaxCompute table that is used as the data source.
         self.table = table
+        self.tag = tag
 
     def validate(self):
         pass
@@ -12865,6 +13039,10 @@ class ListIndexesResponseBodyResultDataSourceInfoConfig(TeaModel):
             result['accessSecret'] = self.access_secret
         if self.bucket is not None:
             result['bucket'] = self.bucket
+        if self.catalog is not None:
+            result['catalog'] = self.catalog
+        if self.database is not None:
+            result['database'] = self.database
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
         if self.namespace is not None:
@@ -12879,6 +13057,8 @@ class ListIndexesResponseBodyResultDataSourceInfoConfig(TeaModel):
             result['project'] = self.project
         if self.table is not None:
             result['table'] = self.table
+        if self.tag is not None:
+            result['tag'] = self.tag
         return result
 
     def from_map(self, m: dict = None):
@@ -12889,6 +13069,10 @@ class ListIndexesResponseBodyResultDataSourceInfoConfig(TeaModel):
             self.access_secret = m.get('accessSecret')
         if m.get('bucket') is not None:
             self.bucket = m.get('bucket')
+        if m.get('catalog') is not None:
+            self.catalog = m.get('catalog')
+        if m.get('database') is not None:
+            self.database = m.get('database')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
         if m.get('namespace') is not None:
@@ -12903,6 +13087,8 @@ class ListIndexesResponseBodyResultDataSourceInfoConfig(TeaModel):
             self.project = m.get('project')
         if m.get('table') is not None:
             self.table = m.get('table')
+        if m.get('tag') is not None:
+            self.tag = m.get('tag')
         return self
 
 
@@ -13557,14 +13743,21 @@ class ListInstancesRequestTags(TeaModel):
 class ListInstancesRequest(TeaModel):
     def __init__(
         self,
+        catalog: str = None,
+        data_source_type: str = None,
+        database: str = None,
         description: str = None,
         edition: str = None,
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
         resource_group_id: str = None,
+        table: str = None,
         tags: List[ListInstancesRequestTags] = None,
     ):
+        self.catalog = catalog
+        self.data_source_type = data_source_type
+        self.database = database
         # The description of the instance. You can use this description to filter instances. Fuzzy match is supported.
         self.description = description
         # The instance type. Valid values: vector: OpenSearch Vector Search Edition instance. engine: OpenSearch Retrieval Engine Edition instance.
@@ -13577,6 +13770,7 @@ class ListInstancesRequest(TeaModel):
         self.page_size = page_size
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
+        self.table = table
         # The tags of the instance.
         self.tags = tags
 
@@ -13592,6 +13786,12 @@ class ListInstancesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.catalog is not None:
+            result['catalog'] = self.catalog
+        if self.data_source_type is not None:
+            result['dataSourceType'] = self.data_source_type
+        if self.database is not None:
+            result['database'] = self.database
         if self.description is not None:
             result['description'] = self.description
         if self.edition is not None:
@@ -13604,6 +13804,8 @@ class ListInstancesRequest(TeaModel):
             result['pageSize'] = self.page_size
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
+        if self.table is not None:
+            result['table'] = self.table
         result['tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -13612,6 +13814,12 @@ class ListInstancesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('catalog') is not None:
+            self.catalog = m.get('catalog')
+        if m.get('dataSourceType') is not None:
+            self.data_source_type = m.get('dataSourceType')
+        if m.get('database') is not None:
+            self.database = m.get('database')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('edition') is not None:
@@ -13624,6 +13832,8 @@ class ListInstancesRequest(TeaModel):
             self.page_size = m.get('pageSize')
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
+        if m.get('table') is not None:
+            self.table = m.get('table')
         self.tags = []
         if m.get('tags') is not None:
             for k in m.get('tags'):
@@ -13635,14 +13845,21 @@ class ListInstancesRequest(TeaModel):
 class ListInstancesShrinkRequest(TeaModel):
     def __init__(
         self,
+        catalog: str = None,
+        data_source_type: str = None,
+        database: str = None,
         description: str = None,
         edition: str = None,
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
         resource_group_id: str = None,
+        table: str = None,
         tags_shrink: str = None,
     ):
+        self.catalog = catalog
+        self.data_source_type = data_source_type
+        self.database = database
         # The description of the instance. You can use this description to filter instances. Fuzzy match is supported.
         self.description = description
         # The instance type. Valid values: vector: OpenSearch Vector Search Edition instance. engine: OpenSearch Retrieval Engine Edition instance.
@@ -13655,6 +13872,7 @@ class ListInstancesShrinkRequest(TeaModel):
         self.page_size = page_size
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
+        self.table = table
         # The tags of the instance.
         self.tags_shrink = tags_shrink
 
@@ -13667,6 +13885,12 @@ class ListInstancesShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.catalog is not None:
+            result['catalog'] = self.catalog
+        if self.data_source_type is not None:
+            result['dataSourceType'] = self.data_source_type
+        if self.database is not None:
+            result['database'] = self.database
         if self.description is not None:
             result['description'] = self.description
         if self.edition is not None:
@@ -13679,12 +13903,20 @@ class ListInstancesShrinkRequest(TeaModel):
             result['pageSize'] = self.page_size
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
+        if self.table is not None:
+            result['table'] = self.table
         if self.tags_shrink is not None:
             result['tags'] = self.tags_shrink
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('catalog') is not None:
+            self.catalog = m.get('catalog')
+        if m.get('dataSourceType') is not None:
+            self.data_source_type = m.get('dataSourceType')
+        if m.get('database') is not None:
+            self.database = m.get('database')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('edition') is not None:
@@ -13697,8 +13929,144 @@ class ListInstancesShrinkRequest(TeaModel):
             self.page_size = m.get('pageSize')
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
+        if m.get('table') is not None:
+            self.table = m.get('table')
         if m.get('tags') is not None:
             self.tags_shrink = m.get('tags')
+        return self
+
+
+class ListInstancesResponseBodyResultDataSourceDetailsConfig(TeaModel):
+    def __init__(
+        self,
+        access_key: str = None,
+        bucket: str = None,
+        catalog: str = None,
+        database: str = None,
+        endpoint: str = None,
+        namespace: str = None,
+        oss_path: str = None,
+        partition: str = None,
+        path: str = None,
+        project: str = None,
+        table: str = None,
+        tag: str = None,
+    ):
+        self.access_key = access_key
+        self.bucket = bucket
+        self.catalog = catalog
+        self.database = database
+        self.endpoint = endpoint
+        self.namespace = namespace
+        self.oss_path = oss_path
+        self.partition = partition
+        self.path = path
+        self.project = project
+        self.table = table
+        self.tag = tag
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_key is not None:
+            result['accessKey'] = self.access_key
+        if self.bucket is not None:
+            result['bucket'] = self.bucket
+        if self.catalog is not None:
+            result['catalog'] = self.catalog
+        if self.database is not None:
+            result['database'] = self.database
+        if self.endpoint is not None:
+            result['endpoint'] = self.endpoint
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.oss_path is not None:
+            result['ossPath'] = self.oss_path
+        if self.partition is not None:
+            result['partition'] = self.partition
+        if self.path is not None:
+            result['path'] = self.path
+        if self.project is not None:
+            result['project'] = self.project
+        if self.table is not None:
+            result['table'] = self.table
+        if self.tag is not None:
+            result['tag'] = self.tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessKey') is not None:
+            self.access_key = m.get('accessKey')
+        if m.get('bucket') is not None:
+            self.bucket = m.get('bucket')
+        if m.get('catalog') is not None:
+            self.catalog = m.get('catalog')
+        if m.get('database') is not None:
+            self.database = m.get('database')
+        if m.get('endpoint') is not None:
+            self.endpoint = m.get('endpoint')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('ossPath') is not None:
+            self.oss_path = m.get('ossPath')
+        if m.get('partition') is not None:
+            self.partition = m.get('partition')
+        if m.get('path') is not None:
+            self.path = m.get('path')
+        if m.get('project') is not None:
+            self.project = m.get('project')
+        if m.get('table') is not None:
+            self.table = m.get('table')
+        if m.get('tag') is not None:
+            self.tag = m.get('tag')
+        return self
+
+
+class ListInstancesResponseBodyResultDataSourceDetails(TeaModel):
+    def __init__(
+        self,
+        config: ListInstancesResponseBodyResultDataSourceDetailsConfig = None,
+        index_name: str = None,
+        type: str = None,
+    ):
+        self.config = config
+        self.index_name = index_name
+        self.type = type
+
+    def validate(self):
+        if self.config:
+            self.config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['config'] = self.config.to_map()
+        if self.index_name is not None:
+            result['indexName'] = self.index_name
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            temp_model = ListInstancesResponseBodyResultDataSourceDetailsConfig()
+            self.config = temp_model.from_map(m['config'])
+        if m.get('indexName') is not None:
+            self.index_name = m.get('indexName')
+        if m.get('type') is not None:
+            self.type = m.get('type')
         return self
 
 
@@ -13937,6 +14305,7 @@ class ListInstancesResponseBodyResult(TeaModel):
         charge_type: str = None,
         commodity_code: str = None,
         create_time: str = None,
+        data_source_details: List[ListInstancesResponseBodyResultDataSourceDetails] = None,
         description: str = None,
         edition: str = None,
         expired_time: str = None,
@@ -13959,6 +14328,7 @@ class ListInstancesResponseBodyResult(TeaModel):
         self.commodity_code = commodity_code
         # The time when the instance was created.
         self.create_time = create_time
+        self.data_source_details = data_source_details
         # The description of the instance.
         self.description = description
         self.edition = edition
@@ -13986,6 +14356,10 @@ class ListInstancesResponseBodyResult(TeaModel):
         self.version = version
 
     def validate(self):
+        if self.data_source_details:
+            for k in self.data_source_details:
+                if k:
+                    k.validate()
         if self.network:
             self.network.validate()
         if self.spec:
@@ -14007,6 +14381,10 @@ class ListInstancesResponseBodyResult(TeaModel):
             result['commodityCode'] = self.commodity_code
         if self.create_time is not None:
             result['createTime'] = self.create_time
+        result['dataSourceDetails'] = []
+        if self.data_source_details is not None:
+            for k in self.data_source_details:
+                result['dataSourceDetails'].append(k.to_map() if k else None)
         if self.description is not None:
             result['description'] = self.description
         if self.edition is not None:
@@ -14049,6 +14427,11 @@ class ListInstancesResponseBodyResult(TeaModel):
             self.commodity_code = m.get('commodityCode')
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
+        self.data_source_details = []
+        if m.get('dataSourceDetails') is not None:
+            for k in m.get('dataSourceDetails'):
+                temp_model = ListInstancesResponseBodyResultDataSourceDetails()
+                self.data_source_details.append(temp_model.from_map(k))
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('edition') is not None:
@@ -16887,6 +17270,8 @@ class ModifyDataSourceDeployRequestStorage(TeaModel):
         access_key: str = None,
         access_secret: str = None,
         bucket: str = None,
+        catalog: str = None,
+        database: str = None,
         endpoint: str = None,
         namespace: str = None,
         oss_path: str = None,
@@ -16894,6 +17279,7 @@ class ModifyDataSourceDeployRequestStorage(TeaModel):
         path: str = None,
         project: str = None,
         table: str = None,
+        tag: str = None,
     ):
         # The AccessKey ID of the MaxCompute data source.
         self.access_key = access_key
@@ -16901,6 +17287,8 @@ class ModifyDataSourceDeployRequestStorage(TeaModel):
         self.access_secret = access_secret
         # The name of the OSS bucket.
         self.bucket = bucket
+        self.catalog = catalog
+        self.database = database
         # The endpoint of the MaxCompute data source.
         self.endpoint = endpoint
         # The namespace. This parameter is applicable to the SARO data source used in the intranet of Alibaba Group.
@@ -16915,6 +17303,7 @@ class ModifyDataSourceDeployRequestStorage(TeaModel):
         self.project = project
         # The name of the MaxCompute table that is used as the data source.
         self.table = table
+        self.tag = tag
 
     def validate(self):
         pass
@@ -16931,6 +17320,10 @@ class ModifyDataSourceDeployRequestStorage(TeaModel):
             result['accessSecret'] = self.access_secret
         if self.bucket is not None:
             result['bucket'] = self.bucket
+        if self.catalog is not None:
+            result['catalog'] = self.catalog
+        if self.database is not None:
+            result['database'] = self.database
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
         if self.namespace is not None:
@@ -16945,6 +17338,8 @@ class ModifyDataSourceDeployRequestStorage(TeaModel):
             result['project'] = self.project
         if self.table is not None:
             result['table'] = self.table
+        if self.tag is not None:
+            result['tag'] = self.tag
         return result
 
     def from_map(self, m: dict = None):
@@ -16955,6 +17350,10 @@ class ModifyDataSourceDeployRequestStorage(TeaModel):
             self.access_secret = m.get('accessSecret')
         if m.get('bucket') is not None:
             self.bucket = m.get('bucket')
+        if m.get('catalog') is not None:
+            self.catalog = m.get('catalog')
+        if m.get('database') is not None:
+            self.database = m.get('database')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
         if m.get('namespace') is not None:
@@ -16969,6 +17368,8 @@ class ModifyDataSourceDeployRequestStorage(TeaModel):
             self.project = m.get('project')
         if m.get('table') is not None:
             self.table = m.get('table')
+        if m.get('tag') is not None:
+            self.tag = m.get('tag')
         return self
 
 
@@ -17290,6 +17691,8 @@ class ModifyIndexRequestDataSourceInfoConfig(TeaModel):
         access_key: str = None,
         access_secret: str = None,
         bucket: str = None,
+        catalog: str = None,
+        database: str = None,
         endpoint: str = None,
         namespace: str = None,
         oss_path: str = None,
@@ -17297,6 +17700,7 @@ class ModifyIndexRequestDataSourceInfoConfig(TeaModel):
         path: str = None,
         project: str = None,
         table: str = None,
+        tag: str = None,
     ):
         # The AccessKey ID of the MaxCompute data source.
         self.access_key = access_key
@@ -17304,6 +17708,8 @@ class ModifyIndexRequestDataSourceInfoConfig(TeaModel):
         self.access_secret = access_secret
         # The name of the OSS bucket.
         self.bucket = bucket
+        self.catalog = catalog
+        self.database = database
         # The endpoint of the MaxCompute data source.
         self.endpoint = endpoint
         # The namespace. This parameter is applicable to the SARO data source used in the intranet of Alibaba Group.
@@ -17318,6 +17724,7 @@ class ModifyIndexRequestDataSourceInfoConfig(TeaModel):
         self.project = project
         # The name of the MaxCompute table that is used as the data source.
         self.table = table
+        self.tag = tag
 
     def validate(self):
         pass
@@ -17334,6 +17741,10 @@ class ModifyIndexRequestDataSourceInfoConfig(TeaModel):
             result['accessSecret'] = self.access_secret
         if self.bucket is not None:
             result['bucket'] = self.bucket
+        if self.catalog is not None:
+            result['catalog'] = self.catalog
+        if self.database is not None:
+            result['database'] = self.database
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
         if self.namespace is not None:
@@ -17348,6 +17759,8 @@ class ModifyIndexRequestDataSourceInfoConfig(TeaModel):
             result['project'] = self.project
         if self.table is not None:
             result['table'] = self.table
+        if self.tag is not None:
+            result['tag'] = self.tag
         return result
 
     def from_map(self, m: dict = None):
@@ -17358,6 +17771,10 @@ class ModifyIndexRequestDataSourceInfoConfig(TeaModel):
             self.access_secret = m.get('accessSecret')
         if m.get('bucket') is not None:
             self.bucket = m.get('bucket')
+        if m.get('catalog') is not None:
+            self.catalog = m.get('catalog')
+        if m.get('database') is not None:
+            self.database = m.get('database')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
         if m.get('namespace') is not None:
@@ -17372,6 +17789,8 @@ class ModifyIndexRequestDataSourceInfoConfig(TeaModel):
             self.project = m.get('project')
         if m.get('table') is not None:
             self.table = m.get('table')
+        if m.get('tag') is not None:
+            self.tag = m.get('tag')
         return self
 
 
@@ -17525,6 +17944,7 @@ class ModifyIndexRequest(TeaModel):
         data_source_info: ModifyIndexRequestDataSourceInfo = None,
         description: str = None,
         domain: str = None,
+        extend: Dict[str, Any] = None,
         merge_parallel_num: int = None,
         partition: int = None,
         push_mode: str = None,
@@ -17548,6 +17968,7 @@ class ModifyIndexRequest(TeaModel):
         self.description = description
         # The name of the data center in which the data source is deployed.
         self.domain = domain
+        self.extend = extend
         # The maximum number of full indexes that can be concurrently merged.
         self.merge_parallel_num = merge_parallel_num
         # The number of shards.
@@ -17596,6 +18017,8 @@ class ModifyIndexRequest(TeaModel):
             result['description'] = self.description
         if self.domain is not None:
             result['domain'] = self.domain
+        if self.extend is not None:
+            result['extend'] = self.extend
         if self.merge_parallel_num is not None:
             result['mergeParallelNum'] = self.merge_parallel_num
         if self.partition is not None:
@@ -17630,6 +18053,8 @@ class ModifyIndexRequest(TeaModel):
             self.description = m.get('description')
         if m.get('domain') is not None:
             self.domain = m.get('domain')
+        if m.get('extend') is not None:
+            self.extend = m.get('extend')
         if m.get('mergeParallelNum') is not None:
             self.merge_parallel_num = m.get('mergeParallelNum')
         if m.get('partition') is not None:
@@ -18901,11 +19326,14 @@ class ModifyTableRequestDataSourceConfig(TeaModel):
         access_key: str = None,
         access_secret: str = None,
         bucket: str = None,
+        catalog: str = None,
+        database: str = None,
         endpoint: str = None,
         oss_path: str = None,
         partition: str = None,
         project: str = None,
         table: str = None,
+        tag: str = None,
     ):
         # The AccessKey ID of the MaxCompute data source.
         self.access_key = access_key
@@ -18913,6 +19341,8 @@ class ModifyTableRequestDataSourceConfig(TeaModel):
         self.access_secret = access_secret
         # The name of the OSS bucket.
         self.bucket = bucket
+        self.catalog = catalog
+        self.database = database
         # The endpoint of the MaxCompute data source.
         self.endpoint = endpoint
         # The path of the Object Storage Service (OSS) object.
@@ -18923,6 +19353,7 @@ class ModifyTableRequestDataSourceConfig(TeaModel):
         self.project = project
         # The name of the MaxCompute table that is used as the data source.
         self.table = table
+        self.tag = tag
 
     def validate(self):
         pass
@@ -18939,6 +19370,10 @@ class ModifyTableRequestDataSourceConfig(TeaModel):
             result['accessSecret'] = self.access_secret
         if self.bucket is not None:
             result['bucket'] = self.bucket
+        if self.catalog is not None:
+            result['catalog'] = self.catalog
+        if self.database is not None:
+            result['database'] = self.database
         if self.endpoint is not None:
             result['endpoint'] = self.endpoint
         if self.oss_path is not None:
@@ -18949,6 +19384,8 @@ class ModifyTableRequestDataSourceConfig(TeaModel):
             result['project'] = self.project
         if self.table is not None:
             result['table'] = self.table
+        if self.tag is not None:
+            result['tag'] = self.tag
         return result
 
     def from_map(self, m: dict = None):
@@ -18959,6 +19396,10 @@ class ModifyTableRequestDataSourceConfig(TeaModel):
             self.access_secret = m.get('accessSecret')
         if m.get('bucket') is not None:
             self.bucket = m.get('bucket')
+        if m.get('catalog') is not None:
+            self.catalog = m.get('catalog')
+        if m.get('database') is not None:
+            self.database = m.get('database')
         if m.get('endpoint') is not None:
             self.endpoint = m.get('endpoint')
         if m.get('ossPath') is not None:
@@ -18969,6 +19410,8 @@ class ModifyTableRequestDataSourceConfig(TeaModel):
             self.project = m.get('project')
         if m.get('table') is not None:
             self.table = m.get('table')
+        if m.get('tag') is not None:
+            self.tag = m.get('tag')
         return self
 
 
