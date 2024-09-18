@@ -1525,6 +1525,7 @@ class OrderResult(TeaModel):
         distributor_id: str = None,
         logistics_status: str = None,
         order_amount: int = None,
+        order_closed_reason: str = None,
         order_id: str = None,
         order_line_list: List[OrderLineResult] = None,
         order_status: str = None,
@@ -1534,6 +1535,7 @@ class OrderResult(TeaModel):
         self.distributor_id = distributor_id
         self.logistics_status = logistics_status
         self.order_amount = order_amount
+        self.order_closed_reason = order_closed_reason
         self.order_id = order_id
         self.order_line_list = order_line_list
         self.order_status = order_status
@@ -1559,6 +1561,8 @@ class OrderResult(TeaModel):
             result['logisticsStatus'] = self.logistics_status
         if self.order_amount is not None:
             result['orderAmount'] = self.order_amount
+        if self.order_closed_reason is not None:
+            result['orderClosedReason'] = self.order_closed_reason
         if self.order_id is not None:
             result['orderId'] = self.order_id
         result['orderLineList'] = []
@@ -1581,6 +1585,8 @@ class OrderResult(TeaModel):
             self.logistics_status = m.get('logisticsStatus')
         if m.get('orderAmount') is not None:
             self.order_amount = m.get('orderAmount')
+        if m.get('orderClosedReason') is not None:
+            self.order_closed_reason = m.get('orderClosedReason')
         if m.get('orderId') is not None:
             self.order_id = m.get('orderId')
         self.order_line_list = []
