@@ -803,6 +803,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddUserToWorkspaceResponse:
         """
+        @summary 添加成员到指定工作空间。
+        
         @param request: AddUserToWorkspaceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddUserToWorkspaceResponse
@@ -840,6 +842,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddUserToWorkspaceResponse:
         """
+        @summary 添加成员到指定工作空间。
+        
         @param request: AddUserToWorkspaceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddUserToWorkspaceResponse
@@ -876,6 +880,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddUserToWorkspaceRequest,
     ) -> quickbi_public_20220101_models.AddUserToWorkspaceResponse:
         """
+        @summary 添加成员到指定工作空间。
+        
         @param request: AddUserToWorkspaceRequest
         @return: AddUserToWorkspaceResponse
         """
@@ -887,6 +893,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddUserToWorkspaceRequest,
     ) -> quickbi_public_20220101_models.AddUserToWorkspaceResponse:
         """
+        @summary 添加成员到指定工作空间。
+        
         @param request: AddUserToWorkspaceRequest
         @return: AddUserToWorkspaceResponse
         """
@@ -899,6 +907,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddWorkspaceUsersResponse:
         """
+        @summary 批量添加成员到工作空间。
+        
         @param request: AddWorkspaceUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddWorkspaceUsersResponse
@@ -936,6 +946,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddWorkspaceUsersResponse:
         """
+        @summary 批量添加成员到工作空间。
+        
         @param request: AddWorkspaceUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddWorkspaceUsersResponse
@@ -972,6 +984,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddWorkspaceUsersRequest,
     ) -> quickbi_public_20220101_models.AddWorkspaceUsersResponse:
         """
+        @summary 批量添加成员到工作空间。
+        
         @param request: AddWorkspaceUsersRequest
         @return: AddWorkspaceUsersResponse
         """
@@ -983,6 +997,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddWorkspaceUsersRequest,
     ) -> quickbi_public_20220101_models.AddWorkspaceUsersResponse:
         """
+        @summary 批量添加成员到工作空间。
+        
         @param request: AddWorkspaceUsersRequest
         @return: AddWorkspaceUsersResponse
         """
@@ -995,7 +1011,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse:
         """
-        @summary 触发数据集抽取加速
+        @summary 触发数据集抽取加速。
         
         @param request: AllotDatasetAccelerationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1030,7 +1046,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse:
         """
-        @summary 触发数据集抽取加速
+        @summary 触发数据集抽取加速。
         
         @param request: AllotDatasetAccelerationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1064,7 +1080,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AllotDatasetAccelerationTaskRequest,
     ) -> quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse:
         """
-        @summary 触发数据集抽取加速
+        @summary 触发数据集抽取加速。
         
         @param request: AllotDatasetAccelerationTaskRequest
         @return: AllotDatasetAccelerationTaskResponse
@@ -1077,7 +1093,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AllotDatasetAccelerationTaskRequest,
     ) -> quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse:
         """
-        @summary 触发数据集抽取加速
+        @summary 触发数据集抽取加速。
         
         @param request: AllotDatasetAccelerationTaskRequest
         @return: AllotDatasetAccelerationTaskResponse
@@ -1203,7 +1219,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.BatchAddFeishuUsersResponse:
         """
-        @summary 批量添加飞书用户
+        @summary 批量添加飞书用户。
         
         @param request: BatchAddFeishuUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1246,7 +1262,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.BatchAddFeishuUsersResponse:
         """
-        @summary 批量添加飞书用户
+        @summary 批量添加飞书用户。
         
         @param request: BatchAddFeishuUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1288,7 +1304,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.BatchAddFeishuUsersRequest,
     ) -> quickbi_public_20220101_models.BatchAddFeishuUsersResponse:
         """
-        @summary 批量添加飞书用户
+        @summary 批量添加飞书用户。
         
         @param request: BatchAddFeishuUsersRequest
         @return: BatchAddFeishuUsersResponse
@@ -1301,7 +1317,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.BatchAddFeishuUsersRequest,
     ) -> quickbi_public_20220101_models.BatchAddFeishuUsersResponse:
         """
-        @summary 批量添加飞书用户
+        @summary 批量添加飞书用户。
         
         @param request: BatchAddFeishuUsersRequest
         @return: BatchAddFeishuUsersResponse
@@ -1315,6 +1331,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CancelAuthorizationMenuResponse:
         """
+        @summary 根据门户菜单ID，取消指定用户、用户组的授权记录。
+        
         @param request: CancelAuthorizationMenuRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CancelAuthorizationMenuResponse
@@ -1354,6 +1372,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CancelAuthorizationMenuResponse:
         """
+        @summary 根据门户菜单ID，取消指定用户、用户组的授权记录。
+        
         @param request: CancelAuthorizationMenuRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CancelAuthorizationMenuResponse
@@ -1392,6 +1412,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.CancelAuthorizationMenuRequest,
     ) -> quickbi_public_20220101_models.CancelAuthorizationMenuResponse:
         """
+        @summary 根据门户菜单ID，取消指定用户、用户组的授权记录。
+        
         @param request: CancelAuthorizationMenuRequest
         @return: CancelAuthorizationMenuResponse
         """
@@ -1403,6 +1425,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.CancelAuthorizationMenuRequest,
     ) -> quickbi_public_20220101_models.CancelAuthorizationMenuResponse:
         """
+        @summary 根据门户菜单ID，取消指定用户、用户组的授权记录。
+        
         @param request: CancelAuthorizationMenuRequest
         @return: CancelAuthorizationMenuResponse
         """
@@ -1823,7 +1847,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CreateTicketResponse:
         """
-        @summary 生成三方嵌入的ticket
+        @summary 生成三方嵌入的ticket。
         
         @param request: CreateTicketRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1874,7 +1898,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CreateTicketResponse:
         """
-        @summary 生成三方嵌入的ticket
+        @summary 生成三方嵌入的ticket。
         
         @param request: CreateTicketRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1924,7 +1948,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.CreateTicketRequest,
     ) -> quickbi_public_20220101_models.CreateTicketResponse:
         """
-        @summary 生成三方嵌入的ticket
+        @summary 生成三方嵌入的ticket。
         
         @param request: CreateTicketRequest
         @return: CreateTicketResponse
@@ -1937,7 +1961,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.CreateTicketRequest,
     ) -> quickbi_public_20220101_models.CreateTicketResponse:
         """
-        @summary 生成三方嵌入的ticket
+        @summary 生成三方嵌入的ticket。
         
         @param request: CreateTicketRequest
         @return: CreateTicketResponse
@@ -1951,7 +1975,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CreateTicket4CopilotResponse:
         """
-        @summary 生成智能小Q嵌入ticket
+        @summary 生成智能小Q嵌入ticket。
         
         @param request: CreateTicket4CopilotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1996,7 +2020,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CreateTicket4CopilotResponse:
         """
-        @summary 生成智能小Q嵌入ticket
+        @summary 生成智能小Q嵌入ticket。
         
         @param request: CreateTicket4CopilotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2040,7 +2064,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.CreateTicket4CopilotRequest,
     ) -> quickbi_public_20220101_models.CreateTicket4CopilotResponse:
         """
-        @summary 生成智能小Q嵌入ticket
+        @summary 生成智能小Q嵌入ticket。
         
         @param request: CreateTicket4CopilotRequest
         @return: CreateTicket4CopilotResponse
@@ -2053,7 +2077,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.CreateTicket4CopilotRequest,
     ) -> quickbi_public_20220101_models.CreateTicket4CopilotResponse:
         """
-        @summary 生成智能小Q嵌入ticket
+        @summary 生成智能小Q嵌入ticket。
         
         @param request: CreateTicket4CopilotRequest
         @return: CreateTicket4CopilotResponse
@@ -2175,7 +2199,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DataSetBloodResponse:
         """
-        @summary 查询引用指定数据集下的作品信息
+        @summary 查询引用指定数据集下的作品信息。
         
         @param request: DataSetBloodRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2214,7 +2238,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DataSetBloodResponse:
         """
-        @summary 查询引用指定数据集下的作品信息
+        @summary 查询引用指定数据集下的作品信息。
         
         @param request: DataSetBloodRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2252,7 +2276,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DataSetBloodRequest,
     ) -> quickbi_public_20220101_models.DataSetBloodResponse:
         """
-        @summary 查询引用指定数据集下的作品信息
+        @summary 查询引用指定数据集下的作品信息。
         
         @param request: DataSetBloodRequest
         @return: DataSetBloodResponse
@@ -2265,7 +2289,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DataSetBloodRequest,
     ) -> quickbi_public_20220101_models.DataSetBloodResponse:
         """
-        @summary 查询引用指定数据集下的作品信息
+        @summary 查询引用指定数据集下的作品信息。
         
         @param request: DataSetBloodRequest
         @return: DataSetBloodResponse
@@ -2279,7 +2303,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DataSourceBloodResponse:
         """
-        @summary 查询引用指定数据源下的数据集信息
+        @summary 查询引用指定数据源下的数据集信息。
         
         @param request: DataSourceBloodRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2314,7 +2338,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DataSourceBloodResponse:
         """
-        @summary 查询引用指定数据源下的数据集信息
+        @summary 查询引用指定数据源下的数据集信息。
         
         @param request: DataSourceBloodRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2348,7 +2372,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DataSourceBloodRequest,
     ) -> quickbi_public_20220101_models.DataSourceBloodResponse:
         """
-        @summary 查询引用指定数据源下的数据集信息
+        @summary 查询引用指定数据源下的数据集信息。
         
         @param request: DataSourceBloodRequest
         @return: DataSourceBloodResponse
@@ -2361,7 +2385,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DataSourceBloodRequest,
     ) -> quickbi_public_20220101_models.DataSourceBloodResponse:
         """
-        @summary 查询引用指定数据源下的数据集信息
+        @summary 查询引用指定数据源下的数据集信息。
         
         @param request: DataSourceBloodRequest
         @return: DataSourceBloodResponse
@@ -2883,6 +2907,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteUserFromWorkspaceResponse:
         """
+        @summary 删除指定工作空间的成员。
+        
         @param request: DeleteUserFromWorkspaceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteUserFromWorkspaceResponse
@@ -2918,6 +2944,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteUserFromWorkspaceResponse:
         """
+        @summary 删除指定工作空间的成员。
+        
         @param request: DeleteUserFromWorkspaceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteUserFromWorkspaceResponse
@@ -2952,6 +2980,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteUserFromWorkspaceRequest,
     ) -> quickbi_public_20220101_models.DeleteUserFromWorkspaceResponse:
         """
+        @summary 删除指定工作空间的成员。
+        
         @param request: DeleteUserFromWorkspaceRequest
         @return: DeleteUserFromWorkspaceResponse
         """
@@ -2963,6 +2993,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteUserFromWorkspaceRequest,
     ) -> quickbi_public_20220101_models.DeleteUserFromWorkspaceResponse:
         """
+        @summary 删除指定工作空间的成员。
+        
         @param request: DeleteUserFromWorkspaceRequest
         @return: DeleteUserFromWorkspaceResponse
         """
@@ -3471,7 +3503,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListApiDatasourceResponse:
         """
-        @summary 概述
+        @summary 查询API数据源列表。
         
         @param request: ListApiDatasourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3512,7 +3544,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListApiDatasourceResponse:
         """
-        @summary 概述
+        @summary 查询API数据源列表。
         
         @param request: ListApiDatasourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3552,7 +3584,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListApiDatasourceRequest,
     ) -> quickbi_public_20220101_models.ListApiDatasourceResponse:
         """
-        @summary 概述
+        @summary 查询API数据源列表。
         
         @param request: ListApiDatasourceRequest
         @return: ListApiDatasourceResponse
@@ -3565,7 +3597,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListApiDatasourceRequest,
     ) -> quickbi_public_20220101_models.ListApiDatasourceResponse:
         """
-        @summary 概述
+        @summary 查询API数据源列表。
         
         @param request: ListApiDatasourceRequest
         @return: ListApiDatasourceResponse
@@ -3879,6 +3911,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListDataLevelPermissionWhiteListResponse:
         """
+        @summary 根据行列权限种类，获取数据集行列权限的白名单列表。
+        
         @param request: ListDataLevelPermissionWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDataLevelPermissionWhiteListResponse
@@ -3914,6 +3948,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListDataLevelPermissionWhiteListResponse:
         """
+        @summary 根据行列权限种类，获取数据集行列权限的白名单列表。
+        
         @param request: ListDataLevelPermissionWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListDataLevelPermissionWhiteListResponse
@@ -3948,6 +3984,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListDataLevelPermissionWhiteListRequest,
     ) -> quickbi_public_20220101_models.ListDataLevelPermissionWhiteListResponse:
         """
+        @summary 根据行列权限种类，获取数据集行列权限的白名单列表。
+        
         @param request: ListDataLevelPermissionWhiteListRequest
         @return: ListDataLevelPermissionWhiteListResponse
         """
@@ -3959,6 +3997,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListDataLevelPermissionWhiteListRequest,
     ) -> quickbi_public_20220101_models.ListDataLevelPermissionWhiteListResponse:
         """
+        @summary 根据行列权限种类，获取数据集行列权限的白名单列表。
+        
         @param request: ListDataLevelPermissionWhiteListRequest
         @return: ListDataLevelPermissionWhiteListResponse
         """
@@ -3971,7 +4011,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListFavoriteReportsResponse:
         """
-        @summary 概述
+        @summary 获取指定用户在首页看板中展示的收藏作品列表。
         
         @param request: ListFavoriteReportsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4012,7 +4052,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListFavoriteReportsResponse:
         """
-        @summary 概述
+        @summary 获取指定用户在首页看板中展示的收藏作品列表。
         
         @param request: ListFavoriteReportsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4052,7 +4092,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListFavoriteReportsRequest,
     ) -> quickbi_public_20220101_models.ListFavoriteReportsResponse:
         """
-        @summary 概述
+        @summary 获取指定用户在首页看板中展示的收藏作品列表。
         
         @param request: ListFavoriteReportsRequest
         @return: ListFavoriteReportsResponse
@@ -4065,7 +4105,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListFavoriteReportsRequest,
     ) -> quickbi_public_20220101_models.ListFavoriteReportsResponse:
         """
-        @summary 概述
+        @summary 获取指定用户在首页看板中展示的收藏作品列表。
         
         @param request: ListFavoriteReportsRequest
         @return: ListFavoriteReportsResponse
@@ -4079,7 +4119,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListOrganizationRoleUsersResponse:
         """
-        @summary 获取指定组织角色下的用户列表
+        @summary 获取指定组织角色下的用户列表。
         
         @param request: ListOrganizationRoleUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4120,7 +4160,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListOrganizationRoleUsersResponse:
         """
-        @summary 获取指定组织角色下的用户列表
+        @summary 获取指定组织角色下的用户列表。
         
         @param request: ListOrganizationRoleUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4160,7 +4200,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListOrganizationRoleUsersRequest,
     ) -> quickbi_public_20220101_models.ListOrganizationRoleUsersResponse:
         """
-        @summary 获取指定组织角色下的用户列表
+        @summary 获取指定组织角色下的用户列表。
         
         @param request: ListOrganizationRoleUsersRequest
         @return: ListOrganizationRoleUsersResponse
@@ -4173,7 +4213,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListOrganizationRoleUsersRequest,
     ) -> quickbi_public_20220101_models.ListOrganizationRoleUsersResponse:
         """
-        @summary 获取指定组织角色下的用户列表
+        @summary 获取指定组织角色下的用户列表。
         
         @param request: ListOrganizationRoleUsersRequest
         @return: ListOrganizationRoleUsersResponse
@@ -4186,7 +4226,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListOrganizationRolesResponse:
         """
-        @summary 获取组织级别自定义角色列表
+        @summary 获取组织级别自定义角色列表。
         
         @param request: ListOrganizationRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4214,7 +4254,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListOrganizationRolesResponse:
         """
-        @summary 获取组织级别自定义角色列表
+        @summary 获取组织级别自定义角色列表。
         
         @param request: ListOrganizationRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4239,7 +4279,7 @@ class Client(OpenApiClient):
 
     def list_organization_roles(self) -> quickbi_public_20220101_models.ListOrganizationRolesResponse:
         """
-        @summary 获取组织级别自定义角色列表
+        @summary 获取组织级别自定义角色列表。
         
         @return: ListOrganizationRolesResponse
         """
@@ -4248,7 +4288,7 @@ class Client(OpenApiClient):
 
     async def list_organization_roles_async(self) -> quickbi_public_20220101_models.ListOrganizationRolesResponse:
         """
-        @summary 获取组织级别自定义角色列表
+        @summary 获取组织级别自定义角色列表。
         
         @return: ListOrganizationRolesResponse
         """
@@ -4457,7 +4497,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListRecentViewReportsResponse:
         """
-        @summary 获取首页看板常看和足迹列表
+        @summary 获取首页看板常看和足迹列表。
         
         @param request: ListRecentViewReportsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4502,7 +4542,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListRecentViewReportsResponse:
         """
-        @summary 获取首页看板常看和足迹列表
+        @summary 获取首页看板常看和足迹列表。
         
         @param request: ListRecentViewReportsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4546,7 +4586,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListRecentViewReportsRequest,
     ) -> quickbi_public_20220101_models.ListRecentViewReportsResponse:
         """
-        @summary 获取首页看板常看和足迹列表
+        @summary 获取首页看板常看和足迹列表。
         
         @param request: ListRecentViewReportsRequest
         @return: ListRecentViewReportsResponse
@@ -4559,7 +4599,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListRecentViewReportsRequest,
     ) -> quickbi_public_20220101_models.ListRecentViewReportsResponse:
         """
-        @summary 获取首页看板常看和足迹列表
+        @summary 获取首页看板常看和足迹列表。
         
         @param request: ListRecentViewReportsRequest
         @return: ListRecentViewReportsResponse
@@ -4573,7 +4613,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListSharedReportsResponse:
         """
-        @summary 概述
+        @summary 获取指定用户在首页看板中展示的被授权的作品列表。
         
         @param request: ListSharedReportsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4614,7 +4654,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListSharedReportsResponse:
         """
-        @summary 概述
+        @summary 获取指定用户在首页看板中展示的被授权的作品列表。
         
         @param request: ListSharedReportsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4654,7 +4694,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListSharedReportsRequest,
     ) -> quickbi_public_20220101_models.ListSharedReportsResponse:
         """
-        @summary 概述
+        @summary 获取指定用户在首页看板中展示的被授权的作品列表。
         
         @param request: ListSharedReportsRequest
         @return: ListSharedReportsResponse
@@ -4667,7 +4707,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListSharedReportsRequest,
     ) -> quickbi_public_20220101_models.ListSharedReportsResponse:
         """
-        @summary 概述
+        @summary 获取指定用户在首页看板中展示的被授权的作品列表。
         
         @param request: ListSharedReportsRequest
         @return: ListSharedReportsResponse
@@ -4777,7 +4817,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse:
         """
-        @summary 获取指定空间角色下的用户列表
+        @summary 获取指定空间角色下的用户列表。
         
         @param request: ListWorkspaceRoleUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4820,7 +4860,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse:
         """
-        @summary 获取指定空间角色下的用户列表
+        @summary 获取指定空间角色下的用户列表。
         
         @param request: ListWorkspaceRoleUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4862,7 +4902,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListWorkspaceRoleUsersRequest,
     ) -> quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse:
         """
-        @summary 获取指定空间角色下的用户列表
+        @summary 获取指定空间角色下的用户列表。
         
         @param request: ListWorkspaceRoleUsersRequest
         @return: ListWorkspaceRoleUsersResponse
@@ -4875,7 +4915,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListWorkspaceRoleUsersRequest,
     ) -> quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse:
         """
-        @summary 获取指定空间角色下的用户列表
+        @summary 获取指定空间角色下的用户列表。
         
         @param request: ListWorkspaceRoleUsersRequest
         @return: ListWorkspaceRoleUsersResponse
@@ -4889,7 +4929,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListWorkspaceRolesResponse:
         """
-        @summary 获取空间角色列表
+        @summary 获取空间角色列表。
         
         @param request: ListWorkspaceRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4924,7 +4964,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListWorkspaceRolesResponse:
         """
-        @summary 获取空间角色列表
+        @summary 获取空间角色列表。
         
         @param request: ListWorkspaceRolesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4958,7 +4998,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListWorkspaceRolesRequest,
     ) -> quickbi_public_20220101_models.ListWorkspaceRolesResponse:
         """
-        @summary 获取空间角色列表
+        @summary 获取空间角色列表。
         
         @param request: ListWorkspaceRolesRequest
         @return: ListWorkspaceRolesResponse
@@ -4971,7 +5011,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListWorkspaceRolesRequest,
     ) -> quickbi_public_20220101_models.ListWorkspaceRolesResponse:
         """
-        @summary 获取空间角色列表
+        @summary 获取空间角色列表。
         
         @param request: ListWorkspaceRolesRequest
         @return: ListWorkspaceRolesResponse
@@ -4985,7 +5025,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse:
         """
-        @summary 修改指定API数据源参数值
+        @summary 修改指定API数据源参数值。
         
         @param request: ModifyApiDatasourceParametersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5024,7 +5064,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse:
         """
-        @summary 修改指定API数据源参数值
+        @summary 修改指定API数据源参数值。
         
         @param request: ModifyApiDatasourceParametersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5062,7 +5102,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ModifyApiDatasourceParametersRequest,
     ) -> quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse:
         """
-        @summary 修改指定API数据源参数值
+        @summary 修改指定API数据源参数值。
         
         @param request: ModifyApiDatasourceParametersRequest
         @return: ModifyApiDatasourceParametersResponse
@@ -5075,7 +5115,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ModifyApiDatasourceParametersRequest,
     ) -> quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse:
         """
-        @summary 修改指定API数据源参数值
+        @summary 修改指定API数据源参数值。
         
         @param request: ModifyApiDatasourceParametersRequest
         @return: ModifyApiDatasourceParametersResponse
@@ -5089,7 +5129,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ModifyCopilotEmbedConfigResponse:
         """
-        @summary 修改智能问数嵌入配置
+        @summary 修改智能问数嵌入配置。
         
         @param request: ModifyCopilotEmbedConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5130,7 +5170,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ModifyCopilotEmbedConfigResponse:
         """
-        @summary 修改智能问数嵌入配置
+        @summary 修改智能问数嵌入配置。
         
         @param request: ModifyCopilotEmbedConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5170,7 +5210,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ModifyCopilotEmbedConfigRequest,
     ) -> quickbi_public_20220101_models.ModifyCopilotEmbedConfigResponse:
         """
-        @summary 修改智能问数嵌入配置
+        @summary 修改智能问数嵌入配置。
         
         @param request: ModifyCopilotEmbedConfigRequest
         @return: ModifyCopilotEmbedConfigResponse
@@ -5183,7 +5223,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ModifyCopilotEmbedConfigRequest,
     ) -> quickbi_public_20220101_models.ModifyCopilotEmbedConfigResponse:
         """
-        @summary 修改智能问数嵌入配置
+        @summary 修改智能问数嵌入配置。
         
         @param request: ModifyCopilotEmbedConfigRequest
         @return: ModifyCopilotEmbedConfigResponse
@@ -5197,7 +5237,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryApprovalInfoResponse:
         """
-        @summary 根据审批人获取相应的审批流信息
+        @summary 根据审批人获取相应的审批流信息。
         
         @param request: QueryApprovalInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5238,7 +5278,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryApprovalInfoResponse:
         """
-        @summary 根据审批人获取相应的审批流信息
+        @summary 根据审批人获取相应的审批流信息。
         
         @param request: QueryApprovalInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5278,7 +5318,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryApprovalInfoRequest,
     ) -> quickbi_public_20220101_models.QueryApprovalInfoResponse:
         """
-        @summary 根据审批人获取相应的审批流信息
+        @summary 根据审批人获取相应的审批流信息。
         
         @param request: QueryApprovalInfoRequest
         @return: QueryApprovalInfoResponse
@@ -5291,7 +5331,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryApprovalInfoRequest,
     ) -> quickbi_public_20220101_models.QueryApprovalInfoResponse:
         """
-        @summary 根据审批人获取相应的审批流信息
+        @summary 根据审批人获取相应的审批流信息。
         
         @param request: QueryApprovalInfoRequest
         @return: QueryApprovalInfoResponse
@@ -5305,7 +5345,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryAuditLogResponse:
         """
-        @summary 查询审计日志信息
+        @summary 查询审计日志信息。
         
         @param request: QueryAuditLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5352,7 +5392,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryAuditLogResponse:
         """
-        @summary 查询审计日志信息
+        @summary 查询审计日志信息。
         
         @param request: QueryAuditLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5398,7 +5438,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryAuditLogRequest,
     ) -> quickbi_public_20220101_models.QueryAuditLogResponse:
         """
-        @summary 查询审计日志信息
+        @summary 查询审计日志信息。
         
         @param request: QueryAuditLogRequest
         @return: QueryAuditLogResponse
@@ -5411,7 +5451,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryAuditLogRequest,
     ) -> quickbi_public_20220101_models.QueryAuditLogResponse:
         """
-        @summary 查询审计日志信息
+        @summary 查询审计日志信息。
         
         @param request: QueryAuditLogRequest
         @return: QueryAuditLogResponse
@@ -5425,7 +5465,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryComponentPerformanceResponse:
         """
-        @summary 查询组件性能列表
+        @summary 查询组件性能列表。
         
         @param request: QueryComponentPerformanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5472,7 +5512,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryComponentPerformanceResponse:
         """
-        @summary 查询组件性能列表
+        @summary 查询组件性能列表。
         
         @param request: QueryComponentPerformanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5518,7 +5558,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryComponentPerformanceRequest,
     ) -> quickbi_public_20220101_models.QueryComponentPerformanceResponse:
         """
-        @summary 查询组件性能列表
+        @summary 查询组件性能列表。
         
         @param request: QueryComponentPerformanceRequest
         @return: QueryComponentPerformanceResponse
@@ -5531,7 +5571,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryComponentPerformanceRequest,
     ) -> quickbi_public_20220101_models.QueryComponentPerformanceResponse:
         """
-        @summary 查询组件性能列表
+        @summary 查询组件性能列表。
         
         @param request: QueryComponentPerformanceRequest
         @return: QueryComponentPerformanceResponse
@@ -5545,7 +5585,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryCopilotEmbedConfigResponse:
         """
-        @summary 获取开通小Q嵌入的配置列表
+        @summary 获取开通小Q嵌入的配置列表。
         
         @param request: QueryCopilotEmbedConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5580,7 +5620,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryCopilotEmbedConfigResponse:
         """
-        @summary 获取开通小Q嵌入的配置列表
+        @summary 获取开通小Q嵌入的配置列表。
         
         @param request: QueryCopilotEmbedConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5614,7 +5654,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryCopilotEmbedConfigRequest,
     ) -> quickbi_public_20220101_models.QueryCopilotEmbedConfigResponse:
         """
-        @summary 获取开通小Q嵌入的配置列表
+        @summary 获取开通小Q嵌入的配置列表。
         
         @param request: QueryCopilotEmbedConfigRequest
         @return: QueryCopilotEmbedConfigResponse
@@ -5627,7 +5667,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryCopilotEmbedConfigRequest,
     ) -> quickbi_public_20220101_models.QueryCopilotEmbedConfigResponse:
         """
-        @summary 获取开通小Q嵌入的配置列表
+        @summary 获取开通小Q嵌入的配置列表。
         
         @param request: QueryCopilotEmbedConfigRequest
         @return: QueryCopilotEmbedConfigResponse
@@ -5641,7 +5681,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryCubeOptimizationResponse:
         """
-        @summary 查询数据集优化建议
+        @summary 查询数据集优化建议。
         
         @param request: QueryCubeOptimizationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5676,7 +5716,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryCubeOptimizationResponse:
         """
-        @summary 查询数据集优化建议
+        @summary 查询数据集优化建议。
         
         @param request: QueryCubeOptimizationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5710,7 +5750,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryCubeOptimizationRequest,
     ) -> quickbi_public_20220101_models.QueryCubeOptimizationResponse:
         """
-        @summary 查询数据集优化建议
+        @summary 查询数据集优化建议。
         
         @param request: QueryCubeOptimizationRequest
         @return: QueryCubeOptimizationResponse
@@ -5723,7 +5763,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryCubeOptimizationRequest,
     ) -> quickbi_public_20220101_models.QueryCubeOptimizationResponse:
         """
-        @summary 查询数据集优化建议
+        @summary 查询数据集优化建议。
         
         @param request: QueryCubeOptimizationRequest
         @return: QueryCubeOptimizationResponse
@@ -5737,7 +5777,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryCubePerformanceResponse:
         """
-        @summary 查询数据集性能
+        @summary 查询数据集性能。
         
         @param request: QueryCubePerformanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5782,7 +5822,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryCubePerformanceResponse:
         """
-        @summary 查询数据集性能
+        @summary 查询数据集性能。
         
         @param request: QueryCubePerformanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5826,7 +5866,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryCubePerformanceRequest,
     ) -> quickbi_public_20220101_models.QueryCubePerformanceResponse:
         """
-        @summary 查询数据集性能
+        @summary 查询数据集性能。
         
         @param request: QueryCubePerformanceRequest
         @return: QueryCubePerformanceResponse
@@ -5839,7 +5879,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryCubePerformanceRequest,
     ) -> quickbi_public_20220101_models.QueryCubePerformanceResponse:
         """
-        @summary 查询数据集性能
+        @summary 查询数据集性能。
         
         @param request: QueryCubePerformanceRequest
         @return: QueryCubePerformanceResponse
@@ -5853,7 +5893,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDataResponse:
         """
-        @summary 调用开放数据服务API
+        @summary 调用开放数据服务API。
         
         @param request: QueryDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5894,7 +5934,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDataResponse:
         """
-        @summary 调用开放数据服务API
+        @summary 调用开放数据服务API。
         
         @param request: QueryDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5934,7 +5974,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDataRequest,
     ) -> quickbi_public_20220101_models.QueryDataResponse:
         """
-        @summary 调用开放数据服务API
+        @summary 调用开放数据服务API。
         
         @param request: QueryDataRequest
         @return: QueryDataResponse
@@ -5947,7 +5987,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDataRequest,
     ) -> quickbi_public_20220101_models.QueryDataResponse:
         """
-        @summary 调用开放数据服务API
+        @summary 调用开放数据服务API。
         
         @param request: QueryDataRequest
         @return: QueryDataResponse
@@ -5961,7 +6001,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDataRangeResponse:
         """
-        @summary 获取数据范围目录列表
+        @summary 获取数据范围目录列表。
         
         @param request: QueryDataRangeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5998,7 +6038,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDataRangeResponse:
         """
-        @summary 获取数据范围目录列表
+        @summary 获取数据范围目录列表。
         
         @param request: QueryDataRangeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6034,7 +6074,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDataRangeRequest,
     ) -> quickbi_public_20220101_models.QueryDataRangeResponse:
         """
-        @summary 获取数据范围目录列表
+        @summary 获取数据范围目录列表。
         
         @param request: QueryDataRangeRequest
         @return: QueryDataRangeResponse
@@ -6047,7 +6087,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDataRangeRequest,
     ) -> quickbi_public_20220101_models.QueryDataRangeResponse:
         """
-        @summary 获取数据范围目录列表
+        @summary 获取数据范围目录列表。
         
         @param request: QueryDataRangeRequest
         @return: QueryDataRangeResponse
@@ -6173,7 +6213,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDataServiceListResponse:
         """
-        @summary 查询数据服务API列表
+        @summary 查询数据服务API列表。
         
         @param request: QueryDataServiceListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6214,7 +6254,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDataServiceListResponse:
         """
-        @summary 查询数据服务API列表
+        @summary 查询数据服务API列表。
         
         @param request: QueryDataServiceListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6254,7 +6294,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDataServiceListRequest,
     ) -> quickbi_public_20220101_models.QueryDataServiceListResponse:
         """
-        @summary 查询数据服务API列表
+        @summary 查询数据服务API列表。
         
         @param request: QueryDataServiceListRequest
         @return: QueryDataServiceListResponse
@@ -6267,7 +6307,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDataServiceListRequest,
     ) -> quickbi_public_20220101_models.QueryDataServiceListResponse:
         """
-        @summary 查询数据服务API列表
+        @summary 查询数据服务API列表。
         
         @param request: QueryDataServiceListRequest
         @return: QueryDataServiceListResponse
@@ -6605,6 +6645,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDatasetSwitchInfoResponse:
         """
+        @summary 获取指定数据集的行级权限开关状态。
+        
         @param request: QueryDatasetSwitchInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryDatasetSwitchInfoResponse
@@ -6638,6 +6680,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDatasetSwitchInfoResponse:
         """
+        @summary 获取指定数据集的行级权限开关状态。
+        
         @param request: QueryDatasetSwitchInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryDatasetSwitchInfoResponse
@@ -6670,6 +6714,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDatasetSwitchInfoRequest,
     ) -> quickbi_public_20220101_models.QueryDatasetSwitchInfoResponse:
         """
+        @summary 获取指定数据集的行级权限开关状态。
+        
         @param request: QueryDatasetSwitchInfoRequest
         @return: QueryDatasetSwitchInfoResponse
         """
@@ -6681,6 +6727,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDatasetSwitchInfoRequest,
     ) -> quickbi_public_20220101_models.QueryDatasetSwitchInfoResponse:
         """
+        @summary 获取指定数据集的行级权限开关状态。
+        
         @param request: QueryDatasetSwitchInfoRequest
         @return: QueryDatasetSwitchInfoResponse
         """
@@ -7667,6 +7715,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserGroupMemberResponse:
         """
+        @summary 获取用户组下的成员列表信息。
+        
         @param request: QueryUserGroupMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryUserGroupMemberResponse
@@ -7702,6 +7752,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserGroupMemberResponse:
         """
+        @summary 获取用户组下的成员列表信息。
+        
         @param request: QueryUserGroupMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryUserGroupMemberResponse
@@ -7736,6 +7788,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserGroupMemberRequest,
     ) -> quickbi_public_20220101_models.QueryUserGroupMemberResponse:
         """
+        @summary 获取用户组下的成员列表信息。
+        
         @param request: QueryUserGroupMemberRequest
         @return: QueryUserGroupMemberResponse
         """
@@ -7747,6 +7801,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserGroupMemberRequest,
     ) -> quickbi_public_20220101_models.QueryUserGroupMemberResponse:
         """
+        @summary 获取用户组下的成员列表信息。
+        
         @param request: QueryUserGroupMemberRequest
         @return: QueryUserGroupMemberResponse
         """
@@ -7955,6 +8011,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserListResponse:
         """
+        @summary 查询组织成员列表信息。
+        
         @param request: QueryUserListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryUserListResponse
@@ -7986,6 +8044,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserListResponse:
         """
+        @summary 查询组织成员列表信息。
+        
         @param request: QueryUserListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryUserListResponse
@@ -8016,6 +8076,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserListRequest,
     ) -> quickbi_public_20220101_models.QueryUserListResponse:
         """
+        @summary 查询组织成员列表信息。
+        
         @param request: QueryUserListRequest
         @return: QueryUserListResponse
         """
@@ -8027,6 +8089,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserListRequest,
     ) -> quickbi_public_20220101_models.QueryUserListResponse:
         """
+        @summary 查询组织成员列表信息。
+        
         @param request: QueryUserListRequest
         @return: QueryUserListResponse
         """
@@ -8039,6 +8103,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceResponse:
         """
+        @summary 获取指定工作空间成员的预置空间角色信息。
+        
         @param request: QueryUserRoleInfoInWorkspaceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryUserRoleInfoInWorkspaceResponse
@@ -8074,6 +8140,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceResponse:
         """
+        @summary 获取指定工作空间成员的预置空间角色信息。
+        
         @param request: QueryUserRoleInfoInWorkspaceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryUserRoleInfoInWorkspaceResponse
@@ -8108,6 +8176,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceRequest,
     ) -> quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceResponse:
         """
+        @summary 获取指定工作空间成员的预置空间角色信息。
+        
         @param request: QueryUserRoleInfoInWorkspaceRequest
         @return: QueryUserRoleInfoInWorkspaceResponse
         """
@@ -8119,6 +8189,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceRequest,
     ) -> quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceResponse:
         """
+        @summary 获取指定工作空间成员的预置空间角色信息。
+        
         @param request: QueryUserRoleInfoInWorkspaceRequest
         @return: QueryUserRoleInfoInWorkspaceResponse
         """
@@ -8813,6 +8885,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryWorkspaceUserListResponse:
         """
+        @summary 查询指定工作空间下的成员列表信息。
+        
         @param request: QueryWorkspaceUserListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryWorkspaceUserListResponse
@@ -8852,6 +8926,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryWorkspaceUserListResponse:
         """
+        @summary 查询指定工作空间下的成员列表信息。
+        
         @param request: QueryWorkspaceUserListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QueryWorkspaceUserListResponse
@@ -8890,6 +8966,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryWorkspaceUserListRequest,
     ) -> quickbi_public_20220101_models.QueryWorkspaceUserListResponse:
         """
+        @summary 查询指定工作空间下的成员列表信息。
+        
         @param request: QueryWorkspaceUserListRequest
         @return: QueryWorkspaceUserListResponse
         """
@@ -8901,6 +8979,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryWorkspaceUserListRequest,
     ) -> quickbi_public_20220101_models.QueryWorkspaceUserListResponse:
         """
+        @summary 查询指定工作空间下的成员列表信息。
+        
         @param request: QueryWorkspaceUserListRequest
         @return: QueryWorkspaceUserListResponse
         """
@@ -9117,6 +9197,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigResponse:
         """
+        @summary 设置行列权限的额外配置
+        
         @param request: SetDataLevelPermissionExtraConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetDataLevelPermissionExtraConfigResponse
@@ -9154,6 +9236,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigResponse:
         """
+        @summary 设置行列权限的额外配置
+        
         @param request: SetDataLevelPermissionExtraConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetDataLevelPermissionExtraConfigResponse
@@ -9190,6 +9274,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigResponse:
         """
+        @summary 设置行列权限的额外配置
+        
         @param request: SetDataLevelPermissionExtraConfigRequest
         @return: SetDataLevelPermissionExtraConfigResponse
         """
@@ -9201,6 +9287,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigResponse:
         """
+        @summary 设置行列权限的额外配置
+        
         @param request: SetDataLevelPermissionExtraConfigRequest
         @return: SetDataLevelPermissionExtraConfigResponse
         """
@@ -9213,6 +9301,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
         """
+        @summary 设置单条数据集行列权限配置信息（新增和更新）
+        
         @param request: SetDataLevelPermissionRuleConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetDataLevelPermissionRuleConfigResponse
@@ -9246,6 +9336,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
         """
+        @summary 设置单条数据集行列权限配置信息（新增和更新）
+        
         @param request: SetDataLevelPermissionRuleConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SetDataLevelPermissionRuleConfigResponse
@@ -9278,6 +9370,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
         """
+        @summary 设置单条数据集行列权限配置信息（新增和更新）
+        
         @param request: SetDataLevelPermissionRuleConfigRequest
         @return: SetDataLevelPermissionRuleConfigResponse
         """
@@ -9289,6 +9383,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
         """
+        @summary 设置单条数据集行列权限配置信息（新增和更新）
+        
         @param request: SetDataLevelPermissionRuleConfigRequest
         @return: SetDataLevelPermissionRuleConfigResponse
         """
@@ -9957,6 +10053,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateUserTagMetaResponse:
         """
+        @summary 用于更新组织成员标签元信息
+        
         @param request: UpdateUserTagMetaRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateUserTagMetaResponse
@@ -9994,6 +10092,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateUserTagMetaResponse:
         """
+        @summary 用于更新组织成员标签元信息
+        
         @param request: UpdateUserTagMetaRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateUserTagMetaResponse
@@ -10030,6 +10130,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateUserTagMetaRequest,
     ) -> quickbi_public_20220101_models.UpdateUserTagMetaResponse:
         """
+        @summary 用于更新组织成员标签元信息
+        
         @param request: UpdateUserTagMetaRequest
         @return: UpdateUserTagMetaResponse
         """
@@ -10041,6 +10143,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateUserTagMetaRequest,
     ) -> quickbi_public_20220101_models.UpdateUserTagMetaResponse:
         """
+        @summary 用于更新组织成员标签元信息
+        
         @param request: UpdateUserTagMetaRequest
         @return: UpdateUserTagMetaResponse
         """
@@ -10053,6 +10157,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateUserTagValueResponse:
         """
+        @summary 更新组织成员标签值
+        
         @param request: UpdateUserTagValueRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateUserTagValueResponse
@@ -10090,6 +10196,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateUserTagValueResponse:
         """
+        @summary 更新组织成员标签值
+        
         @param request: UpdateUserTagValueRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateUserTagValueResponse
@@ -10126,6 +10234,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateUserTagValueRequest,
     ) -> quickbi_public_20220101_models.UpdateUserTagValueResponse:
         """
+        @summary 更新组织成员标签值
+        
         @param request: UpdateUserTagValueRequest
         @return: UpdateUserTagValueResponse
         """
@@ -10137,6 +10247,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateUserTagValueRequest,
     ) -> quickbi_public_20220101_models.UpdateUserTagValueResponse:
         """
+        @summary 更新组织成员标签值
+        
         @param request: UpdateUserTagValueRequest
         @return: UpdateUserTagValueResponse
         """
@@ -10149,6 +10261,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateWorkspaceUserRoleResponse:
         """
+        @summary 修改工作空间下指定成员的角色，已有的角色会被覆盖
+        
         @param request: UpdateWorkspaceUserRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateWorkspaceUserRoleResponse
@@ -10186,6 +10300,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateWorkspaceUserRoleResponse:
         """
+        @summary 修改工作空间下指定成员的角色，已有的角色会被覆盖
+        
         @param request: UpdateWorkspaceUserRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateWorkspaceUserRoleResponse
@@ -10222,6 +10338,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateWorkspaceUserRoleRequest,
     ) -> quickbi_public_20220101_models.UpdateWorkspaceUserRoleResponse:
         """
+        @summary 修改工作空间下指定成员的角色，已有的角色会被覆盖
+        
         @param request: UpdateWorkspaceUserRoleRequest
         @return: UpdateWorkspaceUserRoleResponse
         """
@@ -10233,6 +10351,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateWorkspaceUserRoleRequest,
     ) -> quickbi_public_20220101_models.UpdateWorkspaceUserRoleResponse:
         """
+        @summary 修改工作空间下指定成员的角色，已有的角色会被覆盖
+        
         @param request: UpdateWorkspaceUserRoleRequest
         @return: UpdateWorkspaceUserRoleResponse
         """
@@ -10245,6 +10365,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateWorkspaceUsersRoleResponse:
         """
+        @summary 批量更新工作空间成员的角色信息，已有角色会被覆盖
+        
         @param request: UpdateWorkspaceUsersRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateWorkspaceUsersRoleResponse
@@ -10282,6 +10404,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateWorkspaceUsersRoleResponse:
         """
+        @summary 批量更新工作空间成员的角色信息，已有角色会被覆盖
+        
         @param request: UpdateWorkspaceUsersRoleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateWorkspaceUsersRoleResponse
@@ -10318,6 +10442,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateWorkspaceUsersRoleRequest,
     ) -> quickbi_public_20220101_models.UpdateWorkspaceUsersRoleResponse:
         """
+        @summary 批量更新工作空间成员的角色信息，已有角色会被覆盖
+        
         @param request: UpdateWorkspaceUsersRoleRequest
         @return: UpdateWorkspaceUsersRoleResponse
         """
@@ -10329,6 +10455,8 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateWorkspaceUsersRoleRequest,
     ) -> quickbi_public_20220101_models.UpdateWorkspaceUsersRoleResponse:
         """
+        @summary 批量更新工作空间成员的角色信息，已有角色会被覆盖
+        
         @param request: UpdateWorkspaceUsersRoleRequest
         @return: UpdateWorkspaceUsersRoleResponse
         """

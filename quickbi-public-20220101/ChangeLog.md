@@ -1,3 +1,9 @@
+2024-09-18 Version: 1.6.1
+- Update API AddUserGroupMember: update response param.
+- Update API AddUserGroupMembers: update response param.
+- Update API QueryDatasetInfo: update response param.
+
+
 2024-08-07 Version: 1.6.0
 - Support API ModifyCopilotEmbedConfig.
 - Support API QueryCopilotEmbedConfig.

@@ -11303,6 +11303,7 @@ class QueryDatasetInfoResponseBodyResultDimensionList(TeaModel):
         dimension_type: str = None,
         expression: str = None,
         fact_column: str = None,
+        field_description: str = None,
         granularity: str = None,
         ref_uid: str = None,
         table_unique_id: str = None,
@@ -11322,6 +11323,7 @@ class QueryDatasetInfoResponseBodyResultDimensionList(TeaModel):
         self.expression = expression
         # Expression for a calculated dimension; valid only for calculated dimensions.
         self.fact_column = fact_column
+        self.field_description = field_description
         # The type of the dimension. Valid values:
         # 
         # *   standard_dimension: General Dimension
@@ -11354,6 +11356,8 @@ class QueryDatasetInfoResponseBodyResultDimensionList(TeaModel):
             result['Expression'] = self.expression
         if self.fact_column is not None:
             result['FactColumn'] = self.fact_column
+        if self.field_description is not None:
+            result['FieldDescription'] = self.field_description
         if self.granularity is not None:
             result['Granularity'] = self.granularity
         if self.ref_uid is not None:
@@ -11376,6 +11380,8 @@ class QueryDatasetInfoResponseBodyResultDimensionList(TeaModel):
             self.expression = m.get('Expression')
         if m.get('FactColumn') is not None:
             self.fact_column = m.get('FactColumn')
+        if m.get('FieldDescription') is not None:
+            self.field_description = m.get('FieldDescription')
         if m.get('Granularity') is not None:
             self.granularity = m.get('Granularity')
         if m.get('RefUid') is not None:
@@ -11443,6 +11449,7 @@ class QueryDatasetInfoResponseBodyResultMeasureList(TeaModel):
         data_type: str = None,
         expression: str = None,
         fact_column: str = None,
+        field_description: str = None,
         measure_type: str = None,
         table_unique_id: str = None,
         uid: str = None,
@@ -11462,6 +11469,7 @@ class QueryDatasetInfoResponseBodyResultMeasureList(TeaModel):
         # *   standard_measure: General Metrics
         # *   calculate_measure: Calculating Measures
         self.fact_column = fact_column
+        self.field_description = field_description
         # An expression that calculates a measure; valid only for calculated measures.
         self.measure_type = measure_type
         # The display name of the metric.
@@ -11486,6 +11494,8 @@ class QueryDatasetInfoResponseBodyResultMeasureList(TeaModel):
             result['Expression'] = self.expression
         if self.fact_column is not None:
             result['FactColumn'] = self.fact_column
+        if self.field_description is not None:
+            result['FieldDescription'] = self.field_description
         if self.measure_type is not None:
             result['MeasureType'] = self.measure_type
         if self.table_unique_id is not None:
@@ -11504,6 +11514,8 @@ class QueryDatasetInfoResponseBodyResultMeasureList(TeaModel):
             self.expression = m.get('Expression')
         if m.get('FactColumn') is not None:
             self.fact_column = m.get('FactColumn')
+        if m.get('FieldDescription') is not None:
+            self.field_description = m.get('FieldDescription')
         if m.get('MeasureType') is not None:
             self.measure_type = m.get('MeasureType')
         if m.get('TableUniqueId') is not None:
