@@ -1,3 +1,8 @@
+2024-09-18 Version: 2.30.0
+- Support API GetChatRoutingProfile.
+- Support API UpdateChatRoutingProfile.
+
+
 2024-09-07 Version: 2.29.2
 - Update API ListCallDetailRecordsV2: add param ReleaseInitiatorList.
 - Update API ListCallDetailRecordsV2: add param ReleaseReasonList.

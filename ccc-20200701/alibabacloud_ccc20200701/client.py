@@ -6657,6 +6657,94 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_chat_media_url_with_options_async(request, runtime)
 
+    def get_chat_routing_profile_with_options(
+        self,
+        request: ccc20200701_models.GetChatRoutingProfileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetChatRoutingProfileResponse:
+        """
+        @param request: GetChatRoutingProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatRoutingProfileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetChatRoutingProfile',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetChatRoutingProfileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_chat_routing_profile_with_options_async(
+        self,
+        request: ccc20200701_models.GetChatRoutingProfileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetChatRoutingProfileResponse:
+        """
+        @param request: GetChatRoutingProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetChatRoutingProfileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetChatRoutingProfile',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetChatRoutingProfileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_chat_routing_profile(
+        self,
+        request: ccc20200701_models.GetChatRoutingProfileRequest,
+    ) -> ccc20200701_models.GetChatRoutingProfileResponse:
+        """
+        @param request: GetChatRoutingProfileRequest
+        @return: GetChatRoutingProfileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_chat_routing_profile_with_options(request, runtime)
+
+    async def get_chat_routing_profile_async(
+        self,
+        request: ccc20200701_models.GetChatRoutingProfileRequest,
+    ) -> ccc20200701_models.GetChatRoutingProfileResponse:
+        """
+        @param request: GetChatRoutingProfileRequest
+        @return: GetChatRoutingProfileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_chat_routing_profile_with_options_async(request, runtime)
+
     def get_contact_flow_with_options(
         self,
         request: ccc20200701_models.GetContactFlowRequest,
@@ -23696,6 +23784,98 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_campaign_with_options_async(request, runtime)
+
+    def update_chat_routing_profile_with_options(
+        self,
+        request: ccc20200701_models.UpdateChatRoutingProfileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.UpdateChatRoutingProfileResponse:
+        """
+        @param request: UpdateChatRoutingProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateChatRoutingProfileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.routing_profiles):
+            query['RoutingProfiles'] = request.routing_profiles
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateChatRoutingProfile',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.UpdateChatRoutingProfileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_chat_routing_profile_with_options_async(
+        self,
+        request: ccc20200701_models.UpdateChatRoutingProfileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.UpdateChatRoutingProfileResponse:
+        """
+        @param request: UpdateChatRoutingProfileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateChatRoutingProfileResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.routing_profiles):
+            query['RoutingProfiles'] = request.routing_profiles
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateChatRoutingProfile',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.UpdateChatRoutingProfileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_chat_routing_profile(
+        self,
+        request: ccc20200701_models.UpdateChatRoutingProfileRequest,
+    ) -> ccc20200701_models.UpdateChatRoutingProfileResponse:
+        """
+        @param request: UpdateChatRoutingProfileRequest
+        @return: UpdateChatRoutingProfileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_chat_routing_profile_with_options(request, runtime)
+
+    async def update_chat_routing_profile_async(
+        self,
+        request: ccc20200701_models.UpdateChatRoutingProfileRequest,
+    ) -> ccc20200701_models.UpdateChatRoutingProfileResponse:
+        """
+        @param request: UpdateChatRoutingProfileRequest
+        @return: UpdateChatRoutingProfileResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_chat_routing_profile_with_options_async(request, runtime)
 
     def update_config_items_with_options(
         self,
