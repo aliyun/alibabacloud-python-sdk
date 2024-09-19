@@ -274,9 +274,6 @@ class Client(OpenApiClient):
         @return: AssociateWebCertResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         body = {}
         if not UtilClient.is_unset(request.cert):
             body['Cert'] = request.cert
@@ -293,7 +290,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.key):
             body['Key'] = request.key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -325,9 +321,6 @@ class Client(OpenApiClient):
         @return: AssociateWebCertResponse
         """
         UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.resource_group_id):
-            query['ResourceGroupId'] = request.resource_group_id
         body = {}
         if not UtilClient.is_unset(request.cert):
             body['Cert'] = request.cert
@@ -344,7 +337,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.key):
             body['Key'] = request.key
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -14511,9 +14503,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeWebRulesResponse:
         """
-        @summary Indicates whether Allow Access Only from SM Certificates-based Clients is turned on.
-        0: no
-        1: yes
+        @summary Query Configuration of Website Business Forwarding Rules.
+        
+        @description This interface is used for paginated querying of the configurations of website business forwarding rules you have created, such as forwarding protocol types, source server addresses, HTTPS configurations, IP blacklist configurations, and more.
+        Before calling this interface, you must have already called [CreateWebRule](~~CreateWebRule~~) to create website business forwarding rules.
+        ### QPS Limit
+        The per-user QPS limit for this interface is 50 times/second. Exceeding this limit will result in API calls being throttled, which may impact your business; please use it reasonably.
         
         @param request: DescribeWebRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14560,9 +14555,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.DescribeWebRulesResponse:
         """
-        @summary Indicates whether Allow Access Only from SM Certificates-based Clients is turned on.
-        0: no
-        1: yes
+        @summary Query Configuration of Website Business Forwarding Rules.
+        
+        @description This interface is used for paginated querying of the configurations of website business forwarding rules you have created, such as forwarding protocol types, source server addresses, HTTPS configurations, IP blacklist configurations, and more.
+        Before calling this interface, you must have already called [CreateWebRule](~~CreateWebRule~~) to create website business forwarding rules.
+        ### QPS Limit
+        The per-user QPS limit for this interface is 50 times/second. Exceeding this limit will result in API calls being throttled, which may impact your business; please use it reasonably.
         
         @param request: DescribeWebRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14608,9 +14606,12 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeWebRulesRequest,
     ) -> ddoscoo_20200101_models.DescribeWebRulesResponse:
         """
-        @summary Indicates whether Allow Access Only from SM Certificates-based Clients is turned on.
-        0: no
-        1: yes
+        @summary Query Configuration of Website Business Forwarding Rules.
+        
+        @description This interface is used for paginated querying of the configurations of website business forwarding rules you have created, such as forwarding protocol types, source server addresses, HTTPS configurations, IP blacklist configurations, and more.
+        Before calling this interface, you must have already called [CreateWebRule](~~CreateWebRule~~) to create website business forwarding rules.
+        ### QPS Limit
+        The per-user QPS limit for this interface is 50 times/second. Exceeding this limit will result in API calls being throttled, which may impact your business; please use it reasonably.
         
         @param request: DescribeWebRulesRequest
         @return: DescribeWebRulesResponse
@@ -14623,9 +14624,12 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.DescribeWebRulesRequest,
     ) -> ddoscoo_20200101_models.DescribeWebRulesResponse:
         """
-        @summary Indicates whether Allow Access Only from SM Certificates-based Clients is turned on.
-        0: no
-        1: yes
+        @summary Query Configuration of Website Business Forwarding Rules.
+        
+        @description This interface is used for paginated querying of the configurations of website business forwarding rules you have created, such as forwarding protocol types, source server addresses, HTTPS configurations, IP blacklist configurations, and more.
+        Before calling this interface, you must have already called [CreateWebRule](~~CreateWebRule~~) to create website business forwarding rules.
+        ### QPS Limit
+        The per-user QPS limit for this interface is 50 times/second. Exceeding this limit will result in API calls being throttled, which may impact your business; please use it reasonably.
         
         @param request: DescribeWebRulesRequest
         @return: DescribeWebRulesResponse
@@ -17235,7 +17239,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.ModifyNetworkRuleAttributeResponse:
         """
-        @summary Modifies the session persistence settings of a port forwarding rule.
+        @summary Modifies the session persistence and DDoS mitigation policy settings of a port forwarding rule.
         
         @param request: ModifyNetworkRuleAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17276,7 +17280,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.ModifyNetworkRuleAttributeResponse:
         """
-        @summary Modifies the session persistence settings of a port forwarding rule.
+        @summary Modifies the session persistence and DDoS mitigation policy settings of a port forwarding rule.
         
         @param request: ModifyNetworkRuleAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17316,7 +17320,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.ModifyNetworkRuleAttributeRequest,
     ) -> ddoscoo_20200101_models.ModifyNetworkRuleAttributeResponse:
         """
-        @summary Modifies the session persistence settings of a port forwarding rule.
+        @summary Modifies the session persistence and DDoS mitigation policy settings of a port forwarding rule.
         
         @param request: ModifyNetworkRuleAttributeRequest
         @return: ModifyNetworkRuleAttributeResponse
@@ -17329,7 +17333,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.ModifyNetworkRuleAttributeRequest,
     ) -> ddoscoo_20200101_models.ModifyNetworkRuleAttributeResponse:
         """
-        @summary Modifies the session persistence settings of a port forwarding rule.
+        @summary Modifies the session persistence and DDoS mitigation policy settings of a port forwarding rule.
         
         @param request: ModifyNetworkRuleAttributeRequest
         @return: ModifyNetworkRuleAttributeResponse
@@ -19311,7 +19315,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.ModifyWebPreciseAccessRuleResponse:
         """
-        @summary Modifies the accurate access control rule of a website.
+        @summary Creates or modifies an accurate access control rule of a website.
         
         @param request: ModifyWebPreciseAccessRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19352,7 +19356,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ddoscoo_20200101_models.ModifyWebPreciseAccessRuleResponse:
         """
-        @summary Modifies the accurate access control rule of a website.
+        @summary Creates or modifies an accurate access control rule of a website.
         
         @param request: ModifyWebPreciseAccessRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19392,7 +19396,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.ModifyWebPreciseAccessRuleRequest,
     ) -> ddoscoo_20200101_models.ModifyWebPreciseAccessRuleResponse:
         """
-        @summary Modifies the accurate access control rule of a website.
+        @summary Creates or modifies an accurate access control rule of a website.
         
         @param request: ModifyWebPreciseAccessRuleRequest
         @return: ModifyWebPreciseAccessRuleResponse
@@ -19405,7 +19409,7 @@ class Client(OpenApiClient):
         request: ddoscoo_20200101_models.ModifyWebPreciseAccessRuleRequest,
     ) -> ddoscoo_20200101_models.ModifyWebPreciseAccessRuleResponse:
         """
-        @summary Modifies the accurate access control rule of a website.
+        @summary Creates or modifies an accurate access control rule of a website.
         
         @param request: ModifyWebPreciseAccessRuleRequest
         @return: ModifyWebPreciseAccessRuleResponse

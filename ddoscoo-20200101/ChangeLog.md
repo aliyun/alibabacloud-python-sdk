@@ -1,3 +1,13 @@
+2024-09-19 Version: 2.4.4
+- Update API AssociateWebCert: delete param ResourceGroupId.
+- Update API DescribeDomainResource: update param PageSize.
+- Update API DescribeL7RsPolicy: update response param.
+- Update API DescribePort: update param PageNumber.
+- Update API DescribePort: update param PageSize.
+- Update API DescribeWebRules: update param PageSize.
+- Update API DescribeWebRules: update response param.
+
+
 2024-08-29 Version: 2.4.3
 - Update API CreatePort: add param ProxyEnable.
 - Update API DescribeNetworkRules: update response param.

@@ -245,7 +245,6 @@ class AssociateWebCertRequest(TeaModel):
         cert_region: str = None,
         domain: str = None,
         key: str = None,
-        resource_group_id: str = None,
     ):
         self.cert = cert
         self.cert_id = cert_id
@@ -259,8 +258,6 @@ class AssociateWebCertRequest(TeaModel):
         # This parameter is required.
         self.domain = domain
         self.key = key
-        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
-        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -285,8 +282,6 @@ class AssociateWebCertRequest(TeaModel):
             result['Domain'] = self.domain
         if self.key is not None:
             result['Key'] = self.key
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -305,8 +300,6 @@ class AssociateWebCertRequest(TeaModel):
             self.domain = m.get('Domain')
         if m.get('Key') is not None:
             self.key = m.get('Key')
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -2369,11 +2362,11 @@ class CreateDomainResourceRequest(TeaModel):
         self.real_servers = real_servers
         # The address type of the origin server. Valid values:
         # 
-        # *   **0**: IP address
+        # *   **0**: IP address.
         # 
-        # *   **1**: domain name
+        # *   **1**: domain name.
         # 
-        #     This parameter is suitable for scenarios where another proxy service, such as Web Application Firewall (WAF), is deployed between the origin server and Anti-DDoS Pro or Anti-DDoS Premium. The address is the jump address of the proxy service, such as the CNAME address of WAF.
+        #     This parameter is suitable for scenarios in which another proxy service, such as Web Application Firewall (WAF), is deployed between the origin server and Anti-DDoS Proxy. The address is the redirection address of the proxy service, such as the CNAME of WAF.
         # 
         # This parameter is required.
         self.rs_type = rs_type
@@ -2616,7 +2609,7 @@ class CreatePortRequest(TeaModel):
         # 
         # This parameter is required.
         self.frontend_port = frontend_port
-        # The type of the protocol. Valid values:
+        # The type of the forwarding protocol. Valid values:
         # 
         # *   **tcp**\
         # *   **udp**\
@@ -4302,12 +4295,12 @@ class DeleteSceneDefensePolicyResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -9592,11 +9585,9 @@ class DescribeDomainResourceRequest(TeaModel):
         self.domain = domain
         # An array that consists of the IDs of instances to query.
         self.instance_ids = instance_ids
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.
-        # 
-        # This parameter is required.
+        # The number of entries per page.
         self.page_size = page_size
         # The match mode. Valid values:
         # 
@@ -12482,7 +12473,7 @@ class DescribeHealthCheckListResponseBodyHealthCheckListHealthCheck(TeaModel):
     ):
         # The domain name.
         # 
-        # > This parameter is returned only when the Layer 7 health check configuration is queried.
+        # >  This parameter is returned only when the Layer 7 health check configuration is queried.
         self.domain = domain
         # The number of consecutive failed health checks that must occur before a port is declared unhealthy. Valid values: **1** to **10**.
         self.down = down
@@ -12501,7 +12492,7 @@ class DescribeHealthCheckListResponseBodyHealthCheckListHealthCheck(TeaModel):
         self.up = up
         # The check path.
         # 
-        # > This parameter is returned only when the Layer 7 health check configuration is queried.
+        # >  This parameter is returned only when the Layer 7 health check configuration is queried.
         self.uri = uri
 
     def validate(self):
@@ -12614,7 +12605,7 @@ class DescribeHealthCheckListResponseBody(TeaModel):
     ):
         # An array that consists of information about the health check configuration.
         self.health_check_list = health_check_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14715,6 +14706,7 @@ class DescribeL7RsPolicyResponseBody(TeaModel):
         attributes: List[DescribeL7RsPolicyResponseBodyAttributes] = None,
         proxy_mode: str = None,
         request_id: str = None,
+        rs_attr_rw_timeout_max: int = None,
         upstream_retry: int = None,
     ):
         # The details about the parameters for back-to-origin processing.
@@ -14727,6 +14719,7 @@ class DescribeL7RsPolicyResponseBody(TeaModel):
         self.proxy_mode = proxy_mode
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        self.rs_attr_rw_timeout_max = rs_attr_rw_timeout_max
         # The back-to-origin retry switch. Valid values:
         # 
         # *   **1**: on
@@ -14753,6 +14746,8 @@ class DescribeL7RsPolicyResponseBody(TeaModel):
             result['ProxyMode'] = self.proxy_mode
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.rs_attr_rw_timeout_max is not None:
+            result['RsAttrRwTimeoutMax'] = self.rs_attr_rw_timeout_max
         if self.upstream_retry is not None:
             result['UpstreamRetry'] = self.upstream_retry
         return result
@@ -14768,6 +14763,8 @@ class DescribeL7RsPolicyResponseBody(TeaModel):
             self.proxy_mode = m.get('ProxyMode')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('RsAttrRwTimeoutMax') is not None:
+            self.rs_attr_rw_timeout_max = m.get('RsAttrRwTimeoutMax')
         if m.get('UpstreamRetry') is not None:
             self.upstream_retry = m.get('UpstreamRetry')
         return self
@@ -16235,7 +16232,7 @@ class DescribeNetworkRulesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of a port forwarding rule.
+        # The details of the port forwarding rule.
         self.network_rules = network_rules
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
@@ -16651,13 +16648,9 @@ class DescribePortRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return. For example, if you want to obtain results on the first page, set the value to **1**.
-        # 
-        # This parameter is required.
+        # The page number. For example, if you want to obtain results on the first page, set the value to **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.
-        # 
-        # This parameter is required.
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):
@@ -22604,6 +22597,7 @@ class DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition(TeaModel):
     ):
         # The match content.
         self.content = content
+        # The match content when the match method is Equals to One of Multiple Values.
         self.content_list = content_list
         # The match field.
         self.field = field
@@ -24487,13 +24481,25 @@ class DescribeWebRulesRequest(TeaModel):
         query_domain_pattern: str = None,
         resource_group_id: str = None,
     ):
+        # The CNAME address to query.
         self.cname = cname
+        # The domain name of the website to query.
+        # 
+        # > The domain must have been configured with website business forwarding rules. You can call [DescribeDomains](~~DescribeDomains~~) to query all domains that have been configured with website business forwarding rules.
         self.domain = domain
+        # The list of DDoS protection instance IDs to query.
         self.instance_ids = instance_ids
+        # When paginating, set the page number of the current page. The default value is 1.
         self.page_number = page_number
-        # This parameter is required.
+        # When paginating, set the number of forwarding rules per page. The range of values is: 1~10.
         self.page_size = page_size
+        # The query matching pattern. Values:
+        # - **fuzzy** (default): Indicates fuzzy query.
+        # - **exact**: Indicates exact query.
         self.query_domain_pattern = query_domain_pattern
+        # The resource group ID of the DDoS protection instance in the resource management service.
+        # 
+        # Not setting this parameter indicates the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -24547,8 +24553,17 @@ class DescribeWebRulesResponseBodyWebRulesGmCert(TeaModel):
         gm_enable: int = None,
         gm_only: int = None,
     ):
+        # The ID of the SM certificate.
         self.cert_id = cert_id
+        # Indicates whether Enable SM Certificate-based Verification is turned on.
+        # 
+        # *   0: no
+        # *   1: yes
         self.gm_enable = gm_enable
+        # Indicates whether Allow Access Only from SM Certificates-based Clients is turned on.
+        # 
+        # *   0: no
+        # *   1: yes
         self.gm_only = gm_only
 
     def validate(self):
@@ -24585,7 +24600,14 @@ class DescribeWebRulesResponseBodyWebRulesProxyTypes(TeaModel):
         proxy_ports: List[str] = None,
         proxy_type: str = None,
     ):
+        # The ports.
         self.proxy_ports = proxy_ports
+        # The type of the protocol. Valid values:
+        # 
+        # *   **http**\
+        # *   **https**\
+        # *   **websocket**\
+        # *   **websockets**\
         self.proxy_type = proxy_type
 
     def validate(self):
@@ -24618,7 +24640,12 @@ class DescribeWebRulesResponseBodyWebRulesRealServers(TeaModel):
         real_server: str = None,
         rs_type: int = None,
     ):
+        # The address of the origin server.
         self.real_server = real_server
+        # The type of the origin server address. Valid values:
+        # 
+        # *   **0**: IP address
+        # *   **1**: domain name The domain name of the origin server is returned if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the instance. In this case, the address of the proxy, such as the CNAME provided by WAF, is returned.
         self.rs_type = rs_type
 
     def validate(self):
@@ -24671,31 +24698,110 @@ class DescribeWebRulesResponseBodyWebRules(TeaModel):
         ssl_13enabled: bool = None,
         ssl_ciphers: str = None,
         ssl_protocols: str = None,
+        user_cert_name: str = None,
         white_list: List[str] = None,
     ):
+        # The IP addresses in the blacklist for the domain name.
         self.black_list = black_list
+        # Indicates whether the Frequency Control policy is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.cc_enabled = cc_enabled
+        # Indicates whether the Custom Rule switch of the Frequency Control policy is turned on. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.cc_rule_enabled = cc_rule_enabled
+        # The mode of the Frequency Control policy. Valid values:
+        # 
+        # *   **default**: the Normal mode
+        # *   **gf_under_attack**: the Emergency mode
+        # *   **gf_sos_verify**: the Strict mode
+        # *   **gf_sos_verify**: the Super Strict mode
         self.cc_template = cc_template
+        # The name of the SSL certificate.
         self.cert_name = cert_name
+        # The region where the certificate is used. Valid values:
+        # 
+        # *   cn-hangzhou (default): the Chinese mainland
+        # *   ap-southeast-1: outside the Chinese mainland
         self.cert_region = cert_region
+        # The CNAME provided by the Anti-DDoS Pro or Anti-DDoS Premium instance to which the domain name is added.
         self.cname = cname
+        # The custom cipher suites.
         self.custom_ciphers = custom_ciphers
+        # The domain name of the website.
         self.domain = domain
+        # The SM certificate settings.
         self.gm_cert = gm_cert
+        # Indicates whether Enable HTTP/2 is turned on. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.http_2enable = http_2enable
+        # Indicates whether Enable HTTPS Redirection was turned on. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.http_2https_enable = http_2https_enable
+        # Indicates whether Enable HTTP Redirection of Back-to-origin Requests is turned on. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.https_2http_enable = https_2http_enable
+        # Indicates whether the Online Certificate Status Protocol (OCSP) feature is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.ocsp_enabled = ocsp_enabled
+        # The load balancing algorithm for back-to-origin traffic. Valid values:
+        # 
+        # *   **ip_hash**: the IP hash algorithm. This algorithm is used to redirect the requests from the same IP address to the same origin server.
+        # *   **rr**: the round-robin algorithm. This algorithm is used to redirect requests to origin servers in turn.
+        # *   **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from Anti-DDoS Pro or Anti-DDoS Premium instances to origin servers based on the intelligent DNS resolution feature.
         self.policy_mode = policy_mode
+        # Indicates whether the forwarding rule is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.proxy_enabled = proxy_enabled
+        # The details of the protocol type and port number.
         self.proxy_types = proxy_types
+        # The reason why the domain name is invalid. Valid values:
+        # 
+        # *   **1**: No Content Provider (ICP) filing is completed for the domain name.
+        # *   **2**: The business for which you registered the domain name does not meet regulatory requirements.
+        # 
+        # If the two reasons are both involved, the value **2** is returned.
         self.punish_reason = punish_reason
+        # Indicates whether the domain name is invalid. Valid values:
+        # 
+        # *   **true**: You can view the specific reasons from the **PunishReason** parameter.
+        # *   **false**\
         self.punish_status = punish_status
+        # The details of the origin server address.
         self.real_servers = real_servers
+        # Indicates whether TLS 1.3 is supported. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.ssl_13enabled = ssl_13enabled
+        # The type of the cipher suite. Valid values:
+        # 
+        # *   **default**: custom cipher suites
+        # *   **all**: all cipher suites, which contain strong and weak cipher suites
+        # *   **strong**: strong cipher suites
         self.ssl_ciphers = ssl_ciphers
+        # The version of the Transport Layer Security (TLS) protocol. Valid values:
+        # 
+        # *   **tls1.0**: TLS 1.0 or later
+        # *   **tls1.1**: TLS 1.1 or later
+        # *   **tls1.2**: TLS 1.2 or later
         self.ssl_protocols = ssl_protocols
+        # The name of the certificate uploaded by the user to the certificate center.
+        self.user_cert_name = user_cert_name
+        # The IP addresses in the whitelist for the domain name.
         self.white_list = white_list
 
     def validate(self):
@@ -24766,6 +24872,8 @@ class DescribeWebRulesResponseBodyWebRules(TeaModel):
             result['SslCiphers'] = self.ssl_ciphers
         if self.ssl_protocols is not None:
             result['SslProtocols'] = self.ssl_protocols
+        if self.user_cert_name is not None:
+            result['UserCertName'] = self.user_cert_name
         if self.white_list is not None:
             result['WhiteList'] = self.white_list
         return result
@@ -24825,6 +24933,8 @@ class DescribeWebRulesResponseBodyWebRules(TeaModel):
             self.ssl_ciphers = m.get('SslCiphers')
         if m.get('SslProtocols') is not None:
             self.ssl_protocols = m.get('SslProtocols')
+        if m.get('UserCertName') is not None:
+            self.user_cert_name = m.get('UserCertName')
         if m.get('WhiteList') is not None:
             self.white_list = m.get('WhiteList')
         return self
@@ -24837,8 +24947,11 @@ class DescribeWebRulesResponseBody(TeaModel):
         total_count: int = None,
         web_rules: List[DescribeWebRulesResponseBodyWebRules] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of queried website business forwarding rules.
         self.total_count = total_count
+        # The configurations of the forwarding rule.
         self.web_rules = web_rules
 
     def validate(self):
@@ -27890,9 +28003,34 @@ class ModifyNetworkRuleAttributeRequest(TeaModel):
         frontend_port: int = None,
         instance_id: str = None,
     ):
-        # The session persistence settings of the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
+        # The detailed settings of the port forwarding rule. This parameter is a JSON string and contains the following fields. The detailed settings of a TCP port forwarding rule contain the following fields.
         # 
-        # *   **PersistenceTimeout**: The timeout period of session persistence. This field is required and must be of the integer type. Valid values: **30** to **3600**. Unit: seconds. Default value: **0**. A value of 0 indicates that session persistence is disabled.
+        # *   **PersistenceTimeout**: the timeout period of session persistence. This field is required and of the integer type. Valid values: **30** to **3600**. Unit: seconds. Default value: **0**, which indicates that session persistence is disabled.
+        # *   **Synproxy**: specifies whether to enable the false source feature in the DDoS mitigation policy. This field is required and of the string type. Valid values: off and on.
+        # *   **NodataConn**: specifies whether to enable the empty connection feature in the DDoS mitigation policy. This field is required and of the string type. Valid values: off and on.
+        # *   **Sla**: the settings of the speed limit for destination feature. This field is required and of the struct type. For more information, see the following description about Sla.
+        # *   **Slimit**: the settings of the rate limit for source feature. This field is required and of the struct type. For more information, see the following description about Slimit.
+        # *   **PayloadLen**: the settings of the packet length limit feature. This field is required and of the struct type. For more information, see the following description about PayloadLen.
+        # 
+        # Sla contains the following fields:
+        # 
+        # *   **Cps**: the destination rate limit on new connections in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 100 to 100000.
+        # *   **Maxconn**: the destination rate limit on concurrent connections in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 1000 to 1000000.
+        # *   **CpsEnable**: specifies whether to enable Cps. This field is required and of the integer type. Valid values: 0 and 1. Default value: 1. The value 0 indicates that Cps is disabled, and the value 1 indicates that Cps is enabled.
+        # *   **MaxconnEnable**: specifies whether to enable Maxconn. This field is required and of the integer type. Valid values: 0 and 1. Default value: 1. The value 0 indicates that Maxconn is disabled, and the value 1 indicates that Maxconn is enabled.
+        # 
+        # Slimit contains the following fields:
+        # 
+        # *   **Cps**: the source rate limit on new connections in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 1 to 50000.
+        # *   **Maxconn**: the source rate limit on concurrent connections in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 1 to 50000.
+        # *   **CpsEnable**: specifies whether to enable Cps. This field is required and of the integer type. Valid values: 0 and 1. Default value: 1. The value 0 indicates that Cps is disabled, and the value 1 indicates that Cps is enabled.
+        # *   **MaxconnEnable**: specifies whether to enable Maxconn. This field is required and of the integer type. Valid values: 0 and 1. Default value: 1. The value 0 indicates that Maxconn is disabled, and the value 1 indicates that Maxconn is enabled.
+        # *   **CpsMode**: specifies whether to enable the source rate limit on new connections. This field is required and of the integer type. Valid values: 1 and 2. The value 1 indicates the source rate limit is enabled. The value 2 indicates that the system determines whether to enable the source rate limit.
+        # 
+        # PayloadLen contains the following fields:
+        # 
+        # *   **Min**: the minimum packet length in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 0 to 2000.
+        # *   **Max**: the maximum packet length in the DDoS mitigation policy. This field is required and of the integer type. Valid values: 0 to 6000.
         # 
         # This parameter is required.
         self.config = config
@@ -27951,7 +28089,7 @@ class ModifyNetworkRuleAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -28146,7 +28284,7 @@ class ModifyPortRequest(TeaModel):
         # 
         # This parameter is required.
         self.frontend_port = frontend_port
-        # The type of the protocol. Valid values:
+        # The type of the forwarding protocol. Valid values:
         # 
         # *   **tcp**\
         # *   **udp**\
@@ -28336,7 +28474,7 @@ class ModifyPortAutoCcStatusResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
