@@ -1,3 +1,8 @@
+2024-09-19 Version: 1.8.1
+- Update API GetTopicSelectionPerspectiveAnalysisTask: update response param.
+- Update API ListGeneratedContents: update param ContentDomain.
+
+
 2024-09-11 Version: 1.8.0
 - Support API DeleteCustomTopicByTopic.
 - Support API DeleteCustomTopicViewPointById.

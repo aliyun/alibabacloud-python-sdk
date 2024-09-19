@@ -7288,17 +7288,27 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsRes
 class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesNews(TeaModel):
     def __init__(
         self,
+        content: str = None,
         doc_id: str = None,
         doc_uuid: str = None,
         image_urls: List[str] = None,
+        source: str = None,
+        summary: str = None,
         tags: List[str] = None,
+        title: str = None,
         topic: str = None,
+        url: str = None,
     ):
+        self.content = content
         self.doc_id = doc_id
         self.doc_uuid = doc_uuid
         self.image_urls = image_urls
+        self.source = source
+        self.summary = summary
         self.tags = tags
+        self.title = title
         self.topic = topic
+        self.url = url
 
     def validate(self):
         pass
@@ -7309,30 +7319,50 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResul
             return _map
 
         result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
         if self.doc_uuid is not None:
             result['DocUuid'] = self.doc_uuid
         if self.image_urls is not None:
             result['ImageUrls'] = self.image_urls
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.summary is not None:
+            result['Summary'] = self.summary
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.title is not None:
+            result['Title'] = self.title
         if self.topic is not None:
             result['Topic'] = self.topic
+        if self.url is not None:
+            result['Url'] = self.url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
         if m.get('DocUuid') is not None:
             self.doc_uuid = m.get('DocUuid')
         if m.get('ImageUrls') is not None:
             self.image_urls = m.get('ImageUrls')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
         if m.get('Topic') is not None:
             self.topic = m.get('Topic')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
         return self
 
 
