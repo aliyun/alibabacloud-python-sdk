@@ -1,3 +1,9 @@
+2024-09-19 Version: 1.8.4
+- Update API AddFile: add param Tags.
+- Update API DescribeFile: update response param.
+- Update API ListFile: update response param.
+
+
 2024-09-17 Version: 1.8.3
 - Update API CreateIndex: add param DataSource.
 - Update API Retrieve: add param Images.

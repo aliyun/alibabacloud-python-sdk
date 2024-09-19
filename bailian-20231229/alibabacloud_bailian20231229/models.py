@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List
+from typing import Dict, List, Any
 
 
 class AddCategoryRequest(TeaModel):
@@ -185,6 +185,7 @@ class AddFileRequest(TeaModel):
         category_id: str = None,
         lease_id: str = None,
         parser: str = None,
+        tags: List[str] = None,
     ):
         # This parameter is required.
         self.category_id = category_id
@@ -192,6 +193,7 @@ class AddFileRequest(TeaModel):
         self.lease_id = lease_id
         # This parameter is required.
         self.parser = parser
+        self.tags = tags
 
     def validate(self):
         pass
@@ -208,6 +210,8 @@ class AddFileRequest(TeaModel):
             result['LeaseId'] = self.lease_id
         if self.parser is not None:
             result['Parser'] = self.parser
+        if self.tags is not None:
+            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -218,6 +222,56 @@ class AddFileRequest(TeaModel):
             self.lease_id = m.get('LeaseId')
         if m.get('Parser') is not None:
             self.parser = m.get('Parser')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class AddFileShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        category_id: str = None,
+        lease_id: str = None,
+        parser: str = None,
+        tags_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.category_id = category_id
+        # This parameter is required.
+        self.lease_id = lease_id
+        # This parameter is required.
+        self.parser = parser
+        self.tags_shrink = tags_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+        if self.lease_id is not None:
+            result['LeaseId'] = self.lease_id
+        if self.parser is not None:
+            result['Parser'] = self.parser
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+        if m.get('LeaseId') is not None:
+            self.lease_id = m.get('LeaseId')
+        if m.get('Parser') is not None:
+            self.parser = m.get('Parser')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
         return self
 
 
@@ -2653,6 +2707,7 @@ class DescribeFileResponseBodyData(TeaModel):
         parser: str = None,
         size_in_bytes: int = None,
         status: str = None,
+        tags: List[str] = None,
     ):
         self.category_id = category_id
         self.create_time = create_time
@@ -2662,6 +2717,7 @@ class DescribeFileResponseBodyData(TeaModel):
         self.parser = parser
         self.size_in_bytes = size_in_bytes
         self.status = status
+        self.tags = tags
 
     def validate(self):
         pass
@@ -2688,6 +2744,8 @@ class DescribeFileResponseBodyData(TeaModel):
             result['SizeInBytes'] = self.size_in_bytes
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -2708,6 +2766,8 @@ class DescribeFileResponseBodyData(TeaModel):
             self.size_in_bytes = m.get('SizeInBytes')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
         return self
 
 
@@ -4266,6 +4326,7 @@ class ListFileResponseBodyDataFileList(TeaModel):
         parser: str = None,
         size_in_bytes: int = None,
         status: str = None,
+        tags: List[str] = None,
     ):
         self.category_id = category_id
         self.create_time = create_time
@@ -4275,6 +4336,7 @@ class ListFileResponseBodyDataFileList(TeaModel):
         self.parser = parser
         self.size_in_bytes = size_in_bytes
         self.status = status
+        self.tags = tags
 
     def validate(self):
         pass
@@ -4301,6 +4363,8 @@ class ListFileResponseBodyDataFileList(TeaModel):
             result['SizeInBytes'] = self.size_in_bytes
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags
         return result
 
     def from_map(self, m: dict = None):
@@ -4321,6 +4385,8 @@ class ListFileResponseBodyDataFileList(TeaModel):
             self.size_in_bytes = m.get('SizeInBytes')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
         return self
 
 

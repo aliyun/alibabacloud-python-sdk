@@ -152,19 +152,23 @@ class Client(OpenApiClient):
     def add_file_with_options(
         self,
         workspace_id: str,
-        request: bailian_20231229_models.AddFileRequest,
+        tmp_req: bailian_20231229_models.AddFileRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.AddFileResponse:
         """
         @summary 将临时上传的文档导入百炼数据中心，导入成功之后会自动触发文档解析。
         
-        @param request: AddFileRequest
+        @param tmp_req: AddFileRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddFileResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.AddFileShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         body = {}
         if not UtilClient.is_unset(request.category_id):
             body['CategoryId'] = request.category_id
@@ -172,6 +176,8 @@ class Client(OpenApiClient):
             body['LeaseId'] = request.lease_id
         if not UtilClient.is_unset(request.parser):
             body['Parser'] = request.parser
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -195,19 +201,23 @@ class Client(OpenApiClient):
     async def add_file_with_options_async(
         self,
         workspace_id: str,
-        request: bailian_20231229_models.AddFileRequest,
+        tmp_req: bailian_20231229_models.AddFileRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> bailian_20231229_models.AddFileResponse:
         """
         @summary 将临时上传的文档导入百炼数据中心，导入成功之后会自动触发文档解析。
         
-        @param request: AddFileRequest
+        @param tmp_req: AddFileRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddFileResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.AddFileShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         body = {}
         if not UtilClient.is_unset(request.category_id):
             body['CategoryId'] = request.category_id
@@ -215,6 +225,8 @@ class Client(OpenApiClient):
             body['LeaseId'] = request.lease_id
         if not UtilClient.is_unset(request.parser):
             body['Parser'] = request.parser
+        if not UtilClient.is_unset(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
