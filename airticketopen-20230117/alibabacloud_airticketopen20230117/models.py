@@ -1216,6 +1216,8 @@ class AccountFlowListHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -1255,9 +1257,11 @@ class AccountFlowListRequest(TeaModel):
         page_size: int = None,
         utc_begin_time: int = None,
     ):
+        # This parameter is required.
         self.day_num = day_num
         self.page_index = page_index
         self.page_size = page_size
+        # This parameter is required.
         self.utc_begin_time = utc_begin_time
 
     def validate(self):
@@ -1551,9 +1555,6 @@ class AccountFlowListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1592,6 +1593,8 @@ class AncillarySuggestHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -1628,6 +1631,7 @@ class AncillarySuggestRequest(TeaModel):
         self,
         solution_id: str = None,
     ):
+        # This parameter is required.
         self.solution_id = solution_id
 
     def validate(self):
@@ -1901,9 +1905,6 @@ class AncillarySuggestResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1942,6 +1943,8 @@ class BookHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -2067,6 +2070,7 @@ class BookRequestPassengerAncillaryPurchaseMapListPassengerListCredential(TeaMod
     ):
         self.cert_issue_place = cert_issue_place
         self.credential_num = credential_num
+        # This parameter is required.
         self.credential_type = credential_type
         self.expire_date = expire_date
 
@@ -2117,12 +2121,17 @@ class BookRequestPassengerAncillaryPurchaseMapListPassengerList(TeaModel):
     ):
         self.birthday = birthday
         self.credential = credential
+        # This parameter is required.
         self.first_name = first_name
         self.gender = gender
+        # This parameter is required.
         self.last_name = last_name
+        # This parameter is required.
         self.mobile_country_code = mobile_country_code
+        # This parameter is required.
         self.mobile_phone_number = mobile_phone_number
         self.nationality = nationality
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -2233,6 +2242,7 @@ class BookRequestPassengerListCredential(TeaModel):
     ):
         self.cert_issue_place = cert_issue_place
         self.credential_num = credential_num
+        # This parameter is required.
         self.credential_type = credential_type
         self.expire_date = expire_date
 
@@ -2283,12 +2293,17 @@ class BookRequestPassengerList(TeaModel):
     ):
         self.birthday = birthday
         self.credential = credential
+        # This parameter is required.
         self.first_name = first_name
         self.gender = gender
+        # This parameter is required.
         self.last_name = last_name
+        # This parameter is required.
         self.mobile_country_code = mobile_country_code
+        # This parameter is required.
         self.mobile_phone_number = mobile_phone_number
         self.nationality = nationality
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -2354,11 +2369,16 @@ class BookRequest(TeaModel):
         passenger_list: List[BookRequestPassengerList] = None,
         solution_id: str = None,
     ):
+        # This parameter is required.
         self.contact = contact
+        # This parameter is required.
         self.out_order_num = out_order_num
         self.passenger_ancillary_purchase_map_list = passenger_ancillary_purchase_map_list
+        # This parameter is required.
         self.passenger_list = passenger_list
         # solution_id
+        # 
+        # This parameter is required.
         self.solution_id = solution_id
 
     def validate(self):
@@ -2426,11 +2446,16 @@ class BookShrinkRequest(TeaModel):
         passenger_list_shrink: str = None,
         solution_id: str = None,
     ):
+        # This parameter is required.
         self.contact_shrink = contact_shrink
+        # This parameter is required.
         self.out_order_num = out_order_num
         self.passenger_ancillary_purchase_map_list_shrink = passenger_ancillary_purchase_map_list_shrink
+        # This parameter is required.
         self.passenger_list_shrink = passenger_list_shrink
         # solution_id
+        # 
+        # This parameter is required.
         self.solution_id = solution_id
 
     def validate(self):
@@ -2673,9 +2698,6 @@ class BookResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2714,6 +2736,8 @@ class CancelHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -2750,6 +2774,7 @@ class CancelRequest(TeaModel):
         self,
         order_num: int = None,
     ):
+        # This parameter is required.
         self.order_num = order_num
 
     def validate(self):
@@ -2876,9 +2901,6 @@ class CancelResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2917,6 +2939,8 @@ class ChangeApplyHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -2956,7 +2980,9 @@ class ChangeApplyRequestChangePassengerList(TeaModel):
         last_name: str = None,
     ):
         self.document = document
+        # This parameter is required.
         self.first_name = first_name
+        # This parameter is required.
         self.last_name = last_name
 
     def validate(self):
@@ -3004,15 +3030,19 @@ class ChangeApplyRequestChangedJourneysSegmentList(TeaModel):
         operating_flight_no: str = None,
     ):
         self.arrival_airport = arrival_airport
+        # This parameter is required.
         self.arrival_city = arrival_city
         self.arrive_terminal = arrive_terminal
         self.arrive_time = arrive_time
         self.code_share = code_share
         self.departure_airport = departure_airport
+        # This parameter is required.
         self.departure_city = departure_city
+        # This parameter is required.
         self.departure_date = departure_date
         self.departure_terminal = departure_terminal
         self.departure_time = departure_time
+        # This parameter is required.
         self.marketing_flight_no = marketing_flight_no
         self.operating_flight_no = operating_flight_no
 
@@ -3164,11 +3194,16 @@ class ChangeApplyRequest(TeaModel):
         remark: str = None,
         type: int = None,
     ):
+        # This parameter is required.
         self.change_passenger_list = change_passenger_list
+        # This parameter is required.
         self.changed_journeys = changed_journeys
+        # This parameter is required.
         self.contact = contact
+        # This parameter is required.
         self.order_num = order_num
         self.remark = remark
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -3241,11 +3276,16 @@ class ChangeApplyShrinkRequest(TeaModel):
         remark: str = None,
         type: int = None,
     ):
+        # This parameter is required.
         self.change_passenger_list_shrink = change_passenger_list_shrink
+        # This parameter is required.
         self.changed_journeys_shrink = changed_journeys_shrink
+        # This parameter is required.
         self.contact_shrink = contact_shrink
+        # This parameter is required.
         self.order_num = order_num
         self.remark = remark
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -3498,9 +3538,6 @@ class ChangeApplyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3539,6 +3576,8 @@ class ChangeCancelHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -3575,6 +3614,7 @@ class ChangeCancelRequest(TeaModel):
         self,
         change_order_num: int = None,
     ):
+        # This parameter is required.
         self.change_order_num = change_order_num
 
     def validate(self):
@@ -3672,9 +3712,6 @@ class ChangeCancelResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3713,6 +3750,8 @@ class ChangeConfirmHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -3749,6 +3788,7 @@ class ChangeConfirmRequest(TeaModel):
         self,
         change_order_num: int = None,
     ):
+        # This parameter is required.
         self.change_order_num = change_order_num
 
     def validate(self):
@@ -3881,9 +3921,6 @@ class ChangeConfirmResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3922,6 +3959,8 @@ class ChangeDetailHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -3958,6 +3997,7 @@ class ChangeDetailRequest(TeaModel):
         self,
         change_order_num: int = None,
     ):
+        # This parameter is required.
         self.change_order_num = change_order_num
 
     def validate(self):
@@ -5009,9 +5049,6 @@ class ChangeDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5050,6 +5087,8 @@ class ChangeDetailListOfBuyerHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -5349,9 +5388,6 @@ class ChangeDetailListOfBuyerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5390,6 +5426,8 @@ class ChangeDetailListOfOrderNumHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -5428,6 +5466,7 @@ class ChangeDetailListOfOrderNumRequest(TeaModel):
         page_index: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.order_num = order_num
         self.page_index = page_index
         self.page_size = page_size
@@ -6578,9 +6617,6 @@ class ChangeDetailListOfOrderNumResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6619,6 +6655,8 @@ class EnrichHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -6662,13 +6700,17 @@ class EnrichRequestJourneyParamListSegmentParamList(TeaModel):
         departure_time: str = None,
         marketing_flight_no: str = None,
     ):
+        # This parameter is required.
         self.arrival_airport = arrival_airport
         self.arrival_city = arrival_city
         self.cabin = cabin
         self.child_cabin = child_cabin
+        # This parameter is required.
         self.departure_airport = departure_airport
         self.departure_city = departure_city
+        # This parameter is required.
         self.departure_time = departure_time
+        # This parameter is required.
         self.marketing_flight_no = marketing_flight_no
 
     def validate(self):
@@ -6727,9 +6769,13 @@ class EnrichRequestJourneyParamList(TeaModel):
         departure_date: str = None,
         segment_param_list: List[EnrichRequestJourneyParamListSegmentParamList] = None,
     ):
+        # This parameter is required.
         self.arrival_city = arrival_city
+        # This parameter is required.
         self.departure_city = departure_city
+        # This parameter is required.
         self.departure_date = departure_date
+        # This parameter is required.
         self.segment_param_list = segment_param_list
 
     def validate(self):
@@ -7450,9 +7496,6 @@ class EnrichResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7491,6 +7534,8 @@ class FileUploadHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -7528,7 +7573,9 @@ class FileUploadRequest(TeaModel):
         file_content: str = None,
         order_num: int = None,
     ):
+        # This parameter is required.
         self.file_content = file_content
+        # This parameter is required.
         self.order_num = order_num
 
     def validate(self):
@@ -7659,9 +7706,6 @@ class FileUploadResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7700,6 +7744,8 @@ class FlightChangeOfOrderHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -7736,6 +7782,7 @@ class FlightChangeOfOrderRequest(TeaModel):
         self,
         order_num: int = None,
     ):
+        # This parameter is required.
         self.order_num = order_num
 
     def validate(self):
@@ -7975,9 +8022,6 @@ class FlightChangeOfOrderResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8014,8 +8058,12 @@ class GetTokenRequest(TeaModel):
         app_secret: str = None,
     ):
         # appKey
+        # 
+        # This parameter is required.
         self.app_key = app_key
         # appSecret
+        # 
+        # This parameter is required.
         self.app_secret = app_secret
 
     def validate(self):
@@ -8159,9 +8207,6 @@ class GetTokenResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8200,6 +8245,8 @@ class LuggageDirectHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -8247,14 +8294,21 @@ class LuggageDirectRequestFlightSegmentParamList(TeaModel):
         stop_city_list: str = None,
         ticketing_airline: str = None,
     ):
+        # This parameter is required.
         self.arrival_airport = arrival_airport
         self.arrival_terminal = arrival_terminal
+        # This parameter is required.
         self.arrival_time = arrival_time
+        # This parameter is required.
         self.code_share = code_share
+        # This parameter is required.
         self.departure_airport = departure_airport
         self.departure_terminal = departure_terminal
+        # This parameter is required.
         self.departure_time = departure_time
+        # This parameter is required.
         self.marketing_airline = marketing_airline
+        # This parameter is required.
         self.marketing_flight_no = marketing_flight_no
         self.operating_airline = operating_airline
         self.stop_city_list = stop_city_list
@@ -8502,9 +8556,6 @@ class LuggageDirectResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8543,6 +8594,8 @@ class OrderDetailHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -9967,9 +10020,6 @@ class OrderDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10008,6 +10058,8 @@ class OrderListHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -10048,7 +10100,9 @@ class OrderListRequest(TeaModel):
         page_size: int = None,
         status: int = None,
     ):
+        # This parameter is required.
         self.book_time_end = book_time_end
+        # This parameter is required.
         self.book_time_start = book_time_start
         self.page_index = page_index
         self.page_size = page_size
@@ -10485,9 +10539,6 @@ class OrderListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10526,6 +10577,8 @@ class PricingHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -10563,6 +10616,8 @@ class PricingRequest(TeaModel):
         solution_id: str = None,
     ):
         # solution_id
+        # 
+        # This parameter is required.
         self.solution_id = solution_id
 
     def validate(self):
@@ -11287,9 +11342,6 @@ class PricingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11328,6 +11380,8 @@ class RefundApplyHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -11367,9 +11421,13 @@ class RefundApplyRequestRefundJourneysSegmentList(TeaModel):
         departure_airport: str = None,
         departure_city: str = None,
     ):
+        # This parameter is required.
         self.arrival_airport = arrival_airport
+        # This parameter is required.
         self.arrival_city = arrival_city
+        # This parameter is required.
         self.departure_airport = departure_airport
+        # This parameter is required.
         self.departure_city = departure_city
 
     def validate(self):
@@ -11409,6 +11467,7 @@ class RefundApplyRequestRefundJourneys(TeaModel):
         self,
         segment_list: List[RefundApplyRequestRefundJourneysSegmentList] = None,
     ):
+        # This parameter is required.
         self.segment_list = segment_list
 
     def validate(self):
@@ -11447,7 +11506,9 @@ class RefundApplyRequestRefundPassengerList(TeaModel):
         last_name: str = None,
     ):
         self.document = document
+        # This parameter is required.
         self.first_name = first_name
+        # This parameter is required.
         self.last_name = last_name
 
     def validate(self):
@@ -11486,6 +11547,7 @@ class RefundApplyRequestRefundType(TeaModel):
         remark: str = None,
     ):
         self.file = file
+        # This parameter is required.
         self.refund_type_id = refund_type_id
         self.remark = remark
 
@@ -11525,9 +11587,13 @@ class RefundApplyRequest(TeaModel):
         refund_passenger_list: List[RefundApplyRequestRefundPassengerList] = None,
         refund_type: RefundApplyRequestRefundType = None,
     ):
+        # This parameter is required.
         self.order_num = order_num
+        # This parameter is required.
         self.refund_journeys = refund_journeys
+        # This parameter is required.
         self.refund_passenger_list = refund_passenger_list
+        # This parameter is required.
         self.refund_type = refund_type
 
     def validate(self):
@@ -11590,9 +11656,13 @@ class RefundApplyShrinkRequest(TeaModel):
         refund_passenger_list_shrink: str = None,
         refund_type_shrink: str = None,
     ):
+        # This parameter is required.
         self.order_num = order_num
+        # This parameter is required.
         self.refund_journeys_shrink = refund_journeys_shrink
+        # This parameter is required.
         self.refund_passenger_list_shrink = refund_passenger_list_shrink
+        # This parameter is required.
         self.refund_type_shrink = refund_type_shrink
 
     def validate(self):
@@ -11838,9 +11908,6 @@ class RefundApplyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -11879,6 +11946,8 @@ class RefundDetailHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -11915,6 +11984,7 @@ class RefundDetailRequest(TeaModel):
         self,
         refund_order_num: int = None,
     ):
+        # This parameter is required.
         self.refund_order_num = refund_order_num
 
     def validate(self):
@@ -12606,9 +12676,6 @@ class RefundDetailResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12647,6 +12714,8 @@ class RefundDetailListHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -12690,7 +12759,9 @@ class RefundDetailListRequest(TeaModel):
         self.order_num = order_num
         self.page_index = page_index
         self.page_size = page_size
+        # This parameter is required.
         self.refund_create_begin_time = refund_create_begin_time
+        # This parameter is required.
         self.refund_create_end_time = refund_create_end_time
 
     def validate(self):
@@ -12958,9 +13029,6 @@ class RefundDetailListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12999,6 +13067,8 @@ class SearchHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -13040,9 +13110,12 @@ class SearchRequestAirLegs(TeaModel):
         departure_date: str = None,
     ):
         self.arrival_airport_list = arrival_airport_list
+        # This parameter is required.
         self.arrival_city = arrival_city
         self.departure_airport_list = departure_airport_list
+        # This parameter is required.
         self.departure_city = departure_city
+        # This parameter is required.
         self.departure_date = departure_date
 
     def validate(self):
@@ -13081,6 +13154,39 @@ class SearchRequestAirLegs(TeaModel):
         return self
 
 
+class SearchRequestSearchControlOptions(TeaModel):
+    def __init__(
+        self,
+        airline_excluded_list: List[str] = None,
+        airline_prefer_list: List[str] = None,
+    ):
+        self.airline_excluded_list = airline_excluded_list
+        self.airline_prefer_list = airline_prefer_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.airline_excluded_list is not None:
+            result['airline_excluded_list'] = self.airline_excluded_list
+        if self.airline_prefer_list is not None:
+            result['airline_prefer_list'] = self.airline_prefer_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('airline_excluded_list') is not None:
+            self.airline_excluded_list = m.get('airline_excluded_list')
+        if m.get('airline_prefer_list') is not None:
+            self.airline_prefer_list = m.get('airline_prefer_list')
+        return self
+
+
 class SearchRequest(TeaModel):
     def __init__(
         self,
@@ -13089,18 +13195,23 @@ class SearchRequest(TeaModel):
         cabin_class: str = None,
         children: int = None,
         infants: int = None,
+        search_control_options: SearchRequestSearchControlOptions = None,
     ):
         self.adults = adults
+        # This parameter is required.
         self.air_legs = air_legs
         self.cabin_class = cabin_class
         self.children = children
         self.infants = infants
+        self.search_control_options = search_control_options
 
     def validate(self):
         if self.air_legs:
             for k in self.air_legs:
                 if k:
                     k.validate()
+        if self.search_control_options:
+            self.search_control_options.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -13120,6 +13231,8 @@ class SearchRequest(TeaModel):
             result['children'] = self.children
         if self.infants is not None:
             result['infants'] = self.infants
+        if self.search_control_options is not None:
+            result['search_control_options'] = self.search_control_options.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -13137,6 +13250,9 @@ class SearchRequest(TeaModel):
             self.children = m.get('children')
         if m.get('infants') is not None:
             self.infants = m.get('infants')
+        if m.get('search_control_options') is not None:
+            temp_model = SearchRequestSearchControlOptions()
+            self.search_control_options = temp_model.from_map(m['search_control_options'])
         return self
 
 
@@ -13148,12 +13264,15 @@ class SearchShrinkRequest(TeaModel):
         cabin_class: str = None,
         children: int = None,
         infants: int = None,
+        search_control_options_shrink: str = None,
     ):
         self.adults = adults
+        # This parameter is required.
         self.air_legs_shrink = air_legs_shrink
         self.cabin_class = cabin_class
         self.children = children
         self.infants = infants
+        self.search_control_options_shrink = search_control_options_shrink
 
     def validate(self):
         pass
@@ -13174,6 +13293,8 @@ class SearchShrinkRequest(TeaModel):
             result['children'] = self.children
         if self.infants is not None:
             result['infants'] = self.infants
+        if self.search_control_options_shrink is not None:
+            result['search_control_options'] = self.search_control_options_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -13188,6 +13309,8 @@ class SearchShrinkRequest(TeaModel):
             self.children = m.get('children')
         if m.get('infants') is not None:
             self.infants = m.get('infants')
+        if m.get('search_control_options') is not None:
+            self.search_control_options_shrink = m.get('search_control_options')
         return self
 
 
@@ -13747,9 +13870,6 @@ class SearchResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13788,6 +13908,8 @@ class TicketingHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -13824,6 +13946,7 @@ class TicketingRequest(TeaModel):
         self,
         order_num: int = None,
     ):
+        # This parameter is required.
         self.order_num = order_num
 
     def validate(self):
@@ -13956,9 +14079,6 @@ class TicketingResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13997,6 +14117,8 @@ class TicketingCheckHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -14033,6 +14155,7 @@ class TicketingCheckRequest(TeaModel):
         self,
         order_num: int = None,
     ):
+        # This parameter is required.
         self.order_num = order_num
 
     def validate(self):
@@ -14159,9 +14282,6 @@ class TicketingCheckResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14200,6 +14320,8 @@ class TransitVisaHeaders(TeaModel):
     ):
         self.common_headers = common_headers
         # access_token
+        # 
+        # This parameter is required.
         self.x_acs_airticket_access_token = x_acs_airticket_access_token
         self.x_acs_airticket_language = x_acs_airticket_language
 
@@ -14247,14 +14369,21 @@ class TransitVisaRequestFlightSegmentParamList(TeaModel):
         stop_city_list: str = None,
         ticketing_airline: str = None,
     ):
+        # This parameter is required.
         self.arrival_airport = arrival_airport
         self.arrival_terminal = arrival_terminal
+        # This parameter is required.
         self.arrival_time = arrival_time
+        # This parameter is required.
         self.code_share = code_share
+        # This parameter is required.
         self.departure_airport = departure_airport
         self.departure_terminal = departure_terminal
+        # This parameter is required.
         self.departure_time = departure_time
+        # This parameter is required.
         self.marketing_airline = marketing_airline
+        # This parameter is required.
         self.marketing_flight_no = marketing_flight_no
         self.operating_airline = operating_airline
         self.stop_city_list = stop_city_list
@@ -14502,9 +14631,6 @@ class TransitVisaResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

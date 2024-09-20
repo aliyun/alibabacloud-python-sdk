@@ -28,7 +28,7 @@ pip install alibabacloud_airticketopen20230117
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/airticketopen-20230117/ChangeLog.md).
 
 ## References
 

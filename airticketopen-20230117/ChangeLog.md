@@ -1,3 +1,7 @@
+2024-09-20 Version: 3.4.1
+- Update API Search: add param search_control_options.
+
+
 2024-01-22 Version: 3.4.0
 - Generated python 2023-01-17 for airticketOpen.
 

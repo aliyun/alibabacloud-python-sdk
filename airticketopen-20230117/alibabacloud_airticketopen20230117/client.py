@@ -47,6 +47,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.AccountFlowListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.AccountFlowListResponse:
+        """
+        @summary 账号资金流水
+        
+        @param request: AccountFlowListRequest
+        @param headers: AccountFlowListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AccountFlowListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.day_num):
@@ -90,6 +98,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.AccountFlowListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.AccountFlowListResponse:
+        """
+        @summary 账号资金流水
+        
+        @param request: AccountFlowListRequest
+        @param headers: AccountFlowListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AccountFlowListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.day_num):
@@ -131,6 +147,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.AccountFlowListRequest,
     ) -> airticket_open_20230117_models.AccountFlowListResponse:
+        """
+        @summary 账号资金流水
+        
+        @param request: AccountFlowListRequest
+        @return: AccountFlowListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.AccountFlowListHeaders()
         return self.account_flow_list_with_options(request, headers, runtime)
@@ -139,6 +161,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.AccountFlowListRequest,
     ) -> airticket_open_20230117_models.AccountFlowListResponse:
+        """
+        @summary 账号资金流水
+        
+        @param request: AccountFlowListRequest
+        @return: AccountFlowListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.AccountFlowListHeaders()
         return await self.account_flow_list_with_options_async(request, headers, runtime)
@@ -149,6 +177,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.AncillarySuggestHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.AncillarySuggestResponse:
+        """
+        @summary 辅营-推荐
+        
+        @param request: AncillarySuggestRequest
+        @param headers: AncillarySuggestHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AncillarySuggestResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.solution_id):
@@ -186,6 +222,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.AncillarySuggestHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.AncillarySuggestResponse:
+        """
+        @summary 辅营-推荐
+        
+        @param request: AncillarySuggestRequest
+        @param headers: AncillarySuggestHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AncillarySuggestResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.solution_id):
@@ -221,6 +265,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.AncillarySuggestRequest,
     ) -> airticket_open_20230117_models.AncillarySuggestResponse:
+        """
+        @summary 辅营-推荐
+        
+        @param request: AncillarySuggestRequest
+        @return: AncillarySuggestResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.AncillarySuggestHeaders()
         return self.ancillary_suggest_with_options(request, headers, runtime)
@@ -229,6 +279,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.AncillarySuggestRequest,
     ) -> airticket_open_20230117_models.AncillarySuggestResponse:
+        """
+        @summary 辅营-推荐
+        
+        @param request: AncillarySuggestRequest
+        @return: AncillarySuggestResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.AncillarySuggestHeaders()
         return await self.ancillary_suggest_with_options_async(request, headers, runtime)
@@ -239,6 +295,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.BookHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.BookResponse:
+        """
+        @summary 交易-预定
+        
+        @param tmp_req: BookRequest
+        @param headers: BookHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BookResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = airticket_open_20230117_models.BookShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -292,6 +356,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.BookHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.BookResponse:
+        """
+        @summary 交易-预定
+        
+        @param tmp_req: BookRequest
+        @param headers: BookHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BookResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = airticket_open_20230117_models.BookShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -343,6 +415,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.BookRequest,
     ) -> airticket_open_20230117_models.BookResponse:
+        """
+        @summary 交易-预定
+        
+        @param request: BookRequest
+        @return: BookResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.BookHeaders()
         return self.book_with_options(request, headers, runtime)
@@ -351,6 +429,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.BookRequest,
     ) -> airticket_open_20230117_models.BookResponse:
+        """
+        @summary 交易-预定
+        
+        @param request: BookRequest
+        @return: BookResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.BookHeaders()
         return await self.book_with_options_async(request, headers, runtime)
@@ -361,6 +445,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.CancelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.CancelResponse:
+        """
+        @summary 交易-未支付取消
+        
+        @param request: CancelRequest
+        @param headers: CancelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.order_num):
@@ -398,6 +490,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.CancelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.CancelResponse:
+        """
+        @summary 交易-未支付取消
+        
+        @param request: CancelRequest
+        @param headers: CancelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.order_num):
@@ -433,6 +533,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.CancelRequest,
     ) -> airticket_open_20230117_models.CancelResponse:
+        """
+        @summary 交易-未支付取消
+        
+        @param request: CancelRequest
+        @return: CancelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.CancelHeaders()
         return self.cancel_with_options(request, headers, runtime)
@@ -441,6 +547,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.CancelRequest,
     ) -> airticket_open_20230117_models.CancelResponse:
+        """
+        @summary 交易-未支付取消
+        
+        @param request: CancelRequest
+        @return: CancelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.CancelHeaders()
         return await self.cancel_with_options_async(request, headers, runtime)
@@ -451,6 +563,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.ChangeApplyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.ChangeApplyResponse:
+        """
+        @summary 改签-Apply
+        
+        @param tmp_req: ChangeApplyRequest
+        @param headers: ChangeApplyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeApplyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = airticket_open_20230117_models.ChangeApplyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -506,6 +626,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.ChangeApplyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.ChangeApplyResponse:
+        """
+        @summary 改签-Apply
+        
+        @param tmp_req: ChangeApplyRequest
+        @param headers: ChangeApplyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeApplyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = airticket_open_20230117_models.ChangeApplyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -559,6 +687,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.ChangeApplyRequest,
     ) -> airticket_open_20230117_models.ChangeApplyResponse:
+        """
+        @summary 改签-Apply
+        
+        @param request: ChangeApplyRequest
+        @return: ChangeApplyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.ChangeApplyHeaders()
         return self.change_apply_with_options(request, headers, runtime)
@@ -567,6 +701,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.ChangeApplyRequest,
     ) -> airticket_open_20230117_models.ChangeApplyResponse:
+        """
+        @summary 改签-Apply
+        
+        @param request: ChangeApplyRequest
+        @return: ChangeApplyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.ChangeApplyHeaders()
         return await self.change_apply_with_options_async(request, headers, runtime)
@@ -577,6 +717,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.ChangeCancelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.ChangeCancelResponse:
+        """
+        @summary 改签-取消
+        
+        @param request: ChangeCancelRequest
+        @param headers: ChangeCancelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeCancelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.change_order_num):
@@ -614,6 +762,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.ChangeCancelHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.ChangeCancelResponse:
+        """
+        @summary 改签-取消
+        
+        @param request: ChangeCancelRequest
+        @param headers: ChangeCancelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeCancelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.change_order_num):
@@ -649,6 +805,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.ChangeCancelRequest,
     ) -> airticket_open_20230117_models.ChangeCancelResponse:
+        """
+        @summary 改签-取消
+        
+        @param request: ChangeCancelRequest
+        @return: ChangeCancelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.ChangeCancelHeaders()
         return self.change_cancel_with_options(request, headers, runtime)
@@ -657,6 +819,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.ChangeCancelRequest,
     ) -> airticket_open_20230117_models.ChangeCancelResponse:
+        """
+        @summary 改签-取消
+        
+        @param request: ChangeCancelRequest
+        @return: ChangeCancelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.ChangeCancelHeaders()
         return await self.change_cancel_with_options_async(request, headers, runtime)
@@ -667,6 +835,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.ChangeConfirmHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.ChangeConfirmResponse:
+        """
+        @summary 改签-确认
+        
+        @param request: ChangeConfirmRequest
+        @param headers: ChangeConfirmHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeConfirmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.change_order_num):
@@ -704,6 +880,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.ChangeConfirmHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.ChangeConfirmResponse:
+        """
+        @summary 改签-确认
+        
+        @param request: ChangeConfirmRequest
+        @param headers: ChangeConfirmHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeConfirmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.change_order_num):
@@ -739,6 +923,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.ChangeConfirmRequest,
     ) -> airticket_open_20230117_models.ChangeConfirmResponse:
+        """
+        @summary 改签-确认
+        
+        @param request: ChangeConfirmRequest
+        @return: ChangeConfirmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.ChangeConfirmHeaders()
         return self.change_confirm_with_options(request, headers, runtime)
@@ -747,6 +937,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.ChangeConfirmRequest,
     ) -> airticket_open_20230117_models.ChangeConfirmResponse:
+        """
+        @summary 改签-确认
+        
+        @param request: ChangeConfirmRequest
+        @return: ChangeConfirmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.ChangeConfirmHeaders()
         return await self.change_confirm_with_options_async(request, headers, runtime)
@@ -757,6 +953,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.ChangeDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.ChangeDetailResponse:
+        """
+        @summary 改签-Detail
+        
+        @param request: ChangeDetailRequest
+        @param headers: ChangeDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.change_order_num):
@@ -794,6 +998,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.ChangeDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.ChangeDetailResponse:
+        """
+        @summary 改签-Detail
+        
+        @param request: ChangeDetailRequest
+        @param headers: ChangeDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.change_order_num):
@@ -829,6 +1041,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.ChangeDetailRequest,
     ) -> airticket_open_20230117_models.ChangeDetailResponse:
+        """
+        @summary 改签-Detail
+        
+        @param request: ChangeDetailRequest
+        @return: ChangeDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.ChangeDetailHeaders()
         return self.change_detail_with_options(request, headers, runtime)
@@ -837,6 +1055,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.ChangeDetailRequest,
     ) -> airticket_open_20230117_models.ChangeDetailResponse:
+        """
+        @summary 改签-Detail
+        
+        @param request: ChangeDetailRequest
+        @return: ChangeDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.ChangeDetailHeaders()
         return await self.change_detail_with_options_async(request, headers, runtime)
@@ -847,6 +1071,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.ChangeDetailListOfBuyerHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.ChangeDetailListOfBuyerResponse:
+        """
+        @summary 改签单列表-关于买家账号
+        
+        @param request: ChangeDetailListOfBuyerRequest
+        @param headers: ChangeDetailListOfBuyerHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeDetailListOfBuyerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_index):
@@ -890,6 +1122,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.ChangeDetailListOfBuyerHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.ChangeDetailListOfBuyerResponse:
+        """
+        @summary 改签单列表-关于买家账号
+        
+        @param request: ChangeDetailListOfBuyerRequest
+        @param headers: ChangeDetailListOfBuyerHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeDetailListOfBuyerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_index):
@@ -931,6 +1171,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.ChangeDetailListOfBuyerRequest,
     ) -> airticket_open_20230117_models.ChangeDetailListOfBuyerResponse:
+        """
+        @summary 改签单列表-关于买家账号
+        
+        @param request: ChangeDetailListOfBuyerRequest
+        @return: ChangeDetailListOfBuyerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.ChangeDetailListOfBuyerHeaders()
         return self.change_detail_list_of_buyer_with_options(request, headers, runtime)
@@ -939,6 +1185,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.ChangeDetailListOfBuyerRequest,
     ) -> airticket_open_20230117_models.ChangeDetailListOfBuyerResponse:
+        """
+        @summary 改签单列表-关于买家账号
+        
+        @param request: ChangeDetailListOfBuyerRequest
+        @return: ChangeDetailListOfBuyerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.ChangeDetailListOfBuyerHeaders()
         return await self.change_detail_list_of_buyer_with_options_async(request, headers, runtime)
@@ -949,6 +1201,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.ChangeDetailListOfOrderNumHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.ChangeDetailListOfOrderNumResponse:
+        """
+        @summary 改签单列表-关于正向订单
+        
+        @param request: ChangeDetailListOfOrderNumRequest
+        @param headers: ChangeDetailListOfOrderNumHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeDetailListOfOrderNumResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_num):
@@ -990,6 +1250,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.ChangeDetailListOfOrderNumHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.ChangeDetailListOfOrderNumResponse:
+        """
+        @summary 改签单列表-关于正向订单
+        
+        @param request: ChangeDetailListOfOrderNumRequest
+        @param headers: ChangeDetailListOfOrderNumHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeDetailListOfOrderNumResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_num):
@@ -1029,6 +1297,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.ChangeDetailListOfOrderNumRequest,
     ) -> airticket_open_20230117_models.ChangeDetailListOfOrderNumResponse:
+        """
+        @summary 改签单列表-关于正向订单
+        
+        @param request: ChangeDetailListOfOrderNumRequest
+        @return: ChangeDetailListOfOrderNumResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.ChangeDetailListOfOrderNumHeaders()
         return self.change_detail_list_of_order_num_with_options(request, headers, runtime)
@@ -1037,6 +1311,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.ChangeDetailListOfOrderNumRequest,
     ) -> airticket_open_20230117_models.ChangeDetailListOfOrderNumResponse:
+        """
+        @summary 改签单列表-关于正向订单
+        
+        @param request: ChangeDetailListOfOrderNumRequest
+        @return: ChangeDetailListOfOrderNumResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.ChangeDetailListOfOrderNumHeaders()
         return await self.change_detail_list_of_order_num_with_options_async(request, headers, runtime)
@@ -1047,6 +1327,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.EnrichHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.EnrichResponse:
+        """
+        @summary 搜索-Enrich
+        
+        @param tmp_req: EnrichRequest
+        @param headers: EnrichHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnrichResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = airticket_open_20230117_models.EnrichShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1098,6 +1386,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.EnrichHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.EnrichResponse:
+        """
+        @summary 搜索-Enrich
+        
+        @param tmp_req: EnrichRequest
+        @param headers: EnrichHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnrichResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = airticket_open_20230117_models.EnrichShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1147,6 +1443,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.EnrichRequest,
     ) -> airticket_open_20230117_models.EnrichResponse:
+        """
+        @summary 搜索-Enrich
+        
+        @param request: EnrichRequest
+        @return: EnrichResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.EnrichHeaders()
         return self.enrich_with_options(request, headers, runtime)
@@ -1155,6 +1457,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.EnrichRequest,
     ) -> airticket_open_20230117_models.EnrichResponse:
+        """
+        @summary 搜索-Enrich
+        
+        @param request: EnrichRequest
+        @return: EnrichResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.EnrichHeaders()
         return await self.enrich_with_options_async(request, headers, runtime)
@@ -1165,6 +1473,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.FileUploadHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.FileUploadResponse:
+        """
+        @summary 附件上传
+        
+        @param request: FileUploadRequest
+        @param headers: FileUploadHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FileUploadResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.file_content):
@@ -1204,6 +1520,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.FileUploadHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.FileUploadResponse:
+        """
+        @summary 附件上传
+        
+        @param request: FileUploadRequest
+        @param headers: FileUploadHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FileUploadResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.file_content):
@@ -1241,6 +1565,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.FileUploadRequest,
     ) -> airticket_open_20230117_models.FileUploadResponse:
+        """
+        @summary 附件上传
+        
+        @param request: FileUploadRequest
+        @return: FileUploadResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.FileUploadHeaders()
         return self.file_upload_with_options(request, headers, runtime)
@@ -1249,6 +1579,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.FileUploadRequest,
     ) -> airticket_open_20230117_models.FileUploadResponse:
+        """
+        @summary 附件上传
+        
+        @param request: FileUploadRequest
+        @return: FileUploadResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.FileUploadHeaders()
         return await self.file_upload_with_options_async(request, headers, runtime)
@@ -1259,6 +1595,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.FlightChangeOfOrderHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.FlightChangeOfOrderResponse:
+        """
+        @summary 航变信息-关于订单
+        
+        @param request: FlightChangeOfOrderRequest
+        @param headers: FlightChangeOfOrderHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightChangeOfOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_num):
@@ -1296,6 +1640,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.FlightChangeOfOrderHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.FlightChangeOfOrderResponse:
+        """
+        @summary 航变信息-关于订单
+        
+        @param request: FlightChangeOfOrderRequest
+        @param headers: FlightChangeOfOrderHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FlightChangeOfOrderResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_num):
@@ -1331,6 +1683,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.FlightChangeOfOrderRequest,
     ) -> airticket_open_20230117_models.FlightChangeOfOrderResponse:
+        """
+        @summary 航变信息-关于订单
+        
+        @param request: FlightChangeOfOrderRequest
+        @return: FlightChangeOfOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.FlightChangeOfOrderHeaders()
         return self.flight_change_of_order_with_options(request, headers, runtime)
@@ -1339,6 +1697,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.FlightChangeOfOrderRequest,
     ) -> airticket_open_20230117_models.FlightChangeOfOrderResponse:
+        """
+        @summary 航变信息-关于订单
+        
+        @param request: FlightChangeOfOrderRequest
+        @return: FlightChangeOfOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.FlightChangeOfOrderHeaders()
         return await self.flight_change_of_order_with_options_async(request, headers, runtime)
@@ -1349,6 +1713,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.GetTokenResponse:
+        """
+        @summary 获取token
+        
+        @param request: GetTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -1381,6 +1753,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.GetTokenResponse:
+        """
+        @summary 获取token
+        
+        @param request: GetTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key):
@@ -1411,6 +1791,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.GetTokenRequest,
     ) -> airticket_open_20230117_models.GetTokenResponse:
+        """
+        @summary 获取token
+        
+        @param request: GetTokenRequest
+        @return: GetTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_token_with_options(request, headers, runtime)
@@ -1419,6 +1805,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.GetTokenRequest,
     ) -> airticket_open_20230117_models.GetTokenResponse:
+        """
+        @summary 获取token
+        
+        @param request: GetTokenRequest
+        @return: GetTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_token_with_options_async(request, headers, runtime)
@@ -1429,6 +1821,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.LuggageDirectHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.LuggageDirectResponse:
+        """
+        @summary 航程行李直挂
+        
+        @param tmp_req: LuggageDirectRequest
+        @param headers: LuggageDirectHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LuggageDirectResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = airticket_open_20230117_models.LuggageDirectShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1470,6 +1870,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.LuggageDirectHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.LuggageDirectResponse:
+        """
+        @summary 航程行李直挂
+        
+        @param tmp_req: LuggageDirectRequest
+        @param headers: LuggageDirectHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LuggageDirectResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = airticket_open_20230117_models.LuggageDirectShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1509,6 +1917,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.LuggageDirectRequest,
     ) -> airticket_open_20230117_models.LuggageDirectResponse:
+        """
+        @summary 航程行李直挂
+        
+        @param request: LuggageDirectRequest
+        @return: LuggageDirectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.LuggageDirectHeaders()
         return self.luggage_direct_with_options(request, headers, runtime)
@@ -1517,6 +1931,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.LuggageDirectRequest,
     ) -> airticket_open_20230117_models.LuggageDirectResponse:
+        """
+        @summary 航程行李直挂
+        
+        @param request: LuggageDirectRequest
+        @return: LuggageDirectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.LuggageDirectHeaders()
         return await self.luggage_direct_with_options_async(request, headers, runtime)
@@ -1527,6 +1947,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.OrderDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.OrderDetailResponse:
+        """
+        @summary 交易-订单详情
+        
+        @param request: OrderDetailRequest
+        @param headers: OrderDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_num):
@@ -1566,6 +1994,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.OrderDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.OrderDetailResponse:
+        """
+        @summary 交易-订单详情
+        
+        @param request: OrderDetailRequest
+        @param headers: OrderDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OrderDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_num):
@@ -1603,6 +2039,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.OrderDetailRequest,
     ) -> airticket_open_20230117_models.OrderDetailResponse:
+        """
+        @summary 交易-订单详情
+        
+        @param request: OrderDetailRequest
+        @return: OrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.OrderDetailHeaders()
         return self.order_detail_with_options(request, headers, runtime)
@@ -1611,6 +2053,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.OrderDetailRequest,
     ) -> airticket_open_20230117_models.OrderDetailResponse:
+        """
+        @summary 交易-订单详情
+        
+        @param request: OrderDetailRequest
+        @return: OrderDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.OrderDetailHeaders()
         return await self.order_detail_with_options_async(request, headers, runtime)
@@ -1621,6 +2069,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.OrderListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.OrderListResponse:
+        """
+        @summary 交易-订单列表
+        
+        @param request: OrderListRequest
+        @param headers: OrderListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OrderListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.book_time_end):
@@ -1666,6 +2122,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.OrderListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.OrderListResponse:
+        """
+        @summary 交易-订单列表
+        
+        @param request: OrderListRequest
+        @param headers: OrderListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OrderListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.book_time_end):
@@ -1709,6 +2173,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.OrderListRequest,
     ) -> airticket_open_20230117_models.OrderListResponse:
+        """
+        @summary 交易-订单列表
+        
+        @param request: OrderListRequest
+        @return: OrderListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.OrderListHeaders()
         return self.order_list_with_options(request, headers, runtime)
@@ -1717,6 +2187,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.OrderListRequest,
     ) -> airticket_open_20230117_models.OrderListResponse:
+        """
+        @summary 交易-订单列表
+        
+        @param request: OrderListRequest
+        @return: OrderListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.OrderListHeaders()
         return await self.order_list_with_options_async(request, headers, runtime)
@@ -1727,6 +2203,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.PricingHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.PricingResponse:
+        """
+        @summary Pricing
+        
+        @param request: PricingRequest
+        @param headers: PricingHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PricingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.solution_id):
@@ -1764,6 +2248,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.PricingHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.PricingResponse:
+        """
+        @summary Pricing
+        
+        @param request: PricingRequest
+        @param headers: PricingHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PricingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.solution_id):
@@ -1799,6 +2291,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.PricingRequest,
     ) -> airticket_open_20230117_models.PricingResponse:
+        """
+        @summary Pricing
+        
+        @param request: PricingRequest
+        @return: PricingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.PricingHeaders()
         return self.pricing_with_options(request, headers, runtime)
@@ -1807,6 +2305,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.PricingRequest,
     ) -> airticket_open_20230117_models.PricingResponse:
+        """
+        @summary Pricing
+        
+        @param request: PricingRequest
+        @return: PricingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.PricingHeaders()
         return await self.pricing_with_options_async(request, headers, runtime)
@@ -1817,6 +2321,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.RefundApplyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.RefundApplyResponse:
+        """
+        @summary 退票-申请
+        
+        @param tmp_req: RefundApplyRequest
+        @param headers: RefundApplyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefundApplyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = airticket_open_20230117_models.RefundApplyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1868,6 +2380,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.RefundApplyHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.RefundApplyResponse:
+        """
+        @summary 退票-申请
+        
+        @param tmp_req: RefundApplyRequest
+        @param headers: RefundApplyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefundApplyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = airticket_open_20230117_models.RefundApplyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1917,6 +2437,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.RefundApplyRequest,
     ) -> airticket_open_20230117_models.RefundApplyResponse:
+        """
+        @summary 退票-申请
+        
+        @param request: RefundApplyRequest
+        @return: RefundApplyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.RefundApplyHeaders()
         return self.refund_apply_with_options(request, headers, runtime)
@@ -1925,6 +2451,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.RefundApplyRequest,
     ) -> airticket_open_20230117_models.RefundApplyResponse:
+        """
+        @summary 退票-申请
+        
+        @param request: RefundApplyRequest
+        @return: RefundApplyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.RefundApplyHeaders()
         return await self.refund_apply_with_options_async(request, headers, runtime)
@@ -1935,6 +2467,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.RefundDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.RefundDetailResponse:
+        """
+        @summary 退票-Detail
+        
+        @param request: RefundDetailRequest
+        @param headers: RefundDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefundDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.refund_order_num):
@@ -1972,6 +2512,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.RefundDetailHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.RefundDetailResponse:
+        """
+        @summary 退票-Detail
+        
+        @param request: RefundDetailRequest
+        @param headers: RefundDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefundDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.refund_order_num):
@@ -2007,6 +2555,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.RefundDetailRequest,
     ) -> airticket_open_20230117_models.RefundDetailResponse:
+        """
+        @summary 退票-Detail
+        
+        @param request: RefundDetailRequest
+        @return: RefundDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.RefundDetailHeaders()
         return self.refund_detail_with_options(request, headers, runtime)
@@ -2015,6 +2569,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.RefundDetailRequest,
     ) -> airticket_open_20230117_models.RefundDetailResponse:
+        """
+        @summary 退票-Detail
+        
+        @param request: RefundDetailRequest
+        @return: RefundDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.RefundDetailHeaders()
         return await self.refund_detail_with_options_async(request, headers, runtime)
@@ -2025,6 +2585,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.RefundDetailListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.RefundDetailListResponse:
+        """
+        @summary 退票-DetailList
+        
+        @param request: RefundDetailListRequest
+        @param headers: RefundDetailListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefundDetailListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_num):
@@ -2070,6 +2638,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.RefundDetailListHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.RefundDetailListResponse:
+        """
+        @summary 退票-DetailList
+        
+        @param request: RefundDetailListRequest
+        @param headers: RefundDetailListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefundDetailListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order_num):
@@ -2113,6 +2689,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.RefundDetailListRequest,
     ) -> airticket_open_20230117_models.RefundDetailListResponse:
+        """
+        @summary 退票-DetailList
+        
+        @param request: RefundDetailListRequest
+        @return: RefundDetailListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.RefundDetailListHeaders()
         return self.refund_detail_list_with_options(request, headers, runtime)
@@ -2121,6 +2703,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.RefundDetailListRequest,
     ) -> airticket_open_20230117_models.RefundDetailListResponse:
+        """
+        @summary 退票-DetailList
+        
+        @param request: RefundDetailListRequest
+        @return: RefundDetailListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.RefundDetailListHeaders()
         return await self.refund_detail_list_with_options_async(request, headers, runtime)
@@ -2131,11 +2719,21 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.SearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.SearchResponse:
+        """
+        @summary 搜索
+        
+        @param tmp_req: SearchRequest
+        @param headers: SearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = airticket_open_20230117_models.SearchShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.air_legs):
             request.air_legs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.air_legs, 'air_legs', 'json')
+        if not UtilClient.is_unset(tmp_req.search_control_options):
+            request.search_control_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_control_options, 'search_control_options', 'json')
         body = {}
         if not UtilClient.is_unset(request.adults):
             body['adults'] = request.adults
@@ -2147,6 +2745,8 @@ class Client(OpenApiClient):
             body['children'] = request.children
         if not UtilClient.is_unset(request.infants):
             body['infants'] = request.infants
+        if not UtilClient.is_unset(request.search_control_options_shrink):
+            body['search_control_options'] = request.search_control_options_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -2180,11 +2780,21 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.SearchHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.SearchResponse:
+        """
+        @summary 搜索
+        
+        @param tmp_req: SearchRequest
+        @param headers: SearchHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = airticket_open_20230117_models.SearchShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.air_legs):
             request.air_legs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.air_legs, 'air_legs', 'json')
+        if not UtilClient.is_unset(tmp_req.search_control_options):
+            request.search_control_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_control_options, 'search_control_options', 'json')
         body = {}
         if not UtilClient.is_unset(request.adults):
             body['adults'] = request.adults
@@ -2196,6 +2806,8 @@ class Client(OpenApiClient):
             body['children'] = request.children
         if not UtilClient.is_unset(request.infants):
             body['infants'] = request.infants
+        if not UtilClient.is_unset(request.search_control_options_shrink):
+            body['search_control_options'] = request.search_control_options_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -2227,6 +2839,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.SearchRequest,
     ) -> airticket_open_20230117_models.SearchResponse:
+        """
+        @summary 搜索
+        
+        @param request: SearchRequest
+        @return: SearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.SearchHeaders()
         return self.search_with_options(request, headers, runtime)
@@ -2235,6 +2853,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.SearchRequest,
     ) -> airticket_open_20230117_models.SearchResponse:
+        """
+        @summary 搜索
+        
+        @param request: SearchRequest
+        @return: SearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.SearchHeaders()
         return await self.search_with_options_async(request, headers, runtime)
@@ -2245,6 +2869,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.TicketingHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.TicketingResponse:
+        """
+        @summary 交易-支付出票
+        
+        @param request: TicketingRequest
+        @param headers: TicketingHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TicketingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.order_num):
@@ -2282,6 +2914,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.TicketingHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.TicketingResponse:
+        """
+        @summary 交易-支付出票
+        
+        @param request: TicketingRequest
+        @param headers: TicketingHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TicketingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.order_num):
@@ -2317,6 +2957,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.TicketingRequest,
     ) -> airticket_open_20230117_models.TicketingResponse:
+        """
+        @summary 交易-支付出票
+        
+        @param request: TicketingRequest
+        @return: TicketingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.TicketingHeaders()
         return self.ticketing_with_options(request, headers, runtime)
@@ -2325,6 +2971,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.TicketingRequest,
     ) -> airticket_open_20230117_models.TicketingResponse:
+        """
+        @summary 交易-支付出票
+        
+        @param request: TicketingRequest
+        @return: TicketingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.TicketingHeaders()
         return await self.ticketing_with_options_async(request, headers, runtime)
@@ -2335,6 +2987,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.TicketingCheckHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.TicketingCheckResponse:
+        """
+        @summary 交易-支付前校验
+        
+        @param request: TicketingCheckRequest
+        @param headers: TicketingCheckHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TicketingCheckResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.order_num):
@@ -2372,6 +3032,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.TicketingCheckHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.TicketingCheckResponse:
+        """
+        @summary 交易-支付前校验
+        
+        @param request: TicketingCheckRequest
+        @param headers: TicketingCheckHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TicketingCheckResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.order_num):
@@ -2407,6 +3075,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.TicketingCheckRequest,
     ) -> airticket_open_20230117_models.TicketingCheckResponse:
+        """
+        @summary 交易-支付前校验
+        
+        @param request: TicketingCheckRequest
+        @return: TicketingCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.TicketingCheckHeaders()
         return self.ticketing_check_with_options(request, headers, runtime)
@@ -2415,6 +3089,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.TicketingCheckRequest,
     ) -> airticket_open_20230117_models.TicketingCheckResponse:
+        """
+        @summary 交易-支付前校验
+        
+        @param request: TicketingCheckRequest
+        @return: TicketingCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.TicketingCheckHeaders()
         return await self.ticketing_check_with_options_async(request, headers, runtime)
@@ -2425,6 +3105,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.TransitVisaHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.TransitVisaResponse:
+        """
+        @summary 航程过境签
+        
+        @param tmp_req: TransitVisaRequest
+        @param headers: TransitVisaHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransitVisaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = airticket_open_20230117_models.TransitVisaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2466,6 +3154,14 @@ class Client(OpenApiClient):
         headers: airticket_open_20230117_models.TransitVisaHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> airticket_open_20230117_models.TransitVisaResponse:
+        """
+        @summary 航程过境签
+        
+        @param tmp_req: TransitVisaRequest
+        @param headers: TransitVisaHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransitVisaResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = airticket_open_20230117_models.TransitVisaShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2505,6 +3201,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.TransitVisaRequest,
     ) -> airticket_open_20230117_models.TransitVisaResponse:
+        """
+        @summary 航程过境签
+        
+        @param request: TransitVisaRequest
+        @return: TransitVisaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.TransitVisaHeaders()
         return self.transit_visa_with_options(request, headers, runtime)
@@ -2513,6 +3215,12 @@ class Client(OpenApiClient):
         self,
         request: airticket_open_20230117_models.TransitVisaRequest,
     ) -> airticket_open_20230117_models.TransitVisaResponse:
+        """
+        @summary 航程过境签
+        
+        @param request: TransitVisaRequest
+        @return: TransitVisaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = airticket_open_20230117_models.TransitVisaHeaders()
         return await self.transit_visa_with_options_async(request, headers, runtime)
