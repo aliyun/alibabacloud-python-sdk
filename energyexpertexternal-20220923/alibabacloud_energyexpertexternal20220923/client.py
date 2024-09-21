@@ -47,6 +47,498 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def batch_save_instruction_status_with_options(
+        self,
+        request: energy_expert_external_20220923_models.BatchSaveInstructionStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.BatchSaveInstructionStatusResponse:
+        """
+        @summary 策略执行状态反馈
+        
+        @param request: BatchSaveInstructionStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchSaveInstructionStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.factory_id):
+            body['factoryId'] = request.factory_id
+        if not UtilClient.is_unset(request.p_key):
+            body['pKey'] = request.p_key
+        if not UtilClient.is_unset(request.status_list):
+            body['statusList'] = request.status_list
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchSaveInstructionStatus',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/carbon/hvac/batchSaveInstructionStatus',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.BatchSaveInstructionStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_save_instruction_status_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.BatchSaveInstructionStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.BatchSaveInstructionStatusResponse:
+        """
+        @summary 策略执行状态反馈
+        
+        @param request: BatchSaveInstructionStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchSaveInstructionStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.factory_id):
+            body['factoryId'] = request.factory_id
+        if not UtilClient.is_unset(request.p_key):
+            body['pKey'] = request.p_key
+        if not UtilClient.is_unset(request.status_list):
+            body['statusList'] = request.status_list
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchSaveInstructionStatus',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/carbon/hvac/batchSaveInstructionStatus',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.BatchSaveInstructionStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_save_instruction_status(
+        self,
+        request: energy_expert_external_20220923_models.BatchSaveInstructionStatusRequest,
+    ) -> energy_expert_external_20220923_models.BatchSaveInstructionStatusResponse:
+        """
+        @summary 策略执行状态反馈
+        
+        @param request: BatchSaveInstructionStatusRequest
+        @return: BatchSaveInstructionStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.batch_save_instruction_status_with_options(request, headers, runtime)
+
+    async def batch_save_instruction_status_async(
+        self,
+        request: energy_expert_external_20220923_models.BatchSaveInstructionStatusRequest,
+    ) -> energy_expert_external_20220923_models.BatchSaveInstructionStatusResponse:
+        """
+        @summary 策略执行状态反馈
+        
+        @param request: BatchSaveInstructionStatusRequest
+        @return: BatchSaveInstructionStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.batch_save_instruction_status_with_options_async(request, headers, runtime)
+
+    def batch_update_system_running_plan_with_options(
+        self,
+        request: energy_expert_external_20220923_models.BatchUpdateSystemRunningPlanRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.BatchUpdateSystemRunningPlanResponse:
+        """
+        @summary 批量设置空调站点运行计划
+        
+        @param request: BatchUpdateSystemRunningPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUpdateSystemRunningPlanResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.control_type):
+            body['controlType'] = request.control_type
+        if not UtilClient.is_unset(request.date_type):
+            body['dateType'] = request.date_type
+        if not UtilClient.is_unset(request.earliest_startup_time):
+            body['earliestStartupTime'] = request.earliest_startup_time
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.factory_id):
+            body['factoryId'] = request.factory_id
+        if not UtilClient.is_unset(request.latest_shutdown_time):
+            body['latestShutdownTime'] = request.latest_shutdown_time
+        if not UtilClient.is_unset(request.max_carbon_dioxide):
+            body['maxCarbonDioxide'] = request.max_carbon_dioxide
+        if not UtilClient.is_unset(request.max_tem):
+            body['maxTem'] = request.max_tem
+        if not UtilClient.is_unset(request.min_tem):
+            body['minTem'] = request.min_tem
+        if not UtilClient.is_unset(request.season_mode):
+            body['seasonMode'] = request.season_mode
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.system_id):
+            body['systemId'] = request.system_id
+        if not UtilClient.is_unset(request.working_end_time):
+            body['workingEndTime'] = request.working_end_time
+        if not UtilClient.is_unset(request.working_start_time):
+            body['workingStartTime'] = request.working_start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchUpdateSystemRunningPlan',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/carbon/hvac/batchUpdateSystemRunningPlan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.BatchUpdateSystemRunningPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_update_system_running_plan_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.BatchUpdateSystemRunningPlanRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.BatchUpdateSystemRunningPlanResponse:
+        """
+        @summary 批量设置空调站点运行计划
+        
+        @param request: BatchUpdateSystemRunningPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchUpdateSystemRunningPlanResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.control_type):
+            body['controlType'] = request.control_type
+        if not UtilClient.is_unset(request.date_type):
+            body['dateType'] = request.date_type
+        if not UtilClient.is_unset(request.earliest_startup_time):
+            body['earliestStartupTime'] = request.earliest_startup_time
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.factory_id):
+            body['factoryId'] = request.factory_id
+        if not UtilClient.is_unset(request.latest_shutdown_time):
+            body['latestShutdownTime'] = request.latest_shutdown_time
+        if not UtilClient.is_unset(request.max_carbon_dioxide):
+            body['maxCarbonDioxide'] = request.max_carbon_dioxide
+        if not UtilClient.is_unset(request.max_tem):
+            body['maxTem'] = request.max_tem
+        if not UtilClient.is_unset(request.min_tem):
+            body['minTem'] = request.min_tem
+        if not UtilClient.is_unset(request.season_mode):
+            body['seasonMode'] = request.season_mode
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.system_id):
+            body['systemId'] = request.system_id
+        if not UtilClient.is_unset(request.working_end_time):
+            body['workingEndTime'] = request.working_end_time
+        if not UtilClient.is_unset(request.working_start_time):
+            body['workingStartTime'] = request.working_start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchUpdateSystemRunningPlan',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/carbon/hvac/batchUpdateSystemRunningPlan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.BatchUpdateSystemRunningPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_update_system_running_plan(
+        self,
+        request: energy_expert_external_20220923_models.BatchUpdateSystemRunningPlanRequest,
+    ) -> energy_expert_external_20220923_models.BatchUpdateSystemRunningPlanResponse:
+        """
+        @summary 批量设置空调站点运行计划
+        
+        @param request: BatchUpdateSystemRunningPlanRequest
+        @return: BatchUpdateSystemRunningPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.batch_update_system_running_plan_with_options(request, headers, runtime)
+
+    async def batch_update_system_running_plan_async(
+        self,
+        request: energy_expert_external_20220923_models.BatchUpdateSystemRunningPlanRequest,
+    ) -> energy_expert_external_20220923_models.BatchUpdateSystemRunningPlanResponse:
+        """
+        @summary 批量设置空调站点运行计划
+        
+        @param request: BatchUpdateSystemRunningPlanRequest
+        @return: BatchUpdateSystemRunningPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.batch_update_system_running_plan_with_options_async(request, headers, runtime)
+
+    def edit_prohibited_devices_with_options(
+        self,
+        request: energy_expert_external_20220923_models.EditProhibitedDevicesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.EditProhibitedDevicesResponse:
+        """
+        @summary 编辑禁用设备
+        
+        @param request: EditProhibitedDevicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditProhibitedDevicesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.factory_id):
+            body['factoryId'] = request.factory_id
+        if not UtilClient.is_unset(request.hvac_device_config_volist):
+            body['hvacDeviceConfigVOList'] = request.hvac_device_config_volist
+        if not UtilClient.is_unset(request.system_id):
+            body['systemId'] = request.system_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EditProhibitedDevices',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/carbon/hvac/editProhibitedDevices',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.EditProhibitedDevicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def edit_prohibited_devices_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.EditProhibitedDevicesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.EditProhibitedDevicesResponse:
+        """
+        @summary 编辑禁用设备
+        
+        @param request: EditProhibitedDevicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditProhibitedDevicesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.factory_id):
+            body['factoryId'] = request.factory_id
+        if not UtilClient.is_unset(request.hvac_device_config_volist):
+            body['hvacDeviceConfigVOList'] = request.hvac_device_config_volist
+        if not UtilClient.is_unset(request.system_id):
+            body['systemId'] = request.system_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EditProhibitedDevices',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/carbon/hvac/editProhibitedDevices',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.EditProhibitedDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def edit_prohibited_devices(
+        self,
+        request: energy_expert_external_20220923_models.EditProhibitedDevicesRequest,
+    ) -> energy_expert_external_20220923_models.EditProhibitedDevicesResponse:
+        """
+        @summary 编辑禁用设备
+        
+        @param request: EditProhibitedDevicesRequest
+        @return: EditProhibitedDevicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.edit_prohibited_devices_with_options(request, headers, runtime)
+
+    async def edit_prohibited_devices_async(
+        self,
+        request: energy_expert_external_20220923_models.EditProhibitedDevicesRequest,
+    ) -> energy_expert_external_20220923_models.EditProhibitedDevicesResponse:
+        """
+        @summary 编辑禁用设备
+        
+        @param request: EditProhibitedDevicesRequest
+        @return: EditProhibitedDevicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.edit_prohibited_devices_with_options_async(request, headers, runtime)
+
+    def edit_unfavorable_area_devices_with_options(
+        self,
+        request: energy_expert_external_20220923_models.EditUnfavorableAreaDevicesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.EditUnfavorableAreaDevicesResponse:
+        """
+        @summary 编辑不利区设备
+        
+        @param request: EditUnfavorableAreaDevicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditUnfavorableAreaDevicesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.factory_id):
+            body['factoryId'] = request.factory_id
+        if not UtilClient.is_unset(request.hvac_device_config_volist):
+            body['hvacDeviceConfigVOList'] = request.hvac_device_config_volist
+        if not UtilClient.is_unset(request.system_id):
+            body['systemId'] = request.system_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EditUnfavorableAreaDevices',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/carbon/hvac/editUnfavorableAreaDevices',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.EditUnfavorableAreaDevicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def edit_unfavorable_area_devices_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.EditUnfavorableAreaDevicesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.EditUnfavorableAreaDevicesResponse:
+        """
+        @summary 编辑不利区设备
+        
+        @param request: EditUnfavorableAreaDevicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EditUnfavorableAreaDevicesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.factory_id):
+            body['factoryId'] = request.factory_id
+        if not UtilClient.is_unset(request.hvac_device_config_volist):
+            body['hvacDeviceConfigVOList'] = request.hvac_device_config_volist
+        if not UtilClient.is_unset(request.system_id):
+            body['systemId'] = request.system_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='EditUnfavorableAreaDevices',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/carbon/hvac/editUnfavorableAreaDevices',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.EditUnfavorableAreaDevicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def edit_unfavorable_area_devices(
+        self,
+        request: energy_expert_external_20220923_models.EditUnfavorableAreaDevicesRequest,
+    ) -> energy_expert_external_20220923_models.EditUnfavorableAreaDevicesResponse:
+        """
+        @summary 编辑不利区设备
+        
+        @param request: EditUnfavorableAreaDevicesRequest
+        @return: EditUnfavorableAreaDevicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.edit_unfavorable_area_devices_with_options(request, headers, runtime)
+
+    async def edit_unfavorable_area_devices_async(
+        self,
+        request: energy_expert_external_20220923_models.EditUnfavorableAreaDevicesRequest,
+    ) -> energy_expert_external_20220923_models.EditUnfavorableAreaDevicesResponse:
+        """
+        @summary 编辑不利区设备
+        
+        @param request: EditUnfavorableAreaDevicesRequest
+        @return: EditUnfavorableAreaDevicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.edit_unfavorable_area_devices_with_options_async(request, headers, runtime)
+
     def generate_result_with_options(
         self,
         request: energy_expert_external_20220923_models.GenerateResultRequest,
@@ -643,8 +1135,8 @@ class Client(OpenApiClient):
         @description    You can call this operation to query the parameters of a data collection device based on the device ID. If the verification is passed, the device parameters are returned. If the verification fails, a null value is returned.
         You can query the parameters of a single device by day. If data of the device does not exist, a null value is returned.
         - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
-        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
-        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
+        - To use this API, you need to be added to the whitelist. Please contact us through  <props="china">[official website](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[official website](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param request: GetDeviceInfoRequest
         @param headers: map
@@ -691,8 +1183,8 @@ class Client(OpenApiClient):
         @description    You can call this operation to query the parameters of a data collection device based on the device ID. If the verification is passed, the device parameters are returned. If the verification fails, a null value is returned.
         You can query the parameters of a single device by day. If data of the device does not exist, a null value is returned.
         - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
-        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
-        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
+        - To use this API, you need to be added to the whitelist. Please contact us through  <props="china">[official website](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[official website](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param request: GetDeviceInfoRequest
         @param headers: map
@@ -737,8 +1229,8 @@ class Client(OpenApiClient):
         @description    You can call this operation to query the parameters of a data collection device based on the device ID. If the verification is passed, the device parameters are returned. If the verification fails, a null value is returned.
         You can query the parameters of a single device by day. If data of the device does not exist, a null value is returned.
         - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
-        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
-        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
+        - To use this API, you need to be added to the whitelist. Please contact us through  <props="china">[official website](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[official website](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param request: GetDeviceInfoRequest
         @return: GetDeviceInfoResponse
@@ -757,8 +1249,8 @@ class Client(OpenApiClient):
         @description    You can call this operation to query the parameters of a data collection device based on the device ID. If the verification is passed, the device parameters are returned. If the verification fails, a null value is returned.
         You can query the parameters of a single device by day. If data of the device does not exist, a null value is returned.
         - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
-        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
-        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
+        - To use this API, you need to be added to the whitelist. Please contact us through  <props="china">[official website](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[official website](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param request: GetDeviceInfoRequest
         @return: GetDeviceInfoResponse
@@ -779,8 +1271,8 @@ class Client(OpenApiClient):
         @description    You can query the information about data collection devices of a site based on the ID of the site. If the verification is passed, the information about the devices of the site is returned. If the verification fails, a null value is returned.
         Virtual meters at the site are not returned.
         - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
-        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
-        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
+        - To use this API, you need to be added to the whitelist. Please contact us through  <props="china">[official website](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[official website](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param request: GetDeviceListRequest
         @param headers: map
@@ -823,8 +1315,8 @@ class Client(OpenApiClient):
         @description    You can query the information about data collection devices of a site based on the ID of the site. If the verification is passed, the information about the devices of the site is returned. If the verification fails, a null value is returned.
         Virtual meters at the site are not returned.
         - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
-        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
-        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
+        - To use this API, you need to be added to the whitelist. Please contact us through  <props="china">[official website](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[official website](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param request: GetDeviceListRequest
         @param headers: map
@@ -865,8 +1357,8 @@ class Client(OpenApiClient):
         @description    You can query the information about data collection devices of a site based on the ID of the site. If the verification is passed, the information about the devices of the site is returned. If the verification fails, a null value is returned.
         Virtual meters at the site are not returned.
         - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
-        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
-        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
+        - To use this API, you need to be added to the whitelist. Please contact us through  <props="china">[official website](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[official website](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param request: GetDeviceListRequest
         @return: GetDeviceListResponse
@@ -885,8 +1377,8 @@ class Client(OpenApiClient):
         @description    You can query the information about data collection devices of a site based on the ID of the site. If the verification is passed, the information about the devices of the site is returned. If the verification fails, a null value is returned.
         Virtual meters at the site are not returned.
         - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
-        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
-        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
+        - To use this API, you need to be added to the whitelist. Please contact us through  <props="china">[official website](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[official website](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param request: GetDeviceListRequest
         @return: GetDeviceListResponse
@@ -2549,8 +3041,8 @@ class Client(OpenApiClient):
         
         @description    If an activated site exists, the information about the site and the organization to which the site belongs is returned. If no activated site exists, null is returned.
         - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
-        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
-        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
+        - To use this API, you need to be added to the whitelist. Please contact us through  <props="china">[official website](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[official website](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2585,8 +3077,8 @@ class Client(OpenApiClient):
         
         @description    If an activated site exists, the information about the site and the organization to which the site belongs is returned. If no activated site exists, null is returned.
         - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
-        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
-        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
+        - To use this API, you need to be added to the whitelist. Please contact us through  <props="china">[official website](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[official website](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2617,8 +3109,8 @@ class Client(OpenApiClient):
         
         @description    If an activated site exists, the information about the site and the organization to which the site belongs is returned. If no activated site exists, null is returned.
         - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
-        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
-        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
+        - To use this API, you need to be added to the whitelist. Please contact us through  <props="china">[official website](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[official website](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @return: GetOrgAndFactoryResponse
         """
@@ -2632,8 +3124,8 @@ class Client(OpenApiClient):
         
         @description    If an activated site exists, the information about the site and the organization to which the site belongs is returned. If no activated site exists, null is returned.
         - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
-        - To use this API, you need to be added to the whitelist. Please contact us through the official website <props="china">[here](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
-        <props="intl">[here](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
+        - To use this API, you need to be added to the whitelist. Please contact us through  <props="china">[official website](https://energy.aliyun.com/ifa/web/defaultLoginPage?adapter=aliyun#/consult?source=%E8%83%BD%E8%80%97%E5%AE%9D%E7%99%BB%E5%BD%95%E9%A1%B5%EF%BC%88WEB%EF%BC%89)
+        <props="intl">[official website](https://energy.alibabacloud.com/common?adapter=aliyun&lang=en-US#/home/en) to apply for whitelist activation.
         
         @return: GetOrgAndFactoryResponse
         """
@@ -3584,6 +4076,170 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.send_document_ask_question_with_options_async(request, headers, runtime)
+
+    def set_running_plan_with_options(
+        self,
+        request: energy_expert_external_20220923_models.SetRunningPlanRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SetRunningPlanResponse:
+        """
+        @summary 设置运行计划
+        
+        @param request: SetRunningPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetRunningPlanResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.control_type):
+            body['controlType'] = request.control_type
+        if not UtilClient.is_unset(request.date_type):
+            body['dateType'] = request.date_type
+        if not UtilClient.is_unset(request.earliest_startup_time):
+            body['earliestStartupTime'] = request.earliest_startup_time
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.factory_id):
+            body['factoryId'] = request.factory_id
+        if not UtilClient.is_unset(request.latest_shutdown_time):
+            body['latestShutdownTime'] = request.latest_shutdown_time
+        if not UtilClient.is_unset(request.max_carbon_dioxide):
+            body['maxCarbonDioxide'] = request.max_carbon_dioxide
+        if not UtilClient.is_unset(request.max_tem):
+            body['maxTem'] = request.max_tem
+        if not UtilClient.is_unset(request.min_tem):
+            body['minTem'] = request.min_tem
+        if not UtilClient.is_unset(request.p_key):
+            body['pKey'] = request.p_key
+        if not UtilClient.is_unset(request.season_mode):
+            body['seasonMode'] = request.season_mode
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.statistics_time):
+            body['statisticsTime'] = request.statistics_time
+        if not UtilClient.is_unset(request.system_id):
+            body['systemId'] = request.system_id
+        if not UtilClient.is_unset(request.working_end_time):
+            body['workingEndTime'] = request.working_end_time
+        if not UtilClient.is_unset(request.working_start_time):
+            body['workingStartTime'] = request.working_start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetRunningPlan',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/carbon/hvac/setRunningPlan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.SetRunningPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_running_plan_with_options_async(
+        self,
+        request: energy_expert_external_20220923_models.SetRunningPlanRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> energy_expert_external_20220923_models.SetRunningPlanResponse:
+        """
+        @summary 设置运行计划
+        
+        @param request: SetRunningPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetRunningPlanResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.control_type):
+            body['controlType'] = request.control_type
+        if not UtilClient.is_unset(request.date_type):
+            body['dateType'] = request.date_type
+        if not UtilClient.is_unset(request.earliest_startup_time):
+            body['earliestStartupTime'] = request.earliest_startup_time
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.factory_id):
+            body['factoryId'] = request.factory_id
+        if not UtilClient.is_unset(request.latest_shutdown_time):
+            body['latestShutdownTime'] = request.latest_shutdown_time
+        if not UtilClient.is_unset(request.max_carbon_dioxide):
+            body['maxCarbonDioxide'] = request.max_carbon_dioxide
+        if not UtilClient.is_unset(request.max_tem):
+            body['maxTem'] = request.max_tem
+        if not UtilClient.is_unset(request.min_tem):
+            body['minTem'] = request.min_tem
+        if not UtilClient.is_unset(request.p_key):
+            body['pKey'] = request.p_key
+        if not UtilClient.is_unset(request.season_mode):
+            body['seasonMode'] = request.season_mode
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        if not UtilClient.is_unset(request.statistics_time):
+            body['statisticsTime'] = request.statistics_time
+        if not UtilClient.is_unset(request.system_id):
+            body['systemId'] = request.system_id
+        if not UtilClient.is_unset(request.working_end_time):
+            body['workingEndTime'] = request.working_end_time
+        if not UtilClient.is_unset(request.working_start_time):
+            body['workingStartTime'] = request.working_start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SetRunningPlan',
+            version='2022-09-23',
+            protocol='HTTPS',
+            pathname=f'/api/v1/carbon/hvac/setRunningPlan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            energy_expert_external_20220923_models.SetRunningPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_running_plan(
+        self,
+        request: energy_expert_external_20220923_models.SetRunningPlanRequest,
+    ) -> energy_expert_external_20220923_models.SetRunningPlanResponse:
+        """
+        @summary 设置运行计划
+        
+        @param request: SetRunningPlanRequest
+        @return: SetRunningPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.set_running_plan_with_options(request, headers, runtime)
+
+    async def set_running_plan_async(
+        self,
+        request: energy_expert_external_20220923_models.SetRunningPlanRequest,
+    ) -> energy_expert_external_20220923_models.SetRunningPlanResponse:
+        """
+        @summary 设置运行计划
+        
+        @param request: SetRunningPlanRequest
+        @return: SetRunningPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.set_running_plan_with_options_async(request, headers, runtime)
 
     def submit_document_analyze_job_with_options(
         self,

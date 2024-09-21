@@ -784,6 +784,678 @@ class OrgEmission(TeaModel):
         return self
 
 
+class BatchSaveInstructionStatusRequest(TeaModel):
+    def __init__(
+        self,
+        factory_id: str = None,
+        p_key: str = None,
+        status_list: str = None,
+    ):
+        self.factory_id = factory_id
+        self.p_key = p_key
+        self.status_list = status_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.factory_id is not None:
+            result['factoryId'] = self.factory_id
+        if self.p_key is not None:
+            result['pKey'] = self.p_key
+        if self.status_list is not None:
+            result['statusList'] = self.status_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('factoryId') is not None:
+            self.factory_id = m.get('factoryId')
+        if m.get('pKey') is not None:
+            self.p_key = m.get('pKey')
+        if m.get('statusList') is not None:
+            self.status_list = m.get('statusList')
+        return self
+
+
+class BatchSaveInstructionStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class BatchSaveInstructionStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchSaveInstructionStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchSaveInstructionStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BatchUpdateSystemRunningPlanRequest(TeaModel):
+    def __init__(
+        self,
+        control_type: int = None,
+        date_type: int = None,
+        earliest_startup_time: str = None,
+        end_time: str = None,
+        factory_id: str = None,
+        latest_shutdown_time: str = None,
+        max_carbon_dioxide: float = None,
+        max_tem: float = None,
+        min_tem: float = None,
+        season_mode: int = None,
+        start_time: str = None,
+        system_id: str = None,
+        working_end_time: str = None,
+        working_start_time: str = None,
+    ):
+        self.control_type = control_type
+        self.date_type = date_type
+        self.earliest_startup_time = earliest_startup_time
+        self.end_time = end_time
+        self.factory_id = factory_id
+        self.latest_shutdown_time = latest_shutdown_time
+        self.max_carbon_dioxide = max_carbon_dioxide
+        self.max_tem = max_tem
+        self.min_tem = min_tem
+        self.season_mode = season_mode
+        self.start_time = start_time
+        self.system_id = system_id
+        self.working_end_time = working_end_time
+        self.working_start_time = working_start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.control_type is not None:
+            result['controlType'] = self.control_type
+        if self.date_type is not None:
+            result['dateType'] = self.date_type
+        if self.earliest_startup_time is not None:
+            result['earliestStartupTime'] = self.earliest_startup_time
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.factory_id is not None:
+            result['factoryId'] = self.factory_id
+        if self.latest_shutdown_time is not None:
+            result['latestShutdownTime'] = self.latest_shutdown_time
+        if self.max_carbon_dioxide is not None:
+            result['maxCarbonDioxide'] = self.max_carbon_dioxide
+        if self.max_tem is not None:
+            result['maxTem'] = self.max_tem
+        if self.min_tem is not None:
+            result['minTem'] = self.min_tem
+        if self.season_mode is not None:
+            result['seasonMode'] = self.season_mode
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.system_id is not None:
+            result['systemId'] = self.system_id
+        if self.working_end_time is not None:
+            result['workingEndTime'] = self.working_end_time
+        if self.working_start_time is not None:
+            result['workingStartTime'] = self.working_start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('controlType') is not None:
+            self.control_type = m.get('controlType')
+        if m.get('dateType') is not None:
+            self.date_type = m.get('dateType')
+        if m.get('earliestStartupTime') is not None:
+            self.earliest_startup_time = m.get('earliestStartupTime')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('factoryId') is not None:
+            self.factory_id = m.get('factoryId')
+        if m.get('latestShutdownTime') is not None:
+            self.latest_shutdown_time = m.get('latestShutdownTime')
+        if m.get('maxCarbonDioxide') is not None:
+            self.max_carbon_dioxide = m.get('maxCarbonDioxide')
+        if m.get('maxTem') is not None:
+            self.max_tem = m.get('maxTem')
+        if m.get('minTem') is not None:
+            self.min_tem = m.get('minTem')
+        if m.get('seasonMode') is not None:
+            self.season_mode = m.get('seasonMode')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('systemId') is not None:
+            self.system_id = m.get('systemId')
+        if m.get('workingEndTime') is not None:
+            self.working_end_time = m.get('workingEndTime')
+        if m.get('workingStartTime') is not None:
+            self.working_start_time = m.get('workingStartTime')
+        return self
+
+
+class BatchUpdateSystemRunningPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class BatchUpdateSystemRunningPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchUpdateSystemRunningPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchUpdateSystemRunningPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EditProhibitedDevicesRequestHvacDeviceConfigVOList(TeaModel):
+    def __init__(
+        self,
+        building_id: str = None,
+        device_id: str = None,
+        device_name: str = None,
+        device_type: str = None,
+        fence_id: str = None,
+        floor_id: str = None,
+        is_forbidden: int = None,
+        is_unfavorable_area: int = None,
+    ):
+        self.building_id = building_id
+        self.device_id = device_id
+        self.device_name = device_name
+        self.device_type = device_type
+        self.fence_id = fence_id
+        self.floor_id = floor_id
+        self.is_forbidden = is_forbidden
+        self.is_unfavorable_area = is_unfavorable_area
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.building_id is not None:
+            result['buildingId'] = self.building_id
+        if self.device_id is not None:
+            result['deviceId'] = self.device_id
+        if self.device_name is not None:
+            result['deviceName'] = self.device_name
+        if self.device_type is not None:
+            result['deviceType'] = self.device_type
+        if self.fence_id is not None:
+            result['fenceId'] = self.fence_id
+        if self.floor_id is not None:
+            result['floorId'] = self.floor_id
+        if self.is_forbidden is not None:
+            result['isForbidden'] = self.is_forbidden
+        if self.is_unfavorable_area is not None:
+            result['isUnfavorableArea'] = self.is_unfavorable_area
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('buildingId') is not None:
+            self.building_id = m.get('buildingId')
+        if m.get('deviceId') is not None:
+            self.device_id = m.get('deviceId')
+        if m.get('deviceName') is not None:
+            self.device_name = m.get('deviceName')
+        if m.get('deviceType') is not None:
+            self.device_type = m.get('deviceType')
+        if m.get('fenceId') is not None:
+            self.fence_id = m.get('fenceId')
+        if m.get('floorId') is not None:
+            self.floor_id = m.get('floorId')
+        if m.get('isForbidden') is not None:
+            self.is_forbidden = m.get('isForbidden')
+        if m.get('isUnfavorableArea') is not None:
+            self.is_unfavorable_area = m.get('isUnfavorableArea')
+        return self
+
+
+class EditProhibitedDevicesRequest(TeaModel):
+    def __init__(
+        self,
+        factory_id: str = None,
+        hvac_device_config_volist: List[EditProhibitedDevicesRequestHvacDeviceConfigVOList] = None,
+        system_id: str = None,
+    ):
+        self.factory_id = factory_id
+        self.hvac_device_config_volist = hvac_device_config_volist
+        self.system_id = system_id
+
+    def validate(self):
+        if self.hvac_device_config_volist:
+            for k in self.hvac_device_config_volist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.factory_id is not None:
+            result['factoryId'] = self.factory_id
+        result['hvacDeviceConfigVOList'] = []
+        if self.hvac_device_config_volist is not None:
+            for k in self.hvac_device_config_volist:
+                result['hvacDeviceConfigVOList'].append(k.to_map() if k else None)
+        if self.system_id is not None:
+            result['systemId'] = self.system_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('factoryId') is not None:
+            self.factory_id = m.get('factoryId')
+        self.hvac_device_config_volist = []
+        if m.get('hvacDeviceConfigVOList') is not None:
+            for k in m.get('hvacDeviceConfigVOList'):
+                temp_model = EditProhibitedDevicesRequestHvacDeviceConfigVOList()
+                self.hvac_device_config_volist.append(temp_model.from_map(k))
+        if m.get('systemId') is not None:
+            self.system_id = m.get('systemId')
+        return self
+
+
+class EditProhibitedDevicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class EditProhibitedDevicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EditProhibitedDevicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EditProhibitedDevicesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList(TeaModel):
+    def __init__(
+        self,
+        building_id: str = None,
+        device_id: str = None,
+        device_name: str = None,
+        device_type: str = None,
+        fence_id: str = None,
+        floor_id: str = None,
+        is_forbidden: int = None,
+        is_unfavorable_area: int = None,
+    ):
+        self.building_id = building_id
+        self.device_id = device_id
+        self.device_name = device_name
+        self.device_type = device_type
+        self.fence_id = fence_id
+        self.floor_id = floor_id
+        self.is_forbidden = is_forbidden
+        self.is_unfavorable_area = is_unfavorable_area
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.building_id is not None:
+            result['buildingId'] = self.building_id
+        if self.device_id is not None:
+            result['deviceId'] = self.device_id
+        if self.device_name is not None:
+            result['deviceName'] = self.device_name
+        if self.device_type is not None:
+            result['deviceType'] = self.device_type
+        if self.fence_id is not None:
+            result['fenceId'] = self.fence_id
+        if self.floor_id is not None:
+            result['floorId'] = self.floor_id
+        if self.is_forbidden is not None:
+            result['isForbidden'] = self.is_forbidden
+        if self.is_unfavorable_area is not None:
+            result['isUnfavorableArea'] = self.is_unfavorable_area
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('buildingId') is not None:
+            self.building_id = m.get('buildingId')
+        if m.get('deviceId') is not None:
+            self.device_id = m.get('deviceId')
+        if m.get('deviceName') is not None:
+            self.device_name = m.get('deviceName')
+        if m.get('deviceType') is not None:
+            self.device_type = m.get('deviceType')
+        if m.get('fenceId') is not None:
+            self.fence_id = m.get('fenceId')
+        if m.get('floorId') is not None:
+            self.floor_id = m.get('floorId')
+        if m.get('isForbidden') is not None:
+            self.is_forbidden = m.get('isForbidden')
+        if m.get('isUnfavorableArea') is not None:
+            self.is_unfavorable_area = m.get('isUnfavorableArea')
+        return self
+
+
+class EditUnfavorableAreaDevicesRequest(TeaModel):
+    def __init__(
+        self,
+        factory_id: str = None,
+        hvac_device_config_volist: List[EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList] = None,
+        system_id: str = None,
+    ):
+        self.factory_id = factory_id
+        self.hvac_device_config_volist = hvac_device_config_volist
+        self.system_id = system_id
+
+    def validate(self):
+        if self.hvac_device_config_volist:
+            for k in self.hvac_device_config_volist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.factory_id is not None:
+            result['factoryId'] = self.factory_id
+        result['hvacDeviceConfigVOList'] = []
+        if self.hvac_device_config_volist is not None:
+            for k in self.hvac_device_config_volist:
+                result['hvacDeviceConfigVOList'].append(k.to_map() if k else None)
+        if self.system_id is not None:
+            result['systemId'] = self.system_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('factoryId') is not None:
+            self.factory_id = m.get('factoryId')
+        self.hvac_device_config_volist = []
+        if m.get('hvacDeviceConfigVOList') is not None:
+            for k in m.get('hvacDeviceConfigVOList'):
+                temp_model = EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList()
+                self.hvac_device_config_volist.append(temp_model.from_map(k))
+        if m.get('systemId') is not None:
+            self.system_id = m.get('systemId')
+        return self
+
+
+class EditUnfavorableAreaDevicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class EditUnfavorableAreaDevicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EditUnfavorableAreaDevicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EditUnfavorableAreaDevicesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GenerateResultRequest(TeaModel):
     def __init__(
         self,
@@ -6562,7 +7234,8 @@ class GetInventoryListRequest(TeaModel):
         # 
         # This parameter is required.
         self.group = group
-        # The type of the obtained environmental impact: gwp indicates the carbon footprint of climate change. For more information, see the type value of the enumerated values.
+        # The type of the obtained environmental impact: gwp indicates the carbon footprint of climate change. 
+        # <props="intl">[For more information, see the environment impact category enumeration.](https://www.alibabacloud.com/help/en/energy-expert/developer-reference/enumerated-values-of-energy-expert#RhGn7)
         # 
         # This parameter is required.
         self.method_type = method_type
@@ -7868,7 +8541,7 @@ class PushItemDataRequest(TeaModel):
         # 
         # This parameter is required.
         self.code = code
-        # Push data list.
+        # List of data to be pushed.
         # 
         # This parameter is required.
         self.items = items
@@ -8243,6 +8916,197 @@ class SendDocumentAskQuestionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SendDocumentAskQuestionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetRunningPlanRequest(TeaModel):
+    def __init__(
+        self,
+        control_type: int = None,
+        date_type: int = None,
+        earliest_startup_time: str = None,
+        end_time: str = None,
+        factory_id: str = None,
+        latest_shutdown_time: str = None,
+        max_carbon_dioxide: float = None,
+        max_tem: float = None,
+        min_tem: float = None,
+        p_key: str = None,
+        season_mode: int = None,
+        start_time: str = None,
+        statistics_time: str = None,
+        system_id: str = None,
+        working_end_time: str = None,
+        working_start_time: str = None,
+    ):
+        self.control_type = control_type
+        self.date_type = date_type
+        self.earliest_startup_time = earliest_startup_time
+        self.end_time = end_time
+        self.factory_id = factory_id
+        self.latest_shutdown_time = latest_shutdown_time
+        self.max_carbon_dioxide = max_carbon_dioxide
+        self.max_tem = max_tem
+        self.min_tem = min_tem
+        self.p_key = p_key
+        self.season_mode = season_mode
+        self.start_time = start_time
+        self.statistics_time = statistics_time
+        self.system_id = system_id
+        self.working_end_time = working_end_time
+        self.working_start_time = working_start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.control_type is not None:
+            result['controlType'] = self.control_type
+        if self.date_type is not None:
+            result['dateType'] = self.date_type
+        if self.earliest_startup_time is not None:
+            result['earliestStartupTime'] = self.earliest_startup_time
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.factory_id is not None:
+            result['factoryId'] = self.factory_id
+        if self.latest_shutdown_time is not None:
+            result['latestShutdownTime'] = self.latest_shutdown_time
+        if self.max_carbon_dioxide is not None:
+            result['maxCarbonDioxide'] = self.max_carbon_dioxide
+        if self.max_tem is not None:
+            result['maxTem'] = self.max_tem
+        if self.min_tem is not None:
+            result['minTem'] = self.min_tem
+        if self.p_key is not None:
+            result['pKey'] = self.p_key
+        if self.season_mode is not None:
+            result['seasonMode'] = self.season_mode
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.statistics_time is not None:
+            result['statisticsTime'] = self.statistics_time
+        if self.system_id is not None:
+            result['systemId'] = self.system_id
+        if self.working_end_time is not None:
+            result['workingEndTime'] = self.working_end_time
+        if self.working_start_time is not None:
+            result['workingStartTime'] = self.working_start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('controlType') is not None:
+            self.control_type = m.get('controlType')
+        if m.get('dateType') is not None:
+            self.date_type = m.get('dateType')
+        if m.get('earliestStartupTime') is not None:
+            self.earliest_startup_time = m.get('earliestStartupTime')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('factoryId') is not None:
+            self.factory_id = m.get('factoryId')
+        if m.get('latestShutdownTime') is not None:
+            self.latest_shutdown_time = m.get('latestShutdownTime')
+        if m.get('maxCarbonDioxide') is not None:
+            self.max_carbon_dioxide = m.get('maxCarbonDioxide')
+        if m.get('maxTem') is not None:
+            self.max_tem = m.get('maxTem')
+        if m.get('minTem') is not None:
+            self.min_tem = m.get('minTem')
+        if m.get('pKey') is not None:
+            self.p_key = m.get('pKey')
+        if m.get('seasonMode') is not None:
+            self.season_mode = m.get('seasonMode')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('statisticsTime') is not None:
+            self.statistics_time = m.get('statisticsTime')
+        if m.get('systemId') is not None:
+            self.system_id = m.get('systemId')
+        if m.get('workingEndTime') is not None:
+            self.working_end_time = m.get('workingEndTime')
+        if m.get('workingStartTime') is not None:
+            self.working_start_time = m.get('workingStartTime')
+        return self
+
+
+class SetRunningPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class SetRunningPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetRunningPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetRunningPlanResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

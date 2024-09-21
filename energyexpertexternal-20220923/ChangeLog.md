@@ -1,3 +1,11 @@
+2024-09-21 Version: 2.1.0
+- Support API BatchSaveInstructionStatus.
+- Support API BatchUpdateSystemRunningPlan.
+- Support API EditProhibitedDevices.
+- Support API EditUnfavorableAreaDevices.
+- Support API SetRunningPlan.
+
+
 2024-06-14 Version: 2.0.1
 - Update API SubmitDocumentAnalyzeJob: update param fileName.
 
