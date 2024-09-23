@@ -13,6 +13,8 @@ class DescribeFileModerationResultRequest(TeaModel):
         # The type of the moderation service.
         self.service = service
         # The parameters required by the moderation service. The value is a JSON string.
+        # 
+        # *   taskId: required. The URL of the object that you want to moderate. Make sure that the URL can be accessed over the Internet.
         self.service_parameters = service_parameters
 
     def validate(self):
@@ -46,8 +48,9 @@ class DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResu
         description: str = None,
         label: str = None,
     ):
-        # Confidence score, 0 to 100, reserved to 2 decimal places.
+        # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places.
         self.confidence = confidence
+        # The description.
         self.description = description
         # The details of the labels.
         self.label = label
@@ -138,12 +141,13 @@ class DescribeFileModerationResultResponseBodyDataPageResultImageResult(TeaModel
         risk_level: str = None,
         service: str = None,
     ):
-        # Description.
+        # The description.
         self.description = description
-        # Label information.
+        # The label information.
         self.label_result = label_result
-        # Location information.
+        # The location information
         self.location = location
+        # Risk Level
         self.risk_level = risk_level
         # The moderation service.
         self.service = service
@@ -207,10 +211,11 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(TeaModel)
         text: str = None,
         text_segment: str = None,
     ):
-        # Description
+        # The description.
         self.description = description
         # The details of the labels.
         self.labels = labels
+        # Risk Level
         self.risk_level = risk_level
         # The risk details that are hit.
         self.risk_tips = risk_tips
@@ -218,9 +223,9 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(TeaModel)
         self.risk_words = risk_words
         # The moderation service.
         self.service = service
-        # Text content.
+        # The text content.
         self.text = text
-        # Text segmentation information.
+        # The text segmentation information.
         self.text_segment = text_segment
 
     def validate(self):
@@ -280,15 +285,15 @@ class DescribeFileModerationResultResponseBodyDataPageResult(TeaModel):
         text_result: List[DescribeFileModerationResultResponseBodyDataPageResultTextResult] = None,
         text_url: str = None,
     ):
-        # Image detection results.
+        # The image moderation results.
         self.image_result = image_result
-        # The image url.
+        # The image URL.
         self.image_url = image_url
         # The page number.
         self.page_num = page_num
-        # Text detection results.
+        # The text moderation results.
         self.text_result = text_result
-        # the text url.
+        # The text URL.
         self.text_url = text_url
 
     def validate(self):
@@ -351,8 +356,11 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLa
         label: str = None,
         label_sum: int = None,
     ):
+        # The description.
         self.description = description
+        # The details of the labels.
         self.label = label
+        # The number of times that the label is matched.
         self.label_sum = label_sum
 
     def validate(self):
@@ -389,7 +397,9 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary(TeaMod
         image_labels: List[DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels] = None,
         risk_level: str = None,
     ):
+        # Image Label
         self.image_labels = image_labels
+        # Risk Level
         self.risk_level = risk_level
 
     def validate(self):
@@ -430,7 +440,9 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabe
         label: str = None,
         label_sum: int = None,
     ):
+        # The details of the labels.
         self.label = label
+        # The number of times that the label is matched.
         self.label_sum = label_sum
 
     def validate(self):
@@ -463,7 +475,9 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary(TeaMode
         risk_level: str = None,
         text_labels: List[DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels] = None,
     ):
+        # Risk Level
         self.risk_level = risk_level
+        # Text Label
         self.text_labels = text_labels
 
     def validate(self):
@@ -505,8 +519,11 @@ class DescribeFileModerationResultResponseBodyDataPageSummary(TeaModel):
         page_sum: int = None,
         text_summary: DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary = None,
     ):
+        # Image Results Summary
         self.image_summary = image_summary
+        # Number of pages
         self.page_sum = page_sum
+        # Text Results Summary
         self.text_summary = text_summary
 
     def validate(self):
@@ -554,13 +571,15 @@ class DescribeFileModerationResultResponseBodyData(TeaModel):
     ):
         # The ID of the moderated object.
         self.data_id = data_id
-        # Optional, document type.
+        # Optional. The document type.
         self.doc_type = doc_type
-        # The pagination information.
+        # An array that consists of the moderation results.
         self.page_result = page_result
+        # Summary of results
         self.page_summary = page_summary
+        # Risk Level
         self.risk_level = risk_level
-        # The URL of the moderation object.
+        # The URL of the moderated object.
         self.url = url
 
     def validate(self):
@@ -622,13 +641,13 @@ class DescribeFileModerationResultResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The returned HTTP status code.
+        # The returned HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
         # The data returned.
         self.data = data
         # The message that is returned in response to the request.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -2139,7 +2158,9 @@ class ImageModerationResponseBodyDataExtFaceDataBang(TeaModel):
         confidence: float = None,
         value: str = None,
     ):
+        # The confidence level of the bang recognition result. Valid values: 0 to 100. A higher value indicates a more credible result.
         self.confidence = confidence
+        # Indicates whether the recognition result of bangs is available.
         self.value = value
 
     def validate(self):
@@ -2172,7 +2193,13 @@ class ImageModerationResponseBodyDataExtFaceDataGender(TeaModel):
         confidence: float = None,
         value: str = None,
     ):
+        # The confidence level of the gender recognition result. Valid values: 0 to 100. A higher value indicates a more credible result.
         self.confidence = confidence
+        # The gender recognition result. Valid values:
+        # 
+        # - Male
+        # 
+        # - FeMale
         self.value = value
 
     def validate(self):
@@ -2205,7 +2232,15 @@ class ImageModerationResponseBodyDataExtFaceDataHairstyle(TeaModel):
         confidence: float = None,
         value: str = None,
     ):
+        # The confidence level of the hairstyle recognition result. Valid values: 0 to 100. A higher value indicates a more credible result.
         self.confidence = confidence
+        # The hairstyle recognition result. Valid values:
+        # 
+        # - Bald: bald head.
+        # 
+        # - Long: Long hair.
+        # 
+        # - Short: Short hair.
         self.value = value
 
     def validate(self):
@@ -2238,7 +2273,13 @@ class ImageModerationResponseBodyDataExtFaceDataHat(TeaModel):
         confidence: float = None,
         value: str = None,
     ):
+        # The confidence level of the result of wearing the hat. Valid values: 0 to 100. A higher value indicates a more credible result.
         self.confidence = confidence
+        # The recognition result of whether to wear the hat. Valid values:
+        # 
+        # - Wear: Wear a hat.
+        # 
+        # - None: No hat.
         self.value = value
 
     def validate(self):
@@ -2273,9 +2314,13 @@ class ImageModerationResponseBodyDataExtFaceDataLocation(TeaModel):
         x: int = None,
         y: int = None,
     ):
+        # The height of the face area. Unit: pixels.
         self.h = h
+        # The width of the face area. Unit: pixels.
         self.w = w
+        # The distance from the upper-left corner of the face area to the y-axis with the upper-left corner of the image as the coordinate origin. Unit: pixels.
         self.x = x
+        # The distance from the upper-left corner of the face area to the x-axis with the upper-left corner of the image as the coordinate origin. Unit: pixels.
         self.y = y
 
     def validate(self):
@@ -2316,7 +2361,13 @@ class ImageModerationResponseBodyDataExtFaceDataMask(TeaModel):
         confidence: float = None,
         value: str = None,
     ):
+        # The confidence level of the result of wearing the mask. Valid values: 0 to 100. A higher value indicates a more credible result.
         self.confidence = confidence
+        # The recognition result of whether to wear a mask. Valid values:
+        # 
+        # - Wear a mask.
+        # 
+        #  - None: No mask.
         self.value = value
 
     def validate(self):
@@ -2349,7 +2400,13 @@ class ImageModerationResponseBodyDataExtFaceDataMustache(TeaModel):
         confidence: float = None,
         value: str = None,
     ):
+        # The confidence level of the result of the beard. Valid values: 0 to 100. A higher value indicates a more credible result.
         self.confidence = confidence
+        # The identification result of whether there is a beard.Valid values:
+        # 
+        # - Has:have a beard.
+        # 
+        # - None:No beard.
         self.value = value
 
     def validate(self):
@@ -2385,10 +2442,19 @@ class ImageModerationResponseBodyDataExtFaceDataQuality(TeaModel):
         roll: float = None,
         yaw: float = None,
     ):
+        # The blur of the face image. Valid values: 0 to 100. The higher the score, the more fuzzy it is.
+        # Recommended values: 0 to 25.
         self.blur = blur
+        # The integrity of the human face. Recommended values:80 to 100.
         self.integrity = integrity
+        # The head-up or head-down angle of the face.
+        # Recommended values:-30 to 30.
         self.pitch = pitch
+        # The plane rotation angle of the face.
+        # Recommended values:-30 to 30.
         self.roll = roll
+        # The left and right shaking angle of the human face.
+        # Recommended values:-30 to 30.
         self.yaw = yaw
 
     def validate(self):
@@ -2442,16 +2508,33 @@ class ImageModerationResponseBodyDataExtFaceData(TeaModel):
         quality: ImageModerationResponseBodyDataExtFaceDataQuality = None,
         smile: float = None,
     ):
+        # The age recognition result.
         self.age = age
+        # Indicates whether the recognition result of bangs is available.
         self.bang = bang
+        # The gender recognition result.
         self.gender = gender
+        # The recognition result of whether to wear glasses.
+        # 
+        # - None: No glasses.
+        # 
+        # - Wear: Wear glasses.
+        # 
+        # - Sunglass: Wear sunglasses.
         self.glasses = glasses
+        # The hairstyle recognition result.
         self.hairstyle = hairstyle
+        # The recognition result of whether to wear a hat.
         self.hat = hat
+        # The location of the face.
         self.location = location
+        # The recognition result of whether to wear a mask.
         self.mask = mask
+        # The identification result of whether there is a beard.
         self.mustache = mustache
+        # The quality information of the face image.
         self.quality = quality
+        # The smiling degree of the face.
         self.smile = smile
 
     def validate(self):
@@ -3094,6 +3177,7 @@ class ImageModerationResponseBodyDataExt(TeaModel):
     ):
         # If a custom image library is hit, information about the hit custom image library is returned.
         self.custom_image = custom_image
+        # The returned face attribute information
         self.face_data = face_data
         # Logo information.
         self.logo_data = logo_data
@@ -4439,6 +4523,7 @@ class VideoModerationResultResponseBodyDataAudioResultSliceDetails(TeaModel):
         end_timestamp: int = None,
         extend: str = None,
         labels: str = None,
+        risk_level: str = None,
         risk_tips: str = None,
         risk_words: str = None,
         score: float = None,
@@ -4455,6 +4540,7 @@ class VideoModerationResultResponseBodyDataAudioResultSliceDetails(TeaModel):
         self.extend = extend
         # The details of the labels.
         self.labels = labels
+        self.risk_level = risk_level
         # Subcategory labels. Multiple labels are separated by commas (,).
         self.risk_tips = risk_tips
         # The risk words that are hit. Multiple words are separated by commas (,).
@@ -4487,6 +4573,8 @@ class VideoModerationResultResponseBodyDataAudioResultSliceDetails(TeaModel):
             result['Extend'] = self.extend
         if self.labels is not None:
             result['Labels'] = self.labels
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         if self.risk_tips is not None:
             result['RiskTips'] = self.risk_tips
         if self.risk_words is not None:
@@ -4513,6 +4601,8 @@ class VideoModerationResultResponseBodyDataAudioResultSliceDetails(TeaModel):
             self.extend = m.get('Extend')
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         if m.get('RiskTips') is not None:
             self.risk_tips = m.get('RiskTips')
         if m.get('RiskWords') is not None:
@@ -4534,10 +4624,12 @@ class VideoModerationResultResponseBodyDataAudioResult(TeaModel):
     def __init__(
         self,
         audio_summarys: List[VideoModerationResultResponseBodyDataAudioResultAudioSummarys] = None,
+        risk_level: str = None,
         slice_details: List[VideoModerationResultResponseBodyDataAudioResultSliceDetails] = None,
     ):
         # Summary of voice labels.
         self.audio_summarys = audio_summarys
+        self.risk_level = risk_level
         # The details about the text in the moderated voice. The value is a JSON array that contains one or more elements. Each element corresponds to a text entry.
         self.slice_details = slice_details
 
@@ -4561,6 +4653,8 @@ class VideoModerationResultResponseBodyDataAudioResult(TeaModel):
         if self.audio_summarys is not None:
             for k in self.audio_summarys:
                 result['AudioSummarys'].append(k.to_map() if k else None)
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         result['SliceDetails'] = []
         if self.slice_details is not None:
             for k in self.slice_details:
@@ -4574,6 +4668,8 @@ class VideoModerationResultResponseBodyDataAudioResult(TeaModel):
             for k in m.get('AudioSummarys'):
                 temp_model = VideoModerationResultResponseBodyDataAudioResultAudioSummarys()
                 self.audio_summarys.append(temp_model.from_map(k))
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         self.slice_details = []
         if m.get('SliceDetails') is not None:
             for k in m.get('SliceDetails'):
@@ -4585,9 +4681,11 @@ class VideoModerationResultResponseBodyDataAudioResult(TeaModel):
 class VideoModerationResultResponseBodyDataFrameResultFrameSummarys(TeaModel):
     def __init__(
         self,
+        description: str = None,
         label: str = None,
         label_sum: int = None,
     ):
+        self.description = description
         # The label against which a captured frame is matched.
         self.label = label
         # The number of times that the label is matched.
@@ -4602,6 +4700,8 @@ class VideoModerationResultResponseBodyDataFrameResultFrameSummarys(TeaModel):
             return _map
 
         result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
         if self.label is not None:
             result['Label'] = self.label
         if self.label_sum is not None:
@@ -4610,6 +4710,8 @@ class VideoModerationResultResponseBodyDataFrameResultFrameSummarys(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('Label') is not None:
             self.label = m.get('Label')
         if m.get('LabelSum') is not None:
@@ -4684,10 +4786,12 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsResult(TeaMod
     def __init__(
         self,
         confidence: float = None,
+        description: str = None,
         label: str = None,
     ):
         # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places.
         self.confidence = confidence
+        self.description = description
         # The label returned after a frame is moderated. Multiple risk labels and the corresponding scores of confidence levels may be returned for a frame.
         self.label = label
 
@@ -4702,6 +4806,8 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsResult(TeaMod
         result = dict()
         if self.confidence is not None:
             result['Confidence'] = self.confidence
+        if self.description is not None:
+            result['Description'] = self.description
         if self.label is not None:
             result['Label'] = self.label
         return result
@@ -4710,6 +4816,8 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsResult(TeaMod
         m = m or dict()
         if m.get('Confidence') is not None:
             self.confidence = m.get('Confidence')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('Label') is not None:
             self.label = m.get('Label')
         return self
@@ -4802,6 +4910,7 @@ class VideoModerationResultResponseBodyDataFrameResultFrames(TeaModel):
         self,
         offset: float = None,
         results: List[VideoModerationResultResponseBodyDataFrameResultFramesResults] = None,
+        risk_level: str = None,
         temp_url: str = None,
         timestamp: int = None,
     ):
@@ -4809,6 +4918,7 @@ class VideoModerationResultResponseBodyDataFrameResultFrames(TeaModel):
         self.offset = offset
         # The results of frame moderation parameters such as the label parameter and the confidence parameter.
         self.results = results
+        self.risk_level = risk_level
         # The temporary URL of a captured frame. This URL is valid for 30 minutes.
         self.temp_url = temp_url
         # The absolute timestamp. Unit: milliseconds.
@@ -4832,6 +4942,8 @@ class VideoModerationResultResponseBodyDataFrameResultFrames(TeaModel):
         if self.results is not None:
             for k in self.results:
                 result['Results'].append(k.to_map() if k else None)
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         if self.temp_url is not None:
             result['TempUrl'] = self.temp_url
         if self.timestamp is not None:
@@ -4847,6 +4959,8 @@ class VideoModerationResultResponseBodyDataFrameResultFrames(TeaModel):
             for k in m.get('Results'):
                 temp_model = VideoModerationResultResponseBodyDataFrameResultFramesResults()
                 self.results.append(temp_model.from_map(k))
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         if m.get('TempUrl') is not None:
             self.temp_url = m.get('TempUrl')
         if m.get('Timestamp') is not None:
@@ -4860,6 +4974,7 @@ class VideoModerationResultResponseBodyDataFrameResult(TeaModel):
         frame_num: int = None,
         frame_summarys: List[VideoModerationResultResponseBodyDataFrameResultFrameSummarys] = None,
         frames: List[VideoModerationResultResponseBodyDataFrameResultFrames] = None,
+        risk_level: str = None,
     ):
         # The number of captured frames that are returned for the video file.
         self.frame_num = frame_num
@@ -4867,6 +4982,7 @@ class VideoModerationResultResponseBodyDataFrameResult(TeaModel):
         self.frame_summarys = frame_summarys
         # The information about the frames that match the labels.
         self.frames = frames
+        self.risk_level = risk_level
 
     def validate(self):
         if self.frame_summarys:
@@ -4894,6 +5010,8 @@ class VideoModerationResultResponseBodyDataFrameResult(TeaModel):
         if self.frames is not None:
             for k in self.frames:
                 result['Frames'].append(k.to_map() if k else None)
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         return result
 
     def from_map(self, m: dict = None):
@@ -4910,6 +5028,8 @@ class VideoModerationResultResponseBodyDataFrameResult(TeaModel):
             for k in m.get('Frames'):
                 temp_model = VideoModerationResultResponseBodyDataFrameResultFrames()
                 self.frames.append(temp_model.from_map(k))
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         return self
 
 
@@ -4920,6 +5040,7 @@ class VideoModerationResultResponseBodyData(TeaModel):
         data_id: str = None,
         frame_result: VideoModerationResultResponseBodyDataFrameResult = None,
         live_id: str = None,
+        risk_level: str = None,
         task_id: str = None,
     ):
         # The voice moderation results. The moderation results contain a structure.
@@ -4930,6 +5051,7 @@ class VideoModerationResultResponseBodyData(TeaModel):
         self.frame_result = frame_result
         # The unique ID of the live stream.
         self.live_id = live_id
+        self.risk_level = risk_level
         # The task ID.
         self.task_id = task_id
 
@@ -4953,6 +5075,8 @@ class VideoModerationResultResponseBodyData(TeaModel):
             result['FrameResult'] = self.frame_result.to_map()
         if self.live_id is not None:
             result['LiveId'] = self.live_id
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         return result
@@ -4969,6 +5093,8 @@ class VideoModerationResultResponseBodyData(TeaModel):
             self.frame_result = temp_model.from_map(m['FrameResult'])
         if m.get('LiveId') is not None:
             self.live_id = m.get('LiveId')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         return self

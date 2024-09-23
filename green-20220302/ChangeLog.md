@@ -1,3 +1,7 @@
+2024-09-23 Version: 2.2.13
+- Update API VideoModerationResult: update response param.
+
+
 2024-09-13 Version: 2.2.12
 - Update API DescribeFileModerationResult: update response param.
 - Update API ImageModeration: update response param.
