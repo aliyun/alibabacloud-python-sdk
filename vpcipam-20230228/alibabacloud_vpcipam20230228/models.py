@@ -267,6 +267,39 @@ class ChangeResourceGroupResponse(TeaModel):
         return self
 
 
+class CreateIpamRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateIpamRequest(TeaModel):
     def __init__(
         self,
@@ -281,6 +314,7 @@ class CreateIpamRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tag: List[CreateIpamRequestTag] = None,
     ):
         self.client_token = client_token
         self.dry_run = dry_run
@@ -295,9 +329,13 @@ class CreateIpamRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -327,6 +365,10 @@ class CreateIpamRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -353,6 +395,11 @@ class CreateIpamRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateIpamRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -460,12 +507,46 @@ class CreateIpamResponse(TeaModel):
         return self
 
 
+class CreateIpamPoolRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateIpamPoolRequest(TeaModel):
     def __init__(
         self,
         allocation_default_cidr_mask: int = None,
         allocation_max_cidr_mask: int = None,
         allocation_min_cidr_mask: int = None,
+        auto_import: bool = None,
         client_token: str = None,
         dry_run: bool = None,
         ip_version: str = None,
@@ -479,10 +560,12 @@ class CreateIpamPoolRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         source_ipam_pool_id: str = None,
+        tag: List[CreateIpamPoolRequestTag] = None,
     ):
         self.allocation_default_cidr_mask = allocation_default_cidr_mask
         self.allocation_max_cidr_mask = allocation_max_cidr_mask
         self.allocation_min_cidr_mask = allocation_min_cidr_mask
+        self.auto_import = auto_import
         self.client_token = client_token
         self.dry_run = dry_run
         self.ip_version = ip_version
@@ -498,9 +581,13 @@ class CreateIpamPoolRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.source_ipam_pool_id = source_ipam_pool_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -514,6 +601,8 @@ class CreateIpamPoolRequest(TeaModel):
             result['AllocationMaxCidrMask'] = self.allocation_max_cidr_mask
         if self.allocation_min_cidr_mask is not None:
             result['AllocationMinCidrMask'] = self.allocation_min_cidr_mask
+        if self.auto_import is not None:
+            result['AutoImport'] = self.auto_import
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.dry_run is not None:
@@ -540,6 +629,10 @@ class CreateIpamPoolRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.source_ipam_pool_id is not None:
             result['SourceIpamPoolId'] = self.source_ipam_pool_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -550,6 +643,8 @@ class CreateIpamPoolRequest(TeaModel):
             self.allocation_max_cidr_mask = m.get('AllocationMaxCidrMask')
         if m.get('AllocationMinCidrMask') is not None:
             self.allocation_min_cidr_mask = m.get('AllocationMinCidrMask')
+        if m.get('AutoImport') is not None:
+            self.auto_import = m.get('AutoImport')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DryRun') is not None:
@@ -576,6 +671,11 @@ class CreateIpamPoolRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SourceIpamPoolId') is not None:
             self.source_ipam_pool_id = m.get('SourceIpamPoolId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateIpamPoolRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -798,6 +898,39 @@ class CreateIpamPoolAllocationResponse(TeaModel):
         return self
 
 
+class CreateIpamScopeRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateIpamScopeRequest(TeaModel):
     def __init__(
         self,
@@ -812,6 +945,7 @@ class CreateIpamScopeRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tag: List[CreateIpamScopeRequestTag] = None,
     ):
         self.client_token = client_token
         self.dry_run = dry_run
@@ -826,9 +960,13 @@ class CreateIpamScopeRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -858,6 +996,10 @@ class CreateIpamScopeRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -884,6 +1026,11 @@ class CreateIpamScopeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateIpamScopeRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -1771,6 +1918,7 @@ class ListIpamPoolAllocationsRequest(TeaModel):
     ):
         self.cidr = cidr
         self.ipam_pool_allocation_ids = ipam_pool_allocation_ids
+        # This parameter is required.
         self.ipam_pool_id = ipam_pool_id
         self.max_results = max_results
         self.next_token = next_token
@@ -1907,12 +2055,14 @@ class ListIpamPoolAllocationsResponseBodyIpamPoolAllocations(TeaModel):
 class ListIpamPoolAllocationsResponseBody(TeaModel):
     def __init__(
         self,
+        count: int = None,
         ipam_pool_allocations: List[ListIpamPoolAllocationsResponseBodyIpamPoolAllocations] = None,
         max_results: int = None,
         next_token: str = None,
         request_id: str = None,
         total_count: int = None,
     ):
+        self.count = count
         self.ipam_pool_allocations = ipam_pool_allocations
         self.max_results = max_results
         self.next_token = next_token
@@ -1931,6 +2081,8 @@ class ListIpamPoolAllocationsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
         result['IpamPoolAllocations'] = []
         if self.ipam_pool_allocations is not None:
             for k in self.ipam_pool_allocations:
@@ -1947,6 +2099,8 @@ class ListIpamPoolAllocationsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
         self.ipam_pool_allocations = []
         if m.get('IpamPoolAllocations') is not None:
             for k in m.get('IpamPoolAllocations'):
@@ -2099,12 +2253,14 @@ class ListIpamPoolCidrsResponseBodyIpamPoolCidrs(TeaModel):
 class ListIpamPoolCidrsResponseBody(TeaModel):
     def __init__(
         self,
+        count: int = None,
         ipam_pool_cidrs: List[ListIpamPoolCidrsResponseBodyIpamPoolCidrs] = None,
         max_results: int = None,
         next_token: str = None,
         request_id: str = None,
         total_count: int = None,
     ):
+        self.count = count
         self.ipam_pool_cidrs = ipam_pool_cidrs
         self.max_results = max_results
         self.next_token = next_token
@@ -2123,6 +2279,8 @@ class ListIpamPoolCidrsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
         result['IpamPoolCidrs'] = []
         if self.ipam_pool_cidrs is not None:
             for k in self.ipam_pool_cidrs:
@@ -2139,6 +2297,8 @@ class ListIpamPoolCidrsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
         self.ipam_pool_cidrs = []
         if m.get('IpamPoolCidrs') is not None:
             for k in m.get('IpamPoolCidrs'):
@@ -2235,6 +2395,7 @@ class ListIpamPoolsRequest(TeaModel):
         ipam_pool_ids: List[str] = None,
         ipam_pool_name: str = None,
         ipam_scope_id: str = None,
+        is_shared: bool = None,
         max_results: int = None,
         next_token: str = None,
         owner_account: str = None,
@@ -2250,6 +2411,7 @@ class ListIpamPoolsRequest(TeaModel):
         self.ipam_pool_ids = ipam_pool_ids
         self.ipam_pool_name = ipam_pool_name
         self.ipam_scope_id = ipam_scope_id
+        self.is_shared = is_shared
         self.max_results = max_results
         self.next_token = next_token
         self.owner_account = owner_account
@@ -2281,6 +2443,8 @@ class ListIpamPoolsRequest(TeaModel):
             result['IpamPoolName'] = self.ipam_pool_name
         if self.ipam_scope_id is not None:
             result['IpamScopeId'] = self.ipam_scope_id
+        if self.is_shared is not None:
+            result['IsShared'] = self.is_shared
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -2315,6 +2479,8 @@ class ListIpamPoolsRequest(TeaModel):
             self.ipam_pool_name = m.get('IpamPoolName')
         if m.get('IpamScopeId') is not None:
             self.ipam_scope_id = m.get('IpamScopeId')
+        if m.get('IsShared') is not None:
+            self.is_shared = m.get('IsShared')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -2382,6 +2548,7 @@ class ListIpamPoolsResponseBodyIpamPools(TeaModel):
         allocation_default_cidr_mask: int = None,
         allocation_max_cidr_mask: int = None,
         allocation_min_cidr_mask: int = None,
+        auto_import: bool = None,
         create_time: str = None,
         has_sub_pool: bool = None,
         ip_version: str = None,
@@ -2392,6 +2559,7 @@ class ListIpamPoolsResponseBodyIpamPools(TeaModel):
         ipam_region_id: str = None,
         ipam_scope_id: str = None,
         ipam_scope_type: str = None,
+        is_shared: bool = None,
         owner_id: int = None,
         pool_depth: int = None,
         pool_region_id: str = None,
@@ -2403,6 +2571,7 @@ class ListIpamPoolsResponseBodyIpamPools(TeaModel):
         self.allocation_default_cidr_mask = allocation_default_cidr_mask
         self.allocation_max_cidr_mask = allocation_max_cidr_mask
         self.allocation_min_cidr_mask = allocation_min_cidr_mask
+        self.auto_import = auto_import
         self.create_time = create_time
         self.has_sub_pool = has_sub_pool
         self.ip_version = ip_version
@@ -2413,6 +2582,7 @@ class ListIpamPoolsResponseBodyIpamPools(TeaModel):
         self.ipam_region_id = ipam_region_id
         self.ipam_scope_id = ipam_scope_id
         self.ipam_scope_type = ipam_scope_type
+        self.is_shared = is_shared
         self.owner_id = owner_id
         self.pool_depth = pool_depth
         self.pool_region_id = pool_region_id
@@ -2439,6 +2609,8 @@ class ListIpamPoolsResponseBodyIpamPools(TeaModel):
             result['AllocationMaxCidrMask'] = self.allocation_max_cidr_mask
         if self.allocation_min_cidr_mask is not None:
             result['AllocationMinCidrMask'] = self.allocation_min_cidr_mask
+        if self.auto_import is not None:
+            result['AutoImport'] = self.auto_import
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.has_sub_pool is not None:
@@ -2459,6 +2631,8 @@ class ListIpamPoolsResponseBodyIpamPools(TeaModel):
             result['IpamScopeId'] = self.ipam_scope_id
         if self.ipam_scope_type is not None:
             result['IpamScopeType'] = self.ipam_scope_type
+        if self.is_shared is not None:
+            result['IsShared'] = self.is_shared
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.pool_depth is not None:
@@ -2485,6 +2659,8 @@ class ListIpamPoolsResponseBodyIpamPools(TeaModel):
             self.allocation_max_cidr_mask = m.get('AllocationMaxCidrMask')
         if m.get('AllocationMinCidrMask') is not None:
             self.allocation_min_cidr_mask = m.get('AllocationMinCidrMask')
+        if m.get('AutoImport') is not None:
+            self.auto_import = m.get('AutoImport')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('HasSubPool') is not None:
@@ -2505,6 +2681,8 @@ class ListIpamPoolsResponseBodyIpamPools(TeaModel):
             self.ipam_scope_id = m.get('IpamScopeId')
         if m.get('IpamScopeType') is not None:
             self.ipam_scope_type = m.get('IpamScopeType')
+        if m.get('IsShared') is not None:
+            self.is_shared = m.get('IsShared')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('PoolDepth') is not None:
@@ -2528,12 +2706,14 @@ class ListIpamPoolsResponseBodyIpamPools(TeaModel):
 class ListIpamPoolsResponseBody(TeaModel):
     def __init__(
         self,
+        count: int = None,
         ipam_pools: List[ListIpamPoolsResponseBodyIpamPools] = None,
         max_results: int = None,
         next_token: str = None,
         request_id: str = None,
         total_count: int = None,
     ):
+        self.count = count
         self.ipam_pools = ipam_pools
         self.max_results = max_results
         self.next_token = next_token
@@ -2552,6 +2732,8 @@ class ListIpamPoolsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
         result['IpamPools'] = []
         if self.ipam_pools is not None:
             for k in self.ipam_pools:
@@ -2568,6 +2750,8 @@ class ListIpamPoolsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
         self.ipam_pools = []
         if m.get('IpamPools') is not None:
             for k in m.get('IpamPools'):
@@ -2636,6 +2820,7 @@ class ListIpamResourceCidrsRequest(TeaModel):
         resource_id: str = None,
         resource_owner_id: int = None,
         resource_type: str = None,
+        vpc_id: str = None,
     ):
         self.ipam_pool_id = ipam_pool_id
         self.ipam_scope_id = ipam_scope_id
@@ -2646,6 +2831,7 @@ class ListIpamResourceCidrsRequest(TeaModel):
         self.resource_id = resource_id
         self.resource_owner_id = resource_owner_id
         self.resource_type = resource_type
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -2672,6 +2858,8 @@ class ListIpamResourceCidrsRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2692,6 +2880,8 @@ class ListIpamResourceCidrsRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -2714,6 +2904,7 @@ class ListIpamResourceCidrsResponseBodyIpamResourceCidrs(TeaModel):
         resource_type: str = None,
         source_cidr: str = None,
         status: str = None,
+        vpc_id: str = None,
     ):
         self.ali_uid = ali_uid
         self.cidr = cidr
@@ -2731,6 +2922,7 @@ class ListIpamResourceCidrsResponseBodyIpamResourceCidrs(TeaModel):
         self.resource_type = resource_type
         self.source_cidr = source_cidr
         self.status = status
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -2773,6 +2965,8 @@ class ListIpamResourceCidrsResponseBodyIpamResourceCidrs(TeaModel):
             result['SourceCidr'] = self.source_cidr
         if self.status is not None:
             result['Status'] = self.status
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2809,18 +3003,22 @@ class ListIpamResourceCidrsResponseBodyIpamResourceCidrs(TeaModel):
             self.source_cidr = m.get('SourceCidr')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
 class ListIpamResourceCidrsResponseBody(TeaModel):
     def __init__(
         self,
+        count: int = None,
         ipam_resource_cidrs: List[ListIpamResourceCidrsResponseBodyIpamResourceCidrs] = None,
         max_results: int = None,
         next_token: str = None,
         request_id: str = None,
         total_count: int = None,
     ):
+        self.count = count
         self.ipam_resource_cidrs = ipam_resource_cidrs
         self.max_results = max_results
         self.next_token = next_token
@@ -2839,6 +3037,8 @@ class ListIpamResourceCidrsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
         result['IpamResourceCidrs'] = []
         if self.ipam_resource_cidrs is not None:
             for k in self.ipam_resource_cidrs:
@@ -2855,6 +3055,8 @@ class ListIpamResourceCidrsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
         self.ipam_resource_cidrs = []
         if m.get('IpamResourceCidrs') is not None:
             for k in m.get('IpamResourceCidrs'):
@@ -3190,12 +3392,14 @@ class ListIpamScopesResponseBodyIpamScopes(TeaModel):
 class ListIpamScopesResponseBody(TeaModel):
     def __init__(
         self,
+        count: int = None,
         ipam_scopes: List[ListIpamScopesResponseBodyIpamScopes] = None,
         max_results: int = None,
         next_token: str = None,
         request_id: str = None,
         total_count: int = None,
     ):
+        self.count = count
         self.ipam_scopes = ipam_scopes
         self.max_results = max_results
         self.next_token = next_token
@@ -3214,6 +3418,8 @@ class ListIpamScopesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
         result['IpamScopes'] = []
         if self.ipam_scopes is not None:
             for k in self.ipam_scopes:
@@ -3230,6 +3436,8 @@ class ListIpamScopesResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
         self.ipam_scopes = []
         if m.get('IpamScopes') is not None:
             for k in m.get('IpamScopes'):
@@ -3577,12 +3785,14 @@ class ListIpamsResponseBodyIpams(TeaModel):
 class ListIpamsResponseBody(TeaModel):
     def __init__(
         self,
+        count: int = None,
         ipams: List[ListIpamsResponseBodyIpams] = None,
         max_results: int = None,
         next_token: str = None,
         request_id: str = None,
         total_count: int = None,
     ):
+        self.count = count
         self.ipams = ipams
         self.max_results = max_results
         self.next_token = next_token
@@ -3601,6 +3811,8 @@ class ListIpamsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
         result['Ipams'] = []
         if self.ipams is not None:
             for k in self.ipams:
@@ -3617,6 +3829,8 @@ class ListIpamsResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
         self.ipams = []
         if m.get('Ipams') is not None:
             for k in m.get('Ipams'):
@@ -4566,6 +4780,7 @@ class UpdateIpamPoolRequest(TeaModel):
         allocation_default_cidr_mask: int = None,
         allocation_max_cidr_mask: int = None,
         allocation_min_cidr_mask: int = None,
+        auto_import: bool = None,
         clear_allocation_default_cidr_mask: bool = None,
         client_token: str = None,
         dry_run: bool = None,
@@ -4581,6 +4796,7 @@ class UpdateIpamPoolRequest(TeaModel):
         self.allocation_default_cidr_mask = allocation_default_cidr_mask
         self.allocation_max_cidr_mask = allocation_max_cidr_mask
         self.allocation_min_cidr_mask = allocation_min_cidr_mask
+        self.auto_import = auto_import
         self.clear_allocation_default_cidr_mask = clear_allocation_default_cidr_mask
         self.client_token = client_token
         self.dry_run = dry_run
@@ -4610,6 +4826,8 @@ class UpdateIpamPoolRequest(TeaModel):
             result['AllocationMaxCidrMask'] = self.allocation_max_cidr_mask
         if self.allocation_min_cidr_mask is not None:
             result['AllocationMinCidrMask'] = self.allocation_min_cidr_mask
+        if self.auto_import is not None:
+            result['AutoImport'] = self.auto_import
         if self.clear_allocation_default_cidr_mask is not None:
             result['ClearAllocationDefaultCidrMask'] = self.clear_allocation_default_cidr_mask
         if self.client_token is not None:
@@ -4642,6 +4860,8 @@ class UpdateIpamPoolRequest(TeaModel):
             self.allocation_max_cidr_mask = m.get('AllocationMaxCidrMask')
         if m.get('AllocationMinCidrMask') is not None:
             self.allocation_min_cidr_mask = m.get('AllocationMinCidrMask')
+        if m.get('AutoImport') is not None:
+            self.auto_import = m.get('AutoImport')
         if m.get('ClearAllocationDefaultCidrMask') is not None:
             self.clear_allocation_default_cidr_mask = m.get('ClearAllocationDefaultCidrMask')
         if m.get('ClientToken') is not None:

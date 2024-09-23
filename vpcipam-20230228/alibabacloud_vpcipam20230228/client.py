@@ -297,6 +297,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -352,6 +354,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -415,6 +419,8 @@ class Client(OpenApiClient):
             query['AllocationMaxCidrMask'] = request.allocation_max_cidr_mask
         if not UtilClient.is_unset(request.allocation_min_cidr_mask):
             query['AllocationMinCidrMask'] = request.allocation_min_cidr_mask
+        if not UtilClient.is_unset(request.auto_import):
+            query['AutoImport'] = request.auto_import
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
@@ -441,6 +447,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.source_ipam_pool_id):
             query['SourceIpamPoolId'] = request.source_ipam_pool_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -478,6 +486,8 @@ class Client(OpenApiClient):
             query['AllocationMaxCidrMask'] = request.allocation_max_cidr_mask
         if not UtilClient.is_unset(request.allocation_min_cidr_mask):
             query['AllocationMinCidrMask'] = request.allocation_min_cidr_mask
+        if not UtilClient.is_unset(request.auto_import):
+            query['AutoImport'] = request.auto_import
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
@@ -504,6 +514,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.source_ipam_pool_id):
             query['SourceIpamPoolId'] = request.source_ipam_pool_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -687,6 +699,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -740,6 +754,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1687,6 +1703,8 @@ class Client(OpenApiClient):
             query['IpamPoolName'] = request.ipam_pool_name
         if not UtilClient.is_unset(request.ipam_scope_id):
             query['IpamScopeId'] = request.ipam_scope_id
+        if not UtilClient.is_unset(request.is_shared):
+            query['IsShared'] = request.is_shared
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -1746,6 +1764,8 @@ class Client(OpenApiClient):
             query['IpamPoolName'] = request.ipam_pool_name
         if not UtilClient.is_unset(request.ipam_scope_id):
             query['IpamScopeId'] = request.ipam_scope_id
+        if not UtilClient.is_unset(request.is_shared):
+            query['IsShared'] = request.is_shared
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -1837,6 +1857,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1884,6 +1906,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2855,6 +2879,8 @@ class Client(OpenApiClient):
             query['AllocationMaxCidrMask'] = request.allocation_max_cidr_mask
         if not UtilClient.is_unset(request.allocation_min_cidr_mask):
             query['AllocationMinCidrMask'] = request.allocation_min_cidr_mask
+        if not UtilClient.is_unset(request.auto_import):
+            query['AutoImport'] = request.auto_import
         if not UtilClient.is_unset(request.clear_allocation_default_cidr_mask):
             query['ClearAllocationDefaultCidrMask'] = request.clear_allocation_default_cidr_mask
         if not UtilClient.is_unset(request.client_token):
@@ -2914,6 +2940,8 @@ class Client(OpenApiClient):
             query['AllocationMaxCidrMask'] = request.allocation_max_cidr_mask
         if not UtilClient.is_unset(request.allocation_min_cidr_mask):
             query['AllocationMinCidrMask'] = request.allocation_min_cidr_mask
+        if not UtilClient.is_unset(request.auto_import):
+            query['AutoImport'] = request.auto_import
         if not UtilClient.is_unset(request.clear_allocation_default_cidr_mask):
             query['ClearAllocationDefaultCidrMask'] = request.clear_allocation_default_cidr_mask
         if not UtilClient.is_unset(request.client_token):
