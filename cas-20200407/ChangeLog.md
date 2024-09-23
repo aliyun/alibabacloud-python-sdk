@@ -1,3 +1,7 @@
+2024-09-23 Version: 2.0.1
+- Update API GetUserCertificateDetail: update response param.
+
+
 2024-08-30 Version: 2.0.0
 - Delete API CreateWHClientCertificate.
 - Delete API RevokeWHClientCertificate.

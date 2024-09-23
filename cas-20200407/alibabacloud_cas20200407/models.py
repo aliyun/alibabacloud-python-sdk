@@ -1531,6 +1531,8 @@ class DeletePCACertRequest(TeaModel):
         self,
         identifier: str = None,
     ):
+        # The unique identifier of the certificate. You can call the [ListCert](https://help.aliyun.com/document_detail/452331.html) operation to query the unique identifiers of certificates.
+        # 
         # This parameter is required.
         self.identifier = identifier
 
@@ -1559,6 +1561,7 @@ class DeletePCACertResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3301,6 +3304,7 @@ class GetUserCertificateDetailResponseBody(TeaModel):
         algorithm: str = None,
         buy_in_aliyun: bool = None,
         cert: str = None,
+        cert_identifier: str = None,
         city: str = None,
         common: str = None,
         country: str = None,
@@ -3335,6 +3339,8 @@ class GetUserCertificateDetailResponseBody(TeaModel):
         self.buy_in_aliyun = buy_in_aliyun
         # The content of the certificate if the certificate does not use an SM algorithm. If certFilter is set to false, this parameter is returned. Otherwise, this parameter is not returned.
         self.cert = cert
+        # The unique identifier of the certificate. The value of this parameter must be in the {Certificate ID}-cn-hangzhou format.
+        self.cert_identifier = cert_identifier
         # The city of the company or organization to which the certificate purchaser belongs.
         self.city = city
         # The primary domain name that is bound to the certificate.
@@ -3402,6 +3408,8 @@ class GetUserCertificateDetailResponseBody(TeaModel):
             result['BuyInAliyun'] = self.buy_in_aliyun
         if self.cert is not None:
             result['Cert'] = self.cert
+        if self.cert_identifier is not None:
+            result['CertIdentifier'] = self.cert_identifier
         if self.city is not None:
             result['City'] = self.city
         if self.common is not None:
@@ -3460,6 +3468,8 @@ class GetUserCertificateDetailResponseBody(TeaModel):
             self.buy_in_aliyun = m.get('BuyInAliyun')
         if m.get('Cert') is not None:
             self.cert = m.get('Cert')
+        if m.get('CertIdentifier') is not None:
+            self.cert_identifier = m.get('CertIdentifier')
         if m.get('City') is not None:
             self.city = m.get('City')
         if m.get('Common') is not None:
