@@ -1,3 +1,17 @@
+2024-09-24 Version: 1.2.0
+- Support API BatchSetDesktopManager.
+- Support API DescribeOrgs.
+- Update API CreateUsers: add param IsLocalAdmin.
+- Update API CreateUsers: add param PasswordExpireDays.
+- Update API DescribeUsers: add param FilterWithAssignedResources.
+- Update API DescribeUsers: add param ShowExtras.
+- Update API DescribeUsers: update param BizType.
+- Update API DescribeUsers: update param SolutionId.
+- Update API DescribeUsers: update response param.
+- Update API FilterUsers: add param Status.
+- Update API FilterUsers: update response param.
+
+
 2024-01-16 Version: 1.1.1
 - Generated python 2021-03-08 for eds-user.
 

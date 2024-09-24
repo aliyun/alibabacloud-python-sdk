@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import List, Dict, Any
 
 
 class GroupResources(TeaModel):
@@ -102,11 +102,116 @@ class WaIdPermissions(TeaModel):
         return self
 
 
+class BatchSetDesktopManagerRequest(TeaModel):
+    def __init__(
+        self,
+        is_desktop_manager: str = None,
+        users: List[str] = None,
+    ):
+        self.is_desktop_manager = is_desktop_manager
+        # This parameter is required.
+        self.users = users
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_desktop_manager is not None:
+            result['IsDesktopManager'] = self.is_desktop_manager
+        if self.users is not None:
+            result['Users'] = self.users
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsDesktopManager') is not None:
+            self.is_desktop_manager = m.get('IsDesktopManager')
+        if m.get('Users') is not None:
+            self.users = m.get('Users')
+        return self
+
+
+class BatchSetDesktopManagerResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class BatchSetDesktopManagerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchSetDesktopManagerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchSetDesktopManagerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckUsedPropertyRequest(TeaModel):
     def __init__(
         self,
         property_id: int = None,
     ):
+        # The ID of the property. You can call the [ListProperty](https://help.aliyun.com/document_detail/410890.html) operation to query the property ID.
+        # 
+        # This parameter is required.
         self.property_id = property_id
 
     def validate(self):
@@ -135,7 +240,9 @@ class CheckUsedPropertyResponseBody(TeaModel):
         request_id: str = None,
         use_count: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The number of convenience users that are associated with the property.
         self.use_count = use_count
 
     def validate(self):
@@ -174,9 +281,6 @@ class CheckUsedPropertyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -212,9 +316,13 @@ class CheckUsedPropertyValueRequest(TeaModel):
         property_id: int = None,
         property_value_id: int = None,
     ):
-        # The ID of the property.
+        # The property ID. You can call the [ListProperty](~~ListProperty~~) operation to query property ID.
+        # 
+        # This parameter is required.
         self.property_id = property_id
-        # The ID of the property value.
+        # The ID of the property value. You can call the [ListProperty](~~ListProperty~~) operation to query the ID of the property value.
+        # 
+        # This parameter is required.
         self.property_value_id = property_value_id
 
     def validate(self):
@@ -288,9 +396,6 @@ class CheckUsedPropertyValueResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -326,7 +431,11 @@ class CreatePropertyRequest(TeaModel):
         property_key: str = None,
         property_values: List[str] = None,
     ):
+        # The property name.
+        # 
+        # This parameter is required.
         self.property_key = property_key
+        # The values of the property. You can specify up to 50 values for a property.
         self.property_values = property_values
 
     def validate(self):
@@ -361,9 +470,13 @@ class CreatePropertyResponseBodyCreateResultSavePropertyValueModelFailedProperty
         property_id: int = None,
         property_value: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The ID of the property value.
         self.property_id = property_id
+        # The value of the property.
         self.property_value = property_value
 
     def validate(self):
@@ -404,7 +517,9 @@ class CreatePropertyResponseBodyCreateResultSavePropertyValueModelSavePropertyVa
         property_value: str = None,
         property_value_id: int = None,
     ):
+        # The value of the property.
         self.property_value = property_value
+        # The ID of the property value.
         self.property_value_id = property_value_id
 
     def validate(self):
@@ -437,7 +552,9 @@ class CreatePropertyResponseBodyCreateResultSavePropertyValueModel(TeaModel):
         failed_property_values: List[CreatePropertyResponseBodyCreateResultSavePropertyValueModelFailedPropertyValues] = None,
         save_property_values: List[CreatePropertyResponseBodyCreateResultSavePropertyValueModelSavePropertyValues] = None,
     ):
+        # The property values that failed to be created.
         self.failed_property_values = failed_property_values
+        # Details of the property values that were created.
         self.save_property_values = save_property_values
 
     def validate(self):
@@ -488,8 +605,11 @@ class CreatePropertyResponseBodyCreateResult(TeaModel):
         property_key: str = None,
         save_property_value_model: CreatePropertyResponseBodyCreateResultSavePropertyValueModel = None,
     ):
+        # The ID of the property.
         self.property_id = property_id
+        # The name of the property.
         self.property_key = property_key
+        # The result of creating the property value.
         self.save_property_value_model = save_property_value_model
 
     def validate(self):
@@ -528,7 +648,9 @@ class CreatePropertyResponseBody(TeaModel):
         create_result: CreatePropertyResponseBodyCreateResult = None,
         request_id: str = None,
     ):
+        # The result of creating the property.
         self.create_result = create_result
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -569,9 +691,6 @@ class CreatePropertyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -613,20 +732,30 @@ class CreateUsersRequestUsers(TeaModel):
         real_nick_name: str = None,
         remark: str = None,
     ):
-        # The email address of the end user. The email address is used to receive notifications about events such as desktop assignment. You must specify an email address or a mobile number to receive notifications.
+        # The email address of the convenience user. The email address is used to receive notifications about events such as desktop assignment. You must specify an email address or a mobile number to receive notifications.
         self.email = email
-        # The name of the end user. The name must be 3 to 24 characters in length, and can contain lowercase letters, digits, and underscores (\_).
+        # The username of the convenience user. The name can contain lowercase letters, digits, and underscores (_), and must be 3 to 24 characters in length.
+        # 
+        # This parameter is required.
         self.end_user_id = end_user_id
-        # The organization to which the end user belongs.
+        # The organization to which the convenience user belongs.
         self.org_id = org_id
         # The type of the account ownership.
+        # 
+        # Valid values:
+        # 
+        # *   CreateFromManager: administrator-activated
+        # *   Normal: user-activated
         self.owner_type = owner_type
-        # The password of the end user.
+        # The user password.
+        # 
+        # >  The password must be at least 10 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (excluding spaces).
         self.password = password
         # Mobile numbers are not supported on the international site (alibabacloud.com).
         self.phone = phone
+        # The display name of the end user.
         self.real_nick_name = real_nick_name
-        # The remarks of the end user.
+        # The remarks on the convenience user.
         self.remark = remark
 
     def validate(self):
@@ -681,13 +810,20 @@ class CreateUsersRequest(TeaModel):
     def __init__(
         self,
         auto_lock_time: str = None,
+        is_local_admin: bool = None,
         password: str = None,
+        password_expire_days: str = None,
         users: List[CreateUsersRequestUsers] = None,
     ):
+        # The date on which the convenience users are automatically locked.
         self.auto_lock_time = auto_lock_time
+        self.is_local_admin = is_local_admin
         # The initial password. If this parameter is left empty, an email for password reset is sent to the specified email address.
         self.password = password
-        # Details of the convenience users.
+        self.password_expire_days = password_expire_days
+        # The information about the convenience user.
+        # 
+        # This parameter is required.
         self.users = users
 
     def validate(self):
@@ -704,8 +840,12 @@ class CreateUsersRequest(TeaModel):
         result = dict()
         if self.auto_lock_time is not None:
             result['AutoLockTime'] = self.auto_lock_time
+        if self.is_local_admin is not None:
+            result['IsLocalAdmin'] = self.is_local_admin
         if self.password is not None:
             result['Password'] = self.password
+        if self.password_expire_days is not None:
+            result['PasswordExpireDays'] = self.password_expire_days
         result['Users'] = []
         if self.users is not None:
             for k in self.users:
@@ -716,8 +856,12 @@ class CreateUsersRequest(TeaModel):
         m = m or dict()
         if m.get('AutoLockTime') is not None:
             self.auto_lock_time = m.get('AutoLockTime')
+        if m.get('IsLocalAdmin') is not None:
+            self.is_local_admin = m.get('IsLocalAdmin')
         if m.get('Password') is not None:
             self.password = m.get('Password')
+        if m.get('PasswordExpireDays') is not None:
+            self.password_expire_days = m.get('PasswordExpireDays')
         self.users = []
         if m.get('Users') is not None:
             for k in m.get('Users'):
@@ -741,6 +885,7 @@ class CreateUsersResponseBodyCreateResultCreatedUsers(TeaModel):
         self.end_user_id = end_user_id
         # The mobile number of the end user.
         self.phone = phone
+        # The display name of the end user.
         self.real_nick_name = real_nick_name
         # The remarks of the end user.
         self.remark = remark
@@ -938,9 +1083,6 @@ class CreateUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -977,10 +1119,17 @@ class DeleteUserPropertyValueRequest(TeaModel):
         property_value_id: int = None,
         user_id: int = None,
     ):
-        # DeleteUserPropertyValue
+        # The property ID.
+        # 
+        # This parameter is required.
         self.property_id = property_id
+        # The ID of the property value.
+        # 
+        # This parameter is required.
         self.property_value_id = property_value_id
-        # Dissociates a user property from a user.
+        # The ID of the convenience user.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -1016,6 +1165,7 @@ class DeleteUserPropertyValueResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1050,9 +1200,6 @@ class DeleteUserPropertyValueResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1091,16 +1238,16 @@ class DescribeMfaDevicesRequest(TeaModel):
         next_token: str = None,
         serial_numbers: List[str] = None,
     ):
+        # The domain of the Active Directory (AD) workspace.
         self.ad_domain = ad_domain
-        # The list of username of convenience users.
+        # The usernames of the convenience users.
         self.end_user_ids = end_user_ids
-        # The maximum number of entries to return. Valid values: 1 to 500.
-        # 
+        # The maximum number of entries to return. Valid values: 1 to 500.\\
         # Default value: 100.
         self.max_results = max_results
-        # The query token. Set the value to the NextToken value returned in the last call.
+        # The pagination token that is used in the next request to retrieve a new page of results. Set the value to the token that is obtained from the previous query.
         self.next_token = next_token
-        # The list of serial numbers of the virtual MFA devices.
+        # The serial numbers of the virtual MFA devices.
         self.serial_numbers = serial_numbers
 
     def validate(self):
@@ -1152,27 +1299,49 @@ class DescribeMfaDevicesResponseBodyMfaDevices(TeaModel):
         serial_number: str = None,
         status: str = None,
     ):
-        # The number of consecutive failures to bind the virtual MFA device, or the number of MFA failures based on the virtual MFA device.
+        # The number of consecutive failures to bind the virtual MFA device, or the number of authentication failures based on the virtual MFA device.
         self.consecutive_fails = consecutive_fails
-        # The types of the virtual MFA device. Set the value to TOTP_VIRTUAL, which indicates that the virtual MFA devices follow the Time-based One-time Password (TOTP) algorithm.
+        # The type of the virtual MFA device. The value can only be TOTP_VIRTUAL. This value indicates that the virtual MFA device follows the Time-based One-time Password (TOTP) algorithm.
         self.device_type = device_type
-        # This parameter is unavailable.
+        # >  This parameter is not publicly available.
         self.email = email
         # The username of the convenience user that uses the virtual MFA device.
         self.end_user_id = end_user_id
         # The time when the virtual MFA device was enabled. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.gmt_enabled = gmt_enabled
-        # The time when a locked virtual MFA device is automatically unlocked. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the locked virtual MFA device was automatically unlocked. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.gmt_unlock = gmt_unlock
-        # This parameter is unavailable.
+        # >  This parameter is not publicly available.
         self.id = id
-        # The serial number of the virtual MFA device, which is a unique identifier.
+        # The serial number of the virtual MFA device. The serial number is unique for each device.
         self.serial_number = serial_number
-        # The status of the virtual MFA device. Valid values:
+        # The status of the virtual MFA device.
+        # 
+        # Valid values:
+        # 
+        # *   LOCKED
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         # 
         # *   UNBOUND
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
         # *   NORMAL
-        # *   LOCKED
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.status = status
 
     def validate(self):
@@ -1234,11 +1403,11 @@ class DescribeMfaDevicesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # Details about the virtual MFA devices.
+        # The information about the virtual MFA devices.
         self.mfa_devices = mfa_devices
-        # The token that determines the start point of the next query.
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1289,9 +1458,6 @@ class DescribeMfaDevicesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1321,6 +1487,189 @@ class DescribeMfaDevicesResponse(TeaModel):
         return self
 
 
+class DescribeOrgsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        org_name: str = None,
+        parent_org_id: str = None,
+    ):
+        # The maximum number of entries to return. Valid values: 1 to 100.\\
+        # Default value: 100.
+        self.max_results = max_results
+        # The token that determines the start point of the query. The return value is the value of the NextToken response parameter that was returned last time the DescribeOrgs operation was called.
+        self.next_token = next_token
+        # The name of the organization.
+        self.org_name = org_name
+        # The parent organization ID.
+        self.parent_org_id = parent_org_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        if self.parent_org_id is not None:
+            result['ParentOrgId'] = self.parent_org_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        if m.get('ParentOrgId') is not None:
+            self.parent_org_id = m.get('ParentOrgId')
+        return self
+
+
+class DescribeOrgsResponseBodyOrgs(TeaModel):
+    def __init__(
+        self,
+        org_id: str = None,
+        org_name: str = None,
+        parent_org_id: str = None,
+    ):
+        # The organization ID.
+        self.org_id = org_id
+        # The name of the organizational unit.
+        self.org_name = org_name
+        # The parent organization ID.
+        self.parent_org_id = parent_org_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.org_name is not None:
+            result['OrgName'] = self.org_name
+        if self.parent_org_id is not None:
+            result['ParentOrgId'] = self.parent_org_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('OrgName') is not None:
+            self.org_name = m.get('OrgName')
+        if m.get('ParentOrgId') is not None:
+            self.parent_org_id = m.get('ParentOrgId')
+        return self
+
+
+class DescribeOrgsResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        orgs: List[DescribeOrgsResponseBodyOrgs] = None,
+        request_id: str = None,
+    ):
+        # The token that determines the start point of the query. The return value is the value of the NextToken response parameter that was returned last time the DescribeOrgs operation was called.
+        self.next_token = next_token
+        # The organizations.
+        self.orgs = orgs
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.orgs:
+            for k in self.orgs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['Orgs'] = []
+        if self.orgs is not None:
+            for k in self.orgs:
+                result['Orgs'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.orgs = []
+        if m.get('Orgs') is not None:
+            for k in m.get('Orgs'):
+                temp_model = DescribeOrgsResponseBodyOrgs()
+                self.orgs.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeOrgsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeOrgsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeOrgsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeUsersRequest(TeaModel):
     def __init__(
         self,
@@ -1328,10 +1677,12 @@ class DescribeUsersRequest(TeaModel):
         end_user_ids: List[str] = None,
         exclude_end_user_ids: List[str] = None,
         filter: str = None,
+        filter_with_assigned_resources: Dict[str, bool] = None,
         group_id: str = None,
         max_results: int = None,
         next_token: str = None,
         org_id: str = None,
+        show_extras: Dict[str, Any] = None,
         solution_id: str = None,
     ):
         self.biz_type = biz_type
@@ -1339,19 +1690,22 @@ class DescribeUsersRequest(TeaModel):
         self.end_user_ids = end_user_ids
         # The list of usernames to be exactly excluded.
         self.exclude_end_user_ids = exclude_end_user_ids
-        # The string that is used for fuzzy search. You perform fuzzy search by username (EndUserId) and email address (Email). Wildcard characters (\*) are supported. For example, if you set this parameter to `a*m`, usernames or email addresses that start with `a` and end with `m` are returned.
+        # The string that is used for fuzzy search. You perform fuzzy search by username (EndUserId) and email address (Email). Wildcard characters (\\*) are supported. For example, if you set this parameter to `a*m`, usernames or email addresses that start with `a` and end with `m` are returned.
         self.filter = filter
+        self.filter_with_assigned_resources = filter_with_assigned_resources
+        # The ID of the organization in which you want to query convenience users.
         self.group_id = group_id
         # The number of entries per page.
         # 
         # *   Valid values: 1 to 500
         # *   Default value: 500
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.\
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.\\
         # If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the return value of NextToken to perform the next query.
         self.next_token = next_token
         # The ID of the organization in which you want to query users.
         self.org_id = org_id
+        self.show_extras = show_extras
         self.solution_id = solution_id
 
     def validate(self):
@@ -1371,6 +1725,8 @@ class DescribeUsersRequest(TeaModel):
             result['ExcludeEndUserIds'] = self.exclude_end_user_ids
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.filter_with_assigned_resources is not None:
+            result['FilterWithAssignedResources'] = self.filter_with_assigned_resources
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.max_results is not None:
@@ -1379,6 +1735,8 @@ class DescribeUsersRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.org_id is not None:
             result['OrgId'] = self.org_id
+        if self.show_extras is not None:
+            result['ShowExtras'] = self.show_extras
         if self.solution_id is not None:
             result['SolutionId'] = self.solution_id
         return result
@@ -1393,6 +1751,8 @@ class DescribeUsersRequest(TeaModel):
             self.exclude_end_user_ids = m.get('ExcludeEndUserIds')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('FilterWithAssignedResources') is not None:
+            self.filter_with_assigned_resources = m.get('FilterWithAssignedResources')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('MaxResults') is not None:
@@ -1401,8 +1761,135 @@ class DescribeUsersRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('OrgId') is not None:
             self.org_id = m.get('OrgId')
+        if m.get('ShowExtras') is not None:
+            self.show_extras = m.get('ShowExtras')
         if m.get('SolutionId') is not None:
             self.solution_id = m.get('SolutionId')
+        return self
+
+
+class DescribeUsersShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        biz_type: str = None,
+        end_user_ids: List[str] = None,
+        exclude_end_user_ids: List[str] = None,
+        filter: str = None,
+        filter_with_assigned_resources_shrink: str = None,
+        group_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        org_id: str = None,
+        show_extras_shrink: str = None,
+        solution_id: str = None,
+    ):
+        self.biz_type = biz_type
+        # The list of usernames that must be exactly matched.
+        self.end_user_ids = end_user_ids
+        # The list of usernames to be exactly excluded.
+        self.exclude_end_user_ids = exclude_end_user_ids
+        # The string that is used for fuzzy search. You perform fuzzy search by username (EndUserId) and email address (Email). Wildcard characters (\\*) are supported. For example, if you set this parameter to `a*m`, usernames or email addresses that start with `a` and end with `m` are returned.
+        self.filter = filter
+        self.filter_with_assigned_resources_shrink = filter_with_assigned_resources_shrink
+        # The ID of the organization in which you want to query convenience users.
+        self.group_id = group_id
+        # The number of entries per page.
+        # 
+        # *   Valid values: 1 to 500
+        # *   Default value: 500
+        self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.\\
+        # If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the return value of NextToken to perform the next query.
+        self.next_token = next_token
+        # The ID of the organization in which you want to query users.
+        self.org_id = org_id
+        self.show_extras_shrink = show_extras_shrink
+        self.solution_id = solution_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.end_user_ids is not None:
+            result['EndUserIds'] = self.end_user_ids
+        if self.exclude_end_user_ids is not None:
+            result['ExcludeEndUserIds'] = self.exclude_end_user_ids
+        if self.filter is not None:
+            result['Filter'] = self.filter
+        if self.filter_with_assigned_resources_shrink is not None:
+            result['FilterWithAssignedResources'] = self.filter_with_assigned_resources_shrink
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+        if self.show_extras_shrink is not None:
+            result['ShowExtras'] = self.show_extras_shrink
+        if self.solution_id is not None:
+            result['SolutionId'] = self.solution_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('EndUserIds') is not None:
+            self.end_user_ids = m.get('EndUserIds')
+        if m.get('ExcludeEndUserIds') is not None:
+            self.exclude_end_user_ids = m.get('ExcludeEndUserIds')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
+        if m.get('FilterWithAssignedResources') is not None:
+            self.filter_with_assigned_resources_shrink = m.get('FilterWithAssignedResources')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+        if m.get('ShowExtras') is not None:
+            self.show_extras_shrink = m.get('ShowExtras')
+        if m.get('SolutionId') is not None:
+            self.solution_id = m.get('SolutionId')
+        return self
+
+
+class DescribeUsersResponseBodyUsersExtras(TeaModel):
+    def __init__(
+        self,
+        assigned_resource_count: Dict[str, Any] = None,
+    ):
+        self.assigned_resource_count = assigned_resource_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assigned_resource_count is not None:
+            result['AssignedResourceCount'] = self.assigned_resource_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssignedResourceCount') is not None:
+            self.assigned_resource_count = m.get('AssignedResourceCount')
         return self
 
 
@@ -1412,7 +1899,9 @@ class DescribeUsersResponseBodyUsersGroups(TeaModel):
         group_id: str = None,
         group_name: str = None,
     ):
+        # The ID of the user group.
         self.group_id = group_id
+        # The name of the user group.
         self.group_name = group_name
 
     def validate(self):
@@ -1445,7 +1934,9 @@ class DescribeUsersResponseBodyUsersOrgs(TeaModel):
         org_id: str = None,
         org_name: str = None,
     ):
+        # The organization ID.
         self.org_id = org_id
+        # The organization name.
         self.org_name = org_name
 
     def validate(self):
@@ -1479,6 +1970,7 @@ class DescribeUsersResponseBodyUsers(TeaModel):
         avatar: str = None,
         email: str = None,
         end_user_id: str = None,
+        extras: DescribeUsersResponseBodyUsersExtras = None,
         groups: List[DescribeUsersResponseBodyUsersGroups] = None,
         id: int = None,
         is_tenant_manager: bool = None,
@@ -1488,31 +1980,40 @@ class DescribeUsersResponseBodyUsers(TeaModel):
         orgs: List[DescribeUsersResponseBodyUsersOrgs] = None,
         owner_type: str = None,
         phone: str = None,
+        real_nick_name: str = None,
         remark: str = None,
         status: int = None,
         wy_id: str = None,
     ):
+        # The work address of the convenience user.
         self.address = address
+        # The profile picture of the convenience user.
         self.avatar = avatar
-        # The email address.
+        # The email address of the convenience user.
         self.email = email
-        # The name of the user.
+        # The username of the convenience user.
         self.end_user_id = end_user_id
+        self.extras = extras
+        # The user groups to which the convenience user belongs.
         self.groups = groups
-        # The ID of the user.
+        # The ID of the convenience user.
         self.id = id
-        # Indicates whether the user is an administrator. If the convenience user is of the administrator-activated type, you must specify a user administrator. Notifications such as password reset on a client are sent to the email address or mobile phone of the user administrator. For more information, see [Create a convenience user](~~214472~~).
+        # Indicates whether the convenience user is an administrator. If the convenience user is of the administrator-activated type, you must specify a user administrator. Notifications such as password reset on a client are sent to the email address or mobile number of the user administrator. For more information, see [Create a convenience user](https://help.aliyun.com/document_detail/214472.html).
         self.is_tenant_manager = is_tenant_manager
+        # The employee number of the convenience user.
         self.job_number = job_number
-        # The nickname of the user.
+        # The nickname of the convenience user.
         self.nick_name = nick_name
-        # The ID of the organization to which the user belongs.
+        # The ID of the organization to which the convenience user belongs.
+        # 
+        # >  This parameter will be deprecated in the future.
         self.org_id = org_id
+        # The organizations to which the convenience user belongs.
         self.orgs = orgs
         # The type of the convenience account.
         # 
-        # *   The administrator-activated type. The administrator specifies the username and the password of the convenience account. User notifications such as password reset are sent to the email address or mobile number of the administrator.
-        # *   The user-activated type. The administrator specifies the username and the email address or mobile number of a user. Activation notifications are sent to the email address or mobile number of the user.
+        # *   Administrator-activated type: The administrator specifies the username and password of the convenience account. User notifications such as password reset notifications are sent to the email address or mobile number of the administrator.
+        # *   User-activated type: The administrator specifies the username and the email address or mobile number of a convenience user. Notifications such as activation notifications that contain the default password are sent to the email address or mobile number of the convenience user.
         # 
         # Valid values:
         # 
@@ -1528,24 +2029,49 @@ class DescribeUsersResponseBodyUsers(TeaModel):
         # 
         #     <!-- -->
         # 
-        # *   Normal: user-activated
+        # *   Normal
         # 
         #     <!-- -->
         # 
+        #     :
+        # 
         #     <!-- -->
+        # 
+        #     user-activated
         # 
         #     <!-- -->
         self.owner_type = owner_type
-        # The mobile number of the user. If you leave this parameter empty, the value of this parameter is not returned.
+        # The mobile number of the convenience user. If you leave this parameter empty, the value of this parameter is not returned.
         self.phone = phone
-        # The remarks on the user.
+        self.real_nick_name = real_nick_name
+        # The remarks on the convenience user.
         self.remark = remark
-        # The status of the user.
+        # The status of the convenience user.
+        # 
+        # Valid values:
+        # 
+        # *   0: The convenience user is normal.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   9: The convenience user is locked.
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.status = status
-        # The user ID that is globally unique.
+        # The globally unique ID of the convenience user.
         self.wy_id = wy_id
 
     def validate(self):
+        if self.extras:
+            self.extras.validate()
         if self.groups:
             for k in self.groups:
                 if k:
@@ -1569,6 +2095,8 @@ class DescribeUsersResponseBodyUsers(TeaModel):
             result['Email'] = self.email
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
+        if self.extras is not None:
+            result['Extras'] = self.extras.to_map()
         result['Groups'] = []
         if self.groups is not None:
             for k in self.groups:
@@ -1591,6 +2119,8 @@ class DescribeUsersResponseBodyUsers(TeaModel):
             result['OwnerType'] = self.owner_type
         if self.phone is not None:
             result['Phone'] = self.phone
+        if self.real_nick_name is not None:
+            result['RealNickName'] = self.real_nick_name
         if self.remark is not None:
             result['Remark'] = self.remark
         if self.status is not None:
@@ -1609,6 +2139,9 @@ class DescribeUsersResponseBodyUsers(TeaModel):
             self.email = m.get('Email')
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
+        if m.get('Extras') is not None:
+            temp_model = DescribeUsersResponseBodyUsersExtras()
+            self.extras = temp_model.from_map(m['Extras'])
         self.groups = []
         if m.get('Groups') is not None:
             for k in m.get('Groups'):
@@ -1633,6 +2166,8 @@ class DescribeUsersResponseBodyUsers(TeaModel):
             self.owner_type = m.get('OwnerType')
         if m.get('Phone') is not None:
             self.phone = m.get('Phone')
+        if m.get('RealNickName') is not None:
+            self.real_nick_name = m.get('RealNickName')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
         if m.get('Status') is not None:
@@ -1649,9 +2184,11 @@ class DescribeUsersResponseBody(TeaModel):
         request_id: str = None,
         users: List[DescribeUsersResponseBodyUsers] = None,
     ):
+        # The token that determines the start point of the next query. If this parameter is left empty, all results are returned.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
-        # Details of the convenience users.
+        # The information about the convenience users.
         self.users = users
 
     def validate(self):
@@ -1702,9 +2239,6 @@ class DescribeUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1740,35 +2274,15 @@ class FilterUsersRequestOrderParam(TeaModel):
         order_field: str = None,
         order_type: str = None,
     ):
-        # The way to sort query results.
+        # The parameter based on which to sort query results.
         # 
         # Valid values:
         # 
-        # *   EndUserId
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   id
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   gmt_created
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # *   EndUserId: the username.
+        # *   id: the ID of the user primary key.
+        # *   gmt_created: the time when the convenience user was created.
         self.order_field = order_field
-        # Specifies whether to sort query results in ascending or descending order. Valid values:
+        # Specifies whether to sort query results in ascending or descending order.
         # 
         # Valid values:
         # 
@@ -1897,20 +2411,57 @@ class FilterUsersRequest(TeaModel):
         owner_type: str = None,
         property_filter_param: List[FilterUsersRequestPropertyFilterParam] = None,
         property_key_value_filter_param: List[FilterUsersRequestPropertyKeyValueFilterParam] = None,
+        status: int = None,
     ):
         # The list of usernames to be precisely excluded.
         self.exclude_end_user_ids = exclude_end_user_ids
-        # The string that is used for fuzzy search. You can use usernames and email addresses to perform fuzzy search. Wildcard characters (\*) are supported for this parameter. For example, if you set this parameter to a\*m, the usernames or an email addresses that start with a or end with m are returned.
+        # The string that is used for fuzzy search. You can use usernames and email addresses to perform fuzzy search. Wildcard characters (\\*) are supported for this parameter. For example, if you set this parameter to a\\*m, the usernames or an email addresses that start with a or end with m are returned.
         self.filter = filter
-        # Specifies whether to return information about cloud desktops that are assigned to the convenience user.
+        # Specifies whether to return the number of cloud desktops that are assigned to the convenience user.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.include_desktop_count = include_desktop_count
-        # Specifies whether to return the number of desktop groups that are assigned to the user.
+        # Specifies whether to return the number of cloud desktop pools that are assigned to the convenience user.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.include_desktop_group_count = include_desktop_group_count
         # The number of entries per page. If you set this parameter to a value greater than 100, the system resets the value to 100.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to start the next query.
         self.next_token = next_token
-        # The parameter that supports to sort query results.
+        # The parameters that are used to sort query results.
         self.order_param = order_param
         # The ID of the organization.
         self.org_id = org_id
@@ -1920,6 +2471,7 @@ class FilterUsersRequest(TeaModel):
         self.property_filter_param = property_filter_param
         # The list of property names and property values.
         self.property_key_value_filter_param = property_key_value_filter_param
+        self.status = status
 
     def validate(self):
         if self.order_param:
@@ -1965,6 +2517,8 @@ class FilterUsersRequest(TeaModel):
         if self.property_key_value_filter_param is not None:
             for k in self.property_key_value_filter_param:
                 result['PropertyKeyValueFilterParam'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -1998,6 +2552,8 @@ class FilterUsersRequest(TeaModel):
             for k in m.get('PropertyKeyValueFilterParam'):
                 temp_model = FilterUsersRequestPropertyKeyValueFilterParam()
                 self.property_key_value_filter_param.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -2085,20 +2641,57 @@ class FilterUsersShrinkRequest(TeaModel):
         owner_type: str = None,
         property_filter_param: List[FilterUsersShrinkRequestPropertyFilterParam] = None,
         property_key_value_filter_param: List[FilterUsersShrinkRequestPropertyKeyValueFilterParam] = None,
+        status: int = None,
     ):
         # The list of usernames to be precisely excluded.
         self.exclude_end_user_ids = exclude_end_user_ids
-        # The string that is used for fuzzy search. You can use usernames and email addresses to perform fuzzy search. Wildcard characters (\*) are supported for this parameter. For example, if you set this parameter to a\*m, the usernames or an email addresses that start with a or end with m are returned.
+        # The string that is used for fuzzy search. You can use usernames and email addresses to perform fuzzy search. Wildcard characters (\\*) are supported for this parameter. For example, if you set this parameter to a\\*m, the usernames or an email addresses that start with a or end with m are returned.
         self.filter = filter
-        # Specifies whether to return information about cloud desktops that are assigned to the convenience user.
+        # Specifies whether to return the number of cloud desktops that are assigned to the convenience user.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.include_desktop_count = include_desktop_count
-        # Specifies whether to return the number of desktop groups that are assigned to the user.
+        # Specifies whether to return the number of cloud desktop pools that are assigned to the convenience user.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.include_desktop_group_count = include_desktop_group_count
         # The number of entries per page. If you set this parameter to a value greater than 100, the system resets the value to 100.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. If not all results are returned in a query, a value is returned for the NextToken parameter. In this case, you can use the returned NextToken value to start the next query.
         self.next_token = next_token
-        # The parameter that supports to sort query results.
+        # The parameters that are used to sort query results.
         self.order_param_shrink = order_param_shrink
         # The ID of the organization.
         self.org_id = org_id
@@ -2108,6 +2701,7 @@ class FilterUsersShrinkRequest(TeaModel):
         self.property_filter_param = property_filter_param
         # The list of property names and property values.
         self.property_key_value_filter_param = property_key_value_filter_param
+        self.status = status
 
     def validate(self):
         if self.property_filter_param:
@@ -2151,6 +2745,8 @@ class FilterUsersShrinkRequest(TeaModel):
         if self.property_key_value_filter_param is not None:
             for k in self.property_key_value_filter_param:
                 result['PropertyKeyValueFilterParam'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -2183,6 +2779,8 @@ class FilterUsersShrinkRequest(TeaModel):
             for k in m.get('PropertyKeyValueFilterParam'):
                 temp_model = FilterUsersShrinkRequestPropertyKeyValueFilterParam()
                 self.property_key_value_filter_param.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -2192,9 +2790,9 @@ class FilterUsersResponseBodyUsersExternalInfo(TeaModel):
         external_name: str = None,
         job_number: str = None,
     ):
-        # The account that is connected to the user.
+        # The account that is associated with the convenience user.
         self.external_name = external_name
-        # The account, student ID, or employee ID that is connected to the user.
+        # The account, student ID, or employee ID that is associated with the convenience user.
         self.job_number = job_number
 
     def validate(self):
@@ -2229,7 +2827,7 @@ class FilterUsersResponseBodyUsersUserSetPropertiesModelsPropertyValues(TeaModel
     ):
         # The property value.
         self.property_value = property_value
-        # The property value ID.
+        # The ID of the property value.
         self.property_value_id = property_value_id
 
     def validate(self):
@@ -2270,13 +2868,13 @@ class FilterUsersResponseBodyUsersUserSetPropertiesModels(TeaModel):
         self.property_id = property_id
         # The property name.
         self.property_key = property_key
-        # The property ID.
+        # The property type.
         self.property_type = property_type
-        # The property value.
+        # The property values.
         self.property_values = property_values
-        # The ID of the user that is bound to the property.
+        # The ID of the convenience user that is bound to the property.
         self.user_id = user_id
-        # The name of the user that is bound to the property.
+        # The username of the convenience user that is bound to the property.
         self.user_name = user_name
 
     def validate(self):
@@ -2330,6 +2928,7 @@ class FilterUsersResponseBodyUsersUserSetPropertiesModels(TeaModel):
 class FilterUsersResponseBodyUsers(TeaModel):
     def __init__(
         self,
+        auto_lock_time: str = None,
         desktop_count: int = None,
         desktop_group_count: int = None,
         email: str = None,
@@ -2339,19 +2938,22 @@ class FilterUsersResponseBodyUsers(TeaModel):
         id: int = None,
         is_tenant_manager: bool = None,
         owner_type: str = None,
+        password_expire_days: int = None,
+        password_expire_rest_days: int = None,
         phone: str = None,
         real_nick_name: str = None,
         remark: str = None,
         status: int = None,
         user_set_properties_models: List[FilterUsersResponseBodyUsersUserSetPropertiesModels] = None,
     ):
-        # The number of cloud desktops that are assigned to the user.
+        self.auto_lock_time = auto_lock_time
+        # The number of cloud desktops that are assigned to the convenience user.
         self.desktop_count = desktop_count
-        # The number of authorized desktop groups that are owned by the user. This value is returned if you set `IncludeDesktopGroupCount` to `true`.
+        # The number of cloud desktop pools that are assigned to the convenience user. This value is returned if you set `IncludeDesktopGroupCount` to `true`.
         self.desktop_group_count = desktop_group_count
-        # The email address.
+        # The email address of the convenience user.
         self.email = email
-        # Indicates whether the user is a local administrator.
+        # Indicates whether the convenience user is a local administrator.
         # 
         # Valid values:
         # 
@@ -2371,13 +2973,13 @@ class FilterUsersResponseBodyUsers(TeaModel):
         # 
         #     <!-- -->
         self.enable_admin_access = enable_admin_access
-        # The username.
+        # The username of the convenience user.
         self.end_user_id = end_user_id
-        # The additional information about the user.
+        # The additional information about the convenience user.
         self.external_info = external_info
-        # The user ID.
+        # The ID of the convenience user.
         self.id = id
-        # Indicates whether the user is a tenant administrator.
+        # Indicates whether the convenience user is a tenant administrator.
         # 
         # Valid values:
         # 
@@ -2401,40 +3003,22 @@ class FilterUsersResponseBodyUsers(TeaModel):
         # 
         # Valid values:
         # 
-        # *   CreateFromManager
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     administrator-activated
-        # 
-        #     <!-- -->
-        # 
-        # *   Normal
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     user-activated
-        # 
-        #     <!-- -->
+        # *   CreateFromManager: administrator-activated
+        # *   Normal: user-activated
         self.owner_type = owner_type
-        # The mobile number.
+        self.password_expire_days = password_expire_days
+        self.password_expire_rest_days = password_expire_rest_days
+        # The mobile number of the convenience user.
         self.phone = phone
+        # The nickname of the convenience user.
         self.real_nick_name = real_nick_name
-        # The remarks.
+        # The remarks on the convenience user.
         self.remark = remark
-        # The user status.
+        # The status of the convenience user.
         # 
         # Valid values:
         # 
-        # *   0: The user status is normal.
+        # *   0: The convenience user is normal.
         # 
         #     <!-- -->
         # 
@@ -2442,7 +3026,7 @@ class FilterUsersResponseBodyUsers(TeaModel):
         # 
         #     <!-- -->
         # 
-        # *   9: The user is locked.
+        # *   9: The convenience user is locked.
         # 
         #     <!-- -->
         # 
@@ -2450,7 +3034,7 @@ class FilterUsersResponseBodyUsers(TeaModel):
         # 
         #     <!-- -->
         self.status = status
-        # Details of the properties.
+        # The information about the properties.
         self.user_set_properties_models = user_set_properties_models
 
     def validate(self):
@@ -2467,6 +3051,8 @@ class FilterUsersResponseBodyUsers(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_lock_time is not None:
+            result['AutoLockTime'] = self.auto_lock_time
         if self.desktop_count is not None:
             result['DesktopCount'] = self.desktop_count
         if self.desktop_group_count is not None:
@@ -2485,6 +3071,10 @@ class FilterUsersResponseBodyUsers(TeaModel):
             result['IsTenantManager'] = self.is_tenant_manager
         if self.owner_type is not None:
             result['OwnerType'] = self.owner_type
+        if self.password_expire_days is not None:
+            result['PasswordExpireDays'] = self.password_expire_days
+        if self.password_expire_rest_days is not None:
+            result['PasswordExpireRestDays'] = self.password_expire_rest_days
         if self.phone is not None:
             result['Phone'] = self.phone
         if self.real_nick_name is not None:
@@ -2501,6 +3091,8 @@ class FilterUsersResponseBodyUsers(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoLockTime') is not None:
+            self.auto_lock_time = m.get('AutoLockTime')
         if m.get('DesktopCount') is not None:
             self.desktop_count = m.get('DesktopCount')
         if m.get('DesktopGroupCount') is not None:
@@ -2520,6 +3112,10 @@ class FilterUsersResponseBodyUsers(TeaModel):
             self.is_tenant_manager = m.get('IsTenantManager')
         if m.get('OwnerType') is not None:
             self.owner_type = m.get('OwnerType')
+        if m.get('PasswordExpireDays') is not None:
+            self.password_expire_days = m.get('PasswordExpireDays')
+        if m.get('PasswordExpireRestDays') is not None:
+            self.password_expire_rest_days = m.get('PasswordExpireRestDays')
         if m.get('Phone') is not None:
             self.phone = m.get('Phone')
         if m.get('RealNickName') is not None:
@@ -2547,7 +3143,7 @@ class FilterUsersResponseBody(TeaModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Details of the convenience users.
+        # The information about the convenience user.
         self.users = users
 
     def validate(self):
@@ -2598,9 +3194,6 @@ class FilterUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2635,6 +3228,9 @@ class GetManagerInfoByAuthCodeRequest(TeaModel):
         self,
         auth_code: str = None,
     ):
+        # The authorization code.
+        # 
+        # This parameter is required.
         self.auth_code = auth_code
 
     def validate(self):
@@ -2667,11 +3263,17 @@ class GetManagerInfoByAuthCodeResponseBody(TeaModel):
         user_name: str = None,
         wa_id: int = None,
     ):
+        # The organization ID.
         self.org_id = org_id
+        # The mobile number.
         self.phone = phone
+        # The request ID.
         self.request_id = request_id
+        # The team name.
         self.team_name = team_name
+        # The tenant name.
         self.user_name = user_name
+        # The ID of the Elastic Desktop Service account.
         self.wa_id = wa_id
 
     def validate(self):
@@ -2726,9 +3328,6 @@ class GetManagerInfoByAuthCodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2905,9 +3504,6 @@ class ListPropertyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2942,7 +3538,9 @@ class ListPropertyValueRequest(TeaModel):
         self,
         property_id: int = None,
     ):
-        # The ID of the property. You can call the [ListProperty](~~410890~~) operation to query the property ID.
+        # The ID of the property. You can call the [ListProperty](https://help.aliyun.com/document_detail/410890.html) operation to query the property ID.
+        # 
+        # This parameter is required.
         self.property_id = property_id
 
     def validate(self):
@@ -3055,9 +3653,6 @@ class ListPropertyValueResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3093,9 +3688,9 @@ class LockMfaDeviceRequest(TeaModel):
         ad_domain: str = None,
         serial_number: str = None,
     ):
-        # The address of the Active Directory (AD) workspace.
+        # The domain of the Active Directory (AD) workspace.
         self.ad_domain = ad_domain
-        # The serial number of the virtual MFA device, which is a unique identifier.
+        # The serial number of the virtual MFA device. The serial number is unique for each device.
         self.serial_number = serial_number
 
     def validate(self):
@@ -3127,7 +3722,7 @@ class LockMfaDeviceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3162,9 +3757,6 @@ class LockMfaDeviceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3199,6 +3791,9 @@ class LockUsersRequest(TeaModel):
         self,
         users: List[str] = None,
     ):
+        # The usernames of the convenience users that you want to lock.
+        # 
+        # This parameter is required.
         self.users = users
 
     def validate(self):
@@ -3228,8 +3823,11 @@ class LockUsersResponseBodyLockUsersResultFailedUsers(TeaModel):
         error_code: str = None,
         error_message: str = None,
     ):
+        # The ID of the convenience user that failed to be locked.
         self.end_user_id = end_user_id
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
 
     def validate(self):
@@ -3266,7 +3864,9 @@ class LockUsersResponseBodyLockUsersResult(TeaModel):
         failed_users: List[LockUsersResponseBodyLockUsersResultFailedUsers] = None,
         locked_users: List[str] = None,
     ):
+        # The convenience users that failed to be locked.
         self.failed_users = failed_users
+        # The convenience users that were locked.
         self.locked_users = locked_users
 
     def validate(self):
@@ -3307,7 +3907,9 @@ class LockUsersResponseBody(TeaModel):
         lock_users_result: LockUsersResponseBodyLockUsersResult = None,
         request_id: str = None,
     ):
+        # The result of the locking the convenience user.
         self.lock_users_result = lock_users_result
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3348,9 +3950,6 @@ class LockUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3387,8 +3986,15 @@ class ModifyUserRequest(TeaModel):
         end_user_id: str = None,
         phone: str = None,
     ):
+        # The email address of the convenience user. For a user-activated convenience user, the email address or mobile number must be verified. You can choose to verify the email address or the mobile number. For an administrator-activated convenience user, the email address and mobile number can be left empty.
         self.email = email
+        # The name of the user.
+        # 
+        # This parameter is required.
         self.end_user_id = end_user_id
+        # The mobile number of the convenience user. For a user-activated convenience user, the email address or mobile number must be verified. You can choose to verify the email address or the mobile number. For an administrator-activated convenience user, the email address and mobile number can be left empty.
+        # 
+        # >  Accounts created on the International site (alibabacloud.com) do not support mobile number-based authentication.
         self.phone = phone
 
     def validate(self):
@@ -3424,6 +4030,7 @@ class ModifyUserResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3458,9 +4065,6 @@ class ModifyUserResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3636,9 +4240,6 @@ class QuerySyncStatusByAliUidResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3674,7 +4275,11 @@ class RemoveMfaDeviceRequest(TeaModel):
         ad_domain: str = None,
         serial_number: str = None,
     ):
+        # The domain of the Active Directory (AD) workspace.
         self.ad_domain = ad_domain
+        # The serial number of the virtual MFA device. The serial number is unique for each device.
+        # 
+        # This parameter is required.
         self.serial_number = serial_number
 
     def validate(self):
@@ -3706,6 +4311,7 @@ class RemoveMfaDeviceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3740,9 +4346,6 @@ class RemoveMfaDeviceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3777,6 +4380,9 @@ class RemovePropertyRequest(TeaModel):
         self,
         property_id: int = None,
     ):
+        # The ID of the property. You can call the [ListProperty](https://help.aliyun.com/document_detail/410890.html) operation to query the property ID.
+        # 
+        # This parameter is required.
         self.property_id = property_id
 
     def validate(self):
@@ -3804,6 +4410,7 @@ class RemovePropertyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3838,9 +4445,6 @@ class RemovePropertyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3875,6 +4479,9 @@ class RemoveUsersRequest(TeaModel):
         self,
         users: List[str] = None,
     ):
+        # The usernames of the convenience users that you want to remove.
+        # 
+        # This parameter is required.
         self.users = users
 
     def validate(self):
@@ -3904,8 +4511,11 @@ class RemoveUsersResponseBodyRemoveUsersResultFailedUsers(TeaModel):
         error_code: str = None,
         error_message: str = None,
     ):
+        # The ID of the convenience user that failed to be removed.
         self.end_user_id = end_user_id
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
 
     def validate(self):
@@ -3942,7 +4552,9 @@ class RemoveUsersResponseBodyRemoveUsersResult(TeaModel):
         failed_users: List[RemoveUsersResponseBodyRemoveUsersResultFailedUsers] = None,
         removed_users: List[str] = None,
     ):
+        # The convenience users that failed to be removed.
         self.failed_users = failed_users
+        # The convenience users that were removed.
         self.removed_users = removed_users
 
     def validate(self):
@@ -3983,7 +4595,9 @@ class RemoveUsersResponseBody(TeaModel):
         remove_users_result: RemoveUsersResponseBodyRemoveUsersResult = None,
         request_id: str = None,
     ):
+        # The result of removing the convenience user.
         self.remove_users_result = remove_users_result
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4024,9 +4638,6 @@ class RemoveUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4063,8 +4674,12 @@ class ResetUserPasswordRequest(TeaModel):
         users: List[str] = None,
     ):
         # The method to notify the user after the password is reset.
+        # 
+        # > Alibaba Cloud accounts of the international site do not support sending notification through text messages.
         self.notify_type = notify_type
         # The names of the convenience users whose passwords you want to reset.
+        # 
+        # This parameter is required.
         self.users = users
 
     def validate(self):
@@ -4225,9 +4840,6 @@ class ResetUserPasswordResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4265,11 +4877,21 @@ class SetUserPropertyValueRequest(TeaModel):
         user_id: int = None,
         user_name: str = None,
     ):
+        # The property ID. You can call the [ListProperty](~~ListProperty~~) operation to query the property ID.
+        # 
+        # This parameter is required.
         self.property_id = property_id
+        # The ID of the property value. You can call the [ListProperty](~~ListProperty~~) operation to query the ID of the property value.
+        # 
+        # This parameter is required.
         self.property_value_id = property_value_id
-        # Associates a user property with a user.
+        # The ID of the convenience user. You can call the [DescribeUsers](~~DescribeUsers~~) operation to query the user ID.
+        # 
+        # This parameter is required.
         self.user_id = user_id
-        # SetUserPropertyValue
+        # The username of the convenience user.
+        # 
+        # This parameter is required.
         self.user_name = user_name
 
     def validate(self):
@@ -4309,6 +4931,7 @@ class SetUserPropertyValueResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4343,9 +4966,6 @@ class SetUserPropertyValueResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4438,9 +5058,6 @@ class SyncAllEduInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4476,9 +5093,11 @@ class UnlockMfaDeviceRequest(TeaModel):
         ad_domain: str = None,
         serial_number: str = None,
     ):
-        # The address of the Active Directory (AD) workspace.
+        # The domain of the Active Directory (AD) workspace.
         self.ad_domain = ad_domain
-        # The serial number of the virtual MFA device, which is a unique identifier.
+        # The serial number of the virtual MFA device. The serial number is unique for each device.
+        # 
+        # This parameter is required.
         self.serial_number = serial_number
 
     def validate(self):
@@ -4510,7 +5129,7 @@ class UnlockMfaDeviceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4545,9 +5164,6 @@ class UnlockMfaDeviceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4583,7 +5199,11 @@ class UnlockUsersRequest(TeaModel):
         auto_lock_time: str = None,
         users: List[str] = None,
     ):
+        # The date on which the convenience users are automatically locked.
         self.auto_lock_time = auto_lock_time
+        # The usernames of the convenience users that you want to unlock.
+        # 
+        # This parameter is required.
         self.users = users
 
     def validate(self):
@@ -4617,8 +5237,11 @@ class UnlockUsersResponseBodyUnlockUsersResultFailedUsers(TeaModel):
         error_code: str = None,
         error_message: str = None,
     ):
+        # The ID of the convenience user that failed to be unlocked.
         self.end_user_id = end_user_id
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
 
     def validate(self):
@@ -4655,7 +5278,9 @@ class UnlockUsersResponseBodyUnlockUsersResult(TeaModel):
         failed_users: List[UnlockUsersResponseBodyUnlockUsersResultFailedUsers] = None,
         unlocked_users: List[str] = None,
     ):
+        # The convenience users that failed to be unlocked.
         self.failed_users = failed_users
+        # The convenience users that were unlocked.
         self.unlocked_users = unlocked_users
 
     def validate(self):
@@ -4696,7 +5321,9 @@ class UnlockUsersResponseBody(TeaModel):
         request_id: str = None,
         unlock_users_result: UnlockUsersResponseBodyUnlockUsersResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The result of unlocking the convenience user.
         self.unlock_users_result = unlock_users_result
 
     def validate(self):
@@ -4737,9 +5364,6 @@ class UnlockUsersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4777,7 +5401,7 @@ class UpdatePropertyRequestPropertyValues(TeaModel):
     ):
         # The new property value.
         self.property_value = property_value
-        # The ID of property value that you want to modify. You can call the [ListProperty](~~410890~~) operation to query the property value ID.
+        # The ID of property value that you want to modify. You can call the [ListProperty](https://help.aliyun.com/document_detail/410890.html) operation to query the property value ID.
         self.property_value_id = property_value_id
 
     def validate(self):
@@ -4811,9 +5435,13 @@ class UpdatePropertyRequest(TeaModel):
         property_key: str = None,
         property_values: List[UpdatePropertyRequestPropertyValues] = None,
     ):
-        # The ID of the property that you want to modify. You can call the [ListProperty](~~410890~~) operation to query the property ID.
+        # The ID of the property that you want to modify. You can call the [ListProperty](https://help.aliyun.com/document_detail/410890.html) operation to query the property ID.
+        # 
+        # This parameter is required.
         self.property_id = property_id
         # The new property name.
+        # 
+        # This parameter is required.
         self.property_key = property_key
         # The values of property.
         self.property_values = property_values
@@ -5083,9 +5711,6 @@ class UpdatePropertyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
