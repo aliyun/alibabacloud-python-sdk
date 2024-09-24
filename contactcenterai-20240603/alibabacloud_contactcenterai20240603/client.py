@@ -59,6 +59,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.category_tags):
+            body['categoryTags'] = request.category_tags
         if not UtilClient.is_unset(request.dialogue):
             body['dialogue'] = request.dialogue
         if not UtilClient.is_unset(request.examples):
@@ -75,6 +77,8 @@ class Client(OpenApiClient):
             body['serviceInspection'] = request.service_inspection
         if not UtilClient.is_unset(request.stream):
             body['stream'] = request.stream
+        if not UtilClient.is_unset(request.user_profiles):
+            body['userProfiles'] = request.user_profiles
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -113,6 +117,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.category_tags):
+            body['categoryTags'] = request.category_tags
         if not UtilClient.is_unset(request.dialogue):
             body['dialogue'] = request.dialogue
         if not UtilClient.is_unset(request.examples):
@@ -129,6 +135,8 @@ class Client(OpenApiClient):
             body['serviceInspection'] = request.service_inspection
         if not UtilClient.is_unset(request.stream):
             body['stream'] = request.stream
+        if not UtilClient.is_unset(request.user_profiles):
+            body['userProfiles'] = request.user_profiles
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)

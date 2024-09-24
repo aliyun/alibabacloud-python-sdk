@@ -4,6 +4,39 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
+class AnalyzeConversationRequestCategoryTags(TeaModel):
+    def __init__(
+        self,
+        tag_desc: str = None,
+        tag_name: str = None,
+    ):
+        self.tag_desc = tag_desc
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_desc is not None:
+            result['tagDesc'] = self.tag_desc
+        if self.tag_name is not None:
+            result['tagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tagDesc') is not None:
+            self.tag_desc = m.get('tagDesc')
+        if m.get('tagName') is not None:
+            self.tag_name = m.get('tagName')
+        return self
+
+
 class AnalyzeConversationRequestDialogueSentences(TeaModel):
     def __init__(
         self,
@@ -340,9 +373,43 @@ class AnalyzeConversationRequestServiceInspection(TeaModel):
         return self
 
 
+class AnalyzeConversationRequestUserProfiles(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class AnalyzeConversationRequest(TeaModel):
     def __init__(
         self,
+        category_tags: List[AnalyzeConversationRequestCategoryTags] = None,
         dialogue: AnalyzeConversationRequestDialogue = None,
         examples: List[AnalyzeConversationRequestExamples] = None,
         fields: List[AnalyzeConversationRequestFields] = None,
@@ -351,7 +418,9 @@ class AnalyzeConversationRequest(TeaModel):
         scene_name: str = None,
         service_inspection: AnalyzeConversationRequestServiceInspection = None,
         stream: bool = None,
+        user_profiles: List[AnalyzeConversationRequestUserProfiles] = None,
     ):
+        self.category_tags = category_tags
         # This parameter is required.
         self.dialogue = dialogue
         self.examples = examples
@@ -363,8 +432,13 @@ class AnalyzeConversationRequest(TeaModel):
         self.service_inspection = service_inspection
         # This parameter is required.
         self.stream = stream
+        self.user_profiles = user_profiles
 
     def validate(self):
+        if self.category_tags:
+            for k in self.category_tags:
+                if k:
+                    k.validate()
         if self.dialogue:
             self.dialogue.validate()
         if self.examples:
@@ -377,6 +451,10 @@ class AnalyzeConversationRequest(TeaModel):
                     k.validate()
         if self.service_inspection:
             self.service_inspection.validate()
+        if self.user_profiles:
+            for k in self.user_profiles:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -384,6 +462,10 @@ class AnalyzeConversationRequest(TeaModel):
             return _map
 
         result = dict()
+        result['categoryTags'] = []
+        if self.category_tags is not None:
+            for k in self.category_tags:
+                result['categoryTags'].append(k.to_map() if k else None)
         if self.dialogue is not None:
             result['dialogue'] = self.dialogue.to_map()
         result['examples'] = []
@@ -404,10 +486,19 @@ class AnalyzeConversationRequest(TeaModel):
             result['serviceInspection'] = self.service_inspection.to_map()
         if self.stream is not None:
             result['stream'] = self.stream
+        result['userProfiles'] = []
+        if self.user_profiles is not None:
+            for k in self.user_profiles:
+                result['userProfiles'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.category_tags = []
+        if m.get('categoryTags') is not None:
+            for k in m.get('categoryTags'):
+                temp_model = AnalyzeConversationRequestCategoryTags()
+                self.category_tags.append(temp_model.from_map(k))
         if m.get('dialogue') is not None:
             temp_model = AnalyzeConversationRequestDialogue()
             self.dialogue = temp_model.from_map(m['dialogue'])
@@ -432,6 +523,11 @@ class AnalyzeConversationRequest(TeaModel):
             self.service_inspection = temp_model.from_map(m['serviceInspection'])
         if m.get('stream') is not None:
             self.stream = m.get('stream')
+        self.user_profiles = []
+        if m.get('userProfiles') is not None:
+            for k in m.get('userProfiles'):
+                temp_model = AnalyzeConversationRequestUserProfiles()
+                self.user_profiles.append(temp_model.from_map(k))
         return self
 
 
