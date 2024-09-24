@@ -47,6 +47,142 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def create_fin_report_summary_task_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateFinReportSummaryTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.CreateFinReportSummaryTaskResponse:
+        """
+        @summary 创建财报总结任务
+        
+        @param request: CreateFinReportSummaryTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFinReportSummaryTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['docId'] = request.doc_id
+        if not UtilClient.is_unset(request.enable_table):
+            body['enableTable'] = request.enable_table
+        if not UtilClient.is_unset(request.end_page):
+            body['endPage'] = request.end_page
+        if not UtilClient.is_unset(request.instruction):
+            body['instruction'] = request.instruction
+        if not UtilClient.is_unset(request.library_id):
+            body['libraryId'] = request.library_id
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.start_page):
+            body['startPage'] = request.start_page
+        if not UtilClient.is_unset(request.task_type):
+            body['taskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFinReportSummaryTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/task/summary',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.CreateFinReportSummaryTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_fin_report_summary_task_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateFinReportSummaryTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.CreateFinReportSummaryTaskResponse:
+        """
+        @summary 创建财报总结任务
+        
+        @param request: CreateFinReportSummaryTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFinReportSummaryTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.doc_id):
+            body['docId'] = request.doc_id
+        if not UtilClient.is_unset(request.enable_table):
+            body['enableTable'] = request.enable_table
+        if not UtilClient.is_unset(request.end_page):
+            body['endPage'] = request.end_page
+        if not UtilClient.is_unset(request.instruction):
+            body['instruction'] = request.instruction
+        if not UtilClient.is_unset(request.library_id):
+            body['libraryId'] = request.library_id
+        if not UtilClient.is_unset(request.model_id):
+            body['modelId'] = request.model_id
+        if not UtilClient.is_unset(request.start_page):
+            body['startPage'] = request.start_page
+        if not UtilClient.is_unset(request.task_type):
+            body['taskType'] = request.task_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFinReportSummaryTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/task/summary',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.CreateFinReportSummaryTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_fin_report_summary_task(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateFinReportSummaryTaskRequest,
+    ) -> dian_jin_20240628_models.CreateFinReportSummaryTaskResponse:
+        """
+        @summary 创建财报总结任务
+        
+        @param request: CreateFinReportSummaryTaskRequest
+        @return: CreateFinReportSummaryTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_fin_report_summary_task_with_options(workspace_id, request, headers, runtime)
+
+    async def create_fin_report_summary_task_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.CreateFinReportSummaryTaskRequest,
+    ) -> dian_jin_20240628_models.CreateFinReportSummaryTaskResponse:
+        """
+        @summary 创建财报总结任务
+        
+        @param request: CreateFinReportSummaryTaskRequest
+        @return: CreateFinReportSummaryTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_fin_report_summary_task_with_options_async(workspace_id, request, headers, runtime)
+
     def create_library_with_options(
         self,
         workspace_id: str,
@@ -502,6 +638,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_library_with_options_async(workspace_id, request, headers, runtime)
+
+    def evict_task_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.EvictTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.EvictTaskResponse:
+        """
+        @summary 中断任务
+        
+        @param request: EvictTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EvictTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EvictTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/task/evict',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.EvictTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def evict_task_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.EvictTaskRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.EvictTaskResponse:
+        """
+        @summary 中断任务
+        
+        @param request: EvictTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EvictTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EvictTask',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/task/evict',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.EvictTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def evict_task(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.EvictTaskRequest,
+    ) -> dian_jin_20240628_models.EvictTaskResponse:
+        """
+        @summary 中断任务
+        
+        @param request: EvictTaskRequest
+        @return: EvictTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.evict_task_with_options(workspace_id, request, headers, runtime)
+
+    async def evict_task_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.EvictTaskRequest,
+    ) -> dian_jin_20240628_models.EvictTaskResponse:
+        """
+        @summary 中断任务
+        
+        @param request: EvictTaskRequest
+        @return: EvictTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.evict_task_with_options_async(workspace_id, request, headers, runtime)
 
     def get_app_config_with_options(
         self,
@@ -1545,6 +1789,222 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_parse_result_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_summary_task_result_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetSummaryTaskResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetSummaryTaskResultResponse:
+        """
+        @summary 获取财报总结任务结果
+        
+        @param request: GetSummaryTaskResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSummaryTaskResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSummaryTaskResult',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/task/summary/result',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GetSummaryTaskResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_summary_task_result_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetSummaryTaskResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetSummaryTaskResultResponse:
+        """
+        @summary 获取财报总结任务结果
+        
+        @param request: GetSummaryTaskResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSummaryTaskResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSummaryTaskResult',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/task/summary/result',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GetSummaryTaskResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_summary_task_result(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetSummaryTaskResultRequest,
+    ) -> dian_jin_20240628_models.GetSummaryTaskResultResponse:
+        """
+        @summary 获取财报总结任务结果
+        
+        @param request: GetSummaryTaskResultRequest
+        @return: GetSummaryTaskResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_summary_task_result_with_options(workspace_id, request, headers, runtime)
+
+    async def get_summary_task_result_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetSummaryTaskResultRequest,
+    ) -> dian_jin_20240628_models.GetSummaryTaskResultResponse:
+        """
+        @summary 获取财报总结任务结果
+        
+        @param request: GetSummaryTaskResultRequest
+        @return: GetSummaryTaskResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_summary_task_result_with_options_async(workspace_id, request, headers, runtime)
+
+    def get_task_status_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetTaskStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetTaskStatusResponse:
+        """
+        @summary 获取财报总结任务结果
+        
+        @param request: GetTaskStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTaskStatus',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/task/status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GetTaskStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_task_status_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetTaskStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.GetTaskStatusResponse:
+        """
+        @summary 获取财报总结任务结果
+        
+        @param request: GetTaskStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.task_id):
+            query['taskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTaskStatus',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/task/status',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.GetTaskStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_task_status(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetTaskStatusRequest,
+    ) -> dian_jin_20240628_models.GetTaskStatusResponse:
+        """
+        @summary 获取财报总结任务结果
+        
+        @param request: GetTaskStatusRequest
+        @return: GetTaskStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_task_status_with_options(workspace_id, request, headers, runtime)
+
+    async def get_task_status_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.GetTaskStatusRequest,
+    ) -> dian_jin_20240628_models.GetTaskStatusResponse:
+        """
+        @summary 获取财报总结任务结果
+        
+        @param request: GetTaskStatusRequest
+        @return: GetTaskStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_task_status_with_options_async(workspace_id, request, headers, runtime)
+
     def invoke_plugin_with_options(
         self,
         workspace_id: str,
@@ -1992,6 +2452,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.recall_document_with_options_async(workspace_id, request, headers, runtime)
+
+    def recognize_intention_with_options(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.RecognizeIntentionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.RecognizeIntentionResponse:
+        """
+        @summary 意图识别
+        
+        @param request: RecognizeIntentionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecognizeIntentionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.analysis):
+            body['analysis'] = request.analysis
+        if not UtilClient.is_unset(request.biz_type):
+            body['bizType'] = request.biz_type
+        if not UtilClient.is_unset(request.conversation):
+            body['conversation'] = request.conversation
+        if not UtilClient.is_unset(request.global_intention_list):
+            body['globalIntentionList'] = request.global_intention_list
+        if not UtilClient.is_unset(request.hierarchical_intention_list):
+            body['hierarchicalIntentionList'] = request.hierarchical_intention_list
+        if not UtilClient.is_unset(request.intention_list):
+            body['intentionList'] = request.intention_list
+        if not UtilClient.is_unset(request.op_type):
+            body['opType'] = request.op_type
+        if not UtilClient.is_unset(request.recommend):
+            body['recommend'] = request.recommend
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeIntention',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/recog/intent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.RecognizeIntentionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recognize_intention_with_options_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.RecognizeIntentionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dian_jin_20240628_models.RecognizeIntentionResponse:
+        """
+        @summary 意图识别
+        
+        @param request: RecognizeIntentionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecognizeIntentionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.analysis):
+            body['analysis'] = request.analysis
+        if not UtilClient.is_unset(request.biz_type):
+            body['bizType'] = request.biz_type
+        if not UtilClient.is_unset(request.conversation):
+            body['conversation'] = request.conversation
+        if not UtilClient.is_unset(request.global_intention_list):
+            body['globalIntentionList'] = request.global_intention_list
+        if not UtilClient.is_unset(request.hierarchical_intention_list):
+            body['hierarchicalIntentionList'] = request.hierarchical_intention_list
+        if not UtilClient.is_unset(request.intention_list):
+            body['intentionList'] = request.intention_list
+        if not UtilClient.is_unset(request.op_type):
+            body['opType'] = request.op_type
+        if not UtilClient.is_unset(request.recommend):
+            body['recommend'] = request.recommend
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecognizeIntention',
+            version='2024-06-28',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/api/recog/intent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dian_jin_20240628_models.RecognizeIntentionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recognize_intention(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.RecognizeIntentionRequest,
+    ) -> dian_jin_20240628_models.RecognizeIntentionResponse:
+        """
+        @summary 意图识别
+        
+        @param request: RecognizeIntentionRequest
+        @return: RecognizeIntentionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.recognize_intention_with_options(workspace_id, request, headers, runtime)
+
+    async def recognize_intention_async(
+        self,
+        workspace_id: str,
+        request: dian_jin_20240628_models.RecognizeIntentionRequest,
+    ) -> dian_jin_20240628_models.RecognizeIntentionResponse:
+        """
+        @summary 意图识别
+        
+        @param request: RecognizeIntentionRequest
+        @return: RecognizeIntentionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.recognize_intention_with_options_async(workspace_id, request, headers, runtime)
 
     def run_chat_result_generation_with_options(
         self,

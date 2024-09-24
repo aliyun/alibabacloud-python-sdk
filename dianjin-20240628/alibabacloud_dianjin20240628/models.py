@@ -4,6 +4,189 @@ from Tea.model import TeaModel
 from typing import Dict, Any, List, BinaryIO
 
 
+class CreateFinReportSummaryTaskRequest(TeaModel):
+    def __init__(
+        self,
+        doc_id: str = None,
+        enable_table: bool = None,
+        end_page: int = None,
+        instruction: str = None,
+        library_id: str = None,
+        model_id: str = None,
+        start_page: int = None,
+        task_type: str = None,
+    ):
+        # This parameter is required.
+        self.doc_id = doc_id
+        # This parameter is required.
+        self.enable_table = enable_table
+        self.end_page = end_page
+        self.instruction = instruction
+        # This parameter is required.
+        self.library_id = library_id
+        # This parameter is required.
+        self.model_id = model_id
+        self.start_page = start_page
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.doc_id is not None:
+            result['docId'] = self.doc_id
+        if self.enable_table is not None:
+            result['enableTable'] = self.enable_table
+        if self.end_page is not None:
+            result['endPage'] = self.end_page
+        if self.instruction is not None:
+            result['instruction'] = self.instruction
+        if self.library_id is not None:
+            result['libraryId'] = self.library_id
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.start_page is not None:
+            result['startPage'] = self.start_page
+        if self.task_type is not None:
+            result['taskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('docId') is not None:
+            self.doc_id = m.get('docId')
+        if m.get('enableTable') is not None:
+            self.enable_table = m.get('enableTable')
+        if m.get('endPage') is not None:
+            self.end_page = m.get('endPage')
+        if m.get('instruction') is not None:
+            self.instruction = m.get('instruction')
+        if m.get('libraryId') is not None:
+            self.library_id = m.get('libraryId')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('startPage') is not None:
+            self.start_page = m.get('startPage')
+        if m.get('taskType') is not None:
+            self.task_type = m.get('taskType')
+        return self
+
+
+class CreateFinReportSummaryTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost: int = None,
+        data: str = None,
+        data_type: str = None,
+        err_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time: str = None,
+    ):
+        self.cost = cost
+        self.data = data
+        self.data_type = data_type
+        self.err_code = err_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost
+        if self.data is not None:
+            result['data'] = self.data
+        if self.data_type is not None:
+            result['dataType'] = self.data_type
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.time is not None:
+            result['time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            self.cost = m.get('cost')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('dataType') is not None:
+            self.data_type = m.get('dataType')
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        return self
+
+
+class CreateFinReportSummaryTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateFinReportSummaryTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateFinReportSummaryTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateLibraryRequestIndexSettingChunkStrategy(TeaModel):
     def __init__(
         self,
@@ -1012,6 +1195,144 @@ class DeleteLibraryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteLibraryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EvictTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class EvictTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost: int = None,
+        data: str = None,
+        data_type: str = None,
+        err_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time: str = None,
+    ):
+        self.cost = cost
+        self.data = data
+        self.data_type = data_type
+        self.err_code = err_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost
+        if self.data is not None:
+            result['data'] = self.data
+        if self.data_type is not None:
+            result['dataType'] = self.data_type
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.time is not None:
+            result['time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            self.cost = m.get('cost')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('dataType') is not None:
+            self.data_type = m.get('dataType')
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        return self
+
+
+class EvictTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EvictTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EvictTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4195,6 +4516,495 @@ class GetParseResultResponse(TeaModel):
         return self
 
 
+class GetSummaryTaskResultRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class GetSummaryTaskResultResponseBodyDataChoicesMessage(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        role: str = None,
+        tool_calls: List[Dict[str, Any]] = None,
+    ):
+        self.content = content
+        self.role = role
+        self.tool_calls = tool_calls
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['content'] = self.content
+        if self.role is not None:
+            result['role'] = self.role
+        if self.tool_calls is not None:
+            result['toolCalls'] = self.tool_calls
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('role') is not None:
+            self.role = m.get('role')
+        if m.get('toolCalls') is not None:
+            self.tool_calls = m.get('toolCalls')
+        return self
+
+
+class GetSummaryTaskResultResponseBodyDataChoices(TeaModel):
+    def __init__(
+        self,
+        finish_reason: str = None,
+        index: int = None,
+        message: GetSummaryTaskResultResponseBodyDataChoicesMessage = None,
+    ):
+        self.finish_reason = finish_reason
+        self.index = index
+        self.message = message
+
+    def validate(self):
+        if self.message:
+            self.message.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.finish_reason is not None:
+            result['finishReason'] = self.finish_reason
+        if self.index is not None:
+            result['index'] = self.index
+        if self.message is not None:
+            result['message'] = self.message.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('finishReason') is not None:
+            self.finish_reason = m.get('finishReason')
+        if m.get('index') is not None:
+            self.index = m.get('index')
+        if m.get('message') is not None:
+            temp_model = GetSummaryTaskResultResponseBodyDataChoicesMessage()
+            self.message = temp_model.from_map(m['message'])
+        return self
+
+
+class GetSummaryTaskResultResponseBodyDataUsage(TeaModel):
+    def __init__(
+        self,
+        image_count: int = None,
+        image_tokens: int = None,
+        input_tokens: int = None,
+        output_tokens: int = None,
+        total_tokens: int = None,
+    ):
+        self.image_count = image_count
+        self.image_tokens = image_tokens
+        self.input_tokens = input_tokens
+        self.output_tokens = output_tokens
+        self.total_tokens = total_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_count is not None:
+            result['imageCount'] = self.image_count
+        if self.image_tokens is not None:
+            result['imageTokens'] = self.image_tokens
+        if self.input_tokens is not None:
+            result['inputTokens'] = self.input_tokens
+        if self.output_tokens is not None:
+            result['outputTokens'] = self.output_tokens
+        if self.total_tokens is not None:
+            result['totalTokens'] = self.total_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('imageCount') is not None:
+            self.image_count = m.get('imageCount')
+        if m.get('imageTokens') is not None:
+            self.image_tokens = m.get('imageTokens')
+        if m.get('inputTokens') is not None:
+            self.input_tokens = m.get('inputTokens')
+        if m.get('outputTokens') is not None:
+            self.output_tokens = m.get('outputTokens')
+        if m.get('totalTokens') is not None:
+            self.total_tokens = m.get('totalTokens')
+        return self
+
+
+class GetSummaryTaskResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        choices: List[GetSummaryTaskResultResponseBodyDataChoices] = None,
+        created: int = None,
+        id: str = None,
+        model_id: str = None,
+        request_id: str = None,
+        time: str = None,
+        total_tokens: int = None,
+        usage: GetSummaryTaskResultResponseBodyDataUsage = None,
+    ):
+        self.choices = choices
+        self.created = created
+        self.id = id
+        self.model_id = model_id
+        self.request_id = request_id
+        self.time = time
+        self.total_tokens = total_tokens
+        self.usage = usage
+
+    def validate(self):
+        if self.choices:
+            for k in self.choices:
+                if k:
+                    k.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['choices'] = []
+        if self.choices is not None:
+            for k in self.choices:
+                result['choices'].append(k.to_map() if k else None)
+        if self.created is not None:
+            result['created'] = self.created
+        if self.id is not None:
+            result['id'] = self.id
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.time is not None:
+            result['time'] = self.time
+        if self.total_tokens is not None:
+            result['totalTokens'] = self.total_tokens
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.choices = []
+        if m.get('choices') is not None:
+            for k in m.get('choices'):
+                temp_model = GetSummaryTaskResultResponseBodyDataChoices()
+                self.choices.append(temp_model.from_map(k))
+        if m.get('created') is not None:
+            self.created = m.get('created')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        if m.get('totalTokens') is not None:
+            self.total_tokens = m.get('totalTokens')
+        if m.get('usage') is not None:
+            temp_model = GetSummaryTaskResultResponseBodyDataUsage()
+            self.usage = temp_model.from_map(m['usage'])
+        return self
+
+
+class GetSummaryTaskResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost: int = None,
+        data: GetSummaryTaskResultResponseBodyData = None,
+        data_type: str = None,
+        err_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time: str = None,
+    ):
+        self.cost = cost
+        self.data = data
+        self.data_type = data_type
+        self.err_code = err_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time = time
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.data_type is not None:
+            result['dataType'] = self.data_type
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.time is not None:
+            result['time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            self.cost = m.get('cost')
+        if m.get('data') is not None:
+            temp_model = GetSummaryTaskResultResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('dataType') is not None:
+            self.data_type = m.get('dataType')
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        return self
+
+
+class GetSummaryTaskResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSummaryTaskResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSummaryTaskResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTaskStatusRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        return self
+
+
+class GetTaskStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost: int = None,
+        data: str = None,
+        data_type: str = None,
+        err_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time: str = None,
+    ):
+        self.cost = cost
+        self.data = data
+        self.data_type = data_type
+        self.err_code = err_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time = time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost
+        if self.data is not None:
+            result['data'] = self.data
+        if self.data_type is not None:
+            result['dataType'] = self.data_type
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.time is not None:
+            result['time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            self.cost = m.get('cost')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('dataType') is not None:
+            self.data_type = m.get('dataType')
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        return self
+
+
+class GetTaskStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTaskStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTaskStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class InvokePluginRequest(TeaModel):
     def __init__(
         self,
@@ -5784,6 +6594,383 @@ class RecallDocumentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RecallDocumentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RecognizeIntentionRequestGlobalIntentionList(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        intention: str = None,
+        intention_code: str = None,
+    ):
+        self.description = description
+        self.intention = intention
+        self.intention_code = intention_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.intention is not None:
+            result['intention'] = self.intention
+        if self.intention_code is not None:
+            result['intentionCode'] = self.intention_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('intention') is not None:
+            self.intention = m.get('intention')
+        if m.get('intentionCode') is not None:
+            self.intention_code = m.get('intentionCode')
+        return self
+
+
+class RecognizeIntentionRequestHierarchicalIntentionList(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        intention: str = None,
+        intention_code: str = None,
+    ):
+        self.description = description
+        self.intention = intention
+        self.intention_code = intention_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.intention is not None:
+            result['intention'] = self.intention
+        if self.intention_code is not None:
+            result['intentionCode'] = self.intention_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('intention') is not None:
+            self.intention = m.get('intention')
+        if m.get('intentionCode') is not None:
+            self.intention_code = m.get('intentionCode')
+        return self
+
+
+class RecognizeIntentionRequestIntentionList(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        intention: str = None,
+        intention_code: str = None,
+    ):
+        self.description = description
+        self.intention = intention
+        self.intention_code = intention_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.intention is not None:
+            result['intention'] = self.intention
+        if self.intention_code is not None:
+            result['intentionCode'] = self.intention_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('intention') is not None:
+            self.intention = m.get('intention')
+        if m.get('intentionCode') is not None:
+            self.intention_code = m.get('intentionCode')
+        return self
+
+
+class RecognizeIntentionRequest(TeaModel):
+    def __init__(
+        self,
+        analysis: bool = None,
+        biz_type: str = None,
+        conversation: str = None,
+        global_intention_list: List[RecognizeIntentionRequestGlobalIntentionList] = None,
+        hierarchical_intention_list: List[RecognizeIntentionRequestHierarchicalIntentionList] = None,
+        intention_list: List[RecognizeIntentionRequestIntentionList] = None,
+        op_type: str = None,
+        recommend: bool = None,
+    ):
+        self.analysis = analysis
+        # This parameter is required.
+        self.biz_type = biz_type
+        # This parameter is required.
+        self.conversation = conversation
+        self.global_intention_list = global_intention_list
+        self.hierarchical_intention_list = hierarchical_intention_list
+        self.intention_list = intention_list
+        self.op_type = op_type
+        self.recommend = recommend
+
+    def validate(self):
+        if self.global_intention_list:
+            for k in self.global_intention_list:
+                if k:
+                    k.validate()
+        if self.hierarchical_intention_list:
+            for k in self.hierarchical_intention_list:
+                if k:
+                    k.validate()
+        if self.intention_list:
+            for k in self.intention_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analysis is not None:
+            result['analysis'] = self.analysis
+        if self.biz_type is not None:
+            result['bizType'] = self.biz_type
+        if self.conversation is not None:
+            result['conversation'] = self.conversation
+        result['globalIntentionList'] = []
+        if self.global_intention_list is not None:
+            for k in self.global_intention_list:
+                result['globalIntentionList'].append(k.to_map() if k else None)
+        result['hierarchicalIntentionList'] = []
+        if self.hierarchical_intention_list is not None:
+            for k in self.hierarchical_intention_list:
+                result['hierarchicalIntentionList'].append(k.to_map() if k else None)
+        result['intentionList'] = []
+        if self.intention_list is not None:
+            for k in self.intention_list:
+                result['intentionList'].append(k.to_map() if k else None)
+        if self.op_type is not None:
+            result['opType'] = self.op_type
+        if self.recommend is not None:
+            result['recommend'] = self.recommend
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('analysis') is not None:
+            self.analysis = m.get('analysis')
+        if m.get('bizType') is not None:
+            self.biz_type = m.get('bizType')
+        if m.get('conversation') is not None:
+            self.conversation = m.get('conversation')
+        self.global_intention_list = []
+        if m.get('globalIntentionList') is not None:
+            for k in m.get('globalIntentionList'):
+                temp_model = RecognizeIntentionRequestGlobalIntentionList()
+                self.global_intention_list.append(temp_model.from_map(k))
+        self.hierarchical_intention_list = []
+        if m.get('hierarchicalIntentionList') is not None:
+            for k in m.get('hierarchicalIntentionList'):
+                temp_model = RecognizeIntentionRequestHierarchicalIntentionList()
+                self.hierarchical_intention_list.append(temp_model.from_map(k))
+        self.intention_list = []
+        if m.get('intentionList') is not None:
+            for k in m.get('intentionList'):
+                temp_model = RecognizeIntentionRequestIntentionList()
+                self.intention_list.append(temp_model.from_map(k))
+        if m.get('opType') is not None:
+            self.op_type = m.get('opType')
+        if m.get('recommend') is not None:
+            self.recommend = m.get('recommend')
+        return self
+
+
+class RecognizeIntentionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        analysis_process: str = None,
+        intention_code: str = None,
+        intention_name: str = None,
+        recommend_intention: str = None,
+        recommend_script: str = None,
+    ):
+        self.analysis_process = analysis_process
+        self.intention_code = intention_code
+        self.intention_name = intention_name
+        self.recommend_intention = recommend_intention
+        self.recommend_script = recommend_script
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analysis_process is not None:
+            result['analysisProcess'] = self.analysis_process
+        if self.intention_code is not None:
+            result['intentionCode'] = self.intention_code
+        if self.intention_name is not None:
+            result['intentionName'] = self.intention_name
+        if self.recommend_intention is not None:
+            result['recommendIntention'] = self.recommend_intention
+        if self.recommend_script is not None:
+            result['recommendScript'] = self.recommend_script
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('analysisProcess') is not None:
+            self.analysis_process = m.get('analysisProcess')
+        if m.get('intentionCode') is not None:
+            self.intention_code = m.get('intentionCode')
+        if m.get('intentionName') is not None:
+            self.intention_name = m.get('intentionName')
+        if m.get('recommendIntention') is not None:
+            self.recommend_intention = m.get('recommendIntention')
+        if m.get('recommendScript') is not None:
+            self.recommend_script = m.get('recommendScript')
+        return self
+
+
+class RecognizeIntentionResponseBody(TeaModel):
+    def __init__(
+        self,
+        cost: int = None,
+        data: RecognizeIntentionResponseBodyData = None,
+        data_type: str = None,
+        err_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time: str = None,
+    ):
+        self.cost = cost
+        self.data = data
+        self.data_type = data_type
+        self.err_code = err_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time = time
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost is not None:
+            result['cost'] = self.cost
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.data_type is not None:
+            result['dataType'] = self.data_type
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.time is not None:
+            result['time'] = self.time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            self.cost = m.get('cost')
+        if m.get('data') is not None:
+            temp_model = RecognizeIntentionResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('dataType') is not None:
+            self.data_type = m.get('dataType')
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('time') is not None:
+            self.time = m.get('time')
+        return self
+
+
+class RecognizeIntentionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RecognizeIntentionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RecognizeIntentionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

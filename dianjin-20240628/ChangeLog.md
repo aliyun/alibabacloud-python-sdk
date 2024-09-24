@@ -1,3 +1,11 @@
+2024-09-24 Version: 1.2.0
+- Support API CreateFinReportSummaryTask.
+- Support API EvictTask.
+- Support API GetSummaryTaskResult.
+- Support API GetTaskStatus.
+- Support API RecognizeIntention.
+
+
 2024-09-14 Version: 1.1.1
 - Generated python 2024-06-28 for DianJin.
 
