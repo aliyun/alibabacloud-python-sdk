@@ -6935,9 +6935,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeCustomMetricListResponse:
         """
-        @summary Queries the reported custom metrics of a cloud service.
+        @summary Queries the reported monitoring data.
         
-        @description >  You can call the DescribeMetricList operation to query the metrics of a cloud service. For more information, see [DescribeMetricList](https://help.aliyun.com/document_detail/51936.html).
+        @description >  You can call the DescribeMetricList operation to query the metrics of cloud services. For more information, see [DescribeMetricList](https://help.aliyun.com/document_detail/51936.html).
         
         @param request: DescribeCustomMetricListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6982,9 +6982,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeCustomMetricListResponse:
         """
-        @summary Queries the reported custom metrics of a cloud service.
+        @summary Queries the reported monitoring data.
         
-        @description >  You can call the DescribeMetricList operation to query the metrics of a cloud service. For more information, see [DescribeMetricList](https://help.aliyun.com/document_detail/51936.html).
+        @description >  You can call the DescribeMetricList operation to query the metrics of cloud services. For more information, see [DescribeMetricList](https://help.aliyun.com/document_detail/51936.html).
         
         @param request: DescribeCustomMetricListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7028,9 +7028,9 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeCustomMetricListRequest,
     ) -> cms_20190101_models.DescribeCustomMetricListResponse:
         """
-        @summary Queries the reported custom metrics of a cloud service.
+        @summary Queries the reported monitoring data.
         
-        @description >  You can call the DescribeMetricList operation to query the metrics of a cloud service. For more information, see [DescribeMetricList](https://help.aliyun.com/document_detail/51936.html).
+        @description >  You can call the DescribeMetricList operation to query the metrics of cloud services. For more information, see [DescribeMetricList](https://help.aliyun.com/document_detail/51936.html).
         
         @param request: DescribeCustomMetricListRequest
         @return: DescribeCustomMetricListResponse
@@ -7043,9 +7043,9 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeCustomMetricListRequest,
     ) -> cms_20190101_models.DescribeCustomMetricListResponse:
         """
-        @summary Queries the reported custom metrics of a cloud service.
+        @summary Queries the reported monitoring data.
         
-        @description >  You can call the DescribeMetricList operation to query the metrics of a cloud service. For more information, see [DescribeMetricList](https://help.aliyun.com/document_detail/51936.html).
+        @description >  You can call the DescribeMetricList operation to query the metrics of cloud services. For more information, see [DescribeMetricList](https://help.aliyun.com/document_detail/51936.html).
         
         @param request: DescribeCustomMetricListRequest
         @return: DescribeCustomMetricListResponse
@@ -11895,6 +11895,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorDataResponse:
         """
+        @summary Queries the fine-grained monitoring data of a site monitoring task.
+        
         @param request: DescribeSiteMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSiteMonitorDataResponse
@@ -11942,6 +11944,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorDataResponse:
         """
+        @summary Queries the fine-grained monitoring data of a site monitoring task.
+        
         @param request: DescribeSiteMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSiteMonitorDataResponse
@@ -11988,6 +11992,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSiteMonitorDataRequest,
     ) -> cms_20190101_models.DescribeSiteMonitorDataResponse:
         """
+        @summary Queries the fine-grained monitoring data of a site monitoring task.
+        
         @param request: DescribeSiteMonitorDataRequest
         @return: DescribeSiteMonitorDataResponse
         """
@@ -11999,6 +12005,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSiteMonitorDataRequest,
     ) -> cms_20190101_models.DescribeSiteMonitorDataResponse:
         """
+        @summary Queries the fine-grained monitoring data of a site monitoring task.
+        
         @param request: DescribeSiteMonitorDataRequest
         @return: DescribeSiteMonitorDataResponse
         """
@@ -12407,6 +12415,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorQuotaResponse:
         """
+        @summary Queries the quotas and version of site monitoring.
+        
         @param request: DescribeSiteMonitorQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSiteMonitorQuotaResponse
@@ -12435,6 +12445,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorQuotaResponse:
         """
+        @summary Queries the quotas and version of site monitoring.
+        
         @param request: DescribeSiteMonitorQuotaRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSiteMonitorQuotaResponse
@@ -12462,6 +12474,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSiteMonitorQuotaRequest,
     ) -> cms_20190101_models.DescribeSiteMonitorQuotaResponse:
         """
+        @summary Queries the quotas and version of site monitoring.
+        
         @param request: DescribeSiteMonitorQuotaRequest
         @return: DescribeSiteMonitorQuotaResponse
         """
@@ -12473,6 +12487,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSiteMonitorQuotaRequest,
     ) -> cms_20190101_models.DescribeSiteMonitorQuotaResponse:
         """
+        @summary Queries the quotas and version of site monitoring.
+        
         @param request: DescribeSiteMonitorQuotaRequest
         @return: DescribeSiteMonitorQuotaResponse
         """
@@ -12485,7 +12501,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorStatisticsResponse:
         """
-        @description This topic provides an example to show how to query the statistics of the `Availability` metric for a site monitoring task whose ID is `ef4cdc8b-9dc7-43e7-810e-f950e56c***`. The result indicates that the availability rate of the site is `100%`.
+        @summary Queries the statistics of a specified metric for a specified site monitoring task.
+        
+        @description This topic provides an example on how to query the statistics of the `Availability` metric for a site monitoring task whose ID is `ef4cdc8b-9dc7-43e7-810e-f950e56c***`. The result indicates that the availability rate of the site is `100%`.
         
         @param request: DescribeSiteMonitorStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12526,7 +12544,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSiteMonitorStatisticsResponse:
         """
-        @description This topic provides an example to show how to query the statistics of the `Availability` metric for a site monitoring task whose ID is `ef4cdc8b-9dc7-43e7-810e-f950e56c***`. The result indicates that the availability rate of the site is `100%`.
+        @summary Queries the statistics of a specified metric for a specified site monitoring task.
+        
+        @description This topic provides an example on how to query the statistics of the `Availability` metric for a site monitoring task whose ID is `ef4cdc8b-9dc7-43e7-810e-f950e56c***`. The result indicates that the availability rate of the site is `100%`.
         
         @param request: DescribeSiteMonitorStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12566,7 +12586,9 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSiteMonitorStatisticsRequest,
     ) -> cms_20190101_models.DescribeSiteMonitorStatisticsResponse:
         """
-        @description This topic provides an example to show how to query the statistics of the `Availability` metric for a site monitoring task whose ID is `ef4cdc8b-9dc7-43e7-810e-f950e56c***`. The result indicates that the availability rate of the site is `100%`.
+        @summary Queries the statistics of a specified metric for a specified site monitoring task.
+        
+        @description This topic provides an example on how to query the statistics of the `Availability` metric for a site monitoring task whose ID is `ef4cdc8b-9dc7-43e7-810e-f950e56c***`. The result indicates that the availability rate of the site is `100%`.
         
         @param request: DescribeSiteMonitorStatisticsRequest
         @return: DescribeSiteMonitorStatisticsResponse
@@ -12579,13 +12601,139 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSiteMonitorStatisticsRequest,
     ) -> cms_20190101_models.DescribeSiteMonitorStatisticsResponse:
         """
-        @description This topic provides an example to show how to query the statistics of the `Availability` metric for a site monitoring task whose ID is `ef4cdc8b-9dc7-43e7-810e-f950e56c***`. The result indicates that the availability rate of the site is `100%`.
+        @summary Queries the statistics of a specified metric for a specified site monitoring task.
+        
+        @description This topic provides an example on how to query the statistics of the `Availability` metric for a site monitoring task whose ID is `ef4cdc8b-9dc7-43e7-810e-f950e56c***`. The result indicates that the availability rate of the site is `100%`.
         
         @param request: DescribeSiteMonitorStatisticsRequest
         @return: DescribeSiteMonitorStatisticsResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_site_monitor_statistics_with_options_async(request, runtime)
+
+    def describe_synthetic_probe_list_with_options(
+        self,
+        request: cms_20190101_models.DescribeSyntheticProbeListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DescribeSyntheticProbeListResponse:
+        """
+        @summary 查询拨测探测节点列表
+        
+        @param request: DescribeSyntheticProbeListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSyntheticProbeListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.city):
+            query['City'] = request.city
+        if not UtilClient.is_unset(request.idc_probe):
+            query['IdcProbe'] = request.idc_probe
+        if not UtilClient.is_unset(request.ipv_4):
+            query['Ipv4'] = request.ipv_4
+        if not UtilClient.is_unset(request.ipv_6):
+            query['Ipv6'] = request.ipv_6
+        if not UtilClient.is_unset(request.isp):
+            query['Isp'] = request.isp
+        if not UtilClient.is_unset(request.lm_probe):
+            query['LmProbe'] = request.lm_probe
+        if not UtilClient.is_unset(request.mb_probe):
+            query['MbProbe'] = request.mb_probe
+        if not UtilClient.is_unset(request.view_all):
+            query['ViewAll'] = request.view_all
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSyntheticProbeList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSyntheticProbeListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_synthetic_probe_list_with_options_async(
+        self,
+        request: cms_20190101_models.DescribeSyntheticProbeListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cms_20190101_models.DescribeSyntheticProbeListResponse:
+        """
+        @summary 查询拨测探测节点列表
+        
+        @param request: DescribeSyntheticProbeListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSyntheticProbeListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.city):
+            query['City'] = request.city
+        if not UtilClient.is_unset(request.idc_probe):
+            query['IdcProbe'] = request.idc_probe
+        if not UtilClient.is_unset(request.ipv_4):
+            query['Ipv4'] = request.ipv_4
+        if not UtilClient.is_unset(request.ipv_6):
+            query['Ipv6'] = request.ipv_6
+        if not UtilClient.is_unset(request.isp):
+            query['Isp'] = request.isp
+        if not UtilClient.is_unset(request.lm_probe):
+            query['LmProbe'] = request.lm_probe
+        if not UtilClient.is_unset(request.mb_probe):
+            query['MbProbe'] = request.mb_probe
+        if not UtilClient.is_unset(request.view_all):
+            query['ViewAll'] = request.view_all
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSyntheticProbeList',
+            version='2019-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cms_20190101_models.DescribeSyntheticProbeListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_synthetic_probe_list(
+        self,
+        request: cms_20190101_models.DescribeSyntheticProbeListRequest,
+    ) -> cms_20190101_models.DescribeSyntheticProbeListResponse:
+        """
+        @summary 查询拨测探测节点列表
+        
+        @param request: DescribeSyntheticProbeListRequest
+        @return: DescribeSyntheticProbeListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_synthetic_probe_list_with_options(request, runtime)
+
+    async def describe_synthetic_probe_list_async(
+        self,
+        request: cms_20190101_models.DescribeSyntheticProbeListRequest,
+    ) -> cms_20190101_models.DescribeSyntheticProbeListResponse:
+        """
+        @summary 查询拨测探测节点列表
+        
+        @param request: DescribeSyntheticProbeListRequest
+        @return: DescribeSyntheticProbeListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_synthetic_probe_list_with_options_async(request, runtime)
 
     def describe_system_event_attribute_with_options(
         self,
@@ -13631,6 +13779,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DisableMetricRulesResponse:
         """
+        @summary Disables alert rules.
+        
         @param request: DisableMetricRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DisableMetricRulesResponse
@@ -13664,6 +13814,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DisableMetricRulesResponse:
         """
+        @summary Disables alert rules.
+        
         @param request: DisableMetricRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DisableMetricRulesResponse
@@ -13696,6 +13848,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DisableMetricRulesRequest,
     ) -> cms_20190101_models.DisableMetricRulesResponse:
         """
+        @summary Disables alert rules.
+        
         @param request: DisableMetricRulesRequest
         @return: DisableMetricRulesResponse
         """
@@ -13707,6 +13861,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DisableMetricRulesRequest,
     ) -> cms_20190101_models.DisableMetricRulesResponse:
         """
+        @summary Disables alert rules.
+        
         @param request: DisableMetricRulesRequest
         @return: DisableMetricRulesResponse
         """
@@ -13719,6 +13875,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DisableSiteMonitorsResponse:
         """
+        @summary Disables site monitoring tasks.
+        
         @param request: DisableSiteMonitorsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DisableSiteMonitorsResponse
@@ -13752,6 +13910,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DisableSiteMonitorsResponse:
         """
+        @summary Disables site monitoring tasks.
+        
         @param request: DisableSiteMonitorsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DisableSiteMonitorsResponse
@@ -13784,6 +13944,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DisableSiteMonitorsRequest,
     ) -> cms_20190101_models.DisableSiteMonitorsResponse:
         """
+        @summary Disables site monitoring tasks.
+        
         @param request: DisableSiteMonitorsRequest
         @return: DisableSiteMonitorsResponse
         """
@@ -13795,6 +13957,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DisableSiteMonitorsRequest,
     ) -> cms_20190101_models.DisableSiteMonitorsResponse:
         """
+        @summary Disables site monitoring tasks.
+        
         @param request: DisableSiteMonitorsRequest
         @return: DisableSiteMonitorsResponse
         """
@@ -14267,6 +14431,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.EnableSiteMonitorsResponse:
         """
+        @summary Enables site monitoring tasks.
+        
         @param request: EnableSiteMonitorsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: EnableSiteMonitorsResponse
@@ -14300,6 +14466,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.EnableSiteMonitorsResponse:
         """
+        @summary Enables site monitoring tasks.
+        
         @param request: EnableSiteMonitorsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: EnableSiteMonitorsResponse
@@ -14332,6 +14500,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.EnableSiteMonitorsRequest,
     ) -> cms_20190101_models.EnableSiteMonitorsResponse:
         """
+        @summary Enables site monitoring tasks.
+        
         @param request: EnableSiteMonitorsRequest
         @return: EnableSiteMonitorsResponse
         """
@@ -14343,6 +14513,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.EnableSiteMonitorsRequest,
     ) -> cms_20190101_models.EnableSiteMonitorsResponse:
         """
+        @summary Enables site monitoring tasks.
+        
         @param request: EnableSiteMonitorsRequest
         @return: EnableSiteMonitorsResponse
         """
@@ -17765,7 +17937,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutResourceMetricRuleResponse:
         """
-        @summary Creates an alert rule for a metric of a resource.
+        @summary Configures an alert rule.
         
         @description This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of an Elastic Compute Service (ECS) instance whose ID is `i-uf6j91r34rnwawoo***`. The namespace of ECS metrics is `acs_ecs_dashboard`. The alert contact group of the alert rule is `ECS_Group`. The name of the alert rule is `test123`. The ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`. The comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`. The threshold for Critical-level alerts is `90`. The consecutive number of times for which the metric value meets the trigger condition before a Critical-level alert is triggered is `3`.
         
@@ -17842,7 +18014,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutResourceMetricRuleResponse:
         """
-        @summary Creates an alert rule for a metric of a resource.
+        @summary Configures an alert rule.
         
         @description This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of an Elastic Compute Service (ECS) instance whose ID is `i-uf6j91r34rnwawoo***`. The namespace of ECS metrics is `acs_ecs_dashboard`. The alert contact group of the alert rule is `ECS_Group`. The name of the alert rule is `test123`. The ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`. The comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`. The threshold for Critical-level alerts is `90`. The consecutive number of times for which the metric value meets the trigger condition before a Critical-level alert is triggered is `3`.
         
@@ -17918,7 +18090,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutResourceMetricRuleRequest,
     ) -> cms_20190101_models.PutResourceMetricRuleResponse:
         """
-        @summary Creates an alert rule for a metric of a resource.
+        @summary Configures an alert rule.
         
         @description This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of an Elastic Compute Service (ECS) instance whose ID is `i-uf6j91r34rnwawoo***`. The namespace of ECS metrics is `acs_ecs_dashboard`. The alert contact group of the alert rule is `ECS_Group`. The name of the alert rule is `test123`. The ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`. The comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`. The threshold for Critical-level alerts is `90`. The consecutive number of times for which the metric value meets the trigger condition before a Critical-level alert is triggered is `3`.
         
@@ -17933,7 +18105,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutResourceMetricRuleRequest,
     ) -> cms_20190101_models.PutResourceMetricRuleResponse:
         """
-        @summary Creates an alert rule for a metric of a resource.
+        @summary Configures an alert rule.
         
         @description This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of an Elastic Compute Service (ECS) instance whose ID is `i-uf6j91r34rnwawoo***`. The namespace of ECS metrics is `acs_ecs_dashboard`. The alert contact group of the alert rule is `ECS_Group`. The name of the alert rule is `test123`. The ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`. The comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`. The threshold for Critical-level alerts is `90`. The consecutive number of times for which the metric value meets the trigger condition before a Critical-level alert is triggered is `3`.
         

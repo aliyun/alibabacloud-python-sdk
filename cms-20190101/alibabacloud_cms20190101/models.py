@@ -2680,23 +2680,23 @@ class AddTagsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N.
+        # The tag key.
         # 
         # Valid values of N: 1 to 3. A tag key can be 1 to 64 characters in length.
         # 
         # You can create a tag key or specify an existing tag key. For more information about how to obtain a tag key, see [DescribeTagKeyList](https://help.aliyun.com/document_detail/145558.html).
         # 
-        # > The tag key cannot start with `aliyun` or `acs:`. The tag key (`Tag.N.Key`) and tag value (`Tag.N.Value`) must be specified at the same time.
+        # >  The tag key cannot start with `aliyun` or `acs:`. The tag key (`Tag.N.Key`) and tag value (`Tag.N.Value`) must be specified at the same time.
         # 
         # This parameter is required.
         self.key = key
-        # The value of tag N.
+        # The tag value.
         # 
         # Valid values of N: 1 to 3. A tag value can be 1 to 64 characters in length.
         # 
-        # You can create a tag value or specify an existing tag value. For more information about how to obtain a tag value, see [DescribeTagKeyList](https://help.aliyun.com/document_detail/145557.html).
+        # You can create a tag value or specify an existing tag value. For more information about how to obtain a tag value, see [DescribeTagValueList](https://help.aliyun.com/document_detail/145557.html).
         # 
-        # > The tag value cannot start with `aliyun` or `acs:`. The tag key (`Tag.N.Key`) and tag value (`Tag.N.Value`) must be specified at the same time.
+        # >  The tag value cannot start with `aliyun` or `acs:`. The tag key (`Tag.N.Key`) and tag value (`Tag.N.Value`) must be specified at the same time.
         # 
         # This parameter is required.
         self.value = value
@@ -3762,11 +3762,11 @@ class CreateDynamicTagGroupRequestMatchExpress(TeaModel):
     ):
         # The keys of the tags that are used to create the application group. If a specified key is attached to multiple resources, the resources that have the same key-value pair are added to the same group.
         self.tag_name = tag_name
-        # The tag values of the cloud resources. In this example, set the value of N to 1.
+        # The tag values of the cloud resources. Set the value of N to 1.
         # 
         # >  If you set the `MatchExpress.N.TagValueMatchFunction` parameter, you must also set the `MatchExpress.N.TagValue` parameter.
         self.tag_value = tag_value
-        # The method that is used to match the tag values of the cloud resources. In this example, set the value of N to 1. Valid values:
+        # The method that is used to match the tag values of the cloud resources. Set the value of N to 1. Valid values:
         # 
         # *   contains: contains
         # *   startWith: starts with a prefix
@@ -3831,6 +3831,8 @@ class CreateDynamicTagGroupRequest(TeaModel):
         # *   true: The application group automatically subscribes to event notifications.
         # *   false (default value): The application group does not automatically subscribe to event notifications.
         self.enable_subscribe_event = enable_subscribe_event
+        # The conditional expressions used to create an application group based on the tag.
+        # 
         # This parameter is required.
         self.match_express = match_express
         # The relationship between the conditional expressions for the tag values of the cloud resources. Valid values:
@@ -5452,7 +5454,7 @@ class CreateHostAvailabilityRequestTaskOption(TeaModel):
         self.http_response_charset = http_response_charset
         # The response to the HTTP request.
         self.http_response_match_content = http_response_match_content
-        # The URI that you want to monitor. This parameter must be specified when TaskType is set to HTTP.
+        # The URI that you want to monitor. This parameter is required if the TaskType parameter is set to HTTP or Telnet.
         self.http_uri = http_uri
         # The interval at which detection requests are sent. Unit: seconds. Valid values: 15, 30, 60, 120, 300, 900, 1800, and 3600.
         # 
@@ -5460,7 +5462,7 @@ class CreateHostAvailabilityRequestTaskOption(TeaModel):
         self.interval = interval
         # The domain name or IP address that you want to monitor.
         # 
-        # > This parameter must be specified when TaskType is set to PING or TELNET.
+        # >  This parameter is required if the TaskType parameter is set to PING.
         self.telnet_or_ping_host = telnet_or_ping_host
 
     def validate(self):
@@ -7453,12 +7455,12 @@ class CreateMetricRuleResourcesRequest(TeaModel):
         resources: str = None,
         rule_id: str = None,
     ):
-        # Specifies whether to overwrite the existing data. Valid values:
+        # Specifies whether to overwrite existing resources. Valid values:
         # 
-        # *   true: The resources submitted this time will overwrite the previous associated resources.
-        # *   false: The resources submitted this time will not overwrite the previous associated resources. The associated resources after submission include the previous associated resources and the resources submitted this time.
+        # *   true: The resources submitted this time overwrite the previously associated resources.
+        # *   false: The resources submitted this time do not overwrite the previously associated resources. The associated resources after submission include the previously associated resources and the resources submitted this time.
         self.overwrite = overwrite
-        # The resources to be associated with the alert rule. The value is a JSON array.
+        # The resources that are associated with the alert rule. Set the value to a JSON array.
         # 
         # >  You can add up to 100 resources each time. An alert rule can be associated with up to 3,000 resources.
         # 
@@ -7503,15 +7505,15 @@ class CreateMetricRuleResourcesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The response code.
         # 
-        # >  The status code 200 indicates that the call was successful.
+        # >  The status code 200 indicates that the request was successful.
         self.code = code
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+        # Indicates whether the request was successful. Valid values: true: The request was successful. false: The request failed.
         self.success = success
 
     def validate(self):
@@ -9103,9 +9105,9 @@ class CreateSiteMonitorRequest(TeaModel):
         # 
         # This parameter is required.
         self.task_name = task_name
-        # The type of the site monitoring task.
+        # The protocol that is used by the site monitoring task.
         # 
-        # Valid values: HTTP, HTTPS, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
+        # Valid values: HTTP, HTTPS, PING, TCP, UDP, DNS, SMTP, POP3, FTP, and WEBSOCKET.
         # 
         # This parameter is required.
         self.task_type = task_type
@@ -11784,7 +11786,7 @@ class DeleteMetricRuleResourcesRequest(TeaModel):
         resources: str = None,
         rule_id: str = None,
     ):
-        # The resources to be disassociated from the alert rule.
+        # The resources that are associated with the alert rule.
         # 
         # This parameter is required.
         self.resources = resources
@@ -11825,18 +11827,18 @@ class DeleteMetricRuleResourcesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The responses code.
         # 
-        # >  The status code 200 indicates that the call was successful.
+        # >  The status code 200 indicates that the request was successful.
         self.code = code
-        # The returned message.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -17505,11 +17507,11 @@ class DescribeContactListRequest(TeaModel):
         self.chanel_value = chanel_value
         # The name of the alert contact.
         self.contact_name = contact_name
-        # The number of the page to return.
+        # The page number.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Default value: 100.
         self.page_size = page_size
@@ -17569,7 +17571,7 @@ class DescribeContactListResponseBodyContactsContactChannels(TeaModel):
         self.ding_web_hook = ding_web_hook
         # The email address of the alert contact.
         self.mail = mail
-        # The phone number of the alert contact.
+        # The phone number of the alert contac.
         self.sms = sms
 
     def validate(self):
@@ -17616,7 +17618,7 @@ class DescribeContactListResponseBodyContactsContactChannelsState(TeaModel):
         # 
         # Valid value: OK. The value OK indicates that the TradeManager ID is valid and can receive alert notifications.
         # 
-        # >  This parameter can be returned only on the China site (aliyun.com).
+        # >  This parameter applies only to the Alibaba Cloud China site (aliyun.com).
         self.ali_im = ali_im
         # The status of the DingTalk chatbot.
         # 
@@ -17624,15 +17626,15 @@ class DescribeContactListResponseBodyContactsContactChannelsState(TeaModel):
         self.ding_web_hook = ding_web_hook
         # The status of the email address. Valid values:
         # 
-        # *   PENDING: The email address is not activated. Alert notifications can be sent to the email address only after the email address is activated.
-        # *   OK: The email address is activated and can receive alert notifications.
+        # *   PENDING: The phone number is not activated. Alert notifications can be sent to the phone number by using text messages only after the phone number is activated.
+        # *   OK: The phone number is activated and can receive alert notifications.
         self.mail = mail
         # The status of the phone number. Valid values:
         # 
         # *   PENDING: The phone number is not activated. Alert notifications can be sent to the phone number by using text messages only after the phone number is activated.
         # *   OK: The phone number is activated and can receive alert notifications.
         # 
-        # >  This parameter can be returned only on the China site (aliyun.com).
+        # >  This parameter applies only to the Alibaba Cloud China site (aliyun.com).
         self.sms = sms
 
     def validate(self):
@@ -17712,13 +17714,13 @@ class DescribeContactListResponseBodyContactsContact(TeaModel):
         # 
         # The email address must be activated after it is added as the value specified for the alert notification method. The value PENDING indicates that the email address is not activated. The value OK indicates that the email address is activated.
         self.channels_state = channels_state
-        # The alert contact groups.
+        # None.
         self.contact_groups = contact_groups
         # The timestamp when the alert contact was created.
         # 
         # Unit: milliseconds.
         self.create_time = create_time
-        # The description of the alert contact.
+        # The description.
         self.desc = desc
         # The language in which the alert information is displayed. Valid values:
         # 
@@ -17835,20 +17837,20 @@ class DescribeContactListResponseBody(TeaModel):
     ):
         # The HTTP status code.
         # 
-        # >  The status code 200 indicates that the call was successful.
+        # >  The status code 200 indicates that the request was successful.
         self.code = code
         # The alert contacts.
         self.contacts = contacts
-        # The error message.
+        # The error message returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
-        # The total number of returned entries.
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -19047,21 +19049,21 @@ class DescribeCustomMetricListRequest(TeaModel):
         page_size: str = None,
         region_id: str = None,
     ):
-        # The dimensions that specify the resources for which you want to query custom metrics.
+        # The dimensions based on which the resources are queried.
         self.dimension = dimension
         # The ID of the application group.
         # 
-        # For more information, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
+        # For information about how to query the IDs of application groups, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
         self.group_id = group_id
-        # The MD5 value of the HTTP request body. The MD5 value is a 128-bit hash value used to verify the uniqueness of the reported custom metrics.
+        # The MD5 value of the HTTP request body. The MD5 value is a 128-bit hash value used to verify the uniqueness of the reported monitoring data.
         self.md_5 = md_5
         # The name of the custom metric.
         self.metric_name = metric_name
-        # The number of the page to return.
+        # The page number.
         # 
         # Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Pages start from page 1. Default value: 10.
         self.page_size = page_size
@@ -19119,13 +19121,13 @@ class DescribeCustomMetricListResponseBody(TeaModel):
         request_id: str = None,
         result: str = None,
     ):
-        # The HTTP status code.
+        # The responses code.
         # 
-        # >  The value 200 indicates that the call is successful.
+        # >  The status code 200 indicates that the request was successful.
         self.code = code
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The reported custom metrics that are found in the query.
         self.result = result
@@ -27653,9 +27655,9 @@ class DescribeMetricRuleCountRequest(TeaModel):
         namespace: str = None,
         region_id: str = None,
     ):
-        # The name of the metric. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # The metric name. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
         self.metric_name = metric_name
-        # The namespace of the service. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # The namespace of the cloud service. For more information, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
         self.namespace = namespace
         self.region_id = region_id
 
@@ -27752,20 +27754,20 @@ class DescribeMetricRuleCountResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The responses code.
         # 
-        # >  The status code 200 indicates that the call was successful.
+        # >  The status code 200 indicates that the request was successful.
         self.code = code
-        # The returned message.
+        # The error message.
         self.message = message
         # The number of alert rules in each state.
         self.metric_rule_count = metric_rule_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -28099,11 +28101,11 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression(TeaModel)
         # *   Set a special alert threshold for a specified instance in the rule. For example, if you specify `$Average > ($instanceId == \\"i-io8kfvcpp7x5****\\"? 80: 50)`, an alert is triggered when the `average metric value` of the `i-io8kfvcpp7x5****` instance exceeds 80 or the `average metric value` of other instances exceeds 50.
         # *   Limit the number of instances whose metric values exceed the threshold. For example, if you specify `count($Average > 20) > 3`, an alert is triggered only when the number of instances whose `average metric value` exceeds 20 exceeds three.
         self.expression_raw = expression_raw
-        # The level of the alert. Valid values:
+        # The alert level. Valid values:
         # 
-        # *   Critical
-        # *   Warn
-        # *   Info
+        # *   CRITICAL
+        # *   WARN
+        # *   INFO
         self.level = level
         # The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
         self.times = times
@@ -28564,11 +28566,11 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus(TeaModel):
         # 
         # >  This parameter is equivalent to the annotations parameter of open source Prometheus.
         self.annotations = annotations
-        # The level of the alert. Valid values:
+        # The alert level. Valid values:
         # 
-        # *   Critical
-        # *   Warn
-        # *   Info
+        # *   CRITICAL
+        # *   WARN
+        # *   INFO
         self.level = level
         # The PromQL query statement.
         # 
@@ -28685,9 +28687,9 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarm(TeaModel):
         self.no_effective_interval = no_effective_interval
         # The statistical period.
         self.period = period
-        # The Prometheus alert rule.
+        # The Prometheus alerts.
         # 
-        # >  This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
+        # >  This parameter is required only if you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         self.prometheus = prometheus
         # The resources that are associated with the alert rule.
         self.resources = resources
@@ -28868,7 +28870,7 @@ class DescribeMetricRuleListResponseBody(TeaModel):
         success: bool = None,
         total: str = None,
     ):
-        # The details of the alert rules.
+        # The alert rules.
         self.alarms = alarms
         # The HTTP status code.
         # 
@@ -36065,6 +36067,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity(TeaMo
         city_name: str = None,
         isp: str = None,
         isp_name: str = None,
+        type: str = None,
     ):
         # The city ID.
         self.city = city
@@ -36074,6 +36077,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity(TeaMo
         self.isp = isp
         # The carrier name.
         self.isp_name = isp_name
+        self.type = type
 
     def validate(self):
         pass
@@ -36092,6 +36096,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity(TeaMo
             result['Isp'] = self.isp
         if self.isp_name is not None:
             result['IspName'] = self.isp_name
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -36104,6 +36110,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsIspCitiesIspCity(TeaMo
             self.isp = m.get('Isp')
         if m.get('IspName') is not None:
             self.isp_name = m.get('IspName')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -36549,6 +36557,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         response_content: str = None,
         response_format: str = None,
         retry_delay: int = None,
+        screen_shot: bool = None,
         strict_mode: bool = None,
         time_out: int = None,
         traffic_hijack_element_blacklist: DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementBlacklist = None,
@@ -36614,6 +36623,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         # *   post
         # *   head
         self.http_method = http_method
+        # ip_network indicates the network type of the task. Valid values: v4, v6, and auto. Default value: v4.
         self.ip_network = ip_network
         self.is_base_64encode = is_base_64encode
         # Indicates whether the alert rule is included. Valid values:
@@ -36627,12 +36637,19 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         # The heartbeat of the PING protocol.
         self.ping_num = ping_num
         self.ping_port = ping_port
+        # The PING protocol type. Valid values:
+        # 
+        # *   icmp
+        # *   tcp
+        # *   udp
         self.ping_type = ping_type
         # The port number of the TCP, UDP, SMTP, or POP3 protocol.
         self.port = port
         # The protocol that is used to send the request.
         self.protocol = protocol
+        # Indicates whether the Quick UDP Internet Connections (QUIC) protocol is used for browser detection. Valid values: true false Default value: false.
         self.quic_enabled = quic_enabled
+        # The sites for which the QUIC protocol is forcibly used.
         self.quic_target = quic_target
         # The content of the HTTP request.
         self.request_content = request_content
@@ -36649,6 +36666,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
         # *   txt: text
         self.response_format = response_format
         self.retry_delay = retry_delay
+        self.screen_shot = screen_shot
         self.strict_mode = strict_mode
         # The timeout period. Unit: milliseconds.
         self.time_out = time_out
@@ -36767,6 +36785,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             result['response_format'] = self.response_format
         if self.retry_delay is not None:
             result['retry_delay'] = self.retry_delay
+        if self.screen_shot is not None:
+            result['screen_shot'] = self.screen_shot
         if self.strict_mode is not None:
             result['strict_mode'] = self.strict_mode
         if self.time_out is not None:
@@ -36873,6 +36893,8 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(TeaModel):
             self.response_format = m.get('response_format')
         if m.get('retry_delay') is not None:
             self.retry_delay = m.get('retry_delay')
+        if m.get('screen_shot') is not None:
+            self.screen_shot = m.get('screen_shot')
         if m.get('strict_mode') is not None:
             self.strict_mode = m.get('strict_mode')
         if m.get('time_out') is not None:
@@ -37167,33 +37189,33 @@ class DescribeSiteMonitorDataRequest(TeaModel):
         task_id: str = None,
         type: str = None,
     ):
-        # The end of the time range for the query. Supported formats:
+        # The end of the time range to query. The following formats are supported:
         # 
-        # *   UNIX timestamp: The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-        # *   Time format: The value is in the YYYY-MM-DDThh:mm:ssZ format.
+        # *   UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 UTC on Thursday, January 1, 1970.
+        # *   UTC time: the UTC time that follows the YYYY-MM-DDThh:mm:ssZ format.
         self.end_time = end_time
         # The number of data points to return.
         self.length = length
-        # The name of the metric. Valid values:
+        # The metric name. Valid values:
         # 
         # *   Availability
         # *   ResponseTime
         # 
         # This parameter is required.
         self.metric_name = metric_name
-        # The pagination cursor.
+        # The pagination token.
         self.next_token = next_token
-        # The interval at which monitoring data is returned. The value is an integral multiple of 60. Unit: seconds.
+        # The statistical period. The value is an integral multiple of 60. Unit: seconds.
         # 
         # >  The default value equals the minimum interval at which detection requests are sent to the monitored address.
         self.period = period
         self.region_id = region_id
-        # The beginning of the time range for the query. Supported formats:
+        # The start of the time range to query. The following formats are supported:
         # 
-        # *   UNIX timestamp: The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-        # *   Time format: The value is in the YYYY-MM-DDThh:mm:ssZ format.
+        # *   UNIX timestamp: the number of milliseconds that have elapsed since 00:00:00 UTC on Thursday, January 1, 1970.
+        # *   UTC time: the UTC time that follows the YYYY-MM-DDThh:mm:ssZ format.
         self.start_time = start_time
-        # The ID of the site monitoring task.
+        # The job ID.
         # 
         # This parameter is required.
         self.task_id = task_id
@@ -37265,19 +37287,19 @@ class DescribeSiteMonitorDataResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The HTTP status code.
+        # The responses code.
         # 
-        # >  The status code 200 indicates that the call was successful.
+        # >  The status code 200 indicates that the request was successful.
         self.code = code
-        # The returned monitoring data.
+        # The monitoring data.
         self.data = data
         # The returned message.
         self.message = message
-        # The pagination cursor.
+        # The pagination token.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+        # Indicates whether the request was successful. Valid values: true: The request was successful. false: The request failed.
         self.success = success
 
     def validate(self):
@@ -38482,13 +38504,10 @@ class DescribeSiteMonitorLogRequest(TeaModel):
         start_time: str = None,
         task_ids: str = None,
     ):
-        # 浏览器类型。
         self.browser = browser
-        # 该参数已废弃，无需关注。
         self.browser_info = browser_info
         # The city identification code.
         self.city = city
-        # 设备类型（模拟屏幕大小类型）。
         self.device = device
         # The end of the time range to query. Valid values:
         # 
@@ -38743,10 +38762,10 @@ class DescribeSiteMonitorQuotaResponseBodyData(TeaModel):
         site_monitor_task_quota: int = None,
         site_monitor_version: str = None,
     ):
-        # Indicates whether the second-level monitoring is enabled. Valid values:
+        # Indicates whether second-level monitoring is enabled. Valid values:
         # 
-        # *   true
-        # *   false
+        # *   true: Second-level monitoring is enabled.
+        # *   false: Second-level monitoring is disabled.
         self.second_monitor = second_monitor
         # The quota of detection points that are provided by Alibaba Cloud. Five detection points are provided for free.
         self.site_monitor_idc_quota = site_monitor_idc_quota
@@ -38811,20 +38830,20 @@ class DescribeSiteMonitorQuotaResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The HTTP status code.
+        # The responses code.
         # 
-        # >  The status code 200 indicates that the call was successful.
+        # >  The status code 200 indicates that the request was successful.
         self.code = code
-        # The quotas and version of site monitoring.
+        # The quota.
         self.data = data
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -38915,7 +38934,7 @@ class DescribeSiteMonitorStatisticsRequest(TeaModel):
         task_id: str = None,
         time_range: str = None,
     ):
-        # The name of the metric. Valid values:
+        # The metric name. Valid values:
         # 
         # *   Availability
         # *   ErrorRate
@@ -38924,7 +38943,7 @@ class DescribeSiteMonitorStatisticsRequest(TeaModel):
         # This parameter is required.
         self.metric_name = metric_name
         self.region_id = region_id
-        # The timestamp that specifies the beginning of the time range to query.
+        # The beginning of the time range to query.
         # 
         # Unit: milliseconds. The default value is 1 hour ahead of the current time.
         self.start_time = start_time
@@ -38936,7 +38955,7 @@ class DescribeSiteMonitorStatisticsRequest(TeaModel):
         self.task_id = task_id
         # The statistical period.
         # 
-        # Unit: minutes. Default value: 1440 (1 day). Maximum value: 43200 (30 days).
+        # Unit: minutes. Default value: 1440 (one day). Maximum value: 43200 (30 days).
         self.time_range = time_range
 
     def validate(self):
@@ -38984,20 +39003,20 @@ class DescribeSiteMonitorStatisticsResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The HTTP status code.
+        # The responses code.
         # 
-        # >  The status code 200 indicates that the call is successful.
+        # >  The status code 200 indicates that the request was successful.
         self.code = code
-        # The statistics of the specified metric.
+        # The statistics.
         self.data = data
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -39073,6 +39092,316 @@ class DescribeSiteMonitorStatisticsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSiteMonitorStatisticsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSyntheticProbeListRequest(TeaModel):
+    def __init__(
+        self,
+        city: str = None,
+        idc_probe: bool = None,
+        ipv_4: bool = None,
+        ipv_6: bool = None,
+        isp: str = None,
+        lm_probe: bool = None,
+        mb_probe: bool = None,
+        region_id: str = None,
+        view_all: bool = None,
+    ):
+        self.city = city
+        self.idc_probe = idc_probe
+        self.ipv_4 = ipv_4
+        self.ipv_6 = ipv_6
+        self.isp = isp
+        self.lm_probe = lm_probe
+        self.mb_probe = mb_probe
+        self.region_id = region_id
+        self.view_all = view_all
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city is not None:
+            result['City'] = self.city
+        if self.idc_probe is not None:
+            result['IdcProbe'] = self.idc_probe
+        if self.ipv_4 is not None:
+            result['Ipv4'] = self.ipv_4
+        if self.ipv_6 is not None:
+            result['Ipv6'] = self.ipv_6
+        if self.isp is not None:
+            result['Isp'] = self.isp
+        if self.lm_probe is not None:
+            result['LmProbe'] = self.lm_probe
+        if self.mb_probe is not None:
+            result['MbProbe'] = self.mb_probe
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.view_all is not None:
+            result['ViewAll'] = self.view_all
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('City') is not None:
+            self.city = m.get('City')
+        if m.get('IdcProbe') is not None:
+            self.idc_probe = m.get('IdcProbe')
+        if m.get('Ipv4') is not None:
+            self.ipv_4 = m.get('Ipv4')
+        if m.get('Ipv6') is not None:
+            self.ipv_6 = m.get('Ipv6')
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
+        if m.get('LmProbe') is not None:
+            self.lm_probe = m.get('LmProbe')
+        if m.get('MbProbe') is not None:
+            self.mb_probe = m.get('MbProbe')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ViewAll') is not None:
+            self.view_all = m.get('ViewAll')
+        return self
+
+
+class DescribeSyntheticProbeListResponseBodyIspCityList(TeaModel):
+    def __init__(
+        self,
+        area_cn: str = None,
+        area_en: str = None,
+        city: str = None,
+        city_cn: str = None,
+        city_en: str = None,
+        country: str = None,
+        country_cn: str = None,
+        country_en: str = None,
+        idc_v4probe_count: int = None,
+        idc_v6probe_count: int = None,
+        ip_pool: List[str] = None,
+        isp: str = None,
+        isp_cn: str = None,
+        isp_en: str = None,
+        lm_probe_count: int = None,
+        mb_probe_count: int = None,
+        region: str = None,
+        region_cn: str = None,
+        region_en: str = None,
+    ):
+        self.area_cn = area_cn
+        self.area_en = area_en
+        self.city = city
+        self.city_cn = city_cn
+        self.city_en = city_en
+        self.country = country
+        self.country_cn = country_cn
+        self.country_en = country_en
+        self.idc_v4probe_count = idc_v4probe_count
+        self.idc_v6probe_count = idc_v6probe_count
+        self.ip_pool = ip_pool
+        self.isp = isp
+        self.isp_cn = isp_cn
+        self.isp_en = isp_en
+        self.lm_probe_count = lm_probe_count
+        self.mb_probe_count = mb_probe_count
+        self.region = region
+        self.region_cn = region_cn
+        self.region_en = region_en
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.area_cn is not None:
+            result['AreaCn'] = self.area_cn
+        if self.area_en is not None:
+            result['AreaEn'] = self.area_en
+        if self.city is not None:
+            result['City'] = self.city
+        if self.city_cn is not None:
+            result['CityCn'] = self.city_cn
+        if self.city_en is not None:
+            result['CityEn'] = self.city_en
+        if self.country is not None:
+            result['Country'] = self.country
+        if self.country_cn is not None:
+            result['CountryCn'] = self.country_cn
+        if self.country_en is not None:
+            result['CountryEn'] = self.country_en
+        if self.idc_v4probe_count is not None:
+            result['IdcV4ProbeCount'] = self.idc_v4probe_count
+        if self.idc_v6probe_count is not None:
+            result['IdcV6ProbeCount'] = self.idc_v6probe_count
+        if self.ip_pool is not None:
+            result['IpPool'] = self.ip_pool
+        if self.isp is not None:
+            result['Isp'] = self.isp
+        if self.isp_cn is not None:
+            result['IspCn'] = self.isp_cn
+        if self.isp_en is not None:
+            result['IspEn'] = self.isp_en
+        if self.lm_probe_count is not None:
+            result['LmProbeCount'] = self.lm_probe_count
+        if self.mb_probe_count is not None:
+            result['MbProbeCount'] = self.mb_probe_count
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.region_cn is not None:
+            result['RegionCn'] = self.region_cn
+        if self.region_en is not None:
+            result['RegionEn'] = self.region_en
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AreaCn') is not None:
+            self.area_cn = m.get('AreaCn')
+        if m.get('AreaEn') is not None:
+            self.area_en = m.get('AreaEn')
+        if m.get('City') is not None:
+            self.city = m.get('City')
+        if m.get('CityCn') is not None:
+            self.city_cn = m.get('CityCn')
+        if m.get('CityEn') is not None:
+            self.city_en = m.get('CityEn')
+        if m.get('Country') is not None:
+            self.country = m.get('Country')
+        if m.get('CountryCn') is not None:
+            self.country_cn = m.get('CountryCn')
+        if m.get('CountryEn') is not None:
+            self.country_en = m.get('CountryEn')
+        if m.get('IdcV4ProbeCount') is not None:
+            self.idc_v4probe_count = m.get('IdcV4ProbeCount')
+        if m.get('IdcV6ProbeCount') is not None:
+            self.idc_v6probe_count = m.get('IdcV6ProbeCount')
+        if m.get('IpPool') is not None:
+            self.ip_pool = m.get('IpPool')
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
+        if m.get('IspCn') is not None:
+            self.isp_cn = m.get('IspCn')
+        if m.get('IspEn') is not None:
+            self.isp_en = m.get('IspEn')
+        if m.get('LmProbeCount') is not None:
+            self.lm_probe_count = m.get('LmProbeCount')
+        if m.get('MbProbeCount') is not None:
+            self.mb_probe_count = m.get('MbProbeCount')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RegionCn') is not None:
+            self.region_cn = m.get('RegionCn')
+        if m.get('RegionEn') is not None:
+            self.region_en = m.get('RegionEn')
+        return self
+
+
+class DescribeSyntheticProbeListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        isp_city_list: List[DescribeSyntheticProbeListResponseBodyIspCityList] = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.isp_city_list = isp_city_list
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.isp_city_list:
+            for k in self.isp_city_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['IspCityList'] = []
+        if self.isp_city_list is not None:
+            for k in self.isp_city_list:
+                result['IspCityList'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.isp_city_list = []
+        if m.get('IspCityList') is not None:
+            for k in m.get('IspCityList'):
+                temp_model = DescribeSyntheticProbeListResponseBodyIspCityList()
+                self.isp_city_list.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeSyntheticProbeListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSyntheticProbeListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSyntheticProbeListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -41344,6 +41673,8 @@ class DisableMetricRulesRequest(TeaModel):
         rule_id: List[str] = None,
     ):
         self.region_id = region_id
+        # The ID of the alert rule. Valid values of N: 1 to 20.
+        # 
         # This parameter is required.
         self.rule_id = rule_id
 
@@ -41379,18 +41710,18 @@ class DisableMetricRulesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The responses code.
         # 
-        # >  The status code 200 indicates that the call was successful.
+        # >  The status code 200 indicates that the request was successful.
         self.code = code
         # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -41473,7 +41804,7 @@ class DisableSiteMonitorsRequest(TeaModel):
         task_ids: str = None,
     ):
         self.region_id = region_id
-        # The IDs of the site monitoring tasks. Separate multiple IDs with commas (,).
+        # The ID of the site monitoring task. Separate multiple IDs with commas (,).
         # 
         # This parameter is required.
         self.task_ids = task_ids
@@ -41539,20 +41870,20 @@ class DisableSiteMonitorsResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The status code.
+        # The responses code.
         # 
-        # >  The status code 200 indicates a success.
+        # >  The status code 200 indicates that the request was successful.
         self.code = code
-        # The number of detection points that were monitored by the site monitoring tasks.
+        # The number of detection points that are affected by the site monitoring tasks.
         self.data = data
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: successful.
-        # *   false: failed.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -42328,7 +42659,7 @@ class EnableSiteMonitorsRequest(TeaModel):
         task_ids: str = None,
     ):
         self.region_id = region_id
-        # The IDs of the site monitoring tasks. Separate multiple instance IDs with commas (,).
+        # The ID of the site monitoring task. Separate multiple IDs with commas (,).
         # 
         # This parameter is required.
         self.task_ids = task_ids
@@ -42394,20 +42725,20 @@ class EnableSiteMonitorsResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The status code.
+        # The responses code.
         # 
-        # >  The status code 200 indicates a success.
+        # >  The status code 200 indicates that the request was successful.
         self.code = code
         # The number of detection points that are affected by the site monitoring tasks.
         self.data = data
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: successful.
-        # *   false: failed.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -43117,7 +43448,7 @@ class ModifyHostAvailabilityRequestTaskOption(TeaModel):
         self.http_response_charset = http_response_charset
         # The response to the HTTP request.
         self.http_response_match_content = http_response_match_content
-        # The URI that you want to monitor. This parameter must be specified when TaskType is set to HTTP.
+        # The URI that you want to monitor. This parameter is required if the TaskType parameter is set to HTTP or Telnet.
         self.http_uri = http_uri
         # The interval at which detection requests are sent. Unit: seconds. Valid values: 15, 30, 60, 120, 300, 900, 1800, and 3600.
         # 
@@ -43125,7 +43456,7 @@ class ModifyHostAvailabilityRequestTaskOption(TeaModel):
         self.interval = interval
         # The domain name or IP address that you want to monitor.
         # 
-        # > This parameter must be specified when TaskType is set to PING or TELNET. For more information about how to configure the TaskType parameter, see [CreateHostAvailability](https://help.aliyun.com/document_detail/115317.html).
+        # >  This parameter is required if the TaskType parameter is set to PING. For more information about how to set the TaskType parameter, see [CreateHostAvailability](https://help.aliyun.com/document_detail/115317.html).
         self.telnet_or_ping_host = telnet_or_ping_host
 
     def validate(self):
@@ -50931,6 +51262,7 @@ class PutResourceMetricRuleRequestEscalationsCritical(TeaModel):
         # *   LessThanOrEqualToThreshold: less than or equal to the threshold
         # *   LessThanThreshold: less than the threshold
         # *   NotEqualToThreshold: not equal to the threshold
+        # *   EqualToThreshold: equal to the threshold
         # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
         # *   LessThanYesterday: less than the metric value at the same time yesterday
         # *   GreaterThanLastWeek: greater than the metric value at the same time last week
@@ -51002,6 +51334,7 @@ class PutResourceMetricRuleRequestEscalationsInfo(TeaModel):
         # *   LessThanOrEqualToThreshold: less than or equal to the threshold
         # *   LessThanThreshold: less than the threshold
         # *   NotEqualToThreshold: not equal to the threshold
+        # *   EqualToThreshold: equal to the threshold
         # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
         # *   LessThanYesterday: less than the metric value at the same time yesterday
         # *   GreaterThanLastWeek: greater than the metric value at the same time last week
@@ -51073,6 +51406,7 @@ class PutResourceMetricRuleRequestEscalationsWarn(TeaModel):
         # *   LessThanOrEqualToThreshold: less than or equal to the threshold
         # *   LessThanThreshold: less than the threshold
         # *   NotEqualToThreshold: not equal to the threshold
+        # *   EqualToThreshold: equal to the threshold
         # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
         # *   LessThanYesterday: less than the metric value at the same time yesterday
         # *   GreaterThanLastWeek: greater than the metric value at the same time last week
@@ -51192,6 +51526,7 @@ class PutResourceMetricRuleRequestCompositeExpressionExpressionList(TeaModel):
         # *   LessThanOrEqualToThreshold: less than or equal to the threshold
         # *   LessThanThreshold: less than the threshold
         # *   NotEqualToThreshold: not equal to the threshold
+        # *   EqualToThreshold: equal to the threshold
         # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
         # *   LessThanYesterday: less than the metric value at the same time yesterday
         # *   GreaterThanLastWeek: greater than the metric value at the same time last week
@@ -51685,6 +52020,7 @@ class PutResourceMetricRuleShrinkRequestEscalationsCritical(TeaModel):
         # *   LessThanOrEqualToThreshold: less than or equal to the threshold
         # *   LessThanThreshold: less than the threshold
         # *   NotEqualToThreshold: not equal to the threshold
+        # *   EqualToThreshold: equal to the threshold
         # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
         # *   LessThanYesterday: less than the metric value at the same time yesterday
         # *   GreaterThanLastWeek: greater than the metric value at the same time last week
@@ -51756,6 +52092,7 @@ class PutResourceMetricRuleShrinkRequestEscalationsInfo(TeaModel):
         # *   LessThanOrEqualToThreshold: less than or equal to the threshold
         # *   LessThanThreshold: less than the threshold
         # *   NotEqualToThreshold: not equal to the threshold
+        # *   EqualToThreshold: equal to the threshold
         # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
         # *   LessThanYesterday: less than the metric value at the same time yesterday
         # *   GreaterThanLastWeek: greater than the metric value at the same time last week
@@ -51827,6 +52164,7 @@ class PutResourceMetricRuleShrinkRequestEscalationsWarn(TeaModel):
         # *   LessThanOrEqualToThreshold: less than or equal to the threshold
         # *   LessThanThreshold: less than the threshold
         # *   NotEqualToThreshold: not equal to the threshold
+        # *   EqualToThreshold: equal to the threshold
         # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
         # *   LessThanYesterday: less than the metric value at the same time yesterday
         # *   GreaterThanLastWeek: greater than the metric value at the same time last week
