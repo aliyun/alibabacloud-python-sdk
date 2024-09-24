@@ -47,7 +47,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.ConfigAuditLogResponse:
         """
-        @summary 查询用户地域下审计日志功能开通
+        @summary Enables or disables the audit log feature and delivers audit logs to buckets.
+        
+        @description    The region of the bucket must be the same as the region where the security audit feature is enabled.
+        If the security audit feature is enabled, do not delete Object Storage Service (OSS) buckets. If you delete OSS buckets, audit logs fail to be delivered.
+        Only electronic virtual security modules (EVSMs) and general virtual security modules (GVSMs) within the Chinese mainland support the security audit feature.
         
         @param request: ConfigAuditLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -86,7 +90,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.ConfigAuditLogResponse:
         """
-        @summary 查询用户地域下审计日志功能开通
+        @summary Enables or disables the audit log feature and delivers audit logs to buckets.
+        
+        @description    The region of the bucket must be the same as the region where the security audit feature is enabled.
+        If the security audit feature is enabled, do not delete Object Storage Service (OSS) buckets. If you delete OSS buckets, audit logs fail to be delivered.
+        Only electronic virtual security modules (EVSMs) and general virtual security modules (GVSMs) within the Chinese mainland support the security audit feature.
         
         @param request: ConfigAuditLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -124,7 +132,11 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.ConfigAuditLogRequest,
     ) -> hsm_20231113_models.ConfigAuditLogResponse:
         """
-        @summary 查询用户地域下审计日志功能开通
+        @summary Enables or disables the audit log feature and delivers audit logs to buckets.
+        
+        @description    The region of the bucket must be the same as the region where the security audit feature is enabled.
+        If the security audit feature is enabled, do not delete Object Storage Service (OSS) buckets. If you delete OSS buckets, audit logs fail to be delivered.
+        Only electronic virtual security modules (EVSMs) and general virtual security modules (GVSMs) within the Chinese mainland support the security audit feature.
         
         @param request: ConfigAuditLogRequest
         @return: ConfigAuditLogResponse
@@ -137,7 +149,11 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.ConfigAuditLogRequest,
     ) -> hsm_20231113_models.ConfigAuditLogResponse:
         """
-        @summary 查询用户地域下审计日志功能开通
+        @summary Enables or disables the audit log feature and delivers audit logs to buckets.
+        
+        @description    The region of the bucket must be the same as the region where the security audit feature is enabled.
+        If the security audit feature is enabled, do not delete Object Storage Service (OSS) buckets. If you delete OSS buckets, audit logs fail to be delivered.
+        Only electronic virtual security modules (EVSMs) and general virtual security modules (GVSMs) within the Chinese mainland support the security audit feature.
         
         @param request: ConfigAuditLogRequest
         @return: ConfigAuditLogResponse
@@ -471,7 +487,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.ConfigClusterNameResponse:
         """
-        @summary 配置集群名称
+        @summary Modifies the name of a cluster.
         
         @param request: ConfigClusterNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -508,7 +524,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.ConfigClusterNameResponse:
         """
-        @summary 配置集群名称
+        @summary Modifies the name of a cluster.
         
         @param request: ConfigClusterNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -544,7 +560,7 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.ConfigClusterNameRequest,
     ) -> hsm_20231113_models.ConfigClusterNameResponse:
         """
-        @summary 配置集群名称
+        @summary Modifies the name of a cluster.
         
         @param request: ConfigClusterNameRequest
         @return: ConfigClusterNameResponse
@@ -557,7 +573,7 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.ConfigClusterNameRequest,
     ) -> hsm_20231113_models.ConfigClusterNameResponse:
         """
-        @summary 配置集群名称
+        @summary Modifies the name of a cluster.
         
         @param request: ConfigClusterNameRequest
         @return: ConfigClusterNameResponse
@@ -687,7 +703,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.ConfigClusterWhitelistResponse:
         """
-        @summary 配置集群名称
+        @summary Modifies the IP address whitelist of a cluster.
+        
+        @description The IP address whitelist of a cluster has a higher priority than the IP address whitelist of a hardware security module (HSM) in the cluster. In cluster mode, we recommend that you create an IP address whitelist for your cluster. In this case, you do not need to create an IP address for the HSM in the cluster.
         
         @param request: ConfigClusterWhitelistRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -724,7 +742,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.ConfigClusterWhitelistResponse:
         """
-        @summary 配置集群名称
+        @summary Modifies the IP address whitelist of a cluster.
+        
+        @description The IP address whitelist of a cluster has a higher priority than the IP address whitelist of a hardware security module (HSM) in the cluster. In cluster mode, we recommend that you create an IP address whitelist for your cluster. In this case, you do not need to create an IP address for the HSM in the cluster.
         
         @param request: ConfigClusterWhitelistRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -760,7 +780,9 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.ConfigClusterWhitelistRequest,
     ) -> hsm_20231113_models.ConfigClusterWhitelistResponse:
         """
-        @summary 配置集群名称
+        @summary Modifies the IP address whitelist of a cluster.
+        
+        @description The IP address whitelist of a cluster has a higher priority than the IP address whitelist of a hardware security module (HSM) in the cluster. In cluster mode, we recommend that you create an IP address whitelist for your cluster. In this case, you do not need to create an IP address for the HSM in the cluster.
         
         @param request: ConfigClusterWhitelistRequest
         @return: ConfigClusterWhitelistResponse
@@ -773,7 +795,9 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.ConfigClusterWhitelistRequest,
     ) -> hsm_20231113_models.ConfigClusterWhitelistResponse:
         """
-        @summary 配置集群名称
+        @summary Modifies the IP address whitelist of a cluster.
+        
+        @description The IP address whitelist of a cluster has a higher priority than the IP address whitelist of a hardware security module (HSM) in the cluster. In cluster mode, we recommend that you create an IP address whitelist for your cluster. In this case, you do not need to create an IP address for the HSM in the cluster.
         
         @param request: ConfigClusterWhitelistRequest
         @return: ConfigClusterWhitelistResponse
@@ -887,6 +911,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.ConfigInstanceIpAddressResponse:
         """
+        @summary Modifies the virtual private cloud (VPC) endpoint of a hardware security module (HSM).
+        
+        @description After you add an HSM to a cluster, you cannot modify the VPC endpoint of the HSM.
+        
         @param request: ConfigInstanceIpAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ConfigInstanceIpAddressResponse
@@ -928,6 +956,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.ConfigInstanceIpAddressResponse:
         """
+        @summary Modifies the virtual private cloud (VPC) endpoint of a hardware security module (HSM).
+        
+        @description After you add an HSM to a cluster, you cannot modify the VPC endpoint of the HSM.
+        
         @param request: ConfigInstanceIpAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ConfigInstanceIpAddressResponse
@@ -968,6 +1000,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.ConfigInstanceIpAddressRequest,
     ) -> hsm_20231113_models.ConfigInstanceIpAddressResponse:
         """
+        @summary Modifies the virtual private cloud (VPC) endpoint of a hardware security module (HSM).
+        
+        @description After you add an HSM to a cluster, you cannot modify the VPC endpoint of the HSM.
+        
         @param request: ConfigInstanceIpAddressRequest
         @return: ConfigInstanceIpAddressResponse
         """
@@ -979,6 +1015,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.ConfigInstanceIpAddressRequest,
     ) -> hsm_20231113_models.ConfigInstanceIpAddressResponse:
         """
+        @summary Modifies the virtual private cloud (VPC) endpoint of a hardware security module (HSM).
+        
+        @description After you add an HSM to a cluster, you cannot modify the VPC endpoint of the HSM.
+        
         @param request: ConfigInstanceIpAddressRequest
         @return: ConfigInstanceIpAddressResponse
         """
@@ -991,6 +1031,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.ConfigInstanceRemarkResponse:
         """
+        @summary Modifies the description of a hardware security module (HSM).
+        
         @param request: ConfigInstanceRemarkRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ConfigInstanceRemarkResponse
@@ -1026,6 +1068,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.ConfigInstanceRemarkResponse:
         """
+        @summary Modifies the description of a hardware security module (HSM).
+        
         @param request: ConfigInstanceRemarkRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ConfigInstanceRemarkResponse
@@ -1060,6 +1104,8 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.ConfigInstanceRemarkRequest,
     ) -> hsm_20231113_models.ConfigInstanceRemarkResponse:
         """
+        @summary Modifies the description of a hardware security module (HSM).
+        
         @param request: ConfigInstanceRemarkRequest
         @return: ConfigInstanceRemarkResponse
         """
@@ -1071,6 +1117,8 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.ConfigInstanceRemarkRequest,
     ) -> hsm_20231113_models.ConfigInstanceRemarkResponse:
         """
+        @summary Modifies the description of a hardware security module (HSM).
+        
         @param request: ConfigInstanceRemarkRequest
         @return: ConfigInstanceRemarkResponse
         """
@@ -1283,6 +1331,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.CreateClusterResponse:
         """
+        @summary Specifies a hardware security module (HSM) as the master HSM to create a cluster.
+        
+        @description The master HSM that you specify to create a cluster must be in the ACTIVE state.
+        
         @param request: CreateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateClusterResponse
@@ -1320,6 +1372,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.CreateClusterResponse:
         """
+        @summary Specifies a hardware security module (HSM) as the master HSM to create a cluster.
+        
+        @description The master HSM that you specify to create a cluster must be in the ACTIVE state.
+        
         @param request: CreateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateClusterResponse
@@ -1356,6 +1412,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.CreateClusterRequest,
     ) -> hsm_20231113_models.CreateClusterResponse:
         """
+        @summary Specifies a hardware security module (HSM) as the master HSM to create a cluster.
+        
+        @description The master HSM that you specify to create a cluster must be in the ACTIVE state.
+        
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
         """
@@ -1367,6 +1427,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.CreateClusterRequest,
     ) -> hsm_20231113_models.CreateClusterResponse:
         """
+        @summary Specifies a hardware security module (HSM) as the master HSM to create a cluster.
+        
+        @description The master HSM that you specify to create a cluster must be in the ACTIVE state.
+        
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
         """
@@ -1379,6 +1443,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.DeleteClusterResponse:
         """
+        @summary Deletes a cluster.
+        
+        @description You can delete a cluster only when no hardware security modules (HSMs) exist in the cluster.
+        
         @param request: DeleteClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteClusterResponse
@@ -1412,6 +1480,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.DeleteClusterResponse:
         """
+        @summary Deletes a cluster.
+        
+        @description You can delete a cluster only when no hardware security modules (HSMs) exist in the cluster.
+        
         @param request: DeleteClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteClusterResponse
@@ -1444,6 +1516,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.DeleteClusterRequest,
     ) -> hsm_20231113_models.DeleteClusterResponse:
         """
+        @summary Deletes a cluster.
+        
+        @description You can delete a cluster only when no hardware security modules (HSMs) exist in the cluster.
+        
         @param request: DeleteClusterRequest
         @return: DeleteClusterResponse
         """
@@ -1455,6 +1531,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.DeleteClusterRequest,
     ) -> hsm_20231113_models.DeleteClusterResponse:
         """
+        @summary Deletes a cluster.
+        
+        @description You can delete a cluster only when no hardware security modules (HSMs) exist in the cluster.
+        
         @param request: DeleteClusterRequest
         @return: DeleteClusterResponse
         """
@@ -1951,6 +2031,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.GetClusterResponse:
         """
+        @summary Queries information about a cluster.
+        
         @param request: GetClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetClusterResponse
@@ -1984,6 +2066,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.GetClusterResponse:
         """
+        @summary Queries information about a cluster.
+        
         @param request: GetClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetClusterResponse
@@ -2016,6 +2100,8 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.GetClusterRequest,
     ) -> hsm_20231113_models.GetClusterResponse:
         """
+        @summary Queries information about a cluster.
+        
         @param request: GetClusterRequest
         @return: GetClusterResponse
         """
@@ -2027,6 +2113,8 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.GetClusterRequest,
     ) -> hsm_20231113_models.GetClusterResponse:
         """
+        @summary Queries information about a cluster.
+        
         @param request: GetClusterRequest
         @return: GetClusterResponse
         """
@@ -2135,6 +2223,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.GetInstanceResponse:
         """
+        @summary Queries information about a hardware security module (HSM).
+        
         @param request: GetInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetInstanceResponse
@@ -2168,6 +2258,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.GetInstanceResponse:
         """
+        @summary Queries information about a hardware security module (HSM).
+        
         @param request: GetInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetInstanceResponse
@@ -2200,6 +2292,8 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.GetInstanceRequest,
     ) -> hsm_20231113_models.GetInstanceResponse:
         """
+        @summary Queries information about a hardware security module (HSM).
+        
         @param request: GetInstanceRequest
         @return: GetInstanceResponse
         """
@@ -2211,6 +2305,8 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.GetInstanceRequest,
     ) -> hsm_20231113_models.GetInstanceResponse:
         """
+        @summary Queries information about a hardware security module (HSM).
+        
         @param request: GetInstanceRequest
         @return: GetInstanceResponse
         """
@@ -2393,7 +2489,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.InitializeClusterResponse:
         """
-        @summary 初始化集群（原activeCluster）
+        @summary Initializes a cluster.
+        
+        @description    The cluster is not initialized, but the master hardware security module (HSM) of the cluster is initialized.
+        Two or more vSwitches are configured for the cluster.
         
         @param request: InitializeClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2428,7 +2527,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.InitializeClusterResponse:
         """
-        @summary 初始化集群（原activeCluster）
+        @summary Initializes a cluster.
+        
+        @description    The cluster is not initialized, but the master hardware security module (HSM) of the cluster is initialized.
+        Two or more vSwitches are configured for the cluster.
         
         @param request: InitializeClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2462,7 +2564,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.InitializeClusterRequest,
     ) -> hsm_20231113_models.InitializeClusterResponse:
         """
-        @summary 初始化集群（原activeCluster）
+        @summary Initializes a cluster.
+        
+        @description    The cluster is not initialized, but the master hardware security module (HSM) of the cluster is initialized.
+        Two or more vSwitches are configured for the cluster.
         
         @param request: InitializeClusterRequest
         @return: InitializeClusterResponse
@@ -2475,7 +2580,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.InitializeClusterRequest,
     ) -> hsm_20231113_models.InitializeClusterResponse:
         """
-        @summary 初始化集群（原activeCluster）
+        @summary Initializes a cluster.
+        
+        @description    The cluster is not initialized, but the master hardware security module (HSM) of the cluster is initialized.
+        Two or more vSwitches are configured for the cluster.
         
         @param request: InitializeClusterRequest
         @return: InitializeClusterResponse
@@ -2489,6 +2597,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.JoinClusterResponse:
         """
+        @summary Adds a hardware security module (HSM) to the current cluster.
+        
+        @description You can add an HSM only to the cluster that is in the INITIALIZED state, and the HSM must be enabled or disabled and is not initialized.
+        
         @param request: JoinClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: JoinClusterResponse
@@ -2524,6 +2636,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.JoinClusterResponse:
         """
+        @summary Adds a hardware security module (HSM) to the current cluster.
+        
+        @description You can add an HSM only to the cluster that is in the INITIALIZED state, and the HSM must be enabled or disabled and is not initialized.
+        
         @param request: JoinClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: JoinClusterResponse
@@ -2558,6 +2674,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.JoinClusterRequest,
     ) -> hsm_20231113_models.JoinClusterResponse:
         """
+        @summary Adds a hardware security module (HSM) to the current cluster.
+        
+        @description You can add an HSM only to the cluster that is in the INITIALIZED state, and the HSM must be enabled or disabled and is not initialized.
+        
         @param request: JoinClusterRequest
         @return: JoinClusterResponse
         """
@@ -2569,6 +2689,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.JoinClusterRequest,
     ) -> hsm_20231113_models.JoinClusterResponse:
         """
+        @summary Adds a hardware security module (HSM) to the current cluster.
+        
+        @description You can add an HSM only to the cluster that is in the INITIALIZED state, and the HSM must be enabled or disabled and is not initialized.
+        
         @param request: JoinClusterRequest
         @return: JoinClusterResponse
         """
@@ -2581,6 +2705,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.LeaveClusterResponse:
         """
+        @summary Removes a hardware security module (HSM) from the current cluster.
+        
+        @description    If non-master HSMs exist in a cluster, you cannot remove the master HSM from the cluster.
+        After the master HSM is removed from a cluster, the cluster enters the TO_DELETE state and cannot be restored to be available. Proceed with caution.
+        
         @param request: LeaveClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: LeaveClusterResponse
@@ -2616,6 +2745,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.LeaveClusterResponse:
         """
+        @summary Removes a hardware security module (HSM) from the current cluster.
+        
+        @description    If non-master HSMs exist in a cluster, you cannot remove the master HSM from the cluster.
+        After the master HSM is removed from a cluster, the cluster enters the TO_DELETE state and cannot be restored to be available. Proceed with caution.
+        
         @param request: LeaveClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: LeaveClusterResponse
@@ -2650,6 +2784,11 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.LeaveClusterRequest,
     ) -> hsm_20231113_models.LeaveClusterResponse:
         """
+        @summary Removes a hardware security module (HSM) from the current cluster.
+        
+        @description    If non-master HSMs exist in a cluster, you cannot remove the master HSM from the cluster.
+        After the master HSM is removed from a cluster, the cluster enters the TO_DELETE state and cannot be restored to be available. Proceed with caution.
+        
         @param request: LeaveClusterRequest
         @return: LeaveClusterResponse
         """
@@ -2661,6 +2800,11 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.LeaveClusterRequest,
     ) -> hsm_20231113_models.LeaveClusterResponse:
         """
+        @summary Removes a hardware security module (HSM) from the current cluster.
+        
+        @description    If non-master HSMs exist in a cluster, you cannot remove the master HSM from the cluster.
+        After the master HSM is removed from a cluster, the cluster enters the TO_DELETE state and cannot be restored to be available. Proceed with caution.
+        
         @param request: LeaveClusterRequest
         @return: LeaveClusterResponse
         """
@@ -2789,6 +2933,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.ListClustersResponse:
         """
+        @summary Obtains the clusters that meet the query conditions.
+        
         @param request: ListClustersRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListClustersResponse
@@ -2826,6 +2972,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.ListClustersResponse:
         """
+        @summary Obtains the clusters that meet the query conditions.
+        
         @param request: ListClustersRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListClustersResponse
@@ -2862,6 +3010,8 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.ListClustersRequest,
     ) -> hsm_20231113_models.ListClustersResponse:
         """
+        @summary Obtains the clusters that meet the query conditions.
+        
         @param request: ListClustersRequest
         @return: ListClustersResponse
         """
@@ -2873,6 +3023,8 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.ListClustersRequest,
     ) -> hsm_20231113_models.ListClustersResponse:
         """
+        @summary Obtains the clusters that meet the query conditions.
+        
         @param request: ListClustersRequest
         @return: ListClustersResponse
         """
@@ -2997,6 +3149,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.ListInstancesResponse:
         """
+        @summary Queries the hardware security modules (HSMs) that meet the query conditions.
+        
         @param request: ListInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListInstancesResponse
@@ -3009,6 +3163,8 @@ class Client(OpenApiClient):
             body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tenant_isolation_type):
+            body['TenantIsolationType'] = request.tenant_isolation_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3034,6 +3190,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.ListInstancesResponse:
         """
+        @summary Queries the hardware security modules (HSMs) that meet the query conditions.
+        
         @param request: ListInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListInstancesResponse
@@ -3046,6 +3204,8 @@ class Client(OpenApiClient):
             body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.tenant_isolation_type):
+            body['TenantIsolationType'] = request.tenant_isolation_type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -3070,6 +3230,8 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.ListInstancesRequest,
     ) -> hsm_20231113_models.ListInstancesResponse:
         """
+        @summary Queries the hardware security modules (HSMs) that meet the query conditions.
+        
         @param request: ListInstancesRequest
         @return: ListInstancesResponse
         """
@@ -3081,6 +3243,8 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.ListInstancesRequest,
     ) -> hsm_20231113_models.ListInstancesResponse:
         """
+        @summary Queries the hardware security modules (HSMs) that meet the query conditions.
+        
         @param request: ListInstancesRequest
         @return: ListInstancesResponse
         """
@@ -3201,6 +3365,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.PauseInstanceResponse:
         """
+        @summary Deactivates a hardware security module (HSM).
+        
+        @description After you deactivate an HSM, the relevant service operations fail. Proceed with caution.
+        
         @param request: PauseInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PauseInstanceResponse
@@ -3234,6 +3402,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.PauseInstanceResponse:
         """
+        @summary Deactivates a hardware security module (HSM).
+        
+        @description After you deactivate an HSM, the relevant service operations fail. Proceed with caution.
+        
         @param request: PauseInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PauseInstanceResponse
@@ -3266,6 +3438,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.PauseInstanceRequest,
     ) -> hsm_20231113_models.PauseInstanceResponse:
         """
+        @summary Deactivates a hardware security module (HSM).
+        
+        @description After you deactivate an HSM, the relevant service operations fail. Proceed with caution.
+        
         @param request: PauseInstanceRequest
         @return: PauseInstanceResponse
         """
@@ -3277,6 +3453,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.PauseInstanceRequest,
     ) -> hsm_20231113_models.PauseInstanceResponse:
         """
+        @summary Deactivates a hardware security module (HSM).
+        
+        @description After you deactivate an HSM, the relevant service operations fail. Proceed with caution.
+        
         @param request: PauseInstanceRequest
         @return: PauseInstanceResponse
         """
@@ -3289,6 +3469,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.QuickInitInstanceResponse:
         """
+        @summary Initializes a hardware security module (HSM).
+        
+        @description This operation is supported only for general virtual security modules (GVSMs) that are deployed in regions in the Chinese mainland.
+        
         @param request: QuickInitInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QuickInitInstanceResponse
@@ -3322,6 +3506,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.QuickInitInstanceResponse:
         """
+        @summary Initializes a hardware security module (HSM).
+        
+        @description This operation is supported only for general virtual security modules (GVSMs) that are deployed in regions in the Chinese mainland.
+        
         @param request: QuickInitInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: QuickInitInstanceResponse
@@ -3354,6 +3542,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.QuickInitInstanceRequest,
     ) -> hsm_20231113_models.QuickInitInstanceResponse:
         """
+        @summary Initializes a hardware security module (HSM).
+        
+        @description This operation is supported only for general virtual security modules (GVSMs) that are deployed in regions in the Chinese mainland.
+        
         @param request: QuickInitInstanceRequest
         @return: QuickInitInstanceResponse
         """
@@ -3365,6 +3557,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.QuickInitInstanceRequest,
     ) -> hsm_20231113_models.QuickInitInstanceResponse:
         """
+        @summary Initializes a hardware security module (HSM).
+        
+        @description This operation is supported only for general virtual security modules (GVSMs) that are deployed in regions in the Chinese mainland.
+        
         @param request: QuickInitInstanceRequest
         @return: QuickInitInstanceResponse
         """
@@ -3473,6 +3669,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.ResetInstanceResponse:
         """
+        @summary Resets a hardware security module (HSM).
+        
+        @description After an HSM is reset, all related data is deleted and cannot be recovered. Exercise caution.
+        
         @param request: ResetInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ResetInstanceResponse
@@ -3506,6 +3706,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.ResetInstanceResponse:
         """
+        @summary Resets a hardware security module (HSM).
+        
+        @description After an HSM is reset, all related data is deleted and cannot be recovered. Exercise caution.
+        
         @param request: ResetInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ResetInstanceResponse
@@ -3538,6 +3742,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.ResetInstanceRequest,
     ) -> hsm_20231113_models.ResetInstanceResponse:
         """
+        @summary Resets a hardware security module (HSM).
+        
+        @description After an HSM is reset, all related data is deleted and cannot be recovered. Exercise caution.
+        
         @param request: ResetInstanceRequest
         @return: ResetInstanceResponse
         """
@@ -3549,6 +3757,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.ResetInstanceRequest,
     ) -> hsm_20231113_models.ResetInstanceResponse:
         """
+        @summary Resets a hardware security module (HSM).
+        
+        @description After an HSM is reset, all related data is deleted and cannot be recovered. Exercise caution.
+        
         @param request: ResetInstanceRequest
         @return: ResetInstanceResponse
         """
@@ -3561,6 +3773,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.RestoreInstanceResponse:
         """
+        @summary Restores a hardware security module (HSM) by using an image.
+        
+        @description You can use images to restore only HSMs that are suspended or deactivated.
+        
         @param request: RestoreInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RestoreInstanceResponse
@@ -3596,6 +3812,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.RestoreInstanceResponse:
         """
+        @summary Restores a hardware security module (HSM) by using an image.
+        
+        @description You can use images to restore only HSMs that are suspended or deactivated.
+        
         @param request: RestoreInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: RestoreInstanceResponse
@@ -3630,6 +3850,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.RestoreInstanceRequest,
     ) -> hsm_20231113_models.RestoreInstanceResponse:
         """
+        @summary Restores a hardware security module (HSM) by using an image.
+        
+        @description You can use images to restore only HSMs that are suspended or deactivated.
+        
         @param request: RestoreInstanceRequest
         @return: RestoreInstanceResponse
         """
@@ -3641,6 +3865,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.RestoreInstanceRequest,
     ) -> hsm_20231113_models.RestoreInstanceResponse:
         """
+        @summary Restores a hardware security module (HSM) by using an image.
+        
+        @description You can use images to restore only HSMs that are suspended or deactivated.
+        
         @param request: RestoreInstanceRequest
         @return: RestoreInstanceResponse
         """
@@ -3653,6 +3881,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.ResumeInstanceResponse:
         """
+        @summary Resumes a deactivated hardware security module (HSM).
+        
         @param request: ResumeInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ResumeInstanceResponse
@@ -3686,6 +3916,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.ResumeInstanceResponse:
         """
+        @summary Resumes a deactivated hardware security module (HSM).
+        
         @param request: ResumeInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ResumeInstanceResponse
@@ -3718,6 +3950,8 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.ResumeInstanceRequest,
     ) -> hsm_20231113_models.ResumeInstanceResponse:
         """
+        @summary Resumes a deactivated hardware security module (HSM).
+        
         @param request: ResumeInstanceRequest
         @return: ResumeInstanceResponse
         """
@@ -3729,6 +3963,8 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.ResumeInstanceRequest,
     ) -> hsm_20231113_models.ResumeInstanceResponse:
         """
+        @summary Resumes a deactivated hardware security module (HSM).
+        
         @param request: ResumeInstanceRequest
         @return: ResumeInstanceResponse
         """
@@ -3741,6 +3977,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.SwitchClusterMasterResponse:
         """
+        @summary Promote a non-master hardware security module (HSM) in a cluster to the master HSM.
+        
         @param request: SwitchClusterMasterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SwitchClusterMasterResponse
@@ -3776,6 +4014,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.SwitchClusterMasterResponse:
         """
+        @summary Promote a non-master hardware security module (HSM) in a cluster to the master HSM.
+        
         @param request: SwitchClusterMasterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SwitchClusterMasterResponse
@@ -3810,6 +4050,8 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.SwitchClusterMasterRequest,
     ) -> hsm_20231113_models.SwitchClusterMasterResponse:
         """
+        @summary Promote a non-master hardware security module (HSM) in a cluster to the master HSM.
+        
         @param request: SwitchClusterMasterRequest
         @return: SwitchClusterMasterResponse
         """
@@ -3821,6 +4063,8 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.SwitchClusterMasterRequest,
     ) -> hsm_20231113_models.SwitchClusterMasterResponse:
         """
+        @summary Promote a non-master hardware security module (HSM) in a cluster to the master HSM.
+        
         @param request: SwitchClusterMasterRequest
         @return: SwitchClusterMasterResponse
         """
@@ -3833,6 +4077,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.SyncClusterResponse:
         """
+        @summary Synchronizes HSM data in a cluster.
+        
+        @description This operation is supported only for hardware security modules (HSMs) that are created in regions in the Chinese mainland.
+        
         @param request: SyncClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SyncClusterResponse
@@ -3866,6 +4114,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hsm_20231113_models.SyncClusterResponse:
         """
+        @summary Synchronizes HSM data in a cluster.
+        
+        @description This operation is supported only for hardware security modules (HSMs) that are created in regions in the Chinese mainland.
+        
         @param request: SyncClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: SyncClusterResponse
@@ -3898,6 +4150,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.SyncClusterRequest,
     ) -> hsm_20231113_models.SyncClusterResponse:
         """
+        @summary Synchronizes HSM data in a cluster.
+        
+        @description This operation is supported only for hardware security modules (HSMs) that are created in regions in the Chinese mainland.
+        
         @param request: SyncClusterRequest
         @return: SyncClusterResponse
         """
@@ -3909,6 +4165,10 @@ class Client(OpenApiClient):
         request: hsm_20231113_models.SyncClusterRequest,
     ) -> hsm_20231113_models.SyncClusterResponse:
         """
+        @summary Synchronizes HSM data in a cluster.
+        
+        @description This operation is supported only for hardware security modules (HSMs) that are created in regions in the Chinese mainland.
+        
         @param request: SyncClusterRequest
         @return: SyncClusterResponse
         """

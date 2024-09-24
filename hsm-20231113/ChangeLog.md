@@ -1,3 +1,8 @@
+2024-09-24 Version: 1.1.1
+- Update API GetInstance: update response param.
+- Update API ListInstances: add param TenantIsolationType.
+
+
 2024-09-14 Version: 1.1.0
 - Support API ConfigAuditLog.
 - Support API ConfigBackupRemark.
